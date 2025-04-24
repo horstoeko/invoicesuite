@@ -110,7 +110,7 @@ trait HandlesFormatProviders
      *
      * @return static
      */
-    public function initFormatProviders(): self
+    public function resolveAvailableFormatProviders(): self
     {
         $classFinder = InvoiceSuiteClassFinder::factory();
         $classesWhichAreFormatProviders = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractFormatProvider::class);

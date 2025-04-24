@@ -44,7 +44,7 @@ class InvoiceDocumentBuilder
      */
     final protected function __construct(string $formatProviderUniqueId)
     {
-        $this->initFormatProviders();
+        $this->resolveAvailableFormatProviders();
         $this->setCurrentFormatProvider($this->findFormatProviderByUniqueIdOrFail($formatProviderUniqueId));
         $this->getCurrentFormatProvider()->initBuilder();
     }

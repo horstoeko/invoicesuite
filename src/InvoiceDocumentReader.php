@@ -67,7 +67,7 @@ class InvoiceDocumentReader
      */
     final protected function __construct(string $fromContent)
     {
-        $this->initFormatProviders();
+        $this->resolveAvailableFormatProviders();
 
         $formatProviders = array_filter($this->getRegisteredFormatProviders(), function ($formatProvider) use ($fromContent) {
             return $formatProvider->isSatisfiableBy($fromContent);
