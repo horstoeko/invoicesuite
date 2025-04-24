@@ -40,7 +40,7 @@ class DateTimeType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType\DateTimeStringAType
      * @return self
      */
-    public function setDateTimeString(DateTimeStringAType $dateTimeStringAType,): self
+    public function setDateTimeString(DateTimeStringAType $dateTimeStringAType): self
     {
         $this->dateTimeStringAType = $dateTimeStringAType;
 
