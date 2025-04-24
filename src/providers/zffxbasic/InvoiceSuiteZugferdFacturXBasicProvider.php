@@ -3,7 +3,7 @@
 namespace horstoeko\invoicesuite\providers\zffxbasic;
 
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProvider;
-use horstoeko\invoicesuite\models\zugferd\rsm\CrossIndustryInvoice;
+use horstoeko\invoicesuite\models\zffx\rsm\CrossIndustryInvoice;
 
 class InvoiceSuiteZugferdFacturXBasicProvider extends InvoiceSuiteAbstractFormatProvider
 {

@@ -2,7 +2,7 @@
 
 namespace horstoeko\invoicesuite\tests\testcases;
 
-use horstoeko\invoicesuite\models\zugferd\rsm\CrossIndustryInvoice;
+use horstoeko\invoicesuite\models\zffx\rsm\CrossIndustryInvoice;
 use horstoeko\invoicesuite\tests\TestCase;
 
 class BasicTest extends TestCase
