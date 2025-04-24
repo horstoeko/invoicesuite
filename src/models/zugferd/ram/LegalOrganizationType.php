@@ -60,7 +60,7 @@ class LegalOrganizationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iD
      * @return self
      */
     public function setID(IDType $iD): self
@@ -89,7 +89,7 @@ class LegalOrganizationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $tradingBusinessName
      * @return self
      */
     public function setTradingBusinessName(TextType $tradingBusinessName): self
@@ -118,7 +118,7 @@ class LegalOrganizationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAddressType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAddressType $postalTradeAddress
      * @return self
      */
     public function setPostalTradeAddress(TradeAddressType $postalTradeAddress): self

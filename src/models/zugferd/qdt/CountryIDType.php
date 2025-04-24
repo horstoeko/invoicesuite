@@ -26,7 +26,7 @@ class CountryIDType
     }
 
     /**
-     * @param string
+     * @param string $value
      * @return self
      */
     public function setValue(string $value): self

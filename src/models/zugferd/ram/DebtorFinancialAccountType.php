@@ -37,7 +37,7 @@ class DebtorFinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iBANID
      * @return self
      */
     public function setIBANID(IDType $iBANID): self

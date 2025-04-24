@@ -37,7 +37,7 @@ class DateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateType\DateStringAType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateType\DateStringAType $dateString
      * @return self
      */
     public function setDateString(DateStringAType $dateString): self

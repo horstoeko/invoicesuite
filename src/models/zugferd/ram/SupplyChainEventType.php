@@ -37,7 +37,7 @@ class SupplyChainEventType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $occurrenceDateTime
      * @return self
      */
     public function setOccurrenceDateTime(DateTimeType $occurrenceDateTime): self

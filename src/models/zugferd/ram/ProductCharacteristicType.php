@@ -72,7 +72,7 @@ class ProductCharacteristicType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType $typeCode
      * @return self
      */
     public function setTypeCode(CodeType $typeCode): self
@@ -101,7 +101,7 @@ class ProductCharacteristicType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $description
      * @return self
      */
     public function setDescription(TextType $description): self
@@ -130,7 +130,7 @@ class ProductCharacteristicType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\MeasureType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\MeasureType $valueMeasure
      * @return self
      */
     public function setValueMeasure(MeasureType $valueMeasure): self
@@ -159,7 +159,7 @@ class ProductCharacteristicType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $value
      * @return self
      */
     public function setValue(TextType $value): self

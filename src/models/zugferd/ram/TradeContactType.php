@@ -93,7 +93,7 @@ class TradeContactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $personName
      * @return self
      */
     public function setPersonName(TextType $personName): self
@@ -122,7 +122,7 @@ class TradeContactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $departmentName
      * @return self
      */
     public function setDepartmentName(TextType $departmentName): self
@@ -151,7 +151,7 @@ class TradeContactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType $typeCode
      * @return self
      */
     public function setTypeCode(CodeType $typeCode): self
@@ -180,11 +180,11 @@ class TradeContactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\UniversalCommunicationType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\UniversalCommunicationType $telephoneUniversalCommunication
      * @return self
      */
     public function setTelephoneUniversalCommunication(
-        UniversalCommunicationType $telephoneUniversalCommunication
+        UniversalCommunicationType $telephoneUniversalCommunication,
     ): self {
         $this->telephoneUniversalCommunication = $telephoneUniversalCommunication;
 
@@ -210,7 +210,7 @@ class TradeContactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\UniversalCommunicationType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\UniversalCommunicationType $faxUniversalCommunication
      * @return self
      */
     public function setFaxUniversalCommunication(UniversalCommunicationType $faxUniversalCommunication): self
@@ -239,11 +239,11 @@ class TradeContactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\UniversalCommunicationType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\UniversalCommunicationType $emailURIUniversalCommunication
      * @return self
      */
     public function setEmailURIUniversalCommunication(
-        UniversalCommunicationType $emailURIUniversalCommunication
+        UniversalCommunicationType $emailURIUniversalCommunication,
     ): self {
         $this->emailURIUniversalCommunication = $emailURIUniversalCommunication;
 

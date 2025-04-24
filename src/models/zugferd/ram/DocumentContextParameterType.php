@@ -37,7 +37,7 @@ class DocumentContextParameterType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iD
      * @return self
      */
     public function setID(IDType $iD): self

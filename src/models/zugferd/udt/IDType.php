@@ -37,7 +37,7 @@ class IDType
     }
 
     /**
-     * @param string
+     * @param string $value
      * @return self
      */
     public function setValue(string $value): self
@@ -56,7 +56,7 @@ class IDType
     }
 
     /**
-     * @param string
+     * @param string $schemeID
      * @return self
      */
     public function setSchemeID(string $schemeID): self

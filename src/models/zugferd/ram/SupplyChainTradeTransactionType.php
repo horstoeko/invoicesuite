@@ -60,7 +60,7 @@ class SupplyChainTradeTransactionType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\SupplyChainTradeLineItemType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\SupplyChainTradeLineItemType> $includedSupplyChainTradeLineItem
      * @return self
      */
     public function setIncludedSupplyChainTradeLineItem(array $includedSupplyChainTradeLineItem): self
@@ -85,7 +85,7 @@ class SupplyChainTradeTransactionType
      * @return self
      */
     public function addToIncludedSupplyChainTradeLineItem(
-        SupplyChainTradeLineItemType $includedSupplyChainTradeLineItem
+        SupplyChainTradeLineItemType $includedSupplyChainTradeLineItem,
     ): self {
         $this->includedSupplyChainTradeLineItem[] = $includedSupplyChainTradeLineItem;
 
@@ -121,7 +121,7 @@ class SupplyChainTradeTransactionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeAgreementType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeAgreementType $applicableHeaderTradeAgreement
      * @return self
      */
     public function setApplicableHeaderTradeAgreement(HeaderTradeAgreementType $applicableHeaderTradeAgreement): self
@@ -150,7 +150,7 @@ class SupplyChainTradeTransactionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeDeliveryType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeDeliveryType $applicableHeaderTradeDelivery
      * @return self
      */
     public function setApplicableHeaderTradeDelivery(HeaderTradeDeliveryType $applicableHeaderTradeDelivery): self
@@ -179,11 +179,11 @@ class SupplyChainTradeTransactionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeSettlementType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeSettlementType $applicableHeaderTradeSettlement
      * @return self
      */
     public function setApplicableHeaderTradeSettlement(
-        HeaderTradeSettlementType $applicableHeaderTradeSettlement
+        HeaderTradeSettlementType $applicableHeaderTradeSettlement,
     ): self {
         $this->applicableHeaderTradeSettlement = $applicableHeaderTradeSettlement;
 

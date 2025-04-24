@@ -37,7 +37,7 @@ class CreditorFinancialInstitutionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $bICID
      * @return self
      */
     public function setBICID(IDType $bICID): self

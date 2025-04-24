@@ -115,7 +115,7 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $sellerOrderReferencedDocument
      * @return self
      */
     public function setSellerOrderReferencedDocument(ReferencedDocumentType $sellerOrderReferencedDocument): self
@@ -144,7 +144,7 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $buyerOrderReferencedDocument
      * @return self
      */
     public function setBuyerOrderReferencedDocument(ReferencedDocumentType $buyerOrderReferencedDocument): self
@@ -173,7 +173,7 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $quotationReferencedDocument
      * @return self
      */
     public function setQuotationReferencedDocument(ReferencedDocumentType $quotationReferencedDocument): self
@@ -202,7 +202,7 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $contractReferencedDocument
      * @return self
      */
     public function setContractReferencedDocument(ReferencedDocumentType $contractReferencedDocument): self
@@ -221,7 +221,7 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType> $additionalReferencedDocument
      * @return self
      */
     public function setAdditionalReferencedDocument(array $additionalReferencedDocument): self
@@ -281,7 +281,7 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType $grossPriceProductTradePrice
      * @return self
      */
     public function setGrossPriceProductTradePrice(TradePriceType $grossPriceProductTradePrice): self
@@ -310,7 +310,7 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType $netPriceProductTradePrice
      * @return self
      */
     public function setNetPriceProductTradePrice(TradePriceType $netPriceProductTradePrice): self
@@ -329,7 +329,7 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType> $ultimateCustomerOrderReferencedDocument
      * @return self
      */
     public function setUltimateCustomerOrderReferencedDocument(array $ultimateCustomerOrderReferencedDocument): self
@@ -354,7 +354,7 @@ class LineTradeAgreementType
      * @return self
      */
     public function addToUltimateCustomerOrderReferencedDocument(
-        ReferencedDocumentType $ultimateCustomerOrderReferencedDocument
+        ReferencedDocumentType $ultimateCustomerOrderReferencedDocument,
     ): self {
         $this->ultimateCustomerOrderReferencedDocument[] = $ultimateCustomerOrderReferencedDocument;
 

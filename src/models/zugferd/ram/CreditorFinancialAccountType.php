@@ -60,7 +60,7 @@ class CreditorFinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iBANID
      * @return self
      */
     public function setIBANID(IDType $iBANID): self
@@ -89,7 +89,7 @@ class CreditorFinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $accountName
      * @return self
      */
     public function setAccountName(TextType $accountName): self
@@ -118,7 +118,7 @@ class CreditorFinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $proprietaryID
      * @return self
      */
     public function setProprietaryID(IDType $proprietaryID): self

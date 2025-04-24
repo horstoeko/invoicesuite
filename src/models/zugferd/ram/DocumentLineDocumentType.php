@@ -84,7 +84,7 @@ class DocumentLineDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $lineID
      * @return self
      */
     public function setLineID(IDType $lineID): self
@@ -113,7 +113,7 @@ class DocumentLineDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $parentLineID
      * @return self
      */
     public function setParentLineID(IDType $parentLineID): self
@@ -142,7 +142,7 @@ class DocumentLineDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\LineStatusCodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\LineStatusCodeType $lineStatusCode
      * @return self
      */
     public function setLineStatusCode(LineStatusCodeType $lineStatusCode): self
@@ -171,7 +171,7 @@ class DocumentLineDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType $lineStatusReasonCode
      * @return self
      */
     public function setLineStatusReasonCode(CodeType $lineStatusReasonCode): self
@@ -190,7 +190,7 @@ class DocumentLineDocumentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\NoteType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\NoteType> $includedNote
      * @return self
      */
     public function setIncludedNote(array $includedNote): self

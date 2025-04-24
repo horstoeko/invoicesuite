@@ -49,7 +49,7 @@ class TradeAccountingAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iD
      * @return self
      */
     public function setID(IDType $iD): self
@@ -78,7 +78,7 @@ class TradeAccountingAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\AccountingAccountTypeCodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\AccountingAccountTypeCodeType $typeCode
      * @return self
      */
     public function setTypeCode(AccountingAccountTypeCodeType $typeCode): self

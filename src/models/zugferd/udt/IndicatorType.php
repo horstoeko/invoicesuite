@@ -26,7 +26,7 @@ class IndicatorType
     }
 
     /**
-     * @param bool
+     * @param bool $indicator
      * @return self
      */
     public function setIndicator(bool $indicator): self

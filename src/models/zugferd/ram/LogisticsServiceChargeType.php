@@ -61,7 +61,7 @@ class LogisticsServiceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $description
      * @return self
      */
     public function setDescription(TextType $description): self
@@ -90,7 +90,7 @@ class LogisticsServiceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $appliedAmount
      * @return self
      */
     public function setAppliedAmount(AmountType $appliedAmount): self
@@ -109,7 +109,7 @@ class LogisticsServiceChargeType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType> $appliedTradeTax
      * @return self
      */
     public function setAppliedTradeTax(array $appliedTradeTax): self

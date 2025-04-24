@@ -49,7 +49,7 @@ class ProductClassificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType $classCode
      * @return self
      */
     public function setClassCode(CodeType $classCode): self
@@ -78,7 +78,7 @@ class ProductClassificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $className
      * @return self
      */
     public function setClassName(TextType $className): self

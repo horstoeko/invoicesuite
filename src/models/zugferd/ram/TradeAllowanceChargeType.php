@@ -131,7 +131,7 @@ class TradeAllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IndicatorType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IndicatorType $chargeIndicator
      * @return self
      */
     public function setChargeIndicator(IndicatorType $chargeIndicator): self
@@ -160,7 +160,7 @@ class TradeAllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\NumericType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\NumericType $sequenceNumeric
      * @return self
      */
     public function setSequenceNumeric(NumericType $sequenceNumeric): self
@@ -189,7 +189,7 @@ class TradeAllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\PercentType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\PercentType $calculationPercent
      * @return self
      */
     public function setCalculationPercent(PercentType $calculationPercent): self
@@ -218,7 +218,7 @@ class TradeAllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $basisAmount
      * @return self
      */
     public function setBasisAmount(AmountType $basisAmount): self
@@ -247,7 +247,7 @@ class TradeAllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\QuantityType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\QuantityType $basisQuantity
      * @return self
      */
     public function setBasisQuantity(QuantityType $basisQuantity): self
@@ -276,7 +276,7 @@ class TradeAllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $actualAmount
      * @return self
      */
     public function setActualAmount(AmountType $actualAmount): self
@@ -305,7 +305,7 @@ class TradeAllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\AllowanceChargeReasonCodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\AllowanceChargeReasonCodeType $reasonCode
      * @return self
      */
     public function setReasonCode(AllowanceChargeReasonCodeType $reasonCode): self
@@ -334,7 +334,7 @@ class TradeAllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $reason
      * @return self
      */
     public function setReason(TextType $reason): self
@@ -363,7 +363,7 @@ class TradeAllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType $categoryTradeTax
      * @return self
      */
     public function setCategoryTradeTax(TradeTaxType $categoryTradeTax): self

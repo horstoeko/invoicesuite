@@ -208,7 +208,7 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iD
      * @return self
      */
     public function setID(IDType $iD): self
@@ -237,7 +237,7 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $globalID
      * @return self
      */
     public function setGlobalID(IDType $globalID): self
@@ -266,7 +266,7 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $sellerAssignedID
      * @return self
      */
     public function setSellerAssignedID(IDType $sellerAssignedID): self
@@ -295,7 +295,7 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $buyerAssignedID
      * @return self
      */
     public function setBuyerAssignedID(IDType $buyerAssignedID): self
@@ -324,7 +324,7 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $industryAssignedID
      * @return self
      */
     public function setIndustryAssignedID(IDType $industryAssignedID): self
@@ -353,7 +353,7 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $modelID
      * @return self
      */
     public function setModelID(IDType $modelID): self
@@ -382,7 +382,7 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $name
      * @return self
      */
     public function setName(TextType $name): self
@@ -411,7 +411,7 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $description
      * @return self
      */
     public function setDescription(TextType $description): self
@@ -430,7 +430,7 @@ class TradeProductType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\udt\IDType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\udt\IDType> $batchID
      * @return self
      */
     public function setBatchID(array $batchID): self
@@ -490,7 +490,7 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $brandName
      * @return self
      */
     public function setBrandName(TextType $brandName): self
@@ -519,7 +519,7 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $modelName
      * @return self
      */
     public function setModelName(TextType $modelName): self
@@ -538,7 +538,7 @@ class TradeProductType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\ProductCharacteristicType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\ProductCharacteristicType> $applicableProductCharacteristic
      * @return self
      */
     public function setApplicableProductCharacteristic(array $applicableProductCharacteristic): self
@@ -563,7 +563,7 @@ class TradeProductType
      * @return self
      */
     public function addToApplicableProductCharacteristic(
-        ProductCharacteristicType $applicableProductCharacteristic
+        ProductCharacteristicType $applicableProductCharacteristic,
     ): self {
         $this->applicableProductCharacteristic[] = $applicableProductCharacteristic;
 
@@ -589,7 +589,7 @@ class TradeProductType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\ProductClassificationType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\ProductClassificationType> $designatedProductClassification
      * @return self
      */
     public function setDesignatedProductClassification(array $designatedProductClassification): self
@@ -614,7 +614,7 @@ class TradeProductType
      * @return self
      */
     public function addToDesignatedProductClassification(
-        ProductClassificationType $designatedProductClassification
+        ProductClassificationType $designatedProductClassification,
     ): self {
         $this->designatedProductClassification[] = $designatedProductClassification;
 
@@ -640,7 +640,7 @@ class TradeProductType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\TradeProductInstanceType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\TradeProductInstanceType> $individualTradeProductInstance
      * @return self
      */
     public function setIndividualTradeProductInstance(array $individualTradeProductInstance): self
@@ -665,7 +665,7 @@ class TradeProductType
      * @return self
      */
     public function addToIndividualTradeProductInstance(
-        TradeProductInstanceType $individualTradeProductInstance
+        TradeProductInstanceType $individualTradeProductInstance,
     ): self {
         $this->individualTradeProductInstance[] = $individualTradeProductInstance;
 
@@ -701,7 +701,7 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeCountryType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeCountryType $originTradeCountry
      * @return self
      */
     public function setOriginTradeCountry(TradeCountryType $originTradeCountry): self
@@ -720,7 +720,7 @@ class TradeProductType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\ReferencedProductType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\ReferencedProductType> $includedReferencedProduct
      * @return self
      */
     public function setIncludedReferencedProduct(array $includedReferencedProduct): self

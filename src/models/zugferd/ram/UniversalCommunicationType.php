@@ -49,7 +49,7 @@ class UniversalCommunicationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $uRIID
      * @return self
      */
     public function setURIID(IDType $uRIID): self
@@ -78,7 +78,7 @@ class UniversalCommunicationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $completeNumber
      * @return self
      */
     public function setCompleteNumber(TextType $completeNumber): self

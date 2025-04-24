@@ -108,7 +108,7 @@ trait HandlesFormatProviders
     /**
      * Initialize additionall format providers
      *
-     * @return HandlesFormatProviders
+     * @return static
      */
     public function initFormatProviders(): self
     {

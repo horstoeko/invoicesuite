@@ -126,7 +126,7 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $lineTotalAmount
      * @return self
      */
     public function setLineTotalAmount(AmountType $lineTotalAmount): self
@@ -155,7 +155,7 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $chargeTotalAmount
      * @return self
      */
     public function setChargeTotalAmount(AmountType $chargeTotalAmount): self
@@ -184,7 +184,7 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $allowanceTotalAmount
      * @return self
      */
     public function setAllowanceTotalAmount(AmountType $allowanceTotalAmount): self
@@ -213,7 +213,7 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $taxBasisTotalAmount
      * @return self
      */
     public function setTaxBasisTotalAmount(AmountType $taxBasisTotalAmount): self
@@ -232,7 +232,7 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\udt\AmountType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\udt\AmountType> $taxTotalAmount
      * @return self
      */
     public function setTaxTotalAmount(array $taxTotalAmount): self
@@ -292,7 +292,7 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $roundingAmount
      * @return self
      */
     public function setRoundingAmount(AmountType $roundingAmount): self
@@ -321,7 +321,7 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $grandTotalAmount
      * @return self
      */
     public function setGrandTotalAmount(AmountType $grandTotalAmount): self
@@ -350,7 +350,7 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $totalPrepaidAmount
      * @return self
      */
     public function setTotalPrepaidAmount(AmountType $totalPrepaidAmount): self
@@ -379,7 +379,7 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $duePayableAmount
      * @return self
      */
     public function setDuePayableAmount(AmountType $duePayableAmount): self

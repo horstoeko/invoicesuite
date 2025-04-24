@@ -37,7 +37,7 @@ class MeasureType
     }
 
     /**
-     * @param float
+     * @param float $value
      * @return self
      */
     public function setValue(float $value): self
@@ -56,7 +56,7 @@ class MeasureType
     }
 
     /**
-     * @param string
+     * @param string $unitCode
      * @return self
      */
     public function setUnitCode(string $unitCode): self

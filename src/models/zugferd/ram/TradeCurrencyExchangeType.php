@@ -72,7 +72,7 @@ class TradeCurrencyExchangeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType $sourceCurrencyCode
      * @return self
      */
     public function setSourceCurrencyCode(CurrencyCodeType $sourceCurrencyCode): self
@@ -101,7 +101,7 @@ class TradeCurrencyExchangeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType $targetCurrencyCode
      * @return self
      */
     public function setTargetCurrencyCode(CurrencyCodeType $targetCurrencyCode): self
@@ -130,7 +130,7 @@ class TradeCurrencyExchangeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\RateType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\RateType $conversionRate
      * @return self
      */
     public function setConversionRate(RateType $conversionRate): self
@@ -159,7 +159,7 @@ class TradeCurrencyExchangeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $conversionRateDateTime
      * @return self
      */
     public function setConversionRateDateTime(DateTimeType $conversionRateDateTime): self

@@ -48,7 +48,7 @@ class BinaryObjectType
     }
 
     /**
-     * @param string
+     * @param string $value
      * @return self
      */
     public function setValue(string $value): self
@@ -67,7 +67,7 @@ class BinaryObjectType
     }
 
     /**
-     * @param string
+     * @param string $mimeCode
      * @return self
      */
     public function setMimeCode(string $mimeCode): self
@@ -86,7 +86,7 @@ class BinaryObjectType
     }
 
     /**
-     * @param string
+     * @param string $filename
      * @return self
      */
     public function setFilename(string $filename): self

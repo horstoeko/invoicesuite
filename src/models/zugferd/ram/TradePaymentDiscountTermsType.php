@@ -84,7 +84,7 @@ class TradePaymentDiscountTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $basisDateTime
      * @return self
      */
     public function setBasisDateTime(DateTimeType $basisDateTime): self
@@ -113,7 +113,7 @@ class TradePaymentDiscountTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\MeasureType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\MeasureType $basisPeriodMeasure
      * @return self
      */
     public function setBasisPeriodMeasure(MeasureType $basisPeriodMeasure): self
@@ -142,7 +142,7 @@ class TradePaymentDiscountTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $basisAmount
      * @return self
      */
     public function setBasisAmount(AmountType $basisAmount): self
@@ -171,7 +171,7 @@ class TradePaymentDiscountTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\PercentType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\PercentType $calculationPercent
      * @return self
      */
     public function setCalculationPercent(PercentType $calculationPercent): self
@@ -200,7 +200,7 @@ class TradePaymentDiscountTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $actualDiscountAmount
      * @return self
      */
     public function setActualDiscountAmount(AmountType $actualDiscountAmount): self

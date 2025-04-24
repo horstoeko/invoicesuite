@@ -72,7 +72,7 @@ class AdvancePaymentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $paidAmount
      * @return self
      */
     public function setPaidAmount(AmountType $paidAmount): self
@@ -101,7 +101,7 @@ class AdvancePaymentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType $formattedReceivedDateTime
      * @return self
      */
     public function setFormattedReceivedDateTime(FormattedDateTimeType $formattedReceivedDateTime): self
@@ -120,7 +120,7 @@ class AdvancePaymentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType> $includedTradeTax
      * @return self
      */
     public function setIncludedTradeTax(array $includedTradeTax): self
@@ -180,11 +180,11 @@ class AdvancePaymentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $invoiceSpecifiedReferencedDocument
      * @return self
      */
     public function setInvoiceSpecifiedReferencedDocument(
-        ReferencedDocumentType $invoiceSpecifiedReferencedDocument
+        ReferencedDocumentType $invoiceSpecifiedReferencedDocument,
     ): self {
         $this->invoiceSpecifiedReferencedDocument = $invoiceSpecifiedReferencedDocument;
 

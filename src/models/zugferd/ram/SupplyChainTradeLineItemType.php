@@ -80,7 +80,7 @@ class SupplyChainTradeLineItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\DocumentLineDocumentType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\DocumentLineDocumentType $associatedDocumentLineDocument
      * @return self
      */
     public function setAssociatedDocumentLineDocument(DocumentLineDocumentType $associatedDocumentLineDocument): self
@@ -109,7 +109,7 @@ class SupplyChainTradeLineItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeProductType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeProductType $specifiedTradeProduct
      * @return self
      */
     public function setSpecifiedTradeProduct(TradeProductType $specifiedTradeProduct): self
@@ -138,7 +138,7 @@ class SupplyChainTradeLineItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\LineTradeAgreementType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\LineTradeAgreementType $specifiedLineTradeAgreement
      * @return self
      */
     public function setSpecifiedLineTradeAgreement(LineTradeAgreementType $specifiedLineTradeAgreement): self
@@ -167,7 +167,7 @@ class SupplyChainTradeLineItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\LineTradeDeliveryType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\LineTradeDeliveryType $specifiedLineTradeDelivery
      * @return self
      */
     public function setSpecifiedLineTradeDelivery(LineTradeDeliveryType $specifiedLineTradeDelivery): self
@@ -196,7 +196,7 @@ class SupplyChainTradeLineItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\LineTradeSettlementType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\LineTradeSettlementType $specifiedLineTradeSettlement
      * @return self
      */
     public function setSpecifiedLineTradeSettlement(LineTradeSettlementType $specifiedLineTradeSettlement): self

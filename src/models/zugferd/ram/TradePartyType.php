@@ -131,7 +131,7 @@ class TradePartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\udt\IDType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\udt\IDType> $iD
      * @return self
      */
     public function setID(array $iD): self
@@ -181,7 +181,7 @@ class TradePartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\udt\IDType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\udt\IDType> $globalID
      * @return self
      */
     public function setGlobalID(array $globalID): self
@@ -241,7 +241,7 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $name
      * @return self
      */
     public function setName(TextType $name): self
@@ -260,7 +260,7 @@ class TradePartyType
     }
 
     /**
-     * @param string
+     * @param string $roleCode
      * @return self
      */
     public function setRoleCode(string $roleCode): self
@@ -289,7 +289,7 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $description
      * @return self
      */
     public function setDescription(TextType $description): self
@@ -318,7 +318,7 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\LegalOrganizationType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\LegalOrganizationType $specifiedLegalOrganization
      * @return self
      */
     public function setSpecifiedLegalOrganization(LegalOrganizationType $specifiedLegalOrganization): self
@@ -337,7 +337,7 @@ class TradePartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\TradeContactType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\TradeContactType> $definedTradeContact
      * @return self
      */
     public function setDefinedTradeContact(array $definedTradeContact): self
@@ -397,7 +397,7 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAddressType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAddressType $postalTradeAddress
      * @return self
      */
     public function setPostalTradeAddress(TradeAddressType $postalTradeAddress): self
@@ -426,7 +426,7 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\UniversalCommunicationType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\UniversalCommunicationType $uRIUniversalCommunication
      * @return self
      */
     public function setURIUniversalCommunication(UniversalCommunicationType $uRIUniversalCommunication): self
@@ -445,7 +445,7 @@ class TradePartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\TaxRegistrationType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\TaxRegistrationType> $specifiedTaxRegistration
      * @return self
      */
     public function setSpecifiedTaxRegistration(array $specifiedTaxRegistration): self

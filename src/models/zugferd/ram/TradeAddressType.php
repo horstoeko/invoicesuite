@@ -105,7 +105,7 @@ class TradeAddressType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType $postcodeCode
      * @return self
      */
     public function setPostcodeCode(CodeType $postcodeCode): self
@@ -134,7 +134,7 @@ class TradeAddressType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $lineOne
      * @return self
      */
     public function setLineOne(TextType $lineOne): self
@@ -163,7 +163,7 @@ class TradeAddressType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $lineTwo
      * @return self
      */
     public function setLineTwo(TextType $lineTwo): self
@@ -192,7 +192,7 @@ class TradeAddressType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $lineThree
      * @return self
      */
     public function setLineThree(TextType $lineThree): self
@@ -221,7 +221,7 @@ class TradeAddressType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $cityName
      * @return self
      */
     public function setCityName(TextType $cityName): self
@@ -250,7 +250,7 @@ class TradeAddressType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\CountryIDType
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\CountryIDType $countryID
      * @return self
      */
     public function setCountryID(CountryIDType $countryID): self
@@ -279,7 +279,7 @@ class TradeAddressType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $countrySubDivisionName
      * @return self
      */
     public function setCountrySubDivisionName(TextType $countrySubDivisionName): self

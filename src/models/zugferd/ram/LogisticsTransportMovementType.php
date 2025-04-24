@@ -37,7 +37,7 @@ class LogisticsTransportMovementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\TransportModeCodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\TransportModeCodeType $modeCode
      * @return self
      */
     public function setModeCode(TransportModeCodeType $modeCode): self

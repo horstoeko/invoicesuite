@@ -69,7 +69,7 @@ class CrossIndustryInvoiceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ExchangedDocumentContextType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ExchangedDocumentContextType $exchangedDocumentContext
      * @return self
      */
     public function setExchangedDocumentContext(ExchangedDocumentContextType $exchangedDocumentContext): self
@@ -98,7 +98,7 @@ class CrossIndustryInvoiceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ExchangedDocumentType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ExchangedDocumentType $exchangedDocument
      * @return self
      */
     public function setExchangedDocument(ExchangedDocumentType $exchangedDocument): self
@@ -127,7 +127,7 @@ class CrossIndustryInvoiceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\SupplyChainTradeTransactionType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction
      * @return self
      */
     public function setSupplyChainTradeTransaction(SupplyChainTradeTransactionType $supplyChainTradeTransaction): self

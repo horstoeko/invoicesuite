@@ -37,7 +37,7 @@ class TradeCountryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\CountryIDType
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\CountryIDType $iD
      * @return self
      */
     public function setID(CountryIDType $iD): self

@@ -21,7 +21,7 @@ class InvoiceSuiteClassFinder
      *
      * @var InvoiceSuiteClassFinder
      */
-    private static $invoiceSuiteClassFinder;
+    protected static $invoiceSuiteClassFinder;
 
     /**
      * Classes
@@ -29,27 +29,6 @@ class InvoiceSuiteClassFinder
      * @var array<int,string>
      */
     private $classNames = [];
-
-    /**
-     * Class files
-     *
-     * @var array<int,string>
-     */
-    private $classFiles = [];
-
-    /**
-     * Class file to class maps
-     *
-     * @var array<string,string>
-     */
-    private $classFileToClassnameMaps = [];
-
-    /**
-     * Class to file maps
-     *
-     * @var array<string,string>
-     */
-    private $classToClassFileMaps = [];
 
     /**
      * Create a new instance of InvoiceSuiteClassFinder if needed
@@ -81,9 +60,6 @@ class InvoiceSuiteClassFinder
     public function clear(): InvoiceSuiteClassFinder
     {
         $this->classNames = [];
-        $this->classFiles = [];
-        $this->classFileToClassnameMaps = [];
-        $this->classToClassFileMaps = [];
 
         return $this;
     }
@@ -99,9 +75,6 @@ class InvoiceSuiteClassFinder
 
         foreach ($classMaps as $className => $classFile) {
             $this->classNames[] = $className;
-            $this->classFiles[] = $classFile;
-            $this->classToClassFileMaps[$className] = $classFile;
-            $this->classFileToClassnameMaps[$classFile] = $className;
         }
 
         return $this;

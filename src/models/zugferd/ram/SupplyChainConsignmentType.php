@@ -27,7 +27,7 @@ class SupplyChainConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\LogisticsTransportMovementType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\LogisticsTransportMovementType> $specifiedLogisticsTransportMovement
      * @return self
      */
     public function setSpecifiedLogisticsTransportMovement(array $specifiedLogisticsTransportMovement): self
@@ -52,7 +52,7 @@ class SupplyChainConsignmentType
      * @return self
      */
     public function addToSpecifiedLogisticsTransportMovement(
-        LogisticsTransportMovementType $specifiedLogisticsTransportMovement
+        LogisticsTransportMovementType $specifiedLogisticsTransportMovement,
     ): self {
         $this->specifiedLogisticsTransportMovement[] = $specifiedLogisticsTransportMovement;
 

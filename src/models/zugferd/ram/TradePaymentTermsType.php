@@ -106,7 +106,7 @@ class TradePaymentTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $description
      * @return self
      */
     public function setDescription(TextType $description): self
@@ -135,7 +135,7 @@ class TradePaymentTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $dueDateDateTime
      * @return self
      */
     public function setDueDateDateTime(DateTimeType $dueDateDateTime): self
@@ -164,7 +164,7 @@ class TradePaymentTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $directDebitMandateID
      * @return self
      */
     public function setDirectDebitMandateID(IDType $directDebitMandateID): self
@@ -193,7 +193,7 @@ class TradePaymentTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $partialPaymentAmount
      * @return self
      */
     public function setPartialPaymentAmount(AmountType $partialPaymentAmount): self
@@ -222,11 +222,11 @@ class TradePaymentTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePaymentPenaltyTermsType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePaymentPenaltyTermsType $applicableTradePaymentPenaltyTerms
      * @return self
      */
     public function setApplicableTradePaymentPenaltyTerms(
-        TradePaymentPenaltyTermsType $applicableTradePaymentPenaltyTerms
+        TradePaymentPenaltyTermsType $applicableTradePaymentPenaltyTerms,
     ): self {
         $this->applicableTradePaymentPenaltyTerms = $applicableTradePaymentPenaltyTerms;
 
@@ -252,11 +252,11 @@ class TradePaymentTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePaymentDiscountTermsType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePaymentDiscountTermsType $applicableTradePaymentDiscountTerms
      * @return self
      */
     public function setApplicableTradePaymentDiscountTerms(
-        TradePaymentDiscountTermsType $applicableTradePaymentDiscountTerms
+        TradePaymentDiscountTermsType $applicableTradePaymentDiscountTerms,
     ): self {
         $this->applicableTradePaymentDiscountTerms = $applicableTradePaymentDiscountTerms;
 
@@ -282,7 +282,7 @@ class TradePaymentTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType $payeeTradeParty
      * @return self
      */
     public function setPayeeTradeParty(TradePartyType $payeeTradeParty): self

@@ -119,7 +119,7 @@ class ReferencedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $issuerAssignedID
      * @return self
      */
     public function setIssuerAssignedID(IDType $issuerAssignedID): self
@@ -148,7 +148,7 @@ class ReferencedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $uRIID
      * @return self
      */
     public function setURIID(IDType $uRIID): self
@@ -177,7 +177,7 @@ class ReferencedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $lineID
      * @return self
      */
     public function setLineID(IDType $lineID): self
@@ -206,7 +206,7 @@ class ReferencedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\DocumentCodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\DocumentCodeType $typeCode
      * @return self
      */
     public function setTypeCode(DocumentCodeType $typeCode): self
@@ -235,7 +235,7 @@ class ReferencedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $name
      * @return self
      */
     public function setName(TextType $name): self
@@ -264,7 +264,7 @@ class ReferencedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\BinaryObjectType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\BinaryObjectType $attachmentBinaryObject
      * @return self
      */
     public function setAttachmentBinaryObject(BinaryObjectType $attachmentBinaryObject): self
@@ -293,7 +293,7 @@ class ReferencedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\ReferenceCodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\ReferenceCodeType $referenceTypeCode
      * @return self
      */
     public function setReferenceTypeCode(ReferenceCodeType $referenceTypeCode): self
@@ -322,7 +322,7 @@ class ReferencedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType $formattedIssueDateTime
      * @return self
      */
     public function setFormattedIssueDateTime(FormattedDateTimeType $formattedIssueDateTime): self

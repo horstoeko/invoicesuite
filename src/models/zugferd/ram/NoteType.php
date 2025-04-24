@@ -60,7 +60,7 @@ class NoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType $contentCode
      * @return self
      */
     public function setContentCode(CodeType $contentCode): self
@@ -89,7 +89,7 @@ class NoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $content
      * @return self
      */
     public function setContent(TextType $content): self
@@ -118,7 +118,7 @@ class NoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType $subjectCode
      * @return self
      */
     public function setSubjectCode(CodeType $subjectCode): self

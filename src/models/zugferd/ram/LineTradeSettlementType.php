@@ -95,7 +95,7 @@ class LineTradeSettlementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType> $applicableTradeTax
      * @return self
      */
     public function setApplicableTradeTax(array $applicableTradeTax): self
@@ -155,7 +155,7 @@ class LineTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\SpecifiedPeriodType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\SpecifiedPeriodType $billingSpecifiedPeriod
      * @return self
      */
     public function setBillingSpecifiedPeriod(SpecifiedPeriodType $billingSpecifiedPeriod): self
@@ -174,7 +174,7 @@ class LineTradeSettlementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\TradeAllowanceChargeType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\TradeAllowanceChargeType> $specifiedTradeAllowanceCharge
      * @return self
      */
     public function setSpecifiedTradeAllowanceCharge(array $specifiedTradeAllowanceCharge): self
@@ -226,19 +226,19 @@ class LineTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementLineMonetarySummationType
      */
-    public function getSpecifiedTradeSettlementLineMonetarySummationWithCreate(
-    ): TradeSettlementLineMonetarySummationType {
+    public function getSpecifiedTradeSettlementLineMonetarySummationWithCreate(): TradeSettlementLineMonetarySummationType
+    {
         $this->specifiedTradeSettlementLineMonetarySummation = is_null($this->specifiedTradeSettlementLineMonetarySummation) ? new TradeSettlementLineMonetarySummationType() : $this->specifiedTradeSettlementLineMonetarySummation;
 
         return $this->specifiedTradeSettlementLineMonetarySummation;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementLineMonetarySummationType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation
      * @return self
      */
     public function setSpecifiedTradeSettlementLineMonetarySummation(
-        TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation
+        TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation,
     ): self {
         $this->specifiedTradeSettlementLineMonetarySummation = $specifiedTradeSettlementLineMonetarySummation;
 
@@ -264,7 +264,7 @@ class LineTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $invoiceReferencedDocument
      * @return self
      */
     public function setInvoiceReferencedDocument(ReferencedDocumentType $invoiceReferencedDocument): self
@@ -283,7 +283,7 @@ class LineTradeSettlementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType> $additionalReferencedDocument
      * @return self
      */
     public function setAdditionalReferencedDocument(array $additionalReferencedDocument): self
@@ -343,11 +343,11 @@ class LineTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAccountingAccountType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
      * @return self
      */
     public function setReceivableSpecifiedTradeAccountingAccount(
-        TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
+        TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount,
     ): self {
         $this->receivableSpecifiedTradeAccountingAccount = $receivableSpecifiedTradeAccountingAccount;
 

@@ -49,7 +49,7 @@ class TradeSettlementFinancialCardType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iD
      * @return self
      */
     public function setID(IDType $iD): self
@@ -78,7 +78,7 @@ class TradeSettlementFinancialCardType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $cardholderName
      * @return self
      */
     public function setCardholderName(TextType $cardholderName): self

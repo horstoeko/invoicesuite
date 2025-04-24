@@ -117,7 +117,7 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iD
      * @return self
      */
     public function setID(IDType $iD): self
@@ -136,7 +136,7 @@ class ReferencedProductType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\udt\IDType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\udt\IDType> $globalID
      * @return self
      */
     public function setGlobalID(array $globalID): self
@@ -196,7 +196,7 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $sellerAssignedID
      * @return self
      */
     public function setSellerAssignedID(IDType $sellerAssignedID): self
@@ -225,7 +225,7 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $buyerAssignedID
      * @return self
      */
     public function setBuyerAssignedID(IDType $buyerAssignedID): self
@@ -254,7 +254,7 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $industryAssignedID
      * @return self
      */
     public function setIndustryAssignedID(IDType $industryAssignedID): self
@@ -283,7 +283,7 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $name
      * @return self
      */
     public function setName(TextType $name): self
@@ -312,7 +312,7 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $description
      * @return self
      */
     public function setDescription(TextType $description): self
@@ -341,7 +341,7 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\QuantityType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\QuantityType $unitQuantity
      * @return self
      */
     public function setUnitQuantity(QuantityType $unitQuantity): self

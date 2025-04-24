@@ -26,7 +26,7 @@ class RateType
     }
 
     /**
-     * @param float
+     * @param float $value
      * @return self
      */
     public function setValue(float $value): self

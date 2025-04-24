@@ -92,7 +92,7 @@ class TradeSettlementLineMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $lineTotalAmount
      * @return self
      */
     public function setLineTotalAmount(AmountType $lineTotalAmount): self
@@ -121,7 +121,7 @@ class TradeSettlementLineMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $chargeTotalAmount
      * @return self
      */
     public function setChargeTotalAmount(AmountType $chargeTotalAmount): self
@@ -150,7 +150,7 @@ class TradeSettlementLineMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $allowanceTotalAmount
      * @return self
      */
     public function setAllowanceTotalAmount(AmountType $allowanceTotalAmount): self
@@ -179,7 +179,7 @@ class TradeSettlementLineMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $taxTotalAmount
      * @return self
      */
     public function setTaxTotalAmount(AmountType $taxTotalAmount): self
@@ -208,7 +208,7 @@ class TradeSettlementLineMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $grandTotalAmount
      * @return self
      */
     public function setGrandTotalAmount(AmountType $grandTotalAmount): self
@@ -237,7 +237,7 @@ class TradeSettlementLineMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $totalAllowanceChargeAmount
      * @return self
      */
     public function setTotalAllowanceChargeAmount(AmountType $totalAllowanceChargeAmount): self

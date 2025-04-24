@@ -104,7 +104,7 @@ class HeaderTradeDeliveryType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\LogisticsTransportMovementType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\LogisticsTransportMovementType> $relatedSupplyChainConsignment
      * @return self
      */
     public function setRelatedSupplyChainConsignment(array $relatedSupplyChainConsignment): self
@@ -129,7 +129,7 @@ class HeaderTradeDeliveryType
      * @return self
      */
     public function addToRelatedSupplyChainConsignment(
-        LogisticsTransportMovementType $relatedSupplyChainConsignment
+        LogisticsTransportMovementType $relatedSupplyChainConsignment,
     ): self {
         $this->relatedSupplyChainConsignment[] = $relatedSupplyChainConsignment;
 
@@ -165,7 +165,7 @@ class HeaderTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType $shipToTradeParty
      * @return self
      */
     public function setShipToTradeParty(TradePartyType $shipToTradeParty): self
@@ -194,7 +194,7 @@ class HeaderTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType $ultimateShipToTradeParty
      * @return self
      */
     public function setUltimateShipToTradeParty(TradePartyType $ultimateShipToTradeParty): self
@@ -223,7 +223,7 @@ class HeaderTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType $shipFromTradeParty
      * @return self
      */
     public function setShipFromTradeParty(TradePartyType $shipFromTradeParty): self
@@ -252,7 +252,7 @@ class HeaderTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\SupplyChainEventType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
      * @return self
      */
     public function setActualDeliverySupplyChainEvent(SupplyChainEventType $actualDeliverySupplyChainEvent): self
@@ -281,11 +281,11 @@ class HeaderTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
      * @return self
      */
     public function setDespatchAdviceReferencedDocument(
-        ReferencedDocumentType $despatchAdviceReferencedDocument
+        ReferencedDocumentType $despatchAdviceReferencedDocument,
     ): self {
         $this->despatchAdviceReferencedDocument = $despatchAdviceReferencedDocument;
 
@@ -311,11 +311,11 @@ class HeaderTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $receivingAdviceReferencedDocument
      * @return self
      */
     public function setReceivingAdviceReferencedDocument(
-        ReferencedDocumentType $receivingAdviceReferencedDocument
+        ReferencedDocumentType $receivingAdviceReferencedDocument,
     ): self {
         $this->receivingAdviceReferencedDocument = $receivingAdviceReferencedDocument;
 
@@ -341,7 +341,7 @@ class HeaderTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $deliveryNoteReferencedDocument
      * @return self
      */
     public function setDeliveryNoteReferencedDocument(ReferencedDocumentType $deliveryNoteReferencedDocument): self

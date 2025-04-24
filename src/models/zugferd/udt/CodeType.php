@@ -48,7 +48,7 @@ class CodeType
     }
 
     /**
-     * @param string
+     * @param string $value
      * @return self
      */
     public function setValue(string $value): self
@@ -67,7 +67,7 @@ class CodeType
     }
 
     /**
-     * @param string
+     * @param string $listID
      * @return self
      */
     public function setListID(string $listID): self
@@ -86,7 +86,7 @@ class CodeType
     }
 
     /**
-     * @param string
+     * @param string $listVersionID
      * @return self
      */
     public function setListVersionID(string $listVersionID): self

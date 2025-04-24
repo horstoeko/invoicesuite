@@ -37,7 +37,7 @@ class AmountType
     }
 
     /**
-     * @param float
+     * @param float $value
      * @return self
      */
     public function setValue(float $value): self
@@ -56,7 +56,7 @@ class AmountType
     }
 
     /**
-     * @param string
+     * @param string $currencyID
      * @return self
      */
     public function setCurrencyID(string $currencyID): self

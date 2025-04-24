@@ -119,7 +119,7 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iD
      * @return self
      */
     public function setID(IDType $iD): self
@@ -148,7 +148,7 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $name
      * @return self
      */
     public function setName(TextType $name): self
@@ -177,7 +177,7 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\DocumentCodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\DocumentCodeType $typeCode
      * @return self
      */
     public function setTypeCode(DocumentCodeType $typeCode): self
@@ -206,7 +206,7 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $issueDateTime
      * @return self
      */
     public function setIssueDateTime(DateTimeType $issueDateTime): self
@@ -235,7 +235,7 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IndicatorType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IndicatorType $copyIndicator
      * @return self
      */
     public function setCopyIndicator(IndicatorType $copyIndicator): self
@@ -264,7 +264,7 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $languageID
      * @return self
      */
     public function setLanguageID(IDType $languageID): self
@@ -283,7 +283,7 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\NoteType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\NoteType> $includedNote
      * @return self
      */
     public function setIncludedNote(array $includedNote): self
@@ -343,7 +343,7 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\SpecifiedPeriodType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\SpecifiedPeriodType $effectiveSpecifiedPeriod
      * @return self
      */
     public function setEffectiveSpecifiedPeriod(SpecifiedPeriodType $effectiveSpecifiedPeriod): self

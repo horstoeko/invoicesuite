@@ -37,7 +37,7 @@ class FormattedDateTimeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType\DateTimeStringAType
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType\DateTimeStringAType $dateTimeString
      * @return self
      */
     public function setDateTimeString(DateTimeStringAType $dateTimeString): self

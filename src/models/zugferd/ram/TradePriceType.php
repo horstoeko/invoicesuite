@@ -72,7 +72,7 @@ class TradePriceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $chargeAmount
      * @return self
      */
     public function setChargeAmount(AmountType $chargeAmount): self
@@ -101,7 +101,7 @@ class TradePriceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\QuantityType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\QuantityType $basisQuantity
      * @return self
      */
     public function setBasisQuantity(QuantityType $basisQuantity): self
@@ -120,7 +120,7 @@ class TradePriceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\TradeAllowanceChargeType>
+     * @param array<\horstoeko\invoicesuite\models\zugferd\ram\TradeAllowanceChargeType> $appliedTradeAllowanceCharge
      * @return self
      */
     public function setAppliedTradeAllowanceCharge(array $appliedTradeAllowanceCharge): self
@@ -180,7 +180,7 @@ class TradePriceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType $includedTradeTax
      * @return self
      */
     public function setIncludedTradeTax(TradeTaxType $includedTradeTax): self

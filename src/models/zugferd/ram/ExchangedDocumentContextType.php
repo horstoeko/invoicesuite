@@ -59,7 +59,7 @@ class ExchangedDocumentContextType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IndicatorType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IndicatorType $testIndicator
      * @return self
      */
     public function setTestIndicator(IndicatorType $testIndicator): self
@@ -88,11 +88,11 @@ class ExchangedDocumentContextType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\DocumentContextParameterType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter
      * @return self
      */
     public function setBusinessProcessSpecifiedDocumentContextParameter(
-        DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter
+        DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter,
     ): self {
         $this->businessProcessSpecifiedDocumentContextParameter = $businessProcessSpecifiedDocumentContextParameter;
 
@@ -118,11 +118,11 @@ class ExchangedDocumentContextType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\DocumentContextParameterType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\DocumentContextParameterType $guidelineSpecifiedDocumentContextParameter
      * @return self
      */
     public function setGuidelineSpecifiedDocumentContextParameter(
-        DocumentContextParameterType $guidelineSpecifiedDocumentContextParameter
+        DocumentContextParameterType $guidelineSpecifiedDocumentContextParameter,
     ): self {
         $this->guidelineSpecifiedDocumentContextParameter = $guidelineSpecifiedDocumentContextParameter;
 

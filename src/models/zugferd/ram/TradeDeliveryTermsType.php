@@ -37,7 +37,7 @@ class TradeDeliveryTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\DeliveryTermsCodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\DeliveryTermsCodeType $deliveryTypeCode
      * @return self
      */
     public function setDeliveryTypeCode(DeliveryTermsCodeType $deliveryTypeCode): self

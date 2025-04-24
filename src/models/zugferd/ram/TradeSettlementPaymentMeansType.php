@@ -93,7 +93,7 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\PaymentMeansCodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\PaymentMeansCodeType $typeCode
      * @return self
      */
     public function setTypeCode(PaymentMeansCodeType $typeCode): self
@@ -122,7 +122,7 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $information
      * @return self
      */
     public function setInformation(TextType $information): self
@@ -151,11 +151,11 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementFinancialCardType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementFinancialCardType $applicableTradeSettlementFinancialCard
      * @return self
      */
     public function setApplicableTradeSettlementFinancialCard(
-        TradeSettlementFinancialCardType $applicableTradeSettlementFinancialCard
+        TradeSettlementFinancialCardType $applicableTradeSettlementFinancialCard,
     ): self {
         $this->applicableTradeSettlementFinancialCard = $applicableTradeSettlementFinancialCard;
 
@@ -181,11 +181,11 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\DebtorFinancialAccountType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\DebtorFinancialAccountType $payerPartyDebtorFinancialAccount
      * @return self
      */
     public function setPayerPartyDebtorFinancialAccount(
-        DebtorFinancialAccountType $payerPartyDebtorFinancialAccount
+        DebtorFinancialAccountType $payerPartyDebtorFinancialAccount,
     ): self {
         $this->payerPartyDebtorFinancialAccount = $payerPartyDebtorFinancialAccount;
 
@@ -211,11 +211,11 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\CreditorFinancialAccountType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\CreditorFinancialAccountType $payeePartyCreditorFinancialAccount
      * @return self
      */
     public function setPayeePartyCreditorFinancialAccount(
-        CreditorFinancialAccountType $payeePartyCreditorFinancialAccount
+        CreditorFinancialAccountType $payeePartyCreditorFinancialAccount,
     ): self {
         $this->payeePartyCreditorFinancialAccount = $payeePartyCreditorFinancialAccount;
 
@@ -241,11 +241,11 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\CreditorFinancialInstitutionType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\CreditorFinancialInstitutionType $payeeSpecifiedCreditorFinancialInstitution
      * @return self
      */
     public function setPayeeSpecifiedCreditorFinancialInstitution(
-        CreditorFinancialInstitutionType $payeeSpecifiedCreditorFinancialInstitution
+        CreditorFinancialInstitutionType $payeeSpecifiedCreditorFinancialInstitution,
     ): self {
         $this->payeeSpecifiedCreditorFinancialInstitution = $payeeSpecifiedCreditorFinancialInstitution;
 

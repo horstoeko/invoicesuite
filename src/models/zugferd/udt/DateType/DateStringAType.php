@@ -37,7 +37,7 @@ class DateStringAType
     }
 
     /**
-     * @param string
+     * @param string $value
      * @return self
      */
     public function setValue(string $value): self
@@ -56,7 +56,7 @@ class DateStringAType
     }
 
     /**
-     * @param string
+     * @param string $format
      * @return self
      */
     public function setFormat(string $format): self

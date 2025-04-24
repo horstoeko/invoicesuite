@@ -52,7 +52,7 @@ class InvoiceSuiteContentTypeResolver
      * @param string $fromContent
      * @return bool
      */
-    private static function isValidXml(string $fromContent): bool
+    protected static function isValidXml(string $fromContent): bool
     {
         $prevUseInternalErrors = \libxml_use_internal_errors(true);
 
@@ -80,7 +80,7 @@ class InvoiceSuiteContentTypeResolver
      * @param string $fromContent
      * @return bool
      */
-    private static function isValidJson(string $fromContent): bool
+    protected static function isValidJson(string $fromContent): bool
     {
         try {
             json_decode($fromContent, false, 512, JSON_THROW_ON_ERROR);

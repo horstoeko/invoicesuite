@@ -154,7 +154,7 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $calculatedAmount
      * @return self
      */
     public function setCalculatedAmount(AmountType $calculatedAmount): self
@@ -183,7 +183,7 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\TaxTypeCodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\TaxTypeCodeType $typeCode
      * @return self
      */
     public function setTypeCode(TaxTypeCodeType $typeCode): self
@@ -212,7 +212,7 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $exemptionReason
      * @return self
      */
     public function setExemptionReason(TextType $exemptionReason): self
@@ -241,7 +241,7 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $basisAmount
      * @return self
      */
     public function setBasisAmount(AmountType $basisAmount): self
@@ -270,7 +270,7 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $lineTotalBasisAmount
      * @return self
      */
     public function setLineTotalBasisAmount(AmountType $lineTotalBasisAmount): self
@@ -299,7 +299,7 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $allowanceChargeBasisAmount
      * @return self
      */
     public function setAllowanceChargeBasisAmount(AmountType $allowanceChargeBasisAmount): self
@@ -328,7 +328,7 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\TaxCategoryCodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\TaxCategoryCodeType $categoryCode
      * @return self
      */
     public function setCategoryCode(TaxCategoryCodeType $categoryCode): self
@@ -357,7 +357,7 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType $exemptionReasonCode
      * @return self
      */
     public function setExemptionReasonCode(CodeType $exemptionReasonCode): self
@@ -386,7 +386,7 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateType $taxPointDate
      * @return self
      */
     public function setTaxPointDate(DateType $taxPointDate): self
@@ -415,7 +415,7 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\TimeReferenceCodeType
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\TimeReferenceCodeType $dueDateTypeCode
      * @return self
      */
     public function setDueDateTypeCode(TimeReferenceCodeType $dueDateTypeCode): self
@@ -444,7 +444,7 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\PercentType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\PercentType $rateApplicablePercent
      * @return self
      */
     public function setRateApplicablePercent(PercentType $rateApplicablePercent): self

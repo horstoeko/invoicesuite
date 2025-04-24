@@ -71,7 +71,7 @@ class SpecifiedPeriodType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $description
      * @return self
      */
     public function setDescription(TextType $description): self
@@ -100,7 +100,7 @@ class SpecifiedPeriodType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $startDateTime
      * @return self
      */
     public function setStartDateTime(DateTimeType $startDateTime): self
@@ -129,7 +129,7 @@ class SpecifiedPeriodType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $endDateTime
      * @return self
      */
     public function setEndDateTime(DateTimeType $endDateTime): self
@@ -158,7 +158,7 @@ class SpecifiedPeriodType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $completeDateTime
      * @return self
      */
     public function setCompleteDateTime(DateTimeType $completeDateTime): self
