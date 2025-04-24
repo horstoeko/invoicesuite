@@ -34,7 +34,6 @@ abstract class InvoiceSuiteAbstractFormatProviderReader
     {
         $this->setCurrentFormatProvider($invoiceSuiteAbstractFormatProvider);
         $this->createAndInitSerializerByFormatProvider($this->getCurrentFormatProvider());
-        $this->createAndInitRootObjectByFormatProvider($this->getCurrentFormatProvider());
     }
 
     /**

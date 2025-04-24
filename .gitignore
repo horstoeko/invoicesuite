@@ -64,7 +64,7 @@ _backup*
 /nbproject/
 
 !/setup/.htaccess
-.vscode 
+.vscode
 .idea
 
 /vendor/
@@ -81,3 +81,5 @@ _backup*
 /build/phpdoc/
 /*.phar
 /composer.lock
+
+lint.ps1
