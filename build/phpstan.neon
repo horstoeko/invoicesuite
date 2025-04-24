@@ -1,0 +1,10 @@
+parameters:
+    paths:
+        - ../src
+        - ../tests
+    level: 5
+    treatPhpDocTypesAsCertain: false
+    excludePaths:
+        - ../src/entities/*
+    ignoreErrors:
+        - identifier: parameterByRef.unusedType
