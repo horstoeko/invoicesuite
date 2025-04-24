@@ -11,7 +11,7 @@ class CreditorFinancialAccountType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\IDType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\IDType")
      * @JMS\Expose
      * @JMS\SerializedName("IBANID")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -22,18 +22,18 @@ class CreditorFinancialAccountType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @JMS\Groups({"zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\TextType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\TextType")
      * @JMS\Expose
      * @JMS\SerializedName("AccountName")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getAccountName", setter="setAccountName")
      */
-    private $textType;
+    private $accountName;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\IDType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\IDType")
      * @JMS\Expose
      * @JMS\SerializedName("ProprietaryID")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -44,7 +44,7 @@ class CreditorFinancialAccountType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
-    public function getIBANID(): ?\horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getIBANID(): ?IDType
     {
         return $this->iBANID;
     }
@@ -52,7 +52,7 @@ class CreditorFinancialAccountType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType
      */
-    public function getIBANIDWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getIBANIDWithCreate(): IDType
     {
         $this->iBANID = is_null($this->iBANID) ? new IDType() : $this->iBANID;
 
@@ -63,9 +63,9 @@ class CreditorFinancialAccountType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @return self
      */
-    public function setIBANID(\horstoeko\invoicesuite\models\zugferd\udt\IDType $idType): self
+    public function setIBANID(IDType $iBANID): self
     {
-        $this->iBANID = $idType;
+        $this->iBANID = $iBANID;
 
         return $this;
     }
@@ -73,28 +73,28 @@ class CreditorFinancialAccountType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType|null
      */
-    public function getAccountName(): ?\horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getAccountName(): ?TextType
     {
-        return $this->textType;
+        return $this->accountName;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType
      */
-    public function getAccountNameWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getAccountNameWithCreate(): TextType
     {
-        $this->textType = is_null($this->textType) ? new TextType() : $this->textType;
+        $this->accountName = is_null($this->accountName) ? new TextType() : $this->accountName;
 
-        return $this->textType;
+        return $this->accountName;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @return self
      */
-    public function setAccountName(\horstoeko\invoicesuite\models\zugferd\udt\TextType $textType): self
+    public function setAccountName(TextType $accountName): self
     {
-        $this->textType = $textType;
+        $this->accountName = $accountName;
 
         return $this;
     }
@@ -102,7 +102,7 @@ class CreditorFinancialAccountType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
-    public function getProprietaryID(): ?\horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getProprietaryID(): ?IDType
     {
         return $this->proprietaryID;
     }
@@ -110,7 +110,7 @@ class CreditorFinancialAccountType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType
      */
-    public function getProprietaryIDWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getProprietaryIDWithCreate(): IDType
     {
         $this->proprietaryID = is_null($this->proprietaryID) ? new IDType() : $this->proprietaryID;
 
@@ -121,9 +121,9 @@ class CreditorFinancialAccountType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @return self
      */
-    public function setProprietaryID(\horstoeko\invoicesuite\models\zugferd\udt\IDType $idType): self
+    public function setProprietaryID(IDType $proprietaryID): self
     {
-        $this->proprietaryID = $idType;
+        $this->proprietaryID = $proprietaryID;
 
         return $this;
     }

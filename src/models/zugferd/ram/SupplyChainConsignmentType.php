@@ -9,7 +9,7 @@ class SupplyChainConsignmentType
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\LogisticsTransportMovementType>
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("array<horstoeko\zugferd\entities\extended\ram\LogisticsTransportMovementType>")
+     * @JMS\Type("array<horstoeko\invoicesuite\models\zugferd\ram\LogisticsTransportMovementType>")
      * @JMS\Expose
      * @JMS\SerializedName("SpecifiedLogisticsTransportMovement")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -48,13 +48,13 @@ class SupplyChainConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\LogisticsTransportMovementType $logisticsTransportMovementType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\LogisticsTransportMovementType $specifiedLogisticsTransportMovement
      * @return self
      */
     public function addToSpecifiedLogisticsTransportMovement(
-        \horstoeko\invoicesuite\models\zugferd\ram\LogisticsTransportMovementType $logisticsTransportMovementType,
+        LogisticsTransportMovementType $specifiedLogisticsTransportMovement,
     ): self {
-        $this->specifiedLogisticsTransportMovement[] = $logisticsTransportMovementType;
+        $this->specifiedLogisticsTransportMovement[] = $specifiedLogisticsTransportMovement;
 
         return $this;
     }
@@ -62,10 +62,10 @@ class SupplyChainConsignmentType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\LogisticsTransportMovementType
      */
-    public function addToSpecifiedLogisticsTransportMovementWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\LogisticsTransportMovementType {
-        $this->addTospecifiedLogisticsTransportMovement($logisticsTransportMovementType = new LogisticsTransportMovementType());
+    public function addToSpecifiedLogisticsTransportMovementWithCreate(): LogisticsTransportMovementType
+    {
+        $this->addTospecifiedLogisticsTransportMovement($specifiedLogisticsTransportMovement = new LogisticsTransportMovementType());
 
-        return $logisticsTransportMovementType;
+        return $specifiedLogisticsTransportMovement;
     }
 }

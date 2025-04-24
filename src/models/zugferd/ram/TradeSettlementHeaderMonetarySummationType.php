@@ -10,7 +10,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\AmountType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\AmountType")
      * @JMS\Expose
      * @JMS\SerializedName("LineTotalAmount")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -21,7 +21,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\AmountType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\AmountType")
      * @JMS\Expose
      * @JMS\SerializedName("ChargeTotalAmount")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -32,7 +32,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\AmountType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\AmountType")
      * @JMS\Expose
      * @JMS\SerializedName("AllowanceTotalAmount")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -43,7 +43,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @JMS\Groups({"zffxminimum", "zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\AmountType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\AmountType")
      * @JMS\Expose
      * @JMS\SerializedName("TaxBasisTotalAmount")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -54,7 +54,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\udt\AmountType>
      * @JMS\Groups({"zffxminimum", "zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("array<horstoeko\zugferd\entities\extended\udt\AmountType>")
+     * @JMS\Type("array<horstoeko\invoicesuite\models\zugferd\udt\AmountType>")
      * @JMS\Expose
      * @JMS\SerializedName("TaxTotalAmount")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -66,7 +66,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @JMS\Groups({"zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\AmountType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\AmountType")
      * @JMS\Expose
      * @JMS\SerializedName("RoundingAmount")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -77,7 +77,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @JMS\Groups({"zffxminimum", "zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\AmountType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\AmountType")
      * @JMS\Expose
      * @JMS\SerializedName("GrandTotalAmount")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -88,7 +88,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\AmountType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\AmountType")
      * @JMS\Expose
      * @JMS\SerializedName("TotalPrepaidAmount")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -99,7 +99,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @JMS\Groups({"zffxminimum", "zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\AmountType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\AmountType")
      * @JMS\Expose
      * @JMS\SerializedName("DuePayableAmount")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -110,7 +110,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType|null
      */
-    public function getLineTotalAmount(): ?\horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getLineTotalAmount(): ?AmountType
     {
         return $this->lineTotalAmount;
     }
@@ -118,7 +118,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      */
-    public function getLineTotalAmountWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getLineTotalAmountWithCreate(): AmountType
     {
         $this->lineTotalAmount = is_null($this->lineTotalAmount) ? new AmountType() : $this->lineTotalAmount;
 
@@ -129,9 +129,9 @@ class TradeSettlementHeaderMonetarySummationType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @return self
      */
-    public function setLineTotalAmount(\horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType): self
+    public function setLineTotalAmount(AmountType $lineTotalAmount): self
     {
-        $this->lineTotalAmount = $amountType;
+        $this->lineTotalAmount = $lineTotalAmount;
 
         return $this;
     }
@@ -139,7 +139,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType|null
      */
-    public function getChargeTotalAmount(): ?\horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getChargeTotalAmount(): ?AmountType
     {
         return $this->chargeTotalAmount;
     }
@@ -147,7 +147,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      */
-    public function getChargeTotalAmountWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getChargeTotalAmountWithCreate(): AmountType
     {
         $this->chargeTotalAmount = is_null($this->chargeTotalAmount) ? new AmountType() : $this->chargeTotalAmount;
 
@@ -158,9 +158,9 @@ class TradeSettlementHeaderMonetarySummationType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @return self
      */
-    public function setChargeTotalAmount(\horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType): self
+    public function setChargeTotalAmount(AmountType $chargeTotalAmount): self
     {
-        $this->chargeTotalAmount = $amountType;
+        $this->chargeTotalAmount = $chargeTotalAmount;
 
         return $this;
     }
@@ -168,7 +168,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType|null
      */
-    public function getAllowanceTotalAmount(): ?\horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getAllowanceTotalAmount(): ?AmountType
     {
         return $this->allowanceTotalAmount;
     }
@@ -176,7 +176,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      */
-    public function getAllowanceTotalAmountWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getAllowanceTotalAmountWithCreate(): AmountType
     {
         $this->allowanceTotalAmount = is_null($this->allowanceTotalAmount) ? new AmountType() : $this->allowanceTotalAmount;
 
@@ -187,10 +187,9 @@ class TradeSettlementHeaderMonetarySummationType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @return self
      */
-    public function setAllowanceTotalAmount(
-        \horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType,
-    ): self {
-        $this->allowanceTotalAmount = $amountType;
+    public function setAllowanceTotalAmount(AmountType $allowanceTotalAmount): self
+    {
+        $this->allowanceTotalAmount = $allowanceTotalAmount;
 
         return $this;
     }
@@ -198,7 +197,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType|null
      */
-    public function getTaxBasisTotalAmount(): ?\horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getTaxBasisTotalAmount(): ?AmountType
     {
         return $this->taxBasisTotalAmount;
     }
@@ -206,7 +205,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      */
-    public function getTaxBasisTotalAmountWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getTaxBasisTotalAmountWithCreate(): AmountType
     {
         $this->taxBasisTotalAmount = is_null($this->taxBasisTotalAmount) ? new AmountType() : $this->taxBasisTotalAmount;
 
@@ -217,10 +216,9 @@ class TradeSettlementHeaderMonetarySummationType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @return self
      */
-    public function setTaxBasisTotalAmount(
-        \horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType,
-    ): self {
-        $this->taxBasisTotalAmount = $amountType;
+    public function setTaxBasisTotalAmount(AmountType $taxBasisTotalAmount): self
+    {
+        $this->taxBasisTotalAmount = $taxBasisTotalAmount;
 
         return $this;
     }
@@ -255,12 +253,12 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $taxTotalAmount
      * @return self
      */
-    public function addToTaxTotalAmount(\horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType): self
+    public function addToTaxTotalAmount(AmountType $taxTotalAmount): self
     {
-        $this->taxTotalAmount[] = $amountType;
+        $this->taxTotalAmount[] = $taxTotalAmount;
 
         return $this;
     }
@@ -268,17 +266,17 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      */
-    public function addToTaxTotalAmountWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function addToTaxTotalAmountWithCreate(): AmountType
     {
-        $this->addTotaxTotalAmount($amountType = new AmountType());
+        $this->addTotaxTotalAmount($taxTotalAmount = new AmountType());
 
-        return $amountType;
+        return $taxTotalAmount;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType|null
      */
-    public function getRoundingAmount(): ?\horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getRoundingAmount(): ?AmountType
     {
         return $this->roundingAmount;
     }
@@ -286,7 +284,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      */
-    public function getRoundingAmountWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getRoundingAmountWithCreate(): AmountType
     {
         $this->roundingAmount = is_null($this->roundingAmount) ? new AmountType() : $this->roundingAmount;
 
@@ -297,9 +295,9 @@ class TradeSettlementHeaderMonetarySummationType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @return self
      */
-    public function setRoundingAmount(\horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType): self
+    public function setRoundingAmount(AmountType $roundingAmount): self
     {
-        $this->roundingAmount = $amountType;
+        $this->roundingAmount = $roundingAmount;
 
         return $this;
     }
@@ -307,7 +305,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType|null
      */
-    public function getGrandTotalAmount(): ?\horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getGrandTotalAmount(): ?AmountType
     {
         return $this->grandTotalAmount;
     }
@@ -315,7 +313,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      */
-    public function getGrandTotalAmountWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getGrandTotalAmountWithCreate(): AmountType
     {
         $this->grandTotalAmount = is_null($this->grandTotalAmount) ? new AmountType() : $this->grandTotalAmount;
 
@@ -326,9 +324,9 @@ class TradeSettlementHeaderMonetarySummationType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @return self
      */
-    public function setGrandTotalAmount(\horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType): self
+    public function setGrandTotalAmount(AmountType $grandTotalAmount): self
     {
-        $this->grandTotalAmount = $amountType;
+        $this->grandTotalAmount = $grandTotalAmount;
 
         return $this;
     }
@@ -336,7 +334,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType|null
      */
-    public function getTotalPrepaidAmount(): ?\horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getTotalPrepaidAmount(): ?AmountType
     {
         return $this->totalPrepaidAmount;
     }
@@ -344,7 +342,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      */
-    public function getTotalPrepaidAmountWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getTotalPrepaidAmountWithCreate(): AmountType
     {
         $this->totalPrepaidAmount = is_null($this->totalPrepaidAmount) ? new AmountType() : $this->totalPrepaidAmount;
 
@@ -355,10 +353,9 @@ class TradeSettlementHeaderMonetarySummationType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @return self
      */
-    public function setTotalPrepaidAmount(
-        \horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType,
-    ): self {
-        $this->totalPrepaidAmount = $amountType;
+    public function setTotalPrepaidAmount(AmountType $totalPrepaidAmount): self
+    {
+        $this->totalPrepaidAmount = $totalPrepaidAmount;
 
         return $this;
     }
@@ -366,7 +363,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType|null
      */
-    public function getDuePayableAmount(): ?\horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getDuePayableAmount(): ?AmountType
     {
         return $this->duePayableAmount;
     }
@@ -374,7 +371,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      */
-    public function getDuePayableAmountWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getDuePayableAmountWithCreate(): AmountType
     {
         $this->duePayableAmount = is_null($this->duePayableAmount) ? new AmountType() : $this->duePayableAmount;
 
@@ -385,9 +382,9 @@ class TradeSettlementHeaderMonetarySummationType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @return self
      */
-    public function setDuePayableAmount(\horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType): self
+    public function setDuePayableAmount(AmountType $duePayableAmount): self
     {
-        $this->duePayableAmount = $amountType;
+        $this->duePayableAmount = $duePayableAmount;
 
         return $this;
     }

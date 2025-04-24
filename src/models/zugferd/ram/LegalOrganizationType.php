@@ -11,61 +11,61 @@ class LegalOrganizationType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @JMS\Groups({"zffxminimum", "zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\IDType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\IDType")
      * @JMS\Expose
      * @JMS\SerializedName("ID")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getID", setter="setID")
      */
-    private $idType;
+    private $iD;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\TextType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\TextType")
      * @JMS\Expose
      * @JMS\SerializedName("TradingBusinessName")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getTradingBusinessName", setter="setTradingBusinessName")
      */
-    private $textType;
+    private $tradingBusinessName;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\TradeAddressType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\TradeAddressType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\TradeAddressType")
      * @JMS\Expose
      * @JMS\SerializedName("PostalTradeAddress")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getPostalTradeAddress", setter="setPostalTradeAddress")
      */
-    private $tradeAddressType;
+    private $postalTradeAddress;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
-    public function getID(): ?\horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getID(): ?IDType
     {
-        return $this->idType;
+        return $this->iD;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType
      */
-    public function getIDWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getIDWithCreate(): IDType
     {
-        $this->idType = is_null($this->idType) ? new IDType() : $this->idType;
+        $this->iD = is_null($this->iD) ? new IDType() : $this->iD;
 
-        return $this->idType;
+        return $this->iD;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @return self
      */
-    public function setID(\horstoeko\invoicesuite\models\zugferd\udt\IDType $idType): self
+    public function setID(IDType $iD): self
     {
-        $this->idType = $idType;
+        $this->iD = $iD;
 
         return $this;
     }
@@ -73,29 +73,28 @@ class LegalOrganizationType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType|null
      */
-    public function getTradingBusinessName(): ?\horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getTradingBusinessName(): ?TextType
     {
-        return $this->textType;
+        return $this->tradingBusinessName;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType
      */
-    public function getTradingBusinessNameWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getTradingBusinessNameWithCreate(): TextType
     {
-        $this->textType = is_null($this->textType) ? new TextType() : $this->textType;
+        $this->tradingBusinessName = is_null($this->tradingBusinessName) ? new TextType() : $this->tradingBusinessName;
 
-        return $this->textType;
+        return $this->tradingBusinessName;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @return self
      */
-    public function setTradingBusinessName(
-        \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType,
-    ): self {
-        $this->textType = $textType;
+    public function setTradingBusinessName(TextType $tradingBusinessName): self
+    {
+        $this->tradingBusinessName = $tradingBusinessName;
 
         return $this;
     }
@@ -103,29 +102,28 @@ class LegalOrganizationType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradeAddressType|null
      */
-    public function getPostalTradeAddress(): ?\horstoeko\invoicesuite\models\zugferd\ram\TradeAddressType
+    public function getPostalTradeAddress(): ?TradeAddressType
     {
-        return $this->tradeAddressType;
+        return $this->postalTradeAddress;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradeAddressType
      */
-    public function getPostalTradeAddressWithCreate(): \horstoeko\invoicesuite\models\zugferd\ram\TradeAddressType
+    public function getPostalTradeAddressWithCreate(): TradeAddressType
     {
-        $this->tradeAddressType = is_null($this->tradeAddressType) ? new TradeAddressType() : $this->tradeAddressType;
+        $this->postalTradeAddress = is_null($this->postalTradeAddress) ? new TradeAddressType() : $this->postalTradeAddress;
 
-        return $this->tradeAddressType;
+        return $this->postalTradeAddress;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAddressType
      * @return self
      */
-    public function setPostalTradeAddress(
-        \horstoeko\invoicesuite\models\zugferd\ram\TradeAddressType $tradeAddressType,
-    ): self {
-        $this->tradeAddressType = $tradeAddressType;
+    public function setPostalTradeAddress(TradeAddressType $postalTradeAddress): self
+    {
+        $this->postalTradeAddress = $postalTradeAddress;
 
         return $this;
     }

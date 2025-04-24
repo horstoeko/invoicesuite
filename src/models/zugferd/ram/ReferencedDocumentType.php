@@ -15,7 +15,7 @@ class ReferencedDocumentType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @JMS\Groups({"zffxminimum", "zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\IDType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\IDType")
      * @JMS\Expose
      * @JMS\SerializedName("IssuerAssignedID")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -26,7 +26,7 @@ class ReferencedDocumentType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @JMS\Groups({"zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\IDType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\IDType")
      * @JMS\Expose
      * @JMS\SerializedName("URIID")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -37,7 +37,7 @@ class ReferencedDocumentType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @JMS\Groups({"zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\IDType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\IDType")
      * @JMS\Expose
      * @JMS\SerializedName("LineID")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -48,62 +48,62 @@ class ReferencedDocumentType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\qdt\DocumentCodeType
      * @JMS\Groups({"zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\qdt\DocumentCodeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\qdt\DocumentCodeType")
      * @JMS\Expose
      * @JMS\SerializedName("TypeCode")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getTypeCode", setter="setTypeCode")
      */
-    private $documentCodeType;
+    private $typeCode;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @JMS\Groups({"zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\TextType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\TextType")
      * @JMS\Expose
      * @JMS\SerializedName("Name")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getName", setter="setName")
      */
-    private $textType;
+    private $name;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\BinaryObjectType
      * @JMS\Groups({"zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\BinaryObjectType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\BinaryObjectType")
      * @JMS\Expose
      * @JMS\SerializedName("AttachmentBinaryObject")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getAttachmentBinaryObject", setter="setAttachmentBinaryObject")
      */
-    private $binaryObjectType;
+    private $attachmentBinaryObject;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\qdt\ReferenceCodeType
      * @JMS\Groups({"zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\qdt\ReferenceCodeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\qdt\ReferenceCodeType")
      * @JMS\Expose
      * @JMS\SerializedName("ReferenceTypeCode")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getReferenceTypeCode", setter="setReferenceTypeCode")
      */
-    private $referenceCodeType;
+    private $referenceTypeCode;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType")
      * @JMS\Expose
      * @JMS\SerializedName("FormattedIssueDateTime")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getFormattedIssueDateTime", setter="setFormattedIssueDateTime")
      */
-    private $formattedDateTimeType;
+    private $formattedIssueDateTime;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
-    public function getIssuerAssignedID(): ?\horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getIssuerAssignedID(): ?IDType
     {
         return $this->issuerAssignedID;
     }
@@ -111,7 +111,7 @@ class ReferencedDocumentType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType
      */
-    public function getIssuerAssignedIDWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getIssuerAssignedIDWithCreate(): IDType
     {
         $this->issuerAssignedID = is_null($this->issuerAssignedID) ? new IDType() : $this->issuerAssignedID;
 
@@ -122,9 +122,9 @@ class ReferencedDocumentType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @return self
      */
-    public function setIssuerAssignedID(\horstoeko\invoicesuite\models\zugferd\udt\IDType $idType): self
+    public function setIssuerAssignedID(IDType $issuerAssignedID): self
     {
-        $this->issuerAssignedID = $idType;
+        $this->issuerAssignedID = $issuerAssignedID;
 
         return $this;
     }
@@ -132,7 +132,7 @@ class ReferencedDocumentType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
-    public function getURIID(): ?\horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getURIID(): ?IDType
     {
         return $this->uRIID;
     }
@@ -140,7 +140,7 @@ class ReferencedDocumentType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType
      */
-    public function getURIIDWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getURIIDWithCreate(): IDType
     {
         $this->uRIID = is_null($this->uRIID) ? new IDType() : $this->uRIID;
 
@@ -151,9 +151,9 @@ class ReferencedDocumentType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @return self
      */
-    public function setURIID(\horstoeko\invoicesuite\models\zugferd\udt\IDType $idType): self
+    public function setURIID(IDType $uRIID): self
     {
-        $this->uRIID = $idType;
+        $this->uRIID = $uRIID;
 
         return $this;
     }
@@ -161,7 +161,7 @@ class ReferencedDocumentType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
-    public function getLineID(): ?\horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getLineID(): ?IDType
     {
         return $this->lineID;
     }
@@ -169,7 +169,7 @@ class ReferencedDocumentType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType
      */
-    public function getLineIDWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getLineIDWithCreate(): IDType
     {
         $this->lineID = is_null($this->lineID) ? new IDType() : $this->lineID;
 
@@ -180,9 +180,9 @@ class ReferencedDocumentType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @return self
      */
-    public function setLineID(\horstoeko\invoicesuite\models\zugferd\udt\IDType $idType): self
+    public function setLineID(IDType $lineID): self
     {
-        $this->lineID = $idType;
+        $this->lineID = $lineID;
 
         return $this;
     }
@@ -190,28 +190,28 @@ class ReferencedDocumentType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\DocumentCodeType|null
      */
-    public function getTypeCode(): ?\horstoeko\invoicesuite\models\zugferd\qdt\DocumentCodeType
+    public function getTypeCode(): ?DocumentCodeType
     {
-        return $this->documentCodeType;
+        return $this->typeCode;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\DocumentCodeType
      */
-    public function getTypeCodeWithCreate(): \horstoeko\invoicesuite\models\zugferd\qdt\DocumentCodeType
+    public function getTypeCodeWithCreate(): DocumentCodeType
     {
-        $this->documentCodeType = is_null($this->documentCodeType) ? new DocumentCodeType() : $this->documentCodeType;
+        $this->typeCode = is_null($this->typeCode) ? new DocumentCodeType() : $this->typeCode;
 
-        return $this->documentCodeType;
+        return $this->typeCode;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\qdt\DocumentCodeType
      * @return self
      */
-    public function setTypeCode(\horstoeko\invoicesuite\models\zugferd\qdt\DocumentCodeType $documentCodeType): self
+    public function setTypeCode(DocumentCodeType $typeCode): self
     {
-        $this->documentCodeType = $documentCodeType;
+        $this->typeCode = $typeCode;
 
         return $this;
     }
@@ -219,28 +219,28 @@ class ReferencedDocumentType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType|null
      */
-    public function getName(): ?\horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getName(): ?TextType
     {
-        return $this->textType;
+        return $this->name;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType
      */
-    public function getNameWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getNameWithCreate(): TextType
     {
-        $this->textType = is_null($this->textType) ? new TextType() : $this->textType;
+        $this->name = is_null($this->name) ? new TextType() : $this->name;
 
-        return $this->textType;
+        return $this->name;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @return self
      */
-    public function setName(\horstoeko\invoicesuite\models\zugferd\udt\TextType $textType): self
+    public function setName(TextType $name): self
     {
-        $this->textType = $textType;
+        $this->name = $name;
 
         return $this;
     }
@@ -248,29 +248,28 @@ class ReferencedDocumentType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\BinaryObjectType|null
      */
-    public function getAttachmentBinaryObject(): ?\horstoeko\invoicesuite\models\zugferd\udt\BinaryObjectType
+    public function getAttachmentBinaryObject(): ?BinaryObjectType
     {
-        return $this->binaryObjectType;
+        return $this->attachmentBinaryObject;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\BinaryObjectType
      */
-    public function getAttachmentBinaryObjectWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\BinaryObjectType
+    public function getAttachmentBinaryObjectWithCreate(): BinaryObjectType
     {
-        $this->binaryObjectType = is_null($this->binaryObjectType) ? new BinaryObjectType() : $this->binaryObjectType;
+        $this->attachmentBinaryObject = is_null($this->attachmentBinaryObject) ? new BinaryObjectType() : $this->attachmentBinaryObject;
 
-        return $this->binaryObjectType;
+        return $this->attachmentBinaryObject;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\BinaryObjectType
      * @return self
      */
-    public function setAttachmentBinaryObject(
-        \horstoeko\invoicesuite\models\zugferd\udt\BinaryObjectType $binaryObjectType,
-    ): self {
-        $this->binaryObjectType = $binaryObjectType;
+    public function setAttachmentBinaryObject(BinaryObjectType $attachmentBinaryObject): self
+    {
+        $this->attachmentBinaryObject = $attachmentBinaryObject;
 
         return $this;
     }
@@ -278,29 +277,28 @@ class ReferencedDocumentType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\ReferenceCodeType|null
      */
-    public function getReferenceTypeCode(): ?\horstoeko\invoicesuite\models\zugferd\qdt\ReferenceCodeType
+    public function getReferenceTypeCode(): ?ReferenceCodeType
     {
-        return $this->referenceCodeType;
+        return $this->referenceTypeCode;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\ReferenceCodeType
      */
-    public function getReferenceTypeCodeWithCreate(): \horstoeko\invoicesuite\models\zugferd\qdt\ReferenceCodeType
+    public function getReferenceTypeCodeWithCreate(): ReferenceCodeType
     {
-        $this->referenceCodeType = is_null($this->referenceCodeType) ? new ReferenceCodeType() : $this->referenceCodeType;
+        $this->referenceTypeCode = is_null($this->referenceTypeCode) ? new ReferenceCodeType() : $this->referenceTypeCode;
 
-        return $this->referenceCodeType;
+        return $this->referenceTypeCode;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\qdt\ReferenceCodeType
      * @return self
      */
-    public function setReferenceTypeCode(
-        \horstoeko\invoicesuite\models\zugferd\qdt\ReferenceCodeType $referenceCodeType,
-    ): self {
-        $this->referenceCodeType = $referenceCodeType;
+    public function setReferenceTypeCode(ReferenceCodeType $referenceTypeCode): self
+    {
+        $this->referenceTypeCode = $referenceTypeCode;
 
         return $this;
     }
@@ -308,29 +306,28 @@ class ReferencedDocumentType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType|null
      */
-    public function getFormattedIssueDateTime(): ?\horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType
+    public function getFormattedIssueDateTime(): ?FormattedDateTimeType
     {
-        return $this->formattedDateTimeType;
+        return $this->formattedIssueDateTime;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType
      */
-    public function getFormattedIssueDateTimeWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType {
-        $this->formattedDateTimeType = is_null($this->formattedDateTimeType) ? new FormattedDateTimeType() : $this->formattedDateTimeType;
+    public function getFormattedIssueDateTimeWithCreate(): FormattedDateTimeType
+    {
+        $this->formattedIssueDateTime = is_null($this->formattedIssueDateTime) ? new FormattedDateTimeType() : $this->formattedIssueDateTime;
 
-        return $this->formattedDateTimeType;
+        return $this->formattedIssueDateTime;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType
      * @return self
      */
-    public function setFormattedIssueDateTime(
-        \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType $formattedDateTimeType,
-    ): self {
-        $this->formattedDateTimeType = $formattedDateTimeType;
+    public function setFormattedIssueDateTime(FormattedDateTimeType $formattedIssueDateTime): self
+    {
+        $this->formattedIssueDateTime = $formattedIssueDateTime;
 
         return $this;
     }

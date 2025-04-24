@@ -10,20 +10,20 @@ class DateType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\DateType\DateStringAType
      * @JMS\Groups({"zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\DateType\DateStringAType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\DateType\DateStringAType")
      * @JMS\Expose
      * @JMS\SerializedName("DateString")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100", cdata=false)
      * @JMS\Accessor(getter="getDateString", setter="setDateString")
      */
-    private $dateStringAType;
+    private $dateString;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateType\DateStringAType|null
      */
     public function getDateString(): ?DateStringAType
     {
-        return $this->dateStringAType;
+        return $this->dateString;
     }
 
     /**
@@ -31,18 +31,18 @@ class DateType
      */
     public function getDateStringWithCreate(): DateStringAType
     {
-        $this->dateStringAType = is_null($this->dateStringAType) ? new DateStringAType() : $this->dateStringAType;
+        $this->dateString = is_null($this->dateString) ? new DateStringAType() : $this->dateString;
 
-        return $this->dateStringAType;
+        return $this->dateString;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\DateType\DateStringAType
      * @return self
      */
-    public function setDateString(DateStringAType $dateStringAType): self
+    public function setDateString(DateStringAType $dateString): self
     {
-        $this->dateStringAType = $dateStringAType;
+        $this->dateString = $dateString;
 
         return $this;
     }

@@ -10,20 +10,20 @@ class DateTimeType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType\DateTimeStringAType
      * @JMS\Groups({"zffxminimum", "zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\DateTimeType\DateTimeStringAType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\DateTimeType\DateTimeStringAType")
      * @JMS\Expose
      * @JMS\SerializedName("DateTimeString")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100", cdata=false)
      * @JMS\Accessor(getter="getDateTimeString", setter="setDateTimeString")
      */
-    private $dateTimeStringAType;
+    private $dateTimeString;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType\DateTimeStringAType|null
      */
     public function getDateTimeString(): ?DateTimeStringAType
     {
-        return $this->dateTimeStringAType;
+        return $this->dateTimeString;
     }
 
     /**
@@ -31,18 +31,18 @@ class DateTimeType
      */
     public function getDateTimeStringWithCreate(): DateTimeStringAType
     {
-        $this->dateTimeStringAType = is_null($this->dateTimeStringAType) ? new DateTimeStringAType() : $this->dateTimeStringAType;
+        $this->dateTimeString = is_null($this->dateTimeString) ? new DateTimeStringAType() : $this->dateTimeString;
 
-        return $this->dateTimeStringAType;
+        return $this->dateTimeString;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType\DateTimeStringAType
      * @return self
      */
-    public function setDateTimeString(DateTimeStringAType $dateTimeStringAType): self
+    public function setDateTimeString(DateTimeStringAType $dateTimeString): self
     {
-        $this->dateTimeStringAType = $dateTimeStringAType;
+        $this->dateTimeString = $dateTimeString;
 
         return $this;
     }

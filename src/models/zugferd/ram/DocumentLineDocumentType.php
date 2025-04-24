@@ -12,7 +12,7 @@ class DocumentLineDocumentType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @JMS\Groups({"zffxbasic", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\IDType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\IDType")
      * @JMS\Expose
      * @JMS\SerializedName("LineID")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -23,7 +23,7 @@ class DocumentLineDocumentType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\IDType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\IDType")
      * @JMS\Expose
      * @JMS\SerializedName("ParentLineID")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -34,29 +34,29 @@ class DocumentLineDocumentType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\qdt\LineStatusCodeType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\qdt\LineStatusCodeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\qdt\LineStatusCodeType")
      * @JMS\Expose
      * @JMS\SerializedName("LineStatusCode")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getLineStatusCode", setter="setLineStatusCode")
      */
-    private $lineStatusCodeType;
+    private $lineStatusCode;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\CodeType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\CodeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\CodeType")
      * @JMS\Expose
      * @JMS\SerializedName("LineStatusReasonCode")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getLineStatusReasonCode", setter="setLineStatusReasonCode")
      */
-    private $codeType;
+    private $lineStatusReasonCode;
 
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\NoteType>
      * @JMS\Groups({"zffxbasic", "zffxen16931", "zffxextended"})
-     * @JMS\Type("array<horstoeko\zugferd\entities\extended\ram\NoteType>")
+     * @JMS\Type("array<horstoeko\invoicesuite\models\zugferd\ram\NoteType>")
      * @JMS\Expose
      * @JMS\SerializedName("IncludedNote")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -68,7 +68,7 @@ class DocumentLineDocumentType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
-    public function getLineID(): ?\horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getLineID(): ?IDType
     {
         return $this->lineID;
     }
@@ -76,7 +76,7 @@ class DocumentLineDocumentType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType
      */
-    public function getLineIDWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getLineIDWithCreate(): IDType
     {
         $this->lineID = is_null($this->lineID) ? new IDType() : $this->lineID;
 
@@ -87,9 +87,9 @@ class DocumentLineDocumentType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @return self
      */
-    public function setLineID(\horstoeko\invoicesuite\models\zugferd\udt\IDType $idType): self
+    public function setLineID(IDType $lineID): self
     {
-        $this->lineID = $idType;
+        $this->lineID = $lineID;
 
         return $this;
     }
@@ -97,7 +97,7 @@ class DocumentLineDocumentType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
-    public function getParentLineID(): ?\horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getParentLineID(): ?IDType
     {
         return $this->parentLineID;
     }
@@ -105,7 +105,7 @@ class DocumentLineDocumentType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType
      */
-    public function getParentLineIDWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getParentLineIDWithCreate(): IDType
     {
         $this->parentLineID = is_null($this->parentLineID) ? new IDType() : $this->parentLineID;
 
@@ -116,9 +116,9 @@ class DocumentLineDocumentType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @return self
      */
-    public function setParentLineID(\horstoeko\invoicesuite\models\zugferd\udt\IDType $idType): self
+    public function setParentLineID(IDType $parentLineID): self
     {
-        $this->parentLineID = $idType;
+        $this->parentLineID = $parentLineID;
 
         return $this;
     }
@@ -126,29 +126,28 @@ class DocumentLineDocumentType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\LineStatusCodeType|null
      */
-    public function getLineStatusCode(): ?\horstoeko\invoicesuite\models\zugferd\qdt\LineStatusCodeType
+    public function getLineStatusCode(): ?LineStatusCodeType
     {
-        return $this->lineStatusCodeType;
+        return $this->lineStatusCode;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\LineStatusCodeType
      */
-    public function getLineStatusCodeWithCreate(): \horstoeko\invoicesuite\models\zugferd\qdt\LineStatusCodeType
+    public function getLineStatusCodeWithCreate(): LineStatusCodeType
     {
-        $this->lineStatusCodeType = is_null($this->lineStatusCodeType) ? new LineStatusCodeType() : $this->lineStatusCodeType;
+        $this->lineStatusCode = is_null($this->lineStatusCode) ? new LineStatusCodeType() : $this->lineStatusCode;
 
-        return $this->lineStatusCodeType;
+        return $this->lineStatusCode;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\qdt\LineStatusCodeType
      * @return self
      */
-    public function setLineStatusCode(
-        \horstoeko\invoicesuite\models\zugferd\qdt\LineStatusCodeType $lineStatusCodeType,
-    ): self {
-        $this->lineStatusCodeType = $lineStatusCodeType;
+    public function setLineStatusCode(LineStatusCodeType $lineStatusCode): self
+    {
+        $this->lineStatusCode = $lineStatusCode;
 
         return $this;
     }
@@ -156,29 +155,28 @@ class DocumentLineDocumentType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\CodeType|null
      */
-    public function getLineStatusReasonCode(): ?\horstoeko\invoicesuite\models\zugferd\udt\CodeType
+    public function getLineStatusReasonCode(): ?CodeType
     {
-        return $this->codeType;
+        return $this->lineStatusReasonCode;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\CodeType
      */
-    public function getLineStatusReasonCodeWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\CodeType
+    public function getLineStatusReasonCodeWithCreate(): CodeType
     {
-        $this->codeType = is_null($this->codeType) ? new CodeType() : $this->codeType;
+        $this->lineStatusReasonCode = is_null($this->lineStatusReasonCode) ? new CodeType() : $this->lineStatusReasonCode;
 
-        return $this->codeType;
+        return $this->lineStatusReasonCode;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType
      * @return self
      */
-    public function setLineStatusReasonCode(
-        \horstoeko\invoicesuite\models\zugferd\udt\CodeType $codeType,
-    ): self {
-        $this->codeType = $codeType;
+    public function setLineStatusReasonCode(CodeType $lineStatusReasonCode): self
+    {
+        $this->lineStatusReasonCode = $lineStatusReasonCode;
 
         return $this;
     }
@@ -213,12 +211,12 @@ class DocumentLineDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\NoteType $noteType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\NoteType $includedNote
      * @return self
      */
-    public function addToIncludedNote(\horstoeko\invoicesuite\models\zugferd\ram\NoteType $noteType): self
+    public function addToIncludedNote(NoteType $includedNote): self
     {
-        $this->includedNote[] = $noteType;
+        $this->includedNote[] = $includedNote;
 
         return $this;
     }
@@ -226,10 +224,10 @@ class DocumentLineDocumentType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\NoteType
      */
-    public function addToIncludedNoteWithCreate(): \horstoeko\invoicesuite\models\zugferd\ram\NoteType
+    public function addToIncludedNoteWithCreate(): NoteType
     {
-        $this->addToincludedNote($noteType = new NoteType());
+        $this->addToincludedNote($includedNote = new NoteType());
 
-        return $noteType;
+        return $includedNote;
     }
 }

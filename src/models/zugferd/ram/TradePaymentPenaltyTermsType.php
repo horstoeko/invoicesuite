@@ -13,29 +13,29 @@ class TradePaymentPenaltyTermsType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\DateTimeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\DateTimeType")
      * @JMS\Expose
      * @JMS\SerializedName("BasisDateTime")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getBasisDateTime", setter="setBasisDateTime")
      */
-    private $dateTimeType;
+    private $basisDateTime;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\MeasureType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\MeasureType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\MeasureType")
      * @JMS\Expose
      * @JMS\SerializedName("BasisPeriodMeasure")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getBasisPeriodMeasure", setter="setBasisPeriodMeasure")
      */
-    private $measureType;
+    private $basisPeriodMeasure;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\AmountType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\AmountType")
      * @JMS\Expose
      * @JMS\SerializedName("BasisAmount")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -46,18 +46,18 @@ class TradePaymentPenaltyTermsType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\PercentType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\PercentType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\PercentType")
      * @JMS\Expose
      * @JMS\SerializedName("CalculationPercent")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getCalculationPercent", setter="setCalculationPercent")
      */
-    private $percentType;
+    private $calculationPercent;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\AmountType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\AmountType")
      * @JMS\Expose
      * @JMS\SerializedName("ActualPenaltyAmount")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -68,28 +68,28 @@ class TradePaymentPenaltyTermsType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType|null
      */
-    public function getBasisDateTime(): ?\horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+    public function getBasisDateTime(): ?DateTimeType
     {
-        return $this->dateTimeType;
+        return $this->basisDateTime;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
      */
-    public function getBasisDateTimeWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+    public function getBasisDateTimeWithCreate(): DateTimeType
     {
-        $this->dateTimeType = is_null($this->dateTimeType) ? new DateTimeType() : $this->dateTimeType;
+        $this->basisDateTime = is_null($this->basisDateTime) ? new DateTimeType() : $this->basisDateTime;
 
-        return $this->dateTimeType;
+        return $this->basisDateTime;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
      * @return self
      */
-    public function setBasisDateTime(\horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $dateTimeType): self
+    public function setBasisDateTime(DateTimeType $basisDateTime): self
     {
-        $this->dateTimeType = $dateTimeType;
+        $this->basisDateTime = $basisDateTime;
 
         return $this;
     }
@@ -97,29 +97,28 @@ class TradePaymentPenaltyTermsType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\MeasureType|null
      */
-    public function getBasisPeriodMeasure(): ?\horstoeko\invoicesuite\models\zugferd\udt\MeasureType
+    public function getBasisPeriodMeasure(): ?MeasureType
     {
-        return $this->measureType;
+        return $this->basisPeriodMeasure;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\MeasureType
      */
-    public function getBasisPeriodMeasureWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\MeasureType
+    public function getBasisPeriodMeasureWithCreate(): MeasureType
     {
-        $this->measureType = is_null($this->measureType) ? new MeasureType() : $this->measureType;
+        $this->basisPeriodMeasure = is_null($this->basisPeriodMeasure) ? new MeasureType() : $this->basisPeriodMeasure;
 
-        return $this->measureType;
+        return $this->basisPeriodMeasure;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\MeasureType
      * @return self
      */
-    public function setBasisPeriodMeasure(
-        \horstoeko\invoicesuite\models\zugferd\udt\MeasureType $measureType,
-    ): self {
-        $this->measureType = $measureType;
+    public function setBasisPeriodMeasure(MeasureType $basisPeriodMeasure): self
+    {
+        $this->basisPeriodMeasure = $basisPeriodMeasure;
 
         return $this;
     }
@@ -127,7 +126,7 @@ class TradePaymentPenaltyTermsType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType|null
      */
-    public function getBasisAmount(): ?\horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getBasisAmount(): ?AmountType
     {
         return $this->basisAmount;
     }
@@ -135,7 +134,7 @@ class TradePaymentPenaltyTermsType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      */
-    public function getBasisAmountWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getBasisAmountWithCreate(): AmountType
     {
         $this->basisAmount = is_null($this->basisAmount) ? new AmountType() : $this->basisAmount;
 
@@ -146,9 +145,9 @@ class TradePaymentPenaltyTermsType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @return self
      */
-    public function setBasisAmount(\horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType): self
+    public function setBasisAmount(AmountType $basisAmount): self
     {
-        $this->basisAmount = $amountType;
+        $this->basisAmount = $basisAmount;
 
         return $this;
     }
@@ -156,29 +155,28 @@ class TradePaymentPenaltyTermsType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\PercentType|null
      */
-    public function getCalculationPercent(): ?\horstoeko\invoicesuite\models\zugferd\udt\PercentType
+    public function getCalculationPercent(): ?PercentType
     {
-        return $this->percentType;
+        return $this->calculationPercent;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\PercentType
      */
-    public function getCalculationPercentWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\PercentType
+    public function getCalculationPercentWithCreate(): PercentType
     {
-        $this->percentType = is_null($this->percentType) ? new PercentType() : $this->percentType;
+        $this->calculationPercent = is_null($this->calculationPercent) ? new PercentType() : $this->calculationPercent;
 
-        return $this->percentType;
+        return $this->calculationPercent;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\PercentType
      * @return self
      */
-    public function setCalculationPercent(
-        \horstoeko\invoicesuite\models\zugferd\udt\PercentType $percentType,
-    ): self {
-        $this->percentType = $percentType;
+    public function setCalculationPercent(PercentType $calculationPercent): self
+    {
+        $this->calculationPercent = $calculationPercent;
 
         return $this;
     }
@@ -186,7 +184,7 @@ class TradePaymentPenaltyTermsType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType|null
      */
-    public function getActualPenaltyAmount(): ?\horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getActualPenaltyAmount(): ?AmountType
     {
         return $this->actualPenaltyAmount;
     }
@@ -194,7 +192,7 @@ class TradePaymentPenaltyTermsType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      */
-    public function getActualPenaltyAmountWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getActualPenaltyAmountWithCreate(): AmountType
     {
         $this->actualPenaltyAmount = is_null($this->actualPenaltyAmount) ? new AmountType() : $this->actualPenaltyAmount;
 
@@ -205,10 +203,9 @@ class TradePaymentPenaltyTermsType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @return self
      */
-    public function setActualPenaltyAmount(
-        \horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType,
-    ): self {
-        $this->actualPenaltyAmount = $amountType;
+    public function setActualPenaltyAmount(AmountType $actualPenaltyAmount): self
+    {
+        $this->actualPenaltyAmount = $actualPenaltyAmount;
 
         return $this;
     }

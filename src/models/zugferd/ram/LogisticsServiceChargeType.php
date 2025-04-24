@@ -11,29 +11,29 @@ class LogisticsServiceChargeType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\TextType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\TextType")
      * @JMS\Expose
      * @JMS\SerializedName("Description")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getDescription", setter="setDescription")
      */
-    private $textType;
+    private $description;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\AmountType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\AmountType")
      * @JMS\Expose
      * @JMS\SerializedName("AppliedAmount")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getAppliedAmount", setter="setAppliedAmount")
      */
-    private $amountType;
+    private $appliedAmount;
 
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType>
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("array<horstoeko\zugferd\entities\extended\ram\TradeTaxType>")
+     * @JMS\Type("array<horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType>")
      * @JMS\Expose
      * @JMS\SerializedName("AppliedTradeTax")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -45,28 +45,28 @@ class LogisticsServiceChargeType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType|null
      */
-    public function getDescription(): ?\horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getDescription(): ?TextType
     {
-        return $this->textType;
+        return $this->description;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType
      */
-    public function getDescriptionWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getDescriptionWithCreate(): TextType
     {
-        $this->textType = is_null($this->textType) ? new TextType() : $this->textType;
+        $this->description = is_null($this->description) ? new TextType() : $this->description;
 
-        return $this->textType;
+        return $this->description;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @return self
      */
-    public function setDescription(\horstoeko\invoicesuite\models\zugferd\udt\TextType $textType): self
+    public function setDescription(TextType $description): self
     {
-        $this->textType = $textType;
+        $this->description = $description;
 
         return $this;
     }
@@ -74,28 +74,28 @@ class LogisticsServiceChargeType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType|null
      */
-    public function getAppliedAmount(): ?\horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getAppliedAmount(): ?AmountType
     {
-        return $this->amountType;
+        return $this->appliedAmount;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      */
-    public function getAppliedAmountWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getAppliedAmountWithCreate(): AmountType
     {
-        $this->amountType = is_null($this->amountType) ? new AmountType() : $this->amountType;
+        $this->appliedAmount = is_null($this->appliedAmount) ? new AmountType() : $this->appliedAmount;
 
-        return $this->amountType;
+        return $this->appliedAmount;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @return self
      */
-    public function setAppliedAmount(\horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType): self
+    public function setAppliedAmount(AmountType $appliedAmount): self
     {
-        $this->amountType = $amountType;
+        $this->appliedAmount = $appliedAmount;
 
         return $this;
     }
@@ -130,12 +130,12 @@ class LogisticsServiceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType $tradeTaxType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType $appliedTradeTax
      * @return self
      */
-    public function addToAppliedTradeTax(\horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType $tradeTaxType): self
+    public function addToAppliedTradeTax(TradeTaxType $appliedTradeTax): self
     {
-        $this->appliedTradeTax[] = $tradeTaxType;
+        $this->appliedTradeTax[] = $appliedTradeTax;
 
         return $this;
     }
@@ -143,10 +143,10 @@ class LogisticsServiceChargeType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType
      */
-    public function addToAppliedTradeTaxWithCreate(): \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType
+    public function addToAppliedTradeTaxWithCreate(): TradeTaxType
     {
-        $this->addToappliedTradeTax($tradeTaxType = new TradeTaxType());
+        $this->addToappliedTradeTax($appliedTradeTax = new TradeTaxType());
 
-        return $tradeTaxType;
+        return $appliedTradeTax;
     }
 }

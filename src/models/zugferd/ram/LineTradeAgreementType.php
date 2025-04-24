@@ -9,7 +9,7 @@ class LineTradeAgreementType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType")
      * @JMS\Expose
      * @JMS\SerializedName("SellerOrderReferencedDocument")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -20,7 +20,7 @@ class LineTradeAgreementType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
      * @JMS\Groups({"zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType")
      * @JMS\Expose
      * @JMS\SerializedName("BuyerOrderReferencedDocument")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -31,7 +31,7 @@ class LineTradeAgreementType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType")
      * @JMS\Expose
      * @JMS\SerializedName("QuotationReferencedDocument")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -42,7 +42,7 @@ class LineTradeAgreementType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType")
      * @JMS\Expose
      * @JMS\SerializedName("ContractReferencedDocument")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -53,7 +53,7 @@ class LineTradeAgreementType
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType>
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("array<horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType>")
+     * @JMS\Type("array<horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType>")
      * @JMS\Expose
      * @JMS\SerializedName("AdditionalReferencedDocument")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -65,7 +65,7 @@ class LineTradeAgreementType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType
      * @JMS\Groups({"zffxbasic", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\TradePriceType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\TradePriceType")
      * @JMS\Expose
      * @JMS\SerializedName("GrossPriceProductTradePrice")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -76,7 +76,7 @@ class LineTradeAgreementType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType
      * @JMS\Groups({"zffxbasic", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\TradePriceType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\TradePriceType")
      * @JMS\Expose
      * @JMS\SerializedName("NetPriceProductTradePrice")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -87,7 +87,7 @@ class LineTradeAgreementType
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType>
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("array<horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType>")
+     * @JMS\Type("array<horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType>")
      * @JMS\Expose
      * @JMS\SerializedName("UltimateCustomerOrderReferencedDocument")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -99,16 +99,16 @@ class LineTradeAgreementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType|null
      */
-    public function getSellerOrderReferencedDocument(
-    ): ?\horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType {
+    public function getSellerOrderReferencedDocument(): ?ReferencedDocumentType
+    {
         return $this->sellerOrderReferencedDocument;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
      */
-    public function getSellerOrderReferencedDocumentWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType {
+    public function getSellerOrderReferencedDocumentWithCreate(): ReferencedDocumentType
+    {
         $this->sellerOrderReferencedDocument = is_null($this->sellerOrderReferencedDocument) ? new ReferencedDocumentType() : $this->sellerOrderReferencedDocument;
 
         return $this->sellerOrderReferencedDocument;
@@ -118,10 +118,9 @@ class LineTradeAgreementType
      * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
      * @return self
      */
-    public function setSellerOrderReferencedDocument(
-        \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType,
-    ): self {
-        $this->sellerOrderReferencedDocument = $referencedDocumentType;
+    public function setSellerOrderReferencedDocument(ReferencedDocumentType $sellerOrderReferencedDocument): self
+    {
+        $this->sellerOrderReferencedDocument = $sellerOrderReferencedDocument;
 
         return $this;
     }
@@ -129,16 +128,16 @@ class LineTradeAgreementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType|null
      */
-    public function getBuyerOrderReferencedDocument(
-    ): ?\horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType {
+    public function getBuyerOrderReferencedDocument(): ?ReferencedDocumentType
+    {
         return $this->buyerOrderReferencedDocument;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
      */
-    public function getBuyerOrderReferencedDocumentWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType {
+    public function getBuyerOrderReferencedDocumentWithCreate(): ReferencedDocumentType
+    {
         $this->buyerOrderReferencedDocument = is_null($this->buyerOrderReferencedDocument) ? new ReferencedDocumentType() : $this->buyerOrderReferencedDocument;
 
         return $this->buyerOrderReferencedDocument;
@@ -148,10 +147,9 @@ class LineTradeAgreementType
      * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
      * @return self
      */
-    public function setBuyerOrderReferencedDocument(
-        \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType,
-    ): self {
-        $this->buyerOrderReferencedDocument = $referencedDocumentType;
+    public function setBuyerOrderReferencedDocument(ReferencedDocumentType $buyerOrderReferencedDocument): self
+    {
+        $this->buyerOrderReferencedDocument = $buyerOrderReferencedDocument;
 
         return $this;
     }
@@ -159,7 +157,7 @@ class LineTradeAgreementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType|null
      */
-    public function getQuotationReferencedDocument(): ?\horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
+    public function getQuotationReferencedDocument(): ?ReferencedDocumentType
     {
         return $this->quotationReferencedDocument;
     }
@@ -167,8 +165,8 @@ class LineTradeAgreementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
      */
-    public function getQuotationReferencedDocumentWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType {
+    public function getQuotationReferencedDocumentWithCreate(): ReferencedDocumentType
+    {
         $this->quotationReferencedDocument = is_null($this->quotationReferencedDocument) ? new ReferencedDocumentType() : $this->quotationReferencedDocument;
 
         return $this->quotationReferencedDocument;
@@ -178,10 +176,9 @@ class LineTradeAgreementType
      * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
      * @return self
      */
-    public function setQuotationReferencedDocument(
-        \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType,
-    ): self {
-        $this->quotationReferencedDocument = $referencedDocumentType;
+    public function setQuotationReferencedDocument(ReferencedDocumentType $quotationReferencedDocument): self
+    {
+        $this->quotationReferencedDocument = $quotationReferencedDocument;
 
         return $this;
     }
@@ -189,7 +186,7 @@ class LineTradeAgreementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType|null
      */
-    public function getContractReferencedDocument(): ?\horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
+    public function getContractReferencedDocument(): ?ReferencedDocumentType
     {
         return $this->contractReferencedDocument;
     }
@@ -197,8 +194,8 @@ class LineTradeAgreementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
      */
-    public function getContractReferencedDocumentWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType {
+    public function getContractReferencedDocumentWithCreate(): ReferencedDocumentType
+    {
         $this->contractReferencedDocument = is_null($this->contractReferencedDocument) ? new ReferencedDocumentType() : $this->contractReferencedDocument;
 
         return $this->contractReferencedDocument;
@@ -208,10 +205,9 @@ class LineTradeAgreementType
      * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
      * @return self
      */
-    public function setContractReferencedDocument(
-        \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType,
-    ): self {
-        $this->contractReferencedDocument = $referencedDocumentType;
+    public function setContractReferencedDocument(ReferencedDocumentType $contractReferencedDocument): self
+    {
+        $this->contractReferencedDocument = $contractReferencedDocument;
 
         return $this;
     }
@@ -246,13 +242,12 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $additionalReferencedDocument
      * @return self
      */
-    public function addToAdditionalReferencedDocument(
-        \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType,
-    ): self {
-        $this->additionalReferencedDocument[] = $referencedDocumentType;
+    public function addToAdditionalReferencedDocument(ReferencedDocumentType $additionalReferencedDocument): self
+    {
+        $this->additionalReferencedDocument[] = $additionalReferencedDocument;
 
         return $this;
     }
@@ -260,17 +255,17 @@ class LineTradeAgreementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
      */
-    public function addToAdditionalReferencedDocumentWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType {
-        $this->addToadditionalReferencedDocument($referencedDocumentType = new ReferencedDocumentType());
+    public function addToAdditionalReferencedDocumentWithCreate(): ReferencedDocumentType
+    {
+        $this->addToadditionalReferencedDocument($additionalReferencedDocument = new ReferencedDocumentType());
 
-        return $referencedDocumentType;
+        return $additionalReferencedDocument;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType|null
      */
-    public function getGrossPriceProductTradePrice(): ?\horstoeko\invoicesuite\models\zugferd\ram\TradePriceType
+    public function getGrossPriceProductTradePrice(): ?TradePriceType
     {
         return $this->grossPriceProductTradePrice;
     }
@@ -278,8 +273,8 @@ class LineTradeAgreementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType
      */
-    public function getGrossPriceProductTradePriceWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType {
+    public function getGrossPriceProductTradePriceWithCreate(): TradePriceType
+    {
         $this->grossPriceProductTradePrice = is_null($this->grossPriceProductTradePrice) ? new TradePriceType() : $this->grossPriceProductTradePrice;
 
         return $this->grossPriceProductTradePrice;
@@ -289,10 +284,9 @@ class LineTradeAgreementType
      * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType
      * @return self
      */
-    public function setGrossPriceProductTradePrice(
-        \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType $tradePriceType,
-    ): self {
-        $this->grossPriceProductTradePrice = $tradePriceType;
+    public function setGrossPriceProductTradePrice(TradePriceType $grossPriceProductTradePrice): self
+    {
+        $this->grossPriceProductTradePrice = $grossPriceProductTradePrice;
 
         return $this;
     }
@@ -300,7 +294,7 @@ class LineTradeAgreementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType|null
      */
-    public function getNetPriceProductTradePrice(): ?\horstoeko\invoicesuite\models\zugferd\ram\TradePriceType
+    public function getNetPriceProductTradePrice(): ?TradePriceType
     {
         return $this->netPriceProductTradePrice;
     }
@@ -308,7 +302,7 @@ class LineTradeAgreementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType
      */
-    public function getNetPriceProductTradePriceWithCreate(): \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType
+    public function getNetPriceProductTradePriceWithCreate(): TradePriceType
     {
         $this->netPriceProductTradePrice = is_null($this->netPriceProductTradePrice) ? new TradePriceType() : $this->netPriceProductTradePrice;
 
@@ -319,10 +313,9 @@ class LineTradeAgreementType
      * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType
      * @return self
      */
-    public function setNetPriceProductTradePrice(
-        \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType $tradePriceType,
-    ): self {
-        $this->netPriceProductTradePrice = $tradePriceType;
+    public function setNetPriceProductTradePrice(TradePriceType $netPriceProductTradePrice): self
+    {
+        $this->netPriceProductTradePrice = $netPriceProductTradePrice;
 
         return $this;
     }
@@ -357,13 +350,13 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $ultimateCustomerOrderReferencedDocument
      * @return self
      */
     public function addToUltimateCustomerOrderReferencedDocument(
-        \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType,
+        ReferencedDocumentType $ultimateCustomerOrderReferencedDocument,
     ): self {
-        $this->ultimateCustomerOrderReferencedDocument[] = $referencedDocumentType;
+        $this->ultimateCustomerOrderReferencedDocument[] = $ultimateCustomerOrderReferencedDocument;
 
         return $this;
     }
@@ -371,10 +364,10 @@ class LineTradeAgreementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
      */
-    public function addToUltimateCustomerOrderReferencedDocumentWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType {
-        $this->addToultimateCustomerOrderReferencedDocument($referencedDocumentType = new ReferencedDocumentType());
+    public function addToUltimateCustomerOrderReferencedDocumentWithCreate(): ReferencedDocumentType
+    {
+        $this->addToultimateCustomerOrderReferencedDocument($ultimateCustomerOrderReferencedDocument = new ReferencedDocumentType());
 
-        return $referencedDocumentType;
+        return $ultimateCustomerOrderReferencedDocument;
     }
 }

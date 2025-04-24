@@ -11,50 +11,50 @@ class ProductClassificationType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\CodeType
      * @JMS\Groups({"zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\CodeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\CodeType")
      * @JMS\Expose
      * @JMS\SerializedName("ClassCode")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getClassCode", setter="setClassCode")
      */
-    private $codeType;
+    private $classCode;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\TextType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\TextType")
      * @JMS\Expose
      * @JMS\SerializedName("ClassName")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getClassName", setter="setClassName")
      */
-    private $textType;
+    private $className;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\CodeType|null
      */
-    public function getClassCode(): ?\horstoeko\invoicesuite\models\zugferd\udt\CodeType
+    public function getClassCode(): ?CodeType
     {
-        return $this->codeType;
+        return $this->classCode;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\CodeType
      */
-    public function getClassCodeWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\CodeType
+    public function getClassCodeWithCreate(): CodeType
     {
-        $this->codeType = is_null($this->codeType) ? new CodeType() : $this->codeType;
+        $this->classCode = is_null($this->classCode) ? new CodeType() : $this->classCode;
 
-        return $this->codeType;
+        return $this->classCode;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType
      * @return self
      */
-    public function setClassCode(\horstoeko\invoicesuite\models\zugferd\udt\CodeType $codeType): self
+    public function setClassCode(CodeType $classCode): self
     {
-        $this->codeType = $codeType;
+        $this->classCode = $classCode;
 
         return $this;
     }
@@ -62,28 +62,28 @@ class ProductClassificationType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType|null
      */
-    public function getClassName(): ?\horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getClassName(): ?TextType
     {
-        return $this->textType;
+        return $this->className;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType
      */
-    public function getClassNameWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getClassNameWithCreate(): TextType
     {
-        $this->textType = is_null($this->textType) ? new TextType() : $this->textType;
+        $this->className = is_null($this->className) ? new TextType() : $this->className;
 
-        return $this->textType;
+        return $this->className;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @return self
      */
-    public function setClassName(\horstoeko\invoicesuite\models\zugferd\udt\TextType $textType): self
+    public function setClassName(TextType $className): self
     {
-        $this->textType = $textType;
+        $this->className = $className;
 
         return $this;
     }

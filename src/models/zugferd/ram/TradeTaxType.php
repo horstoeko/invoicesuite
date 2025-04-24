@@ -17,7 +17,7 @@ class TradeTaxType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\AmountType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\AmountType")
      * @JMS\Expose
      * @JMS\SerializedName("CalculatedAmount")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -28,29 +28,29 @@ class TradeTaxType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\qdt\TaxTypeCodeType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\qdt\TaxTypeCodeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\qdt\TaxTypeCodeType")
      * @JMS\Expose
      * @JMS\SerializedName("TypeCode")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getTypeCode", setter="setTypeCode")
      */
-    private $taxTypeCodeType;
+    private $typeCode;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\TextType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\TextType")
      * @JMS\Expose
      * @JMS\SerializedName("ExemptionReason")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getExemptionReason", setter="setExemptionReason")
      */
-    private $textType;
+    private $exemptionReason;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\AmountType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\AmountType")
      * @JMS\Expose
      * @JMS\SerializedName("BasisAmount")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -61,7 +61,7 @@ class TradeTaxType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\AmountType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\AmountType")
      * @JMS\Expose
      * @JMS\SerializedName("LineTotalBasisAmount")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -72,7 +72,7 @@ class TradeTaxType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\AmountType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\AmountType")
      * @JMS\Expose
      * @JMS\SerializedName("AllowanceChargeBasisAmount")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -83,62 +83,62 @@ class TradeTaxType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\qdt\TaxCategoryCodeType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\qdt\TaxCategoryCodeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\qdt\TaxCategoryCodeType")
      * @JMS\Expose
      * @JMS\SerializedName("CategoryCode")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getCategoryCode", setter="setCategoryCode")
      */
-    private $taxCategoryCodeType;
+    private $categoryCode;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\CodeType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\CodeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\CodeType")
      * @JMS\Expose
      * @JMS\SerializedName("ExemptionReasonCode")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getExemptionReasonCode", setter="setExemptionReasonCode")
      */
-    private $codeType;
+    private $exemptionReasonCode;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\DateType
      * @JMS\Groups({"zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\DateType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\DateType")
      * @JMS\Expose
      * @JMS\SerializedName("TaxPointDate")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getTaxPointDate", setter="setTaxPointDate")
      */
-    private $dateType;
+    private $taxPointDate;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\qdt\TimeReferenceCodeType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\qdt\TimeReferenceCodeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\qdt\TimeReferenceCodeType")
      * @JMS\Expose
      * @JMS\SerializedName("DueDateTypeCode")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getDueDateTypeCode", setter="setDueDateTypeCode")
      */
-    private $timeReferenceCodeType;
+    private $dueDateTypeCode;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\PercentType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\PercentType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\PercentType")
      * @JMS\Expose
      * @JMS\SerializedName("RateApplicablePercent")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getRateApplicablePercent", setter="setRateApplicablePercent")
      */
-    private $percentType;
+    private $rateApplicablePercent;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType|null
      */
-    public function getCalculatedAmount(): ?\horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getCalculatedAmount(): ?AmountType
     {
         return $this->calculatedAmount;
     }
@@ -146,7 +146,7 @@ class TradeTaxType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      */
-    public function getCalculatedAmountWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getCalculatedAmountWithCreate(): AmountType
     {
         $this->calculatedAmount = is_null($this->calculatedAmount) ? new AmountType() : $this->calculatedAmount;
 
@@ -157,9 +157,9 @@ class TradeTaxType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @return self
      */
-    public function setCalculatedAmount(\horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType): self
+    public function setCalculatedAmount(AmountType $calculatedAmount): self
     {
-        $this->calculatedAmount = $amountType;
+        $this->calculatedAmount = $calculatedAmount;
 
         return $this;
     }
@@ -167,28 +167,28 @@ class TradeTaxType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\TaxTypeCodeType|null
      */
-    public function getTypeCode(): ?\horstoeko\invoicesuite\models\zugferd\qdt\TaxTypeCodeType
+    public function getTypeCode(): ?TaxTypeCodeType
     {
-        return $this->taxTypeCodeType;
+        return $this->typeCode;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\TaxTypeCodeType
      */
-    public function getTypeCodeWithCreate(): \horstoeko\invoicesuite\models\zugferd\qdt\TaxTypeCodeType
+    public function getTypeCodeWithCreate(): TaxTypeCodeType
     {
-        $this->taxTypeCodeType = is_null($this->taxTypeCodeType) ? new TaxTypeCodeType() : $this->taxTypeCodeType;
+        $this->typeCode = is_null($this->typeCode) ? new TaxTypeCodeType() : $this->typeCode;
 
-        return $this->taxTypeCodeType;
+        return $this->typeCode;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\qdt\TaxTypeCodeType
      * @return self
      */
-    public function setTypeCode(\horstoeko\invoicesuite\models\zugferd\qdt\TaxTypeCodeType $taxTypeCodeType): self
+    public function setTypeCode(TaxTypeCodeType $typeCode): self
     {
-        $this->taxTypeCodeType = $taxTypeCodeType;
+        $this->typeCode = $typeCode;
 
         return $this;
     }
@@ -196,28 +196,28 @@ class TradeTaxType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType|null
      */
-    public function getExemptionReason(): ?\horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getExemptionReason(): ?TextType
     {
-        return $this->textType;
+        return $this->exemptionReason;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType
      */
-    public function getExemptionReasonWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getExemptionReasonWithCreate(): TextType
     {
-        $this->textType = is_null($this->textType) ? new TextType() : $this->textType;
+        $this->exemptionReason = is_null($this->exemptionReason) ? new TextType() : $this->exemptionReason;
 
-        return $this->textType;
+        return $this->exemptionReason;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @return self
      */
-    public function setExemptionReason(\horstoeko\invoicesuite\models\zugferd\udt\TextType $textType): self
+    public function setExemptionReason(TextType $exemptionReason): self
     {
-        $this->textType = $textType;
+        $this->exemptionReason = $exemptionReason;
 
         return $this;
     }
@@ -225,7 +225,7 @@ class TradeTaxType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType|null
      */
-    public function getBasisAmount(): ?\horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getBasisAmount(): ?AmountType
     {
         return $this->basisAmount;
     }
@@ -233,7 +233,7 @@ class TradeTaxType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      */
-    public function getBasisAmountWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getBasisAmountWithCreate(): AmountType
     {
         $this->basisAmount = is_null($this->basisAmount) ? new AmountType() : $this->basisAmount;
 
@@ -244,9 +244,9 @@ class TradeTaxType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @return self
      */
-    public function setBasisAmount(\horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType): self
+    public function setBasisAmount(AmountType $basisAmount): self
     {
-        $this->basisAmount = $amountType;
+        $this->basisAmount = $basisAmount;
 
         return $this;
     }
@@ -254,7 +254,7 @@ class TradeTaxType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType|null
      */
-    public function getLineTotalBasisAmount(): ?\horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getLineTotalBasisAmount(): ?AmountType
     {
         return $this->lineTotalBasisAmount;
     }
@@ -262,7 +262,7 @@ class TradeTaxType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      */
-    public function getLineTotalBasisAmountWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getLineTotalBasisAmountWithCreate(): AmountType
     {
         $this->lineTotalBasisAmount = is_null($this->lineTotalBasisAmount) ? new AmountType() : $this->lineTotalBasisAmount;
 
@@ -273,10 +273,9 @@ class TradeTaxType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @return self
      */
-    public function setLineTotalBasisAmount(
-        \horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType,
-    ): self {
-        $this->lineTotalBasisAmount = $amountType;
+    public function setLineTotalBasisAmount(AmountType $lineTotalBasisAmount): self
+    {
+        $this->lineTotalBasisAmount = $lineTotalBasisAmount;
 
         return $this;
     }
@@ -284,7 +283,7 @@ class TradeTaxType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType|null
      */
-    public function getAllowanceChargeBasisAmount(): ?\horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getAllowanceChargeBasisAmount(): ?AmountType
     {
         return $this->allowanceChargeBasisAmount;
     }
@@ -292,7 +291,7 @@ class TradeTaxType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      */
-    public function getAllowanceChargeBasisAmountWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getAllowanceChargeBasisAmountWithCreate(): AmountType
     {
         $this->allowanceChargeBasisAmount = is_null($this->allowanceChargeBasisAmount) ? new AmountType() : $this->allowanceChargeBasisAmount;
 
@@ -303,10 +302,9 @@ class TradeTaxType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @return self
      */
-    public function setAllowanceChargeBasisAmount(
-        \horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType,
-    ): self {
-        $this->allowanceChargeBasisAmount = $amountType;
+    public function setAllowanceChargeBasisAmount(AmountType $allowanceChargeBasisAmount): self
+    {
+        $this->allowanceChargeBasisAmount = $allowanceChargeBasisAmount;
 
         return $this;
     }
@@ -314,28 +312,28 @@ class TradeTaxType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\TaxCategoryCodeType|null
      */
-    public function getCategoryCode(): ?\horstoeko\invoicesuite\models\zugferd\qdt\TaxCategoryCodeType
+    public function getCategoryCode(): ?TaxCategoryCodeType
     {
-        return $this->taxCategoryCodeType;
+        return $this->categoryCode;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\TaxCategoryCodeType
      */
-    public function getCategoryCodeWithCreate(): \horstoeko\invoicesuite\models\zugferd\qdt\TaxCategoryCodeType
+    public function getCategoryCodeWithCreate(): TaxCategoryCodeType
     {
-        $this->taxCategoryCodeType = is_null($this->taxCategoryCodeType) ? new TaxCategoryCodeType() : $this->taxCategoryCodeType;
+        $this->categoryCode = is_null($this->categoryCode) ? new TaxCategoryCodeType() : $this->categoryCode;
 
-        return $this->taxCategoryCodeType;
+        return $this->categoryCode;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\qdt\TaxCategoryCodeType
      * @return self
      */
-    public function setCategoryCode(\horstoeko\invoicesuite\models\zugferd\qdt\TaxCategoryCodeType $taxCategoryCodeType): self
+    public function setCategoryCode(TaxCategoryCodeType $categoryCode): self
     {
-        $this->taxCategoryCodeType = $taxCategoryCodeType;
+        $this->categoryCode = $categoryCode;
 
         return $this;
     }
@@ -343,29 +341,28 @@ class TradeTaxType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\CodeType|null
      */
-    public function getExemptionReasonCode(): ?\horstoeko\invoicesuite\models\zugferd\udt\CodeType
+    public function getExemptionReasonCode(): ?CodeType
     {
-        return $this->codeType;
+        return $this->exemptionReasonCode;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\CodeType
      */
-    public function getExemptionReasonCodeWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\CodeType
+    public function getExemptionReasonCodeWithCreate(): CodeType
     {
-        $this->codeType = is_null($this->codeType) ? new CodeType() : $this->codeType;
+        $this->exemptionReasonCode = is_null($this->exemptionReasonCode) ? new CodeType() : $this->exemptionReasonCode;
 
-        return $this->codeType;
+        return $this->exemptionReasonCode;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType
      * @return self
      */
-    public function setExemptionReasonCode(
-        \horstoeko\invoicesuite\models\zugferd\udt\CodeType $codeType,
-    ): self {
-        $this->codeType = $codeType;
+    public function setExemptionReasonCode(CodeType $exemptionReasonCode): self
+    {
+        $this->exemptionReasonCode = $exemptionReasonCode;
 
         return $this;
     }
@@ -373,28 +370,28 @@ class TradeTaxType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateType|null
      */
-    public function getTaxPointDate(): ?\horstoeko\invoicesuite\models\zugferd\udt\DateType
+    public function getTaxPointDate(): ?DateType
     {
-        return $this->dateType;
+        return $this->taxPointDate;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateType
      */
-    public function getTaxPointDateWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\DateType
+    public function getTaxPointDateWithCreate(): DateType
     {
-        $this->dateType = is_null($this->dateType) ? new DateType() : $this->dateType;
+        $this->taxPointDate = is_null($this->taxPointDate) ? new DateType() : $this->taxPointDate;
 
-        return $this->dateType;
+        return $this->taxPointDate;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\DateType
      * @return self
      */
-    public function setTaxPointDate(\horstoeko\invoicesuite\models\zugferd\udt\DateType $dateType): self
+    public function setTaxPointDate(DateType $taxPointDate): self
     {
-        $this->dateType = $dateType;
+        $this->taxPointDate = $taxPointDate;
 
         return $this;
     }
@@ -402,29 +399,28 @@ class TradeTaxType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\TimeReferenceCodeType|null
      */
-    public function getDueDateTypeCode(): ?\horstoeko\invoicesuite\models\zugferd\qdt\TimeReferenceCodeType
+    public function getDueDateTypeCode(): ?TimeReferenceCodeType
     {
-        return $this->timeReferenceCodeType;
+        return $this->dueDateTypeCode;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\TimeReferenceCodeType
      */
-    public function getDueDateTypeCodeWithCreate(): \horstoeko\invoicesuite\models\zugferd\qdt\TimeReferenceCodeType
+    public function getDueDateTypeCodeWithCreate(): TimeReferenceCodeType
     {
-        $this->timeReferenceCodeType = is_null($this->timeReferenceCodeType) ? new TimeReferenceCodeType() : $this->timeReferenceCodeType;
+        $this->dueDateTypeCode = is_null($this->dueDateTypeCode) ? new TimeReferenceCodeType() : $this->dueDateTypeCode;
 
-        return $this->timeReferenceCodeType;
+        return $this->dueDateTypeCode;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\qdt\TimeReferenceCodeType
      * @return self
      */
-    public function setDueDateTypeCode(
-        \horstoeko\invoicesuite\models\zugferd\qdt\TimeReferenceCodeType $timeReferenceCodeType,
-    ): self {
-        $this->timeReferenceCodeType = $timeReferenceCodeType;
+    public function setDueDateTypeCode(TimeReferenceCodeType $dueDateTypeCode): self
+    {
+        $this->dueDateTypeCode = $dueDateTypeCode;
 
         return $this;
     }
@@ -432,29 +428,28 @@ class TradeTaxType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\PercentType|null
      */
-    public function getRateApplicablePercent(): ?\horstoeko\invoicesuite\models\zugferd\udt\PercentType
+    public function getRateApplicablePercent(): ?PercentType
     {
-        return $this->percentType;
+        return $this->rateApplicablePercent;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\PercentType
      */
-    public function getRateApplicablePercentWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\PercentType
+    public function getRateApplicablePercentWithCreate(): PercentType
     {
-        $this->percentType = is_null($this->percentType) ? new PercentType() : $this->percentType;
+        $this->rateApplicablePercent = is_null($this->rateApplicablePercent) ? new PercentType() : $this->rateApplicablePercent;
 
-        return $this->percentType;
+        return $this->rateApplicablePercent;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\PercentType
      * @return self
      */
-    public function setRateApplicablePercent(
-        \horstoeko\invoicesuite\models\zugferd\udt\PercentType $percentType,
-    ): self {
-        $this->percentType = $percentType;
+    public function setRateApplicablePercent(PercentType $rateApplicablePercent): self
+    {
+        $this->rateApplicablePercent = $rateApplicablePercent;
 
         return $this;
     }

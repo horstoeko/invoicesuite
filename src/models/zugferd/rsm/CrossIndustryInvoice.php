@@ -13,6 +13,6 @@ use JMS\Serializer\Annotation as JMS;
  * @JMS\XmlNamespace(uri="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100", prefix="udt")
  * @JMS\XmlNamespace(uri="http://www.w3.org/2001/XMLSchema-instance", prefix="xsi")
  */
-class CrossIndustryInvoice extends CrossIndustryInvoiceType
+class CrossIndustryInvoice
 {
 }

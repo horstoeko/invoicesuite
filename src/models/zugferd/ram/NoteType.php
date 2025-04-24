@@ -11,7 +11,7 @@ class NoteType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\CodeType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\CodeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\CodeType")
      * @JMS\Expose
      * @JMS\SerializedName("ContentCode")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -22,18 +22,18 @@ class NoteType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\TextType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\TextType")
      * @JMS\Expose
      * @JMS\SerializedName("Content")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getContent", setter="setContent")
      */
-    private $textType;
+    private $content;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\CodeType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\CodeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\CodeType")
      * @JMS\Expose
      * @JMS\SerializedName("SubjectCode")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -44,7 +44,7 @@ class NoteType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\CodeType|null
      */
-    public function getContentCode(): ?\horstoeko\invoicesuite\models\zugferd\udt\CodeType
+    public function getContentCode(): ?CodeType
     {
         return $this->contentCode;
     }
@@ -52,7 +52,7 @@ class NoteType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\CodeType
      */
-    public function getContentCodeWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\CodeType
+    public function getContentCodeWithCreate(): CodeType
     {
         $this->contentCode = is_null($this->contentCode) ? new CodeType() : $this->contentCode;
 
@@ -63,9 +63,9 @@ class NoteType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType
      * @return self
      */
-    public function setContentCode(\horstoeko\invoicesuite\models\zugferd\udt\CodeType $codeType): self
+    public function setContentCode(CodeType $contentCode): self
     {
-        $this->contentCode = $codeType;
+        $this->contentCode = $contentCode;
 
         return $this;
     }
@@ -73,28 +73,28 @@ class NoteType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType|null
      */
-    public function getContent(): ?\horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getContent(): ?TextType
     {
-        return $this->textType;
+        return $this->content;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType
      */
-    public function getContentWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getContentWithCreate(): TextType
     {
-        $this->textType = is_null($this->textType) ? new TextType() : $this->textType;
+        $this->content = is_null($this->content) ? new TextType() : $this->content;
 
-        return $this->textType;
+        return $this->content;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @return self
      */
-    public function setContent(\horstoeko\invoicesuite\models\zugferd\udt\TextType $textType): self
+    public function setContent(TextType $content): self
     {
-        $this->textType = $textType;
+        $this->content = $content;
 
         return $this;
     }
@@ -102,7 +102,7 @@ class NoteType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\CodeType|null
      */
-    public function getSubjectCode(): ?\horstoeko\invoicesuite\models\zugferd\udt\CodeType
+    public function getSubjectCode(): ?CodeType
     {
         return $this->subjectCode;
     }
@@ -110,7 +110,7 @@ class NoteType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\CodeType
      */
-    public function getSubjectCodeWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\CodeType
+    public function getSubjectCodeWithCreate(): CodeType
     {
         $this->subjectCode = is_null($this->subjectCode) ? new CodeType() : $this->subjectCode;
 
@@ -121,9 +121,9 @@ class NoteType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType
      * @return self
      */
-    public function setSubjectCode(\horstoeko\invoicesuite\models\zugferd\udt\CodeType $codeType): self
+    public function setSubjectCode(CodeType $subjectCode): self
     {
-        $this->subjectCode = $codeType;
+        $this->subjectCode = $subjectCode;
 
         return $this;
     }

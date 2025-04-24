@@ -12,7 +12,7 @@ class TradeCurrencyExchangeType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\qdt\CurrencyCodeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType")
      * @JMS\Expose
      * @JMS\SerializedName("SourceCurrencyCode")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -23,7 +23,7 @@ class TradeCurrencyExchangeType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\qdt\CurrencyCodeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType")
      * @JMS\Expose
      * @JMS\SerializedName("TargetCurrencyCode")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -34,29 +34,29 @@ class TradeCurrencyExchangeType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\RateType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\RateType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\RateType")
      * @JMS\Expose
      * @JMS\SerializedName("ConversionRate")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getConversionRate", setter="setConversionRate")
      */
-    private $rateType;
+    private $conversionRate;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\DateTimeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\DateTimeType")
      * @JMS\Expose
      * @JMS\SerializedName("ConversionRateDateTime")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getConversionRateDateTime", setter="setConversionRateDateTime")
      */
-    private $dateTimeType;
+    private $conversionRateDateTime;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType|null
      */
-    public function getSourceCurrencyCode(): ?\horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
+    public function getSourceCurrencyCode(): ?CurrencyCodeType
     {
         return $this->sourceCurrencyCode;
     }
@@ -64,7 +64,7 @@ class TradeCurrencyExchangeType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
      */
-    public function getSourceCurrencyCodeWithCreate(): \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
+    public function getSourceCurrencyCodeWithCreate(): CurrencyCodeType
     {
         $this->sourceCurrencyCode = is_null($this->sourceCurrencyCode) ? new CurrencyCodeType() : $this->sourceCurrencyCode;
 
@@ -75,10 +75,9 @@ class TradeCurrencyExchangeType
      * @param \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
      * @return self
      */
-    public function setSourceCurrencyCode(
-        \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType $currencyCodeType,
-    ): self {
-        $this->sourceCurrencyCode = $currencyCodeType;
+    public function setSourceCurrencyCode(CurrencyCodeType $sourceCurrencyCode): self
+    {
+        $this->sourceCurrencyCode = $sourceCurrencyCode;
 
         return $this;
     }
@@ -86,7 +85,7 @@ class TradeCurrencyExchangeType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType|null
      */
-    public function getTargetCurrencyCode(): ?\horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
+    public function getTargetCurrencyCode(): ?CurrencyCodeType
     {
         return $this->targetCurrencyCode;
     }
@@ -94,7 +93,7 @@ class TradeCurrencyExchangeType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
      */
-    public function getTargetCurrencyCodeWithCreate(): \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
+    public function getTargetCurrencyCodeWithCreate(): CurrencyCodeType
     {
         $this->targetCurrencyCode = is_null($this->targetCurrencyCode) ? new CurrencyCodeType() : $this->targetCurrencyCode;
 
@@ -105,10 +104,9 @@ class TradeCurrencyExchangeType
      * @param \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
      * @return self
      */
-    public function setTargetCurrencyCode(
-        \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType $currencyCodeType,
-    ): self {
-        $this->targetCurrencyCode = $currencyCodeType;
+    public function setTargetCurrencyCode(CurrencyCodeType $targetCurrencyCode): self
+    {
+        $this->targetCurrencyCode = $targetCurrencyCode;
 
         return $this;
     }
@@ -116,28 +114,28 @@ class TradeCurrencyExchangeType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\RateType|null
      */
-    public function getConversionRate(): ?\horstoeko\invoicesuite\models\zugferd\udt\RateType
+    public function getConversionRate(): ?RateType
     {
-        return $this->rateType;
+        return $this->conversionRate;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\RateType
      */
-    public function getConversionRateWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\RateType
+    public function getConversionRateWithCreate(): RateType
     {
-        $this->rateType = is_null($this->rateType) ? new RateType() : $this->rateType;
+        $this->conversionRate = is_null($this->conversionRate) ? new RateType() : $this->conversionRate;
 
-        return $this->rateType;
+        return $this->conversionRate;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\RateType
      * @return self
      */
-    public function setConversionRate(\horstoeko\invoicesuite\models\zugferd\udt\RateType $rateType): self
+    public function setConversionRate(RateType $conversionRate): self
     {
-        $this->rateType = $rateType;
+        $this->conversionRate = $conversionRate;
 
         return $this;
     }
@@ -145,29 +143,28 @@ class TradeCurrencyExchangeType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType|null
      */
-    public function getConversionRateDateTime(): ?\horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+    public function getConversionRateDateTime(): ?DateTimeType
     {
-        return $this->dateTimeType;
+        return $this->conversionRateDateTime;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
      */
-    public function getConversionRateDateTimeWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+    public function getConversionRateDateTimeWithCreate(): DateTimeType
     {
-        $this->dateTimeType = is_null($this->dateTimeType) ? new DateTimeType() : $this->dateTimeType;
+        $this->conversionRateDateTime = is_null($this->conversionRateDateTime) ? new DateTimeType() : $this->conversionRateDateTime;
 
-        return $this->dateTimeType;
+        return $this->conversionRateDateTime;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
      * @return self
      */
-    public function setConversionRateDateTime(
-        \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $dateTimeType,
-    ): self {
-        $this->dateTimeType = $dateTimeType;
+    public function setConversionRateDateTime(DateTimeType $conversionRateDateTime): self
+    {
+        $this->conversionRateDateTime = $conversionRateDateTime;
 
         return $this;
     }

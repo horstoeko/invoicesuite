@@ -11,18 +11,18 @@ class SpecifiedPeriodType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\TextType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\TextType")
      * @JMS\Expose
      * @JMS\SerializedName("Description")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getDescription", setter="setDescription")
      */
-    private $textType;
+    private $description;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\DateTimeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\DateTimeType")
      * @JMS\Expose
      * @JMS\SerializedName("StartDateTime")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -33,7 +33,7 @@ class SpecifiedPeriodType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\DateTimeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\DateTimeType")
      * @JMS\Expose
      * @JMS\SerializedName("EndDateTime")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -44,7 +44,7 @@ class SpecifiedPeriodType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\DateTimeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\DateTimeType")
      * @JMS\Expose
      * @JMS\SerializedName("CompleteDateTime")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -55,28 +55,28 @@ class SpecifiedPeriodType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType|null
      */
-    public function getDescription(): ?\horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getDescription(): ?TextType
     {
-        return $this->textType;
+        return $this->description;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType
      */
-    public function getDescriptionWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getDescriptionWithCreate(): TextType
     {
-        $this->textType = is_null($this->textType) ? new TextType() : $this->textType;
+        $this->description = is_null($this->description) ? new TextType() : $this->description;
 
-        return $this->textType;
+        return $this->description;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @return self
      */
-    public function setDescription(\horstoeko\invoicesuite\models\zugferd\udt\TextType $textType): self
+    public function setDescription(TextType $description): self
     {
-        $this->textType = $textType;
+        $this->description = $description;
 
         return $this;
     }
@@ -84,7 +84,7 @@ class SpecifiedPeriodType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType|null
      */
-    public function getStartDateTime(): ?\horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+    public function getStartDateTime(): ?DateTimeType
     {
         return $this->startDateTime;
     }
@@ -92,7 +92,7 @@ class SpecifiedPeriodType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
      */
-    public function getStartDateTimeWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+    public function getStartDateTimeWithCreate(): DateTimeType
     {
         $this->startDateTime = is_null($this->startDateTime) ? new DateTimeType() : $this->startDateTime;
 
@@ -103,9 +103,9 @@ class SpecifiedPeriodType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
      * @return self
      */
-    public function setStartDateTime(\horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $dateTimeType): self
+    public function setStartDateTime(DateTimeType $startDateTime): self
     {
-        $this->startDateTime = $dateTimeType;
+        $this->startDateTime = $startDateTime;
 
         return $this;
     }
@@ -113,7 +113,7 @@ class SpecifiedPeriodType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType|null
      */
-    public function getEndDateTime(): ?\horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+    public function getEndDateTime(): ?DateTimeType
     {
         return $this->endDateTime;
     }
@@ -121,7 +121,7 @@ class SpecifiedPeriodType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
      */
-    public function getEndDateTimeWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+    public function getEndDateTimeWithCreate(): DateTimeType
     {
         $this->endDateTime = is_null($this->endDateTime) ? new DateTimeType() : $this->endDateTime;
 
@@ -132,9 +132,9 @@ class SpecifiedPeriodType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
      * @return self
      */
-    public function setEndDateTime(\horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $dateTimeType): self
+    public function setEndDateTime(DateTimeType $endDateTime): self
     {
-        $this->endDateTime = $dateTimeType;
+        $this->endDateTime = $endDateTime;
 
         return $this;
     }
@@ -142,7 +142,7 @@ class SpecifiedPeriodType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType|null
      */
-    public function getCompleteDateTime(): ?\horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+    public function getCompleteDateTime(): ?DateTimeType
     {
         return $this->completeDateTime;
     }
@@ -150,7 +150,7 @@ class SpecifiedPeriodType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
      */
-    public function getCompleteDateTimeWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+    public function getCompleteDateTimeWithCreate(): DateTimeType
     {
         $this->completeDateTime = is_null($this->completeDateTime) ? new DateTimeType() : $this->completeDateTime;
 
@@ -161,9 +161,9 @@ class SpecifiedPeriodType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
      * @return self
      */
-    public function setCompleteDateTime(\horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $dateTimeType): self
+    public function setCompleteDateTime(DateTimeType $completeDateTime): self
     {
-        $this->completeDateTime = $dateTimeType;
+        $this->completeDateTime = $completeDateTime;
 
         return $this;
     }

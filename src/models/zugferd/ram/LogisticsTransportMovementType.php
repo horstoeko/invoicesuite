@@ -10,39 +10,39 @@ class LogisticsTransportMovementType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\qdt\TransportModeCodeType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\qdt\TransportModeCodeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\qdt\TransportModeCodeType")
      * @JMS\Expose
      * @JMS\SerializedName("ModeCode")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getModeCode", setter="setModeCode")
      */
-    private $transportModeCodeType;
+    private $modeCode;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\TransportModeCodeType|null
      */
-    public function getModeCode(): ?\horstoeko\invoicesuite\models\zugferd\qdt\TransportModeCodeType
+    public function getModeCode(): ?TransportModeCodeType
     {
-        return $this->transportModeCodeType;
+        return $this->modeCode;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\TransportModeCodeType
      */
-    public function getModeCodeWithCreate(): \horstoeko\invoicesuite\models\zugferd\qdt\TransportModeCodeType
+    public function getModeCodeWithCreate(): TransportModeCodeType
     {
-        $this->transportModeCodeType = is_null($this->transportModeCodeType) ? new TransportModeCodeType() : $this->transportModeCodeType;
+        $this->modeCode = is_null($this->modeCode) ? new TransportModeCodeType() : $this->modeCode;
 
-        return $this->transportModeCodeType;
+        return $this->modeCode;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\qdt\TransportModeCodeType
      * @return self
      */
-    public function setModeCode(\horstoeko\invoicesuite\models\zugferd\qdt\TransportModeCodeType $transportModeCodeType): self
+    public function setModeCode(TransportModeCodeType $modeCode): self
     {
-        $this->transportModeCodeType = $transportModeCodeType;
+        $this->modeCode = $modeCode;
 
         return $this;
     }

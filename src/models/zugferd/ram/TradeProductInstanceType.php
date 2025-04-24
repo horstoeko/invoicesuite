@@ -10,7 +10,7 @@ class TradeProductInstanceType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\IDType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\IDType")
      * @JMS\Expose
      * @JMS\SerializedName("BatchID")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -21,7 +21,7 @@ class TradeProductInstanceType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\IDType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\IDType")
      * @JMS\Expose
      * @JMS\SerializedName("SupplierAssignedSerialID")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -32,7 +32,7 @@ class TradeProductInstanceType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
-    public function getBatchID(): ?\horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getBatchID(): ?IDType
     {
         return $this->batchID;
     }
@@ -40,7 +40,7 @@ class TradeProductInstanceType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType
      */
-    public function getBatchIDWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getBatchIDWithCreate(): IDType
     {
         $this->batchID = is_null($this->batchID) ? new IDType() : $this->batchID;
 
@@ -51,9 +51,9 @@ class TradeProductInstanceType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @return self
      */
-    public function setBatchID(\horstoeko\invoicesuite\models\zugferd\udt\IDType $idType): self
+    public function setBatchID(IDType $batchID): self
     {
-        $this->batchID = $idType;
+        $this->batchID = $batchID;
 
         return $this;
     }
@@ -61,7 +61,7 @@ class TradeProductInstanceType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
-    public function getSupplierAssignedSerialID(): ?\horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getSupplierAssignedSerialID(): ?IDType
     {
         return $this->supplierAssignedSerialID;
     }
@@ -69,7 +69,7 @@ class TradeProductInstanceType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType
      */
-    public function getSupplierAssignedSerialIDWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getSupplierAssignedSerialIDWithCreate(): IDType
     {
         $this->supplierAssignedSerialID = is_null($this->supplierAssignedSerialID) ? new IDType() : $this->supplierAssignedSerialID;
 
@@ -80,10 +80,9 @@ class TradeProductInstanceType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @return self
      */
-    public function setSupplierAssignedSerialID(
-        \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType,
-    ): self {
-        $this->supplierAssignedSerialID = $idType;
+    public function setSupplierAssignedSerialID(IDType $supplierAssignedSerialID): self
+    {
+        $this->supplierAssignedSerialID = $supplierAssignedSerialID;
 
         return $this;
     }

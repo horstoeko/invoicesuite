@@ -9,7 +9,7 @@ class SupplyChainTradeTransactionType
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\SupplyChainTradeLineItemType>
      * @JMS\Groups({"zffxbasic", "zffxen16931", "zffxextended"})
-     * @JMS\Type("array<horstoeko\zugferd\entities\extended\ram\SupplyChainTradeLineItemType>")
+     * @JMS\Type("array<horstoeko\invoicesuite\models\zugferd\ram\SupplyChainTradeLineItemType>")
      * @JMS\Expose
      * @JMS\SerializedName("IncludedSupplyChainTradeLineItem")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -21,35 +21,35 @@ class SupplyChainTradeTransactionType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeAgreementType
      * @JMS\Groups({"zffxminimum", "zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\HeaderTradeAgreementType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeAgreementType")
      * @JMS\Expose
      * @JMS\SerializedName("ApplicableHeaderTradeAgreement")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getApplicableHeaderTradeAgreement", setter="setApplicableHeaderTradeAgreement")
      */
-    private $headerTradeAgreementType;
+    private $applicableHeaderTradeAgreement;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeDeliveryType
      * @JMS\Groups({"zffxminimum", "zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\HeaderTradeDeliveryType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeDeliveryType")
      * @JMS\Expose
      * @JMS\SerializedName("ApplicableHeaderTradeDelivery")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getApplicableHeaderTradeDelivery", setter="setApplicableHeaderTradeDelivery")
      */
-    private $headerTradeDeliveryType;
+    private $applicableHeaderTradeDelivery;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeSettlementType
      * @JMS\Groups({"zffxminimum", "zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\HeaderTradeSettlementType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeSettlementType")
      * @JMS\Expose
      * @JMS\SerializedName("ApplicableHeaderTradeSettlement")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getApplicableHeaderTradeSettlement", setter="setApplicableHeaderTradeSettlement")
      */
-    private $headerTradeSettlementType;
+    private $applicableHeaderTradeSettlement;
 
     /**
      * @return array<\horstoeko\invoicesuite\models\zugferd\ram\SupplyChainTradeLineItemType>|null
@@ -81,13 +81,13 @@ class SupplyChainTradeTransactionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\SupplyChainTradeLineItemType $supplyChainTradeLineItemType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\SupplyChainTradeLineItemType $includedSupplyChainTradeLineItem
      * @return self
      */
     public function addToIncludedSupplyChainTradeLineItem(
-        \horstoeko\invoicesuite\models\zugferd\ram\SupplyChainTradeLineItemType $supplyChainTradeLineItemType,
+        SupplyChainTradeLineItemType $includedSupplyChainTradeLineItem,
     ): self {
-        $this->includedSupplyChainTradeLineItem[] = $supplyChainTradeLineItemType;
+        $this->includedSupplyChainTradeLineItem[] = $includedSupplyChainTradeLineItem;
 
         return $this;
     }
@@ -95,39 +95,38 @@ class SupplyChainTradeTransactionType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\SupplyChainTradeLineItemType
      */
-    public function addToIncludedSupplyChainTradeLineItemWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\SupplyChainTradeLineItemType {
-        $this->addToincludedSupplyChainTradeLineItem($supplyChainTradeLineItemType = new SupplyChainTradeLineItemType());
+    public function addToIncludedSupplyChainTradeLineItemWithCreate(): SupplyChainTradeLineItemType
+    {
+        $this->addToincludedSupplyChainTradeLineItem($includedSupplyChainTradeLineItem = new SupplyChainTradeLineItemType());
 
-        return $supplyChainTradeLineItemType;
+        return $includedSupplyChainTradeLineItem;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeAgreementType|null
      */
-    public function getApplicableHeaderTradeAgreement(
-    ): ?\horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeAgreementType {
-        return $this->headerTradeAgreementType;
+    public function getApplicableHeaderTradeAgreement(): ?HeaderTradeAgreementType
+    {
+        return $this->applicableHeaderTradeAgreement;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeAgreementType
      */
-    public function getApplicableHeaderTradeAgreementWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeAgreementType {
-        $this->headerTradeAgreementType = is_null($this->headerTradeAgreementType) ? new HeaderTradeAgreementType() : $this->headerTradeAgreementType;
+    public function getApplicableHeaderTradeAgreementWithCreate(): HeaderTradeAgreementType
+    {
+        $this->applicableHeaderTradeAgreement = is_null($this->applicableHeaderTradeAgreement) ? new HeaderTradeAgreementType() : $this->applicableHeaderTradeAgreement;
 
-        return $this->headerTradeAgreementType;
+        return $this->applicableHeaderTradeAgreement;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeAgreementType
      * @return self
      */
-    public function setApplicableHeaderTradeAgreement(
-        \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeAgreementType $headerTradeAgreementType,
-    ): self {
-        $this->headerTradeAgreementType = $headerTradeAgreementType;
+    public function setApplicableHeaderTradeAgreement(HeaderTradeAgreementType $applicableHeaderTradeAgreement): self
+    {
+        $this->applicableHeaderTradeAgreement = $applicableHeaderTradeAgreement;
 
         return $this;
     }
@@ -135,29 +134,28 @@ class SupplyChainTradeTransactionType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeDeliveryType|null
      */
-    public function getApplicableHeaderTradeDelivery(
-    ): ?\horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeDeliveryType {
-        return $this->headerTradeDeliveryType;
+    public function getApplicableHeaderTradeDelivery(): ?HeaderTradeDeliveryType
+    {
+        return $this->applicableHeaderTradeDelivery;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeDeliveryType
      */
-    public function getApplicableHeaderTradeDeliveryWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeDeliveryType {
-        $this->headerTradeDeliveryType = is_null($this->headerTradeDeliveryType) ? new HeaderTradeDeliveryType() : $this->headerTradeDeliveryType;
+    public function getApplicableHeaderTradeDeliveryWithCreate(): HeaderTradeDeliveryType
+    {
+        $this->applicableHeaderTradeDelivery = is_null($this->applicableHeaderTradeDelivery) ? new HeaderTradeDeliveryType() : $this->applicableHeaderTradeDelivery;
 
-        return $this->headerTradeDeliveryType;
+        return $this->applicableHeaderTradeDelivery;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeDeliveryType
      * @return self
      */
-    public function setApplicableHeaderTradeDelivery(
-        \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeDeliveryType $headerTradeDeliveryType,
-    ): self {
-        $this->headerTradeDeliveryType = $headerTradeDeliveryType;
+    public function setApplicableHeaderTradeDelivery(HeaderTradeDeliveryType $applicableHeaderTradeDelivery): self
+    {
+        $this->applicableHeaderTradeDelivery = $applicableHeaderTradeDelivery;
 
         return $this;
     }
@@ -165,19 +163,19 @@ class SupplyChainTradeTransactionType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeSettlementType|null
      */
-    public function getApplicableHeaderTradeSettlement(
-    ): ?\horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeSettlementType {
-        return $this->headerTradeSettlementType;
+    public function getApplicableHeaderTradeSettlement(): ?HeaderTradeSettlementType
+    {
+        return $this->applicableHeaderTradeSettlement;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeSettlementType
      */
-    public function getApplicableHeaderTradeSettlementWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeSettlementType {
-        $this->headerTradeSettlementType = is_null($this->headerTradeSettlementType) ? new HeaderTradeSettlementType() : $this->headerTradeSettlementType;
+    public function getApplicableHeaderTradeSettlementWithCreate(): HeaderTradeSettlementType
+    {
+        $this->applicableHeaderTradeSettlement = is_null($this->applicableHeaderTradeSettlement) ? new HeaderTradeSettlementType() : $this->applicableHeaderTradeSettlement;
 
-        return $this->headerTradeSettlementType;
+        return $this->applicableHeaderTradeSettlement;
     }
 
     /**
@@ -185,9 +183,9 @@ class SupplyChainTradeTransactionType
      * @return self
      */
     public function setApplicableHeaderTradeSettlement(
-        \horstoeko\invoicesuite\models\zugferd\ram\HeaderTradeSettlementType $headerTradeSettlementType,
+        HeaderTradeSettlementType $applicableHeaderTradeSettlement,
     ): self {
-        $this->headerTradeSettlementType = $headerTradeSettlementType;
+        $this->applicableHeaderTradeSettlement = $applicableHeaderTradeSettlement;
 
         return $this;
     }

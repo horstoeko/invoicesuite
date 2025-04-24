@@ -12,18 +12,18 @@ class TradeAddressType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\CodeType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\CodeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\CodeType")
      * @JMS\Expose
      * @JMS\SerializedName("PostcodeCode")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getPostcodeCode", setter="setPostcodeCode")
      */
-    private $codeType;
+    private $postcodeCode;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\TextType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\TextType")
      * @JMS\Expose
      * @JMS\SerializedName("LineOne")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -34,7 +34,7 @@ class TradeAddressType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\TextType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\TextType")
      * @JMS\Expose
      * @JMS\SerializedName("LineTwo")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -45,7 +45,7 @@ class TradeAddressType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\TextType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\TextType")
      * @JMS\Expose
      * @JMS\SerializedName("LineThree")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -56,7 +56,7 @@ class TradeAddressType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\TextType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\TextType")
      * @JMS\Expose
      * @JMS\SerializedName("CityName")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -67,18 +67,18 @@ class TradeAddressType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\qdt\CountryIDType
      * @JMS\Groups({"zffxminimum", "zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\qdt\CountryIDType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\qdt\CountryIDType")
      * @JMS\Expose
      * @JMS\SerializedName("CountryID")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getCountryID", setter="setCountryID")
      */
-    private $countryIDType;
+    private $countryID;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\TextType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\TextType")
      * @JMS\Expose
      * @JMS\SerializedName("CountrySubDivisionName")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -89,28 +89,28 @@ class TradeAddressType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\CodeType|null
      */
-    public function getPostcodeCode(): ?\horstoeko\invoicesuite\models\zugferd\udt\CodeType
+    public function getPostcodeCode(): ?CodeType
     {
-        return $this->codeType;
+        return $this->postcodeCode;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\CodeType
      */
-    public function getPostcodeCodeWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\CodeType
+    public function getPostcodeCodeWithCreate(): CodeType
     {
-        $this->codeType = is_null($this->codeType) ? new CodeType() : $this->codeType;
+        $this->postcodeCode = is_null($this->postcodeCode) ? new CodeType() : $this->postcodeCode;
 
-        return $this->codeType;
+        return $this->postcodeCode;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType
      * @return self
      */
-    public function setPostcodeCode(\horstoeko\invoicesuite\models\zugferd\udt\CodeType $codeType): self
+    public function setPostcodeCode(CodeType $postcodeCode): self
     {
-        $this->codeType = $codeType;
+        $this->postcodeCode = $postcodeCode;
 
         return $this;
     }
@@ -118,7 +118,7 @@ class TradeAddressType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType|null
      */
-    public function getLineOne(): ?\horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getLineOne(): ?TextType
     {
         return $this->lineOne;
     }
@@ -126,7 +126,7 @@ class TradeAddressType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType
      */
-    public function getLineOneWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getLineOneWithCreate(): TextType
     {
         $this->lineOne = is_null($this->lineOne) ? new TextType() : $this->lineOne;
 
@@ -137,9 +137,9 @@ class TradeAddressType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @return self
      */
-    public function setLineOne(\horstoeko\invoicesuite\models\zugferd\udt\TextType $textType): self
+    public function setLineOne(TextType $lineOne): self
     {
-        $this->lineOne = $textType;
+        $this->lineOne = $lineOne;
 
         return $this;
     }
@@ -147,7 +147,7 @@ class TradeAddressType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType|null
      */
-    public function getLineTwo(): ?\horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getLineTwo(): ?TextType
     {
         return $this->lineTwo;
     }
@@ -155,7 +155,7 @@ class TradeAddressType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType
      */
-    public function getLineTwoWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getLineTwoWithCreate(): TextType
     {
         $this->lineTwo = is_null($this->lineTwo) ? new TextType() : $this->lineTwo;
 
@@ -166,9 +166,9 @@ class TradeAddressType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @return self
      */
-    public function setLineTwo(\horstoeko\invoicesuite\models\zugferd\udt\TextType $textType): self
+    public function setLineTwo(TextType $lineTwo): self
     {
-        $this->lineTwo = $textType;
+        $this->lineTwo = $lineTwo;
 
         return $this;
     }
@@ -176,7 +176,7 @@ class TradeAddressType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType|null
      */
-    public function getLineThree(): ?\horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getLineThree(): ?TextType
     {
         return $this->lineThree;
     }
@@ -184,7 +184,7 @@ class TradeAddressType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType
      */
-    public function getLineThreeWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getLineThreeWithCreate(): TextType
     {
         $this->lineThree = is_null($this->lineThree) ? new TextType() : $this->lineThree;
 
@@ -195,9 +195,9 @@ class TradeAddressType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @return self
      */
-    public function setLineThree(\horstoeko\invoicesuite\models\zugferd\udt\TextType $textType): self
+    public function setLineThree(TextType $lineThree): self
     {
-        $this->lineThree = $textType;
+        $this->lineThree = $lineThree;
 
         return $this;
     }
@@ -205,7 +205,7 @@ class TradeAddressType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType|null
      */
-    public function getCityName(): ?\horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getCityName(): ?TextType
     {
         return $this->cityName;
     }
@@ -213,7 +213,7 @@ class TradeAddressType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType
      */
-    public function getCityNameWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getCityNameWithCreate(): TextType
     {
         $this->cityName = is_null($this->cityName) ? new TextType() : $this->cityName;
 
@@ -224,9 +224,9 @@ class TradeAddressType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @return self
      */
-    public function setCityName(\horstoeko\invoicesuite\models\zugferd\udt\TextType $textType): self
+    public function setCityName(TextType $cityName): self
     {
-        $this->cityName = $textType;
+        $this->cityName = $cityName;
 
         return $this;
     }
@@ -234,28 +234,28 @@ class TradeAddressType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\CountryIDType|null
      */
-    public function getCountryID(): ?\horstoeko\invoicesuite\models\zugferd\qdt\CountryIDType
+    public function getCountryID(): ?CountryIDType
     {
-        return $this->countryIDType;
+        return $this->countryID;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\CountryIDType
      */
-    public function getCountryIDWithCreate(): \horstoeko\invoicesuite\models\zugferd\qdt\CountryIDType
+    public function getCountryIDWithCreate(): CountryIDType
     {
-        $this->countryIDType = is_null($this->countryIDType) ? new CountryIDType() : $this->countryIDType;
+        $this->countryID = is_null($this->countryID) ? new CountryIDType() : $this->countryID;
 
-        return $this->countryIDType;
+        return $this->countryID;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\qdt\CountryIDType
      * @return self
      */
-    public function setCountryID(\horstoeko\invoicesuite\models\zugferd\qdt\CountryIDType $countryIDType): self
+    public function setCountryID(CountryIDType $countryID): self
     {
-        $this->countryIDType = $countryIDType;
+        $this->countryID = $countryID;
 
         return $this;
     }
@@ -263,7 +263,7 @@ class TradeAddressType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType|null
      */
-    public function getCountrySubDivisionName(): ?\horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getCountrySubDivisionName(): ?TextType
     {
         return $this->countrySubDivisionName;
     }
@@ -271,7 +271,7 @@ class TradeAddressType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType
      */
-    public function getCountrySubDivisionNameWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getCountrySubDivisionNameWithCreate(): TextType
     {
         $this->countrySubDivisionName = is_null($this->countrySubDivisionName) ? new TextType() : $this->countrySubDivisionName;
 
@@ -282,10 +282,9 @@ class TradeAddressType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @return self
      */
-    public function setCountrySubDivisionName(
-        \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType,
-    ): self {
-        $this->countrySubDivisionName = $textType;
+    public function setCountrySubDivisionName(TextType $countrySubDivisionName): self
+    {
+        $this->countrySubDivisionName = $countrySubDivisionName;
 
         return $this;
     }

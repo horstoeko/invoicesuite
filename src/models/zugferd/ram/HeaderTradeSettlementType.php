@@ -12,18 +12,18 @@ class HeaderTradeSettlementType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\IDType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\IDType")
      * @JMS\Expose
      * @JMS\SerializedName("CreditorReferenceID")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getCreditorReferenceID", setter="setCreditorReferenceID")
      */
-    private $idType;
+    private $creditorReferenceID;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\TextType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\TextType")
      * @JMS\Expose
      * @JMS\SerializedName("PaymentReference")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -34,7 +34,7 @@ class HeaderTradeSettlementType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\qdt\CurrencyCodeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType")
      * @JMS\Expose
      * @JMS\SerializedName("TaxCurrencyCode")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -45,7 +45,7 @@ class HeaderTradeSettlementType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
      * @JMS\Groups({"zffxminimum", "zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\qdt\CurrencyCodeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType")
      * @JMS\Expose
      * @JMS\SerializedName("InvoiceCurrencyCode")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -56,7 +56,7 @@ class HeaderTradeSettlementType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\TextType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\TextType")
      * @JMS\Expose
      * @JMS\SerializedName("InvoiceIssuerReference")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -67,7 +67,7 @@ class HeaderTradeSettlementType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\TradePartyType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\TradePartyType")
      * @JMS\Expose
      * @JMS\SerializedName("InvoicerTradeParty")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -78,7 +78,7 @@ class HeaderTradeSettlementType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\TradePartyType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\TradePartyType")
      * @JMS\Expose
      * @JMS\SerializedName("InvoiceeTradeParty")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -89,7 +89,7 @@ class HeaderTradeSettlementType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\TradePartyType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\TradePartyType")
      * @JMS\Expose
      * @JMS\SerializedName("PayeeTradeParty")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -100,7 +100,7 @@ class HeaderTradeSettlementType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\TradePartyType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\TradePartyType")
      * @JMS\Expose
      * @JMS\SerializedName("PayerTradeParty")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -111,18 +111,18 @@ class HeaderTradeSettlementType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\TradeCurrencyExchangeType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\TradeCurrencyExchangeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\TradeCurrencyExchangeType")
      * @JMS\Expose
      * @JMS\SerializedName("TaxApplicableTradeCurrencyExchange")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getTaxApplicableTradeCurrencyExchange", setter="setTaxApplicableTradeCurrencyExchange")
      */
-    private $tradeCurrencyExchangeType;
+    private $taxApplicableTradeCurrencyExchange;
 
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementPaymentMeansType>
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("array<horstoeko\zugferd\entities\extended\ram\TradeSettlementPaymentMeansType>")
+     * @JMS\Type("array<horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementPaymentMeansType>")
      * @JMS\Expose
      * @JMS\SerializedName("SpecifiedTradeSettlementPaymentMeans")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -134,7 +134,7 @@ class HeaderTradeSettlementType
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType>
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("array<horstoeko\zugferd\entities\extended\ram\TradeTaxType>")
+     * @JMS\Type("array<horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType>")
      * @JMS\Expose
      * @JMS\SerializedName("ApplicableTradeTax")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -146,18 +146,18 @@ class HeaderTradeSettlementType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\SpecifiedPeriodType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\SpecifiedPeriodType")
      * @JMS\Expose
      * @JMS\SerializedName("BillingSpecifiedPeriod")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getBillingSpecifiedPeriod", setter="setBillingSpecifiedPeriod")
      */
-    private $specifiedPeriodType;
+    private $billingSpecifiedPeriod;
 
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\TradeAllowanceChargeType>
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("array<horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType>")
+     * @JMS\Type("array<horstoeko\invoicesuite\models\zugferd\ram\TradeAllowanceChargeType>")
      * @JMS\Expose
      * @JMS\SerializedName("SpecifiedTradeAllowanceCharge")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -169,7 +169,7 @@ class HeaderTradeSettlementType
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\LogisticsServiceChargeType>
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("array<horstoeko\zugferd\entities\extended\ram\LogisticsServiceChargeType>")
+     * @JMS\Type("array<horstoeko\invoicesuite\models\zugferd\ram\LogisticsServiceChargeType>")
      * @JMS\Expose
      * @JMS\SerializedName("SpecifiedLogisticsServiceCharge")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -181,7 +181,7 @@ class HeaderTradeSettlementType
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\TradePaymentTermsType>
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("array<horstoeko\zugferd\entities\extended\ram\TradePaymentTermsType>")
+     * @JMS\Type("array<horstoeko\invoicesuite\models\zugferd\ram\TradePaymentTermsType>")
      * @JMS\Expose
      * @JMS\SerializedName("SpecifiedTradePaymentTerms")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -193,18 +193,18 @@ class HeaderTradeSettlementType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementHeaderMonetarySummationType
      * @JMS\Groups({"zffxminimum", "zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementHeaderMonetarySummationType")
      * @JMS\Expose
      * @JMS\SerializedName("SpecifiedTradeSettlementHeaderMonetarySummation")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getSpecifiedTradeSettlementHeaderMonetarySummation", setter="setSpecifiedTradeSettlementHeaderMonetarySummation")
      */
-    private $tradeSettlementHeaderMonetarySummationType;
+    private $specifiedTradeSettlementHeaderMonetarySummation;
 
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType>
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("array<horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType>")
+     * @JMS\Type("array<horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType>")
      * @JMS\Expose
      * @JMS\SerializedName("InvoiceReferencedDocument")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -216,7 +216,7 @@ class HeaderTradeSettlementType
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\TradeAccountingAccountType>
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("array<horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType>")
+     * @JMS\Type("array<horstoeko\invoicesuite\models\zugferd\ram\TradeAccountingAccountType>")
      * @JMS\Expose
      * @JMS\SerializedName("ReceivableSpecifiedTradeAccountingAccount")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -228,7 +228,7 @@ class HeaderTradeSettlementType
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\AdvancePaymentType>
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("array<horstoeko\zugferd\entities\extended\ram\AdvancePaymentType>")
+     * @JMS\Type("array<horstoeko\invoicesuite\models\zugferd\ram\AdvancePaymentType>")
      * @JMS\Expose
      * @JMS\SerializedName("SpecifiedAdvancePayment")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
@@ -240,28 +240,28 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
-    public function getCreditorReferenceID(): ?\horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getCreditorReferenceID(): ?IDType
     {
-        return $this->idType;
+        return $this->creditorReferenceID;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType
      */
-    public function getCreditorReferenceIDWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getCreditorReferenceIDWithCreate(): IDType
     {
-        $this->idType = is_null($this->idType) ? new IDType() : $this->idType;
+        $this->creditorReferenceID = is_null($this->creditorReferenceID) ? new IDType() : $this->creditorReferenceID;
 
-        return $this->idType;
+        return $this->creditorReferenceID;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @return self
      */
-    public function setCreditorReferenceID(\horstoeko\invoicesuite\models\zugferd\udt\IDType $idType): self
+    public function setCreditorReferenceID(IDType $creditorReferenceID): self
     {
-        $this->idType = $idType;
+        $this->creditorReferenceID = $creditorReferenceID;
 
         return $this;
     }
@@ -269,7 +269,7 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType|null
      */
-    public function getPaymentReference(): ?\horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getPaymentReference(): ?TextType
     {
         return $this->paymentReference;
     }
@@ -277,7 +277,7 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType
      */
-    public function getPaymentReferenceWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getPaymentReferenceWithCreate(): TextType
     {
         $this->paymentReference = is_null($this->paymentReference) ? new TextType() : $this->paymentReference;
 
@@ -288,9 +288,9 @@ class HeaderTradeSettlementType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @return self
      */
-    public function setPaymentReference(\horstoeko\invoicesuite\models\zugferd\udt\TextType $textType): self
+    public function setPaymentReference(TextType $paymentReference): self
     {
-        $this->paymentReference = $textType;
+        $this->paymentReference = $paymentReference;
 
         return $this;
     }
@@ -298,7 +298,7 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType|null
      */
-    public function getTaxCurrencyCode(): ?\horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
+    public function getTaxCurrencyCode(): ?CurrencyCodeType
     {
         return $this->taxCurrencyCode;
     }
@@ -306,7 +306,7 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
      */
-    public function getTaxCurrencyCodeWithCreate(): \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
+    public function getTaxCurrencyCodeWithCreate(): CurrencyCodeType
     {
         $this->taxCurrencyCode = is_null($this->taxCurrencyCode) ? new CurrencyCodeType() : $this->taxCurrencyCode;
 
@@ -317,10 +317,9 @@ class HeaderTradeSettlementType
      * @param \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
      * @return self
      */
-    public function setTaxCurrencyCode(
-        \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType $currencyCodeType,
-    ): self {
-        $this->taxCurrencyCode = $currencyCodeType;
+    public function setTaxCurrencyCode(CurrencyCodeType $taxCurrencyCode): self
+    {
+        $this->taxCurrencyCode = $taxCurrencyCode;
 
         return $this;
     }
@@ -328,7 +327,7 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType|null
      */
-    public function getInvoiceCurrencyCode(): ?\horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
+    public function getInvoiceCurrencyCode(): ?CurrencyCodeType
     {
         return $this->invoiceCurrencyCode;
     }
@@ -336,7 +335,7 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
      */
-    public function getInvoiceCurrencyCodeWithCreate(): \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
+    public function getInvoiceCurrencyCodeWithCreate(): CurrencyCodeType
     {
         $this->invoiceCurrencyCode = is_null($this->invoiceCurrencyCode) ? new CurrencyCodeType() : $this->invoiceCurrencyCode;
 
@@ -347,10 +346,9 @@ class HeaderTradeSettlementType
      * @param \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType
      * @return self
      */
-    public function setInvoiceCurrencyCode(
-        \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType $currencyCodeType,
-    ): self {
-        $this->invoiceCurrencyCode = $currencyCodeType;
+    public function setInvoiceCurrencyCode(CurrencyCodeType $invoiceCurrencyCode): self
+    {
+        $this->invoiceCurrencyCode = $invoiceCurrencyCode;
 
         return $this;
     }
@@ -358,7 +356,7 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType|null
      */
-    public function getInvoiceIssuerReference(): ?\horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getInvoiceIssuerReference(): ?TextType
     {
         return $this->invoiceIssuerReference;
     }
@@ -366,7 +364,7 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType
      */
-    public function getInvoiceIssuerReferenceWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getInvoiceIssuerReferenceWithCreate(): TextType
     {
         $this->invoiceIssuerReference = is_null($this->invoiceIssuerReference) ? new TextType() : $this->invoiceIssuerReference;
 
@@ -377,10 +375,9 @@ class HeaderTradeSettlementType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @return self
      */
-    public function setInvoiceIssuerReference(
-        \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType,
-    ): self {
-        $this->invoiceIssuerReference = $textType;
+    public function setInvoiceIssuerReference(TextType $invoiceIssuerReference): self
+    {
+        $this->invoiceIssuerReference = $invoiceIssuerReference;
 
         return $this;
     }
@@ -388,7 +385,7 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType|null
      */
-    public function getInvoicerTradeParty(): ?\horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
+    public function getInvoicerTradeParty(): ?TradePartyType
     {
         return $this->invoicerTradeParty;
     }
@@ -396,7 +393,7 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
      */
-    public function getInvoicerTradePartyWithCreate(): \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
+    public function getInvoicerTradePartyWithCreate(): TradePartyType
     {
         $this->invoicerTradeParty = is_null($this->invoicerTradeParty) ? new TradePartyType() : $this->invoicerTradeParty;
 
@@ -407,10 +404,9 @@ class HeaderTradeSettlementType
      * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
      * @return self
      */
-    public function setInvoicerTradeParty(
-        \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType $tradePartyType,
-    ): self {
-        $this->invoicerTradeParty = $tradePartyType;
+    public function setInvoicerTradeParty(TradePartyType $invoicerTradeParty): self
+    {
+        $this->invoicerTradeParty = $invoicerTradeParty;
 
         return $this;
     }
@@ -418,7 +414,7 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType|null
      */
-    public function getInvoiceeTradeParty(): ?\horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
+    public function getInvoiceeTradeParty(): ?TradePartyType
     {
         return $this->invoiceeTradeParty;
     }
@@ -426,7 +422,7 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
      */
-    public function getInvoiceeTradePartyWithCreate(): \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
+    public function getInvoiceeTradePartyWithCreate(): TradePartyType
     {
         $this->invoiceeTradeParty = is_null($this->invoiceeTradeParty) ? new TradePartyType() : $this->invoiceeTradeParty;
 
@@ -437,10 +433,9 @@ class HeaderTradeSettlementType
      * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
      * @return self
      */
-    public function setInvoiceeTradeParty(
-        \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType $tradePartyType,
-    ): self {
-        $this->invoiceeTradeParty = $tradePartyType;
+    public function setInvoiceeTradeParty(TradePartyType $invoiceeTradeParty): self
+    {
+        $this->invoiceeTradeParty = $invoiceeTradeParty;
 
         return $this;
     }
@@ -448,7 +443,7 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType|null
      */
-    public function getPayeeTradeParty(): ?\horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
+    public function getPayeeTradeParty(): ?TradePartyType
     {
         return $this->payeeTradeParty;
     }
@@ -456,7 +451,7 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
      */
-    public function getPayeeTradePartyWithCreate(): \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
+    public function getPayeeTradePartyWithCreate(): TradePartyType
     {
         $this->payeeTradeParty = is_null($this->payeeTradeParty) ? new TradePartyType() : $this->payeeTradeParty;
 
@@ -467,9 +462,9 @@ class HeaderTradeSettlementType
      * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
      * @return self
      */
-    public function setPayeeTradeParty(\horstoeko\invoicesuite\models\zugferd\ram\TradePartyType $tradePartyType): self
+    public function setPayeeTradeParty(TradePartyType $payeeTradeParty): self
     {
-        $this->payeeTradeParty = $tradePartyType;
+        $this->payeeTradeParty = $payeeTradeParty;
 
         return $this;
     }
@@ -477,7 +472,7 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType|null
      */
-    public function getPayerTradeParty(): ?\horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
+    public function getPayerTradeParty(): ?TradePartyType
     {
         return $this->payerTradeParty;
     }
@@ -485,7 +480,7 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
      */
-    public function getPayerTradePartyWithCreate(): \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
+    public function getPayerTradePartyWithCreate(): TradePartyType
     {
         $this->payerTradeParty = is_null($this->payerTradeParty) ? new TradePartyType() : $this->payerTradeParty;
 
@@ -496,9 +491,9 @@ class HeaderTradeSettlementType
      * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
      * @return self
      */
-    public function setPayerTradeParty(\horstoeko\invoicesuite\models\zugferd\ram\TradePartyType $tradePartyType): self
+    public function setPayerTradeParty(TradePartyType $payerTradeParty): self
     {
-        $this->payerTradeParty = $tradePartyType;
+        $this->payerTradeParty = $payerTradeParty;
 
         return $this;
     }
@@ -506,19 +501,19 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradeCurrencyExchangeType|null
      */
-    public function getTaxApplicableTradeCurrencyExchange(
-    ): ?\horstoeko\invoicesuite\models\zugferd\ram\TradeCurrencyExchangeType {
-        return $this->tradeCurrencyExchangeType;
+    public function getTaxApplicableTradeCurrencyExchange(): ?TradeCurrencyExchangeType
+    {
+        return $this->taxApplicableTradeCurrencyExchange;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradeCurrencyExchangeType
      */
-    public function getTaxApplicableTradeCurrencyExchangeWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\TradeCurrencyExchangeType {
-        $this->tradeCurrencyExchangeType = is_null($this->tradeCurrencyExchangeType) ? new TradeCurrencyExchangeType() : $this->tradeCurrencyExchangeType;
+    public function getTaxApplicableTradeCurrencyExchangeWithCreate(): TradeCurrencyExchangeType
+    {
+        $this->taxApplicableTradeCurrencyExchange = is_null($this->taxApplicableTradeCurrencyExchange) ? new TradeCurrencyExchangeType() : $this->taxApplicableTradeCurrencyExchange;
 
-        return $this->tradeCurrencyExchangeType;
+        return $this->taxApplicableTradeCurrencyExchange;
     }
 
     /**
@@ -526,9 +521,9 @@ class HeaderTradeSettlementType
      * @return self
      */
     public function setTaxApplicableTradeCurrencyExchange(
-        \horstoeko\invoicesuite\models\zugferd\ram\TradeCurrencyExchangeType $tradeCurrencyExchangeType,
+        TradeCurrencyExchangeType $taxApplicableTradeCurrencyExchange,
     ): self {
-        $this->tradeCurrencyExchangeType = $tradeCurrencyExchangeType;
+        $this->taxApplicableTradeCurrencyExchange = $taxApplicableTradeCurrencyExchange;
 
         return $this;
     }
@@ -563,13 +558,13 @@ class HeaderTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementPaymentMeansType $tradeSettlementPaymentMeansType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementPaymentMeansType $specifiedTradeSettlementPaymentMeans
      * @return self
      */
     public function addToSpecifiedTradeSettlementPaymentMeans(
-        \horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementPaymentMeansType $tradeSettlementPaymentMeansType,
+        TradeSettlementPaymentMeansType $specifiedTradeSettlementPaymentMeans,
     ): self {
-        $this->specifiedTradeSettlementPaymentMeans[] = $tradeSettlementPaymentMeansType;
+        $this->specifiedTradeSettlementPaymentMeans[] = $specifiedTradeSettlementPaymentMeans;
 
         return $this;
     }
@@ -577,11 +572,11 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementPaymentMeansType
      */
-    public function addToSpecifiedTradeSettlementPaymentMeansWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementPaymentMeansType {
-        $this->addTospecifiedTradeSettlementPaymentMeans($tradeSettlementPaymentMeansType = new TradeSettlementPaymentMeansType());
+    public function addToSpecifiedTradeSettlementPaymentMeansWithCreate(): TradeSettlementPaymentMeansType
+    {
+        $this->addTospecifiedTradeSettlementPaymentMeans($specifiedTradeSettlementPaymentMeans = new TradeSettlementPaymentMeansType());
 
-        return $tradeSettlementPaymentMeansType;
+        return $specifiedTradeSettlementPaymentMeans;
     }
 
     /**
@@ -614,13 +609,12 @@ class HeaderTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType $tradeTaxType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType $applicableTradeTax
      * @return self
      */
-    public function addToApplicableTradeTax(
-        \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType $tradeTaxType,
-    ): self {
-        $this->applicableTradeTax[] = $tradeTaxType;
+    public function addToApplicableTradeTax(TradeTaxType $applicableTradeTax): self
+    {
+        $this->applicableTradeTax[] = $applicableTradeTax;
 
         return $this;
     }
@@ -628,39 +622,38 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType
      */
-    public function addToApplicableTradeTaxWithCreate(): \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType
+    public function addToApplicableTradeTaxWithCreate(): TradeTaxType
     {
-        $this->addToapplicableTradeTax($tradeTaxType = new TradeTaxType());
+        $this->addToapplicableTradeTax($applicableTradeTax = new TradeTaxType());
 
-        return $tradeTaxType;
+        return $applicableTradeTax;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\SpecifiedPeriodType|null
      */
-    public function getBillingSpecifiedPeriod(): ?\horstoeko\invoicesuite\models\zugferd\ram\SpecifiedPeriodType
+    public function getBillingSpecifiedPeriod(): ?SpecifiedPeriodType
     {
-        return $this->specifiedPeriodType;
+        return $this->billingSpecifiedPeriod;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\SpecifiedPeriodType
      */
-    public function getBillingSpecifiedPeriodWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\SpecifiedPeriodType {
-        $this->specifiedPeriodType = is_null($this->specifiedPeriodType) ? new SpecifiedPeriodType() : $this->specifiedPeriodType;
+    public function getBillingSpecifiedPeriodWithCreate(): SpecifiedPeriodType
+    {
+        $this->billingSpecifiedPeriod = is_null($this->billingSpecifiedPeriod) ? new SpecifiedPeriodType() : $this->billingSpecifiedPeriod;
 
-        return $this->specifiedPeriodType;
+        return $this->billingSpecifiedPeriod;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\ram\SpecifiedPeriodType
      * @return self
      */
-    public function setBillingSpecifiedPeriod(
-        \horstoeko\invoicesuite\models\zugferd\ram\SpecifiedPeriodType $specifiedPeriodType,
-    ): self {
-        $this->specifiedPeriodType = $specifiedPeriodType;
+    public function setBillingSpecifiedPeriod(SpecifiedPeriodType $billingSpecifiedPeriod): self
+    {
+        $this->billingSpecifiedPeriod = $billingSpecifiedPeriod;
 
         return $this;
     }
@@ -695,13 +688,12 @@ class HeaderTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAllowanceChargeType $tradeAllowanceChargeType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge
      * @return self
      */
-    public function addToSpecifiedTradeAllowanceCharge(
-        \horstoeko\invoicesuite\models\zugferd\ram\TradeAllowanceChargeType $tradeAllowanceChargeType,
-    ): self {
-        $this->specifiedTradeAllowanceCharge[] = $tradeAllowanceChargeType;
+    public function addToSpecifiedTradeAllowanceCharge(TradeAllowanceChargeType $specifiedTradeAllowanceCharge): self
+    {
+        $this->specifiedTradeAllowanceCharge[] = $specifiedTradeAllowanceCharge;
 
         return $this;
     }
@@ -709,11 +701,11 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradeAllowanceChargeType
      */
-    public function addToSpecifiedTradeAllowanceChargeWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\TradeAllowanceChargeType {
-        $this->addTospecifiedTradeAllowanceCharge($tradeAllowanceChargeType = new TradeAllowanceChargeType());
+    public function addToSpecifiedTradeAllowanceChargeWithCreate(): TradeAllowanceChargeType
+    {
+        $this->addTospecifiedTradeAllowanceCharge($specifiedTradeAllowanceCharge = new TradeAllowanceChargeType());
 
-        return $tradeAllowanceChargeType;
+        return $specifiedTradeAllowanceCharge;
     }
 
     /**
@@ -746,13 +738,13 @@ class HeaderTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\LogisticsServiceChargeType $logisticsServiceChargeType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\LogisticsServiceChargeType $specifiedLogisticsServiceCharge
      * @return self
      */
     public function addToSpecifiedLogisticsServiceCharge(
-        \horstoeko\invoicesuite\models\zugferd\ram\LogisticsServiceChargeType $logisticsServiceChargeType,
+        LogisticsServiceChargeType $specifiedLogisticsServiceCharge,
     ): self {
-        $this->specifiedLogisticsServiceCharge[] = $logisticsServiceChargeType;
+        $this->specifiedLogisticsServiceCharge[] = $specifiedLogisticsServiceCharge;
 
         return $this;
     }
@@ -760,11 +752,11 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\LogisticsServiceChargeType
      */
-    public function addToSpecifiedLogisticsServiceChargeWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\LogisticsServiceChargeType {
-        $this->addTospecifiedLogisticsServiceCharge($logisticsServiceChargeType = new LogisticsServiceChargeType());
+    public function addToSpecifiedLogisticsServiceChargeWithCreate(): LogisticsServiceChargeType
+    {
+        $this->addTospecifiedLogisticsServiceCharge($specifiedLogisticsServiceCharge = new LogisticsServiceChargeType());
 
-        return $logisticsServiceChargeType;
+        return $specifiedLogisticsServiceCharge;
     }
 
     /**
@@ -797,13 +789,12 @@ class HeaderTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePaymentTermsType $tradePaymentTermsType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePaymentTermsType $specifiedTradePaymentTerms
      * @return self
      */
-    public function addToSpecifiedTradePaymentTerms(
-        \horstoeko\invoicesuite\models\zugferd\ram\TradePaymentTermsType $tradePaymentTermsType,
-    ): self {
-        $this->specifiedTradePaymentTerms[] = $tradePaymentTermsType;
+    public function addToSpecifiedTradePaymentTerms(TradePaymentTermsType $specifiedTradePaymentTerms): self
+    {
+        $this->specifiedTradePaymentTerms[] = $specifiedTradePaymentTerms;
 
         return $this;
     }
@@ -811,29 +802,29 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradePaymentTermsType
      */
-    public function addToSpecifiedTradePaymentTermsWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\TradePaymentTermsType {
-        $this->addTospecifiedTradePaymentTerms($tradePaymentTermsType = new TradePaymentTermsType());
+    public function addToSpecifiedTradePaymentTermsWithCreate(): TradePaymentTermsType
+    {
+        $this->addTospecifiedTradePaymentTerms($specifiedTradePaymentTerms = new TradePaymentTermsType());
 
-        return $tradePaymentTermsType;
+        return $specifiedTradePaymentTerms;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementHeaderMonetarySummationType|null
      */
-    public function getSpecifiedTradeSettlementHeaderMonetarySummation(
-    ): ?\horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementHeaderMonetarySummationType {
-        return $this->tradeSettlementHeaderMonetarySummationType;
+    public function getSpecifiedTradeSettlementHeaderMonetarySummation(): ?TradeSettlementHeaderMonetarySummationType
+    {
+        return $this->specifiedTradeSettlementHeaderMonetarySummation;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementHeaderMonetarySummationType
      */
     public function getSpecifiedTradeSettlementHeaderMonetarySummationWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementHeaderMonetarySummationType {
-        $this->tradeSettlementHeaderMonetarySummationType = is_null($this->tradeSettlementHeaderMonetarySummationType) ? new TradeSettlementHeaderMonetarySummationType() : $this->tradeSettlementHeaderMonetarySummationType;
+    ): TradeSettlementHeaderMonetarySummationType {
+        $this->specifiedTradeSettlementHeaderMonetarySummation = is_null($this->specifiedTradeSettlementHeaderMonetarySummation) ? new TradeSettlementHeaderMonetarySummationType() : $this->specifiedTradeSettlementHeaderMonetarySummation;
 
-        return $this->tradeSettlementHeaderMonetarySummationType;
+        return $this->specifiedTradeSettlementHeaderMonetarySummation;
     }
 
     /**
@@ -841,9 +832,9 @@ class HeaderTradeSettlementType
      * @return self
      */
     public function setSpecifiedTradeSettlementHeaderMonetarySummation(
-        \horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementHeaderMonetarySummationType $tradeSettlementHeaderMonetarySummationType,
+        TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation,
     ): self {
-        $this->tradeSettlementHeaderMonetarySummationType = $tradeSettlementHeaderMonetarySummationType;
+        $this->specifiedTradeSettlementHeaderMonetarySummation = $specifiedTradeSettlementHeaderMonetarySummation;
 
         return $this;
     }
@@ -878,13 +869,12 @@ class HeaderTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $invoiceReferencedDocument
      * @return self
      */
-    public function addToInvoiceReferencedDocument(
-        \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType,
-    ): self {
-        $this->invoiceReferencedDocument[] = $referencedDocumentType;
+    public function addToInvoiceReferencedDocument(ReferencedDocumentType $invoiceReferencedDocument): self
+    {
+        $this->invoiceReferencedDocument[] = $invoiceReferencedDocument;
 
         return $this;
     }
@@ -892,11 +882,11 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
      */
-    public function addToInvoiceReferencedDocumentWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType {
-        $this->addToinvoiceReferencedDocument($referencedDocumentType = new ReferencedDocumentType());
+    public function addToInvoiceReferencedDocumentWithCreate(): ReferencedDocumentType
+    {
+        $this->addToinvoiceReferencedDocument($invoiceReferencedDocument = new ReferencedDocumentType());
 
-        return $referencedDocumentType;
+        return $invoiceReferencedDocument;
     }
 
     /**
@@ -930,13 +920,13 @@ class HeaderTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAccountingAccountType $tradeAccountingAccountType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
      * @return self
      */
     public function addToReceivableSpecifiedTradeAccountingAccount(
-        \horstoeko\invoicesuite\models\zugferd\ram\TradeAccountingAccountType $tradeAccountingAccountType,
+        TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount,
     ): self {
-        $this->receivableSpecifiedTradeAccountingAccount[] = $tradeAccountingAccountType;
+        $this->receivableSpecifiedTradeAccountingAccount[] = $receivableSpecifiedTradeAccountingAccount;
 
         return $this;
     }
@@ -944,11 +934,11 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradeAccountingAccountType
      */
-    public function addToReceivableSpecifiedTradeAccountingAccountWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\TradeAccountingAccountType {
-        $this->addToreceivableSpecifiedTradeAccountingAccount($tradeAccountingAccountType = new TradeAccountingAccountType());
+    public function addToReceivableSpecifiedTradeAccountingAccountWithCreate(): TradeAccountingAccountType
+    {
+        $this->addToreceivableSpecifiedTradeAccountingAccount($receivableSpecifiedTradeAccountingAccount = new TradeAccountingAccountType());
 
-        return $tradeAccountingAccountType;
+        return $receivableSpecifiedTradeAccountingAccount;
     }
 
     /**
@@ -981,13 +971,12 @@ class HeaderTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\AdvancePaymentType $advancePaymentType
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\AdvancePaymentType $specifiedAdvancePayment
      * @return self
      */
-    public function addToSpecifiedAdvancePayment(
-        \horstoeko\invoicesuite\models\zugferd\ram\AdvancePaymentType $advancePaymentType,
-    ): self {
-        $this->specifiedAdvancePayment[] = $advancePaymentType;
+    public function addToSpecifiedAdvancePayment(AdvancePaymentType $specifiedAdvancePayment): self
+    {
+        $this->specifiedAdvancePayment[] = $specifiedAdvancePayment;
 
         return $this;
     }
@@ -995,10 +984,10 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\AdvancePaymentType
      */
-    public function addToSpecifiedAdvancePaymentWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\AdvancePaymentType {
-        $this->addTospecifiedAdvancePayment($advancePaymentType = new AdvancePaymentType());
+    public function addToSpecifiedAdvancePaymentWithCreate(): AdvancePaymentType
+    {
+        $this->addTospecifiedAdvancePayment($specifiedAdvancePayment = new AdvancePaymentType());
 
-        return $advancePaymentType;
+        return $specifiedAdvancePayment;
     }
 }

@@ -10,39 +10,39 @@ class CreditorFinancialInstitutionType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @JMS\Groups({"zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\IDType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\IDType")
      * @JMS\Expose
      * @JMS\SerializedName("BICID")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getBICID", setter="setBICID")
      */
-    private $idType;
+    private $bICID;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
-    public function getBICID(): ?\horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getBICID(): ?IDType
     {
-        return $this->idType;
+        return $this->bICID;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType
      */
-    public function getBICIDWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getBICIDWithCreate(): IDType
     {
-        $this->idType = is_null($this->idType) ? new IDType() : $this->idType;
+        $this->bICID = is_null($this->bICID) ? new IDType() : $this->bICID;
 
-        return $this->idType;
+        return $this->bICID;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @return self
      */
-    public function setBICID(\horstoeko\invoicesuite\models\zugferd\udt\IDType $idType): self
+    public function setBICID(IDType $bICID): self
     {
-        $this->idType = $idType;
+        $this->bICID = $bICID;
 
         return $this;
     }

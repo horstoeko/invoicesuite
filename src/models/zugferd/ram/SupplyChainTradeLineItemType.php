@@ -9,84 +9,83 @@ class SupplyChainTradeLineItemType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\DocumentLineDocumentType
      * @JMS\Groups({"zffxbasic", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\DocumentLineDocumentType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\DocumentLineDocumentType")
      * @JMS\Expose
      * @JMS\SerializedName("AssociatedDocumentLineDocument")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getAssociatedDocumentLineDocument", setter="setAssociatedDocumentLineDocument")
      */
-    private $documentLineDocumentType;
+    private $associatedDocumentLineDocument;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\TradeProductType
      * @JMS\Groups({"zffxbasic", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\TradeProductType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\TradeProductType")
      * @JMS\Expose
      * @JMS\SerializedName("SpecifiedTradeProduct")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getSpecifiedTradeProduct", setter="setSpecifiedTradeProduct")
      */
-    private $tradeProductType;
+    private $specifiedTradeProduct;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\LineTradeAgreementType
      * @JMS\Groups({"zffxbasic", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\LineTradeAgreementType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\LineTradeAgreementType")
      * @JMS\Expose
      * @JMS\SerializedName("SpecifiedLineTradeAgreement")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getSpecifiedLineTradeAgreement", setter="setSpecifiedLineTradeAgreement")
      */
-    private $lineTradeAgreementType;
+    private $specifiedLineTradeAgreement;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\LineTradeDeliveryType
      * @JMS\Groups({"zffxbasic", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\LineTradeDeliveryType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\LineTradeDeliveryType")
      * @JMS\Expose
      * @JMS\SerializedName("SpecifiedLineTradeDelivery")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getSpecifiedLineTradeDelivery", setter="setSpecifiedLineTradeDelivery")
      */
-    private $lineTradeDeliveryType;
+    private $specifiedLineTradeDelivery;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\LineTradeSettlementType
      * @JMS\Groups({"zffxbasic", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\LineTradeSettlementType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\LineTradeSettlementType")
      * @JMS\Expose
      * @JMS\SerializedName("SpecifiedLineTradeSettlement")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getSpecifiedLineTradeSettlement", setter="setSpecifiedLineTradeSettlement")
      */
-    private $lineTradeSettlementType;
+    private $specifiedLineTradeSettlement;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\DocumentLineDocumentType|null
      */
-    public function getAssociatedDocumentLineDocument(
-    ): ?\horstoeko\invoicesuite\models\zugferd\ram\DocumentLineDocumentType {
-        return $this->documentLineDocumentType;
+    public function getAssociatedDocumentLineDocument(): ?DocumentLineDocumentType
+    {
+        return $this->associatedDocumentLineDocument;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\DocumentLineDocumentType
      */
-    public function getAssociatedDocumentLineDocumentWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\DocumentLineDocumentType {
-        $this->documentLineDocumentType = is_null($this->documentLineDocumentType) ? new DocumentLineDocumentType() : $this->documentLineDocumentType;
+    public function getAssociatedDocumentLineDocumentWithCreate(): DocumentLineDocumentType
+    {
+        $this->associatedDocumentLineDocument = is_null($this->associatedDocumentLineDocument) ? new DocumentLineDocumentType() : $this->associatedDocumentLineDocument;
 
-        return $this->documentLineDocumentType;
+        return $this->associatedDocumentLineDocument;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\ram\DocumentLineDocumentType
      * @return self
      */
-    public function setAssociatedDocumentLineDocument(
-        \horstoeko\invoicesuite\models\zugferd\ram\DocumentLineDocumentType $documentLineDocumentType,
-    ): self {
-        $this->documentLineDocumentType = $documentLineDocumentType;
+    public function setAssociatedDocumentLineDocument(DocumentLineDocumentType $associatedDocumentLineDocument): self
+    {
+        $this->associatedDocumentLineDocument = $associatedDocumentLineDocument;
 
         return $this;
     }
@@ -94,29 +93,28 @@ class SupplyChainTradeLineItemType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradeProductType|null
      */
-    public function getSpecifiedTradeProduct(): ?\horstoeko\invoicesuite\models\zugferd\ram\TradeProductType
+    public function getSpecifiedTradeProduct(): ?TradeProductType
     {
-        return $this->tradeProductType;
+        return $this->specifiedTradeProduct;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradeProductType
      */
-    public function getSpecifiedTradeProductWithCreate(): \horstoeko\invoicesuite\models\zugferd\ram\TradeProductType
+    public function getSpecifiedTradeProductWithCreate(): TradeProductType
     {
-        $this->tradeProductType = is_null($this->tradeProductType) ? new TradeProductType() : $this->tradeProductType;
+        $this->specifiedTradeProduct = is_null($this->specifiedTradeProduct) ? new TradeProductType() : $this->specifiedTradeProduct;
 
-        return $this->tradeProductType;
+        return $this->specifiedTradeProduct;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeProductType
      * @return self
      */
-    public function setSpecifiedTradeProduct(
-        \horstoeko\invoicesuite\models\zugferd\ram\TradeProductType $tradeProductType,
-    ): self {
-        $this->tradeProductType = $tradeProductType;
+    public function setSpecifiedTradeProduct(TradeProductType $specifiedTradeProduct): self
+    {
+        $this->specifiedTradeProduct = $specifiedTradeProduct;
 
         return $this;
     }
@@ -124,29 +122,28 @@ class SupplyChainTradeLineItemType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\LineTradeAgreementType|null
      */
-    public function getSpecifiedLineTradeAgreement(): ?\horstoeko\invoicesuite\models\zugferd\ram\LineTradeAgreementType
+    public function getSpecifiedLineTradeAgreement(): ?LineTradeAgreementType
     {
-        return $this->lineTradeAgreementType;
+        return $this->specifiedLineTradeAgreement;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\LineTradeAgreementType
      */
-    public function getSpecifiedLineTradeAgreementWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\LineTradeAgreementType {
-        $this->lineTradeAgreementType = is_null($this->lineTradeAgreementType) ? new LineTradeAgreementType() : $this->lineTradeAgreementType;
+    public function getSpecifiedLineTradeAgreementWithCreate(): LineTradeAgreementType
+    {
+        $this->specifiedLineTradeAgreement = is_null($this->specifiedLineTradeAgreement) ? new LineTradeAgreementType() : $this->specifiedLineTradeAgreement;
 
-        return $this->lineTradeAgreementType;
+        return $this->specifiedLineTradeAgreement;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\ram\LineTradeAgreementType
      * @return self
      */
-    public function setSpecifiedLineTradeAgreement(
-        \horstoeko\invoicesuite\models\zugferd\ram\LineTradeAgreementType $lineTradeAgreementType,
-    ): self {
-        $this->lineTradeAgreementType = $lineTradeAgreementType;
+    public function setSpecifiedLineTradeAgreement(LineTradeAgreementType $specifiedLineTradeAgreement): self
+    {
+        $this->specifiedLineTradeAgreement = $specifiedLineTradeAgreement;
 
         return $this;
     }
@@ -154,29 +151,28 @@ class SupplyChainTradeLineItemType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\LineTradeDeliveryType|null
      */
-    public function getSpecifiedLineTradeDelivery(): ?\horstoeko\invoicesuite\models\zugferd\ram\LineTradeDeliveryType
+    public function getSpecifiedLineTradeDelivery(): ?LineTradeDeliveryType
     {
-        return $this->lineTradeDeliveryType;
+        return $this->specifiedLineTradeDelivery;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\LineTradeDeliveryType
      */
-    public function getSpecifiedLineTradeDeliveryWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\LineTradeDeliveryType {
-        $this->lineTradeDeliveryType = is_null($this->lineTradeDeliveryType) ? new LineTradeDeliveryType() : $this->lineTradeDeliveryType;
+    public function getSpecifiedLineTradeDeliveryWithCreate(): LineTradeDeliveryType
+    {
+        $this->specifiedLineTradeDelivery = is_null($this->specifiedLineTradeDelivery) ? new LineTradeDeliveryType() : $this->specifiedLineTradeDelivery;
 
-        return $this->lineTradeDeliveryType;
+        return $this->specifiedLineTradeDelivery;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\ram\LineTradeDeliveryType
      * @return self
      */
-    public function setSpecifiedLineTradeDelivery(
-        \horstoeko\invoicesuite\models\zugferd\ram\LineTradeDeliveryType $lineTradeDeliveryType,
-    ): self {
-        $this->lineTradeDeliveryType = $lineTradeDeliveryType;
+    public function setSpecifiedLineTradeDelivery(LineTradeDeliveryType $specifiedLineTradeDelivery): self
+    {
+        $this->specifiedLineTradeDelivery = $specifiedLineTradeDelivery;
 
         return $this;
     }
@@ -184,29 +180,28 @@ class SupplyChainTradeLineItemType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\LineTradeSettlementType|null
      */
-    public function getSpecifiedLineTradeSettlement(
-    ): ?\horstoeko\invoicesuite\models\zugferd\ram\LineTradeSettlementType {
-        return $this->lineTradeSettlementType;
+    public function getSpecifiedLineTradeSettlement(): ?LineTradeSettlementType
+    {
+        return $this->specifiedLineTradeSettlement;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\LineTradeSettlementType
      */
-    public function getSpecifiedLineTradeSettlementWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\LineTradeSettlementType {
-        $this->lineTradeSettlementType = is_null($this->lineTradeSettlementType) ? new LineTradeSettlementType() : $this->lineTradeSettlementType;
+    public function getSpecifiedLineTradeSettlementWithCreate(): LineTradeSettlementType
+    {
+        $this->specifiedLineTradeSettlement = is_null($this->specifiedLineTradeSettlement) ? new LineTradeSettlementType() : $this->specifiedLineTradeSettlement;
 
-        return $this->lineTradeSettlementType;
+        return $this->specifiedLineTradeSettlement;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\ram\LineTradeSettlementType
      * @return self
      */
-    public function setSpecifiedLineTradeSettlement(
-        \horstoeko\invoicesuite\models\zugferd\ram\LineTradeSettlementType $lineTradeSettlementType,
-    ): self {
-        $this->lineTradeSettlementType = $lineTradeSettlementType;
+    public function setSpecifiedLineTradeSettlement(LineTradeSettlementType $specifiedLineTradeSettlement): self
+    {
+        $this->specifiedLineTradeSettlement = $specifiedLineTradeSettlement;
 
         return $this;
     }

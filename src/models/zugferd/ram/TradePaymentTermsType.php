@@ -13,105 +13,105 @@ class TradePaymentTermsType
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\TextType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\TextType")
      * @JMS\Expose
      * @JMS\SerializedName("Description")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getDescription", setter="setDescription")
      */
-    private $textType;
+    private $description;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\DateTimeType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\DateTimeType")
      * @JMS\Expose
      * @JMS\SerializedName("DueDateDateTime")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getDueDateDateTime", setter="setDueDateDateTime")
      */
-    private $dateTimeType;
+    private $dueDateDateTime;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\IDType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\IDType")
      * @JMS\Expose
      * @JMS\SerializedName("DirectDebitMandateID")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getDirectDebitMandateID", setter="setDirectDebitMandateID")
      */
-    private $idType;
+    private $directDebitMandateID;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\udt\AmountType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\udt\AmountType")
      * @JMS\Expose
      * @JMS\SerializedName("PartialPaymentAmount")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getPartialPaymentAmount", setter="setPartialPaymentAmount")
      */
-    private $amountType;
+    private $partialPaymentAmount;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\TradePaymentPenaltyTermsType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\TradePaymentPenaltyTermsType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\TradePaymentPenaltyTermsType")
      * @JMS\Expose
      * @JMS\SerializedName("ApplicableTradePaymentPenaltyTerms")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getApplicableTradePaymentPenaltyTerms", setter="setApplicableTradePaymentPenaltyTerms")
      */
-    private $tradePaymentPenaltyTermsType;
+    private $applicableTradePaymentPenaltyTerms;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\TradePaymentDiscountTermsType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\TradePaymentDiscountTermsType")
      * @JMS\Expose
      * @JMS\SerializedName("ApplicableTradePaymentDiscountTerms")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getApplicableTradePaymentDiscountTerms", setter="setApplicableTradePaymentDiscountTerms")
      */
-    private $tradePaymentDiscountTermsType;
+    private $applicableTradePaymentDiscountTerms;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
      * @JMS\Groups({"zffxextended"})
-     * @JMS\Type("horstoeko\zugferd\entities\extended\ram\TradePartyType")
+     * @JMS\Type("horstoeko\invoicesuite\models\zugferd\ram\TradePartyType")
      * @JMS\Expose
      * @JMS\SerializedName("PayeeTradeParty")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getPayeeTradeParty", setter="setPayeeTradeParty")
      */
-    private $tradePartyType;
+    private $payeeTradeParty;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType|null
      */
-    public function getDescription(): ?\horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getDescription(): ?TextType
     {
-        return $this->textType;
+        return $this->description;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\TextType
      */
-    public function getDescriptionWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\TextType
+    public function getDescriptionWithCreate(): TextType
     {
-        $this->textType = is_null($this->textType) ? new TextType() : $this->textType;
+        $this->description = is_null($this->description) ? new TextType() : $this->description;
 
-        return $this->textType;
+        return $this->description;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType
      * @return self
      */
-    public function setDescription(\horstoeko\invoicesuite\models\zugferd\udt\TextType $textType): self
+    public function setDescription(TextType $description): self
     {
-        $this->textType = $textType;
+        $this->description = $description;
 
         return $this;
     }
@@ -119,28 +119,28 @@ class TradePaymentTermsType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType|null
      */
-    public function getDueDateDateTime(): ?\horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+    public function getDueDateDateTime(): ?DateTimeType
     {
-        return $this->dateTimeType;
+        return $this->dueDateDateTime;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
      */
-    public function getDueDateDateTimeWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
+    public function getDueDateDateTimeWithCreate(): DateTimeType
     {
-        $this->dateTimeType = is_null($this->dateTimeType) ? new DateTimeType() : $this->dateTimeType;
+        $this->dueDateDateTime = is_null($this->dueDateDateTime) ? new DateTimeType() : $this->dueDateDateTime;
 
-        return $this->dateTimeType;
+        return $this->dueDateDateTime;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
      * @return self
      */
-    public function setDueDateDateTime(\horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $dateTimeType): self
+    public function setDueDateDateTime(DateTimeType $dueDateDateTime): self
     {
-        $this->dateTimeType = $dateTimeType;
+        $this->dueDateDateTime = $dueDateDateTime;
 
         return $this;
     }
@@ -148,29 +148,28 @@ class TradePaymentTermsType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
-    public function getDirectDebitMandateID(): ?\horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getDirectDebitMandateID(): ?IDType
     {
-        return $this->idType;
+        return $this->directDebitMandateID;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType
      */
-    public function getDirectDebitMandateIDWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\IDType
+    public function getDirectDebitMandateIDWithCreate(): IDType
     {
-        $this->idType = is_null($this->idType) ? new IDType() : $this->idType;
+        $this->directDebitMandateID = is_null($this->directDebitMandateID) ? new IDType() : $this->directDebitMandateID;
 
-        return $this->idType;
+        return $this->directDebitMandateID;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType
      * @return self
      */
-    public function setDirectDebitMandateID(
-        \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType,
-    ): self {
-        $this->idType = $idType;
+    public function setDirectDebitMandateID(IDType $directDebitMandateID): self
+    {
+        $this->directDebitMandateID = $directDebitMandateID;
 
         return $this;
     }
@@ -178,29 +177,28 @@ class TradePaymentTermsType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType|null
      */
-    public function getPartialPaymentAmount(): ?\horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getPartialPaymentAmount(): ?AmountType
     {
-        return $this->amountType;
+        return $this->partialPaymentAmount;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      */
-    public function getPartialPaymentAmountWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\AmountType
+    public function getPartialPaymentAmountWithCreate(): AmountType
     {
-        $this->amountType = is_null($this->amountType) ? new AmountType() : $this->amountType;
+        $this->partialPaymentAmount = is_null($this->partialPaymentAmount) ? new AmountType() : $this->partialPaymentAmount;
 
-        return $this->amountType;
+        return $this->partialPaymentAmount;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType
      * @return self
      */
-    public function setPartialPaymentAmount(
-        \horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType,
-    ): self {
-        $this->amountType = $amountType;
+    public function setPartialPaymentAmount(AmountType $partialPaymentAmount): self
+    {
+        $this->partialPaymentAmount = $partialPaymentAmount;
 
         return $this;
     }
@@ -208,19 +206,19 @@ class TradePaymentTermsType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradePaymentPenaltyTermsType|null
      */
-    public function getApplicableTradePaymentPenaltyTerms(
-    ): ?\horstoeko\invoicesuite\models\zugferd\ram\TradePaymentPenaltyTermsType {
-        return $this->tradePaymentPenaltyTermsType;
+    public function getApplicableTradePaymentPenaltyTerms(): ?TradePaymentPenaltyTermsType
+    {
+        return $this->applicableTradePaymentPenaltyTerms;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradePaymentPenaltyTermsType
      */
-    public function getApplicableTradePaymentPenaltyTermsWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\TradePaymentPenaltyTermsType {
-        $this->tradePaymentPenaltyTermsType = is_null($this->tradePaymentPenaltyTermsType) ? new TradePaymentPenaltyTermsType() : $this->tradePaymentPenaltyTermsType;
+    public function getApplicableTradePaymentPenaltyTermsWithCreate(): TradePaymentPenaltyTermsType
+    {
+        $this->applicableTradePaymentPenaltyTerms = is_null($this->applicableTradePaymentPenaltyTerms) ? new TradePaymentPenaltyTermsType() : $this->applicableTradePaymentPenaltyTerms;
 
-        return $this->tradePaymentPenaltyTermsType;
+        return $this->applicableTradePaymentPenaltyTerms;
     }
 
     /**
@@ -228,9 +226,9 @@ class TradePaymentTermsType
      * @return self
      */
     public function setApplicableTradePaymentPenaltyTerms(
-        \horstoeko\invoicesuite\models\zugferd\ram\TradePaymentPenaltyTermsType $tradePaymentPenaltyTermsType,
+        TradePaymentPenaltyTermsType $applicableTradePaymentPenaltyTerms,
     ): self {
-        $this->tradePaymentPenaltyTermsType = $tradePaymentPenaltyTermsType;
+        $this->applicableTradePaymentPenaltyTerms = $applicableTradePaymentPenaltyTerms;
 
         return $this;
     }
@@ -238,19 +236,19 @@ class TradePaymentTermsType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradePaymentDiscountTermsType|null
      */
-    public function getApplicableTradePaymentDiscountTerms(
-    ): ?\horstoeko\invoicesuite\models\zugferd\ram\TradePaymentDiscountTermsType {
-        return $this->tradePaymentDiscountTermsType;
+    public function getApplicableTradePaymentDiscountTerms(): ?TradePaymentDiscountTermsType
+    {
+        return $this->applicableTradePaymentDiscountTerms;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradePaymentDiscountTermsType
      */
-    public function getApplicableTradePaymentDiscountTermsWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\ram\TradePaymentDiscountTermsType {
-        $this->tradePaymentDiscountTermsType = is_null($this->tradePaymentDiscountTermsType) ? new TradePaymentDiscountTermsType() : $this->tradePaymentDiscountTermsType;
+    public function getApplicableTradePaymentDiscountTermsWithCreate(): TradePaymentDiscountTermsType
+    {
+        $this->applicableTradePaymentDiscountTerms = is_null($this->applicableTradePaymentDiscountTerms) ? new TradePaymentDiscountTermsType() : $this->applicableTradePaymentDiscountTerms;
 
-        return $this->tradePaymentDiscountTermsType;
+        return $this->applicableTradePaymentDiscountTerms;
     }
 
     /**
@@ -258,9 +256,9 @@ class TradePaymentTermsType
      * @return self
      */
     public function setApplicableTradePaymentDiscountTerms(
-        \horstoeko\invoicesuite\models\zugferd\ram\TradePaymentDiscountTermsType $tradePaymentDiscountTermsType,
+        TradePaymentDiscountTermsType $applicableTradePaymentDiscountTerms,
     ): self {
-        $this->tradePaymentDiscountTermsType = $tradePaymentDiscountTermsType;
+        $this->applicableTradePaymentDiscountTerms = $applicableTradePaymentDiscountTerms;
 
         return $this;
     }
@@ -268,28 +266,28 @@ class TradePaymentTermsType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType|null
      */
-    public function getPayeeTradeParty(): ?\horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
+    public function getPayeeTradeParty(): ?TradePartyType
     {
-        return $this->tradePartyType;
+        return $this->payeeTradeParty;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
      */
-    public function getPayeeTradePartyWithCreate(): \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
+    public function getPayeeTradePartyWithCreate(): TradePartyType
     {
-        $this->tradePartyType = is_null($this->tradePartyType) ? new TradePartyType() : $this->tradePartyType;
+        $this->payeeTradeParty = is_null($this->payeeTradeParty) ? new TradePartyType() : $this->payeeTradeParty;
 
-        return $this->tradePartyType;
+        return $this->payeeTradeParty;
     }
 
     /**
      * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType
      * @return self
      */
-    public function setPayeeTradeParty(\horstoeko\invoicesuite\models\zugferd\ram\TradePartyType $tradePartyType): self
+    public function setPayeeTradeParty(TradePartyType $payeeTradeParty): self
     {
-        $this->tradePartyType = $tradePartyType;
+        $this->payeeTradeParty = $payeeTradeParty;
 
         return $this;
     }
