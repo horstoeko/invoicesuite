@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\invoicesuite\providers\zffxbasicwl;
+namespace horstoeko\invoicesuite\providers\zffx;
 
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProvider;
 use horstoeko\invoicesuite\models\zffx\rsm\CrossIndustryInvoice;

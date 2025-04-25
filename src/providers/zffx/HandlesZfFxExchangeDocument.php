@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\invoicesuite\providers\zffxgeneral;
+namespace horstoeko\invoicesuite\providers\zffx;
 
 use horstoeko\invoicesuite\concerns\HandlesRootObject;
 use horstoeko\invoicesuite\models\zffx\ram\DocumentContextParameterType;
@@ -22,12 +22,13 @@ trait HandlesZfFxExchangeDocument
     use HandlesRootObject;
 
     /**
-     * Init Context parameter
+     * Init context parameter for profile definition
      *
      * @param string $newContextParameter
+     * @param string $newBusinessProcessContextParameter
      * @return static
      */
-    public function setContextParameter(string $newContextParameter): self
+    public function setContextParameter(string $newContextParameter, string $newBusinessProcessContextParameter = ""): self
     {
         /**
          * @var CrossIndustryInvoiceType $crossIndustryInvoice
@@ -43,7 +44,18 @@ trait HandlesZfFxExchangeDocument
         $documentContextParameterType = new DocumentContextParameterType();
         $documentContextParameterType->getIDWithCreate()->setValue($newContextParameter);
 
-        $crossIndustryInvoice->getExchangedDocumentContext()->setGuidelineSpecifiedDocumentContextParameter($documentContextParameterType);
+        $crossIndustryInvoice
+            ->getExchangedDocumentContext()
+            ->setGuidelineSpecifiedDocumentContextParameter($documentContextParameterType);
+
+        if ($newBusinessProcessContextParameter !== "") {
+            $documentContextParameterType = new DocumentContextParameterType();
+            $documentContextParameterType->getIDWithCreate()->setValue($newBusinessProcessContextParameter);
+
+            $crossIndustryInvoice
+                ->getExchangedDocumentContext()
+                ->setBusinessProcessSpecifiedDocumentContextParameter($documentContextParameterType);
+        }
 
         return $this;
     }

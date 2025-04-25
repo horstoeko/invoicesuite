@@ -1,11 +1,11 @@
 <?php
 
-namespace horstoeko\invoicesuite\providers\zffxminimum;
+namespace horstoeko\invoicesuite\providers\zffx;
 
-use horstoeko\invoicesuite\providers\zffxgeneral\HandlesZfFxExchangeDocument;
+use horstoeko\invoicesuite\providers\zffx\HandlesZfFxExchangeDocument;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
 
-class InvoiceSuiteZugferdFacturXMinimumProviderBuilder extends InvoiceSuiteAbstractFormatProviderBuilder
+class InvoiceSuiteZugferdFacturXMinimumProviderBuilder extends InvoiceSuiteZugferdFacturXProviderBuilder
 {
     use HandlesZfFxExchangeDocument;
 

@@ -1,18 +1,18 @@
 <?php
 
-namespace horstoeko\invoicesuite\providers\zffxen16931;
+namespace horstoeko\invoicesuite\providers\zffx;
 
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProvider;
 use horstoeko\invoicesuite\models\zffx\rsm\CrossIndustryInvoice;
 
-class InvoiceSuiteZugferdFacturXEn16931Provider extends InvoiceSuiteAbstractFormatProvider
+class InvoiceSuiteZugferdFacturXExtendedProvider extends InvoiceSuiteAbstractFormatProvider
 {
     /**
      * @inheritDoc
      */
     public function getUniqueId(): string
     {
-        return 'zffxen16931';
+        return 'zffxextended';
     }
 
     /**
@@ -20,8 +20,9 @@ class InvoiceSuiteZugferdFacturXEn16931Provider extends InvoiceSuiteAbstractForm
      */
     public function getDescription(): string
     {
-        return 'The EN 16931 (COMFORT) profile completely maps the EN 16931-1 and focuses on the core elements ' .
-            'of an electronic invoice.';
+        return 'The EXTENDED profile is an extension of EN 16931-1 to support more complex business processes (invoices ' .
+            'in which several deliveries / delivery locations are billed, structured payment conditions, further information at ' .
+            'item level to support warehousing, etc.)';
     }
 
     /**
@@ -61,7 +62,7 @@ class InvoiceSuiteZugferdFacturXEn16931Provider extends InvoiceSuiteAbstractForm
      */
     public function getGroups(): array
     {
-        return ["zffxen16931"];
+        return ["zffxextended"];
     }
 
     /**
@@ -85,7 +86,7 @@ class InvoiceSuiteZugferdFacturXEn16931Provider extends InvoiceSuiteAbstractForm
      */
     public function getReaderClassName(): string
     {
-        return InvoiceSuiteZugferdFacturXEn16931ProviderReader::class;
+        return InvoiceSuiteZugferdFacturXExtendedProviderReader::class;
     }
 
     /**
@@ -93,6 +94,6 @@ class InvoiceSuiteZugferdFacturXEn16931Provider extends InvoiceSuiteAbstractForm
      */
     public function getBuilderClassName(): string
     {
-        return InvoiceSuiteZugferdFacturXEn16931ProviderBuilder::class;
+        return InvoiceSuiteZugferdFacturXExtendedProviderBuilder::class;
     }
 }

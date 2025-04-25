@@ -1,18 +1,18 @@
 <?php
 
-namespace horstoeko\invoicesuite\providers\zffxbasic;
+namespace horstoeko\invoicesuite\providers\zffx;
 
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProvider;
 use horstoeko\invoicesuite\models\zffx\rsm\CrossIndustryInvoice;
 
-class InvoiceSuiteZugferdFacturXBasicProvider extends InvoiceSuiteAbstractFormatProvider
+class InvoiceSuiteZugferdFacturXEn16931Provider extends InvoiceSuiteAbstractFormatProvider
 {
     /**
      * @inheritDoc
      */
     public function getUniqueId(): string
     {
-        return 'zffxbasic';
+        return 'zffxen16931';
     }
 
     /**
@@ -20,7 +20,8 @@ class InvoiceSuiteZugferdFacturXBasicProvider extends InvoiceSuiteAbstractFormat
      */
     public function getDescription(): string
     {
-        return 'The BASIC profile is a subset of EN 16931-1 and can be used for simple VAT-compliant invoices.';
+        return 'The EN 16931 (COMFORT) profile completely maps the EN 16931-1 and focuses on the core elements ' .
+            'of an electronic invoice.';
     }
 
     /**
@@ -60,7 +61,7 @@ class InvoiceSuiteZugferdFacturXBasicProvider extends InvoiceSuiteAbstractFormat
      */
     public function getGroups(): array
     {
-        return ["zffxbasic"];
+        return ["zffxen16931"];
     }
 
     /**
@@ -84,7 +85,7 @@ class InvoiceSuiteZugferdFacturXBasicProvider extends InvoiceSuiteAbstractFormat
      */
     public function getReaderClassName(): string
     {
-        return InvoiceSuiteZugferdFacturXBasicProviderReader::class;
+        return InvoiceSuiteZugferdFacturXEn16931ProviderReader::class;
     }
 
     /**
@@ -92,6 +93,6 @@ class InvoiceSuiteZugferdFacturXBasicProvider extends InvoiceSuiteAbstractFormat
      */
     public function getBuilderClassName(): string
     {
-        return InvoiceSuiteZugferdFacturXBasicProviderBuilder::class;
+        return InvoiceSuiteZugferdFacturXEn16931ProviderBuilder::class;
     }
 }
