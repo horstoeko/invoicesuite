@@ -220,4 +220,38 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     #endregion
+
+    #region Document Seller/Supplier
+
+    /**
+     * @inheritDoc
+     */
+    public function setSellerName(string $newName): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setSellerName($newName);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setSellerId(string $newId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setSellerId($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addSellerId(string $newId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addSellerId($newId);
+
+        return $this;
+    }
+
+    #endregion
 }

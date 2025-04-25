@@ -115,4 +115,32 @@ interface InvoiceSuiteBuilderContract
     public function addDocumentNote(string $newContent, ?string $newContentCode = null, ?string $newSubjectCode = null): self;
 
     #endregion
+
+    #region Document Seller/Supplier
+
+    /**
+     * Set the name of the seller/supplier party
+     *
+     * @param string $newName
+     * @return self
+     */
+    public function setSellerName(string $newName): self;
+
+    /**
+     * Set the ID of the seller/supplier party
+     *
+     * @param string $newId
+     * @return self
+     */
+    public function setSellerId(string $newId): self;
+
+    /**
+     * Add an ID to the seller/supplier party
+     *
+     * @param string $newId
+     * @return self
+     */
+    public function addSellerId(string $newId): self;
+
+    #endregion
 }

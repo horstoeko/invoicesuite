@@ -254,4 +254,66 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
     }
 
     #endregion
+
+    #region Document Seller/Supplier
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newName __BT-27, From MINIMUM__ The full formal name under which the seller is registered in the National Register of Legal Entities, Taxable Person or otherwise acting as person(s)
+     * @return self
+     */
+    public function setSellerName(string $newName): self
+    {
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getSellerTradePartyWithCreate()
+            ->getNameWithCreate()
+            ->setValue($newName);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newId __BT-29, From BASIC WL__ An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
+     * @return self
+     */
+    public function setSellerId(string $newId): self
+    {
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getSellerTradePartyWithCreate()
+            ->clearID();
+
+        $this->addSellerId($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newId __BT-29, From BASIC WL__ An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
+     * @return self
+     */
+    public function addSellerId(string $newId): self
+    {
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getSellerTradePartyWithCreate()
+            ->addToIDWithCreate()
+            ->setValue($newId);
+
+        return $this;
+    }
+
+    #endregion
 }

@@ -18,4 +18,9 @@ $builder->setDocumentIsTest(true);
 $builder->setDocumentIsCopy(true);
 $builder->addDocumentNote("Some content", "CC00", "SC00");
 $builder->addDocumentNote("Some other content", "CC99", "SC99");
+
+$builder->setSellerName("Lieferant GmbH");
+$builder->setSellerId("0815-4711");
+$builder->addSellerId("0815-4712");
+
 echo $builder->getContentAsXml();
