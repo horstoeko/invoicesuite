@@ -2,14 +2,12 @@
 
 namespace horstoeko\invoicesuite\providers\zffx;
 
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
-
 class InvoiceSuiteZugferdFacturXEn16931ProviderBuilder extends InvoiceSuiteZugferdFacturXProviderBuilder
 {
     /**
      * @inheritDoc
      */
-    public function initRootObject(): InvoiceSuiteAbstractFormatProviderBuilder
+    public function initRootObject(): InvoiceSuiteZugferdFacturXEn16931ProviderBuilder
     {
         $this->setContextParameter('urn:cen.eu:en16931:2017');
 

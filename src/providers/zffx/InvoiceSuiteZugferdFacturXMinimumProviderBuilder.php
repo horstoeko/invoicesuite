@@ -2,14 +2,12 @@
 
 namespace horstoeko\invoicesuite\providers\zffx;
 
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
-
 class InvoiceSuiteZugferdFacturXMinimumProviderBuilder extends InvoiceSuiteZugferdFacturXProviderBuilder
 {
     /**
      * @inheritDoc
      */
-    public function initRootObject(): InvoiceSuiteAbstractFormatProviderBuilder
+    public function initRootObject(): InvoiceSuiteZugferdFacturXMinimumProviderBuilder
     {
         $this->setContextParameter('urn:factur-x.eu:1p0:minimum');
 

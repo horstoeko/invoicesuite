@@ -2,7 +2,6 @@
 
 namespace horstoeko\invoicesuite\providers\xrechnung;
 
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
 use horstoeko\invoicesuite\providers\zffx\InvoiceSuiteZugferdFacturXProviderBuilder;
 
 class InvoiceSuiteXRechnungProviderBuilder extends InvoiceSuiteZugferdFacturXProviderBuilder
@@ -10,7 +9,7 @@ class InvoiceSuiteXRechnungProviderBuilder extends InvoiceSuiteZugferdFacturXPro
     /**
      * @inheritDoc
      */
-    public function initRootObject(): InvoiceSuiteAbstractFormatProviderBuilder
+    public function initRootObject(): InvoiceSuiteXRechnungProviderBuilder
     {
         $this->setContextParameter(
             'urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0',
