@@ -197,4 +197,36 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
 
         return $this;
     }
+
+    /**
+     * @inheritDoc
+     *
+     * @param bool $newDocumentIsCopy __BT-X-1-00, From EXTENDED__ Only to be used in the case of a test calculation, with newDocumentIsCopy = true
+     */
+    public function setDocumentIsCopy(bool $newDocumentIsCopy): self
+    {
+        $this
+            ->getCrossIndustryRootObject()
+            ->getExchangedDocumentWithCreate()
+            ->getCopyIndicatorWithCreate()
+            ->setIndicator($newDocumentIsCopy);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param bool $newDocumentIsCopy __BT-X-3-00, From EXTENDED__ With newDocumentIsTest = true, the document is a copy
+     */
+    public function setDocumentIsTest(bool $newDocumentIsTest): self
+    {
+        $this
+            ->getCrossIndustryRootObject()
+            ->getExchangedDocumentContextWithCreate()
+            ->getTestIndicatorWithCreate()
+            ->setIndicator($newDocumentIsTest);
+
+        return $this;
+    }
 }

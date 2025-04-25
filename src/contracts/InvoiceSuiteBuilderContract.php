@@ -85,4 +85,20 @@ interface InvoiceSuiteBuilderContract
      * @return self
      */
     public function setDocumentTaxCurrency(string $newDocumentTaxCurrency): self;
+
+    /**
+     * Sets the new status of the copy indicator
+     *
+     * @param boolean $newDocumentIsCopy
+     * @return self
+     */
+    public function setDocumentIsCopy(bool $newDocumentIsCopy): self;
+
+    /**
+     * Sets the new status of the test indicator
+     *
+     * @param boolean $newDocumentIsCopy
+     * @return self
+     */
+    public function setDocumentIsTest(bool $newDocumentIsTest): self;
 }

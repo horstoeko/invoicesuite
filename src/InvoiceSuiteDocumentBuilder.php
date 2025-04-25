@@ -186,4 +186,24 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
 
         return $this;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentIsCopy(bool $newDocumentIsCopy): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentIsCopy($newDocumentIsCopy);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentIsTest(bool $newDocumentIsTest): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentIsTest($newDocumentIsTest);
+
+        return $this;
+    }
 }
