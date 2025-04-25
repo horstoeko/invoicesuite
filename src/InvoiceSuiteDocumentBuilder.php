@@ -140,6 +140,16 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
+    public function setDocumentLanguage(string $newDocumentLanguage): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentLanguage($newDocumentLanguage);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function setDocumentDate(DateTimeInterface $newDocumentDate): self
     {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentDate($newDocumentDate);

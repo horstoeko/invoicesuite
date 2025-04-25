@@ -111,6 +111,22 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
     /**
      * @inheritDoc
      *
+     * @param string $newDocumentLanguage __BT-X-4, From EXTENDED__ Language indicator. The language code in which the document was written
+     */
+    public function setDocumentLanguage(string $newDocumentLanguage): self
+    {
+        $this
+            ->getCrossIndustryRootObject()
+            ->getExchangedDocumentWithCreate()
+            ->getLanguageIDWithCreate()
+            ->setValue($newDocumentLanguage);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
      * @param DateTimeInterface $newDocumentDate __BT-2, From MINIMUM__ Date of invoice. The date when the document was issued by the seller
      */
     public function setDocumentDate(DateTimeInterface $newDocumentDate): self

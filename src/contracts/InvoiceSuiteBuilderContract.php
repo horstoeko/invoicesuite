@@ -47,6 +47,14 @@ interface InvoiceSuiteBuilderContract
     public function setDocumentDescription(string $newDocumentDescription): self;
 
     /**
+     * Sets the new document language
+     *
+     * @param string $newDocumentLanguage
+     * @return self
+     */
+    public function setDocumentLanguage(string $newDocumentLanguage): self;
+
+    /**
      * Sets the new document date (e.g. invoice date)
      *
      * @param DateTimeInterface $newDocumentDate
