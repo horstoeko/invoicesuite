@@ -60,6 +60,8 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
         return $this;
     }
 
+    #region Document Generals
+
     /**
      * @inheritDoc
      *
@@ -229,4 +231,27 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
 
         return $this;
     }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string      $newContent     __BT-22, From BASIC WL__ A free text containing unstructured information that is relevant to the invoice as a whole
+     * @param string|null $newContentCode __BT-X-5, From EXTENDED__ A code to classify the content of the free text of the invoice
+     * @param string|null $newSubjectCode __BT-21, From BASIC WL__ The qualification of the free text for the invoice from BT-22
+     */
+    public function addDocumentNote(string $newContent, ?string $newContentCode = null, ?string $newSubjectCode = null): self
+    {
+        $note = $this
+            ->getCrossIndustryRootObject()
+            ->getExchangedDocumentWithCreate()
+            ->addToIncludedNoteWithCreate();
+
+        $note->getContentWithCreate()->setValue($newContent);
+        $note->getContentCodeWithCreate()->setValue($newContentCode);
+        $note->getSubjectCodeWithCreate()->setValue($newSubjectCode);
+
+        return $this;
+    }
+
+    #endregion
 }

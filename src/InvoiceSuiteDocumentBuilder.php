@@ -26,6 +26,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     use HandlesCurrentFormatProvider;
     use HandlesFormatProviders;
 
+    #region Document Generals
+
     /**
      * Create a new InvoiceDocumentBuilder instance for the given format provider
      *
@@ -206,4 +208,16 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
 
         return $this;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentNote(string $newContent, ?string $newContentCode = null, ?string $newSubjectCode = null): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentNote($newContent, $newContentCode, $newSubjectCode);
+
+        return $this;
+    }
+
+    #endregion
 }

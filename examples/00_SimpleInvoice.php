@@ -16,4 +16,6 @@ $builder->setDocumentCurrency("EUR");
 $builder->setDocumentTaxCurrency("GBP");
 $builder->setDocumentIsTest(true);
 $builder->setDocumentIsCopy(true);
+$builder->addDocumentNote("Some content", "CC00", "SC00");
+$builder->addDocumentNote("Some other content", "CC99", "SC99");
 echo $builder->getContentAsXml();

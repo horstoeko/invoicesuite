@@ -22,6 +22,8 @@ use DateTimeInterface;
  */
 interface InvoiceSuiteBuilderContract
 {
+    #region Document Generals
+
     /**
      * Sets the new document number (e.g. invoice number)
      *
@@ -101,4 +103,16 @@ interface InvoiceSuiteBuilderContract
      * @return self
      */
     public function setDocumentIsTest(bool $newDocumentIsTest): self;
+
+    /**
+     * Add a note to the document
+     *
+     * @param string $newContent
+     * @param string|null $newContentCode
+     * @param string|null $newSubjectCode
+     * @return self
+     */
+    public function addDocumentNote(string $newContent, ?string $newContentCode = null, ?string $newSubjectCode = null): self;
+
+    #endregion
 }
