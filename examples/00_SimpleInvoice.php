@@ -11,4 +11,5 @@ $builder->setDocumentDescription("Some document description");
 $builder->setDocumentDate(new DateTime());
 $builder->setDocumentCompleteDate(new DateTime());
 $builder->setDocumentCurrency("EUR");
+$builder->setDocumentTaxCurrency("GBP");
 echo $builder->getContentAsXml();

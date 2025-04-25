@@ -161,4 +161,24 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
 
         return $this;
     }
+
+    /**
+     * @inheritDoc
+     *
+     * Note: Shall be used in combination with the Total VAT amount in accounting currency (BT-111)
+     * when the VAT accounting currency code differs from the Invoice currency code.
+     *
+     * @param string $newDocumentTaxCurrency __BT-6, From BASIC WL__ Code for the tax currency
+     */
+    public function setDocumentTaxCurrency(string $newDocumentTaxCurrency): self
+    {
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getTaxCurrencyCodeWithCreate()
+            ->setValue($newDocumentTaxCurrency);
+
+        return $this;
+    }
 }

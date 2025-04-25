@@ -166,4 +166,14 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
 
         return $this;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentTaxCurrency(string $newDocumentTaxCurrency): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentTaxCurrency($newDocumentTaxCurrency);
+
+        return $this;
+    }
 }

@@ -69,4 +69,12 @@ interface InvoiceSuiteBuilderContract
      * @return self
      */
     public function setDocumentCurrency(string $newDocumentCurrency): self;
+
+    /**
+     * Sets the new document tax currency
+     *
+     * @param string $newDocumentTaxCurrency
+     * @return self
+     */
+    public function setDocumentTaxCurrency(string $newDocumentTaxCurrency): self;
 }
