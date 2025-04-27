@@ -137,6 +137,29 @@ class LineTradeSettlementType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\zffx\ram\TradeTaxType $tradeTaxType
+     * @return self
+     */
+    public function addOnceToApplicableTradeTax(TradeTaxType $tradeTaxType): self
+    {
+        $this->applicableTradeTax[0] = $tradeTaxType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\ram\TradeTaxType
+     */
+    public function addOnceToApplicableTradeTaxWithCreate(): TradeTaxType
+    {
+        if ($this->applicableTradeTax === []) {
+            $this->addOnceToapplicableTradeTax(new TradeTaxType());
+        }
+
+        return $this->applicableTradeTax[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffx\ram\SpecifiedPeriodType|null
      */
     public function getBillingSpecifiedPeriod(): ?SpecifiedPeriodType
@@ -216,6 +239,30 @@ class LineTradeSettlementType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\zffx\ram\TradeAllowanceChargeType $tradeAllowanceChargeType
+     * @return self
+     */
+    public function addOnceToSpecifiedTradeAllowanceCharge(
+        TradeAllowanceChargeType $tradeAllowanceChargeType,
+    ): self {
+        $this->specifiedTradeAllowanceCharge[0] = $tradeAllowanceChargeType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\ram\TradeAllowanceChargeType
+     */
+    public function addOnceToSpecifiedTradeAllowanceChargeWithCreate(): TradeAllowanceChargeType
+    {
+        if ($this->specifiedTradeAllowanceCharge === []) {
+            $this->addOnceTospecifiedTradeAllowanceCharge(new TradeAllowanceChargeType());
+        }
+
+        return $this->specifiedTradeAllowanceCharge[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffx\ram\TradeSettlementLineMonetarySummationType|null
      */
     public function getSpecifiedTradeSettlementLineMonetarySummation(): ?TradeSettlementLineMonetarySummationType
@@ -226,8 +273,8 @@ class LineTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zffx\ram\TradeSettlementLineMonetarySummationType
      */
-    public function getSpecifiedTradeSettlementLineMonetarySummationWithCreate(): TradeSettlementLineMonetarySummationType
-    {
+    public function getSpecifiedTradeSettlementLineMonetarySummationWithCreate(
+    ): TradeSettlementLineMonetarySummationType {
         $this->tradeSettlementLineMonetarySummationType = is_null($this->tradeSettlementLineMonetarySummationType) ? new TradeSettlementLineMonetarySummationType() : $this->tradeSettlementLineMonetarySummationType;
 
         return $this->tradeSettlementLineMonetarySummationType;
@@ -322,6 +369,29 @@ class LineTradeSettlementType
         $this->addToadditionalReferencedDocument($referencedDocumentType = new ReferencedDocumentType());
 
         return $referencedDocumentType;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\zffx\ram\ReferencedDocumentType $referencedDocumentType
+     * @return self
+     */
+    public function addOnceToAdditionalReferencedDocument(ReferencedDocumentType $referencedDocumentType): self
+    {
+        $this->additionalReferencedDocument[0] = $referencedDocumentType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\ram\ReferencedDocumentType
+     */
+    public function addOnceToAdditionalReferencedDocumentWithCreate(): ReferencedDocumentType
+    {
+        if ($this->additionalReferencedDocument === []) {
+            $this->addOnceToadditionalReferencedDocument(new ReferencedDocumentType());
+        }
+
+        return $this->additionalReferencedDocument[0];
     }
 
     /**

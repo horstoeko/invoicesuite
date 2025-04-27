@@ -173,6 +173,29 @@ class TradePartyType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\zffx\udt\IDType $idType
+     * @return self
+     */
+    public function addOnceToID(IDType $idType): self
+    {
+        $this->iD[0] = $idType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\udt\IDType
+     */
+    public function addOnceToIDWithCreate(): IDType
+    {
+        if ($this->iD === []) {
+            $this->addOnceToiD(new IDType());
+        }
+
+        return $this->iD[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffx\udt\IDType>|null
      */
     public function getGlobalID(): ?array
@@ -220,6 +243,29 @@ class TradePartyType
         $this->addToglobalID($idType = new IDType());
 
         return $idType;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\zffx\udt\IDType $idType
+     * @return self
+     */
+    public function addOnceToGlobalID(IDType $idType): self
+    {
+        $this->globalID[0] = $idType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\udt\IDType
+     */
+    public function addOnceToGlobalIDWithCreate(): IDType
+    {
+        if ($this->globalID === []) {
+            $this->addOnceToglobalID(new IDType());
+        }
+
+        return $this->globalID[0];
     }
 
     /**
@@ -379,6 +425,29 @@ class TradePartyType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\zffx\ram\TradeContactType $tradeContactType
+     * @return self
+     */
+    public function addOnceToDefinedTradeContact(TradeContactType $tradeContactType): self
+    {
+        $this->definedTradeContact[0] = $tradeContactType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\ram\TradeContactType
+     */
+    public function addOnceToDefinedTradeContactWithCreate(): TradeContactType
+    {
+        if ($this->definedTradeContact === []) {
+            $this->addOnceTodefinedTradeContact(new TradeContactType());
+        }
+
+        return $this->definedTradeContact[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffx\ram\TradeAddressType|null
      */
     public function getPostalTradeAddress(): ?TradeAddressType
@@ -484,5 +553,28 @@ class TradePartyType
         $this->addTospecifiedTaxRegistration($taxRegistrationType = new TaxRegistrationType());
 
         return $taxRegistrationType;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\zffx\ram\TaxRegistrationType $taxRegistrationType
+     * @return self
+     */
+    public function addOnceToSpecifiedTaxRegistration(TaxRegistrationType $taxRegistrationType): self
+    {
+        $this->specifiedTaxRegistration[0] = $taxRegistrationType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\ram\TaxRegistrationType
+     */
+    public function addOnceToSpecifiedTaxRegistrationWithCreate(): TaxRegistrationType
+    {
+        if ($this->specifiedTaxRegistration === []) {
+            $this->addOnceTospecifiedTaxRegistration(new TaxRegistrationType());
+        }
+
+        return $this->specifiedTaxRegistration[0];
     }
 }

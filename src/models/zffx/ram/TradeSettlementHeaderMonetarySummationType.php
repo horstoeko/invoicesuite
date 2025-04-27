@@ -274,6 +274,29 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\zffx\udt\AmountType $amountType
+     * @return self
+     */
+    public function addOnceToTaxTotalAmount(AmountType $amountType): self
+    {
+        $this->taxTotalAmount[0] = $amountType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\udt\AmountType
+     */
+    public function addOnceToTaxTotalAmountWithCreate(): AmountType
+    {
+        if ($this->taxTotalAmount === []) {
+            $this->addOnceTotaxTotalAmount(new AmountType());
+        }
+
+        return $this->taxTotalAmount[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffx\udt\AmountType|null
      */
     public function getRoundingAmount(): ?AmountType

@@ -147,6 +147,30 @@ class HeaderTradeDeliveryType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\zffx\ram\LogisticsTransportMovementType $logisticsTransportMovementType
+     * @return self
+     */
+    public function addOnceToRelatedSupplyChainConsignment(
+        LogisticsTransportMovementType $logisticsTransportMovementType,
+    ): self {
+        $this->relatedSupplyChainConsignment[0] = $logisticsTransportMovementType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\ram\LogisticsTransportMovementType
+     */
+    public function addOnceToRelatedSupplyChainConsignmentWithCreate(): LogisticsTransportMovementType
+    {
+        if ($this->relatedSupplyChainConsignment === []) {
+            $this->addOnceTorelatedSupplyChainConsignment(new LogisticsTransportMovementType());
+        }
+
+        return $this->relatedSupplyChainConsignment[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffx\ram\TradePartyType|null
      */
     public function getShipToTradeParty(): ?TradePartyType

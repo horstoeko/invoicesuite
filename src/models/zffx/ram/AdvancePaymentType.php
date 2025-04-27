@@ -162,6 +162,29 @@ class AdvancePaymentType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\zffx\ram\TradeTaxType $tradeTaxType
+     * @return self
+     */
+    public function addOnceToIncludedTradeTax(TradeTaxType $tradeTaxType): self
+    {
+        $this->includedTradeTax[0] = $tradeTaxType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\ram\TradeTaxType
+     */
+    public function addOnceToIncludedTradeTaxWithCreate(): TradeTaxType
+    {
+        if ($this->includedTradeTax === []) {
+            $this->addOnceToincludedTradeTax(new TradeTaxType());
+        }
+
+        return $this->includedTradeTax[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffx\ram\ReferencedDocumentType|null
      */
     public function getInvoiceSpecifiedReferencedDocument(): ?ReferencedDocumentType

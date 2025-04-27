@@ -68,4 +68,28 @@ class SupplyChainConsignmentType
 
         return $logisticsTransportMovementType;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\zffx\ram\LogisticsTransportMovementType $logisticsTransportMovementType
+     * @return self
+     */
+    public function addOnceToSpecifiedLogisticsTransportMovement(
+        LogisticsTransportMovementType $logisticsTransportMovementType,
+    ): self {
+        $this->specifiedLogisticsTransportMovement[0] = $logisticsTransportMovementType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\ram\LogisticsTransportMovementType
+     */
+    public function addOnceToSpecifiedLogisticsTransportMovementWithCreate(): LogisticsTransportMovementType
+    {
+        if ($this->specifiedLogisticsTransportMovement === []) {
+            $this->addOnceTospecifiedLogisticsTransportMovement(new LogisticsTransportMovementType());
+        }
+
+        return $this->specifiedLogisticsTransportMovement[0];
+    }
 }

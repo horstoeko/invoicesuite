@@ -162,6 +162,29 @@ class TradePriceType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\zffx\ram\TradeAllowanceChargeType $tradeAllowanceChargeType
+     * @return self
+     */
+    public function addOnceToAppliedTradeAllowanceCharge(TradeAllowanceChargeType $tradeAllowanceChargeType): self
+    {
+        $this->appliedTradeAllowanceCharge[0] = $tradeAllowanceChargeType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\ram\TradeAllowanceChargeType
+     */
+    public function addOnceToAppliedTradeAllowanceChargeWithCreate(): TradeAllowanceChargeType
+    {
+        if ($this->appliedTradeAllowanceCharge === []) {
+            $this->addOnceToappliedTradeAllowanceCharge(new TradeAllowanceChargeType());
+        }
+
+        return $this->appliedTradeAllowanceCharge[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffx\ram\TradeTaxType|null
      */
     public function getIncludedTradeTax(): ?TradeTaxType

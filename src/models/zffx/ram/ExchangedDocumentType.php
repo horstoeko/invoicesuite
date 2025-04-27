@@ -325,6 +325,29 @@ class ExchangedDocumentType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\zffx\ram\NoteType $noteType
+     * @return self
+     */
+    public function addOnceToIncludedNote(NoteType $noteType): self
+    {
+        $this->includedNote[0] = $noteType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\ram\NoteType
+     */
+    public function addOnceToIncludedNoteWithCreate(): NoteType
+    {
+        if ($this->includedNote === []) {
+            $this->addOnceToincludedNote(new NoteType());
+        }
+
+        return $this->includedNote[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffx\ram\SpecifiedPeriodType|null
      */
     public function getEffectiveSpecifiedPeriod(): ?SpecifiedPeriodType

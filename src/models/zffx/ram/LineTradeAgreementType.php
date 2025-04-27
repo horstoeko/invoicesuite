@@ -263,6 +263,29 @@ class LineTradeAgreementType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\zffx\ram\ReferencedDocumentType $referencedDocumentType
+     * @return self
+     */
+    public function addOnceToAdditionalReferencedDocument(ReferencedDocumentType $referencedDocumentType): self
+    {
+        $this->additionalReferencedDocument[0] = $referencedDocumentType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\ram\ReferencedDocumentType
+     */
+    public function addOnceToAdditionalReferencedDocumentWithCreate(): ReferencedDocumentType
+    {
+        if ($this->additionalReferencedDocument === []) {
+            $this->addOnceToadditionalReferencedDocument(new ReferencedDocumentType());
+        }
+
+        return $this->additionalReferencedDocument[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffx\ram\TradePriceType|null
      */
     public function getGrossPriceProductTradePrice(): ?TradePriceType
@@ -369,5 +392,29 @@ class LineTradeAgreementType
         $this->addToultimateCustomerOrderReferencedDocument($referencedDocumentType = new ReferencedDocumentType());
 
         return $referencedDocumentType;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\zffx\ram\ReferencedDocumentType $referencedDocumentType
+     * @return self
+     */
+    public function addOnceToUltimateCustomerOrderReferencedDocument(
+        ReferencedDocumentType $referencedDocumentType,
+    ): self {
+        $this->ultimateCustomerOrderReferencedDocument[0] = $referencedDocumentType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\ram\ReferencedDocumentType
+     */
+    public function addOnceToUltimateCustomerOrderReferencedDocumentWithCreate(): ReferencedDocumentType
+    {
+        if ($this->ultimateCustomerOrderReferencedDocument === []) {
+            $this->addOnceToultimateCustomerOrderReferencedDocument(new ReferencedDocumentType());
+        }
+
+        return $this->ultimateCustomerOrderReferencedDocument[0];
     }
 }

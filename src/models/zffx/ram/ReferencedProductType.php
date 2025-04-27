@@ -178,6 +178,29 @@ class ReferencedProductType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\zffx\udt\IDType $idType
+     * @return self
+     */
+    public function addOnceToGlobalID(IDType $idType): self
+    {
+        $this->globalID[0] = $idType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\udt\IDType
+     */
+    public function addOnceToGlobalIDWithCreate(): IDType
+    {
+        if ($this->globalID === []) {
+            $this->addOnceToglobalID(new IDType());
+        }
+
+        return $this->globalID[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffx\udt\IDType|null
      */
     public function getSellerAssignedID(): ?IDType

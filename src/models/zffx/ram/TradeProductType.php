@@ -472,6 +472,29 @@ class TradeProductType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\zffx\udt\IDType $idType
+     * @return self
+     */
+    public function addOnceToBatchID(IDType $idType): self
+    {
+        $this->batchID[0] = $idType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\udt\IDType
+     */
+    public function addOnceToBatchIDWithCreate(): IDType
+    {
+        if ($this->batchID === []) {
+            $this->addOnceTobatchID(new IDType());
+        }
+
+        return $this->batchID[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffx\udt\TextType|null
      */
     public function getBrandName(): ?TextType
@@ -581,6 +604,30 @@ class TradeProductType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\zffx\ram\ProductCharacteristicType $productCharacteristicType
+     * @return self
+     */
+    public function addOnceToApplicableProductCharacteristic(
+        ProductCharacteristicType $productCharacteristicType,
+    ): self {
+        $this->applicableProductCharacteristic[0] = $productCharacteristicType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\ram\ProductCharacteristicType
+     */
+    public function addOnceToApplicableProductCharacteristicWithCreate(): ProductCharacteristicType
+    {
+        if ($this->applicableProductCharacteristic === []) {
+            $this->addOnceToapplicableProductCharacteristic(new ProductCharacteristicType());
+        }
+
+        return $this->applicableProductCharacteristic[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffx\ram\ProductClassificationType>|null
      */
     public function getDesignatedProductClassification(): ?array
@@ -632,6 +679,30 @@ class TradeProductType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\zffx\ram\ProductClassificationType $productClassificationType
+     * @return self
+     */
+    public function addOnceToDesignatedProductClassification(
+        ProductClassificationType $productClassificationType,
+    ): self {
+        $this->designatedProductClassification[0] = $productClassificationType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\ram\ProductClassificationType
+     */
+    public function addOnceToDesignatedProductClassificationWithCreate(): ProductClassificationType
+    {
+        if ($this->designatedProductClassification === []) {
+            $this->addOnceTodesignatedProductClassification(new ProductClassificationType());
+        }
+
+        return $this->designatedProductClassification[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffx\ram\TradeProductInstanceType>|null
      */
     public function getIndividualTradeProductInstance(): ?array
@@ -680,6 +751,30 @@ class TradeProductType
         $this->addToindividualTradeProductInstance($tradeProductInstanceType = new TradeProductInstanceType());
 
         return $tradeProductInstanceType;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\zffx\ram\TradeProductInstanceType $tradeProductInstanceType
+     * @return self
+     */
+    public function addOnceToIndividualTradeProductInstance(
+        TradeProductInstanceType $tradeProductInstanceType,
+    ): self {
+        $this->individualTradeProductInstance[0] = $tradeProductInstanceType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\ram\TradeProductInstanceType
+     */
+    public function addOnceToIndividualTradeProductInstanceWithCreate(): TradeProductInstanceType
+    {
+        if ($this->individualTradeProductInstance === []) {
+            $this->addOnceToindividualTradeProductInstance(new TradeProductInstanceType());
+        }
+
+        return $this->individualTradeProductInstance[0];
     }
 
     /**
@@ -759,5 +854,28 @@ class TradeProductType
         $this->addToincludedReferencedProduct($referencedProductType = new ReferencedProductType());
 
         return $referencedProductType;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\zffx\ram\ReferencedProductType $referencedProductType
+     * @return self
+     */
+    public function addOnceToIncludedReferencedProduct(ReferencedProductType $referencedProductType): self
+    {
+        $this->includedReferencedProduct[0] = $referencedProductType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\ram\ReferencedProductType
+     */
+    public function addOnceToIncludedReferencedProductWithCreate(): ReferencedProductType
+    {
+        if ($this->includedReferencedProduct === []) {
+            $this->addOnceToincludedReferencedProduct(new ReferencedProductType());
+        }
+
+        return $this->includedReferencedProduct[0];
     }
 }

@@ -149,4 +149,27 @@ class LogisticsServiceChargeType
 
         return $tradeTaxType;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\zffx\ram\TradeTaxType $tradeTaxType
+     * @return self
+     */
+    public function addOnceToAppliedTradeTax(TradeTaxType $tradeTaxType): self
+    {
+        $this->appliedTradeTax[0] = $tradeTaxType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\ram\TradeTaxType
+     */
+    public function addOnceToAppliedTradeTaxWithCreate(): TradeTaxType
+    {
+        if ($this->appliedTradeTax === []) {
+            $this->addOnceToappliedTradeTax(new TradeTaxType());
+        }
+
+        return $this->appliedTradeTax[0];
+    }
 }

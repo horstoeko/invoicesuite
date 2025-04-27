@@ -103,6 +103,30 @@ class SupplyChainTradeTransactionType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\zffx\ram\SupplyChainTradeLineItemType $supplyChainTradeLineItemType
+     * @return self
+     */
+    public function addOnceToIncludedSupplyChainTradeLineItem(
+        SupplyChainTradeLineItemType $supplyChainTradeLineItemType,
+    ): self {
+        $this->includedSupplyChainTradeLineItem[0] = $supplyChainTradeLineItemType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffx\ram\SupplyChainTradeLineItemType
+     */
+    public function addOnceToIncludedSupplyChainTradeLineItemWithCreate(): SupplyChainTradeLineItemType
+    {
+        if ($this->includedSupplyChainTradeLineItem === []) {
+            $this->addOnceToincludedSupplyChainTradeLineItem(new SupplyChainTradeLineItemType());
+        }
+
+        return $this->includedSupplyChainTradeLineItem[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffx\ram\HeaderTradeAgreementType|null
      */
     public function getApplicableHeaderTradeAgreement(): ?HeaderTradeAgreementType
