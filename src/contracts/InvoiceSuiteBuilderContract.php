@@ -599,4 +599,125 @@ interface InvoiceSuiteBuilderContract
     public function setProductEndUserCommunication(string $newType, string $newUri): self;
 
     #endregion
+
+    #region Document Ship-To
+
+    /**
+     * Set the name of the Ship-To party
+     *
+     * @param string $newName
+     * @return self
+     */
+    public function setShipToName(string $newName): self;
+
+    /**
+     * Set the ID of the Ship-To party
+     *
+     * @param string $newId
+     * @return self
+     */
+    public function setShipToId(string $newId): self;
+
+    /**
+     * Add an ID to the Ship-To party
+     *
+     * @param string $newId
+     * @return self
+     */
+    public function addShipToId(string $newId): self;
+
+    /**
+     * Set the Global ID of the Ship-To party
+     *
+     * @param string $newGlobalId
+     * @param string $newGlobalIdType
+     * @return self
+     */
+    public function setShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self;
+
+    /**
+     * Add an ID to the Ship-To party
+     *
+     * @param string $newGlobalId
+     * @param string $newGlobalIdType
+     * @return self
+     */
+    public function addShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self;
+
+    /**
+     * Set the Tax Registration of the Ship-To party
+     *
+     * @param string $newTaxRegistrationTyüe
+     * @param string $newTaxRegistrationId
+     * @return self
+     */
+    public function setShipToTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+
+    /**
+     * Add an Tax Registration to the Ship-To party
+     *
+     * @param string $newTaxRegistrationTyüe
+     * @param string $newTaxRegistrationId
+     * @return self
+     */
+    public function addShipToTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+
+    /**
+     * Set the address of the Ship-To party
+     *
+     * @param string $newAddressLine1
+     * @param string $newAddressLine2
+     * @param string $newAddressLine3
+     * @param string $newPostcode
+     * @param string $newCity
+     * @param string $newCountryId
+     * @param string $newSubDivision
+     * @return self
+     */
+    public function setShipToAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self;
+
+    /**
+     * Set the legal information of the Ship-To party
+     *
+     * @param string $newType
+     * @param string $newId
+     * @param string $newName
+     * @return self
+     */
+    public function setShipToLegalOrganisation(string $newType, string $newId, string $newName): self;
+
+    /**
+     * Set the contact information of the Ship-To party
+     *
+     * @param string $newPersonName
+     * @param string $newDepartmentName
+     * @param string $newPhoneNumber
+     * @param string $newFaxNumber
+     * @param string $newEmailAddress
+     * @return self
+     */
+    public function setShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
+
+    /**
+     * Add contact information of the Ship-To party
+     *
+     * @param string $newPersonName
+     * @param string $newDepartmentName
+     * @param string $newPhoneNumber
+     * @param string $newFaxNumber
+     * @param string $newEmailAddress
+     * @return self
+     */
+    public function addShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
+
+    /**
+     * Add communication information of the Ship-To party
+     *
+     * @param string $newType
+     * @param string $newUri
+     * @return self
+     */
+    public function setShipToCommunication(string $newType, string $newUri): self;
+
+    #endregion
 }

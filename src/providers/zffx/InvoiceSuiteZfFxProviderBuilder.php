@@ -1843,4 +1843,394 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     #endregion
+
+    #region Document Product Enduser
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newName __BT-70, From BASIC WL__ The name of the party to whom the goods are being delivered or for whom the services are being performed. Must be used if the recipient of the goods or services is not the same as the buyer.
+     * @return self
+     */
+    public function setShipToName(string $newName): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate()
+            ->getShipToTradePartyWithCreate()
+            ->getNameWithCreate()
+            ->setValue($newName);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string __BT-71, From BASIC WL__ An identifier for the place where the goods are delivered or where the services are provided. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @return self
+     */
+    public function setShipToId(string $newId): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate()
+            ->getShipToTradePartyWithCreate()
+            ->clearID();
+
+        $this->addShipToId($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newId __BT-71, From BASIC WL__ An identifier for the place where the goods are delivered or where the services are provided. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @return self
+     */
+    public function addShipToId(string $newId): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate()
+            ->getShipToTradePartyWithCreate()
+            ->addToIDWithCreate()
+            ->setValue($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newGlobalId     __BT-71-0, From BASIC WL__ Global identifier of the goods recipient
+     * @param string $newGlobalIdType __BT-71-1, From BASIC WL__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @return self
+     */
+    public function setShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate()
+            ->getShipToTradePartyWithCreate()
+            ->clearGlobalID();
+
+        $this->addShipToGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newGlobalId     __BT-71-0, From BASIC WL__ Global identifier of the goods recipient
+     * @param string $newGlobalIdType __BT-71-1, From BASIC WL__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @return self
+     */
+    public function addShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate()
+            ->getShipToTradePartyWithCreate()
+            ->addToGlobalIDWithCreate()
+            ->setValue($newGlobalId)
+            ->setSchemeID($newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newTaxRegistrationTyüe __BT-X-161-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationId   __BT-X-161, From EXTENDED__ Tax number or sales tax identification number
+     * @return self
+     */
+    public function setShipToTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate()
+            ->getShipToTradePartyWithCreate()
+            ->clearSpecifiedTaxRegistration();
+
+        $this->addShipToTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newTaxRegistrationTyüe __BT-X-161-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationId   __BT-X-161, From EXTENDED__ Tax number or sales tax identification number
+     * @return self
+     */
+    public function addShipToTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate()
+            ->getShipToTradePartyWithCreate()
+            ->addToSpecifiedTaxRegistrationWithCreate()
+            ->getIDWithCreate()
+            ->setValue($newTaxRegistrationId)
+            ->setSchemeID($newTaxRegistrationTyüe);
+
+        return $this;
+    }
+
+    /**
+     * @param string $newAddressLine1 __BT-75, From BASIC WL__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param string $newAddressLine2 __BT-76, From BASIC WL__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param string $newAddressLine3 __BT-165, From BASIC WL__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param string $newPostcode     __BT-78, From BASIC WL__ Identifier for a group of properties, such as a zip code
+     * @param string $newCity         __BT-77, From BASIC WL__ Usual name of the city or municipality in which the party's address is located
+     * @param string $newCountryId    __BT-80, From BASIC WL__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
+     * @param string $newSubDivision  __BT-79, From BASIC WL__ The party's state
+     * @return self
+     */
+    public function setShipToAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newAddressLine1,
+                $newAddressLine2,
+                $newAddressLine3,
+                $newPostcode,
+                $newCity,
+                $newCountryId,
+                $newSubDivision
+            ])
+        ) {
+            return $this;
+        }
+
+        $shipToTradeParty = $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate()
+            ->getShipToTradePartyWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
+            $shipToTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine2])) {
+            $shipToTradeParty->getPostalTradeAddressWithCreate()->getLineTwoWithCreate()->setValue($newAddressLine2);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine3])) {
+            $shipToTradeParty->getPostalTradeAddressWithCreate()->getLineThreeWithCreate()->setValue($newAddressLine3);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPostcode])) {
+            $shipToTradeParty->getPostalTradeAddressWithCreate()->getPostcodeCodeWithCreate()->setValue($newPostcode);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
+            $shipToTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $shipToTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
+            $shipToTradeParty->getPostalTradeAddressWithCreate()->getCountrySubDivisionNameWithCreate()->setValue($newSubDivision);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newType __BT-X-153-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param string $newId   __BT-X-153, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param string $newName __BT-X-154, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @return self
+     */
+    public function setShipToLegalOrganisation(string $newType, string $newId, string $newName): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+            return $this;
+        }
+
+        $shipToTradeParty = $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate()
+            ->getShipToTradePartyWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            $shipToTradeParty->getSpecifiedLegalOrganizationWithCreate()->getIDWithCreate()->setValue($newId);
+            if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
+                $shipToTradeParty->getSpecifiedLegalOrganization()->getID()->setSchemeID($newType);
+            }
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            $shipToTradeParty->getSpecifiedLegalOrganizationWithCreate()->getTradingBusinessNameWithCreate()->setValue($newName);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string $newPersonName     __BT-X-155, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param string $newDepartmentName __BT-X-156, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param string $newPhoneNumber    __BT-X-157, From EXTENDED__ A telephone number for the contact point
+     * @param string $newFaxNumber      __BT-X-158, From EXTENDED__ A fax number of the contact point
+     * @param string $newEmailAddress   __BT-X-159, From EXTENDED__ An e-mail address of the contact point
+     * @return self
+     */
+    public function setShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            ])
+        ) {
+            return $this;
+        }
+
+        $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate()
+            ->getShipToTradePartyWithCreate()
+            ->clearDefinedTradeContact();
+
+        $this->addShipToContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
+    }
+
+    /**
+     * @param string $newPersonName     __BT-X-155, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param string $newDepartmentName __BT-X-156, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param string $newPhoneNumber    __BT-X-157, From EXTENDED__ A telephone number for the contact point
+     * @param string $newFaxNumber      __BT-X-158, From EXTENDED__ A fax number of the contact point
+     * @param string $newEmailAddress   __BT-X-159, From EXTENDED__ An e-mail address of the contact point
+     * @return self
+     */
+    public function addShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            ])
+        ) {
+            return $this;
+        }
+
+        $shipToTradeContact = $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate()
+            ->getShipToTradePartyWithCreate()
+            ->addToDefinedTradeContactWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPersonName])) {
+            $shipToTradeContact->getPersonNameWithCreate()->setValue($newPersonName);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDepartmentName])) {
+            $shipToTradeContact->getDepartmentNameWithCreate()->setValue($newPersonName);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPhoneNumber])) {
+            $shipToTradeContact->getTelephoneUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newPhoneNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newFaxNumber])) {
+            $shipToTradeContact->getFaxUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newFaxNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newEmailAddress])) {
+            $shipToTradeContact->getEmailURIUniversalCommunicationWithCreate()->getURIIDWithCreate()->setValue($newEmailAddress);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string $newType __BT-X-160, From EXTENDED__ The identifier for the identification scheme of the product enduser's electronic address
+     * @param string $newUri  __BT-X-160-0, From EXTENDED__ Specifies the product enduser's electronic address to which the invoice is sent
+     * @return self
+     */
+    public function setShipToCommunication(string $newType, string $newUri): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+            return $this;
+        }
+
+        $shipToUniversalCommunication = $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate()
+            ->getShipToTradePartyWithCreate()
+            ->getURIUniversalCommunicationWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
+            $shipToUniversalCommunication->getURIIDWithCreate()->setSchemeID($newType);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
+            $shipToUniversalCommunication->getURIIDWithCreate()->setValue($newUri);
+        }
+
+        return $this;
+    }
+
+    #endregion
 }
