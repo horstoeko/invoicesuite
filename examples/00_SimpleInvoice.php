@@ -43,4 +43,14 @@ $builder->setBuyerLegalOrganisation("8884", "3874837489237", "Kunde AG");
 $builder->addBuyerContact("Lars Müller", "Buchhaltung", "0815-9991", "0815-9992", "la.mue@kunde.de");
 $builder->setBuyerCommunication("EM", "invoice@kunde.de");
 
+$builder->setTaxRepresentativeName("Tax GmbH");
+$builder->setTaxRepresentativeId("0901-4711");
+$builder->addTaxRepresentativeId("0901-4712");
+$builder->setTaxRepresentativeGlobalId("T-1", "0088");
+$builder->setTaxRepresentativeTaxRegistration("VA", "9089767578");
+$builder->setTaxRepresentativeAddress("line1", "line2", "line3", "04001", "Somewhere", "DE", "Saxonia");
+$builder->setTaxRepresentativeLegalOrganisation("8884", "3874837489237", "Tax AG");
+$builder->addTaxRepresentativeContact("Karl Schneider", "Buchhaltung", "0901-9991", "0901-9992", "ks@tax-gnbh.de");
+$builder->setTaxRepresentativeCommunication("EM", "invoice@tax-gmbh.de");
+
 echo $builder->getContentAsXml();
