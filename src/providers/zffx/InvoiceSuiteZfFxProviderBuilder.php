@@ -1108,7 +1108,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getSellerTaxRepresentativeTradePartyWithCreate()
             ->clearID();
 
-        $this->addBuyerId($newId);
+        $this->addTaxRepresentativeId($newId);
 
         return $this;
     }
@@ -1158,7 +1158,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getSellerTaxRepresentativeTradePartyWithCreate()
             ->clearGlobalID();
 
-        $this->addBuyerGlobalId($newGlobalId, $newGlobalIdType);
+        $this->addTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -1425,8 +1425,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-X-125-0, From EXTENDED__ The identifier for the identification scheme of the buyer's electronic address
-     * @param string $newUri  __BT-X-125, From EXTENDED__ Specifies the buyer's electronic address to which the invoice is sent
+     * @param string $newType __BT-X-125-0, From EXTENDED__ The identifier for the identification scheme of the tax representative's electronic address
+     * @param string $newUri  __BT-X-125, From EXTENDED__ Specifies the tax representative's electronic address to which the invoice is sent
      * @return self
      */
     public function setTaxRepresentativeCommunication(string $newType, string $newUri): self
@@ -1435,18 +1435,408 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             return $this;
         }
 
-        $buyerUniversalCommunication = $this->getCrossIndustryRootObject()
+        $taxRepresentativeUniversalCommunication = $this->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getSellerTaxRepresentativeTradePartyWithCreate()
             ->getURIUniversalCommunicationWithCreate();
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
-            $buyerUniversalCommunication->getURIIDWithCreate()->setSchemeID($newType);
+            $taxRepresentativeUniversalCommunication->getURIIDWithCreate()->setSchemeID($newType);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
-            $buyerUniversalCommunication->getURIIDWithCreate()->setValue($newUri);
+            $taxRepresentativeUniversalCommunication->getURIIDWithCreate()->setValue($newUri);
+        }
+
+        return $this;
+    }
+
+    #endregion
+
+    #region Document Product Enduser
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newName __BT-X-128, From EXTENDED__ Name/company name of the end user
+     * @return self
+     */
+    public function setProductEndUserName(string $newName): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getProductEndUserTradePartyWithCreate()
+            ->getNameWithCreate()
+            ->setValue($newName);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newId __BT-X-126, From EXTENDED__ An identifier of the product end user
+     * @return self
+     */
+    public function setProductEndUserId(string $newId): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getProductEndUserTradePartyWithCreate()
+            ->clearID();
+
+        $this->addProductEndUserId($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newId __BT-X-126, From EXTENDED__ An identifier of the product end user
+     * @return self
+     */
+    public function addProductEndUserId(string $newId): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getProductEndUserTradePartyWithCreate()
+            ->addToIDWithCreate()
+            ->setValue($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newGlobalId     __BT-X-127, From EXTENDED__ The identifier is uniquely assigned to a party by a global registration organization.
+     * @param string $newGlobalIdType __BT-X-127-0, From EXTENDED__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @return self
+     */
+    public function setProductEndUserGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getProductEndUserTradePartyWithCreate()
+            ->clearGlobalID();
+
+        $this->addProductEndUserGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newGlobalId     __BT-X-127, From EXTENDED__ The identifier is uniquely assigned to a party by a global registration organization.
+     * @param string $newGlobalIdType __BT-X-127-0, From EXTENDED__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @return self
+     */
+    public function addProductEndUserGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getProductEndUserTradePartyWithCreate()
+            ->addToGlobalIDWithCreate()
+            ->setValue($newGlobalId)
+            ->setSchemeID($newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newTaxRegistrationTyüe __BT-, From __ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationId   __BT-, From __ Tax number or sales tax identification number
+     * @return self
+     */
+    public function setProductEndUserTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getProductEndUserTradePartyWithCreate()
+            ->clearSpecifiedTaxRegistration();
+
+        $this->addProductEndUserTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newTaxRegistrationTyüe __BT-, From __ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationId   __BT-, From __ Tax number or sales tax identification number
+     * @return self
+     */
+    public function addProductEndUserTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getProductEndUserTradePartyWithCreate()
+            ->addToSpecifiedTaxRegistrationWithCreate()
+            ->getIDWithCreate()
+            ->setValue($newTaxRegistrationId)
+            ->setSchemeID($newTaxRegistrationTyüe);
+
+        return $this;
+    }
+
+    /**
+     * @param string $newAddressLine1 __BT-X-397, From EXTENDED__ The main line in the product end users address. This is usually the street name and house number or the post office box
+     * @param string $newAddressLine2 __BT-X-398, From EXTENDED__ Line 2 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param string $newAddressLine3 __BT-X-399, From EXTENDED__ Line 3 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param string $newPostcode     __BT-X-396, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param string $newCity         __BT-X-400, From EXTENDED__ Usual name of the city or municipality in which the product end users address is located
+     * @param string $newCountryId    __BT-X-401, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
+     * @param string $newSubDivision  __BT-X-402, From EXTENDED__ The product end users state
+     * @return self
+     */
+    public function setProductEndUserAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newAddressLine1,
+                $newAddressLine2,
+                $newAddressLine3,
+                $newPostcode,
+                $newCity,
+                $newCountryId,
+                $newSubDivision
+            ])
+        ) {
+            return $this;
+        }
+
+        $productEndUserTradeParty = $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getProductEndUserTradePartyWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
+            $productEndUserTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine2])) {
+            $productEndUserTradeParty->getPostalTradeAddressWithCreate()->getLineTwoWithCreate()->setValue($newAddressLine2);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine3])) {
+            $productEndUserTradeParty->getPostalTradeAddressWithCreate()->getLineThreeWithCreate()->setValue($newAddressLine3);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPostcode])) {
+            $productEndUserTradeParty->getPostalTradeAddressWithCreate()->getPostcodeCodeWithCreate()->setValue($newPostcode);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
+            $productEndUserTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $productEndUserTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
+            $productEndUserTradeParty->getPostalTradeAddressWithCreate()->getCountrySubDivisionNameWithCreate()->setValue($newSubDivision);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newType __BT-X-129-0, From EXTENDED__The identifier for the identification scheme of the legal registration of the product end user. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
+     * @param string $newId   __BT-X-129, From EXTENDED__ An identifier issued by an official registrar that identifies the product end user as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to all trade parties
+     * @param string $newName __BT-X-130, From EXTENDED__ A name by which the product end user is known, if different from the product end users name (also known as the company name)
+     * @return self
+     */
+    public function setProductEndUserLegalOrganisation(string $newType, string $newId, string $newName): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+            return $this;
+        }
+
+        $productEndUserTradeParty = $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getProductEndUserTradePartyWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            $productEndUserTradeParty->getSpecifiedLegalOrganizationWithCreate()->getIDWithCreate()->setValue($newId);
+            if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
+                $productEndUserTradeParty->getSpecifiedLegalOrganization()->getID()->setSchemeID($newType);
+            }
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            $productEndUserTradeParty->getSpecifiedLegalOrganizationWithCreate()->getTradingBusinessNameWithCreate()->setValue($newName);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string $newPersonName     __BT-X-131, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param string $newDepartmentName __BT-X-132, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param string $newPhoneNumber    __BT-X-133, From EXTENDED__ A telephone number for the contact point
+     * @param string $newFaxNumber      __BT-X-134, From EXTENDED__ A fax number of the contact point
+     * @param string $newEmailAddress   __BT-X-135, From EXTENDED__ An e-mail address of the contact point
+     * @return self
+     */
+    public function setProductEndUserContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            ])
+        ) {
+            return $this;
+        }
+
+        $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getProductEndUserTradePartyWithCreate()
+            ->clearDefinedTradeContact();
+
+        $this->addProductEndUserContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
+    }
+
+    /**
+     * @param string $newPersonName     __BT-X-131, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param string $newDepartmentName __BT-X-132, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param string $newPhoneNumber    __BT-X-133, From EXTENDED__ A telephone number for the contact point
+     * @param string $newFaxNumber      __BT-X-134, From EXTENDED__ A fax number of the contact point
+     * @param string $newEmailAddress   __BT-X-135, From EXTENDED__ An e-mail address of the contact point
+     * @return self
+     */
+    public function addProductEndUserContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            ])
+        ) {
+            return $this;
+        }
+
+        $productEndUserTradeContact = $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getProductEndUserTradePartyWithCreate()
+            ->addToDefinedTradeContactWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPersonName])) {
+            $productEndUserTradeContact->getPersonNameWithCreate()->setValue($newPersonName);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDepartmentName])) {
+            $productEndUserTradeContact->getDepartmentNameWithCreate()->setValue($newPersonName);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPhoneNumber])) {
+            $productEndUserTradeContact->getTelephoneUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newPhoneNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newFaxNumber])) {
+            $productEndUserTradeContact->getFaxUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newFaxNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newEmailAddress])) {
+            $productEndUserTradeContact->getEmailURIUniversalCommunicationWithCreate()->getURIIDWithCreate()->setValue($newEmailAddress);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string $newType __BT-, From EXTENDED__ The identifier for the identification scheme of the product enduser's electronic address
+     * @param string $newUri  __BT-, From EXTENDED__ Specifies the product enduser's electronic address to which the invoice is sent
+     * @return self
+     */
+    public function setProductEndUserCommunication(string $newType, string $newUri): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+            return $this;
+        }
+
+        $productEndUserUniversalCommunication = $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getProductEndUserTradePartyWithCreate()
+            ->getURIUniversalCommunicationWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
+            $productEndUserUniversalCommunication->getURIIDWithCreate()->setSchemeID($newType);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
+            $productEndUserUniversalCommunication->getURIIDWithCreate()->setValue($newUri);
         }
 
         return $this;

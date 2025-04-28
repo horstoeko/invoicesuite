@@ -592,4 +592,128 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     #endregion
+
+    #region Document Product Enduser
+
+    /**
+     * @inheritDoc
+     */
+    public function setProductEndUserName(string $newName): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setProductEndUserName($newName);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setProductEndUserId(string $newId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setProductEndUserId($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addProductEndUserId(string $newId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addProductEndUserId($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setProductEndUserGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setProductEndUserGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addProductEndUserGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addProductEndUserGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setProductEndUserTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setProductEndUserTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addProductEndUserTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addProductEndUserTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setProductEndUserAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setProductEndUserAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setProductEndUserLegalOrganisation(string $newType, string $newId, string $newName): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setProductEndUserLegalOrganisation($newType, $newId, $newName);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setProductEndUserContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setProductEndUserContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addProductEndUserContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addProductEndUserContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setProductEndUserCommunication(string $newType, string $newUri): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setProductEndUserCommunication($newType, $newUri);
+
+        return $this;
+    }
+
+    #endregion
 }

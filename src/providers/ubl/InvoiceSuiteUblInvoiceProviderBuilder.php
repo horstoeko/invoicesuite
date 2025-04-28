@@ -1416,4 +1416,104 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     #endregion
+
+    #region Document Product Enduser
+
+    /**
+     * @inheritDoc
+     */
+    public function setProductEndUserName(string $newName): self
+    {
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setProductEndUserId(string $newId): self
+    {
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addProductEndUserId(string $newId): self
+    {
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setProductEndUserGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addProductEndUserGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setProductEndUserTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    {
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addProductEndUserTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    {
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setProductEndUserAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    {
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setProductEndUserLegalOrganisation(string $newType, string $newId, string $newName): self
+    {
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setProductEndUserContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addProductEndUserContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setProductEndUserCommunication(string $newType, string $newUri): self
+    {
+        return $this;
+    }
+
+    #endregion}
 }

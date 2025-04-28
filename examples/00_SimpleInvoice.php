@@ -4,8 +4,8 @@ use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
-//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
+$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
 //$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxxrechnung');
 $builder->setDocumentNo('2025-04-000001');
 $builder->setDocumentType("380");
@@ -52,5 +52,15 @@ $builder->setTaxRepresentativeAddress("line1", "line2", "line3", "04001", "Somew
 $builder->setTaxRepresentativeLegalOrganisation("8884", "3874837489237", "Tax AG");
 $builder->addTaxRepresentativeContact("Karl Schneider", "Buchhaltung", "0901-9991", "0901-9992", "ks@tax-gnbh.de");
 $builder->setTaxRepresentativeCommunication("EM", "invoice@tax-gmbh.de");
+
+$builder->setProductEndUserName("End-User GmbH");
+$builder->setProductEndUserId("0201-4711");
+$builder->addProductEndUserId("0201-4712");
+$builder->setProductEndUserGlobalId("37877787", "0088");
+$builder->setProductEndUserTaxRegistration("VA", "333355525");
+$builder->setProductEndUserAddress("line1", "line2", "line3", "06108", "OtherCity", "DE", "NRW");
+$builder->setProductEndUserLegalOrganisation("8884", "3874837489237", "Kunde AG");
+$builder->addProductEndUserContact("Lars Müller", "Buchhaltung", "0815-9991", "0815-9992", "la.mue@end-user.de");
+$builder->setProductEndUserCommunication("EM", "invoice@end-user.de");
 
 echo $builder->getContentAsXml();

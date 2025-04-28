@@ -478,4 +478,125 @@ interface InvoiceSuiteBuilderContract
     public function setTaxRepresentativeCommunication(string $newType, string $newUri): self;
 
     #endregion
+
+    #region Document Product Enduser
+
+    /**
+     * Set the name of the product end-user party
+     *
+     * @param string $newName
+     * @return self
+     */
+    public function setProductEndUserName(string $newName): self;
+
+    /**
+     * Set the ID of the product end-user party
+     *
+     * @param string $newId
+     * @return self
+     */
+    public function setProductEndUserId(string $newId): self;
+
+    /**
+     * Add an ID to the product end-user party
+     *
+     * @param string $newId
+     * @return self
+     */
+    public function addProductEndUserId(string $newId): self;
+
+    /**
+     * Set the Global ID of the product end-user party
+     *
+     * @param string $newGlobalId
+     * @param string $newGlobalIdType
+     * @return self
+     */
+    public function setProductEndUserGlobalId(string $newGlobalId, string $newGlobalIdType): self;
+
+    /**
+     * Add an ID to the product end-user party
+     *
+     * @param string $newGlobalId
+     * @param string $newGlobalIdType
+     * @return self
+     */
+    public function addProductEndUserGlobalId(string $newGlobalId, string $newGlobalIdType): self;
+
+    /**
+     * Set the Tax Registration of the product end-user party
+     *
+     * @param string $newTaxRegistrationTyüe
+     * @param string $newTaxRegistrationId
+     * @return self
+     */
+    public function setProductEndUserTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+
+    /**
+     * Add an Tax Registration to the product end-user party
+     *
+     * @param string $newTaxRegistrationTyüe
+     * @param string $newTaxRegistrationId
+     * @return self
+     */
+    public function addProductEndUserTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+
+    /**
+     * Set the address of the product end-user party
+     *
+     * @param string $newAddressLine1
+     * @param string $newAddressLine2
+     * @param string $newAddressLine3
+     * @param string $newPostcode
+     * @param string $newCity
+     * @param string $newCountryId
+     * @param string $newSubDivision
+     * @return self
+     */
+    public function setProductEndUserAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self;
+
+    /**
+     * Set the legal information of the product end-user party
+     *
+     * @param string $newType
+     * @param string $newId
+     * @param string $newName
+     * @return self
+     */
+    public function setProductEndUserLegalOrganisation(string $newType, string $newId, string $newName): self;
+
+    /**
+     * Set the contact information of the product end-user party
+     *
+     * @param string $newPersonName
+     * @param string $newDepartmentName
+     * @param string $newPhoneNumber
+     * @param string $newFaxNumber
+     * @param string $newEmailAddress
+     * @return self
+     */
+    public function setProductEndUserContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
+
+    /**
+     * Add contact information of the product end-user party
+     *
+     * @param string $newPersonName
+     * @param string $newDepartmentName
+     * @param string $newPhoneNumber
+     * @param string $newFaxNumber
+     * @param string $newEmailAddress
+     * @return self
+     */
+    public function addProductEndUserContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
+
+    /**
+     * Add communication information of the product end-user party
+     *
+     * @param string $newType
+     * @param string $newUri
+     * @return self
+     */
+    public function setProductEndUserCommunication(string $newType, string $newUri): self;
+
+    #endregion
 }
