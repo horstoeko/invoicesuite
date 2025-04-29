@@ -221,7 +221,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
 
     #endregion
 
-    // region Document Seller/Supplier
+    #region Document Seller/Supplier
 
     /**
      * @inheritDoc
@@ -345,7 +345,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
 
     #endregion
 
-    // region Document Buyer/Customer
+    #region Document Buyer/Customer
 
     /**
      * @inheritDoc
@@ -469,7 +469,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
 
     #endregion
 
-    // region Document tax representativ party
+    #region Document tax representativ party
 
     /**
      * @inheritDoc
@@ -593,7 +593,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
 
     #endregion
 
-    // region Document Product Enduser
+    #region Document Product Enduser
 
     /**
      * @inheritDoc
@@ -717,7 +717,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
 
     #endregion
 
-    // region Document Ship-To
+    #region Document Ship-To
 
     /**
      * @inheritDoc
@@ -841,7 +841,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
 
     #endregion
 
-    // region Document Ultimate Ship-To
+    #region Document Ultimate Ship-To
 
     /**
      * @inheritDoc

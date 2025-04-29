@@ -116,7 +116,7 @@ interface InvoiceSuiteBuilderContract
 
     #endregion
 
-    // region Document Seller/Supplier
+    #region Document Seller/Supplier
 
     /**
      * Set the name of the seller/supplier party
@@ -237,7 +237,7 @@ interface InvoiceSuiteBuilderContract
 
     #endregion
 
-    // region Document Buyer/Customer
+    #region Document Buyer/Customer
 
     /**
      * Set the name of the buyer/customer party
@@ -358,7 +358,7 @@ interface InvoiceSuiteBuilderContract
 
     #endregion
 
-    // region Document tax representativ party
+    #region Document tax representativ party
 
     /**
      * Set the name of the tax representative party
@@ -479,7 +479,7 @@ interface InvoiceSuiteBuilderContract
 
     #endregion
 
-    // region Document Product Enduser
+    #region Document Product Enduser
 
     /**
      * Set the name of the product end-user party
@@ -600,7 +600,7 @@ interface InvoiceSuiteBuilderContract
 
     #endregion
 
-    // region Document Ship-To
+    #region Document Ship-To
 
     /**
      * Set the name of the Ship-To party
@@ -721,7 +721,7 @@ interface InvoiceSuiteBuilderContract
 
     #endregion
 
-    // region Document Ultimate Ship-To
+    #region Document Ultimate Ship-To
 
     /**
      * Set the name of the ultimate Ship-To party
