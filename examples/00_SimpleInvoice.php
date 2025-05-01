@@ -93,4 +93,14 @@ $builder->setShipFromLegalOrganisation("8884", "99ß0224444", "Ship-From AG");
 $builder->addShipFromContact("Alfons Baum", "Dispo", "0221-10001", "0221-10001", "alfzit@ship-from-gmbh.de");
 $builder->setShipFromCommunication("EM", "invoice@ship-from-gmbh.de");
 
+$builder->setInvoicerName("Invoicer GmbH");
+$builder->setInvoicerId("INVOICER-001");
+$builder->addInvoicerId("INVOICER-002");
+$builder->setInvoicerGlobalId("INVOICER222", "0088");
+$builder->setInvoicerTaxRegistration("VA", "9989773373");
+$builder->setInvoicerAddress("Invoicer Street", "Invoicer Street 2", "Invoicer Street 3", "99999", "Invoicer-City", "DE", "RLP");
+$builder->setInvoicerLegalOrganisation("8884", "Invoicer-Org-Id", "Invoicer AG");
+$builder->addInvoicerContact("Alfons Baum", "Dispo", "0999-10001", "0999-10001", "alfzit@Invoicer-gmbh.de");
+$builder->setInvoicerCommunication("EM", "invoice@invoicer-gmbh.de");
+
 echo $builder->getContentAsXml();

@@ -1777,7 +1777,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     #region Document Ship-From
 
     /**
-     * @param string $newName Name or company name of the different end recipient
+     * @param string $newName The name of the party
      * @return self
      */
     public function setShipFromName(string $newName): self
@@ -1786,7 +1786,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newId Identification of the different end recipient. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes.
+     * @param string $newId An identifier for the party. Multiple IDs can be assigned or specified
      * @return self
      */
     public function setShipFromId(string $newId): self
@@ -1795,7 +1795,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newId Identification of the different end recipient. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes.
+     * @param string $newId An identifier for the party. Multiple IDs can be assigned or specified
      * @return self
      */
     public function addShipFromId(string $newId): self
@@ -1804,7 +1804,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newGlobalId Global identifier of the different end recipient
+     * @param string $newGlobalId Global identification number
      * @param string $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
@@ -1814,7 +1814,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newGlobalId Global identifier of the different end recipient
+     * @param string $newGlobalId Global identification number
      * @param string $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
@@ -1909,6 +1909,147 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @return self
      */
     public function setShipFromCommunication(string $newType, string $newUri): self
+    {
+        return $this;
+    }
+
+    #endregion
+
+    #region Document Invoicer
+
+    /**
+     * @param string $newName The name of the party
+     * @return self
+     */
+    public function setInvoicerName(string $newName): self
+    {
+        return $this;
+    }
+
+    /**
+     * @param string $newId An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @return self
+     */
+    public function setInvoicerId(string $newId): self
+    {
+        return $this;
+    }
+
+    /**
+     * @param string $newId An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @return self
+     */
+    public function addInvoicerId(string $newId): self
+    {
+        return $this;
+    }
+
+    /**
+     * @param string $newGlobalId Global identifier
+     * @param string $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @return self
+     */
+    public function setInvoicerGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        return $this;
+    }
+
+    /**
+     * @param string $newGlobalId Global identifier
+     * @param string $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @return self
+     */
+    public function addInvoicerGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        return $this;
+    }
+
+    /**
+     * @param string $newTaxRegistrationTyüe Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationId Tax number or sales tax identification number
+     * @return self
+     */
+    public function setInvoicerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    {
+        return $this;
+    }
+
+    /**
+     * @param string $newTaxRegistrationTyüe Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationId Tax number or sales tax identification number
+     * @return self
+     */
+    public function addInvoicerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    {
+        return $this;
+    }
+
+    /**
+     * @param string $newAddressLine1 The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param string $newAddressLine2 Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param string $newAddressLine3 Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param string $newPostcode     Identifier for a group of properties, such as a zip code
+     * @param string $newCity         Usual name of the city or municipality in which the party's address is located
+     * @param string $newCountryId    Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
+     * @param string $newSubDivision  The party's state
+     * @return self
+     */
+    public function setInvoicerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    {
+        return $this;
+    }
+
+    /**
+     * Set the legal information of the ultimate Ship-To party
+     *
+     * @param string $newType The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param string $newId An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param string $newName A name by which the party is known, if different from the party's name (also known as the company name)
+     * @return self
+     */
+    public function setInvoicerLegalOrganisation(string $newType, string $newId, string $newName): self
+    {
+        return $this;
+    }
+
+    /**
+     * Set the contact information of the ultimate Ship-To party
+     *
+     * @param string $newPersonName     Such as personal name, name of contact person or department or office
+     * @param string $newDepartmentName If a contact person is specified, either the name or the department must be transmitted.
+     * @param string $newPhoneNumber    A telephone number for the contact point
+     * @param string $newFaxNumber      A fax number of the contact point
+     * @param string $newEmailAddress   An e-mail address of the contact point
+     * @return self
+     */
+    public function setInvoicerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        return $this;
+    }
+
+    /**
+     * Add contact information of the ultimate Ship-To party
+     *
+     * @param string $newPersonName     Such as personal name, name of contact person or department or office
+     * @param string $newDepartmentName If a contact person is specified, either the name or the department must be transmitted.
+     * @param string $newPhoneNumber    A telephone number for the contact point
+     * @param string $newFaxNumber      A fax number of the contact point
+     * @param string $newEmailAddress   An e-mail address of the contact point
+     * @return self
+     */
+    public function addInvoicerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        return $this;
+    }
+
+    /**
+     * Add communication information of the ultimate Ship-To party
+     *
+     * @param string $newType The identifier for the identification scheme of the seller's electronic address
+     * @param string $newUri  Specifies the electronic address of the seller to which the response to the invoice can be sent at application level
+     * @return self
+     */
+    public function setInvoicerCommunication(string $newType, string $newUri): self
     {
         return $this;
     }

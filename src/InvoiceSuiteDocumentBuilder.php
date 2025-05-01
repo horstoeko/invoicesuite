@@ -1088,4 +1088,128 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     #endregion
+
+    #region Document Invoicer
+
+    /**
+     * @inheritDoc
+     */
+    public function setInvoicerName(string $newName): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setInvoicerName($newName);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setInvoicerId(string $newId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setInvoicerId($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addInvoicerId(string $newId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addInvoicerId($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setInvoicerGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setInvoicerGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addInvoicerGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addInvoicerGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setInvoicerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setInvoicerTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addInvoicerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addInvoicerTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setInvoicerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setInvoicerAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setInvoicerLegalOrganisation(string $newType, string $newId, string $newName): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setInvoicerLegalOrganisation($newType, $newId, $newName);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setInvoicerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setInvoicerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addInvoicerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addInvoicerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setInvoicerCommunication(string $newType, string $newUri): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setInvoicerCommunication($newType, $newUri);
+
+        return $this;
+    }
+
+    #endregion
 }
