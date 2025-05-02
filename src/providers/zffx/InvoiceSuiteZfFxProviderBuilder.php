@@ -290,6 +290,42 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
 
     #endregion
 
+    #region Document References
+
+    /**
+     * @param string $newReferenceNumber __BT-14, From EN 16931__ Seller's order confirmation number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-146, Seller's order confirmation date
+     * @return self
+     */
+    public function setDocumentSellerOrderReference(string $newReferenceNumber, ?DateTimeInterface $newReferenceDate = null): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
+            return $this;
+        }
+
+        $orderReference = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getSellerOrderReferencedDocumentWithCreate();
+
+        $orderReference
+            ->getIssuerAssignedIDWithCreate()
+            ->setValue($newReferenceNumber);
+
+        if (!is_null($newReferenceDate)) {
+            $orderReference
+                ->getFormattedIssueDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newReferenceDate->format("Ymd"))
+                ->setFormat("102");
+        }
+
+        return $this;
+    }
+
+    #endregion
+
     #region Document Seller/Supplier
 
     /**

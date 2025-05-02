@@ -231,6 +231,20 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
 
     #endregion
 
+    #region Document References
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentSellerOrderReference(string $newReferenceNumber, ?DateTimeInterface $newReferenceDate = null): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
+
+        return $this;
+    }
+
+    #endregion
+
     #region Document Seller/Supplier
 
     /**

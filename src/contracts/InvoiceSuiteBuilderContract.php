@@ -126,6 +126,19 @@ interface InvoiceSuiteBuilderContract
 
     #endregion
 
+    #region Document References
+
+    /**
+     * Set the associated seller's order confirmation.
+     *
+     * @param string $newReferenceNumber Seller's order confirmation number
+     * @param DateTimeInterface|null $newReferenceDate Seller's order confirmation date
+     * @return self
+     */
+    public function setDocumentSellerOrderReference(string $newReferenceNumber, ?DateTimeInterface $newReferenceDate = null): self;
+
+    #endregion
+
     #region Document Seller/Supplier
 
     /**

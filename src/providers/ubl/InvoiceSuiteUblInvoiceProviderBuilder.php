@@ -202,6 +202,36 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
 
     #endregion
 
+    #region Document References
+
+    /**
+     * @param string $newReferenceNumber Seller's order confirmation number
+     * @param DateTimeInterface|null $newReferenceDate Seller's order confirmation date
+     * @return self
+     */
+    public function setDocumentSellerOrderReference(string $newReferenceNumber, ?DateTimeInterface $newReferenceDate = null): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
+            return $this;
+        }
+
+        $orderReference = $this
+            ->getUblInvoiceRootObject()
+            ->getOrderReferenceWithCreate();
+
+        $orderReference
+            ->getIDWithCreate()
+            ->setValue($newReferenceNumber);
+
+        if (!is_null($newReferenceDate)) {
+            $orderReference->setIssueDate($newReferenceDate);
+        }
+
+        return $this;
+    }
+
+    #endregion
+
     #region Document Seller/Supplier
 
     /**

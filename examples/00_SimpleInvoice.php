@@ -123,4 +123,6 @@ $builder->setPayeeLegalOrganisation("8884", "Payee-Org-Id", "Payee AG");
 $builder->addPayeeContact("Alfons Baum", "Dispo", "0999-10001", "0999-10001", "alfzit@payee-gmbh.de");
 $builder->setPayeeCommunication("EM", "invoice@payee-gmbh.de");
 
+$builder->setDocumentSellerOrderReference('SO-2025/0000001', new DateTime());
+
 echo $builder->getContentAsXml();
