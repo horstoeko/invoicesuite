@@ -243,6 +243,27 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newContentCode __BT-X-5, From EXTENDED__ A code to classify the content of the free text of the invoice
      * @param string $newSubjectCode __BT-21, From BASIC WL__ The qualification of the free text for the invoice from BT-22
      */
+    public function setDocumentNote(string $newContent, string $newContentCode, string $newSubjectCode): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newContent])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getExchangedDocumentWithCreate()
+            ->clearIncludedNote();
+
+        $this->addDocumentNote($newContent, $newContentCode, $newSubjectCode);
+
+        return $this;
+    }
+
+    /**
+     * @param string $newContent     __BT-22, From BASIC WL__ A free text containing unstructured information that is relevant to the invoice as a whole
+     * @param string $newContentCode __BT-X-5, From EXTENDED__ A code to classify the content of the free text of the invoice
+     * @param string $newSubjectCode __BT-21, From BASIC WL__ The qualification of the free text for the invoice from BT-22
+     */
     public function addDocumentNote(string $newContent, string $newContentCode, string $newSubjectCode): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newContent])) {

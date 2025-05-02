@@ -105,6 +105,16 @@ interface InvoiceSuiteBuilderContract
     public function setDocumentIsTest(bool $newDocumentIsTest): self;
 
     /**
+     * Set a note to the document. This clears all added notes
+     *
+     * @param  string $newContent
+     * @param  string $newContentCode
+     * @param  string $newSubjectCode
+     * @return self
+     */
+    public function setDocumentNote(string $newContent, string $newContentCode, string $newSubjectCode): self;
+
+    /**
      * Add a note to the document
      *
      * @param  string $newContent

@@ -212,6 +212,16 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
+    public function setDocumentNote(string $newContent, ?string $newContentCode = null, ?string $newSubjectCode = null): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentNote($newContent, $newContentCode, $newSubjectCode);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function addDocumentNote(string $newContent, ?string $newContentCode = null, ?string $newSubjectCode = null): self
     {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentNote($newContent, $newContentCode, $newSubjectCode);

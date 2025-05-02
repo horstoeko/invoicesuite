@@ -180,6 +180,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newSubjectCode The qualification of the free text for the invoice from
      * @return self
      */
+    public function setDocumentNote(string $newContent, string $newContentCode, string $newSubjectCode): self
+    {
+        $this->getUblInvoiceRootObject()->clearNote()->addToNoteWithCreate()->setValue($newContent);
+
+        return $this;
+    }
+
+    /**
+     * @param string $newContent     A free text containing unstructured information that is relevant to the invoice as a whole
+     * @param string $newContentCode A code to classify the content of the free text of the invoice
+     * @param string $newSubjectCode The qualification of the free text for the invoice from
+     * @return self
+     */
     public function addDocumentNote(string $newContent, string $newContentCode, string $newSubjectCode): self
     {
         $this->getUblInvoiceRootObject()->addToNoteWithCreate()->setValue($newContent);
