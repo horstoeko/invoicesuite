@@ -215,9 +215,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             return $this;
         }
 
-        $orderReference = $this->getUblInvoiceRootObject()->getOrderReferenceWithCreate();
-
-        $orderReference->getSalesOrderIDWithCreate()->setValue($newReferenceNumber);
+        $this
+            ->getUblInvoiceRootObject()
+            ->getOrderReferenceWithCreate()
+            ->getSalesOrderIDWithCreate()
+            ->setValue($newReferenceNumber);
 
         return $this;
     }
