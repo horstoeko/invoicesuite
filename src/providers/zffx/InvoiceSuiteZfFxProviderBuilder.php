@@ -272,7 +272,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     #region Document Seller/Supplier
 
     /**
-     * @param string $newName __BT-27, From MINIMUM__ The full formal name under which the seller is registered in the National Register of Legal Entities, Taxable Person or otherwise acting as person(s)
+     * @param string $newName __BT-27, From MINIMUM__ The full formal name under which the party is registered.
      * @return self
      */
     public function setSellerName(string $newName): self
@@ -293,7 +293,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newId __BT-29, From BASIC WL__ An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
+     * @param string $newId __BT-29, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setSellerId(string $newId): self
@@ -315,7 +315,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newId __BT-29, From BASIC WL__ An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
+     * @param string $newId __BT-29, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addSellerId(string $newId): self
@@ -336,8 +336,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-29-0, From BASIC WL__ An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
-     * @param string $newGlobalIdType __BT-29-1, From BASIC WL__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId     __BT-29-0, From BASIC WL__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-29-1, From BASIC WL__ Type of the global identifier of the party.
      * @return self
      */
     public function setSellerGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -359,8 +359,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-29-o, From BASIC WL__ An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
-     * @param string $newGlobalIdType __BT-29-1, From BASIC WL__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId     __BT-29-0, From BASIC WL__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-29-1, From BASIC WL__ Type of the global identifier of the party.
      * @return self
      */
     public function addSellerGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -382,8 +382,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-31-0/BT-32-0, From MINIMUM/EN 16931__ Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-31/32, From MINIMUM/EN 16931__ Tax number of the seller or sales tax identification number of the seller
+     * @param string $newTaxRegistrationType __BT-31-0/BT-32-0, From MINIMUM/EN 16931__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-31/32, From MINIMUM/EN 16931__ Tax identification number.
      * @return self
      */
     public function setSellerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -405,8 +405,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-31-0/BT-32-0, From MINIMUM/EN 16931__ Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-31/32, From MINIMUM/EN 16931__ Tax number of the seller or sales tax identification number of the seller
+     * @param string $newTaxRegistrationType __BT-31-0/BT-32-0, From MINIMUM/EN 16931__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-31/32, From MINIMUM/EN 16931__ Tax identification number.
      * @return self
      */
     public function addSellerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -431,13 +431,13 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newAddressLine1 __BT-35, From BASIC WL__ The main line in the sellers address. This is usually the street name and house number or the post office box
-     * @param string $newAddressLine2 __BT-36, From BASIC WL__ Line 2 of the seller's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line used to provide additional details in addition to the main line
-     * @param string $newAddressLine3 __BT-162, From BASIC WL__ Line 3 of the seller's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newPostcode     __BT-38, From BASIC WL__ Identifier for a group of properties, such as a zip code
-     * @param string $newCity         __BT-37, From BASIC WL__ Usual name of the city or municipality in which the seller's address is located
-     * @param string $newCountryId    __BT-40, From MINIMUM__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param string $newSubDivision  __BT-39, From BASIC WL__ The sellers state
+     * @param string $newAddressLine1 __BT-35, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 __BT-36, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 __BT-162, From BASIC WL__ This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode     __BT-38, From BASIC WL__ Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity         __BT-37, From BASIC WL__ Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId    __BT-40, From MINIMUM__ Country in which the party's address is located.
+     * @param string $newSubDivision  __BT-39, From BASIC WL__ Region or federal state in which the party's address is located.
      * @return self
      */
     public function setSellerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
@@ -493,9 +493,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-30-1, From MINIMUM__ The identifier for the identification scheme of the legal registration of the seller. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
-     * @param string $newId   __BT-30, From MINIMUM__ An identifier issued by an official registrar that identifies the seller as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and seller
-     * @param string $newName __BT-28, From BASIC WL__ A name by which the seller is known, if different from the seller's name (also known as the company name). Note: This may be used if different from the seller's name.
+     * @param string $newType __BT-30-1, From MINIMUM__ Type of the identification number of the legal registration of the party.
+     * @param string $newId   __BT-30, From MINIMUM__ Identification number of the legal registration of the party.
+     * @param string $newName __BT-28, From BASIC WL__ Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setSellerLegalOrganisation(string $newType, string $newId, string $newName): self
@@ -524,11 +524,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-41, From EN 16931__ Such as personal name, name of contact person or department or office
-     * @param string $newDepartmentName __BT-41-0, From EN 16931__ If a contact person is specified, either the name or the department must be transmitted.
-     * @param string $newPhoneNumber    __BT-42, From EN 16931__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-107, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-43, From EN 16931__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-41, From EN 16931__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-41-0, From EN 16931__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-42, From EN 16931__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-107, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-43, From EN 16931__ E-Mail address of the contact point.
      * @return self
      */
     public function setSellerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -557,11 +557,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-41, From EN 16931__ Such as personal name, name of contact person or department or office
-     * @param string $newDepartmentName __BT-41-0, From EN 16931__ If a contact person is specified, either the name or the department must be transmitted.
-     * @param string $newPhoneNumber    __BT-42, From EN 16931__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-107, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-43, From EN 16931__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-41, From EN 16931__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-41-0, From EN 16931__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-42, From EN 16931__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-107, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-43, From EN 16931__ E-Mail address of the contact point.
      * @return self
      */
     public function addSellerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -608,8 +608,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-34-1, From BASIC WL__ The identifier for the identification scheme of the party's electronic address
-     * @param string $newUri  __BT-34, From BASIC WL__ The party's electronic address
+     * @param string $newType __BT-34-1, From BASIC WL__ The type for the party's electronic address.
+     * @param string $newUri  __BT-34, From BASIC WL__ The party's electronic address.
      * @return self
      */
     public function setSellerCommunication(string $newType, string $newUri): self
@@ -640,7 +640,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     #region Document Buyer/Customer
 
     /**
-     * @param string $newName __BT-44, From MINIMUM__ The full name of the buyer
+     * @param string $newName __BT-44, From MINIMUM__ The full formal name under which the party is registered
      * @return self
      */
     public function setBuyerName(string $newName): self
@@ -661,7 +661,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newId __BT-46, From BASIC WL__ An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
+     * @param string $newId __BT-46, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setBuyerId(string $newId): self
@@ -683,7 +683,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newId __BT-46, From BASIC WL__ An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
+     * @param string $newId __BT-46, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addBuyerId(string $newId): self
@@ -704,8 +704,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-46-0, From BASIC WL__ The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
-     * @param string $newGlobalIdType __BT-46-1, From BASIC WL__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId     __BT-46-0, From BASIC WL__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-46-1, From BASIC WL__ Type of the global identifier of the party.
      * @return self
      */
     public function setBuyerGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -729,8 +729,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-46-0, From BASIC WL__ The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
-     * @param string $newGlobalIdType __BT-46-1, From BASIC WL__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId     __BT-46-0, From BASIC WL__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-46-1, From BASIC WL__ Type of the global identifier of the party.
      * @return self
      */
     public function addBuyerGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -754,8 +754,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-48-0, From MINIMUM__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-48, From MINIMUM__ Tax number or sales tax identification number
+     * @param string $newTaxRegistrationType __BT-48-0, From MINIMUM__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-48, From MINIMUM__ Tax identification number.
      * @return self
      */
     public function setBuyerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -779,8 +779,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-48-0, From MINIMUM__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-48, From MINIMUM__ Tax number or sales tax identification number
+     * @param string $newTaxRegistrationType __BT-48-0, From MINIMUM__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-48, From MINIMUM__ Tax identification number.
      * @return self
      */
     public function addBuyerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -805,13 +805,13 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newAddressLine1 __BT-50, From BASIC WL__ The main line in the buyers address. This is usually the street name and house number or the post office box
-     * @param string $newAddressLine2 __BT-51, From BASIC WL__ Line 2 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newAddressLine3 __BT-163, From BASIC WL__ Line 3 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newPostcode     __BT-53, From BASIC WL__ Identifier for a group of properties, such as a zip code
-     * @param string $newCity         __BT-52, From BASIC WL__ Usual name of the city or municipality in which the buyers address is located
-     * @param string $newCountryId    __BT-55, From BASIC WL__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param string $newSubDivision  __BT-54, From BASIC WL__ The buyers state
+     * @param string $newAddressLine1 __BT-50, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 __BT-51, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 __BT-163, From BASIC WL__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode     __BT-53, From BASIC WL__ Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity         __BT-52, From BASIC WL__ Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId    __BT-55, From BASIC WL__ Country in which the party's address is located.
+     * @param string $newSubDivision  __BT-54, From BASIC WL__ Region or federal state in which the party's address is located.
      * @return self
      */
     public function setBuyerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
@@ -867,9 +867,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-47-1, From MINIMUM__ The identifier for the identification scheme of the legal registration of the buyer. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
-     * @param string $newId   __BT-47, From MINIMUM__ An identifier issued by an official registrar that identifies the buyer as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and buyer
-     * @param string $newName __BT-45, From BASIC WL__ A name by which the buyer is known, if different from the buyers name (also known as the company name)
+     * @param string $newType __BT-47-1, From MINIMUM__ Type of the identification number of the legal registration of the party.
+     * @param string $newId   __BT-47, From MINIMUM__ Identification number of the legal registration of the party.
+     * @param string $newName __BT-45, From BASIC WL__ Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setBuyerLegalOrganisation(string $newType, string $newId, string $newName): self
@@ -898,11 +898,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-56, From EN 16931__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param string $newDepartmentName __BT-56-0, From EN 16931__ Contact point for a legal entity, such as a name of the department or office
-     * @param string $newPhoneNumber    __BT-57, From EN 16931__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-115, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-58, From EN 16931__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-56, From EN 16931__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-56-0, From EN 16931__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-57, From EN 16931__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-115, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-58, From EN 16931__ E-Mail address of the contact point.
      * @return self
      */
     public function setBuyerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -931,11 +931,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-56, From EN 16931__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param string $newDepartmentName __BT-56-0, From EN 16931__ Contact point for a legal entity, such as a name of the department or office
-     * @param string $newPhoneNumber    __BT-57, From EN 16931__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-115, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-58, From EN 16931__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-56, From EN 16931__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-56-0, From EN 16931__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-57, From EN 16931__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-115, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-58, From EN 16931__ E-Mail address of the contact point.
      * @return self
      */
     public function addBuyerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -982,8 +982,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-49-1, From BASIC WL__ The identifier for the identification scheme of the buyer's electronic address
-     * @param string $newUri  __BT-49, From BASIC WL__ Specifies the buyer's electronic address to which the invoice is sent
+     * @param string $newType __BT-49-1, From BASIC WL__ The type for the party's electronic address.
+     * @param string $newUri  __BT-49, From BASIC WL__ The party's electronic address.
      * @return self
      */
     public function setBuyerCommunication(string $newType, string $newUri): self
@@ -1014,7 +1014,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     #region Document tax representativ party
 
     /**
-     * @param string $newName __BT-62, From BASIC WL__ The full name of the seller's tax agent
+     * @param string $newName __BT-62, From BASIC WL__ The full formal name under which the party is registered.
      * @return self
      */
     public function setTaxRepresentativeName(string $newName): self
@@ -1035,7 +1035,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newId __BT-X-116, From EXTENDED__ An identifier of the sellers tax agent.
+     * @param string $newId __BT-X-116, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setTaxRepresentativeId(string $newId): self
@@ -1057,7 +1057,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newId __BT-X-116, From EXTENDED__ An identifier of the sellers tax agent.
+     * @param string $newId __BT-X-116, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addTaxRepresentativeId(string $newId): self
@@ -1078,8 +1078,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-X-117, From EXTENDED__ The seller's tax agent identifier identification scheme is an identifier uniquely assigned to a seller by a global registration organization.
-     * @param string $newGlobalIdType __BT-X-117-1, From EXTENDED__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId __BT-X-117, From EXTENDED__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-X-117-1, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
     public function setTaxRepresentativeGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -1103,8 +1103,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-X-117, From EXTENDED__ The seller's tax agent identifier identification scheme is an identifier uniquely assigned to a seller by a global registration organization.
-     * @param string $newGlobalIdType __BT-X-117-1, From EXTENDED__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId __BT-X-117, From EXTENDED__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-X-117-1, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
     public function addTaxRepresentativeGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -1128,8 +1128,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-63-0, From BASIC WL__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-63, From BASIC WL__ Tax number or sales tax identification number
+     * @param string $newTaxRegistrationType __BT-63-0, From BASIC WL__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-63, From BASIC WL__ Tax identification number.
      * @return self
      */
     public function setTaxRepresentativeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -1153,8 +1153,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-63-0, From BASIC WL__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-63, From BASIC WL__ Tax number or sales tax identification number
+     * @param string $newTaxRegistrationType __BT-63-0, From BASIC WL__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-63, From BASIC WL__ Tax identification number.
      * @return self
      */
     public function addTaxRepresentativeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -1179,13 +1179,13 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newAddressLine1 __BT-64, From BASIC WL__ The main line in the sellers tax agent address. This is usually the street name and house number or the post office box
-     * @param string $newAddressLine2 __BT-65, From BASIC WL__ Line 2 of the sellers tax agent address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newAddressLine3 __BT-164, From BASIC WL__ Line 3 of the sellers tax agent address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newPostcode     __BT-67, From BASIC WL__ Identifier for a group of properties, such as a zip code
-     * @param string $newCity         __BT-66, From BASIC WL__ Usual name of the city or municipality in which the sellers tax agent address is located
-     * @param string $newCountryId    __BT-69, From BASIC WL__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param string $newSubDivision  __BT-68, From BASIC WL__ The sellers tax agent state
+     * @param string $newAddressLine1 __BT-64, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 __BT-65, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 __BT-164, From BASIC WL__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode     __BT-67, From BASIC WL__ Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity         __BT-66, From BASIC WL__ Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId    __BT-69, From BASIC WL__ Country in which the party's address is located.
+     * @param string $newSubDivision  __BT-68, From BASIC WL__ Region or federal state in which the party's address is located.
      * @return self
      */
     public function setTaxRepresentativeAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
@@ -1241,9 +1241,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-, From __ The identifier for the identification scheme of the legal registration of the sellers tax agent. If the identification scheme is used, it must be selected from  ISO/IEC 6523 list
-     * @param string $newId   __BT-, From __ An identifier issued by an official registrar that identifies the seller tax agent as a legal entity or legal person.
-     * @param string $newName __BT-, From __ A name by which the sellers tax agent is known, if different from the  sellers tax agent name (also known as the company name)
+     * @param string $newType __BT-, From __ Type of the identification number of the legal registration of the party.
+     * @param string $newId   __BT-, From __ Identification number of the legal registration of the party.
+     * @param string $newName __BT-, From __ Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setTaxRepresentativeLegalOrganisation(string $newType, string $newId, string $newName): self
@@ -1272,11 +1272,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-X-120, From EXTENDED__ Such as personal name, name of contact person or department or office
-     * @param string $newDepartmentName __BT-X-121, From EXTENDED__ If a contact person is specified, either the name or the department must be transmitted.
-     * @param string $newPhoneNumber    __BT-X-122, From EXTENDED__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-123, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-X-124, From EXTENDED__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-X-120, From EXTENDED__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-X-121, From EXTENDED__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-X-122, From EXTENDED__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-123, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-X-124, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
     public function setTaxRepresentativeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -1305,11 +1305,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-X-120, From EXTENDED__ Such as personal name, name of contact person or department or office
-     * @param string $newDepartmentName __BT-X-121, From EXTENDED__ If a contact person is specified, either the name or the department must be transmitted.
-     * @param string $newPhoneNumber    __BT-X-122, From EXTENDED__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-123, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-X-124, From EXTENDED__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-X-120, From EXTENDED__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-X-121, From EXTENDED__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-X-122, From EXTENDED__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-123, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-X-124, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
     public function addTaxRepresentativeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -1356,8 +1356,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-X-125-0, From EXTENDED__ The identifier for the identification scheme of the tax representative's electronic address
-     * @param string $newUri  __BT-X-125, From EXTENDED__ Specifies the tax representative's electronic address to which the invoice is sent
+     * @param string $newType __BT-X-125-0, From EXTENDED__ The type for the party's electronic address.
+     * @param string $newUri  __BT-X-125, From EXTENDED__ The party's electronic address.
      * @return self
      */
     public function setTaxRepresentativeCommunication(string $newType, string $newUri): self
@@ -1388,7 +1388,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     #region Document Product Enduser
 
     /**
-     * @param string $newName __BT-X-128, From EXTENDED__ Name/company name of the end user
+     * @param string $newName __BT-X-128, From EXTENDED__ The full formal name under which the party is registered.
      * @return self
      */
     public function setProductEndUserName(string $newName): self
@@ -1409,7 +1409,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newId __BT-X-126, From EXTENDED__ An identifier of the product end user
+     * @param string $newId __BT-X-126, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setProductEndUserId(string $newId): self
@@ -1431,7 +1431,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newId __BT-X-126, From EXTENDED__ An identifier of the product end user
+     * @param string $newId __BT-X-126, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addProductEndUserId(string $newId): self
@@ -1452,8 +1452,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-X-127, From EXTENDED__ The identifier is uniquely assigned to a party by a global registration organization.
-     * @param string $newGlobalIdType __BT-X-127-0, From EXTENDED__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId __BT-X-127, From EXTENDED__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-X-127-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
     public function setProductEndUserGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -1477,8 +1477,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-X-127, From EXTENDED__ The identifier is uniquely assigned to a party by a global registration organization.
-     * @param string $newGlobalIdType __BT-X-127-0, From EXTENDED__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId __BT-X-127, From EXTENDED__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-X-127-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
     public function addProductEndUserGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -1502,8 +1502,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-, From __ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-, From __ Tax number or sales tax identification number
+     * @param string $newTaxRegistrationType __BT-, From __ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-, From __ Tax identification number.
      * @return self
      */
     public function setProductEndUserTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -1527,8 +1527,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-, From __ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-, From __ Tax number or sales tax identification number
+     * @param string $newTaxRegistrationType __BT-, From __ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-, From __ Tax identification number.
      * @return self
      */
     public function addProductEndUserTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -1553,13 +1553,13 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newAddressLine1 __BT-X-397, From EXTENDED__ The main line in the product end users address. This is usually the street name and house number or the post office box
-     * @param string $newAddressLine2 __BT-X-398, From EXTENDED__ Line 2 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newAddressLine3 __BT-X-399, From EXTENDED__ Line 3 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newPostcode     __BT-X-396, From EXTENDED__ Identifier for a group of properties, such as a zip code
-     * @param string $newCity         __BT-X-400, From EXTENDED__ Usual name of the city or municipality in which the product end users address is located
-     * @param string $newCountryId    __BT-X-401, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param string $newSubDivision  __BT-X-402, From EXTENDED__ The product end users state
+     * @param string $newAddressLine1 __BT-X-397, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 __BT-X-398, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 __BT-X-399, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode     __BT-X-396, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity         __BT-X-400, From EXTENDED__ Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId    __BT-X-401, From EXTENDED__ Country in which the party's address is located.
+     * @param string $newSubDivision  __BT-X-402, From EXTENDED__ Region or federal state in which the party's address is located.
      * @return self
      */
     public function setProductEndUserAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
@@ -1615,9 +1615,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-X-129-0, From EXTENDED__The identifier for the identification scheme of the legal registration of the product end user. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
-     * @param string $newId   __BT-X-129, From EXTENDED__ An identifier issued by an official registrar that identifies the product end user as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to all trade parties
-     * @param string $newName __BT-X-130, From EXTENDED__ A name by which the product end user is known, if different from the product end users name (also known as the company name)
+     * @param string $newType __BT-X-129-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
+     * @param string $newId   __BT-X-129, From EXTENDED__ Identification number of the legal registration of the party.
+     * @param string $newName __BT-X-130, From EXTENDED__ Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setProductEndUserLegalOrganisation(string $newType, string $newId, string $newName): self
@@ -1646,11 +1646,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-X-131, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param string $newDepartmentName __BT-X-132, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param string $newPhoneNumber    __BT-X-133, From EXTENDED__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-134, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-X-135, From EXTENDED__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-X-131, From EXTENDED__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-X-132, From EXTENDED__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-X-133, From EXTENDED__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-134, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-X-135, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
     public function setProductEndUserContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -1679,11 +1679,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-X-131, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param string $newDepartmentName __BT-X-132, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param string $newPhoneNumber    __BT-X-133, From EXTENDED__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-134, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-X-135, From EXTENDED__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-X-131, From EXTENDED__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-X-132, From EXTENDED__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-X-133, From EXTENDED__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-134, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-X-135, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
     public function addProductEndUserContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -1730,8 +1730,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-, From EXTENDED__ The identifier for the identification scheme of the party's electronic address
-     * @param string $newUri  __BT-, From EXTENDED__ The party's electronic address
+     * @param string $newType __BT-, From EXTENDED__ The type for the party's electronic address.
+     * @param string $newUri  __BT-, From EXTENDED__ The party's electronic address.
      * @return self
      */
     public function setProductEndUserCommunication(string $newType, string $newUri): self
@@ -1762,7 +1762,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     #region Document Ship-To
 
     /**
-     * @param string $newName __BT-70, From BASIC WL__ The name of the party to whom the goods are being delivered or for whom the services are being performed. Must be used if the recipient of the goods or services is not the same as the buyer.
+     * @param string $newName __BT-70, From BASIC WL__ The full formal name under which the party is registered.
      * @return self
      */
     public function setShipToName(string $newName): self
@@ -1783,7 +1783,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string __BT-71, From BASIC WL__ An identifier for the place where the goods are delivered or where the services are provided. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @param string __BT-71, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setShipToId(string $newId): self
@@ -1805,7 +1805,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newId __BT-71, From BASIC WL__ An identifier for the place where the goods are delivered or where the services are provided. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @param string $newId __BT-71, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addShipToId(string $newId): self
@@ -1826,8 +1826,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-71-0, From BASIC WL__ Global identifier of the goods recipient
-     * @param string $newGlobalIdType __BT-71-1, From BASIC WL__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId __BT-71-0, From BASIC WL__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-71-1, From BASIC WL__ Type of the global identifier of the party.
      * @return self
      */
     public function setShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -1851,8 +1851,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-71-0, From BASIC WL__ Global identifier of the goods recipient
-     * @param string $newGlobalIdType __BT-71-1, From BASIC WL__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId __BT-71-0, From BASIC WL__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-71-1, From BASIC WL__ Type of the global identifier of the party.
      * @return self
      */
     public function addShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -1876,8 +1876,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-X-161-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-X-161, From EXTENDED__ Tax number or sales tax identification number
+     * @param string $newTaxRegistrationType __BT-X-161-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-X-161, From EXTENDED__ Tax identification number.
      * @return self
      */
     public function setShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -1901,8 +1901,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-X-161-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-X-161, From EXTENDED__ Tax number or sales tax identification number
+     * @param string $newTaxRegistrationType __BT-X-161-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-X-161, From EXTENDED__ Tax identification number.
      * @return self
      */
     public function addShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -1927,13 +1927,13 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newAddressLine1 __BT-75, From BASIC WL__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param string $newAddressLine2 __BT-76, From BASIC WL__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newAddressLine3 __BT-165, From BASIC WL__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newPostcode     __BT-78, From BASIC WL__ Identifier for a group of properties, such as a zip code
-     * @param string $newCity         __BT-77, From BASIC WL__ Usual name of the city or municipality in which the party's address is located
-     * @param string $newCountryId    __BT-80, From BASIC WL__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param string $newSubDivision  __BT-79, From BASIC WL__ The party's state
+     * @param string $newAddressLine1 __BT-75, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 __BT-76, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 __BT-165, From BASIC WL__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode     __BT-78, From BASIC WL__ Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity         __BT-77, From BASIC WL__ Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId    __BT-80, From BASIC WL__ Country in which the party's address is located.
+     * @param string $newSubDivision  __BT-79, From BASIC WL__ Region or federal state in which the party's address is located.
      * @return self
      */
     public function setShipToAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
@@ -1989,9 +1989,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-X-153-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param string $newId   __BT-X-153, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param string $newName __BT-X-154, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param string $newType __BT-X-153-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
+     * @param string $newId   __BT-X-153, From EXTENDED__ Identification number of the legal registration of the party.
+     * @param string $newName __BT-X-154, From EXTENDED__ Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setShipToLegalOrganisation(string $newType, string $newId, string $newName): self
@@ -2020,11 +2020,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-X-155, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param string $newDepartmentName __BT-X-156, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param string $newPhoneNumber    __BT-X-157, From EXTENDED__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-158, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-X-159, From EXTENDED__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-X-155, From EXTENDED__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-X-156, From EXTENDED__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-X-157, From EXTENDED__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-158, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-X-159, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
     public function setShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -2053,11 +2053,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-X-155, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param string $newDepartmentName __BT-X-156, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param string $newPhoneNumber    __BT-X-157, From EXTENDED__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-158, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-X-159, From EXTENDED__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-X-155, From EXTENDED__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-X-156, From EXTENDED__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-X-157, From EXTENDED__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-158, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-X-159, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
     public function addShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -2104,8 +2104,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-X-160, From EXTENDED__ The identifier for the identification scheme of the party's electronic address
-     * @param string $newUri  __BT-X-160-0, From EXTENDED__ The party's electronic address
+     * @param string $newType __BT-X-160, From EXTENDED__ The type for the party's electronic address.
+     * @param string $newUri  __BT-X-160-0, From EXTENDED__ The party's electronic address.
      * @return self
      */
     public function setShipToCommunication(string $newType, string $newUri): self
@@ -2136,7 +2136,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     #region Document Ultimate Ship-To
 
     /**
-     * @param string $newName __BT-X-164, From EXTENDED__ Name or company name of the different end recipient
+     * @param string $newName __BT-X-164, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
     public function setUltimateShipToName(string $newName): self
@@ -2157,7 +2157,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newId __BT-X-162, From EXTENDED__ Identification of the different end recipient. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes.
+     * @param string $newId __BT-X-162, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setUltimateShipToId(string $newId): self
@@ -2179,7 +2179,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newId __BT-X-162, From EXTENDED__ Identification of the different end recipient. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes.
+     * @param string $newId __BT-X-162, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addUltimateShipToId(string $newId): self
@@ -2200,8 +2200,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-X-163, From EXTENDED__ Global identifier of the different end recipient
-     * @param string $newGlobalIdType __BT-X-163-0, From EXTENDED__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId __BT-X-163, From EXTENDED__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-X-163-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
     public function setUltimateShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -2225,8 +2225,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-X-163, From EXTENDED__ Global identifier of the different end recipient
-     * @param string $newGlobalIdType __BT-X-163-0, From EXTENDED__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId __BT-X-163, From EXTENDED__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-X-163-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
     public function addUltimateShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -2250,8 +2250,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-X-180-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-X-180, From EXTENDED__ Tax number or sales tax identification number
+     * @param string $newTaxRegistrationType __BT-X-180-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-X-180, From EXTENDED__ Tax identification number.
      * @return self
      */
     public function setUltimateShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -2275,8 +2275,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-X-180-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-X-180, From EXTENDED__ Tax number or sales tax identification number
+     * @param string $newTaxRegistrationType __BT-X-180-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-X-180, From EXTENDED__ Tax identification number.
      * @return self
      */
     public function addUltimateShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -2301,13 +2301,13 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newAddressLine1 __BT-X-173, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box. For major customer addresses, this field must be filled with "-".
-     * @param string $newAddressLine2 __BT-X-174, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newAddressLine3 __BT-X-175, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newPostcode     __BT-X-172, From EXTENDED__ Identifier for a group of properties, such as a zip code
-     * @param string $newCity         __BT-X-176, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
-     * @param string $newCountryId    __BT-X-177, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param string $newSubDivision  __BT-X-178, From EXTENDED__ The party's state
+     * @param string $newAddressLine1 __BT-X-173, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 __BT-X-174, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 __BT-X-175, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode     __BT-X-172, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity         __BT-X-176, From EXTENDED__ Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId    __BT-X-177, From EXTENDED__ Country in which the party's address is located.
+     * @param string $newSubDivision  __BT-X-178, From EXTENDED__ Region or federal state in which the party's address is located.
      * @return self
      */
     public function setUltimateShipToAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
@@ -2363,9 +2363,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-X-165-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param string $newId   __BT-X-165, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param string $newName __BT-X-166, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param string $newType __BT-X-165-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
+     * @param string $newId   __BT-X-165, From EXTENDED__ Identification number of the legal registration of the party.
+     * @param string $newName __BT-X-166, From EXTENDED__ Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setUltimateShipToLegalOrganisation(string $newType, string $newId, string $newName): self
@@ -2394,11 +2394,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-X-167, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param string $newDepartmentName __BT-X-168, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param string $newPhoneNumber    __BT-X-169, From EXTENDED__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-170, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-X-171, From EXTENDED__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-X-167, From EXTENDED__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-X-168, From EXTENDED__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-X-169, From EXTENDED__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-170, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-X-171, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
     public function setUltimateShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -2427,11 +2427,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-X-167, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param string $newDepartmentName __BT-X-168, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param string $newPhoneNumber    __BT-X-169, From EXTENDED__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-170, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-X-171, From EXTENDED__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-X-167, From EXTENDED__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-X-168, From EXTENDED__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-X-169, From EXTENDED__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-170, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-X-171, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
     public function addUltimateShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -2478,8 +2478,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-X-83, From EXTENDED__ The identifier for the identification scheme of the party's electronic address
-     * @param string $newUri  __BT-X-83-0, From EXTENDED__ The party's electronic address
+     * @param string $newType __BT-X-83, From EXTENDED__ The type for the party's electronic address.
+     * @param string $newUri  __BT-X-83-0, From EXTENDED__ The party's electronic address.
      * @return self
      */
     public function setUltimateShipToCommunication(string $newType, string $newUri): self
@@ -2510,7 +2510,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     #region Document Ship-From
 
     /**
-     * @param string $newName __BT-X-183, From EXTENDED__ The name of the party
+     * @param string $newName __BT-X-183, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
     public function setShipFromName(string $newName): self
@@ -2531,7 +2531,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newId __BT-X-181, From EXTENDED__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @param string $newId __BT-X-181, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setShipFromId(string $newId): self
@@ -2553,7 +2553,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newId __BT-X-181, From EXTENDED__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @param string $newId __BT-X-181, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addShipFromId(string $newId): self
@@ -2574,8 +2574,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-X-182, From EXTENDED__ Global identifier of the goods recipient
-     * @param string $newGlobalIdType __BT-X-182-0, From EXTENDED__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId __BT-X-182, From EXTENDED__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-X-182-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
     public function setShipFromGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -2599,8 +2599,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-X-182, From EXTENDED__ Global identifier of the goods recipient
-     * @param string $newGlobalIdType __BT-X-182-0, From EXTENDED__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId __BT-X-182, From EXTENDED__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-X-182-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
     public function addShipFromGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -2624,8 +2624,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-X-199-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-X-199, From EXTENDED__ Tax number or sales tax identification number
+     * @param string $newTaxRegistrationType __BT-X-199-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-X-199, From EXTENDED__ Tax identification number.
      * @return self
      */
     public function setShipFromTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -2649,8 +2649,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-X-199-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-X-199, From EXTENDED__ Tax number or sales tax identification number
+     * @param string $newTaxRegistrationType __BT-X-199-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-X-199, From EXTENDED__ Tax identification number.
      * @return self
      */
     public function addShipFromTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -2675,13 +2675,13 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newAddressLine1 __BT-X-192, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param string $newAddressLine2 __BT-X-193, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newAddressLine3 __BT-X-194, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newPostcode     __BT-X-191, From EXTENDED__ Identifier for a group of properties, such as a zip code
-     * @param string $newCity         __BT-X-195, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
-     * @param string $newCountryId    __BT-X-196, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param string $newSubDivision  __BT-X-197, From EXTENDED__ The party's state
+     * @param string $newAddressLine1 __BT-X-192, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 __BT-X-193, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 __BT-X-194, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode     __BT-X-191, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity         __BT-X-195, From EXTENDED__ Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId    __BT-X-196, From EXTENDED__ Country in which the party's address is located.
+     * @param string $newSubDivision  __BT-X-197, From EXTENDED__ Region or federal state in which the party's address is located.
      * @return self
      */
     public function setShipFromAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
@@ -2737,9 +2737,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-X-184-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param string $newId   __BT-X-184, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param string $newName __BT-X-185, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param string $newType __BT-X-184-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
+     * @param string $newId   __BT-X-184, From EXTENDED__ Identification number of the legal registration of the party.
+     * @param string $newName __BT-X-185, From EXTENDED__ Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setShipFromLegalOrganisation(string $newType, string $newId, string $newName): self
@@ -2768,11 +2768,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-X-186, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param string $newDepartmentName __BT-X-187, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param string $newPhoneNumber    __BT-X-188, From EXTENDED__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-189, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-X-190, From EXTENDED__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-X-186, From EXTENDED__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-X-187, From EXTENDED__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-X-188, From EXTENDED__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-189, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-X-190, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
     public function setShipFromContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -2801,11 +2801,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-X-186, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param string $newDepartmentName __BT-X-187, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param string $newPhoneNumber    __BT-X-188, From EXTENDED__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-189, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-X-190, From EXTENDED__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-X-186, From EXTENDED__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-X-187, From EXTENDED__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-X-188, From EXTENDED__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-189, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-X-190, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
     public function addShipFromContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -2852,8 +2852,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-X-199, From EXTENDED__ The identifier for the identification scheme of the party's electronic address
-     * @param string $newUri  __BT-X-199-0, From EXTENDED__ The party's electronic address
+     * @param string $newType __BT-X-199, From EXTENDED__ The type for the party's electronic address.
+     * @param string $newUri  __BT-X-199-0, From EXTENDED__ The party's electronic address.
      * @return self
      */
     public function setShipFromCommunication(string $newType, string $newUri): self
@@ -2884,7 +2884,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     #region Document Invoicer
 
     /**
-     * @param string $newName __BT-X-207, From EXTENDED__ The name of the party
+     * @param string $newName __BT-X-207, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
     public function setInvoicerName(string $newName): self
@@ -2905,7 +2905,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newId __BT-X-205, From EXTENDED__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @param string $newId __BT-X-205, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setInvoicerId(string $newId): self
@@ -2927,7 +2927,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newId __BT-X-205, From EXTENDED__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @param string $newId __BT-X-205, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addInvoicerId(string $newId): self
@@ -2948,8 +2948,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-X-206, From EXTENDED__ Global identification number
-     * @param string $newGlobalIdType __BT-X-206-0, From EXTENDED__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId __BT-X-206, From EXTENDED__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-X-206-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
     public function setInvoicerGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -2973,8 +2973,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-X-206, From EXTENDED__ Global identifier of the goods recipient
-     * @param string $newGlobalIdType __BT-X-206-0, From EXTENDED__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId __BT-X-206, From EXTENDED__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-X-206-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
     public function addInvoicerGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -2998,8 +2998,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-X-223-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-X-223, From EXTENDED__ Tax number or sales tax identification number
+     * @param string $newTaxRegistrationType __BT-X-223-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-X-223, From EXTENDED__ Tax identification number.
      * @return self
      */
     public function setInvoicerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -3023,8 +3023,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-X-223-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-X-223, From EXTENDED__ Tax number or sales tax identification number
+     * @param string $newTaxRegistrationType __BT-X-223-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-X-223, From EXTENDED__ Tax identification number.
      * @return self
      */
     public function addInvoicerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -3049,13 +3049,13 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newAddressLine1 __BT-X-216, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param string $newAddressLine2 __BT-X-217, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newAddressLine3 __BT-X-218, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newPostcode     __BT-X-215, From EXTENDED__ Identifier for a group of properties, such as a zip code
-     * @param string $newCity         __BT-X-219, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
-     * @param string $newCountryId    __BT-X-220, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param string $newSubDivision  __BT-X-221, From EXTENDED__ The party's state
+     * @param string $newAddressLine1 __BT-X-216, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 __BT-X-217, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 __BT-X-218, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode     __BT-X-215, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity         __BT-X-219, From EXTENDED__ Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId    __BT-X-220, From EXTENDED__ Country in which the party's address is located.
+     * @param string $newSubDivision  __BT-X-221, From EXTENDED__ Region or federal state in which the party's address is located.
      * @return self
      */
     public function setInvoicerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
@@ -3111,9 +3111,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-X-208-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,* 0060 : DUNS, 0177 : ODETTE
-     * @param string $newId   __BT-X-208, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param string $newName __BT-X-209, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param string $newType __BT-X-208-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
+     * @param string $newId   __BT-X-208, From EXTENDED__ Identification number of the legal registration of the party.
+     * @param string $newName __BT-X-209, From EXTENDED__ Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setInvoicerLegalOrganisation(string $newType, string $newId, string $newName): self
@@ -3142,11 +3142,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-X-210, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param string $newDepartmentName __BT-X-211, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param string $newPhoneNumber    __BT-X-212, From EXTENDED__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-213, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-X-214, From EXTENDED__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-X-210, From EXTENDED__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-X-211, From EXTENDED__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-X-212, From EXTENDED__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-213, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-X-214, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
     public function setInvoicerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -3175,11 +3175,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-X-210, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param string $newDepartmentName __BT-X-211, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param string $newPhoneNumber    __BT-X-212, From EXTENDED__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-213, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-X-214, From EXTENDED__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-X-210, From EXTENDED__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-X-211, From EXTENDED__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-X-212, From EXTENDED__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-213, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-X-214, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
     public function addInvoicerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -3226,8 +3226,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-X-222-0, From EXTENDED__ The identifier for the identification scheme of the party's electronic address
-     * @param string $newUri  __BT-X-222, From EXTENDED__ The party's electronic address
+     * @param string $newType __BT-X-222-0, From EXTENDED__ The type for the party's electronic address.
+     * @param string $newUri  __BT-X-222, From EXTENDED__ The party's electronic address.
      * @return self
      */
     public function setInvoicerCommunication(string $newType, string $newUri): self
@@ -3258,7 +3258,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     #region Document Invoicee
 
     /**
-     * @param string $newName __BT-X-226, From EXTENDED__ The name of the party
+     * @param string $newName __BT-X-226, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
     public function setInvoiceeName(string $newName): self
@@ -3279,7 +3279,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newId __BT-X-224, From EXTENDED__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @param string $newId __BT-X-224, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setInvoiceeId(string $newId): self
@@ -3301,7 +3301,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newId __BT-X-224, From EXTENDED__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @param string $newId __BT-X-224, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addInvoiceeId(string $newId): self
@@ -3322,8 +3322,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-X-225, From EXTENDED__ Global identification number
-     * @param string $newGlobalIdType __BT-X-225-0, From EXTENDED__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId __BT-X-225, From EXTENDED__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-X-225-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
     public function setInvoiceeGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -3347,8 +3347,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-X-225, From EXTENDED__ Global identification number
-     * @param string $newGlobalIdType __BT-X-225-0, From EXTENDED__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId __BT-X-225, From EXTENDED__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-X-225-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
     public function addInvoiceeGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -3372,8 +3372,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-X-242-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-X-242, From EXTENDED__ Tax number or sales tax identification number
+     * @param string $newTaxRegistrationType __BT-X-242-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-X-242, From EXTENDED__ Tax identification number.
      * @return self
      */
     public function setInvoiceeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -3397,8 +3397,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-X-242-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-X-242, From EXTENDED__ Tax number or sales tax identification number
+     * @param string $newTaxRegistrationType __BT-X-242-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-X-242, From EXTENDED__ Tax identification number.
      * @return self
      */
     public function addInvoiceeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -3423,13 +3423,13 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newAddressLine1 __BT-X-235, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param string $newAddressLine2 __BT-X-236, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newAddressLine3 __BT-X-237, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newPostcode     __BT-X-234, From EXTENDED__ Identifier for a group of properties, such as a zip code
-     * @param string $newCity         __BT-X-238, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
-     * @param string $newCountryId    __BT-X-239, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param string $newSubDivision  __BT-X-240, From EXTENDED__ The party's state
+     * @param string $newAddressLine1 __BT-X-235, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 __BT-X-236, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 __BT-X-237, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode     __BT-X-234, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity         __BT-X-238, From EXTENDED__ Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId    __BT-X-239, From EXTENDED__ Country in which the party's address is located.
+     * @param string $newSubDivision  __BT-X-240, From EXTENDED__ Region or federal state in which the party's address is located.
      * @return self
      */
     public function setInvoiceeAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
@@ -3485,9 +3485,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-X-227-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,* 0060 : DUNS, 0177 : ODETTE
-     * @param string $newId   __BT-X-227, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param string $newName __BT-X-228, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param string $newType __BT-X-227-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
+     * @param string $newId   __BT-X-227, From EXTENDED__ Identification number of the legal registration of the party.
+     * @param string $newName __BT-X-228, From EXTENDED__ Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setInvoiceeLegalOrganisation(string $newType, string $newId, string $newName): self
@@ -3516,11 +3516,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-X-229, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param string $newDepartmentName __BT-X-230, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param string $newPhoneNumber    __BT-X-231, From EXTENDED__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-232, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-X-233, From EXTENDED__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-X-229, From EXTENDED__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-X-230, From EXTENDED__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-X-231, From EXTENDED__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-232, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-X-233, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
     public function setInvoiceeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -3549,11 +3549,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-X-229, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param string $newDepartmentName __BT-X-230, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param string $newPhoneNumber    __BT-X-231, From EXTENDED__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-232, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-X-233, From EXTENDED__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-X-229, From EXTENDED__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-X-230, From EXTENDED__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-X-231, From EXTENDED__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-232, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-X-233, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
     public function addInvoiceeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -3600,8 +3600,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-X-241-0, From EXTENDED__ The identifier for the identification scheme of the party's electronic address
-     * @param string $newUri  __BT-X-241, From EXTENDED__ The party's electronic address
+     * @param string $newType __BT-X-241-0, From EXTENDED__ The type for the party's electronic address.
+     * @param string $newUri  __BT-X-241, From EXTENDED__ The party's electronic address.
      * @return self
      */
     public function setInvoiceeCommunication(string $newType, string $newUri): self
@@ -3632,7 +3632,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     #region Document Payee
 
     /**
-     * @param string $newName __BT-59, From BASIC WL__ The name of the party
+     * @param string $newName __BT-59, From BASIC WL__ The full formal name under which the party is registered.
      * @return self
      */
     public function setPayeeName(string $newName): self
@@ -3653,7 +3653,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newId __BT-60, From BASIC WL__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @param string $newId __BT-60, From BASIC WL__ >An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setPayeeId(string $newId): self
@@ -3675,7 +3675,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newId __BT-60, From BASIC WL__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @param string $newId __BT-60, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addPayeeId(string $newId): self
@@ -3696,8 +3696,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-60-0, From BASIC WL__ Global identification number
-     * @param string $newGlobalIdType __BT-60-1, From BASIC WL__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId __BT-60-0, From BASIC WL__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-60-1, From BASIC WL__ Type of the global identifier of the party.
      * @return self
      */
     public function setPayeeGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -3721,8 +3721,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newGlobalId     __BT-60-0, From BASIC WL__ Global identification number
-     * @param string $newGlobalIdType __BT-60-1, From BASIC WL__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string $newGlobalId __BT-60-0, From BASIC WL__ A global identifier of the party.
+     * @param string $newGlobalIdType __BT-60-1, From BASIC WL__ Type of the global identifier of the party.
      * @return self
      */
     public function addPayeeGlobalId(string $newGlobalId, string $newGlobalIdType): self
@@ -3746,8 +3746,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-X-257-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-X-257, From EXTENDED__ Tax number or sales tax identification number
+     * @param string $newTaxRegistrationType __BT-X-257-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-X-257, From EXTENDED__ Tax identification number.
      * @return self
      */
     public function setPayeeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -3771,8 +3771,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-X-257-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   __BT-X-257, From EXTENDED__ Tax number or sales tax identification number
+     * @param string $newTaxRegistrationType __BT-X-257-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId   __BT-X-257, From EXTENDED__ Tax identification number.
      * @return self
      */
     public function addPayeeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
@@ -3797,13 +3797,13 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newAddressLine1 __BT-X-250, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param string $newAddressLine2 __BT-X-251, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newAddressLine3 __BT-X-252, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newPostcode     __BT-X-249, From EXTENDED__ Identifier for a group of properties, such as a zip code
-     * @param string $newCity         __BT-X-253, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
-     * @param string $newCountryId    __BT-X-254, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param string $newSubDivision  __BT-X-255, From EXTENDED__ The party's state
+     * @param string $newAddressLine1 __BT-X-250, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 __BT-X-251, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 __BT-X-252, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode     __BT-X-249, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity         __BT-X-253, From EXTENDED__ Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId    __BT-X-254, From EXTENDED__ Country in which the party's address is located.
+     * @param string $newSubDivision  __BT-X-255, From EXTENDED__ Region or federal state in which the party's address is located.
      * @return self
      */
     public function setPayeeAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
@@ -3890,11 +3890,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-X-244, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param string $newDepartmentName __BT-X-245, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param string $newPhoneNumber    __BT-X-246, From EXTENDED__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-247, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-X-248, From EXTENDED__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-X-244, From EXTENDED__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-X-245, From EXTENDED__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-X-246, From EXTENDED__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-247, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-X-248, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
     public function setPayeeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -3923,11 +3923,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newPersonName     __BT-X-244, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param string $newDepartmentName __BT-X-245, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param string $newPhoneNumber    __BT-X-246, From EXTENDED__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-247, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-X-248, From EXTENDED__ An e-mail address of the contact point
+     * @param string $newPersonName     __BT-X-244, From EXTENDED__ Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName __BT-X-245, From EXTENDED__ Name of the department for the contact point.
+     * @param string $newPhoneNumber    __BT-X-246, From EXTENDED__ Telephone number for the contact point.
+     * @param string $newFaxNumber      __BT-X-247, From EXTENDED__ Fax number of the contact point.
+     * @param string $newEmailAddress   __BT-X-248, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
     public function addPayeeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -3974,8 +3974,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newType __BT-X-256-0, From EXTENDED__ The identifier for the identification scheme of the party's electronic address
-     * @param string $newUri  __BT-X-256, From EXTENDED__ The party's electronic address
+     * @param string $newType __BT-X-256-0, From EXTENDED__ The type for the party's electronic address.
+     * @param string $newUri  __BT-X-256, From EXTENDED__ The party's electronic address.
      * @return self
      */
     public function setPayeeCommunication(string $newType, string $newUri): self

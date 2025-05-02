@@ -121,7 +121,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the name of the seller/supplier party
      *
-     * @param  string $newName
+     * @param string $newName The full formal name under which the party is registered.
      * @return self
      */
     public function setSellerName(string $newName): self;
@@ -129,7 +129,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the ID of the seller/supplier party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setSellerId(string $newId): self;
@@ -137,7 +137,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the seller/supplier party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addSellerId(string $newId): self;
@@ -145,8 +145,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Global ID of the seller/supplier party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function setSellerGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -154,8 +154,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the seller/supplier party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function addSellerGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -163,8 +163,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Tax Registration of the seller/supplier party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function setSellerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -172,8 +172,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an Tax Registration to the seller/supplier party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function addSellerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -181,13 +181,13 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the address of the seller/supplier party
      *
-     * @param  string $newAddressLine1
-     * @param  string $newAddressLine2
-     * @param  string $newAddressLine3
-     * @param  string $newPostcode
-     * @param  string $newCity
-     * @param  string $newCountryId
-     * @param  string $newSubDivision
+     * @param string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId Country in which the party's address is located.
+     * @param string $newSubDivision Region or federal state in which the party's address is located.
      * @return self
      */
     public function setSellerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self;
@@ -195,9 +195,9 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the legal information of the seller/supplier party
      *
-     * @param  string $newType
-     * @param  string $newId
-     * @param  string $newName
+     * @param string $newType Type of the identification number of the legal registration of the party.
+     * @param string $newId Identification number of the legal registration of the party.
+     * @param string $newName Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setSellerLegalOrganisation(string $newType, string $newId, string $newName): self;
@@ -205,11 +205,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the contact information of the seller/supplier party
      *
-     * @param  string $newPersonName
-     * @param  string $newDepartmentName
-     * @param  string $newPhoneNumber
-     * @param  string $newFaxNumber
-     * @param  string $newEmailAddress
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function setSellerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
@@ -217,11 +217,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add contact information of the seller/supplier party
      *
-     * @param  string $newPersonName
-     * @param  string $newDepartmentName
-     * @param  string $newPhoneNumber
-     * @param  string $newFaxNumber
-     * @param  string $newEmailAddress
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function addSellerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
@@ -229,8 +229,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add communication information of the seller/supplier party
      *
-     * @param  string $newType
-     * @param  string $newUri
+     * @param string $newType The type for the party's electronic address.
+     * @param string $newUri The party's electronic address.
      * @return self
      */
     public function setSellerCommunication(string $newType, string $newUri): self;
@@ -242,7 +242,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the name of the buyer/customer party
      *
-     * @param  string $newName
+     * @param string $newName The full formal name under which the party is registered.
      * @return self
      */
     public function setBuyerName(string $newName): self;
@@ -250,7 +250,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the ID of the buyer/customer party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setBuyerId(string $newId): self;
@@ -258,7 +258,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the buyer/customer party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addBuyerId(string $newId): self;
@@ -266,8 +266,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Global ID of the buyer/customer party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function setBuyerGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -275,8 +275,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the buyer/customer party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function addBuyerGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -284,8 +284,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Tax Registration of the buyer/customer party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function setBuyerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -293,8 +293,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an Tax Registration to the buyer/customer party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function addBuyerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -302,13 +302,13 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the address of the buyer/customer party
      *
-     * @param  string $newAddressLine1
-     * @param  string $newAddressLine2
-     * @param  string $newAddressLine3
-     * @param  string $newPostcode
-     * @param  string $newCity
-     * @param  string $newCountryId
-     * @param  string $newSubDivision
+     * @param string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId Country in which the party's address is located.
+     * @param string $newSubDivision Region or federal state in which the party's address is located.
      * @return self
      */
     public function setBuyerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self;
@@ -316,9 +316,9 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the legal information of the buyer/customer party
      *
-     * @param  string $newType
-     * @param  string $newId
-     * @param  string $newName
+     * @param string $newType Type of the identification number of the legal registration of the party.
+     * @param string $newId Identification number of the legal registration of the party.
+     * @param string $newName Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setBuyerLegalOrganisation(string $newType, string $newId, string $newName): self;
@@ -338,11 +338,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add contact information of the buyer/customer party
      *
-     * @param  string $newPersonName
-     * @param  string $newDepartmentName
-     * @param  string $newPhoneNumber
-     * @param  string $newFaxNumber
-     * @param  string $newEmailAddress
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function addBuyerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
@@ -350,8 +350,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add communication information of the buyer/customer party
      *
-     * @param  string $newType
-     * @param  string $newUri
+     * @param string $newType The type for the party's electronic address.
+     * @param string $newUri The party's electronic address.
      * @return self
      */
     public function setBuyerCommunication(string $newType, string $newUri): self;
@@ -363,7 +363,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the name of the tax representative party
      *
-     * @param  string $newName
+     * @param string $newName The full formal name under which the party is registered.
      * @return self
      */
     public function setTaxRepresentativeName(string $newName): self;
@@ -371,7 +371,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the ID of the tax representative party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setTaxRepresentativeId(string $newId): self;
@@ -379,7 +379,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the tax representative party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addTaxRepresentativeId(string $newId): self;
@@ -387,8 +387,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Global ID of the tax representative party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function setTaxRepresentativeGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -396,8 +396,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the tax representative party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function addTaxRepresentativeGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -405,8 +405,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Tax Registration of the tax representative party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function setTaxRepresentativeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -414,8 +414,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an Tax Registration to the tax representative party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function addTaxRepresentativeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -423,13 +423,13 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the address of the tax representative party
      *
-     * @param  string $newAddressLine1
-     * @param  string $newAddressLine2
-     * @param  string $newAddressLine3
-     * @param  string $newPostcode
-     * @param  string $newCity
-     * @param  string $newCountryId
-     * @param  string $newSubDivision
+     * @param string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId Country in which the party's address is located.
+     * @param string $newSubDivision Region or federal state in which the party's address is located.
      * @return self
      */
     public function setTaxRepresentativeAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self;
@@ -437,9 +437,9 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the legal information of the tax representative party
      *
-     * @param  string $newType
-     * @param  string $newId
-     * @param  string $newName
+     * @param string $newType Type of the identification number of the legal registration of the party.
+     * @param string $newId Identification number of the legal registration of the party.
+     * @param string $newName Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setTaxRepresentativeLegalOrganisation(string $newType, string $newId, string $newName): self;
@@ -447,11 +447,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the contact information of the tax representative party
      *
-     * @param  string $newPersonName
-     * @param  string $newDepartmentName
-     * @param  string $newPhoneNumber
-     * @param  string $newFaxNumber
-     * @param  string $newEmailAddress
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function setTaxRepresentativeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
@@ -459,11 +459,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add contact information of the tax representative party
      *
-     * @param  string $newPersonName
-     * @param  string $newDepartmentName
-     * @param  string $newPhoneNumber
-     * @param  string $newFaxNumber
-     * @param  string $newEmailAddress
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function addTaxRepresentativeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
@@ -471,8 +471,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add communication information of the tax representative party
      *
-     * @param  string $newType
-     * @param  string $newUri
+     * @param string $newType The type for the party's electronic address.
+     * @param string $newUri The party's electronic address.
      * @return self
      */
     public function setTaxRepresentativeCommunication(string $newType, string $newUri): self;
@@ -484,7 +484,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the name of the product end-user party
      *
-     * @param  string $newName
+     * @param string $newName The full formal name under which the party is registered.
      * @return self
      */
     public function setProductEndUserName(string $newName): self;
@@ -492,7 +492,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the ID of the product end-user party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setProductEndUserId(string $newId): self;
@@ -500,7 +500,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the product end-user party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addProductEndUserId(string $newId): self;
@@ -508,8 +508,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Global ID of the product end-user party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function setProductEndUserGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -517,8 +517,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the product end-user party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function addProductEndUserGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -526,8 +526,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Tax Registration of the product end-user party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function setProductEndUserTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -535,8 +535,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an Tax Registration to the product end-user party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function addProductEndUserTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -544,13 +544,13 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the address of the product end-user party
      *
-     * @param  string $newAddressLine1
-     * @param  string $newAddressLine2
-     * @param  string $newAddressLine3
-     * @param  string $newPostcode
-     * @param  string $newCity
-     * @param  string $newCountryId
-     * @param  string $newSubDivision
+     * @param string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId Country in which the party's address is located.
+     * @param string $newSubDivision Region or federal state in which the party's address is located.
      * @return self
      */
     public function setProductEndUserAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self;
@@ -558,9 +558,9 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the legal information of the product end-user party
      *
-     * @param  string $newType
-     * @param  string $newId
-     * @param  string $newName
+     * @param string $newType Type of the identification number of the legal registration of the party.
+     * @param string $newId Identification number of the legal registration of the party.
+     * @param string $newName Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setProductEndUserLegalOrganisation(string $newType, string $newId, string $newName): self;
@@ -568,11 +568,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the contact information of the product end-user party
      *
-     * @param  string $newPersonName
-     * @param  string $newDepartmentName
-     * @param  string $newPhoneNumber
-     * @param  string $newFaxNumber
-     * @param  string $newEmailAddress
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function setProductEndUserContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
@@ -580,11 +580,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add contact information of the product end-user party
      *
-     * @param  string $newPersonName
-     * @param  string $newDepartmentName
-     * @param  string $newPhoneNumber
-     * @param  string $newFaxNumber
-     * @param  string $newEmailAddress
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function addProductEndUserContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
@@ -592,8 +592,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add communication information of the product end-user party
      *
-     * @param  string $newType
-     * @param  string $newUri
+     * @param string $newType The type for the party's electronic address.
+     * @param string $newUri The party's electronic address.
      * @return self
      */
     public function setProductEndUserCommunication(string $newType, string $newUri): self;
@@ -605,7 +605,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the name of the Ship-To party
      *
-     * @param  string $newName
+     * @param string $newName The full formal name under which the party is registered.
      * @return self
      */
     public function setShipToName(string $newName): self;
@@ -613,7 +613,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the ID of the Ship-To party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setShipToId(string $newId): self;
@@ -621,7 +621,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the Ship-To party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addShipToId(string $newId): self;
@@ -629,8 +629,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Global ID of the Ship-To party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function setShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -638,8 +638,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the Ship-To party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function addShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -647,8 +647,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Tax Registration of the Ship-To party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function setShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -656,8 +656,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an Tax Registration to the Ship-To party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function addShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -665,13 +665,13 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the address of the Ship-To party
      *
-     * @param  string $newAddressLine1
-     * @param  string $newAddressLine2
-     * @param  string $newAddressLine3
-     * @param  string $newPostcode
-     * @param  string $newCity
-     * @param  string $newCountryId
-     * @param  string $newSubDivision
+     * @param string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId Country in which the party's address is located.
+     * @param string $newSubDivision Region or federal state in which the party's address is located.
      * @return self
      */
     public function setShipToAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self;
@@ -679,9 +679,9 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the legal information of the Ship-To party
      *
-     * @param  string $newType
-     * @param  string $newId
-     * @param  string $newName
+     * @param string $newType Type of the identification number of the legal registration of the party.
+     * @param string $newId Identification number of the legal registration of the party.
+     * @param string $newName Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setShipToLegalOrganisation(string $newType, string $newId, string $newName): self;
@@ -689,11 +689,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the contact information of the Ship-To party
      *
-     * @param  string $newPersonName
-     * @param  string $newDepartmentName
-     * @param  string $newPhoneNumber
-     * @param  string $newFaxNumber
-     * @param  string $newEmailAddress
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function setShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
@@ -701,11 +701,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add contact information of the Ship-To party
      *
-     * @param  string $newPersonName
-     * @param  string $newDepartmentName
-     * @param  string $newPhoneNumber
-     * @param  string $newFaxNumber
-     * @param  string $newEmailAddress
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function addShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
@@ -713,8 +713,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add communication information of the Ship-To party
      *
-     * @param  string $newType
-     * @param  string $newUri
+     * @param string $newType The type for the party's electronic address.
+     * @param string $newUri The party's electronic address.
      * @return self
      */
     public function setShipToCommunication(string $newType, string $newUri): self;
@@ -726,7 +726,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the name of the ultimate Ship-To party
      *
-     * @param  string $newName
+     * @param string $newName The full formal name under which the party is registered.
      * @return self
      */
     public function setUltimateShipToName(string $newName): self;
@@ -734,7 +734,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the ID of the ultimate Ship-To party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setUltimateShipToId(string $newId): self;
@@ -742,7 +742,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the ultimate Ship-To party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addUltimateShipToId(string $newId): self;
@@ -750,8 +750,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Global ID of the ultimate Ship-To party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function setUltimateShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -759,8 +759,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the ultimate Ship-To party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function addUltimateShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -768,8 +768,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Tax Registration of the ultimate Ship-To party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function setUltimateShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -777,8 +777,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an Tax Registration to the ultimate Ship-To party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function addUltimateShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -786,13 +786,13 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the address of the ultimate Ship-To party
      *
-     * @param  string $newAddressLine1
-     * @param  string $newAddressLine2
-     * @param  string $newAddressLine3
-     * @param  string $newPostcode
-     * @param  string $newCity
-     * @param  string $newCountryId
-     * @param  string $newSubDivision
+     * @param string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId Country in which the party's address is located.
+     * @param string $newSubDivision Region or federal state in which the party's address is located.
      * @return self
      */
     public function setUltimateShipToAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self;
@@ -800,9 +800,9 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the legal information of the ultimate Ship-To party
      *
-     * @param  string $newType
-     * @param  string $newId
-     * @param  string $newName
+     * @param string $newType Type of the identification number of the legal registration of the party.
+     * @param string $newId Identification number of the legal registration of the party.
+     * @param string $newName Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setUltimateShipToLegalOrganisation(string $newType, string $newId, string $newName): self;
@@ -810,11 +810,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the contact information of the ultimate Ship-To party
      *
-     * @param  string $newPersonName
-     * @param  string $newDepartmentName
-     * @param  string $newPhoneNumber
-     * @param  string $newFaxNumber
-     * @param  string $newEmailAddress
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function setUltimateShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
@@ -822,11 +822,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add contact information of the ultimate Ship-To party
      *
-     * @param  string $newPersonName
-     * @param  string $newDepartmentName
-     * @param  string $newPhoneNumber
-     * @param  string $newFaxNumber
-     * @param  string $newEmailAddress
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function addUltimateShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
@@ -834,8 +834,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add communication information of the ultimate Ship-To party
      *
-     * @param  string $newType
-     * @param  string $newUri
+     * @param string $newType The type for the party's electronic address.
+     * @param string $newUri The party's electronic address.
      * @return self
      */
     public function setUltimateShipToCommunication(string $newType, string $newUri): self;
@@ -847,7 +847,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the name of the Ship-From party
      *
-     * @param  string $newName
+     * @param string $newName The full formal name under which the party is registered.
      * @return self
      */
     public function setShipFromName(string $newName): self;
@@ -855,7 +855,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the ID of the Ship-From party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setShipFromId(string $newId): self;
@@ -863,7 +863,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the Ship-From party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addShipFromId(string $newId): self;
@@ -871,8 +871,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Global ID of the Ship-From party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function setShipFromGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -880,8 +880,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the Ship-From party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function addShipFromGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -889,8 +889,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Tax Registration of the Ship-From party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function setShipFromTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -898,8 +898,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an Tax Registration to the Ship-From party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function addShipFromTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -907,13 +907,13 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the address of the Ship-From party
      *
-     * @param  string $newAddressLine1
-     * @param  string $newAddressLine2
-     * @param  string $newAddressLine3
-     * @param  string $newPostcode
-     * @param  string $newCity
-     * @param  string $newCountryId
-     * @param  string $newSubDivision
+     * @param string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId Country in which the party's address is located.
+     * @param string $newSubDivision Region or federal state in which the party's address is located.
      * @return self
      */
     public function setShipFromAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self;
@@ -921,9 +921,9 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the legal information of the Ship-From party
      *
-     * @param  string $newType
-     * @param  string $newId
-     * @param  string $newName
+     * @param string $newType Type of the identification number of the legal registration of the party.
+     * @param string $newId Identification number of the legal registration of the party.
+     * @param string $newName Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setShipFromLegalOrganisation(string $newType, string $newId, string $newName): self;
@@ -931,11 +931,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the contact information of the Ship-From party
      *
-     * @param  string $newPersonName
-     * @param  string $newDepartmentName
-     * @param  string $newPhoneNumber
-     * @param  string $newFaxNumber
-     * @param  string $newEmailAddress
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function setShipFromContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
@@ -943,11 +943,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add contact information of the Ship-From party
      *
-     * @param  string $newPersonName
-     * @param  string $newDepartmentName
-     * @param  string $newPhoneNumber
-     * @param  string $newFaxNumber
-     * @param  string $newEmailAddress
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function addShipFromContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
@@ -955,8 +955,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add communication information of the Ship-From party
      *
-     * @param  string $newType
-     * @param  string $newUri
+     * @param string $newType The type for the party's electronic address.
+     * @param string $newUri The party's electronic address.
      * @return self
      */
     public function setShipFromCommunication(string $newType, string $newUri): self;
@@ -968,7 +968,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the name of the Invoicer party
      *
-     * @param  string $newName
+     * @param string $newName The full formal name under which the party is registered.
      * @return self
      */
     public function setInvoicerName(string $newName): self;
@@ -976,7 +976,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the ID of the Invoicer party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setInvoicerId(string $newId): self;
@@ -984,7 +984,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the Invoicer party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addInvoicerId(string $newId): self;
@@ -992,8 +992,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Global ID of the Invoicer party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function setInvoicerGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -1001,8 +1001,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the Invoicer party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function addInvoicerGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -1010,8 +1010,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Tax Registration of the Invoicer party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function setInvoicerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -1019,8 +1019,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an Tax Registration to the Invoicer party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function addInvoicerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -1028,13 +1028,13 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the address of the Invoicer party
      *
-     * @param  string $newAddressLine1
-     * @param  string $newAddressLine2
-     * @param  string $newAddressLine3
-     * @param  string $newPostcode
-     * @param  string $newCity
-     * @param  string $newCountryId
-     * @param  string $newSubDivision
+     * @param string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId Country in which the party's address is located.
+     * @param string $newSubDivision Region or federal state in which the party's address is located.
      * @return self
      */
     public function setInvoicerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self;
@@ -1042,9 +1042,9 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the legal information of the Invoicer party
      *
-     * @param  string $newType
-     * @param  string $newId
-     * @param  string $newName
+     * @param string $newType Type of the identification number of the legal registration of the party.
+     * @param string $newId Identification number of the legal registration of the party.
+     * @param string $newName Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setInvoicerLegalOrganisation(string $newType, string $newId, string $newName): self;
@@ -1052,11 +1052,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the contact information of the Invoicer party
      *
-     * @param  string $newPersonName
-     * @param  string $newDepartmentName
-     * @param  string $newPhoneNumber
-     * @param  string $newFaxNumber
-     * @param  string $newEmailAddress
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function setInvoicerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
@@ -1064,11 +1064,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add contact information of the Invoicer party
      *
-     * @param  string $newPersonName
-     * @param  string $newDepartmentName
-     * @param  string $newPhoneNumber
-     * @param  string $newFaxNumber
-     * @param  string $newEmailAddress
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function addInvoicerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
@@ -1076,8 +1076,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add communication information of the Invoicer party
      *
-     * @param  string $newType
-     * @param  string $newUri
+     * @param string $newType The type for the party's electronic address.
+     * @param string $newUri The party's electronic address.
      * @return self
      */
     public function setInvoicerCommunication(string $newType, string $newUri): self;
@@ -1089,7 +1089,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the name of the Invoicee party
      *
-     * @param  string $newName
+     * @param string $newName The full formal name under which the party is registered.
      * @return self
      */
     public function setInvoiceeName(string $newName): self;
@@ -1097,7 +1097,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the ID of the Invoicee party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setInvoiceeId(string $newId): self;
@@ -1105,7 +1105,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the Invoicee party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addInvoiceeId(string $newId): self;
@@ -1113,8 +1113,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Global ID of the Invoicee party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function setInvoiceeGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -1122,8 +1122,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the Invoicee party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function addInvoiceeGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -1131,8 +1131,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Tax Registration of the Invoicee party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function setInvoiceeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -1140,8 +1140,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an Tax Registration to the Invoicee party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function addInvoiceeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -1149,13 +1149,13 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the address of the Invoicee party
      *
-     * @param  string $newAddressLine1
-     * @param  string $newAddressLine2
-     * @param  string $newAddressLine3
-     * @param  string $newPostcode
-     * @param  string $newCity
-     * @param  string $newCountryId
-     * @param  string $newSubDivision
+     * @param string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId Country in which the party's address is located.
+     * @param string $newSubDivision Region or federal state in which the party's address is located.
      * @return self
      */
     public function setInvoiceeAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self;
@@ -1163,9 +1163,9 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the legal information of the Invoicee party
      *
-     * @param  string $newType
-     * @param  string $newId
-     * @param  string $newName
+     * @param string $newType Type of the identification number of the legal registration of the party.
+     * @param string $newId Identification number of the legal registration of the party.
+     * @param string $newName Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setInvoiceeLegalOrganisation(string $newType, string $newId, string $newName): self;
@@ -1173,11 +1173,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the contact information of the Invoicee party
      *
-     * @param  string $newPersonName
-     * @param  string $newDepartmentName
-     * @param  string $newPhoneNumber
-     * @param  string $newFaxNumber
-     * @param  string $newEmailAddress
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function setInvoiceeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
@@ -1185,11 +1185,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add contact information of the Invoicee party
      *
-     * @param  string $newPersonName
-     * @param  string $newDepartmentName
-     * @param  string $newPhoneNumber
-     * @param  string $newFaxNumber
-     * @param  string $newEmailAddress
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function addInvoiceeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
@@ -1197,8 +1197,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add communication information of the Invoicee party
      *
-     * @param  string $newType
-     * @param  string $newUri
+     * @param string $newType The type for the party's electronic address.
+     * @param string $newUri The party's electronic address.
      * @return self
      */
     public function setInvoiceeCommunication(string $newType, string $newUri): self;
@@ -1210,7 +1210,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the name of the Payee party
      *
-     * @param  string $newName
+     * @param string $newName The full formal name under which the party is registered.
      * @return self
      */
     public function setPayeeName(string $newName): self;
@@ -1218,7 +1218,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the ID of the Payee party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setPayeeId(string $newId): self;
@@ -1226,7 +1226,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the Payee party
      *
-     * @param  string $newId
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addPayeeId(string $newId): self;
@@ -1234,8 +1234,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Global ID of the Payee party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function setPayeeGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -1243,8 +1243,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an ID to the Payee party
      *
-     * @param  string $newGlobalId
-     * @param  string $newGlobalIdType
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
     public function addPayeeGlobalId(string $newGlobalId, string $newGlobalIdType): self;
@@ -1252,8 +1252,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Tax Registration of the Payee party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function setPayeeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -1261,8 +1261,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add an Tax Registration to the Payee party
      *
-     * @param  string $newTaxRegistrationType
-     * @param  string $newTaxRegistrationId
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function addPayeeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
@@ -1270,13 +1270,13 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the address of the Payee party
      *
-     * @param  string $newAddressLine1
-     * @param  string $newAddressLine2
-     * @param  string $newAddressLine3
-     * @param  string $newPostcode
-     * @param  string $newCity
-     * @param  string $newCountryId
-     * @param  string $newSubDivision
+     * @param string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId Country in which the party's address is located.
+     * @param string $newSubDivision Region or federal state in which the party's address is located.
      * @return self
      */
     public function setPayeeAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self;
@@ -1284,9 +1284,9 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the legal information of the Payee party
      *
-     * @param  string $newType
-     * @param  string $newId
-     * @param  string $newName
+     * @param string $newType Type of the identification number of the legal registration of the party.
+     * @param string $newId Identification number of the legal registration of the party.
+     * @param string $newName Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setPayeeLegalOrganisation(string $newType, string $newId, string $newName): self;
@@ -1294,11 +1294,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the contact information of the Payee party
      *
-     * @param  string $newPersonName
-     * @param  string $newDepartmentName
-     * @param  string $newPhoneNumber
-     * @param  string $newFaxNumber
-     * @param  string $newEmailAddress
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function setPayeeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
@@ -1306,11 +1306,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add contact information of the Payee party
      *
-     * @param  string $newPersonName
-     * @param  string $newDepartmentName
-     * @param  string $newPhoneNumber
-     * @param  string $newFaxNumber
-     * @param  string $newEmailAddress
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function addPayeeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
@@ -1318,8 +1318,8 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add communication information of the Payee party
      *
-     * @param  string $newType
-     * @param  string $newUri
+     * @param string $newType The type for the party's electronic address.
+     * @param string $newUri The party's electronic address.
      * @return self
      */
     public function setPayeeCommunication(string $newType, string $newUri): self;

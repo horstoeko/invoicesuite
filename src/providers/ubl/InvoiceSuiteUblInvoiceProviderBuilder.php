@@ -192,7 +192,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     #region Document Seller/Supplier
 
     /**
-     * @param string $newName The full formal name under which the seller is registered in the National Register of Legal Entities, Taxable Person or otherwise acting as person(s)
+     * @param string $newName The full formal name under which the party is registered
      * @return self
      */
     public function setSellerName(string $newName): self
@@ -567,7 +567,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     #region Document Buyer/Customer
 
     /**
-     * @param string $newName The full name of the buyer
+     * @param string $newName The full formal name under which the party is registered
      * @return self
      */
     public function setBuyerName(string $newName): self
@@ -952,7 +952,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     #region Document Tax representativ party
 
     /**
-     * @param string $newName The full name of the seller's tax agent
+     * @param string $newName The full formal name under which the party is registered
      * @return self
      */
     public function setTaxRepresentativeName(string $newName): self
@@ -1412,7 +1412,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     #region Document Ship-To
 
     /**
-     * @param string $newName The name of the party to whom the goods are being delivered or for whom the services are being performed. Must be used if the recipient of the goods or services is not the same as the buyer.
+     * @param string $newName The full formal name under which the party is registered
      * @return self
      */
     public function setShipToName(string $newName): self
@@ -1635,7 +1635,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     #region Document Ultimate Ship-To
 
     /**
-     * @param string $newName Name or company name of the different end recipient
+     * @param string $newName The full formal name under which the party is registered
      * @return self
      */
     public function setUltimateShipToName(string $newName): self
@@ -1776,7 +1776,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     #region Document Ship-From
 
     /**
-     * @param string $newName The name of the party
+     * @param string $newName The full formal name under which the party is registered
      * @return self
      */
     public function setShipFromName(string $newName): self
@@ -1917,7 +1917,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     #region Document Invoicer
 
     /**
-     * @param string $newName The name of the party
+     * @param string $newName The full formal name under which the party is registered
      * @return self
      */
     public function setInvoicerName(string $newName): self
@@ -2058,7 +2058,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     #region Document Invoicee
 
     /**
-     * @param string $newName The name of the party
+     * @param string $newName The full formal name under which the party is registered
      * @return self
      */
     public function setInvoiceeName(string $newName): self
@@ -2199,7 +2199,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     #region Document Payee
 
     /**
-     * @param string $newName The name of the party
+     * @param string $newName The full formal name under which the party is registered
      * @return self
      */
     public function setPayeeName(string $newName): self
