@@ -1083,4 +1083,125 @@ interface InvoiceSuiteBuilderContract
     public function setInvoicerCommunication(string $newType, string $newUri): self;
 
     #endregion
+
+    #region Document Invoicee
+
+    /**
+     * Set the name of the Invoicee party
+     *
+     * @param  string $newName
+     * @return self
+     */
+    public function setInvoiceeName(string $newName): self;
+
+    /**
+     * Set the ID of the Invoicee party
+     *
+     * @param  string $newId
+     * @return self
+     */
+    public function setInvoiceeId(string $newId): self;
+
+    /**
+     * Add an ID to the Invoicee party
+     *
+     * @param  string $newId
+     * @return self
+     */
+    public function addInvoiceeId(string $newId): self;
+
+    /**
+     * Set the Global ID of the Invoicee party
+     *
+     * @param  string $newGlobalId
+     * @param  string $newGlobalIdType
+     * @return self
+     */
+    public function setInvoiceeGlobalId(string $newGlobalId, string $newGlobalIdType): self;
+
+    /**
+     * Add an ID to the Invoicee party
+     *
+     * @param  string $newGlobalId
+     * @param  string $newGlobalIdType
+     * @return self
+     */
+    public function addInvoiceeGlobalId(string $newGlobalId, string $newGlobalIdType): self;
+
+    /**
+     * Set the Tax Registration of the Invoicee party
+     *
+     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationId
+     * @return self
+     */
+    public function setInvoiceeTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+
+    /**
+     * Add an Tax Registration to the Invoicee party
+     *
+     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationId
+     * @return self
+     */
+    public function addInvoiceeTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+
+    /**
+     * Set the address of the Invoicee party
+     *
+     * @param  string $newAddressLine1
+     * @param  string $newAddressLine2
+     * @param  string $newAddressLine3
+     * @param  string $newPostcode
+     * @param  string $newCity
+     * @param  string $newCountryId
+     * @param  string $newSubDivision
+     * @return self
+     */
+    public function setInvoiceeAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self;
+
+    /**
+     * Set the legal information of the Invoicee party
+     *
+     * @param  string $newType
+     * @param  string $newId
+     * @param  string $newName
+     * @return self
+     */
+    public function setInvoiceeLegalOrganisation(string $newType, string $newId, string $newName): self;
+
+    /**
+     * Set the contact information of the Invoicee party
+     *
+     * @param  string $newPersonName
+     * @param  string $newDepartmentName
+     * @param  string $newPhoneNumber
+     * @param  string $newFaxNumber
+     * @param  string $newEmailAddress
+     * @return self
+     */
+    public function setInvoiceeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
+
+    /**
+     * Add contact information of the Invoicee party
+     *
+     * @param  string $newPersonName
+     * @param  string $newDepartmentName
+     * @param  string $newPhoneNumber
+     * @param  string $newFaxNumber
+     * @param  string $newEmailAddress
+     * @return self
+     */
+    public function addInvoiceeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
+
+    /**
+     * Add communication information of the Invoicee party
+     *
+     * @param  string $newType
+     * @param  string $newUri
+     * @return self
+     */
+    public function setInvoiceeCommunication(string $newType, string $newUri): self;
+
+    #endregion
 }

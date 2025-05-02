@@ -103,4 +103,14 @@ $builder->setInvoicerLegalOrganisation("8884", "Invoicer-Org-Id", "Invoicer AG")
 $builder->addInvoicerContact("Alfons Baum", "Dispo", "0999-10001", "0999-10001", "alfzit@Invoicer-gmbh.de");
 $builder->setInvoicerCommunication("EM", "invoice@invoicer-gmbh.de");
 
+$builder->setInvoiceeName("Invoicee GmbH");
+$builder->setInvoiceeId("INVOICEE-001");
+$builder->addInvoiceeId("INVOICEE-002");
+$builder->setInvoiceeGlobalId("INVOICEE222", "0088");
+$builder->setInvoiceeTaxRegistration("VA", "9989773373");
+$builder->setInvoiceeAddress("Invoicee Street", "Invoicee Street 2", "Invoicee Street 3", "99999", "Invoicee-City", "DE", "RLP");
+$builder->setInvoiceeLegalOrganisation("8884", "Invoicee-Org-Id", "Invoicee AG");
+$builder->addInvoiceeContact("Alfons Baum", "Dispo", "0999-10001", "0999-10001", "alfzit@Invoicee-gmbh.de");
+$builder->setInvoiceeCommunication("EM", "invoice@invoicee-gmbh.de");
+
 echo $builder->getContentAsXml();
