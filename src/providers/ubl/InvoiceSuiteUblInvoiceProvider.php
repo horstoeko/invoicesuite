@@ -28,7 +28,10 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractFormatProvider
      */
     public function getParameters(): array
     {
-        return [];
+        return [
+            'BUILDER_QUOTATION_DOCTYPECODE' => '325',
+            'BUILDER_QUOTATION_DOCDESCRIPTION' => 'Quotation',
+        ];
     }
 
     /**

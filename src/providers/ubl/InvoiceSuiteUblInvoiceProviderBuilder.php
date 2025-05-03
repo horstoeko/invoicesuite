@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\providers\ubl;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
+use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
 use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
 use horstoeko\invoicesuite\models\ubl\main\Invoice;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
@@ -247,6 +248,34 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
+        }
+
+        $additionalDocTypeCode = $this->getCurrentFormatProviderParameterValue('BUILDER_QUOTATION_DOCTYPECODE', '');
+        $additionalDocDescription = $this->getCurrentFormatProviderParameterValue('BUILDER_QUOTATION_DOCDESCRIPTION', '');
+
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$additionalDocTypeCode, $additionalDocDescription])) {
+            return $this;
+        }
+
+        $additionalDocumentReferences =
+            array_filter(
+                $this->getUblInvoiceRootObject()->getAdditionalDocumentReference() ?? [],
+                function (AdditionalDocumentReference $additionalDocumentReference) use ($additionalDocTypeCode) {
+                    return strcasecmp(($additionalDocumentReference->getDocumentTypeCode()?->getValue() ?? ""), $additionalDocTypeCode) !== 0;
+                }
+            );
+
+        $this->getUblInvoiceRootObject()->setAdditionalDocumentReference($additionalDocumentReferences);
+
+        $additionalDocReference = $this->getUblInvoiceRootObject()->addToAdditionalDocumentReferenceWithCreate();
+        $additionalDocReference->getIDWithCreate()->setValue($newReferenceNumber);
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($additionalDocTypeCode)) {
+            $additionalDocReference->getDocumentTypeCodeWithCreate()->setValue($additionalDocTypeCode);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($additionalDocDescription)) {
+            $additionalDocReference->addOnceToDocumentDescriptionWithCreate()->setValue($additionalDocDescription);
         }
 
         return $this;

@@ -32,7 +32,7 @@ class InvoiceSuiteStringUtils
      * Tests if any string in $values is not null and has a value != ""
      *
      * @param array<string|null> $values
-     * @return bool
+     * @return boolean
      */
     public static function allIsNullOrEmpty(array $values): bool
     {
@@ -43,6 +43,23 @@ class InvoiceSuiteStringUtils
         }
 
         return true;
+    }
+
+    /**
+     * Returns true if at least on element in values is null or empty
+     *
+     * @param array<string|null> $values
+     * @return boolean
+     */
+    public static function oneIsNullOrEmpty(array $values): bool
+    {
+        foreach ($values as $value) {
+            if (static::stringIsNullOrEmpty($value)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
