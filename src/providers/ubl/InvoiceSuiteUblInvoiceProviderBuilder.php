@@ -3,11 +3,12 @@
 namespace horstoeko\invoicesuite\providers\ubl;
 
 use DateTimeInterface;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
-use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
-use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
 use horstoeko\invoicesuite\models\ubl\main\Invoice;
+use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
+use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
 
 class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatProviderBuilder
 {
@@ -361,7 +362,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?DateTimeInterface $newReferenceDate = null,
         ?string $newTypeCode = null,
         ?string $newReferenceTypeCode = null,
-        ?string $newDescription = null
+        ?string $newDescription = null,
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -376,7 +378,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             $newReferenceDate,
             $newTypeCode,
             $newReferenceTypeCode,
-            $newDescription
+            $newDescription,
+            $newInvoiceSuiteAttachment
         );
 
         return $this;
@@ -390,7 +393,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?DateTimeInterface $newReferenceDate = null,
         ?string $newTypeCode = null,
         ?string $newReferenceTypeCode = null,
-        ?string $newDescription = null
+        ?string $newDescription = null,
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -420,6 +424,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 ->clearDocumentDescription()
                 ->addToDocumentDescriptionWithCreate()
                 ->setValue($newDescription);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            $additionalReference
+                ->getAttachmentWithCreate();
         }
 
         return $this;

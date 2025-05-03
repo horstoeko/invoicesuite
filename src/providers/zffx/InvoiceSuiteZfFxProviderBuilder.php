@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\providers\zffx;
 
 use DateTimeInterface;
+use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\models\zffx\ram\ExchangedDocumentType;
 use horstoeko\invoicesuite\models\zffx\rsm\CrossIndustryInvoiceType;
@@ -473,7 +474,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         ?DateTimeInterface $newReferenceDate = null,
         ?string $newTypeCode = null,
         ?string $newReferenceTypeCode = null,
-        ?string $newDescription = null
+        ?string $newDescription = null,
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newTypeCode])) {
             return $this;
@@ -509,7 +511,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         ?DateTimeInterface $newReferenceDate = null,
         ?string $newTypeCode = null,
         ?string $newReferenceTypeCode = null,
-        ?string $newDescription = null
+        ?string $newDescription = null,
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newTypeCode])) {
             return $this;
@@ -547,6 +550,21 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             $additionalReference
                 ->getNameWithCreate()
                 ->setValue($newDescription);
+        }
+
+        if (!is_null($newInvoiceSuiteAttachment)) {
+            if ($newInvoiceSuiteAttachment->isBinaryAttachment()) {
+                $additionalReference
+                    ->getAttachmentBinaryObjectWithCreate()
+                    ->setFilename($newInvoiceSuiteAttachment->getFilename())
+                    ->setMimeCode($newInvoiceSuiteAttachment->getContentMimeType())
+                    ->setValue($newInvoiceSuiteAttachment->getContent());
+            }
+            if ($newInvoiceSuiteAttachment->isUrlAttachment()) {
+                $additionalReference
+                    ->getURIIDWithCreate()
+                    ->setValue($newInvoiceSuiteAttachment->getContent());
+            }
         }
 
         return $this;

@@ -5,6 +5,7 @@ namespace horstoeko\invoicesuite;
 use DateTimeInterface;
 use JMS\Serializer\Exception\RuntimeException;
 use JMS\Serializer\Exception\InvalidArgumentException;
+use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesFormatProviders;
 use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
@@ -316,9 +317,22 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function setDocumentAdditionalReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null, ?string $newTypeCode = null, ?string $newReferenceTypeCode = null, ?string $newDescription = null): self
-    {
-        $this->getCurrentFormatProvider()->getBuilder()->setDocumentAdditionalReference($newReferenceNumber, $newReferenceDate, $newTypeCode, $newReferenceTypeCode, $newDescription);
+    public function setDocumentAdditionalReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null,
+        ?string $newReferenceTypeCode = null,
+        ?string $newDescription = null,
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentAdditionalReference(
+            $newReferenceNumber,
+            $newReferenceDate,
+            $newTypeCode,
+            $newReferenceTypeCode,
+            $newDescription,
+            $newInvoiceSuiteAttachment
+        );
 
         return $this;
     }
@@ -326,9 +340,22 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function addDocumentAdditionalReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null, ?string $newTypeCode = null, ?string $newReferenceTypeCode = null, ?string $newDescription = null): self
-    {
-        $this->getCurrentFormatProvider()->getBuilder()->addDocumentAdditionalReference($newReferenceNumber, $newReferenceDate, $newTypeCode, $newReferenceTypeCode, $newDescription);
+    public function addDocumentAdditionalReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null,
+        ?string $newReferenceTypeCode = null,
+        ?string $newDescription = null,
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentAdditionalReference(
+            $newReferenceNumber,
+            $newReferenceDate,
+            $newTypeCode,
+            $newReferenceTypeCode,
+            $newDescription,
+            $newInvoiceSuiteAttachment
+        );
 
         return $this;
     }
