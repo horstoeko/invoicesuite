@@ -245,6 +245,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentSellerQuotationReference(string $newReferenceNumber, ?DateTimeInterface $newReferenceDate = null): self
     {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
+            return $this;
+        }
+
         return $this;
     }
 
