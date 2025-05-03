@@ -5,8 +5,8 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
-$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
+//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
 //$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxxrechnung');
 
 $builder->setDocumentNo('2025-04-000001');
@@ -130,5 +130,6 @@ $builder->setDocumentBuyerOrderReference('PO-0000011', new DateTime());
 $builder->setDocumentSellerQuotationReference('ANG-2025/0000055', new DateTime());
 $builder->setDocumentContractReference('CON-2025/0000001', new DateTime());
 $builder->addDocumentAdditionalReference('ADDDOC-001', new DateTime(), "918", "0815", "Description for additional docuemnt", InvoiceSuiteAttachment::fromBase64String('SWNoIGJpbiBlaW4gVGVzdHRleHQ=', 'att.ext'));
+$builder->addDocumentAdditionalReference('ADDDOC-002', new DateTime(), "918", "0816", "Description for additional docuemnt", InvoiceSuiteAttachment::fromUrl('http://some.url'));
 
 echo $builder->getContentAsXml();

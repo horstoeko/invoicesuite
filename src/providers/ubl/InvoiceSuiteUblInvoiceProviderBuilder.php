@@ -431,6 +431,24 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 ->getAttachmentWithCreate();
         }
 
+        if (!is_null($newInvoiceSuiteAttachment)) {
+            if ($newInvoiceSuiteAttachment->isBinaryAttachment()) {
+                $additionalReference
+                    ->getAttachmentWithCreate()
+                    ->getEmbeddedDocumentBinaryObjectWithCreate()
+                    ->setFilename($newInvoiceSuiteAttachment->getFilename())
+                    ->setMimeCode($newInvoiceSuiteAttachment->getContentMimeType())
+                    ->setValue($newInvoiceSuiteAttachment->getRawContent());
+            }
+            if ($newInvoiceSuiteAttachment->isUrlAttachment()) {
+                $additionalReference
+                    ->getAttachmentWithCreate()
+                    ->getExternalReferenceWithCreate()
+                    ->getURIWithCreate()
+                    ->setValue($newInvoiceSuiteAttachment->getContent());
+            }
+        }
+
         return $this;
     }
 

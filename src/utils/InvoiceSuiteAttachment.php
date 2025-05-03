@@ -170,7 +170,17 @@ class InvoiceSuiteAttachment
      */
     public function isUrlAttachment(): bool
     {
-        return in_array($this->internalType, [static::IS_FROM_URL]);
+        return $this->internalType == static::IS_FROM_URL;
+    }
+
+    /**
+     * Get the raw attachment content
+     *
+     * @return string
+     */
+    public function getRawContent(): string
+    {
+        return $this->internalContent;
     }
 
     /**
@@ -181,10 +191,10 @@ class InvoiceSuiteAttachment
     public function getContent(): string
     {
         if ($this->isUrlAttachment()) {
-            return $this->internalContent;
+            return $this->getRawContent();
         }
 
-        return base64_encode($this->internalContent);
+        return base64_encode($this->getRawContent());
     }
 
     /**

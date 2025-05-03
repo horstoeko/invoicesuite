@@ -560,6 +560,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
                     ->setMimeCode($newInvoiceSuiteAttachment->getContentMimeType())
                     ->setValue($newInvoiceSuiteAttachment->getContent());
             }
+
             if ($newInvoiceSuiteAttachment->isUrlAttachment()) {
                 $additionalReference
                     ->getURIIDWithCreate()
