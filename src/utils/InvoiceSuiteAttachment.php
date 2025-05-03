@@ -22,7 +22,7 @@ class InvoiceSuiteAttachment
     /**
      * The content type
      *
-     * @var integer
+     * @var int
      */
     protected $internalType = -1;
 
@@ -105,11 +105,7 @@ class InvoiceSuiteAttachment
      */
     public static function fromBase64String(string $content, string $filename): InvoiceSuiteAttachment
     {
-        if (preg_match('/^[a-zA-Z0-9\/\r\n+]*={0,2}$/', $content) === false || strlen($content) % 4 !== 0) {
-            throw new InvalidArgumentException("Not a BASE64 string");
-        }
-
-        $content = base64_decode($content);
+        $content = base64_decode($content, true);
 
         if ($content === false) {
             throw new InvalidArgumentException("Not a BASE64 string");
@@ -127,12 +123,8 @@ class InvoiceSuiteAttachment
      */
     public static function fromUrl(string $url): InvoiceSuiteAttachment
     {
-        if (preg_match_all('/\b([a-z][a-z0-9+\-.]*):[^\s<>"\'`]+/i', $url, $matches) === false) {
-            throw new InvalidArgumentException("Not a valid URL");
-        }
-
         if (filter_var($url, FILTER_VALIDATE_URL) === false) {
-            throw new InvalidArgumentException("Not a valid URL");
+            throw new InvalidArgumentException("Not a valid URL: $url");
         }
 
         return new static($url, '', static::IS_FROM_URL);
