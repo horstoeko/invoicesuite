@@ -131,29 +131,29 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the associated seller's order confirmation.
      *
-     * @param string $newReferenceNumber Seller's order confirmation number
+     * @param string|null $newReferenceNumber Seller's order confirmation number
      * @param DateTimeInterface|null $newReferenceDate Seller's order confirmation date
      * @return self
      */
-    public function setDocumentSellerOrderReference(string $newReferenceNumber, ?DateTimeInterface $newReferenceDate = null): self;
+    public function setDocumentSellerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self;
 
     /**
      * Set the associated buyer's order
      *
-     * @param string $newReferenceNumber Buyers's order number
+     * @param string|null $newReferenceNumber Buyers's order number
      * @param DateTimeInterface|null $newReferenceDate Buyer's order date
      * @return self
      */
-    public function setDocumentBuyerOrderReference(string $newReferenceNumber, ?DateTimeInterface $newReferenceDate = null): self;
+    public function setDocumentBuyerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self;
 
     /**
      * Set the associated seller's quotation
      *
-     * @param string $newReferenceNumber Seller's quotation number
+     * @param string|null $newReferenceNumber Seller's quotation number
      * @param DateTimeInterface|null $newReferenceDate Seller's quotation date
      * @return self
      */
-    public function setDocumentSellerQuotationReference(string $newReferenceNumber, ?DateTimeInterface $newReferenceDate = null): self;
+    public function setDocumentSellerQuotationReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self;
 
     /**
      * Set the associated contract
@@ -162,31 +162,31 @@ interface InvoiceSuiteBuilderContract
      * @param DateTimeInterface|null $newReferenceDate Contract date
      * @return self
      */
-    public function setDocumentContractReference(string $newReferenceNumber, ?DateTimeInterface $newReferenceDate = null): self;
+    public function setDocumentContractReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self;
 
     /**
      * Set an additional associated document
      *
-     * @param string $newReferenceNumber Additional document number
+     * @param string|null $newReferenceNumber Additional document number
      * @param DateTimeInterface|null $newReferenceDate Additional document date
      * @param string|null $newTypeCode Additional document type code
      * @param string|null $newReferenceTypeCode Additional document reference-type code
      * @param string|null $newDescription Additional document description
      * @return self
      */
-    public function setDocumentAdditionalReference(string $newReferenceNumber, ?DateTimeInterface $newReferenceDate = null, ?string $newTypeCode = null, ?string $newReferenceTypeCode = null, ?string $newDescription = null): self;
+    public function setDocumentAdditionalReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null, ?string $newTypeCode = null, ?string $newReferenceTypeCode = null, ?string $newDescription = null): self;
 
     /**
      * Add an additional associated document
      *
-     * @param string $newReferenceNumber Additional document number
+     * @param string|null $newReferenceNumber Additional document number
      * @param DateTimeInterface|null $newReferenceDate Additional document date
      * @param string|null $newTypeCode Additional document type code
      * @param string|null $newReferenceTypeCode Additional document reference-type code
      * @param string|null $newDescription Additional document description
      * @return self
      */
-    public function addDocumentAdditionalReference(string $newReferenceNumber, ?DateTimeInterface $newReferenceDate = null, ?string $newTypeCode = null, ?string $newReferenceTypeCode = null, ?string $newDescription = null): self;
+    public function addDocumentAdditionalReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null, ?string $newTypeCode = null, ?string $newReferenceTypeCode = null, ?string $newDescription = null): self;
 
     #endregion
 

@@ -293,11 +293,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     #region Document References
 
     /**
-     * @param string $newReferenceNumber __BT-14, From EN 16931__ Seller's order confirmation number
+     * @param string|null $newReferenceNumber __BT-14, From EN 16931__ Seller's order confirmation number
      * @param DateTimeInterface|null $newReferenceDate __BT-X-146, From EXTENDED__ Seller's order confirmation date
      * @return self
      */
-    public function setDocumentSellerOrderReference(string $newReferenceNumber, ?DateTimeInterface $newReferenceDate = null): self
+    public function setDocumentSellerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -325,11 +325,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newReferenceNumber __BT-13, From MINIMUM__ Buyers's order number
+     * @param string|null $newReferenceNumber __BT-13, From MINIMUM__ Buyers's order number
      * @param DateTimeInterface|null $newReferenceDate __BT-X-147, From EXTENDED__ Buyer's order date
      * @return self
      */
-    public function setDocumentBuyerOrderReference(string $newReferenceNumber, ?DateTimeInterface $newReferenceDate = null): self
+    public function setDocumentBuyerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -357,11 +357,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newReferenceNumber __BT-X-403, From EXTENDED__ Seller's quotation number
+     * @param string|null $newReferenceNumber __BT-X-403, From EXTENDED__ Seller's quotation number
      * @param DateTimeInterface|null $newReferenceDate __BT-X-404, From EXTENDED__ Seller's quotation date
      * @return self
      */
-    public function setDocumentSellerQuotationReference(string $newReferenceNumber, ?DateTimeInterface $newReferenceDate = null): self
+    public function setDocumentSellerQuotationReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -389,11 +389,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newReferenceNumber __BT-12, From BASIC WL__ Contract number
+     * @param string|null $newReferenceNumber __BT-12, From BASIC WL__ Contract number
      * @param DateTimeInterface|null $newReferenceDate __BT-X-26, From EXTENDED__ Contract date
      * @return self
      */
-    public function setDocumentContractReference(string $newReferenceNumber, ?DateTimeInterface $newReferenceDate = null): self
+    public function setDocumentContractReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -421,7 +421,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newReferenceNumber __BT-122, From EN 16931__ Additional document number
+     * @param string|null $newReferenceNumber __BT-122, From EN 16931__ Additional document number
      * @param DateTimeInterface|null $newReferenceDate __BT-X-149, From EXTENDED__ Additional document date
      * @param string|null $newTypeCode __BT-122-0, From EN 16931__ Additional document type code
      * @param string|null $newReferenceTypeCode __BT-18-1, From EN 16931__ Additional document reference-type code
@@ -429,7 +429,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @return self
      */
     public function setDocumentAdditionalReference(
-        string $newReferenceNumber,
+        ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
         ?string $newTypeCode = null,
         ?string $newReferenceTypeCode = null,
@@ -457,7 +457,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newReferenceNumber __BT-122, From EN 16931__ Additional document number
+     * @param string|null $newReferenceNumber __BT-122, From EN 16931__ Additional document number
      * @param DateTimeInterface|null $newReferenceDate __BT-X-149, From EXTENDED__ Additional document date
      * @param string|null $newTypeCode __BT-122-0, From EN 16931__ Additional document type code
      * @param string|null $newReferenceTypeCode __BT-18-1, From EN 16931__ Additional document reference-type code
@@ -465,7 +465,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @return self
      */
     public function addDocumentAdditionalReference(
-        string $newReferenceNumber,
+        ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
         ?string $newTypeCode = null,
         ?string $newReferenceTypeCode = null,
