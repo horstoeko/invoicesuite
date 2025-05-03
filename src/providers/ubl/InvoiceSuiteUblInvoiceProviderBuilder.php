@@ -232,11 +232,16 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             return $this;
         }
 
-        $this
+        $orderReference = $this
             ->getUblInvoiceRootObject()
-            ->getOrderReferenceWithCreate()
-            ->getIDWithCreate()
-            ->setValue($newReferenceNumber);
+            ->getOrderReferenceWithCreate();
+
+        $orderReference->getIDWithCreate()->setValue($newReferenceNumber);
+
+        if (!is_null($newReferenceDate)) {
+            $orderReference->setIssueDate($newReferenceDate);
+        }
+
 
         return $this;
     }
@@ -268,6 +273,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         $this->getUblInvoiceRootObject()->setAdditionalDocumentReference($additionalDocumentReferences);
 
         $additionalDocReference = $this->getUblInvoiceRootObject()->addToAdditionalDocumentReferenceWithCreate();
+
         $additionalDocReference->getIDWithCreate()->setValue($newReferenceNumber);
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($additionalDocTypeCode)) {
@@ -276,6 +282,33 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($additionalDocDescription)) {
             $additionalDocReference->addOnceToDocumentDescriptionWithCreate()->setValue($additionalDocDescription);
+        }
+
+        if (!is_null($newReferenceDate)) {
+            $additionalDocReference->setIssueDate($newReferenceDate);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentContractReference(string $newReferenceNumber, ?DateTimeInterface $newReferenceDate = null): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
+            return $this;
+        }
+
+        $contractReference = $this
+            ->getUblInvoiceRootObject()
+            ->clearContractDocumentReference()
+            ->addToContractDocumentReferenceWithCreate();
+
+        $contractReference->getIDWithCreate()->setValue($newReferenceNumber);
+
+        if (!is_null($newReferenceDate)) {
+            $contractReference->setIssueDate($newReferenceDate);
         }
 
         return $this;

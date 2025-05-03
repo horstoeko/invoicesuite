@@ -126,6 +126,7 @@ $builder->setDocumentPayeeCommunication("EM", "invoice@payee-gmbh.de");
 
 $builder->setDocumentSellerOrderReference('SO-2025/0000001', new DateTime());
 $builder->setDocumentBuyerOrderReference('PO-0000011', new DateTime());
-$builder->setDocumentSellerQuotationReference('ANG-2025/0000055');
+$builder->setDocumentSellerQuotationReference('ANG-2025/0000055', new DateTime());
+$builder->setDocumentContractReference('CON-2025/0000001', new DateTime());
 
 echo $builder->getContentAsXml();

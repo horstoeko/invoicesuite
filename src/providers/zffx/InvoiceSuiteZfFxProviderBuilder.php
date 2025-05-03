@@ -388,6 +388,38 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         return $this;
     }
 
+    /**
+     * @param string $newReferenceNumber __BT-12, From BASIC WL__ Contract number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-26, From EXTENDED__ Contract date
+     * @return self
+     */
+    public function setDocumentContractReference(string $newReferenceNumber, ?DateTimeInterface $newReferenceDate = null): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
+            return $this;
+        }
+
+        $contractReference = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getContractReferencedDocumentWithCreate();
+
+        $contractReference
+            ->getIssuerAssignedIDWithCreate()
+            ->setValue($newReferenceNumber);
+
+        if (!is_null($newReferenceDate)) {
+            $contractReference
+                ->getFormattedIssueDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newReferenceDate->format("Ymd"))
+                ->setFormat("102");
+        }
+
+        return $this;
+    }
+
     #endregion
 
     #region Document Seller/Supplier
