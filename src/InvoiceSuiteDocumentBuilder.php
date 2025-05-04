@@ -237,8 +237,10 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function setDocumentSellerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function setDocumentSellerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
 
         return $this;
@@ -247,8 +249,10 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function addDocumentSellerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function addDocumentSellerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
 
         return $this;
@@ -257,8 +261,10 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function setDocumentBuyerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function setDocumentBuyerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
 
         return $this;
@@ -267,8 +273,10 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function addDocumentBuyerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function addDocumentBuyerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
 
         return $this;
@@ -277,8 +285,10 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function setDocumentSellerQuotationReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function setDocumentSellerQuotationReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentSellerQuotationReference($newReferenceNumber, $newReferenceDate);
 
         return $this;
@@ -287,8 +297,10 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function addDocumentSellerQuotationReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function addDocumentSellerQuotationReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentSellerQuotationReference($newReferenceNumber, $newReferenceDate);
 
         return $this;
@@ -297,8 +309,10 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function setDocumentContractReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function setDocumentContractReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentContractReference($newReferenceNumber, $newReferenceDate);
 
         return $this;
@@ -307,8 +321,10 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function addDocumentContractReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function addDocumentContractReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentContractReference($newReferenceNumber, $newReferenceDate);
 
         return $this;

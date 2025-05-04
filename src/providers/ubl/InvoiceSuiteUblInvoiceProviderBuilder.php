@@ -209,8 +209,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * @inheritDoc
      */
-    public function setDocumentSellerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function setDocumentSellerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
         }
@@ -227,16 +229,20 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * @inheritDoc
      */
-    public function addDocumentSellerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function addDocumentSellerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         return $this->setDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
     }
 
     /**
      * @inheritDoc
      */
-    public function setDocumentBuyerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function setDocumentBuyerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
         }
@@ -258,16 +264,20 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * @inheritDoc
      */
-    public function addDocumentBuyerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function addDocumentBuyerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         return $this->setDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
     }
 
     /**
      * @inheritDoc
      */
-    public function setDocumentSellerQuotationReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function setDocumentSellerQuotationReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
         }
@@ -311,16 +321,20 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * @inheritDoc
      */
-    public function addDocumentSellerQuotationReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function addDocumentSellerQuotationReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         return $this->setDocumentSellerQuotationReference($newReferenceNumber, $newReferenceDate);
     }
 
     /**
      * @inheritDoc
      */
-    public function setDocumentContractReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function setDocumentContractReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
         }
@@ -335,8 +349,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * @inheritDoc
      */
-    public function addDocumentContractReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function addDocumentContractReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
         }

@@ -136,7 +136,10 @@ interface InvoiceSuiteBuilderContract
      * @param DateTimeInterface|null $newReferenceDate Seller's order confirmation date
      * @return self
      */
-    public function setDocumentSellerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self;
+    public function setDocumentSellerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
 
     /**
      * Add an associated seller's order confirmation.
@@ -145,7 +148,10 @@ interface InvoiceSuiteBuilderContract
      * @param DateTimeInterface|null $newReferenceDate Seller's order confirmation date
      * @return self
      */
-    public function addDocumentSellerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self;
+    public function addDocumentSellerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
 
     /**
      * Set the associated buyer's order
@@ -154,7 +160,10 @@ interface InvoiceSuiteBuilderContract
      * @param DateTimeInterface|null $newReferenceDate Buyer's order date
      * @return self
      */
-    public function setDocumentBuyerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self;
+    public function setDocumentBuyerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
 
     /**
      * Add an associated buyer's order
@@ -163,7 +172,10 @@ interface InvoiceSuiteBuilderContract
      * @param DateTimeInterface|null $newReferenceDate Buyer's order date
      * @return self
      */
-    public function addDocumentBuyerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self;
+    public function addDocumentBuyerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
 
     /**
      * Set the associated seller's quotation
@@ -172,7 +184,10 @@ interface InvoiceSuiteBuilderContract
      * @param DateTimeInterface|null $newReferenceDate Seller's quotation date
      * @return self
      */
-    public function setDocumentSellerQuotationReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self;
+    public function setDocumentSellerQuotationReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
 
     /**
      * Add an associated seller's quotation
@@ -181,7 +196,10 @@ interface InvoiceSuiteBuilderContract
      * @param DateTimeInterface|null $newReferenceDate Seller's quotation date
      * @return self
      */
-    public function addDocumentSellerQuotationReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self;
+    public function addDocumentSellerQuotationReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
 
     /**
      * Set the associated contract
@@ -190,7 +208,10 @@ interface InvoiceSuiteBuilderContract
      * @param DateTimeInterface|null $newReferenceDate Contract date
      * @return self
      */
-    public function setDocumentContractReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self;
+    public function setDocumentContractReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
 
     /**
      * Add am associated contract
@@ -199,7 +220,10 @@ interface InvoiceSuiteBuilderContract
      * @param DateTimeInterface|null $newReferenceDate Contract date
      * @return self
      */
-    public function addDocumentContractReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self;
+    public function addDocumentContractReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
 
     /**
      * Set an additional associated document

@@ -298,8 +298,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param DateTimeInterface|null $newReferenceDate __BT-X-146, From EXTENDED__ Seller's order confirmation date
      * @return self
      */
-    public function setDocumentSellerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function setDocumentSellerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
         }
@@ -330,8 +332,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param DateTimeInterface|null $newReferenceDate __BT-X-146, From EXTENDED__ Seller's order confirmation date
      * @return self
      */
-    public function addDocumentSellerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function addDocumentSellerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         return $this->setDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
     }
 
@@ -340,8 +344,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param DateTimeInterface|null $newReferenceDate __BT-X-147, From EXTENDED__ Buyer's order date
      * @return self
      */
-    public function setDocumentBuyerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function setDocumentBuyerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
         }
@@ -372,8 +378,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param DateTimeInterface|null $newReferenceDate __BT-X-147, From EXTENDED__ Buyer's order date
      * @return self
      */
-    public function addDocumentBuyerOrderReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function addDocumentBuyerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         return $this->setDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
     }
 
@@ -382,8 +390,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param DateTimeInterface|null $newReferenceDate __BT-X-404, From EXTENDED__ Seller's quotation date
      * @return self
      */
-    public function setDocumentSellerQuotationReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function setDocumentSellerQuotationReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
         }
@@ -414,8 +424,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param DateTimeInterface|null $newReferenceDate __BT-X-404, From EXTENDED__ Seller's quotation date
      * @return self
      */
-    public function addDocumentSellerQuotationReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function addDocumentSellerQuotationReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         return $this->setDocumentSellerQuotationReference($newReferenceNumber, $newReferenceDate);
     }
 
@@ -424,8 +436,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param DateTimeInterface|null $newReferenceDate __BT-X-26, From EXTENDED__ Contract date
      * @return self
      */
-    public function setDocumentContractReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function setDocumentContractReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
         }
@@ -456,8 +470,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param DateTimeInterface|null $newReferenceDate __BT-X-26, From EXTENDED__ Contract date
      * @return self
      */
-    public function addDocumentContractReference(?string $newReferenceNumber = null, ?DateTimeInterface $newReferenceDate = null): self
-    {
+    public function addDocumentContractReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
         return $this->setDocumentContractReference($newReferenceNumber, $newReferenceDate);
     }
 
