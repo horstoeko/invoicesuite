@@ -370,6 +370,30 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
+     * Set an additional despatch advice reference
+     *
+     * @param string|null $newReferenceNumber Shipping notification number
+     * @param DateTimeInterface|null $newReferenceDate Shipping notification date
+     * @return self
+     */
+    public function setDocumentDespatchAdviceReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
+
+    /**
+     * Set an additional despatch advice reference
+     *
+     * @param string|null $newReferenceNumber Shipping notification number
+     * @param DateTimeInterface|null $newReferenceDate Shipping notification date
+     * @return self
+     */
+    public function addDocumentDespatchAdviceReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
+
+    /**
      * Set the date of the delivery
      *
      * @param DateTimeInterface|null $newDate Actual delivery date

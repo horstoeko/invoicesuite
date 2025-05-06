@@ -137,6 +137,7 @@ $builder->addDocumentInvoiceReference("INVREF-003", null, "382");
 $builder->setDocumentProjectReference("PROJECT-0001", "Project 1");
 $builder->addDocumentProjectReference("PROJECT-0002", "Project 2");
 $builder->addDocumentUltimateCustomerOrderReference('UCOR-0000001', new DateTime());
+$builder->setDocumentDespatchAdviceReference('DESPATCHADV-0000001', new DateTime());
 
 $builder->setAocumentSupplyChainEvent(new DateTime());
 

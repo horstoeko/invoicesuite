@@ -618,6 +618,52 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * @inheritDoc
      */
+    public function setDocumentDespatchAdviceReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
+            return $this;
+        }
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->clearDespatchDocumentReference();
+
+        $this->addDocumentDespatchAdviceReference($newReferenceNumber, $newReferenceDate);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentDespatchAdviceReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
+            return $this;
+        }
+
+        $despatchAdviceReference = $this
+            ->getUblInvoiceRootObject()
+            ->addToDespatchDocumentReferenceWithCreate();
+
+        $despatchAdviceReference
+            ->getIDWithCreate()
+            ->setValue($newReferenceNumber);
+
+        if (!is_null($newReferenceDate)) {
+            $despatchAdviceReference->setIssueDate($newReferenceDate);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function setAocumentSupplyChainEvent(
         ?DateTimeInterface $newDate = null
     ): self {
