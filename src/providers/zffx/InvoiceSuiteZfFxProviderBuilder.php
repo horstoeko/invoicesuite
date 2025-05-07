@@ -5123,6 +5123,55 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             $paymentMean->getInformationWithCreate()->setValue($newName);
         }
 
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardId, $newFinancialCardHolder])) {
+            $paymentMean
+                ->getApplicableTradeSettlementFinancialCardWithCreate()
+                ->getIDWithCreate()
+                ->setValue($newFinancialCardId);
+            $paymentMean
+                ->getApplicableTradeSettlementFinancialCardWithCreate()
+                ->getCardholderNameWithCreate()
+                ->setValue($newFinancialCardHolder);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
+            $paymentMean
+                ->getPayerPartyDebtorFinancialAccountWithCreate()
+                ->getIBANIDWithCreate()
+                ->setValue($newBuyerIban);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban, $newPayeeAccountName, $newPayeeProprietaryId, $newPayeeBic])) {
+            $paymentMean
+                ->getPayeePartyCreditorFinancialAccountWithCreate()
+                ->getIBANIDWithCreate()
+                ->setValue($newPayeeIban);
+
+            $paymentMean
+                ->getPayeePartyCreditorFinancialAccountWithCreate()
+                ->getAccountNameWithCreate()
+                ->setValue($newPayeeAccountName);
+
+            $paymentMean
+                ->getPayeePartyCreditorFinancialAccountWithCreate()
+                ->getProprietaryIDWithCreate()
+                ->setValue($newPayeeProprietaryId);
+
+            $paymentMean
+                ->getPayeeSpecifiedCreditorFinancialInstitutionWithCreate()
+                ->getBICIDWithCreate()
+                ->setValue($newPayeeBic);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPaymentReference])) {
+            $this
+                ->getCrossIndustryRootObject()
+                ->getSupplyChainTradeTransactionWithCreate()
+                ->getApplicableHeaderTradeSettlementWithCreate()
+                ->getPaymentReferenceWithCreate()
+                ->setValue($newPaymentReference);
+        }
+
         return $this;
     }
 

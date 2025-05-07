@@ -3503,6 +3503,23 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             $newPaymentReference
         );
 
+        $this
+            ->getUblInvoiceRootObject()
+            ->clearPaymentMeans();
+
+        $this->addDocumentPaymentMean(
+            $newTypeCode,
+            $newName,
+            $newFinancialCardId,
+            $newFinancialCardHolder,
+            $newBuyerIban,
+            $newPayeeIban,
+            $newPayeeAccountName,
+            $newPayeeProprietaryId,
+            $newPayeeBic,
+            $newPaymentReference
+        );
+
         return $this;
     }
 
@@ -3523,6 +3540,62 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTypeCode])) {
             return $this;
+        }
+
+        $paymentMean = $this
+            ->getUblInvoiceRootObject()
+            ->addToPaymentMeansWithCreate();
+
+        $paymentMean->getPaymentMeansCodeWithCreate()->setValue($newTypeCode);
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)) {
+            $paymentMean->getPaymentMeansCodeWithCreate()->setName($newName);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardId, $newFinancialCardHolder])) {
+            $paymentMean
+                ->getCardAccountWithCreate()
+                ->getPrimaryAccountNumberIDWithCreate()
+                ->setValue($newFinancialCardId);
+
+            $paymentMean
+                ->getCardAccountWithCreate()
+                ->getNetworkIDWithCreate()
+                ->setValue('mapped-from-cii');
+
+            $paymentMean
+                ->getCardAccountWithCreate()
+                ->getHolderNameWithCreate()
+                ->setValue($newFinancialCardHolder);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
+            $paymentMean
+                ->getPayerFinancialAccountWithCreate()
+                ->getIDWithCreate()
+                ->setValue($newBuyerIban);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban, $newPayeeAccountName, $newPayeeProprietaryId, $newPayeeBic])) {
+            $paymentMean
+                ->getPayeeFinancialAccountWithCreate()
+                ->getIDWithCreate()
+                ->setValue($newPayeeIban);
+
+            $paymentMean
+                ->getPayeeFinancialAccountWithCreate()
+                ->getNameWithCreate()
+                ->setValue($newPayeeAccountName);
+
+            $paymentMean
+                ->getPayeeFinancialAccountWithCreate()
+                ->getFinancialInstitutionBranchWithCreate()
+                ->getIDWithCreate()
+                ->setValue($newPayeeBic);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPaymentReference])) {
+            $paymentMean->clearPaymentID()->addToPaymentIDWithCreate()->setValue($newPaymentReference);
         }
 
         return $this;
