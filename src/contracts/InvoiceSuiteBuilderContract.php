@@ -2172,7 +2172,7 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
-     * Set Payment mean (as SEPA credit transfer)
+     * Set Payment mean (as SEPA credit transfer, German: Überweisung)
      *
      * @param string|null $newPayeeIban Payment account identifier
      * @param string|null $newPayeeAccountName Name of the payment account
@@ -2190,7 +2190,7 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
-     * Add Payment mean (as SEPA credit transfer)
+     * Add Payment mean (as SEPA credit transfer, German: Überweisung)
      *
      * @param string|null $newPayeeIban Payment account identifier
      * @param string|null $newPayeeAccountName Name of the payment account
@@ -2208,7 +2208,7 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
-     * Set Payment mean (as non-SEPA credit transfer)
+     * Set Payment mean (as non-SEPA credit transfer, German: Überweisung)
      *
      * @param string|null $newPayeeIban Payment account identifier
      * @param string|null $newPayeeAccountName Name of the payment account
@@ -2226,7 +2226,7 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
-     * Add Payment mean (as non-SEPA credit transfer)
+     * Add Payment mean (as non-SEPA credit transfer, German: Überweisung)
      *
      * @param string|null $newPayeeIban Payment account identifier
      * @param string|null $newPayeeAccountName Name of the payment account
@@ -2244,7 +2244,7 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
-     * Set Payment mean (as SEPA direct debit)
+     * Set Payment mean (as SEPA direct debit, German: Lastschrift)
      *
      * @param string|null $newBuyerIban Identifier of the account to be debited
      * @return self
@@ -2254,7 +2254,7 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
-     * Add Payment mean (as SEPA direct debit)
+     * Add Payment mean (as SEPA direct debit, German: Lastschrift)
      *
      * @param string|null $newBuyerIban Identifier of the account to be debited
      * @return self
@@ -2264,7 +2264,7 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
-     * Set Payment mean (as non-SEPA direct debit)
+     * Set Payment mean (as non-SEPA direct debit, German: Lastschrift)
      *
      * @param string|null $newBuyerIban Identifier of the account to be debited
      * @return self
@@ -2274,7 +2274,7 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
-     * Add Payment mean (as non SEPA direct debit)
+     * Add Payment mean (as non SEPA direct debit, German: Lastschrift)
      *
      * @param string|null $newBuyerIban Identifier of the account to be debited
      * @return self

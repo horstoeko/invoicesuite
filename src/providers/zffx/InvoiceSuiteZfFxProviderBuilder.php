@@ -10,7 +10,6 @@ use horstoeko\invoicesuite\models\zffx\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\models\zffx\ram\DocumentContextParameterType;
 use horstoeko\invoicesuite\models\zffx\ram\ExchangedDocumentContextType;
-use horstoeko\invoicesuite\models\zffx\ram\TradeSettlementPaymentMeansType;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
 
 class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProviderBuilder
