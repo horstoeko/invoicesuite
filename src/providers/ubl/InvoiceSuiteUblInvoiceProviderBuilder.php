@@ -3867,5 +3867,54 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPaymentTerm(
+        ?string $newDescription = null,
+        ?DateTimeInterface $newDueDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDescription])) {
+            return $this;
+        }
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->clearPaymentTerms();
+
+        $this->addDocumentPaymentTerm(
+            $newDescription,
+            $newDueDate
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPaymentTerm(
+        ?string $newDescription = null,
+        ?DateTimeInterface $newDueDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDescription])) {
+            return $this;
+        }
+
+        $paymentTerm = $this
+            ->getUblInvoiceRootObject()
+            ->addToPaymentTermsWithCreate();
+
+        $paymentTerm
+            ->addOnceToNoteWithCreate()
+            ->setValue($newDescription);
+
+        if (!is_null($newDueDate)) {
+            $this->getUblInvoiceRootObject()->setDueDate($newDueDate);
+        }
+
+        return $this;
+    }
+
     #endregion
 }

@@ -2407,5 +2407,43 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         return $this;
     }
 
+    /**
+     * Set payment term
+     *
+     * @param string|null $newDescription Text description of the payment terms
+     * @param DateTimeInterface|null $newDueDate Date by which payment is due
+     * @return self
+     */
+    public function setDocumentPaymentTerm(
+        ?string $newDescription = null,
+        ?DateTimeInterface $newDueDate = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPaymentTerm(
+            $newDescription,
+            $newDueDate
+        );
+
+        return $this;
+    }
+
+    /**
+     * Add payment term
+     *
+     * @param string|null $newDescription Text description of the payment terms
+     * @param DateTimeInterface|null $newDueDate Date by which payment is due
+     * @return self
+     */
+    public function addDocumentPaymentTerm(
+        ?string $newDescription = null,
+        ?DateTimeInterface $newDueDate = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPaymentTerm(
+            $newDescription,
+            $newDueDate
+        );
+
+        return $this;
+    }
+
     #endregion
 }

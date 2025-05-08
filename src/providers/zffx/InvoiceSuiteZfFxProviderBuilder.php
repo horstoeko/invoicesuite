@@ -5502,5 +5502,64 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         return $this;
     }
 
+    /**
+     * @param string|null $newDescription __BT-20, From _BASIC WL__ Text description of the payment terms
+     * @param DateTimeInterface|null $newDueDate __BT-9, From BASIC WL__ Date by which payment is due
+     * @return self
+     */
+    public function setDocumentPaymentTerm(
+        ?string $newDescription = null,
+        ?DateTimeInterface $newDueDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDescription])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->clearSpecifiedTradePaymentTerms();
+
+        $this->addDocumentPaymentTerm(
+            $newDescription,
+            $newDueDate
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newDescription __BT-20, From _BASIC WL__ Text description of the payment terms
+     * @param DateTimeInterface|null $newDueDate __BT-9, From BASIC WL__ Date by which payment is due
+     * @return self
+     */
+    public function addDocumentPaymentTerm(
+        ?string $newDescription = null,
+        ?DateTimeInterface $newDueDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDescription])) {
+            return $this;
+        }
+
+        $paymentTerm = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->addToSpecifiedTradePaymentTermsWithCreate();
+
+        $paymentTerm->getDescriptionWithCreate()->setValue($newDescription);
+
+        if (!is_null($newDueDate)) {
+            $paymentTerm
+                ->getDueDateDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newDueDate->format("Ymd"))
+                ->setFormat("102");
+        }
+
+        return $this;
+    }
+
     #endregion
 }

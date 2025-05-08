@@ -2340,5 +2340,29 @@ interface InvoiceSuiteBuilderContract
         ?string $newId = null
     ): self;
 
+    /**
+     * Set payment term
+     *
+     * @param string|null $newDescription Text description of the payment terms
+     * @param DateTimeInterface|null $newDueDate Date by which payment is due
+     * @return self
+     */
+    public function setDocumentPaymentTerm(
+        ?string $newDescription = null,
+        ?DateTimeInterface $newDueDate = null
+    ): self;
+
+    /**
+     * Add payment term
+     *
+     * @param string|null $newDescription Text description of the payment terms
+     * @param DateTimeInterface|null $newDueDate Date by which payment is due
+     * @return self
+     */
+    public function addDocumentPaymentTerm(
+        ?string $newDescription = null,
+        ?DateTimeInterface $newDueDate = null
+    ): self;
+
     #endregion
 }
