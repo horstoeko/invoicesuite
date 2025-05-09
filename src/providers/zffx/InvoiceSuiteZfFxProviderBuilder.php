@@ -348,6 +348,12 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
                 ->setFormat("102");
         }
 
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            $billingPeriod
+                ->getDescriptionWithCreate()
+                ->setValue($newDescription);
+        }
+
         return $this;
     }
 
