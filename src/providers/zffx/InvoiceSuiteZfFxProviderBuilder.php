@@ -3,15 +3,16 @@
 namespace horstoeko\invoicesuite\providers\zffx;
 
 use DateTimeInterface;
-use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
-use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
-use horstoeko\invoicesuite\models\zffx\ram\ExchangedDocumentType;
-use horstoeko\invoicesuite\models\zffx\ram\TradePaymentTermsType;
-use horstoeko\invoicesuite\models\zffx\rsm\CrossIndustryInvoiceType;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\models\zffx\ram\DocumentContextParameterType;
 use horstoeko\invoicesuite\models\zffx\ram\ExchangedDocumentContextType;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
+use horstoeko\invoicesuite\models\zffx\ram\ExchangedDocumentType;
+use horstoeko\invoicesuite\models\zffx\ram\TradePaymentTermsType;
+use horstoeko\invoicesuite\models\zffx\rsm\CrossIndustryInvoiceType;
+use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProviderBuilder
 {
@@ -5630,6 +5631,129 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
                 ->getDateTimeStringWithCreate()
                 ->setValue($newDueDate->format("Ymd"))
                 ->setFormat("102");
+        }
+
+        return $this;
+    }
+
+    #endregion
+
+    #region Document Tax
+
+    /**
+     * @param string|null $newTaxCategory __BT-118, From BASIC WL__ Coded description of the tax category
+     * @param string|null $newTaxType __BT-118-0, From BASIC WL__ Coded description of the tax type
+     * @param float|null $newBasisAmount __BT-116, From BASIC WL__ Tax base amount
+     * @param float|null $newTaxAmount __BT-117, From BASIC WL__ Tax total amount
+     * @param float|null $newTaxPercent __BT-119, From BASIC WL__ Tax Rate (Percentage)
+     * @param string|null $newExemptionReason __BT-120, From BASIC WL__ Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode __BT-121, From BASIC WL__Reason for tax exemption (Code)
+     * @param DateTimeInterface|null $newTaxDueDate __BT-7-00, From EN 16931__ Date on which tax is due
+     * @param string|null $newTaxDueCode __BT-8, From BASIC WL__ Code for the date on which tax is due
+     * @return self
+     */
+    public function setDocumentTax(
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newBasisAmount = null,
+        ?float $newTaxAmount = null,
+        ?float $newTaxPercent = null,
+        ?string $newExemptionReason = null,
+        ?string $newExemptionReasonCode = null,
+        ?DateTimeInterface $newTaxDueDate = null,
+        ?string $newTaxDueCode = null
+    ): self {
+        if (
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType]) ||
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newBasisAmount, $newTaxAmount])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->clearApplicableTradeTax();
+
+        $this->addDocumentTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newBasisAmount,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode,
+            $newTaxDueDate,
+            $newTaxDueCode
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newTaxCategory __BT-118, From BASIC WL__ Coded description of the tax category
+     * @param string|null $newTaxType __BT-118-0, From BASIC WL__ Coded description of the tax type
+     * @param float|null $newBasisAmount __BT-116, From BASIC WL__ Tax base amount
+     * @param float|null $newTaxAmount __BT-117, From BASIC WL__ Tax total amount
+     * @param float|null $newTaxPercent __BT-119, From BASIC WL__ Tax Rate (Percentage)
+     * @param string|null $newExemptionReason __BT-120, From BASIC WL__ Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode __BT-121, From BASIC WL__Reason for tax exemption (Code)
+     * @param DateTimeInterface|null $newTaxDueDate __BT-7-00, From EN 16931__ Date on which tax is due
+     * @param string|null $newTaxDueCode __BT-8, From BASIC WL__ Code for the date on which tax is due
+     * @return self
+     */
+    public function addDocumentTax(
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newBasisAmount = null,
+        ?float $newTaxAmount = null,
+        ?float $newTaxPercent = null,
+        ?string $newExemptionReason = null,
+        ?string $newExemptionReasonCode = null,
+        ?DateTimeInterface $newTaxDueDate = null,
+        ?string $newTaxDueCode = null
+    ): self {
+        if (
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType]) ||
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newBasisAmount, $newTaxAmount])
+        ) {
+            return $this;
+        }
+
+        $applicableTradeTax = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->addToApplicableTradeTaxWithCreate();
+
+        $applicableTradeTax->getCategoryCodeWithCreate()->setValue($newTaxCategory);
+        $applicableTradeTax->getTypeCodeWithCreate()->setValue($newTaxType);
+        $applicableTradeTax->getBasisAmountWithCreate()->setValue($newBasisAmount);
+        $applicableTradeTax->getCalculatedAmountWithCreate()->setValue($newTaxAmount);
+
+        if (!is_null($newTaxPercent)) {
+            $applicableTradeTax->getRateApplicablePercentWithCreate()->setValue($newTaxPercent);
+        }
+
+        if (!is_null($newExemptionReason)) {
+            $applicableTradeTax->getExemptionReasonWithCreate()->setValue($newExemptionReason);
+        }
+
+        if (!is_null($newExemptionReasonCode)) {
+            $applicableTradeTax->getExemptionReasonCodeWithCreate()->setValue($newExemptionReasonCode);
+        }
+
+        if (!is_null($newTaxDueDate)) {
+            $applicableTradeTax
+                ->getTaxPointDateWithCreate()
+                ->getDateStringWithCreate()
+                ->setValue($newTaxDueDate->format("Ymd"))
+                ->setFormat("102");
+        }
+
+        if (!is_null($newTaxDueCode)) {
+            $applicableTradeTax->getDueDateTypeCodeWithCreate()->setValue($newTaxDueCode);
         }
 
         return $this;

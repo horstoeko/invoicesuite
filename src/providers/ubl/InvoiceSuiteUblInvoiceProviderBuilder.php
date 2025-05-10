@@ -3,14 +3,15 @@
 namespace horstoeko\invoicesuite\providers\ubl;
 
 use DateTimeInterface;
-use horstoeko\invoicesuite\models\ubl\main\Invoice;
-use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
-use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
-use horstoeko\invoicesuite\models\ubl\cac\PartyIdentification;
-use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
+use horstoeko\invoicesuite\models\ubl\cac\PartyIdentification;
+use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
+use horstoeko\invoicesuite\models\ubl\main\Invoice;
+use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatProviderBuilder
 {
@@ -3965,6 +3966,103 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
 
         if (!is_null($newDueDate)) {
             $this->getUblInvoiceRootObject()->setDueDate($newDueDate);
+        }
+
+        return $this;
+    }
+
+    #endregion
+
+    #region Document Tax
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentTax(
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newBasisAmount = null,
+        ?float $newTaxAmount = null,
+        ?float $newTaxPercent = null,
+        ?string $newExemptionReason = null,
+        ?string $newExemptionReasonCode = null,
+        ?DateTimeInterface $newTaxDueDate = null,
+        ?string $newTaxDueCode = null
+    ): self {
+        if (
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType]) ||
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newBasisAmount, $newTaxAmount])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->addOnceToTaxTotalWithCreate()
+            ->clearTaxSubtotal();
+
+        $this->addDocumentTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newBasisAmount,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode,
+            $newTaxDueDate,
+            $newTaxDueCode
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentTax(
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newBasisAmount = null,
+        ?float $newTaxAmount = null,
+        ?float $newTaxPercent = null,
+        ?string $newExemptionReason = null,
+        ?string $newExemptionReasonCode = null,
+        ?DateTimeInterface $newTaxDueDate = null,
+        ?string $newTaxDueCode = null
+    ): self {
+        if (
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType]) ||
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newBasisAmount, $newTaxAmount])
+        ) {
+            return $this;
+        }
+
+        $taxSubTotal = $this
+            ->getUblInvoiceRootObject()
+            ->addOnceToTaxTotalWithCreate()
+            ->addOnceToTaxSubtotalWithCreate();
+
+        $taxCategory = $taxSubTotal->getTaxCategoryWithCreate();
+        $taxCategory->getIDWithCreate()->setValue($newTaxCategory);
+        $taxCategory->getTaxSchemeWithCreate()->getIDWithCreate()->setValue($newTaxType);
+
+        $taxSubTotal->getTaxableAmountWithCreate()->setValue($newBasisAmount);
+        $taxSubTotal->getTaxAmountWithCreate()->setValue($newTaxAmount);
+
+        if (!is_null($newTaxPercent)) {
+            $taxCategory->getPercentWithCreate()->setValue($newTaxPercent);
+        }
+
+        if (!is_null($newExemptionReason)) {
+            $taxCategory->addOnceToTaxExemptionReasonWithCreate()->setValue($newExemptionReason);
+        }
+
+        if (!is_null($newExemptionReasonCode)) {
+            $taxCategory->getTaxExemptionReasonCodeWithCreate()->setValue($newExemptionReasonCode);
+        }
+
+        if (!is_null($newTaxDueDate)) {
+            $this->getUblInvoiceRootObject()->setTaxPointDate($newTaxDueDate);
         }
 
         return $this;

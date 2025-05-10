@@ -5,8 +5,8 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
-$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
+//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
 //$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxxrechnung');
 
 $builder->setDocumentNo('2025-04-000001');
@@ -157,5 +157,7 @@ $builder->addDocumentPaymentTerm("30 Tage Netto", new DateTime("+30 days"));
 
 $builder->setDocumentPaymentCreditorReferenceID("CREDREF");
 $builder->setDocumentPaymentCreditorReferenceID("CREDREF2");
+
+$builder->setDocumentTax('S', 'VAT', 100.00, 19.00, 19.0, 'Reason', 'ReasonCode', new DateTime(), 'DUECODE');
 
 echo $builder->saveAsXmlFile(__DIR__ . "/00_SimpleInvoice.xml");

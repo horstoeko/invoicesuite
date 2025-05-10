@@ -2434,11 +2434,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     /**
-     * Set payment term
-     *
-     * @param string|null $newDescription Text description of the payment terms
-     * @param DateTimeInterface|null $newDueDate Date by which payment is due
-     * @return self
+     * @inheritDoc
      */
     public function setDocumentPaymentTerm(
         ?string $newDescription = null,
@@ -2453,11 +2449,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     /**
-     * Add payment term
-     *
-     * @param string|null $newDescription Text description of the payment terms
-     * @param DateTimeInterface|null $newDueDate Date by which payment is due
-     * @return self
+     * @inheritDoc
      */
     public function addDocumentPaymentTerm(
         ?string $newDescription = null,
@@ -2466,6 +2458,68 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentPaymentTerm(
             $newDescription,
             $newDueDate
+        );
+
+        return $this;
+    }
+
+    #endregion
+
+    #region Document Tax
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentTax(
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newBasisAmount = null,
+        ?float $newTaxAmount = null,
+        ?float $newTaxPercent = null,
+        ?string $newExemptionReason = null,
+        ?string $newExemptionReasonCode = null,
+        ?DateTimeInterface $newTaxDueDate = null,
+        ?string $newTaxDueCode = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newBasisAmount,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode,
+            $newTaxDueDate,
+            $newTaxDueCode
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentTax(
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newBasisAmount = null,
+        ?float $newTaxAmount = null,
+        ?float $newTaxPercent = null,
+        ?string $newExemptionReason = null,
+        ?string $newExemptionReasonCode = null,
+        ?DateTimeInterface $newTaxDueDate = null,
+        ?string $newTaxDueCode = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newBasisAmount,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode,
+            $newTaxDueDate,
+            $newTaxDueCode
         );
 
         return $this;

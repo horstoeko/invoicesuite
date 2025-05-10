@@ -2393,4 +2393,60 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     #endregion
+
+    #region Document Tax
+
+    /**
+     * Set Document Tax Breakdown
+     *
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newBasisAmount Tax base amount
+     * @param float|null $newTaxAmount Tax total amount
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newExemptionReason Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode Reason for tax exemption (Code)
+     * @param DateTimeInterface|null $newTaxDueDate Date on which tax is due
+     * @param string|null $newTaxDueCode Code for the date on which tax is due
+     * @return self
+     */
+    public function setDocumentTax(
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newBasisAmount = null,
+        ?float $newTaxAmount = null,
+        ?float $newTaxPercent = null,
+        ?string $newExemptionReason = null,
+        ?string $newExemptionReasonCode = null,
+        ?DateTimeInterface $newTaxDueDate = null,
+        ?string $newTaxDueCode = null
+    ): self;
+
+    /**
+     * Add Document Tax Breakdown
+     *
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newBasisAmount Tax base amount
+     * @param float|null $newTaxAmount Tax total amount
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newExemptionReason Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode Reason for tax exemption (Code)
+     * @param DateTimeInterface|null $newTaxDueDate Date on which tax is due
+     * @param string|null $newTaxDueCode Code for the date on which tax is due
+     * @return self
+     */
+    public function addDocumentTax(
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newBasisAmount = null,
+        ?float $newTaxAmount = null,
+        ?float $newTaxPercent = null,
+        ?string $newExemptionReason = null,
+        ?string $newExemptionReasonCode = null,
+        ?DateTimeInterface $newTaxDueDate = null,
+        ?string $newTaxDueCode = null
+    ): self;
+
+    #endregion
 }

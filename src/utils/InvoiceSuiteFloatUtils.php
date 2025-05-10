@@ -2,10 +2,8 @@
 
 namespace horstoeko\invoicesuite\utils;
 
-use horstoeko\stringmanagement\StringUtils;
-
 /**
- * class representing string utilities
+ * class representing float utilities
  *
  * @category InvoiceSuite
  * @package  InvoiceSuite
@@ -13,31 +11,30 @@ use horstoeko\stringmanagement\StringUtils;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteStringUtils
+class InvoiceSuiteFloatUtils
 {
     /**
-     * Its like the almost known C#-Methods
-     * Tests if string is not null and has a value != ""
+     * Returns true if the given value is null otherwise false
      *
-     * @param string|null $str
+     * @param float|null $value
      * @return boolean
      */
-    public static function stringIsNullOrEmpty(?string $str = null): bool
+    public static function floatIsNullOrEmpty(?float $value = null): bool
     {
-        return StringUtils::stringIsNullOrEmpty($str);
+        return is_null($value);
     }
 
     /**
      * Check if all elements are null or empty
-     * Tests if any string in $values is not null and has a value != ""
+     * Tests if any float in $values is not null and has a value != ""
      *
-     * @param array<string|null> $values
+     * @param array<float|null> $values
      * @return boolean
      */
     public static function allIsNullOrEmpty(array $values): bool
     {
         foreach ($values as $value) {
-            if (!static::stringIsNullOrEmpty($value)) {
+            if (!static::floatIsNullOrEmpty($value)) {
                 return false;
             }
         }
@@ -48,13 +45,13 @@ class InvoiceSuiteStringUtils
     /**
      * Returns true if at least on element in values is null or empty
      *
-     * @param array<string|null> $values
+     * @param array<float|null> $values
      * @return boolean
      */
     public static function oneIsNullOrEmpty(array $values): bool
     {
         foreach ($values as $value) {
-            if (static::stringIsNullOrEmpty($value)) {
+            if (static::floatIsNullOrEmpty($value)) {
                 return true;
             }
         }
@@ -63,13 +60,13 @@ class InvoiceSuiteStringUtils
     }
 
     /**
-     * Returns null if the given string is empty
+     * Returns null if the given float is empty
      *
-     * @param null|string $str
-     * @return null|string
+     * @param null|float $str
+     * @return null|float
      */
-    public static function asNullWhenEmpty(?string $str): ?string
+    public static function asNullWhenEmpty(?float $str): ?float
     {
-        return static::stringIsNullOrEmpty($str) ? null : $str;
+        return static::floatIsNullOrEmpty($str) ? null : $str;
     }
 }
