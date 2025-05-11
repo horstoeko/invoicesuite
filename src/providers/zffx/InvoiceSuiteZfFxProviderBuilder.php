@@ -5894,5 +5894,88 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         return $this;
     }
 
+    /**
+     * Set Document Logistic Service Charge
+     *
+     * @param float|null $newChargeAmount Amount of the service fee
+     * @param string|null $newDescription Identification of the service fee
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @return self
+     */
+    public function setDocumentLogisticServiceCharge(
+        ?float $newChargeAmount = null,
+        ?string $newDescription = null,
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxPercent = null
+    ): self {
+        if (
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType, $newDescription]) ||
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent, $newChargeAmount])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->clearSpecifiedLogisticsServiceCharge();
+
+        $this->addDocumentLogisticServiceCharge(
+            $newChargeAmount,
+            $newDescription,
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxPercent
+        );
+
+        return $this;
+    }
+
+    /**
+     * Add Document Logistic Service Charge
+     *
+     * @param float|null $newChargeAmount Amount of the service fee
+     * @param string|null $newDescription Identification of the service fee
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @return self
+     */
+    public function addDocumentLogisticServiceCharge(
+        ?float $newChargeAmount = null,
+        ?string $newDescription = null,
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxPercent = null
+    ): self {
+        if (
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType, $newDescription]) ||
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent, $newChargeAmount])
+        ) {
+            return $this;
+        }
+
+        $logisticServiceCharge = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->addToSpecifiedLogisticsServiceChargeWithCreate();
+
+        $logisticServiceCharge->getDescriptionWithCreate()->setValue($newDescription);
+        $logisticServiceCharge->getAppliedAmountWithCreate()->setValue($newChargeAmount);
+        $logisticServiceCharge->clearAppliedTradeTax();
+
+        $appliedTradeTax = $logisticServiceCharge->addToAppliedTradeTaxWithCreate();
+        $appliedTradeTax->getCategoryCodeWithCreate()->setValue($newTaxCategory);
+        $appliedTradeTax->getTypeCodeWithCreate()->setValue($newTaxType);
+        $appliedTradeTax->getRateApplicablePercentWithCreate()->setValue($newTaxPercent);
+
+        return $this;
+    }
+
     #endregion
 }
