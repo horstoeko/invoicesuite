@@ -3,15 +3,16 @@
 namespace horstoeko\invoicesuite\providers\ubl;
 
 use DateTimeInterface;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
-use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
-use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
-use horstoeko\invoicesuite\models\ubl\cac\PartyIdentification;
-use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
 use horstoeko\invoicesuite\models\ubl\main\Invoice;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge;
+use horstoeko\invoicesuite\models\ubl\cac\PartyIdentification;
+use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
+use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
+use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
 
 class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatProviderBuilder
 {
@@ -3900,8 +3901,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getPartyWithCreate()
             ->getPartyIdentification();
 
-        $ids = array_filter($ids, function (PartyIdentification $id) {
-            return strcasecmp($id->getID()->getSchemeID() ?? "", "SEPA") !== 0;
+        $ids = array_filter($ids ?? [], function (PartyIdentification $id) {
+            return strcasecmp($id->getID()?->getSchemeID() ?? "", "SEPA") !== 0;
         });
 
         $this
@@ -4101,9 +4102,16 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             return $this;
         }
 
+        $allowanceCharges = array_filter(
+            $this->getUblInvoiceRootObject()->getAllowanceCharge() ?? [],
+            function (AllowanceCharge $currentAllowanceChage) {
+                return !$currentAllowanceChage->hasObjectFlag('allowancecharge');
+            }
+        );
+
         $this
             ->getUblInvoiceRootObject()
-            ->clearAllowanceCharge();
+            ->setAllowanceCharge($allowanceCharges);
 
         $this->addDocumentAllowanceCharge(
             $newChargeIndicator,
@@ -4143,7 +4151,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
 
         $allowanceCharge = $this
             ->getUblInvoiceRootObject()
-            ->addToAllowanceChargeWithCreate();
+            ->addToAllowanceChargeWithCreate()
+            ->addToObjectFlags('allowancecharge');
 
         $allowanceCharge
             ->setChargeIndicator($newChargeIndicator ?? false);
@@ -4206,6 +4215,23 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             return $this;
         }
 
+        $allowanceCharges = array_filter(
+            $this->getUblInvoiceRootObject()->getAllowanceCharge() ?? [],
+            function (AllowanceCharge $currentAllowanceChage) {
+                return !$currentAllowanceChage->hasObjectFlag('logservicecharge');
+            }
+        );
+
+        $this->getUblInvoiceRootObject()->setAllowanceCharge($allowanceCharges);
+
+        $this->addDocumentLogisticServiceCharge(
+            $newChargeAmount,
+            $newDescription,
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxPercent
+        );
+
         return $this;
     }
 
@@ -4225,6 +4251,28 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ) {
             return $this;
         }
+
+        $allowanceCharge = $this
+            ->getUblInvoiceRootObject()
+            ->addToAllowanceChargeWithCreate()
+            ->addToObjectFlags('logservicecharge');
+
+        $allowanceCharge
+            ->setChargeIndicator(true);
+
+        $allowanceCharge
+            ->getAmountWithCreate()
+            ->setValue($newChargeAmount);
+
+        $allowanceCharge
+            ->clearAllowanceChargeReason()
+            ->addToAllowanceChargeReasonWithCreate()
+            ->setValue($newDescription);
+
+        $taxCategory = $allowanceCharge->clearTaxCategory()->addToTaxCategoryWithCreate();
+        $taxCategory->getIDWithCreate()->setValue($newTaxCategory);
+        $taxCategory->getTaxSchemeWithCreate()->getIDWithCreate()->setValue($newTaxType);
+        $taxCategory->getPercentWithCreate()->setValue($newTaxPercent);
 
         return $this;
     }
