@@ -59,7 +59,10 @@ trait HandlesObjectFlags
             return $this;
         }
 
-        $this->objectFlags = array_filter($this->objectFlags, fn ($currentFlag) => strcasecmp($currentFlag, $flag) !== 0);
+        $this->objectFlags = array_filter(
+            $this->objectFlags,
+            fn ($currentFlag) => strcasecmp($currentFlag, $flag) !== 0
+        );
 
         return $this;
     }
@@ -72,6 +75,9 @@ trait HandlesObjectFlags
      */
     public function objectFlagIsSet(string $flag): bool
     {
-        return array_filter($this->objectFlags, fn ($currentFlag) => strcasecmp($currentFlag, $flag) === 0) !== [];
+        return array_filter(
+            $this->objectFlags,
+            fn ($currentFlag) => strcasecmp($currentFlag, $flag) === 0
+        ) !== [];
     }
 }
