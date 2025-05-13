@@ -5677,7 +5677,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
                 ->getBasisAmountWithCreate()
                 ->setValue($newBaseAmount);
         }
-        
+
         if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newDiscountAmount)) {
             $paymentDiscountTerms
                 ->getActualDiscountAmountWithCreate()
@@ -5732,6 +5732,108 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             $newBaseAmount,
             $newDiscountAmount,
             $newDiscountPercent,
+            $newBaseDate,
+            $newBasePeriod,
+            $newBasePeriodUnit
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param float|null $newBaseAmount __BT-X-279, From EXTENDED__ Base amount of the payment penalty
+     * @param float|null $newPenaltyAmount __BT-X-281, From EXTENDED__ Amount of the payment penalty
+     * @param float|null $newPenaltyPercent __BT-X-280, From EXTENDED__ Percentage of the payment penalty
+     * @param DateTimeInterface|null $newBaseDate __BT-X-276, From EXTENDED__ Due date reference date
+     * @param float|null $newBasePeriod __BT-X-277, From EXTENDED__ Maturity period (basis)
+     * @param string|null $newBasePeriodUnit __BT-X-278, From EXTENDED__ Maturity period (unit)
+     * @return self
+     */
+    public function setDocumentPaymentPenaltyTermsInLastPaymentTerm(
+        ?float $newBaseAmount = null,
+        ?float $newPenaltyAmount = null,
+        ?float $newPenaltyPercent = null,
+        ?DateTimeInterface $newBaseDate = null,
+        ?float $newBasePeriod = null,
+        ?string $newBasePeriodUnit = null
+    ): self {
+        $paymentTerms = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getSpecifiedTradePaymentTerms() ?? [];
+
+        $lastPaymentTerms = end($paymentTerms);
+
+        if ($lastPaymentTerms === false) {
+            return $this;
+        }
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffx\ram\TradePaymentTermsType $lastPaymentTerms
+         */
+        $paymentPenaltyTerms = $lastPaymentTerms->getApplicableTradePaymentPenaltyTermsWithCreate();
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newBaseAmount)) {
+            $paymentPenaltyTerms
+                ->getBasisAmountWithCreate()
+                ->setValue($newBaseAmount);
+        }
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newPenaltyAmount)) {
+            $paymentPenaltyTerms
+                ->getActualPenaltyAmountWithCreate()
+                ->setValue($newPenaltyAmount);
+        }
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newPenaltyPercent)) {
+            $paymentPenaltyTerms
+                ->getCalculationPercentWithCreate()
+                ->setValue($newPenaltyPercent);
+        }
+
+        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newBaseDate)) {
+            $paymentPenaltyTerms
+                ->getBasisDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newBaseDate->format("Ymd"))
+                ->setFormat("102");
+        }
+
+        if (
+            !InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newBasePeriod) &&
+            !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newBasePeriodUnit)
+        ) {
+            $paymentPenaltyTerms
+                ->getBasisPeriodMeasureWithCreate()
+                ->setValue($newBasePeriod)
+                ->setUnitCode($newBasePeriodUnit);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param float|null $newBaseAmount __BT-X-279, From EXTENDED__ Base amount of the payment penalty
+     * @param float|null $newPenaltyAmount __BT-X-281, From EXTENDED__ Amount of the payment penalty
+     * @param float|null $newPenaltyPercent __BT-X-280, From EXTENDED__ Percentage of the payment penalty
+     * @param DateTimeInterface|null $newBaseDate __BT-X-276, From EXTENDED__ Due date reference date
+     * @param float|null $newBasePeriod __BT-X-277, From EXTENDED__ Maturity period (basis)
+     * @param string|null $newBasePeriodUnit __BT-X-278, From EXTENDED__ Maturity period (unit)
+     * @return self
+     */
+    public function addDocumentPaymentPenaltyTermsInLastPaymentTerm(
+        ?float $newBaseAmount = null,
+        ?float $newPenaltyAmount = null,
+        ?float $newPenaltyPercent = null,
+        ?DateTimeInterface $newBaseDate = null,
+        ?float $newBasePeriod = null,
+        ?string $newBasePeriodUnit = null
+    ): self {
+        $this->setDocumentPaymentPenaltyTermsInLastPaymentTerm(
+            $newBaseAmount,
+            $newPenaltyAmount,
+            $newPenaltyPercent,
             $newBaseDate,
             $newBasePeriod,
             $newBasePeriodUnit

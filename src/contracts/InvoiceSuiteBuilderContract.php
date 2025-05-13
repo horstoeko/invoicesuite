@@ -2432,6 +2432,46 @@ interface InvoiceSuiteBuilderContract
         ?string $newBasePeriodUnit = null
     ): self;
 
+    /**
+     * Set payment penalty terms in last added payment terms
+     *
+     * @param float|null $newBaseAmount Base amount of the payment penalty
+     * @param float|null $newPenaltyAmount Amount of the payment penalty
+     * @param float|null $newPenaltyPercent Percentage of the payment penalty
+     * @param DateTimeInterface|null $newBaseDate Due date reference date
+     * @param float|null $newBasePeriod Maturity period (basis)
+     * @param string|null $newBasePeriodUnit Maturity period (unit)
+     * @return self
+     */
+    public function setDocumentPaymentPenaltyTermsInLastPaymentTerm(
+        ?float $newBaseAmount = null,
+        ?float $newPenaltyAmount = null,
+        ?float $newPenaltyPercent = null,
+        ?DateTimeInterface $newBaseDate = null,
+        ?float $newBasePeriod = null,
+        ?string $newBasePeriodUnit = null
+    ): self;
+
+    /**
+     * Add payment penalty terms in last added payment terms
+     *
+     * @param float|null $newBaseAmount Base amount of the payment penalty
+     * @param float|null $newPenaltyAmount Amount of the payment penalty
+     * @param float|null $newPenaltyPercent Percentage of the payment penalty
+     * @param DateTimeInterface|null $newBaseDate Due date reference date
+     * @param float|null $newBasePeriod Maturity period (basis)
+     * @param string|null $newBasePeriodUnit Maturity period (unit)
+     * @return self
+     */
+    public function addDocumentPaymentPenaltyTermsInLastPaymentTerm(
+        ?float $newBaseAmount = null,
+        ?float $newPenaltyAmount = null,
+        ?float $newPenaltyPercent = null,
+        ?DateTimeInterface $newBaseDate = null,
+        ?float $newBasePeriod = null,
+        ?string $newBasePeriodUnit = null
+    ): self;
+
     #endregion
 
     #region Document Tax

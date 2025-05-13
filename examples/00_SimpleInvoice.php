@@ -156,6 +156,7 @@ $builder->addDocumentPaymentMeanAsDirectDebitSepa("00000000000000000", "MANDATE-
 
 $builder->addDocumentPaymentTerm("30 Tage Netto", new DateTime("+30 days"));
 $builder->setDocumentPaymentDiscountTermsInLastPaymentTerm(100.0, 10.0, 10.0, new DateTime(), 10.0, 'DAY');
+$builder->setDocumentPaymentPenaltyTermsInLastPaymentTerm(10.0, 1.0, 5.0, new DateTime(), 2, 'MON');
 
 $builder->setDocumentPaymentCreditorReferenceID("CREDREF");
 $builder->setDocumentPaymentCreditorReferenceID("CREDREF2");

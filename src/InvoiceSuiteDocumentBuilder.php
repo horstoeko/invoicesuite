@@ -2509,6 +2509,52 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPaymentPenaltyTermsInLastPaymentTerm(
+        ?float $newBaseAmount = null,
+        ?float $newPenaltyAmount = null,
+        ?float $newPenaltyPercent = null,
+        ?DateTimeInterface $newBaseDate = null,
+        ?float $newBasePeriod = null,
+        ?string $newBasePeriodUnit = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPaymentPenaltyTermsInLastPaymentTerm(
+            $newBaseAmount,
+            $newPenaltyAmount,
+            $newPenaltyPercent,
+            $newBaseDate,
+            $newBasePeriod,
+            $newBasePeriodUnit
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPaymentPenaltyTermsInLastPaymentTerm(
+        ?float $newBaseAmount = null,
+        ?float $newPenaltyAmount = null,
+        ?float $newPenaltyPercent = null,
+        ?DateTimeInterface $newBaseDate = null,
+        ?float $newBasePeriod = null,
+        ?string $newBasePeriodUnit = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPaymentPenaltyTermsInLastPaymentTerm(
+            $newBaseAmount,
+            $newPenaltyAmount,
+            $newPenaltyPercent,
+            $newBaseDate,
+            $newBasePeriod,
+            $newBasePeriodUnit
+        );
+
+        return $this;
+    }
+
     #endregion
 
     #region Document Tax
