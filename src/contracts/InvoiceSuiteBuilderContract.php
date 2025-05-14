@@ -181,6 +181,30 @@ interface InvoiceSuiteBuilderContract
         ?string $newDescription = null
     ): self;
 
+    /**
+     * Set a posting reference
+     *
+     * @param string|null $newType Type of the posting reference
+     * @param string|null $newAccountId Posting reference of the byuer
+     * @return self
+     */
+    public function setDocumentPostingReference(
+        ?string $newType = null,
+        ?string $newAccountId = null
+    ): self;
+
+    /**
+     * Add a posting reference
+     *
+     * @param string|null $newType Type of the posting reference
+     * @param string|null $newAccountId Posting reference of the byuer
+     * @return self
+     */
+    public function addDocumentPostingReference(
+        ?string $newType = null,
+        ?string $newAccountId = null
+    ): self;
+
     #endregion
 
     #region Document References

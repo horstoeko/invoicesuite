@@ -282,6 +282,30 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPostingReference(
+        ?string $newType = null,
+        ?string $newAccountId = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPostingReference($newType, $newAccountId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPostingReference(
+        ?string $newType = null,
+        ?string $newAccountId = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPostingReference($newType, $newAccountId);
+
+        return $this;
+    }
+
     #endregion
 
     #region Document References

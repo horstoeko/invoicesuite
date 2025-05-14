@@ -5,8 +5,8 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
-$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
+//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
 //$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxxrechnung');
 
 $builder->setDocumentNo('2025-04-000001');
@@ -168,5 +168,7 @@ $builder->addDocumentAllowanceCharge(true, 10, 100, 'S', 'VAT', 19.0, 'Reason', 
 $builder->setDocumentLogisticServiceCharge(50, "Logistic Service Charge", 'S', 'VAT', 19);
 
 $builder->setDocumentAllowanceCharge(true, 10, 100, 'S', 'VAT', 19.0, 'ReasonAllowance', 'ReasonCodeAllowance', 2);
+
+$builder->setDocumentPostingReference('1', 'FINACC');
 
 echo $builder->saveAsXmlFile(__DIR__ . "/00_SimpleInvoice.xml");

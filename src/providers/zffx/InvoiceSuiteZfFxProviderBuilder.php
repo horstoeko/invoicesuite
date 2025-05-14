@@ -385,6 +385,58 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         return $this;
     }
 
+    /**
+     * @param string|null $newType __BT-X-290, From EXTENDED__ Type of the posting reference, Allowed values: 1 = Financial, 2 = Subsidiary, 3 = Budget, 4 = Cost Accounting, 5 = Payable, 6 = Job Cost Accounting
+     * @param string|null $newAccountId __BT-19, From BASIC WL__ Posting reference of the byuer, If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
+     * @return self
+     */
+    public function setDocumentPostingReference(
+        ?string $newType = null,
+        ?string $newAccountId = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newAccountId])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->clearReceivableSpecifiedTradeAccountingAccount();
+
+        $this->addDocumentPostingReference($newType, $newAccountId);
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newType __BT-X-290, From EXTENDED__ Type of the posting reference, Allowed values: 1 = Financial, 2 = Subsidiary, 3 = Budget, 4 = Cost Accounting, 5 = Payable, 6 = Job Cost Accounting
+     * @param string|null $newAccountId __BT-19, From BASIC WL__ Posting reference of the byuer, If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
+     * @return self
+     */
+    public function addDocumentPostingReference(
+        ?string $newType = null,
+        ?string $newAccountId = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newAccountId])) {
+            return $this;
+        }
+
+        $tradeAccountingAccount = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->addToReceivableSpecifiedTradeAccountingAccountWithCreate();
+
+        $tradeAccountingAccount->getIDWithCreate()->setValue($newAccountId);
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType])) {
+            $tradeAccountingAccount->getTypeCodeWithCreate()->setValue($newType);
+        }
+
+        return $this;
+    }
+
     #endregion
 
     #region Document References

@@ -284,6 +284,41 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPostingReference(
+        ?string $newType = null,
+        ?string $newAccountId = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newAccountId])) {
+            return $this;
+        }
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->getAccountingCostWithCreate()
+            ->setValue($newAccountId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPostingReference(
+        ?string $newType = null,
+        ?string $newAccountId = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newAccountId])) {
+            return $this;
+        }
+
+        $this->setDocumentPostingReference($newType, $newAccountId);
+
+        return $this;
+    }
+
     #endregion
 
     #region Document References
