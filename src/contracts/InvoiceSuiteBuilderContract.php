@@ -2655,5 +2655,32 @@ interface InvoiceSuiteBuilderContract
      */
     public function prepareDocumentSummation(): self;
 
+    /**
+     * Set the document summation
+     *
+     * @param float|null $newNetAmount Sum of the net amounts of all invoice lines
+     * @param float|null $newChargeTotalAmount Sum of the charges
+     * @param float|null $newDiscountTotalAmount Sum of the discounts
+     * @param float|null $newTaxBasisAmount Total invoice amount excluding sales tax
+     * @param float|null $newTaxTotalAmount Total amount of the invoice sales tax (in the invoice currency)
+     * @param float|null $newGrossAmount Total invoice amount including sales tax
+     * @param float|null $newDueAmount Payment amount due
+     * @param float|null $newPrepaidAmount Prepayment amount
+     * @param float|null $newRoungingAmount Rounding amount
+     * @return self
+     */
+    public function setDocumentSummation(
+        ?float $newNetAmount = null,
+        ?float $newChargeTotalAmount = null,
+        ?float $newDiscountTotalAmount = null,
+        ?float $newTaxBasisAmount = null,
+        ?float $newTaxTotalAmount = null,
+        ?float $newTaxTotalAmount2 = null,
+        ?float $newGrossAmount = null,
+        ?float $newDueAmount = null,
+        ?float $newPrepaidAmount = null,
+        ?float $newRoungingAmount = null
+    ): self;
+
     #endregion
 }

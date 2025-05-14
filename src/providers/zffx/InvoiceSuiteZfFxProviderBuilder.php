@@ -6259,7 +6259,74 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         $summation->getTotalPrepaidAmountWithCreate()->setValue(0.0);
         $summation->getDuePayableAmountWithCreate()->setValue(0.0);
 
+        $invoiceCurrencyCode = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getInvoiceCurrencyCode()?->getValue();
+
+        $taxCurrencyCode = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getTaxCurrencyCode()?->getValue();
+
         $taxTotalAmount = $summation->clearTaxTotalAmount()->addToTaxTotalAmountWithCreate()->setValue(0);
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($invoiceCurrencyCode)) {
+            $taxTotalAmount->setCurrencyID($invoiceCurrencyCode);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($taxCurrencyCode)) {
+            $taxTotalAmount = $summation->addToTaxTotalAmountWithCreate();
+            $taxTotalAmount->setValue(0.0)->setCurrencyId($taxCurrencyCode);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentSummation(
+        ?float $newNetAmount = null,
+        ?float $newChargeTotalAmount = null,
+        ?float $newDiscountTotalAmount = null,
+        ?float $newTaxBasisAmount = null,
+        ?float $newTaxTotalAmount = null,
+        ?float $newTaxTotalAmount2 = null,
+        ?float $newGrossAmount = null,
+        ?float $newDueAmount = null,
+        ?float $newPrepaidAmount = null,
+        ?float $newRoungingAmount = null
+    ): self {
+        if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newNetAmount, $newTaxBasisAmount, $newTaxTotalAmount, $newGrossAmount, $newDueAmount])) {
+            return $this;
+        }
+
+        $summation = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getSpecifiedTradeSettlementHeaderMonetarySummationWithCreate();
+
+        $summation->getLineTotalAmountWithCreate()->setValue($newNetAmount);
+        $summation->getTaxBasisTotalAmountWithCreate()->setValue($newTaxBasisAmount);
+        $summation->getGrandTotalAmountWithCreate()->setValue($newGrossAmount);
+        $summation->getDuePayableAmountWithCreate()->setValue($newDueAmount);
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newChargeTotalAmount)) {
+            $summation->getChargeTotalAmountWithCreate()->setValue($newChargeTotalAmount);
+        }
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newDiscountTotalAmount)) {
+            $summation->getAllowanceTotalAmountWithCreate()->setValue($newDiscountTotalAmount);
+        }
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newPrepaidAmount)) {
+            $summation->getTotalPrepaidAmountWithCreate()->setValue($newPrepaidAmount);
+        }
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newRoungingAmount)) {
+            $summation->getRoundingAmountWithCreate()->setValue($newRoungingAmount);
+        }
 
         $invoiceCurrencyCode = $this
             ->getCrossIndustryRootObject()
@@ -6267,8 +6334,23 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getApplicableHeaderTradeSettlementWithCreate()
             ->getInvoiceCurrencyCode()?->getValue();
 
-        if (!is_null($invoiceCurrencyCode)) {
-            $taxTotalAmount->setCurrencyID($invoiceCurrencyCode);
+        $taxCurrencyCode = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getTaxCurrencyCode()?->getValue();
+
+        $taxTotalAmount = $summation->clearTaxTotalAmount()->addToTaxTotalAmountWithCreate()->setValue($newTaxTotalAmount);
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($invoiceCurrencyCode)) {
+            $taxTotalAmount->setCurrencyId($invoiceCurrencyCode);
+        }
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxTotalAmount2)) {
+            $taxTotalAmount = $summation->addToTaxTotalAmountWithCreate()->setValue($newTaxTotalAmount2);
+            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($taxCurrencyCode)) {
+                $taxTotalAmount->setCurrencyId($taxCurrencyCode);
+            }
         }
 
         return $this;

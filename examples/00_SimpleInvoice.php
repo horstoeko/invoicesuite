@@ -15,7 +15,7 @@ $builder->setDocumentDescription("Some document description");
 $builder->setDocumentLanguage("German");
 $builder->setDocumentDate(new DateTime());
 $builder->setDocumentCompleteDate(new DateTime());
-//$builder->setDocumentCurrency("EUR");
+$builder->setDocumentCurrency("EUR");
 $builder->setDocumentTaxCurrency("GBP");
 $builder->setDocumentIsTest(true);
 $builder->setDocumentIsCopy(true);
@@ -172,5 +172,6 @@ $builder->setDocumentAllowanceCharge(true, 10, 100, 'S', 'VAT', 19.0, 'ReasonAll
 $builder->setDocumentPostingReference('1', 'FINACC');
 
 $builder->prepareDocumentSummation();
+$builder->setDocumentSummation(100, 10, 20, 90, 90 * 0.19, 50, 107.1, 100.0, 7.10, 0.0);
 
 echo $builder->saveAsXmlFile(__DIR__ . "/00_SimpleInvoice.xml");

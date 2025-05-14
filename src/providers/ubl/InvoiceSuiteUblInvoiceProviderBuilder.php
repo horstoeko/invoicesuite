@@ -4380,5 +4380,23 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentSummation(
+        ?float $newNetAmount = null,
+        ?float $newChargeTotalAmount = null,
+        ?float $newDiscountTotalAmount = null,
+        ?float $newTaxBasisAmount = null,
+        ?float $newTaxTotalAmount = null,
+        ?float $newTaxTotalAmount2 = null,
+        ?float $newGrossAmount = null,
+        ?float $newDueAmount = null,
+        ?float $newPrepaidAmount = null,
+        ?float $newRoungingAmount = null
+    ): self {
+        return $this;
+    }
+
     #endregion
 }
