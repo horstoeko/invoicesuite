@@ -173,5 +173,6 @@ $builder->setDocumentPostingReference('1', 'FINACC');
 
 $builder->prepareDocumentSummation();
 $builder->setDocumentSummation(100, 10, 20, 90, 90 * 0.19, 50, 107.1, 100.0, 7.10, 0.0);
+$builder->setDocumentTaxCurrency("DKK");
 
 echo $builder->saveAsXmlFile(__DIR__ . "/00_SimpleInvoice.xml");
