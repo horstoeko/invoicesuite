@@ -60,6 +60,57 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
+    /**
+     * Internal helper method which updates currencies in several objects
+     *
+     * @return self
+     */
+    protected function updateCurrencies(): self
+    {
+        $invoiceCurrencyCode = $this
+            ->getUblInvoiceRootObject()
+            ->getDocumentCurrencyCode()?->getValue();
+
+        $taxCurrencyCode = $this
+            ->getUblInvoiceRootObject()
+            ->getTaxCurrencyCode()?->getValue();
+
+        // Update summation
+
+        $summation = $this
+            ->getUblInvoiceRootObject()
+            ->getLegalMonetaryTotal();
+
+        if (!is_null($summation)) {
+            if (!is_null($summation->getLineExtensionAmount()) && !is_null($invoiceCurrencyCode)) {
+                $summation->getLineExtensionAmount()->setCurrencyID($invoiceCurrencyCode);
+            }
+            if (!is_null($summation->getTaxExclusiveAmount()) && !is_null($invoiceCurrencyCode)) {
+                $summation->getTaxExclusiveAmount()->setCurrencyID($invoiceCurrencyCode);
+            }
+            if (!is_null($summation->getTaxInclusiveAmount()) && !is_null($invoiceCurrencyCode)) {
+                $summation->getTaxInclusiveAmount()->setCurrencyID($invoiceCurrencyCode);
+            }
+            if (!is_null($summation->getPayableAmount()) && !is_null($invoiceCurrencyCode)) {
+                $summation->getPayableAmount()->setCurrencyID($invoiceCurrencyCode);
+            }
+            if (!is_null($summation->getChargeTotalAmount()) && !is_null($invoiceCurrencyCode)) {
+                $summation->getChargeTotalAmount()->setCurrencyID($invoiceCurrencyCode);
+            }
+            if (!is_null($summation->getAllowanceTotalAmount()) && !is_null($invoiceCurrencyCode)) {
+                $summation->getAllowanceTotalAmount()->setCurrencyID($invoiceCurrencyCode);
+            }
+            if (!is_null($summation->getPrepaidAmount()) && !is_null($invoiceCurrencyCode)) {
+                $summation->getPrepaidAmount()->setCurrencyID($invoiceCurrencyCode);
+            }
+            if (!is_null($summation->getPayableRoundingAmount()) && !is_null($invoiceCurrencyCode)) {
+                $summation->getPayableRoundingAmount()->setCurrencyID($invoiceCurrencyCode);
+            }
+        }
+
+        return $this;
+    }
+
     #endregion
 
     #region Document Generals
@@ -158,6 +209,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         string $newDocumentCurrency
     ): self {
         $this->getUblInvoiceRootObject()->getDocumentCurrencyCodeWithCreate()->setValue($newDocumentCurrency);
+        $this->updateCurrencies();
 
         return $this;
     }
@@ -170,6 +222,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         string $newDocumentTaxCurrency
     ): self {
         $this->getUblInvoiceRootObject()->getTaxCurrencyCodeWithCreate()->setValue($newDocumentTaxCurrency);
+        $this->updateCurrencies();
 
         return $this;
     }
@@ -4395,6 +4448,37 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newPrepaidAmount = null,
         ?float $newRoungingAmount = null
     ): self {
+        if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newNetAmount, $newTaxBasisAmount, $newGrossAmount, $newDueAmount])) {
+            return $this;
+        }
+
+        $summation = $this
+            ->getUblInvoiceRootObject()
+            ->getLegalMonetaryTotalWithCreate();
+
+        $summation->getLineExtensionAmountWithCreate()->setValue($newNetAmount);
+        $summation->getTaxExclusiveAmountWithCreate()->setValue($newTaxBasisAmount);
+        $summation->getTaxInclusiveAmountWithCreate()->setValue($newGrossAmount);
+        $summation->getPayableAmountWithCreate()->setValue($newDueAmount);
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newChargeTotalAmount)) {
+            $summation->getChargeTotalAmountWithCreate()->setValue($newChargeTotalAmount);
+        }
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newDiscountTotalAmount)) {
+            $summation->getAllowanceTotalAmountWithCreate()->setValue($newDiscountTotalAmount);
+        }
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newPrepaidAmount)) {
+            $summation->getPrepaidAmountWithCreate()->setValue($newPrepaidAmount);
+        }
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newRoungingAmount)) {
+            $summation->getPayableRoundingAmountWithCreate()->setValue($newRoungingAmount);
+        }
+
+        $this->updateCurrencies();
+
         return $this;
     }
 
