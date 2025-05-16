@@ -6600,5 +6600,89 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         return $this;
     }
 
+    /**
+     * @param string|null $newProductCharacteristicDescription __BT-160, From EN 16931__ Name of the attribute or characteristic ("Colour")
+     * @param string|null $newProductCharacteristicValue __BT-161, From EN 16931__ Value of the attribute or characteristic ("Red")
+     * @param string|null $newProductCharacteristicType __BT-X-11, From EXTENDED__ Type (Code) of product characteristic
+     * @param float|null $newProductCharacteristicMeasureValue __BT-X-12, From EXTENDED__ Value of the characteristic (numerical measured)
+     * @param string|null $newProductCharacteristicMeasureUnit __BT-X-12-0, From EXTENDED__ Unit of value of the characteristic
+     * @return self
+     */
+    public function setDocumentPositionProductCharacteristic(
+        ?string $newProductCharacteristicDescription = null,
+        ?string $newProductCharacteristicValue = null,
+        ?string $newProductCharacteristicType = null,
+        ?float $newProductCharacteristicMeasureValue = null,
+        ?string $newProductCharacteristicMeasureUnit = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicDescription, $newProductCharacteristicValue])) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+
+        $positionProduct = $latestPosition->getSpecifiedTradeProductWithCreate();
+
+        $positionProduct->clearApplicableProductCharacteristic();
+
+        $this->addDocumentPositionProductCharacteristic(
+            $newProductCharacteristicDescription,
+            $newProductCharacteristicValue,
+            $newProductCharacteristicType,
+            $newProductCharacteristicMeasureValue,
+            $newProductCharacteristicMeasureUnit,
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newProductCharacteristicDescription __BT-160, From EN 16931__ Name of the attribute or characteristic ("Colour")
+     * @param string|null $newProductCharacteristicValue __BT-161, From EN 16931__ Value of the attribute or characteristic ("Red")
+     * @param string|null $newProductCharacteristicType __BT-X-11, From EXTENDED__ Type (Code) of product characteristic
+     * @param float|null $newProductCharacteristicMeasureValue __BT-X-12, From EXTENDED__ Value of the characteristic (numerical measured)
+     * @param string|null $newProductCharacteristicMeasureUnit __BT-X-12-0, From EXTENDED__ Unit of value of the characteristic
+     * @return self
+     */
+    public function addDocumentPositionProductCharacteristic(
+        ?string $newProductCharacteristicDescription = null,
+        ?string $newProductCharacteristicValue = null,
+        ?string $newProductCharacteristicType = null,
+        ?float $newProductCharacteristicMeasureValue = null,
+        ?string $newProductCharacteristicMeasureUnit = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicDescription, $newProductCharacteristicValue])) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+
+        $positionProduct = $latestPosition->getSpecifiedTradeProductWithCreate();
+
+        $positionProductCharacteristic = $positionProduct->addToApplicableProductCharacteristicWithCreate();
+
+        $positionProductCharacteristic->getDescriptionWithCreate()->setValue($newProductCharacteristicDescription);
+        $positionProductCharacteristic->getValueWithCreate()->setValue($newProductCharacteristicValue);
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicType])) {
+            $positionProductCharacteristic->getTypeCodeWithCreate()->setValue($newProductCharacteristicType);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicMeasureValue, $newProductCharacteristicMeasureUnit])) {
+            $positionProductCharacteristic
+                ->getValueMeasureWithCreate()
+                ->setValue($newProductCharacteristicMeasureValue)
+                ->setUnitCode($newProductCharacteristicMeasureUnit);
+        }
+
+        return $this;
+    }
+
     #endregion
 }

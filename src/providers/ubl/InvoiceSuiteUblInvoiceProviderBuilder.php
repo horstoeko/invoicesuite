@@ -4598,5 +4598,68 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionProductCharacteristic(
+        ?string $newProductCharacteristicDescription = null,
+        ?string $newProductCharacteristicValue = null,
+        ?string $newProductCharacteristicType = null,
+        ?float $newProductCharacteristicMeasureValue = null,
+        ?string $newProductCharacteristicMeasureUnit = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicDescription, $newProductCharacteristicValue])) {
+            return $this;
+        }
+
+        $latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLineWithCreate();
+
+        $positionProduct = $latestPosition->getItemWithCreate();
+
+        $positionProduct->clearAdditionalItemProperty();
+
+        $this->addDocumentPositionProductCharacteristic(
+            $newProductCharacteristicDescription,
+            $newProductCharacteristicValue,
+            $newProductCharacteristicType,
+            $newProductCharacteristicMeasureValue,
+            $newProductCharacteristicMeasureUnit,
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPositionProductCharacteristic(
+        ?string $newProductCharacteristicDescription = null,
+        ?string $newProductCharacteristicValue = null,
+        ?string $newProductCharacteristicType = null,
+        ?float $newProductCharacteristicMeasureValue = null,
+        ?string $newProductCharacteristicMeasureUnit = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicDescription, $newProductCharacteristicValue])) {
+            return $this;
+        }
+
+        $latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLineWithCreate();
+
+        $positionProduct = $latestPosition->getItemWithCreate();
+
+        $positionProductCharacteristic = $positionProduct->addToAdditionalItemPropertyWithCreate();
+        $positionProductCharacteristic->getNameWithCreate()->setValue($newProductCharacteristicDescription);
+        $positionProductCharacteristic->getValueWithCreate()->setValue($newProductCharacteristicValue);
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicMeasureValue, $newProductCharacteristicMeasureUnit])) {
+            $positionProductCharacteristic
+                ->getValueQuantityWithCreate()
+                ->setValue($newProductCharacteristicMeasureValue)
+                ->setUnitCode($newProductCharacteristicMeasureUnit);
+        }
+
+        return $this;
+    }
+
     #endregion
 }

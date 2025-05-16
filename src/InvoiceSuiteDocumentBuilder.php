@@ -2896,5 +2896,47 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionProductCharacteristic(
+        ?string $newProductCharacteristicDescription = null,
+        ?string $newProductCharacteristicValue = null,
+        ?string $newProductCharacteristicType = null,
+        ?float $newProductCharacteristicMeasureValue = null,
+        ?string $newProductCharacteristicMeasureUnit = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionProductCharacteristic(
+            $newProductCharacteristicDescription,
+            $newProductCharacteristicValue,
+            $newProductCharacteristicType,
+            $newProductCharacteristicMeasureValue,
+            $newProductCharacteristicMeasureUnit,
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPositionProductCharacteristic(
+        ?string $newProductCharacteristicDescription = null,
+        ?string $newProductCharacteristicValue = null,
+        ?string $newProductCharacteristicType = null,
+        ?float $newProductCharacteristicMeasureValue = null,
+        ?string $newProductCharacteristicMeasureUnit = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionProductCharacteristic(
+            $newProductCharacteristicDescription,
+            $newProductCharacteristicValue,
+            $newProductCharacteristicType,
+            $newProductCharacteristicMeasureValue,
+            $newProductCharacteristicMeasureUnit,
+        );
+
+        return $this;
+    }
+
     #endregion
 }

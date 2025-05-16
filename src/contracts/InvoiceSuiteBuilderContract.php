@@ -2762,5 +2762,41 @@ interface InvoiceSuiteBuilderContract
         ?string $newProductModelName = null
     ): self;
 
+    /**
+     * Set product characteristics to latest added position
+     *
+     * @param string|null $newProductCharacteristicDescription Name of the attribute or characteristic ("Colour")
+     * @param string|null $newProductCharacteristicValue Value of the attribute or characteristic ("Red")
+     * @param string|null $newProductCharacteristicType Type (Code) of product characteristic
+     * @param float|null $newProductCharacteristicMeasureValue Value of the characteristic (numerical measured)
+     * @param string|null $newProductCharacteristicMeasureUnit Unit of value of the characteristic
+     * @return self
+     */
+    public function setDocumentPositionProductCharacteristic(
+        ?string $newProductCharacteristicDescription = null,
+        ?string $newProductCharacteristicValue = null,
+        ?string $newProductCharacteristicType = null,
+        ?float $newProductCharacteristicMeasureValue = null,
+        ?string $newProductCharacteristicMeasureUnit = null
+    ): self;
+
+    /**
+     * Add product characteristics to latest added position
+     *
+     * @param string|null $newProductCharacteristicDescription Name of the attribute or characteristic ("Colour")
+     * @param string|null $newProductCharacteristicValue Value of the attribute or characteristic ("Red")
+     * @param string|null $newProductCharacteristicType Type (Code) of product characteristic
+     * @param float|null $newProductCharacteristicMeasureValue Value of the characteristic (numerical measured)
+     * @param string|null $newProductCharacteristicMeasureUnit Unit of value of the characteristic
+     * @return self
+     */
+    public function addDocumentPositionProductCharacteristic(
+        ?string $newProductCharacteristicDescription = null,
+        ?string $newProductCharacteristicValue = null,
+        ?string $newProductCharacteristicType = null,
+        ?float $newProductCharacteristicMeasureValue = null,
+        ?string $newProductCharacteristicMeasureUnit = null
+    ): self;
+
     #endregion
 }
