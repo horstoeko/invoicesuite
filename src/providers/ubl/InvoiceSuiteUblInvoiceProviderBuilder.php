@@ -4505,18 +4505,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
 
         $position->getIDWithCreate()->setValue($newPositionId);
 
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newParentPositionId)) {
-            // Nothing here
-        }
-
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newLineStatusCode)) {
-            // Nothing here
-        }
-
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newLineStatusReasonCode)) {
-            // Nothing here
-        }
-
         return $this;
     }
 
@@ -4528,13 +4516,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newContentCode = null,
         ?string $newSubjectCode = null
     ): self {
-        if (is_null($latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLine())) {
-            return $this;
-        }
-
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newContent])) {
             return $this;
         }
+
+        $latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLineWithCreate();
 
         $latestPosition->clearNote();
 
@@ -4555,13 +4541,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newContentCode = null,
         ?string $newSubjectCode = null
     ): self {
-        if (is_null($latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLine())) {
-            return $this;
-        }
-
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newContent])) {
             return $this;
         }
+
+        $latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLineWithCreate();
 
         $latestPosition->addOnceToNoteWithCreate()->setValue($newContent);
 
@@ -4572,6 +4556,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @inheritDoc
      */
     public function setDocumentPositionProductDetails(
+        ?string $newProductId = null,
         ?string $newProductName = null,
         ?string $newProductDescription = null,
         ?string $newProductSellerId = null,
@@ -4581,9 +4566,35 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newProductIndustryId = null,
         ?string $newProductModelId = null,
         ?string $newProductBatchId = null,
-        ?string $newProductBrancdName = null,
+        ?string $newProductBrandName = null,
         ?string $newProductModelName = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductName])) {
+            return $this;
+        }
+
+        $latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLineWithCreate();
+
+        $positionProduct = $latestPosition->getItemWithCreate();
+
+        $positionProduct->getNameWithCreate()->setValue($newProductName);
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductDescription])) {
+            $positionProduct->addOnceToDescriptionWithCreate()->setValue($newProductDescription);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductSellerId])) {
+            $positionProduct->getSellersItemIdentificationWithCreate()->getIDWithCreate()->setValue($newProductSellerId);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductBuyerId])) {
+            $positionProduct->getBuyersItemIdentificationWithCreate()->getIDWithCreate()->setValue($newProductBuyerId);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductGlobalIdType]) && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductGlobalId])) {
+            $positionProduct->getStandardItemIdentificationWithCreate()->getIDWithCreate()->setValue($newProductGlobalId)->setSchemeID($newProductGlobalIdType);
+        }
+
         return $this;
     }
 

@@ -2865,6 +2865,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentPositionProductDetails(
+        ?string $newProductId = null,
         ?string $newProductName = null,
         ?string $newProductDescription = null,
         ?string $newProductSellerId = null,
@@ -2874,10 +2875,11 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         ?string $newProductIndustryId = null,
         ?string $newProductModelId = null,
         ?string $newProductBatchId = null,
-        ?string $newProductBrancdName = null,
+        ?string $newProductBrandName = null,
         ?string $newProductModelName = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionProductDetails(
+            $newProductId,
             $newProductName,
             $newProductDescription,
             $newProductSellerId,
@@ -2887,7 +2889,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
             $newProductIndustryId,
             $newProductModelId,
             $newProductBatchId,
-            $newProductBrancdName,
+            $newProductBrandName,
             $newProductModelName
         );
 

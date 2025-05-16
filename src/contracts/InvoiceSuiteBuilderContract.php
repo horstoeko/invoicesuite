@@ -2733,6 +2733,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add product details to latest added position
      *
+     * @param string|null $newProductId ID of the product (product id, Order-X interoperable)
      * @param string|null $newProductName Name of the product (product name)
      * @param string|null $newProductDescription Product description of the item, the item description makes it possible to describe the item
      * @param string|null $newProductSellerId Identifier assigned to the product by the seller
@@ -2742,11 +2743,12 @@ interface InvoiceSuiteBuilderContract
      * @param string|null $newProductIndustryId Id assigned by the industry
      * @param string|null $newProductModelId Unique model identifier of the product
      * @param string|null $newProductBatchId Batch (lot) identifier of the product
-     * @param string|null $newProductBrancdName Brand name of the product
+     * @param string|null $newProductBrandName Brand name of the product
      * @param string|null $newProductModelName Model name of the product
      * @return self
      */
     public function setDocumentPositionProductDetails(
+        ?string $newProductId = null,
         ?string $newProductName = null,
         ?string $newProductDescription = null,
         ?string $newProductSellerId = null,
@@ -2756,7 +2758,7 @@ interface InvoiceSuiteBuilderContract
         ?string $newProductIndustryId = null,
         ?string $newProductModelId = null,
         ?string $newProductBatchId = null,
-        ?string $newProductBrancdName = null,
+        ?string $newProductBrandName = null,
         ?string $newProductModelName = null
     ): self;
 

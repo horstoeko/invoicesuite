@@ -3251,4 +3251,16 @@ class InvoiceType
 
         return $invoiceLine;
     }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\InvoiceLine|null
+     */
+    public function getLatestInvoiceLineWithCreate(): ?InvoiceLine
+    {
+        if (is_null($invoiceLine = $this->getLatestInvoiceLine())) {
+            $invoiceLine = $this->addToInvoiceLineWithCreate();
+        }
+
+        return $invoiceLine;
+    }
 }

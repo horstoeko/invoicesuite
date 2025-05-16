@@ -6456,13 +6456,14 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         ?string $newContentCode = null,
         ?string $newSubjectCode = null
     ): self {
-        if (is_null($latestPosition = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getLatestIncludedSupplyChainTradeLineItem())) {
-            return $this;
-        }
-
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newContent])) {
             return $this;
         }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
 
         $latestPosition
             ->getAssociatedDocumentLineDocumentWithCreate()
@@ -6488,13 +6489,14 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         ?string $newContentCode = null,
         ?string $newSubjectCode = null
     ): self {
-        if (is_null($latestPosition = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getLatestIncludedSupplyChainTradeLineItem())) {
-            return $this;
-        }
-
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newContent])) {
             return $this;
         }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
 
         $positionNote = $latestPosition
             ->getAssociatedDocumentLineDocumentWithCreate()
@@ -6514,6 +6516,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
+     * @param string|null $newProductId __BT-X-305, From EXTENDED__ ID of the product (product id, Order-X interoperable)
      * @param string|null $newProductName __BT-153, From BASIC__ Name of the product (product name)
      * @param string|null $newProductDescription __BT-154, From EN 16931__ Product description of the item, the item description makes it possible to describe the item
      * @param string|null $newProductSellerId __BT-155, From EN 16931__ Identifier assigned to the product by the seller
@@ -6523,11 +6526,12 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string|null $newProductIndustryId __BT-X-309, From EXTENDED__ Id assigned by the industry
      * @param string|null $newProductModelId __BT-X-533, From EXTENDED__ Unique model identifier of the product
      * @param string|null $newProductBatchId __BT-X-534. From EXTENDED__ Batch (lot) identifier of the product
-     * @param string|null $newProductBrancdName __BT-X-535. From EXTENDED__ Brand name of the product
+     * @param string|null $newProductBrandName __BT-X-535. From EXTENDED__ Brand name of the product
      * @param string|null $newProductModelName __BT-X-536. From EXTENDED__ Model name of the product
      * @return self
      */
     public function setDocumentPositionProductDetails(
+        ?string $newProductId = null,
         ?string $newProductName = null,
         ?string $newProductDescription = null,
         ?string $newProductSellerId = null,
@@ -6537,9 +6541,62 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         ?string $newProductIndustryId = null,
         ?string $newProductModelId = null,
         ?string $newProductBatchId = null,
-        ?string $newProductBrancdName = null,
+        ?string $newProductBrandName = null,
         ?string $newProductModelName = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductName])) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+
+        $positionProduct = $latestPosition->getSpecifiedTradeProductWithCreate();
+
+        $positionProduct->getNameWithCreate()->setValue($newProductName);
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductId])) {
+            $positionProduct->getIDWithCreate()->setValue($newProductId);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductDescription])) {
+            $positionProduct->getDescriptionWithCreate()->setValue($newProductDescription);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductSellerId])) {
+            $positionProduct->getSellerAssignedIDWithCreate()->setValue($newProductSellerId);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductBuyerId])) {
+            $positionProduct->getBuyerAssignedIDWithCreate()->setValue($newProductBuyerId);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductGlobalIdType]) && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductGlobalId])) {
+            $positionProduct->getGlobalIDWithCreate()->setValue($newProductGlobalId)->setSchemeID($newProductGlobalIdType);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductIndustryId])) {
+            $positionProduct->getIndustryAssignedIDWithCreate()->setValue($newProductIndustryId);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductModelId])) {
+            $positionProduct->getModelIDWithCreate()->setValue($newProductModelId);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductBatchId])) {
+            $positionProduct->addOnceToBatchIDWithCreate()->setValue($newProductBatchId);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductBrandName])) {
+            $positionProduct->getBrandNameWithCreate()->setValue($newProductBrandName);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductModelName])) {
+            $positionProduct->getModelNameWithCreate()->setValue($newProductModelName);
+        }
+
         return $this;
     }
 
