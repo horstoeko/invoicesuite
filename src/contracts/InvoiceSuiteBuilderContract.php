@@ -258,10 +258,10 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
-     * Set the associated seller's quotation
+     * Set the associated quotation
      *
-     * @param string|null $newReferenceNumber Seller's quotation number
-     * @param DateTimeInterface|null $newReferenceDate Seller's quotation date
+     * @param string|null $newReferenceNumber Quotation number
+     * @param DateTimeInterface|null $newReferenceDate quotation date
      * @return self
      */
     public function setDocumentQuotationReference(
@@ -270,10 +270,10 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
-     * Add an associated seller's quotation
+     * Add an associated quotation
      *
-     * @param string|null $newReferenceNumber Seller's quotation number
-     * @param DateTimeInterface|null $newReferenceDate Seller's quotation date
+     * @param string|null $newReferenceNumber quotation number
+     * @param DateTimeInterface|null $newReferenceDate quotation date
      * @return self
      */
     public function addDocumentQuotationReference(
@@ -2939,6 +2939,34 @@ interface InvoiceSuiteBuilderContract
      * @return self
      */
     public function addDocumentPositionBuyerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
+
+    /**
+     * Set the associated quotation (line reference).
+     *
+     * @param string|null $newReferenceNumber Buyer's order confirmation number
+     * @param string|null $newReferenceLineNumber Buyer's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate Buyer's order confirmation date
+     * @return self
+     */
+    public function setDocumentPositionQuotationReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
+
+    /**
+     * Add an associated quotation (line reference).
+     *
+     * @param string|null $newReferenceNumber Buyer's order confirmation number
+     * @param string|null $newReferenceLineNumber Buyer's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate Buyer's order confirmation date
+     * @return self
+     */
+    public function addDocumentPositionQuotationReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
         ?DateTimeInterface $newReferenceDate = null

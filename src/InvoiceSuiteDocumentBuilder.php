@@ -3108,5 +3108,39 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionQuotationReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionQuotationReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPositionQuotationReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionQuotationReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
+
+        return $this;
+    }
+
     #endregion
 }

@@ -7015,5 +7015,67 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         return $this;
     }
 
+    /**
+     * @param string|null $newReferenceNumber __BT-X-310, From EXTENDED__ Quotation number
+     * @param string|null $newReferenceLineNumber __BT-X-311, From EXTENDED__ Quotation line number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-312, From EXTENDED__ Quotation number date
+     * @return self
+     */
+    public function setDocumentPositionQuotationReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+
+        $quotationOrderReference = $latestPosition
+            ->getSpecifiedLineTradeAgreementWithCreate()
+            ->getQuotationReferencedDocumentWithCreate();
+
+        $quotationOrderReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
+        $quotationOrderReference->getLineIDWithCreate()->setValue($newReferenceLineNumber);
+
+        if (!InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newReferenceDate])) {
+            $quotationOrderReference
+                ->getFormattedIssueDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newReferenceDate->format("Ymd"))
+                ->setFormat("102");
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newReferenceNumber __BT-X-310, From EXTENDED__ Quotation number
+     * @param string|null $newReferenceLineNumber __BT-X-311, From EXTENDED__ Quotation line number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-312, From EXTENDED__ Quotation number date
+     * @return self
+     */
+    public function addDocumentPositionQuotationReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
+            return $this;
+        }
+
+        $this->setDocumentPositionQuotationReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
+
+        return $this;
+    }
+
     #endregion
 }

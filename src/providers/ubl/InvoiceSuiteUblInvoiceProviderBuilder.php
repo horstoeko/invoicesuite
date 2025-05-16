@@ -4849,5 +4849,31 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionQuotationReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        // Nothing here...
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPositionQuotationReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        // Nothing here...
+
+        return $this;
+    }
+
     #endregion
 }

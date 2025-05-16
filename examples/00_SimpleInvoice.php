@@ -5,9 +5,9 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
+//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
 //$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
-//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxxrechnung');
+$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxxrechnung');
 
 $builder->setDocumentNo('2025-04-000001');
 $builder->setDocumentType("380");
@@ -187,5 +187,6 @@ $builder->setDocumentPositionReferencedProduct("id", "name", "descr", "sellerid"
 
 $builder->setDocumentPositionSellerOrderReference('SO-2025/0000001', '10', new DateTime());
 $builder->setDocumentPositionBuyerOrderReference('PO-0000011', '20', new DateTime());
+$builder->setDocumentPositionQuotationReference('ANG-2025/0000055', '30', new DateTime());
 
 echo $builder->saveAsXmlFile(__DIR__ . "/00_SimpleInvoice.xml");
