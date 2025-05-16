@@ -71,7 +71,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getUblInvoiceRootObject()
             ->getDocumentCurrencyCode()?->getValue();
 
-        $taxCurrencyCode = $this
+        $this
             ->getUblInvoiceRootObject()
             ->getTaxCurrencyCode()?->getValue();
 
@@ -85,24 +85,31 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             if (!is_null($summation->getLineExtensionAmount()) && !is_null($invoiceCurrencyCode)) {
                 $summation->getLineExtensionAmount()->setCurrencyID($invoiceCurrencyCode);
             }
+
             if (!is_null($summation->getTaxExclusiveAmount()) && !is_null($invoiceCurrencyCode)) {
                 $summation->getTaxExclusiveAmount()->setCurrencyID($invoiceCurrencyCode);
             }
+
             if (!is_null($summation->getTaxInclusiveAmount()) && !is_null($invoiceCurrencyCode)) {
                 $summation->getTaxInclusiveAmount()->setCurrencyID($invoiceCurrencyCode);
             }
+
             if (!is_null($summation->getPayableAmount()) && !is_null($invoiceCurrencyCode)) {
                 $summation->getPayableAmount()->setCurrencyID($invoiceCurrencyCode);
             }
+
             if (!is_null($summation->getChargeTotalAmount()) && !is_null($invoiceCurrencyCode)) {
                 $summation->getChargeTotalAmount()->setCurrencyID($invoiceCurrencyCode);
             }
+
             if (!is_null($summation->getAllowanceTotalAmount()) && !is_null($invoiceCurrencyCode)) {
                 $summation->getAllowanceTotalAmount()->setCurrencyID($invoiceCurrencyCode);
             }
+
             if (!is_null($summation->getPrepaidAmount()) && !is_null($invoiceCurrencyCode)) {
                 $summation->getPrepaidAmount()->setCurrencyID($invoiceCurrencyCode);
             }
+
             if (!is_null($summation->getPayableRoundingAmount()) && !is_null($invoiceCurrencyCode)) {
                 $summation->getPayableRoundingAmount()->setCurrencyID($invoiceCurrencyCode);
             }
@@ -4707,6 +4714,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductClassificationCode, $newProductClassificationListId])) {
             return $this;
         }
+
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductClassificationCode, $newProductClassificationListId])) {
             return $this;
         }
