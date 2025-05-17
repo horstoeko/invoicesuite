@@ -3342,5 +3342,167 @@ interface InvoiceSuiteBuilderContract
         string $newUri
     ): self;
 
+    /**
+     * Set the name of the ultimate Ship-To party
+     *
+     * @param string $newName The full formal name under which the party is registered.
+     * @return self
+     */
+    public function setDocumentPositionUltimateShipToName(
+        string $newName
+    ): self;
+
+    /**
+     * Set the ID of the ultimate Ship-To party
+     *
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
+     */
+    public function setDocumentPositionUltimateShipToId(
+        string $newId
+    ): self;
+
+    /**
+     * Add an ID to the ultimate Ship-To party
+     *
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
+     */
+    public function addDocumentPositionUltimateShipToId(
+        string $newId
+    ): self;
+
+    /**
+     * Set the Global ID of the ultimate Ship-To party
+     *
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
+     * @return self
+     */
+    public function setDocumentPositionUltimateShipToGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self;
+
+    /**
+     * Add an ID to the ultimate Ship-To party
+     *
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
+     * @return self
+     */
+    public function addDocumentPositionUltimateShipToGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self;
+
+    /**
+     * Set the Tax Registration of the ultimate Ship-To party
+     *
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
+     * @return self
+     */
+    public function setDocumentPositionUltimateShipToTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self;
+
+    /**
+     * Add an Tax Registration to the ultimate Ship-To party
+     *
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
+     * @return self
+     */
+    public function addDocumentPositionUltimateShipToTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self;
+
+    /**
+     * Set the address of the ultimate Ship-To party
+     *
+     * @param string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId Country in which the party's address is located.
+     * @param string $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
+     */
+    public function setDocumentPositionUltimateShipToAddress(
+        string $newAddressLine1,
+        string $newAddressLine2,
+        string $newAddressLine3,
+        string $newPostcode,
+        string $newCity,
+        string $newCountryId,
+        string $newSubDivision
+    ): self;
+
+    /**
+     * Set the legal information of the ultimate Ship-To party
+     *
+     * @param string $newType Type of the identification number of the legal registration of the party.
+     * @param string $newId Identification number of the legal registration of the party.
+     * @param string $newName Name by which the party is known, if different from the party's name.
+     * @return self
+     */
+    public function setDocumentPositionUltimateShipToLegalOrganisation(
+        string $newType,
+        string $newId,
+        string $newName
+    ): self;
+
+    /**
+     * Set the contact information of the ultimate Ship-To party
+     *
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
+     * @return self
+     */
+    public function setDocumentPositionUltimateShipToContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self;
+
+    /**
+     * Add contact information of the ultimate Ship-To party
+     *
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
+     * @return self
+     */
+    public function addDocumentPositionUltimateShipToContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self;
+
+    /**
+     * Add communication information of the ultimate Ship-To party
+     *
+     * @param string $newType The type for the party's electronic address.
+     * @param string $newUri The party's electronic address.
+     * @return self
+     */
+    public function setDocumentPositionUltimateShipToCommunication(
+        string $newType,
+        string $newUri
+    ): self;
+
     #endregion
 }

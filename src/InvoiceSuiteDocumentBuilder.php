@@ -3584,5 +3584,203 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionUltimateShipToName(
+        string $newName
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToName(
+            $newName
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionUltimateShipToId(
+        string $newId
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToId(
+            $newId
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPositionUltimateShipToId(
+        string $newId
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToId(
+            $newId
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionUltimateShipToGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToGlobalId(
+            $newGlobalId,
+            $newGlobalIdType
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPositionUltimateShipToGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToGlobalId(
+            $newGlobalId,
+            $newGlobalIdType
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionUltimateShipToTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToTaxRegistration(
+            $newTaxRegistrationType,
+            $newTaxRegistrationId
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPositionUltimateShipToTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToTaxRegistration(
+            $newTaxRegistrationType,
+            $newTaxRegistrationId
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionUltimateShipToAddress(
+        string $newAddressLine1,
+        string $newAddressLine2,
+        string $newAddressLine3,
+        string $newPostcode,
+        string $newCity,
+        string $newCountryId,
+        string $newSubDivision
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionUltimateShipToLegalOrganisation(
+        string $newType,
+        string $newId,
+        string $newName
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToLegalOrganisation(
+            $newType,
+            $newId,
+            $newName
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionUltimateShipToContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToContact(
+            $newPersonName,
+            $newDepartmentName,
+            $newPhoneNumber,
+            $newFaxNumber,
+            $newEmailAddress
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPositionUltimateShipToContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToContact(
+            $newPersonName,
+            $newDepartmentName,
+            $newPhoneNumber,
+            $newFaxNumber,
+            $newEmailAddress
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionUltimateShipToCommunication(
+        string $newType,
+        string $newUri
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToCommunication(
+            $newType,
+            $newUri
+        );
+
+        return $this;
+    }
+
     #endregion
 }

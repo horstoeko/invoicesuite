@@ -212,4 +212,14 @@ $builder->setDocumentPositionShipToLegalOrganisation("8884", "99ß0224444", "Use
 $builder->addDocumentPositionShipToContact("Alfons Zitterbacke", "Buchhaltung", "030-9991", "030-9992", "alfzit@user-gmbh.de");
 $builder->setDocumentPositionShipToCommunication("EM", "invoice@user-gmbh.de");
 
+$builder->setDocumentPositionUltimateShipToName("Ultimate User GmbH");
+$builder->setDocumentPositionUltimateShipToId("U-1111111");
+$builder->addDocumentPositionUltimateShipToId("U-1111111-A");
+$builder->setDocumentPositionUltimateShipToGlobalId("9999999", "0088");
+$builder->setDocumentPositionUltimateShipToTaxRegistration("VA", "444574987534");
+$builder->setDocumentPositionUltimateShipToAddress("line1", "line2", "line3", "10176", "Berlin", "DE", "Berlin");
+$builder->setDocumentPositionUltimateShipToLegalOrganisation("8884", "99ß0224444", "User AG");
+$builder->addDocumentPositionUltimateShipToContact("Alfons Baum", "Dispo", "030-10001", "030-10001", "alfzit@ultimate-user-gmbh.de");
+$builder->setDocumentPositionUltimateShipToCommunication("EM", "invoice@ultimate-user-gmbh.de");
+
 echo $builder->saveAsXmlFile(__DIR__ . "/00_SimpleInvoice.xml");
