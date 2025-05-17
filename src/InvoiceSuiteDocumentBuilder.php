@@ -3176,5 +3176,55 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionAdditionalReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null,
+        ?string $newReferenceTypeCode = null,
+        ?string $newDescription = null,
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionAdditionalReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate,
+            $newTypeCode,
+            $newReferenceTypeCode,
+            $newDescription,
+            $newInvoiceSuiteAttachment
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPositionAdditionalReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null,
+        ?string $newReferenceTypeCode = null,
+        ?string $newDescription = null,
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionAdditionalReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate,
+            $newTypeCode,
+            $newReferenceTypeCode,
+            $newDescription,
+            $newInvoiceSuiteAttachment
+        );
+
+        return $this;
+    }
+
     #endregion
 }

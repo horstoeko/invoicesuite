@@ -188,5 +188,8 @@ $builder->setDocumentPositionReferencedProduct("id", "name", "descr", "sellerid"
 $builder->setDocumentPositionSellerOrderReference('SO-2025/0000001', '10', new DateTime());
 $builder->setDocumentPositionBuyerOrderReference('PO-0000011', '20', new DateTime());
 $builder->setDocumentPositionQuotationReference('ANG-2025/0000055', '30', new DateTime());
+$builder->setDocumentPositionContractReference('CON-2025/0000001', '40', new DateTime());
+$builder->addDocumentPositionAdditionalReference('ADDDOC-001', '100', new DateTime(), "918", "0815", "Description for additional docuemnt", InvoiceSuiteAttachment::fromBase64String('SWNoIGJpbiBlaW4gVGVzdHRleHQ=', 'att.ext'));
+$builder->addDocumentPositionAdditionalReference('ADDDOC-002', '101', new DateTime(), "918", "0816", "Description for additional docuemnt", InvoiceSuiteAttachment::fromUrl('http://some.url'));
 
 echo $builder->saveAsXmlFile(__DIR__ . "/00_SimpleInvoice.xml");

@@ -7149,5 +7149,125 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         return $this;
     }
 
+    /**
+     * @param string|null $newReferenceNumber __BT-122, From EN 16931__ Additional document number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-149, From EXTENDED__ Additional document date
+     * @param string|null $newTypeCode __BT-122-0, From EN 16931__ Additional document type code
+     * @param string|null $newReferenceTypeCode __BT-18-1, From EN 16931__ Additional document reference-type code
+     * @param string|null $newDescription __BT-123, From EN 16931__ Additional document description
+     * @return self
+     */
+    public function setDocumentPositionAdditionalReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null,
+        ?string $newReferenceTypeCode = null,
+        ?string $newDescription = null,
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber, $newTypeCode])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->clearAdditionalReferencedDocument();
+
+        $this->addDocumentPositionAdditionalReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate,
+            $newTypeCode,
+            $newReferenceTypeCode,
+            $newDescription
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newReferenceNumber __BT-122, From EN 16931__ Additional document number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-149, From EXTENDED__ Additional document date
+     * @param string|null $newTypeCode __BT-122-0, From EN 16931__ Additional document type code
+     * @param string|null $newReferenceTypeCode __BT-18-1, From EN 16931__ Additional document reference-type code
+     * @param string|null $newDescription __BT-123, From EN 16931__ Additional document description
+     * @return self
+     */
+    public function addDocumentPositionAdditionalReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null,
+        ?string $newReferenceTypeCode = null,
+        ?string $newDescription = null,
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber, $newTypeCode])) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+
+        $additionalReference = $latestPosition
+            ->getSpecifiedLineTradeAgreementWithCreate()
+            ->addToAdditionalReferencedDocumentWithCreate();
+
+        $additionalReference
+            ->getIssuerAssignedIDWithCreate()
+            ->setValue($newReferenceNumber);
+
+        $additionalReference
+            ->getLineIDWithCreate()
+            ->setValue($newReferenceLineNumber);
+
+        $additionalReference
+            ->getTypeCodeWithCreate()
+            ->setValue($newTypeCode);
+
+        if (!is_null($newReferenceDate)) {
+            $additionalReference
+                ->getFormattedIssueDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newReferenceDate->format("Ymd"))
+                ->setFormat("102");
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newReferenceTypeCode)) {
+            $additionalReference
+                ->getReferenceTypeCodeWithCreate()
+                ->setValue($newReferenceTypeCode);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            $additionalReference
+                ->getNameWithCreate()
+                ->setValue($newDescription);
+        }
+
+        if (!is_null($newInvoiceSuiteAttachment)) {
+            if ($newInvoiceSuiteAttachment->isBinaryAttachment()) {
+                $additionalReference
+                    ->getAttachmentBinaryObjectWithCreate()
+                    ->setFilename($newInvoiceSuiteAttachment->getFilename())
+                    ->setMimeCode($newInvoiceSuiteAttachment->getContentMimeType())
+                    ->setValue($newInvoiceSuiteAttachment->getContent());
+            }
+
+            if ($newInvoiceSuiteAttachment->isUrlAttachment()) {
+                $additionalReference
+                    ->getURIIDWithCreate()
+                    ->setValue($newInvoiceSuiteAttachment->getContent());
+            }
+        }
+
+        return $this;
+    }
+
     #endregion
 }

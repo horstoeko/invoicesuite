@@ -3000,5 +3000,49 @@ interface InvoiceSuiteBuilderContract
         ?DateTimeInterface $newReferenceDate = null
     ): self;
 
+    /**
+     * Set an additional associated document (line reference)
+     *
+     * @param string|null $newReferenceNumber Additional document number
+     * @param string|null $newReferenceLineNumber Additional document line number
+     * @param DateTimeInterface|null $newReferenceDate Additional document date
+     * @param string|null $newTypeCode Additional document type code
+     * @param string|null $newReferenceTypeCode Additional document reference-type code
+     * @param string|null $newDescription Additional document description
+     * @param InvoiceSuiteAttachment|null $InvoiceSuiteAttachment Additional document attachment
+     * @return self
+     */
+    public function setDocumentPositionAdditionalReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null,
+        ?string $newReferenceTypeCode = null,
+        ?string $newDescription = null,
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
+    ): self;
+
+    /**
+     * Add an additional associated document (line reference)
+     *
+     * @param string|null $newReferenceNumber Additional document number
+     * @param string|null $newReferenceLineNumber Additional document line number
+     * @param DateTimeInterface|null $newReferenceDate Additional document date
+     * @param string|null $newTypeCode Additional document type code
+     * @param string|null $newReferenceTypeCode Additional document reference-type code
+     * @param string|null $newDescription Additional document description
+     * @param InvoiceSuiteAttachment|null $InvoiceSuiteAttachment Additional document attachment
+     * @return self
+     */
+    public function addDocumentPositionAdditionalReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null,
+        ?string $newReferenceTypeCode = null,
+        ?string $newDescription = null,
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
+    ): self;
+
     #endregion
 }
