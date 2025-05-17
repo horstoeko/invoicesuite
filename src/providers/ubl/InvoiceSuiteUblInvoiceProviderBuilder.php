@@ -5051,5 +5051,29 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionQuantities(
+        ?float $newQuantity = null,
+        ?string $newQuantityUnit = null,
+        ?float $newChargeFreeQuantity = null,
+        ?string $newChargeFreeQuantityUnit = null,
+        ?float $newPackageQuantity = null,
+        ?string $newPackageQuantityUnit = null
+    ): self {
+        if (
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newQuantity]) ||
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newQuantityUnit])
+        ) {
+            return $this;
+        }
+
+        $latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLineWithCreate();
+        $latestPosition->getInvoicedQuantityWithCreate()->setValue($newQuantity)->setUnitCode($newQuantityUnit);
+
+        return $this;
+    }
+
     #endregion
 }

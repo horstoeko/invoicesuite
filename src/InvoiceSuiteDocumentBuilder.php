@@ -3363,5 +3363,28 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionQuantities(
+        ?float $newQuantity = null,
+        ?string $newQuantityUnit = null,
+        ?float $newChargeFreeQuantity = null,
+        ?string $newChargeFreeQuantityUnit = null,
+        ?float $newPackageQuantity = null,
+        ?string $newPackageQuantityUnit = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionQuantities(
+            $newQuantity,
+            $newQuantityUnit,
+            $newChargeFreeQuantity,
+            $newChargeFreeQuantityUnit,
+            $newPackageQuantity,
+            $newPackageQuantityUnit
+        );
+
+        return $this;
+    }
+
     #endregion
 }

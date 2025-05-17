@@ -198,4 +198,6 @@ $builder->addDocumentPositionGrossPriceAllowanceCharge(10, false, 10.0, 100.0, '
 $builder->setDocumentPositionNetPrice(100.0, 1.0, "C62");
 $builder->setDocumentPositionNetPriceTax("S", "VAT", 9.0, 7.0, 'Reason', 'Reasoncode');
 
+$builder->setDocumentPositionQuantities(10.0, "C62", 2, "KTR", 1, "MTR");
+
 echo $builder->saveAsXmlFile(__DIR__ . "/00_SimpleInvoice.xml");

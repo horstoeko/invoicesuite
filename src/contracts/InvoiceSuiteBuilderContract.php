@@ -3073,7 +3073,7 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
-     * Set the position gross price
+     * Set the position's gross price
      *
      * @param null|float $newGrossPrice Unit price excluding sales tax before deduction of the discount on the item price
      * @param null|float $newGrossPriceBasisQuantity Number of item units for which the price applies
@@ -3127,7 +3127,7 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
-     * Set the position net price
+     * Set the position's net price
      *
      * @param null|float $newNetPrice Unit price excluding sales tax after deduction of the discount on the item price
      * @param null|float $newNetPriceBasisQuantity Number of item units for which the price applies
@@ -3141,6 +3141,8 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
+     * Set the position's net price included tax
+     *
      * @param string|null $newTaxCategory Coded description of the tax category
      * @param string|null $newTaxType Coded description of the tax type
      * @param float|null $newTaxAmount Tax total amount
@@ -3156,6 +3158,26 @@ interface InvoiceSuiteBuilderContract
         ?float $newTaxPercent = null,
         ?string $newExemptionReason = null,
         ?string $newExemptionReasonCode = null,
+    ): self;
+
+    /**
+     * Set the position's
+     *
+     * @param null|float $newQuantity Invoiced quantity
+     * @param null|string $newQuantityUnit Invoiced quantity unit
+     * @param null|float $newChargeFreeQuantity Charge Free quantity
+     * @param null|string $newChargeFreeQuantityUnit Charge Free quantity unit
+     * @param null|float $newPackageQuantity Package quantity
+     * @param null|string $newPackageQuantityUnit Package quantity unit
+     * @return self
+     */
+    public function setDocumentPositionQuantities(
+        ?float $newQuantity = null,
+        ?string $newQuantityUnit = null,
+        ?float $newChargeFreeQuantity = null,
+        ?string $newChargeFreeQuantityUnit = null,
+        ?float $newPackageQuantity = null,
+        ?string $newPackageQuantityUnit = null
     ): self;
 
     #endregion

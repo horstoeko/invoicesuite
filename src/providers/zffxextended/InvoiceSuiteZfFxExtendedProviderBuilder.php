@@ -7575,5 +7575,65 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         return $this;
     }
 
+    /**
+     * @param null|float $newQuantity __BT-129, From BASIC__ Invoiced quantity
+     * @param null|string $newQuantityUnit __BT-130, From BASIC__ Invoiced quantity unit
+     * @param null|float $newChargeFreeQuantity __BT-X-46, From EXTENDED__ Charge Free quantity
+     * @param null|string $newChargeFreeQuantityUnit __BT-X-46-0, From EXTENDED__ Charge Free quantity unit
+     * @param null|float $newPackageQuantity __BT-X-47, From EXTENDED__ Package quantity
+     * @param null|string $newPackageQuantityUnit __BT-X-47-0, From EXTENDED__ Package quantity unit
+     * @return self
+     */
+    public function setDocumentPositionQuantities(
+        ?float $newQuantity = null,
+        ?string $newQuantityUnit = null,
+        ?float $newChargeFreeQuantity = null,
+        ?string $newChargeFreeQuantityUnit = null,
+        ?float $newPackageQuantity = null,
+        ?string $newPackageQuantityUnit = null
+    ): self {
+        if (
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newQuantity]) ||
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newQuantityUnit])
+        ) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+
+        $latestPosition
+            ->getSpecifiedLineTradeDeliveryWithCreate()
+            ->getBilledQuantityWithCreate()
+            ->setValue($newQuantity)
+            ->setUnitCode($newQuantityUnit);
+
+        if (
+            !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newChargeFreeQuantity]) ||
+            !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newChargeFreeQuantityUnit])
+        ) {
+            $latestPosition
+                ->getSpecifiedLineTradeDeliveryWithCreate()
+                ->getChargeFreeQuantityWithCreate()
+                ->setValue($newChargeFreeQuantity)
+                ->setUnitCode($newChargeFreeQuantityUnit);
+        }
+
+        if (
+            !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newPackageQuantity]) ||
+            !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPackageQuantityUnit])
+        ) {
+            $latestPosition
+                ->getSpecifiedLineTradeDeliveryWithCreate()
+                ->getPackageQuantityWithCreate()
+                ->setValue($newPackageQuantity)
+                ->setUnitCode($newPackageQuantityUnit);
+        }
+
+        return $this;
+    }
+
     #endregion
 }
