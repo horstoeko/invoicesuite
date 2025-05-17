@@ -3260,5 +3260,22 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionGrossPrice(
+        ?float $newGrossPrice = null,
+        ?float $newGrossPriceBasisQuantity = null,
+        ?string $newGrossPriceBasisQuantityUnit = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionGrossPrice(
+            $newGrossPrice,
+            $newGrossPriceBasisQuantity,
+            $newGrossPriceBasisQuantityUnit
+        );
+
+        return $this;
+    }
+
     #endregion
 }

@@ -3072,5 +3072,17 @@ interface InvoiceSuiteBuilderContract
         ?DateTimeInterface $newReferenceDate = null
     ): self;
 
+    /**
+     * @param null|float $newGrossPrice Unit price excluding sales tax before deduction of the discount on the item price
+     * @param null|float $newGrossPriceBasisQuantity Number of item units for which the price applies
+     * @param null|string $newGrossPriceBasisQuantityUnit Unit code of the number of item units for which the price applies
+     * @return self
+     */
+    public function setDocumentPositionGrossPrice(
+        ?float $newGrossPrice = null,
+        ?float $newGrossPriceBasisQuantity = null,
+        ?string $newGrossPriceBasisQuantityUnit = null
+    ): self;
+
     #endregion
 }

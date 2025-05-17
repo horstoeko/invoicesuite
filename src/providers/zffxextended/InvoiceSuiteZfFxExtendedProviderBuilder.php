@@ -7345,5 +7345,41 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         return $this;
     }
 
+    /**
+     * @param null|float $newGrossPrice __BT-148, From BASIC__ Unit price excluding sales tax before deduction of the discount on the item price
+     * @param null|float $newGrossPriceBasisQuantity __BT-149-1, From BASIC__ Number of item units for which the price applies
+     * @param null|string $newGrossPriceBasisQuantityUnit __BT-150-1, From BASIC__ Unit code of the number of item units for which the price applies
+     * @return self
+     */
+    public function setDocumentPositionGrossPrice(
+        ?float $newGrossPrice = null,
+        ?float $newGrossPriceBasisQuantity = null,
+        ?string $newGrossPriceBasisQuantityUnit = null
+    ): self {
+        if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newGrossPrice])) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+
+        $grossPrice = $latestPosition
+            ->getSpecifiedLineTradeAgreementWithCreate()
+            ->getGrossPriceProductTradePriceWithCreate();
+
+        $grossPrice->getChargeAmountWithCreate()->setValue($newGrossPrice);
+
+        if (
+            !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newGrossPriceBasisQuantity]) &&
+            !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGrossPriceBasisQuantityUnit])
+        ) {
+            $grossPrice->getBasisQuantityWithCreate()->setValue($newGrossPriceBasisQuantity)->setUnitCode($newGrossPriceBasisQuantityUnit);
+        }
+
+        return $this;
+    }
+
     #endregion
 }

@@ -193,4 +193,6 @@ $builder->addDocumentPositionAdditionalReference('ADDDOC-001', '100', new DateTi
 $builder->addDocumentPositionAdditionalReference('ADDDOC-002', '101', new DateTime(), "918", "0816", "Description for additional docuemnt", InvoiceSuiteAttachment::fromUrl('http://some.url'));
 $builder->addDocumentPositionUltimateCustomerOrderReference('UCOR-0000001', '200', new DateTime());
 
+$builder->setDocumentPositionGrossPrice(110.0, 1.0, "C62");
+
 echo $builder->saveAsXmlFile(__DIR__ . "/00_SimpleInvoice.xml");
