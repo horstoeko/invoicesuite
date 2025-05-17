@@ -7459,9 +7459,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
             return $this;
         }
 
-        $allowanceCharge = $grossPrice
-            ->addToAppliedTradeAllowanceChargeWithCreate();
-
+        $allowanceCharge = $grossPrice->addToAppliedTradeAllowanceChargeWithCreate();
         $allowanceCharge->getActualAmountWithCreate()->setValue($newGrossPriceAllowanceChargeAmount);
         $allowanceCharge->getChargeIndicatorWithCreate()->setIndicator($newIsCharge);
 
