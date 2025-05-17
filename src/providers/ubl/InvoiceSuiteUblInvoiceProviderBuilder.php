@@ -5035,5 +5035,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionNetPriceTax(
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxAmount = null,
+        ?float $newTaxPercent = null,
+        ?string $newExemptionReason = null,
+        ?string $newExemptionReasonCode = null,
+    ): self {
+        // Nothing here
+
+        return $this;
+    }
+
     #endregion
 }

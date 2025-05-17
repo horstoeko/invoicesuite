@@ -3340,5 +3340,28 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionNetPriceTax(
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxAmount = null,
+        ?float $newTaxPercent = null,
+        ?string $newExemptionReason = null,
+        ?string $newExemptionReasonCode = null,
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionNetPriceTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode
+        );
+
+        return $this;
+    }
+
     #endregion
 }

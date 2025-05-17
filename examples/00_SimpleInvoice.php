@@ -6,7 +6,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 require __DIR__ . "/../vendor/autoload.php";
 
 $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
-//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
 //$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxxrechnung');
 
 $builder->setDocumentNo('2025-04-000001');
@@ -196,5 +196,6 @@ $builder->addDocumentPositionUltimateCustomerOrderReference('UCOR-0000001', '200
 $builder->setDocumentPositionGrossPrice(110.0, 1.0, "C62");
 $builder->addDocumentPositionGrossPriceAllowanceCharge(10, false, 10.0, 100.0, 'Reason', 'ReasonCode');
 $builder->setDocumentPositionNetPrice(100.0, 1.0, "C62");
+$builder->setDocumentPositionNetPriceTax("S", "VAT", 9.0, 7.0, 'Reason', 'Reasoncode');
 
 echo $builder->saveAsXmlFile(__DIR__ . "/00_SimpleInvoice.xml");

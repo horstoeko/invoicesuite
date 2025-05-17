@@ -7518,5 +7518,62 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         return $this;
     }
 
+    /**
+     * @param string|null $newTaxCategory __BT-X-40, From EXTENDED__ Coded description of the tax category
+     * @param string|null $newTaxType __BT-X-38, From EXTENDED__ Coded description of the tax type
+     * @param float|null $newTaxAmount __BT-X-37, From EXTENDED__ Tax total amount
+     * @param float|null $newTaxPercent __BT-X-42, From EXTENDED__ Tax Rate (Percentage)
+     * @param string|null $newExemptionReason __BT-X-39, From EXTENDED__ Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode __BT-X-41, From EXTENDED__ Reason for tax exemption (Code)
+     * @return self
+     */
+    public function setDocumentPositionNetPriceTax(
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxAmount = null,
+        ?float $newTaxPercent = null,
+        ?string $newExemptionReason = null,
+        ?string $newExemptionReasonCode = null,
+    ): self {
+        if (
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxAmount]) ||
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])
+        ) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+
+        $netPrice = $latestPosition
+            ->getSpecifiedLineTradeAgreementWithCreate()
+            ->getNetPriceProductTradePrice();
+
+        if (is_null($netPrice)) {
+            return $this;
+        }
+
+        $tradeTax = $netPrice->getIncludedTradeTaxWithCreate();
+        $tradeTax->getCategoryCodeWithCreate()->setValue($newTaxCategory);
+        $tradeTax->getTypeCodeWithCreate()->setValue($newTaxType);
+        $tradeTax->getCalculatedAmountWithCreate()->setValue($newTaxAmount);
+
+        if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent])) {
+            $tradeTax->getRateApplicablePercentWithCreate()->setValue($newTaxPercent);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newExemptionReason])) {
+            $tradeTax->getExemptionReasonWithCreate()->setValue($newExemptionReason);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newExemptionReasonCode])) {
+            $tradeTax->getExemptionReasonCodeWithCreate()->setValue($newExemptionReasonCode);
+        }
+
+        return $this;
+    }
+
     #endregion
 }
