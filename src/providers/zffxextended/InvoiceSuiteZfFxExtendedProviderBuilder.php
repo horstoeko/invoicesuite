@@ -7151,11 +7151,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * @param string|null $newReferenceNumber __BT-122, From EN 16931__ Additional document number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-149, From EXTENDED__ Additional document date
-     * @param string|null $newTypeCode __BT-122-0, From EN 16931__ Additional document type code
-     * @param string|null $newReferenceTypeCode __BT-18-1, From EN 16931__ Additional document reference-type code
-     * @param string|null $newDescription __BT-123, From EN 16931__ Additional document description
+     * @param string|null $newReferenceNumber __BT-X-27, From EXTENDED__ Additional document number
+     * @param string|null $newReferenceLineNumber __BT-X-29, From EXTENDED__ Additional document number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-33, From EXTENDED__ Additional document date
+     * @param string|null $newTypeCode __BT-X-30, From EXTENDED__ Additional document type code
+     * @param string|null $newReferenceTypeCode __BT-X-32, From EXTENDED__ Additional document reference-type code
+     * @param string|null $newDescription __BT-X-299, From EXTENDED__ Additional document description
+     * @param InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment __BT-X-31, From EXTENDED__ Additional document attachment
      * @return self
      */
     public function setDocumentPositionAdditionalReference(
@@ -7191,11 +7193,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * @param string|null $newReferenceNumber __BT-122, From EN 16931__ Additional document number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-149, From EXTENDED__ Additional document date
-     * @param string|null $newTypeCode __BT-122-0, From EN 16931__ Additional document type code
-     * @param string|null $newReferenceTypeCode __BT-18-1, From EN 16931__ Additional document reference-type code
-     * @param string|null $newDescription __BT-123, From EN 16931__ Additional document description
+     * @param string|null $newReferenceNumber __BT-X-27, From EXTENDED__ Additional document number
+     * @param string|null $newReferenceLineNumber __BT-X-29, From EXTENDED__ Additional document number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-33, From EXTENDED__ Additional document date
+     * @param string|null $newTypeCode __BT-X-30, From EXTENDED__ Additional document type code
+     * @param string|null $newReferenceTypeCode __BT-X-32, From EXTENDED__ Additional document reference-type code
+     * @param string|null $newDescription __BT-X-299, From EXTENDED__ Additional document description
+     * @param InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment __BT-X-31, From EXTENDED__ Additional document attachment
      * @return self
      */
     public function addDocumentPositionAdditionalReference(
