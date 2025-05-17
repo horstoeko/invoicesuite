@@ -715,7 +715,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
             $newReferenceDate,
             $newTypeCode,
             $newReferenceTypeCode,
-            $newDescription
+            $newDescription,
+            $newInvoiceSuiteAttachment
         );
 
         return $this;
@@ -7182,7 +7183,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
             $newReferenceDate,
             $newTypeCode,
             $newReferenceTypeCode,
-            $newDescription
+            $newDescription,
+            $newInvoiceSuiteAttachment
         );
 
         return $this;
