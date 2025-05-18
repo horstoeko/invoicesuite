@@ -8496,7 +8496,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * @param DateTimeInterface|null $newDate __BT-72, From BASIC WL__ Actual delivery date
+     * @param DateTimeInterface|null $newDate __BT-X-85, From EXTENDED__  Actual delivery date
      * @return self
      */
     public function setDocumentPositionSupplyChainEvent(
