@@ -7387,6 +7387,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      * @param string|null $newReferenceNumber __BT-X-86, From EXTENDED__ Shipping notification number
      * @param string|null $newReferenceLineNumber __BT-X-87, From EXTENDED__ Ultimate customer order line number
      * @param DateTimeInterface|null $newReferenceDate __BT-X-88, From EXTENDED__ Shipping notification date
+     * @return self
      */
     public function addDocumentPositionDespatchAdviceReference(
         ?string $newReferenceNumber = null,
@@ -7448,6 +7449,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      * @param string|null $newReferenceNumber __BT-X-89, From EXTENDED__ Shipping notification number
      * @param string|null $newReferenceLineNumber __BT-X-90, From EXTENDED__ Ultimate customer order line number
      * @param DateTimeInterface|null $newReferenceDate __BT-X-91, From EXTENDED__ Shipping notification date
+     * @return self
      */
     public function addDocumentPositionReceivingAdviceReference(
         ?string $newReferenceNumber = null,
@@ -7459,6 +7461,68 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         }
 
         $this->setDocumentPositionReceivingAdviceReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newReferenceNumber __BT-X-92, From EXTENDED__ Delivery slip number
+     * @param string|null $newReferenceLineNumber __BT-X-93, From EXTENDED__ Delivery slip line number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-94, From EXTENDED__ Delivery slip date
+     * @return self
+     */
+    public function setDocumentPositionDeliveryNoteReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+
+        $deliveryNoteReference = $latestPosition
+            ->getSpecifiedLineTradeDeliveryWithCreate()
+            ->getDeliveryNoteReferencedDocumentWithCreate();
+
+        $deliveryNoteReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
+        $deliveryNoteReference->getLineIDWithCreate()->setValue($newReferenceLineNumber);
+
+        if (!is_null($newReferenceDate)) {
+            $deliveryNoteReference
+                ->getFormattedIssueDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newReferenceDate->format("Ymd"))
+                ->setFormat("102");
+        };
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newReferenceNumber __BT-X-92, From EXTENDED__ Delivery slip number
+     * @param string|null $newReferenceLineNumber __BT-X-93, From EXTENDED__ Delivery slip line number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-94, From EXTENDED__ Delivery slip date
+     * @return self
+     */
+    public function addDocumentPositionDeliveryNoteReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
+            return $this;
+        }
+
+        $this->setDocumentPositionDeliveryNoteReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate

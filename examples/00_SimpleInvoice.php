@@ -194,6 +194,7 @@ $builder->addDocumentPositionAdditionalReference('ADDDOC-002', '101', new DateTi
 $builder->addDocumentPositionUltimateCustomerOrderReference('UCOR-0000001', '200', new DateTime());
 $builder->setDocumentPositionDespatchAdviceReference('DESPATCHADV-0000001', '300', new DateTime());
 $builder->setDocumentPositionReceivingAdviceReference('RECEIPTADV-0000001', '400', new DateTime());
+$builder->setDocumentPositionDeliveryNoteReference('DELIVERYNOTE-0000001', '500', new DateTime());
 
 $builder->setDocumentPositionGrossPrice(110.0, 1.0, "C62");
 $builder->addDocumentPositionGrossPriceAllowanceCharge(10, false, 10.0, 100.0, 'Reason', 'ReasonCode');

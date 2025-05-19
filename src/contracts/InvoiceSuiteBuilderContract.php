@@ -3129,6 +3129,34 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
+     * Set an additional delivery note
+     *
+     * @param string|null $newReferenceNumber Delivery slip number
+     * @param string|null $newReferenceLineNumber Delivery slip line number
+     * @param DateTimeInterface|null $newReferenceDate Delivery slip date
+     * @return self
+     */
+    public function setDocumentPositionDeliveryNoteReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
+
+    /**
+     * Add an additional delivery note
+     *
+     * @param string|null $newReferenceNumber Delivery slip number
+     * @param string|null $newReferenceLineNumber Delivery slip line number
+     * @param DateTimeInterface|null $newReferenceDate Delivery slip date
+     * @return self
+     */
+    public function addDocumentPositionDeliveryNoteReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
+
+    /**
      * Set the position's gross price
      *
      * @param null|float $newGrossPrice Unit price excluding sales tax before deduction of the discount on the item price
