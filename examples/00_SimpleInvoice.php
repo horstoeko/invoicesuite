@@ -6,7 +6,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 require __DIR__ . "/../vendor/autoload.php";
 
 $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
-//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
 //$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxxrechnung');
 
 $builder->setDocumentNo('2025-04-000001');
@@ -229,5 +229,6 @@ $builder->setDocumentPositionSupplyChainEvent(new DateTime());
 $builder->setDocumentPositionBillingPeriod(new DateTime("first day of this month"), new DateTime("last day of this month"), "Some Description");
 $builder->setDocumentPositionTax('S', 'VAT', 1.19, 19,  'Reason', 'Reasoncode');
 $builder->setDocumentPositionAllowanceCharge(false, 25.33, 133.44, 'Reason', 'Resoncode', 12.7);
+$builder->setDocumentPositionSummation(2000, 1, 2, 3, 4);
 
 echo $builder->saveAsXmlFile(__DIR__ . "/00_SimpleInvoice.xml");

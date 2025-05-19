@@ -8946,5 +8946,54 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         return $this;
     }
 
+    /**
+     * @param float|null $newNetAmount __BT-131, From BASIC__ Net amount
+     * @param float|null $newChargeTotalAmount __BT-X-327, From EXTENDED__ Sum of the charges
+     * @param float|null $newDiscountTotalAmount __BT-X-328, From EXTENDED__ Sum of the discounts
+     * @param float|null $newTaxTotalAmount __BT-X-329, From EXTENDED__ Total amount of the line (in the invoice currency)
+     * @param float|null $newGrossAmount __BT-X-330, From EXTENDED__ Total invoice line amount including sales tax
+     * @return self
+     */
+    public function setDocumentPositionSummation(
+        ?float $newNetAmount = null,
+        ?float $newChargeTotalAmount = null,
+        ?float $newDiscountTotalAmount = null,
+        ?float $newTaxTotalAmount = null,
+        ?float $newGrossAmount = null
+    ): self {
+        if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newNetAmount])) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+
+        $summation = $latestPosition
+            ->getSpecifiedLineTradeSettlementWithCreate()
+            ->getSpecifiedTradeSettlementLineMonetarySummationWithCreate();
+
+        $summation->getLineTotalAmountWithCreate()->setValue($newNetAmount);
+
+        if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newChargeTotalAmount])) {
+            $summation->getChargeTotalAmountWithCreate()->setValue($newChargeTotalAmount);
+        }
+
+        if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newDiscountTotalAmount])) {
+            $summation->getAllowanceTotalAmountWithCreate()->setValue($newDiscountTotalAmount);
+        }
+
+        if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxTotalAmount])) {
+            $summation->getTaxTotalAmountWithCreate()->setValue($newTaxTotalAmount);
+        }
+
+        if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newGrossAmount])) {
+            $summation->getGrandTotalAmountWithCreate()->setValue($newGrossAmount);
+        }
+
+        return $this;
+    }
+
     #endregion
 }

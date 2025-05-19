@@ -4006,5 +4006,26 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionSummation(
+        ?float $newNetAmount = null,
+        ?float $newChargeTotalAmount = null,
+        ?float $newDiscountTotalAmount = null,
+        ?float $newTaxTotalAmount = null,
+        ?float $newGrossAmount = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionSummation(
+            $newNetAmount,
+            $newChargeTotalAmount,
+            $newDiscountTotalAmount,
+            $newTaxTotalAmount,
+            $newGrossAmount
+        );
+
+        return $this;
+    }
+
     #endregion
 }

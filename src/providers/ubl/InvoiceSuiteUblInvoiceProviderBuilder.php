@@ -5639,5 +5639,30 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionSummation(
+        ?float $newNetAmount = null,
+        ?float $newChargeTotalAmount = null,
+        ?float $newDiscountTotalAmount = null,
+        ?float $newTaxTotalAmount = null,
+        ?float $newGrossAmount = null
+    ): self {
+        if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newNetAmount])) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLineWithCreate();
+
+        $allowanceCharge = $latestPosition
+            ->getLineExtensionAmountWithCreate()
+            ->setValue($newNetAmount);
+
+        return $this;
+    }
+
     #endregion
 }

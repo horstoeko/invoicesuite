@@ -3692,5 +3692,23 @@ interface InvoiceSuiteBuilderContract
         ?float $newAllowanceChargePercent = null
     ): self;
 
+    /**
+     * Set the document position summation
+     *
+     * @param float|null $newNetAmount Net amount
+     * @param float|null $newChargeTotalAmount Sum of the charges
+     * @param float|null $newDiscountTotalAmount Sum of the discounts
+     * @param float|null $newTaxTotalAmount Total amount of the line (in the invoice currency)
+     * @param float|null $newGrossAmount Total invoice line amount including sales tax
+     * @return self
+     */
+    public function setDocumentPositionSummation(
+        ?float $newNetAmount = null,
+        ?float $newChargeTotalAmount = null,
+        ?float $newDiscountTotalAmount = null,
+        ?float $newTaxTotalAmount = null,
+        ?float $newGrossAmount = null
+    ): self;
+
     #endregion
 }
