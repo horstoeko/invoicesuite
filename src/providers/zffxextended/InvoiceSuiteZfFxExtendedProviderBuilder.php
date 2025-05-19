@@ -8757,5 +8757,102 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         return $this;
     }
 
+    /**
+     * @param string|null $newTaxCategory __BT-151, From BASIC__ Coded description of the tax category
+     * @param string|null $newTaxType __BT-151-0, From BASIC__ Coded description of the tax type
+     * @param float|null $newTaxAmount __BT-X-95, From EXTENDED__ Tax total amount
+     * @param float|null $newTaxPercent __BT-152, From BASIC__ Tax Rate (Percentage)
+     * @param string|null $newExemptionReason __BT-X-96, From EXTENDED__ Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode __BT-X-97, From EXTENDED__ Reason for tax exemption (Code)
+     * @return self
+     */
+    public function setDocumentPositionTax(
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxAmount = null,
+        ?float $newTaxPercent = null,
+        ?string $newExemptionReason = null,
+        ?string $newExemptionReasonCode = null,
+    ): self {
+        if (
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxAmount]) ||
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])
+        ) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+
+        $latestPosition
+            ->getSpecifiedLineTradeSettlementWithCreate()
+            ->clearApplicableTradeTax();
+
+        $this->addDocumentPositionTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newTaxCategory __BT-151, From BASIC__ Coded description of the tax category
+     * @param string|null $newTaxType __BT-151-0, From BASIC__ Coded description of the tax type
+     * @param float|null $newTaxAmount __BT-X-95, From EXTENDED__ Tax total amount
+     * @param float|null $newTaxPercent __BT-152, From BASIC__ Tax Rate (Percentage)
+     * @param string|null $newExemptionReason __BT-X-96, From EXTENDED__ Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode __BT-X-97, From EXTENDED__ Reason for tax exemption (Code)
+     * @return self
+     */
+    public function addDocumentPositionTax(
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxAmount = null,
+        ?float $newTaxPercent = null,
+        ?string $newExemptionReason = null,
+        ?string $newExemptionReasonCode = null,
+    ): self {
+        if (
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxAmount]) ||
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])
+        ) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+
+        $tradeTax = $latestPosition
+            ->getSpecifiedLineTradeSettlementWithCreate()
+            ->addToApplicableTradeTaxWithCreate();
+
+        $tradeTax->getCategoryCodeWithCreate()->setValue($newTaxCategory);
+        $tradeTax->getTypeCodeWithCreate()->setValue($newTaxType);
+        $tradeTax->getCalculatedAmountWithCreate()->setValue($newTaxAmount);
+
+        if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent])) {
+            $tradeTax->getRateApplicablePercentWithCreate()->setValue($newTaxPercent);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newExemptionReason])) {
+            $tradeTax->getExemptionReasonWithCreate()->setValue($newExemptionReason);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newExemptionReasonCode])) {
+            $tradeTax->getExemptionReasonCodeWithCreate()->setValue($newExemptionReasonCode);
+        }
+
+        return $this;
+    }
+
     #endregion
 }

@@ -3612,5 +3612,45 @@ interface InvoiceSuiteBuilderContract
         ?string $newDescription = null
     ): self;
 
+    /**
+     * Set the position's tax information
+     *
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxAmount Tax total amount
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newExemptionReason Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode Reason for tax exemption (Code)
+     * @return self
+     */
+    public function setDocumentPositionTax(
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxAmount = null,
+        ?float $newTaxPercent = null,
+        ?string $newExemptionReason = null,
+        ?string $newExemptionReasonCode = null,
+    ): self;
+
+    /**
+     * Add a position's tax information
+     *
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxAmount Tax total amount
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newExemptionReason Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode Reason for tax exemption (Code)
+     * @return self
+     */
+    public function addDocumentPositionTax(
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxAmount = null,
+        ?float $newTaxPercent = null,
+        ?string $newExemptionReason = null,
+        ?string $newExemptionReasonCode = null,
+    ): self;
+
     #endregion
 }

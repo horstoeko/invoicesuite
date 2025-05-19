@@ -227,5 +227,6 @@ $builder->setDocumentPositionUltimateShipToCommunication("EM", "invoice@ultimate
 
 $builder->setDocumentPositionSupplyChainEvent(new DateTime());
 $builder->setDocumentPositionBillingPeriod(new DateTime("first day of this month"), new DateTime("last day of this month"), "Some Description");
+$builder->setDocumentPositionTax('S', 'VAT', 1.19, 19,  'Reason', 'Reasoncode');
 
 echo $builder->saveAsXmlFile(__DIR__ . "/00_SimpleInvoice.xml");
