@@ -3685,7 +3685,7 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
-     * Set Document Allowance/Charge
+     * Set Document position Allowance/Charge
      *
      * @param boolean|null $newChargeIndicator Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
      * @param float|null $newAllowanceChargeAmount Amount of the surcharge or discount
@@ -3705,7 +3705,7 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
-     * Add Document Allowance/Charge
+     * Add Document position Allowance/Charge
      *
      * @param boolean|null $newChargeIndicator Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
      * @param float|null $newAllowanceChargeAmount Amount of the surcharge or discount
@@ -3740,6 +3740,30 @@ interface InvoiceSuiteBuilderContract
         ?float $newDiscountTotalAmount = null,
         ?float $newTaxTotalAmount = null,
         ?float $newGrossAmount = null
+    ): self;
+
+    /**
+     * Set a position's posting reference
+     *
+     * @param string|null $newType Type of the posting reference
+     * @param string|null $newAccountId Posting reference of the byuer
+     * @return self
+     */
+    public function setDocumentPositionPostingReference(
+        ?string $newType = null,
+        ?string $newAccountId = null
+    ): self;
+
+    /**
+     * Add a position's posting reference
+     *
+     * @param string|null $newType Type of the posting reference
+     * @param string|null $newAccountId Posting reference of the byuer
+     * @return self
+     */
+    public function addDocumentPositionPostingReference(
+        ?string $newType = null,
+        ?string $newAccountId = null
     ): self;
 
     #endregion

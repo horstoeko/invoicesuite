@@ -5692,5 +5692,37 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
+    /**
+     * Set a position's posting reference
+     *
+     * @param string|null $newType Type of the posting reference
+     * @param string|null $newAccountId Posting reference of the byuer
+     * @return self
+     */
+    public function setDocumentPositionPostingReference(
+        ?string $newType = null,
+        ?string $newAccountId = null
+    ): self {
+        // Nothing here
+
+        return $this;
+    }
+
+    /**
+     * Add a position's posting reference
+     *
+     * @param string|null $newType Type of the posting reference
+     * @param string|null $newAccountId Posting reference of the byuer
+     * @return self
+     */
+    public function addDocumentPositionPostingReference(
+        ?string $newType = null,
+        ?string $newAccountId = null
+    ): self {
+        // Nothing here
+
+        return $this;
+    }
+
     #endregion
 }

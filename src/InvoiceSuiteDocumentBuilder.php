@@ -4065,5 +4065,35 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionPostingReference(
+        ?string $newType = null,
+        ?string $newAccountId = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionPostingReference(
+            $newType,
+            $newAccountId
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPositionPostingReference(
+        ?string $newType = null,
+        ?string $newAccountId = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionPostingReference(
+            $newType,
+            $newAccountId
+        );
+
+        return $this;
+    }
+
     #endregion
 }

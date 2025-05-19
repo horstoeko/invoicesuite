@@ -232,4 +232,6 @@ $builder->setDocumentPositionAllowanceCharge(false, 25.33, 133.44, 'Reason', 'Re
 $builder->setDocumentPositionSummation(2000, 1, 2, 3, 4);
 $builder->addDocumentPositionInvoiceReference("INVREF-001", "4000", new DateTime(), "382");
 
+$builder->setDocumentPositionPostingReference('1', 'FINACC');
+
 echo $builder->saveAsXmlFile(__DIR__ . "/00_SimpleInvoice.xml");

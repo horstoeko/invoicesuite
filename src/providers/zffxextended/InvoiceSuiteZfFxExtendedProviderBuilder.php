@@ -9061,5 +9061,57 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         return $this;
     }
 
+    /**
+     * @param string|null $newType __BT-X-290, From EXTENDED__ Type of the posting reference, Allowed values: 1 = Financial, 2 = Subsidiary, 3 = Budget, 4 = Cost Accounting, 5 = Payable, 6 = Job Cost Accounting
+     * @param string|null $newAccountId __BT-19, From BASIC WL__ Posting reference of the byuer, If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
+     * @return self
+     */
+    public function setDocumentPositionPostingReference(
+        ?string $newType = null,
+        ?string $newAccountId = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newAccountId])) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+
+        $tradeAccountingAccount = $latestPosition
+            ->getSpecifiedLineTradeSettlementWithCreate()
+            ->getReceivableSpecifiedTradeAccountingAccountWithCreate();
+
+        $tradeAccountingAccount->getIDWithCreate()->setValue($newAccountId);
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType])) {
+            $tradeAccountingAccount->getTypeCodeWithCreate()->setValue($newType);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newType __BT-X-290, From EXTENDED__ Type of the posting reference, Allowed values: 1 = Financial, 2 = Subsidiary, 3 = Budget, 4 = Cost Accounting, 5 = Payable, 6 = Job Cost Accounting
+     * @param string|null $newAccountId __BT-19, From BASIC WL__ Posting reference of the byuer, If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
+     * @return self
+     */
+    public function addDocumentPositionPostingReference(
+        ?string $newType = null,
+        ?string $newAccountId = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newAccountId])) {
+            return $this;
+        }
+
+        $this->setDocumentPositionPostingReference(
+            $newType,
+            $newAccountId
+        );
+
+        return $this;
+    }
+
     #endregion
 }
