@@ -7722,7 +7722,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         ?string $newExemptionReasonCode = null,
     ): self {
         if (
-            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxAmount]) ||
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent]) ||
             InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])
         ) {
             return $this;
@@ -8775,7 +8775,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         ?string $newExemptionReasonCode = null,
     ): self {
         if (
-            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxAmount]) ||
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent]) ||
             InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])
         ) {
             return $this;
@@ -8820,7 +8820,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         ?string $newExemptionReasonCode = null,
     ): self {
         if (
-            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxAmount]) ||
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent]) ||
             InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])
         ) {
             return $this;

@@ -5494,6 +5494,30 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newExemptionReason = null,
         ?string $newExemptionReasonCode = null,
     ): self {
+        if (
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent]) ||
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])
+        ) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLineWithCreate();
+
+        $latestPosition
+            ->getItemWithCreate()
+            ->clearClassifiedTaxCategory();
+
+        $this->addDocumentPositionTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode
+        );
+
         return $this;
     }
 
@@ -5508,6 +5532,33 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newExemptionReason = null,
         ?string $newExemptionReasonCode = null,
     ): self {
+        if (
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent]) ||
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])
+        ) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLineWithCreate();
+
+        $tradeTax = $latestPosition
+            ->getItemWithCreate()
+            ->addToClassifiedTaxCategoryWithCreate();
+
+        $tradeTax->getIDWithCreate()->setValue($newTaxCategory);
+        $tradeTax->getTaxSchemeWithCreate()->getIDWithCreate()->setValue($newTaxType);
+        $tradeTax->getPercentWithCreate()->setValue($newTaxPercent);
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newExemptionReason])) {
+            $tradeTax->addOnceToTaxExemptionReasonWithCreate()->setValue($newExemptionReason);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newExemptionReasonCode])) {
+            $tradeTax->getTaxExemptionReasonCodeWithCreate()->setValue($newExemptionReason);
+        }
+
         return $this;
     }
 
