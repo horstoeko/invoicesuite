@@ -7407,6 +7407,67 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
+     * @param string|null $newReferenceNumber __BT-X-89, From EXTENDED__ Shipping notification number
+     * @param string|null $newReferenceLineNumber __BT-X-90, From EXTENDED__ Ultimate customer order line number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-91, From EXTENDED__ Shipping notification date
+     * @return self
+     */
+    public function setDocumentPositionReceivingAdviceReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+
+        $receivingAdviceReference = $latestPosition
+            ->getSpecifiedLineTradeDeliveryWithCreate()
+            ->getReceivingAdviceReferencedDocumentWithCreate();
+
+        $receivingAdviceReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
+        $receivingAdviceReference->getLineIDWithCreate()->setValue($newReferenceLineNumber);
+
+        if (!is_null($newReferenceDate)) {
+            $receivingAdviceReference
+                ->getFormattedIssueDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newReferenceDate->format("Ymd"))
+                ->setFormat("102");
+        };
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newReferenceNumber __BT-X-89, From EXTENDED__ Shipping notification number
+     * @param string|null $newReferenceLineNumber __BT-X-90, From EXTENDED__ Ultimate customer order line number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-91, From EXTENDED__ Shipping notification date
+     */
+    public function addDocumentPositionReceivingAdviceReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
+            return $this;
+        }
+
+        $this->setDocumentPositionReceivingAdviceReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
+
+        return $this;
+    }
+
+    /**
      * @param null|float $newGrossPrice __BT-148, From BASIC__ Unit price excluding sales tax before deduction of the discount on the item price
      * @param null|float $newGrossPriceBasisQuantity __BT-149-1, From BASIC__ Number of item units for which the price applies
      * @param null|string $newGrossPriceBasisQuantityUnit __BT-150-1, From BASIC__ Unit code of the number of item units for which the price applies

@@ -3101,6 +3101,34 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
+     * Set an additional despatch advice reference
+     *
+     * @param string|null $newReferenceNumber Receipt notification number
+     * @param string|null $newReferenceLineNumber Receipt notification line number
+     * @param DateTimeInterface|null $newReferenceDate Receipt notification date
+     * @return self
+     */
+    public function setDocumentPositionReceivingAdviceReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
+
+    /**
+     * Add an additional despatch advice reference
+     *
+     * @param string|null $newReferenceNumber Receipt notification number
+     * @param string|null $newReferenceLineNumber Receipt notification line number
+     * @param DateTimeInterface|null $newReferenceDate Receipt notification date
+     * @return self
+     */
+    public function addDocumentPositionReceivingAdviceReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
+
+    /**
      * Set the position's gross price
      *
      * @param null|float $newGrossPrice Unit price excluding sales tax before deduction of the discount on the item price
