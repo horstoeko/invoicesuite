@@ -7532,6 +7532,72 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
+     * @param string|null $newReferenceNumber __BT-X-331, From EXTENDED__ Identification of an invoice previously sent
+     * @param string|null $newReferenceLineNumber __BT-X-540, From EXTENDED__ Identification of an invoice line previously sent
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-333, From EXTENDED__ Date of the previous invoice
+     * @param string|null $newTypeCode __BT-X-332, From EXTENDED__ Type code of previous invoice
+     */
+    public function setDocumentPositionInvoiceReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber, $newTypeCode])) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+
+        $invoiceReference = $latestPosition
+            ->getSpecifiedLineTradeSettlementWithCreate()
+            ->getInvoiceReferencedDocumentWithCreate();
+
+        $invoiceReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
+        $invoiceReference->getLineIDWithCreate()->setValue($newReferenceLineNumber);
+        $invoiceReference->getTypeCodeWithCreate()->setValue($newTypeCode);
+
+        if (!InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newReferenceDate])) {
+            $invoiceReference
+                ->getFormattedIssueDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newReferenceDate->format("Ymd"))
+                ->setFormat("102");
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newReferenceNumber __BT-X-331, From EXTENDED__ Identification of an invoice previously sent
+     * @param string|null $newReferenceLineNumber __BT-X-540, From EXTENDED__ Identification of an invoice line previously sent
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-333, From EXTENDED__ Date of the previous invoice
+     * @param string|null $newTypeCode __BT-X-332, From EXTENDED__ Type code of previous invoice
+     */
+    public function addDocumentPositionInvoiceReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber, $newTypeCode])) {
+            return $this;
+        }
+
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionInvoiceReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate,
+            $newTypeCode
+        );
+
+        return $this;
+    }
+
+    /**
      * @param null|float $newGrossPrice __BT-148, From BASIC__ Unit price excluding sales tax before deduction of the discount on the item price
      * @param null|float $newGrossPriceBasisQuantity __BT-149-1, From BASIC__ Number of item units for which the price applies
      * @param null|string $newGrossPriceBasisQuantityUnit __BT-150-1, From BASIC__ Unit code of the number of item units for which the price applies
@@ -8991,72 +9057,6 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newGrossAmount])) {
             $summation->getGrandTotalAmountWithCreate()->setValue($newGrossAmount);
         }
-
-        return $this;
-    }
-
-    /**
-     * @param string|null $newReferenceNumber __BT-X-331, From EXTENDED__ Identification of an invoice previously sent
-     * @param string|null $newReferenceLineNumber __BT-X-540, From EXTENDED__ Identification of an invoice line previously sent
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-333, From EXTENDED__ Date of the previous invoice
-     * @param string|null $newTypeCode __BT-X-332, From EXTENDED__ Type code of previous invoice
-     */
-    public function setDocumentPositionInvoiceReference(
-        ?string $newReferenceNumber = null,
-        ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-        ?string $newTypeCode = null
-    ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber, $newTypeCode])) {
-            return $this;
-        }
-
-        $latestPosition = $this
-            ->getCrossIndustryRootObject()
-            ->getSupplyChainTradeTransactionWithCreate()
-            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
-
-        $invoiceReference = $latestPosition
-            ->getSpecifiedLineTradeSettlementWithCreate()
-            ->getInvoiceReferencedDocumentWithCreate();
-
-        $invoiceReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
-        $invoiceReference->getLineIDWithCreate()->setValue($newReferenceLineNumber);
-        $invoiceReference->getTypeCodeWithCreate()->setValue($newTypeCode);
-
-        if (!InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newReferenceDate])) {
-            $invoiceReference
-                ->getFormattedIssueDateTimeWithCreate()
-                ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param string|null $newReferenceNumber __BT-X-331, From EXTENDED__ Identification of an invoice previously sent
-     * @param string|null $newReferenceLineNumber __BT-X-540, From EXTENDED__ Identification of an invoice line previously sent
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-333, From EXTENDED__ Date of the previous invoice
-     * @param string|null $newTypeCode __BT-X-332, From EXTENDED__ Type code of previous invoice
-     */
-    public function addDocumentPositionInvoiceReference(
-        ?string $newReferenceNumber = null,
-        ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-        ?string $newTypeCode = null
-    ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber, $newTypeCode])) {
-            return $this;
-        }
-
-        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionInvoiceReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate,
-            $newTypeCode
-        );
 
         return $this;
     }

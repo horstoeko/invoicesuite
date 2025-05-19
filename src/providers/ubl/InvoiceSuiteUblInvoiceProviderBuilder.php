@@ -5042,6 +5042,34 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * @inheritDoc
      */
+    public function setDocumentPositionInvoiceReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null
+    ): self {
+        // Nothing here
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPositionInvoiceReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null
+    ): self {
+        // Nothing here
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function setDocumentPositionGrossPrice(
         ?float $newGrossPrice = null,
         ?float $newGrossPriceBasisQuantity = null,
@@ -5660,34 +5688,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         $latestPosition
             ->getLineExtensionAmountWithCreate()
             ->setValue($newNetAmount);
-
-        return $this;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function setDocumentPositionInvoiceReference(
-        ?string $newReferenceNumber = null,
-        ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-        ?string $newTypeCode = null
-    ): self {
-        // Nothing here
-
-        return $this;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function addDocumentPositionInvoiceReference(
-        ?string $newReferenceNumber = null,
-        ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-        ?string $newTypeCode = null
-    ): self {
-        // Nothing here
 
         return $this;
     }

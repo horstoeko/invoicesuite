@@ -3365,6 +3365,44 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
+    public function setDocumentPositionInvoiceReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionInvoiceReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate,
+            $newTypeCode
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPositionInvoiceReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionInvoiceReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate,
+            $newTypeCode
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function setDocumentPositionGrossPrice(
         ?float $newGrossPrice = null,
         ?float $newGrossPriceBasisQuantity = null,
@@ -4022,44 +4060,6 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
             $newDiscountTotalAmount,
             $newTaxTotalAmount,
             $newGrossAmount
-        );
-
-        return $this;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function setDocumentPositionInvoiceReference(
-        ?string $newReferenceNumber = null,
-        ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-        ?string $newTypeCode = null
-    ): self {
-        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionInvoiceReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate,
-            $newTypeCode
-        );
-
-        return $this;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function addDocumentPositionInvoiceReference(
-        ?string $newReferenceNumber = null,
-        ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-        ?string $newTypeCode = null
-    ): self {
-        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionInvoiceReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate,
-            $newTypeCode
         );
 
         return $this;
