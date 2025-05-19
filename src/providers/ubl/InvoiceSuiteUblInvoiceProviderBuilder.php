@@ -5561,6 +5561,83 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
 
         return $this;
     }
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionAllowanceCharge(
+        ?bool $newChargeIndicator = null,
+        ?float $newAllowanceChargeAmount = null,
+        ?float $newAllowanceChargeBaseAmount = null,
+        ?string $newAllowanceChargeReason = null,
+        ?string $newAllowanceChargeReasonCode = null,
+        ?float $newAllowanceChargePercent = null
+    ): self {
+        if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargeAmount]) || is_null($newChargeIndicator)) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLineWithCreate();
+
+        $latestPosition
+            ->clearAllowanceCharge();
+
+        $this->addDocumentPositionAllowanceCharge(
+            $newChargeIndicator,
+            $newAllowanceChargeAmount,
+            $newAllowanceChargeBaseAmount,
+            $newAllowanceChargeReason,
+            $newAllowanceChargeReasonCode,
+            $newAllowanceChargePercent
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPositionAllowanceCharge(
+        ?bool $newChargeIndicator = null,
+        ?float $newAllowanceChargeAmount = null,
+        ?float $newAllowanceChargeBaseAmount = null,
+        ?string $newAllowanceChargeReason = null,
+        ?string $newAllowanceChargeReasonCode = null,
+        ?float $newAllowanceChargePercent = null
+    ): self {
+        if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargeAmount]) || is_null($newChargeIndicator)) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLineWithCreate();
+
+        $allowanceCharge = $latestPosition
+            ->addToAllowanceChargeWithCreate();
+
+        $allowanceCharge->setChargeIndicator($newChargeIndicator);
+        $allowanceCharge->getAmountWithCreate()->setValue($newAllowanceChargeAmount);
+
+        if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargeBaseAmount])) {
+            $allowanceCharge->getBaseAmountWithCreate()->setValue($newAllowanceChargeBaseAmount);
+        }
+
+        if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargePercent])) {
+            $allowanceCharge->getMultiplierFactorNumericWithCreate()->setValue($newAllowanceChargePercent);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newAllowanceChargeReason])) {
+            $allowanceCharge->addOnceToAllowanceChargeReasonWithCreate()->setValue($newAllowanceChargeReason);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newAllowanceChargeReasonCode])) {
+            $allowanceCharge->getAllowanceChargeReasonCodeWithCreate()->setValue($newAllowanceChargeReasonCode);
+        }
+
+        return $this;
+    }
 
     #endregion
 }
