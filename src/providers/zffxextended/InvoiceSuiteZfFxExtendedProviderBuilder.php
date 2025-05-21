@@ -115,7 +115,6 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                 if (!is_null($taxTotalAmount1) && !is_null($invoiceCurrencyCode)) {
                     $taxTotalAmount1->setCurrencyID($invoiceCurrencyCode);
                 }
-
                 if (!is_null($taxTotalAmount2) && !is_null($taxCurrencyCode)) {
                     $taxTotalAmount2->setCurrencyID($taxCurrencyCode);
                 }

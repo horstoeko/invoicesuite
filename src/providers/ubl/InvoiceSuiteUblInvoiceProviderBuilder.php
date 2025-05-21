@@ -72,7 +72,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getUblInvoiceRootObject()
             ->getDocumentCurrencyCode()?->getValue();
 
-        $this
+        $taxCurrencyCode = $this
             ->getUblInvoiceRootObject()
             ->getTaxCurrencyCode()?->getValue();
 
@@ -113,6 +113,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
 
             if (!is_null($summation->getPayableRoundingAmount()) && !is_null($invoiceCurrencyCode)) {
                 $summation->getPayableRoundingAmount()->setCurrencyID($invoiceCurrencyCode);
+            }
+        }
+
+        // Update Tax
+
+        $taxTotal = $this->getUblInvoiceRootObject()->getTaxTotal();
+
+        if (!is_null($taxTotal)) {
+            if (isset($taxTotal[0]) && !is_null($taxTotal[0]->getTaxAmount()) && !is_null($invoiceCurrencyCode)) {
+                $taxTotal[0]->getTaxAmount()->setCurrencyID($invoiceCurrencyCode);
+            }
+            if (isset($taxTotal[1]) && !is_null($taxTotal[1]->getTaxAmount()) && !is_null($taxCurrencyCode)) {
+                $taxTotal[1]->getTaxAmount()->setCurrencyID($taxCurrencyCode);
             }
         }
 
@@ -4476,7 +4489,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newPrepaidAmount = null,
         ?float $newRoungingAmount = null
     ): self {
-        if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newNetAmount, $newTaxBasisAmount, $newGrossAmount, $newDueAmount])) {
+        if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newNetAmount, $newTaxBasisAmount, $newTaxTotalAmount, $newGrossAmount, $newDueAmount])) {
             return $this;
         }
 
@@ -4503,6 +4516,27 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
 
         if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newRoungingAmount)) {
             $summation->getPayableRoundingAmountWithCreate()->setValue($newRoungingAmount);
+        }
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxTotalAmount)) {
+            if (is_null($this->getUblInvoiceRootObject()?->getTaxTotal())) {
+                $this->getUblInvoiceRootObject()->addToTaxTotalWithCreate();
+            }
+
+            $this->getUblInvoiceRootObject()->getTaxTotal()[0]->getTaxAmountWithCreate()->setValue($newTaxTotalAmount);
+        }
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxTotalAmount2)) {
+            if (is_null($this->getUblInvoiceRootObject()?->getTaxTotal())) {
+                $this->getUblInvoiceRootObject()->addToTaxTotalWithCreate();
+                $this->getUblInvoiceRootObject()->addToTaxTotalWithCreate();
+            }
+
+            if (!isset($this->getUblInvoiceRootObject()?->getTaxTotal()[1])) {
+                $this->getUblInvoiceRootObject()->addToTaxTotalWithCreate();
+            }
+
+            $this->getUblInvoiceRootObject()->getTaxTotal()[1]->getTaxAmountWithCreate()->setValue($newTaxTotalAmount2);
         }
 
         $this->updateCurrencies();
