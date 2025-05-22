@@ -117,7 +117,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         }
 
         // Update Tax
-
+        
         $taxTotal = $this->getUblInvoiceRootObject()->getTaxTotal();
 
         if (!is_null($taxTotal)) {
