@@ -13,7 +13,7 @@ class DeclarationType
     use HandlesObjectFlags;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Name>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Name>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Name>")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class DeclarationType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\DeclarationTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\DeclarationTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\DeclarationTypeCode")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class DeclarationType
     private $declarationTypeCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class DeclarationType
     private $description;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied>")
      * @JMS\Expose
@@ -68,10 +68,10 @@ class DeclarationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Name> $name
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Name>|null $name
      * @return self
      */
-    public function setName(array $name): self
+    public function setName(?array $name = null): self
     {
         $this->name = $name;
 
@@ -159,10 +159,10 @@ class DeclarationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\DeclarationTypeCode $declarationTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DeclarationTypeCode|null $declarationTypeCode
      * @return self
      */
-    public function setDeclarationTypeCode(DeclarationTypeCode $declarationTypeCode): self
+    public function setDeclarationTypeCode(?DeclarationTypeCode $declarationTypeCode = null): self
     {
         $this->declarationTypeCode = $declarationTypeCode;
 
@@ -178,10 +178,10 @@ class DeclarationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -259,10 +259,10 @@ class DeclarationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied> $evidenceSupplied
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied>|null $evidenceSupplied
      * @return self
      */
-    public function setEvidenceSupplied(array $evidenceSupplied): self
+    public function setEvidenceSupplied(?array $evidenceSupplied = null): self
     {
         $this->evidenceSupplied = $evidenceSupplied;
 

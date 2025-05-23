@@ -13,7 +13,7 @@ class TransportEventType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\IdentificationID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\IdentificationID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\IdentificationID")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class TransportEventType
     private $identificationID;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class TransportEventType
     private $occurrenceDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class TransportEventType
     private $occurrenceTime;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransportEventTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransportEventTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TransportEventTypeCode")
      * @JMS\Expose
@@ -57,7 +57,7 @@ class TransportEventType
     private $transportEventTypeCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -69,7 +69,7 @@ class TransportEventType
     private $description;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -80,7 +80,7 @@ class TransportEventType
     private $completionIndicator;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ReportedShipment
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ReportedShipment|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ReportedShipment")
      * @JMS\Expose
@@ -91,7 +91,7 @@ class TransportEventType
     private $reportedShipment;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CurrentStatus>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CurrentStatus>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\CurrentStatus>")
      * @JMS\Expose
@@ -103,7 +103,7 @@ class TransportEventType
     private $currentStatus;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Contact>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Contact>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Contact>")
      * @JMS\Expose
@@ -115,7 +115,7 @@ class TransportEventType
     private $contact;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Location
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Location|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Location")
      * @JMS\Expose
@@ -126,7 +126,7 @@ class TransportEventType
     private $location;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Signature
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Signature|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Signature")
      * @JMS\Expose
@@ -137,7 +137,7 @@ class TransportEventType
     private $signature;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Period>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Period>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Period>")
      * @JMS\Expose
@@ -167,10 +167,10 @@ class TransportEventType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\IdentificationID $identificationID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\IdentificationID|null $identificationID
      * @return self
      */
-    public function setIdentificationID(IdentificationID $identificationID): self
+    public function setIdentificationID(?IdentificationID $identificationID = null): self
     {
         $this->identificationID = $identificationID;
 
@@ -186,10 +186,10 @@ class TransportEventType
     }
 
     /**
-     * @param \DateTimeInterface $occurrenceDate
+     * @param \DateTimeInterface|null $occurrenceDate
      * @return self
      */
-    public function setOccurrenceDate(\DateTimeInterface $occurrenceDate): self
+    public function setOccurrenceDate(?\DateTimeInterface $occurrenceDate = null): self
     {
         $this->occurrenceDate = $occurrenceDate;
 
@@ -205,10 +205,10 @@ class TransportEventType
     }
 
     /**
-     * @param \DateTimeInterface $occurrenceTime
+     * @param \DateTimeInterface|null $occurrenceTime
      * @return self
      */
-    public function setOccurrenceTime(\DateTimeInterface $occurrenceTime): self
+    public function setOccurrenceTime(?\DateTimeInterface $occurrenceTime = null): self
     {
         $this->occurrenceTime = $occurrenceTime;
 
@@ -234,10 +234,10 @@ class TransportEventType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransportEventTypeCode $transportEventTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransportEventTypeCode|null $transportEventTypeCode
      * @return self
      */
-    public function setTransportEventTypeCode(TransportEventTypeCode $transportEventTypeCode): self
+    public function setTransportEventTypeCode(?TransportEventTypeCode $transportEventTypeCode = null): self
     {
         $this->transportEventTypeCode = $transportEventTypeCode;
 
@@ -253,10 +253,10 @@ class TransportEventType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -334,10 +334,10 @@ class TransportEventType
     }
 
     /**
-     * @param bool $completionIndicator
+     * @param bool|null $completionIndicator
      * @return self
      */
-    public function setCompletionIndicator(bool $completionIndicator): self
+    public function setCompletionIndicator(?bool $completionIndicator = null): self
     {
         $this->completionIndicator = $completionIndicator;
 
@@ -363,10 +363,10 @@ class TransportEventType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ReportedShipment $reportedShipment
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ReportedShipment|null $reportedShipment
      * @return self
      */
-    public function setReportedShipment(ReportedShipment $reportedShipment): self
+    public function setReportedShipment(?ReportedShipment $reportedShipment = null): self
     {
         $this->reportedShipment = $reportedShipment;
 
@@ -382,10 +382,10 @@ class TransportEventType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CurrentStatus> $currentStatus
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CurrentStatus>|null $currentStatus
      * @return self
      */
-    public function setCurrentStatus(array $currentStatus): self
+    public function setCurrentStatus(?array $currentStatus = null): self
     {
         $this->currentStatus = $currentStatus;
 
@@ -463,10 +463,10 @@ class TransportEventType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Contact> $contact
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Contact>|null $contact
      * @return self
      */
-    public function setContact(array $contact): self
+    public function setContact(?array $contact = null): self
     {
         $this->contact = $contact;
 
@@ -554,10 +554,10 @@ class TransportEventType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Location $location
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Location|null $location
      * @return self
      */
-    public function setLocation(Location $location): self
+    public function setLocation(?Location $location = null): self
     {
         $this->location = $location;
 
@@ -583,10 +583,10 @@ class TransportEventType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Signature $signature
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Signature|null $signature
      * @return self
      */
-    public function setSignature(Signature $signature): self
+    public function setSignature(?Signature $signature = null): self
     {
         $this->signature = $signature;
 
@@ -602,10 +602,10 @@ class TransportEventType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Period> $period
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Period>|null $period
      * @return self
      */
-    public function setPeriod(array $period): self
+    public function setPeriod(?array $period = null): self
     {
         $this->period = $period;
 

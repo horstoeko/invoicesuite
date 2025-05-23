@@ -24,7 +24,7 @@ class ReceiptLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class ReceiptLineType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\UUID")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class ReceiptLineType
     private $uUID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class ReceiptLineType
     private $note;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ReceivedQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ReceivedQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ReceivedQuantity")
      * @JMS\Expose
@@ -69,7 +69,7 @@ class ReceiptLineType
     private $receivedQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ShortQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ShortQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ShortQuantity")
      * @JMS\Expose
@@ -80,7 +80,7 @@ class ReceiptLineType
     private $shortQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ShortageActionCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ShortageActionCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ShortageActionCode")
      * @JMS\Expose
@@ -91,7 +91,7 @@ class ReceiptLineType
     private $shortageActionCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\RejectedQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\RejectedQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\RejectedQuantity")
      * @JMS\Expose
@@ -102,7 +102,7 @@ class ReceiptLineType
     private $rejectedQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\RejectReasonCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\RejectReasonCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\RejectReasonCode")
      * @JMS\Expose
@@ -113,7 +113,7 @@ class ReceiptLineType
     private $rejectReasonCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\RejectReason>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\RejectReason>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\RejectReason>")
      * @JMS\Expose
@@ -125,7 +125,7 @@ class ReceiptLineType
     private $rejectReason;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\RejectActionCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\RejectActionCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\RejectActionCode")
      * @JMS\Expose
@@ -136,7 +136,7 @@ class ReceiptLineType
     private $rejectActionCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\QuantityDiscrepancyCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\QuantityDiscrepancyCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\QuantityDiscrepancyCode")
      * @JMS\Expose
@@ -147,7 +147,7 @@ class ReceiptLineType
     private $quantityDiscrepancyCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\OversupplyQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\OversupplyQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\OversupplyQuantity")
      * @JMS\Expose
@@ -158,7 +158,7 @@ class ReceiptLineType
     private $oversupplyQuantity;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -169,7 +169,7 @@ class ReceiptLineType
     private $receivedDate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TimingComplaintCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TimingComplaintCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TimingComplaintCode")
      * @JMS\Expose
@@ -180,7 +180,7 @@ class ReceiptLineType
     private $timingComplaintCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TimingComplaint
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TimingComplaint|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TimingComplaint")
      * @JMS\Expose
@@ -191,7 +191,7 @@ class ReceiptLineType
     private $timingComplaint;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\OrderLineReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\OrderLineReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\OrderLineReference")
      * @JMS\Expose
@@ -202,7 +202,7 @@ class ReceiptLineType
     private $orderLineReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DespatchLineReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DespatchLineReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DespatchLineReference>")
      * @JMS\Expose
@@ -214,7 +214,7 @@ class ReceiptLineType
     private $despatchLineReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DocumentReference>")
      * @JMS\Expose
@@ -226,7 +226,7 @@ class ReceiptLineType
     private $documentReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Item>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Item>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Item>")
      * @JMS\Expose
@@ -238,7 +238,7 @@ class ReceiptLineType
     private $item;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Shipment>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Shipment>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Shipment>")
      * @JMS\Expose
@@ -268,10 +268,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -297,10 +297,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID $uUID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID|null $uUID
      * @return self
      */
-    public function setUUID(UUID $uUID): self
+    public function setUUID(?UUID $uUID = null): self
     {
         $this->uUID = $uUID;
 
@@ -316,10 +316,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -407,10 +407,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ReceivedQuantity $receivedQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ReceivedQuantity|null $receivedQuantity
      * @return self
      */
-    public function setReceivedQuantity(ReceivedQuantity $receivedQuantity): self
+    public function setReceivedQuantity(?ReceivedQuantity $receivedQuantity = null): self
     {
         $this->receivedQuantity = $receivedQuantity;
 
@@ -436,10 +436,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ShortQuantity $shortQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ShortQuantity|null $shortQuantity
      * @return self
      */
-    public function setShortQuantity(ShortQuantity $shortQuantity): self
+    public function setShortQuantity(?ShortQuantity $shortQuantity = null): self
     {
         $this->shortQuantity = $shortQuantity;
 
@@ -465,10 +465,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ShortageActionCode $shortageActionCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ShortageActionCode|null $shortageActionCode
      * @return self
      */
-    public function setShortageActionCode(ShortageActionCode $shortageActionCode): self
+    public function setShortageActionCode(?ShortageActionCode $shortageActionCode = null): self
     {
         $this->shortageActionCode = $shortageActionCode;
 
@@ -494,10 +494,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\RejectedQuantity $rejectedQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\RejectedQuantity|null $rejectedQuantity
      * @return self
      */
-    public function setRejectedQuantity(RejectedQuantity $rejectedQuantity): self
+    public function setRejectedQuantity(?RejectedQuantity $rejectedQuantity = null): self
     {
         $this->rejectedQuantity = $rejectedQuantity;
 
@@ -523,10 +523,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\RejectReasonCode $rejectReasonCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\RejectReasonCode|null $rejectReasonCode
      * @return self
      */
-    public function setRejectReasonCode(RejectReasonCode $rejectReasonCode): self
+    public function setRejectReasonCode(?RejectReasonCode $rejectReasonCode = null): self
     {
         $this->rejectReasonCode = $rejectReasonCode;
 
@@ -542,10 +542,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\RejectReason> $rejectReason
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\RejectReason>|null $rejectReason
      * @return self
      */
-    public function setRejectReason(array $rejectReason): self
+    public function setRejectReason(?array $rejectReason = null): self
     {
         $this->rejectReason = $rejectReason;
 
@@ -633,10 +633,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\RejectActionCode $rejectActionCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\RejectActionCode|null $rejectActionCode
      * @return self
      */
-    public function setRejectActionCode(RejectActionCode $rejectActionCode): self
+    public function setRejectActionCode(?RejectActionCode $rejectActionCode = null): self
     {
         $this->rejectActionCode = $rejectActionCode;
 
@@ -662,10 +662,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\QuantityDiscrepancyCode $quantityDiscrepancyCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\QuantityDiscrepancyCode|null $quantityDiscrepancyCode
      * @return self
      */
-    public function setQuantityDiscrepancyCode(QuantityDiscrepancyCode $quantityDiscrepancyCode): self
+    public function setQuantityDiscrepancyCode(?QuantityDiscrepancyCode $quantityDiscrepancyCode = null): self
     {
         $this->quantityDiscrepancyCode = $quantityDiscrepancyCode;
 
@@ -691,10 +691,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\OversupplyQuantity $oversupplyQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\OversupplyQuantity|null $oversupplyQuantity
      * @return self
      */
-    public function setOversupplyQuantity(OversupplyQuantity $oversupplyQuantity): self
+    public function setOversupplyQuantity(?OversupplyQuantity $oversupplyQuantity = null): self
     {
         $this->oversupplyQuantity = $oversupplyQuantity;
 
@@ -710,10 +710,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param \DateTimeInterface $receivedDate
+     * @param \DateTimeInterface|null $receivedDate
      * @return self
      */
-    public function setReceivedDate(\DateTimeInterface $receivedDate): self
+    public function setReceivedDate(?\DateTimeInterface $receivedDate = null): self
     {
         $this->receivedDate = $receivedDate;
 
@@ -739,10 +739,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TimingComplaintCode $timingComplaintCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TimingComplaintCode|null $timingComplaintCode
      * @return self
      */
-    public function setTimingComplaintCode(TimingComplaintCode $timingComplaintCode): self
+    public function setTimingComplaintCode(?TimingComplaintCode $timingComplaintCode = null): self
     {
         $this->timingComplaintCode = $timingComplaintCode;
 
@@ -768,10 +768,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TimingComplaint $timingComplaint
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TimingComplaint|null $timingComplaint
      * @return self
      */
-    public function setTimingComplaint(TimingComplaint $timingComplaint): self
+    public function setTimingComplaint(?TimingComplaint $timingComplaint = null): self
     {
         $this->timingComplaint = $timingComplaint;
 
@@ -797,10 +797,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\OrderLineReference $orderLineReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OrderLineReference|null $orderLineReference
      * @return self
      */
-    public function setOrderLineReference(OrderLineReference $orderLineReference): self
+    public function setOrderLineReference(?OrderLineReference $orderLineReference = null): self
     {
         $this->orderLineReference = $orderLineReference;
 
@@ -816,10 +816,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DespatchLineReference> $despatchLineReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DespatchLineReference>|null $despatchLineReference
      * @return self
      */
-    public function setDespatchLineReference(array $despatchLineReference): self
+    public function setDespatchLineReference(?array $despatchLineReference = null): self
     {
         $this->despatchLineReference = $despatchLineReference;
 
@@ -897,10 +897,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference> $documentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null $documentReference
      * @return self
      */
-    public function setDocumentReference(array $documentReference): self
+    public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
 
@@ -978,10 +978,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Item> $item
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Item>|null $item
      * @return self
      */
-    public function setItem(array $item): self
+    public function setItem(?array $item = null): self
     {
         $this->item = $item;
 
@@ -1059,10 +1059,10 @@ class ReceiptLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Shipment> $shipment
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Shipment>|null $shipment
      * @return self
      */
-    public function setShipment(array $shipment): self
+    public function setShipment(?array $shipment = null): self
     {
         $this->shipment = $shipment;
 

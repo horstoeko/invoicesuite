@@ -12,7 +12,7 @@ class TenderRequirementType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Name")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class TenderRequirementType
     private $name;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class TenderRequirementType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TemplateDocumentReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TemplateDocumentReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TemplateDocumentReference")
      * @JMS\Expose
@@ -64,10 +64,10 @@ class TenderRequirementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name|null $name
      * @return self
      */
-    public function setName(Name $name): self
+    public function setName(?Name $name = null): self
     {
         $this->name = $name;
 
@@ -83,10 +83,10 @@ class TenderRequirementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -174,10 +174,10 @@ class TenderRequirementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TemplateDocumentReference $templateDocumentReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TemplateDocumentReference|null $templateDocumentReference
      * @return self
      */
-    public function setTemplateDocumentReference(TemplateDocumentReference $templateDocumentReference): self
+    public function setTemplateDocumentReference(?TemplateDocumentReference $templateDocumentReference = null): self
     {
         $this->templateDocumentReference = $templateDocumentReference;
 

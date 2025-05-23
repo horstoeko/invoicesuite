@@ -13,7 +13,7 @@ class TransportExecutionTermsType
     use HandlesObjectFlags;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\TransportUserSpecialTerms>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\TransportUserSpecialTerms>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\TransportUserSpecialTerms>")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class TransportExecutionTermsType
     private $transportUserSpecialTerms;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\TransportServiceProviderSpecialTerms>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\TransportServiceProviderSpecialTerms>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\TransportServiceProviderSpecialTerms>")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class TransportExecutionTermsType
     private $transportServiceProviderSpecialTerms;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ChangeConditions>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ChangeConditions>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\ChangeConditions>")
      * @JMS\Expose
@@ -49,7 +49,7 @@ class TransportExecutionTermsType
     private $changeConditions;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>")
      * @JMS\Expose
@@ -61,7 +61,7 @@ class TransportExecutionTermsType
     private $paymentTerms;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms>")
      * @JMS\Expose
@@ -73,7 +73,7 @@ class TransportExecutionTermsType
     private $deliveryTerms;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\BonusPaymentTerms
+     * @var \horstoeko\invoicesuite\models\ubl\cac\BonusPaymentTerms|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\BonusPaymentTerms")
      * @JMS\Expose
@@ -84,7 +84,7 @@ class TransportExecutionTermsType
     private $bonusPaymentTerms;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\CommissionPaymentTerms
+     * @var \horstoeko\invoicesuite\models\ubl\cac\CommissionPaymentTerms|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\CommissionPaymentTerms")
      * @JMS\Expose
@@ -95,7 +95,7 @@ class TransportExecutionTermsType
     private $commissionPaymentTerms;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PenaltyPaymentTerms
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PenaltyPaymentTerms|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PenaltyPaymentTerms")
      * @JMS\Expose
@@ -106,7 +106,7 @@ class TransportExecutionTermsType
     private $penaltyPaymentTerms;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\EnvironmentalEmission>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\EnvironmentalEmission>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\EnvironmentalEmission>")
      * @JMS\Expose
@@ -118,7 +118,7 @@ class TransportExecutionTermsType
     private $environmentalEmission;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\NotificationRequirement>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\NotificationRequirement>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\NotificationRequirement>")
      * @JMS\Expose
@@ -130,7 +130,7 @@ class TransportExecutionTermsType
     private $notificationRequirement;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ServiceChargePaymentTerms
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ServiceChargePaymentTerms|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ServiceChargePaymentTerms")
      * @JMS\Expose
@@ -149,10 +149,10 @@ class TransportExecutionTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\TransportUserSpecialTerms> $transportUserSpecialTerms
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\TransportUserSpecialTerms>|null $transportUserSpecialTerms
      * @return self
      */
-    public function setTransportUserSpecialTerms(array $transportUserSpecialTerms): self
+    public function setTransportUserSpecialTerms(?array $transportUserSpecialTerms = null): self
     {
         $this->transportUserSpecialTerms = $transportUserSpecialTerms;
 
@@ -230,10 +230,10 @@ class TransportExecutionTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\TransportServiceProviderSpecialTerms> $transportServiceProviderSpecialTerms
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\TransportServiceProviderSpecialTerms>|null $transportServiceProviderSpecialTerms
      * @return self
      */
-    public function setTransportServiceProviderSpecialTerms(array $transportServiceProviderSpecialTerms): self
+    public function setTransportServiceProviderSpecialTerms(?array $transportServiceProviderSpecialTerms = null): self
     {
         $this->transportServiceProviderSpecialTerms = $transportServiceProviderSpecialTerms;
 
@@ -313,10 +313,10 @@ class TransportExecutionTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ChangeConditions> $changeConditions
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ChangeConditions>|null $changeConditions
      * @return self
      */
-    public function setChangeConditions(array $changeConditions): self
+    public function setChangeConditions(?array $changeConditions = null): self
     {
         $this->changeConditions = $changeConditions;
 
@@ -394,10 +394,10 @@ class TransportExecutionTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms> $paymentTerms
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>|null $paymentTerms
      * @return self
      */
-    public function setPaymentTerms(array $paymentTerms): self
+    public function setPaymentTerms(?array $paymentTerms = null): self
     {
         $this->paymentTerms = $paymentTerms;
 
@@ -475,10 +475,10 @@ class TransportExecutionTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms> $deliveryTerms
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms>|null $deliveryTerms
      * @return self
      */
-    public function setDeliveryTerms(array $deliveryTerms): self
+    public function setDeliveryTerms(?array $deliveryTerms = null): self
     {
         $this->deliveryTerms = $deliveryTerms;
 
@@ -566,10 +566,10 @@ class TransportExecutionTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\BonusPaymentTerms $bonusPaymentTerms
+     * @param \horstoeko\invoicesuite\models\ubl\cac\BonusPaymentTerms|null $bonusPaymentTerms
      * @return self
      */
-    public function setBonusPaymentTerms(BonusPaymentTerms $bonusPaymentTerms): self
+    public function setBonusPaymentTerms(?BonusPaymentTerms $bonusPaymentTerms = null): self
     {
         $this->bonusPaymentTerms = $bonusPaymentTerms;
 
@@ -595,10 +595,10 @@ class TransportExecutionTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\CommissionPaymentTerms $commissionPaymentTerms
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CommissionPaymentTerms|null $commissionPaymentTerms
      * @return self
      */
-    public function setCommissionPaymentTerms(CommissionPaymentTerms $commissionPaymentTerms): self
+    public function setCommissionPaymentTerms(?CommissionPaymentTerms $commissionPaymentTerms = null): self
     {
         $this->commissionPaymentTerms = $commissionPaymentTerms;
 
@@ -624,10 +624,10 @@ class TransportExecutionTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PenaltyPaymentTerms $penaltyPaymentTerms
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PenaltyPaymentTerms|null $penaltyPaymentTerms
      * @return self
      */
-    public function setPenaltyPaymentTerms(PenaltyPaymentTerms $penaltyPaymentTerms): self
+    public function setPenaltyPaymentTerms(?PenaltyPaymentTerms $penaltyPaymentTerms = null): self
     {
         $this->penaltyPaymentTerms = $penaltyPaymentTerms;
 
@@ -643,10 +643,10 @@ class TransportExecutionTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\EnvironmentalEmission> $environmentalEmission
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\EnvironmentalEmission>|null $environmentalEmission
      * @return self
      */
-    public function setEnvironmentalEmission(array $environmentalEmission): self
+    public function setEnvironmentalEmission(?array $environmentalEmission = null): self
     {
         $this->environmentalEmission = $environmentalEmission;
 
@@ -724,10 +724,10 @@ class TransportExecutionTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\NotificationRequirement> $notificationRequirement
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\NotificationRequirement>|null $notificationRequirement
      * @return self
      */
-    public function setNotificationRequirement(array $notificationRequirement): self
+    public function setNotificationRequirement(?array $notificationRequirement = null): self
     {
         $this->notificationRequirement = $notificationRequirement;
 
@@ -815,10 +815,10 @@ class TransportExecutionTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ServiceChargePaymentTerms $serviceChargePaymentTerms
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ServiceChargePaymentTerms|null $serviceChargePaymentTerms
      * @return self
      */
-    public function setServiceChargePaymentTerms(ServiceChargePaymentTerms $serviceChargePaymentTerms): self
+    public function setServiceChargePaymentTerms(?ServiceChargePaymentTerms $serviceChargePaymentTerms = null): self
     {
         $this->serviceChargePaymentTerms = $serviceChargePaymentTerms;
 

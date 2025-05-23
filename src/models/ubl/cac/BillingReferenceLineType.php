@@ -12,7 +12,7 @@ class BillingReferenceLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class BillingReferenceLineType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Amount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Amount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Amount")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class BillingReferenceLineType
     private $amount;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>")
      * @JMS\Expose
@@ -64,10 +64,10 @@ class BillingReferenceLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -93,10 +93,10 @@ class BillingReferenceLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Amount $amount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Amount|null $amount
      * @return self
      */
-    public function setAmount(Amount $amount): self
+    public function setAmount(?Amount $amount = null): self
     {
         $this->amount = $amount;
 
@@ -112,10 +112,10 @@ class BillingReferenceLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge> $allowanceCharge
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null $allowanceCharge
      * @return self
      */
-    public function setAllowanceCharge(array $allowanceCharge): self
+    public function setAllowanceCharge(?array $allowanceCharge = null): self
     {
         $this->allowanceCharge = $allowanceCharge;
 

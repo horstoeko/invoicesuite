@@ -11,7 +11,7 @@ class EventCommentType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Comment
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Comment|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Comment")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class EventCommentType
     private $comment;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -33,7 +33,7 @@ class EventCommentType
     private $issueDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -62,10 +62,10 @@ class EventCommentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Comment $comment
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Comment|null $comment
      * @return self
      */
-    public function setComment(Comment $comment): self
+    public function setComment(?Comment $comment = null): self
     {
         $this->comment = $comment;
 
@@ -81,10 +81,10 @@ class EventCommentType
     }
 
     /**
-     * @param \DateTimeInterface $issueDate
+     * @param \DateTimeInterface|null $issueDate
      * @return self
      */
-    public function setIssueDate(\DateTimeInterface $issueDate): self
+    public function setIssueDate(?\DateTimeInterface $issueDate = null): self
     {
         $this->issueDate = $issueDate;
 
@@ -100,10 +100,10 @@ class EventCommentType
     }
 
     /**
-     * @param \DateTimeInterface $issueTime
+     * @param \DateTimeInterface|null $issueTime
      * @return self
      */
-    public function setIssueTime(\DateTimeInterface $issueTime): self
+    public function setIssueTime(?\DateTimeInterface $issueTime = null): self
     {
         $this->issueTime = $issueTime;
 

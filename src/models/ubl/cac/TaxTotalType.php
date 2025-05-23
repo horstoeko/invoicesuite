@@ -12,7 +12,7 @@ class TaxTotalType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TaxAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TaxAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TaxAmount")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class TaxTotalType
     private $taxAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\RoundingAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\RoundingAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\RoundingAmount")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class TaxTotalType
     private $roundingAmount;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -45,7 +45,7 @@ class TaxTotalType
     private $taxEvidenceIndicator;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -56,7 +56,7 @@ class TaxTotalType
     private $taxIncludedIndicator;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TaxSubtotal>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TaxSubtotal>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TaxSubtotal>")
      * @JMS\Expose
@@ -86,10 +86,10 @@ class TaxTotalType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TaxAmount $taxAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TaxAmount|null $taxAmount
      * @return self
      */
-    public function setTaxAmount(TaxAmount $taxAmount): self
+    public function setTaxAmount(?TaxAmount $taxAmount = null): self
     {
         $this->taxAmount = $taxAmount;
 
@@ -115,10 +115,10 @@ class TaxTotalType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\RoundingAmount $roundingAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\RoundingAmount|null $roundingAmount
      * @return self
      */
-    public function setRoundingAmount(RoundingAmount $roundingAmount): self
+    public function setRoundingAmount(?RoundingAmount $roundingAmount = null): self
     {
         $this->roundingAmount = $roundingAmount;
 
@@ -134,10 +134,10 @@ class TaxTotalType
     }
 
     /**
-     * @param bool $taxEvidenceIndicator
+     * @param bool|null $taxEvidenceIndicator
      * @return self
      */
-    public function setTaxEvidenceIndicator(bool $taxEvidenceIndicator): self
+    public function setTaxEvidenceIndicator(?bool $taxEvidenceIndicator = null): self
     {
         $this->taxEvidenceIndicator = $taxEvidenceIndicator;
 
@@ -153,10 +153,10 @@ class TaxTotalType
     }
 
     /**
-     * @param bool $taxIncludedIndicator
+     * @param bool|null $taxIncludedIndicator
      * @return self
      */
-    public function setTaxIncludedIndicator(bool $taxIncludedIndicator): self
+    public function setTaxIncludedIndicator(?bool $taxIncludedIndicator = null): self
     {
         $this->taxIncludedIndicator = $taxIncludedIndicator;
 
@@ -172,10 +172,10 @@ class TaxTotalType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TaxSubtotal> $taxSubtotal
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TaxSubtotal>|null $taxSubtotal
      * @return self
      */
-    public function setTaxSubtotal(array $taxSubtotal): self
+    public function setTaxSubtotal(?array $taxSubtotal = null): self
     {
         $this->taxSubtotal = $taxSubtotal;
 

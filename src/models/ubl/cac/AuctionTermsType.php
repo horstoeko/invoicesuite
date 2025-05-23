@@ -16,7 +16,7 @@ class AuctionTermsType
     use HandlesObjectFlags;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -27,7 +27,7 @@ class AuctionTermsType
     private $auctionConstraintIndicator;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\JustificationDescription>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\JustificationDescription>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\JustificationDescription>")
      * @JMS\Expose
@@ -39,7 +39,7 @@ class AuctionTermsType
     private $justificationDescription;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -51,7 +51,7 @@ class AuctionTermsType
     private $description;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ProcessDescription>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ProcessDescription>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\ProcessDescription>")
      * @JMS\Expose
@@ -63,7 +63,7 @@ class AuctionTermsType
     private $processDescription;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ConditionsDescription>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ConditionsDescription>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\ConditionsDescription>")
      * @JMS\Expose
@@ -75,7 +75,7 @@ class AuctionTermsType
     private $conditionsDescription;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ElectronicDeviceDescription>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ElectronicDeviceDescription>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\ElectronicDeviceDescription>")
      * @JMS\Expose
@@ -87,7 +87,7 @@ class AuctionTermsType
     private $electronicDeviceDescription;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AuctionURI
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AuctionURI|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AuctionURI")
      * @JMS\Expose
@@ -106,10 +106,10 @@ class AuctionTermsType
     }
 
     /**
-     * @param bool $auctionConstraintIndicator
+     * @param bool|null $auctionConstraintIndicator
      * @return self
      */
-    public function setAuctionConstraintIndicator(bool $auctionConstraintIndicator): self
+    public function setAuctionConstraintIndicator(?bool $auctionConstraintIndicator = null): self
     {
         $this->auctionConstraintIndicator = $auctionConstraintIndicator;
 
@@ -125,10 +125,10 @@ class AuctionTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\JustificationDescription> $justificationDescription
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\JustificationDescription>|null $justificationDescription
      * @return self
      */
-    public function setJustificationDescription(array $justificationDescription): self
+    public function setJustificationDescription(?array $justificationDescription = null): self
     {
         $this->justificationDescription = $justificationDescription;
 
@@ -206,10 +206,10 @@ class AuctionTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -287,10 +287,10 @@ class AuctionTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ProcessDescription> $processDescription
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ProcessDescription>|null $processDescription
      * @return self
      */
-    public function setProcessDescription(array $processDescription): self
+    public function setProcessDescription(?array $processDescription = null): self
     {
         $this->processDescription = $processDescription;
 
@@ -368,10 +368,10 @@ class AuctionTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ConditionsDescription> $conditionsDescription
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ConditionsDescription>|null $conditionsDescription
      * @return self
      */
-    public function setConditionsDescription(array $conditionsDescription): self
+    public function setConditionsDescription(?array $conditionsDescription = null): self
     {
         $this->conditionsDescription = $conditionsDescription;
 
@@ -449,10 +449,10 @@ class AuctionTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ElectronicDeviceDescription> $electronicDeviceDescription
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ElectronicDeviceDescription>|null $electronicDeviceDescription
      * @return self
      */
-    public function setElectronicDeviceDescription(array $electronicDeviceDescription): self
+    public function setElectronicDeviceDescription(?array $electronicDeviceDescription = null): self
     {
         $this->electronicDeviceDescription = $electronicDeviceDescription;
 
@@ -541,10 +541,10 @@ class AuctionTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AuctionURI $auctionURI
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AuctionURI|null $auctionURI
      * @return self
      */
-    public function setAuctionURI(AuctionURI $auctionURI): self
+    public function setAuctionURI(?AuctionURI $auctionURI = null): self
     {
         $this->auctionURI = $auctionURI;
 

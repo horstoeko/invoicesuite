@@ -11,7 +11,7 @@ class WinningPartyType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Rank
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Rank|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Rank")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class WinningPartyType
     private $rank;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Party
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Party|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Party")
      * @JMS\Expose
@@ -51,10 +51,10 @@ class WinningPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Rank $rank
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Rank|null $rank
      * @return self
      */
-    public function setRank(Rank $rank): self
+    public function setRank(?Rank $rank = null): self
     {
         $this->rank = $rank;
 
@@ -80,10 +80,10 @@ class WinningPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Party $party
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Party|null $party
      * @return self
      */
-    public function setParty(Party $party): self
+    public function setParty(?Party $party = null): self
     {
         $this->party = $party;
 

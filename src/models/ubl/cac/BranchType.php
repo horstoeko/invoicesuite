@@ -12,7 +12,7 @@ class BranchType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class BranchType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Name")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class BranchType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\FinancialInstitution
+     * @var \horstoeko\invoicesuite\models\ubl\cac\FinancialInstitution|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\FinancialInstitution")
      * @JMS\Expose
@@ -45,7 +45,7 @@ class BranchType
     private $financialInstitution;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Address
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Address|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Address")
      * @JMS\Expose
@@ -74,10 +74,10 @@ class BranchType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -103,10 +103,10 @@ class BranchType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name|null $name
      * @return self
      */
-    public function setName(Name $name): self
+    public function setName(?Name $name = null): self
     {
         $this->name = $name;
 
@@ -132,10 +132,10 @@ class BranchType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\FinancialInstitution $financialInstitution
+     * @param \horstoeko\invoicesuite\models\ubl\cac\FinancialInstitution|null $financialInstitution
      * @return self
      */
-    public function setFinancialInstitution(FinancialInstitution $financialInstitution): self
+    public function setFinancialInstitution(?FinancialInstitution $financialInstitution = null): self
     {
         $this->financialInstitution = $financialInstitution;
 
@@ -161,10 +161,10 @@ class BranchType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Address $address
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Address|null $address
      * @return self
      */
-    public function setAddress(Address $address): self
+    public function setAddress(?Address $address = null): self
     {
         $this->address = $address;
 

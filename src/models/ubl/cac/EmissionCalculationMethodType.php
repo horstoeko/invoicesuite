@@ -12,7 +12,7 @@ class EmissionCalculationMethodType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CalculationMethodCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CalculationMethodCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CalculationMethodCode")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class EmissionCalculationMethodType
     private $calculationMethodCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\FullnessIndicationCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\FullnessIndicationCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\FullnessIndicationCode")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class EmissionCalculationMethodType
     private $fullnessIndicationCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\MeasurementFromLocation
+     * @var \horstoeko\invoicesuite\models\ubl\cac\MeasurementFromLocation|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\MeasurementFromLocation")
      * @JMS\Expose
@@ -45,7 +45,7 @@ class EmissionCalculationMethodType
     private $measurementFromLocation;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\MeasurementToLocation
+     * @var \horstoeko\invoicesuite\models\ubl\cac\MeasurementToLocation|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\MeasurementToLocation")
      * @JMS\Expose
@@ -74,10 +74,10 @@ class EmissionCalculationMethodType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CalculationMethodCode $calculationMethodCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CalculationMethodCode|null $calculationMethodCode
      * @return self
      */
-    public function setCalculationMethodCode(CalculationMethodCode $calculationMethodCode): self
+    public function setCalculationMethodCode(?CalculationMethodCode $calculationMethodCode = null): self
     {
         $this->calculationMethodCode = $calculationMethodCode;
 
@@ -103,10 +103,10 @@ class EmissionCalculationMethodType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\FullnessIndicationCode $fullnessIndicationCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\FullnessIndicationCode|null $fullnessIndicationCode
      * @return self
      */
-    public function setFullnessIndicationCode(FullnessIndicationCode $fullnessIndicationCode): self
+    public function setFullnessIndicationCode(?FullnessIndicationCode $fullnessIndicationCode = null): self
     {
         $this->fullnessIndicationCode = $fullnessIndicationCode;
 
@@ -132,10 +132,10 @@ class EmissionCalculationMethodType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\MeasurementFromLocation $measurementFromLocation
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MeasurementFromLocation|null $measurementFromLocation
      * @return self
      */
-    public function setMeasurementFromLocation(MeasurementFromLocation $measurementFromLocation): self
+    public function setMeasurementFromLocation(?MeasurementFromLocation $measurementFromLocation = null): self
     {
         $this->measurementFromLocation = $measurementFromLocation;
 
@@ -161,10 +161,10 @@ class EmissionCalculationMethodType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\MeasurementToLocation $measurementToLocation
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MeasurementToLocation|null $measurementToLocation
      * @return self
      */
-    public function setMeasurementToLocation(MeasurementToLocation $measurementToLocation): self
+    public function setMeasurementToLocation(?MeasurementToLocation $measurementToLocation = null): self
     {
         $this->measurementToLocation = $measurementToLocation;
 

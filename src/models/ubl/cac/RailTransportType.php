@@ -12,7 +12,7 @@ class RailTransportType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TrainID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TrainID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TrainID")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class RailTransportType
     private $trainID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\RailCarID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\RailCarID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\RailCarID")
      * @JMS\Expose
@@ -52,10 +52,10 @@ class RailTransportType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TrainID $trainID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TrainID|null $trainID
      * @return self
      */
-    public function setTrainID(TrainID $trainID): self
+    public function setTrainID(?TrainID $trainID = null): self
     {
         $this->trainID = $trainID;
 
@@ -81,10 +81,10 @@ class RailTransportType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\RailCarID $railCarID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\RailCarID|null $railCarID
      * @return self
      */
-    public function setRailCarID(RailCarID $railCarID): self
+    public function setRailCarID(?RailCarID $railCarID = null): self
     {
         $this->railCarID = $railCarID;
 

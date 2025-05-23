@@ -12,7 +12,7 @@ class UnstructuredPriceType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PriceAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PriceAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PriceAmount")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class UnstructuredPriceType
     private $priceAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TimeAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TimeAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TimeAmount")
      * @JMS\Expose
@@ -52,10 +52,10 @@ class UnstructuredPriceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PriceAmount $priceAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PriceAmount|null $priceAmount
      * @return self
      */
-    public function setPriceAmount(PriceAmount $priceAmount): self
+    public function setPriceAmount(?PriceAmount $priceAmount = null): self
     {
         $this->priceAmount = $priceAmount;
 
@@ -81,10 +81,10 @@ class UnstructuredPriceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TimeAmount $timeAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TimeAmount|null $timeAmount
      * @return self
      */
-    public function setTimeAmount(TimeAmount $timeAmount): self
+    public function setTimeAmount(?TimeAmount $timeAmount = null): self
     {
         $this->timeAmount = $timeAmount;
 

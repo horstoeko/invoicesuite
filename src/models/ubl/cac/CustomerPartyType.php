@@ -13,7 +13,7 @@ class CustomerPartyType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CustomerAssignedAccountID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CustomerAssignedAccountID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CustomerAssignedAccountID")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class CustomerPartyType
     private $customerAssignedAccountID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SupplierAssignedAccountID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SupplierAssignedAccountID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SupplierAssignedAccountID")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class CustomerPartyType
     private $supplierAssignedAccountID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalAccountID>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalAccountID>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\AdditionalAccountID>")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class CustomerPartyType
     private $additionalAccountID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Party
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Party|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Party")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class CustomerPartyType
     private $party;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\DeliveryContact
+     * @var \horstoeko\invoicesuite\models\ubl\cac\DeliveryContact|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\DeliveryContact")
      * @JMS\Expose
@@ -69,7 +69,7 @@ class CustomerPartyType
     private $deliveryContact;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\AccountingContact
+     * @var \horstoeko\invoicesuite\models\ubl\cac\AccountingContact|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\AccountingContact")
      * @JMS\Expose
@@ -80,7 +80,7 @@ class CustomerPartyType
     private $accountingContact;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\BuyerContact
+     * @var \horstoeko\invoicesuite\models\ubl\cac\BuyerContact|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\BuyerContact")
      * @JMS\Expose
@@ -109,10 +109,10 @@ class CustomerPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CustomerAssignedAccountID $customerAssignedAccountID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CustomerAssignedAccountID|null $customerAssignedAccountID
      * @return self
      */
-    public function setCustomerAssignedAccountID(CustomerAssignedAccountID $customerAssignedAccountID): self
+    public function setCustomerAssignedAccountID(?CustomerAssignedAccountID $customerAssignedAccountID = null): self
     {
         $this->customerAssignedAccountID = $customerAssignedAccountID;
 
@@ -138,10 +138,10 @@ class CustomerPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SupplierAssignedAccountID $supplierAssignedAccountID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SupplierAssignedAccountID|null $supplierAssignedAccountID
      * @return self
      */
-    public function setSupplierAssignedAccountID(SupplierAssignedAccountID $supplierAssignedAccountID): self
+    public function setSupplierAssignedAccountID(?SupplierAssignedAccountID $supplierAssignedAccountID = null): self
     {
         $this->supplierAssignedAccountID = $supplierAssignedAccountID;
 
@@ -157,10 +157,10 @@ class CustomerPartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalAccountID> $additionalAccountID
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalAccountID>|null $additionalAccountID
      * @return self
      */
-    public function setAdditionalAccountID(array $additionalAccountID): self
+    public function setAdditionalAccountID(?array $additionalAccountID = null): self
     {
         $this->additionalAccountID = $additionalAccountID;
 
@@ -248,10 +248,10 @@ class CustomerPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Party $party
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Party|null $party
      * @return self
      */
-    public function setParty(Party $party): self
+    public function setParty(?Party $party = null): self
     {
         $this->party = $party;
 
@@ -277,10 +277,10 @@ class CustomerPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\DeliveryContact $deliveryContact
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DeliveryContact|null $deliveryContact
      * @return self
      */
-    public function setDeliveryContact(DeliveryContact $deliveryContact): self
+    public function setDeliveryContact(?DeliveryContact $deliveryContact = null): self
     {
         $this->deliveryContact = $deliveryContact;
 
@@ -306,10 +306,10 @@ class CustomerPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\AccountingContact $accountingContact
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AccountingContact|null $accountingContact
      * @return self
      */
-    public function setAccountingContact(AccountingContact $accountingContact): self
+    public function setAccountingContact(?AccountingContact $accountingContact = null): self
     {
         $this->accountingContact = $accountingContact;
 
@@ -335,10 +335,10 @@ class CustomerPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\BuyerContact $buyerContact
+     * @param \horstoeko\invoicesuite\models\ubl\cac\BuyerContact|null $buyerContact
      * @return self
      */
-    public function setBuyerContact(BuyerContact $buyerContact): self
+    public function setBuyerContact(?BuyerContact $buyerContact = null): self
     {
         $this->buyerContact = $buyerContact;
 

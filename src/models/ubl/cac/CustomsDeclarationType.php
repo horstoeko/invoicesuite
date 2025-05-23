@@ -11,7 +11,7 @@ class CustomsDeclarationType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class CustomsDeclarationType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\IssuerParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\IssuerParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\IssuerParty")
      * @JMS\Expose
@@ -51,10 +51,10 @@ class CustomsDeclarationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -80,10 +80,10 @@ class CustomsDeclarationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\IssuerParty $issuerParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\IssuerParty|null $issuerParty
      * @return self
      */
-    public function setIssuerParty(IssuerParty $issuerParty): self
+    public function setIssuerParty(?IssuerParty $issuerParty = null): self
     {
         $this->issuerParty = $issuerParty;
 

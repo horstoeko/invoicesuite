@@ -23,7 +23,7 @@ class TenderingTermsType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AwardingMethodTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AwardingMethodTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AwardingMethodTypeCode")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class TenderingTermsType
     private $awardingMethodTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PriceEvaluationCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PriceEvaluationCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PriceEvaluationCode")
      * @JMS\Expose
@@ -45,7 +45,7 @@ class TenderingTermsType
     private $priceEvaluationCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumVariantQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumVariantQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MaximumVariantQuantity")
      * @JMS\Expose
@@ -56,7 +56,7 @@ class TenderingTermsType
     private $maximumVariantQuantity;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -67,7 +67,7 @@ class TenderingTermsType
     private $variantConstraintIndicator;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\AcceptedVariantsDescription>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\AcceptedVariantsDescription>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\AcceptedVariantsDescription>")
      * @JMS\Expose
@@ -79,7 +79,7 @@ class TenderingTermsType
     private $acceptedVariantsDescription;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\PriceRevisionFormulaDescription>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\PriceRevisionFormulaDescription>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\PriceRevisionFormulaDescription>")
      * @JMS\Expose
@@ -91,7 +91,7 @@ class TenderingTermsType
     private $priceRevisionFormulaDescription;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\FundingProgramCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\FundingProgramCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\FundingProgramCode")
      * @JMS\Expose
@@ -102,7 +102,7 @@ class TenderingTermsType
     private $fundingProgramCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\FundingProgram>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\FundingProgram>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\FundingProgram>")
      * @JMS\Expose
@@ -114,7 +114,7 @@ class TenderingTermsType
     private $fundingProgram;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumAdvertisementAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumAdvertisementAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MaximumAdvertisementAmount")
      * @JMS\Expose
@@ -125,7 +125,7 @@ class TenderingTermsType
     private $maximumAdvertisementAmount;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -137,7 +137,7 @@ class TenderingTermsType
     private $note;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PaymentFrequencyCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PaymentFrequencyCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PaymentFrequencyCode")
      * @JMS\Expose
@@ -148,7 +148,7 @@ class TenderingTermsType
     private $paymentFrequencyCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\EconomicOperatorRegistryURI
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\EconomicOperatorRegistryURI|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\EconomicOperatorRegistryURI")
      * @JMS\Expose
@@ -159,7 +159,7 @@ class TenderingTermsType
     private $economicOperatorRegistryURI;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -170,7 +170,7 @@ class TenderingTermsType
     private $requiredCurriculaIndicator;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -181,7 +181,7 @@ class TenderingTermsType
     private $otherConditionsIndicator;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalConditions>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalConditions>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\AdditionalConditions>")
      * @JMS\Expose
@@ -193,7 +193,7 @@ class TenderingTermsType
     private $additionalConditions;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -204,7 +204,7 @@ class TenderingTermsType
     private $latestSecurityClearanceDate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\DocumentationFeeAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\DocumentationFeeAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\DocumentationFeeAmount")
      * @JMS\Expose
@@ -215,7 +215,7 @@ class TenderingTermsType
     private $documentationFeeAmount;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PenaltyClause>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PenaltyClause>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PenaltyClause>")
      * @JMS\Expose
@@ -227,7 +227,7 @@ class TenderingTermsType
     private $penaltyClause;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\RequiredFinancialGuarantee>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\RequiredFinancialGuarantee>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\RequiredFinancialGuarantee>")
      * @JMS\Expose
@@ -239,7 +239,7 @@ class TenderingTermsType
     private $requiredFinancialGuarantee;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ProcurementLegislationDocumentReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ProcurementLegislationDocumentReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ProcurementLegislationDocumentReference")
      * @JMS\Expose
@@ -250,7 +250,7 @@ class TenderingTermsType
     private $procurementLegislationDocumentReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\FiscalLegislationDocumentReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\FiscalLegislationDocumentReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\FiscalLegislationDocumentReference")
      * @JMS\Expose
@@ -261,7 +261,7 @@ class TenderingTermsType
     private $fiscalLegislationDocumentReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\EnvironmentalLegislationDocumentReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\EnvironmentalLegislationDocumentReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\EnvironmentalLegislationDocumentReference")
      * @JMS\Expose
@@ -272,7 +272,7 @@ class TenderingTermsType
     private $environmentalLegislationDocumentReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\EmploymentLegislationDocumentReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\EmploymentLegislationDocumentReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\EmploymentLegislationDocumentReference")
      * @JMS\Expose
@@ -283,7 +283,7 @@ class TenderingTermsType
     private $employmentLegislationDocumentReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ContractualDocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ContractualDocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ContractualDocumentReference>")
      * @JMS\Expose
@@ -295,7 +295,7 @@ class TenderingTermsType
     private $contractualDocumentReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\CallForTendersDocumentReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\CallForTendersDocumentReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\CallForTendersDocumentReference")
      * @JMS\Expose
@@ -306,7 +306,7 @@ class TenderingTermsType
     private $callForTendersDocumentReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\WarrantyValidityPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\WarrantyValidityPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\WarrantyValidityPeriod")
      * @JMS\Expose
@@ -317,7 +317,7 @@ class TenderingTermsType
     private $warrantyValidityPeriod;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>")
      * @JMS\Expose
@@ -329,7 +329,7 @@ class TenderingTermsType
     private $paymentTerms;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TendererQualificationRequest>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TendererQualificationRequest>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TendererQualificationRequest>")
      * @JMS\Expose
@@ -341,7 +341,7 @@ class TenderingTermsType
     private $tendererQualificationRequest;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowedSubcontractTerms>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowedSubcontractTerms>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\AllowedSubcontractTerms>")
      * @JMS\Expose
@@ -353,7 +353,7 @@ class TenderingTermsType
     private $allowedSubcontractTerms;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TenderPreparation>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TenderPreparation>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TenderPreparation>")
      * @JMS\Expose
@@ -365,7 +365,7 @@ class TenderingTermsType
     private $tenderPreparation;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ContractExecutionRequirement>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ContractExecutionRequirement>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ContractExecutionRequirement>")
      * @JMS\Expose
@@ -377,7 +377,7 @@ class TenderingTermsType
     private $contractExecutionRequirement;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\AwardingTerms
+     * @var \horstoeko\invoicesuite\models\ubl\cac\AwardingTerms|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\AwardingTerms")
      * @JMS\Expose
@@ -388,7 +388,7 @@ class TenderingTermsType
     private $awardingTerms;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\AdditionalInformationParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\AdditionalInformationParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\AdditionalInformationParty")
      * @JMS\Expose
@@ -399,7 +399,7 @@ class TenderingTermsType
     private $additionalInformationParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\DocumentProviderParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\DocumentProviderParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\DocumentProviderParty")
      * @JMS\Expose
@@ -410,7 +410,7 @@ class TenderingTermsType
     private $documentProviderParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TenderRecipientParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TenderRecipientParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TenderRecipientParty")
      * @JMS\Expose
@@ -421,7 +421,7 @@ class TenderingTermsType
     private $tenderRecipientParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ContractResponsibleParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ContractResponsibleParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ContractResponsibleParty")
      * @JMS\Expose
@@ -432,7 +432,7 @@ class TenderingTermsType
     private $contractResponsibleParty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TenderEvaluationParty>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TenderEvaluationParty>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TenderEvaluationParty>")
      * @JMS\Expose
@@ -444,7 +444,7 @@ class TenderingTermsType
     private $tenderEvaluationParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TenderValidityPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TenderValidityPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TenderValidityPeriod")
      * @JMS\Expose
@@ -455,7 +455,7 @@ class TenderingTermsType
     private $tenderValidityPeriod;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ContractAcceptancePeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ContractAcceptancePeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ContractAcceptancePeriod")
      * @JMS\Expose
@@ -466,7 +466,7 @@ class TenderingTermsType
     private $contractAcceptancePeriod;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\AppealTerms
+     * @var \horstoeko\invoicesuite\models\ubl\cac\AppealTerms|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\AppealTerms")
      * @JMS\Expose
@@ -477,7 +477,7 @@ class TenderingTermsType
     private $appealTerms;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Language>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Language>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Language>")
      * @JMS\Expose
@@ -489,7 +489,7 @@ class TenderingTermsType
     private $language;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\BudgetAccountLine>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\BudgetAccountLine>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\BudgetAccountLine>")
      * @JMS\Expose
@@ -501,7 +501,7 @@ class TenderingTermsType
     private $budgetAccountLine;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ReplacedNoticeDocumentReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ReplacedNoticeDocumentReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ReplacedNoticeDocumentReference")
      * @JMS\Expose
@@ -530,10 +530,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AwardingMethodTypeCode $awardingMethodTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AwardingMethodTypeCode|null $awardingMethodTypeCode
      * @return self
      */
-    public function setAwardingMethodTypeCode(AwardingMethodTypeCode $awardingMethodTypeCode): self
+    public function setAwardingMethodTypeCode(?AwardingMethodTypeCode $awardingMethodTypeCode = null): self
     {
         $this->awardingMethodTypeCode = $awardingMethodTypeCode;
 
@@ -559,10 +559,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PriceEvaluationCode $priceEvaluationCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PriceEvaluationCode|null $priceEvaluationCode
      * @return self
      */
-    public function setPriceEvaluationCode(PriceEvaluationCode $priceEvaluationCode): self
+    public function setPriceEvaluationCode(?PriceEvaluationCode $priceEvaluationCode = null): self
     {
         $this->priceEvaluationCode = $priceEvaluationCode;
 
@@ -588,10 +588,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumVariantQuantity $maximumVariantQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumVariantQuantity|null $maximumVariantQuantity
      * @return self
      */
-    public function setMaximumVariantQuantity(MaximumVariantQuantity $maximumVariantQuantity): self
+    public function setMaximumVariantQuantity(?MaximumVariantQuantity $maximumVariantQuantity = null): self
     {
         $this->maximumVariantQuantity = $maximumVariantQuantity;
 
@@ -607,10 +607,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param bool $variantConstraintIndicator
+     * @param bool|null $variantConstraintIndicator
      * @return self
      */
-    public function setVariantConstraintIndicator(bool $variantConstraintIndicator): self
+    public function setVariantConstraintIndicator(?bool $variantConstraintIndicator = null): self
     {
         $this->variantConstraintIndicator = $variantConstraintIndicator;
 
@@ -626,10 +626,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\AcceptedVariantsDescription> $acceptedVariantsDescription
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\AcceptedVariantsDescription>|null $acceptedVariantsDescription
      * @return self
      */
-    public function setAcceptedVariantsDescription(array $acceptedVariantsDescription): self
+    public function setAcceptedVariantsDescription(?array $acceptedVariantsDescription = null): self
     {
         $this->acceptedVariantsDescription = $acceptedVariantsDescription;
 
@@ -708,10 +708,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\PriceRevisionFormulaDescription> $priceRevisionFormulaDescription
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\PriceRevisionFormulaDescription>|null $priceRevisionFormulaDescription
      * @return self
      */
-    public function setPriceRevisionFormulaDescription(array $priceRevisionFormulaDescription): self
+    public function setPriceRevisionFormulaDescription(?array $priceRevisionFormulaDescription = null): self
     {
         $this->priceRevisionFormulaDescription = $priceRevisionFormulaDescription;
 
@@ -801,10 +801,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\FundingProgramCode $fundingProgramCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\FundingProgramCode|null $fundingProgramCode
      * @return self
      */
-    public function setFundingProgramCode(FundingProgramCode $fundingProgramCode): self
+    public function setFundingProgramCode(?FundingProgramCode $fundingProgramCode = null): self
     {
         $this->fundingProgramCode = $fundingProgramCode;
 
@@ -820,10 +820,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\FundingProgram> $fundingProgram
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\FundingProgram>|null $fundingProgram
      * @return self
      */
-    public function setFundingProgram(array $fundingProgram): self
+    public function setFundingProgram(?array $fundingProgram = null): self
     {
         $this->fundingProgram = $fundingProgram;
 
@@ -911,11 +911,12 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumAdvertisementAmount $maximumAdvertisementAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumAdvertisementAmount|null $maximumAdvertisementAmount
      * @return self
      */
-    public function setMaximumAdvertisementAmount(MaximumAdvertisementAmount $maximumAdvertisementAmount): self
-    {
+    public function setMaximumAdvertisementAmount(
+        ?MaximumAdvertisementAmount $maximumAdvertisementAmount = null,
+    ): self {
         $this->maximumAdvertisementAmount = $maximumAdvertisementAmount;
 
         return $this;
@@ -930,10 +931,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -1021,10 +1022,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaymentFrequencyCode $paymentFrequencyCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaymentFrequencyCode|null $paymentFrequencyCode
      * @return self
      */
-    public function setPaymentFrequencyCode(PaymentFrequencyCode $paymentFrequencyCode): self
+    public function setPaymentFrequencyCode(?PaymentFrequencyCode $paymentFrequencyCode = null): self
     {
         $this->paymentFrequencyCode = $paymentFrequencyCode;
 
@@ -1050,11 +1051,12 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\EconomicOperatorRegistryURI $economicOperatorRegistryURI
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\EconomicOperatorRegistryURI|null $economicOperatorRegistryURI
      * @return self
      */
-    public function setEconomicOperatorRegistryURI(EconomicOperatorRegistryURI $economicOperatorRegistryURI): self
-    {
+    public function setEconomicOperatorRegistryURI(
+        ?EconomicOperatorRegistryURI $economicOperatorRegistryURI = null,
+    ): self {
         $this->economicOperatorRegistryURI = $economicOperatorRegistryURI;
 
         return $this;
@@ -1069,10 +1071,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param bool $requiredCurriculaIndicator
+     * @param bool|null $requiredCurriculaIndicator
      * @return self
      */
-    public function setRequiredCurriculaIndicator(bool $requiredCurriculaIndicator): self
+    public function setRequiredCurriculaIndicator(?bool $requiredCurriculaIndicator = null): self
     {
         $this->requiredCurriculaIndicator = $requiredCurriculaIndicator;
 
@@ -1088,10 +1090,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param bool $otherConditionsIndicator
+     * @param bool|null $otherConditionsIndicator
      * @return self
      */
-    public function setOtherConditionsIndicator(bool $otherConditionsIndicator): self
+    public function setOtherConditionsIndicator(?bool $otherConditionsIndicator = null): self
     {
         $this->otherConditionsIndicator = $otherConditionsIndicator;
 
@@ -1107,10 +1109,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalConditions> $additionalConditions
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalConditions>|null $additionalConditions
      * @return self
      */
-    public function setAdditionalConditions(array $additionalConditions): self
+    public function setAdditionalConditions(?array $additionalConditions = null): self
     {
         $this->additionalConditions = $additionalConditions;
 
@@ -1188,10 +1190,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param \DateTimeInterface $latestSecurityClearanceDate
+     * @param \DateTimeInterface|null $latestSecurityClearanceDate
      * @return self
      */
-    public function setLatestSecurityClearanceDate(\DateTimeInterface $latestSecurityClearanceDate): self
+    public function setLatestSecurityClearanceDate(?\DateTimeInterface $latestSecurityClearanceDate = null): self
     {
         $this->latestSecurityClearanceDate = $latestSecurityClearanceDate;
 
@@ -1217,10 +1219,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\DocumentationFeeAmount $documentationFeeAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DocumentationFeeAmount|null $documentationFeeAmount
      * @return self
      */
-    public function setDocumentationFeeAmount(DocumentationFeeAmount $documentationFeeAmount): self
+    public function setDocumentationFeeAmount(?DocumentationFeeAmount $documentationFeeAmount = null): self
     {
         $this->documentationFeeAmount = $documentationFeeAmount;
 
@@ -1236,10 +1238,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PenaltyClause> $penaltyClause
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PenaltyClause>|null $penaltyClause
      * @return self
      */
-    public function setPenaltyClause(array $penaltyClause): self
+    public function setPenaltyClause(?array $penaltyClause = null): self
     {
         $this->penaltyClause = $penaltyClause;
 
@@ -1317,10 +1319,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\RequiredFinancialGuarantee> $requiredFinancialGuarantee
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\RequiredFinancialGuarantee>|null $requiredFinancialGuarantee
      * @return self
      */
-    public function setRequiredFinancialGuarantee(array $requiredFinancialGuarantee): self
+    public function setRequiredFinancialGuarantee(?array $requiredFinancialGuarantee = null): self
     {
         $this->requiredFinancialGuarantee = $requiredFinancialGuarantee;
 
@@ -1408,11 +1410,11 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ProcurementLegislationDocumentReference $procurementLegislationDocumentReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ProcurementLegislationDocumentReference|null $procurementLegislationDocumentReference
      * @return self
      */
     public function setProcurementLegislationDocumentReference(
-        ProcurementLegislationDocumentReference $procurementLegislationDocumentReference,
+        ?ProcurementLegislationDocumentReference $procurementLegislationDocumentReference = null,
     ): self {
         $this->procurementLegislationDocumentReference = $procurementLegislationDocumentReference;
 
@@ -1438,11 +1440,11 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\FiscalLegislationDocumentReference $fiscalLegislationDocumentReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\FiscalLegislationDocumentReference|null $fiscalLegislationDocumentReference
      * @return self
      */
     public function setFiscalLegislationDocumentReference(
-        FiscalLegislationDocumentReference $fiscalLegislationDocumentReference,
+        ?FiscalLegislationDocumentReference $fiscalLegislationDocumentReference = null,
     ): self {
         $this->fiscalLegislationDocumentReference = $fiscalLegislationDocumentReference;
 
@@ -1460,19 +1462,19 @@ class TenderingTermsType
     /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\EnvironmentalLegislationDocumentReference
      */
-    public function getEnvironmentalLegislationDocumentReferenceWithCreate(): EnvironmentalLegislationDocumentReference
-    {
+    public function getEnvironmentalLegislationDocumentReferenceWithCreate(
+    ): EnvironmentalLegislationDocumentReference {
         $this->environmentalLegislationDocumentReference = is_null($this->environmentalLegislationDocumentReference) ? new EnvironmentalLegislationDocumentReference() : $this->environmentalLegislationDocumentReference;
 
         return $this->environmentalLegislationDocumentReference;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\EnvironmentalLegislationDocumentReference $environmentalLegislationDocumentReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EnvironmentalLegislationDocumentReference|null $environmentalLegislationDocumentReference
      * @return self
      */
     public function setEnvironmentalLegislationDocumentReference(
-        EnvironmentalLegislationDocumentReference $environmentalLegislationDocumentReference,
+        ?EnvironmentalLegislationDocumentReference $environmentalLegislationDocumentReference = null,
     ): self {
         $this->environmentalLegislationDocumentReference = $environmentalLegislationDocumentReference;
 
@@ -1498,11 +1500,11 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\EmploymentLegislationDocumentReference $employmentLegislationDocumentReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EmploymentLegislationDocumentReference|null $employmentLegislationDocumentReference
      * @return self
      */
     public function setEmploymentLegislationDocumentReference(
-        EmploymentLegislationDocumentReference $employmentLegislationDocumentReference,
+        ?EmploymentLegislationDocumentReference $employmentLegislationDocumentReference = null,
     ): self {
         $this->employmentLegislationDocumentReference = $employmentLegislationDocumentReference;
 
@@ -1518,10 +1520,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ContractualDocumentReference> $contractualDocumentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ContractualDocumentReference>|null $contractualDocumentReference
      * @return self
      */
-    public function setContractualDocumentReference(array $contractualDocumentReference): self
+    public function setContractualDocumentReference(?array $contractualDocumentReference = null): self
     {
         $this->contractualDocumentReference = $contractualDocumentReference;
 
@@ -1611,11 +1613,11 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\CallForTendersDocumentReference $callForTendersDocumentReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CallForTendersDocumentReference|null $callForTendersDocumentReference
      * @return self
      */
     public function setCallForTendersDocumentReference(
-        CallForTendersDocumentReference $callForTendersDocumentReference,
+        ?CallForTendersDocumentReference $callForTendersDocumentReference = null,
     ): self {
         $this->callForTendersDocumentReference = $callForTendersDocumentReference;
 
@@ -1641,10 +1643,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\WarrantyValidityPeriod $warrantyValidityPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\WarrantyValidityPeriod|null $warrantyValidityPeriod
      * @return self
      */
-    public function setWarrantyValidityPeriod(WarrantyValidityPeriod $warrantyValidityPeriod): self
+    public function setWarrantyValidityPeriod(?WarrantyValidityPeriod $warrantyValidityPeriod = null): self
     {
         $this->warrantyValidityPeriod = $warrantyValidityPeriod;
 
@@ -1660,10 +1662,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms> $paymentTerms
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>|null $paymentTerms
      * @return self
      */
-    public function setPaymentTerms(array $paymentTerms): self
+    public function setPaymentTerms(?array $paymentTerms = null): self
     {
         $this->paymentTerms = $paymentTerms;
 
@@ -1741,10 +1743,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TendererQualificationRequest> $tendererQualificationRequest
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TendererQualificationRequest>|null $tendererQualificationRequest
      * @return self
      */
-    public function setTendererQualificationRequest(array $tendererQualificationRequest): self
+    public function setTendererQualificationRequest(?array $tendererQualificationRequest = null): self
     {
         $this->tendererQualificationRequest = $tendererQualificationRequest;
 
@@ -1824,10 +1826,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AllowedSubcontractTerms> $allowedSubcontractTerms
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AllowedSubcontractTerms>|null $allowedSubcontractTerms
      * @return self
      */
-    public function setAllowedSubcontractTerms(array $allowedSubcontractTerms): self
+    public function setAllowedSubcontractTerms(?array $allowedSubcontractTerms = null): self
     {
         $this->allowedSubcontractTerms = $allowedSubcontractTerms;
 
@@ -1905,10 +1907,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TenderPreparation> $tenderPreparation
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TenderPreparation>|null $tenderPreparation
      * @return self
      */
-    public function setTenderPreparation(array $tenderPreparation): self
+    public function setTenderPreparation(?array $tenderPreparation = null): self
     {
         $this->tenderPreparation = $tenderPreparation;
 
@@ -1986,10 +1988,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ContractExecutionRequirement> $contractExecutionRequirement
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ContractExecutionRequirement>|null $contractExecutionRequirement
      * @return self
      */
-    public function setContractExecutionRequirement(array $contractExecutionRequirement): self
+    public function setContractExecutionRequirement(?array $contractExecutionRequirement = null): self
     {
         $this->contractExecutionRequirement = $contractExecutionRequirement;
 
@@ -2079,10 +2081,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\AwardingTerms $awardingTerms
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AwardingTerms|null $awardingTerms
      * @return self
      */
-    public function setAwardingTerms(AwardingTerms $awardingTerms): self
+    public function setAwardingTerms(?AwardingTerms $awardingTerms = null): self
     {
         $this->awardingTerms = $awardingTerms;
 
@@ -2108,11 +2110,12 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\AdditionalInformationParty $additionalInformationParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AdditionalInformationParty|null $additionalInformationParty
      * @return self
      */
-    public function setAdditionalInformationParty(AdditionalInformationParty $additionalInformationParty): self
-    {
+    public function setAdditionalInformationParty(
+        ?AdditionalInformationParty $additionalInformationParty = null,
+    ): self {
         $this->additionalInformationParty = $additionalInformationParty;
 
         return $this;
@@ -2137,10 +2140,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentProviderParty $documentProviderParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentProviderParty|null $documentProviderParty
      * @return self
      */
-    public function setDocumentProviderParty(DocumentProviderParty $documentProviderParty): self
+    public function setDocumentProviderParty(?DocumentProviderParty $documentProviderParty = null): self
     {
         $this->documentProviderParty = $documentProviderParty;
 
@@ -2166,10 +2169,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TenderRecipientParty $tenderRecipientParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TenderRecipientParty|null $tenderRecipientParty
      * @return self
      */
-    public function setTenderRecipientParty(TenderRecipientParty $tenderRecipientParty): self
+    public function setTenderRecipientParty(?TenderRecipientParty $tenderRecipientParty = null): self
     {
         $this->tenderRecipientParty = $tenderRecipientParty;
 
@@ -2195,10 +2198,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ContractResponsibleParty $contractResponsibleParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ContractResponsibleParty|null $contractResponsibleParty
      * @return self
      */
-    public function setContractResponsibleParty(ContractResponsibleParty $contractResponsibleParty): self
+    public function setContractResponsibleParty(?ContractResponsibleParty $contractResponsibleParty = null): self
     {
         $this->contractResponsibleParty = $contractResponsibleParty;
 
@@ -2214,10 +2217,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TenderEvaluationParty> $tenderEvaluationParty
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TenderEvaluationParty>|null $tenderEvaluationParty
      * @return self
      */
-    public function setTenderEvaluationParty(array $tenderEvaluationParty): self
+    public function setTenderEvaluationParty(?array $tenderEvaluationParty = null): self
     {
         $this->tenderEvaluationParty = $tenderEvaluationParty;
 
@@ -2305,10 +2308,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TenderValidityPeriod $tenderValidityPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TenderValidityPeriod|null $tenderValidityPeriod
      * @return self
      */
-    public function setTenderValidityPeriod(TenderValidityPeriod $tenderValidityPeriod): self
+    public function setTenderValidityPeriod(?TenderValidityPeriod $tenderValidityPeriod = null): self
     {
         $this->tenderValidityPeriod = $tenderValidityPeriod;
 
@@ -2334,10 +2337,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ContractAcceptancePeriod $contractAcceptancePeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ContractAcceptancePeriod|null $contractAcceptancePeriod
      * @return self
      */
-    public function setContractAcceptancePeriod(ContractAcceptancePeriod $contractAcceptancePeriod): self
+    public function setContractAcceptancePeriod(?ContractAcceptancePeriod $contractAcceptancePeriod = null): self
     {
         $this->contractAcceptancePeriod = $contractAcceptancePeriod;
 
@@ -2363,10 +2366,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\AppealTerms $appealTerms
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AppealTerms|null $appealTerms
      * @return self
      */
-    public function setAppealTerms(AppealTerms $appealTerms): self
+    public function setAppealTerms(?AppealTerms $appealTerms = null): self
     {
         $this->appealTerms = $appealTerms;
 
@@ -2382,10 +2385,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Language> $language
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Language>|null $language
      * @return self
      */
-    public function setLanguage(array $language): self
+    public function setLanguage(?array $language = null): self
     {
         $this->language = $language;
 
@@ -2463,10 +2466,10 @@ class TenderingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\BudgetAccountLine> $budgetAccountLine
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\BudgetAccountLine>|null $budgetAccountLine
      * @return self
      */
-    public function setBudgetAccountLine(array $budgetAccountLine): self
+    public function setBudgetAccountLine(?array $budgetAccountLine = null): self
     {
         $this->budgetAccountLine = $budgetAccountLine;
 
@@ -2554,11 +2557,11 @@ class TenderingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ReplacedNoticeDocumentReference $replacedNoticeDocumentReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ReplacedNoticeDocumentReference|null $replacedNoticeDocumentReference
      * @return self
      */
     public function setReplacedNoticeDocumentReference(
-        ReplacedNoticeDocumentReference $replacedNoticeDocumentReference,
+        ?ReplacedNoticeDocumentReference $replacedNoticeDocumentReference = null,
     ): self {
         $this->replacedNoticeDocumentReference = $replacedNoticeDocumentReference;
 

@@ -12,7 +12,7 @@ class ItemComparisonType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PriceAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PriceAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PriceAmount")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class ItemComparisonType
     private $priceAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Quantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Quantity")
      * @JMS\Expose
@@ -52,10 +52,10 @@ class ItemComparisonType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PriceAmount $priceAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PriceAmount|null $priceAmount
      * @return self
      */
-    public function setPriceAmount(PriceAmount $priceAmount): self
+    public function setPriceAmount(?PriceAmount $priceAmount = null): self
     {
         $this->priceAmount = $priceAmount;
 
@@ -81,10 +81,10 @@ class ItemComparisonType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Quantity $quantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null $quantity
      * @return self
      */
-    public function setQuantity(Quantity $quantity): self
+    public function setQuantity(?Quantity $quantity = null): self
     {
         $this->quantity = $quantity;
 

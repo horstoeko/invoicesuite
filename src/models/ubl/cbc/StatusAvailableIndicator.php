@@ -13,7 +13,7 @@ class StatusAvailableIndicator
     use HandlesObjectFlags;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -32,10 +32,10 @@ class StatusAvailableIndicator
     }
 
     /**
-     * @param bool $value
+     * @param bool|null $value
      * @return self
      */
-    public function setValue(bool $value): self
+    public function setValue(?bool $value = null): self
     {
         $this->value = $value;
 

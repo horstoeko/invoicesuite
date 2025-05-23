@@ -10,7 +10,7 @@ class TendererPartyQualificationType
     use HandlesObjectFlags;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\InterestedProcurementProjectLot>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\InterestedProcurementProjectLot>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\InterestedProcurementProjectLot>")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class TendererPartyQualificationType
     private $interestedProcurementProjectLot;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\MainQualifyingParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\MainQualifyingParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\MainQualifyingParty")
      * @JMS\Expose
@@ -33,7 +33,7 @@ class TendererPartyQualificationType
     private $mainQualifyingParty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalQualifyingParty>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalQualifyingParty>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\AdditionalQualifyingParty>")
      * @JMS\Expose
@@ -53,10 +53,10 @@ class TendererPartyQualificationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\InterestedProcurementProjectLot> $interestedProcurementProjectLot
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\InterestedProcurementProjectLot>|null $interestedProcurementProjectLot
      * @return self
      */
-    public function setInterestedProcurementProjectLot(array $interestedProcurementProjectLot): self
+    public function setInterestedProcurementProjectLot(?array $interestedProcurementProjectLot = null): self
     {
         $this->interestedProcurementProjectLot = $interestedProcurementProjectLot;
 
@@ -146,10 +146,10 @@ class TendererPartyQualificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\MainQualifyingParty $mainQualifyingParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MainQualifyingParty|null $mainQualifyingParty
      * @return self
      */
-    public function setMainQualifyingParty(MainQualifyingParty $mainQualifyingParty): self
+    public function setMainQualifyingParty(?MainQualifyingParty $mainQualifyingParty = null): self
     {
         $this->mainQualifyingParty = $mainQualifyingParty;
 
@@ -165,10 +165,10 @@ class TendererPartyQualificationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalQualifyingParty> $additionalQualifyingParty
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalQualifyingParty>|null $additionalQualifyingParty
      * @return self
      */
-    public function setAdditionalQualifyingParty(array $additionalQualifyingParty): self
+    public function setAdditionalQualifyingParty(?array $additionalQualifyingParty = null): self
     {
         $this->additionalQualifyingParty = $additionalQualifyingParty;
 

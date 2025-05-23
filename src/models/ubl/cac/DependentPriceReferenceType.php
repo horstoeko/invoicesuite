@@ -11,7 +11,7 @@ class DependentPriceReferenceType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Percent
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Percent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Percent")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class DependentPriceReferenceType
     private $percent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\LocationAddress
+     * @var \horstoeko\invoicesuite\models\ubl\cac\LocationAddress|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\LocationAddress")
      * @JMS\Expose
@@ -33,7 +33,7 @@ class DependentPriceReferenceType
     private $locationAddress;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\DependentLineReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\DependentLineReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\DependentLineReference")
      * @JMS\Expose
@@ -62,10 +62,10 @@ class DependentPriceReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Percent $percent
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Percent|null $percent
      * @return self
      */
-    public function setPercent(Percent $percent): self
+    public function setPercent(?Percent $percent = null): self
     {
         $this->percent = $percent;
 
@@ -91,10 +91,10 @@ class DependentPriceReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\LocationAddress $locationAddress
+     * @param \horstoeko\invoicesuite\models\ubl\cac\LocationAddress|null $locationAddress
      * @return self
      */
-    public function setLocationAddress(LocationAddress $locationAddress): self
+    public function setLocationAddress(?LocationAddress $locationAddress = null): self
     {
         $this->locationAddress = $locationAddress;
 
@@ -120,10 +120,10 @@ class DependentPriceReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\DependentLineReference $dependentLineReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DependentLineReference|null $dependentLineReference
      * @return self
      */
-    public function setDependentLineReference(DependentLineReference $dependentLineReference): self
+    public function setDependentLineReference(?DependentLineReference $dependentLineReference = null): self
     {
         $this->dependentLineReference = $dependentLineReference;
 

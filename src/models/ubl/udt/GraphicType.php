@@ -11,7 +11,7 @@ class GraphicType extends BinaryObjectType
     use HandlesObjectFlags;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -30,10 +30,10 @@ class GraphicType extends BinaryObjectType
     }
 
     /**
-     * @param string $mimeCode
+     * @param string|null $mimeCode
      * @return self
      */
-    public function setMimeCode(string $mimeCode): self
+    public function setMimeCode(?string $mimeCode = null): self
     {
         $this->mimeCode = $mimeCode;
 

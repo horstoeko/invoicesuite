@@ -10,7 +10,7 @@ class PricingReferenceType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\OriginalItemLocationQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cac\OriginalItemLocationQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\OriginalItemLocationQuantity")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class PricingReferenceType
     private $originalItemLocationQuantity;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AlternativeConditionPrice>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AlternativeConditionPrice>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\AlternativeConditionPrice>")
      * @JMS\Expose
@@ -51,11 +51,12 @@ class PricingReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\OriginalItemLocationQuantity $originalItemLocationQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OriginalItemLocationQuantity|null $originalItemLocationQuantity
      * @return self
      */
-    public function setOriginalItemLocationQuantity(OriginalItemLocationQuantity $originalItemLocationQuantity): self
-    {
+    public function setOriginalItemLocationQuantity(
+        ?OriginalItemLocationQuantity $originalItemLocationQuantity = null,
+    ): self {
         $this->originalItemLocationQuantity = $originalItemLocationQuantity;
 
         return $this;
@@ -70,10 +71,10 @@ class PricingReferenceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AlternativeConditionPrice> $alternativeConditionPrice
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AlternativeConditionPrice>|null $alternativeConditionPrice
      * @return self
      */
-    public function setAlternativeConditionPrice(array $alternativeConditionPrice): self
+    public function setAlternativeConditionPrice(?array $alternativeConditionPrice = null): self
     {
         $this->alternativeConditionPrice = $alternativeConditionPrice;
 

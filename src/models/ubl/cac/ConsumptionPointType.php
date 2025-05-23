@@ -16,7 +16,7 @@ class ConsumptionPointType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -27,7 +27,7 @@ class ConsumptionPointType
     private $iD;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -39,7 +39,7 @@ class ConsumptionPointType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SubscriberID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SubscriberID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SubscriberID")
      * @JMS\Expose
@@ -50,7 +50,7 @@ class ConsumptionPointType
     private $subscriberID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SubscriberType
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SubscriberType|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SubscriberType")
      * @JMS\Expose
@@ -61,7 +61,7 @@ class ConsumptionPointType
     private $subscriberType;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SubscriberTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SubscriberTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SubscriberTypeCode")
      * @JMS\Expose
@@ -72,7 +72,7 @@ class ConsumptionPointType
     private $subscriberTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalDeliveredQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalDeliveredQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TotalDeliveredQuantity")
      * @JMS\Expose
@@ -83,7 +83,7 @@ class ConsumptionPointType
     private $totalDeliveredQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Address
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Address|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Address")
      * @JMS\Expose
@@ -94,7 +94,7 @@ class ConsumptionPointType
     private $address;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\WebSiteAccess
+     * @var \horstoeko\invoicesuite\models\ubl\cac\WebSiteAccess|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\WebSiteAccess")
      * @JMS\Expose
@@ -105,7 +105,7 @@ class ConsumptionPointType
     private $webSiteAccess;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\UtilityMeter>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\UtilityMeter>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\UtilityMeter>")
      * @JMS\Expose
@@ -135,10 +135,10 @@ class ConsumptionPointType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -154,10 +154,10 @@ class ConsumptionPointType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -245,10 +245,10 @@ class ConsumptionPointType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SubscriberID $subscriberID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SubscriberID|null $subscriberID
      * @return self
      */
-    public function setSubscriberID(SubscriberID $subscriberID): self
+    public function setSubscriberID(?SubscriberID $subscriberID = null): self
     {
         $this->subscriberID = $subscriberID;
 
@@ -274,10 +274,10 @@ class ConsumptionPointType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SubscriberType $subscriberType
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SubscriberType|null $subscriberType
      * @return self
      */
-    public function setSubscriberType(SubscriberType $subscriberType): self
+    public function setSubscriberType(?SubscriberType $subscriberType = null): self
     {
         $this->subscriberType = $subscriberType;
 
@@ -303,10 +303,10 @@ class ConsumptionPointType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SubscriberTypeCode $subscriberTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SubscriberTypeCode|null $subscriberTypeCode
      * @return self
      */
-    public function setSubscriberTypeCode(SubscriberTypeCode $subscriberTypeCode): self
+    public function setSubscriberTypeCode(?SubscriberTypeCode $subscriberTypeCode = null): self
     {
         $this->subscriberTypeCode = $subscriberTypeCode;
 
@@ -332,10 +332,10 @@ class ConsumptionPointType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalDeliveredQuantity $totalDeliveredQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalDeliveredQuantity|null $totalDeliveredQuantity
      * @return self
      */
-    public function setTotalDeliveredQuantity(TotalDeliveredQuantity $totalDeliveredQuantity): self
+    public function setTotalDeliveredQuantity(?TotalDeliveredQuantity $totalDeliveredQuantity = null): self
     {
         $this->totalDeliveredQuantity = $totalDeliveredQuantity;
 
@@ -361,10 +361,10 @@ class ConsumptionPointType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Address $address
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Address|null $address
      * @return self
      */
-    public function setAddress(Address $address): self
+    public function setAddress(?Address $address = null): self
     {
         $this->address = $address;
 
@@ -390,10 +390,10 @@ class ConsumptionPointType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\WebSiteAccess $webSiteAccess
+     * @param \horstoeko\invoicesuite\models\ubl\cac\WebSiteAccess|null $webSiteAccess
      * @return self
      */
-    public function setWebSiteAccess(WebSiteAccess $webSiteAccess): self
+    public function setWebSiteAccess(?WebSiteAccess $webSiteAccess = null): self
     {
         $this->webSiteAccess = $webSiteAccess;
 
@@ -409,10 +409,10 @@ class ConsumptionPointType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\UtilityMeter> $utilityMeter
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\UtilityMeter>|null $utilityMeter
      * @return self
      */
-    public function setUtilityMeter(array $utilityMeter): self
+    public function setUtilityMeter(?array $utilityMeter = null): self
     {
         $this->utilityMeter = $utilityMeter;
 

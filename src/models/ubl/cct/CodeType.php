@@ -10,7 +10,7 @@ class CodeType
     use HandlesObjectFlags;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class CodeType
     private $value;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class CodeType
     private $listID;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -43,7 +43,7 @@ class CodeType
     private $listAgencyID;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -54,7 +54,7 @@ class CodeType
     private $listAgencyName;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -65,7 +65,7 @@ class CodeType
     private $listName;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -76,7 +76,7 @@ class CodeType
     private $listVersionID;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -87,7 +87,7 @@ class CodeType
     private $name;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -98,7 +98,7 @@ class CodeType
     private $languageID;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -109,7 +109,7 @@ class CodeType
     private $listURI;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -128,10 +128,10 @@ class CodeType
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return self
      */
-    public function setValue(string $value): self
+    public function setValue(?string $value = null): self
     {
         $this->value = $value;
 
@@ -147,10 +147,10 @@ class CodeType
     }
 
     /**
-     * @param string $listID
+     * @param string|null $listID
      * @return self
      */
-    public function setListID(string $listID): self
+    public function setListID(?string $listID = null): self
     {
         $this->listID = $listID;
 
@@ -166,10 +166,10 @@ class CodeType
     }
 
     /**
-     * @param string $listAgencyID
+     * @param string|null $listAgencyID
      * @return self
      */
-    public function setListAgencyID(string $listAgencyID): self
+    public function setListAgencyID(?string $listAgencyID = null): self
     {
         $this->listAgencyID = $listAgencyID;
 
@@ -185,10 +185,10 @@ class CodeType
     }
 
     /**
-     * @param string $listAgencyName
+     * @param string|null $listAgencyName
      * @return self
      */
-    public function setListAgencyName(string $listAgencyName): self
+    public function setListAgencyName(?string $listAgencyName = null): self
     {
         $this->listAgencyName = $listAgencyName;
 
@@ -204,10 +204,10 @@ class CodeType
     }
 
     /**
-     * @param string $listName
+     * @param string|null $listName
      * @return self
      */
-    public function setListName(string $listName): self
+    public function setListName(?string $listName = null): self
     {
         $this->listName = $listName;
 
@@ -223,10 +223,10 @@ class CodeType
     }
 
     /**
-     * @param string $listVersionID
+     * @param string|null $listVersionID
      * @return self
      */
-    public function setListVersionID(string $listVersionID): self
+    public function setListVersionID(?string $listVersionID = null): self
     {
         $this->listVersionID = $listVersionID;
 
@@ -242,10 +242,10 @@ class CodeType
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      * @return self
      */
-    public function setName(string $name): self
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -261,10 +261,10 @@ class CodeType
     }
 
     /**
-     * @param string $languageID
+     * @param string|null $languageID
      * @return self
      */
-    public function setLanguageID(string $languageID): self
+    public function setLanguageID(?string $languageID = null): self
     {
         $this->languageID = $languageID;
 
@@ -280,10 +280,10 @@ class CodeType
     }
 
     /**
-     * @param string $listURI
+     * @param string|null $listURI
      * @return self
      */
-    public function setListURI(string $listURI): self
+    public function setListURI(?string $listURI = null): self
     {
         $this->listURI = $listURI;
 
@@ -299,10 +299,10 @@ class CodeType
     }
 
     /**
-     * @param string $listSchemeURI
+     * @param string|null $listSchemeURI
      * @return self
      */
-    public function setListSchemeURI(string $listSchemeURI): self
+    public function setListSchemeURI(?string $listSchemeURI = null): self
     {
         $this->listSchemeURI = $listSchemeURI;
 

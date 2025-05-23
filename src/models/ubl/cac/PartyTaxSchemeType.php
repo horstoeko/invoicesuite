@@ -15,7 +15,7 @@ class PartyTaxSchemeType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\RegistrationName
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\RegistrationName|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\RegistrationName")
      * @JMS\Expose
@@ -26,7 +26,7 @@ class PartyTaxSchemeType
     private $registrationName;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CompanyID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CompanyID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CompanyID")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class PartyTaxSchemeType
     private $companyID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TaxLevelCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TaxLevelCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TaxLevelCode")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class PartyTaxSchemeType
     private $taxLevelCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ExemptionReasonCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ExemptionReasonCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ExemptionReasonCode")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class PartyTaxSchemeType
     private $exemptionReasonCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ExemptionReason>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ExemptionReason>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\ExemptionReason>")
      * @JMS\Expose
@@ -71,7 +71,7 @@ class PartyTaxSchemeType
     private $exemptionReason;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\RegistrationAddress
+     * @var \horstoeko\invoicesuite\models\ubl\cac\RegistrationAddress|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\RegistrationAddress")
      * @JMS\Expose
@@ -82,7 +82,7 @@ class PartyTaxSchemeType
     private $registrationAddress;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TaxScheme
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TaxScheme|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TaxScheme")
      * @JMS\Expose
@@ -111,10 +111,10 @@ class PartyTaxSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\RegistrationName $registrationName
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\RegistrationName|null $registrationName
      * @return self
      */
-    public function setRegistrationName(RegistrationName $registrationName): self
+    public function setRegistrationName(?RegistrationName $registrationName = null): self
     {
         $this->registrationName = $registrationName;
 
@@ -140,10 +140,10 @@ class PartyTaxSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CompanyID $companyID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CompanyID|null $companyID
      * @return self
      */
-    public function setCompanyID(CompanyID $companyID): self
+    public function setCompanyID(?CompanyID $companyID = null): self
     {
         $this->companyID = $companyID;
 
@@ -169,10 +169,10 @@ class PartyTaxSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TaxLevelCode $taxLevelCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TaxLevelCode|null $taxLevelCode
      * @return self
      */
-    public function setTaxLevelCode(TaxLevelCode $taxLevelCode): self
+    public function setTaxLevelCode(?TaxLevelCode $taxLevelCode = null): self
     {
         $this->taxLevelCode = $taxLevelCode;
 
@@ -198,10 +198,10 @@ class PartyTaxSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExemptionReasonCode $exemptionReasonCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExemptionReasonCode|null $exemptionReasonCode
      * @return self
      */
-    public function setExemptionReasonCode(ExemptionReasonCode $exemptionReasonCode): self
+    public function setExemptionReasonCode(?ExemptionReasonCode $exemptionReasonCode = null): self
     {
         $this->exemptionReasonCode = $exemptionReasonCode;
 
@@ -217,10 +217,10 @@ class PartyTaxSchemeType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ExemptionReason> $exemptionReason
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ExemptionReason>|null $exemptionReason
      * @return self
      */
-    public function setExemptionReason(array $exemptionReason): self
+    public function setExemptionReason(?array $exemptionReason = null): self
     {
         $this->exemptionReason = $exemptionReason;
 
@@ -308,10 +308,10 @@ class PartyTaxSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\RegistrationAddress $registrationAddress
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RegistrationAddress|null $registrationAddress
      * @return self
      */
-    public function setRegistrationAddress(RegistrationAddress $registrationAddress): self
+    public function setRegistrationAddress(?RegistrationAddress $registrationAddress = null): self
     {
         $this->registrationAddress = $registrationAddress;
 
@@ -337,10 +337,10 @@ class PartyTaxSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxScheme $taxScheme
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxScheme|null $taxScheme
      * @return self
      */
-    public function setTaxScheme(TaxScheme $taxScheme): self
+    public function setTaxScheme(?TaxScheme $taxScheme = null): self
     {
         $this->taxScheme = $taxScheme;
 

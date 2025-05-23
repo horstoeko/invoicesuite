@@ -19,7 +19,7 @@ class TransportHandlingUnitType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -30,7 +30,7 @@ class TransportHandlingUnitType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransportHandlingUnitTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransportHandlingUnitTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TransportHandlingUnitTypeCode")
      * @JMS\Expose
@@ -41,7 +41,7 @@ class TransportHandlingUnitType
     private $transportHandlingUnitTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\HandlingCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\HandlingCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\HandlingCode")
      * @JMS\Expose
@@ -52,7 +52,7 @@ class TransportHandlingUnitType
     private $handlingCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\HandlingInstructions>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\HandlingInstructions>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\HandlingInstructions>")
      * @JMS\Expose
@@ -64,7 +64,7 @@ class TransportHandlingUnitType
     private $handlingInstructions;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -75,7 +75,7 @@ class TransportHandlingUnitType
     private $hazardousRiskIndicator;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalGoodsItemQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalGoodsItemQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TotalGoodsItemQuantity")
      * @JMS\Expose
@@ -86,7 +86,7 @@ class TransportHandlingUnitType
     private $totalGoodsItemQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalPackageQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalPackageQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TotalPackageQuantity")
      * @JMS\Expose
@@ -97,7 +97,7 @@ class TransportHandlingUnitType
     private $totalPackageQuantity;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\DamageRemarks>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\DamageRemarks>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\DamageRemarks>")
      * @JMS\Expose
@@ -109,7 +109,7 @@ class TransportHandlingUnitType
     private $damageRemarks;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ShippingMarks>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ShippingMarks>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\ShippingMarks>")
      * @JMS\Expose
@@ -121,7 +121,7 @@ class TransportHandlingUnitType
     private $shippingMarks;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TraceID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TraceID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TraceID")
      * @JMS\Expose
@@ -132,7 +132,7 @@ class TransportHandlingUnitType
     private $traceID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\HandlingUnitDespatchLine>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\HandlingUnitDespatchLine>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\HandlingUnitDespatchLine>")
      * @JMS\Expose
@@ -144,7 +144,7 @@ class TransportHandlingUnitType
     private $handlingUnitDespatchLine;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ActualPackage>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ActualPackage>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ActualPackage>")
      * @JMS\Expose
@@ -156,7 +156,7 @@ class TransportHandlingUnitType
     private $actualPackage;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ReceivedHandlingUnitReceiptLine>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ReceivedHandlingUnitReceiptLine>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ReceivedHandlingUnitReceiptLine>")
      * @JMS\Expose
@@ -168,7 +168,7 @@ class TransportHandlingUnitType
     private $receivedHandlingUnitReceiptLine;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TransportEquipment>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TransportEquipment>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TransportEquipment>")
      * @JMS\Expose
@@ -180,7 +180,7 @@ class TransportHandlingUnitType
     private $transportEquipment;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TransportMeans>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TransportMeans>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TransportMeans>")
      * @JMS\Expose
@@ -192,7 +192,7 @@ class TransportHandlingUnitType
     private $transportMeans;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\HazardousGoodsTransit>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\HazardousGoodsTransit>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\HazardousGoodsTransit>")
      * @JMS\Expose
@@ -204,7 +204,7 @@ class TransportHandlingUnitType
     private $hazardousGoodsTransit;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>")
      * @JMS\Expose
@@ -216,7 +216,7 @@ class TransportHandlingUnitType
     private $measurementDimension;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\MinimumTemperature
+     * @var \horstoeko\invoicesuite\models\ubl\cac\MinimumTemperature|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\MinimumTemperature")
      * @JMS\Expose
@@ -227,7 +227,7 @@ class TransportHandlingUnitType
     private $minimumTemperature;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\MaximumTemperature
+     * @var \horstoeko\invoicesuite\models\ubl\cac\MaximumTemperature|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\MaximumTemperature")
      * @JMS\Expose
@@ -238,7 +238,7 @@ class TransportHandlingUnitType
     private $maximumTemperature;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\GoodsItem>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\GoodsItem>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\GoodsItem>")
      * @JMS\Expose
@@ -250,7 +250,7 @@ class TransportHandlingUnitType
     private $goodsItem;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\FloorSpaceMeasurementDimension
+     * @var \horstoeko\invoicesuite\models\ubl\cac\FloorSpaceMeasurementDimension|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\FloorSpaceMeasurementDimension")
      * @JMS\Expose
@@ -261,7 +261,7 @@ class TransportHandlingUnitType
     private $floorSpaceMeasurementDimension;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PalletSpaceMeasurementDimension
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PalletSpaceMeasurementDimension|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PalletSpaceMeasurementDimension")
      * @JMS\Expose
@@ -272,7 +272,7 @@ class TransportHandlingUnitType
     private $palletSpaceMeasurementDimension;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ShipmentDocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ShipmentDocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ShipmentDocumentReference>")
      * @JMS\Expose
@@ -284,7 +284,7 @@ class TransportHandlingUnitType
     private $shipmentDocumentReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Status>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Status>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Status>")
      * @JMS\Expose
@@ -296,7 +296,7 @@ class TransportHandlingUnitType
     private $status;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CustomsDeclaration>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CustomsDeclaration>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\CustomsDeclaration>")
      * @JMS\Expose
@@ -308,7 +308,7 @@ class TransportHandlingUnitType
     private $customsDeclaration;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ReferencedShipment>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ReferencedShipment>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ReferencedShipment>")
      * @JMS\Expose
@@ -320,7 +320,7 @@ class TransportHandlingUnitType
     private $referencedShipment;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Package>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Package>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Package>")
      * @JMS\Expose
@@ -350,10 +350,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -379,11 +379,11 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransportHandlingUnitTypeCode $transportHandlingUnitTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransportHandlingUnitTypeCode|null $transportHandlingUnitTypeCode
      * @return self
      */
     public function setTransportHandlingUnitTypeCode(
-        TransportHandlingUnitTypeCode $transportHandlingUnitTypeCode,
+        ?TransportHandlingUnitTypeCode $transportHandlingUnitTypeCode = null,
     ): self {
         $this->transportHandlingUnitTypeCode = $transportHandlingUnitTypeCode;
 
@@ -409,10 +409,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\HandlingCode $handlingCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\HandlingCode|null $handlingCode
      * @return self
      */
-    public function setHandlingCode(HandlingCode $handlingCode): self
+    public function setHandlingCode(?HandlingCode $handlingCode = null): self
     {
         $this->handlingCode = $handlingCode;
 
@@ -428,10 +428,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\HandlingInstructions> $handlingInstructions
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\HandlingInstructions>|null $handlingInstructions
      * @return self
      */
-    public function setHandlingInstructions(array $handlingInstructions): self
+    public function setHandlingInstructions(?array $handlingInstructions = null): self
     {
         $this->handlingInstructions = $handlingInstructions;
 
@@ -509,10 +509,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param bool $hazardousRiskIndicator
+     * @param bool|null $hazardousRiskIndicator
      * @return self
      */
-    public function setHazardousRiskIndicator(bool $hazardousRiskIndicator): self
+    public function setHazardousRiskIndicator(?bool $hazardousRiskIndicator = null): self
     {
         $this->hazardousRiskIndicator = $hazardousRiskIndicator;
 
@@ -538,10 +538,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalGoodsItemQuantity $totalGoodsItemQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalGoodsItemQuantity|null $totalGoodsItemQuantity
      * @return self
      */
-    public function setTotalGoodsItemQuantity(TotalGoodsItemQuantity $totalGoodsItemQuantity): self
+    public function setTotalGoodsItemQuantity(?TotalGoodsItemQuantity $totalGoodsItemQuantity = null): self
     {
         $this->totalGoodsItemQuantity = $totalGoodsItemQuantity;
 
@@ -567,10 +567,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalPackageQuantity $totalPackageQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalPackageQuantity|null $totalPackageQuantity
      * @return self
      */
-    public function setTotalPackageQuantity(TotalPackageQuantity $totalPackageQuantity): self
+    public function setTotalPackageQuantity(?TotalPackageQuantity $totalPackageQuantity = null): self
     {
         $this->totalPackageQuantity = $totalPackageQuantity;
 
@@ -586,10 +586,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\DamageRemarks> $damageRemarks
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\DamageRemarks>|null $damageRemarks
      * @return self
      */
-    public function setDamageRemarks(array $damageRemarks): self
+    public function setDamageRemarks(?array $damageRemarks = null): self
     {
         $this->damageRemarks = $damageRemarks;
 
@@ -667,10 +667,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ShippingMarks> $shippingMarks
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ShippingMarks>|null $shippingMarks
      * @return self
      */
-    public function setShippingMarks(array $shippingMarks): self
+    public function setShippingMarks(?array $shippingMarks = null): self
     {
         $this->shippingMarks = $shippingMarks;
 
@@ -758,10 +758,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TraceID $traceID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TraceID|null $traceID
      * @return self
      */
-    public function setTraceID(TraceID $traceID): self
+    public function setTraceID(?TraceID $traceID = null): self
     {
         $this->traceID = $traceID;
 
@@ -777,10 +777,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\HandlingUnitDespatchLine> $handlingUnitDespatchLine
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\HandlingUnitDespatchLine>|null $handlingUnitDespatchLine
      * @return self
      */
-    public function setHandlingUnitDespatchLine(array $handlingUnitDespatchLine): self
+    public function setHandlingUnitDespatchLine(?array $handlingUnitDespatchLine = null): self
     {
         $this->handlingUnitDespatchLine = $handlingUnitDespatchLine;
 
@@ -858,10 +858,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ActualPackage> $actualPackage
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ActualPackage>|null $actualPackage
      * @return self
      */
-    public function setActualPackage(array $actualPackage): self
+    public function setActualPackage(?array $actualPackage = null): self
     {
         $this->actualPackage = $actualPackage;
 
@@ -939,10 +939,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ReceivedHandlingUnitReceiptLine> $receivedHandlingUnitReceiptLine
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ReceivedHandlingUnitReceiptLine>|null $receivedHandlingUnitReceiptLine
      * @return self
      */
-    public function setReceivedHandlingUnitReceiptLine(array $receivedHandlingUnitReceiptLine): self
+    public function setReceivedHandlingUnitReceiptLine(?array $receivedHandlingUnitReceiptLine = null): self
     {
         $this->receivedHandlingUnitReceiptLine = $receivedHandlingUnitReceiptLine;
 
@@ -1022,10 +1022,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TransportEquipment> $transportEquipment
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TransportEquipment>|null $transportEquipment
      * @return self
      */
-    public function setTransportEquipment(array $transportEquipment): self
+    public function setTransportEquipment(?array $transportEquipment = null): self
     {
         $this->transportEquipment = $transportEquipment;
 
@@ -1103,10 +1103,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TransportMeans> $transportMeans
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TransportMeans>|null $transportMeans
      * @return self
      */
-    public function setTransportMeans(array $transportMeans): self
+    public function setTransportMeans(?array $transportMeans = null): self
     {
         $this->transportMeans = $transportMeans;
 
@@ -1184,10 +1184,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\HazardousGoodsTransit> $hazardousGoodsTransit
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\HazardousGoodsTransit>|null $hazardousGoodsTransit
      * @return self
      */
-    public function setHazardousGoodsTransit(array $hazardousGoodsTransit): self
+    public function setHazardousGoodsTransit(?array $hazardousGoodsTransit = null): self
     {
         $this->hazardousGoodsTransit = $hazardousGoodsTransit;
 
@@ -1265,10 +1265,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension> $measurementDimension
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>|null $measurementDimension
      * @return self
      */
-    public function setMeasurementDimension(array $measurementDimension): self
+    public function setMeasurementDimension(?array $measurementDimension = null): self
     {
         $this->measurementDimension = $measurementDimension;
 
@@ -1356,10 +1356,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\MinimumTemperature $minimumTemperature
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MinimumTemperature|null $minimumTemperature
      * @return self
      */
-    public function setMinimumTemperature(MinimumTemperature $minimumTemperature): self
+    public function setMinimumTemperature(?MinimumTemperature $minimumTemperature = null): self
     {
         $this->minimumTemperature = $minimumTemperature;
 
@@ -1385,10 +1385,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\MaximumTemperature $maximumTemperature
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MaximumTemperature|null $maximumTemperature
      * @return self
      */
-    public function setMaximumTemperature(MaximumTemperature $maximumTemperature): self
+    public function setMaximumTemperature(?MaximumTemperature $maximumTemperature = null): self
     {
         $this->maximumTemperature = $maximumTemperature;
 
@@ -1404,10 +1404,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\GoodsItem> $goodsItem
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\GoodsItem>|null $goodsItem
      * @return self
      */
-    public function setGoodsItem(array $goodsItem): self
+    public function setGoodsItem(?array $goodsItem = null): self
     {
         $this->goodsItem = $goodsItem;
 
@@ -1495,11 +1495,11 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\FloorSpaceMeasurementDimension $floorSpaceMeasurementDimension
+     * @param \horstoeko\invoicesuite\models\ubl\cac\FloorSpaceMeasurementDimension|null $floorSpaceMeasurementDimension
      * @return self
      */
     public function setFloorSpaceMeasurementDimension(
-        FloorSpaceMeasurementDimension $floorSpaceMeasurementDimension,
+        ?FloorSpaceMeasurementDimension $floorSpaceMeasurementDimension = null,
     ): self {
         $this->floorSpaceMeasurementDimension = $floorSpaceMeasurementDimension;
 
@@ -1525,11 +1525,11 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PalletSpaceMeasurementDimension $palletSpaceMeasurementDimension
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PalletSpaceMeasurementDimension|null $palletSpaceMeasurementDimension
      * @return self
      */
     public function setPalletSpaceMeasurementDimension(
-        PalletSpaceMeasurementDimension $palletSpaceMeasurementDimension,
+        ?PalletSpaceMeasurementDimension $palletSpaceMeasurementDimension = null,
     ): self {
         $this->palletSpaceMeasurementDimension = $palletSpaceMeasurementDimension;
 
@@ -1545,10 +1545,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ShipmentDocumentReference> $shipmentDocumentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ShipmentDocumentReference>|null $shipmentDocumentReference
      * @return self
      */
-    public function setShipmentDocumentReference(array $shipmentDocumentReference): self
+    public function setShipmentDocumentReference(?array $shipmentDocumentReference = null): self
     {
         $this->shipmentDocumentReference = $shipmentDocumentReference;
 
@@ -1626,10 +1626,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Status> $status
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Status>|null $status
      * @return self
      */
-    public function setStatus(array $status): self
+    public function setStatus(?array $status = null): self
     {
         $this->status = $status;
 
@@ -1707,10 +1707,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CustomsDeclaration> $customsDeclaration
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CustomsDeclaration>|null $customsDeclaration
      * @return self
      */
-    public function setCustomsDeclaration(array $customsDeclaration): self
+    public function setCustomsDeclaration(?array $customsDeclaration = null): self
     {
         $this->customsDeclaration = $customsDeclaration;
 
@@ -1788,10 +1788,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ReferencedShipment> $referencedShipment
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ReferencedShipment>|null $referencedShipment
      * @return self
      */
-    public function setReferencedShipment(array $referencedShipment): self
+    public function setReferencedShipment(?array $referencedShipment = null): self
     {
         $this->referencedShipment = $referencedShipment;
 
@@ -1869,10 +1869,10 @@ class TransportHandlingUnitType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Package> $package
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Package>|null $package
      * @return self
      */
-    public function setPackage(array $package): self
+    public function setPackage(?array $package = null): self
     {
         $this->package = $package;
 

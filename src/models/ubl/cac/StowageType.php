@@ -12,7 +12,7 @@ class StowageType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LocationID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LocationID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LocationID")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class StowageType
     private $locationID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Location>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Location>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Location>")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class StowageType
     private $location;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>")
      * @JMS\Expose
@@ -65,10 +65,10 @@ class StowageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LocationID $locationID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LocationID|null $locationID
      * @return self
      */
-    public function setLocationID(LocationID $locationID): self
+    public function setLocationID(?LocationID $locationID = null): self
     {
         $this->locationID = $locationID;
 
@@ -84,10 +84,10 @@ class StowageType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Location> $location
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Location>|null $location
      * @return self
      */
-    public function setLocation(array $location): self
+    public function setLocation(?array $location = null): self
     {
         $this->location = $location;
 
@@ -165,10 +165,10 @@ class StowageType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension> $measurementDimension
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>|null $measurementDimension
      * @return self
      */
-    public function setMeasurementDimension(array $measurementDimension): self
+    public function setMeasurementDimension(?array $measurementDimension = null): self
     {
         $this->measurementDimension = $measurementDimension;
 

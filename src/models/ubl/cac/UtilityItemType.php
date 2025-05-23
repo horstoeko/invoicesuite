@@ -23,7 +23,7 @@ class UtilityItemType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class UtilityItemType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SubscriberID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SubscriberID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SubscriberID")
      * @JMS\Expose
@@ -45,7 +45,7 @@ class UtilityItemType
     private $subscriberID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SubscriberType
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SubscriberType|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SubscriberType")
      * @JMS\Expose
@@ -56,7 +56,7 @@ class UtilityItemType
     private $subscriberType;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SubscriberTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SubscriberTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SubscriberTypeCode")
      * @JMS\Expose
@@ -67,7 +67,7 @@ class UtilityItemType
     private $subscriberTypeCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -79,7 +79,7 @@ class UtilityItemType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PackQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PackQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PackQuantity")
      * @JMS\Expose
@@ -90,7 +90,7 @@ class UtilityItemType
     private $packQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PackSizeNumeric
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PackSizeNumeric|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PackSizeNumeric")
      * @JMS\Expose
@@ -101,7 +101,7 @@ class UtilityItemType
     private $packSizeNumeric;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ConsumptionType
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ConsumptionType|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ConsumptionType")
      * @JMS\Expose
@@ -112,7 +112,7 @@ class UtilityItemType
     private $consumptionType;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ConsumptionTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ConsumptionTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ConsumptionTypeCode")
      * @JMS\Expose
@@ -123,7 +123,7 @@ class UtilityItemType
     private $consumptionTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CurrentChargeType
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CurrentChargeType|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CurrentChargeType")
      * @JMS\Expose
@@ -134,7 +134,7 @@ class UtilityItemType
     private $currentChargeType;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CurrentChargeTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CurrentChargeTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CurrentChargeTypeCode")
      * @JMS\Expose
@@ -145,7 +145,7 @@ class UtilityItemType
     private $currentChargeTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\OneTimeChargeType
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\OneTimeChargeType|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\OneTimeChargeType")
      * @JMS\Expose
@@ -156,7 +156,7 @@ class UtilityItemType
     private $oneTimeChargeType;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\OneTimeChargeTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\OneTimeChargeTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\OneTimeChargeTypeCode")
      * @JMS\Expose
@@ -167,7 +167,7 @@ class UtilityItemType
     private $oneTimeChargeTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TaxCategory
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TaxCategory|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TaxCategory")
      * @JMS\Expose
@@ -178,7 +178,7 @@ class UtilityItemType
     private $taxCategory;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Contract
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Contract|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Contract")
      * @JMS\Expose
@@ -207,10 +207,10 @@ class UtilityItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -236,10 +236,10 @@ class UtilityItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SubscriberID $subscriberID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SubscriberID|null $subscriberID
      * @return self
      */
-    public function setSubscriberID(SubscriberID $subscriberID): self
+    public function setSubscriberID(?SubscriberID $subscriberID = null): self
     {
         $this->subscriberID = $subscriberID;
 
@@ -265,10 +265,10 @@ class UtilityItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SubscriberType $subscriberType
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SubscriberType|null $subscriberType
      * @return self
      */
-    public function setSubscriberType(SubscriberType $subscriberType): self
+    public function setSubscriberType(?SubscriberType $subscriberType = null): self
     {
         $this->subscriberType = $subscriberType;
 
@@ -294,10 +294,10 @@ class UtilityItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SubscriberTypeCode $subscriberTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SubscriberTypeCode|null $subscriberTypeCode
      * @return self
      */
-    public function setSubscriberTypeCode(SubscriberTypeCode $subscriberTypeCode): self
+    public function setSubscriberTypeCode(?SubscriberTypeCode $subscriberTypeCode = null): self
     {
         $this->subscriberTypeCode = $subscriberTypeCode;
 
@@ -313,10 +313,10 @@ class UtilityItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -404,10 +404,10 @@ class UtilityItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PackQuantity $packQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PackQuantity|null $packQuantity
      * @return self
      */
-    public function setPackQuantity(PackQuantity $packQuantity): self
+    public function setPackQuantity(?PackQuantity $packQuantity = null): self
     {
         $this->packQuantity = $packQuantity;
 
@@ -433,10 +433,10 @@ class UtilityItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PackSizeNumeric $packSizeNumeric
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PackSizeNumeric|null $packSizeNumeric
      * @return self
      */
-    public function setPackSizeNumeric(PackSizeNumeric $packSizeNumeric): self
+    public function setPackSizeNumeric(?PackSizeNumeric $packSizeNumeric = null): self
     {
         $this->packSizeNumeric = $packSizeNumeric;
 
@@ -462,10 +462,10 @@ class UtilityItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ConsumptionType $consumptionType
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ConsumptionType|null $consumptionType
      * @return self
      */
-    public function setConsumptionType(ConsumptionType $consumptionType): self
+    public function setConsumptionType(?ConsumptionType $consumptionType = null): self
     {
         $this->consumptionType = $consumptionType;
 
@@ -491,10 +491,10 @@ class UtilityItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ConsumptionTypeCode $consumptionTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ConsumptionTypeCode|null $consumptionTypeCode
      * @return self
      */
-    public function setConsumptionTypeCode(ConsumptionTypeCode $consumptionTypeCode): self
+    public function setConsumptionTypeCode(?ConsumptionTypeCode $consumptionTypeCode = null): self
     {
         $this->consumptionTypeCode = $consumptionTypeCode;
 
@@ -520,10 +520,10 @@ class UtilityItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CurrentChargeType $currentChargeType
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CurrentChargeType|null $currentChargeType
      * @return self
      */
-    public function setCurrentChargeType(CurrentChargeType $currentChargeType): self
+    public function setCurrentChargeType(?CurrentChargeType $currentChargeType = null): self
     {
         $this->currentChargeType = $currentChargeType;
 
@@ -549,10 +549,10 @@ class UtilityItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CurrentChargeTypeCode $currentChargeTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CurrentChargeTypeCode|null $currentChargeTypeCode
      * @return self
      */
-    public function setCurrentChargeTypeCode(CurrentChargeTypeCode $currentChargeTypeCode): self
+    public function setCurrentChargeTypeCode(?CurrentChargeTypeCode $currentChargeTypeCode = null): self
     {
         $this->currentChargeTypeCode = $currentChargeTypeCode;
 
@@ -578,10 +578,10 @@ class UtilityItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\OneTimeChargeType $oneTimeChargeType
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\OneTimeChargeType|null $oneTimeChargeType
      * @return self
      */
-    public function setOneTimeChargeType(OneTimeChargeType $oneTimeChargeType): self
+    public function setOneTimeChargeType(?OneTimeChargeType $oneTimeChargeType = null): self
     {
         $this->oneTimeChargeType = $oneTimeChargeType;
 
@@ -607,10 +607,10 @@ class UtilityItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\OneTimeChargeTypeCode $oneTimeChargeTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\OneTimeChargeTypeCode|null $oneTimeChargeTypeCode
      * @return self
      */
-    public function setOneTimeChargeTypeCode(OneTimeChargeTypeCode $oneTimeChargeTypeCode): self
+    public function setOneTimeChargeTypeCode(?OneTimeChargeTypeCode $oneTimeChargeTypeCode = null): self
     {
         $this->oneTimeChargeTypeCode = $oneTimeChargeTypeCode;
 
@@ -636,10 +636,10 @@ class UtilityItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxCategory $taxCategory
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxCategory|null $taxCategory
      * @return self
      */
-    public function setTaxCategory(TaxCategory $taxCategory): self
+    public function setTaxCategory(?TaxCategory $taxCategory = null): self
     {
         $this->taxCategory = $taxCategory;
 
@@ -665,10 +665,10 @@ class UtilityItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Contract $contract
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Contract|null $contract
      * @return self
      */
-    public function setContract(Contract $contract): self
+    public function setContract(?Contract $contract = null): self
     {
         $this->contract = $contract;
 

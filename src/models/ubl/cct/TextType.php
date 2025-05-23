@@ -10,7 +10,7 @@ class TextType
     use HandlesObjectFlags;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class TextType
     private $value;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class TextType
     private $languageID;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -51,10 +51,10 @@ class TextType
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return self
      */
-    public function setValue(string $value): self
+    public function setValue(?string $value = null): self
     {
         $this->value = $value;
 
@@ -70,10 +70,10 @@ class TextType
     }
 
     /**
-     * @param string $languageID
+     * @param string|null $languageID
      * @return self
      */
-    public function setLanguageID(string $languageID): self
+    public function setLanguageID(?string $languageID = null): self
     {
         $this->languageID = $languageID;
 
@@ -89,10 +89,10 @@ class TextType
     }
 
     /**
-     * @param string $languageLocaleID
+     * @param string|null $languageLocaleID
      * @return self
      */
-    public function setLanguageLocaleID(string $languageLocaleID): self
+    public function setLanguageLocaleID(?string $languageLocaleID = null): self
     {
         $this->languageLocaleID = $languageLocaleID;
 

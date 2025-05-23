@@ -11,7 +11,7 @@ class RenewalType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Amount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Amount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Amount")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class RenewalType
     private $amount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Period
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Period|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Period")
      * @JMS\Expose
@@ -51,10 +51,10 @@ class RenewalType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Amount $amount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Amount|null $amount
      * @return self
      */
-    public function setAmount(Amount $amount): self
+    public function setAmount(?Amount $amount = null): self
     {
         $this->amount = $amount;
 
@@ -80,10 +80,10 @@ class RenewalType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Period $period
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Period|null $period
      * @return self
      */
-    public function setPeriod(Period $period): self
+    public function setPeriod(?Period $period = null): self
     {
         $this->period = $period;
 

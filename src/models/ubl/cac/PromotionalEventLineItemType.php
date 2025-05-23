@@ -11,7 +11,7 @@ class PromotionalEventLineItemType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Amount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Amount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Amount")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class PromotionalEventLineItemType
     private $amount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\EventLineItem
+     * @var \horstoeko\invoicesuite\models\ubl\cac\EventLineItem|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\EventLineItem")
      * @JMS\Expose
@@ -51,10 +51,10 @@ class PromotionalEventLineItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Amount $amount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Amount|null $amount
      * @return self
      */
-    public function setAmount(Amount $amount): self
+    public function setAmount(?Amount $amount = null): self
     {
         $this->amount = $amount;
 
@@ -80,10 +80,10 @@ class PromotionalEventLineItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\EventLineItem $eventLineItem
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EventLineItem|null $eventLineItem
      * @return self
      */
-    public function setEventLineItem(EventLineItem $eventLineItem): self
+    public function setEventLineItem(?EventLineItem $eventLineItem = null): self
     {
         $this->eventLineItem = $eventLineItem;
 

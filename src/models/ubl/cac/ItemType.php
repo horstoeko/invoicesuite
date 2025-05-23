@@ -18,7 +18,7 @@ class ItemType
     use HandlesObjectFlags;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -30,7 +30,7 @@ class ItemType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PackQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PackQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PackQuantity")
      * @JMS\Expose
@@ -41,7 +41,7 @@ class ItemType
     private $packQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PackSizeNumeric
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PackSizeNumeric|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PackSizeNumeric")
      * @JMS\Expose
@@ -52,7 +52,7 @@ class ItemType
     private $packSizeNumeric;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -63,7 +63,7 @@ class ItemType
     private $catalogueIndicator;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Name")
      * @JMS\Expose
@@ -74,7 +74,7 @@ class ItemType
     private $name;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -85,7 +85,7 @@ class ItemType
     private $hazardousRiskIndicator;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalInformation>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalInformation>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\AdditionalInformation>")
      * @JMS\Expose
@@ -97,7 +97,7 @@ class ItemType
     private $additionalInformation;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Keyword>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Keyword>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Keyword>")
      * @JMS\Expose
@@ -109,7 +109,7 @@ class ItemType
     private $keyword;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\BrandName>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\BrandName>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\BrandName>")
      * @JMS\Expose
@@ -121,7 +121,7 @@ class ItemType
     private $brandName;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ModelName>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ModelName>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\ModelName>")
      * @JMS\Expose
@@ -133,7 +133,7 @@ class ItemType
     private $modelName;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\BuyersItemIdentification
+     * @var \horstoeko\invoicesuite\models\ubl\cac\BuyersItemIdentification|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\BuyersItemIdentification")
      * @JMS\Expose
@@ -144,7 +144,7 @@ class ItemType
     private $buyersItemIdentification;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\SellersItemIdentification
+     * @var \horstoeko\invoicesuite\models\ubl\cac\SellersItemIdentification|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\SellersItemIdentification")
      * @JMS\Expose
@@ -155,7 +155,7 @@ class ItemType
     private $sellersItemIdentification;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ManufacturersItemIdentification>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ManufacturersItemIdentification>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ManufacturersItemIdentification>")
      * @JMS\Expose
@@ -167,7 +167,7 @@ class ItemType
     private $manufacturersItemIdentification;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\StandardItemIdentification
+     * @var \horstoeko\invoicesuite\models\ubl\cac\StandardItemIdentification|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\StandardItemIdentification")
      * @JMS\Expose
@@ -178,7 +178,7 @@ class ItemType
     private $standardItemIdentification;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\CatalogueItemIdentification
+     * @var \horstoeko\invoicesuite\models\ubl\cac\CatalogueItemIdentification|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\CatalogueItemIdentification")
      * @JMS\Expose
@@ -189,7 +189,7 @@ class ItemType
     private $catalogueItemIdentification;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemIdentification>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemIdentification>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\AdditionalItemIdentification>")
      * @JMS\Expose
@@ -201,7 +201,7 @@ class ItemType
     private $additionalItemIdentification;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\CatalogueDocumentReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\CatalogueDocumentReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\CatalogueDocumentReference")
      * @JMS\Expose
@@ -212,7 +212,7 @@ class ItemType
     private $catalogueDocumentReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ItemSpecificationDocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ItemSpecificationDocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ItemSpecificationDocumentReference>")
      * @JMS\Expose
@@ -224,7 +224,7 @@ class ItemType
     private $itemSpecificationDocumentReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\OriginCountry
+     * @var \horstoeko\invoicesuite\models\ubl\cac\OriginCountry|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\OriginCountry")
      * @JMS\Expose
@@ -235,7 +235,7 @@ class ItemType
     private $originCountry;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CommodityClassification>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CommodityClassification>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\CommodityClassification>")
      * @JMS\Expose
@@ -247,7 +247,7 @@ class ItemType
     private $commodityClassification;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TransactionConditions>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TransactionConditions>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TransactionConditions>")
      * @JMS\Expose
@@ -259,7 +259,7 @@ class ItemType
     private $transactionConditions;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\HazardousItem>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\HazardousItem>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\HazardousItem>")
      * @JMS\Expose
@@ -271,7 +271,7 @@ class ItemType
     private $hazardousItem;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ClassifiedTaxCategory>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ClassifiedTaxCategory>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ClassifiedTaxCategory>")
      * @JMS\Expose
@@ -283,7 +283,7 @@ class ItemType
     private $classifiedTaxCategory;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty>")
      * @JMS\Expose
@@ -295,7 +295,7 @@ class ItemType
     private $additionalItemProperty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ManufacturerParty>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ManufacturerParty>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ManufacturerParty>")
      * @JMS\Expose
@@ -307,7 +307,7 @@ class ItemType
     private $manufacturerParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\InformationContentProviderParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\InformationContentProviderParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\InformationContentProviderParty")
      * @JMS\Expose
@@ -318,7 +318,7 @@ class ItemType
     private $informationContentProviderParty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\OriginAddress>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\OriginAddress>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\OriginAddress>")
      * @JMS\Expose
@@ -330,7 +330,7 @@ class ItemType
     private $originAddress;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ItemInstance>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ItemInstance>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ItemInstance>")
      * @JMS\Expose
@@ -342,7 +342,7 @@ class ItemType
     private $itemInstance;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Certificate>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Certificate>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Certificate>")
      * @JMS\Expose
@@ -354,7 +354,7 @@ class ItemType
     private $certificate;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Dimension>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Dimension>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Dimension>")
      * @JMS\Expose
@@ -374,10 +374,10 @@ class ItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -465,10 +465,10 @@ class ItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PackQuantity $packQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PackQuantity|null $packQuantity
      * @return self
      */
-    public function setPackQuantity(PackQuantity $packQuantity): self
+    public function setPackQuantity(?PackQuantity $packQuantity = null): self
     {
         $this->packQuantity = $packQuantity;
 
@@ -494,10 +494,10 @@ class ItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PackSizeNumeric $packSizeNumeric
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PackSizeNumeric|null $packSizeNumeric
      * @return self
      */
-    public function setPackSizeNumeric(PackSizeNumeric $packSizeNumeric): self
+    public function setPackSizeNumeric(?PackSizeNumeric $packSizeNumeric = null): self
     {
         $this->packSizeNumeric = $packSizeNumeric;
 
@@ -513,10 +513,10 @@ class ItemType
     }
 
     /**
-     * @param bool $catalogueIndicator
+     * @param bool|null $catalogueIndicator
      * @return self
      */
-    public function setCatalogueIndicator(bool $catalogueIndicator): self
+    public function setCatalogueIndicator(?bool $catalogueIndicator = null): self
     {
         $this->catalogueIndicator = $catalogueIndicator;
 
@@ -542,10 +542,10 @@ class ItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name|null $name
      * @return self
      */
-    public function setName(Name $name): self
+    public function setName(?Name $name = null): self
     {
         $this->name = $name;
 
@@ -561,10 +561,10 @@ class ItemType
     }
 
     /**
-     * @param bool $hazardousRiskIndicator
+     * @param bool|null $hazardousRiskIndicator
      * @return self
      */
-    public function setHazardousRiskIndicator(bool $hazardousRiskIndicator): self
+    public function setHazardousRiskIndicator(?bool $hazardousRiskIndicator = null): self
     {
         $this->hazardousRiskIndicator = $hazardousRiskIndicator;
 
@@ -580,10 +580,10 @@ class ItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalInformation> $additionalInformation
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalInformation>|null $additionalInformation
      * @return self
      */
-    public function setAdditionalInformation(array $additionalInformation): self
+    public function setAdditionalInformation(?array $additionalInformation = null): self
     {
         $this->additionalInformation = $additionalInformation;
 
@@ -661,10 +661,10 @@ class ItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Keyword> $keyword
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Keyword>|null $keyword
      * @return self
      */
-    public function setKeyword(array $keyword): self
+    public function setKeyword(?array $keyword = null): self
     {
         $this->keyword = $keyword;
 
@@ -742,10 +742,10 @@ class ItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\BrandName> $brandName
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\BrandName>|null $brandName
      * @return self
      */
-    public function setBrandName(array $brandName): self
+    public function setBrandName(?array $brandName = null): self
     {
         $this->brandName = $brandName;
 
@@ -823,10 +823,10 @@ class ItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ModelName> $modelName
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ModelName>|null $modelName
      * @return self
      */
-    public function setModelName(array $modelName): self
+    public function setModelName(?array $modelName = null): self
     {
         $this->modelName = $modelName;
 
@@ -914,10 +914,10 @@ class ItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\BuyersItemIdentification $buyersItemIdentification
+     * @param \horstoeko\invoicesuite\models\ubl\cac\BuyersItemIdentification|null $buyersItemIdentification
      * @return self
      */
-    public function setBuyersItemIdentification(BuyersItemIdentification $buyersItemIdentification): self
+    public function setBuyersItemIdentification(?BuyersItemIdentification $buyersItemIdentification = null): self
     {
         $this->buyersItemIdentification = $buyersItemIdentification;
 
@@ -943,10 +943,10 @@ class ItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\SellersItemIdentification $sellersItemIdentification
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SellersItemIdentification|null $sellersItemIdentification
      * @return self
      */
-    public function setSellersItemIdentification(SellersItemIdentification $sellersItemIdentification): self
+    public function setSellersItemIdentification(?SellersItemIdentification $sellersItemIdentification = null): self
     {
         $this->sellersItemIdentification = $sellersItemIdentification;
 
@@ -962,10 +962,10 @@ class ItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ManufacturersItemIdentification> $manufacturersItemIdentification
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ManufacturersItemIdentification>|null $manufacturersItemIdentification
      * @return self
      */
-    public function setManufacturersItemIdentification(array $manufacturersItemIdentification): self
+    public function setManufacturersItemIdentification(?array $manufacturersItemIdentification = null): self
     {
         $this->manufacturersItemIdentification = $manufacturersItemIdentification;
 
@@ -1055,11 +1055,12 @@ class ItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\StandardItemIdentification $standardItemIdentification
+     * @param \horstoeko\invoicesuite\models\ubl\cac\StandardItemIdentification|null $standardItemIdentification
      * @return self
      */
-    public function setStandardItemIdentification(StandardItemIdentification $standardItemIdentification): self
-    {
+    public function setStandardItemIdentification(
+        ?StandardItemIdentification $standardItemIdentification = null,
+    ): self {
         $this->standardItemIdentification = $standardItemIdentification;
 
         return $this;
@@ -1084,11 +1085,12 @@ class ItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\CatalogueItemIdentification $catalogueItemIdentification
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CatalogueItemIdentification|null $catalogueItemIdentification
      * @return self
      */
-    public function setCatalogueItemIdentification(CatalogueItemIdentification $catalogueItemIdentification): self
-    {
+    public function setCatalogueItemIdentification(
+        ?CatalogueItemIdentification $catalogueItemIdentification = null,
+    ): self {
         $this->catalogueItemIdentification = $catalogueItemIdentification;
 
         return $this;
@@ -1103,10 +1105,10 @@ class ItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemIdentification> $additionalItemIdentification
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemIdentification>|null $additionalItemIdentification
      * @return self
      */
-    public function setAdditionalItemIdentification(array $additionalItemIdentification): self
+    public function setAdditionalItemIdentification(?array $additionalItemIdentification = null): self
     {
         $this->additionalItemIdentification = $additionalItemIdentification;
 
@@ -1196,11 +1198,12 @@ class ItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\CatalogueDocumentReference $catalogueDocumentReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CatalogueDocumentReference|null $catalogueDocumentReference
      * @return self
      */
-    public function setCatalogueDocumentReference(CatalogueDocumentReference $catalogueDocumentReference): self
-    {
+    public function setCatalogueDocumentReference(
+        ?CatalogueDocumentReference $catalogueDocumentReference = null,
+    ): self {
         $this->catalogueDocumentReference = $catalogueDocumentReference;
 
         return $this;
@@ -1215,10 +1218,10 @@ class ItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ItemSpecificationDocumentReference> $itemSpecificationDocumentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ItemSpecificationDocumentReference>|null $itemSpecificationDocumentReference
      * @return self
      */
-    public function setItemSpecificationDocumentReference(array $itemSpecificationDocumentReference): self
+    public function setItemSpecificationDocumentReference(?array $itemSpecificationDocumentReference = null): self
     {
         $this->itemSpecificationDocumentReference = $itemSpecificationDocumentReference;
 
@@ -1308,10 +1311,10 @@ class ItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\OriginCountry $originCountry
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OriginCountry|null $originCountry
      * @return self
      */
-    public function setOriginCountry(OriginCountry $originCountry): self
+    public function setOriginCountry(?OriginCountry $originCountry = null): self
     {
         $this->originCountry = $originCountry;
 
@@ -1327,10 +1330,10 @@ class ItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CommodityClassification> $commodityClassification
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CommodityClassification>|null $commodityClassification
      * @return self
      */
-    public function setCommodityClassification(array $commodityClassification): self
+    public function setCommodityClassification(?array $commodityClassification = null): self
     {
         $this->commodityClassification = $commodityClassification;
 
@@ -1408,10 +1411,10 @@ class ItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TransactionConditions> $transactionConditions
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TransactionConditions>|null $transactionConditions
      * @return self
      */
-    public function setTransactionConditions(array $transactionConditions): self
+    public function setTransactionConditions(?array $transactionConditions = null): self
     {
         $this->transactionConditions = $transactionConditions;
 
@@ -1489,10 +1492,10 @@ class ItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\HazardousItem> $hazardousItem
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\HazardousItem>|null $hazardousItem
      * @return self
      */
-    public function setHazardousItem(array $hazardousItem): self
+    public function setHazardousItem(?array $hazardousItem = null): self
     {
         $this->hazardousItem = $hazardousItem;
 
@@ -1570,10 +1573,10 @@ class ItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ClassifiedTaxCategory> $classifiedTaxCategory
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ClassifiedTaxCategory>|null $classifiedTaxCategory
      * @return self
      */
-    public function setClassifiedTaxCategory(array $classifiedTaxCategory): self
+    public function setClassifiedTaxCategory(?array $classifiedTaxCategory = null): self
     {
         $this->classifiedTaxCategory = $classifiedTaxCategory;
 
@@ -1651,10 +1654,10 @@ class ItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty> $additionalItemProperty
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty>|null $additionalItemProperty
      * @return self
      */
-    public function setAdditionalItemProperty(array $additionalItemProperty): self
+    public function setAdditionalItemProperty(?array $additionalItemProperty = null): self
     {
         $this->additionalItemProperty = $additionalItemProperty;
 
@@ -1732,10 +1735,10 @@ class ItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ManufacturerParty> $manufacturerParty
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ManufacturerParty>|null $manufacturerParty
      * @return self
      */
-    public function setManufacturerParty(array $manufacturerParty): self
+    public function setManufacturerParty(?array $manufacturerParty = null): self
     {
         $this->manufacturerParty = $manufacturerParty;
 
@@ -1823,11 +1826,11 @@ class ItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\InformationContentProviderParty $informationContentProviderParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\InformationContentProviderParty|null $informationContentProviderParty
      * @return self
      */
     public function setInformationContentProviderParty(
-        InformationContentProviderParty $informationContentProviderParty,
+        ?InformationContentProviderParty $informationContentProviderParty = null,
     ): self {
         $this->informationContentProviderParty = $informationContentProviderParty;
 
@@ -1843,10 +1846,10 @@ class ItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\OriginAddress> $originAddress
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\OriginAddress>|null $originAddress
      * @return self
      */
-    public function setOriginAddress(array $originAddress): self
+    public function setOriginAddress(?array $originAddress = null): self
     {
         $this->originAddress = $originAddress;
 
@@ -1924,10 +1927,10 @@ class ItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ItemInstance> $itemInstance
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ItemInstance>|null $itemInstance
      * @return self
      */
-    public function setItemInstance(array $itemInstance): self
+    public function setItemInstance(?array $itemInstance = null): self
     {
         $this->itemInstance = $itemInstance;
 
@@ -2005,10 +2008,10 @@ class ItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Certificate> $certificate
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Certificate>|null $certificate
      * @return self
      */
-    public function setCertificate(array $certificate): self
+    public function setCertificate(?array $certificate = null): self
     {
         $this->certificate = $certificate;
 
@@ -2086,10 +2089,10 @@ class ItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Dimension> $dimension
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Dimension>|null $dimension
      * @return self
      */
-    public function setDimension(array $dimension): self
+    public function setDimension(?array $dimension = null): self
     {
         $this->dimension = $dimension;
 

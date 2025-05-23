@@ -15,7 +15,7 @@ class ForecastRevisionLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -26,7 +26,7 @@ class ForecastRevisionLineType
     private $iD;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -38,7 +38,7 @@ class ForecastRevisionLineType
     private $note;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -50,7 +50,7 @@ class ForecastRevisionLineType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\RevisedForecastLineID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\RevisedForecastLineID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\RevisedForecastLineID")
      * @JMS\Expose
@@ -61,7 +61,7 @@ class ForecastRevisionLineType
     private $revisedForecastLineID;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -72,7 +72,7 @@ class ForecastRevisionLineType
     private $sourceForecastIssueDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -83,7 +83,7 @@ class ForecastRevisionLineType
     private $sourceForecastIssueTime;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AdjustmentReasonCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AdjustmentReasonCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AdjustmentReasonCode")
      * @JMS\Expose
@@ -94,7 +94,7 @@ class ForecastRevisionLineType
     private $adjustmentReasonCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ForecastPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ForecastPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ForecastPeriod")
      * @JMS\Expose
@@ -105,7 +105,7 @@ class ForecastRevisionLineType
     private $forecastPeriod;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\SalesItem
+     * @var \horstoeko\invoicesuite\models\ubl\cac\SalesItem|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\SalesItem")
      * @JMS\Expose
@@ -134,10 +134,10 @@ class ForecastRevisionLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -153,10 +153,10 @@ class ForecastRevisionLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -234,10 +234,10 @@ class ForecastRevisionLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -325,10 +325,10 @@ class ForecastRevisionLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\RevisedForecastLineID $revisedForecastLineID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\RevisedForecastLineID|null $revisedForecastLineID
      * @return self
      */
-    public function setRevisedForecastLineID(RevisedForecastLineID $revisedForecastLineID): self
+    public function setRevisedForecastLineID(?RevisedForecastLineID $revisedForecastLineID = null): self
     {
         $this->revisedForecastLineID = $revisedForecastLineID;
 
@@ -344,10 +344,10 @@ class ForecastRevisionLineType
     }
 
     /**
-     * @param \DateTimeInterface $sourceForecastIssueDate
+     * @param \DateTimeInterface|null $sourceForecastIssueDate
      * @return self
      */
-    public function setSourceForecastIssueDate(\DateTimeInterface $sourceForecastIssueDate): self
+    public function setSourceForecastIssueDate(?\DateTimeInterface $sourceForecastIssueDate = null): self
     {
         $this->sourceForecastIssueDate = $sourceForecastIssueDate;
 
@@ -363,10 +363,10 @@ class ForecastRevisionLineType
     }
 
     /**
-     * @param \DateTimeInterface $sourceForecastIssueTime
+     * @param \DateTimeInterface|null $sourceForecastIssueTime
      * @return self
      */
-    public function setSourceForecastIssueTime(\DateTimeInterface $sourceForecastIssueTime): self
+    public function setSourceForecastIssueTime(?\DateTimeInterface $sourceForecastIssueTime = null): self
     {
         $this->sourceForecastIssueTime = $sourceForecastIssueTime;
 
@@ -392,10 +392,10 @@ class ForecastRevisionLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AdjustmentReasonCode $adjustmentReasonCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AdjustmentReasonCode|null $adjustmentReasonCode
      * @return self
      */
-    public function setAdjustmentReasonCode(AdjustmentReasonCode $adjustmentReasonCode): self
+    public function setAdjustmentReasonCode(?AdjustmentReasonCode $adjustmentReasonCode = null): self
     {
         $this->adjustmentReasonCode = $adjustmentReasonCode;
 
@@ -421,10 +421,10 @@ class ForecastRevisionLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ForecastPeriod $forecastPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ForecastPeriod|null $forecastPeriod
      * @return self
      */
-    public function setForecastPeriod(ForecastPeriod $forecastPeriod): self
+    public function setForecastPeriod(?ForecastPeriod $forecastPeriod = null): self
     {
         $this->forecastPeriod = $forecastPeriod;
 
@@ -450,10 +450,10 @@ class ForecastRevisionLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\SalesItem $salesItem
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SalesItem|null $salesItem
      * @return self
      */
-    public function setSalesItem(SalesItem $salesItem): self
+    public function setSalesItem(?SalesItem $salesItem = null): self
     {
         $this->salesItem = $salesItem;
 

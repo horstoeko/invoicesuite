@@ -10,7 +10,7 @@ class LineResponseType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\LineReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\LineReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\LineReference")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class LineResponseType
     private $lineReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Response>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Response>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Response>")
      * @JMS\Expose
@@ -51,10 +51,10 @@ class LineResponseType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\LineReference $lineReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\LineReference|null $lineReference
      * @return self
      */
-    public function setLineReference(LineReference $lineReference): self
+    public function setLineReference(?LineReference $lineReference = null): self
     {
         $this->lineReference = $lineReference;
 
@@ -70,10 +70,10 @@ class LineResponseType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Response> $response
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Response>|null $response
      * @return self
      */
-    public function setResponse(array $response): self
+    public function setResponse(?array $response = null): self
     {
         $this->response = $response;
 

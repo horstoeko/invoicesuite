@@ -10,7 +10,7 @@ class IdentifierType
     use HandlesObjectFlags;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class IdentifierType
     private $value;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class IdentifierType
     private $schemeID;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -43,7 +43,7 @@ class IdentifierType
     private $schemeName;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -54,7 +54,7 @@ class IdentifierType
     private $schemeAgencyID;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -65,7 +65,7 @@ class IdentifierType
     private $schemeAgencyName;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -76,7 +76,7 @@ class IdentifierType
     private $schemeVersionID;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -87,7 +87,7 @@ class IdentifierType
     private $schemeDataURI;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -106,10 +106,10 @@ class IdentifierType
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return self
      */
-    public function setValue(string $value): self
+    public function setValue(?string $value = null): self
     {
         $this->value = $value;
 
@@ -125,10 +125,10 @@ class IdentifierType
     }
 
     /**
-     * @param string $schemeID
+     * @param string|null $schemeID
      * @return self
      */
-    public function setSchemeID(string $schemeID): self
+    public function setSchemeID(?string $schemeID = null): self
     {
         $this->schemeID = $schemeID;
 
@@ -144,10 +144,10 @@ class IdentifierType
     }
 
     /**
-     * @param string $schemeName
+     * @param string|null $schemeName
      * @return self
      */
-    public function setSchemeName(string $schemeName): self
+    public function setSchemeName(?string $schemeName = null): self
     {
         $this->schemeName = $schemeName;
 
@@ -163,10 +163,10 @@ class IdentifierType
     }
 
     /**
-     * @param string $schemeAgencyID
+     * @param string|null $schemeAgencyID
      * @return self
      */
-    public function setSchemeAgencyID(string $schemeAgencyID): self
+    public function setSchemeAgencyID(?string $schemeAgencyID = null): self
     {
         $this->schemeAgencyID = $schemeAgencyID;
 
@@ -182,10 +182,10 @@ class IdentifierType
     }
 
     /**
-     * @param string $schemeAgencyName
+     * @param string|null $schemeAgencyName
      * @return self
      */
-    public function setSchemeAgencyName(string $schemeAgencyName): self
+    public function setSchemeAgencyName(?string $schemeAgencyName = null): self
     {
         $this->schemeAgencyName = $schemeAgencyName;
 
@@ -201,10 +201,10 @@ class IdentifierType
     }
 
     /**
-     * @param string $schemeVersionID
+     * @param string|null $schemeVersionID
      * @return self
      */
-    public function setSchemeVersionID(string $schemeVersionID): self
+    public function setSchemeVersionID(?string $schemeVersionID = null): self
     {
         $this->schemeVersionID = $schemeVersionID;
 
@@ -220,10 +220,10 @@ class IdentifierType
     }
 
     /**
-     * @param string $schemeDataURI
+     * @param string|null $schemeDataURI
      * @return self
      */
-    public function setSchemeDataURI(string $schemeDataURI): self
+    public function setSchemeDataURI(?string $schemeDataURI = null): self
     {
         $this->schemeDataURI = $schemeDataURI;
 
@@ -239,10 +239,10 @@ class IdentifierType
     }
 
     /**
-     * @param string $schemeURI
+     * @param string|null $schemeURI
      * @return self
      */
-    public function setSchemeURI(string $schemeURI): self
+    public function setSchemeURI(?string $schemeURI = null): self
     {
         $this->schemeURI = $schemeURI;
 

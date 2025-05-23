@@ -30,7 +30,7 @@ class DateTimeType
     }
 
     /**
-     * @return DateTime
+     * @return DateTime|null
      */
     public function getValueWithCreate(): DateTime
     {
@@ -43,7 +43,7 @@ class DateTimeType
      * @param DateTime $value
      * @return self
      */
-    public function setValue(DateTime $value): self
+    public function setValue(?DateTime $value = null): self
     {
         $this->value = $value;
 

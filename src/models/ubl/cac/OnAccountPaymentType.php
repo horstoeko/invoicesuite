@@ -12,7 +12,7 @@ class OnAccountPaymentType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\EstimatedConsumedQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\EstimatedConsumedQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\EstimatedConsumedQuantity")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class OnAccountPaymentType
     private $estimatedConsumedQuantity;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class OnAccountPaymentType
     private $note;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>")
      * @JMS\Expose
@@ -65,10 +65,10 @@ class OnAccountPaymentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\EstimatedConsumedQuantity $estimatedConsumedQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\EstimatedConsumedQuantity|null $estimatedConsumedQuantity
      * @return self
      */
-    public function setEstimatedConsumedQuantity(EstimatedConsumedQuantity $estimatedConsumedQuantity): self
+    public function setEstimatedConsumedQuantity(?EstimatedConsumedQuantity $estimatedConsumedQuantity = null): self
     {
         $this->estimatedConsumedQuantity = $estimatedConsumedQuantity;
 
@@ -84,10 +84,10 @@ class OnAccountPaymentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -165,10 +165,10 @@ class OnAccountPaymentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms> $paymentTerms
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>|null $paymentTerms
      * @return self
      */
-    public function setPaymentTerms(array $paymentTerms): self
+    public function setPaymentTerms(?array $paymentTerms = null): self
     {
         $this->paymentTerms = $paymentTerms;
 

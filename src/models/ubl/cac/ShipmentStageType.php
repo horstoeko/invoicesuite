@@ -20,7 +20,7 @@ class ShipmentStageType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -31,7 +31,7 @@ class ShipmentStageType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransportModeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransportModeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TransportModeCode")
      * @JMS\Expose
@@ -42,7 +42,7 @@ class ShipmentStageType
     private $transportModeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransportMeansTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransportMeansTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TransportMeansTypeCode")
      * @JMS\Expose
@@ -53,7 +53,7 @@ class ShipmentStageType
     private $transportMeansTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransitDirectionCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransitDirectionCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TransitDirectionCode")
      * @JMS\Expose
@@ -64,7 +64,7 @@ class ShipmentStageType
     private $transitDirectionCode;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -75,7 +75,7 @@ class ShipmentStageType
     private $preCarriageIndicator;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -86,7 +86,7 @@ class ShipmentStageType
     private $onCarriageIndicator;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -97,7 +97,7 @@ class ShipmentStageType
     private $estimatedDeliveryDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -108,7 +108,7 @@ class ShipmentStageType
     private $estimatedDeliveryTime;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -119,7 +119,7 @@ class ShipmentStageType
     private $requiredDeliveryDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -130,7 +130,7 @@ class ShipmentStageType
     private $requiredDeliveryTime;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LoadingSequenceID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LoadingSequenceID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LoadingSequenceID")
      * @JMS\Expose
@@ -141,7 +141,7 @@ class ShipmentStageType
     private $loadingSequenceID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SuccessiveSequenceID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SuccessiveSequenceID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SuccessiveSequenceID")
      * @JMS\Expose
@@ -152,7 +152,7 @@ class ShipmentStageType
     private $successiveSequenceID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Instructions>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Instructions>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Instructions>")
      * @JMS\Expose
@@ -164,7 +164,7 @@ class ShipmentStageType
     private $instructions;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\DemurrageInstructions>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\DemurrageInstructions>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\DemurrageInstructions>")
      * @JMS\Expose
@@ -176,7 +176,7 @@ class ShipmentStageType
     private $demurrageInstructions;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CrewQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CrewQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CrewQuantity")
      * @JMS\Expose
@@ -187,7 +187,7 @@ class ShipmentStageType
     private $crewQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PassengerQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PassengerQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PassengerQuantity")
      * @JMS\Expose
@@ -198,7 +198,7 @@ class ShipmentStageType
     private $passengerQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TransitPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TransitPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TransitPeriod")
      * @JMS\Expose
@@ -209,7 +209,7 @@ class ShipmentStageType
     private $transitPeriod;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CarrierParty>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CarrierParty>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\CarrierParty>")
      * @JMS\Expose
@@ -221,7 +221,7 @@ class ShipmentStageType
     private $carrierParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TransportMeans
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TransportMeans|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TransportMeans")
      * @JMS\Expose
@@ -232,7 +232,7 @@ class ShipmentStageType
     private $transportMeans;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\LoadingPortLocation
+     * @var \horstoeko\invoicesuite\models\ubl\cac\LoadingPortLocation|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\LoadingPortLocation")
      * @JMS\Expose
@@ -243,7 +243,7 @@ class ShipmentStageType
     private $loadingPortLocation;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\UnloadingPortLocation
+     * @var \horstoeko\invoicesuite\models\ubl\cac\UnloadingPortLocation|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\UnloadingPortLocation")
      * @JMS\Expose
@@ -254,7 +254,7 @@ class ShipmentStageType
     private $unloadingPortLocation;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TransshipPortLocation
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TransshipPortLocation|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TransshipPortLocation")
      * @JMS\Expose
@@ -265,7 +265,7 @@ class ShipmentStageType
     private $transshipPortLocation;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\LoadingTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\LoadingTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\LoadingTransportEvent")
      * @JMS\Expose
@@ -276,7 +276,7 @@ class ShipmentStageType
     private $loadingTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ExaminationTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ExaminationTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ExaminationTransportEvent")
      * @JMS\Expose
@@ -287,7 +287,7 @@ class ShipmentStageType
     private $examinationTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\AvailabilityTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\AvailabilityTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\AvailabilityTransportEvent")
      * @JMS\Expose
@@ -298,7 +298,7 @@ class ShipmentStageType
     private $availabilityTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ExportationTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ExportationTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ExportationTransportEvent")
      * @JMS\Expose
@@ -309,7 +309,7 @@ class ShipmentStageType
     private $exportationTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\DischargeTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\DischargeTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\DischargeTransportEvent")
      * @JMS\Expose
@@ -320,7 +320,7 @@ class ShipmentStageType
     private $dischargeTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\WarehousingTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\WarehousingTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\WarehousingTransportEvent")
      * @JMS\Expose
@@ -331,7 +331,7 @@ class ShipmentStageType
     private $warehousingTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TakeoverTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TakeoverTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TakeoverTransportEvent")
      * @JMS\Expose
@@ -342,7 +342,7 @@ class ShipmentStageType
     private $takeoverTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\OptionalTakeoverTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\OptionalTakeoverTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\OptionalTakeoverTransportEvent")
      * @JMS\Expose
@@ -353,7 +353,7 @@ class ShipmentStageType
     private $optionalTakeoverTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\DropoffTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\DropoffTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\DropoffTransportEvent")
      * @JMS\Expose
@@ -364,7 +364,7 @@ class ShipmentStageType
     private $dropoffTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ActualPickupTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ActualPickupTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ActualPickupTransportEvent")
      * @JMS\Expose
@@ -375,7 +375,7 @@ class ShipmentStageType
     private $actualPickupTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\DeliveryTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\DeliveryTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\DeliveryTransportEvent")
      * @JMS\Expose
@@ -386,7 +386,7 @@ class ShipmentStageType
     private $deliveryTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ReceiptTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ReceiptTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ReceiptTransportEvent")
      * @JMS\Expose
@@ -397,7 +397,7 @@ class ShipmentStageType
     private $receiptTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\StorageTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\StorageTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\StorageTransportEvent")
      * @JMS\Expose
@@ -408,7 +408,7 @@ class ShipmentStageType
     private $storageTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\AcceptanceTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\AcceptanceTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\AcceptanceTransportEvent")
      * @JMS\Expose
@@ -419,7 +419,7 @@ class ShipmentStageType
     private $acceptanceTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TerminalOperatorParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TerminalOperatorParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TerminalOperatorParty")
      * @JMS\Expose
@@ -430,7 +430,7 @@ class ShipmentStageType
     private $terminalOperatorParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\CustomsAgentParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\CustomsAgentParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\CustomsAgentParty")
      * @JMS\Expose
@@ -441,7 +441,7 @@ class ShipmentStageType
     private $customsAgentParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\EstimatedTransitPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\EstimatedTransitPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\EstimatedTransitPeriod")
      * @JMS\Expose
@@ -452,7 +452,7 @@ class ShipmentStageType
     private $estimatedTransitPeriod;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge>")
      * @JMS\Expose
@@ -464,7 +464,7 @@ class ShipmentStageType
     private $freightAllowanceCharge;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\FreightChargeLocation
+     * @var \horstoeko\invoicesuite\models\ubl\cac\FreightChargeLocation|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\FreightChargeLocation")
      * @JMS\Expose
@@ -475,7 +475,7 @@ class ShipmentStageType
     private $freightChargeLocation;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DetentionTransportEvent>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DetentionTransportEvent>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DetentionTransportEvent>")
      * @JMS\Expose
@@ -487,7 +487,7 @@ class ShipmentStageType
     private $detentionTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\RequestedDepartureTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\RequestedDepartureTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\RequestedDepartureTransportEvent")
      * @JMS\Expose
@@ -498,7 +498,7 @@ class ShipmentStageType
     private $requestedDepartureTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\RequestedArrivalTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\RequestedArrivalTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\RequestedArrivalTransportEvent")
      * @JMS\Expose
@@ -509,7 +509,7 @@ class ShipmentStageType
     private $requestedArrivalTransportEvent;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\RequestedWaypointTransportEvent>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\RequestedWaypointTransportEvent>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\RequestedWaypointTransportEvent>")
      * @JMS\Expose
@@ -521,7 +521,7 @@ class ShipmentStageType
     private $requestedWaypointTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PlannedDepartureTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PlannedDepartureTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PlannedDepartureTransportEvent")
      * @JMS\Expose
@@ -532,7 +532,7 @@ class ShipmentStageType
     private $plannedDepartureTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PlannedArrivalTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PlannedArrivalTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PlannedArrivalTransportEvent")
      * @JMS\Expose
@@ -543,7 +543,7 @@ class ShipmentStageType
     private $plannedArrivalTransportEvent;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PlannedWaypointTransportEvent>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PlannedWaypointTransportEvent>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PlannedWaypointTransportEvent>")
      * @JMS\Expose
@@ -555,7 +555,7 @@ class ShipmentStageType
     private $plannedWaypointTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ActualDepartureTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ActualDepartureTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ActualDepartureTransportEvent")
      * @JMS\Expose
@@ -566,7 +566,7 @@ class ShipmentStageType
     private $actualDepartureTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ActualWaypointTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ActualWaypointTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ActualWaypointTransportEvent")
      * @JMS\Expose
@@ -577,7 +577,7 @@ class ShipmentStageType
     private $actualWaypointTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ActualArrivalTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ActualArrivalTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ActualArrivalTransportEvent")
      * @JMS\Expose
@@ -588,7 +588,7 @@ class ShipmentStageType
     private $actualArrivalTransportEvent;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TransportEvent>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TransportEvent>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TransportEvent>")
      * @JMS\Expose
@@ -600,7 +600,7 @@ class ShipmentStageType
     private $transportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\EstimatedDepartureTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\EstimatedDepartureTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\EstimatedDepartureTransportEvent")
      * @JMS\Expose
@@ -611,7 +611,7 @@ class ShipmentStageType
     private $estimatedDepartureTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\EstimatedArrivalTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\EstimatedArrivalTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\EstimatedArrivalTransportEvent")
      * @JMS\Expose
@@ -622,7 +622,7 @@ class ShipmentStageType
     private $estimatedArrivalTransportEvent;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PassengerPerson>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PassengerPerson>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PassengerPerson>")
      * @JMS\Expose
@@ -634,7 +634,7 @@ class ShipmentStageType
     private $passengerPerson;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DriverPerson>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DriverPerson>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DriverPerson>")
      * @JMS\Expose
@@ -646,7 +646,7 @@ class ShipmentStageType
     private $driverPerson;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ReportingPerson
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ReportingPerson|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ReportingPerson")
      * @JMS\Expose
@@ -657,7 +657,7 @@ class ShipmentStageType
     private $reportingPerson;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CrewMemberPerson>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CrewMemberPerson>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\CrewMemberPerson>")
      * @JMS\Expose
@@ -669,7 +669,7 @@ class ShipmentStageType
     private $crewMemberPerson;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\SecurityOfficerPerson
+     * @var \horstoeko\invoicesuite\models\ubl\cac\SecurityOfficerPerson|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\SecurityOfficerPerson")
      * @JMS\Expose
@@ -680,7 +680,7 @@ class ShipmentStageType
     private $securityOfficerPerson;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\MasterPerson
+     * @var \horstoeko\invoicesuite\models\ubl\cac\MasterPerson|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\MasterPerson")
      * @JMS\Expose
@@ -691,7 +691,7 @@ class ShipmentStageType
     private $masterPerson;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ShipsSurgeonPerson
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ShipsSurgeonPerson|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ShipsSurgeonPerson")
      * @JMS\Expose
@@ -720,10 +720,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -749,10 +749,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransportModeCode $transportModeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransportModeCode|null $transportModeCode
      * @return self
      */
-    public function setTransportModeCode(TransportModeCode $transportModeCode): self
+    public function setTransportModeCode(?TransportModeCode $transportModeCode = null): self
     {
         $this->transportModeCode = $transportModeCode;
 
@@ -778,10 +778,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransportMeansTypeCode $transportMeansTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransportMeansTypeCode|null $transportMeansTypeCode
      * @return self
      */
-    public function setTransportMeansTypeCode(TransportMeansTypeCode $transportMeansTypeCode): self
+    public function setTransportMeansTypeCode(?TransportMeansTypeCode $transportMeansTypeCode = null): self
     {
         $this->transportMeansTypeCode = $transportMeansTypeCode;
 
@@ -807,10 +807,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransitDirectionCode $transitDirectionCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransitDirectionCode|null $transitDirectionCode
      * @return self
      */
-    public function setTransitDirectionCode(TransitDirectionCode $transitDirectionCode): self
+    public function setTransitDirectionCode(?TransitDirectionCode $transitDirectionCode = null): self
     {
         $this->transitDirectionCode = $transitDirectionCode;
 
@@ -826,10 +826,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param bool $preCarriageIndicator
+     * @param bool|null $preCarriageIndicator
      * @return self
      */
-    public function setPreCarriageIndicator(bool $preCarriageIndicator): self
+    public function setPreCarriageIndicator(?bool $preCarriageIndicator = null): self
     {
         $this->preCarriageIndicator = $preCarriageIndicator;
 
@@ -845,10 +845,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param bool $onCarriageIndicator
+     * @param bool|null $onCarriageIndicator
      * @return self
      */
-    public function setOnCarriageIndicator(bool $onCarriageIndicator): self
+    public function setOnCarriageIndicator(?bool $onCarriageIndicator = null): self
     {
         $this->onCarriageIndicator = $onCarriageIndicator;
 
@@ -864,10 +864,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \DateTimeInterface $estimatedDeliveryDate
+     * @param \DateTimeInterface|null $estimatedDeliveryDate
      * @return self
      */
-    public function setEstimatedDeliveryDate(\DateTimeInterface $estimatedDeliveryDate): self
+    public function setEstimatedDeliveryDate(?\DateTimeInterface $estimatedDeliveryDate = null): self
     {
         $this->estimatedDeliveryDate = $estimatedDeliveryDate;
 
@@ -883,10 +883,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \DateTimeInterface $estimatedDeliveryTime
+     * @param \DateTimeInterface|null $estimatedDeliveryTime
      * @return self
      */
-    public function setEstimatedDeliveryTime(\DateTimeInterface $estimatedDeliveryTime): self
+    public function setEstimatedDeliveryTime(?\DateTimeInterface $estimatedDeliveryTime = null): self
     {
         $this->estimatedDeliveryTime = $estimatedDeliveryTime;
 
@@ -902,10 +902,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \DateTimeInterface $requiredDeliveryDate
+     * @param \DateTimeInterface|null $requiredDeliveryDate
      * @return self
      */
-    public function setRequiredDeliveryDate(\DateTimeInterface $requiredDeliveryDate): self
+    public function setRequiredDeliveryDate(?\DateTimeInterface $requiredDeliveryDate = null): self
     {
         $this->requiredDeliveryDate = $requiredDeliveryDate;
 
@@ -921,10 +921,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \DateTimeInterface $requiredDeliveryTime
+     * @param \DateTimeInterface|null $requiredDeliveryTime
      * @return self
      */
-    public function setRequiredDeliveryTime(\DateTimeInterface $requiredDeliveryTime): self
+    public function setRequiredDeliveryTime(?\DateTimeInterface $requiredDeliveryTime = null): self
     {
         $this->requiredDeliveryTime = $requiredDeliveryTime;
 
@@ -950,10 +950,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LoadingSequenceID $loadingSequenceID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LoadingSequenceID|null $loadingSequenceID
      * @return self
      */
-    public function setLoadingSequenceID(LoadingSequenceID $loadingSequenceID): self
+    public function setLoadingSequenceID(?LoadingSequenceID $loadingSequenceID = null): self
     {
         $this->loadingSequenceID = $loadingSequenceID;
 
@@ -979,10 +979,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SuccessiveSequenceID $successiveSequenceID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SuccessiveSequenceID|null $successiveSequenceID
      * @return self
      */
-    public function setSuccessiveSequenceID(SuccessiveSequenceID $successiveSequenceID): self
+    public function setSuccessiveSequenceID(?SuccessiveSequenceID $successiveSequenceID = null): self
     {
         $this->successiveSequenceID = $successiveSequenceID;
 
@@ -998,10 +998,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Instructions> $instructions
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Instructions>|null $instructions
      * @return self
      */
-    public function setInstructions(array $instructions): self
+    public function setInstructions(?array $instructions = null): self
     {
         $this->instructions = $instructions;
 
@@ -1079,10 +1079,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\DemurrageInstructions> $demurrageInstructions
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\DemurrageInstructions>|null $demurrageInstructions
      * @return self
      */
-    public function setDemurrageInstructions(array $demurrageInstructions): self
+    public function setDemurrageInstructions(?array $demurrageInstructions = null): self
     {
         $this->demurrageInstructions = $demurrageInstructions;
 
@@ -1170,10 +1170,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CrewQuantity $crewQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CrewQuantity|null $crewQuantity
      * @return self
      */
-    public function setCrewQuantity(CrewQuantity $crewQuantity): self
+    public function setCrewQuantity(?CrewQuantity $crewQuantity = null): self
     {
         $this->crewQuantity = $crewQuantity;
 
@@ -1199,10 +1199,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PassengerQuantity $passengerQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PassengerQuantity|null $passengerQuantity
      * @return self
      */
-    public function setPassengerQuantity(PassengerQuantity $passengerQuantity): self
+    public function setPassengerQuantity(?PassengerQuantity $passengerQuantity = null): self
     {
         $this->passengerQuantity = $passengerQuantity;
 
@@ -1228,10 +1228,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TransitPeriod $transitPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TransitPeriod|null $transitPeriod
      * @return self
      */
-    public function setTransitPeriod(TransitPeriod $transitPeriod): self
+    public function setTransitPeriod(?TransitPeriod $transitPeriod = null): self
     {
         $this->transitPeriod = $transitPeriod;
 
@@ -1247,10 +1247,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CarrierParty> $carrierParty
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CarrierParty>|null $carrierParty
      * @return self
      */
-    public function setCarrierParty(array $carrierParty): self
+    public function setCarrierParty(?array $carrierParty = null): self
     {
         $this->carrierParty = $carrierParty;
 
@@ -1338,10 +1338,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TransportMeans $transportMeans
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TransportMeans|null $transportMeans
      * @return self
      */
-    public function setTransportMeans(TransportMeans $transportMeans): self
+    public function setTransportMeans(?TransportMeans $transportMeans = null): self
     {
         $this->transportMeans = $transportMeans;
 
@@ -1367,10 +1367,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\LoadingPortLocation $loadingPortLocation
+     * @param \horstoeko\invoicesuite\models\ubl\cac\LoadingPortLocation|null $loadingPortLocation
      * @return self
      */
-    public function setLoadingPortLocation(LoadingPortLocation $loadingPortLocation): self
+    public function setLoadingPortLocation(?LoadingPortLocation $loadingPortLocation = null): self
     {
         $this->loadingPortLocation = $loadingPortLocation;
 
@@ -1396,10 +1396,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\UnloadingPortLocation $unloadingPortLocation
+     * @param \horstoeko\invoicesuite\models\ubl\cac\UnloadingPortLocation|null $unloadingPortLocation
      * @return self
      */
-    public function setUnloadingPortLocation(UnloadingPortLocation $unloadingPortLocation): self
+    public function setUnloadingPortLocation(?UnloadingPortLocation $unloadingPortLocation = null): self
     {
         $this->unloadingPortLocation = $unloadingPortLocation;
 
@@ -1425,10 +1425,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TransshipPortLocation $transshipPortLocation
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TransshipPortLocation|null $transshipPortLocation
      * @return self
      */
-    public function setTransshipPortLocation(TransshipPortLocation $transshipPortLocation): self
+    public function setTransshipPortLocation(?TransshipPortLocation $transshipPortLocation = null): self
     {
         $this->transshipPortLocation = $transshipPortLocation;
 
@@ -1454,10 +1454,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\LoadingTransportEvent $loadingTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\LoadingTransportEvent|null $loadingTransportEvent
      * @return self
      */
-    public function setLoadingTransportEvent(LoadingTransportEvent $loadingTransportEvent): self
+    public function setLoadingTransportEvent(?LoadingTransportEvent $loadingTransportEvent = null): self
     {
         $this->loadingTransportEvent = $loadingTransportEvent;
 
@@ -1483,10 +1483,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ExaminationTransportEvent $examinationTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ExaminationTransportEvent|null $examinationTransportEvent
      * @return self
      */
-    public function setExaminationTransportEvent(ExaminationTransportEvent $examinationTransportEvent): self
+    public function setExaminationTransportEvent(?ExaminationTransportEvent $examinationTransportEvent = null): self
     {
         $this->examinationTransportEvent = $examinationTransportEvent;
 
@@ -1512,11 +1512,12 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\AvailabilityTransportEvent $availabilityTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AvailabilityTransportEvent|null $availabilityTransportEvent
      * @return self
      */
-    public function setAvailabilityTransportEvent(AvailabilityTransportEvent $availabilityTransportEvent): self
-    {
+    public function setAvailabilityTransportEvent(
+        ?AvailabilityTransportEvent $availabilityTransportEvent = null,
+    ): self {
         $this->availabilityTransportEvent = $availabilityTransportEvent;
 
         return $this;
@@ -1541,10 +1542,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ExportationTransportEvent $exportationTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ExportationTransportEvent|null $exportationTransportEvent
      * @return self
      */
-    public function setExportationTransportEvent(ExportationTransportEvent $exportationTransportEvent): self
+    public function setExportationTransportEvent(?ExportationTransportEvent $exportationTransportEvent = null): self
     {
         $this->exportationTransportEvent = $exportationTransportEvent;
 
@@ -1570,10 +1571,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\DischargeTransportEvent $dischargeTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DischargeTransportEvent|null $dischargeTransportEvent
      * @return self
      */
-    public function setDischargeTransportEvent(DischargeTransportEvent $dischargeTransportEvent): self
+    public function setDischargeTransportEvent(?DischargeTransportEvent $dischargeTransportEvent = null): self
     {
         $this->dischargeTransportEvent = $dischargeTransportEvent;
 
@@ -1599,10 +1600,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\WarehousingTransportEvent $warehousingTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\WarehousingTransportEvent|null $warehousingTransportEvent
      * @return self
      */
-    public function setWarehousingTransportEvent(WarehousingTransportEvent $warehousingTransportEvent): self
+    public function setWarehousingTransportEvent(?WarehousingTransportEvent $warehousingTransportEvent = null): self
     {
         $this->warehousingTransportEvent = $warehousingTransportEvent;
 
@@ -1628,10 +1629,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TakeoverTransportEvent $takeoverTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TakeoverTransportEvent|null $takeoverTransportEvent
      * @return self
      */
-    public function setTakeoverTransportEvent(TakeoverTransportEvent $takeoverTransportEvent): self
+    public function setTakeoverTransportEvent(?TakeoverTransportEvent $takeoverTransportEvent = null): self
     {
         $this->takeoverTransportEvent = $takeoverTransportEvent;
 
@@ -1657,11 +1658,11 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\OptionalTakeoverTransportEvent $optionalTakeoverTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OptionalTakeoverTransportEvent|null $optionalTakeoverTransportEvent
      * @return self
      */
     public function setOptionalTakeoverTransportEvent(
-        OptionalTakeoverTransportEvent $optionalTakeoverTransportEvent,
+        ?OptionalTakeoverTransportEvent $optionalTakeoverTransportEvent = null,
     ): self {
         $this->optionalTakeoverTransportEvent = $optionalTakeoverTransportEvent;
 
@@ -1687,10 +1688,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\DropoffTransportEvent $dropoffTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DropoffTransportEvent|null $dropoffTransportEvent
      * @return self
      */
-    public function setDropoffTransportEvent(DropoffTransportEvent $dropoffTransportEvent): self
+    public function setDropoffTransportEvent(?DropoffTransportEvent $dropoffTransportEvent = null): self
     {
         $this->dropoffTransportEvent = $dropoffTransportEvent;
 
@@ -1716,11 +1717,12 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ActualPickupTransportEvent $actualPickupTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ActualPickupTransportEvent|null $actualPickupTransportEvent
      * @return self
      */
-    public function setActualPickupTransportEvent(ActualPickupTransportEvent $actualPickupTransportEvent): self
-    {
+    public function setActualPickupTransportEvent(
+        ?ActualPickupTransportEvent $actualPickupTransportEvent = null,
+    ): self {
         $this->actualPickupTransportEvent = $actualPickupTransportEvent;
 
         return $this;
@@ -1745,10 +1747,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\DeliveryTransportEvent $deliveryTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DeliveryTransportEvent|null $deliveryTransportEvent
      * @return self
      */
-    public function setDeliveryTransportEvent(DeliveryTransportEvent $deliveryTransportEvent): self
+    public function setDeliveryTransportEvent(?DeliveryTransportEvent $deliveryTransportEvent = null): self
     {
         $this->deliveryTransportEvent = $deliveryTransportEvent;
 
@@ -1774,10 +1776,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ReceiptTransportEvent $receiptTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ReceiptTransportEvent|null $receiptTransportEvent
      * @return self
      */
-    public function setReceiptTransportEvent(ReceiptTransportEvent $receiptTransportEvent): self
+    public function setReceiptTransportEvent(?ReceiptTransportEvent $receiptTransportEvent = null): self
     {
         $this->receiptTransportEvent = $receiptTransportEvent;
 
@@ -1803,10 +1805,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\StorageTransportEvent $storageTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\StorageTransportEvent|null $storageTransportEvent
      * @return self
      */
-    public function setStorageTransportEvent(StorageTransportEvent $storageTransportEvent): self
+    public function setStorageTransportEvent(?StorageTransportEvent $storageTransportEvent = null): self
     {
         $this->storageTransportEvent = $storageTransportEvent;
 
@@ -1832,10 +1834,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\AcceptanceTransportEvent $acceptanceTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AcceptanceTransportEvent|null $acceptanceTransportEvent
      * @return self
      */
-    public function setAcceptanceTransportEvent(AcceptanceTransportEvent $acceptanceTransportEvent): self
+    public function setAcceptanceTransportEvent(?AcceptanceTransportEvent $acceptanceTransportEvent = null): self
     {
         $this->acceptanceTransportEvent = $acceptanceTransportEvent;
 
@@ -1861,10 +1863,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TerminalOperatorParty $terminalOperatorParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TerminalOperatorParty|null $terminalOperatorParty
      * @return self
      */
-    public function setTerminalOperatorParty(TerminalOperatorParty $terminalOperatorParty): self
+    public function setTerminalOperatorParty(?TerminalOperatorParty $terminalOperatorParty = null): self
     {
         $this->terminalOperatorParty = $terminalOperatorParty;
 
@@ -1890,10 +1892,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\CustomsAgentParty $customsAgentParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CustomsAgentParty|null $customsAgentParty
      * @return self
      */
-    public function setCustomsAgentParty(CustomsAgentParty $customsAgentParty): self
+    public function setCustomsAgentParty(?CustomsAgentParty $customsAgentParty = null): self
     {
         $this->customsAgentParty = $customsAgentParty;
 
@@ -1919,10 +1921,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\EstimatedTransitPeriod $estimatedTransitPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EstimatedTransitPeriod|null $estimatedTransitPeriod
      * @return self
      */
-    public function setEstimatedTransitPeriod(EstimatedTransitPeriod $estimatedTransitPeriod): self
+    public function setEstimatedTransitPeriod(?EstimatedTransitPeriod $estimatedTransitPeriod = null): self
     {
         $this->estimatedTransitPeriod = $estimatedTransitPeriod;
 
@@ -1938,10 +1940,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge> $freightAllowanceCharge
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge>|null $freightAllowanceCharge
      * @return self
      */
-    public function setFreightAllowanceCharge(array $freightAllowanceCharge): self
+    public function setFreightAllowanceCharge(?array $freightAllowanceCharge = null): self
     {
         $this->freightAllowanceCharge = $freightAllowanceCharge;
 
@@ -2029,10 +2031,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\FreightChargeLocation $freightChargeLocation
+     * @param \horstoeko\invoicesuite\models\ubl\cac\FreightChargeLocation|null $freightChargeLocation
      * @return self
      */
-    public function setFreightChargeLocation(FreightChargeLocation $freightChargeLocation): self
+    public function setFreightChargeLocation(?FreightChargeLocation $freightChargeLocation = null): self
     {
         $this->freightChargeLocation = $freightChargeLocation;
 
@@ -2048,10 +2050,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DetentionTransportEvent> $detentionTransportEvent
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DetentionTransportEvent>|null $detentionTransportEvent
      * @return self
      */
-    public function setDetentionTransportEvent(array $detentionTransportEvent): self
+    public function setDetentionTransportEvent(?array $detentionTransportEvent = null): self
     {
         $this->detentionTransportEvent = $detentionTransportEvent;
 
@@ -2139,11 +2141,11 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\RequestedDepartureTransportEvent $requestedDepartureTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RequestedDepartureTransportEvent|null $requestedDepartureTransportEvent
      * @return self
      */
     public function setRequestedDepartureTransportEvent(
-        RequestedDepartureTransportEvent $requestedDepartureTransportEvent,
+        ?RequestedDepartureTransportEvent $requestedDepartureTransportEvent = null,
     ): self {
         $this->requestedDepartureTransportEvent = $requestedDepartureTransportEvent;
 
@@ -2169,11 +2171,11 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\RequestedArrivalTransportEvent $requestedArrivalTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RequestedArrivalTransportEvent|null $requestedArrivalTransportEvent
      * @return self
      */
     public function setRequestedArrivalTransportEvent(
-        RequestedArrivalTransportEvent $requestedArrivalTransportEvent,
+        ?RequestedArrivalTransportEvent $requestedArrivalTransportEvent = null,
     ): self {
         $this->requestedArrivalTransportEvent = $requestedArrivalTransportEvent;
 
@@ -2189,10 +2191,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\RequestedWaypointTransportEvent> $requestedWaypointTransportEvent
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\RequestedWaypointTransportEvent>|null $requestedWaypointTransportEvent
      * @return self
      */
-    public function setRequestedWaypointTransportEvent(array $requestedWaypointTransportEvent): self
+    public function setRequestedWaypointTransportEvent(?array $requestedWaypointTransportEvent = null): self
     {
         $this->requestedWaypointTransportEvent = $requestedWaypointTransportEvent;
 
@@ -2282,11 +2284,11 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PlannedDepartureTransportEvent $plannedDepartureTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PlannedDepartureTransportEvent|null $plannedDepartureTransportEvent
      * @return self
      */
     public function setPlannedDepartureTransportEvent(
-        PlannedDepartureTransportEvent $plannedDepartureTransportEvent,
+        ?PlannedDepartureTransportEvent $plannedDepartureTransportEvent = null,
     ): self {
         $this->plannedDepartureTransportEvent = $plannedDepartureTransportEvent;
 
@@ -2312,11 +2314,12 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PlannedArrivalTransportEvent $plannedArrivalTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PlannedArrivalTransportEvent|null $plannedArrivalTransportEvent
      * @return self
      */
-    public function setPlannedArrivalTransportEvent(PlannedArrivalTransportEvent $plannedArrivalTransportEvent): self
-    {
+    public function setPlannedArrivalTransportEvent(
+        ?PlannedArrivalTransportEvent $plannedArrivalTransportEvent = null,
+    ): self {
         $this->plannedArrivalTransportEvent = $plannedArrivalTransportEvent;
 
         return $this;
@@ -2331,10 +2334,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PlannedWaypointTransportEvent> $plannedWaypointTransportEvent
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PlannedWaypointTransportEvent>|null $plannedWaypointTransportEvent
      * @return self
      */
-    public function setPlannedWaypointTransportEvent(array $plannedWaypointTransportEvent): self
+    public function setPlannedWaypointTransportEvent(?array $plannedWaypointTransportEvent = null): self
     {
         $this->plannedWaypointTransportEvent = $plannedWaypointTransportEvent;
 
@@ -2424,11 +2427,11 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ActualDepartureTransportEvent $actualDepartureTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ActualDepartureTransportEvent|null $actualDepartureTransportEvent
      * @return self
      */
     public function setActualDepartureTransportEvent(
-        ActualDepartureTransportEvent $actualDepartureTransportEvent,
+        ?ActualDepartureTransportEvent $actualDepartureTransportEvent = null,
     ): self {
         $this->actualDepartureTransportEvent = $actualDepartureTransportEvent;
 
@@ -2454,11 +2457,12 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ActualWaypointTransportEvent $actualWaypointTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ActualWaypointTransportEvent|null $actualWaypointTransportEvent
      * @return self
      */
-    public function setActualWaypointTransportEvent(ActualWaypointTransportEvent $actualWaypointTransportEvent): self
-    {
+    public function setActualWaypointTransportEvent(
+        ?ActualWaypointTransportEvent $actualWaypointTransportEvent = null,
+    ): self {
         $this->actualWaypointTransportEvent = $actualWaypointTransportEvent;
 
         return $this;
@@ -2483,11 +2487,12 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ActualArrivalTransportEvent $actualArrivalTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ActualArrivalTransportEvent|null $actualArrivalTransportEvent
      * @return self
      */
-    public function setActualArrivalTransportEvent(ActualArrivalTransportEvent $actualArrivalTransportEvent): self
-    {
+    public function setActualArrivalTransportEvent(
+        ?ActualArrivalTransportEvent $actualArrivalTransportEvent = null,
+    ): self {
         $this->actualArrivalTransportEvent = $actualArrivalTransportEvent;
 
         return $this;
@@ -2502,10 +2507,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TransportEvent> $transportEvent
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TransportEvent>|null $transportEvent
      * @return self
      */
-    public function setTransportEvent(array $transportEvent): self
+    public function setTransportEvent(?array $transportEvent = null): self
     {
         $this->transportEvent = $transportEvent;
 
@@ -2593,11 +2598,11 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\EstimatedDepartureTransportEvent $estimatedDepartureTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EstimatedDepartureTransportEvent|null $estimatedDepartureTransportEvent
      * @return self
      */
     public function setEstimatedDepartureTransportEvent(
-        EstimatedDepartureTransportEvent $estimatedDepartureTransportEvent,
+        ?EstimatedDepartureTransportEvent $estimatedDepartureTransportEvent = null,
     ): self {
         $this->estimatedDepartureTransportEvent = $estimatedDepartureTransportEvent;
 
@@ -2623,11 +2628,11 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\EstimatedArrivalTransportEvent $estimatedArrivalTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EstimatedArrivalTransportEvent|null $estimatedArrivalTransportEvent
      * @return self
      */
     public function setEstimatedArrivalTransportEvent(
-        EstimatedArrivalTransportEvent $estimatedArrivalTransportEvent,
+        ?EstimatedArrivalTransportEvent $estimatedArrivalTransportEvent = null,
     ): self {
         $this->estimatedArrivalTransportEvent = $estimatedArrivalTransportEvent;
 
@@ -2643,10 +2648,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PassengerPerson> $passengerPerson
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PassengerPerson>|null $passengerPerson
      * @return self
      */
-    public function setPassengerPerson(array $passengerPerson): self
+    public function setPassengerPerson(?array $passengerPerson = null): self
     {
         $this->passengerPerson = $passengerPerson;
 
@@ -2724,10 +2729,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DriverPerson> $driverPerson
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DriverPerson>|null $driverPerson
      * @return self
      */
-    public function setDriverPerson(array $driverPerson): self
+    public function setDriverPerson(?array $driverPerson = null): self
     {
         $this->driverPerson = $driverPerson;
 
@@ -2815,10 +2820,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ReportingPerson $reportingPerson
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ReportingPerson|null $reportingPerson
      * @return self
      */
-    public function setReportingPerson(ReportingPerson $reportingPerson): self
+    public function setReportingPerson(?ReportingPerson $reportingPerson = null): self
     {
         $this->reportingPerson = $reportingPerson;
 
@@ -2834,10 +2839,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CrewMemberPerson> $crewMemberPerson
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CrewMemberPerson>|null $crewMemberPerson
      * @return self
      */
-    public function setCrewMemberPerson(array $crewMemberPerson): self
+    public function setCrewMemberPerson(?array $crewMemberPerson = null): self
     {
         $this->crewMemberPerson = $crewMemberPerson;
 
@@ -2925,10 +2930,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\SecurityOfficerPerson $securityOfficerPerson
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SecurityOfficerPerson|null $securityOfficerPerson
      * @return self
      */
-    public function setSecurityOfficerPerson(SecurityOfficerPerson $securityOfficerPerson): self
+    public function setSecurityOfficerPerson(?SecurityOfficerPerson $securityOfficerPerson = null): self
     {
         $this->securityOfficerPerson = $securityOfficerPerson;
 
@@ -2954,10 +2959,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\MasterPerson $masterPerson
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MasterPerson|null $masterPerson
      * @return self
      */
-    public function setMasterPerson(MasterPerson $masterPerson): self
+    public function setMasterPerson(?MasterPerson $masterPerson = null): self
     {
         $this->masterPerson = $masterPerson;
 
@@ -2983,10 +2988,10 @@ class ShipmentStageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ShipsSurgeonPerson $shipsSurgeonPerson
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ShipsSurgeonPerson|null $shipsSurgeonPerson
      * @return self
      */
-    public function setShipsSurgeonPerson(ShipsSurgeonPerson $shipsSurgeonPerson): self
+    public function setShipsSurgeonPerson(?ShipsSurgeonPerson $shipsSurgeonPerson = null): self
     {
         $this->shipsSurgeonPerson = $shipsSurgeonPerson;
 

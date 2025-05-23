@@ -11,7 +11,7 @@ class SupplierConsumptionType
     use HandlesObjectFlags;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class SupplierConsumptionType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\UtilitySupplierParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\UtilitySupplierParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\UtilitySupplierParty")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class SupplierConsumptionType
     private $utilitySupplierParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\UtilityCustomerParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\UtilityCustomerParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\UtilityCustomerParty")
      * @JMS\Expose
@@ -45,7 +45,7 @@ class SupplierConsumptionType
     private $utilityCustomerParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Consumption
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Consumption|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Consumption")
      * @JMS\Expose
@@ -56,7 +56,7 @@ class SupplierConsumptionType
     private $consumption;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Contract
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Contract|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Contract")
      * @JMS\Expose
@@ -67,7 +67,7 @@ class SupplierConsumptionType
     private $contract;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ConsumptionLine>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ConsumptionLine>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ConsumptionLine>")
      * @JMS\Expose
@@ -87,10 +87,10 @@ class SupplierConsumptionType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -178,10 +178,10 @@ class SupplierConsumptionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\UtilitySupplierParty $utilitySupplierParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\UtilitySupplierParty|null $utilitySupplierParty
      * @return self
      */
-    public function setUtilitySupplierParty(UtilitySupplierParty $utilitySupplierParty): self
+    public function setUtilitySupplierParty(?UtilitySupplierParty $utilitySupplierParty = null): self
     {
         $this->utilitySupplierParty = $utilitySupplierParty;
 
@@ -207,10 +207,10 @@ class SupplierConsumptionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\UtilityCustomerParty $utilityCustomerParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\UtilityCustomerParty|null $utilityCustomerParty
      * @return self
      */
-    public function setUtilityCustomerParty(UtilityCustomerParty $utilityCustomerParty): self
+    public function setUtilityCustomerParty(?UtilityCustomerParty $utilityCustomerParty = null): self
     {
         $this->utilityCustomerParty = $utilityCustomerParty;
 
@@ -236,10 +236,10 @@ class SupplierConsumptionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Consumption $consumption
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Consumption|null $consumption
      * @return self
      */
-    public function setConsumption(Consumption $consumption): self
+    public function setConsumption(?Consumption $consumption = null): self
     {
         $this->consumption = $consumption;
 
@@ -265,10 +265,10 @@ class SupplierConsumptionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Contract $contract
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Contract|null $contract
      * @return self
      */
-    public function setContract(Contract $contract): self
+    public function setContract(?Contract $contract = null): self
     {
         $this->contract = $contract;
 
@@ -284,10 +284,10 @@ class SupplierConsumptionType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ConsumptionLine> $consumptionLine
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ConsumptionLine>|null $consumptionLine
      * @return self
      */
-    public function setConsumptionLine(array $consumptionLine): self
+    public function setConsumptionLine(?array $consumptionLine = null): self
     {
         $this->consumptionLine = $consumptionLine;
 

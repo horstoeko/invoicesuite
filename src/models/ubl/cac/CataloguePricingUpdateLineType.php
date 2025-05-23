@@ -11,7 +11,7 @@ class CataloguePricingUpdateLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class CataloguePricingUpdateLineType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ContractorCustomerParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ContractorCustomerParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ContractorCustomerParty")
      * @JMS\Expose
@@ -33,7 +33,7 @@ class CataloguePricingUpdateLineType
     private $contractorCustomerParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty")
      * @JMS\Expose
@@ -44,7 +44,7 @@ class CataloguePricingUpdateLineType
     private $sellerSupplierParty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity>")
      * @JMS\Expose
@@ -74,10 +74,10 @@ class CataloguePricingUpdateLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -103,10 +103,10 @@ class CataloguePricingUpdateLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ContractorCustomerParty $contractorCustomerParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ContractorCustomerParty|null $contractorCustomerParty
      * @return self
      */
-    public function setContractorCustomerParty(ContractorCustomerParty $contractorCustomerParty): self
+    public function setContractorCustomerParty(?ContractorCustomerParty $contractorCustomerParty = null): self
     {
         $this->contractorCustomerParty = $contractorCustomerParty;
 
@@ -132,10 +132,10 @@ class CataloguePricingUpdateLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty $sellerSupplierParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty|null $sellerSupplierParty
      * @return self
      */
-    public function setSellerSupplierParty(SellerSupplierParty $sellerSupplierParty): self
+    public function setSellerSupplierParty(?SellerSupplierParty $sellerSupplierParty = null): self
     {
         $this->sellerSupplierParty = $sellerSupplierParty;
 
@@ -151,10 +151,10 @@ class CataloguePricingUpdateLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity> $requiredItemLocationQuantity
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity>|null $requiredItemLocationQuantity
      * @return self
      */
-    public function setRequiredItemLocationQuantity(array $requiredItemLocationQuantity): self
+    public function setRequiredItemLocationQuantity(?array $requiredItemLocationQuantity = null): self
     {
         $this->requiredItemLocationQuantity = $requiredItemLocationQuantity;
 

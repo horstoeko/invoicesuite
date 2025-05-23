@@ -13,7 +13,7 @@ class InstructionForReturnsLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class InstructionForReturnsLineType
     private $iD;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class InstructionForReturnsLineType
     private $note;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Quantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Quantity")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class InstructionForReturnsLineType
     private $quantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ManufacturerParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ManufacturerParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ManufacturerParty")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class InstructionForReturnsLineType
     private $manufacturerParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Item
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Item|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Item")
      * @JMS\Expose
@@ -87,10 +87,10 @@ class InstructionForReturnsLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -106,10 +106,10 @@ class InstructionForReturnsLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -197,10 +197,10 @@ class InstructionForReturnsLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Quantity $quantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null $quantity
      * @return self
      */
-    public function setQuantity(Quantity $quantity): self
+    public function setQuantity(?Quantity $quantity = null): self
     {
         $this->quantity = $quantity;
 
@@ -226,10 +226,10 @@ class InstructionForReturnsLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ManufacturerParty $manufacturerParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ManufacturerParty|null $manufacturerParty
      * @return self
      */
-    public function setManufacturerParty(ManufacturerParty $manufacturerParty): self
+    public function setManufacturerParty(?ManufacturerParty $manufacturerParty = null): self
     {
         $this->manufacturerParty = $manufacturerParty;
 
@@ -255,10 +255,10 @@ class InstructionForReturnsLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Item $item
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Item|null $item
      * @return self
      */
-    public function setItem(Item $item): self
+    public function setItem(?Item $item = null): self
     {
         $this->item = $item;
 

@@ -16,7 +16,7 @@ class SubcontractTermsType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Rate
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Rate|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Rate")
      * @JMS\Expose
@@ -27,7 +27,7 @@ class SubcontractTermsType
     private $rate;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -38,7 +38,7 @@ class SubcontractTermsType
     private $unknownPriceIndicator;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -50,7 +50,7 @@ class SubcontractTermsType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Amount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Amount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Amount")
      * @JMS\Expose
@@ -61,7 +61,7 @@ class SubcontractTermsType
     private $amount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SubcontractingConditionsCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SubcontractingConditionsCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SubcontractingConditionsCode")
      * @JMS\Expose
@@ -72,7 +72,7 @@ class SubcontractTermsType
     private $subcontractingConditionsCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumPercent
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumPercent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MaximumPercent")
      * @JMS\Expose
@@ -83,7 +83,7 @@ class SubcontractTermsType
     private $maximumPercent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MinimumPercent
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MinimumPercent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MinimumPercent")
      * @JMS\Expose
@@ -112,10 +112,10 @@ class SubcontractTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Rate $rate
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Rate|null $rate
      * @return self
      */
-    public function setRate(Rate $rate): self
+    public function setRate(?Rate $rate = null): self
     {
         $this->rate = $rate;
 
@@ -131,10 +131,10 @@ class SubcontractTermsType
     }
 
     /**
-     * @param bool $unknownPriceIndicator
+     * @param bool|null $unknownPriceIndicator
      * @return self
      */
-    public function setUnknownPriceIndicator(bool $unknownPriceIndicator): self
+    public function setUnknownPriceIndicator(?bool $unknownPriceIndicator = null): self
     {
         $this->unknownPriceIndicator = $unknownPriceIndicator;
 
@@ -150,10 +150,10 @@ class SubcontractTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -241,10 +241,10 @@ class SubcontractTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Amount $amount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Amount|null $amount
      * @return self
      */
-    public function setAmount(Amount $amount): self
+    public function setAmount(?Amount $amount = null): self
     {
         $this->amount = $amount;
 
@@ -270,11 +270,12 @@ class SubcontractTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SubcontractingConditionsCode $subcontractingConditionsCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SubcontractingConditionsCode|null $subcontractingConditionsCode
      * @return self
      */
-    public function setSubcontractingConditionsCode(SubcontractingConditionsCode $subcontractingConditionsCode): self
-    {
+    public function setSubcontractingConditionsCode(
+        ?SubcontractingConditionsCode $subcontractingConditionsCode = null,
+    ): self {
         $this->subcontractingConditionsCode = $subcontractingConditionsCode;
 
         return $this;
@@ -299,10 +300,10 @@ class SubcontractTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumPercent $maximumPercent
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumPercent|null $maximumPercent
      * @return self
      */
-    public function setMaximumPercent(MaximumPercent $maximumPercent): self
+    public function setMaximumPercent(?MaximumPercent $maximumPercent = null): self
     {
         $this->maximumPercent = $maximumPercent;
 
@@ -328,10 +329,10 @@ class SubcontractTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MinimumPercent $minimumPercent
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MinimumPercent|null $minimumPercent
      * @return self
      */
-    public function setMinimumPercent(MinimumPercent $minimumPercent): self
+    public function setMinimumPercent(?MinimumPercent $minimumPercent = null): self
     {
         $this->minimumPercent = $minimumPercent;
 

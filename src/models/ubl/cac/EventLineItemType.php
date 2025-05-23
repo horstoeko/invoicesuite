@@ -11,7 +11,7 @@ class EventLineItemType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LineNumberNumeric
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LineNumberNumeric|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LineNumberNumeric")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class EventLineItemType
     private $lineNumberNumeric;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ParticipatingLocationsLocation
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ParticipatingLocationsLocation|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ParticipatingLocationsLocation")
      * @JMS\Expose
@@ -33,7 +33,7 @@ class EventLineItemType
     private $participatingLocationsLocation;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\RetailPlannedImpact>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\RetailPlannedImpact>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\RetailPlannedImpact>")
      * @JMS\Expose
@@ -45,7 +45,7 @@ class EventLineItemType
     private $retailPlannedImpact;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\SupplyItem
+     * @var \horstoeko\invoicesuite\models\ubl\cac\SupplyItem|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\SupplyItem")
      * @JMS\Expose
@@ -74,10 +74,10 @@ class EventLineItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LineNumberNumeric $lineNumberNumeric
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LineNumberNumeric|null $lineNumberNumeric
      * @return self
      */
-    public function setLineNumberNumeric(LineNumberNumeric $lineNumberNumeric): self
+    public function setLineNumberNumeric(?LineNumberNumeric $lineNumberNumeric = null): self
     {
         $this->lineNumberNumeric = $lineNumberNumeric;
 
@@ -103,11 +103,11 @@ class EventLineItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ParticipatingLocationsLocation $participatingLocationsLocation
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ParticipatingLocationsLocation|null $participatingLocationsLocation
      * @return self
      */
     public function setParticipatingLocationsLocation(
-        ParticipatingLocationsLocation $participatingLocationsLocation,
+        ?ParticipatingLocationsLocation $participatingLocationsLocation = null,
     ): self {
         $this->participatingLocationsLocation = $participatingLocationsLocation;
 
@@ -123,10 +123,10 @@ class EventLineItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\RetailPlannedImpact> $retailPlannedImpact
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\RetailPlannedImpact>|null $retailPlannedImpact
      * @return self
      */
-    public function setRetailPlannedImpact(array $retailPlannedImpact): self
+    public function setRetailPlannedImpact(?array $retailPlannedImpact = null): self
     {
         $this->retailPlannedImpact = $retailPlannedImpact;
 
@@ -214,10 +214,10 @@ class EventLineItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\SupplyItem $supplyItem
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SupplyItem|null $supplyItem
      * @return self
      */
-    public function setSupplyItem(SupplyItem $supplyItem): self
+    public function setSupplyItem(?SupplyItem $supplyItem = null): self
     {
         $this->supplyItem = $supplyItem;
 

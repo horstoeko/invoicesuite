@@ -13,7 +13,7 @@ class ResponseType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ReferenceID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ReferenceID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ReferenceID")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class ResponseType
     private $referenceID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ResponseCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ResponseCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ResponseCode")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class ResponseType
     private $responseCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class ResponseType
     private $description;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class ResponseType
     private $effectiveDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -69,7 +69,7 @@ class ResponseType
     private $effectiveTime;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Status>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Status>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Status>")
      * @JMS\Expose
@@ -99,10 +99,10 @@ class ResponseType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ReferenceID $referenceID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ReferenceID|null $referenceID
      * @return self
      */
-    public function setReferenceID(ReferenceID $referenceID): self
+    public function setReferenceID(?ReferenceID $referenceID = null): self
     {
         $this->referenceID = $referenceID;
 
@@ -128,10 +128,10 @@ class ResponseType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ResponseCode $responseCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ResponseCode|null $responseCode
      * @return self
      */
-    public function setResponseCode(ResponseCode $responseCode): self
+    public function setResponseCode(?ResponseCode $responseCode = null): self
     {
         $this->responseCode = $responseCode;
 
@@ -147,10 +147,10 @@ class ResponseType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -228,10 +228,10 @@ class ResponseType
     }
 
     /**
-     * @param \DateTimeInterface $effectiveDate
+     * @param \DateTimeInterface|null $effectiveDate
      * @return self
      */
-    public function setEffectiveDate(\DateTimeInterface $effectiveDate): self
+    public function setEffectiveDate(?\DateTimeInterface $effectiveDate = null): self
     {
         $this->effectiveDate = $effectiveDate;
 
@@ -247,10 +247,10 @@ class ResponseType
     }
 
     /**
-     * @param \DateTimeInterface $effectiveTime
+     * @param \DateTimeInterface|null $effectiveTime
      * @return self
      */
-    public function setEffectiveTime(\DateTimeInterface $effectiveTime): self
+    public function setEffectiveTime(?\DateTimeInterface $effectiveTime = null): self
     {
         $this->effectiveTime = $effectiveTime;
 
@@ -266,10 +266,10 @@ class ResponseType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Status> $status
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Status>|null $status
      * @return self
      */
-    public function setStatus(array $status): self
+    public function setStatus(?array $status = null): self
     {
         $this->status = $status;
 

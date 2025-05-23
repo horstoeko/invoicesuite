@@ -10,7 +10,7 @@ class DocumentResponseType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Response
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Response|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Response")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class DocumentResponseType
     private $response;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DocumentReference>")
      * @JMS\Expose
@@ -33,7 +33,7 @@ class DocumentResponseType
     private $documentReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\IssuerParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\IssuerParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\IssuerParty")
      * @JMS\Expose
@@ -44,7 +44,7 @@ class DocumentResponseType
     private $issuerParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\RecipientParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\RecipientParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\RecipientParty")
      * @JMS\Expose
@@ -55,7 +55,7 @@ class DocumentResponseType
     private $recipientParty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\LineResponse>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\LineResponse>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\LineResponse>")
      * @JMS\Expose
@@ -85,10 +85,10 @@ class DocumentResponseType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Response $response
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Response|null $response
      * @return self
      */
-    public function setResponse(Response $response): self
+    public function setResponse(?Response $response = null): self
     {
         $this->response = $response;
 
@@ -104,10 +104,10 @@ class DocumentResponseType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference> $documentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null $documentReference
      * @return self
      */
-    public function setDocumentReference(array $documentReference): self
+    public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
 
@@ -195,10 +195,10 @@ class DocumentResponseType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\IssuerParty $issuerParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\IssuerParty|null $issuerParty
      * @return self
      */
-    public function setIssuerParty(IssuerParty $issuerParty): self
+    public function setIssuerParty(?IssuerParty $issuerParty = null): self
     {
         $this->issuerParty = $issuerParty;
 
@@ -224,10 +224,10 @@ class DocumentResponseType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\RecipientParty $recipientParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RecipientParty|null $recipientParty
      * @return self
      */
-    public function setRecipientParty(RecipientParty $recipientParty): self
+    public function setRecipientParty(?RecipientParty $recipientParty = null): self
     {
         $this->recipientParty = $recipientParty;
 
@@ -243,10 +243,10 @@ class DocumentResponseType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\LineResponse> $lineResponse
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\LineResponse>|null $lineResponse
      * @return self
      */
-    public function setLineResponse(array $lineResponse): self
+    public function setLineResponse(?array $lineResponse = null): self
     {
         $this->lineResponse = $lineResponse;
 

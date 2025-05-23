@@ -12,7 +12,7 @@ class ActivityPropertyType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Name")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class ActivityPropertyType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Value
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Value|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Value")
      * @JMS\Expose
@@ -52,10 +52,10 @@ class ActivityPropertyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name|null $name
      * @return self
      */
-    public function setName(Name $name): self
+    public function setName(?Name $name = null): self
     {
         $this->name = $name;
 
@@ -81,10 +81,10 @@ class ActivityPropertyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Value $value
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Value|null $value
      * @return self
      */
-    public function setValue(Value $value): self
+    public function setValue(?Value $value = null): self
     {
         $this->value = $value;
 

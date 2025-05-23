@@ -12,7 +12,7 @@ class UBLExtensionType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class UBLExtensionType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Name")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class UBLExtensionType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\ext\ExtensionAgencyID
+     * @var \horstoeko\invoicesuite\models\ubl\ext\ExtensionAgencyID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\ext\ExtensionAgencyID")
      * @JMS\Expose
@@ -45,7 +45,7 @@ class UBLExtensionType
     private $extensionAgencyID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\ext\ExtensionAgencyName
+     * @var \horstoeko\invoicesuite\models\ubl\ext\ExtensionAgencyName|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\ext\ExtensionAgencyName")
      * @JMS\Expose
@@ -56,7 +56,7 @@ class UBLExtensionType
     private $extensionAgencyName;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\ext\ExtensionVersionID
+     * @var \horstoeko\invoicesuite\models\ubl\ext\ExtensionVersionID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\ext\ExtensionVersionID")
      * @JMS\Expose
@@ -67,7 +67,7 @@ class UBLExtensionType
     private $extensionVersionID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\ext\ExtensionAgencyURI
+     * @var \horstoeko\invoicesuite\models\ubl\ext\ExtensionAgencyURI|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\ext\ExtensionAgencyURI")
      * @JMS\Expose
@@ -78,7 +78,7 @@ class UBLExtensionType
     private $extensionAgencyURI;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\ext\ExtensionURI
+     * @var \horstoeko\invoicesuite\models\ubl\ext\ExtensionURI|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\ext\ExtensionURI")
      * @JMS\Expose
@@ -89,7 +89,7 @@ class UBLExtensionType
     private $extensionURI;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\ext\ExtensionReasonCode
+     * @var \horstoeko\invoicesuite\models\ubl\ext\ExtensionReasonCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\ext\ExtensionReasonCode")
      * @JMS\Expose
@@ -100,7 +100,7 @@ class UBLExtensionType
     private $extensionReasonCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\ext\ExtensionReason
+     * @var \horstoeko\invoicesuite\models\ubl\ext\ExtensionReason|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\ext\ExtensionReason")
      * @JMS\Expose
@@ -111,7 +111,7 @@ class UBLExtensionType
     private $extensionReason;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\ext\ExtensionContent
+     * @var \horstoeko\invoicesuite\models\ubl\ext\ExtensionContent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\ext\ExtensionContent")
      * @JMS\Expose
@@ -140,10 +140,10 @@ class UBLExtensionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -169,10 +169,10 @@ class UBLExtensionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name|null $name
      * @return self
      */
-    public function setName(Name $name): self
+    public function setName(?Name $name = null): self
     {
         $this->name = $name;
 
@@ -198,10 +198,10 @@ class UBLExtensionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\ext\ExtensionAgencyID $extensionAgencyID
+     * @param \horstoeko\invoicesuite\models\ubl\ext\ExtensionAgencyID|null $extensionAgencyID
      * @return self
      */
-    public function setExtensionAgencyID(ExtensionAgencyID $extensionAgencyID): self
+    public function setExtensionAgencyID(?ExtensionAgencyID $extensionAgencyID = null): self
     {
         $this->extensionAgencyID = $extensionAgencyID;
 
@@ -227,10 +227,10 @@ class UBLExtensionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\ext\ExtensionAgencyName $extensionAgencyName
+     * @param \horstoeko\invoicesuite\models\ubl\ext\ExtensionAgencyName|null $extensionAgencyName
      * @return self
      */
-    public function setExtensionAgencyName(ExtensionAgencyName $extensionAgencyName): self
+    public function setExtensionAgencyName(?ExtensionAgencyName $extensionAgencyName = null): self
     {
         $this->extensionAgencyName = $extensionAgencyName;
 
@@ -256,10 +256,10 @@ class UBLExtensionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\ext\ExtensionVersionID $extensionVersionID
+     * @param \horstoeko\invoicesuite\models\ubl\ext\ExtensionVersionID|null $extensionVersionID
      * @return self
      */
-    public function setExtensionVersionID(ExtensionVersionID $extensionVersionID): self
+    public function setExtensionVersionID(?ExtensionVersionID $extensionVersionID = null): self
     {
         $this->extensionVersionID = $extensionVersionID;
 
@@ -285,10 +285,10 @@ class UBLExtensionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\ext\ExtensionAgencyURI $extensionAgencyURI
+     * @param \horstoeko\invoicesuite\models\ubl\ext\ExtensionAgencyURI|null $extensionAgencyURI
      * @return self
      */
-    public function setExtensionAgencyURI(ExtensionAgencyURI $extensionAgencyURI): self
+    public function setExtensionAgencyURI(?ExtensionAgencyURI $extensionAgencyURI = null): self
     {
         $this->extensionAgencyURI = $extensionAgencyURI;
 
@@ -314,10 +314,10 @@ class UBLExtensionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\ext\ExtensionURI $extensionURI
+     * @param \horstoeko\invoicesuite\models\ubl\ext\ExtensionURI|null $extensionURI
      * @return self
      */
-    public function setExtensionURI(ExtensionURI $extensionURI): self
+    public function setExtensionURI(?ExtensionURI $extensionURI = null): self
     {
         $this->extensionURI = $extensionURI;
 
@@ -343,10 +343,10 @@ class UBLExtensionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\ext\ExtensionReasonCode $extensionReasonCode
+     * @param \horstoeko\invoicesuite\models\ubl\ext\ExtensionReasonCode|null $extensionReasonCode
      * @return self
      */
-    public function setExtensionReasonCode(ExtensionReasonCode $extensionReasonCode): self
+    public function setExtensionReasonCode(?ExtensionReasonCode $extensionReasonCode = null): self
     {
         $this->extensionReasonCode = $extensionReasonCode;
 
@@ -372,10 +372,10 @@ class UBLExtensionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\ext\ExtensionReason $extensionReason
+     * @param \horstoeko\invoicesuite\models\ubl\ext\ExtensionReason|null $extensionReason
      * @return self
      */
-    public function setExtensionReason(ExtensionReason $extensionReason): self
+    public function setExtensionReason(?ExtensionReason $extensionReason = null): self
     {
         $this->extensionReason = $extensionReason;
 
@@ -401,10 +401,10 @@ class UBLExtensionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\ext\ExtensionContent $extensionContent
+     * @param \horstoeko\invoicesuite\models\ubl\ext\ExtensionContent|null $extensionContent
      * @return self
      */
-    public function setExtensionContent(ExtensionContent $extensionContent): self
+    public function setExtensionContent(?ExtensionContent $extensionContent = null): self
     {
         $this->extensionContent = $extensionContent;
 

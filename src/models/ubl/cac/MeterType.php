@@ -15,7 +15,7 @@ class MeterType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MeterNumber
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MeterNumber|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MeterNumber")
      * @JMS\Expose
@@ -26,7 +26,7 @@ class MeterType
     private $meterNumber;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MeterName
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MeterName|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MeterName")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class MeterType
     private $meterName;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MeterConstant
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MeterConstant|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MeterConstant")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class MeterType
     private $meterConstant;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MeterConstantCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MeterConstantCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MeterConstantCode")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class MeterType
     private $meterConstantCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalDeliveredQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalDeliveredQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TotalDeliveredQuantity")
      * @JMS\Expose
@@ -70,7 +70,7 @@ class MeterType
     private $totalDeliveredQuantity;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\MeterReading>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\MeterReading>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\MeterReading>")
      * @JMS\Expose
@@ -82,7 +82,7 @@ class MeterType
     private $meterReading;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\MeterProperty>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\MeterProperty>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\MeterProperty>")
      * @JMS\Expose
@@ -112,10 +112,10 @@ class MeterType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MeterNumber $meterNumber
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MeterNumber|null $meterNumber
      * @return self
      */
-    public function setMeterNumber(MeterNumber $meterNumber): self
+    public function setMeterNumber(?MeterNumber $meterNumber = null): self
     {
         $this->meterNumber = $meterNumber;
 
@@ -141,10 +141,10 @@ class MeterType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MeterName $meterName
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MeterName|null $meterName
      * @return self
      */
-    public function setMeterName(MeterName $meterName): self
+    public function setMeterName(?MeterName $meterName = null): self
     {
         $this->meterName = $meterName;
 
@@ -170,10 +170,10 @@ class MeterType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MeterConstant $meterConstant
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MeterConstant|null $meterConstant
      * @return self
      */
-    public function setMeterConstant(MeterConstant $meterConstant): self
+    public function setMeterConstant(?MeterConstant $meterConstant = null): self
     {
         $this->meterConstant = $meterConstant;
 
@@ -199,10 +199,10 @@ class MeterType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MeterConstantCode $meterConstantCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MeterConstantCode|null $meterConstantCode
      * @return self
      */
-    public function setMeterConstantCode(MeterConstantCode $meterConstantCode): self
+    public function setMeterConstantCode(?MeterConstantCode $meterConstantCode = null): self
     {
         $this->meterConstantCode = $meterConstantCode;
 
@@ -228,10 +228,10 @@ class MeterType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalDeliveredQuantity $totalDeliveredQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalDeliveredQuantity|null $totalDeliveredQuantity
      * @return self
      */
-    public function setTotalDeliveredQuantity(TotalDeliveredQuantity $totalDeliveredQuantity): self
+    public function setTotalDeliveredQuantity(?TotalDeliveredQuantity $totalDeliveredQuantity = null): self
     {
         $this->totalDeliveredQuantity = $totalDeliveredQuantity;
 
@@ -247,10 +247,10 @@ class MeterType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\MeterReading> $meterReading
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\MeterReading>|null $meterReading
      * @return self
      */
-    public function setMeterReading(array $meterReading): self
+    public function setMeterReading(?array $meterReading = null): self
     {
         $this->meterReading = $meterReading;
 
@@ -328,10 +328,10 @@ class MeterType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\MeterProperty> $meterProperty
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\MeterProperty>|null $meterProperty
      * @return self
      */
-    public function setMeterProperty(array $meterProperty): self
+    public function setMeterProperty(?array $meterProperty = null): self
     {
         $this->meterProperty = $meterProperty;
 

@@ -62,7 +62,7 @@ class CreditNoteType
     use HandlesObjectFlags;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\ext\UBLExtension>
+     * @var array<\horstoeko\invoicesuite\models\ubl\ext\UBLExtension>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\ext\UBLExtension>")
      * @JMS\Expose
@@ -74,7 +74,7 @@ class CreditNoteType
     private $uBLExtensions;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\UBLVersionID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\UBLVersionID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\UBLVersionID")
      * @JMS\Expose
@@ -85,7 +85,7 @@ class CreditNoteType
     private $uBLVersionID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CustomizationID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CustomizationID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CustomizationID")
      * @JMS\Expose
@@ -96,7 +96,7 @@ class CreditNoteType
     private $customizationID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ProfileID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ProfileID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ProfileID")
      * @JMS\Expose
@@ -107,7 +107,7 @@ class CreditNoteType
     private $profileID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ProfileExecutionID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ProfileExecutionID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ProfileExecutionID")
      * @JMS\Expose
@@ -118,7 +118,7 @@ class CreditNoteType
     private $profileExecutionID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -129,7 +129,7 @@ class CreditNoteType
     private $iD;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -140,7 +140,7 @@ class CreditNoteType
     private $copyIndicator;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\UUID")
      * @JMS\Expose
@@ -151,7 +151,7 @@ class CreditNoteType
     private $uUID;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -162,7 +162,7 @@ class CreditNoteType
     private $issueDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -173,7 +173,7 @@ class CreditNoteType
     private $issueTime;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -184,7 +184,7 @@ class CreditNoteType
     private $taxPointDate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CreditNoteTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CreditNoteTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CreditNoteTypeCode")
      * @JMS\Expose
@@ -195,7 +195,7 @@ class CreditNoteType
     private $creditNoteTypeCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -207,7 +207,7 @@ class CreditNoteType
     private $note;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\DocumentCurrencyCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\DocumentCurrencyCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\DocumentCurrencyCode")
      * @JMS\Expose
@@ -218,7 +218,7 @@ class CreditNoteType
     private $documentCurrencyCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TaxCurrencyCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TaxCurrencyCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TaxCurrencyCode")
      * @JMS\Expose
@@ -229,7 +229,7 @@ class CreditNoteType
     private $taxCurrencyCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PricingCurrencyCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PricingCurrencyCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PricingCurrencyCode")
      * @JMS\Expose
@@ -240,7 +240,7 @@ class CreditNoteType
     private $pricingCurrencyCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PaymentCurrencyCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PaymentCurrencyCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PaymentCurrencyCode")
      * @JMS\Expose
@@ -251,7 +251,7 @@ class CreditNoteType
     private $paymentCurrencyCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PaymentAlternativeCurrencyCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PaymentAlternativeCurrencyCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PaymentAlternativeCurrencyCode")
      * @JMS\Expose
@@ -262,7 +262,7 @@ class CreditNoteType
     private $paymentAlternativeCurrencyCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode")
      * @JMS\Expose
@@ -273,7 +273,7 @@ class CreditNoteType
     private $accountingCostCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AccountingCost
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AccountingCost|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AccountingCost")
      * @JMS\Expose
@@ -284,7 +284,7 @@ class CreditNoteType
     private $accountingCost;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LineCountNumeric
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LineCountNumeric|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LineCountNumeric")
      * @JMS\Expose
@@ -295,7 +295,7 @@ class CreditNoteType
     private $lineCountNumeric;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\BuyerReference
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\BuyerReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\BuyerReference")
      * @JMS\Expose
@@ -306,7 +306,7 @@ class CreditNoteType
     private $buyerReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod>")
      * @JMS\Expose
@@ -318,7 +318,7 @@ class CreditNoteType
     private $invoicePeriod;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DiscrepancyResponse>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DiscrepancyResponse>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DiscrepancyResponse>")
      * @JMS\Expose
@@ -330,7 +330,7 @@ class CreditNoteType
     private $discrepancyResponse;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\OrderReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\OrderReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\OrderReference")
      * @JMS\Expose
@@ -341,7 +341,7 @@ class CreditNoteType
     private $orderReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\BillingReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\BillingReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\BillingReference>")
      * @JMS\Expose
@@ -353,7 +353,7 @@ class CreditNoteType
     private $billingReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DespatchDocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DespatchDocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DespatchDocumentReference>")
      * @JMS\Expose
@@ -365,7 +365,7 @@ class CreditNoteType
     private $despatchDocumentReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ReceiptDocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ReceiptDocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ReceiptDocumentReference>")
      * @JMS\Expose
@@ -377,7 +377,7 @@ class CreditNoteType
     private $receiptDocumentReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ContractDocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ContractDocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ContractDocumentReference>")
      * @JMS\Expose
@@ -389,7 +389,7 @@ class CreditNoteType
     private $contractDocumentReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference>")
      * @JMS\Expose
@@ -401,7 +401,7 @@ class CreditNoteType
     private $additionalDocumentReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\StatementDocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\StatementDocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\StatementDocumentReference>")
      * @JMS\Expose
@@ -413,7 +413,7 @@ class CreditNoteType
     private $statementDocumentReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\OriginatorDocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\OriginatorDocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\OriginatorDocumentReference>")
      * @JMS\Expose
@@ -425,7 +425,7 @@ class CreditNoteType
     private $originatorDocumentReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Signature>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Signature>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Signature>")
      * @JMS\Expose
@@ -437,7 +437,7 @@ class CreditNoteType
     private $signature;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\AccountingSupplierParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\AccountingSupplierParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\AccountingSupplierParty")
      * @JMS\Expose
@@ -448,7 +448,7 @@ class CreditNoteType
     private $accountingSupplierParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\AccountingCustomerParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\AccountingCustomerParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\AccountingCustomerParty")
      * @JMS\Expose
@@ -459,7 +459,7 @@ class CreditNoteType
     private $accountingCustomerParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PayeeParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PayeeParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PayeeParty")
      * @JMS\Expose
@@ -470,7 +470,7 @@ class CreditNoteType
     private $payeeParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\BuyerCustomerParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\BuyerCustomerParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\BuyerCustomerParty")
      * @JMS\Expose
@@ -481,7 +481,7 @@ class CreditNoteType
     private $buyerCustomerParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty")
      * @JMS\Expose
@@ -492,7 +492,7 @@ class CreditNoteType
     private $sellerSupplierParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TaxRepresentativeParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TaxRepresentativeParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TaxRepresentativeParty")
      * @JMS\Expose
@@ -503,7 +503,7 @@ class CreditNoteType
     private $taxRepresentativeParty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Delivery>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Delivery>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Delivery>")
      * @JMS\Expose
@@ -515,7 +515,7 @@ class CreditNoteType
     private $delivery;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms>")
      * @JMS\Expose
@@ -527,7 +527,7 @@ class CreditNoteType
     private $deliveryTerms;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PaymentMeans>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PaymentMeans>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PaymentMeans>")
      * @JMS\Expose
@@ -539,7 +539,7 @@ class CreditNoteType
     private $paymentMeans;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>")
      * @JMS\Expose
@@ -551,7 +551,7 @@ class CreditNoteType
     private $paymentTerms;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TaxExchangeRate
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TaxExchangeRate|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TaxExchangeRate")
      * @JMS\Expose
@@ -562,7 +562,7 @@ class CreditNoteType
     private $taxExchangeRate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PricingExchangeRate
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PricingExchangeRate|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PricingExchangeRate")
      * @JMS\Expose
@@ -573,7 +573,7 @@ class CreditNoteType
     private $pricingExchangeRate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PaymentExchangeRate
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PaymentExchangeRate|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PaymentExchangeRate")
      * @JMS\Expose
@@ -584,7 +584,7 @@ class CreditNoteType
     private $paymentExchangeRate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PaymentAlternativeExchangeRate
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PaymentAlternativeExchangeRate|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PaymentAlternativeExchangeRate")
      * @JMS\Expose
@@ -595,7 +595,7 @@ class CreditNoteType
     private $paymentAlternativeExchangeRate;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>")
      * @JMS\Expose
@@ -607,7 +607,7 @@ class CreditNoteType
     private $allowanceCharge;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TaxTotal>")
      * @JMS\Expose
@@ -619,7 +619,7 @@ class CreditNoteType
     private $taxTotal;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\LegalMonetaryTotal
+     * @var \horstoeko\invoicesuite\models\ubl\cac\LegalMonetaryTotal|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\LegalMonetaryTotal")
      * @JMS\Expose
@@ -630,7 +630,7 @@ class CreditNoteType
     private $legalMonetaryTotal;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CreditNoteLine>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CreditNoteLine>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\CreditNoteLine>")
      * @JMS\Expose
@@ -650,10 +650,10 @@ class CreditNoteType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\ext\UBLExtension> $uBLExtensions
+     * @param array<\horstoeko\invoicesuite\models\ubl\ext\UBLExtension>|null $uBLExtensions
      * @return self
      */
-    public function setUBLExtensions(array $uBLExtensions): self
+    public function setUBLExtensions(?array $uBLExtensions = null): self
     {
         $this->uBLExtensions = $uBLExtensions;
 
@@ -741,10 +741,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\UBLVersionID $uBLVersionID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\UBLVersionID|null $uBLVersionID
      * @return self
      */
-    public function setUBLVersionID(UBLVersionID $uBLVersionID): self
+    public function setUBLVersionID(?UBLVersionID $uBLVersionID = null): self
     {
         $this->uBLVersionID = $uBLVersionID;
 
@@ -770,10 +770,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CustomizationID $customizationID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CustomizationID|null $customizationID
      * @return self
      */
-    public function setCustomizationID(CustomizationID $customizationID): self
+    public function setCustomizationID(?CustomizationID $customizationID = null): self
     {
         $this->customizationID = $customizationID;
 
@@ -799,10 +799,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ProfileID $profileID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ProfileID|null $profileID
      * @return self
      */
-    public function setProfileID(ProfileID $profileID): self
+    public function setProfileID(?ProfileID $profileID = null): self
     {
         $this->profileID = $profileID;
 
@@ -828,10 +828,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ProfileExecutionID $profileExecutionID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ProfileExecutionID|null $profileExecutionID
      * @return self
      */
-    public function setProfileExecutionID(ProfileExecutionID $profileExecutionID): self
+    public function setProfileExecutionID(?ProfileExecutionID $profileExecutionID = null): self
     {
         $this->profileExecutionID = $profileExecutionID;
 
@@ -857,10 +857,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -876,10 +876,10 @@ class CreditNoteType
     }
 
     /**
-     * @param bool $copyIndicator
+     * @param bool|null $copyIndicator
      * @return self
      */
-    public function setCopyIndicator(bool $copyIndicator): self
+    public function setCopyIndicator(?bool $copyIndicator = null): self
     {
         $this->copyIndicator = $copyIndicator;
 
@@ -905,10 +905,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID $uUID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID|null $uUID
      * @return self
      */
-    public function setUUID(UUID $uUID): self
+    public function setUUID(?UUID $uUID = null): self
     {
         $this->uUID = $uUID;
 
@@ -924,10 +924,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \DateTimeInterface $issueDate
+     * @param \DateTimeInterface|null $issueDate
      * @return self
      */
-    public function setIssueDate(\DateTimeInterface $issueDate): self
+    public function setIssueDate(?\DateTimeInterface $issueDate = null): self
     {
         $this->issueDate = $issueDate;
 
@@ -943,10 +943,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \DateTimeInterface $issueTime
+     * @param \DateTimeInterface|null $issueTime
      * @return self
      */
-    public function setIssueTime(\DateTimeInterface $issueTime): self
+    public function setIssueTime(?\DateTimeInterface $issueTime = null): self
     {
         $this->issueTime = $issueTime;
 
@@ -962,10 +962,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \DateTimeInterface $taxPointDate
+     * @param \DateTimeInterface|null $taxPointDate
      * @return self
      */
-    public function setTaxPointDate(\DateTimeInterface $taxPointDate): self
+    public function setTaxPointDate(?\DateTimeInterface $taxPointDate = null): self
     {
         $this->taxPointDate = $taxPointDate;
 
@@ -991,10 +991,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CreditNoteTypeCode $creditNoteTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CreditNoteTypeCode|null $creditNoteTypeCode
      * @return self
      */
-    public function setCreditNoteTypeCode(CreditNoteTypeCode $creditNoteTypeCode): self
+    public function setCreditNoteTypeCode(?CreditNoteTypeCode $creditNoteTypeCode = null): self
     {
         $this->creditNoteTypeCode = $creditNoteTypeCode;
 
@@ -1010,10 +1010,10 @@ class CreditNoteType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -1101,10 +1101,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\DocumentCurrencyCode $documentCurrencyCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DocumentCurrencyCode|null $documentCurrencyCode
      * @return self
      */
-    public function setDocumentCurrencyCode(DocumentCurrencyCode $documentCurrencyCode): self
+    public function setDocumentCurrencyCode(?DocumentCurrencyCode $documentCurrencyCode = null): self
     {
         $this->documentCurrencyCode = $documentCurrencyCode;
 
@@ -1130,10 +1130,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TaxCurrencyCode $taxCurrencyCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TaxCurrencyCode|null $taxCurrencyCode
      * @return self
      */
-    public function setTaxCurrencyCode(TaxCurrencyCode $taxCurrencyCode): self
+    public function setTaxCurrencyCode(?TaxCurrencyCode $taxCurrencyCode = null): self
     {
         $this->taxCurrencyCode = $taxCurrencyCode;
 
@@ -1159,10 +1159,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PricingCurrencyCode $pricingCurrencyCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PricingCurrencyCode|null $pricingCurrencyCode
      * @return self
      */
-    public function setPricingCurrencyCode(PricingCurrencyCode $pricingCurrencyCode): self
+    public function setPricingCurrencyCode(?PricingCurrencyCode $pricingCurrencyCode = null): self
     {
         $this->pricingCurrencyCode = $pricingCurrencyCode;
 
@@ -1188,10 +1188,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaymentCurrencyCode $paymentCurrencyCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaymentCurrencyCode|null $paymentCurrencyCode
      * @return self
      */
-    public function setPaymentCurrencyCode(PaymentCurrencyCode $paymentCurrencyCode): self
+    public function setPaymentCurrencyCode(?PaymentCurrencyCode $paymentCurrencyCode = null): self
     {
         $this->paymentCurrencyCode = $paymentCurrencyCode;
 
@@ -1217,11 +1217,11 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaymentAlternativeCurrencyCode $paymentAlternativeCurrencyCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaymentAlternativeCurrencyCode|null $paymentAlternativeCurrencyCode
      * @return self
      */
     public function setPaymentAlternativeCurrencyCode(
-        PaymentAlternativeCurrencyCode $paymentAlternativeCurrencyCode,
+        ?PaymentAlternativeCurrencyCode $paymentAlternativeCurrencyCode = null,
     ): self {
         $this->paymentAlternativeCurrencyCode = $paymentAlternativeCurrencyCode;
 
@@ -1247,10 +1247,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode $accountingCostCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode|null $accountingCostCode
      * @return self
      */
-    public function setAccountingCostCode(AccountingCostCode $accountingCostCode): self
+    public function setAccountingCostCode(?AccountingCostCode $accountingCostCode = null): self
     {
         $this->accountingCostCode = $accountingCostCode;
 
@@ -1276,10 +1276,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AccountingCost $accountingCost
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AccountingCost|null $accountingCost
      * @return self
      */
-    public function setAccountingCost(AccountingCost $accountingCost): self
+    public function setAccountingCost(?AccountingCost $accountingCost = null): self
     {
         $this->accountingCost = $accountingCost;
 
@@ -1305,10 +1305,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LineCountNumeric $lineCountNumeric
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LineCountNumeric|null $lineCountNumeric
      * @return self
      */
-    public function setLineCountNumeric(LineCountNumeric $lineCountNumeric): self
+    public function setLineCountNumeric(?LineCountNumeric $lineCountNumeric = null): self
     {
         $this->lineCountNumeric = $lineCountNumeric;
 
@@ -1334,10 +1334,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\BuyerReference $buyerReference
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\BuyerReference|null $buyerReference
      * @return self
      */
-    public function setBuyerReference(BuyerReference $buyerReference): self
+    public function setBuyerReference(?BuyerReference $buyerReference = null): self
     {
         $this->buyerReference = $buyerReference;
 
@@ -1353,10 +1353,10 @@ class CreditNoteType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod> $invoicePeriod
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod>|null $invoicePeriod
      * @return self
      */
-    public function setInvoicePeriod(array $invoicePeriod): self
+    public function setInvoicePeriod(?array $invoicePeriod = null): self
     {
         $this->invoicePeriod = $invoicePeriod;
 
@@ -1434,10 +1434,10 @@ class CreditNoteType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DiscrepancyResponse> $discrepancyResponse
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DiscrepancyResponse>|null $discrepancyResponse
      * @return self
      */
-    public function setDiscrepancyResponse(array $discrepancyResponse): self
+    public function setDiscrepancyResponse(?array $discrepancyResponse = null): self
     {
         $this->discrepancyResponse = $discrepancyResponse;
 
@@ -1525,10 +1525,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\OrderReference $orderReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OrderReference|null $orderReference
      * @return self
      */
-    public function setOrderReference(OrderReference $orderReference): self
+    public function setOrderReference(?OrderReference $orderReference = null): self
     {
         $this->orderReference = $orderReference;
 
@@ -1544,10 +1544,10 @@ class CreditNoteType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\BillingReference> $billingReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\BillingReference>|null $billingReference
      * @return self
      */
-    public function setBillingReference(array $billingReference): self
+    public function setBillingReference(?array $billingReference = null): self
     {
         $this->billingReference = $billingReference;
 
@@ -1625,10 +1625,10 @@ class CreditNoteType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DespatchDocumentReference> $despatchDocumentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DespatchDocumentReference>|null $despatchDocumentReference
      * @return self
      */
-    public function setDespatchDocumentReference(array $despatchDocumentReference): self
+    public function setDespatchDocumentReference(?array $despatchDocumentReference = null): self
     {
         $this->despatchDocumentReference = $despatchDocumentReference;
 
@@ -1706,10 +1706,10 @@ class CreditNoteType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ReceiptDocumentReference> $receiptDocumentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ReceiptDocumentReference>|null $receiptDocumentReference
      * @return self
      */
-    public function setReceiptDocumentReference(array $receiptDocumentReference): self
+    public function setReceiptDocumentReference(?array $receiptDocumentReference = null): self
     {
         $this->receiptDocumentReference = $receiptDocumentReference;
 
@@ -1787,10 +1787,10 @@ class CreditNoteType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ContractDocumentReference> $contractDocumentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ContractDocumentReference>|null $contractDocumentReference
      * @return self
      */
-    public function setContractDocumentReference(array $contractDocumentReference): self
+    public function setContractDocumentReference(?array $contractDocumentReference = null): self
     {
         $this->contractDocumentReference = $contractDocumentReference;
 
@@ -1868,10 +1868,10 @@ class CreditNoteType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference> $additionalDocumentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference>|null $additionalDocumentReference
      * @return self
      */
-    public function setAdditionalDocumentReference(array $additionalDocumentReference): self
+    public function setAdditionalDocumentReference(?array $additionalDocumentReference = null): self
     {
         $this->additionalDocumentReference = $additionalDocumentReference;
 
@@ -1950,10 +1950,10 @@ class CreditNoteType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\StatementDocumentReference> $statementDocumentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\StatementDocumentReference>|null $statementDocumentReference
      * @return self
      */
-    public function setStatementDocumentReference(array $statementDocumentReference): self
+    public function setStatementDocumentReference(?array $statementDocumentReference = null): self
     {
         $this->statementDocumentReference = $statementDocumentReference;
 
@@ -2031,10 +2031,10 @@ class CreditNoteType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\OriginatorDocumentReference> $originatorDocumentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\OriginatorDocumentReference>|null $originatorDocumentReference
      * @return self
      */
-    public function setOriginatorDocumentReference(array $originatorDocumentReference): self
+    public function setOriginatorDocumentReference(?array $originatorDocumentReference = null): self
     {
         $this->originatorDocumentReference = $originatorDocumentReference;
 
@@ -2113,10 +2113,10 @@ class CreditNoteType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Signature> $signature
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Signature>|null $signature
      * @return self
      */
-    public function setSignature(array $signature): self
+    public function setSignature(?array $signature = null): self
     {
         $this->signature = $signature;
 
@@ -2204,10 +2204,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\AccountingSupplierParty $accountingSupplierParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AccountingSupplierParty|null $accountingSupplierParty
      * @return self
      */
-    public function setAccountingSupplierParty(AccountingSupplierParty $accountingSupplierParty): self
+    public function setAccountingSupplierParty(?AccountingSupplierParty $accountingSupplierParty = null): self
     {
         $this->accountingSupplierParty = $accountingSupplierParty;
 
@@ -2233,10 +2233,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\AccountingCustomerParty $accountingCustomerParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AccountingCustomerParty|null $accountingCustomerParty
      * @return self
      */
-    public function setAccountingCustomerParty(AccountingCustomerParty $accountingCustomerParty): self
+    public function setAccountingCustomerParty(?AccountingCustomerParty $accountingCustomerParty = null): self
     {
         $this->accountingCustomerParty = $accountingCustomerParty;
 
@@ -2262,10 +2262,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PayeeParty $payeeParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PayeeParty|null $payeeParty
      * @return self
      */
-    public function setPayeeParty(PayeeParty $payeeParty): self
+    public function setPayeeParty(?PayeeParty $payeeParty = null): self
     {
         $this->payeeParty = $payeeParty;
 
@@ -2291,10 +2291,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\BuyerCustomerParty $buyerCustomerParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\BuyerCustomerParty|null $buyerCustomerParty
      * @return self
      */
-    public function setBuyerCustomerParty(BuyerCustomerParty $buyerCustomerParty): self
+    public function setBuyerCustomerParty(?BuyerCustomerParty $buyerCustomerParty = null): self
     {
         $this->buyerCustomerParty = $buyerCustomerParty;
 
@@ -2320,10 +2320,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty $sellerSupplierParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty|null $sellerSupplierParty
      * @return self
      */
-    public function setSellerSupplierParty(SellerSupplierParty $sellerSupplierParty): self
+    public function setSellerSupplierParty(?SellerSupplierParty $sellerSupplierParty = null): self
     {
         $this->sellerSupplierParty = $sellerSupplierParty;
 
@@ -2349,10 +2349,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxRepresentativeParty $taxRepresentativeParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxRepresentativeParty|null $taxRepresentativeParty
      * @return self
      */
-    public function setTaxRepresentativeParty(TaxRepresentativeParty $taxRepresentativeParty): self
+    public function setTaxRepresentativeParty(?TaxRepresentativeParty $taxRepresentativeParty = null): self
     {
         $this->taxRepresentativeParty = $taxRepresentativeParty;
 
@@ -2368,10 +2368,10 @@ class CreditNoteType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Delivery> $delivery
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Delivery>|null $delivery
      * @return self
      */
-    public function setDelivery(array $delivery): self
+    public function setDelivery(?array $delivery = null): self
     {
         $this->delivery = $delivery;
 
@@ -2449,10 +2449,10 @@ class CreditNoteType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms> $deliveryTerms
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms>|null $deliveryTerms
      * @return self
      */
-    public function setDeliveryTerms(array $deliveryTerms): self
+    public function setDeliveryTerms(?array $deliveryTerms = null): self
     {
         $this->deliveryTerms = $deliveryTerms;
 
@@ -2530,10 +2530,10 @@ class CreditNoteType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PaymentMeans> $paymentMeans
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PaymentMeans>|null $paymentMeans
      * @return self
      */
-    public function setPaymentMeans(array $paymentMeans): self
+    public function setPaymentMeans(?array $paymentMeans = null): self
     {
         $this->paymentMeans = $paymentMeans;
 
@@ -2611,10 +2611,10 @@ class CreditNoteType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms> $paymentTerms
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>|null $paymentTerms
      * @return self
      */
-    public function setPaymentTerms(array $paymentTerms): self
+    public function setPaymentTerms(?array $paymentTerms = null): self
     {
         $this->paymentTerms = $paymentTerms;
 
@@ -2702,10 +2702,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxExchangeRate $taxExchangeRate
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxExchangeRate|null $taxExchangeRate
      * @return self
      */
-    public function setTaxExchangeRate(TaxExchangeRate $taxExchangeRate): self
+    public function setTaxExchangeRate(?TaxExchangeRate $taxExchangeRate = null): self
     {
         $this->taxExchangeRate = $taxExchangeRate;
 
@@ -2731,10 +2731,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PricingExchangeRate $pricingExchangeRate
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PricingExchangeRate|null $pricingExchangeRate
      * @return self
      */
-    public function setPricingExchangeRate(PricingExchangeRate $pricingExchangeRate): self
+    public function setPricingExchangeRate(?PricingExchangeRate $pricingExchangeRate = null): self
     {
         $this->pricingExchangeRate = $pricingExchangeRate;
 
@@ -2760,10 +2760,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PaymentExchangeRate $paymentExchangeRate
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PaymentExchangeRate|null $paymentExchangeRate
      * @return self
      */
-    public function setPaymentExchangeRate(PaymentExchangeRate $paymentExchangeRate): self
+    public function setPaymentExchangeRate(?PaymentExchangeRate $paymentExchangeRate = null): self
     {
         $this->paymentExchangeRate = $paymentExchangeRate;
 
@@ -2789,11 +2789,11 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PaymentAlternativeExchangeRate $paymentAlternativeExchangeRate
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PaymentAlternativeExchangeRate|null $paymentAlternativeExchangeRate
      * @return self
      */
     public function setPaymentAlternativeExchangeRate(
-        PaymentAlternativeExchangeRate $paymentAlternativeExchangeRate,
+        ?PaymentAlternativeExchangeRate $paymentAlternativeExchangeRate = null,
     ): self {
         $this->paymentAlternativeExchangeRate = $paymentAlternativeExchangeRate;
 
@@ -2809,10 +2809,10 @@ class CreditNoteType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge> $allowanceCharge
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null $allowanceCharge
      * @return self
      */
-    public function setAllowanceCharge(array $allowanceCharge): self
+    public function setAllowanceCharge(?array $allowanceCharge = null): self
     {
         $this->allowanceCharge = $allowanceCharge;
 
@@ -2890,10 +2890,10 @@ class CreditNoteType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal> $taxTotal
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal>|null $taxTotal
      * @return self
      */
-    public function setTaxTotal(array $taxTotal): self
+    public function setTaxTotal(?array $taxTotal = null): self
     {
         $this->taxTotal = $taxTotal;
 
@@ -2981,10 +2981,10 @@ class CreditNoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\LegalMonetaryTotal $legalMonetaryTotal
+     * @param \horstoeko\invoicesuite\models\ubl\cac\LegalMonetaryTotal|null $legalMonetaryTotal
      * @return self
      */
-    public function setLegalMonetaryTotal(LegalMonetaryTotal $legalMonetaryTotal): self
+    public function setLegalMonetaryTotal(?LegalMonetaryTotal $legalMonetaryTotal = null): self
     {
         $this->legalMonetaryTotal = $legalMonetaryTotal;
 
@@ -3000,10 +3000,10 @@ class CreditNoteType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CreditNoteLine> $creditNoteLine
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CreditNoteLine>|null $creditNoteLine
      * @return self
      */
-    public function setCreditNoteLine(array $creditNoteLine): self
+    public function setCreditNoteLine(?array $creditNoteLine = null): self
     {
         $this->creditNoteLine = $creditNoteLine;
 

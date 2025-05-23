@@ -13,7 +13,7 @@ class EventType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\IdentificationID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\IdentificationID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\IdentificationID")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class EventType
     private $identificationID;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class EventType
     private $occurrenceDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class EventType
     private $occurrenceTime;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TypeCode")
      * @JMS\Expose
@@ -57,7 +57,7 @@ class EventType
     private $typeCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -69,7 +69,7 @@ class EventType
     private $description;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -80,7 +80,7 @@ class EventType
     private $completionIndicator;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CurrentStatus>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CurrentStatus>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\CurrentStatus>")
      * @JMS\Expose
@@ -92,7 +92,7 @@ class EventType
     private $currentStatus;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Contact>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Contact>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Contact>")
      * @JMS\Expose
@@ -104,7 +104,7 @@ class EventType
     private $contact;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\OccurenceLocation
+     * @var \horstoeko\invoicesuite\models\ubl\cac\OccurenceLocation|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\OccurenceLocation")
      * @JMS\Expose
@@ -133,10 +133,10 @@ class EventType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\IdentificationID $identificationID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\IdentificationID|null $identificationID
      * @return self
      */
-    public function setIdentificationID(IdentificationID $identificationID): self
+    public function setIdentificationID(?IdentificationID $identificationID = null): self
     {
         $this->identificationID = $identificationID;
 
@@ -152,10 +152,10 @@ class EventType
     }
 
     /**
-     * @param \DateTimeInterface $occurrenceDate
+     * @param \DateTimeInterface|null $occurrenceDate
      * @return self
      */
-    public function setOccurrenceDate(\DateTimeInterface $occurrenceDate): self
+    public function setOccurrenceDate(?\DateTimeInterface $occurrenceDate = null): self
     {
         $this->occurrenceDate = $occurrenceDate;
 
@@ -171,10 +171,10 @@ class EventType
     }
 
     /**
-     * @param \DateTimeInterface $occurrenceTime
+     * @param \DateTimeInterface|null $occurrenceTime
      * @return self
      */
-    public function setOccurrenceTime(\DateTimeInterface $occurrenceTime): self
+    public function setOccurrenceTime(?\DateTimeInterface $occurrenceTime = null): self
     {
         $this->occurrenceTime = $occurrenceTime;
 
@@ -200,10 +200,10 @@ class EventType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TypeCode $typeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TypeCode|null $typeCode
      * @return self
      */
-    public function setTypeCode(TypeCode $typeCode): self
+    public function setTypeCode(?TypeCode $typeCode = null): self
     {
         $this->typeCode = $typeCode;
 
@@ -219,10 +219,10 @@ class EventType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -300,10 +300,10 @@ class EventType
     }
 
     /**
-     * @param bool $completionIndicator
+     * @param bool|null $completionIndicator
      * @return self
      */
-    public function setCompletionIndicator(bool $completionIndicator): self
+    public function setCompletionIndicator(?bool $completionIndicator = null): self
     {
         $this->completionIndicator = $completionIndicator;
 
@@ -319,10 +319,10 @@ class EventType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CurrentStatus> $currentStatus
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CurrentStatus>|null $currentStatus
      * @return self
      */
-    public function setCurrentStatus(array $currentStatus): self
+    public function setCurrentStatus(?array $currentStatus = null): self
     {
         $this->currentStatus = $currentStatus;
 
@@ -400,10 +400,10 @@ class EventType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Contact> $contact
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Contact>|null $contact
      * @return self
      */
-    public function setContact(array $contact): self
+    public function setContact(?array $contact = null): self
     {
         $this->contact = $contact;
 
@@ -491,10 +491,10 @@ class EventType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\OccurenceLocation $occurenceLocation
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OccurenceLocation|null $occurenceLocation
      * @return self
      */
-    public function setOccurenceLocation(OccurenceLocation $occurenceLocation): self
+    public function setOccurenceLocation(?OccurenceLocation $occurenceLocation = null): self
     {
         $this->occurenceLocation = $occurenceLocation;
 

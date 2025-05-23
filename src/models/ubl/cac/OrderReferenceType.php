@@ -15,7 +15,7 @@ class OrderReferenceType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -26,7 +26,7 @@ class OrderReferenceType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SalesOrderID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SalesOrderID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SalesOrderID")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class OrderReferenceType
     private $salesOrderID;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class OrderReferenceType
     private $copyIndicator;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\UUID")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class OrderReferenceType
     private $uUID;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -70,7 +70,7 @@ class OrderReferenceType
     private $issueDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -81,7 +81,7 @@ class OrderReferenceType
     private $issueTime;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CustomerReference
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CustomerReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CustomerReference")
      * @JMS\Expose
@@ -92,7 +92,7 @@ class OrderReferenceType
     private $customerReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\OrderTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\OrderTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\OrderTypeCode")
      * @JMS\Expose
@@ -103,7 +103,7 @@ class OrderReferenceType
     private $orderTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\DocumentReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\DocumentReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\DocumentReference")
      * @JMS\Expose
@@ -132,10 +132,10 @@ class OrderReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -161,10 +161,10 @@ class OrderReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SalesOrderID $salesOrderID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SalesOrderID|null $salesOrderID
      * @return self
      */
-    public function setSalesOrderID(SalesOrderID $salesOrderID): self
+    public function setSalesOrderID(?SalesOrderID $salesOrderID = null): self
     {
         $this->salesOrderID = $salesOrderID;
 
@@ -180,10 +180,10 @@ class OrderReferenceType
     }
 
     /**
-     * @param bool $copyIndicator
+     * @param bool|null $copyIndicator
      * @return self
      */
-    public function setCopyIndicator(bool $copyIndicator): self
+    public function setCopyIndicator(?bool $copyIndicator = null): self
     {
         $this->copyIndicator = $copyIndicator;
 
@@ -209,10 +209,10 @@ class OrderReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID $uUID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID|null $uUID
      * @return self
      */
-    public function setUUID(UUID $uUID): self
+    public function setUUID(?UUID $uUID = null): self
     {
         $this->uUID = $uUID;
 
@@ -228,10 +228,10 @@ class OrderReferenceType
     }
 
     /**
-     * @param \DateTimeInterface $issueDate
+     * @param \DateTimeInterface|null $issueDate
      * @return self
      */
-    public function setIssueDate(\DateTimeInterface $issueDate): self
+    public function setIssueDate(?\DateTimeInterface $issueDate = null): self
     {
         $this->issueDate = $issueDate;
 
@@ -247,10 +247,10 @@ class OrderReferenceType
     }
 
     /**
-     * @param \DateTimeInterface $issueTime
+     * @param \DateTimeInterface|null $issueTime
      * @return self
      */
-    public function setIssueTime(\DateTimeInterface $issueTime): self
+    public function setIssueTime(?\DateTimeInterface $issueTime = null): self
     {
         $this->issueTime = $issueTime;
 
@@ -276,10 +276,10 @@ class OrderReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CustomerReference $customerReference
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CustomerReference|null $customerReference
      * @return self
      */
-    public function setCustomerReference(CustomerReference $customerReference): self
+    public function setCustomerReference(?CustomerReference $customerReference = null): self
     {
         $this->customerReference = $customerReference;
 
@@ -305,10 +305,10 @@ class OrderReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\OrderTypeCode $orderTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\OrderTypeCode|null $orderTypeCode
      * @return self
      */
-    public function setOrderTypeCode(OrderTypeCode $orderTypeCode): self
+    public function setOrderTypeCode(?OrderTypeCode $orderTypeCode = null): self
     {
         $this->orderTypeCode = $orderTypeCode;
 
@@ -334,10 +334,10 @@ class OrderReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentReference $documentReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentReference|null $documentReference
      * @return self
      */
-    public function setDocumentReference(DocumentReference $documentReference): self
+    public function setDocumentReference(?DocumentReference $documentReference = null): self
     {
         $this->documentReference = $documentReference;
 

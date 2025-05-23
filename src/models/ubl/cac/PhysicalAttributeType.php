@@ -14,7 +14,7 @@ class PhysicalAttributeType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AttributeID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AttributeID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AttributeID")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class PhysicalAttributeType
     private $attributeID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PositionCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PositionCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PositionCode")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class PhysicalAttributeType
     private $positionCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\DescriptionCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\DescriptionCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\DescriptionCode")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class PhysicalAttributeType
     private $descriptionCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -77,10 +77,10 @@ class PhysicalAttributeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AttributeID $attributeID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AttributeID|null $attributeID
      * @return self
      */
-    public function setAttributeID(AttributeID $attributeID): self
+    public function setAttributeID(?AttributeID $attributeID = null): self
     {
         $this->attributeID = $attributeID;
 
@@ -106,10 +106,10 @@ class PhysicalAttributeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PositionCode $positionCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PositionCode|null $positionCode
      * @return self
      */
-    public function setPositionCode(PositionCode $positionCode): self
+    public function setPositionCode(?PositionCode $positionCode = null): self
     {
         $this->positionCode = $positionCode;
 
@@ -135,10 +135,10 @@ class PhysicalAttributeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\DescriptionCode $descriptionCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DescriptionCode|null $descriptionCode
      * @return self
      */
-    public function setDescriptionCode(DescriptionCode $descriptionCode): self
+    public function setDescriptionCode(?DescriptionCode $descriptionCode = null): self
     {
         $this->descriptionCode = $descriptionCode;
 
@@ -154,10 +154,10 @@ class PhysicalAttributeType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 

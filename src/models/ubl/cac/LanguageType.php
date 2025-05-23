@@ -13,7 +13,7 @@ class LanguageType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class LanguageType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Name")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class LanguageType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LocaleCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LocaleCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LocaleCode")
      * @JMS\Expose
@@ -64,10 +64,10 @@ class LanguageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -93,10 +93,10 @@ class LanguageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name|null $name
      * @return self
      */
-    public function setName(Name $name): self
+    public function setName(?Name $name = null): self
     {
         $this->name = $name;
 
@@ -122,10 +122,10 @@ class LanguageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LocaleCode $localeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LocaleCode|null $localeCode
      * @return self
      */
-    public function setLocaleCode(LocaleCode $localeCode): self
+    public function setLocaleCode(?LocaleCode $localeCode = null): self
     {
         $this->localeCode = $localeCode;
 

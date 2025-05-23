@@ -19,7 +19,7 @@ class TaxCategoryType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -30,7 +30,7 @@ class TaxCategoryType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Name")
      * @JMS\Expose
@@ -41,7 +41,7 @@ class TaxCategoryType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Percent
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Percent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Percent")
      * @JMS\Expose
@@ -52,7 +52,7 @@ class TaxCategoryType
     private $percent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\BaseUnitMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\BaseUnitMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\BaseUnitMeasure")
      * @JMS\Expose
@@ -63,7 +63,7 @@ class TaxCategoryType
     private $baseUnitMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PerUnitAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PerUnitAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PerUnitAmount")
      * @JMS\Expose
@@ -74,7 +74,7 @@ class TaxCategoryType
     private $perUnitAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TaxExemptionReasonCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TaxExemptionReasonCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TaxExemptionReasonCode")
      * @JMS\Expose
@@ -85,7 +85,7 @@ class TaxCategoryType
     private $taxExemptionReasonCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\TaxExemptionReason>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\TaxExemptionReason>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\TaxExemptionReason>")
      * @JMS\Expose
@@ -97,7 +97,7 @@ class TaxCategoryType
     private $taxExemptionReason;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TierRange
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TierRange|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TierRange")
      * @JMS\Expose
@@ -108,7 +108,7 @@ class TaxCategoryType
     private $tierRange;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TierRatePercent
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TierRatePercent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TierRatePercent")
      * @JMS\Expose
@@ -119,7 +119,7 @@ class TaxCategoryType
     private $tierRatePercent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TaxScheme
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TaxScheme|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TaxScheme")
      * @JMS\Expose
@@ -148,10 +148,10 @@ class TaxCategoryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -177,10 +177,10 @@ class TaxCategoryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name|null $name
      * @return self
      */
-    public function setName(Name $name): self
+    public function setName(?Name $name = null): self
     {
         $this->name = $name;
 
@@ -206,10 +206,10 @@ class TaxCategoryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Percent $percent
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Percent|null $percent
      * @return self
      */
-    public function setPercent(Percent $percent): self
+    public function setPercent(?Percent $percent = null): self
     {
         $this->percent = $percent;
 
@@ -235,10 +235,10 @@ class TaxCategoryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\BaseUnitMeasure $baseUnitMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\BaseUnitMeasure|null $baseUnitMeasure
      * @return self
      */
-    public function setBaseUnitMeasure(BaseUnitMeasure $baseUnitMeasure): self
+    public function setBaseUnitMeasure(?BaseUnitMeasure $baseUnitMeasure = null): self
     {
         $this->baseUnitMeasure = $baseUnitMeasure;
 
@@ -264,10 +264,10 @@ class TaxCategoryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PerUnitAmount $perUnitAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PerUnitAmount|null $perUnitAmount
      * @return self
      */
-    public function setPerUnitAmount(PerUnitAmount $perUnitAmount): self
+    public function setPerUnitAmount(?PerUnitAmount $perUnitAmount = null): self
     {
         $this->perUnitAmount = $perUnitAmount;
 
@@ -293,10 +293,10 @@ class TaxCategoryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TaxExemptionReasonCode $taxExemptionReasonCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TaxExemptionReasonCode|null $taxExemptionReasonCode
      * @return self
      */
-    public function setTaxExemptionReasonCode(TaxExemptionReasonCode $taxExemptionReasonCode): self
+    public function setTaxExemptionReasonCode(?TaxExemptionReasonCode $taxExemptionReasonCode = null): self
     {
         $this->taxExemptionReasonCode = $taxExemptionReasonCode;
 
@@ -312,10 +312,10 @@ class TaxCategoryType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\TaxExemptionReason> $taxExemptionReason
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\TaxExemptionReason>|null $taxExemptionReason
      * @return self
      */
-    public function setTaxExemptionReason(array $taxExemptionReason): self
+    public function setTaxExemptionReason(?array $taxExemptionReason = null): self
     {
         $this->taxExemptionReason = $taxExemptionReason;
 
@@ -403,10 +403,10 @@ class TaxCategoryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TierRange $tierRange
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TierRange|null $tierRange
      * @return self
      */
-    public function setTierRange(TierRange $tierRange): self
+    public function setTierRange(?TierRange $tierRange = null): self
     {
         $this->tierRange = $tierRange;
 
@@ -432,10 +432,10 @@ class TaxCategoryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TierRatePercent $tierRatePercent
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TierRatePercent|null $tierRatePercent
      * @return self
      */
-    public function setTierRatePercent(TierRatePercent $tierRatePercent): self
+    public function setTierRatePercent(?TierRatePercent $tierRatePercent = null): self
     {
         $this->tierRatePercent = $tierRatePercent;
 
@@ -461,10 +461,10 @@ class TaxCategoryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxScheme $taxScheme
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxScheme|null $taxScheme
      * @return self
      */
-    public function setTaxScheme(TaxScheme $taxScheme): self
+    public function setTaxScheme(?TaxScheme $taxScheme = null): self
     {
         $this->taxScheme = $taxScheme;
 

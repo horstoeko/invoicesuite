@@ -16,7 +16,7 @@ class ContactType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -27,7 +27,7 @@ class ContactType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Name")
      * @JMS\Expose
@@ -38,7 +38,7 @@ class ContactType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Telephone
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Telephone|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Telephone")
      * @JMS\Expose
@@ -49,7 +49,7 @@ class ContactType
     private $telephone;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Telefax
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Telefax|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Telefax")
      * @JMS\Expose
@@ -60,7 +60,7 @@ class ContactType
     private $telefax;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ElectronicMail
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ElectronicMail|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ElectronicMail")
      * @JMS\Expose
@@ -71,7 +71,7 @@ class ContactType
     private $electronicMail;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -83,7 +83,7 @@ class ContactType
     private $note;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\OtherCommunication>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\OtherCommunication>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\OtherCommunication>")
      * @JMS\Expose
@@ -113,10 +113,10 @@ class ContactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -142,10 +142,10 @@ class ContactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name|null $name
      * @return self
      */
-    public function setName(Name $name): self
+    public function setName(?Name $name = null): self
     {
         $this->name = $name;
 
@@ -171,10 +171,10 @@ class ContactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Telephone $telephone
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Telephone|null $telephone
      * @return self
      */
-    public function setTelephone(Telephone $telephone): self
+    public function setTelephone(?Telephone $telephone = null): self
     {
         $this->telephone = $telephone;
 
@@ -200,10 +200,10 @@ class ContactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Telefax $telefax
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Telefax|null $telefax
      * @return self
      */
-    public function setTelefax(Telefax $telefax): self
+    public function setTelefax(?Telefax $telefax = null): self
     {
         $this->telefax = $telefax;
 
@@ -229,10 +229,10 @@ class ContactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ElectronicMail $electronicMail
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ElectronicMail|null $electronicMail
      * @return self
      */
-    public function setElectronicMail(ElectronicMail $electronicMail): self
+    public function setElectronicMail(?ElectronicMail $electronicMail = null): self
     {
         $this->electronicMail = $electronicMail;
 
@@ -248,10 +248,10 @@ class ContactType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -329,10 +329,10 @@ class ContactType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\OtherCommunication> $otherCommunication
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\OtherCommunication>|null $otherCommunication
      * @return self
      */
-    public function setOtherCommunication(array $otherCommunication): self
+    public function setOtherCommunication(?array $otherCommunication = null): self
     {
         $this->otherCommunication = $otherCommunication;
 

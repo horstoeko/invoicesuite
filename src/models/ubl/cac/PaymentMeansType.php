@@ -16,7 +16,7 @@ class PaymentMeansType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -27,7 +27,7 @@ class PaymentMeansType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PaymentMeansCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PaymentMeansCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PaymentMeansCode")
      * @JMS\Expose
@@ -38,7 +38,7 @@ class PaymentMeansType
     private $paymentMeansCode;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -49,7 +49,7 @@ class PaymentMeansType
     private $paymentDueDate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PaymentChannelCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PaymentChannelCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PaymentChannelCode")
      * @JMS\Expose
@@ -60,7 +60,7 @@ class PaymentMeansType
     private $paymentChannelCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\InstructionID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\InstructionID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\InstructionID")
      * @JMS\Expose
@@ -71,7 +71,7 @@ class PaymentMeansType
     private $instructionID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\InstructionNote>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\InstructionNote>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\InstructionNote>")
      * @JMS\Expose
@@ -83,7 +83,7 @@ class PaymentMeansType
     private $instructionNote;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\PaymentID>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\PaymentID>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\PaymentID>")
      * @JMS\Expose
@@ -95,7 +95,7 @@ class PaymentMeansType
     private $paymentID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\CardAccount
+     * @var \horstoeko\invoicesuite\models\ubl\cac\CardAccount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\CardAccount")
      * @JMS\Expose
@@ -106,7 +106,7 @@ class PaymentMeansType
     private $cardAccount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PayerFinancialAccount
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PayerFinancialAccount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PayerFinancialAccount")
      * @JMS\Expose
@@ -117,7 +117,7 @@ class PaymentMeansType
     private $payerFinancialAccount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PayeeFinancialAccount
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PayeeFinancialAccount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PayeeFinancialAccount")
      * @JMS\Expose
@@ -128,7 +128,7 @@ class PaymentMeansType
     private $payeeFinancialAccount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\CreditAccount
+     * @var \horstoeko\invoicesuite\models\ubl\cac\CreditAccount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\CreditAccount")
      * @JMS\Expose
@@ -139,7 +139,7 @@ class PaymentMeansType
     private $creditAccount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PaymentMandate
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PaymentMandate|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PaymentMandate")
      * @JMS\Expose
@@ -150,7 +150,7 @@ class PaymentMeansType
     private $paymentMandate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TradeFinancing
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TradeFinancing|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TradeFinancing")
      * @JMS\Expose
@@ -179,10 +179,10 @@ class PaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -208,10 +208,10 @@ class PaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaymentMeansCode $paymentMeansCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaymentMeansCode|null $paymentMeansCode
      * @return self
      */
-    public function setPaymentMeansCode(PaymentMeansCode $paymentMeansCode): self
+    public function setPaymentMeansCode(?PaymentMeansCode $paymentMeansCode = null): self
     {
         $this->paymentMeansCode = $paymentMeansCode;
 
@@ -227,10 +227,10 @@ class PaymentMeansType
     }
 
     /**
-     * @param \DateTimeInterface $paymentDueDate
+     * @param \DateTimeInterface|null $paymentDueDate
      * @return self
      */
-    public function setPaymentDueDate(\DateTimeInterface $paymentDueDate): self
+    public function setPaymentDueDate(?\DateTimeInterface $paymentDueDate = null): self
     {
         $this->paymentDueDate = $paymentDueDate;
 
@@ -256,10 +256,10 @@ class PaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaymentChannelCode $paymentChannelCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaymentChannelCode|null $paymentChannelCode
      * @return self
      */
-    public function setPaymentChannelCode(PaymentChannelCode $paymentChannelCode): self
+    public function setPaymentChannelCode(?PaymentChannelCode $paymentChannelCode = null): self
     {
         $this->paymentChannelCode = $paymentChannelCode;
 
@@ -285,10 +285,10 @@ class PaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\InstructionID $instructionID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\InstructionID|null $instructionID
      * @return self
      */
-    public function setInstructionID(InstructionID $instructionID): self
+    public function setInstructionID(?InstructionID $instructionID = null): self
     {
         $this->instructionID = $instructionID;
 
@@ -304,10 +304,10 @@ class PaymentMeansType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\InstructionNote> $instructionNote
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\InstructionNote>|null $instructionNote
      * @return self
      */
-    public function setInstructionNote(array $instructionNote): self
+    public function setInstructionNote(?array $instructionNote = null): self
     {
         $this->instructionNote = $instructionNote;
 
@@ -385,10 +385,10 @@ class PaymentMeansType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\PaymentID> $paymentID
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\PaymentID>|null $paymentID
      * @return self
      */
-    public function setPaymentID(array $paymentID): self
+    public function setPaymentID(?array $paymentID = null): self
     {
         $this->paymentID = $paymentID;
 
@@ -476,10 +476,10 @@ class PaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\CardAccount $cardAccount
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CardAccount|null $cardAccount
      * @return self
      */
-    public function setCardAccount(CardAccount $cardAccount): self
+    public function setCardAccount(?CardAccount $cardAccount = null): self
     {
         $this->cardAccount = $cardAccount;
 
@@ -505,10 +505,10 @@ class PaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PayerFinancialAccount $payerFinancialAccount
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PayerFinancialAccount|null $payerFinancialAccount
      * @return self
      */
-    public function setPayerFinancialAccount(PayerFinancialAccount $payerFinancialAccount): self
+    public function setPayerFinancialAccount(?PayerFinancialAccount $payerFinancialAccount = null): self
     {
         $this->payerFinancialAccount = $payerFinancialAccount;
 
@@ -534,10 +534,10 @@ class PaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PayeeFinancialAccount $payeeFinancialAccount
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PayeeFinancialAccount|null $payeeFinancialAccount
      * @return self
      */
-    public function setPayeeFinancialAccount(PayeeFinancialAccount $payeeFinancialAccount): self
+    public function setPayeeFinancialAccount(?PayeeFinancialAccount $payeeFinancialAccount = null): self
     {
         $this->payeeFinancialAccount = $payeeFinancialAccount;
 
@@ -563,10 +563,10 @@ class PaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\CreditAccount $creditAccount
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CreditAccount|null $creditAccount
      * @return self
      */
-    public function setCreditAccount(CreditAccount $creditAccount): self
+    public function setCreditAccount(?CreditAccount $creditAccount = null): self
     {
         $this->creditAccount = $creditAccount;
 
@@ -592,10 +592,10 @@ class PaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PaymentMandate $paymentMandate
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PaymentMandate|null $paymentMandate
      * @return self
      */
-    public function setPaymentMandate(PaymentMandate $paymentMandate): self
+    public function setPaymentMandate(?PaymentMandate $paymentMandate = null): self
     {
         $this->paymentMandate = $paymentMandate;
 
@@ -621,10 +621,10 @@ class PaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TradeFinancing $tradeFinancing
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TradeFinancing|null $tradeFinancing
      * @return self
      */
-    public function setTradeFinancing(TradeFinancing $tradeFinancing): self
+    public function setTradeFinancing(?TradeFinancing $tradeFinancing = null): self
     {
         $this->tradeFinancing = $tradeFinancing;
 

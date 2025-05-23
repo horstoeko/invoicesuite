@@ -13,7 +13,7 @@ class ContractExecutionRequirementType
     use HandlesObjectFlags;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Name>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Name>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Name>")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class ContractExecutionRequirementType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ExecutionRequirementCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ExecutionRequirementCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ExecutionRequirementCode")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class ContractExecutionRequirementType
     private $executionRequirementCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -56,10 +56,10 @@ class ContractExecutionRequirementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Name> $name
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Name>|null $name
      * @return self
      */
-    public function setName(array $name): self
+    public function setName(?array $name = null): self
     {
         $this->name = $name;
 
@@ -147,10 +147,10 @@ class ContractExecutionRequirementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExecutionRequirementCode $executionRequirementCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExecutionRequirementCode|null $executionRequirementCode
      * @return self
      */
-    public function setExecutionRequirementCode(ExecutionRequirementCode $executionRequirementCode): self
+    public function setExecutionRequirementCode(?ExecutionRequirementCode $executionRequirementCode = null): self
     {
         $this->executionRequirementCode = $executionRequirementCode;
 
@@ -166,10 +166,10 @@ class ContractExecutionRequirementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 

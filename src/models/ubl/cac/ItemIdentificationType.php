@@ -13,7 +13,7 @@ class ItemIdentificationType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class ItemIdentificationType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ExtendedID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ExtendedID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ExtendedID")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class ItemIdentificationType
     private $extendedID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\BarcodeSymbologyID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\BarcodeSymbologyID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\BarcodeSymbologyID")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class ItemIdentificationType
     private $barcodeSymbologyID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PhysicalAttribute>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PhysicalAttribute>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PhysicalAttribute>")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class ItemIdentificationType
     private $physicalAttribute;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>")
      * @JMS\Expose
@@ -70,7 +70,7 @@ class ItemIdentificationType
     private $measurementDimension;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\IssuerParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\IssuerParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\IssuerParty")
      * @JMS\Expose
@@ -99,10 +99,10 @@ class ItemIdentificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -128,10 +128,10 @@ class ItemIdentificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExtendedID $extendedID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExtendedID|null $extendedID
      * @return self
      */
-    public function setExtendedID(ExtendedID $extendedID): self
+    public function setExtendedID(?ExtendedID $extendedID = null): self
     {
         $this->extendedID = $extendedID;
 
@@ -157,10 +157,10 @@ class ItemIdentificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\BarcodeSymbologyID $barcodeSymbologyID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\BarcodeSymbologyID|null $barcodeSymbologyID
      * @return self
      */
-    public function setBarcodeSymbologyID(BarcodeSymbologyID $barcodeSymbologyID): self
+    public function setBarcodeSymbologyID(?BarcodeSymbologyID $barcodeSymbologyID = null): self
     {
         $this->barcodeSymbologyID = $barcodeSymbologyID;
 
@@ -176,10 +176,10 @@ class ItemIdentificationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PhysicalAttribute> $physicalAttribute
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PhysicalAttribute>|null $physicalAttribute
      * @return self
      */
-    public function setPhysicalAttribute(array $physicalAttribute): self
+    public function setPhysicalAttribute(?array $physicalAttribute = null): self
     {
         $this->physicalAttribute = $physicalAttribute;
 
@@ -257,10 +257,10 @@ class ItemIdentificationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension> $measurementDimension
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>|null $measurementDimension
      * @return self
      */
-    public function setMeasurementDimension(array $measurementDimension): self
+    public function setMeasurementDimension(?array $measurementDimension = null): self
     {
         $this->measurementDimension = $measurementDimension;
 
@@ -348,10 +348,10 @@ class ItemIdentificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\IssuerParty $issuerParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\IssuerParty|null $issuerParty
      * @return self
      */
-    public function setIssuerParty(IssuerParty $issuerParty): self
+    public function setIssuerParty(?IssuerParty $issuerParty = null): self
     {
         $this->issuerParty = $issuerParty;
 

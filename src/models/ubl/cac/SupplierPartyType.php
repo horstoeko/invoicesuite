@@ -13,7 +13,7 @@ class SupplierPartyType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CustomerAssignedAccountID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CustomerAssignedAccountID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CustomerAssignedAccountID")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class SupplierPartyType
     private $customerAssignedAccountID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalAccountID>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalAccountID>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\AdditionalAccountID>")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class SupplierPartyType
     private $additionalAccountID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\DataSendingCapability
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\DataSendingCapability|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\DataSendingCapability")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class SupplierPartyType
     private $dataSendingCapability;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Party
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Party|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Party")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class SupplierPartyType
     private $party;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\DespatchContact
+     * @var \horstoeko\invoicesuite\models\ubl\cac\DespatchContact|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\DespatchContact")
      * @JMS\Expose
@@ -69,7 +69,7 @@ class SupplierPartyType
     private $despatchContact;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\AccountingContact
+     * @var \horstoeko\invoicesuite\models\ubl\cac\AccountingContact|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\AccountingContact")
      * @JMS\Expose
@@ -80,7 +80,7 @@ class SupplierPartyType
     private $accountingContact;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\SellerContact
+     * @var \horstoeko\invoicesuite\models\ubl\cac\SellerContact|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\SellerContact")
      * @JMS\Expose
@@ -109,10 +109,10 @@ class SupplierPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CustomerAssignedAccountID $customerAssignedAccountID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CustomerAssignedAccountID|null $customerAssignedAccountID
      * @return self
      */
-    public function setCustomerAssignedAccountID(CustomerAssignedAccountID $customerAssignedAccountID): self
+    public function setCustomerAssignedAccountID(?CustomerAssignedAccountID $customerAssignedAccountID = null): self
     {
         $this->customerAssignedAccountID = $customerAssignedAccountID;
 
@@ -128,10 +128,10 @@ class SupplierPartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalAccountID> $additionalAccountID
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalAccountID>|null $additionalAccountID
      * @return self
      */
-    public function setAdditionalAccountID(array $additionalAccountID): self
+    public function setAdditionalAccountID(?array $additionalAccountID = null): self
     {
         $this->additionalAccountID = $additionalAccountID;
 
@@ -219,10 +219,10 @@ class SupplierPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\DataSendingCapability $dataSendingCapability
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DataSendingCapability|null $dataSendingCapability
      * @return self
      */
-    public function setDataSendingCapability(DataSendingCapability $dataSendingCapability): self
+    public function setDataSendingCapability(?DataSendingCapability $dataSendingCapability = null): self
     {
         $this->dataSendingCapability = $dataSendingCapability;
 
@@ -248,10 +248,10 @@ class SupplierPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Party $party
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Party|null $party
      * @return self
      */
-    public function setParty(Party $party): self
+    public function setParty(?Party $party = null): self
     {
         $this->party = $party;
 
@@ -277,10 +277,10 @@ class SupplierPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\DespatchContact $despatchContact
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DespatchContact|null $despatchContact
      * @return self
      */
-    public function setDespatchContact(DespatchContact $despatchContact): self
+    public function setDespatchContact(?DespatchContact $despatchContact = null): self
     {
         $this->despatchContact = $despatchContact;
 
@@ -306,10 +306,10 @@ class SupplierPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\AccountingContact $accountingContact
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AccountingContact|null $accountingContact
      * @return self
      */
-    public function setAccountingContact(AccountingContact $accountingContact): self
+    public function setAccountingContact(?AccountingContact $accountingContact = null): self
     {
         $this->accountingContact = $accountingContact;
 
@@ -335,10 +335,10 @@ class SupplierPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\SellerContact $sellerContact
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SellerContact|null $sellerContact
      * @return self
      */
-    public function setSellerContact(SellerContact $sellerContact): self
+    public function setSellerContact(?SellerContact $sellerContact = null): self
     {
         $this->sellerContact = $sellerContact;
 

@@ -21,7 +21,7 @@ class MeterReadingType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class MeterReadingType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MeterReadingType
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MeterReadingType|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MeterReadingType")
      * @JMS\Expose
@@ -43,7 +43,7 @@ class MeterReadingType
     private $meterReadingType;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MeterReadingTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MeterReadingTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MeterReadingTypeCode")
      * @JMS\Expose
@@ -54,7 +54,7 @@ class MeterReadingType
     private $meterReadingTypeCode;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -65,7 +65,7 @@ class MeterReadingType
     private $previousMeterReadingDate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PreviousMeterQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PreviousMeterQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PreviousMeterQuantity")
      * @JMS\Expose
@@ -76,7 +76,7 @@ class MeterReadingType
     private $previousMeterQuantity;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -87,7 +87,7 @@ class MeterReadingType
     private $latestMeterReadingDate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LatestMeterQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LatestMeterQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LatestMeterQuantity")
      * @JMS\Expose
@@ -98,7 +98,7 @@ class MeterReadingType
     private $latestMeterQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PreviousMeterReadingMethod
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PreviousMeterReadingMethod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PreviousMeterReadingMethod")
      * @JMS\Expose
@@ -109,7 +109,7 @@ class MeterReadingType
     private $previousMeterReadingMethod;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PreviousMeterReadingMethodCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PreviousMeterReadingMethodCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PreviousMeterReadingMethodCode")
      * @JMS\Expose
@@ -120,7 +120,7 @@ class MeterReadingType
     private $previousMeterReadingMethodCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LatestMeterReadingMethod
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LatestMeterReadingMethod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LatestMeterReadingMethod")
      * @JMS\Expose
@@ -131,7 +131,7 @@ class MeterReadingType
     private $latestMeterReadingMethod;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LatestMeterReadingMethodCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LatestMeterReadingMethodCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LatestMeterReadingMethodCode")
      * @JMS\Expose
@@ -142,7 +142,7 @@ class MeterReadingType
     private $latestMeterReadingMethodCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\MeterReadingComments>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\MeterReadingComments>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\MeterReadingComments>")
      * @JMS\Expose
@@ -154,7 +154,7 @@ class MeterReadingType
     private $meterReadingComments;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\DeliveredQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\DeliveredQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\DeliveredQuantity")
      * @JMS\Expose
@@ -183,10 +183,10 @@ class MeterReadingType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -212,10 +212,10 @@ class MeterReadingType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MeterReadingType $meterReadingType
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MeterReadingType|null $meterReadingType
      * @return self
      */
-    public function setMeterReadingType(MeterReadingType1 $meterReadingType): self
+    public function setMeterReadingType(?MeterReadingType1 $meterReadingType = null): self
     {
         $this->meterReadingType = $meterReadingType;
 
@@ -241,10 +241,10 @@ class MeterReadingType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MeterReadingTypeCode $meterReadingTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MeterReadingTypeCode|null $meterReadingTypeCode
      * @return self
      */
-    public function setMeterReadingTypeCode(MeterReadingTypeCode $meterReadingTypeCode): self
+    public function setMeterReadingTypeCode(?MeterReadingTypeCode $meterReadingTypeCode = null): self
     {
         $this->meterReadingTypeCode = $meterReadingTypeCode;
 
@@ -260,10 +260,10 @@ class MeterReadingType
     }
 
     /**
-     * @param \DateTimeInterface $previousMeterReadingDate
+     * @param \DateTimeInterface|null $previousMeterReadingDate
      * @return self
      */
-    public function setPreviousMeterReadingDate(\DateTimeInterface $previousMeterReadingDate): self
+    public function setPreviousMeterReadingDate(?\DateTimeInterface $previousMeterReadingDate = null): self
     {
         $this->previousMeterReadingDate = $previousMeterReadingDate;
 
@@ -289,10 +289,10 @@ class MeterReadingType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PreviousMeterQuantity $previousMeterQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PreviousMeterQuantity|null $previousMeterQuantity
      * @return self
      */
-    public function setPreviousMeterQuantity(PreviousMeterQuantity $previousMeterQuantity): self
+    public function setPreviousMeterQuantity(?PreviousMeterQuantity $previousMeterQuantity = null): self
     {
         $this->previousMeterQuantity = $previousMeterQuantity;
 
@@ -308,10 +308,10 @@ class MeterReadingType
     }
 
     /**
-     * @param \DateTimeInterface $latestMeterReadingDate
+     * @param \DateTimeInterface|null $latestMeterReadingDate
      * @return self
      */
-    public function setLatestMeterReadingDate(\DateTimeInterface $latestMeterReadingDate): self
+    public function setLatestMeterReadingDate(?\DateTimeInterface $latestMeterReadingDate = null): self
     {
         $this->latestMeterReadingDate = $latestMeterReadingDate;
 
@@ -337,10 +337,10 @@ class MeterReadingType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LatestMeterQuantity $latestMeterQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LatestMeterQuantity|null $latestMeterQuantity
      * @return self
      */
-    public function setLatestMeterQuantity(LatestMeterQuantity $latestMeterQuantity): self
+    public function setLatestMeterQuantity(?LatestMeterQuantity $latestMeterQuantity = null): self
     {
         $this->latestMeterQuantity = $latestMeterQuantity;
 
@@ -366,11 +366,12 @@ class MeterReadingType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PreviousMeterReadingMethod $previousMeterReadingMethod
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PreviousMeterReadingMethod|null $previousMeterReadingMethod
      * @return self
      */
-    public function setPreviousMeterReadingMethod(PreviousMeterReadingMethod $previousMeterReadingMethod): self
-    {
+    public function setPreviousMeterReadingMethod(
+        ?PreviousMeterReadingMethod $previousMeterReadingMethod = null,
+    ): self {
         $this->previousMeterReadingMethod = $previousMeterReadingMethod;
 
         return $this;
@@ -395,11 +396,11 @@ class MeterReadingType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PreviousMeterReadingMethodCode $previousMeterReadingMethodCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PreviousMeterReadingMethodCode|null $previousMeterReadingMethodCode
      * @return self
      */
     public function setPreviousMeterReadingMethodCode(
-        PreviousMeterReadingMethodCode $previousMeterReadingMethodCode,
+        ?PreviousMeterReadingMethodCode $previousMeterReadingMethodCode = null,
     ): self {
         $this->previousMeterReadingMethodCode = $previousMeterReadingMethodCode;
 
@@ -425,10 +426,10 @@ class MeterReadingType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LatestMeterReadingMethod $latestMeterReadingMethod
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LatestMeterReadingMethod|null $latestMeterReadingMethod
      * @return self
      */
-    public function setLatestMeterReadingMethod(LatestMeterReadingMethod $latestMeterReadingMethod): self
+    public function setLatestMeterReadingMethod(?LatestMeterReadingMethod $latestMeterReadingMethod = null): self
     {
         $this->latestMeterReadingMethod = $latestMeterReadingMethod;
 
@@ -454,11 +455,12 @@ class MeterReadingType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LatestMeterReadingMethodCode $latestMeterReadingMethodCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LatestMeterReadingMethodCode|null $latestMeterReadingMethodCode
      * @return self
      */
-    public function setLatestMeterReadingMethodCode(LatestMeterReadingMethodCode $latestMeterReadingMethodCode): self
-    {
+    public function setLatestMeterReadingMethodCode(
+        ?LatestMeterReadingMethodCode $latestMeterReadingMethodCode = null,
+    ): self {
         $this->latestMeterReadingMethodCode = $latestMeterReadingMethodCode;
 
         return $this;
@@ -473,10 +475,10 @@ class MeterReadingType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\MeterReadingComments> $meterReadingComments
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\MeterReadingComments>|null $meterReadingComments
      * @return self
      */
-    public function setMeterReadingComments(array $meterReadingComments): self
+    public function setMeterReadingComments(?array $meterReadingComments = null): self
     {
         $this->meterReadingComments = $meterReadingComments;
 
@@ -564,10 +566,10 @@ class MeterReadingType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\DeliveredQuantity $deliveredQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DeliveredQuantity|null $deliveredQuantity
      * @return self
      */
-    public function setDeliveredQuantity(DeliveredQuantity $deliveredQuantity): self
+    public function setDeliveredQuantity(?DeliveredQuantity $deliveredQuantity = null): self
     {
         $this->deliveredQuantity = $deliveredQuantity;
 

@@ -2,7 +2,6 @@
 
 namespace horstoeko\invoicesuite\models\ubl\cct;
 
-use GoetasWebservices\Xsd\XsdToPhp\Jms\Base64Encoded;
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
@@ -11,7 +10,7 @@ class BinaryObjectType
     use HandlesObjectFlags;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\Jms\Base64Encoded")
      * @JMS\Expose
@@ -22,7 +21,7 @@ class BinaryObjectType
     private $value;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -33,7 +32,7 @@ class BinaryObjectType
     private $format;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -44,7 +43,7 @@ class BinaryObjectType
     private $mimeCode;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -55,7 +54,7 @@ class BinaryObjectType
     private $encodingCode;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -66,7 +65,7 @@ class BinaryObjectType
     private $characterSetCode;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -77,7 +76,7 @@ class BinaryObjectType
     private $uri;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -96,10 +95,10 @@ class BinaryObjectType
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return self
      */
-    public function setValue(string $value): self
+    public function setValue(?string $value = null): self
     {
         $this->value = $value;
 
@@ -115,10 +114,10 @@ class BinaryObjectType
     }
 
     /**
-     * @param string $format
+     * @param string|null $format
      * @return self
      */
-    public function setFormat(string $format): self
+    public function setFormat(?string $format = null): self
     {
         $this->format = $format;
 
@@ -134,10 +133,10 @@ class BinaryObjectType
     }
 
     /**
-     * @param string $mimeCode
+     * @param string|null $mimeCode
      * @return self
      */
-    public function setMimeCode(string $mimeCode): self
+    public function setMimeCode(?string $mimeCode = null): self
     {
         $this->mimeCode = $mimeCode;
 
@@ -153,10 +152,10 @@ class BinaryObjectType
     }
 
     /**
-     * @param string $encodingCode
+     * @param string|null $encodingCode
      * @return self
      */
-    public function setEncodingCode(string $encodingCode): self
+    public function setEncodingCode(?string $encodingCode = null): self
     {
         $this->encodingCode = $encodingCode;
 
@@ -172,10 +171,10 @@ class BinaryObjectType
     }
 
     /**
-     * @param string $characterSetCode
+     * @param string|null $characterSetCode
      * @return self
      */
-    public function setCharacterSetCode(string $characterSetCode): self
+    public function setCharacterSetCode(?string $characterSetCode = null): self
     {
         $this->characterSetCode = $characterSetCode;
 
@@ -191,10 +190,10 @@ class BinaryObjectType
     }
 
     /**
-     * @param string $uri
+     * @param string|null $uri
      * @return self
      */
-    public function setUri(string $uri): self
+    public function setUri(?string $uri = null): self
     {
         $this->uri = $uri;
 
@@ -210,10 +209,10 @@ class BinaryObjectType
     }
 
     /**
-     * @param string $filename
+     * @param string|null $filename
      * @return self
      */
-    public function setFilename(string $filename): self
+    public function setFilename(?string $filename = null): self
     {
         $this->filename = $filename;
 

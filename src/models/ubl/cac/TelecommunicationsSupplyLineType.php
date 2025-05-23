@@ -14,7 +14,7 @@ class TelecommunicationsSupplyLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class TelecommunicationsSupplyLineType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PhoneNumber
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PhoneNumber|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PhoneNumber")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class TelecommunicationsSupplyLineType
     private $phoneNumber;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class TelecommunicationsSupplyLineType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LineExtensionAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LineExtensionAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LineExtensionAmount")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class TelecommunicationsSupplyLineType
     private $lineExtensionAmount;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ExchangeRate>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ExchangeRate>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ExchangeRate>")
      * @JMS\Expose
@@ -71,7 +71,7 @@ class TelecommunicationsSupplyLineType
     private $exchangeRate;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>")
      * @JMS\Expose
@@ -83,7 +83,7 @@ class TelecommunicationsSupplyLineType
     private $allowanceCharge;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TaxTotal>")
      * @JMS\Expose
@@ -95,7 +95,7 @@ class TelecommunicationsSupplyLineType
     private $taxTotal;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsService>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsService>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsService>")
      * @JMS\Expose
@@ -125,10 +125,10 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -154,10 +154,10 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PhoneNumber $phoneNumber
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PhoneNumber|null $phoneNumber
      * @return self
      */
-    public function setPhoneNumber(PhoneNumber $phoneNumber): self
+    public function setPhoneNumber(?PhoneNumber $phoneNumber = null): self
     {
         $this->phoneNumber = $phoneNumber;
 
@@ -173,10 +173,10 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -264,10 +264,10 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LineExtensionAmount $lineExtensionAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LineExtensionAmount|null $lineExtensionAmount
      * @return self
      */
-    public function setLineExtensionAmount(LineExtensionAmount $lineExtensionAmount): self
+    public function setLineExtensionAmount(?LineExtensionAmount $lineExtensionAmount = null): self
     {
         $this->lineExtensionAmount = $lineExtensionAmount;
 
@@ -283,10 +283,10 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ExchangeRate> $exchangeRate
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ExchangeRate>|null $exchangeRate
      * @return self
      */
-    public function setExchangeRate(array $exchangeRate): self
+    public function setExchangeRate(?array $exchangeRate = null): self
     {
         $this->exchangeRate = $exchangeRate;
 
@@ -364,10 +364,10 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge> $allowanceCharge
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null $allowanceCharge
      * @return self
      */
-    public function setAllowanceCharge(array $allowanceCharge): self
+    public function setAllowanceCharge(?array $allowanceCharge = null): self
     {
         $this->allowanceCharge = $allowanceCharge;
 
@@ -445,10 +445,10 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal> $taxTotal
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal>|null $taxTotal
      * @return self
      */
-    public function setTaxTotal(array $taxTotal): self
+    public function setTaxTotal(?array $taxTotal = null): self
     {
         $this->taxTotal = $taxTotal;
 
@@ -526,10 +526,10 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsService> $telecommunicationsService
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsService>|null $telecommunicationsService
      * @return self
      */
-    public function setTelecommunicationsService(array $telecommunicationsService): self
+    public function setTelecommunicationsService(?array $telecommunicationsService = null): self
     {
         $this->telecommunicationsService = $telecommunicationsService;
 

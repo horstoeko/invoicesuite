@@ -14,7 +14,7 @@ class PartyType
     use HandlesObjectFlags;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class PartyType
     private $markCareIndicator;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class PartyType
     private $markAttentionIndicator;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\WebsiteURI
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\WebsiteURI|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\WebsiteURI")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class PartyType
     private $websiteURI;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LogoReferenceID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LogoReferenceID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LogoReferenceID")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class PartyType
     private $logoReferenceID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\EndpointID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\EndpointID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\EndpointID")
      * @JMS\Expose
@@ -69,7 +69,7 @@ class PartyType
     private $endpointID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\IndustryClassificationCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\IndustryClassificationCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\IndustryClassificationCode")
      * @JMS\Expose
@@ -80,7 +80,7 @@ class PartyType
     private $industryClassificationCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PartyIdentification>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PartyIdentification>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PartyIdentification>")
      * @JMS\Expose
@@ -92,7 +92,7 @@ class PartyType
     private $partyIdentification;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PartyName>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PartyName>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PartyName>")
      * @JMS\Expose
@@ -104,7 +104,7 @@ class PartyType
     private $partyName;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Language
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Language|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Language")
      * @JMS\Expose
@@ -115,7 +115,7 @@ class PartyType
     private $language;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PostalAddress
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PostalAddress|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PostalAddress")
      * @JMS\Expose
@@ -126,7 +126,7 @@ class PartyType
     private $postalAddress;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PhysicalLocation
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PhysicalLocation|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PhysicalLocation")
      * @JMS\Expose
@@ -137,7 +137,7 @@ class PartyType
     private $physicalLocation;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PartyTaxScheme>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PartyTaxScheme>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PartyTaxScheme>")
      * @JMS\Expose
@@ -149,7 +149,7 @@ class PartyType
     private $partyTaxScheme;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PartyLegalEntity>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PartyLegalEntity>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PartyLegalEntity>")
      * @JMS\Expose
@@ -161,7 +161,7 @@ class PartyType
     private $partyLegalEntity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Contact
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Contact|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Contact")
      * @JMS\Expose
@@ -172,7 +172,7 @@ class PartyType
     private $contact;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Person>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Person>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Person>")
      * @JMS\Expose
@@ -184,7 +184,7 @@ class PartyType
     private $person;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\AgentParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\AgentParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\AgentParty")
      * @JMS\Expose
@@ -195,7 +195,7 @@ class PartyType
     private $agentParty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ServiceProviderParty>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ServiceProviderParty>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ServiceProviderParty>")
      * @JMS\Expose
@@ -207,7 +207,7 @@ class PartyType
     private $serviceProviderParty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PowerOfAttorney>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PowerOfAttorney>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PowerOfAttorney>")
      * @JMS\Expose
@@ -219,7 +219,7 @@ class PartyType
     private $powerOfAttorney;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\FinancialAccount
+     * @var \horstoeko\invoicesuite\models\ubl\cac\FinancialAccount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\FinancialAccount")
      * @JMS\Expose
@@ -238,10 +238,10 @@ class PartyType
     }
 
     /**
-     * @param bool $markCareIndicator
+     * @param bool|null $markCareIndicator
      * @return self
      */
-    public function setMarkCareIndicator(bool $markCareIndicator): self
+    public function setMarkCareIndicator(?bool $markCareIndicator = null): self
     {
         $this->markCareIndicator = $markCareIndicator;
 
@@ -257,10 +257,10 @@ class PartyType
     }
 
     /**
-     * @param bool $markAttentionIndicator
+     * @param bool|null $markAttentionIndicator
      * @return self
      */
-    public function setMarkAttentionIndicator(bool $markAttentionIndicator): self
+    public function setMarkAttentionIndicator(?bool $markAttentionIndicator = null): self
     {
         $this->markAttentionIndicator = $markAttentionIndicator;
 
@@ -286,10 +286,10 @@ class PartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\WebsiteURI $websiteURI
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\WebsiteURI|null $websiteURI
      * @return self
      */
-    public function setWebsiteURI(WebsiteURI $websiteURI): self
+    public function setWebsiteURI(?WebsiteURI $websiteURI = null): self
     {
         $this->websiteURI = $websiteURI;
 
@@ -315,10 +315,10 @@ class PartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LogoReferenceID $logoReferenceID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LogoReferenceID|null $logoReferenceID
      * @return self
      */
-    public function setLogoReferenceID(LogoReferenceID $logoReferenceID): self
+    public function setLogoReferenceID(?LogoReferenceID $logoReferenceID = null): self
     {
         $this->logoReferenceID = $logoReferenceID;
 
@@ -344,10 +344,10 @@ class PartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\EndpointID $endpointID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\EndpointID|null $endpointID
      * @return self
      */
-    public function setEndpointID(EndpointID $endpointID): self
+    public function setEndpointID(?EndpointID $endpointID = null): self
     {
         $this->endpointID = $endpointID;
 
@@ -373,11 +373,12 @@ class PartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\IndustryClassificationCode $industryClassificationCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\IndustryClassificationCode|null $industryClassificationCode
      * @return self
      */
-    public function setIndustryClassificationCode(IndustryClassificationCode $industryClassificationCode): self
-    {
+    public function setIndustryClassificationCode(
+        ?IndustryClassificationCode $industryClassificationCode = null,
+    ): self {
         $this->industryClassificationCode = $industryClassificationCode;
 
         return $this;
@@ -392,10 +393,10 @@ class PartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PartyIdentification> $partyIdentification
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PartyIdentification>|null $partyIdentification
      * @return self
      */
-    public function setPartyIdentification(array $partyIdentification): self
+    public function setPartyIdentification(?array $partyIdentification = null): self
     {
         $this->partyIdentification = $partyIdentification;
 
@@ -473,10 +474,10 @@ class PartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PartyName> $partyName
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PartyName>|null $partyName
      * @return self
      */
-    public function setPartyName(array $partyName): self
+    public function setPartyName(?array $partyName = null): self
     {
         $this->partyName = $partyName;
 
@@ -564,10 +565,10 @@ class PartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Language $language
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Language|null $language
      * @return self
      */
-    public function setLanguage(Language $language): self
+    public function setLanguage(?Language $language = null): self
     {
         $this->language = $language;
 
@@ -593,10 +594,10 @@ class PartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PostalAddress $postalAddress
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PostalAddress|null $postalAddress
      * @return self
      */
-    public function setPostalAddress(PostalAddress $postalAddress): self
+    public function setPostalAddress(?PostalAddress $postalAddress = null): self
     {
         $this->postalAddress = $postalAddress;
 
@@ -622,10 +623,10 @@ class PartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PhysicalLocation $physicalLocation
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PhysicalLocation|null $physicalLocation
      * @return self
      */
-    public function setPhysicalLocation(PhysicalLocation $physicalLocation): self
+    public function setPhysicalLocation(?PhysicalLocation $physicalLocation = null): self
     {
         $this->physicalLocation = $physicalLocation;
 
@@ -641,10 +642,10 @@ class PartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PartyTaxScheme> $partyTaxScheme
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PartyTaxScheme>|null $partyTaxScheme
      * @return self
      */
-    public function setPartyTaxScheme(array $partyTaxScheme): self
+    public function setPartyTaxScheme(?array $partyTaxScheme = null): self
     {
         $this->partyTaxScheme = $partyTaxScheme;
 
@@ -722,10 +723,10 @@ class PartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PartyLegalEntity> $partyLegalEntity
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PartyLegalEntity>|null $partyLegalEntity
      * @return self
      */
-    public function setPartyLegalEntity(array $partyLegalEntity): self
+    public function setPartyLegalEntity(?array $partyLegalEntity = null): self
     {
         $this->partyLegalEntity = $partyLegalEntity;
 
@@ -813,10 +814,10 @@ class PartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Contact $contact
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Contact|null $contact
      * @return self
      */
-    public function setContact(Contact $contact): self
+    public function setContact(?Contact $contact = null): self
     {
         $this->contact = $contact;
 
@@ -832,10 +833,10 @@ class PartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Person> $person
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Person>|null $person
      * @return self
      */
-    public function setPerson(array $person): self
+    public function setPerson(?array $person = null): self
     {
         $this->person = $person;
 
@@ -923,10 +924,10 @@ class PartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\AgentParty $agentParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AgentParty|null $agentParty
      * @return self
      */
-    public function setAgentParty(AgentParty $agentParty): self
+    public function setAgentParty(?AgentParty $agentParty = null): self
     {
         $this->agentParty = $agentParty;
 
@@ -942,10 +943,10 @@ class PartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ServiceProviderParty> $serviceProviderParty
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ServiceProviderParty>|null $serviceProviderParty
      * @return self
      */
-    public function setServiceProviderParty(array $serviceProviderParty): self
+    public function setServiceProviderParty(?array $serviceProviderParty = null): self
     {
         $this->serviceProviderParty = $serviceProviderParty;
 
@@ -1023,10 +1024,10 @@ class PartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PowerOfAttorney> $powerOfAttorney
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PowerOfAttorney>|null $powerOfAttorney
      * @return self
      */
-    public function setPowerOfAttorney(array $powerOfAttorney): self
+    public function setPowerOfAttorney(?array $powerOfAttorney = null): self
     {
         $this->powerOfAttorney = $powerOfAttorney;
 
@@ -1114,10 +1115,10 @@ class PartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\FinancialAccount $financialAccount
+     * @param \horstoeko\invoicesuite\models\ubl\cac\FinancialAccount|null $financialAccount
      * @return self
      */
-    public function setFinancialAccount(FinancialAccount $financialAccount): self
+    public function setFinancialAccount(?FinancialAccount $financialAccount = null): self
     {
         $this->financialAccount = $financialAccount;
 

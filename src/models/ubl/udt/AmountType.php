@@ -11,7 +11,7 @@ class AmountType extends AmountTypeBase
     use HandlesObjectFlags;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -30,10 +30,10 @@ class AmountType extends AmountTypeBase
     }
 
     /**
-     * @param string $currencyID
+     * @param string|null $currencyID
      * @return self
      */
-    public function setCurrencyID(string $currencyID): self
+    public function setCurrencyID(?string $currencyID = null): self
     {
         $this->currencyID = $currencyID;
 

@@ -14,7 +14,7 @@ class PerformanceDataLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class PerformanceDataLineType
     private $iD;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class PerformanceDataLineType
     private $note;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PerformanceValueQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PerformanceValueQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PerformanceValueQuantity")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class PerformanceDataLineType
     private $performanceValueQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class PerformanceDataLineType
     private $performanceMetricTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Period
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Period|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Period")
      * @JMS\Expose
@@ -70,7 +70,7 @@ class PerformanceDataLineType
     private $period;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Item
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Item|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Item")
      * @JMS\Expose
@@ -99,10 +99,10 @@ class PerformanceDataLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -118,10 +118,10 @@ class PerformanceDataLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -209,10 +209,10 @@ class PerformanceDataLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PerformanceValueQuantity $performanceValueQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PerformanceValueQuantity|null $performanceValueQuantity
      * @return self
      */
-    public function setPerformanceValueQuantity(PerformanceValueQuantity $performanceValueQuantity): self
+    public function setPerformanceValueQuantity(?PerformanceValueQuantity $performanceValueQuantity = null): self
     {
         $this->performanceValueQuantity = $performanceValueQuantity;
 
@@ -238,10 +238,10 @@ class PerformanceDataLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode $performanceMetricTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode|null $performanceMetricTypeCode
      * @return self
      */
-    public function setPerformanceMetricTypeCode(PerformanceMetricTypeCode $performanceMetricTypeCode): self
+    public function setPerformanceMetricTypeCode(?PerformanceMetricTypeCode $performanceMetricTypeCode = null): self
     {
         $this->performanceMetricTypeCode = $performanceMetricTypeCode;
 
@@ -267,10 +267,10 @@ class PerformanceDataLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Period $period
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Period|null $period
      * @return self
      */
-    public function setPeriod(Period $period): self
+    public function setPeriod(?Period $period = null): self
     {
         $this->period = $period;
 
@@ -296,10 +296,10 @@ class PerformanceDataLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Item $item
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Item|null $item
      * @return self
      */
-    public function setItem(Item $item): self
+    public function setItem(?Item $item = null): self
     {
         $this->item = $item;
 

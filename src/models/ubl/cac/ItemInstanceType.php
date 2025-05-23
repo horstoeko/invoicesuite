@@ -13,7 +13,7 @@ class ItemInstanceType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ProductTraceID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ProductTraceID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ProductTraceID")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class ItemInstanceType
     private $productTraceID;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class ItemInstanceType
     private $manufactureDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class ItemInstanceType
     private $manufactureTime;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -57,7 +57,7 @@ class ItemInstanceType
     private $bestBeforeDate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\RegistrationID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\RegistrationID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\RegistrationID")
      * @JMS\Expose
@@ -68,7 +68,7 @@ class ItemInstanceType
     private $registrationID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SerialID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SerialID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SerialID")
      * @JMS\Expose
@@ -79,7 +79,7 @@ class ItemInstanceType
     private $serialID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty>")
      * @JMS\Expose
@@ -91,7 +91,7 @@ class ItemInstanceType
     private $additionalItemProperty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\LotIdentification
+     * @var \horstoeko\invoicesuite\models\ubl\cac\LotIdentification|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\LotIdentification")
      * @JMS\Expose
@@ -120,10 +120,10 @@ class ItemInstanceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ProductTraceID $productTraceID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ProductTraceID|null $productTraceID
      * @return self
      */
-    public function setProductTraceID(ProductTraceID $productTraceID): self
+    public function setProductTraceID(?ProductTraceID $productTraceID = null): self
     {
         $this->productTraceID = $productTraceID;
 
@@ -139,10 +139,10 @@ class ItemInstanceType
     }
 
     /**
-     * @param \DateTimeInterface $manufactureDate
+     * @param \DateTimeInterface|null $manufactureDate
      * @return self
      */
-    public function setManufactureDate(\DateTimeInterface $manufactureDate): self
+    public function setManufactureDate(?\DateTimeInterface $manufactureDate = null): self
     {
         $this->manufactureDate = $manufactureDate;
 
@@ -158,10 +158,10 @@ class ItemInstanceType
     }
 
     /**
-     * @param \DateTimeInterface $manufactureTime
+     * @param \DateTimeInterface|null $manufactureTime
      * @return self
      */
-    public function setManufactureTime(\DateTimeInterface $manufactureTime): self
+    public function setManufactureTime(?\DateTimeInterface $manufactureTime = null): self
     {
         $this->manufactureTime = $manufactureTime;
 
@@ -177,10 +177,10 @@ class ItemInstanceType
     }
 
     /**
-     * @param \DateTimeInterface $bestBeforeDate
+     * @param \DateTimeInterface|null $bestBeforeDate
      * @return self
      */
-    public function setBestBeforeDate(\DateTimeInterface $bestBeforeDate): self
+    public function setBestBeforeDate(?\DateTimeInterface $bestBeforeDate = null): self
     {
         $this->bestBeforeDate = $bestBeforeDate;
 
@@ -206,10 +206,10 @@ class ItemInstanceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\RegistrationID $registrationID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\RegistrationID|null $registrationID
      * @return self
      */
-    public function setRegistrationID(RegistrationID $registrationID): self
+    public function setRegistrationID(?RegistrationID $registrationID = null): self
     {
         $this->registrationID = $registrationID;
 
@@ -235,10 +235,10 @@ class ItemInstanceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SerialID $serialID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SerialID|null $serialID
      * @return self
      */
-    public function setSerialID(SerialID $serialID): self
+    public function setSerialID(?SerialID $serialID = null): self
     {
         $this->serialID = $serialID;
 
@@ -254,10 +254,10 @@ class ItemInstanceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty> $additionalItemProperty
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty>|null $additionalItemProperty
      * @return self
      */
-    public function setAdditionalItemProperty(array $additionalItemProperty): self
+    public function setAdditionalItemProperty(?array $additionalItemProperty = null): self
     {
         $this->additionalItemProperty = $additionalItemProperty;
 
@@ -345,10 +345,10 @@ class ItemInstanceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\LotIdentification $lotIdentification
+     * @param \horstoeko\invoicesuite\models\ubl\cac\LotIdentification|null $lotIdentification
      * @return self
      */
-    public function setLotIdentification(LotIdentification $lotIdentification): self
+    public function setLotIdentification(?LotIdentification $lotIdentification = null): self
     {
         $this->lotIdentification = $lotIdentification;
 

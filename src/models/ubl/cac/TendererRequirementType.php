@@ -14,7 +14,7 @@ class TendererRequirementType
     use HandlesObjectFlags;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Name>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Name>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Name>")
      * @JMS\Expose
@@ -26,7 +26,7 @@ class TendererRequirementType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TendererRequirementTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TendererRequirementTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TendererRequirementTypeCode")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class TendererRequirementType
     private $tendererRequirementTypeCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -49,7 +49,7 @@ class TendererRequirementType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LegalReference
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LegalReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LegalReference")
      * @JMS\Expose
@@ -60,7 +60,7 @@ class TendererRequirementType
     private $legalReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SuggestedEvidence>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SuggestedEvidence>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\SuggestedEvidence>")
      * @JMS\Expose
@@ -80,10 +80,10 @@ class TendererRequirementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Name> $name
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Name>|null $name
      * @return self
      */
-    public function setName(array $name): self
+    public function setName(?array $name = null): self
     {
         $this->name = $name;
 
@@ -171,11 +171,12 @@ class TendererRequirementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TendererRequirementTypeCode $tendererRequirementTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TendererRequirementTypeCode|null $tendererRequirementTypeCode
      * @return self
      */
-    public function setTendererRequirementTypeCode(TendererRequirementTypeCode $tendererRequirementTypeCode): self
-    {
+    public function setTendererRequirementTypeCode(
+        ?TendererRequirementTypeCode $tendererRequirementTypeCode = null,
+    ): self {
         $this->tendererRequirementTypeCode = $tendererRequirementTypeCode;
 
         return $this;
@@ -190,10 +191,10 @@ class TendererRequirementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -281,10 +282,10 @@ class TendererRequirementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LegalReference $legalReference
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LegalReference|null $legalReference
      * @return self
      */
-    public function setLegalReference(LegalReference $legalReference): self
+    public function setLegalReference(?LegalReference $legalReference = null): self
     {
         $this->legalReference = $legalReference;
 
@@ -300,10 +301,10 @@ class TendererRequirementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SuggestedEvidence> $suggestedEvidence
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SuggestedEvidence>|null $suggestedEvidence
      * @return self
      */
-    public function setSuggestedEvidence(array $suggestedEvidence): self
+    public function setSuggestedEvidence(?array $suggestedEvidence = null): self
     {
         $this->suggestedEvidence = $suggestedEvidence;
 

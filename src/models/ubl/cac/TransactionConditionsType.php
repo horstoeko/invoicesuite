@@ -13,7 +13,7 @@ class TransactionConditionsType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class TransactionConditionsType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ActionCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ActionCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ActionCode")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class TransactionConditionsType
     private $actionCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class TransactionConditionsType
     private $description;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DocumentReference>")
      * @JMS\Expose
@@ -77,10 +77,10 @@ class TransactionConditionsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -106,10 +106,10 @@ class TransactionConditionsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ActionCode $actionCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ActionCode|null $actionCode
      * @return self
      */
-    public function setActionCode(ActionCode $actionCode): self
+    public function setActionCode(?ActionCode $actionCode = null): self
     {
         $this->actionCode = $actionCode;
 
@@ -125,10 +125,10 @@ class TransactionConditionsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -206,10 +206,10 @@ class TransactionConditionsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference> $documentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null $documentReference
      * @return self
      */
-    public function setDocumentReference(array $documentReference): self
+    public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
 

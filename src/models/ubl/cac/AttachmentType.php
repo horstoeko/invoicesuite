@@ -11,7 +11,7 @@ class AttachmentType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\EmbeddedDocumentBinaryObject
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\EmbeddedDocumentBinaryObject|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\EmbeddedDocumentBinaryObject")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class AttachmentType
     private $embeddedDocumentBinaryObject;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ExternalReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ExternalReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ExternalReference")
      * @JMS\Expose
@@ -51,11 +51,12 @@ class AttachmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\EmbeddedDocumentBinaryObject $embeddedDocumentBinaryObject
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\EmbeddedDocumentBinaryObject|null $embeddedDocumentBinaryObject
      * @return self
      */
-    public function setEmbeddedDocumentBinaryObject(EmbeddedDocumentBinaryObject $embeddedDocumentBinaryObject): self
-    {
+    public function setEmbeddedDocumentBinaryObject(
+        ?EmbeddedDocumentBinaryObject $embeddedDocumentBinaryObject = null,
+    ): self {
         $this->embeddedDocumentBinaryObject = $embeddedDocumentBinaryObject;
 
         return $this;
@@ -80,10 +81,10 @@ class AttachmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ExternalReference $externalReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ExternalReference|null $externalReference
      * @return self
      */
-    public function setExternalReference(ExternalReference $externalReference): self
+    public function setExternalReference(?ExternalReference $externalReference = null): self
     {
         $this->externalReference = $externalReference;
 

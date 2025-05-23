@@ -17,7 +17,7 @@ class QualifyingPartyType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ParticipationPercent
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ParticipationPercent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ParticipationPercent")
      * @JMS\Expose
@@ -28,7 +28,7 @@ class QualifyingPartyType
     private $participationPercent;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\PersonalSituation>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\PersonalSituation>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\PersonalSituation>")
      * @JMS\Expose
@@ -40,7 +40,7 @@ class QualifyingPartyType
     private $personalSituation;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\OperatingYearsQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\OperatingYearsQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\OperatingYearsQuantity")
      * @JMS\Expose
@@ -51,7 +51,7 @@ class QualifyingPartyType
     private $operatingYearsQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\EmployeeQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\EmployeeQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\EmployeeQuantity")
      * @JMS\Expose
@@ -62,7 +62,7 @@ class QualifyingPartyType
     private $employeeQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\BusinessClassificationEvidenceID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\BusinessClassificationEvidenceID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\BusinessClassificationEvidenceID")
      * @JMS\Expose
@@ -73,7 +73,7 @@ class QualifyingPartyType
     private $businessClassificationEvidenceID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\BusinessIdentityEvidenceID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\BusinessIdentityEvidenceID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\BusinessIdentityEvidenceID")
      * @JMS\Expose
@@ -84,7 +84,7 @@ class QualifyingPartyType
     private $businessIdentityEvidenceID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TendererRoleCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TendererRoleCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TendererRoleCode")
      * @JMS\Expose
@@ -95,7 +95,7 @@ class QualifyingPartyType
     private $tendererRoleCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\BusinessClassificationScheme
+     * @var \horstoeko\invoicesuite\models\ubl\cac\BusinessClassificationScheme|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\BusinessClassificationScheme")
      * @JMS\Expose
@@ -106,7 +106,7 @@ class QualifyingPartyType
     private $businessClassificationScheme;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TechnicalCapability>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TechnicalCapability>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TechnicalCapability>")
      * @JMS\Expose
@@ -118,7 +118,7 @@ class QualifyingPartyType
     private $technicalCapability;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\FinancialCapability>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\FinancialCapability>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\FinancialCapability>")
      * @JMS\Expose
@@ -130,7 +130,7 @@ class QualifyingPartyType
     private $financialCapability;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CompletedTask>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CompletedTask>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\CompletedTask>")
      * @JMS\Expose
@@ -142,7 +142,7 @@ class QualifyingPartyType
     private $completedTask;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Declaration>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Declaration>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Declaration>")
      * @JMS\Expose
@@ -154,7 +154,7 @@ class QualifyingPartyType
     private $declaration;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Party
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Party|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Party")
      * @JMS\Expose
@@ -165,7 +165,7 @@ class QualifyingPartyType
     private $party;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\EconomicOperatorRole
+     * @var \horstoeko\invoicesuite\models\ubl\cac\EconomicOperatorRole|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\EconomicOperatorRole")
      * @JMS\Expose
@@ -194,10 +194,10 @@ class QualifyingPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ParticipationPercent $participationPercent
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ParticipationPercent|null $participationPercent
      * @return self
      */
-    public function setParticipationPercent(ParticipationPercent $participationPercent): self
+    public function setParticipationPercent(?ParticipationPercent $participationPercent = null): self
     {
         $this->participationPercent = $participationPercent;
 
@@ -213,10 +213,10 @@ class QualifyingPartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\PersonalSituation> $personalSituation
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\PersonalSituation>|null $personalSituation
      * @return self
      */
-    public function setPersonalSituation(array $personalSituation): self
+    public function setPersonalSituation(?array $personalSituation = null): self
     {
         $this->personalSituation = $personalSituation;
 
@@ -304,10 +304,10 @@ class QualifyingPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\OperatingYearsQuantity $operatingYearsQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\OperatingYearsQuantity|null $operatingYearsQuantity
      * @return self
      */
-    public function setOperatingYearsQuantity(OperatingYearsQuantity $operatingYearsQuantity): self
+    public function setOperatingYearsQuantity(?OperatingYearsQuantity $operatingYearsQuantity = null): self
     {
         $this->operatingYearsQuantity = $operatingYearsQuantity;
 
@@ -333,10 +333,10 @@ class QualifyingPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\EmployeeQuantity $employeeQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\EmployeeQuantity|null $employeeQuantity
      * @return self
      */
-    public function setEmployeeQuantity(EmployeeQuantity $employeeQuantity): self
+    public function setEmployeeQuantity(?EmployeeQuantity $employeeQuantity = null): self
     {
         $this->employeeQuantity = $employeeQuantity;
 
@@ -362,11 +362,11 @@ class QualifyingPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\BusinessClassificationEvidenceID $businessClassificationEvidenceID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\BusinessClassificationEvidenceID|null $businessClassificationEvidenceID
      * @return self
      */
     public function setBusinessClassificationEvidenceID(
-        BusinessClassificationEvidenceID $businessClassificationEvidenceID,
+        ?BusinessClassificationEvidenceID $businessClassificationEvidenceID = null,
     ): self {
         $this->businessClassificationEvidenceID = $businessClassificationEvidenceID;
 
@@ -392,11 +392,12 @@ class QualifyingPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\BusinessIdentityEvidenceID $businessIdentityEvidenceID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\BusinessIdentityEvidenceID|null $businessIdentityEvidenceID
      * @return self
      */
-    public function setBusinessIdentityEvidenceID(BusinessIdentityEvidenceID $businessIdentityEvidenceID): self
-    {
+    public function setBusinessIdentityEvidenceID(
+        ?BusinessIdentityEvidenceID $businessIdentityEvidenceID = null,
+    ): self {
         $this->businessIdentityEvidenceID = $businessIdentityEvidenceID;
 
         return $this;
@@ -421,10 +422,10 @@ class QualifyingPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TendererRoleCode $tendererRoleCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TendererRoleCode|null $tendererRoleCode
      * @return self
      */
-    public function setTendererRoleCode(TendererRoleCode $tendererRoleCode): self
+    public function setTendererRoleCode(?TendererRoleCode $tendererRoleCode = null): self
     {
         $this->tendererRoleCode = $tendererRoleCode;
 
@@ -450,11 +451,12 @@ class QualifyingPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\BusinessClassificationScheme $businessClassificationScheme
+     * @param \horstoeko\invoicesuite\models\ubl\cac\BusinessClassificationScheme|null $businessClassificationScheme
      * @return self
      */
-    public function setBusinessClassificationScheme(BusinessClassificationScheme $businessClassificationScheme): self
-    {
+    public function setBusinessClassificationScheme(
+        ?BusinessClassificationScheme $businessClassificationScheme = null,
+    ): self {
         $this->businessClassificationScheme = $businessClassificationScheme;
 
         return $this;
@@ -469,10 +471,10 @@ class QualifyingPartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TechnicalCapability> $technicalCapability
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TechnicalCapability>|null $technicalCapability
      * @return self
      */
-    public function setTechnicalCapability(array $technicalCapability): self
+    public function setTechnicalCapability(?array $technicalCapability = null): self
     {
         $this->technicalCapability = $technicalCapability;
 
@@ -550,10 +552,10 @@ class QualifyingPartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\FinancialCapability> $financialCapability
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\FinancialCapability>|null $financialCapability
      * @return self
      */
-    public function setFinancialCapability(array $financialCapability): self
+    public function setFinancialCapability(?array $financialCapability = null): self
     {
         $this->financialCapability = $financialCapability;
 
@@ -631,10 +633,10 @@ class QualifyingPartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CompletedTask> $completedTask
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CompletedTask>|null $completedTask
      * @return self
      */
-    public function setCompletedTask(array $completedTask): self
+    public function setCompletedTask(?array $completedTask = null): self
     {
         $this->completedTask = $completedTask;
 
@@ -712,10 +714,10 @@ class QualifyingPartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Declaration> $declaration
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Declaration>|null $declaration
      * @return self
      */
-    public function setDeclaration(array $declaration): self
+    public function setDeclaration(?array $declaration = null): self
     {
         $this->declaration = $declaration;
 
@@ -803,10 +805,10 @@ class QualifyingPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Party $party
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Party|null $party
      * @return self
      */
-    public function setParty(Party $party): self
+    public function setParty(?Party $party = null): self
     {
         $this->party = $party;
 
@@ -832,10 +834,10 @@ class QualifyingPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\EconomicOperatorRole $economicOperatorRole
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EconomicOperatorRole|null $economicOperatorRole
      * @return self
      */
-    public function setEconomicOperatorRole(EconomicOperatorRole $economicOperatorRole): self
+    public function setEconomicOperatorRole(?EconomicOperatorRole $economicOperatorRole = null): self
     {
         $this->economicOperatorRole = $economicOperatorRole;
 

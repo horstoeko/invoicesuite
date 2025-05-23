@@ -13,7 +13,7 @@ class PaymentType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class PaymentType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PaidAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PaidAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PaidAmount")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class PaymentType
     private $paidAmount;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class PaymentType
     private $receivedDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -57,7 +57,7 @@ class PaymentType
     private $paidDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -68,7 +68,7 @@ class PaymentType
     private $paidTime;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\InstructionID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\InstructionID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\InstructionID")
      * @JMS\Expose
@@ -97,10 +97,10 @@ class PaymentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -126,10 +126,10 @@ class PaymentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaidAmount $paidAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaidAmount|null $paidAmount
      * @return self
      */
-    public function setPaidAmount(PaidAmount $paidAmount): self
+    public function setPaidAmount(?PaidAmount $paidAmount = null): self
     {
         $this->paidAmount = $paidAmount;
 
@@ -145,10 +145,10 @@ class PaymentType
     }
 
     /**
-     * @param \DateTimeInterface $receivedDate
+     * @param \DateTimeInterface|null $receivedDate
      * @return self
      */
-    public function setReceivedDate(\DateTimeInterface $receivedDate): self
+    public function setReceivedDate(?\DateTimeInterface $receivedDate = null): self
     {
         $this->receivedDate = $receivedDate;
 
@@ -164,10 +164,10 @@ class PaymentType
     }
 
     /**
-     * @param \DateTimeInterface $paidDate
+     * @param \DateTimeInterface|null $paidDate
      * @return self
      */
-    public function setPaidDate(\DateTimeInterface $paidDate): self
+    public function setPaidDate(?\DateTimeInterface $paidDate = null): self
     {
         $this->paidDate = $paidDate;
 
@@ -183,10 +183,10 @@ class PaymentType
     }
 
     /**
-     * @param \DateTimeInterface $paidTime
+     * @param \DateTimeInterface|null $paidTime
      * @return self
      */
-    public function setPaidTime(\DateTimeInterface $paidTime): self
+    public function setPaidTime(?\DateTimeInterface $paidTime = null): self
     {
         $this->paidTime = $paidTime;
 
@@ -212,10 +212,10 @@ class PaymentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\InstructionID $instructionID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\InstructionID|null $instructionID
      * @return self
      */
-    public function setInstructionID(InstructionID $instructionID): self
+    public function setInstructionID(?InstructionID $instructionID = null): self
     {
         $this->instructionID = $instructionID;
 

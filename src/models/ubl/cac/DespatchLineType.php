@@ -20,7 +20,7 @@ class DespatchLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -31,7 +31,7 @@ class DespatchLineType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\UUID")
      * @JMS\Expose
@@ -42,7 +42,7 @@ class DespatchLineType
     private $uUID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -54,7 +54,7 @@ class DespatchLineType
     private $note;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LineStatusCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LineStatusCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LineStatusCode")
      * @JMS\Expose
@@ -65,7 +65,7 @@ class DespatchLineType
     private $lineStatusCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\DeliveredQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\DeliveredQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\DeliveredQuantity")
      * @JMS\Expose
@@ -76,7 +76,7 @@ class DespatchLineType
     private $deliveredQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\BackorderQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\BackorderQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\BackorderQuantity")
      * @JMS\Expose
@@ -87,7 +87,7 @@ class DespatchLineType
     private $backorderQuantity;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\BackorderReason>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\BackorderReason>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\BackorderReason>")
      * @JMS\Expose
@@ -99,7 +99,7 @@ class DespatchLineType
     private $backorderReason;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\OutstandingQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\OutstandingQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\OutstandingQuantity")
      * @JMS\Expose
@@ -110,7 +110,7 @@ class DespatchLineType
     private $outstandingQuantity;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\OutstandingReason>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\OutstandingReason>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\OutstandingReason>")
      * @JMS\Expose
@@ -122,7 +122,7 @@ class DespatchLineType
     private $outstandingReason;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\OversupplyQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\OversupplyQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\OversupplyQuantity")
      * @JMS\Expose
@@ -133,7 +133,7 @@ class DespatchLineType
     private $oversupplyQuantity;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\OrderLineReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\OrderLineReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\OrderLineReference>")
      * @JMS\Expose
@@ -145,7 +145,7 @@ class DespatchLineType
     private $orderLineReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DocumentReference>")
      * @JMS\Expose
@@ -157,7 +157,7 @@ class DespatchLineType
     private $documentReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Item
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Item|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Item")
      * @JMS\Expose
@@ -168,7 +168,7 @@ class DespatchLineType
     private $item;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Shipment>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Shipment>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Shipment>")
      * @JMS\Expose
@@ -198,10 +198,10 @@ class DespatchLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -227,10 +227,10 @@ class DespatchLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID $uUID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID|null $uUID
      * @return self
      */
-    public function setUUID(UUID $uUID): self
+    public function setUUID(?UUID $uUID = null): self
     {
         $this->uUID = $uUID;
 
@@ -246,10 +246,10 @@ class DespatchLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -337,10 +337,10 @@ class DespatchLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LineStatusCode $lineStatusCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LineStatusCode|null $lineStatusCode
      * @return self
      */
-    public function setLineStatusCode(LineStatusCode $lineStatusCode): self
+    public function setLineStatusCode(?LineStatusCode $lineStatusCode = null): self
     {
         $this->lineStatusCode = $lineStatusCode;
 
@@ -366,10 +366,10 @@ class DespatchLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\DeliveredQuantity $deliveredQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DeliveredQuantity|null $deliveredQuantity
      * @return self
      */
-    public function setDeliveredQuantity(DeliveredQuantity $deliveredQuantity): self
+    public function setDeliveredQuantity(?DeliveredQuantity $deliveredQuantity = null): self
     {
         $this->deliveredQuantity = $deliveredQuantity;
 
@@ -395,10 +395,10 @@ class DespatchLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\BackorderQuantity $backorderQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\BackorderQuantity|null $backorderQuantity
      * @return self
      */
-    public function setBackorderQuantity(BackorderQuantity $backorderQuantity): self
+    public function setBackorderQuantity(?BackorderQuantity $backorderQuantity = null): self
     {
         $this->backorderQuantity = $backorderQuantity;
 
@@ -414,10 +414,10 @@ class DespatchLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\BackorderReason> $backorderReason
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\BackorderReason>|null $backorderReason
      * @return self
      */
-    public function setBackorderReason(array $backorderReason): self
+    public function setBackorderReason(?array $backorderReason = null): self
     {
         $this->backorderReason = $backorderReason;
 
@@ -505,10 +505,10 @@ class DespatchLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\OutstandingQuantity $outstandingQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\OutstandingQuantity|null $outstandingQuantity
      * @return self
      */
-    public function setOutstandingQuantity(OutstandingQuantity $outstandingQuantity): self
+    public function setOutstandingQuantity(?OutstandingQuantity $outstandingQuantity = null): self
     {
         $this->outstandingQuantity = $outstandingQuantity;
 
@@ -524,10 +524,10 @@ class DespatchLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\OutstandingReason> $outstandingReason
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\OutstandingReason>|null $outstandingReason
      * @return self
      */
-    public function setOutstandingReason(array $outstandingReason): self
+    public function setOutstandingReason(?array $outstandingReason = null): self
     {
         $this->outstandingReason = $outstandingReason;
 
@@ -615,10 +615,10 @@ class DespatchLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\OversupplyQuantity $oversupplyQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\OversupplyQuantity|null $oversupplyQuantity
      * @return self
      */
-    public function setOversupplyQuantity(OversupplyQuantity $oversupplyQuantity): self
+    public function setOversupplyQuantity(?OversupplyQuantity $oversupplyQuantity = null): self
     {
         $this->oversupplyQuantity = $oversupplyQuantity;
 
@@ -634,10 +634,10 @@ class DespatchLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\OrderLineReference> $orderLineReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\OrderLineReference>|null $orderLineReference
      * @return self
      */
-    public function setOrderLineReference(array $orderLineReference): self
+    public function setOrderLineReference(?array $orderLineReference = null): self
     {
         $this->orderLineReference = $orderLineReference;
 
@@ -715,10 +715,10 @@ class DespatchLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference> $documentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null $documentReference
      * @return self
      */
-    public function setDocumentReference(array $documentReference): self
+    public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
 
@@ -806,10 +806,10 @@ class DespatchLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Item $item
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Item|null $item
      * @return self
      */
-    public function setItem(Item $item): self
+    public function setItem(?Item $item = null): self
     {
         $this->item = $item;
 
@@ -825,10 +825,10 @@ class DespatchLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Shipment> $shipment
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Shipment>|null $shipment
      * @return self
      */
-    public function setShipment(array $shipment): self
+    public function setShipment(?array $shipment = null): self
     {
         $this->shipment = $shipment;
 

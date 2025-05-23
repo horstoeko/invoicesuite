@@ -12,7 +12,7 @@ class EndorserPartyType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\RoleCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\RoleCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\RoleCode")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class EndorserPartyType
     private $roleCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class EndorserPartyType
     private $sequenceNumeric;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Party
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Party|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Party")
      * @JMS\Expose
@@ -45,7 +45,7 @@ class EndorserPartyType
     private $party;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\SignatoryContact
+     * @var \horstoeko\invoicesuite\models\ubl\cac\SignatoryContact|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\SignatoryContact")
      * @JMS\Expose
@@ -74,10 +74,10 @@ class EndorserPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\RoleCode $roleCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\RoleCode|null $roleCode
      * @return self
      */
-    public function setRoleCode(RoleCode $roleCode): self
+    public function setRoleCode(?RoleCode $roleCode = null): self
     {
         $this->roleCode = $roleCode;
 
@@ -103,10 +103,10 @@ class EndorserPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric $sequenceNumeric
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric|null $sequenceNumeric
      * @return self
      */
-    public function setSequenceNumeric(SequenceNumeric $sequenceNumeric): self
+    public function setSequenceNumeric(?SequenceNumeric $sequenceNumeric = null): self
     {
         $this->sequenceNumeric = $sequenceNumeric;
 
@@ -132,10 +132,10 @@ class EndorserPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Party $party
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Party|null $party
      * @return self
      */
-    public function setParty(Party $party): self
+    public function setParty(?Party $party = null): self
     {
         $this->party = $party;
 
@@ -161,10 +161,10 @@ class EndorserPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\SignatoryContact $signatoryContact
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SignatoryContact|null $signatoryContact
      * @return self
      */
-    public function setSignatoryContact(SignatoryContact $signatoryContact): self
+    public function setSignatoryContact(?SignatoryContact $signatoryContact = null): self
     {
         $this->signatoryContact = $signatoryContact;
 

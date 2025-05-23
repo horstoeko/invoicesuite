@@ -27,7 +27,7 @@ class HazardousItemType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -38,7 +38,7 @@ class HazardousItemType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PlacardNotation
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PlacardNotation|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PlacardNotation")
      * @JMS\Expose
@@ -49,7 +49,7 @@ class HazardousItemType
     private $placardNotation;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PlacardEndorsement
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PlacardEndorsement|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PlacardEndorsement")
      * @JMS\Expose
@@ -60,7 +60,7 @@ class HazardousItemType
     private $placardEndorsement;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalInformation>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalInformation>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\AdditionalInformation>")
      * @JMS\Expose
@@ -72,7 +72,7 @@ class HazardousItemType
     private $additionalInformation;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\UNDGCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\UNDGCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\UNDGCode")
      * @JMS\Expose
@@ -83,7 +83,7 @@ class HazardousItemType
     private $uNDGCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\EmergencyProceduresCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\EmergencyProceduresCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\EmergencyProceduresCode")
      * @JMS\Expose
@@ -94,7 +94,7 @@ class HazardousItemType
     private $emergencyProceduresCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MedicalFirstAidGuideCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MedicalFirstAidGuideCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MedicalFirstAidGuideCode")
      * @JMS\Expose
@@ -105,7 +105,7 @@ class HazardousItemType
     private $medicalFirstAidGuideCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TechnicalName
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TechnicalName|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TechnicalName")
      * @JMS\Expose
@@ -116,7 +116,7 @@ class HazardousItemType
     private $technicalName;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CategoryName
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CategoryName|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CategoryName")
      * @JMS\Expose
@@ -127,7 +127,7 @@ class HazardousItemType
     private $categoryName;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\HazardousCategoryCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\HazardousCategoryCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\HazardousCategoryCode")
      * @JMS\Expose
@@ -138,7 +138,7 @@ class HazardousItemType
     private $hazardousCategoryCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\UpperOrangeHazardPlacardID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\UpperOrangeHazardPlacardID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\UpperOrangeHazardPlacardID")
      * @JMS\Expose
@@ -149,7 +149,7 @@ class HazardousItemType
     private $upperOrangeHazardPlacardID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LowerOrangeHazardPlacardID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LowerOrangeHazardPlacardID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LowerOrangeHazardPlacardID")
      * @JMS\Expose
@@ -160,7 +160,7 @@ class HazardousItemType
     private $lowerOrangeHazardPlacardID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MarkingID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MarkingID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MarkingID")
      * @JMS\Expose
@@ -171,7 +171,7 @@ class HazardousItemType
     private $markingID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\HazardClassID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\HazardClassID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\HazardClassID")
      * @JMS\Expose
@@ -182,7 +182,7 @@ class HazardousItemType
     private $hazardClassID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\NetWeightMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\NetWeightMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\NetWeightMeasure")
      * @JMS\Expose
@@ -193,7 +193,7 @@ class HazardousItemType
     private $netWeightMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\NetVolumeMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\NetVolumeMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\NetVolumeMeasure")
      * @JMS\Expose
@@ -204,7 +204,7 @@ class HazardousItemType
     private $netVolumeMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Quantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Quantity")
      * @JMS\Expose
@@ -215,7 +215,7 @@ class HazardousItemType
     private $quantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ContactParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ContactParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ContactParty")
      * @JMS\Expose
@@ -226,7 +226,7 @@ class HazardousItemType
     private $contactParty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SecondaryHazard>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SecondaryHazard>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\SecondaryHazard>")
      * @JMS\Expose
@@ -238,7 +238,7 @@ class HazardousItemType
     private $secondaryHazard;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\HazardousGoodsTransit>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\HazardousGoodsTransit>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\HazardousGoodsTransit>")
      * @JMS\Expose
@@ -250,7 +250,7 @@ class HazardousItemType
     private $hazardousGoodsTransit;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\EmergencyTemperature
+     * @var \horstoeko\invoicesuite\models\ubl\cac\EmergencyTemperature|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\EmergencyTemperature")
      * @JMS\Expose
@@ -261,7 +261,7 @@ class HazardousItemType
     private $emergencyTemperature;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\FlashpointTemperature
+     * @var \horstoeko\invoicesuite\models\ubl\cac\FlashpointTemperature|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\FlashpointTemperature")
      * @JMS\Expose
@@ -272,7 +272,7 @@ class HazardousItemType
     private $flashpointTemperature;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalTemperature>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalTemperature>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\AdditionalTemperature>")
      * @JMS\Expose
@@ -302,10 +302,10 @@ class HazardousItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -331,10 +331,10 @@ class HazardousItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PlacardNotation $placardNotation
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PlacardNotation|null $placardNotation
      * @return self
      */
-    public function setPlacardNotation(PlacardNotation $placardNotation): self
+    public function setPlacardNotation(?PlacardNotation $placardNotation = null): self
     {
         $this->placardNotation = $placardNotation;
 
@@ -360,10 +360,10 @@ class HazardousItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PlacardEndorsement $placardEndorsement
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PlacardEndorsement|null $placardEndorsement
      * @return self
      */
-    public function setPlacardEndorsement(PlacardEndorsement $placardEndorsement): self
+    public function setPlacardEndorsement(?PlacardEndorsement $placardEndorsement = null): self
     {
         $this->placardEndorsement = $placardEndorsement;
 
@@ -379,10 +379,10 @@ class HazardousItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalInformation> $additionalInformation
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalInformation>|null $additionalInformation
      * @return self
      */
-    public function setAdditionalInformation(array $additionalInformation): self
+    public function setAdditionalInformation(?array $additionalInformation = null): self
     {
         $this->additionalInformation = $additionalInformation;
 
@@ -470,10 +470,10 @@ class HazardousItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\UNDGCode $uNDGCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\UNDGCode|null $uNDGCode
      * @return self
      */
-    public function setUNDGCode(UNDGCode $uNDGCode): self
+    public function setUNDGCode(?UNDGCode $uNDGCode = null): self
     {
         $this->uNDGCode = $uNDGCode;
 
@@ -499,10 +499,10 @@ class HazardousItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\EmergencyProceduresCode $emergencyProceduresCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\EmergencyProceduresCode|null $emergencyProceduresCode
      * @return self
      */
-    public function setEmergencyProceduresCode(EmergencyProceduresCode $emergencyProceduresCode): self
+    public function setEmergencyProceduresCode(?EmergencyProceduresCode $emergencyProceduresCode = null): self
     {
         $this->emergencyProceduresCode = $emergencyProceduresCode;
 
@@ -528,10 +528,10 @@ class HazardousItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MedicalFirstAidGuideCode $medicalFirstAidGuideCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MedicalFirstAidGuideCode|null $medicalFirstAidGuideCode
      * @return self
      */
-    public function setMedicalFirstAidGuideCode(MedicalFirstAidGuideCode $medicalFirstAidGuideCode): self
+    public function setMedicalFirstAidGuideCode(?MedicalFirstAidGuideCode $medicalFirstAidGuideCode = null): self
     {
         $this->medicalFirstAidGuideCode = $medicalFirstAidGuideCode;
 
@@ -557,10 +557,10 @@ class HazardousItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TechnicalName $technicalName
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TechnicalName|null $technicalName
      * @return self
      */
-    public function setTechnicalName(TechnicalName $technicalName): self
+    public function setTechnicalName(?TechnicalName $technicalName = null): self
     {
         $this->technicalName = $technicalName;
 
@@ -586,10 +586,10 @@ class HazardousItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CategoryName $categoryName
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CategoryName|null $categoryName
      * @return self
      */
-    public function setCategoryName(CategoryName $categoryName): self
+    public function setCategoryName(?CategoryName $categoryName = null): self
     {
         $this->categoryName = $categoryName;
 
@@ -615,10 +615,10 @@ class HazardousItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\HazardousCategoryCode $hazardousCategoryCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\HazardousCategoryCode|null $hazardousCategoryCode
      * @return self
      */
-    public function setHazardousCategoryCode(HazardousCategoryCode $hazardousCategoryCode): self
+    public function setHazardousCategoryCode(?HazardousCategoryCode $hazardousCategoryCode = null): self
     {
         $this->hazardousCategoryCode = $hazardousCategoryCode;
 
@@ -644,11 +644,12 @@ class HazardousItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\UpperOrangeHazardPlacardID $upperOrangeHazardPlacardID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\UpperOrangeHazardPlacardID|null $upperOrangeHazardPlacardID
      * @return self
      */
-    public function setUpperOrangeHazardPlacardID(UpperOrangeHazardPlacardID $upperOrangeHazardPlacardID): self
-    {
+    public function setUpperOrangeHazardPlacardID(
+        ?UpperOrangeHazardPlacardID $upperOrangeHazardPlacardID = null,
+    ): self {
         $this->upperOrangeHazardPlacardID = $upperOrangeHazardPlacardID;
 
         return $this;
@@ -673,11 +674,12 @@ class HazardousItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LowerOrangeHazardPlacardID $lowerOrangeHazardPlacardID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LowerOrangeHazardPlacardID|null $lowerOrangeHazardPlacardID
      * @return self
      */
-    public function setLowerOrangeHazardPlacardID(LowerOrangeHazardPlacardID $lowerOrangeHazardPlacardID): self
-    {
+    public function setLowerOrangeHazardPlacardID(
+        ?LowerOrangeHazardPlacardID $lowerOrangeHazardPlacardID = null,
+    ): self {
         $this->lowerOrangeHazardPlacardID = $lowerOrangeHazardPlacardID;
 
         return $this;
@@ -702,10 +704,10 @@ class HazardousItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MarkingID $markingID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MarkingID|null $markingID
      * @return self
      */
-    public function setMarkingID(MarkingID $markingID): self
+    public function setMarkingID(?MarkingID $markingID = null): self
     {
         $this->markingID = $markingID;
 
@@ -731,10 +733,10 @@ class HazardousItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\HazardClassID $hazardClassID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\HazardClassID|null $hazardClassID
      * @return self
      */
-    public function setHazardClassID(HazardClassID $hazardClassID): self
+    public function setHazardClassID(?HazardClassID $hazardClassID = null): self
     {
         $this->hazardClassID = $hazardClassID;
 
@@ -760,10 +762,10 @@ class HazardousItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\NetWeightMeasure $netWeightMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\NetWeightMeasure|null $netWeightMeasure
      * @return self
      */
-    public function setNetWeightMeasure(NetWeightMeasure $netWeightMeasure): self
+    public function setNetWeightMeasure(?NetWeightMeasure $netWeightMeasure = null): self
     {
         $this->netWeightMeasure = $netWeightMeasure;
 
@@ -789,10 +791,10 @@ class HazardousItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\NetVolumeMeasure $netVolumeMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\NetVolumeMeasure|null $netVolumeMeasure
      * @return self
      */
-    public function setNetVolumeMeasure(NetVolumeMeasure $netVolumeMeasure): self
+    public function setNetVolumeMeasure(?NetVolumeMeasure $netVolumeMeasure = null): self
     {
         $this->netVolumeMeasure = $netVolumeMeasure;
 
@@ -818,10 +820,10 @@ class HazardousItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Quantity $quantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null $quantity
      * @return self
      */
-    public function setQuantity(Quantity $quantity): self
+    public function setQuantity(?Quantity $quantity = null): self
     {
         $this->quantity = $quantity;
 
@@ -847,10 +849,10 @@ class HazardousItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ContactParty $contactParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ContactParty|null $contactParty
      * @return self
      */
-    public function setContactParty(ContactParty $contactParty): self
+    public function setContactParty(?ContactParty $contactParty = null): self
     {
         $this->contactParty = $contactParty;
 
@@ -866,10 +868,10 @@ class HazardousItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SecondaryHazard> $secondaryHazard
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SecondaryHazard>|null $secondaryHazard
      * @return self
      */
-    public function setSecondaryHazard(array $secondaryHazard): self
+    public function setSecondaryHazard(?array $secondaryHazard = null): self
     {
         $this->secondaryHazard = $secondaryHazard;
 
@@ -947,10 +949,10 @@ class HazardousItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\HazardousGoodsTransit> $hazardousGoodsTransit
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\HazardousGoodsTransit>|null $hazardousGoodsTransit
      * @return self
      */
-    public function setHazardousGoodsTransit(array $hazardousGoodsTransit): self
+    public function setHazardousGoodsTransit(?array $hazardousGoodsTransit = null): self
     {
         $this->hazardousGoodsTransit = $hazardousGoodsTransit;
 
@@ -1038,10 +1040,10 @@ class HazardousItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\EmergencyTemperature $emergencyTemperature
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EmergencyTemperature|null $emergencyTemperature
      * @return self
      */
-    public function setEmergencyTemperature(EmergencyTemperature $emergencyTemperature): self
+    public function setEmergencyTemperature(?EmergencyTemperature $emergencyTemperature = null): self
     {
         $this->emergencyTemperature = $emergencyTemperature;
 
@@ -1067,10 +1069,10 @@ class HazardousItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\FlashpointTemperature $flashpointTemperature
+     * @param \horstoeko\invoicesuite\models\ubl\cac\FlashpointTemperature|null $flashpointTemperature
      * @return self
      */
-    public function setFlashpointTemperature(FlashpointTemperature $flashpointTemperature): self
+    public function setFlashpointTemperature(?FlashpointTemperature $flashpointTemperature = null): self
     {
         $this->flashpointTemperature = $flashpointTemperature;
 
@@ -1086,10 +1088,10 @@ class HazardousItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalTemperature> $additionalTemperature
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalTemperature>|null $additionalTemperature
      * @return self
      */
-    public function setAdditionalTemperature(array $additionalTemperature): self
+    public function setAdditionalTemperature(?array $additionalTemperature = null): self
     {
         $this->additionalTemperature = $additionalTemperature;
 

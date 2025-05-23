@@ -12,7 +12,7 @@ class ContractingActivityType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ActivityTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ActivityTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ActivityTypeCode")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class ContractingActivityType
     private $activityTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ActivityType
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ActivityType|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ActivityType")
      * @JMS\Expose
@@ -52,10 +52,10 @@ class ContractingActivityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ActivityTypeCode $activityTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ActivityTypeCode|null $activityTypeCode
      * @return self
      */
-    public function setActivityTypeCode(ActivityTypeCode $activityTypeCode): self
+    public function setActivityTypeCode(?ActivityTypeCode $activityTypeCode = null): self
     {
         $this->activityTypeCode = $activityTypeCode;
 
@@ -81,10 +81,10 @@ class ContractingActivityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ActivityType $activityType
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ActivityType|null $activityType
      * @return self
      */
-    public function setActivityType(ActivityType $activityType): self
+    public function setActivityType(?ActivityType $activityType = null): self
     {
         $this->activityType = $activityType;
 

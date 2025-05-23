@@ -14,7 +14,7 @@ class TenderPreparationType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TenderEnvelopeID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TenderEnvelopeID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TenderEnvelopeID")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class TenderPreparationType
     private $tenderEnvelopeID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TenderEnvelopeTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TenderEnvelopeTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TenderEnvelopeTypeCode")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class TenderPreparationType
     private $tenderEnvelopeTypeCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class TenderPreparationType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\OpenTenderID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\OpenTenderID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\OpenTenderID")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class TenderPreparationType
     private $openTenderID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ProcurementProjectLot>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ProcurementProjectLot>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ProcurementProjectLot>")
      * @JMS\Expose
@@ -71,7 +71,7 @@ class TenderPreparationType
     private $procurementProjectLot;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentTenderRequirement>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentTenderRequirement>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DocumentTenderRequirement>")
      * @JMS\Expose
@@ -101,10 +101,10 @@ class TenderPreparationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TenderEnvelopeID $tenderEnvelopeID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TenderEnvelopeID|null $tenderEnvelopeID
      * @return self
      */
-    public function setTenderEnvelopeID(TenderEnvelopeID $tenderEnvelopeID): self
+    public function setTenderEnvelopeID(?TenderEnvelopeID $tenderEnvelopeID = null): self
     {
         $this->tenderEnvelopeID = $tenderEnvelopeID;
 
@@ -130,10 +130,10 @@ class TenderPreparationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TenderEnvelopeTypeCode $tenderEnvelopeTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TenderEnvelopeTypeCode|null $tenderEnvelopeTypeCode
      * @return self
      */
-    public function setTenderEnvelopeTypeCode(TenderEnvelopeTypeCode $tenderEnvelopeTypeCode): self
+    public function setTenderEnvelopeTypeCode(?TenderEnvelopeTypeCode $tenderEnvelopeTypeCode = null): self
     {
         $this->tenderEnvelopeTypeCode = $tenderEnvelopeTypeCode;
 
@@ -149,10 +149,10 @@ class TenderPreparationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -240,10 +240,10 @@ class TenderPreparationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\OpenTenderID $openTenderID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\OpenTenderID|null $openTenderID
      * @return self
      */
-    public function setOpenTenderID(OpenTenderID $openTenderID): self
+    public function setOpenTenderID(?OpenTenderID $openTenderID = null): self
     {
         $this->openTenderID = $openTenderID;
 
@@ -259,10 +259,10 @@ class TenderPreparationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ProcurementProjectLot> $procurementProjectLot
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ProcurementProjectLot>|null $procurementProjectLot
      * @return self
      */
-    public function setProcurementProjectLot(array $procurementProjectLot): self
+    public function setProcurementProjectLot(?array $procurementProjectLot = null): self
     {
         $this->procurementProjectLot = $procurementProjectLot;
 
@@ -340,10 +340,10 @@ class TenderPreparationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentTenderRequirement> $documentTenderRequirement
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentTenderRequirement>|null $documentTenderRequirement
      * @return self
      */
-    public function setDocumentTenderRequirement(array $documentTenderRequirement): self
+    public function setDocumentTenderRequirement(?array $documentTenderRequirement = null): self
     {
         $this->documentTenderRequirement = $documentTenderRequirement;
 

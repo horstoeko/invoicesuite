@@ -12,7 +12,7 @@ class DeliveryUnitType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\BatchQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\BatchQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\BatchQuantity")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class DeliveryUnitType
     private $batchQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ConsumerUnitQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ConsumerUnitQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ConsumerUnitQuantity")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class DeliveryUnitType
     private $consumerUnitQuantity;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -63,10 +63,10 @@ class DeliveryUnitType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\BatchQuantity $batchQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\BatchQuantity|null $batchQuantity
      * @return self
      */
-    public function setBatchQuantity(BatchQuantity $batchQuantity): self
+    public function setBatchQuantity(?BatchQuantity $batchQuantity = null): self
     {
         $this->batchQuantity = $batchQuantity;
 
@@ -92,10 +92,10 @@ class DeliveryUnitType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ConsumerUnitQuantity $consumerUnitQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ConsumerUnitQuantity|null $consumerUnitQuantity
      * @return self
      */
-    public function setConsumerUnitQuantity(ConsumerUnitQuantity $consumerUnitQuantity): self
+    public function setConsumerUnitQuantity(?ConsumerUnitQuantity $consumerUnitQuantity = null): self
     {
         $this->consumerUnitQuantity = $consumerUnitQuantity;
 
@@ -111,10 +111,10 @@ class DeliveryUnitType
     }
 
     /**
-     * @param bool $hazardousRiskIndicator
+     * @param bool|null $hazardousRiskIndicator
      * @return self
      */
-    public function setHazardousRiskIndicator(bool $hazardousRiskIndicator): self
+    public function setHazardousRiskIndicator(?bool $hazardousRiskIndicator = null): self
     {
         $this->hazardousRiskIndicator = $hazardousRiskIndicator;
 

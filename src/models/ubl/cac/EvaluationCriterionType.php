@@ -16,7 +16,7 @@ class EvaluationCriterionType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\EvaluationCriterionTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\EvaluationCriterionTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\EvaluationCriterionTypeCode")
      * @JMS\Expose
@@ -27,7 +27,7 @@ class EvaluationCriterionType
     private $evaluationCriterionTypeCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -39,7 +39,7 @@ class EvaluationCriterionType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ThresholdAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ThresholdAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ThresholdAmount")
      * @JMS\Expose
@@ -50,7 +50,7 @@ class EvaluationCriterionType
     private $thresholdAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ThresholdQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ThresholdQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ThresholdQuantity")
      * @JMS\Expose
@@ -61,7 +61,7 @@ class EvaluationCriterionType
     private $thresholdQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ExpressionCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ExpressionCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ExpressionCode")
      * @JMS\Expose
@@ -72,7 +72,7 @@ class EvaluationCriterionType
     private $expressionCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Expression>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Expression>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Expression>")
      * @JMS\Expose
@@ -84,7 +84,7 @@ class EvaluationCriterionType
     private $expression;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\DurationPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\DurationPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\DurationPeriod")
      * @JMS\Expose
@@ -95,7 +95,7 @@ class EvaluationCriterionType
     private $durationPeriod;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SuggestedEvidence>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SuggestedEvidence>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\SuggestedEvidence>")
      * @JMS\Expose
@@ -125,11 +125,12 @@ class EvaluationCriterionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\EvaluationCriterionTypeCode $evaluationCriterionTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\EvaluationCriterionTypeCode|null $evaluationCriterionTypeCode
      * @return self
      */
-    public function setEvaluationCriterionTypeCode(EvaluationCriterionTypeCode $evaluationCriterionTypeCode): self
-    {
+    public function setEvaluationCriterionTypeCode(
+        ?EvaluationCriterionTypeCode $evaluationCriterionTypeCode = null,
+    ): self {
         $this->evaluationCriterionTypeCode = $evaluationCriterionTypeCode;
 
         return $this;
@@ -144,10 +145,10 @@ class EvaluationCriterionType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -235,10 +236,10 @@ class EvaluationCriterionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ThresholdAmount $thresholdAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ThresholdAmount|null $thresholdAmount
      * @return self
      */
-    public function setThresholdAmount(ThresholdAmount $thresholdAmount): self
+    public function setThresholdAmount(?ThresholdAmount $thresholdAmount = null): self
     {
         $this->thresholdAmount = $thresholdAmount;
 
@@ -264,10 +265,10 @@ class EvaluationCriterionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ThresholdQuantity $thresholdQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ThresholdQuantity|null $thresholdQuantity
      * @return self
      */
-    public function setThresholdQuantity(ThresholdQuantity $thresholdQuantity): self
+    public function setThresholdQuantity(?ThresholdQuantity $thresholdQuantity = null): self
     {
         $this->thresholdQuantity = $thresholdQuantity;
 
@@ -293,10 +294,10 @@ class EvaluationCriterionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExpressionCode $expressionCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExpressionCode|null $expressionCode
      * @return self
      */
-    public function setExpressionCode(ExpressionCode $expressionCode): self
+    public function setExpressionCode(?ExpressionCode $expressionCode = null): self
     {
         $this->expressionCode = $expressionCode;
 
@@ -312,10 +313,10 @@ class EvaluationCriterionType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Expression> $expression
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Expression>|null $expression
      * @return self
      */
-    public function setExpression(array $expression): self
+    public function setExpression(?array $expression = null): self
     {
         $this->expression = $expression;
 
@@ -403,10 +404,10 @@ class EvaluationCriterionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\DurationPeriod $durationPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DurationPeriod|null $durationPeriod
      * @return self
      */
-    public function setDurationPeriod(DurationPeriod $durationPeriod): self
+    public function setDurationPeriod(?DurationPeriod $durationPeriod = null): self
     {
         $this->durationPeriod = $durationPeriod;
 
@@ -422,10 +423,10 @@ class EvaluationCriterionType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SuggestedEvidence> $suggestedEvidence
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SuggestedEvidence>|null $suggestedEvidence
      * @return self
      */
-    public function setSuggestedEvidence(array $suggestedEvidence): self
+    public function setSuggestedEvidence(?array $suggestedEvidence = null): self
     {
         $this->suggestedEvidence = $suggestedEvidence;
 

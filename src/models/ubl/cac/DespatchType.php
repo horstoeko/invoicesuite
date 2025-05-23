@@ -13,7 +13,7 @@ class DespatchType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class DespatchType
     private $iD;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class DespatchType
     private $requestedDespatchDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class DespatchType
     private $requestedDespatchTime;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -57,7 +57,7 @@ class DespatchType
     private $estimatedDespatchDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -68,7 +68,7 @@ class DespatchType
     private $estimatedDespatchTime;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -79,7 +79,7 @@ class DespatchType
     private $actualDespatchDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -90,7 +90,7 @@ class DespatchType
     private $actualDespatchTime;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -101,7 +101,7 @@ class DespatchType
     private $guaranteedDespatchDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -112,7 +112,7 @@ class DespatchType
     private $guaranteedDespatchTime;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ReleaseID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ReleaseID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ReleaseID")
      * @JMS\Expose
@@ -123,7 +123,7 @@ class DespatchType
     private $releaseID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Instructions>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Instructions>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Instructions>")
      * @JMS\Expose
@@ -135,7 +135,7 @@ class DespatchType
     private $instructions;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\DespatchAddress
+     * @var \horstoeko\invoicesuite\models\ubl\cac\DespatchAddress|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\DespatchAddress")
      * @JMS\Expose
@@ -146,7 +146,7 @@ class DespatchType
     private $despatchAddress;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\DespatchLocation
+     * @var \horstoeko\invoicesuite\models\ubl\cac\DespatchLocation|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\DespatchLocation")
      * @JMS\Expose
@@ -157,7 +157,7 @@ class DespatchType
     private $despatchLocation;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\DespatchParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\DespatchParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\DespatchParty")
      * @JMS\Expose
@@ -168,7 +168,7 @@ class DespatchType
     private $despatchParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\CarrierParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\CarrierParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\CarrierParty")
      * @JMS\Expose
@@ -179,7 +179,7 @@ class DespatchType
     private $carrierParty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\NotifyParty>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\NotifyParty>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\NotifyParty>")
      * @JMS\Expose
@@ -191,7 +191,7 @@ class DespatchType
     private $notifyParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Contact
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Contact|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Contact")
      * @JMS\Expose
@@ -202,7 +202,7 @@ class DespatchType
     private $contact;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\EstimatedDespatchPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\EstimatedDespatchPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\EstimatedDespatchPeriod")
      * @JMS\Expose
@@ -213,7 +213,7 @@ class DespatchType
     private $estimatedDespatchPeriod;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\RequestedDespatchPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\RequestedDespatchPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\RequestedDespatchPeriod")
      * @JMS\Expose
@@ -242,10 +242,10 @@ class DespatchType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -261,10 +261,10 @@ class DespatchType
     }
 
     /**
-     * @param \DateTimeInterface $requestedDespatchDate
+     * @param \DateTimeInterface|null $requestedDespatchDate
      * @return self
      */
-    public function setRequestedDespatchDate(\DateTimeInterface $requestedDespatchDate): self
+    public function setRequestedDespatchDate(?\DateTimeInterface $requestedDespatchDate = null): self
     {
         $this->requestedDespatchDate = $requestedDespatchDate;
 
@@ -280,10 +280,10 @@ class DespatchType
     }
 
     /**
-     * @param \DateTimeInterface $requestedDespatchTime
+     * @param \DateTimeInterface|null $requestedDespatchTime
      * @return self
      */
-    public function setRequestedDespatchTime(\DateTimeInterface $requestedDespatchTime): self
+    public function setRequestedDespatchTime(?\DateTimeInterface $requestedDespatchTime = null): self
     {
         $this->requestedDespatchTime = $requestedDespatchTime;
 
@@ -299,10 +299,10 @@ class DespatchType
     }
 
     /**
-     * @param \DateTimeInterface $estimatedDespatchDate
+     * @param \DateTimeInterface|null $estimatedDespatchDate
      * @return self
      */
-    public function setEstimatedDespatchDate(\DateTimeInterface $estimatedDespatchDate): self
+    public function setEstimatedDespatchDate(?\DateTimeInterface $estimatedDespatchDate = null): self
     {
         $this->estimatedDespatchDate = $estimatedDespatchDate;
 
@@ -318,10 +318,10 @@ class DespatchType
     }
 
     /**
-     * @param \DateTimeInterface $estimatedDespatchTime
+     * @param \DateTimeInterface|null $estimatedDespatchTime
      * @return self
      */
-    public function setEstimatedDespatchTime(\DateTimeInterface $estimatedDespatchTime): self
+    public function setEstimatedDespatchTime(?\DateTimeInterface $estimatedDespatchTime = null): self
     {
         $this->estimatedDespatchTime = $estimatedDespatchTime;
 
@@ -337,10 +337,10 @@ class DespatchType
     }
 
     /**
-     * @param \DateTimeInterface $actualDespatchDate
+     * @param \DateTimeInterface|null $actualDespatchDate
      * @return self
      */
-    public function setActualDespatchDate(\DateTimeInterface $actualDespatchDate): self
+    public function setActualDespatchDate(?\DateTimeInterface $actualDespatchDate = null): self
     {
         $this->actualDespatchDate = $actualDespatchDate;
 
@@ -356,10 +356,10 @@ class DespatchType
     }
 
     /**
-     * @param \DateTimeInterface $actualDespatchTime
+     * @param \DateTimeInterface|null $actualDespatchTime
      * @return self
      */
-    public function setActualDespatchTime(\DateTimeInterface $actualDespatchTime): self
+    public function setActualDespatchTime(?\DateTimeInterface $actualDespatchTime = null): self
     {
         $this->actualDespatchTime = $actualDespatchTime;
 
@@ -375,10 +375,10 @@ class DespatchType
     }
 
     /**
-     * @param \DateTimeInterface $guaranteedDespatchDate
+     * @param \DateTimeInterface|null $guaranteedDespatchDate
      * @return self
      */
-    public function setGuaranteedDespatchDate(\DateTimeInterface $guaranteedDespatchDate): self
+    public function setGuaranteedDespatchDate(?\DateTimeInterface $guaranteedDespatchDate = null): self
     {
         $this->guaranteedDespatchDate = $guaranteedDespatchDate;
 
@@ -394,10 +394,10 @@ class DespatchType
     }
 
     /**
-     * @param \DateTimeInterface $guaranteedDespatchTime
+     * @param \DateTimeInterface|null $guaranteedDespatchTime
      * @return self
      */
-    public function setGuaranteedDespatchTime(\DateTimeInterface $guaranteedDespatchTime): self
+    public function setGuaranteedDespatchTime(?\DateTimeInterface $guaranteedDespatchTime = null): self
     {
         $this->guaranteedDespatchTime = $guaranteedDespatchTime;
 
@@ -423,10 +423,10 @@ class DespatchType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ReleaseID $releaseID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ReleaseID|null $releaseID
      * @return self
      */
-    public function setReleaseID(ReleaseID $releaseID): self
+    public function setReleaseID(?ReleaseID $releaseID = null): self
     {
         $this->releaseID = $releaseID;
 
@@ -442,10 +442,10 @@ class DespatchType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Instructions> $instructions
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Instructions>|null $instructions
      * @return self
      */
-    public function setInstructions(array $instructions): self
+    public function setInstructions(?array $instructions = null): self
     {
         $this->instructions = $instructions;
 
@@ -533,10 +533,10 @@ class DespatchType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\DespatchAddress $despatchAddress
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DespatchAddress|null $despatchAddress
      * @return self
      */
-    public function setDespatchAddress(DespatchAddress $despatchAddress): self
+    public function setDespatchAddress(?DespatchAddress $despatchAddress = null): self
     {
         $this->despatchAddress = $despatchAddress;
 
@@ -562,10 +562,10 @@ class DespatchType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\DespatchLocation $despatchLocation
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DespatchLocation|null $despatchLocation
      * @return self
      */
-    public function setDespatchLocation(DespatchLocation $despatchLocation): self
+    public function setDespatchLocation(?DespatchLocation $despatchLocation = null): self
     {
         $this->despatchLocation = $despatchLocation;
 
@@ -591,10 +591,10 @@ class DespatchType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\DespatchParty $despatchParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DespatchParty|null $despatchParty
      * @return self
      */
-    public function setDespatchParty(DespatchParty $despatchParty): self
+    public function setDespatchParty(?DespatchParty $despatchParty = null): self
     {
         $this->despatchParty = $despatchParty;
 
@@ -620,10 +620,10 @@ class DespatchType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\CarrierParty $carrierParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CarrierParty|null $carrierParty
      * @return self
      */
-    public function setCarrierParty(CarrierParty $carrierParty): self
+    public function setCarrierParty(?CarrierParty $carrierParty = null): self
     {
         $this->carrierParty = $carrierParty;
 
@@ -639,10 +639,10 @@ class DespatchType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\NotifyParty> $notifyParty
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\NotifyParty>|null $notifyParty
      * @return self
      */
-    public function setNotifyParty(array $notifyParty): self
+    public function setNotifyParty(?array $notifyParty = null): self
     {
         $this->notifyParty = $notifyParty;
 
@@ -730,10 +730,10 @@ class DespatchType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Contact $contact
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Contact|null $contact
      * @return self
      */
-    public function setContact(Contact $contact): self
+    public function setContact(?Contact $contact = null): self
     {
         $this->contact = $contact;
 
@@ -759,10 +759,10 @@ class DespatchType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\EstimatedDespatchPeriod $estimatedDespatchPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EstimatedDespatchPeriod|null $estimatedDespatchPeriod
      * @return self
      */
-    public function setEstimatedDespatchPeriod(EstimatedDespatchPeriod $estimatedDespatchPeriod): self
+    public function setEstimatedDespatchPeriod(?EstimatedDespatchPeriod $estimatedDespatchPeriod = null): self
     {
         $this->estimatedDespatchPeriod = $estimatedDespatchPeriod;
 
@@ -788,10 +788,10 @@ class DespatchType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\RequestedDespatchPeriod $requestedDespatchPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RequestedDespatchPeriod|null $requestedDespatchPeriod
      * @return self
      */
-    public function setRequestedDespatchPeriod(RequestedDespatchPeriod $requestedDespatchPeriod): self
+    public function setRequestedDespatchPeriod(?RequestedDespatchPeriod $requestedDespatchPeriod = null): self
     {
         $this->requestedDespatchPeriod = $requestedDespatchPeriod;
 

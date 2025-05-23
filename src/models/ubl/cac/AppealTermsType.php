@@ -11,7 +11,7 @@ class AppealTermsType
     use HandlesObjectFlags;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class AppealTermsType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PresentationPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PresentationPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PresentationPeriod")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class AppealTermsType
     private $presentationPeriod;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\AppealInformationParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\AppealInformationParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\AppealInformationParty")
      * @JMS\Expose
@@ -45,7 +45,7 @@ class AppealTermsType
     private $appealInformationParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\AppealReceiverParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\AppealReceiverParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\AppealReceiverParty")
      * @JMS\Expose
@@ -56,7 +56,7 @@ class AppealTermsType
     private $appealReceiverParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\MediationParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\MediationParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\MediationParty")
      * @JMS\Expose
@@ -75,10 +75,10 @@ class AppealTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -166,10 +166,10 @@ class AppealTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PresentationPeriod $presentationPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PresentationPeriod|null $presentationPeriod
      * @return self
      */
-    public function setPresentationPeriod(PresentationPeriod $presentationPeriod): self
+    public function setPresentationPeriod(?PresentationPeriod $presentationPeriod = null): self
     {
         $this->presentationPeriod = $presentationPeriod;
 
@@ -195,10 +195,10 @@ class AppealTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\AppealInformationParty $appealInformationParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AppealInformationParty|null $appealInformationParty
      * @return self
      */
-    public function setAppealInformationParty(AppealInformationParty $appealInformationParty): self
+    public function setAppealInformationParty(?AppealInformationParty $appealInformationParty = null): self
     {
         $this->appealInformationParty = $appealInformationParty;
 
@@ -224,10 +224,10 @@ class AppealTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\AppealReceiverParty $appealReceiverParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AppealReceiverParty|null $appealReceiverParty
      * @return self
      */
-    public function setAppealReceiverParty(AppealReceiverParty $appealReceiverParty): self
+    public function setAppealReceiverParty(?AppealReceiverParty $appealReceiverParty = null): self
     {
         $this->appealReceiverParty = $appealReceiverParty;
 
@@ -253,10 +253,10 @@ class AppealTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\MediationParty $mediationParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MediationParty|null $mediationParty
      * @return self
      */
-    public function setMediationParty(MediationParty $mediationParty): self
+    public function setMediationParty(?MediationParty $mediationParty = null): self
     {
         $this->mediationParty = $mediationParty;
 

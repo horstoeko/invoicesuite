@@ -13,7 +13,7 @@ class TemperatureType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AttributeID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AttributeID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AttributeID")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class TemperatureType
     private $attributeID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Measure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Measure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Measure")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class TemperatureType
     private $measure;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -65,10 +65,10 @@ class TemperatureType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AttributeID $attributeID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AttributeID|null $attributeID
      * @return self
      */
-    public function setAttributeID(AttributeID $attributeID): self
+    public function setAttributeID(?AttributeID $attributeID = null): self
     {
         $this->attributeID = $attributeID;
 
@@ -94,10 +94,10 @@ class TemperatureType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Measure $measure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Measure|null $measure
      * @return self
      */
-    public function setMeasure(Measure $measure): self
+    public function setMeasure(?Measure $measure = null): self
     {
         $this->measure = $measure;
 
@@ -113,10 +113,10 @@ class TemperatureType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 

@@ -11,7 +11,7 @@ class ProcurementProjectLotType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class ProcurementProjectLotType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TenderingTerms
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TenderingTerms|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TenderingTerms")
      * @JMS\Expose
@@ -33,7 +33,7 @@ class ProcurementProjectLotType
     private $tenderingTerms;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ProcurementProject
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ProcurementProject|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ProcurementProject")
      * @JMS\Expose
@@ -62,10 +62,10 @@ class ProcurementProjectLotType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -91,10 +91,10 @@ class ProcurementProjectLotType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TenderingTerms $tenderingTerms
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TenderingTerms|null $tenderingTerms
      * @return self
      */
-    public function setTenderingTerms(TenderingTerms $tenderingTerms): self
+    public function setTenderingTerms(?TenderingTerms $tenderingTerms = null): self
     {
         $this->tenderingTerms = $tenderingTerms;
 
@@ -120,10 +120,10 @@ class ProcurementProjectLotType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ProcurementProject $procurementProject
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ProcurementProject|null $procurementProject
      * @return self
      */
-    public function setProcurementProject(ProcurementProject $procurementProject): self
+    public function setProcurementProject(?ProcurementProject $procurementProject = null): self
     {
         $this->procurementProject = $procurementProject;
 

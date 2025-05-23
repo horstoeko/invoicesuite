@@ -21,7 +21,7 @@ class ExceptionNotificationLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class ExceptionNotificationLineType
     private $iD;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -44,7 +44,7 @@ class ExceptionNotificationLineType
     private $note;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -56,7 +56,7 @@ class ExceptionNotificationLineType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ExceptionStatusCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ExceptionStatusCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ExceptionStatusCode")
      * @JMS\Expose
@@ -67,7 +67,7 @@ class ExceptionNotificationLineType
     private $exceptionStatusCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CollaborationPriorityCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CollaborationPriorityCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CollaborationPriorityCode")
      * @JMS\Expose
@@ -78,7 +78,7 @@ class ExceptionNotificationLineType
     private $collaborationPriorityCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ResolutionCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ResolutionCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ResolutionCode")
      * @JMS\Expose
@@ -89,7 +89,7 @@ class ExceptionNotificationLineType
     private $resolutionCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ComparedValueMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ComparedValueMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ComparedValueMeasure")
      * @JMS\Expose
@@ -100,7 +100,7 @@ class ExceptionNotificationLineType
     private $comparedValueMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SourceValueMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SourceValueMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SourceValueMeasure")
      * @JMS\Expose
@@ -111,7 +111,7 @@ class ExceptionNotificationLineType
     private $sourceValueMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\VarianceQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\VarianceQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\VarianceQuantity")
      * @JMS\Expose
@@ -122,7 +122,7 @@ class ExceptionNotificationLineType
     private $varianceQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SupplyChainActivityTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SupplyChainActivityTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SupplyChainActivityTypeCode")
      * @JMS\Expose
@@ -133,7 +133,7 @@ class ExceptionNotificationLineType
     private $supplyChainActivityTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode")
      * @JMS\Expose
@@ -144,7 +144,7 @@ class ExceptionNotificationLineType
     private $performanceMetricTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ExceptionObservationPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ExceptionObservationPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ExceptionObservationPeriod")
      * @JMS\Expose
@@ -155,7 +155,7 @@ class ExceptionNotificationLineType
     private $exceptionObservationPeriod;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DocumentReference>")
      * @JMS\Expose
@@ -167,7 +167,7 @@ class ExceptionNotificationLineType
     private $documentReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ForecastException
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ForecastException|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ForecastException")
      * @JMS\Expose
@@ -178,7 +178,7 @@ class ExceptionNotificationLineType
     private $forecastException;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\SupplyItem
+     * @var \horstoeko\invoicesuite\models\ubl\cac\SupplyItem|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\SupplyItem")
      * @JMS\Expose
@@ -207,10 +207,10 @@ class ExceptionNotificationLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -226,10 +226,10 @@ class ExceptionNotificationLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -307,10 +307,10 @@ class ExceptionNotificationLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -398,10 +398,10 @@ class ExceptionNotificationLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExceptionStatusCode $exceptionStatusCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExceptionStatusCode|null $exceptionStatusCode
      * @return self
      */
-    public function setExceptionStatusCode(ExceptionStatusCode $exceptionStatusCode): self
+    public function setExceptionStatusCode(?ExceptionStatusCode $exceptionStatusCode = null): self
     {
         $this->exceptionStatusCode = $exceptionStatusCode;
 
@@ -427,10 +427,10 @@ class ExceptionNotificationLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CollaborationPriorityCode $collaborationPriorityCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CollaborationPriorityCode|null $collaborationPriorityCode
      * @return self
      */
-    public function setCollaborationPriorityCode(CollaborationPriorityCode $collaborationPriorityCode): self
+    public function setCollaborationPriorityCode(?CollaborationPriorityCode $collaborationPriorityCode = null): self
     {
         $this->collaborationPriorityCode = $collaborationPriorityCode;
 
@@ -456,10 +456,10 @@ class ExceptionNotificationLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ResolutionCode $resolutionCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ResolutionCode|null $resolutionCode
      * @return self
      */
-    public function setResolutionCode(ResolutionCode $resolutionCode): self
+    public function setResolutionCode(?ResolutionCode $resolutionCode = null): self
     {
         $this->resolutionCode = $resolutionCode;
 
@@ -485,10 +485,10 @@ class ExceptionNotificationLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ComparedValueMeasure $comparedValueMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ComparedValueMeasure|null $comparedValueMeasure
      * @return self
      */
-    public function setComparedValueMeasure(ComparedValueMeasure $comparedValueMeasure): self
+    public function setComparedValueMeasure(?ComparedValueMeasure $comparedValueMeasure = null): self
     {
         $this->comparedValueMeasure = $comparedValueMeasure;
 
@@ -514,10 +514,10 @@ class ExceptionNotificationLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SourceValueMeasure $sourceValueMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SourceValueMeasure|null $sourceValueMeasure
      * @return self
      */
-    public function setSourceValueMeasure(SourceValueMeasure $sourceValueMeasure): self
+    public function setSourceValueMeasure(?SourceValueMeasure $sourceValueMeasure = null): self
     {
         $this->sourceValueMeasure = $sourceValueMeasure;
 
@@ -543,10 +543,10 @@ class ExceptionNotificationLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\VarianceQuantity $varianceQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\VarianceQuantity|null $varianceQuantity
      * @return self
      */
-    public function setVarianceQuantity(VarianceQuantity $varianceQuantity): self
+    public function setVarianceQuantity(?VarianceQuantity $varianceQuantity = null): self
     {
         $this->varianceQuantity = $varianceQuantity;
 
@@ -572,11 +572,12 @@ class ExceptionNotificationLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SupplyChainActivityTypeCode $supplyChainActivityTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SupplyChainActivityTypeCode|null $supplyChainActivityTypeCode
      * @return self
      */
-    public function setSupplyChainActivityTypeCode(SupplyChainActivityTypeCode $supplyChainActivityTypeCode): self
-    {
+    public function setSupplyChainActivityTypeCode(
+        ?SupplyChainActivityTypeCode $supplyChainActivityTypeCode = null,
+    ): self {
         $this->supplyChainActivityTypeCode = $supplyChainActivityTypeCode;
 
         return $this;
@@ -601,10 +602,10 @@ class ExceptionNotificationLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode $performanceMetricTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode|null $performanceMetricTypeCode
      * @return self
      */
-    public function setPerformanceMetricTypeCode(PerformanceMetricTypeCode $performanceMetricTypeCode): self
+    public function setPerformanceMetricTypeCode(?PerformanceMetricTypeCode $performanceMetricTypeCode = null): self
     {
         $this->performanceMetricTypeCode = $performanceMetricTypeCode;
 
@@ -630,11 +631,12 @@ class ExceptionNotificationLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ExceptionObservationPeriod $exceptionObservationPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ExceptionObservationPeriod|null $exceptionObservationPeriod
      * @return self
      */
-    public function setExceptionObservationPeriod(ExceptionObservationPeriod $exceptionObservationPeriod): self
-    {
+    public function setExceptionObservationPeriod(
+        ?ExceptionObservationPeriod $exceptionObservationPeriod = null,
+    ): self {
         $this->exceptionObservationPeriod = $exceptionObservationPeriod;
 
         return $this;
@@ -649,10 +651,10 @@ class ExceptionNotificationLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference> $documentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null $documentReference
      * @return self
      */
-    public function setDocumentReference(array $documentReference): self
+    public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
 
@@ -740,10 +742,10 @@ class ExceptionNotificationLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ForecastException $forecastException
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ForecastException|null $forecastException
      * @return self
      */
-    public function setForecastException(ForecastException $forecastException): self
+    public function setForecastException(?ForecastException $forecastException = null): self
     {
         $this->forecastException = $forecastException;
 
@@ -769,10 +771,10 @@ class ExceptionNotificationLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\SupplyItem $supplyItem
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SupplyItem|null $supplyItem
      * @return self
      */
-    public function setSupplyItem(SupplyItem $supplyItem): self
+    public function setSupplyItem(?SupplyItem $supplyItem = null): self
     {
         $this->supplyItem = $supplyItem;
 

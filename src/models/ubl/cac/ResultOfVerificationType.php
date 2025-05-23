@@ -15,7 +15,7 @@ class ResultOfVerificationType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ValidatorID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ValidatorID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ValidatorID")
      * @JMS\Expose
@@ -26,7 +26,7 @@ class ResultOfVerificationType
     private $validatorID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ValidationResultCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ValidationResultCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ValidationResultCode")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class ResultOfVerificationType
     private $validationResultCode;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class ResultOfVerificationType
     private $validationDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class ResultOfVerificationType
     private $validationTime;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ValidateProcess
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ValidateProcess|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ValidateProcess")
      * @JMS\Expose
@@ -70,7 +70,7 @@ class ResultOfVerificationType
     private $validateProcess;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ValidateTool
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ValidateTool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ValidateTool")
      * @JMS\Expose
@@ -81,7 +81,7 @@ class ResultOfVerificationType
     private $validateTool;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ValidateToolVersion
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ValidateToolVersion|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ValidateToolVersion")
      * @JMS\Expose
@@ -92,7 +92,7 @@ class ResultOfVerificationType
     private $validateToolVersion;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\SignatoryParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\SignatoryParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\SignatoryParty")
      * @JMS\Expose
@@ -121,10 +121,10 @@ class ResultOfVerificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ValidatorID $validatorID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ValidatorID|null $validatorID
      * @return self
      */
-    public function setValidatorID(ValidatorID $validatorID): self
+    public function setValidatorID(?ValidatorID $validatorID = null): self
     {
         $this->validatorID = $validatorID;
 
@@ -150,10 +150,10 @@ class ResultOfVerificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ValidationResultCode $validationResultCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ValidationResultCode|null $validationResultCode
      * @return self
      */
-    public function setValidationResultCode(ValidationResultCode $validationResultCode): self
+    public function setValidationResultCode(?ValidationResultCode $validationResultCode = null): self
     {
         $this->validationResultCode = $validationResultCode;
 
@@ -169,10 +169,10 @@ class ResultOfVerificationType
     }
 
     /**
-     * @param \DateTimeInterface $validationDate
+     * @param \DateTimeInterface|null $validationDate
      * @return self
      */
-    public function setValidationDate(\DateTimeInterface $validationDate): self
+    public function setValidationDate(?\DateTimeInterface $validationDate = null): self
     {
         $this->validationDate = $validationDate;
 
@@ -188,10 +188,10 @@ class ResultOfVerificationType
     }
 
     /**
-     * @param \DateTimeInterface $validationTime
+     * @param \DateTimeInterface|null $validationTime
      * @return self
      */
-    public function setValidationTime(\DateTimeInterface $validationTime): self
+    public function setValidationTime(?\DateTimeInterface $validationTime = null): self
     {
         $this->validationTime = $validationTime;
 
@@ -217,10 +217,10 @@ class ResultOfVerificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ValidateProcess $validateProcess
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ValidateProcess|null $validateProcess
      * @return self
      */
-    public function setValidateProcess(ValidateProcess $validateProcess): self
+    public function setValidateProcess(?ValidateProcess $validateProcess = null): self
     {
         $this->validateProcess = $validateProcess;
 
@@ -246,10 +246,10 @@ class ResultOfVerificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ValidateTool $validateTool
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ValidateTool|null $validateTool
      * @return self
      */
-    public function setValidateTool(ValidateTool $validateTool): self
+    public function setValidateTool(?ValidateTool $validateTool = null): self
     {
         $this->validateTool = $validateTool;
 
@@ -275,10 +275,10 @@ class ResultOfVerificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ValidateToolVersion $validateToolVersion
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ValidateToolVersion|null $validateToolVersion
      * @return self
      */
-    public function setValidateToolVersion(ValidateToolVersion $validateToolVersion): self
+    public function setValidateToolVersion(?ValidateToolVersion $validateToolVersion = null): self
     {
         $this->validateToolVersion = $validateToolVersion;
 
@@ -304,10 +304,10 @@ class ResultOfVerificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\SignatoryParty $signatoryParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SignatoryParty|null $signatoryParty
      * @return self
      */
-    public function setSignatoryParty(SignatoryParty $signatoryParty): self
+    public function setSignatoryParty(?SignatoryParty $signatoryParty = null): self
     {
         $this->signatoryParty = $signatoryParty;
 

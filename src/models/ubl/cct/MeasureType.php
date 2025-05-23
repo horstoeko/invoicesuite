@@ -10,7 +10,7 @@ class MeasureType
     use HandlesObjectFlags;
 
     /**
-     * @var float
+     * @var float|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("float")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class MeasureType
     private $value;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class MeasureType
     private $unitCode;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -51,10 +51,10 @@ class MeasureType
     }
 
     /**
-     * @param float $value
+     * @param float|null $value
      * @return self
      */
-    public function setValue(float $value): self
+    public function setValue(?float $value = null): self
     {
         $this->value = $value;
 
@@ -70,10 +70,10 @@ class MeasureType
     }
 
     /**
-     * @param string $unitCode
+     * @param string|null $unitCode
      * @return self
      */
-    public function setUnitCode(string $unitCode): self
+    public function setUnitCode(?string $unitCode = null): self
     {
         $this->unitCode = $unitCode;
 
@@ -89,10 +89,10 @@ class MeasureType
     }
 
     /**
-     * @param string $unitCodeListVersionID
+     * @param string|null $unitCodeListVersionID
      * @return self
      */
-    public function setUnitCodeListVersionID(string $unitCodeListVersionID): self
+    public function setUnitCodeListVersionID(?string $unitCodeListVersionID = null): self
     {
         $this->unitCodeListVersionID = $unitCodeListVersionID;
 

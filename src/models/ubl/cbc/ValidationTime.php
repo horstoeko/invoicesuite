@@ -13,7 +13,7 @@ class ValidationTime
     use HandlesObjectFlags;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -32,10 +32,10 @@ class ValidationTime
     }
 
     /**
-     * @param \DateTimeInterface $value
+     * @param \DateTimeInterface|null $value
      * @return self
      */
-    public function setValue(\DateTimeInterface $value): self
+    public function setValue(?\DateTimeInterface $value = null): self
     {
         $this->value = $value;
 

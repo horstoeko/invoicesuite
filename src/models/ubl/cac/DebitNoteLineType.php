@@ -18,7 +18,7 @@ class DebitNoteLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -29,7 +29,7 @@ class DebitNoteLineType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\UUID")
      * @JMS\Expose
@@ -40,7 +40,7 @@ class DebitNoteLineType
     private $uUID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -52,7 +52,7 @@ class DebitNoteLineType
     private $note;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\DebitedQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\DebitedQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\DebitedQuantity")
      * @JMS\Expose
@@ -63,7 +63,7 @@ class DebitNoteLineType
     private $debitedQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LineExtensionAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LineExtensionAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LineExtensionAmount")
      * @JMS\Expose
@@ -74,7 +74,7 @@ class DebitNoteLineType
     private $lineExtensionAmount;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -85,7 +85,7 @@ class DebitNoteLineType
     private $taxPointDate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode")
      * @JMS\Expose
@@ -96,7 +96,7 @@ class DebitNoteLineType
     private $accountingCostCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AccountingCost
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AccountingCost|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AccountingCost")
      * @JMS\Expose
@@ -107,7 +107,7 @@ class DebitNoteLineType
     private $accountingCost;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PaymentPurposeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PaymentPurposeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PaymentPurposeCode")
      * @JMS\Expose
@@ -118,7 +118,7 @@ class DebitNoteLineType
     private $paymentPurposeCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DiscrepancyResponse>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DiscrepancyResponse>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DiscrepancyResponse>")
      * @JMS\Expose
@@ -130,7 +130,7 @@ class DebitNoteLineType
     private $discrepancyResponse;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DespatchLineReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DespatchLineReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DespatchLineReference>")
      * @JMS\Expose
@@ -142,7 +142,7 @@ class DebitNoteLineType
     private $despatchLineReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ReceiptLineReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ReceiptLineReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ReceiptLineReference>")
      * @JMS\Expose
@@ -154,7 +154,7 @@ class DebitNoteLineType
     private $receiptLineReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\BillingReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\BillingReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\BillingReference>")
      * @JMS\Expose
@@ -166,7 +166,7 @@ class DebitNoteLineType
     private $billingReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DocumentReference>")
      * @JMS\Expose
@@ -178,7 +178,7 @@ class DebitNoteLineType
     private $documentReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PricingReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PricingReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PricingReference")
      * @JMS\Expose
@@ -189,7 +189,7 @@ class DebitNoteLineType
     private $pricingReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Delivery>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Delivery>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Delivery>")
      * @JMS\Expose
@@ -201,7 +201,7 @@ class DebitNoteLineType
     private $delivery;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TaxTotal>")
      * @JMS\Expose
@@ -213,7 +213,7 @@ class DebitNoteLineType
     private $taxTotal;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>")
      * @JMS\Expose
@@ -225,7 +225,7 @@ class DebitNoteLineType
     private $allowanceCharge;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Item
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Item|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Item")
      * @JMS\Expose
@@ -236,7 +236,7 @@ class DebitNoteLineType
     private $item;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Price
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Price|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Price")
      * @JMS\Expose
@@ -247,7 +247,7 @@ class DebitNoteLineType
     private $price;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SubDebitNoteLine>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SubDebitNoteLine>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\SubDebitNoteLine>")
      * @JMS\Expose
@@ -277,10 +277,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -306,10 +306,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID $uUID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID|null $uUID
      * @return self
      */
-    public function setUUID(UUID $uUID): self
+    public function setUUID(?UUID $uUID = null): self
     {
         $this->uUID = $uUID;
 
@@ -325,10 +325,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -416,10 +416,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\DebitedQuantity $debitedQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DebitedQuantity|null $debitedQuantity
      * @return self
      */
-    public function setDebitedQuantity(DebitedQuantity $debitedQuantity): self
+    public function setDebitedQuantity(?DebitedQuantity $debitedQuantity = null): self
     {
         $this->debitedQuantity = $debitedQuantity;
 
@@ -445,10 +445,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LineExtensionAmount $lineExtensionAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LineExtensionAmount|null $lineExtensionAmount
      * @return self
      */
-    public function setLineExtensionAmount(LineExtensionAmount $lineExtensionAmount): self
+    public function setLineExtensionAmount(?LineExtensionAmount $lineExtensionAmount = null): self
     {
         $this->lineExtensionAmount = $lineExtensionAmount;
 
@@ -464,10 +464,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param \DateTimeInterface $taxPointDate
+     * @param \DateTimeInterface|null $taxPointDate
      * @return self
      */
-    public function setTaxPointDate(\DateTimeInterface $taxPointDate): self
+    public function setTaxPointDate(?\DateTimeInterface $taxPointDate = null): self
     {
         $this->taxPointDate = $taxPointDate;
 
@@ -493,10 +493,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode $accountingCostCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode|null $accountingCostCode
      * @return self
      */
-    public function setAccountingCostCode(AccountingCostCode $accountingCostCode): self
+    public function setAccountingCostCode(?AccountingCostCode $accountingCostCode = null): self
     {
         $this->accountingCostCode = $accountingCostCode;
 
@@ -522,10 +522,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AccountingCost $accountingCost
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AccountingCost|null $accountingCost
      * @return self
      */
-    public function setAccountingCost(AccountingCost $accountingCost): self
+    public function setAccountingCost(?AccountingCost $accountingCost = null): self
     {
         $this->accountingCost = $accountingCost;
 
@@ -551,10 +551,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaymentPurposeCode $paymentPurposeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaymentPurposeCode|null $paymentPurposeCode
      * @return self
      */
-    public function setPaymentPurposeCode(PaymentPurposeCode $paymentPurposeCode): self
+    public function setPaymentPurposeCode(?PaymentPurposeCode $paymentPurposeCode = null): self
     {
         $this->paymentPurposeCode = $paymentPurposeCode;
 
@@ -570,10 +570,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DiscrepancyResponse> $discrepancyResponse
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DiscrepancyResponse>|null $discrepancyResponse
      * @return self
      */
-    public function setDiscrepancyResponse(array $discrepancyResponse): self
+    public function setDiscrepancyResponse(?array $discrepancyResponse = null): self
     {
         $this->discrepancyResponse = $discrepancyResponse;
 
@@ -651,10 +651,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DespatchLineReference> $despatchLineReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DespatchLineReference>|null $despatchLineReference
      * @return self
      */
-    public function setDespatchLineReference(array $despatchLineReference): self
+    public function setDespatchLineReference(?array $despatchLineReference = null): self
     {
         $this->despatchLineReference = $despatchLineReference;
 
@@ -732,10 +732,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ReceiptLineReference> $receiptLineReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ReceiptLineReference>|null $receiptLineReference
      * @return self
      */
-    public function setReceiptLineReference(array $receiptLineReference): self
+    public function setReceiptLineReference(?array $receiptLineReference = null): self
     {
         $this->receiptLineReference = $receiptLineReference;
 
@@ -813,10 +813,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\BillingReference> $billingReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\BillingReference>|null $billingReference
      * @return self
      */
-    public function setBillingReference(array $billingReference): self
+    public function setBillingReference(?array $billingReference = null): self
     {
         $this->billingReference = $billingReference;
 
@@ -894,10 +894,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference> $documentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null $documentReference
      * @return self
      */
-    public function setDocumentReference(array $documentReference): self
+    public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
 
@@ -985,10 +985,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PricingReference $pricingReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PricingReference|null $pricingReference
      * @return self
      */
-    public function setPricingReference(PricingReference $pricingReference): self
+    public function setPricingReference(?PricingReference $pricingReference = null): self
     {
         $this->pricingReference = $pricingReference;
 
@@ -1004,10 +1004,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Delivery> $delivery
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Delivery>|null $delivery
      * @return self
      */
-    public function setDelivery(array $delivery): self
+    public function setDelivery(?array $delivery = null): self
     {
         $this->delivery = $delivery;
 
@@ -1085,10 +1085,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal> $taxTotal
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal>|null $taxTotal
      * @return self
      */
-    public function setTaxTotal(array $taxTotal): self
+    public function setTaxTotal(?array $taxTotal = null): self
     {
         $this->taxTotal = $taxTotal;
 
@@ -1166,10 +1166,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge> $allowanceCharge
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null $allowanceCharge
      * @return self
      */
-    public function setAllowanceCharge(array $allowanceCharge): self
+    public function setAllowanceCharge(?array $allowanceCharge = null): self
     {
         $this->allowanceCharge = $allowanceCharge;
 
@@ -1257,10 +1257,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Item $item
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Item|null $item
      * @return self
      */
-    public function setItem(Item $item): self
+    public function setItem(?Item $item = null): self
     {
         $this->item = $item;
 
@@ -1286,10 +1286,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Price $price
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Price|null $price
      * @return self
      */
-    public function setPrice(Price $price): self
+    public function setPrice(?Price $price = null): self
     {
         $this->price = $price;
 
@@ -1305,10 +1305,10 @@ class DebitNoteLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SubDebitNoteLine> $subDebitNoteLine
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SubDebitNoteLine>|null $subDebitNoteLine
      * @return self
      */
-    public function setSubDebitNoteLine(array $subDebitNoteLine): self
+    public function setSubDebitNoteLine(?array $subDebitNoteLine = null): self
     {
         $this->subDebitNoteLine = $subDebitNoteLine;
 

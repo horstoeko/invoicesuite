@@ -17,7 +17,7 @@ class FinancialAccountType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -28,7 +28,7 @@ class FinancialAccountType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Name")
      * @JMS\Expose
@@ -39,7 +39,7 @@ class FinancialAccountType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AliasName
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AliasName|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AliasName")
      * @JMS\Expose
@@ -50,7 +50,7 @@ class FinancialAccountType
     private $aliasName;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AccountTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AccountTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AccountTypeCode")
      * @JMS\Expose
@@ -61,7 +61,7 @@ class FinancialAccountType
     private $accountTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AccountFormatCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AccountFormatCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AccountFormatCode")
      * @JMS\Expose
@@ -72,7 +72,7 @@ class FinancialAccountType
     private $accountFormatCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CurrencyCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CurrencyCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CurrencyCode")
      * @JMS\Expose
@@ -83,7 +83,7 @@ class FinancialAccountType
     private $currencyCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\PaymentNote>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\PaymentNote>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\PaymentNote>")
      * @JMS\Expose
@@ -95,7 +95,7 @@ class FinancialAccountType
     private $paymentNote;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\FinancialInstitutionBranch
+     * @var \horstoeko\invoicesuite\models\ubl\cac\FinancialInstitutionBranch|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\FinancialInstitutionBranch")
      * @JMS\Expose
@@ -106,7 +106,7 @@ class FinancialAccountType
     private $financialInstitutionBranch;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Country
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Country|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Country")
      * @JMS\Expose
@@ -135,10 +135,10 @@ class FinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -164,10 +164,10 @@ class FinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name|null $name
      * @return self
      */
-    public function setName(Name $name): self
+    public function setName(?Name $name = null): self
     {
         $this->name = $name;
 
@@ -193,10 +193,10 @@ class FinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AliasName $aliasName
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AliasName|null $aliasName
      * @return self
      */
-    public function setAliasName(AliasName $aliasName): self
+    public function setAliasName(?AliasName $aliasName = null): self
     {
         $this->aliasName = $aliasName;
 
@@ -222,10 +222,10 @@ class FinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AccountTypeCode $accountTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AccountTypeCode|null $accountTypeCode
      * @return self
      */
-    public function setAccountTypeCode(AccountTypeCode $accountTypeCode): self
+    public function setAccountTypeCode(?AccountTypeCode $accountTypeCode = null): self
     {
         $this->accountTypeCode = $accountTypeCode;
 
@@ -251,10 +251,10 @@ class FinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AccountFormatCode $accountFormatCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AccountFormatCode|null $accountFormatCode
      * @return self
      */
-    public function setAccountFormatCode(AccountFormatCode $accountFormatCode): self
+    public function setAccountFormatCode(?AccountFormatCode $accountFormatCode = null): self
     {
         $this->accountFormatCode = $accountFormatCode;
 
@@ -280,10 +280,10 @@ class FinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CurrencyCode $currencyCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CurrencyCode|null $currencyCode
      * @return self
      */
-    public function setCurrencyCode(CurrencyCode $currencyCode): self
+    public function setCurrencyCode(?CurrencyCode $currencyCode = null): self
     {
         $this->currencyCode = $currencyCode;
 
@@ -299,10 +299,10 @@ class FinancialAccountType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\PaymentNote> $paymentNote
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\PaymentNote>|null $paymentNote
      * @return self
      */
-    public function setPaymentNote(array $paymentNote): self
+    public function setPaymentNote(?array $paymentNote = null): self
     {
         $this->paymentNote = $paymentNote;
 
@@ -390,11 +390,12 @@ class FinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\FinancialInstitutionBranch $financialInstitutionBranch
+     * @param \horstoeko\invoicesuite\models\ubl\cac\FinancialInstitutionBranch|null $financialInstitutionBranch
      * @return self
      */
-    public function setFinancialInstitutionBranch(FinancialInstitutionBranch $financialInstitutionBranch): self
-    {
+    public function setFinancialInstitutionBranch(
+        ?FinancialInstitutionBranch $financialInstitutionBranch = null,
+    ): self {
         $this->financialInstitutionBranch = $financialInstitutionBranch;
 
         return $this;
@@ -419,10 +420,10 @@ class FinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Country $country
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Country|null $country
      * @return self
      */
-    public function setCountry(Country $country): self
+    public function setCountry(?Country $country = null): self
     {
         $this->country = $country;
 

@@ -12,7 +12,7 @@ class ConsumptionAverageType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AverageAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AverageAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AverageAmount")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class ConsumptionAverageType
     private $averageAmount;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -53,10 +53,10 @@ class ConsumptionAverageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AverageAmount $averageAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AverageAmount|null $averageAmount
      * @return self
      */
-    public function setAverageAmount(AverageAmount $averageAmount): self
+    public function setAverageAmount(?AverageAmount $averageAmount = null): self
     {
         $this->averageAmount = $averageAmount;
 
@@ -72,10 +72,10 @@ class ConsumptionAverageType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 

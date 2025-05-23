@@ -19,7 +19,7 @@ class ExceptionCriteriaLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -30,7 +30,7 @@ class ExceptionCriteriaLineType
     private $iD;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -42,7 +42,7 @@ class ExceptionCriteriaLineType
     private $note;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ThresholdValueComparisonCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ThresholdValueComparisonCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ThresholdValueComparisonCode")
      * @JMS\Expose
@@ -53,7 +53,7 @@ class ExceptionCriteriaLineType
     private $thresholdValueComparisonCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ThresholdQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ThresholdQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ThresholdQuantity")
      * @JMS\Expose
@@ -64,7 +64,7 @@ class ExceptionCriteriaLineType
     private $thresholdQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ExceptionStatusCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ExceptionStatusCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ExceptionStatusCode")
      * @JMS\Expose
@@ -75,7 +75,7 @@ class ExceptionCriteriaLineType
     private $exceptionStatusCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CollaborationPriorityCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CollaborationPriorityCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CollaborationPriorityCode")
      * @JMS\Expose
@@ -86,7 +86,7 @@ class ExceptionCriteriaLineType
     private $collaborationPriorityCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ExceptionResolutionCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ExceptionResolutionCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ExceptionResolutionCode")
      * @JMS\Expose
@@ -97,7 +97,7 @@ class ExceptionCriteriaLineType
     private $exceptionResolutionCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SupplyChainActivityTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SupplyChainActivityTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SupplyChainActivityTypeCode")
      * @JMS\Expose
@@ -108,7 +108,7 @@ class ExceptionCriteriaLineType
     private $supplyChainActivityTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode")
      * @JMS\Expose
@@ -119,7 +119,7 @@ class ExceptionCriteriaLineType
     private $performanceMetricTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\EffectivePeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\EffectivePeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\EffectivePeriod")
      * @JMS\Expose
@@ -130,7 +130,7 @@ class ExceptionCriteriaLineType
     private $effectivePeriod;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SupplyItem>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SupplyItem>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\SupplyItem>")
      * @JMS\Expose
@@ -142,7 +142,7 @@ class ExceptionCriteriaLineType
     private $supplyItem;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ForecastExceptionCriterionLine
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ForecastExceptionCriterionLine|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ForecastExceptionCriterionLine")
      * @JMS\Expose
@@ -171,10 +171,10 @@ class ExceptionCriteriaLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -190,10 +190,10 @@ class ExceptionCriteriaLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -281,11 +281,12 @@ class ExceptionCriteriaLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ThresholdValueComparisonCode $thresholdValueComparisonCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ThresholdValueComparisonCode|null $thresholdValueComparisonCode
      * @return self
      */
-    public function setThresholdValueComparisonCode(ThresholdValueComparisonCode $thresholdValueComparisonCode): self
-    {
+    public function setThresholdValueComparisonCode(
+        ?ThresholdValueComparisonCode $thresholdValueComparisonCode = null,
+    ): self {
         $this->thresholdValueComparisonCode = $thresholdValueComparisonCode;
 
         return $this;
@@ -310,10 +311,10 @@ class ExceptionCriteriaLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ThresholdQuantity $thresholdQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ThresholdQuantity|null $thresholdQuantity
      * @return self
      */
-    public function setThresholdQuantity(ThresholdQuantity $thresholdQuantity): self
+    public function setThresholdQuantity(?ThresholdQuantity $thresholdQuantity = null): self
     {
         $this->thresholdQuantity = $thresholdQuantity;
 
@@ -339,10 +340,10 @@ class ExceptionCriteriaLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExceptionStatusCode $exceptionStatusCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExceptionStatusCode|null $exceptionStatusCode
      * @return self
      */
-    public function setExceptionStatusCode(ExceptionStatusCode $exceptionStatusCode): self
+    public function setExceptionStatusCode(?ExceptionStatusCode $exceptionStatusCode = null): self
     {
         $this->exceptionStatusCode = $exceptionStatusCode;
 
@@ -368,10 +369,10 @@ class ExceptionCriteriaLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CollaborationPriorityCode $collaborationPriorityCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CollaborationPriorityCode|null $collaborationPriorityCode
      * @return self
      */
-    public function setCollaborationPriorityCode(CollaborationPriorityCode $collaborationPriorityCode): self
+    public function setCollaborationPriorityCode(?CollaborationPriorityCode $collaborationPriorityCode = null): self
     {
         $this->collaborationPriorityCode = $collaborationPriorityCode;
 
@@ -397,10 +398,10 @@ class ExceptionCriteriaLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExceptionResolutionCode $exceptionResolutionCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExceptionResolutionCode|null $exceptionResolutionCode
      * @return self
      */
-    public function setExceptionResolutionCode(ExceptionResolutionCode $exceptionResolutionCode): self
+    public function setExceptionResolutionCode(?ExceptionResolutionCode $exceptionResolutionCode = null): self
     {
         $this->exceptionResolutionCode = $exceptionResolutionCode;
 
@@ -426,11 +427,12 @@ class ExceptionCriteriaLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SupplyChainActivityTypeCode $supplyChainActivityTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SupplyChainActivityTypeCode|null $supplyChainActivityTypeCode
      * @return self
      */
-    public function setSupplyChainActivityTypeCode(SupplyChainActivityTypeCode $supplyChainActivityTypeCode): self
-    {
+    public function setSupplyChainActivityTypeCode(
+        ?SupplyChainActivityTypeCode $supplyChainActivityTypeCode = null,
+    ): self {
         $this->supplyChainActivityTypeCode = $supplyChainActivityTypeCode;
 
         return $this;
@@ -455,10 +457,10 @@ class ExceptionCriteriaLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode $performanceMetricTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode|null $performanceMetricTypeCode
      * @return self
      */
-    public function setPerformanceMetricTypeCode(PerformanceMetricTypeCode $performanceMetricTypeCode): self
+    public function setPerformanceMetricTypeCode(?PerformanceMetricTypeCode $performanceMetricTypeCode = null): self
     {
         $this->performanceMetricTypeCode = $performanceMetricTypeCode;
 
@@ -484,10 +486,10 @@ class ExceptionCriteriaLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\EffectivePeriod $effectivePeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EffectivePeriod|null $effectivePeriod
      * @return self
      */
-    public function setEffectivePeriod(EffectivePeriod $effectivePeriod): self
+    public function setEffectivePeriod(?EffectivePeriod $effectivePeriod = null): self
     {
         $this->effectivePeriod = $effectivePeriod;
 
@@ -503,10 +505,10 @@ class ExceptionCriteriaLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SupplyItem> $supplyItem
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SupplyItem>|null $supplyItem
      * @return self
      */
-    public function setSupplyItem(array $supplyItem): self
+    public function setSupplyItem(?array $supplyItem = null): self
     {
         $this->supplyItem = $supplyItem;
 
@@ -594,11 +596,11 @@ class ExceptionCriteriaLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ForecastExceptionCriterionLine $forecastExceptionCriterionLine
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ForecastExceptionCriterionLine|null $forecastExceptionCriterionLine
      * @return self
      */
     public function setForecastExceptionCriterionLine(
-        ForecastExceptionCriterionLine $forecastExceptionCriterionLine,
+        ?ForecastExceptionCriterionLine $forecastExceptionCriterionLine = null,
     ): self {
         $this->forecastExceptionCriterionLine = $forecastExceptionCriterionLine;
 

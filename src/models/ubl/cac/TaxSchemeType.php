@@ -14,7 +14,7 @@ class TaxSchemeType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class TaxSchemeType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Name")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class TaxSchemeType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TaxTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TaxTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TaxTypeCode")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class TaxSchemeType
     private $taxTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CurrencyCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CurrencyCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CurrencyCode")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class TaxSchemeType
     private $currencyCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\JurisdictionRegionAddress>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\JurisdictionRegionAddress>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\JurisdictionRegionAddress>")
      * @JMS\Expose
@@ -88,10 +88,10 @@ class TaxSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -117,10 +117,10 @@ class TaxSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name|null $name
      * @return self
      */
-    public function setName(Name $name): self
+    public function setName(?Name $name = null): self
     {
         $this->name = $name;
 
@@ -146,10 +146,10 @@ class TaxSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TaxTypeCode $taxTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TaxTypeCode|null $taxTypeCode
      * @return self
      */
-    public function setTaxTypeCode(TaxTypeCode $taxTypeCode): self
+    public function setTaxTypeCode(?TaxTypeCode $taxTypeCode = null): self
     {
         $this->taxTypeCode = $taxTypeCode;
 
@@ -175,10 +175,10 @@ class TaxSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CurrencyCode $currencyCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CurrencyCode|null $currencyCode
      * @return self
      */
-    public function setCurrencyCode(CurrencyCode $currencyCode): self
+    public function setCurrencyCode(?CurrencyCode $currencyCode = null): self
     {
         $this->currencyCode = $currencyCode;
 
@@ -194,10 +194,10 @@ class TaxSchemeType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\JurisdictionRegionAddress> $jurisdictionRegionAddress
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\JurisdictionRegionAddress>|null $jurisdictionRegionAddress
      * @return self
      */
-    public function setJurisdictionRegionAddress(array $jurisdictionRegionAddress): self
+    public function setJurisdictionRegionAddress(?array $jurisdictionRegionAddress = null): self
     {
         $this->jurisdictionRegionAddress = $jurisdictionRegionAddress;
 

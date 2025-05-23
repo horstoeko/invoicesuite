@@ -15,7 +15,7 @@ class SecondaryHazardType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -26,7 +26,7 @@ class SecondaryHazardType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PlacardNotation
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PlacardNotation|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PlacardNotation")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class SecondaryHazardType
     private $placardNotation;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PlacardEndorsement
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PlacardEndorsement|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PlacardEndorsement")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class SecondaryHazardType
     private $placardEndorsement;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\EmergencyProceduresCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\EmergencyProceduresCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\EmergencyProceduresCode")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class SecondaryHazardType
     private $emergencyProceduresCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Extension>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Extension>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Extension>")
      * @JMS\Expose
@@ -89,10 +89,10 @@ class SecondaryHazardType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -118,10 +118,10 @@ class SecondaryHazardType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PlacardNotation $placardNotation
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PlacardNotation|null $placardNotation
      * @return self
      */
-    public function setPlacardNotation(PlacardNotation $placardNotation): self
+    public function setPlacardNotation(?PlacardNotation $placardNotation = null): self
     {
         $this->placardNotation = $placardNotation;
 
@@ -147,10 +147,10 @@ class SecondaryHazardType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PlacardEndorsement $placardEndorsement
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PlacardEndorsement|null $placardEndorsement
      * @return self
      */
-    public function setPlacardEndorsement(PlacardEndorsement $placardEndorsement): self
+    public function setPlacardEndorsement(?PlacardEndorsement $placardEndorsement = null): self
     {
         $this->placardEndorsement = $placardEndorsement;
 
@@ -176,10 +176,10 @@ class SecondaryHazardType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\EmergencyProceduresCode $emergencyProceduresCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\EmergencyProceduresCode|null $emergencyProceduresCode
      * @return self
      */
-    public function setEmergencyProceduresCode(EmergencyProceduresCode $emergencyProceduresCode): self
+    public function setEmergencyProceduresCode(?EmergencyProceduresCode $emergencyProceduresCode = null): self
     {
         $this->emergencyProceduresCode = $emergencyProceduresCode;
 
@@ -195,10 +195,10 @@ class SecondaryHazardType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Extension> $extension
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Extension>|null $extension
      * @return self
      */
-    public function setExtension(array $extension): self
+    public function setExtension(?array $extension = null): self
     {
         $this->extension = $extension;
 

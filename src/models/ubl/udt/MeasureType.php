@@ -11,7 +11,7 @@ class MeasureType extends MeasureTypeBase
     use HandlesObjectFlags;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -30,10 +30,10 @@ class MeasureType extends MeasureTypeBase
     }
 
     /**
-     * @param string $unitCode
+     * @param string|null $unitCode
      * @return self
      */
-    public function setUnitCode(string $unitCode): self
+    public function setUnitCode(?string $unitCode = null): self
     {
         $this->unitCode = $unitCode;
 

@@ -12,7 +12,7 @@ class TradingTermsType
     use HandlesObjectFlags;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Information>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Information>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Information>")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class TradingTermsType
     private $information;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Reference
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Reference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Reference")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class TradingTermsType
     private $reference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ApplicableAddress
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ApplicableAddress|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ApplicableAddress")
      * @JMS\Expose
@@ -54,10 +54,10 @@ class TradingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Information> $information
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Information>|null $information
      * @return self
      */
-    public function setInformation(array $information): self
+    public function setInformation(?array $information = null): self
     {
         $this->information = $information;
 
@@ -145,10 +145,10 @@ class TradingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Reference $reference
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Reference|null $reference
      * @return self
      */
-    public function setReference(Reference $reference): self
+    public function setReference(?Reference $reference = null): self
     {
         $this->reference = $reference;
 
@@ -174,10 +174,10 @@ class TradingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ApplicableAddress $applicableAddress
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ApplicableAddress|null $applicableAddress
      * @return self
      */
-    public function setApplicableAddress(ApplicableAddress $applicableAddress): self
+    public function setApplicableAddress(?ApplicableAddress $applicableAddress = null): self
     {
         $this->applicableAddress = $applicableAddress;
 

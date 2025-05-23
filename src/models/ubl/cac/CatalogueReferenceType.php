@@ -16,7 +16,7 @@ class CatalogueReferenceType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -27,7 +27,7 @@ class CatalogueReferenceType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\UUID")
      * @JMS\Expose
@@ -38,7 +38,7 @@ class CatalogueReferenceType
     private $uUID;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -49,7 +49,7 @@ class CatalogueReferenceType
     private $issueDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -60,7 +60,7 @@ class CatalogueReferenceType
     private $issueTime;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -71,7 +71,7 @@ class CatalogueReferenceType
     private $revisionDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -82,7 +82,7 @@ class CatalogueReferenceType
     private $revisionTime;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -94,7 +94,7 @@ class CatalogueReferenceType
     private $note;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -106,7 +106,7 @@ class CatalogueReferenceType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\VersionID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\VersionID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\VersionID")
      * @JMS\Expose
@@ -117,7 +117,7 @@ class CatalogueReferenceType
     private $versionID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PreviousVersionID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PreviousVersionID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PreviousVersionID")
      * @JMS\Expose
@@ -146,10 +146,10 @@ class CatalogueReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -175,10 +175,10 @@ class CatalogueReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID $uUID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID|null $uUID
      * @return self
      */
-    public function setUUID(UUID $uUID): self
+    public function setUUID(?UUID $uUID = null): self
     {
         $this->uUID = $uUID;
 
@@ -194,10 +194,10 @@ class CatalogueReferenceType
     }
 
     /**
-     * @param \DateTimeInterface $issueDate
+     * @param \DateTimeInterface|null $issueDate
      * @return self
      */
-    public function setIssueDate(\DateTimeInterface $issueDate): self
+    public function setIssueDate(?\DateTimeInterface $issueDate = null): self
     {
         $this->issueDate = $issueDate;
 
@@ -213,10 +213,10 @@ class CatalogueReferenceType
     }
 
     /**
-     * @param \DateTimeInterface $issueTime
+     * @param \DateTimeInterface|null $issueTime
      * @return self
      */
-    public function setIssueTime(\DateTimeInterface $issueTime): self
+    public function setIssueTime(?\DateTimeInterface $issueTime = null): self
     {
         $this->issueTime = $issueTime;
 
@@ -232,10 +232,10 @@ class CatalogueReferenceType
     }
 
     /**
-     * @param \DateTimeInterface $revisionDate
+     * @param \DateTimeInterface|null $revisionDate
      * @return self
      */
-    public function setRevisionDate(\DateTimeInterface $revisionDate): self
+    public function setRevisionDate(?\DateTimeInterface $revisionDate = null): self
     {
         $this->revisionDate = $revisionDate;
 
@@ -251,10 +251,10 @@ class CatalogueReferenceType
     }
 
     /**
-     * @param \DateTimeInterface $revisionTime
+     * @param \DateTimeInterface|null $revisionTime
      * @return self
      */
-    public function setRevisionTime(\DateTimeInterface $revisionTime): self
+    public function setRevisionTime(?\DateTimeInterface $revisionTime = null): self
     {
         $this->revisionTime = $revisionTime;
 
@@ -270,10 +270,10 @@ class CatalogueReferenceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -351,10 +351,10 @@ class CatalogueReferenceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -442,10 +442,10 @@ class CatalogueReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\VersionID $versionID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\VersionID|null $versionID
      * @return self
      */
-    public function setVersionID(VersionID $versionID): self
+    public function setVersionID(?VersionID $versionID = null): self
     {
         $this->versionID = $versionID;
 
@@ -471,10 +471,10 @@ class CatalogueReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PreviousVersionID $previousVersionID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PreviousVersionID|null $previousVersionID
      * @return self
      */
-    public function setPreviousVersionID(PreviousVersionID $previousVersionID): self
+    public function setPreviousVersionID(?PreviousVersionID $previousVersionID = null): self
     {
         $this->previousVersionID = $previousVersionID;
 

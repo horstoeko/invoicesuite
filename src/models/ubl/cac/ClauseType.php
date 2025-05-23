@@ -12,7 +12,7 @@ class ClauseType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class ClauseType
     private $iD;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Content>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Content>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Content>")
      * @JMS\Expose
@@ -53,10 +53,10 @@ class ClauseType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -72,10 +72,10 @@ class ClauseType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Content> $content
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Content>|null $content
      * @return self
      */
-    public function setContent(array $content): self
+    public function setContent(?array $content = null): self
     {
         $this->content = $content;
 

@@ -11,7 +11,7 @@ class CatalogueItemSpecificationUpdateLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class CatalogueItemSpecificationUpdateLineType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ContractorCustomerParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ContractorCustomerParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ContractorCustomerParty")
      * @JMS\Expose
@@ -33,7 +33,7 @@ class CatalogueItemSpecificationUpdateLineType
     private $contractorCustomerParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty")
      * @JMS\Expose
@@ -44,7 +44,7 @@ class CatalogueItemSpecificationUpdateLineType
     private $sellerSupplierParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Item
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Item|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Item")
      * @JMS\Expose
@@ -73,10 +73,10 @@ class CatalogueItemSpecificationUpdateLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -102,10 +102,10 @@ class CatalogueItemSpecificationUpdateLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ContractorCustomerParty $contractorCustomerParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ContractorCustomerParty|null $contractorCustomerParty
      * @return self
      */
-    public function setContractorCustomerParty(ContractorCustomerParty $contractorCustomerParty): self
+    public function setContractorCustomerParty(?ContractorCustomerParty $contractorCustomerParty = null): self
     {
         $this->contractorCustomerParty = $contractorCustomerParty;
 
@@ -131,10 +131,10 @@ class CatalogueItemSpecificationUpdateLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty $sellerSupplierParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty|null $sellerSupplierParty
      * @return self
      */
-    public function setSellerSupplierParty(SellerSupplierParty $sellerSupplierParty): self
+    public function setSellerSupplierParty(?SellerSupplierParty $sellerSupplierParty = null): self
     {
         $this->sellerSupplierParty = $sellerSupplierParty;
 
@@ -160,10 +160,10 @@ class CatalogueItemSpecificationUpdateLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Item $item
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Item|null $item
      * @return self
      */
-    public function setItem(Item $item): self
+    public function setItem(?Item $item = null): self
     {
         $this->item = $item;
 

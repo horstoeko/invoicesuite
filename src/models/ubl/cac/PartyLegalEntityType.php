@@ -16,7 +16,7 @@ class PartyLegalEntityType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\RegistrationName
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\RegistrationName|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\RegistrationName")
      * @JMS\Expose
@@ -27,7 +27,7 @@ class PartyLegalEntityType
     private $registrationName;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CompanyID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CompanyID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CompanyID")
      * @JMS\Expose
@@ -38,7 +38,7 @@ class PartyLegalEntityType
     private $companyID;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -49,7 +49,7 @@ class PartyLegalEntityType
     private $registrationDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -60,7 +60,7 @@ class PartyLegalEntityType
     private $registrationExpirationDate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalFormCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalFormCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalFormCode")
      * @JMS\Expose
@@ -71,7 +71,7 @@ class PartyLegalEntityType
     private $companyLegalFormCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalForm
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalForm|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalForm")
      * @JMS\Expose
@@ -82,7 +82,7 @@ class PartyLegalEntityType
     private $companyLegalForm;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -93,7 +93,7 @@ class PartyLegalEntityType
     private $soleProprietorshipIndicator;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CompanyLiquidationStatusCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CompanyLiquidationStatusCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CompanyLiquidationStatusCode")
      * @JMS\Expose
@@ -104,7 +104,7 @@ class PartyLegalEntityType
     private $companyLiquidationStatusCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CorporateStockAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CorporateStockAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CorporateStockAmount")
      * @JMS\Expose
@@ -115,7 +115,7 @@ class PartyLegalEntityType
     private $corporateStockAmount;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -126,7 +126,7 @@ class PartyLegalEntityType
     private $fullyPaidSharesIndicator;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\RegistrationAddress
+     * @var \horstoeko\invoicesuite\models\ubl\cac\RegistrationAddress|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\RegistrationAddress")
      * @JMS\Expose
@@ -137,7 +137,7 @@ class PartyLegalEntityType
     private $registrationAddress;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\CorporateRegistrationScheme
+     * @var \horstoeko\invoicesuite\models\ubl\cac\CorporateRegistrationScheme|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\CorporateRegistrationScheme")
      * @JMS\Expose
@@ -148,7 +148,7 @@ class PartyLegalEntityType
     private $corporateRegistrationScheme;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\HeadOfficeParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\HeadOfficeParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\HeadOfficeParty")
      * @JMS\Expose
@@ -159,7 +159,7 @@ class PartyLegalEntityType
     private $headOfficeParty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ShareholderParty>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ShareholderParty>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ShareholderParty>")
      * @JMS\Expose
@@ -189,10 +189,10 @@ class PartyLegalEntityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\RegistrationName $registrationName
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\RegistrationName|null $registrationName
      * @return self
      */
-    public function setRegistrationName(RegistrationName $registrationName): self
+    public function setRegistrationName(?RegistrationName $registrationName = null): self
     {
         $this->registrationName = $registrationName;
 
@@ -218,10 +218,10 @@ class PartyLegalEntityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CompanyID $companyID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CompanyID|null $companyID
      * @return self
      */
-    public function setCompanyID(CompanyID $companyID): self
+    public function setCompanyID(?CompanyID $companyID = null): self
     {
         $this->companyID = $companyID;
 
@@ -237,10 +237,10 @@ class PartyLegalEntityType
     }
 
     /**
-     * @param \DateTimeInterface $registrationDate
+     * @param \DateTimeInterface|null $registrationDate
      * @return self
      */
-    public function setRegistrationDate(\DateTimeInterface $registrationDate): self
+    public function setRegistrationDate(?\DateTimeInterface $registrationDate = null): self
     {
         $this->registrationDate = $registrationDate;
 
@@ -256,10 +256,10 @@ class PartyLegalEntityType
     }
 
     /**
-     * @param \DateTimeInterface $registrationExpirationDate
+     * @param \DateTimeInterface|null $registrationExpirationDate
      * @return self
      */
-    public function setRegistrationExpirationDate(\DateTimeInterface $registrationExpirationDate): self
+    public function setRegistrationExpirationDate(?\DateTimeInterface $registrationExpirationDate = null): self
     {
         $this->registrationExpirationDate = $registrationExpirationDate;
 
@@ -285,10 +285,10 @@ class PartyLegalEntityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalFormCode $companyLegalFormCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalFormCode|null $companyLegalFormCode
      * @return self
      */
-    public function setCompanyLegalFormCode(CompanyLegalFormCode $companyLegalFormCode): self
+    public function setCompanyLegalFormCode(?CompanyLegalFormCode $companyLegalFormCode = null): self
     {
         $this->companyLegalFormCode = $companyLegalFormCode;
 
@@ -314,10 +314,10 @@ class PartyLegalEntityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalForm $companyLegalForm
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalForm|null $companyLegalForm
      * @return self
      */
-    public function setCompanyLegalForm(CompanyLegalForm $companyLegalForm): self
+    public function setCompanyLegalForm(?CompanyLegalForm $companyLegalForm = null): self
     {
         $this->companyLegalForm = $companyLegalForm;
 
@@ -333,10 +333,10 @@ class PartyLegalEntityType
     }
 
     /**
-     * @param bool $soleProprietorshipIndicator
+     * @param bool|null $soleProprietorshipIndicator
      * @return self
      */
-    public function setSoleProprietorshipIndicator(bool $soleProprietorshipIndicator): self
+    public function setSoleProprietorshipIndicator(?bool $soleProprietorshipIndicator = null): self
     {
         $this->soleProprietorshipIndicator = $soleProprietorshipIndicator;
 
@@ -362,11 +362,12 @@ class PartyLegalEntityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CompanyLiquidationStatusCode $companyLiquidationStatusCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CompanyLiquidationStatusCode|null $companyLiquidationStatusCode
      * @return self
      */
-    public function setCompanyLiquidationStatusCode(CompanyLiquidationStatusCode $companyLiquidationStatusCode): self
-    {
+    public function setCompanyLiquidationStatusCode(
+        ?CompanyLiquidationStatusCode $companyLiquidationStatusCode = null,
+    ): self {
         $this->companyLiquidationStatusCode = $companyLiquidationStatusCode;
 
         return $this;
@@ -391,10 +392,10 @@ class PartyLegalEntityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CorporateStockAmount $corporateStockAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CorporateStockAmount|null $corporateStockAmount
      * @return self
      */
-    public function setCorporateStockAmount(CorporateStockAmount $corporateStockAmount): self
+    public function setCorporateStockAmount(?CorporateStockAmount $corporateStockAmount = null): self
     {
         $this->corporateStockAmount = $corporateStockAmount;
 
@@ -410,10 +411,10 @@ class PartyLegalEntityType
     }
 
     /**
-     * @param bool $fullyPaidSharesIndicator
+     * @param bool|null $fullyPaidSharesIndicator
      * @return self
      */
-    public function setFullyPaidSharesIndicator(bool $fullyPaidSharesIndicator): self
+    public function setFullyPaidSharesIndicator(?bool $fullyPaidSharesIndicator = null): self
     {
         $this->fullyPaidSharesIndicator = $fullyPaidSharesIndicator;
 
@@ -439,10 +440,10 @@ class PartyLegalEntityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\RegistrationAddress $registrationAddress
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RegistrationAddress|null $registrationAddress
      * @return self
      */
-    public function setRegistrationAddress(RegistrationAddress $registrationAddress): self
+    public function setRegistrationAddress(?RegistrationAddress $registrationAddress = null): self
     {
         $this->registrationAddress = $registrationAddress;
 
@@ -468,11 +469,12 @@ class PartyLegalEntityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\CorporateRegistrationScheme $corporateRegistrationScheme
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CorporateRegistrationScheme|null $corporateRegistrationScheme
      * @return self
      */
-    public function setCorporateRegistrationScheme(CorporateRegistrationScheme $corporateRegistrationScheme): self
-    {
+    public function setCorporateRegistrationScheme(
+        ?CorporateRegistrationScheme $corporateRegistrationScheme = null,
+    ): self {
         $this->corporateRegistrationScheme = $corporateRegistrationScheme;
 
         return $this;
@@ -497,10 +499,10 @@ class PartyLegalEntityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\HeadOfficeParty $headOfficeParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\HeadOfficeParty|null $headOfficeParty
      * @return self
      */
-    public function setHeadOfficeParty(HeadOfficeParty $headOfficeParty): self
+    public function setHeadOfficeParty(?HeadOfficeParty $headOfficeParty = null): self
     {
         $this->headOfficeParty = $headOfficeParty;
 
@@ -516,10 +518,10 @@ class PartyLegalEntityType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ShareholderParty> $shareholderParty
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ShareholderParty>|null $shareholderParty
      * @return self
      */
-    public function setShareholderParty(array $shareholderParty): self
+    public function setShareholderParty(?array $shareholderParty = null): self
     {
         $this->shareholderParty = $shareholderParty;
 

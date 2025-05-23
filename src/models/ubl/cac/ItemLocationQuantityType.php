@@ -14,7 +14,7 @@ class ItemLocationQuantityType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LeadTimeMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LeadTimeMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LeadTimeMeasure")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class ItemLocationQuantityType
     private $leadTimeMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MinimumQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MinimumQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MinimumQuantity")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class ItemLocationQuantityType
     private $minimumQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MaximumQuantity")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class ItemLocationQuantityType
     private $maximumQuantity;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class ItemLocationQuantityType
     private $hazardousRiskIndicator;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\TradingRestrictions>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\TradingRestrictions>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\TradingRestrictions>")
      * @JMS\Expose
@@ -70,7 +70,7 @@ class ItemLocationQuantityType
     private $tradingRestrictions;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ApplicableTerritoryAddress>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ApplicableTerritoryAddress>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ApplicableTerritoryAddress>")
      * @JMS\Expose
@@ -82,7 +82,7 @@ class ItemLocationQuantityType
     private $applicableTerritoryAddress;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Price
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Price|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Price")
      * @JMS\Expose
@@ -93,7 +93,7 @@ class ItemLocationQuantityType
     private $price;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryUnit>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryUnit>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DeliveryUnit>")
      * @JMS\Expose
@@ -105,7 +105,7 @@ class ItemLocationQuantityType
     private $deliveryUnit;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ApplicableTaxCategory>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ApplicableTaxCategory>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ApplicableTaxCategory>")
      * @JMS\Expose
@@ -117,7 +117,7 @@ class ItemLocationQuantityType
     private $applicableTaxCategory;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Package
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Package|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Package")
      * @JMS\Expose
@@ -128,7 +128,7 @@ class ItemLocationQuantityType
     private $package;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>")
      * @JMS\Expose
@@ -140,7 +140,7 @@ class ItemLocationQuantityType
     private $allowanceCharge;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\DependentPriceReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\DependentPriceReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\DependentPriceReference")
      * @JMS\Expose
@@ -169,10 +169,10 @@ class ItemLocationQuantityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LeadTimeMeasure $leadTimeMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LeadTimeMeasure|null $leadTimeMeasure
      * @return self
      */
-    public function setLeadTimeMeasure(LeadTimeMeasure $leadTimeMeasure): self
+    public function setLeadTimeMeasure(?LeadTimeMeasure $leadTimeMeasure = null): self
     {
         $this->leadTimeMeasure = $leadTimeMeasure;
 
@@ -198,10 +198,10 @@ class ItemLocationQuantityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MinimumQuantity $minimumQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MinimumQuantity|null $minimumQuantity
      * @return self
      */
-    public function setMinimumQuantity(MinimumQuantity $minimumQuantity): self
+    public function setMinimumQuantity(?MinimumQuantity $minimumQuantity = null): self
     {
         $this->minimumQuantity = $minimumQuantity;
 
@@ -227,10 +227,10 @@ class ItemLocationQuantityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumQuantity $maximumQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumQuantity|null $maximumQuantity
      * @return self
      */
-    public function setMaximumQuantity(MaximumQuantity $maximumQuantity): self
+    public function setMaximumQuantity(?MaximumQuantity $maximumQuantity = null): self
     {
         $this->maximumQuantity = $maximumQuantity;
 
@@ -246,10 +246,10 @@ class ItemLocationQuantityType
     }
 
     /**
-     * @param bool $hazardousRiskIndicator
+     * @param bool|null $hazardousRiskIndicator
      * @return self
      */
-    public function setHazardousRiskIndicator(bool $hazardousRiskIndicator): self
+    public function setHazardousRiskIndicator(?bool $hazardousRiskIndicator = null): self
     {
         $this->hazardousRiskIndicator = $hazardousRiskIndicator;
 
@@ -265,10 +265,10 @@ class ItemLocationQuantityType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\TradingRestrictions> $tradingRestrictions
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\TradingRestrictions>|null $tradingRestrictions
      * @return self
      */
-    public function setTradingRestrictions(array $tradingRestrictions): self
+    public function setTradingRestrictions(?array $tradingRestrictions = null): self
     {
         $this->tradingRestrictions = $tradingRestrictions;
 
@@ -346,10 +346,10 @@ class ItemLocationQuantityType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ApplicableTerritoryAddress> $applicableTerritoryAddress
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ApplicableTerritoryAddress>|null $applicableTerritoryAddress
      * @return self
      */
-    public function setApplicableTerritoryAddress(array $applicableTerritoryAddress): self
+    public function setApplicableTerritoryAddress(?array $applicableTerritoryAddress = null): self
     {
         $this->applicableTerritoryAddress = $applicableTerritoryAddress;
 
@@ -437,10 +437,10 @@ class ItemLocationQuantityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Price $price
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Price|null $price
      * @return self
      */
-    public function setPrice(Price $price): self
+    public function setPrice(?Price $price = null): self
     {
         $this->price = $price;
 
@@ -456,10 +456,10 @@ class ItemLocationQuantityType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryUnit> $deliveryUnit
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryUnit>|null $deliveryUnit
      * @return self
      */
-    public function setDeliveryUnit(array $deliveryUnit): self
+    public function setDeliveryUnit(?array $deliveryUnit = null): self
     {
         $this->deliveryUnit = $deliveryUnit;
 
@@ -537,10 +537,10 @@ class ItemLocationQuantityType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ApplicableTaxCategory> $applicableTaxCategory
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ApplicableTaxCategory>|null $applicableTaxCategory
      * @return self
      */
-    public function setApplicableTaxCategory(array $applicableTaxCategory): self
+    public function setApplicableTaxCategory(?array $applicableTaxCategory = null): self
     {
         $this->applicableTaxCategory = $applicableTaxCategory;
 
@@ -628,10 +628,10 @@ class ItemLocationQuantityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Package $package
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Package|null $package
      * @return self
      */
-    public function setPackage(Package $package): self
+    public function setPackage(?Package $package = null): self
     {
         $this->package = $package;
 
@@ -647,10 +647,10 @@ class ItemLocationQuantityType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge> $allowanceCharge
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null $allowanceCharge
      * @return self
      */
-    public function setAllowanceCharge(array $allowanceCharge): self
+    public function setAllowanceCharge(?array $allowanceCharge = null): self
     {
         $this->allowanceCharge = $allowanceCharge;
 
@@ -738,10 +738,10 @@ class ItemLocationQuantityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\DependentPriceReference $dependentPriceReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DependentPriceReference|null $dependentPriceReference
      * @return self
      */
-    public function setDependentPriceReference(DependentPriceReference $dependentPriceReference): self
+    public function setDependentPriceReference(?DependentPriceReference $dependentPriceReference = null): self
     {
         $this->dependentPriceReference = $dependentPriceReference;
 

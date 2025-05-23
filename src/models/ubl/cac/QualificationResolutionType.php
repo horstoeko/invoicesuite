@@ -13,7 +13,7 @@ class QualificationResolutionType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AdmissionCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AdmissionCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AdmissionCode")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class QualificationResolutionType
     private $admissionCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ExclusionReason>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ExclusionReason>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\ExclusionReason>")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class QualificationResolutionType
     private $exclusionReason;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Resolution>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Resolution>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Resolution>")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class QualificationResolutionType
     private $resolution;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class QualificationResolutionType
     private $resolutionDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -70,7 +70,7 @@ class QualificationResolutionType
     private $resolutionTime;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ProcurementProjectLot
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ProcurementProjectLot|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ProcurementProjectLot")
      * @JMS\Expose
@@ -99,10 +99,10 @@ class QualificationResolutionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AdmissionCode $admissionCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AdmissionCode|null $admissionCode
      * @return self
      */
-    public function setAdmissionCode(AdmissionCode $admissionCode): self
+    public function setAdmissionCode(?AdmissionCode $admissionCode = null): self
     {
         $this->admissionCode = $admissionCode;
 
@@ -118,10 +118,10 @@ class QualificationResolutionType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ExclusionReason> $exclusionReason
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ExclusionReason>|null $exclusionReason
      * @return self
      */
-    public function setExclusionReason(array $exclusionReason): self
+    public function setExclusionReason(?array $exclusionReason = null): self
     {
         $this->exclusionReason = $exclusionReason;
 
@@ -199,10 +199,10 @@ class QualificationResolutionType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Resolution> $resolution
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Resolution>|null $resolution
      * @return self
      */
-    public function setResolution(array $resolution): self
+    public function setResolution(?array $resolution = null): self
     {
         $this->resolution = $resolution;
 
@@ -280,10 +280,10 @@ class QualificationResolutionType
     }
 
     /**
-     * @param \DateTimeInterface $resolutionDate
+     * @param \DateTimeInterface|null $resolutionDate
      * @return self
      */
-    public function setResolutionDate(\DateTimeInterface $resolutionDate): self
+    public function setResolutionDate(?\DateTimeInterface $resolutionDate = null): self
     {
         $this->resolutionDate = $resolutionDate;
 
@@ -299,10 +299,10 @@ class QualificationResolutionType
     }
 
     /**
-     * @param \DateTimeInterface $resolutionTime
+     * @param \DateTimeInterface|null $resolutionTime
      * @return self
      */
-    public function setResolutionTime(\DateTimeInterface $resolutionTime): self
+    public function setResolutionTime(?\DateTimeInterface $resolutionTime = null): self
     {
         $this->resolutionTime = $resolutionTime;
 
@@ -328,10 +328,10 @@ class QualificationResolutionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ProcurementProjectLot $procurementProjectLot
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ProcurementProjectLot|null $procurementProjectLot
      * @return self
      */
-    public function setProcurementProjectLot(ProcurementProjectLot $procurementProjectLot): self
+    public function setProcurementProjectLot(?ProcurementProjectLot $procurementProjectLot = null): self
     {
         $this->procurementProjectLot = $procurementProjectLot;
 

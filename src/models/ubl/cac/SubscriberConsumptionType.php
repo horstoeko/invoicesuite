@@ -14,7 +14,7 @@ class SubscriberConsumptionType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ConsumptionID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ConsumptionID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ConsumptionID")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class SubscriberConsumptionType
     private $consumptionID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SpecificationTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SpecificationTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SpecificationTypeCode")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class SubscriberConsumptionType
     private $specificationTypeCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class SubscriberConsumptionType
     private $note;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalMeteredQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalMeteredQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TotalMeteredQuantity")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class SubscriberConsumptionType
     private $totalMeteredQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\SubscriberParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\SubscriberParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\SubscriberParty")
      * @JMS\Expose
@@ -70,7 +70,7 @@ class SubscriberConsumptionType
     private $subscriberParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\UtilityConsumptionPoint
+     * @var \horstoeko\invoicesuite\models\ubl\cac\UtilityConsumptionPoint|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\UtilityConsumptionPoint")
      * @JMS\Expose
@@ -81,7 +81,7 @@ class SubscriberConsumptionType
     private $utilityConsumptionPoint;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\OnAccountPayment>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\OnAccountPayment>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\OnAccountPayment>")
      * @JMS\Expose
@@ -93,7 +93,7 @@ class SubscriberConsumptionType
     private $onAccountPayment;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Consumption
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Consumption|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Consumption")
      * @JMS\Expose
@@ -104,7 +104,7 @@ class SubscriberConsumptionType
     private $consumption;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SupplierConsumption>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SupplierConsumption>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\SupplierConsumption>")
      * @JMS\Expose
@@ -134,10 +134,10 @@ class SubscriberConsumptionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ConsumptionID $consumptionID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ConsumptionID|null $consumptionID
      * @return self
      */
-    public function setConsumptionID(ConsumptionID $consumptionID): self
+    public function setConsumptionID(?ConsumptionID $consumptionID = null): self
     {
         $this->consumptionID = $consumptionID;
 
@@ -163,10 +163,10 @@ class SubscriberConsumptionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SpecificationTypeCode $specificationTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SpecificationTypeCode|null $specificationTypeCode
      * @return self
      */
-    public function setSpecificationTypeCode(SpecificationTypeCode $specificationTypeCode): self
+    public function setSpecificationTypeCode(?SpecificationTypeCode $specificationTypeCode = null): self
     {
         $this->specificationTypeCode = $specificationTypeCode;
 
@@ -182,10 +182,10 @@ class SubscriberConsumptionType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -273,10 +273,10 @@ class SubscriberConsumptionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalMeteredQuantity $totalMeteredQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalMeteredQuantity|null $totalMeteredQuantity
      * @return self
      */
-    public function setTotalMeteredQuantity(TotalMeteredQuantity $totalMeteredQuantity): self
+    public function setTotalMeteredQuantity(?TotalMeteredQuantity $totalMeteredQuantity = null): self
     {
         $this->totalMeteredQuantity = $totalMeteredQuantity;
 
@@ -302,10 +302,10 @@ class SubscriberConsumptionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\SubscriberParty $subscriberParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SubscriberParty|null $subscriberParty
      * @return self
      */
-    public function setSubscriberParty(SubscriberParty $subscriberParty): self
+    public function setSubscriberParty(?SubscriberParty $subscriberParty = null): self
     {
         $this->subscriberParty = $subscriberParty;
 
@@ -331,10 +331,10 @@ class SubscriberConsumptionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\UtilityConsumptionPoint $utilityConsumptionPoint
+     * @param \horstoeko\invoicesuite\models\ubl\cac\UtilityConsumptionPoint|null $utilityConsumptionPoint
      * @return self
      */
-    public function setUtilityConsumptionPoint(UtilityConsumptionPoint $utilityConsumptionPoint): self
+    public function setUtilityConsumptionPoint(?UtilityConsumptionPoint $utilityConsumptionPoint = null): self
     {
         $this->utilityConsumptionPoint = $utilityConsumptionPoint;
 
@@ -350,10 +350,10 @@ class SubscriberConsumptionType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\OnAccountPayment> $onAccountPayment
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\OnAccountPayment>|null $onAccountPayment
      * @return self
      */
-    public function setOnAccountPayment(array $onAccountPayment): self
+    public function setOnAccountPayment(?array $onAccountPayment = null): self
     {
         $this->onAccountPayment = $onAccountPayment;
 
@@ -441,10 +441,10 @@ class SubscriberConsumptionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Consumption $consumption
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Consumption|null $consumption
      * @return self
      */
-    public function setConsumption(Consumption $consumption): self
+    public function setConsumption(?Consumption $consumption = null): self
     {
         $this->consumption = $consumption;
 
@@ -460,10 +460,10 @@ class SubscriberConsumptionType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SupplierConsumption> $supplierConsumption
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SupplierConsumption>|null $supplierConsumption
      * @return self
      */
-    public function setSupplierConsumption(array $supplierConsumption): self
+    public function setSupplierConsumption(?array $supplierConsumption = null): self
     {
         $this->supplierConsumption = $supplierConsumption;
 

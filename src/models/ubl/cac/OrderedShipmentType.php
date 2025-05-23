@@ -10,7 +10,7 @@ class OrderedShipmentType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Shipment
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Shipment|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Shipment")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class OrderedShipmentType
     private $shipment;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Package>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Package>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Package>")
      * @JMS\Expose
@@ -51,10 +51,10 @@ class OrderedShipmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Shipment $shipment
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Shipment|null $shipment
      * @return self
      */
-    public function setShipment(Shipment $shipment): self
+    public function setShipment(?Shipment $shipment = null): self
     {
         $this->shipment = $shipment;
 
@@ -70,10 +70,10 @@ class OrderedShipmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Package> $package
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Package>|null $package
      * @return self
      */
-    public function setPackage(array $package): self
+    public function setPackage(?array $package = null): self
     {
         $this->package = $package;
 

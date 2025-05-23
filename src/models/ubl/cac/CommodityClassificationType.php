@@ -14,7 +14,7 @@ class CommodityClassificationType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\NatureCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\NatureCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\NatureCode")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class CommodityClassificationType
     private $natureCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CargoTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CargoTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CargoTypeCode")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class CommodityClassificationType
     private $cargoTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CommodityCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CommodityCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CommodityCode")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class CommodityClassificationType
     private $commodityCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ItemClassificationCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ItemClassificationCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ItemClassificationCode")
      * @JMS\Expose
@@ -76,10 +76,10 @@ class CommodityClassificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\NatureCode $natureCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\NatureCode|null $natureCode
      * @return self
      */
-    public function setNatureCode(NatureCode $natureCode): self
+    public function setNatureCode(?NatureCode $natureCode = null): self
     {
         $this->natureCode = $natureCode;
 
@@ -105,10 +105,10 @@ class CommodityClassificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CargoTypeCode $cargoTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CargoTypeCode|null $cargoTypeCode
      * @return self
      */
-    public function setCargoTypeCode(CargoTypeCode $cargoTypeCode): self
+    public function setCargoTypeCode(?CargoTypeCode $cargoTypeCode = null): self
     {
         $this->cargoTypeCode = $cargoTypeCode;
 
@@ -134,10 +134,10 @@ class CommodityClassificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CommodityCode $commodityCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CommodityCode|null $commodityCode
      * @return self
      */
-    public function setCommodityCode(CommodityCode $commodityCode): self
+    public function setCommodityCode(?CommodityCode $commodityCode = null): self
     {
         $this->commodityCode = $commodityCode;
 
@@ -163,10 +163,10 @@ class CommodityClassificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ItemClassificationCode $itemClassificationCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ItemClassificationCode|null $itemClassificationCode
      * @return self
      */
-    public function setItemClassificationCode(ItemClassificationCode $itemClassificationCode): self
+    public function setItemClassificationCode(?ItemClassificationCode $itemClassificationCode = null): self
     {
         $this->itemClassificationCode = $itemClassificationCode;
 

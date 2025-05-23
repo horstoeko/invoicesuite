@@ -16,7 +16,7 @@ class PackageType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -27,7 +27,7 @@ class PackageType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Quantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Quantity")
      * @JMS\Expose
@@ -38,7 +38,7 @@ class PackageType
     private $quantity;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -49,7 +49,7 @@ class PackageType
     private $returnableMaterialIndicator;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PackageLevelCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PackageLevelCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PackageLevelCode")
      * @JMS\Expose
@@ -60,7 +60,7 @@ class PackageType
     private $packageLevelCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PackagingTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PackagingTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PackagingTypeCode")
      * @JMS\Expose
@@ -71,7 +71,7 @@ class PackageType
     private $packagingTypeCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\PackingMaterial>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\PackingMaterial>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\PackingMaterial>")
      * @JMS\Expose
@@ -83,7 +83,7 @@ class PackageType
     private $packingMaterial;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TraceID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TraceID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TraceID")
      * @JMS\Expose
@@ -94,7 +94,7 @@ class PackageType
     private $traceID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ContainedPackage>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ContainedPackage>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ContainedPackage>")
      * @JMS\Expose
@@ -106,7 +106,7 @@ class PackageType
     private $containedPackage;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ContainingTransportEquipment
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ContainingTransportEquipment|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ContainingTransportEquipment")
      * @JMS\Expose
@@ -117,7 +117,7 @@ class PackageType
     private $containingTransportEquipment;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\GoodsItem>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\GoodsItem>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\GoodsItem>")
      * @JMS\Expose
@@ -129,7 +129,7 @@ class PackageType
     private $goodsItem;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>")
      * @JMS\Expose
@@ -141,7 +141,7 @@ class PackageType
     private $measurementDimension;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryUnit>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryUnit>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DeliveryUnit>")
      * @JMS\Expose
@@ -153,7 +153,7 @@ class PackageType
     private $deliveryUnit;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Delivery
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Delivery|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Delivery")
      * @JMS\Expose
@@ -164,7 +164,7 @@ class PackageType
     private $delivery;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Pickup
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Pickup|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Pickup")
      * @JMS\Expose
@@ -175,7 +175,7 @@ class PackageType
     private $pickup;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Despatch
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Despatch|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Despatch")
      * @JMS\Expose
@@ -204,10 +204,10 @@ class PackageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -233,10 +233,10 @@ class PackageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Quantity $quantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null $quantity
      * @return self
      */
-    public function setQuantity(Quantity $quantity): self
+    public function setQuantity(?Quantity $quantity = null): self
     {
         $this->quantity = $quantity;
 
@@ -252,10 +252,10 @@ class PackageType
     }
 
     /**
-     * @param bool $returnableMaterialIndicator
+     * @param bool|null $returnableMaterialIndicator
      * @return self
      */
-    public function setReturnableMaterialIndicator(bool $returnableMaterialIndicator): self
+    public function setReturnableMaterialIndicator(?bool $returnableMaterialIndicator = null): self
     {
         $this->returnableMaterialIndicator = $returnableMaterialIndicator;
 
@@ -281,10 +281,10 @@ class PackageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PackageLevelCode $packageLevelCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PackageLevelCode|null $packageLevelCode
      * @return self
      */
-    public function setPackageLevelCode(PackageLevelCode $packageLevelCode): self
+    public function setPackageLevelCode(?PackageLevelCode $packageLevelCode = null): self
     {
         $this->packageLevelCode = $packageLevelCode;
 
@@ -310,10 +310,10 @@ class PackageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PackagingTypeCode $packagingTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PackagingTypeCode|null $packagingTypeCode
      * @return self
      */
-    public function setPackagingTypeCode(PackagingTypeCode $packagingTypeCode): self
+    public function setPackagingTypeCode(?PackagingTypeCode $packagingTypeCode = null): self
     {
         $this->packagingTypeCode = $packagingTypeCode;
 
@@ -329,10 +329,10 @@ class PackageType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\PackingMaterial> $packingMaterial
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\PackingMaterial>|null $packingMaterial
      * @return self
      */
-    public function setPackingMaterial(array $packingMaterial): self
+    public function setPackingMaterial(?array $packingMaterial = null): self
     {
         $this->packingMaterial = $packingMaterial;
 
@@ -420,10 +420,10 @@ class PackageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TraceID $traceID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TraceID|null $traceID
      * @return self
      */
-    public function setTraceID(TraceID $traceID): self
+    public function setTraceID(?TraceID $traceID = null): self
     {
         $this->traceID = $traceID;
 
@@ -439,10 +439,10 @@ class PackageType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ContainedPackage> $containedPackage
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ContainedPackage>|null $containedPackage
      * @return self
      */
-    public function setContainedPackage(array $containedPackage): self
+    public function setContainedPackage(?array $containedPackage = null): self
     {
         $this->containedPackage = $containedPackage;
 
@@ -530,11 +530,12 @@ class PackageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ContainingTransportEquipment $containingTransportEquipment
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ContainingTransportEquipment|null $containingTransportEquipment
      * @return self
      */
-    public function setContainingTransportEquipment(ContainingTransportEquipment $containingTransportEquipment): self
-    {
+    public function setContainingTransportEquipment(
+        ?ContainingTransportEquipment $containingTransportEquipment = null,
+    ): self {
         $this->containingTransportEquipment = $containingTransportEquipment;
 
         return $this;
@@ -549,10 +550,10 @@ class PackageType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\GoodsItem> $goodsItem
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\GoodsItem>|null $goodsItem
      * @return self
      */
-    public function setGoodsItem(array $goodsItem): self
+    public function setGoodsItem(?array $goodsItem = null): self
     {
         $this->goodsItem = $goodsItem;
 
@@ -630,10 +631,10 @@ class PackageType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension> $measurementDimension
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>|null $measurementDimension
      * @return self
      */
-    public function setMeasurementDimension(array $measurementDimension): self
+    public function setMeasurementDimension(?array $measurementDimension = null): self
     {
         $this->measurementDimension = $measurementDimension;
 
@@ -711,10 +712,10 @@ class PackageType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryUnit> $deliveryUnit
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryUnit>|null $deliveryUnit
      * @return self
      */
-    public function setDeliveryUnit(array $deliveryUnit): self
+    public function setDeliveryUnit(?array $deliveryUnit = null): self
     {
         $this->deliveryUnit = $deliveryUnit;
 
@@ -802,10 +803,10 @@ class PackageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Delivery $delivery
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Delivery|null $delivery
      * @return self
      */
-    public function setDelivery(Delivery $delivery): self
+    public function setDelivery(?Delivery $delivery = null): self
     {
         $this->delivery = $delivery;
 
@@ -831,10 +832,10 @@ class PackageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Pickup $pickup
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Pickup|null $pickup
      * @return self
      */
-    public function setPickup(Pickup $pickup): self
+    public function setPickup(?Pickup $pickup = null): self
     {
         $this->pickup = $pickup;
 
@@ -860,10 +861,10 @@ class PackageType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Despatch $despatch
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Despatch|null $despatch
      * @return self
      */
-    public function setDespatch(Despatch $despatch): self
+    public function setDespatch(?Despatch $despatch = null): self
     {
         $this->despatch = $despatch;
 

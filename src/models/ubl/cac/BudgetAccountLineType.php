@@ -12,7 +12,7 @@ class BudgetAccountLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class BudgetAccountLineType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TotalAmount")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class BudgetAccountLineType
     private $totalAmount;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\BudgetAccount>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\BudgetAccount>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\BudgetAccount>")
      * @JMS\Expose
@@ -64,10 +64,10 @@ class BudgetAccountLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -93,10 +93,10 @@ class BudgetAccountLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalAmount $totalAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalAmount|null $totalAmount
      * @return self
      */
-    public function setTotalAmount(TotalAmount $totalAmount): self
+    public function setTotalAmount(?TotalAmount $totalAmount = null): self
     {
         $this->totalAmount = $totalAmount;
 
@@ -112,10 +112,10 @@ class BudgetAccountLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\BudgetAccount> $budgetAccount
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\BudgetAccount>|null $budgetAccount
      * @return self
      */
-    public function setBudgetAccount(array $budgetAccount): self
+    public function setBudgetAccount(?array $budgetAccount = null): self
     {
         $this->budgetAccount = $budgetAccount;
 

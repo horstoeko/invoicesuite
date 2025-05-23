@@ -15,7 +15,7 @@ class DeliveryTermsType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -26,7 +26,7 @@ class DeliveryTermsType
     private $iD;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\SpecialTerms>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\SpecialTerms>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\SpecialTerms>")
      * @JMS\Expose
@@ -38,7 +38,7 @@ class DeliveryTermsType
     private $specialTerms;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LossRiskResponsibilityCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LossRiskResponsibilityCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LossRiskResponsibilityCode")
      * @JMS\Expose
@@ -49,7 +49,7 @@ class DeliveryTermsType
     private $lossRiskResponsibilityCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\LossRisk>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\LossRisk>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\LossRisk>")
      * @JMS\Expose
@@ -61,7 +61,7 @@ class DeliveryTermsType
     private $lossRisk;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Amount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Amount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Amount")
      * @JMS\Expose
@@ -72,7 +72,7 @@ class DeliveryTermsType
     private $amount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\DeliveryLocation
+     * @var \horstoeko\invoicesuite\models\ubl\cac\DeliveryLocation|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\DeliveryLocation")
      * @JMS\Expose
@@ -83,7 +83,7 @@ class DeliveryTermsType
     private $deliveryLocation;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge
+     * @var \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge")
      * @JMS\Expose
@@ -112,10 +112,10 @@ class DeliveryTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -131,10 +131,10 @@ class DeliveryTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\SpecialTerms> $specialTerms
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\SpecialTerms>|null $specialTerms
      * @return self
      */
-    public function setSpecialTerms(array $specialTerms): self
+    public function setSpecialTerms(?array $specialTerms = null): self
     {
         $this->specialTerms = $specialTerms;
 
@@ -222,11 +222,12 @@ class DeliveryTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LossRiskResponsibilityCode $lossRiskResponsibilityCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LossRiskResponsibilityCode|null $lossRiskResponsibilityCode
      * @return self
      */
-    public function setLossRiskResponsibilityCode(LossRiskResponsibilityCode $lossRiskResponsibilityCode): self
-    {
+    public function setLossRiskResponsibilityCode(
+        ?LossRiskResponsibilityCode $lossRiskResponsibilityCode = null,
+    ): self {
         $this->lossRiskResponsibilityCode = $lossRiskResponsibilityCode;
 
         return $this;
@@ -241,10 +242,10 @@ class DeliveryTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\LossRisk> $lossRisk
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\LossRisk>|null $lossRisk
      * @return self
      */
-    public function setLossRisk(array $lossRisk): self
+    public function setLossRisk(?array $lossRisk = null): self
     {
         $this->lossRisk = $lossRisk;
 
@@ -332,10 +333,10 @@ class DeliveryTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Amount $amount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Amount|null $amount
      * @return self
      */
-    public function setAmount(Amount $amount): self
+    public function setAmount(?Amount $amount = null): self
     {
         $this->amount = $amount;
 
@@ -361,10 +362,10 @@ class DeliveryTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\DeliveryLocation $deliveryLocation
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DeliveryLocation|null $deliveryLocation
      * @return self
      */
-    public function setDeliveryLocation(DeliveryLocation $deliveryLocation): self
+    public function setDeliveryLocation(?DeliveryLocation $deliveryLocation = null): self
     {
         $this->deliveryLocation = $deliveryLocation;
 
@@ -390,10 +391,10 @@ class DeliveryTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge $allowanceCharge
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge|null $allowanceCharge
      * @return self
      */
-    public function setAllowanceCharge(AllowanceCharge $allowanceCharge): self
+    public function setAllowanceCharge(?AllowanceCharge $allowanceCharge = null): self
     {
         $this->allowanceCharge = $allowanceCharge;
 

@@ -22,7 +22,7 @@ class PersonType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -33,7 +33,7 @@ class PersonType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\FirstName
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\FirstName|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\FirstName")
      * @JMS\Expose
@@ -44,7 +44,7 @@ class PersonType
     private $firstName;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\FamilyName
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\FamilyName|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\FamilyName")
      * @JMS\Expose
@@ -55,7 +55,7 @@ class PersonType
     private $familyName;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Title
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Title|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Title")
      * @JMS\Expose
@@ -66,7 +66,7 @@ class PersonType
     private $title;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MiddleName
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MiddleName|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MiddleName")
      * @JMS\Expose
@@ -77,7 +77,7 @@ class PersonType
     private $middleName;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\OtherName
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\OtherName|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\OtherName")
      * @JMS\Expose
@@ -88,7 +88,7 @@ class PersonType
     private $otherName;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\NameSuffix
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\NameSuffix|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\NameSuffix")
      * @JMS\Expose
@@ -99,7 +99,7 @@ class PersonType
     private $nameSuffix;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\JobTitle
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\JobTitle|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\JobTitle")
      * @JMS\Expose
@@ -110,7 +110,7 @@ class PersonType
     private $jobTitle;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\NationalityID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\NationalityID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\NationalityID")
      * @JMS\Expose
@@ -121,7 +121,7 @@ class PersonType
     private $nationalityID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\GenderCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\GenderCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\GenderCode")
      * @JMS\Expose
@@ -132,7 +132,7 @@ class PersonType
     private $genderCode;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -143,7 +143,7 @@ class PersonType
     private $birthDate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\BirthplaceName
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\BirthplaceName|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\BirthplaceName")
      * @JMS\Expose
@@ -154,7 +154,7 @@ class PersonType
     private $birthplaceName;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\OrganizationDepartment
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\OrganizationDepartment|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\OrganizationDepartment")
      * @JMS\Expose
@@ -165,7 +165,7 @@ class PersonType
     private $organizationDepartment;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Contact
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Contact|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Contact")
      * @JMS\Expose
@@ -176,7 +176,7 @@ class PersonType
     private $contact;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\FinancialAccount
+     * @var \horstoeko\invoicesuite\models\ubl\cac\FinancialAccount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\FinancialAccount")
      * @JMS\Expose
@@ -187,7 +187,7 @@ class PersonType
     private $financialAccount;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\IdentityDocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\IdentityDocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\IdentityDocumentReference>")
      * @JMS\Expose
@@ -199,7 +199,7 @@ class PersonType
     private $identityDocumentReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ResidenceAddress
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ResidenceAddress|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ResidenceAddress")
      * @JMS\Expose
@@ -228,10 +228,10 @@ class PersonType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -257,10 +257,10 @@ class PersonType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\FirstName $firstName
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\FirstName|null $firstName
      * @return self
      */
-    public function setFirstName(FirstName $firstName): self
+    public function setFirstName(?FirstName $firstName = null): self
     {
         $this->firstName = $firstName;
 
@@ -286,10 +286,10 @@ class PersonType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\FamilyName $familyName
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\FamilyName|null $familyName
      * @return self
      */
-    public function setFamilyName(FamilyName $familyName): self
+    public function setFamilyName(?FamilyName $familyName = null): self
     {
         $this->familyName = $familyName;
 
@@ -315,10 +315,10 @@ class PersonType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Title $title
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Title|null $title
      * @return self
      */
-    public function setTitle(Title $title): self
+    public function setTitle(?Title $title = null): self
     {
         $this->title = $title;
 
@@ -344,10 +344,10 @@ class PersonType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MiddleName $middleName
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MiddleName|null $middleName
      * @return self
      */
-    public function setMiddleName(MiddleName $middleName): self
+    public function setMiddleName(?MiddleName $middleName = null): self
     {
         $this->middleName = $middleName;
 
@@ -373,10 +373,10 @@ class PersonType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\OtherName $otherName
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\OtherName|null $otherName
      * @return self
      */
-    public function setOtherName(OtherName $otherName): self
+    public function setOtherName(?OtherName $otherName = null): self
     {
         $this->otherName = $otherName;
 
@@ -402,10 +402,10 @@ class PersonType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\NameSuffix $nameSuffix
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\NameSuffix|null $nameSuffix
      * @return self
      */
-    public function setNameSuffix(NameSuffix $nameSuffix): self
+    public function setNameSuffix(?NameSuffix $nameSuffix = null): self
     {
         $this->nameSuffix = $nameSuffix;
 
@@ -431,10 +431,10 @@ class PersonType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\JobTitle $jobTitle
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\JobTitle|null $jobTitle
      * @return self
      */
-    public function setJobTitle(JobTitle $jobTitle): self
+    public function setJobTitle(?JobTitle $jobTitle = null): self
     {
         $this->jobTitle = $jobTitle;
 
@@ -460,10 +460,10 @@ class PersonType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\NationalityID $nationalityID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\NationalityID|null $nationalityID
      * @return self
      */
-    public function setNationalityID(NationalityID $nationalityID): self
+    public function setNationalityID(?NationalityID $nationalityID = null): self
     {
         $this->nationalityID = $nationalityID;
 
@@ -489,10 +489,10 @@ class PersonType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\GenderCode $genderCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\GenderCode|null $genderCode
      * @return self
      */
-    public function setGenderCode(GenderCode $genderCode): self
+    public function setGenderCode(?GenderCode $genderCode = null): self
     {
         $this->genderCode = $genderCode;
 
@@ -508,10 +508,10 @@ class PersonType
     }
 
     /**
-     * @param \DateTimeInterface $birthDate
+     * @param \DateTimeInterface|null $birthDate
      * @return self
      */
-    public function setBirthDate(\DateTimeInterface $birthDate): self
+    public function setBirthDate(?\DateTimeInterface $birthDate = null): self
     {
         $this->birthDate = $birthDate;
 
@@ -537,10 +537,10 @@ class PersonType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\BirthplaceName $birthplaceName
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\BirthplaceName|null $birthplaceName
      * @return self
      */
-    public function setBirthplaceName(BirthplaceName $birthplaceName): self
+    public function setBirthplaceName(?BirthplaceName $birthplaceName = null): self
     {
         $this->birthplaceName = $birthplaceName;
 
@@ -566,10 +566,10 @@ class PersonType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\OrganizationDepartment $organizationDepartment
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\OrganizationDepartment|null $organizationDepartment
      * @return self
      */
-    public function setOrganizationDepartment(OrganizationDepartment $organizationDepartment): self
+    public function setOrganizationDepartment(?OrganizationDepartment $organizationDepartment = null): self
     {
         $this->organizationDepartment = $organizationDepartment;
 
@@ -595,10 +595,10 @@ class PersonType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Contact $contact
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Contact|null $contact
      * @return self
      */
-    public function setContact(Contact $contact): self
+    public function setContact(?Contact $contact = null): self
     {
         $this->contact = $contact;
 
@@ -624,10 +624,10 @@ class PersonType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\FinancialAccount $financialAccount
+     * @param \horstoeko\invoicesuite\models\ubl\cac\FinancialAccount|null $financialAccount
      * @return self
      */
-    public function setFinancialAccount(FinancialAccount $financialAccount): self
+    public function setFinancialAccount(?FinancialAccount $financialAccount = null): self
     {
         $this->financialAccount = $financialAccount;
 
@@ -643,10 +643,10 @@ class PersonType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\IdentityDocumentReference> $identityDocumentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\IdentityDocumentReference>|null $identityDocumentReference
      * @return self
      */
-    public function setIdentityDocumentReference(array $identityDocumentReference): self
+    public function setIdentityDocumentReference(?array $identityDocumentReference = null): self
     {
         $this->identityDocumentReference = $identityDocumentReference;
 
@@ -734,10 +734,10 @@ class PersonType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ResidenceAddress $residenceAddress
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ResidenceAddress|null $residenceAddress
      * @return self
      */
-    public function setResidenceAddress(ResidenceAddress $residenceAddress): self
+    public function setResidenceAddress(?ResidenceAddress $residenceAddress = null): self
     {
         $this->residenceAddress = $residenceAddress;
 

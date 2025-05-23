@@ -10,7 +10,7 @@ class UBLExtensionsType
     use HandlesObjectFlags;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\ext\UBLExtension>
+     * @var array<\horstoeko\invoicesuite\models\ubl\ext\UBLExtension>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\ext\UBLExtension>")
      * @JMS\Expose
@@ -30,10 +30,10 @@ class UBLExtensionsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\ext\UBLExtension> $uBLExtension
+     * @param array<\horstoeko\invoicesuite\models\ubl\ext\UBLExtension>|null $uBLExtension
      * @return self
      */
-    public function setUBLExtension(array $uBLExtension): self
+    public function setUBLExtension(?array $uBLExtension = null): self
     {
         $this->uBLExtension = $uBLExtension;
 

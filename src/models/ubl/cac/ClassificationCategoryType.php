@@ -13,7 +13,7 @@ class ClassificationCategoryType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Name")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class ClassificationCategoryType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CodeValue
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CodeValue|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CodeValue")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class ClassificationCategoryType
     private $codeValue;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class ClassificationCategoryType
     private $description;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CategorizesClassificationCategory>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CategorizesClassificationCategory>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\CategorizesClassificationCategory>")
      * @JMS\Expose
@@ -77,10 +77,10 @@ class ClassificationCategoryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name|null $name
      * @return self
      */
-    public function setName(Name $name): self
+    public function setName(?Name $name = null): self
     {
         $this->name = $name;
 
@@ -106,10 +106,10 @@ class ClassificationCategoryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CodeValue $codeValue
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CodeValue|null $codeValue
      * @return self
      */
-    public function setCodeValue(CodeValue $codeValue): self
+    public function setCodeValue(?CodeValue $codeValue = null): self
     {
         $this->codeValue = $codeValue;
 
@@ -125,10 +125,10 @@ class ClassificationCategoryType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -206,10 +206,10 @@ class ClassificationCategoryType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CategorizesClassificationCategory> $categorizesClassificationCategory
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CategorizesClassificationCategory>|null $categorizesClassificationCategory
      * @return self
      */
-    public function setCategorizesClassificationCategory(array $categorizesClassificationCategory): self
+    public function setCategorizesClassificationCategory(?array $categorizesClassificationCategory = null): self
     {
         $this->categorizesClassificationCategory = $categorizesClassificationCategory;
 

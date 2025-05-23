@@ -12,7 +12,7 @@ class PowerOfAttorneyType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class PowerOfAttorneyType
     private $iD;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class PowerOfAttorneyType
     private $issueDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -45,7 +45,7 @@ class PowerOfAttorneyType
     private $issueTime;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -57,7 +57,7 @@ class PowerOfAttorneyType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\NotaryParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\NotaryParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\NotaryParty")
      * @JMS\Expose
@@ -68,7 +68,7 @@ class PowerOfAttorneyType
     private $notaryParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\AgentParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\AgentParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\AgentParty")
      * @JMS\Expose
@@ -79,7 +79,7 @@ class PowerOfAttorneyType
     private $agentParty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\WitnessParty>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\WitnessParty>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\WitnessParty>")
      * @JMS\Expose
@@ -91,7 +91,7 @@ class PowerOfAttorneyType
     private $witnessParty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\MandateDocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\MandateDocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\MandateDocumentReference>")
      * @JMS\Expose
@@ -121,10 +121,10 @@ class PowerOfAttorneyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -140,10 +140,10 @@ class PowerOfAttorneyType
     }
 
     /**
-     * @param \DateTimeInterface $issueDate
+     * @param \DateTimeInterface|null $issueDate
      * @return self
      */
-    public function setIssueDate(\DateTimeInterface $issueDate): self
+    public function setIssueDate(?\DateTimeInterface $issueDate = null): self
     {
         $this->issueDate = $issueDate;
 
@@ -159,10 +159,10 @@ class PowerOfAttorneyType
     }
 
     /**
-     * @param \DateTimeInterface $issueTime
+     * @param \DateTimeInterface|null $issueTime
      * @return self
      */
-    public function setIssueTime(\DateTimeInterface $issueTime): self
+    public function setIssueTime(?\DateTimeInterface $issueTime = null): self
     {
         $this->issueTime = $issueTime;
 
@@ -178,10 +178,10 @@ class PowerOfAttorneyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -269,10 +269,10 @@ class PowerOfAttorneyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\NotaryParty $notaryParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\NotaryParty|null $notaryParty
      * @return self
      */
-    public function setNotaryParty(NotaryParty $notaryParty): self
+    public function setNotaryParty(?NotaryParty $notaryParty = null): self
     {
         $this->notaryParty = $notaryParty;
 
@@ -298,10 +298,10 @@ class PowerOfAttorneyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\AgentParty $agentParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AgentParty|null $agentParty
      * @return self
      */
-    public function setAgentParty(AgentParty $agentParty): self
+    public function setAgentParty(?AgentParty $agentParty = null): self
     {
         $this->agentParty = $agentParty;
 
@@ -317,10 +317,10 @@ class PowerOfAttorneyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\WitnessParty> $witnessParty
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\WitnessParty>|null $witnessParty
      * @return self
      */
-    public function setWitnessParty(array $witnessParty): self
+    public function setWitnessParty(?array $witnessParty = null): self
     {
         $this->witnessParty = $witnessParty;
 
@@ -398,10 +398,10 @@ class PowerOfAttorneyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\MandateDocumentReference> $mandateDocumentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\MandateDocumentReference>|null $mandateDocumentReference
      * @return self
      */
-    public function setMandateDocumentReference(array $mandateDocumentReference): self
+    public function setMandateDocumentReference(?array $mandateDocumentReference = null): self
     {
         $this->mandateDocumentReference = $mandateDocumentReference;
 

@@ -22,7 +22,7 @@ class CatalogueLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -33,7 +33,7 @@ class CatalogueLineType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ActionCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ActionCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ActionCode")
      * @JMS\Expose
@@ -44,7 +44,7 @@ class CatalogueLineType
     private $actionCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LifeCycleStatusCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LifeCycleStatusCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LifeCycleStatusCode")
      * @JMS\Expose
@@ -55,7 +55,7 @@ class CatalogueLineType
     private $lifeCycleStatusCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ContractSubdivision
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ContractSubdivision|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ContractSubdivision")
      * @JMS\Expose
@@ -66,7 +66,7 @@ class CatalogueLineType
     private $contractSubdivision;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -78,7 +78,7 @@ class CatalogueLineType
     private $note;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -89,7 +89,7 @@ class CatalogueLineType
     private $orderableIndicator;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\OrderableUnit
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\OrderableUnit|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\OrderableUnit")
      * @JMS\Expose
@@ -100,7 +100,7 @@ class CatalogueLineType
     private $orderableUnit;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ContentUnitQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ContentUnitQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ContentUnitQuantity")
      * @JMS\Expose
@@ -111,7 +111,7 @@ class CatalogueLineType
     private $contentUnitQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\OrderQuantityIncrementNumeric
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\OrderQuantityIncrementNumeric|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\OrderQuantityIncrementNumeric")
      * @JMS\Expose
@@ -122,7 +122,7 @@ class CatalogueLineType
     private $orderQuantityIncrementNumeric;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MinimumOrderQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MinimumOrderQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MinimumOrderQuantity")
      * @JMS\Expose
@@ -133,7 +133,7 @@ class CatalogueLineType
     private $minimumOrderQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumOrderQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumOrderQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MaximumOrderQuantity")
      * @JMS\Expose
@@ -144,7 +144,7 @@ class CatalogueLineType
     private $maximumOrderQuantity;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\WarrantyInformation>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\WarrantyInformation>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\WarrantyInformation>")
      * @JMS\Expose
@@ -156,7 +156,7 @@ class CatalogueLineType
     private $warrantyInformation;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PackLevelCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PackLevelCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PackLevelCode")
      * @JMS\Expose
@@ -167,7 +167,7 @@ class CatalogueLineType
     private $packLevelCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ContractorCustomerParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ContractorCustomerParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ContractorCustomerParty")
      * @JMS\Expose
@@ -178,7 +178,7 @@ class CatalogueLineType
     private $contractorCustomerParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty")
      * @JMS\Expose
@@ -189,7 +189,7 @@ class CatalogueLineType
     private $sellerSupplierParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\WarrantyParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\WarrantyParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\WarrantyParty")
      * @JMS\Expose
@@ -200,7 +200,7 @@ class CatalogueLineType
     private $warrantyParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\WarrantyValidityPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\WarrantyValidityPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\WarrantyValidityPeriod")
      * @JMS\Expose
@@ -211,7 +211,7 @@ class CatalogueLineType
     private $warrantyValidityPeriod;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\LineValidityPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\LineValidityPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\LineValidityPeriod")
      * @JMS\Expose
@@ -222,7 +222,7 @@ class CatalogueLineType
     private $lineValidityPeriod;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ItemComparison>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ItemComparison>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ItemComparison>")
      * @JMS\Expose
@@ -234,7 +234,7 @@ class CatalogueLineType
     private $itemComparison;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ComponentRelatedItem>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ComponentRelatedItem>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ComponentRelatedItem>")
      * @JMS\Expose
@@ -246,7 +246,7 @@ class CatalogueLineType
     private $componentRelatedItem;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AccessoryRelatedItem>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AccessoryRelatedItem>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\AccessoryRelatedItem>")
      * @JMS\Expose
@@ -258,7 +258,7 @@ class CatalogueLineType
     private $accessoryRelatedItem;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\RequiredRelatedItem>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\RequiredRelatedItem>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\RequiredRelatedItem>")
      * @JMS\Expose
@@ -270,7 +270,7 @@ class CatalogueLineType
     private $requiredRelatedItem;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ReplacementRelatedItem>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ReplacementRelatedItem>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ReplacementRelatedItem>")
      * @JMS\Expose
@@ -282,7 +282,7 @@ class CatalogueLineType
     private $replacementRelatedItem;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ComplementaryRelatedItem>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ComplementaryRelatedItem>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ComplementaryRelatedItem>")
      * @JMS\Expose
@@ -294,7 +294,7 @@ class CatalogueLineType
     private $complementaryRelatedItem;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ReplacedRelatedItem>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ReplacedRelatedItem>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ReplacedRelatedItem>")
      * @JMS\Expose
@@ -306,7 +306,7 @@ class CatalogueLineType
     private $replacedRelatedItem;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity>")
      * @JMS\Expose
@@ -318,7 +318,7 @@ class CatalogueLineType
     private $requiredItemLocationQuantity;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DocumentReference>")
      * @JMS\Expose
@@ -330,7 +330,7 @@ class CatalogueLineType
     private $documentReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Item
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Item|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Item")
      * @JMS\Expose
@@ -341,7 +341,7 @@ class CatalogueLineType
     private $item;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\KeywordItemProperty>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\KeywordItemProperty>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\KeywordItemProperty>")
      * @JMS\Expose
@@ -353,7 +353,7 @@ class CatalogueLineType
     private $keywordItemProperty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\CallForTendersLineReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\CallForTendersLineReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\CallForTendersLineReference")
      * @JMS\Expose
@@ -364,7 +364,7 @@ class CatalogueLineType
     private $callForTendersLineReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\CallForTendersDocumentReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\CallForTendersDocumentReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\CallForTendersDocumentReference")
      * @JMS\Expose
@@ -393,10 +393,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -422,10 +422,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ActionCode $actionCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ActionCode|null $actionCode
      * @return self
      */
-    public function setActionCode(ActionCode $actionCode): self
+    public function setActionCode(?ActionCode $actionCode = null): self
     {
         $this->actionCode = $actionCode;
 
@@ -451,10 +451,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LifeCycleStatusCode $lifeCycleStatusCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LifeCycleStatusCode|null $lifeCycleStatusCode
      * @return self
      */
-    public function setLifeCycleStatusCode(LifeCycleStatusCode $lifeCycleStatusCode): self
+    public function setLifeCycleStatusCode(?LifeCycleStatusCode $lifeCycleStatusCode = null): self
     {
         $this->lifeCycleStatusCode = $lifeCycleStatusCode;
 
@@ -480,10 +480,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ContractSubdivision $contractSubdivision
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ContractSubdivision|null $contractSubdivision
      * @return self
      */
-    public function setContractSubdivision(ContractSubdivision $contractSubdivision): self
+    public function setContractSubdivision(?ContractSubdivision $contractSubdivision = null): self
     {
         $this->contractSubdivision = $contractSubdivision;
 
@@ -499,10 +499,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -580,10 +580,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param bool $orderableIndicator
+     * @param bool|null $orderableIndicator
      * @return self
      */
-    public function setOrderableIndicator(bool $orderableIndicator): self
+    public function setOrderableIndicator(?bool $orderableIndicator = null): self
     {
         $this->orderableIndicator = $orderableIndicator;
 
@@ -609,10 +609,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\OrderableUnit $orderableUnit
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\OrderableUnit|null $orderableUnit
      * @return self
      */
-    public function setOrderableUnit(OrderableUnit $orderableUnit): self
+    public function setOrderableUnit(?OrderableUnit $orderableUnit = null): self
     {
         $this->orderableUnit = $orderableUnit;
 
@@ -638,10 +638,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ContentUnitQuantity $contentUnitQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ContentUnitQuantity|null $contentUnitQuantity
      * @return self
      */
-    public function setContentUnitQuantity(ContentUnitQuantity $contentUnitQuantity): self
+    public function setContentUnitQuantity(?ContentUnitQuantity $contentUnitQuantity = null): self
     {
         $this->contentUnitQuantity = $contentUnitQuantity;
 
@@ -667,11 +667,11 @@ class CatalogueLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\OrderQuantityIncrementNumeric $orderQuantityIncrementNumeric
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\OrderQuantityIncrementNumeric|null $orderQuantityIncrementNumeric
      * @return self
      */
     public function setOrderQuantityIncrementNumeric(
-        OrderQuantityIncrementNumeric $orderQuantityIncrementNumeric,
+        ?OrderQuantityIncrementNumeric $orderQuantityIncrementNumeric = null,
     ): self {
         $this->orderQuantityIncrementNumeric = $orderQuantityIncrementNumeric;
 
@@ -697,10 +697,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MinimumOrderQuantity $minimumOrderQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MinimumOrderQuantity|null $minimumOrderQuantity
      * @return self
      */
-    public function setMinimumOrderQuantity(MinimumOrderQuantity $minimumOrderQuantity): self
+    public function setMinimumOrderQuantity(?MinimumOrderQuantity $minimumOrderQuantity = null): self
     {
         $this->minimumOrderQuantity = $minimumOrderQuantity;
 
@@ -726,10 +726,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumOrderQuantity $maximumOrderQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumOrderQuantity|null $maximumOrderQuantity
      * @return self
      */
-    public function setMaximumOrderQuantity(MaximumOrderQuantity $maximumOrderQuantity): self
+    public function setMaximumOrderQuantity(?MaximumOrderQuantity $maximumOrderQuantity = null): self
     {
         $this->maximumOrderQuantity = $maximumOrderQuantity;
 
@@ -745,10 +745,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\WarrantyInformation> $warrantyInformation
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\WarrantyInformation>|null $warrantyInformation
      * @return self
      */
-    public function setWarrantyInformation(array $warrantyInformation): self
+    public function setWarrantyInformation(?array $warrantyInformation = null): self
     {
         $this->warrantyInformation = $warrantyInformation;
 
@@ -836,10 +836,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PackLevelCode $packLevelCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PackLevelCode|null $packLevelCode
      * @return self
      */
-    public function setPackLevelCode(PackLevelCode $packLevelCode): self
+    public function setPackLevelCode(?PackLevelCode $packLevelCode = null): self
     {
         $this->packLevelCode = $packLevelCode;
 
@@ -865,10 +865,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ContractorCustomerParty $contractorCustomerParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ContractorCustomerParty|null $contractorCustomerParty
      * @return self
      */
-    public function setContractorCustomerParty(ContractorCustomerParty $contractorCustomerParty): self
+    public function setContractorCustomerParty(?ContractorCustomerParty $contractorCustomerParty = null): self
     {
         $this->contractorCustomerParty = $contractorCustomerParty;
 
@@ -894,10 +894,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty $sellerSupplierParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty|null $sellerSupplierParty
      * @return self
      */
-    public function setSellerSupplierParty(SellerSupplierParty $sellerSupplierParty): self
+    public function setSellerSupplierParty(?SellerSupplierParty $sellerSupplierParty = null): self
     {
         $this->sellerSupplierParty = $sellerSupplierParty;
 
@@ -923,10 +923,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\WarrantyParty $warrantyParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\WarrantyParty|null $warrantyParty
      * @return self
      */
-    public function setWarrantyParty(WarrantyParty $warrantyParty): self
+    public function setWarrantyParty(?WarrantyParty $warrantyParty = null): self
     {
         $this->warrantyParty = $warrantyParty;
 
@@ -952,10 +952,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\WarrantyValidityPeriod $warrantyValidityPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\WarrantyValidityPeriod|null $warrantyValidityPeriod
      * @return self
      */
-    public function setWarrantyValidityPeriod(WarrantyValidityPeriod $warrantyValidityPeriod): self
+    public function setWarrantyValidityPeriod(?WarrantyValidityPeriod $warrantyValidityPeriod = null): self
     {
         $this->warrantyValidityPeriod = $warrantyValidityPeriod;
 
@@ -981,10 +981,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\LineValidityPeriod $lineValidityPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\LineValidityPeriod|null $lineValidityPeriod
      * @return self
      */
-    public function setLineValidityPeriod(LineValidityPeriod $lineValidityPeriod): self
+    public function setLineValidityPeriod(?LineValidityPeriod $lineValidityPeriod = null): self
     {
         $this->lineValidityPeriod = $lineValidityPeriod;
 
@@ -1000,10 +1000,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ItemComparison> $itemComparison
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ItemComparison>|null $itemComparison
      * @return self
      */
-    public function setItemComparison(array $itemComparison): self
+    public function setItemComparison(?array $itemComparison = null): self
     {
         $this->itemComparison = $itemComparison;
 
@@ -1081,10 +1081,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ComponentRelatedItem> $componentRelatedItem
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ComponentRelatedItem>|null $componentRelatedItem
      * @return self
      */
-    public function setComponentRelatedItem(array $componentRelatedItem): self
+    public function setComponentRelatedItem(?array $componentRelatedItem = null): self
     {
         $this->componentRelatedItem = $componentRelatedItem;
 
@@ -1162,10 +1162,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AccessoryRelatedItem> $accessoryRelatedItem
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AccessoryRelatedItem>|null $accessoryRelatedItem
      * @return self
      */
-    public function setAccessoryRelatedItem(array $accessoryRelatedItem): self
+    public function setAccessoryRelatedItem(?array $accessoryRelatedItem = null): self
     {
         $this->accessoryRelatedItem = $accessoryRelatedItem;
 
@@ -1243,10 +1243,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\RequiredRelatedItem> $requiredRelatedItem
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\RequiredRelatedItem>|null $requiredRelatedItem
      * @return self
      */
-    public function setRequiredRelatedItem(array $requiredRelatedItem): self
+    public function setRequiredRelatedItem(?array $requiredRelatedItem = null): self
     {
         $this->requiredRelatedItem = $requiredRelatedItem;
 
@@ -1324,10 +1324,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ReplacementRelatedItem> $replacementRelatedItem
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ReplacementRelatedItem>|null $replacementRelatedItem
      * @return self
      */
-    public function setReplacementRelatedItem(array $replacementRelatedItem): self
+    public function setReplacementRelatedItem(?array $replacementRelatedItem = null): self
     {
         $this->replacementRelatedItem = $replacementRelatedItem;
 
@@ -1405,10 +1405,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ComplementaryRelatedItem> $complementaryRelatedItem
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ComplementaryRelatedItem>|null $complementaryRelatedItem
      * @return self
      */
-    public function setComplementaryRelatedItem(array $complementaryRelatedItem): self
+    public function setComplementaryRelatedItem(?array $complementaryRelatedItem = null): self
     {
         $this->complementaryRelatedItem = $complementaryRelatedItem;
 
@@ -1486,10 +1486,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ReplacedRelatedItem> $replacedRelatedItem
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ReplacedRelatedItem>|null $replacedRelatedItem
      * @return self
      */
-    public function setReplacedRelatedItem(array $replacedRelatedItem): self
+    public function setReplacedRelatedItem(?array $replacedRelatedItem = null): self
     {
         $this->replacedRelatedItem = $replacedRelatedItem;
 
@@ -1567,10 +1567,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity> $requiredItemLocationQuantity
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity>|null $requiredItemLocationQuantity
      * @return self
      */
-    public function setRequiredItemLocationQuantity(array $requiredItemLocationQuantity): self
+    public function setRequiredItemLocationQuantity(?array $requiredItemLocationQuantity = null): self
     {
         $this->requiredItemLocationQuantity = $requiredItemLocationQuantity;
 
@@ -1650,10 +1650,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference> $documentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null $documentReference
      * @return self
      */
-    public function setDocumentReference(array $documentReference): self
+    public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
 
@@ -1741,10 +1741,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Item $item
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Item|null $item
      * @return self
      */
-    public function setItem(Item $item): self
+    public function setItem(?Item $item = null): self
     {
         $this->item = $item;
 
@@ -1760,10 +1760,10 @@ class CatalogueLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\KeywordItemProperty> $keywordItemProperty
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\KeywordItemProperty>|null $keywordItemProperty
      * @return self
      */
-    public function setKeywordItemProperty(array $keywordItemProperty): self
+    public function setKeywordItemProperty(?array $keywordItemProperty = null): self
     {
         $this->keywordItemProperty = $keywordItemProperty;
 
@@ -1851,11 +1851,12 @@ class CatalogueLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\CallForTendersLineReference $callForTendersLineReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CallForTendersLineReference|null $callForTendersLineReference
      * @return self
      */
-    public function setCallForTendersLineReference(CallForTendersLineReference $callForTendersLineReference): self
-    {
+    public function setCallForTendersLineReference(
+        ?CallForTendersLineReference $callForTendersLineReference = null,
+    ): self {
         $this->callForTendersLineReference = $callForTendersLineReference;
 
         return $this;
@@ -1880,11 +1881,11 @@ class CatalogueLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\CallForTendersDocumentReference $callForTendersDocumentReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CallForTendersDocumentReference|null $callForTendersDocumentReference
      * @return self
      */
     public function setCallForTendersDocumentReference(
-        CallForTendersDocumentReference $callForTendersDocumentReference,
+        ?CallForTendersDocumentReference $callForTendersDocumentReference = null,
     ): self {
         $this->callForTendersDocumentReference = $callForTendersDocumentReference;
 

@@ -19,7 +19,7 @@ class ExternalReferenceType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\URI
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\URI|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\URI")
      * @JMS\Expose
@@ -30,7 +30,7 @@ class ExternalReferenceType
     private $uRI;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\DocumentHash
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\DocumentHash|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\DocumentHash")
      * @JMS\Expose
@@ -41,7 +41,7 @@ class ExternalReferenceType
     private $documentHash;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\HashAlgorithmMethod
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\HashAlgorithmMethod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\HashAlgorithmMethod")
      * @JMS\Expose
@@ -52,7 +52,7 @@ class ExternalReferenceType
     private $hashAlgorithmMethod;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -63,7 +63,7 @@ class ExternalReferenceType
     private $expiryDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -74,7 +74,7 @@ class ExternalReferenceType
     private $expiryTime;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MimeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MimeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MimeCode")
      * @JMS\Expose
@@ -85,7 +85,7 @@ class ExternalReferenceType
     private $mimeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\FormatCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\FormatCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\FormatCode")
      * @JMS\Expose
@@ -96,7 +96,7 @@ class ExternalReferenceType
     private $formatCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\EncodingCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\EncodingCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\EncodingCode")
      * @JMS\Expose
@@ -107,7 +107,7 @@ class ExternalReferenceType
     private $encodingCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CharacterSetCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CharacterSetCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CharacterSetCode")
      * @JMS\Expose
@@ -118,7 +118,7 @@ class ExternalReferenceType
     private $characterSetCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\FileName
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\FileName|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\FileName")
      * @JMS\Expose
@@ -129,7 +129,7 @@ class ExternalReferenceType
     private $fileName;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -159,10 +159,10 @@ class ExternalReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\URI $uRI
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\URI|null $uRI
      * @return self
      */
-    public function setURI(URI $uRI): self
+    public function setURI(?URI $uRI = null): self
     {
         $this->uRI = $uRI;
 
@@ -188,10 +188,10 @@ class ExternalReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\DocumentHash $documentHash
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DocumentHash|null $documentHash
      * @return self
      */
-    public function setDocumentHash(DocumentHash $documentHash): self
+    public function setDocumentHash(?DocumentHash $documentHash = null): self
     {
         $this->documentHash = $documentHash;
 
@@ -217,10 +217,10 @@ class ExternalReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\HashAlgorithmMethod $hashAlgorithmMethod
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\HashAlgorithmMethod|null $hashAlgorithmMethod
      * @return self
      */
-    public function setHashAlgorithmMethod(HashAlgorithmMethod $hashAlgorithmMethod): self
+    public function setHashAlgorithmMethod(?HashAlgorithmMethod $hashAlgorithmMethod = null): self
     {
         $this->hashAlgorithmMethod = $hashAlgorithmMethod;
 
@@ -236,10 +236,10 @@ class ExternalReferenceType
     }
 
     /**
-     * @param \DateTimeInterface $expiryDate
+     * @param \DateTimeInterface|null $expiryDate
      * @return self
      */
-    public function setExpiryDate(\DateTimeInterface $expiryDate): self
+    public function setExpiryDate(?\DateTimeInterface $expiryDate = null): self
     {
         $this->expiryDate = $expiryDate;
 
@@ -255,10 +255,10 @@ class ExternalReferenceType
     }
 
     /**
-     * @param \DateTimeInterface $expiryTime
+     * @param \DateTimeInterface|null $expiryTime
      * @return self
      */
-    public function setExpiryTime(\DateTimeInterface $expiryTime): self
+    public function setExpiryTime(?\DateTimeInterface $expiryTime = null): self
     {
         $this->expiryTime = $expiryTime;
 
@@ -284,10 +284,10 @@ class ExternalReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MimeCode $mimeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MimeCode|null $mimeCode
      * @return self
      */
-    public function setMimeCode(MimeCode $mimeCode): self
+    public function setMimeCode(?MimeCode $mimeCode = null): self
     {
         $this->mimeCode = $mimeCode;
 
@@ -313,10 +313,10 @@ class ExternalReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\FormatCode $formatCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\FormatCode|null $formatCode
      * @return self
      */
-    public function setFormatCode(FormatCode $formatCode): self
+    public function setFormatCode(?FormatCode $formatCode = null): self
     {
         $this->formatCode = $formatCode;
 
@@ -342,10 +342,10 @@ class ExternalReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\EncodingCode $encodingCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\EncodingCode|null $encodingCode
      * @return self
      */
-    public function setEncodingCode(EncodingCode $encodingCode): self
+    public function setEncodingCode(?EncodingCode $encodingCode = null): self
     {
         $this->encodingCode = $encodingCode;
 
@@ -371,10 +371,10 @@ class ExternalReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CharacterSetCode $characterSetCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CharacterSetCode|null $characterSetCode
      * @return self
      */
-    public function setCharacterSetCode(CharacterSetCode $characterSetCode): self
+    public function setCharacterSetCode(?CharacterSetCode $characterSetCode = null): self
     {
         $this->characterSetCode = $characterSetCode;
 
@@ -400,10 +400,10 @@ class ExternalReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\FileName $fileName
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\FileName|null $fileName
      * @return self
      */
-    public function setFileName(FileName $fileName): self
+    public function setFileName(?FileName $fileName = null): self
     {
         $this->fileName = $fileName;
 
@@ -419,10 +419,10 @@ class ExternalReferenceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 

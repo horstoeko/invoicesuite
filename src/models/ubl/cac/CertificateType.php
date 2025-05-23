@@ -14,7 +14,7 @@ class CertificateType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class CertificateType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CertificateTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CertificateTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CertificateTypeCode")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class CertificateType
     private $certificateTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CertificateType
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CertificateType|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CertificateType")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class CertificateType
     private $certificateType;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Remarks>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Remarks>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Remarks>")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class CertificateType
     private $remarks;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\IssuerParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\IssuerParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\IssuerParty")
      * @JMS\Expose
@@ -70,7 +70,7 @@ class CertificateType
     private $issuerParty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DocumentReference>")
      * @JMS\Expose
@@ -82,7 +82,7 @@ class CertificateType
     private $documentReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Signature>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Signature>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Signature>")
      * @JMS\Expose
@@ -112,10 +112,10 @@ class CertificateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -141,10 +141,10 @@ class CertificateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CertificateTypeCode $certificateTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CertificateTypeCode|null $certificateTypeCode
      * @return self
      */
-    public function setCertificateTypeCode(CertificateTypeCode $certificateTypeCode): self
+    public function setCertificateTypeCode(?CertificateTypeCode $certificateTypeCode = null): self
     {
         $this->certificateTypeCode = $certificateTypeCode;
 
@@ -170,10 +170,10 @@ class CertificateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CertificateType $certificateType
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CertificateType|null $certificateType
      * @return self
      */
-    public function setCertificateType(CertificateType1 $certificateType): self
+    public function setCertificateType(?CertificateType1 $certificateType = null): self
     {
         $this->certificateType = $certificateType;
 
@@ -189,10 +189,10 @@ class CertificateType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Remarks> $remarks
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Remarks>|null $remarks
      * @return self
      */
-    public function setRemarks(array $remarks): self
+    public function setRemarks(?array $remarks = null): self
     {
         $this->remarks = $remarks;
 
@@ -280,10 +280,10 @@ class CertificateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\IssuerParty $issuerParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\IssuerParty|null $issuerParty
      * @return self
      */
-    public function setIssuerParty(IssuerParty $issuerParty): self
+    public function setIssuerParty(?IssuerParty $issuerParty = null): self
     {
         $this->issuerParty = $issuerParty;
 
@@ -299,10 +299,10 @@ class CertificateType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference> $documentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null $documentReference
      * @return self
      */
-    public function setDocumentReference(array $documentReference): self
+    public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
 
@@ -380,10 +380,10 @@ class CertificateType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Signature> $signature
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Signature>|null $signature
      * @return self
      */
-    public function setSignature(array $signature): self
+    public function setSignature(?array $signature = null): self
     {
         $this->signature = $signature;
 

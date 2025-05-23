@@ -13,7 +13,7 @@ class WebSiteAccessType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\URI
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\URI|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\URI")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class WebSiteAccessType
     private $uRI;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Password
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Password|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Password")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class WebSiteAccessType
     private $password;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Login
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Login|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Login")
      * @JMS\Expose
@@ -64,10 +64,10 @@ class WebSiteAccessType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\URI $uRI
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\URI|null $uRI
      * @return self
      */
-    public function setURI(URI $uRI): self
+    public function setURI(?URI $uRI = null): self
     {
         $this->uRI = $uRI;
 
@@ -93,10 +93,10 @@ class WebSiteAccessType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Password $password
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Password|null $password
      * @return self
      */
-    public function setPassword(Password $password): self
+    public function setPassword(?Password $password = null): self
     {
         $this->password = $password;
 
@@ -122,10 +122,10 @@ class WebSiteAccessType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Login $login
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Login|null $login
      * @return self
      */
-    public function setLogin(Login $login): self
+    public function setLogin(?Login $login = null): self
     {
         $this->login = $login;
 

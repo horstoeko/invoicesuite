@@ -13,7 +13,7 @@ class CatalogueRequestLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class CatalogueRequestLineType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ContractSubdivision
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ContractSubdivision|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ContractSubdivision")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class CatalogueRequestLineType
     private $contractSubdivision;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class CatalogueRequestLineType
     private $note;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\LineValidityPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\LineValidityPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\LineValidityPeriod")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class CatalogueRequestLineType
     private $lineValidityPeriod;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity>")
      * @JMS\Expose
@@ -70,7 +70,7 @@ class CatalogueRequestLineType
     private $requiredItemLocationQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Item
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Item|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Item")
      * @JMS\Expose
@@ -99,10 +99,10 @@ class CatalogueRequestLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -128,10 +128,10 @@ class CatalogueRequestLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ContractSubdivision $contractSubdivision
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ContractSubdivision|null $contractSubdivision
      * @return self
      */
-    public function setContractSubdivision(ContractSubdivision $contractSubdivision): self
+    public function setContractSubdivision(?ContractSubdivision $contractSubdivision = null): self
     {
         $this->contractSubdivision = $contractSubdivision;
 
@@ -147,10 +147,10 @@ class CatalogueRequestLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -238,10 +238,10 @@ class CatalogueRequestLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\LineValidityPeriod $lineValidityPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\LineValidityPeriod|null $lineValidityPeriod
      * @return self
      */
-    public function setLineValidityPeriod(LineValidityPeriod $lineValidityPeriod): self
+    public function setLineValidityPeriod(?LineValidityPeriod $lineValidityPeriod = null): self
     {
         $this->lineValidityPeriod = $lineValidityPeriod;
 
@@ -257,10 +257,10 @@ class CatalogueRequestLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity> $requiredItemLocationQuantity
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity>|null $requiredItemLocationQuantity
      * @return self
      */
-    public function setRequiredItemLocationQuantity(array $requiredItemLocationQuantity): self
+    public function setRequiredItemLocationQuantity(?array $requiredItemLocationQuantity = null): self
     {
         $this->requiredItemLocationQuantity = $requiredItemLocationQuantity;
 
@@ -350,10 +350,10 @@ class CatalogueRequestLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Item $item
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Item|null $item
      * @return self
      */
-    public function setItem(Item $item): self
+    public function setItem(?Item $item = null): self
     {
         $this->item = $item;
 

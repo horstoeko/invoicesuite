@@ -11,7 +11,7 @@ class MiscellaneousEventType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MiscellaneousEventTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MiscellaneousEventTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MiscellaneousEventTypeCode")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class MiscellaneousEventType
     private $miscellaneousEventTypeCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\EventLineItem>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\EventLineItem>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\EventLineItem>")
      * @JMS\Expose
@@ -52,11 +52,12 @@ class MiscellaneousEventType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MiscellaneousEventTypeCode $miscellaneousEventTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MiscellaneousEventTypeCode|null $miscellaneousEventTypeCode
      * @return self
      */
-    public function setMiscellaneousEventTypeCode(MiscellaneousEventTypeCode $miscellaneousEventTypeCode): self
-    {
+    public function setMiscellaneousEventTypeCode(
+        ?MiscellaneousEventTypeCode $miscellaneousEventTypeCode = null,
+    ): self {
         $this->miscellaneousEventTypeCode = $miscellaneousEventTypeCode;
 
         return $this;
@@ -71,10 +72,10 @@ class MiscellaneousEventType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\EventLineItem> $eventLineItem
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\EventLineItem>|null $eventLineItem
      * @return self
      */
-    public function setEventLineItem(array $eventLineItem): self
+    public function setEventLineItem(?array $eventLineItem = null): self
     {
         $this->eventLineItem = $eventLineItem;
 

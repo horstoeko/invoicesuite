@@ -10,7 +10,7 @@ class NumericType
     use HandlesObjectFlags;
 
     /**
-     * @var float
+     * @var float|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("float")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class NumericType
     private $value;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -40,10 +40,10 @@ class NumericType
     }
 
     /**
-     * @param float $value
+     * @param float|null $value
      * @return self
      */
-    public function setValue(float $value): self
+    public function setValue(?float $value = null): self
     {
         $this->value = $value;
 
@@ -59,10 +59,10 @@ class NumericType
     }
 
     /**
-     * @param string $format
+     * @param string|null $format
      * @return self
      */
-    public function setFormat(string $format): self
+    public function setFormat(?string $format = null): self
     {
         $this->format = $format;
 

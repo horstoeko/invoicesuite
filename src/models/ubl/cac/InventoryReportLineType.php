@@ -15,7 +15,7 @@ class InventoryReportLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -26,7 +26,7 @@ class InventoryReportLineType
     private $iD;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -38,7 +38,7 @@ class InventoryReportLineType
     private $note;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Quantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Quantity")
      * @JMS\Expose
@@ -49,7 +49,7 @@ class InventoryReportLineType
     private $quantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\InventoryValueAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\InventoryValueAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\InventoryValueAmount")
      * @JMS\Expose
@@ -60,7 +60,7 @@ class InventoryReportLineType
     private $inventoryValueAmount;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -71,7 +71,7 @@ class InventoryReportLineType
     private $availabilityDate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AvailabilityStatusCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AvailabilityStatusCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AvailabilityStatusCode")
      * @JMS\Expose
@@ -82,7 +82,7 @@ class InventoryReportLineType
     private $availabilityStatusCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Item
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Item|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Item")
      * @JMS\Expose
@@ -93,7 +93,7 @@ class InventoryReportLineType
     private $item;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\InventoryLocation
+     * @var \horstoeko\invoicesuite\models\ubl\cac\InventoryLocation|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\InventoryLocation")
      * @JMS\Expose
@@ -122,10 +122,10 @@ class InventoryReportLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -141,10 +141,10 @@ class InventoryReportLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -232,10 +232,10 @@ class InventoryReportLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Quantity $quantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null $quantity
      * @return self
      */
-    public function setQuantity(Quantity $quantity): self
+    public function setQuantity(?Quantity $quantity = null): self
     {
         $this->quantity = $quantity;
 
@@ -261,10 +261,10 @@ class InventoryReportLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\InventoryValueAmount $inventoryValueAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\InventoryValueAmount|null $inventoryValueAmount
      * @return self
      */
-    public function setInventoryValueAmount(InventoryValueAmount $inventoryValueAmount): self
+    public function setInventoryValueAmount(?InventoryValueAmount $inventoryValueAmount = null): self
     {
         $this->inventoryValueAmount = $inventoryValueAmount;
 
@@ -280,10 +280,10 @@ class InventoryReportLineType
     }
 
     /**
-     * @param \DateTimeInterface $availabilityDate
+     * @param \DateTimeInterface|null $availabilityDate
      * @return self
      */
-    public function setAvailabilityDate(\DateTimeInterface $availabilityDate): self
+    public function setAvailabilityDate(?\DateTimeInterface $availabilityDate = null): self
     {
         $this->availabilityDate = $availabilityDate;
 
@@ -309,10 +309,10 @@ class InventoryReportLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AvailabilityStatusCode $availabilityStatusCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AvailabilityStatusCode|null $availabilityStatusCode
      * @return self
      */
-    public function setAvailabilityStatusCode(AvailabilityStatusCode $availabilityStatusCode): self
+    public function setAvailabilityStatusCode(?AvailabilityStatusCode $availabilityStatusCode = null): self
     {
         $this->availabilityStatusCode = $availabilityStatusCode;
 
@@ -338,10 +338,10 @@ class InventoryReportLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Item $item
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Item|null $item
      * @return self
      */
-    public function setItem(Item $item): self
+    public function setItem(?Item $item = null): self
     {
         $this->item = $item;
 
@@ -367,10 +367,10 @@ class InventoryReportLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\InventoryLocation $inventoryLocation
+     * @param \horstoeko\invoicesuite\models\ubl\cac\InventoryLocation|null $inventoryLocation
      * @return self
      */
-    public function setInventoryLocation(InventoryLocation $inventoryLocation): self
+    public function setInventoryLocation(?InventoryLocation $inventoryLocation = null): self
     {
         $this->inventoryLocation = $inventoryLocation;
 

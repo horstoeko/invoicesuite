@@ -12,7 +12,7 @@ class EventTacticType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Comment
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Comment|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Comment")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class EventTacticType
     private $comment;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Quantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Quantity")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class EventTacticType
     private $quantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\EventTacticEnumeration
+     * @var \horstoeko\invoicesuite\models\ubl\cac\EventTacticEnumeration|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\EventTacticEnumeration")
      * @JMS\Expose
@@ -45,7 +45,7 @@ class EventTacticType
     private $eventTacticEnumeration;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Period
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Period|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Period")
      * @JMS\Expose
@@ -74,10 +74,10 @@ class EventTacticType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Comment $comment
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Comment|null $comment
      * @return self
      */
-    public function setComment(Comment $comment): self
+    public function setComment(?Comment $comment = null): self
     {
         $this->comment = $comment;
 
@@ -103,10 +103,10 @@ class EventTacticType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Quantity $quantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null $quantity
      * @return self
      */
-    public function setQuantity(Quantity $quantity): self
+    public function setQuantity(?Quantity $quantity = null): self
     {
         $this->quantity = $quantity;
 
@@ -132,10 +132,10 @@ class EventTacticType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\EventTacticEnumeration $eventTacticEnumeration
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EventTacticEnumeration|null $eventTacticEnumeration
      * @return self
      */
-    public function setEventTacticEnumeration(EventTacticEnumeration $eventTacticEnumeration): self
+    public function setEventTacticEnumeration(?EventTacticEnumeration $eventTacticEnumeration = null): self
     {
         $this->eventTacticEnumeration = $eventTacticEnumeration;
 
@@ -161,10 +161,10 @@ class EventTacticType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Period $period
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Period|null $period
      * @return self
      */
-    public function setPeriod(Period $period): self
+    public function setPeriod(?Period $period = null): self
     {
         $this->period = $period;
 

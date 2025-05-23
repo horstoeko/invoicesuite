@@ -16,7 +16,7 @@ class AwardingCriterionResponseType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -27,7 +27,7 @@ class AwardingCriterionResponseType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AwardingCriterionID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AwardingCriterionID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AwardingCriterionID")
      * @JMS\Expose
@@ -38,7 +38,7 @@ class AwardingCriterionResponseType
     private $awardingCriterionID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\AwardingCriterionDescription>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\AwardingCriterionDescription>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\AwardingCriterionDescription>")
      * @JMS\Expose
@@ -50,7 +50,7 @@ class AwardingCriterionResponseType
     private $awardingCriterionDescription;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -62,7 +62,7 @@ class AwardingCriterionResponseType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Quantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Quantity")
      * @JMS\Expose
@@ -73,7 +73,7 @@ class AwardingCriterionResponseType
     private $quantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Amount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Amount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Amount")
      * @JMS\Expose
@@ -84,7 +84,7 @@ class AwardingCriterionResponseType
     private $amount;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SubordinateAwardingCriterionResponse>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SubordinateAwardingCriterionResponse>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\SubordinateAwardingCriterionResponse>")
      * @JMS\Expose
@@ -114,10 +114,10 @@ class AwardingCriterionResponseType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -143,10 +143,10 @@ class AwardingCriterionResponseType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AwardingCriterionID $awardingCriterionID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AwardingCriterionID|null $awardingCriterionID
      * @return self
      */
-    public function setAwardingCriterionID(AwardingCriterionID $awardingCriterionID): self
+    public function setAwardingCriterionID(?AwardingCriterionID $awardingCriterionID = null): self
     {
         $this->awardingCriterionID = $awardingCriterionID;
 
@@ -162,10 +162,10 @@ class AwardingCriterionResponseType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\AwardingCriterionDescription> $awardingCriterionDescription
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\AwardingCriterionDescription>|null $awardingCriterionDescription
      * @return self
      */
-    public function setAwardingCriterionDescription(array $awardingCriterionDescription): self
+    public function setAwardingCriterionDescription(?array $awardingCriterionDescription = null): self
     {
         $this->awardingCriterionDescription = $awardingCriterionDescription;
 
@@ -245,10 +245,10 @@ class AwardingCriterionResponseType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -336,10 +336,10 @@ class AwardingCriterionResponseType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Quantity $quantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null $quantity
      * @return self
      */
-    public function setQuantity(Quantity $quantity): self
+    public function setQuantity(?Quantity $quantity = null): self
     {
         $this->quantity = $quantity;
 
@@ -365,10 +365,10 @@ class AwardingCriterionResponseType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Amount $amount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Amount|null $amount
      * @return self
      */
-    public function setAmount(Amount $amount): self
+    public function setAmount(?Amount $amount = null): self
     {
         $this->amount = $amount;
 
@@ -384,10 +384,10 @@ class AwardingCriterionResponseType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SubordinateAwardingCriterionResponse> $subordinateAwardingCriterionResponse
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SubordinateAwardingCriterionResponse>|null $subordinateAwardingCriterionResponse
      * @return self
      */
-    public function setSubordinateAwardingCriterionResponse(array $subordinateAwardingCriterionResponse): self
+    public function setSubordinateAwardingCriterionResponse(?array $subordinateAwardingCriterionResponse = null): self
     {
         $this->subordinateAwardingCriterionResponse = $subordinateAwardingCriterionResponse;
 

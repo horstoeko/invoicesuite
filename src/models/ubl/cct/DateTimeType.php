@@ -10,7 +10,7 @@ class DateTimeType
     use HandlesObjectFlags;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class DateTimeType
     private $value;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -40,10 +40,10 @@ class DateTimeType
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return self
      */
-    public function setValue(string $value): self
+    public function setValue(?string $value = null): self
     {
         $this->value = $value;
 
@@ -59,10 +59,10 @@ class DateTimeType
     }
 
     /**
-     * @param string $format
+     * @param string|null $format
      * @return self
      */
-    public function setFormat(string $format): self
+    public function setFormat(?string $format = null): self
     {
         $this->format = $format;
 

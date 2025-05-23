@@ -12,7 +12,7 @@ class TransportationSegmentType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class TransportationSegmentType
     private $sequenceNumeric;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransportExecutionPlanReferenceID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransportExecutionPlanReferenceID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TransportExecutionPlanReferenceID")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class TransportationSegmentType
     private $transportExecutionPlanReferenceID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TransportationService
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TransportationService|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TransportationService")
      * @JMS\Expose
@@ -45,7 +45,7 @@ class TransportationSegmentType
     private $transportationService;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TransportServiceProviderParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TransportServiceProviderParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TransportServiceProviderParty")
      * @JMS\Expose
@@ -56,7 +56,7 @@ class TransportationSegmentType
     private $transportServiceProviderParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ReferencedConsignment
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ReferencedConsignment|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ReferencedConsignment")
      * @JMS\Expose
@@ -67,7 +67,7 @@ class TransportationSegmentType
     private $referencedConsignment;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ShipmentStage>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ShipmentStage>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ShipmentStage>")
      * @JMS\Expose
@@ -97,10 +97,10 @@ class TransportationSegmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric $sequenceNumeric
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric|null $sequenceNumeric
      * @return self
      */
-    public function setSequenceNumeric(SequenceNumeric $sequenceNumeric): self
+    public function setSequenceNumeric(?SequenceNumeric $sequenceNumeric = null): self
     {
         $this->sequenceNumeric = $sequenceNumeric;
 
@@ -126,11 +126,11 @@ class TransportationSegmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransportExecutionPlanReferenceID $transportExecutionPlanReferenceID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransportExecutionPlanReferenceID|null $transportExecutionPlanReferenceID
      * @return self
      */
     public function setTransportExecutionPlanReferenceID(
-        TransportExecutionPlanReferenceID $transportExecutionPlanReferenceID,
+        ?TransportExecutionPlanReferenceID $transportExecutionPlanReferenceID = null,
     ): self {
         $this->transportExecutionPlanReferenceID = $transportExecutionPlanReferenceID;
 
@@ -156,10 +156,10 @@ class TransportationSegmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TransportationService $transportationService
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TransportationService|null $transportationService
      * @return self
      */
-    public function setTransportationService(TransportationService $transportationService): self
+    public function setTransportationService(?TransportationService $transportationService = null): self
     {
         $this->transportationService = $transportationService;
 
@@ -185,11 +185,11 @@ class TransportationSegmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TransportServiceProviderParty $transportServiceProviderParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TransportServiceProviderParty|null $transportServiceProviderParty
      * @return self
      */
     public function setTransportServiceProviderParty(
-        TransportServiceProviderParty $transportServiceProviderParty,
+        ?TransportServiceProviderParty $transportServiceProviderParty = null,
     ): self {
         $this->transportServiceProviderParty = $transportServiceProviderParty;
 
@@ -215,10 +215,10 @@ class TransportationSegmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ReferencedConsignment $referencedConsignment
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ReferencedConsignment|null $referencedConsignment
      * @return self
      */
-    public function setReferencedConsignment(ReferencedConsignment $referencedConsignment): self
+    public function setReferencedConsignment(?ReferencedConsignment $referencedConsignment = null): self
     {
         $this->referencedConsignment = $referencedConsignment;
 
@@ -234,10 +234,10 @@ class TransportationSegmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ShipmentStage> $shipmentStage
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ShipmentStage>|null $shipmentStage
      * @return self
      */
-    public function setShipmentStage(array $shipmentStage): self
+    public function setShipmentStage(?array $shipmentStage = null): self
     {
         $this->shipmentStage = $shipmentStage;
 

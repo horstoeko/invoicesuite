@@ -14,7 +14,7 @@ class CompletedTaskType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AnnualAverageAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AnnualAverageAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AnnualAverageAmount")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class CompletedTaskType
     private $annualAverageAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalTaskAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalTaskAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TotalTaskAmount")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class CompletedTaskType
     private $totalTaskAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PartyCapacityAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PartyCapacityAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PartyCapacityAmount")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class CompletedTaskType
     private $partyCapacityAmount;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class CompletedTaskType
     private $description;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied>")
      * @JMS\Expose
@@ -71,7 +71,7 @@ class CompletedTaskType
     private $evidenceSupplied;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Period
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Period|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Period")
      * @JMS\Expose
@@ -82,7 +82,7 @@ class CompletedTaskType
     private $period;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\RecipientCustomerParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\RecipientCustomerParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\RecipientCustomerParty")
      * @JMS\Expose
@@ -111,10 +111,10 @@ class CompletedTaskType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AnnualAverageAmount $annualAverageAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AnnualAverageAmount|null $annualAverageAmount
      * @return self
      */
-    public function setAnnualAverageAmount(AnnualAverageAmount $annualAverageAmount): self
+    public function setAnnualAverageAmount(?AnnualAverageAmount $annualAverageAmount = null): self
     {
         $this->annualAverageAmount = $annualAverageAmount;
 
@@ -140,10 +140,10 @@ class CompletedTaskType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalTaskAmount $totalTaskAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalTaskAmount|null $totalTaskAmount
      * @return self
      */
-    public function setTotalTaskAmount(TotalTaskAmount $totalTaskAmount): self
+    public function setTotalTaskAmount(?TotalTaskAmount $totalTaskAmount = null): self
     {
         $this->totalTaskAmount = $totalTaskAmount;
 
@@ -169,10 +169,10 @@ class CompletedTaskType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PartyCapacityAmount $partyCapacityAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PartyCapacityAmount|null $partyCapacityAmount
      * @return self
      */
-    public function setPartyCapacityAmount(PartyCapacityAmount $partyCapacityAmount): self
+    public function setPartyCapacityAmount(?PartyCapacityAmount $partyCapacityAmount = null): self
     {
         $this->partyCapacityAmount = $partyCapacityAmount;
 
@@ -188,10 +188,10 @@ class CompletedTaskType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -269,10 +269,10 @@ class CompletedTaskType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied> $evidenceSupplied
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied>|null $evidenceSupplied
      * @return self
      */
-    public function setEvidenceSupplied(array $evidenceSupplied): self
+    public function setEvidenceSupplied(?array $evidenceSupplied = null): self
     {
         $this->evidenceSupplied = $evidenceSupplied;
 
@@ -360,10 +360,10 @@ class CompletedTaskType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Period $period
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Period|null $period
      * @return self
      */
-    public function setPeriod(Period $period): self
+    public function setPeriod(?Period $period = null): self
     {
         $this->period = $period;
 
@@ -389,10 +389,10 @@ class CompletedTaskType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\RecipientCustomerParty $recipientCustomerParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RecipientCustomerParty|null $recipientCustomerParty
      * @return self
      */
-    public function setRecipientCustomerParty(RecipientCustomerParty $recipientCustomerParty): self
+    public function setRecipientCustomerParty(?RecipientCustomerParty $recipientCustomerParty = null): self
     {
         $this->recipientCustomerParty = $recipientCustomerParty;
 

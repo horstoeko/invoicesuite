@@ -13,7 +13,7 @@ class CorporateRegistrationSchemeType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class CorporateRegistrationSchemeType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Name")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class CorporateRegistrationSchemeType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CorporateRegistrationTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CorporateRegistrationTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CorporateRegistrationTypeCode")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class CorporateRegistrationSchemeType
     private $corporateRegistrationTypeCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\JurisdictionRegionAddress>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\JurisdictionRegionAddress>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\JurisdictionRegionAddress>")
      * @JMS\Expose
@@ -76,10 +76,10 @@ class CorporateRegistrationSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -105,10 +105,10 @@ class CorporateRegistrationSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name|null $name
      * @return self
      */
-    public function setName(Name $name): self
+    public function setName(?Name $name = null): self
     {
         $this->name = $name;
 
@@ -134,11 +134,11 @@ class CorporateRegistrationSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CorporateRegistrationTypeCode $corporateRegistrationTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CorporateRegistrationTypeCode|null $corporateRegistrationTypeCode
      * @return self
      */
     public function setCorporateRegistrationTypeCode(
-        CorporateRegistrationTypeCode $corporateRegistrationTypeCode,
+        ?CorporateRegistrationTypeCode $corporateRegistrationTypeCode = null,
     ): self {
         $this->corporateRegistrationTypeCode = $corporateRegistrationTypeCode;
 
@@ -154,10 +154,10 @@ class CorporateRegistrationSchemeType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\JurisdictionRegionAddress> $jurisdictionRegionAddress
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\JurisdictionRegionAddress>|null $jurisdictionRegionAddress
      * @return self
      */
-    public function setJurisdictionRegionAddress(array $jurisdictionRegionAddress): self
+    public function setJurisdictionRegionAddress(?array $jurisdictionRegionAddress = null): self
     {
         $this->jurisdictionRegionAddress = $jurisdictionRegionAddress;
 

@@ -13,7 +13,7 @@ class RegulationType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Name")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class RegulationType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LegalReference
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LegalReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LegalReference")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class RegulationType
     private $legalReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\OntologyURI
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\OntologyURI|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\OntologyURI")
      * @JMS\Expose
@@ -64,10 +64,10 @@ class RegulationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name|null $name
      * @return self
      */
-    public function setName(Name $name): self
+    public function setName(?Name $name = null): self
     {
         $this->name = $name;
 
@@ -93,10 +93,10 @@ class RegulationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LegalReference $legalReference
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LegalReference|null $legalReference
      * @return self
      */
-    public function setLegalReference(LegalReference $legalReference): self
+    public function setLegalReference(?LegalReference $legalReference = null): self
     {
         $this->legalReference = $legalReference;
 
@@ -122,10 +122,10 @@ class RegulationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\OntologyURI $ontologyURI
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\OntologyURI|null $ontologyURI
      * @return self
      */
-    public function setOntologyURI(OntologyURI $ontologyURI): self
+    public function setOntologyURI(?OntologyURI $ontologyURI = null): self
     {
         $this->ontologyURI = $ontologyURI;
 

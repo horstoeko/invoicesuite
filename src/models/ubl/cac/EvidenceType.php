@@ -14,7 +14,7 @@ class EvidenceType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class EvidenceType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\EvidenceTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\EvidenceTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\EvidenceTypeCode")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class EvidenceType
     private $evidenceTypeCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class EvidenceType
     private $description;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\CandidateStatement>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\CandidateStatement>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\CandidateStatement>")
      * @JMS\Expose
@@ -60,7 +60,7 @@ class EvidenceType
     private $candidateStatement;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\EvidenceIssuingParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\EvidenceIssuingParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\EvidenceIssuingParty")
      * @JMS\Expose
@@ -71,7 +71,7 @@ class EvidenceType
     private $evidenceIssuingParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\DocumentReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\DocumentReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\DocumentReference")
      * @JMS\Expose
@@ -82,7 +82,7 @@ class EvidenceType
     private $documentReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Language
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Language|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Language")
      * @JMS\Expose
@@ -111,10 +111,10 @@ class EvidenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -140,10 +140,10 @@ class EvidenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\EvidenceTypeCode $evidenceTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\EvidenceTypeCode|null $evidenceTypeCode
      * @return self
      */
-    public function setEvidenceTypeCode(EvidenceTypeCode $evidenceTypeCode): self
+    public function setEvidenceTypeCode(?EvidenceTypeCode $evidenceTypeCode = null): self
     {
         $this->evidenceTypeCode = $evidenceTypeCode;
 
@@ -159,10 +159,10 @@ class EvidenceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -240,10 +240,10 @@ class EvidenceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\CandidateStatement> $candidateStatement
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\CandidateStatement>|null $candidateStatement
      * @return self
      */
-    public function setCandidateStatement(array $candidateStatement): self
+    public function setCandidateStatement(?array $candidateStatement = null): self
     {
         $this->candidateStatement = $candidateStatement;
 
@@ -331,10 +331,10 @@ class EvidenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\EvidenceIssuingParty $evidenceIssuingParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EvidenceIssuingParty|null $evidenceIssuingParty
      * @return self
      */
-    public function setEvidenceIssuingParty(EvidenceIssuingParty $evidenceIssuingParty): self
+    public function setEvidenceIssuingParty(?EvidenceIssuingParty $evidenceIssuingParty = null): self
     {
         $this->evidenceIssuingParty = $evidenceIssuingParty;
 
@@ -360,10 +360,10 @@ class EvidenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentReference $documentReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentReference|null $documentReference
      * @return self
      */
-    public function setDocumentReference(DocumentReference $documentReference): self
+    public function setDocumentReference(?DocumentReference $documentReference = null): self
     {
         $this->documentReference = $documentReference;
 
@@ -389,10 +389,10 @@ class EvidenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Language $language
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Language|null $language
      * @return self
      */
-    public function setLanguage(Language $language): self
+    public function setLanguage(?Language $language = null): self
     {
         $this->language = $language;
 

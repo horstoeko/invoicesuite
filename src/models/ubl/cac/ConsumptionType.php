@@ -11,7 +11,7 @@ class ConsumptionType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\UtilityStatementTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\UtilityStatementTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\UtilityStatementTypeCode")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class ConsumptionType
     private $utilityStatementTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\MainPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\MainPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\MainPeriod")
      * @JMS\Expose
@@ -33,7 +33,7 @@ class ConsumptionType
     private $mainPeriod;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>")
      * @JMS\Expose
@@ -45,7 +45,7 @@ class ConsumptionType
     private $allowanceCharge;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TaxTotal>")
      * @JMS\Expose
@@ -57,7 +57,7 @@ class ConsumptionType
     private $taxTotal;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\EnergyWaterSupply
+     * @var \horstoeko\invoicesuite\models\ubl\cac\EnergyWaterSupply|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\EnergyWaterSupply")
      * @JMS\Expose
@@ -68,7 +68,7 @@ class ConsumptionType
     private $energyWaterSupply;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsSupply
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsSupply|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsSupply")
      * @JMS\Expose
@@ -79,7 +79,7 @@ class ConsumptionType
     private $telecommunicationsSupply;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\LegalMonetaryTotal
+     * @var \horstoeko\invoicesuite\models\ubl\cac\LegalMonetaryTotal|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\LegalMonetaryTotal")
      * @JMS\Expose
@@ -108,10 +108,10 @@ class ConsumptionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\UtilityStatementTypeCode $utilityStatementTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\UtilityStatementTypeCode|null $utilityStatementTypeCode
      * @return self
      */
-    public function setUtilityStatementTypeCode(UtilityStatementTypeCode $utilityStatementTypeCode): self
+    public function setUtilityStatementTypeCode(?UtilityStatementTypeCode $utilityStatementTypeCode = null): self
     {
         $this->utilityStatementTypeCode = $utilityStatementTypeCode;
 
@@ -137,10 +137,10 @@ class ConsumptionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\MainPeriod $mainPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MainPeriod|null $mainPeriod
      * @return self
      */
-    public function setMainPeriod(MainPeriod $mainPeriod): self
+    public function setMainPeriod(?MainPeriod $mainPeriod = null): self
     {
         $this->mainPeriod = $mainPeriod;
 
@@ -156,10 +156,10 @@ class ConsumptionType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge> $allowanceCharge
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null $allowanceCharge
      * @return self
      */
-    public function setAllowanceCharge(array $allowanceCharge): self
+    public function setAllowanceCharge(?array $allowanceCharge = null): self
     {
         $this->allowanceCharge = $allowanceCharge;
 
@@ -237,10 +237,10 @@ class ConsumptionType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal> $taxTotal
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal>|null $taxTotal
      * @return self
      */
-    public function setTaxTotal(array $taxTotal): self
+    public function setTaxTotal(?array $taxTotal = null): self
     {
         $this->taxTotal = $taxTotal;
 
@@ -328,10 +328,10 @@ class ConsumptionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\EnergyWaterSupply $energyWaterSupply
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EnergyWaterSupply|null $energyWaterSupply
      * @return self
      */
-    public function setEnergyWaterSupply(EnergyWaterSupply $energyWaterSupply): self
+    public function setEnergyWaterSupply(?EnergyWaterSupply $energyWaterSupply = null): self
     {
         $this->energyWaterSupply = $energyWaterSupply;
 
@@ -357,10 +357,10 @@ class ConsumptionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsSupply $telecommunicationsSupply
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsSupply|null $telecommunicationsSupply
      * @return self
      */
-    public function setTelecommunicationsSupply(TelecommunicationsSupply $telecommunicationsSupply): self
+    public function setTelecommunicationsSupply(?TelecommunicationsSupply $telecommunicationsSupply = null): self
     {
         $this->telecommunicationsSupply = $telecommunicationsSupply;
 
@@ -386,10 +386,10 @@ class ConsumptionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\LegalMonetaryTotal $legalMonetaryTotal
+     * @param \horstoeko\invoicesuite\models\ubl\cac\LegalMonetaryTotal|null $legalMonetaryTotal
      * @return self
      */
-    public function setLegalMonetaryTotal(LegalMonetaryTotal $legalMonetaryTotal): self
+    public function setLegalMonetaryTotal(?LegalMonetaryTotal $legalMonetaryTotal = null): self
     {
         $this->legalMonetaryTotal = $legalMonetaryTotal;
 

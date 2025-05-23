@@ -18,7 +18,7 @@ class LocationCoordinateType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CoordinateSystemCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CoordinateSystemCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CoordinateSystemCode")
      * @JMS\Expose
@@ -29,7 +29,7 @@ class LocationCoordinateType
     private $coordinateSystemCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LatitudeDegreesMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LatitudeDegreesMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LatitudeDegreesMeasure")
      * @JMS\Expose
@@ -40,7 +40,7 @@ class LocationCoordinateType
     private $latitudeDegreesMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LatitudeMinutesMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LatitudeMinutesMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LatitudeMinutesMeasure")
      * @JMS\Expose
@@ -51,7 +51,7 @@ class LocationCoordinateType
     private $latitudeMinutesMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LatitudeDirectionCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LatitudeDirectionCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LatitudeDirectionCode")
      * @JMS\Expose
@@ -62,7 +62,7 @@ class LocationCoordinateType
     private $latitudeDirectionCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LongitudeDegreesMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LongitudeDegreesMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LongitudeDegreesMeasure")
      * @JMS\Expose
@@ -73,7 +73,7 @@ class LocationCoordinateType
     private $longitudeDegreesMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LongitudeMinutesMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LongitudeMinutesMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LongitudeMinutesMeasure")
      * @JMS\Expose
@@ -84,7 +84,7 @@ class LocationCoordinateType
     private $longitudeMinutesMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LongitudeDirectionCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LongitudeDirectionCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LongitudeDirectionCode")
      * @JMS\Expose
@@ -95,7 +95,7 @@ class LocationCoordinateType
     private $longitudeDirectionCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AltitudeMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AltitudeMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AltitudeMeasure")
      * @JMS\Expose
@@ -124,10 +124,10 @@ class LocationCoordinateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CoordinateSystemCode $coordinateSystemCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CoordinateSystemCode|null $coordinateSystemCode
      * @return self
      */
-    public function setCoordinateSystemCode(CoordinateSystemCode $coordinateSystemCode): self
+    public function setCoordinateSystemCode(?CoordinateSystemCode $coordinateSystemCode = null): self
     {
         $this->coordinateSystemCode = $coordinateSystemCode;
 
@@ -153,10 +153,10 @@ class LocationCoordinateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LatitudeDegreesMeasure $latitudeDegreesMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LatitudeDegreesMeasure|null $latitudeDegreesMeasure
      * @return self
      */
-    public function setLatitudeDegreesMeasure(LatitudeDegreesMeasure $latitudeDegreesMeasure): self
+    public function setLatitudeDegreesMeasure(?LatitudeDegreesMeasure $latitudeDegreesMeasure = null): self
     {
         $this->latitudeDegreesMeasure = $latitudeDegreesMeasure;
 
@@ -182,10 +182,10 @@ class LocationCoordinateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LatitudeMinutesMeasure $latitudeMinutesMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LatitudeMinutesMeasure|null $latitudeMinutesMeasure
      * @return self
      */
-    public function setLatitudeMinutesMeasure(LatitudeMinutesMeasure $latitudeMinutesMeasure): self
+    public function setLatitudeMinutesMeasure(?LatitudeMinutesMeasure $latitudeMinutesMeasure = null): self
     {
         $this->latitudeMinutesMeasure = $latitudeMinutesMeasure;
 
@@ -211,10 +211,10 @@ class LocationCoordinateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LatitudeDirectionCode $latitudeDirectionCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LatitudeDirectionCode|null $latitudeDirectionCode
      * @return self
      */
-    public function setLatitudeDirectionCode(LatitudeDirectionCode $latitudeDirectionCode): self
+    public function setLatitudeDirectionCode(?LatitudeDirectionCode $latitudeDirectionCode = null): self
     {
         $this->latitudeDirectionCode = $latitudeDirectionCode;
 
@@ -240,10 +240,10 @@ class LocationCoordinateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LongitudeDegreesMeasure $longitudeDegreesMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LongitudeDegreesMeasure|null $longitudeDegreesMeasure
      * @return self
      */
-    public function setLongitudeDegreesMeasure(LongitudeDegreesMeasure $longitudeDegreesMeasure): self
+    public function setLongitudeDegreesMeasure(?LongitudeDegreesMeasure $longitudeDegreesMeasure = null): self
     {
         $this->longitudeDegreesMeasure = $longitudeDegreesMeasure;
 
@@ -269,10 +269,10 @@ class LocationCoordinateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LongitudeMinutesMeasure $longitudeMinutesMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LongitudeMinutesMeasure|null $longitudeMinutesMeasure
      * @return self
      */
-    public function setLongitudeMinutesMeasure(LongitudeMinutesMeasure $longitudeMinutesMeasure): self
+    public function setLongitudeMinutesMeasure(?LongitudeMinutesMeasure $longitudeMinutesMeasure = null): self
     {
         $this->longitudeMinutesMeasure = $longitudeMinutesMeasure;
 
@@ -298,10 +298,10 @@ class LocationCoordinateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LongitudeDirectionCode $longitudeDirectionCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LongitudeDirectionCode|null $longitudeDirectionCode
      * @return self
      */
-    public function setLongitudeDirectionCode(LongitudeDirectionCode $longitudeDirectionCode): self
+    public function setLongitudeDirectionCode(?LongitudeDirectionCode $longitudeDirectionCode = null): self
     {
         $this->longitudeDirectionCode = $longitudeDirectionCode;
 
@@ -327,10 +327,10 @@ class LocationCoordinateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AltitudeMeasure $altitudeMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AltitudeMeasure|null $altitudeMeasure
      * @return self
      */
-    public function setAltitudeMeasure(AltitudeMeasure $altitudeMeasure): self
+    public function setAltitudeMeasure(?AltitudeMeasure $altitudeMeasure = null): self
     {
         $this->altitudeMeasure = $altitudeMeasure;
 

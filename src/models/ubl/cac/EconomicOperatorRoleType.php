@@ -12,7 +12,7 @@ class EconomicOperatorRoleType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\RoleCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\RoleCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\RoleCode")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class EconomicOperatorRoleType
     private $roleCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\RoleDescription>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\RoleDescription>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\RoleDescription>")
      * @JMS\Expose
@@ -53,10 +53,10 @@ class EconomicOperatorRoleType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\RoleCode $roleCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\RoleCode|null $roleCode
      * @return self
      */
-    public function setRoleCode(RoleCode $roleCode): self
+    public function setRoleCode(?RoleCode $roleCode = null): self
     {
         $this->roleCode = $roleCode;
 
@@ -72,10 +72,10 @@ class EconomicOperatorRoleType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\RoleDescription> $roleDescription
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\RoleDescription>|null $roleDescription
      * @return self
      */
-    public function setRoleDescription(array $roleDescription): self
+    public function setRoleDescription(?array $roleDescription = null): self
     {
         $this->roleDescription = $roleDescription;
 

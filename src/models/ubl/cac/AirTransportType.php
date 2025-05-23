@@ -11,7 +11,7 @@ class AirTransportType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AircraftID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AircraftID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AircraftID")
      * @JMS\Expose
@@ -40,10 +40,10 @@ class AirTransportType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AircraftID $aircraftID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AircraftID|null $aircraftID
      * @return self
      */
-    public function setAircraftID(AircraftID $aircraftID): self
+    public function setAircraftID(?AircraftID $aircraftID = null): self
     {
         $this->aircraftID = $aircraftID;
 

@@ -16,7 +16,7 @@ class TransportMeansType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\JourneyID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\JourneyID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\JourneyID")
      * @JMS\Expose
@@ -27,7 +27,7 @@ class TransportMeansType
     private $journeyID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\RegistrationNationalityID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\RegistrationNationalityID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\RegistrationNationalityID")
      * @JMS\Expose
@@ -38,7 +38,7 @@ class TransportMeansType
     private $registrationNationalityID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\RegistrationNationality>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\RegistrationNationality>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\RegistrationNationality>")
      * @JMS\Expose
@@ -50,7 +50,7 @@ class TransportMeansType
     private $registrationNationality;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\DirectionCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\DirectionCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\DirectionCode")
      * @JMS\Expose
@@ -61,7 +61,7 @@ class TransportMeansType
     private $directionCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransportMeansTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransportMeansTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TransportMeansTypeCode")
      * @JMS\Expose
@@ -72,7 +72,7 @@ class TransportMeansType
     private $transportMeansTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TradeServiceCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TradeServiceCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TradeServiceCode")
      * @JMS\Expose
@@ -83,7 +83,7 @@ class TransportMeansType
     private $tradeServiceCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Stowage
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Stowage|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Stowage")
      * @JMS\Expose
@@ -94,7 +94,7 @@ class TransportMeansType
     private $stowage;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\AirTransport
+     * @var \horstoeko\invoicesuite\models\ubl\cac\AirTransport|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\AirTransport")
      * @JMS\Expose
@@ -105,7 +105,7 @@ class TransportMeansType
     private $airTransport;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\RoadTransport
+     * @var \horstoeko\invoicesuite\models\ubl\cac\RoadTransport|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\RoadTransport")
      * @JMS\Expose
@@ -116,7 +116,7 @@ class TransportMeansType
     private $roadTransport;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\RailTransport
+     * @var \horstoeko\invoicesuite\models\ubl\cac\RailTransport|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\RailTransport")
      * @JMS\Expose
@@ -127,7 +127,7 @@ class TransportMeansType
     private $railTransport;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\MaritimeTransport
+     * @var \horstoeko\invoicesuite\models\ubl\cac\MaritimeTransport|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\MaritimeTransport")
      * @JMS\Expose
@@ -138,7 +138,7 @@ class TransportMeansType
     private $maritimeTransport;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\OwnerParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\OwnerParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\OwnerParty")
      * @JMS\Expose
@@ -149,7 +149,7 @@ class TransportMeansType
     private $ownerParty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>")
      * @JMS\Expose
@@ -179,10 +179,10 @@ class TransportMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\JourneyID $journeyID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\JourneyID|null $journeyID
      * @return self
      */
-    public function setJourneyID(JourneyID $journeyID): self
+    public function setJourneyID(?JourneyID $journeyID = null): self
     {
         $this->journeyID = $journeyID;
 
@@ -208,10 +208,10 @@ class TransportMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\RegistrationNationalityID $registrationNationalityID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\RegistrationNationalityID|null $registrationNationalityID
      * @return self
      */
-    public function setRegistrationNationalityID(RegistrationNationalityID $registrationNationalityID): self
+    public function setRegistrationNationalityID(?RegistrationNationalityID $registrationNationalityID = null): self
     {
         $this->registrationNationalityID = $registrationNationalityID;
 
@@ -227,10 +227,10 @@ class TransportMeansType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\RegistrationNationality> $registrationNationality
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\RegistrationNationality>|null $registrationNationality
      * @return self
      */
-    public function setRegistrationNationality(array $registrationNationality): self
+    public function setRegistrationNationality(?array $registrationNationality = null): self
     {
         $this->registrationNationality = $registrationNationality;
 
@@ -318,10 +318,10 @@ class TransportMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\DirectionCode $directionCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DirectionCode|null $directionCode
      * @return self
      */
-    public function setDirectionCode(DirectionCode $directionCode): self
+    public function setDirectionCode(?DirectionCode $directionCode = null): self
     {
         $this->directionCode = $directionCode;
 
@@ -347,10 +347,10 @@ class TransportMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransportMeansTypeCode $transportMeansTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransportMeansTypeCode|null $transportMeansTypeCode
      * @return self
      */
-    public function setTransportMeansTypeCode(TransportMeansTypeCode $transportMeansTypeCode): self
+    public function setTransportMeansTypeCode(?TransportMeansTypeCode $transportMeansTypeCode = null): self
     {
         $this->transportMeansTypeCode = $transportMeansTypeCode;
 
@@ -376,10 +376,10 @@ class TransportMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TradeServiceCode $tradeServiceCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TradeServiceCode|null $tradeServiceCode
      * @return self
      */
-    public function setTradeServiceCode(TradeServiceCode $tradeServiceCode): self
+    public function setTradeServiceCode(?TradeServiceCode $tradeServiceCode = null): self
     {
         $this->tradeServiceCode = $tradeServiceCode;
 
@@ -405,10 +405,10 @@ class TransportMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Stowage $stowage
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Stowage|null $stowage
      * @return self
      */
-    public function setStowage(Stowage $stowage): self
+    public function setStowage(?Stowage $stowage = null): self
     {
         $this->stowage = $stowage;
 
@@ -434,10 +434,10 @@ class TransportMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\AirTransport $airTransport
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AirTransport|null $airTransport
      * @return self
      */
-    public function setAirTransport(AirTransport $airTransport): self
+    public function setAirTransport(?AirTransport $airTransport = null): self
     {
         $this->airTransport = $airTransport;
 
@@ -463,10 +463,10 @@ class TransportMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\RoadTransport $roadTransport
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RoadTransport|null $roadTransport
      * @return self
      */
-    public function setRoadTransport(RoadTransport $roadTransport): self
+    public function setRoadTransport(?RoadTransport $roadTransport = null): self
     {
         $this->roadTransport = $roadTransport;
 
@@ -492,10 +492,10 @@ class TransportMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\RailTransport $railTransport
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RailTransport|null $railTransport
      * @return self
      */
-    public function setRailTransport(RailTransport $railTransport): self
+    public function setRailTransport(?RailTransport $railTransport = null): self
     {
         $this->railTransport = $railTransport;
 
@@ -521,10 +521,10 @@ class TransportMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\MaritimeTransport $maritimeTransport
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MaritimeTransport|null $maritimeTransport
      * @return self
      */
-    public function setMaritimeTransport(MaritimeTransport $maritimeTransport): self
+    public function setMaritimeTransport(?MaritimeTransport $maritimeTransport = null): self
     {
         $this->maritimeTransport = $maritimeTransport;
 
@@ -550,10 +550,10 @@ class TransportMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\OwnerParty $ownerParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OwnerParty|null $ownerParty
      * @return self
      */
-    public function setOwnerParty(OwnerParty $ownerParty): self
+    public function setOwnerParty(?OwnerParty $ownerParty = null): self
     {
         $this->ownerParty = $ownerParty;
 
@@ -569,10 +569,10 @@ class TransportMeansType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension> $measurementDimension
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>|null $measurementDimension
      * @return self
      */
-    public function setMeasurementDimension(array $measurementDimension): self
+    public function setMeasurementDimension(?array $measurementDimension = null): self
     {
         $this->measurementDimension = $measurementDimension;
 

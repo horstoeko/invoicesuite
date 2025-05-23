@@ -13,7 +13,7 @@ class CommunicationType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ChannelCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ChannelCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ChannelCode")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class CommunicationType
     private $channelCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Channel
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Channel|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Channel")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class CommunicationType
     private $channel;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Value
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Value|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Value")
      * @JMS\Expose
@@ -64,10 +64,10 @@ class CommunicationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ChannelCode $channelCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ChannelCode|null $channelCode
      * @return self
      */
-    public function setChannelCode(ChannelCode $channelCode): self
+    public function setChannelCode(?ChannelCode $channelCode = null): self
     {
         $this->channelCode = $channelCode;
 
@@ -93,10 +93,10 @@ class CommunicationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Channel $channel
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Channel|null $channel
      * @return self
      */
-    public function setChannel(Channel $channel): self
+    public function setChannel(?Channel $channel = null): self
     {
         $this->channel = $channel;
 
@@ -122,10 +122,10 @@ class CommunicationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Value $value
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Value|null $value
      * @return self
      */
-    public function setValue(Value $value): self
+    public function setValue(?Value $value = null): self
     {
         $this->value = $value;
 

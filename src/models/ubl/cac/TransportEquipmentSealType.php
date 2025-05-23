@@ -15,7 +15,7 @@ class TransportEquipmentSealType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -26,7 +26,7 @@ class TransportEquipmentSealType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SealIssuerTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SealIssuerTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SealIssuerTypeCode")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class TransportEquipmentSealType
     private $sealIssuerTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Condition
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Condition|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Condition")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class TransportEquipmentSealType
     private $condition;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SealStatusCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SealStatusCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SealStatusCode")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class TransportEquipmentSealType
     private $sealStatusCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SealingPartyType
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SealingPartyType|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SealingPartyType")
      * @JMS\Expose
@@ -88,10 +88,10 @@ class TransportEquipmentSealType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -117,10 +117,10 @@ class TransportEquipmentSealType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SealIssuerTypeCode $sealIssuerTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SealIssuerTypeCode|null $sealIssuerTypeCode
      * @return self
      */
-    public function setSealIssuerTypeCode(SealIssuerTypeCode $sealIssuerTypeCode): self
+    public function setSealIssuerTypeCode(?SealIssuerTypeCode $sealIssuerTypeCode = null): self
     {
         $this->sealIssuerTypeCode = $sealIssuerTypeCode;
 
@@ -146,10 +146,10 @@ class TransportEquipmentSealType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Condition $condition
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Condition|null $condition
      * @return self
      */
-    public function setCondition(Condition $condition): self
+    public function setCondition(?Condition $condition = null): self
     {
         $this->condition = $condition;
 
@@ -175,10 +175,10 @@ class TransportEquipmentSealType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SealStatusCode $sealStatusCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SealStatusCode|null $sealStatusCode
      * @return self
      */
-    public function setSealStatusCode(SealStatusCode $sealStatusCode): self
+    public function setSealStatusCode(?SealStatusCode $sealStatusCode = null): self
     {
         $this->sealStatusCode = $sealStatusCode;
 
@@ -204,10 +204,10 @@ class TransportEquipmentSealType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SealingPartyType $sealingPartyType
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SealingPartyType|null $sealingPartyType
      * @return self
      */
-    public function setSealingPartyType(SealingPartyType $sealingPartyType): self
+    public function setSealingPartyType(?SealingPartyType $sealingPartyType = null): self
     {
         $this->sealingPartyType = $sealingPartyType;
 

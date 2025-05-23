@@ -16,7 +16,7 @@ class AwardingTermsType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\WeightingAlgorithmCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\WeightingAlgorithmCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\WeightingAlgorithmCode")
      * @JMS\Expose
@@ -27,7 +27,7 @@ class AwardingTermsType
     private $weightingAlgorithmCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -39,7 +39,7 @@ class AwardingTermsType
     private $description;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\TechnicalCommitteeDescription>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\TechnicalCommitteeDescription>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\TechnicalCommitteeDescription>")
      * @JMS\Expose
@@ -51,7 +51,7 @@ class AwardingTermsType
     private $technicalCommitteeDescription;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\LowTendersDescription>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\LowTendersDescription>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\LowTendersDescription>")
      * @JMS\Expose
@@ -63,7 +63,7 @@ class AwardingTermsType
     private $lowTendersDescription;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -74,7 +74,7 @@ class AwardingTermsType
     private $prizeIndicator;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\PrizeDescription>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\PrizeDescription>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\PrizeDescription>")
      * @JMS\Expose
@@ -86,7 +86,7 @@ class AwardingTermsType
     private $prizeDescription;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\PaymentDescription>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\PaymentDescription>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\PaymentDescription>")
      * @JMS\Expose
@@ -98,7 +98,7 @@ class AwardingTermsType
     private $paymentDescription;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -109,7 +109,7 @@ class AwardingTermsType
     private $followupContractIndicator;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -120,7 +120,7 @@ class AwardingTermsType
     private $bindingOnBuyerIndicator;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AwardingCriterion>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AwardingCriterion>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\AwardingCriterion>")
      * @JMS\Expose
@@ -132,7 +132,7 @@ class AwardingTermsType
     private $awardingCriterion;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TechnicalCommitteePerson>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TechnicalCommitteePerson>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TechnicalCommitteePerson>")
      * @JMS\Expose
@@ -162,10 +162,10 @@ class AwardingTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\WeightingAlgorithmCode $weightingAlgorithmCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\WeightingAlgorithmCode|null $weightingAlgorithmCode
      * @return self
      */
-    public function setWeightingAlgorithmCode(WeightingAlgorithmCode $weightingAlgorithmCode): self
+    public function setWeightingAlgorithmCode(?WeightingAlgorithmCode $weightingAlgorithmCode = null): self
     {
         $this->weightingAlgorithmCode = $weightingAlgorithmCode;
 
@@ -181,10 +181,10 @@ class AwardingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -262,10 +262,10 @@ class AwardingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\TechnicalCommitteeDescription> $technicalCommitteeDescription
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\TechnicalCommitteeDescription>|null $technicalCommitteeDescription
      * @return self
      */
-    public function setTechnicalCommitteeDescription(array $technicalCommitteeDescription): self
+    public function setTechnicalCommitteeDescription(?array $technicalCommitteeDescription = null): self
     {
         $this->technicalCommitteeDescription = $technicalCommitteeDescription;
 
@@ -345,10 +345,10 @@ class AwardingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\LowTendersDescription> $lowTendersDescription
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\LowTendersDescription>|null $lowTendersDescription
      * @return self
      */
-    public function setLowTendersDescription(array $lowTendersDescription): self
+    public function setLowTendersDescription(?array $lowTendersDescription = null): self
     {
         $this->lowTendersDescription = $lowTendersDescription;
 
@@ -426,10 +426,10 @@ class AwardingTermsType
     }
 
     /**
-     * @param bool $prizeIndicator
+     * @param bool|null $prizeIndicator
      * @return self
      */
-    public function setPrizeIndicator(bool $prizeIndicator): self
+    public function setPrizeIndicator(?bool $prizeIndicator = null): self
     {
         $this->prizeIndicator = $prizeIndicator;
 
@@ -445,10 +445,10 @@ class AwardingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\PrizeDescription> $prizeDescription
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\PrizeDescription>|null $prizeDescription
      * @return self
      */
-    public function setPrizeDescription(array $prizeDescription): self
+    public function setPrizeDescription(?array $prizeDescription = null): self
     {
         $this->prizeDescription = $prizeDescription;
 
@@ -526,10 +526,10 @@ class AwardingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\PaymentDescription> $paymentDescription
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\PaymentDescription>|null $paymentDescription
      * @return self
      */
-    public function setPaymentDescription(array $paymentDescription): self
+    public function setPaymentDescription(?array $paymentDescription = null): self
     {
         $this->paymentDescription = $paymentDescription;
 
@@ -607,10 +607,10 @@ class AwardingTermsType
     }
 
     /**
-     * @param bool $followupContractIndicator
+     * @param bool|null $followupContractIndicator
      * @return self
      */
-    public function setFollowupContractIndicator(bool $followupContractIndicator): self
+    public function setFollowupContractIndicator(?bool $followupContractIndicator = null): self
     {
         $this->followupContractIndicator = $followupContractIndicator;
 
@@ -626,10 +626,10 @@ class AwardingTermsType
     }
 
     /**
-     * @param bool $bindingOnBuyerIndicator
+     * @param bool|null $bindingOnBuyerIndicator
      * @return self
      */
-    public function setBindingOnBuyerIndicator(bool $bindingOnBuyerIndicator): self
+    public function setBindingOnBuyerIndicator(?bool $bindingOnBuyerIndicator = null): self
     {
         $this->bindingOnBuyerIndicator = $bindingOnBuyerIndicator;
 
@@ -645,10 +645,10 @@ class AwardingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AwardingCriterion> $awardingCriterion
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AwardingCriterion>|null $awardingCriterion
      * @return self
      */
-    public function setAwardingCriterion(array $awardingCriterion): self
+    public function setAwardingCriterion(?array $awardingCriterion = null): self
     {
         $this->awardingCriterion = $awardingCriterion;
 
@@ -726,10 +726,10 @@ class AwardingTermsType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TechnicalCommitteePerson> $technicalCommitteePerson
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TechnicalCommitteePerson>|null $technicalCommitteePerson
      * @return self
      */
-    public function setTechnicalCommitteePerson(array $technicalCommitteePerson): self
+    public function setTechnicalCommitteePerson(?array $technicalCommitteePerson = null): self
     {
         $this->technicalCommitteePerson = $technicalCommitteePerson;
 

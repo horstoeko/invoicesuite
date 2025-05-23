@@ -15,7 +15,7 @@ class ImmobilizedSecurityType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ImmobilizationCertificateID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ImmobilizationCertificateID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ImmobilizationCertificateID")
      * @JMS\Expose
@@ -26,7 +26,7 @@ class ImmobilizedSecurityType
     private $immobilizationCertificateID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SecurityID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SecurityID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SecurityID")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class ImmobilizedSecurityType
     private $securityID;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class ImmobilizedSecurityType
     private $issueDate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\FaceValueAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\FaceValueAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\FaceValueAmount")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class ImmobilizedSecurityType
     private $faceValueAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MarketValueAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MarketValueAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MarketValueAmount")
      * @JMS\Expose
@@ -70,7 +70,7 @@ class ImmobilizedSecurityType
     private $marketValueAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SharesNumberQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SharesNumberQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SharesNumberQuantity")
      * @JMS\Expose
@@ -81,7 +81,7 @@ class ImmobilizedSecurityType
     private $sharesNumberQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\IssuerParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\IssuerParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\IssuerParty")
      * @JMS\Expose
@@ -110,11 +110,12 @@ class ImmobilizedSecurityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ImmobilizationCertificateID $immobilizationCertificateID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ImmobilizationCertificateID|null $immobilizationCertificateID
      * @return self
      */
-    public function setImmobilizationCertificateID(ImmobilizationCertificateID $immobilizationCertificateID): self
-    {
+    public function setImmobilizationCertificateID(
+        ?ImmobilizationCertificateID $immobilizationCertificateID = null,
+    ): self {
         $this->immobilizationCertificateID = $immobilizationCertificateID;
 
         return $this;
@@ -139,10 +140,10 @@ class ImmobilizedSecurityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SecurityID $securityID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SecurityID|null $securityID
      * @return self
      */
-    public function setSecurityID(SecurityID $securityID): self
+    public function setSecurityID(?SecurityID $securityID = null): self
     {
         $this->securityID = $securityID;
 
@@ -158,10 +159,10 @@ class ImmobilizedSecurityType
     }
 
     /**
-     * @param \DateTimeInterface $issueDate
+     * @param \DateTimeInterface|null $issueDate
      * @return self
      */
-    public function setIssueDate(\DateTimeInterface $issueDate): self
+    public function setIssueDate(?\DateTimeInterface $issueDate = null): self
     {
         $this->issueDate = $issueDate;
 
@@ -187,10 +188,10 @@ class ImmobilizedSecurityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\FaceValueAmount $faceValueAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\FaceValueAmount|null $faceValueAmount
      * @return self
      */
-    public function setFaceValueAmount(FaceValueAmount $faceValueAmount): self
+    public function setFaceValueAmount(?FaceValueAmount $faceValueAmount = null): self
     {
         $this->faceValueAmount = $faceValueAmount;
 
@@ -216,10 +217,10 @@ class ImmobilizedSecurityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MarketValueAmount $marketValueAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MarketValueAmount|null $marketValueAmount
      * @return self
      */
-    public function setMarketValueAmount(MarketValueAmount $marketValueAmount): self
+    public function setMarketValueAmount(?MarketValueAmount $marketValueAmount = null): self
     {
         $this->marketValueAmount = $marketValueAmount;
 
@@ -245,10 +246,10 @@ class ImmobilizedSecurityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SharesNumberQuantity $sharesNumberQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SharesNumberQuantity|null $sharesNumberQuantity
      * @return self
      */
-    public function setSharesNumberQuantity(SharesNumberQuantity $sharesNumberQuantity): self
+    public function setSharesNumberQuantity(?SharesNumberQuantity $sharesNumberQuantity = null): self
     {
         $this->sharesNumberQuantity = $sharesNumberQuantity;
 
@@ -274,10 +275,10 @@ class ImmobilizedSecurityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\IssuerParty $issuerParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\IssuerParty|null $issuerParty
      * @return self
      */
-    public function setIssuerParty(IssuerParty $issuerParty): self
+    public function setIssuerParty(?IssuerParty $issuerParty = null): self
     {
         $this->issuerParty = $issuerParty;
 

@@ -12,7 +12,7 @@ class ProjectReferenceType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class ProjectReferenceType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\UUID")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class ProjectReferenceType
     private $uUID;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -45,7 +45,7 @@ class ProjectReferenceType
     private $issueDate;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\WorkPhaseReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\WorkPhaseReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\WorkPhaseReference>")
      * @JMS\Expose
@@ -75,10 +75,10 @@ class ProjectReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -104,10 +104,10 @@ class ProjectReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID $uUID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID|null $uUID
      * @return self
      */
-    public function setUUID(UUID $uUID): self
+    public function setUUID(?UUID $uUID = null): self
     {
         $this->uUID = $uUID;
 
@@ -123,10 +123,10 @@ class ProjectReferenceType
     }
 
     /**
-     * @param \DateTimeInterface $issueDate
+     * @param \DateTimeInterface|null $issueDate
      * @return self
      */
-    public function setIssueDate(\DateTimeInterface $issueDate): self
+    public function setIssueDate(?\DateTimeInterface $issueDate = null): self
     {
         $this->issueDate = $issueDate;
 
@@ -142,10 +142,10 @@ class ProjectReferenceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\WorkPhaseReference> $workPhaseReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\WorkPhaseReference>|null $workPhaseReference
      * @return self
      */
-    public function setWorkPhaseReference(array $workPhaseReference): self
+    public function setWorkPhaseReference(?array $workPhaseReference = null): self
     {
         $this->workPhaseReference = $workPhaseReference;
 

@@ -13,7 +13,7 @@ class ForecastLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class ForecastLineType
     private $iD;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class ForecastLineType
     private $note;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class ForecastLineType
     private $frozenDocumentIndicator;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class ForecastLineType
     private $forecastTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ForecastPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ForecastPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ForecastPeriod")
      * @JMS\Expose
@@ -69,7 +69,7 @@ class ForecastLineType
     private $forecastPeriod;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\SalesItem
+     * @var \horstoeko\invoicesuite\models\ubl\cac\SalesItem|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\SalesItem")
      * @JMS\Expose
@@ -98,10 +98,10 @@ class ForecastLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -117,10 +117,10 @@ class ForecastLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -198,10 +198,10 @@ class ForecastLineType
     }
 
     /**
-     * @param bool $frozenDocumentIndicator
+     * @param bool|null $frozenDocumentIndicator
      * @return self
      */
-    public function setFrozenDocumentIndicator(bool $frozenDocumentIndicator): self
+    public function setFrozenDocumentIndicator(?bool $frozenDocumentIndicator = null): self
     {
         $this->frozenDocumentIndicator = $frozenDocumentIndicator;
 
@@ -227,10 +227,10 @@ class ForecastLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode $forecastTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode|null $forecastTypeCode
      * @return self
      */
-    public function setForecastTypeCode(ForecastTypeCode $forecastTypeCode): self
+    public function setForecastTypeCode(?ForecastTypeCode $forecastTypeCode = null): self
     {
         $this->forecastTypeCode = $forecastTypeCode;
 
@@ -256,10 +256,10 @@ class ForecastLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ForecastPeriod $forecastPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ForecastPeriod|null $forecastPeriod
      * @return self
      */
-    public function setForecastPeriod(ForecastPeriod $forecastPeriod): self
+    public function setForecastPeriod(?ForecastPeriod $forecastPeriod = null): self
     {
         $this->forecastPeriod = $forecastPeriod;
 
@@ -285,10 +285,10 @@ class ForecastLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\SalesItem $salesItem
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SalesItem|null $salesItem
      * @return self
      */
-    public function setSalesItem(SalesItem $salesItem): self
+    public function setSalesItem(?SalesItem $salesItem = null): self
     {
         $this->salesItem = $salesItem;
 

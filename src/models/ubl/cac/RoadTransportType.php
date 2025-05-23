@@ -11,7 +11,7 @@ class RoadTransportType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LicensePlateID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LicensePlateID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LicensePlateID")
      * @JMS\Expose
@@ -40,10 +40,10 @@ class RoadTransportType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LicensePlateID $licensePlateID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LicensePlateID|null $licensePlateID
      * @return self
      */
-    public function setLicensePlateID(LicensePlateID $licensePlateID): self
+    public function setLicensePlateID(?LicensePlateID $licensePlateID = null): self
     {
         $this->licensePlateID = $licensePlateID;
 

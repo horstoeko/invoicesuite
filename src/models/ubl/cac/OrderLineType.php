@@ -12,7 +12,7 @@ class OrderLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SubstitutionStatusCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SubstitutionStatusCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SubstitutionStatusCode")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class OrderLineType
     private $substitutionStatusCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class OrderLineType
     private $note;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\LineItem
+     * @var \horstoeko\invoicesuite\models\ubl\cac\LineItem|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\LineItem")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class OrderLineType
     private $lineItem;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SellerProposedSubstituteLineItem>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SellerProposedSubstituteLineItem>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\SellerProposedSubstituteLineItem>")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class OrderLineType
     private $sellerProposedSubstituteLineItem;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SellerSubstitutedLineItem>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SellerSubstitutedLineItem>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\SellerSubstitutedLineItem>")
      * @JMS\Expose
@@ -70,7 +70,7 @@ class OrderLineType
     private $sellerSubstitutedLineItem;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\BuyerProposedSubstituteLineItem>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\BuyerProposedSubstituteLineItem>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\BuyerProposedSubstituteLineItem>")
      * @JMS\Expose
@@ -82,7 +82,7 @@ class OrderLineType
     private $buyerProposedSubstituteLineItem;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\CatalogueLineReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\CatalogueLineReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\CatalogueLineReference")
      * @JMS\Expose
@@ -93,7 +93,7 @@ class OrderLineType
     private $catalogueLineReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\QuotationLineReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\QuotationLineReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\QuotationLineReference")
      * @JMS\Expose
@@ -104,7 +104,7 @@ class OrderLineType
     private $quotationLineReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\OrderLineReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\OrderLineReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\OrderLineReference>")
      * @JMS\Expose
@@ -116,7 +116,7 @@ class OrderLineType
     private $orderLineReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DocumentReference>")
      * @JMS\Expose
@@ -146,10 +146,10 @@ class OrderLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SubstitutionStatusCode $substitutionStatusCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SubstitutionStatusCode|null $substitutionStatusCode
      * @return self
      */
-    public function setSubstitutionStatusCode(SubstitutionStatusCode $substitutionStatusCode): self
+    public function setSubstitutionStatusCode(?SubstitutionStatusCode $substitutionStatusCode = null): self
     {
         $this->substitutionStatusCode = $substitutionStatusCode;
 
@@ -165,10 +165,10 @@ class OrderLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -256,10 +256,10 @@ class OrderLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\LineItem $lineItem
+     * @param \horstoeko\invoicesuite\models\ubl\cac\LineItem|null $lineItem
      * @return self
      */
-    public function setLineItem(LineItem $lineItem): self
+    public function setLineItem(?LineItem $lineItem = null): self
     {
         $this->lineItem = $lineItem;
 
@@ -275,10 +275,10 @@ class OrderLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SellerProposedSubstituteLineItem> $sellerProposedSubstituteLineItem
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SellerProposedSubstituteLineItem>|null $sellerProposedSubstituteLineItem
      * @return self
      */
-    public function setSellerProposedSubstituteLineItem(array $sellerProposedSubstituteLineItem): self
+    public function setSellerProposedSubstituteLineItem(?array $sellerProposedSubstituteLineItem = null): self
     {
         $this->sellerProposedSubstituteLineItem = $sellerProposedSubstituteLineItem;
 
@@ -358,10 +358,10 @@ class OrderLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SellerSubstitutedLineItem> $sellerSubstitutedLineItem
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SellerSubstitutedLineItem>|null $sellerSubstitutedLineItem
      * @return self
      */
-    public function setSellerSubstitutedLineItem(array $sellerSubstitutedLineItem): self
+    public function setSellerSubstitutedLineItem(?array $sellerSubstitutedLineItem = null): self
     {
         $this->sellerSubstitutedLineItem = $sellerSubstitutedLineItem;
 
@@ -439,10 +439,10 @@ class OrderLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\BuyerProposedSubstituteLineItem> $buyerProposedSubstituteLineItem
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\BuyerProposedSubstituteLineItem>|null $buyerProposedSubstituteLineItem
      * @return self
      */
-    public function setBuyerProposedSubstituteLineItem(array $buyerProposedSubstituteLineItem): self
+    public function setBuyerProposedSubstituteLineItem(?array $buyerProposedSubstituteLineItem = null): self
     {
         $this->buyerProposedSubstituteLineItem = $buyerProposedSubstituteLineItem;
 
@@ -532,10 +532,10 @@ class OrderLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\CatalogueLineReference $catalogueLineReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CatalogueLineReference|null $catalogueLineReference
      * @return self
      */
-    public function setCatalogueLineReference(CatalogueLineReference $catalogueLineReference): self
+    public function setCatalogueLineReference(?CatalogueLineReference $catalogueLineReference = null): self
     {
         $this->catalogueLineReference = $catalogueLineReference;
 
@@ -561,10 +561,10 @@ class OrderLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\QuotationLineReference $quotationLineReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\QuotationLineReference|null $quotationLineReference
      * @return self
      */
-    public function setQuotationLineReference(QuotationLineReference $quotationLineReference): self
+    public function setQuotationLineReference(?QuotationLineReference $quotationLineReference = null): self
     {
         $this->quotationLineReference = $quotationLineReference;
 
@@ -580,10 +580,10 @@ class OrderLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\OrderLineReference> $orderLineReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\OrderLineReference>|null $orderLineReference
      * @return self
      */
-    public function setOrderLineReference(array $orderLineReference): self
+    public function setOrderLineReference(?array $orderLineReference = null): self
     {
         $this->orderLineReference = $orderLineReference;
 
@@ -661,10 +661,10 @@ class OrderLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference> $documentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null $documentReference
      * @return self
      */
-    public function setDocumentReference(array $documentReference): self
+    public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
 

@@ -12,7 +12,7 @@ class ContractingPartyTypeType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PartyTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PartyTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PartyTypeCode")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class ContractingPartyTypeType
     private $partyTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PartyType
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PartyType|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PartyType")
      * @JMS\Expose
@@ -52,10 +52,10 @@ class ContractingPartyTypeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PartyTypeCode $partyTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PartyTypeCode|null $partyTypeCode
      * @return self
      */
-    public function setPartyTypeCode(PartyTypeCode $partyTypeCode): self
+    public function setPartyTypeCode(?PartyTypeCode $partyTypeCode = null): self
     {
         $this->partyTypeCode = $partyTypeCode;
 
@@ -81,10 +81,10 @@ class ContractingPartyTypeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PartyType $partyType
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PartyType|null $partyType
      * @return self
      */
-    public function setPartyType(PartyType $partyType): self
+    public function setPartyType(?PartyType $partyType = null): self
     {
         $this->partyType = $partyType;
 

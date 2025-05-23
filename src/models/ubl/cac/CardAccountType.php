@@ -19,7 +19,7 @@ class CardAccountType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PrimaryAccountNumberID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PrimaryAccountNumberID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PrimaryAccountNumberID")
      * @JMS\Expose
@@ -30,7 +30,7 @@ class CardAccountType
     private $primaryAccountNumberID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\NetworkID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\NetworkID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\NetworkID")
      * @JMS\Expose
@@ -41,7 +41,7 @@ class CardAccountType
     private $networkID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CardTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CardTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CardTypeCode")
      * @JMS\Expose
@@ -52,7 +52,7 @@ class CardAccountType
     private $cardTypeCode;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -63,7 +63,7 @@ class CardAccountType
     private $validityStartDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -74,7 +74,7 @@ class CardAccountType
     private $expiryDate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\IssuerID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\IssuerID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\IssuerID")
      * @JMS\Expose
@@ -85,7 +85,7 @@ class CardAccountType
     private $issuerID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\IssueNumberID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\IssueNumberID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\IssueNumberID")
      * @JMS\Expose
@@ -96,7 +96,7 @@ class CardAccountType
     private $issueNumberID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CV2ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CV2ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CV2ID")
      * @JMS\Expose
@@ -107,7 +107,7 @@ class CardAccountType
     private $cV2ID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CardChipCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CardChipCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CardChipCode")
      * @JMS\Expose
@@ -118,7 +118,7 @@ class CardAccountType
     private $cardChipCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ChipApplicationID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ChipApplicationID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ChipApplicationID")
      * @JMS\Expose
@@ -129,7 +129,7 @@ class CardAccountType
     private $chipApplicationID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\HolderName
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\HolderName|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\HolderName")
      * @JMS\Expose
@@ -158,10 +158,10 @@ class CardAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PrimaryAccountNumberID $primaryAccountNumberID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PrimaryAccountNumberID|null $primaryAccountNumberID
      * @return self
      */
-    public function setPrimaryAccountNumberID(PrimaryAccountNumberID $primaryAccountNumberID): self
+    public function setPrimaryAccountNumberID(?PrimaryAccountNumberID $primaryAccountNumberID = null): self
     {
         $this->primaryAccountNumberID = $primaryAccountNumberID;
 
@@ -187,10 +187,10 @@ class CardAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\NetworkID $networkID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\NetworkID|null $networkID
      * @return self
      */
-    public function setNetworkID(NetworkID $networkID): self
+    public function setNetworkID(?NetworkID $networkID = null): self
     {
         $this->networkID = $networkID;
 
@@ -216,10 +216,10 @@ class CardAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CardTypeCode $cardTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CardTypeCode|null $cardTypeCode
      * @return self
      */
-    public function setCardTypeCode(CardTypeCode $cardTypeCode): self
+    public function setCardTypeCode(?CardTypeCode $cardTypeCode = null): self
     {
         $this->cardTypeCode = $cardTypeCode;
 
@@ -235,10 +235,10 @@ class CardAccountType
     }
 
     /**
-     * @param \DateTimeInterface $validityStartDate
+     * @param \DateTimeInterface|null $validityStartDate
      * @return self
      */
-    public function setValidityStartDate(\DateTimeInterface $validityStartDate): self
+    public function setValidityStartDate(?\DateTimeInterface $validityStartDate = null): self
     {
         $this->validityStartDate = $validityStartDate;
 
@@ -254,10 +254,10 @@ class CardAccountType
     }
 
     /**
-     * @param \DateTimeInterface $expiryDate
+     * @param \DateTimeInterface|null $expiryDate
      * @return self
      */
-    public function setExpiryDate(\DateTimeInterface $expiryDate): self
+    public function setExpiryDate(?\DateTimeInterface $expiryDate = null): self
     {
         $this->expiryDate = $expiryDate;
 
@@ -283,10 +283,10 @@ class CardAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\IssuerID $issuerID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\IssuerID|null $issuerID
      * @return self
      */
-    public function setIssuerID(IssuerID $issuerID): self
+    public function setIssuerID(?IssuerID $issuerID = null): self
     {
         $this->issuerID = $issuerID;
 
@@ -312,10 +312,10 @@ class CardAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\IssueNumberID $issueNumberID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\IssueNumberID|null $issueNumberID
      * @return self
      */
-    public function setIssueNumberID(IssueNumberID $issueNumberID): self
+    public function setIssueNumberID(?IssueNumberID $issueNumberID = null): self
     {
         $this->issueNumberID = $issueNumberID;
 
@@ -341,10 +341,10 @@ class CardAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CV2ID $cV2ID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CV2ID|null $cV2ID
      * @return self
      */
-    public function setCV2ID(CV2ID $cV2ID): self
+    public function setCV2ID(?CV2ID $cV2ID = null): self
     {
         $this->cV2ID = $cV2ID;
 
@@ -370,10 +370,10 @@ class CardAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CardChipCode $cardChipCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CardChipCode|null $cardChipCode
      * @return self
      */
-    public function setCardChipCode(CardChipCode $cardChipCode): self
+    public function setCardChipCode(?CardChipCode $cardChipCode = null): self
     {
         $this->cardChipCode = $cardChipCode;
 
@@ -399,10 +399,10 @@ class CardAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ChipApplicationID $chipApplicationID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ChipApplicationID|null $chipApplicationID
      * @return self
      */
-    public function setChipApplicationID(ChipApplicationID $chipApplicationID): self
+    public function setChipApplicationID(?ChipApplicationID $chipApplicationID = null): self
     {
         $this->chipApplicationID = $chipApplicationID;
 
@@ -428,10 +428,10 @@ class CardAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\HolderName $holderName
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\HolderName|null $holderName
      * @return self
      */
-    public function setHolderName(HolderName $holderName): self
+    public function setHolderName(?HolderName $holderName = null): self
     {
         $this->holderName = $holderName;
 

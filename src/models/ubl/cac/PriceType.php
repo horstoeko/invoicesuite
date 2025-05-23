@@ -16,7 +16,7 @@ class PriceType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PriceAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PriceAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PriceAmount")
      * @JMS\Expose
@@ -27,7 +27,7 @@ class PriceType
     private $priceAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\BaseQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\BaseQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\BaseQuantity")
      * @JMS\Expose
@@ -38,7 +38,7 @@ class PriceType
     private $baseQuantity;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\PriceChangeReason>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\PriceChangeReason>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\PriceChangeReason>")
      * @JMS\Expose
@@ -50,7 +50,7 @@ class PriceType
     private $priceChangeReason;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PriceTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PriceTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PriceTypeCode")
      * @JMS\Expose
@@ -61,7 +61,7 @@ class PriceType
     private $priceTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PriceType
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PriceType|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PriceType")
      * @JMS\Expose
@@ -72,7 +72,7 @@ class PriceType
     private $priceType;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\OrderableUnitFactorRate
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\OrderableUnitFactorRate|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\OrderableUnitFactorRate")
      * @JMS\Expose
@@ -83,7 +83,7 @@ class PriceType
     private $orderableUnitFactorRate;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod>")
      * @JMS\Expose
@@ -95,7 +95,7 @@ class PriceType
     private $validityPeriod;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PriceList
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PriceList|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PriceList")
      * @JMS\Expose
@@ -106,7 +106,7 @@ class PriceType
     private $priceList;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>")
      * @JMS\Expose
@@ -118,7 +118,7 @@ class PriceType
     private $allowanceCharge;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PricingExchangeRate
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PricingExchangeRate|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PricingExchangeRate")
      * @JMS\Expose
@@ -147,10 +147,10 @@ class PriceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PriceAmount $priceAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PriceAmount|null $priceAmount
      * @return self
      */
-    public function setPriceAmount(PriceAmount $priceAmount): self
+    public function setPriceAmount(?PriceAmount $priceAmount = null): self
     {
         $this->priceAmount = $priceAmount;
 
@@ -176,10 +176,10 @@ class PriceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\BaseQuantity $baseQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\BaseQuantity|null $baseQuantity
      * @return self
      */
-    public function setBaseQuantity(BaseQuantity $baseQuantity): self
+    public function setBaseQuantity(?BaseQuantity $baseQuantity = null): self
     {
         $this->baseQuantity = $baseQuantity;
 
@@ -195,10 +195,10 @@ class PriceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\PriceChangeReason> $priceChangeReason
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\PriceChangeReason>|null $priceChangeReason
      * @return self
      */
-    public function setPriceChangeReason(array $priceChangeReason): self
+    public function setPriceChangeReason(?array $priceChangeReason = null): self
     {
         $this->priceChangeReason = $priceChangeReason;
 
@@ -286,10 +286,10 @@ class PriceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PriceTypeCode $priceTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PriceTypeCode|null $priceTypeCode
      * @return self
      */
-    public function setPriceTypeCode(PriceTypeCode $priceTypeCode): self
+    public function setPriceTypeCode(?PriceTypeCode $priceTypeCode = null): self
     {
         $this->priceTypeCode = $priceTypeCode;
 
@@ -315,10 +315,10 @@ class PriceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PriceType $priceType
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PriceType|null $priceType
      * @return self
      */
-    public function setPriceType(PriceType1 $priceType): self
+    public function setPriceType(?PriceType1 $priceType = null): self
     {
         $this->priceType = $priceType;
 
@@ -344,10 +344,10 @@ class PriceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\OrderableUnitFactorRate $orderableUnitFactorRate
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\OrderableUnitFactorRate|null $orderableUnitFactorRate
      * @return self
      */
-    public function setOrderableUnitFactorRate(OrderableUnitFactorRate $orderableUnitFactorRate): self
+    public function setOrderableUnitFactorRate(?OrderableUnitFactorRate $orderableUnitFactorRate = null): self
     {
         $this->orderableUnitFactorRate = $orderableUnitFactorRate;
 
@@ -363,10 +363,10 @@ class PriceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod> $validityPeriod
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod>|null $validityPeriod
      * @return self
      */
-    public function setValidityPeriod(array $validityPeriod): self
+    public function setValidityPeriod(?array $validityPeriod = null): self
     {
         $this->validityPeriod = $validityPeriod;
 
@@ -454,10 +454,10 @@ class PriceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PriceList $priceList
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PriceList|null $priceList
      * @return self
      */
-    public function setPriceList(PriceList $priceList): self
+    public function setPriceList(?PriceList $priceList = null): self
     {
         $this->priceList = $priceList;
 
@@ -473,10 +473,10 @@ class PriceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge> $allowanceCharge
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null $allowanceCharge
      * @return self
      */
-    public function setAllowanceCharge(array $allowanceCharge): self
+    public function setAllowanceCharge(?array $allowanceCharge = null): self
     {
         $this->allowanceCharge = $allowanceCharge;
 
@@ -564,10 +564,10 @@ class PriceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PricingExchangeRate $pricingExchangeRate
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PricingExchangeRate|null $pricingExchangeRate
      * @return self
      */
-    public function setPricingExchangeRate(PricingExchangeRate $pricingExchangeRate): self
+    public function setPricingExchangeRate(?PricingExchangeRate $pricingExchangeRate = null): self
     {
         $this->pricingExchangeRate = $pricingExchangeRate;
 

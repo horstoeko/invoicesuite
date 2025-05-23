@@ -14,7 +14,7 @@ class ItemInformationRequestLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TimeFrequencyCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TimeFrequencyCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TimeFrequencyCode")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class ItemInformationRequestLineType
     private $timeFrequencyCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SupplyChainActivityTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SupplyChainActivityTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SupplyChainActivityTypeCode")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class ItemInformationRequestLineType
     private $supplyChainActivityTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class ItemInformationRequestLineType
     private $forecastTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class ItemInformationRequestLineType
     private $performanceMetricTypeCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Period>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Period>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Period>")
      * @JMS\Expose
@@ -70,7 +70,7 @@ class ItemInformationRequestLineType
     private $period;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SalesItem>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SalesItem>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\SalesItem>")
      * @JMS\Expose
@@ -100,10 +100,10 @@ class ItemInformationRequestLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TimeFrequencyCode $timeFrequencyCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TimeFrequencyCode|null $timeFrequencyCode
      * @return self
      */
-    public function setTimeFrequencyCode(TimeFrequencyCode $timeFrequencyCode): self
+    public function setTimeFrequencyCode(?TimeFrequencyCode $timeFrequencyCode = null): self
     {
         $this->timeFrequencyCode = $timeFrequencyCode;
 
@@ -129,11 +129,12 @@ class ItemInformationRequestLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SupplyChainActivityTypeCode $supplyChainActivityTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SupplyChainActivityTypeCode|null $supplyChainActivityTypeCode
      * @return self
      */
-    public function setSupplyChainActivityTypeCode(SupplyChainActivityTypeCode $supplyChainActivityTypeCode): self
-    {
+    public function setSupplyChainActivityTypeCode(
+        ?SupplyChainActivityTypeCode $supplyChainActivityTypeCode = null,
+    ): self {
         $this->supplyChainActivityTypeCode = $supplyChainActivityTypeCode;
 
         return $this;
@@ -158,10 +159,10 @@ class ItemInformationRequestLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode $forecastTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode|null $forecastTypeCode
      * @return self
      */
-    public function setForecastTypeCode(ForecastTypeCode $forecastTypeCode): self
+    public function setForecastTypeCode(?ForecastTypeCode $forecastTypeCode = null): self
     {
         $this->forecastTypeCode = $forecastTypeCode;
 
@@ -187,10 +188,10 @@ class ItemInformationRequestLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode $performanceMetricTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode|null $performanceMetricTypeCode
      * @return self
      */
-    public function setPerformanceMetricTypeCode(PerformanceMetricTypeCode $performanceMetricTypeCode): self
+    public function setPerformanceMetricTypeCode(?PerformanceMetricTypeCode $performanceMetricTypeCode = null): self
     {
         $this->performanceMetricTypeCode = $performanceMetricTypeCode;
 
@@ -206,10 +207,10 @@ class ItemInformationRequestLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Period> $period
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Period>|null $period
      * @return self
      */
-    public function setPeriod(array $period): self
+    public function setPeriod(?array $period = null): self
     {
         $this->period = $period;
 
@@ -287,10 +288,10 @@ class ItemInformationRequestLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SalesItem> $salesItem
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SalesItem>|null $salesItem
      * @return self
      */
-    public function setSalesItem(array $salesItem): self
+    public function setSalesItem(?array $salesItem = null): self
     {
         $this->salesItem = $salesItem;
 

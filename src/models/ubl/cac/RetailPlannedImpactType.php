@@ -13,7 +13,7 @@ class RetailPlannedImpactType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Amount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Amount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Amount")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class RetailPlannedImpactType
     private $amount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ForecastPurposeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ForecastPurposeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ForecastPurposeCode")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class RetailPlannedImpactType
     private $forecastPurposeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class RetailPlannedImpactType
     private $forecastTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Period
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Period|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Period")
      * @JMS\Expose
@@ -75,10 +75,10 @@ class RetailPlannedImpactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Amount $amount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Amount|null $amount
      * @return self
      */
-    public function setAmount(Amount $amount): self
+    public function setAmount(?Amount $amount = null): self
     {
         $this->amount = $amount;
 
@@ -104,10 +104,10 @@ class RetailPlannedImpactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ForecastPurposeCode $forecastPurposeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ForecastPurposeCode|null $forecastPurposeCode
      * @return self
      */
-    public function setForecastPurposeCode(ForecastPurposeCode $forecastPurposeCode): self
+    public function setForecastPurposeCode(?ForecastPurposeCode $forecastPurposeCode = null): self
     {
         $this->forecastPurposeCode = $forecastPurposeCode;
 
@@ -133,10 +133,10 @@ class RetailPlannedImpactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode $forecastTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode|null $forecastTypeCode
      * @return self
      */
-    public function setForecastTypeCode(ForecastTypeCode $forecastTypeCode): self
+    public function setForecastTypeCode(?ForecastTypeCode $forecastTypeCode = null): self
     {
         $this->forecastTypeCode = $forecastTypeCode;
 
@@ -162,10 +162,10 @@ class RetailPlannedImpactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Period $period
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Period|null $period
      * @return self
      */
-    public function setPeriod(Period $period): self
+    public function setPeriod(?Period $period = null): self
     {
         $this->period = $period;
 

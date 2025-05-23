@@ -12,7 +12,7 @@ class PriceListType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class PriceListType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\StatusCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\StatusCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\StatusCode")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class PriceListType
     private $statusCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod>")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class PriceListType
     private $validityPeriod;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PreviousPriceList
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PreviousPriceList|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PreviousPriceList")
      * @JMS\Expose
@@ -75,10 +75,10 @@ class PriceListType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -104,10 +104,10 @@ class PriceListType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\StatusCode $statusCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\StatusCode|null $statusCode
      * @return self
      */
-    public function setStatusCode(StatusCode $statusCode): self
+    public function setStatusCode(?StatusCode $statusCode = null): self
     {
         $this->statusCode = $statusCode;
 
@@ -123,10 +123,10 @@ class PriceListType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod> $validityPeriod
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod>|null $validityPeriod
      * @return self
      */
-    public function setValidityPeriod(array $validityPeriod): self
+    public function setValidityPeriod(?array $validityPeriod = null): self
     {
         $this->validityPeriod = $validityPeriod;
 
@@ -214,10 +214,10 @@ class PriceListType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PreviousPriceList $previousPriceList
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PreviousPriceList|null $previousPriceList
      * @return self
      */
-    public function setPreviousPriceList(PreviousPriceList $previousPriceList): self
+    public function setPreviousPriceList(?PreviousPriceList $previousPriceList = null): self
     {
         $this->previousPriceList = $previousPriceList;
 

@@ -12,7 +12,7 @@ class CountryType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\IdentificationCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\IdentificationCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\IdentificationCode")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class CountryType
     private $identificationCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Name")
      * @JMS\Expose
@@ -52,10 +52,10 @@ class CountryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\IdentificationCode $identificationCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\IdentificationCode|null $identificationCode
      * @return self
      */
-    public function setIdentificationCode(IdentificationCode $identificationCode): self
+    public function setIdentificationCode(?IdentificationCode $identificationCode = null): self
     {
         $this->identificationCode = $identificationCode;
 
@@ -81,10 +81,10 @@ class CountryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name|null $name
      * @return self
      */
-    public function setName(Name $name): self
+    public function setName(?Name $name = null): self
     {
         $this->name = $name;
 

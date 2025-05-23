@@ -17,7 +17,7 @@ class ItemManagementProfileType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\FrozenPeriodDaysNumeric
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\FrozenPeriodDaysNumeric|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\FrozenPeriodDaysNumeric")
      * @JMS\Expose
@@ -28,7 +28,7 @@ class ItemManagementProfileType
     private $frozenPeriodDaysNumeric;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MinimumInventoryQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MinimumInventoryQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MinimumInventoryQuantity")
      * @JMS\Expose
@@ -39,7 +39,7 @@ class ItemManagementProfileType
     private $minimumInventoryQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MultipleOrderQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MultipleOrderQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MultipleOrderQuantity")
      * @JMS\Expose
@@ -50,7 +50,7 @@ class ItemManagementProfileType
     private $multipleOrderQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\OrderIntervalDaysNumeric
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\OrderIntervalDaysNumeric|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\OrderIntervalDaysNumeric")
      * @JMS\Expose
@@ -61,7 +61,7 @@ class ItemManagementProfileType
     private $orderIntervalDaysNumeric;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ReplenishmentOwnerDescription>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ReplenishmentOwnerDescription>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\ReplenishmentOwnerDescription>")
      * @JMS\Expose
@@ -73,7 +73,7 @@ class ItemManagementProfileType
     private $replenishmentOwnerDescription;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TargetServicePercent
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TargetServicePercent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TargetServicePercent")
      * @JMS\Expose
@@ -84,7 +84,7 @@ class ItemManagementProfileType
     private $targetServicePercent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TargetInventoryQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TargetInventoryQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TargetInventoryQuantity")
      * @JMS\Expose
@@ -95,7 +95,7 @@ class ItemManagementProfileType
     private $targetInventoryQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\EffectivePeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\EffectivePeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\EffectivePeriod")
      * @JMS\Expose
@@ -106,7 +106,7 @@ class ItemManagementProfileType
     private $effectivePeriod;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Item
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Item|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Item")
      * @JMS\Expose
@@ -117,7 +117,7 @@ class ItemManagementProfileType
     private $item;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ItemLocationQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ItemLocationQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ItemLocationQuantity")
      * @JMS\Expose
@@ -146,10 +146,10 @@ class ItemManagementProfileType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\FrozenPeriodDaysNumeric $frozenPeriodDaysNumeric
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\FrozenPeriodDaysNumeric|null $frozenPeriodDaysNumeric
      * @return self
      */
-    public function setFrozenPeriodDaysNumeric(FrozenPeriodDaysNumeric $frozenPeriodDaysNumeric): self
+    public function setFrozenPeriodDaysNumeric(?FrozenPeriodDaysNumeric $frozenPeriodDaysNumeric = null): self
     {
         $this->frozenPeriodDaysNumeric = $frozenPeriodDaysNumeric;
 
@@ -175,10 +175,10 @@ class ItemManagementProfileType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MinimumInventoryQuantity $minimumInventoryQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MinimumInventoryQuantity|null $minimumInventoryQuantity
      * @return self
      */
-    public function setMinimumInventoryQuantity(MinimumInventoryQuantity $minimumInventoryQuantity): self
+    public function setMinimumInventoryQuantity(?MinimumInventoryQuantity $minimumInventoryQuantity = null): self
     {
         $this->minimumInventoryQuantity = $minimumInventoryQuantity;
 
@@ -204,10 +204,10 @@ class ItemManagementProfileType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MultipleOrderQuantity $multipleOrderQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MultipleOrderQuantity|null $multipleOrderQuantity
      * @return self
      */
-    public function setMultipleOrderQuantity(MultipleOrderQuantity $multipleOrderQuantity): self
+    public function setMultipleOrderQuantity(?MultipleOrderQuantity $multipleOrderQuantity = null): self
     {
         $this->multipleOrderQuantity = $multipleOrderQuantity;
 
@@ -233,10 +233,10 @@ class ItemManagementProfileType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\OrderIntervalDaysNumeric $orderIntervalDaysNumeric
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\OrderIntervalDaysNumeric|null $orderIntervalDaysNumeric
      * @return self
      */
-    public function setOrderIntervalDaysNumeric(OrderIntervalDaysNumeric $orderIntervalDaysNumeric): self
+    public function setOrderIntervalDaysNumeric(?OrderIntervalDaysNumeric $orderIntervalDaysNumeric = null): self
     {
         $this->orderIntervalDaysNumeric = $orderIntervalDaysNumeric;
 
@@ -252,10 +252,10 @@ class ItemManagementProfileType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ReplenishmentOwnerDescription> $replenishmentOwnerDescription
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ReplenishmentOwnerDescription>|null $replenishmentOwnerDescription
      * @return self
      */
-    public function setReplenishmentOwnerDescription(array $replenishmentOwnerDescription): self
+    public function setReplenishmentOwnerDescription(?array $replenishmentOwnerDescription = null): self
     {
         $this->replenishmentOwnerDescription = $replenishmentOwnerDescription;
 
@@ -345,10 +345,10 @@ class ItemManagementProfileType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TargetServicePercent $targetServicePercent
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TargetServicePercent|null $targetServicePercent
      * @return self
      */
-    public function setTargetServicePercent(TargetServicePercent $targetServicePercent): self
+    public function setTargetServicePercent(?TargetServicePercent $targetServicePercent = null): self
     {
         $this->targetServicePercent = $targetServicePercent;
 
@@ -374,10 +374,10 @@ class ItemManagementProfileType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TargetInventoryQuantity $targetInventoryQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TargetInventoryQuantity|null $targetInventoryQuantity
      * @return self
      */
-    public function setTargetInventoryQuantity(TargetInventoryQuantity $targetInventoryQuantity): self
+    public function setTargetInventoryQuantity(?TargetInventoryQuantity $targetInventoryQuantity = null): self
     {
         $this->targetInventoryQuantity = $targetInventoryQuantity;
 
@@ -403,10 +403,10 @@ class ItemManagementProfileType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\EffectivePeriod $effectivePeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EffectivePeriod|null $effectivePeriod
      * @return self
      */
-    public function setEffectivePeriod(EffectivePeriod $effectivePeriod): self
+    public function setEffectivePeriod(?EffectivePeriod $effectivePeriod = null): self
     {
         $this->effectivePeriod = $effectivePeriod;
 
@@ -432,10 +432,10 @@ class ItemManagementProfileType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Item $item
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Item|null $item
      * @return self
      */
-    public function setItem(Item $item): self
+    public function setItem(?Item $item = null): self
     {
         $this->item = $item;
 
@@ -461,10 +461,10 @@ class ItemManagementProfileType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ItemLocationQuantity $itemLocationQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ItemLocationQuantity|null $itemLocationQuantity
      * @return self
      */
-    public function setItemLocationQuantity(ItemLocationQuantity $itemLocationQuantity): self
+    public function setItemLocationQuantity(?ItemLocationQuantity $itemLocationQuantity = null): self
     {
         $this->itemLocationQuantity = $itemLocationQuantity;
 

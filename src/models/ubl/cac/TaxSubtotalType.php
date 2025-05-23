@@ -19,7 +19,7 @@ class TaxSubtotalType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TaxableAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TaxableAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TaxableAmount")
      * @JMS\Expose
@@ -30,7 +30,7 @@ class TaxSubtotalType
     private $taxableAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TaxAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TaxAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TaxAmount")
      * @JMS\Expose
@@ -41,7 +41,7 @@ class TaxSubtotalType
     private $taxAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CalculationSequenceNumeric
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CalculationSequenceNumeric|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CalculationSequenceNumeric")
      * @JMS\Expose
@@ -52,7 +52,7 @@ class TaxSubtotalType
     private $calculationSequenceNumeric;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransactionCurrencyTaxAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransactionCurrencyTaxAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TransactionCurrencyTaxAmount")
      * @JMS\Expose
@@ -63,7 +63,7 @@ class TaxSubtotalType
     private $transactionCurrencyTaxAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Percent
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Percent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Percent")
      * @JMS\Expose
@@ -74,7 +74,7 @@ class TaxSubtotalType
     private $percent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\BaseUnitMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\BaseUnitMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\BaseUnitMeasure")
      * @JMS\Expose
@@ -85,7 +85,7 @@ class TaxSubtotalType
     private $baseUnitMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PerUnitAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PerUnitAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PerUnitAmount")
      * @JMS\Expose
@@ -96,7 +96,7 @@ class TaxSubtotalType
     private $perUnitAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TierRange
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TierRange|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TierRange")
      * @JMS\Expose
@@ -107,7 +107,7 @@ class TaxSubtotalType
     private $tierRange;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TierRatePercent
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TierRatePercent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TierRatePercent")
      * @JMS\Expose
@@ -118,7 +118,7 @@ class TaxSubtotalType
     private $tierRatePercent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TaxCategory
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TaxCategory|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TaxCategory")
      * @JMS\Expose
@@ -147,10 +147,10 @@ class TaxSubtotalType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TaxableAmount $taxableAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TaxableAmount|null $taxableAmount
      * @return self
      */
-    public function setTaxableAmount(TaxableAmount $taxableAmount): self
+    public function setTaxableAmount(?TaxableAmount $taxableAmount = null): self
     {
         $this->taxableAmount = $taxableAmount;
 
@@ -176,10 +176,10 @@ class TaxSubtotalType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TaxAmount $taxAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TaxAmount|null $taxAmount
      * @return self
      */
-    public function setTaxAmount(TaxAmount $taxAmount): self
+    public function setTaxAmount(?TaxAmount $taxAmount = null): self
     {
         $this->taxAmount = $taxAmount;
 
@@ -205,11 +205,12 @@ class TaxSubtotalType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CalculationSequenceNumeric $calculationSequenceNumeric
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CalculationSequenceNumeric|null $calculationSequenceNumeric
      * @return self
      */
-    public function setCalculationSequenceNumeric(CalculationSequenceNumeric $calculationSequenceNumeric): self
-    {
+    public function setCalculationSequenceNumeric(
+        ?CalculationSequenceNumeric $calculationSequenceNumeric = null,
+    ): self {
         $this->calculationSequenceNumeric = $calculationSequenceNumeric;
 
         return $this;
@@ -234,11 +235,12 @@ class TaxSubtotalType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransactionCurrencyTaxAmount $transactionCurrencyTaxAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransactionCurrencyTaxAmount|null $transactionCurrencyTaxAmount
      * @return self
      */
-    public function setTransactionCurrencyTaxAmount(TransactionCurrencyTaxAmount $transactionCurrencyTaxAmount): self
-    {
+    public function setTransactionCurrencyTaxAmount(
+        ?TransactionCurrencyTaxAmount $transactionCurrencyTaxAmount = null,
+    ): self {
         $this->transactionCurrencyTaxAmount = $transactionCurrencyTaxAmount;
 
         return $this;
@@ -263,10 +265,10 @@ class TaxSubtotalType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Percent $percent
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Percent|null $percent
      * @return self
      */
-    public function setPercent(Percent $percent): self
+    public function setPercent(?Percent $percent = null): self
     {
         $this->percent = $percent;
 
@@ -292,10 +294,10 @@ class TaxSubtotalType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\BaseUnitMeasure $baseUnitMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\BaseUnitMeasure|null $baseUnitMeasure
      * @return self
      */
-    public function setBaseUnitMeasure(BaseUnitMeasure $baseUnitMeasure): self
+    public function setBaseUnitMeasure(?BaseUnitMeasure $baseUnitMeasure = null): self
     {
         $this->baseUnitMeasure = $baseUnitMeasure;
 
@@ -321,10 +323,10 @@ class TaxSubtotalType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PerUnitAmount $perUnitAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PerUnitAmount|null $perUnitAmount
      * @return self
      */
-    public function setPerUnitAmount(PerUnitAmount $perUnitAmount): self
+    public function setPerUnitAmount(?PerUnitAmount $perUnitAmount = null): self
     {
         $this->perUnitAmount = $perUnitAmount;
 
@@ -350,10 +352,10 @@ class TaxSubtotalType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TierRange $tierRange
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TierRange|null $tierRange
      * @return self
      */
-    public function setTierRange(TierRange $tierRange): self
+    public function setTierRange(?TierRange $tierRange = null): self
     {
         $this->tierRange = $tierRange;
 
@@ -379,10 +381,10 @@ class TaxSubtotalType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TierRatePercent $tierRatePercent
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TierRatePercent|null $tierRatePercent
      * @return self
      */
-    public function setTierRatePercent(TierRatePercent $tierRatePercent): self
+    public function setTierRatePercent(?TierRatePercent $tierRatePercent = null): self
     {
         $this->tierRatePercent = $tierRatePercent;
 
@@ -408,10 +410,10 @@ class TaxSubtotalType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxCategory $taxCategory
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxCategory|null $taxCategory
      * @return self
      */
-    public function setTaxCategory(TaxCategory $taxCategory): self
+    public function setTaxCategory(?TaxCategory $taxCategory = null): self
     {
         $this->taxCategory = $taxCategory;
 

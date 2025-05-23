@@ -16,7 +16,7 @@ class TendererQualificationRequestType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalFormCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalFormCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalFormCode")
      * @JMS\Expose
@@ -27,7 +27,7 @@ class TendererQualificationRequestType
     private $companyLegalFormCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalForm
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalForm|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalForm")
      * @JMS\Expose
@@ -38,7 +38,7 @@ class TendererQualificationRequestType
     private $companyLegalForm;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\PersonalSituation>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\PersonalSituation>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\PersonalSituation>")
      * @JMS\Expose
@@ -50,7 +50,7 @@ class TendererQualificationRequestType
     private $personalSituation;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\OperatingYearsQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\OperatingYearsQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\OperatingYearsQuantity")
      * @JMS\Expose
@@ -61,7 +61,7 @@ class TendererQualificationRequestType
     private $operatingYearsQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\EmployeeQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\EmployeeQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\EmployeeQuantity")
      * @JMS\Expose
@@ -72,7 +72,7 @@ class TendererQualificationRequestType
     private $employeeQuantity;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -84,7 +84,7 @@ class TendererQualificationRequestType
     private $description;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\RequiredBusinessClassificationScheme>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\RequiredBusinessClassificationScheme>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\RequiredBusinessClassificationScheme>")
      * @JMS\Expose
@@ -96,7 +96,7 @@ class TendererQualificationRequestType
     private $requiredBusinessClassificationScheme;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TechnicalEvaluationCriterion>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TechnicalEvaluationCriterion>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TechnicalEvaluationCriterion>")
      * @JMS\Expose
@@ -108,7 +108,7 @@ class TendererQualificationRequestType
     private $technicalEvaluationCriterion;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\FinancialEvaluationCriterion>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\FinancialEvaluationCriterion>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\FinancialEvaluationCriterion>")
      * @JMS\Expose
@@ -120,7 +120,7 @@ class TendererQualificationRequestType
     private $financialEvaluationCriterion;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SpecificTendererRequirement>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SpecificTendererRequirement>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\SpecificTendererRequirement>")
      * @JMS\Expose
@@ -132,7 +132,7 @@ class TendererQualificationRequestType
     private $specificTendererRequirement;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\EconomicOperatorRole>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\EconomicOperatorRole>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\EconomicOperatorRole>")
      * @JMS\Expose
@@ -162,10 +162,10 @@ class TendererQualificationRequestType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalFormCode $companyLegalFormCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalFormCode|null $companyLegalFormCode
      * @return self
      */
-    public function setCompanyLegalFormCode(CompanyLegalFormCode $companyLegalFormCode): self
+    public function setCompanyLegalFormCode(?CompanyLegalFormCode $companyLegalFormCode = null): self
     {
         $this->companyLegalFormCode = $companyLegalFormCode;
 
@@ -191,10 +191,10 @@ class TendererQualificationRequestType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalForm $companyLegalForm
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalForm|null $companyLegalForm
      * @return self
      */
-    public function setCompanyLegalForm(CompanyLegalForm $companyLegalForm): self
+    public function setCompanyLegalForm(?CompanyLegalForm $companyLegalForm = null): self
     {
         $this->companyLegalForm = $companyLegalForm;
 
@@ -210,10 +210,10 @@ class TendererQualificationRequestType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\PersonalSituation> $personalSituation
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\PersonalSituation>|null $personalSituation
      * @return self
      */
-    public function setPersonalSituation(array $personalSituation): self
+    public function setPersonalSituation(?array $personalSituation = null): self
     {
         $this->personalSituation = $personalSituation;
 
@@ -301,10 +301,10 @@ class TendererQualificationRequestType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\OperatingYearsQuantity $operatingYearsQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\OperatingYearsQuantity|null $operatingYearsQuantity
      * @return self
      */
-    public function setOperatingYearsQuantity(OperatingYearsQuantity $operatingYearsQuantity): self
+    public function setOperatingYearsQuantity(?OperatingYearsQuantity $operatingYearsQuantity = null): self
     {
         $this->operatingYearsQuantity = $operatingYearsQuantity;
 
@@ -330,10 +330,10 @@ class TendererQualificationRequestType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\EmployeeQuantity $employeeQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\EmployeeQuantity|null $employeeQuantity
      * @return self
      */
-    public function setEmployeeQuantity(EmployeeQuantity $employeeQuantity): self
+    public function setEmployeeQuantity(?EmployeeQuantity $employeeQuantity = null): self
     {
         $this->employeeQuantity = $employeeQuantity;
 
@@ -349,10 +349,10 @@ class TendererQualificationRequestType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -430,10 +430,10 @@ class TendererQualificationRequestType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\RequiredBusinessClassificationScheme> $requiredBusinessClassificationScheme
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\RequiredBusinessClassificationScheme>|null $requiredBusinessClassificationScheme
      * @return self
      */
-    public function setRequiredBusinessClassificationScheme(array $requiredBusinessClassificationScheme): self
+    public function setRequiredBusinessClassificationScheme(?array $requiredBusinessClassificationScheme = null): self
     {
         $this->requiredBusinessClassificationScheme = $requiredBusinessClassificationScheme;
 
@@ -513,10 +513,10 @@ class TendererQualificationRequestType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TechnicalEvaluationCriterion> $technicalEvaluationCriterion
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TechnicalEvaluationCriterion>|null $technicalEvaluationCriterion
      * @return self
      */
-    public function setTechnicalEvaluationCriterion(array $technicalEvaluationCriterion): self
+    public function setTechnicalEvaluationCriterion(?array $technicalEvaluationCriterion = null): self
     {
         $this->technicalEvaluationCriterion = $technicalEvaluationCriterion;
 
@@ -596,10 +596,10 @@ class TendererQualificationRequestType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\FinancialEvaluationCriterion> $financialEvaluationCriterion
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\FinancialEvaluationCriterion>|null $financialEvaluationCriterion
      * @return self
      */
-    public function setFinancialEvaluationCriterion(array $financialEvaluationCriterion): self
+    public function setFinancialEvaluationCriterion(?array $financialEvaluationCriterion = null): self
     {
         $this->financialEvaluationCriterion = $financialEvaluationCriterion;
 
@@ -679,10 +679,10 @@ class TendererQualificationRequestType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SpecificTendererRequirement> $specificTendererRequirement
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SpecificTendererRequirement>|null $specificTendererRequirement
      * @return self
      */
-    public function setSpecificTendererRequirement(array $specificTendererRequirement): self
+    public function setSpecificTendererRequirement(?array $specificTendererRequirement = null): self
     {
         $this->specificTendererRequirement = $specificTendererRequirement;
 
@@ -761,10 +761,10 @@ class TendererQualificationRequestType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\EconomicOperatorRole> $economicOperatorRole
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\EconomicOperatorRole>|null $economicOperatorRole
      * @return self
      */
-    public function setEconomicOperatorRole(array $economicOperatorRole): self
+    public function setEconomicOperatorRole(?array $economicOperatorRole = null): self
     {
         $this->economicOperatorRole = $economicOperatorRole;
 

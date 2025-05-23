@@ -15,7 +15,7 @@ class DimensionType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AttributeID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AttributeID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AttributeID")
      * @JMS\Expose
@@ -26,7 +26,7 @@ class DimensionType
     private $attributeID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Measure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Measure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Measure")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class DimensionType
     private $measure;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -49,7 +49,7 @@ class DimensionType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MinimumMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MinimumMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MinimumMeasure")
      * @JMS\Expose
@@ -60,7 +60,7 @@ class DimensionType
     private $minimumMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MaximumMeasure")
      * @JMS\Expose
@@ -89,10 +89,10 @@ class DimensionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AttributeID $attributeID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AttributeID|null $attributeID
      * @return self
      */
-    public function setAttributeID(AttributeID $attributeID): self
+    public function setAttributeID(?AttributeID $attributeID = null): self
     {
         $this->attributeID = $attributeID;
 
@@ -118,10 +118,10 @@ class DimensionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Measure $measure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Measure|null $measure
      * @return self
      */
-    public function setMeasure(Measure $measure): self
+    public function setMeasure(?Measure $measure = null): self
     {
         $this->measure = $measure;
 
@@ -137,10 +137,10 @@ class DimensionType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -228,10 +228,10 @@ class DimensionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MinimumMeasure $minimumMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MinimumMeasure|null $minimumMeasure
      * @return self
      */
-    public function setMinimumMeasure(MinimumMeasure $minimumMeasure): self
+    public function setMinimumMeasure(?MinimumMeasure $minimumMeasure = null): self
     {
         $this->minimumMeasure = $minimumMeasure;
 
@@ -257,10 +257,10 @@ class DimensionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumMeasure $maximumMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumMeasure|null $maximumMeasure
      * @return self
      */
-    public function setMaximumMeasure(MaximumMeasure $maximumMeasure): self
+    public function setMaximumMeasure(?MaximumMeasure $maximumMeasure = null): self
     {
         $this->maximumMeasure = $maximumMeasure;
 

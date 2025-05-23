@@ -20,7 +20,7 @@ class AllowanceChargeType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -31,7 +31,7 @@ class AllowanceChargeType
     private $iD;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -42,7 +42,7 @@ class AllowanceChargeType
     private $chargeIndicator;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AllowanceChargeReasonCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AllowanceChargeReasonCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AllowanceChargeReasonCode")
      * @JMS\Expose
@@ -53,7 +53,7 @@ class AllowanceChargeType
     private $allowanceChargeReasonCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\AllowanceChargeReason>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\AllowanceChargeReason>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\AllowanceChargeReason>")
      * @JMS\Expose
@@ -65,7 +65,7 @@ class AllowanceChargeType
     private $allowanceChargeReason;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MultiplierFactorNumeric
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MultiplierFactorNumeric|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MultiplierFactorNumeric")
      * @JMS\Expose
@@ -76,7 +76,7 @@ class AllowanceChargeType
     private $multiplierFactorNumeric;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -87,7 +87,7 @@ class AllowanceChargeType
     private $prepaidIndicator;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric")
      * @JMS\Expose
@@ -98,7 +98,7 @@ class AllowanceChargeType
     private $sequenceNumeric;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Amount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Amount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Amount")
      * @JMS\Expose
@@ -109,7 +109,7 @@ class AllowanceChargeType
     private $amount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\BaseAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\BaseAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\BaseAmount")
      * @JMS\Expose
@@ -120,7 +120,7 @@ class AllowanceChargeType
     private $baseAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode")
      * @JMS\Expose
@@ -131,7 +131,7 @@ class AllowanceChargeType
     private $accountingCostCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AccountingCost
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AccountingCost|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AccountingCost")
      * @JMS\Expose
@@ -142,7 +142,7 @@ class AllowanceChargeType
     private $accountingCost;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PerUnitAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PerUnitAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PerUnitAmount")
      * @JMS\Expose
@@ -153,7 +153,7 @@ class AllowanceChargeType
     private $perUnitAmount;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TaxCategory>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TaxCategory>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TaxCategory>")
      * @JMS\Expose
@@ -165,7 +165,7 @@ class AllowanceChargeType
     private $taxCategory;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TaxTotal
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TaxTotal|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TaxTotal")
      * @JMS\Expose
@@ -176,7 +176,7 @@ class AllowanceChargeType
     private $taxTotal;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PaymentMeans>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PaymentMeans>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PaymentMeans>")
      * @JMS\Expose
@@ -206,10 +206,10 @@ class AllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -225,10 +225,10 @@ class AllowanceChargeType
     }
 
     /**
-     * @param bool $chargeIndicator
+     * @param bool|null $chargeIndicator
      * @return self
      */
-    public function setChargeIndicator(bool $chargeIndicator): self
+    public function setChargeIndicator(?bool $chargeIndicator = null): self
     {
         $this->chargeIndicator = $chargeIndicator;
 
@@ -254,10 +254,10 @@ class AllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AllowanceChargeReasonCode $allowanceChargeReasonCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AllowanceChargeReasonCode|null $allowanceChargeReasonCode
      * @return self
      */
-    public function setAllowanceChargeReasonCode(AllowanceChargeReasonCode $allowanceChargeReasonCode): self
+    public function setAllowanceChargeReasonCode(?AllowanceChargeReasonCode $allowanceChargeReasonCode = null): self
     {
         $this->allowanceChargeReasonCode = $allowanceChargeReasonCode;
 
@@ -273,10 +273,10 @@ class AllowanceChargeType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\AllowanceChargeReason> $allowanceChargeReason
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\AllowanceChargeReason>|null $allowanceChargeReason
      * @return self
      */
-    public function setAllowanceChargeReason(array $allowanceChargeReason): self
+    public function setAllowanceChargeReason(?array $allowanceChargeReason = null): self
     {
         $this->allowanceChargeReason = $allowanceChargeReason;
 
@@ -364,10 +364,10 @@ class AllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MultiplierFactorNumeric $multiplierFactorNumeric
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MultiplierFactorNumeric|null $multiplierFactorNumeric
      * @return self
      */
-    public function setMultiplierFactorNumeric(MultiplierFactorNumeric $multiplierFactorNumeric): self
+    public function setMultiplierFactorNumeric(?MultiplierFactorNumeric $multiplierFactorNumeric = null): self
     {
         $this->multiplierFactorNumeric = $multiplierFactorNumeric;
 
@@ -383,10 +383,10 @@ class AllowanceChargeType
     }
 
     /**
-     * @param bool $prepaidIndicator
+     * @param bool|null $prepaidIndicator
      * @return self
      */
-    public function setPrepaidIndicator(bool $prepaidIndicator): self
+    public function setPrepaidIndicator(?bool $prepaidIndicator = null): self
     {
         $this->prepaidIndicator = $prepaidIndicator;
 
@@ -412,10 +412,10 @@ class AllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric $sequenceNumeric
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric|null $sequenceNumeric
      * @return self
      */
-    public function setSequenceNumeric(SequenceNumeric $sequenceNumeric): self
+    public function setSequenceNumeric(?SequenceNumeric $sequenceNumeric = null): self
     {
         $this->sequenceNumeric = $sequenceNumeric;
 
@@ -441,10 +441,10 @@ class AllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Amount $amount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Amount|null $amount
      * @return self
      */
-    public function setAmount(Amount $amount): self
+    public function setAmount(?Amount $amount = null): self
     {
         $this->amount = $amount;
 
@@ -470,10 +470,10 @@ class AllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\BaseAmount $baseAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\BaseAmount|null $baseAmount
      * @return self
      */
-    public function setBaseAmount(BaseAmount $baseAmount): self
+    public function setBaseAmount(?BaseAmount $baseAmount = null): self
     {
         $this->baseAmount = $baseAmount;
 
@@ -499,10 +499,10 @@ class AllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode $accountingCostCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode|null $accountingCostCode
      * @return self
      */
-    public function setAccountingCostCode(AccountingCostCode $accountingCostCode): self
+    public function setAccountingCostCode(?AccountingCostCode $accountingCostCode = null): self
     {
         $this->accountingCostCode = $accountingCostCode;
 
@@ -528,10 +528,10 @@ class AllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AccountingCost $accountingCost
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AccountingCost|null $accountingCost
      * @return self
      */
-    public function setAccountingCost(AccountingCost $accountingCost): self
+    public function setAccountingCost(?AccountingCost $accountingCost = null): self
     {
         $this->accountingCost = $accountingCost;
 
@@ -557,10 +557,10 @@ class AllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PerUnitAmount $perUnitAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PerUnitAmount|null $perUnitAmount
      * @return self
      */
-    public function setPerUnitAmount(PerUnitAmount $perUnitAmount): self
+    public function setPerUnitAmount(?PerUnitAmount $perUnitAmount = null): self
     {
         $this->perUnitAmount = $perUnitAmount;
 
@@ -576,10 +576,10 @@ class AllowanceChargeType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TaxCategory> $taxCategory
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TaxCategory>|null $taxCategory
      * @return self
      */
-    public function setTaxCategory(array $taxCategory): self
+    public function setTaxCategory(?array $taxCategory = null): self
     {
         $this->taxCategory = $taxCategory;
 
@@ -667,10 +667,10 @@ class AllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxTotal $taxTotal
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxTotal|null $taxTotal
      * @return self
      */
-    public function setTaxTotal(TaxTotal $taxTotal): self
+    public function setTaxTotal(?TaxTotal $taxTotal = null): self
     {
         $this->taxTotal = $taxTotal;
 
@@ -686,10 +686,10 @@ class AllowanceChargeType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PaymentMeans> $paymentMeans
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PaymentMeans>|null $paymentMeans
      * @return self
      */
-    public function setPaymentMeans(array $paymentMeans): self
+    public function setPaymentMeans(?array $paymentMeans = null): self
     {
         $this->paymentMeans = $paymentMeans;
 

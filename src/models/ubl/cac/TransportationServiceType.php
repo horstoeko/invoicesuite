@@ -18,7 +18,7 @@ class TransportationServiceType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransportServiceCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransportServiceCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TransportServiceCode")
      * @JMS\Expose
@@ -29,7 +29,7 @@ class TransportationServiceType
     private $transportServiceCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TariffClassCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TariffClassCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TariffClassCode")
      * @JMS\Expose
@@ -40,7 +40,7 @@ class TransportationServiceType
     private $tariffClassCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Priority
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Priority|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Priority")
      * @JMS\Expose
@@ -51,7 +51,7 @@ class TransportationServiceType
     private $priority;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\FreightRateClassCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\FreightRateClassCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\FreightRateClassCode")
      * @JMS\Expose
@@ -62,7 +62,7 @@ class TransportationServiceType
     private $freightRateClassCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\TransportationServiceDescription>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\TransportationServiceDescription>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\TransportationServiceDescription>")
      * @JMS\Expose
@@ -74,7 +74,7 @@ class TransportationServiceType
     private $transportationServiceDescription;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransportationServiceDetailsURI
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TransportationServiceDetailsURI|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TransportationServiceDetailsURI")
      * @JMS\Expose
@@ -85,7 +85,7 @@ class TransportationServiceType
     private $transportationServiceDetailsURI;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -96,7 +96,7 @@ class TransportationServiceType
     private $nominationDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -107,7 +107,7 @@ class TransportationServiceType
     private $nominationTime;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Name")
      * @JMS\Expose
@@ -118,7 +118,7 @@ class TransportationServiceType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric")
      * @JMS\Expose
@@ -129,7 +129,7 @@ class TransportationServiceType
     private $sequenceNumeric;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TransportEquipment>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TransportEquipment>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TransportEquipment>")
      * @JMS\Expose
@@ -141,7 +141,7 @@ class TransportationServiceType
     private $transportEquipment;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SupportedTransportEquipment>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SupportedTransportEquipment>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\SupportedTransportEquipment>")
      * @JMS\Expose
@@ -153,7 +153,7 @@ class TransportationServiceType
     private $supportedTransportEquipment;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\UnsupportedTransportEquipment>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\UnsupportedTransportEquipment>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\UnsupportedTransportEquipment>")
      * @JMS\Expose
@@ -165,7 +165,7 @@ class TransportationServiceType
     private $unsupportedTransportEquipment;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CommodityClassification>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CommodityClassification>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\CommodityClassification>")
      * @JMS\Expose
@@ -177,7 +177,7 @@ class TransportationServiceType
     private $commodityClassification;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SupportedCommodityClassification>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SupportedCommodityClassification>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\SupportedCommodityClassification>")
      * @JMS\Expose
@@ -189,7 +189,7 @@ class TransportationServiceType
     private $supportedCommodityClassification;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\UnsupportedCommodityClassification>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\UnsupportedCommodityClassification>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\UnsupportedCommodityClassification>")
      * @JMS\Expose
@@ -201,7 +201,7 @@ class TransportationServiceType
     private $unsupportedCommodityClassification;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TotalCapacityDimension
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TotalCapacityDimension|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TotalCapacityDimension")
      * @JMS\Expose
@@ -212,7 +212,7 @@ class TransportationServiceType
     private $totalCapacityDimension;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ShipmentStage>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ShipmentStage>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ShipmentStage>")
      * @JMS\Expose
@@ -224,7 +224,7 @@ class TransportationServiceType
     private $shipmentStage;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TransportEvent>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TransportEvent>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TransportEvent>")
      * @JMS\Expose
@@ -236,7 +236,7 @@ class TransportationServiceType
     private $transportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ResponsibleTransportServiceProviderParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ResponsibleTransportServiceProviderParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ResponsibleTransportServiceProviderParty")
      * @JMS\Expose
@@ -247,7 +247,7 @@ class TransportationServiceType
     private $responsibleTransportServiceProviderParty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\EnvironmentalEmission>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\EnvironmentalEmission>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\EnvironmentalEmission>")
      * @JMS\Expose
@@ -259,7 +259,7 @@ class TransportationServiceType
     private $environmentalEmission;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\EstimatedDurationPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\EstimatedDurationPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\EstimatedDurationPeriod")
      * @JMS\Expose
@@ -270,7 +270,7 @@ class TransportationServiceType
     private $estimatedDurationPeriod;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ScheduledServiceFrequency>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ScheduledServiceFrequency>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ScheduledServiceFrequency>")
      * @JMS\Expose
@@ -300,10 +300,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransportServiceCode $transportServiceCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransportServiceCode|null $transportServiceCode
      * @return self
      */
-    public function setTransportServiceCode(TransportServiceCode $transportServiceCode): self
+    public function setTransportServiceCode(?TransportServiceCode $transportServiceCode = null): self
     {
         $this->transportServiceCode = $transportServiceCode;
 
@@ -329,10 +329,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TariffClassCode $tariffClassCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TariffClassCode|null $tariffClassCode
      * @return self
      */
-    public function setTariffClassCode(TariffClassCode $tariffClassCode): self
+    public function setTariffClassCode(?TariffClassCode $tariffClassCode = null): self
     {
         $this->tariffClassCode = $tariffClassCode;
 
@@ -358,10 +358,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Priority $priority
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Priority|null $priority
      * @return self
      */
-    public function setPriority(Priority $priority): self
+    public function setPriority(?Priority $priority = null): self
     {
         $this->priority = $priority;
 
@@ -387,10 +387,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\FreightRateClassCode $freightRateClassCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\FreightRateClassCode|null $freightRateClassCode
      * @return self
      */
-    public function setFreightRateClassCode(FreightRateClassCode $freightRateClassCode): self
+    public function setFreightRateClassCode(?FreightRateClassCode $freightRateClassCode = null): self
     {
         $this->freightRateClassCode = $freightRateClassCode;
 
@@ -406,10 +406,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\TransportationServiceDescription> $transportationServiceDescription
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\TransportationServiceDescription>|null $transportationServiceDescription
      * @return self
      */
-    public function setTransportationServiceDescription(array $transportationServiceDescription): self
+    public function setTransportationServiceDescription(?array $transportationServiceDescription = null): self
     {
         $this->transportationServiceDescription = $transportationServiceDescription;
 
@@ -499,11 +499,11 @@ class TransportationServiceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransportationServiceDetailsURI $transportationServiceDetailsURI
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransportationServiceDetailsURI|null $transportationServiceDetailsURI
      * @return self
      */
     public function setTransportationServiceDetailsURI(
-        TransportationServiceDetailsURI $transportationServiceDetailsURI,
+        ?TransportationServiceDetailsURI $transportationServiceDetailsURI = null,
     ): self {
         $this->transportationServiceDetailsURI = $transportationServiceDetailsURI;
 
@@ -519,10 +519,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param \DateTimeInterface $nominationDate
+     * @param \DateTimeInterface|null $nominationDate
      * @return self
      */
-    public function setNominationDate(\DateTimeInterface $nominationDate): self
+    public function setNominationDate(?\DateTimeInterface $nominationDate = null): self
     {
         $this->nominationDate = $nominationDate;
 
@@ -538,10 +538,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param \DateTimeInterface $nominationTime
+     * @param \DateTimeInterface|null $nominationTime
      * @return self
      */
-    public function setNominationTime(\DateTimeInterface $nominationTime): self
+    public function setNominationTime(?\DateTimeInterface $nominationTime = null): self
     {
         $this->nominationTime = $nominationTime;
 
@@ -567,10 +567,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name|null $name
      * @return self
      */
-    public function setName(Name $name): self
+    public function setName(?Name $name = null): self
     {
         $this->name = $name;
 
@@ -596,10 +596,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric $sequenceNumeric
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric|null $sequenceNumeric
      * @return self
      */
-    public function setSequenceNumeric(SequenceNumeric $sequenceNumeric): self
+    public function setSequenceNumeric(?SequenceNumeric $sequenceNumeric = null): self
     {
         $this->sequenceNumeric = $sequenceNumeric;
 
@@ -615,10 +615,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TransportEquipment> $transportEquipment
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TransportEquipment>|null $transportEquipment
      * @return self
      */
-    public function setTransportEquipment(array $transportEquipment): self
+    public function setTransportEquipment(?array $transportEquipment = null): self
     {
         $this->transportEquipment = $transportEquipment;
 
@@ -696,10 +696,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SupportedTransportEquipment> $supportedTransportEquipment
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SupportedTransportEquipment>|null $supportedTransportEquipment
      * @return self
      */
-    public function setSupportedTransportEquipment(array $supportedTransportEquipment): self
+    public function setSupportedTransportEquipment(?array $supportedTransportEquipment = null): self
     {
         $this->supportedTransportEquipment = $supportedTransportEquipment;
 
@@ -778,10 +778,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\UnsupportedTransportEquipment> $unsupportedTransportEquipment
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\UnsupportedTransportEquipment>|null $unsupportedTransportEquipment
      * @return self
      */
-    public function setUnsupportedTransportEquipment(array $unsupportedTransportEquipment): self
+    public function setUnsupportedTransportEquipment(?array $unsupportedTransportEquipment = null): self
     {
         $this->unsupportedTransportEquipment = $unsupportedTransportEquipment;
 
@@ -861,10 +861,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CommodityClassification> $commodityClassification
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CommodityClassification>|null $commodityClassification
      * @return self
      */
-    public function setCommodityClassification(array $commodityClassification): self
+    public function setCommodityClassification(?array $commodityClassification = null): self
     {
         $this->commodityClassification = $commodityClassification;
 
@@ -942,10 +942,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SupportedCommodityClassification> $supportedCommodityClassification
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SupportedCommodityClassification>|null $supportedCommodityClassification
      * @return self
      */
-    public function setSupportedCommodityClassification(array $supportedCommodityClassification): self
+    public function setSupportedCommodityClassification(?array $supportedCommodityClassification = null): self
     {
         $this->supportedCommodityClassification = $supportedCommodityClassification;
 
@@ -1025,10 +1025,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\UnsupportedCommodityClassification> $unsupportedCommodityClassification
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\UnsupportedCommodityClassification>|null $unsupportedCommodityClassification
      * @return self
      */
-    public function setUnsupportedCommodityClassification(array $unsupportedCommodityClassification): self
+    public function setUnsupportedCommodityClassification(?array $unsupportedCommodityClassification = null): self
     {
         $this->unsupportedCommodityClassification = $unsupportedCommodityClassification;
 
@@ -1118,10 +1118,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TotalCapacityDimension $totalCapacityDimension
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TotalCapacityDimension|null $totalCapacityDimension
      * @return self
      */
-    public function setTotalCapacityDimension(TotalCapacityDimension $totalCapacityDimension): self
+    public function setTotalCapacityDimension(?TotalCapacityDimension $totalCapacityDimension = null): self
     {
         $this->totalCapacityDimension = $totalCapacityDimension;
 
@@ -1137,10 +1137,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ShipmentStage> $shipmentStage
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ShipmentStage>|null $shipmentStage
      * @return self
      */
-    public function setShipmentStage(array $shipmentStage): self
+    public function setShipmentStage(?array $shipmentStage = null): self
     {
         $this->shipmentStage = $shipmentStage;
 
@@ -1218,10 +1218,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TransportEvent> $transportEvent
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TransportEvent>|null $transportEvent
      * @return self
      */
-    public function setTransportEvent(array $transportEvent): self
+    public function setTransportEvent(?array $transportEvent = null): self
     {
         $this->transportEvent = $transportEvent;
 
@@ -1309,11 +1309,11 @@ class TransportationServiceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ResponsibleTransportServiceProviderParty $responsibleTransportServiceProviderParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ResponsibleTransportServiceProviderParty|null $responsibleTransportServiceProviderParty
      * @return self
      */
     public function setResponsibleTransportServiceProviderParty(
-        ResponsibleTransportServiceProviderParty $responsibleTransportServiceProviderParty,
+        ?ResponsibleTransportServiceProviderParty $responsibleTransportServiceProviderParty = null,
     ): self {
         $this->responsibleTransportServiceProviderParty = $responsibleTransportServiceProviderParty;
 
@@ -1329,10 +1329,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\EnvironmentalEmission> $environmentalEmission
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\EnvironmentalEmission>|null $environmentalEmission
      * @return self
      */
-    public function setEnvironmentalEmission(array $environmentalEmission): self
+    public function setEnvironmentalEmission(?array $environmentalEmission = null): self
     {
         $this->environmentalEmission = $environmentalEmission;
 
@@ -1420,10 +1420,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\EstimatedDurationPeriod $estimatedDurationPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EstimatedDurationPeriod|null $estimatedDurationPeriod
      * @return self
      */
-    public function setEstimatedDurationPeriod(EstimatedDurationPeriod $estimatedDurationPeriod): self
+    public function setEstimatedDurationPeriod(?EstimatedDurationPeriod $estimatedDurationPeriod = null): self
     {
         $this->estimatedDurationPeriod = $estimatedDurationPeriod;
 
@@ -1439,10 +1439,10 @@ class TransportationServiceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ScheduledServiceFrequency> $scheduledServiceFrequency
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ScheduledServiceFrequency>|null $scheduledServiceFrequency
      * @return self
      */
-    public function setScheduledServiceFrequency(array $scheduledServiceFrequency): self
+    public function setScheduledServiceFrequency(?array $scheduledServiceFrequency = null): self
     {
         $this->scheduledServiceFrequency = $scheduledServiceFrequency;
 

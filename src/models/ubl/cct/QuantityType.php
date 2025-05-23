@@ -10,7 +10,7 @@ class QuantityType
     use HandlesObjectFlags;
 
     /**
-     * @var float
+     * @var float|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("float")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class QuantityType
     private $value;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class QuantityType
     private $unitCode;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -43,7 +43,7 @@ class QuantityType
     private $unitCodeListID;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -54,7 +54,7 @@ class QuantityType
     private $unitCodeListAgencyID;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -73,10 +73,10 @@ class QuantityType
     }
 
     /**
-     * @param float $value
+     * @param float|null $value
      * @return self
      */
-    public function setValue(float $value): self
+    public function setValue(?float $value = null): self
     {
         $this->value = $value;
 
@@ -92,10 +92,10 @@ class QuantityType
     }
 
     /**
-     * @param string $unitCode
+     * @param string|null $unitCode
      * @return self
      */
-    public function setUnitCode(string $unitCode): self
+    public function setUnitCode(?string $unitCode = null): self
     {
         $this->unitCode = $unitCode;
 
@@ -111,10 +111,10 @@ class QuantityType
     }
 
     /**
-     * @param string $unitCodeListID
+     * @param string|null $unitCodeListID
      * @return self
      */
-    public function setUnitCodeListID(string $unitCodeListID): self
+    public function setUnitCodeListID(?string $unitCodeListID = null): self
     {
         $this->unitCodeListID = $unitCodeListID;
 
@@ -130,10 +130,10 @@ class QuantityType
     }
 
     /**
-     * @param string $unitCodeListAgencyID
+     * @param string|null $unitCodeListAgencyID
      * @return self
      */
-    public function setUnitCodeListAgencyID(string $unitCodeListAgencyID): self
+    public function setUnitCodeListAgencyID(?string $unitCodeListAgencyID = null): self
     {
         $this->unitCodeListAgencyID = $unitCodeListAgencyID;
 
@@ -149,10 +149,10 @@ class QuantityType
     }
 
     /**
-     * @param string $unitCodeListAgencyName
+     * @param string|null $unitCodeListAgencyName
      * @return self
      */
-    public function setUnitCodeListAgencyName(string $unitCodeListAgencyName): self
+    public function setUnitCodeListAgencyName(?string $unitCodeListAgencyName = null): self
     {
         $this->unitCodeListAgencyName = $unitCodeListAgencyName;
 

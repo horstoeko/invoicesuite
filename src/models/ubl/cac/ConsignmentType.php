@@ -54,7 +54,7 @@ class ConsignmentType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -65,7 +65,7 @@ class ConsignmentType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CarrierAssignedID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CarrierAssignedID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CarrierAssignedID")
      * @JMS\Expose
@@ -76,7 +76,7 @@ class ConsignmentType
     private $carrierAssignedID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ConsigneeAssignedID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ConsigneeAssignedID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ConsigneeAssignedID")
      * @JMS\Expose
@@ -87,7 +87,7 @@ class ConsignmentType
     private $consigneeAssignedID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ConsignorAssignedID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ConsignorAssignedID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ConsignorAssignedID")
      * @JMS\Expose
@@ -98,7 +98,7 @@ class ConsignmentType
     private $consignorAssignedID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\FreightForwarderAssignedID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\FreightForwarderAssignedID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\FreightForwarderAssignedID")
      * @JMS\Expose
@@ -109,7 +109,7 @@ class ConsignmentType
     private $freightForwarderAssignedID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\BrokerAssignedID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\BrokerAssignedID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\BrokerAssignedID")
      * @JMS\Expose
@@ -120,7 +120,7 @@ class ConsignmentType
     private $brokerAssignedID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ContractedCarrierAssignedID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ContractedCarrierAssignedID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ContractedCarrierAssignedID")
      * @JMS\Expose
@@ -131,7 +131,7 @@ class ConsignmentType
     private $contractedCarrierAssignedID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PerformingCarrierAssignedID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PerformingCarrierAssignedID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PerformingCarrierAssignedID")
      * @JMS\Expose
@@ -142,7 +142,7 @@ class ConsignmentType
     private $performingCarrierAssignedID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\SummaryDescription>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\SummaryDescription>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\SummaryDescription>")
      * @JMS\Expose
@@ -154,7 +154,7 @@ class ConsignmentType
     private $summaryDescription;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalInvoiceAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalInvoiceAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TotalInvoiceAmount")
      * @JMS\Expose
@@ -165,7 +165,7 @@ class ConsignmentType
     private $totalInvoiceAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\DeclaredCustomsValueAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\DeclaredCustomsValueAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\DeclaredCustomsValueAmount")
      * @JMS\Expose
@@ -176,7 +176,7 @@ class ConsignmentType
     private $declaredCustomsValueAmount;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\TariffDescription>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\TariffDescription>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\TariffDescription>")
      * @JMS\Expose
@@ -188,7 +188,7 @@ class ConsignmentType
     private $tariffDescription;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TariffCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TariffCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TariffCode")
      * @JMS\Expose
@@ -199,7 +199,7 @@ class ConsignmentType
     private $tariffCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\InsurancePremiumAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\InsurancePremiumAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\InsurancePremiumAmount")
      * @JMS\Expose
@@ -210,7 +210,7 @@ class ConsignmentType
     private $insurancePremiumAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\GrossWeightMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\GrossWeightMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\GrossWeightMeasure")
      * @JMS\Expose
@@ -221,7 +221,7 @@ class ConsignmentType
     private $grossWeightMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\NetWeightMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\NetWeightMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\NetWeightMeasure")
      * @JMS\Expose
@@ -232,7 +232,7 @@ class ConsignmentType
     private $netWeightMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\NetNetWeightMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\NetNetWeightMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\NetNetWeightMeasure")
      * @JMS\Expose
@@ -243,7 +243,7 @@ class ConsignmentType
     private $netNetWeightMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ChargeableWeightMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ChargeableWeightMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ChargeableWeightMeasure")
      * @JMS\Expose
@@ -254,7 +254,7 @@ class ConsignmentType
     private $chargeableWeightMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\GrossVolumeMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\GrossVolumeMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\GrossVolumeMeasure")
      * @JMS\Expose
@@ -265,7 +265,7 @@ class ConsignmentType
     private $grossVolumeMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\NetVolumeMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\NetVolumeMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\NetVolumeMeasure")
      * @JMS\Expose
@@ -276,7 +276,7 @@ class ConsignmentType
     private $netVolumeMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LoadingLengthMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LoadingLengthMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LoadingLengthMeasure")
      * @JMS\Expose
@@ -287,7 +287,7 @@ class ConsignmentType
     private $loadingLengthMeasure;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Remarks>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Remarks>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Remarks>")
      * @JMS\Expose
@@ -299,7 +299,7 @@ class ConsignmentType
     private $remarks;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -310,7 +310,7 @@ class ConsignmentType
     private $hazardousRiskIndicator;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -321,7 +321,7 @@ class ConsignmentType
     private $animalFoodIndicator;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -332,7 +332,7 @@ class ConsignmentType
     private $humanFoodIndicator;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -343,7 +343,7 @@ class ConsignmentType
     private $livestockIndicator;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -354,7 +354,7 @@ class ConsignmentType
     private $bulkCargoIndicator;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -365,7 +365,7 @@ class ConsignmentType
     private $containerizedIndicator;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -376,7 +376,7 @@ class ConsignmentType
     private $generalCargoIndicator;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -387,7 +387,7 @@ class ConsignmentType
     private $specialSecurityIndicator;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -398,7 +398,7 @@ class ConsignmentType
     private $thirdPartyPayerIndicator;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\CarrierServiceInstructions>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\CarrierServiceInstructions>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\CarrierServiceInstructions>")
      * @JMS\Expose
@@ -410,7 +410,7 @@ class ConsignmentType
     private $carrierServiceInstructions;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\CustomsClearanceServiceInstructions>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\CustomsClearanceServiceInstructions>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\CustomsClearanceServiceInstructions>")
      * @JMS\Expose
@@ -422,7 +422,7 @@ class ConsignmentType
     private $customsClearanceServiceInstructions;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ForwarderServiceInstructions>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ForwarderServiceInstructions>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\ForwarderServiceInstructions>")
      * @JMS\Expose
@@ -434,7 +434,7 @@ class ConsignmentType
     private $forwarderServiceInstructions;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\SpecialServiceInstructions>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\SpecialServiceInstructions>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\SpecialServiceInstructions>")
      * @JMS\Expose
@@ -446,7 +446,7 @@ class ConsignmentType
     private $specialServiceInstructions;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SequenceID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SequenceID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SequenceID")
      * @JMS\Expose
@@ -457,7 +457,7 @@ class ConsignmentType
     private $sequenceID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ShippingPriorityLevelCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ShippingPriorityLevelCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ShippingPriorityLevelCode")
      * @JMS\Expose
@@ -468,7 +468,7 @@ class ConsignmentType
     private $shippingPriorityLevelCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\HandlingCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\HandlingCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\HandlingCode")
      * @JMS\Expose
@@ -479,7 +479,7 @@ class ConsignmentType
     private $handlingCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\HandlingInstructions>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\HandlingInstructions>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\HandlingInstructions>")
      * @JMS\Expose
@@ -491,7 +491,7 @@ class ConsignmentType
     private $handlingInstructions;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Information>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Information>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Information>")
      * @JMS\Expose
@@ -503,7 +503,7 @@ class ConsignmentType
     private $information;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalGoodsItemQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalGoodsItemQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TotalGoodsItemQuantity")
      * @JMS\Expose
@@ -514,7 +514,7 @@ class ConsignmentType
     private $totalGoodsItemQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalTransportHandlingUnitQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalTransportHandlingUnitQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TotalTransportHandlingUnitQuantity")
      * @JMS\Expose
@@ -525,7 +525,7 @@ class ConsignmentType
     private $totalTransportHandlingUnitQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\InsuranceValueAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\InsuranceValueAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\InsuranceValueAmount")
      * @JMS\Expose
@@ -536,7 +536,7 @@ class ConsignmentType
     private $insuranceValueAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\DeclaredForCarriageValueAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\DeclaredForCarriageValueAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\DeclaredForCarriageValueAmount")
      * @JMS\Expose
@@ -547,7 +547,7 @@ class ConsignmentType
     private $declaredForCarriageValueAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\DeclaredStatisticsValueAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\DeclaredStatisticsValueAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\DeclaredStatisticsValueAmount")
      * @JMS\Expose
@@ -558,7 +558,7 @@ class ConsignmentType
     private $declaredStatisticsValueAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\FreeOnBoardValueAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\FreeOnBoardValueAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\FreeOnBoardValueAmount")
      * @JMS\Expose
@@ -569,7 +569,7 @@ class ConsignmentType
     private $freeOnBoardValueAmount;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\SpecialInstructions>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\SpecialInstructions>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\SpecialInstructions>")
      * @JMS\Expose
@@ -581,7 +581,7 @@ class ConsignmentType
     private $specialInstructions;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -592,7 +592,7 @@ class ConsignmentType
     private $splitConsignmentIndicator;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\DeliveryInstructions>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\DeliveryInstructions>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\DeliveryInstructions>")
      * @JMS\Expose
@@ -604,7 +604,7 @@ class ConsignmentType
     private $deliveryInstructions;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ConsignmentQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ConsignmentQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ConsignmentQuantity")
      * @JMS\Expose
@@ -615,7 +615,7 @@ class ConsignmentType
     private $consignmentQuantity;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -626,7 +626,7 @@ class ConsignmentType
     private $consolidatableIndicator;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\HaulageInstructions>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\HaulageInstructions>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\HaulageInstructions>")
      * @JMS\Expose
@@ -638,7 +638,7 @@ class ConsignmentType
     private $haulageInstructions;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LoadingSequenceID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LoadingSequenceID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LoadingSequenceID")
      * @JMS\Expose
@@ -649,7 +649,7 @@ class ConsignmentType
     private $loadingSequenceID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ChildConsignmentQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ChildConsignmentQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ChildConsignmentQuantity")
      * @JMS\Expose
@@ -660,7 +660,7 @@ class ConsignmentType
     private $childConsignmentQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalPackagesQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalPackagesQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TotalPackagesQuantity")
      * @JMS\Expose
@@ -671,7 +671,7 @@ class ConsignmentType
     private $totalPackagesQuantity;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ConsolidatedShipment>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ConsolidatedShipment>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ConsolidatedShipment>")
      * @JMS\Expose
@@ -683,7 +683,7 @@ class ConsignmentType
     private $consolidatedShipment;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CustomsDeclaration>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CustomsDeclaration>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\CustomsDeclaration>")
      * @JMS\Expose
@@ -695,7 +695,7 @@ class ConsignmentType
     private $customsDeclaration;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\RequestedPickupTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\RequestedPickupTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\RequestedPickupTransportEvent")
      * @JMS\Expose
@@ -706,7 +706,7 @@ class ConsignmentType
     private $requestedPickupTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\RequestedDeliveryTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\RequestedDeliveryTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\RequestedDeliveryTransportEvent")
      * @JMS\Expose
@@ -717,7 +717,7 @@ class ConsignmentType
     private $requestedDeliveryTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PlannedPickupTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PlannedPickupTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PlannedPickupTransportEvent")
      * @JMS\Expose
@@ -728,7 +728,7 @@ class ConsignmentType
     private $plannedPickupTransportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PlannedDeliveryTransportEvent
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PlannedDeliveryTransportEvent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PlannedDeliveryTransportEvent")
      * @JMS\Expose
@@ -739,7 +739,7 @@ class ConsignmentType
     private $plannedDeliveryTransportEvent;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Status>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Status>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Status>")
      * @JMS\Expose
@@ -751,7 +751,7 @@ class ConsignmentType
     private $status;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ChildConsignment>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ChildConsignment>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ChildConsignment>")
      * @JMS\Expose
@@ -763,7 +763,7 @@ class ConsignmentType
     private $childConsignment;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ConsigneeParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ConsigneeParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ConsigneeParty")
      * @JMS\Expose
@@ -774,7 +774,7 @@ class ConsignmentType
     private $consigneeParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ExporterParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ExporterParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ExporterParty")
      * @JMS\Expose
@@ -785,7 +785,7 @@ class ConsignmentType
     private $exporterParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ConsignorParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ConsignorParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ConsignorParty")
      * @JMS\Expose
@@ -796,7 +796,7 @@ class ConsignmentType
     private $consignorParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ImporterParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ImporterParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ImporterParty")
      * @JMS\Expose
@@ -807,7 +807,7 @@ class ConsignmentType
     private $importerParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\CarrierParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\CarrierParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\CarrierParty")
      * @JMS\Expose
@@ -818,7 +818,7 @@ class ConsignmentType
     private $carrierParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\FreightForwarderParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\FreightForwarderParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\FreightForwarderParty")
      * @JMS\Expose
@@ -829,7 +829,7 @@ class ConsignmentType
     private $freightForwarderParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\NotifyParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\NotifyParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\NotifyParty")
      * @JMS\Expose
@@ -840,7 +840,7 @@ class ConsignmentType
     private $notifyParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\OriginalDespatchParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\OriginalDespatchParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\OriginalDespatchParty")
      * @JMS\Expose
@@ -851,7 +851,7 @@ class ConsignmentType
     private $originalDespatchParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\FinalDeliveryParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\FinalDeliveryParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\FinalDeliveryParty")
      * @JMS\Expose
@@ -862,7 +862,7 @@ class ConsignmentType
     private $finalDeliveryParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PerformingCarrierParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PerformingCarrierParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PerformingCarrierParty")
      * @JMS\Expose
@@ -873,7 +873,7 @@ class ConsignmentType
     private $performingCarrierParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\SubstituteCarrierParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\SubstituteCarrierParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\SubstituteCarrierParty")
      * @JMS\Expose
@@ -884,7 +884,7 @@ class ConsignmentType
     private $substituteCarrierParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\LogisticsOperatorParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\LogisticsOperatorParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\LogisticsOperatorParty")
      * @JMS\Expose
@@ -895,7 +895,7 @@ class ConsignmentType
     private $logisticsOperatorParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TransportAdvisorParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TransportAdvisorParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TransportAdvisorParty")
      * @JMS\Expose
@@ -906,7 +906,7 @@ class ConsignmentType
     private $transportAdvisorParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\HazardousItemNotificationParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\HazardousItemNotificationParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\HazardousItemNotificationParty")
      * @JMS\Expose
@@ -917,7 +917,7 @@ class ConsignmentType
     private $hazardousItemNotificationParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\InsuranceParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\InsuranceParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\InsuranceParty")
      * @JMS\Expose
@@ -928,7 +928,7 @@ class ConsignmentType
     private $insuranceParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\MortgageHolderParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\MortgageHolderParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\MortgageHolderParty")
      * @JMS\Expose
@@ -939,7 +939,7 @@ class ConsignmentType
     private $mortgageHolderParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\BillOfLadingHolderParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\BillOfLadingHolderParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\BillOfLadingHolderParty")
      * @JMS\Expose
@@ -950,7 +950,7 @@ class ConsignmentType
     private $billOfLadingHolderParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\OriginalDepartureCountry
+     * @var \horstoeko\invoicesuite\models\ubl\cac\OriginalDepartureCountry|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\OriginalDepartureCountry")
      * @JMS\Expose
@@ -961,7 +961,7 @@ class ConsignmentType
     private $originalDepartureCountry;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\FinalDestinationCountry
+     * @var \horstoeko\invoicesuite\models\ubl\cac\FinalDestinationCountry|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\FinalDestinationCountry")
      * @JMS\Expose
@@ -972,7 +972,7 @@ class ConsignmentType
     private $finalDestinationCountry;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TransitCountry>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TransitCountry>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TransitCountry>")
      * @JMS\Expose
@@ -984,7 +984,7 @@ class ConsignmentType
     private $transitCountry;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\TransportContract
+     * @var \horstoeko\invoicesuite\models\ubl\cac\TransportContract|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\TransportContract")
      * @JMS\Expose
@@ -995,7 +995,7 @@ class ConsignmentType
     private $transportContract;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TransportEvent>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TransportEvent>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TransportEvent>")
      * @JMS\Expose
@@ -1007,7 +1007,7 @@ class ConsignmentType
     private $transportEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\OriginalDespatchTransportationService
+     * @var \horstoeko\invoicesuite\models\ubl\cac\OriginalDespatchTransportationService|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\OriginalDespatchTransportationService")
      * @JMS\Expose
@@ -1018,7 +1018,7 @@ class ConsignmentType
     private $originalDespatchTransportationService;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\FinalDeliveryTransportationService
+     * @var \horstoeko\invoicesuite\models\ubl\cac\FinalDeliveryTransportationService|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\FinalDeliveryTransportationService")
      * @JMS\Expose
@@ -1029,7 +1029,7 @@ class ConsignmentType
     private $finalDeliveryTransportationService;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms
+     * @var \horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms")
      * @JMS\Expose
@@ -1040,7 +1040,7 @@ class ConsignmentType
     private $deliveryTerms;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PaymentTerms
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PaymentTerms|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PaymentTerms")
      * @JMS\Expose
@@ -1051,7 +1051,7 @@ class ConsignmentType
     private $paymentTerms;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\CollectPaymentTerms
+     * @var \horstoeko\invoicesuite\models\ubl\cac\CollectPaymentTerms|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\CollectPaymentTerms")
      * @JMS\Expose
@@ -1062,7 +1062,7 @@ class ConsignmentType
     private $collectPaymentTerms;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\DisbursementPaymentTerms
+     * @var \horstoeko\invoicesuite\models\ubl\cac\DisbursementPaymentTerms|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\DisbursementPaymentTerms")
      * @JMS\Expose
@@ -1073,7 +1073,7 @@ class ConsignmentType
     private $disbursementPaymentTerms;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PrepaidPaymentTerms
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PrepaidPaymentTerms|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PrepaidPaymentTerms")
      * @JMS\Expose
@@ -1084,7 +1084,7 @@ class ConsignmentType
     private $prepaidPaymentTerms;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge>")
      * @JMS\Expose
@@ -1096,7 +1096,7 @@ class ConsignmentType
     private $freightAllowanceCharge;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ExtraAllowanceCharge>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ExtraAllowanceCharge>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ExtraAllowanceCharge>")
      * @JMS\Expose
@@ -1108,7 +1108,7 @@ class ConsignmentType
     private $extraAllowanceCharge;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\MainCarriageShipmentStage>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\MainCarriageShipmentStage>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\MainCarriageShipmentStage>")
      * @JMS\Expose
@@ -1120,7 +1120,7 @@ class ConsignmentType
     private $mainCarriageShipmentStage;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PreCarriageShipmentStage>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PreCarriageShipmentStage>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PreCarriageShipmentStage>")
      * @JMS\Expose
@@ -1132,7 +1132,7 @@ class ConsignmentType
     private $preCarriageShipmentStage;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\OnCarriageShipmentStage>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\OnCarriageShipmentStage>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\OnCarriageShipmentStage>")
      * @JMS\Expose
@@ -1144,7 +1144,7 @@ class ConsignmentType
     private $onCarriageShipmentStage;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TransportHandlingUnit>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TransportHandlingUnit>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TransportHandlingUnit>")
      * @JMS\Expose
@@ -1156,7 +1156,7 @@ class ConsignmentType
     private $transportHandlingUnit;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\FirstArrivalPortLocation
+     * @var \horstoeko\invoicesuite\models\ubl\cac\FirstArrivalPortLocation|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\FirstArrivalPortLocation")
      * @JMS\Expose
@@ -1167,7 +1167,7 @@ class ConsignmentType
     private $firstArrivalPortLocation;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\LastExitPortLocation
+     * @var \horstoeko\invoicesuite\models\ubl\cac\LastExitPortLocation|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\LastExitPortLocation")
      * @JMS\Expose
@@ -1196,10 +1196,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -1225,10 +1225,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CarrierAssignedID $carrierAssignedID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CarrierAssignedID|null $carrierAssignedID
      * @return self
      */
-    public function setCarrierAssignedID(CarrierAssignedID $carrierAssignedID): self
+    public function setCarrierAssignedID(?CarrierAssignedID $carrierAssignedID = null): self
     {
         $this->carrierAssignedID = $carrierAssignedID;
 
@@ -1254,10 +1254,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ConsigneeAssignedID $consigneeAssignedID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ConsigneeAssignedID|null $consigneeAssignedID
      * @return self
      */
-    public function setConsigneeAssignedID(ConsigneeAssignedID $consigneeAssignedID): self
+    public function setConsigneeAssignedID(?ConsigneeAssignedID $consigneeAssignedID = null): self
     {
         $this->consigneeAssignedID = $consigneeAssignedID;
 
@@ -1283,10 +1283,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ConsignorAssignedID $consignorAssignedID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ConsignorAssignedID|null $consignorAssignedID
      * @return self
      */
-    public function setConsignorAssignedID(ConsignorAssignedID $consignorAssignedID): self
+    public function setConsignorAssignedID(?ConsignorAssignedID $consignorAssignedID = null): self
     {
         $this->consignorAssignedID = $consignorAssignedID;
 
@@ -1312,11 +1312,12 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\FreightForwarderAssignedID $freightForwarderAssignedID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\FreightForwarderAssignedID|null $freightForwarderAssignedID
      * @return self
      */
-    public function setFreightForwarderAssignedID(FreightForwarderAssignedID $freightForwarderAssignedID): self
-    {
+    public function setFreightForwarderAssignedID(
+        ?FreightForwarderAssignedID $freightForwarderAssignedID = null,
+    ): self {
         $this->freightForwarderAssignedID = $freightForwarderAssignedID;
 
         return $this;
@@ -1341,10 +1342,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\BrokerAssignedID $brokerAssignedID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\BrokerAssignedID|null $brokerAssignedID
      * @return self
      */
-    public function setBrokerAssignedID(BrokerAssignedID $brokerAssignedID): self
+    public function setBrokerAssignedID(?BrokerAssignedID $brokerAssignedID = null): self
     {
         $this->brokerAssignedID = $brokerAssignedID;
 
@@ -1370,11 +1371,12 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ContractedCarrierAssignedID $contractedCarrierAssignedID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ContractedCarrierAssignedID|null $contractedCarrierAssignedID
      * @return self
      */
-    public function setContractedCarrierAssignedID(ContractedCarrierAssignedID $contractedCarrierAssignedID): self
-    {
+    public function setContractedCarrierAssignedID(
+        ?ContractedCarrierAssignedID $contractedCarrierAssignedID = null,
+    ): self {
         $this->contractedCarrierAssignedID = $contractedCarrierAssignedID;
 
         return $this;
@@ -1399,11 +1401,12 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PerformingCarrierAssignedID $performingCarrierAssignedID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PerformingCarrierAssignedID|null $performingCarrierAssignedID
      * @return self
      */
-    public function setPerformingCarrierAssignedID(PerformingCarrierAssignedID $performingCarrierAssignedID): self
-    {
+    public function setPerformingCarrierAssignedID(
+        ?PerformingCarrierAssignedID $performingCarrierAssignedID = null,
+    ): self {
         $this->performingCarrierAssignedID = $performingCarrierAssignedID;
 
         return $this;
@@ -1418,10 +1421,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\SummaryDescription> $summaryDescription
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\SummaryDescription>|null $summaryDescription
      * @return self
      */
-    public function setSummaryDescription(array $summaryDescription): self
+    public function setSummaryDescription(?array $summaryDescription = null): self
     {
         $this->summaryDescription = $summaryDescription;
 
@@ -1509,10 +1512,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalInvoiceAmount $totalInvoiceAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalInvoiceAmount|null $totalInvoiceAmount
      * @return self
      */
-    public function setTotalInvoiceAmount(TotalInvoiceAmount $totalInvoiceAmount): self
+    public function setTotalInvoiceAmount(?TotalInvoiceAmount $totalInvoiceAmount = null): self
     {
         $this->totalInvoiceAmount = $totalInvoiceAmount;
 
@@ -1538,11 +1541,12 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\DeclaredCustomsValueAmount $declaredCustomsValueAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DeclaredCustomsValueAmount|null $declaredCustomsValueAmount
      * @return self
      */
-    public function setDeclaredCustomsValueAmount(DeclaredCustomsValueAmount $declaredCustomsValueAmount): self
-    {
+    public function setDeclaredCustomsValueAmount(
+        ?DeclaredCustomsValueAmount $declaredCustomsValueAmount = null,
+    ): self {
         $this->declaredCustomsValueAmount = $declaredCustomsValueAmount;
 
         return $this;
@@ -1557,10 +1561,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\TariffDescription> $tariffDescription
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\TariffDescription>|null $tariffDescription
      * @return self
      */
-    public function setTariffDescription(array $tariffDescription): self
+    public function setTariffDescription(?array $tariffDescription = null): self
     {
         $this->tariffDescription = $tariffDescription;
 
@@ -1648,10 +1652,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TariffCode $tariffCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TariffCode|null $tariffCode
      * @return self
      */
-    public function setTariffCode(TariffCode $tariffCode): self
+    public function setTariffCode(?TariffCode $tariffCode = null): self
     {
         $this->tariffCode = $tariffCode;
 
@@ -1677,10 +1681,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\InsurancePremiumAmount $insurancePremiumAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\InsurancePremiumAmount|null $insurancePremiumAmount
      * @return self
      */
-    public function setInsurancePremiumAmount(InsurancePremiumAmount $insurancePremiumAmount): self
+    public function setInsurancePremiumAmount(?InsurancePremiumAmount $insurancePremiumAmount = null): self
     {
         $this->insurancePremiumAmount = $insurancePremiumAmount;
 
@@ -1706,10 +1710,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\GrossWeightMeasure $grossWeightMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\GrossWeightMeasure|null $grossWeightMeasure
      * @return self
      */
-    public function setGrossWeightMeasure(GrossWeightMeasure $grossWeightMeasure): self
+    public function setGrossWeightMeasure(?GrossWeightMeasure $grossWeightMeasure = null): self
     {
         $this->grossWeightMeasure = $grossWeightMeasure;
 
@@ -1735,10 +1739,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\NetWeightMeasure $netWeightMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\NetWeightMeasure|null $netWeightMeasure
      * @return self
      */
-    public function setNetWeightMeasure(NetWeightMeasure $netWeightMeasure): self
+    public function setNetWeightMeasure(?NetWeightMeasure $netWeightMeasure = null): self
     {
         $this->netWeightMeasure = $netWeightMeasure;
 
@@ -1764,10 +1768,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\NetNetWeightMeasure $netNetWeightMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\NetNetWeightMeasure|null $netNetWeightMeasure
      * @return self
      */
-    public function setNetNetWeightMeasure(NetNetWeightMeasure $netNetWeightMeasure): self
+    public function setNetNetWeightMeasure(?NetNetWeightMeasure $netNetWeightMeasure = null): self
     {
         $this->netNetWeightMeasure = $netNetWeightMeasure;
 
@@ -1793,10 +1797,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ChargeableWeightMeasure $chargeableWeightMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ChargeableWeightMeasure|null $chargeableWeightMeasure
      * @return self
      */
-    public function setChargeableWeightMeasure(ChargeableWeightMeasure $chargeableWeightMeasure): self
+    public function setChargeableWeightMeasure(?ChargeableWeightMeasure $chargeableWeightMeasure = null): self
     {
         $this->chargeableWeightMeasure = $chargeableWeightMeasure;
 
@@ -1822,10 +1826,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\GrossVolumeMeasure $grossVolumeMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\GrossVolumeMeasure|null $grossVolumeMeasure
      * @return self
      */
-    public function setGrossVolumeMeasure(GrossVolumeMeasure $grossVolumeMeasure): self
+    public function setGrossVolumeMeasure(?GrossVolumeMeasure $grossVolumeMeasure = null): self
     {
         $this->grossVolumeMeasure = $grossVolumeMeasure;
 
@@ -1851,10 +1855,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\NetVolumeMeasure $netVolumeMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\NetVolumeMeasure|null $netVolumeMeasure
      * @return self
      */
-    public function setNetVolumeMeasure(NetVolumeMeasure $netVolumeMeasure): self
+    public function setNetVolumeMeasure(?NetVolumeMeasure $netVolumeMeasure = null): self
     {
         $this->netVolumeMeasure = $netVolumeMeasure;
 
@@ -1880,10 +1884,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LoadingLengthMeasure $loadingLengthMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LoadingLengthMeasure|null $loadingLengthMeasure
      * @return self
      */
-    public function setLoadingLengthMeasure(LoadingLengthMeasure $loadingLengthMeasure): self
+    public function setLoadingLengthMeasure(?LoadingLengthMeasure $loadingLengthMeasure = null): self
     {
         $this->loadingLengthMeasure = $loadingLengthMeasure;
 
@@ -1899,10 +1903,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Remarks> $remarks
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Remarks>|null $remarks
      * @return self
      */
-    public function setRemarks(array $remarks): self
+    public function setRemarks(?array $remarks = null): self
     {
         $this->remarks = $remarks;
 
@@ -1980,10 +1984,10 @@ class ConsignmentType
     }
 
     /**
-     * @param bool $hazardousRiskIndicator
+     * @param bool|null $hazardousRiskIndicator
      * @return self
      */
-    public function setHazardousRiskIndicator(bool $hazardousRiskIndicator): self
+    public function setHazardousRiskIndicator(?bool $hazardousRiskIndicator = null): self
     {
         $this->hazardousRiskIndicator = $hazardousRiskIndicator;
 
@@ -1999,10 +2003,10 @@ class ConsignmentType
     }
 
     /**
-     * @param bool $animalFoodIndicator
+     * @param bool|null $animalFoodIndicator
      * @return self
      */
-    public function setAnimalFoodIndicator(bool $animalFoodIndicator): self
+    public function setAnimalFoodIndicator(?bool $animalFoodIndicator = null): self
     {
         $this->animalFoodIndicator = $animalFoodIndicator;
 
@@ -2018,10 +2022,10 @@ class ConsignmentType
     }
 
     /**
-     * @param bool $humanFoodIndicator
+     * @param bool|null $humanFoodIndicator
      * @return self
      */
-    public function setHumanFoodIndicator(bool $humanFoodIndicator): self
+    public function setHumanFoodIndicator(?bool $humanFoodIndicator = null): self
     {
         $this->humanFoodIndicator = $humanFoodIndicator;
 
@@ -2037,10 +2041,10 @@ class ConsignmentType
     }
 
     /**
-     * @param bool $livestockIndicator
+     * @param bool|null $livestockIndicator
      * @return self
      */
-    public function setLivestockIndicator(bool $livestockIndicator): self
+    public function setLivestockIndicator(?bool $livestockIndicator = null): self
     {
         $this->livestockIndicator = $livestockIndicator;
 
@@ -2056,10 +2060,10 @@ class ConsignmentType
     }
 
     /**
-     * @param bool $bulkCargoIndicator
+     * @param bool|null $bulkCargoIndicator
      * @return self
      */
-    public function setBulkCargoIndicator(bool $bulkCargoIndicator): self
+    public function setBulkCargoIndicator(?bool $bulkCargoIndicator = null): self
     {
         $this->bulkCargoIndicator = $bulkCargoIndicator;
 
@@ -2075,10 +2079,10 @@ class ConsignmentType
     }
 
     /**
-     * @param bool $containerizedIndicator
+     * @param bool|null $containerizedIndicator
      * @return self
      */
-    public function setContainerizedIndicator(bool $containerizedIndicator): self
+    public function setContainerizedIndicator(?bool $containerizedIndicator = null): self
     {
         $this->containerizedIndicator = $containerizedIndicator;
 
@@ -2094,10 +2098,10 @@ class ConsignmentType
     }
 
     /**
-     * @param bool $generalCargoIndicator
+     * @param bool|null $generalCargoIndicator
      * @return self
      */
-    public function setGeneralCargoIndicator(bool $generalCargoIndicator): self
+    public function setGeneralCargoIndicator(?bool $generalCargoIndicator = null): self
     {
         $this->generalCargoIndicator = $generalCargoIndicator;
 
@@ -2113,10 +2117,10 @@ class ConsignmentType
     }
 
     /**
-     * @param bool $specialSecurityIndicator
+     * @param bool|null $specialSecurityIndicator
      * @return self
      */
-    public function setSpecialSecurityIndicator(bool $specialSecurityIndicator): self
+    public function setSpecialSecurityIndicator(?bool $specialSecurityIndicator = null): self
     {
         $this->specialSecurityIndicator = $specialSecurityIndicator;
 
@@ -2132,10 +2136,10 @@ class ConsignmentType
     }
 
     /**
-     * @param bool $thirdPartyPayerIndicator
+     * @param bool|null $thirdPartyPayerIndicator
      * @return self
      */
-    public function setThirdPartyPayerIndicator(bool $thirdPartyPayerIndicator): self
+    public function setThirdPartyPayerIndicator(?bool $thirdPartyPayerIndicator = null): self
     {
         $this->thirdPartyPayerIndicator = $thirdPartyPayerIndicator;
 
@@ -2151,10 +2155,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\CarrierServiceInstructions> $carrierServiceInstructions
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\CarrierServiceInstructions>|null $carrierServiceInstructions
      * @return self
      */
-    public function setCarrierServiceInstructions(array $carrierServiceInstructions): self
+    public function setCarrierServiceInstructions(?array $carrierServiceInstructions = null): self
     {
         $this->carrierServiceInstructions = $carrierServiceInstructions;
 
@@ -2232,10 +2236,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\CustomsClearanceServiceInstructions> $customsClearanceServiceInstructions
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\CustomsClearanceServiceInstructions>|null $customsClearanceServiceInstructions
      * @return self
      */
-    public function setCustomsClearanceServiceInstructions(array $customsClearanceServiceInstructions): self
+    public function setCustomsClearanceServiceInstructions(?array $customsClearanceServiceInstructions = null): self
     {
         $this->customsClearanceServiceInstructions = $customsClearanceServiceInstructions;
 
@@ -2315,10 +2319,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ForwarderServiceInstructions> $forwarderServiceInstructions
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ForwarderServiceInstructions>|null $forwarderServiceInstructions
      * @return self
      */
-    public function setForwarderServiceInstructions(array $forwarderServiceInstructions): self
+    public function setForwarderServiceInstructions(?array $forwarderServiceInstructions = null): self
     {
         $this->forwarderServiceInstructions = $forwarderServiceInstructions;
 
@@ -2398,10 +2402,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\SpecialServiceInstructions> $specialServiceInstructions
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\SpecialServiceInstructions>|null $specialServiceInstructions
      * @return self
      */
-    public function setSpecialServiceInstructions(array $specialServiceInstructions): self
+    public function setSpecialServiceInstructions(?array $specialServiceInstructions = null): self
     {
         $this->specialServiceInstructions = $specialServiceInstructions;
 
@@ -2489,10 +2493,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SequenceID $sequenceID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SequenceID|null $sequenceID
      * @return self
      */
-    public function setSequenceID(SequenceID $sequenceID): self
+    public function setSequenceID(?SequenceID $sequenceID = null): self
     {
         $this->sequenceID = $sequenceID;
 
@@ -2518,10 +2522,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ShippingPriorityLevelCode $shippingPriorityLevelCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ShippingPriorityLevelCode|null $shippingPriorityLevelCode
      * @return self
      */
-    public function setShippingPriorityLevelCode(ShippingPriorityLevelCode $shippingPriorityLevelCode): self
+    public function setShippingPriorityLevelCode(?ShippingPriorityLevelCode $shippingPriorityLevelCode = null): self
     {
         $this->shippingPriorityLevelCode = $shippingPriorityLevelCode;
 
@@ -2547,10 +2551,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\HandlingCode $handlingCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\HandlingCode|null $handlingCode
      * @return self
      */
-    public function setHandlingCode(HandlingCode $handlingCode): self
+    public function setHandlingCode(?HandlingCode $handlingCode = null): self
     {
         $this->handlingCode = $handlingCode;
 
@@ -2566,10 +2570,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\HandlingInstructions> $handlingInstructions
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\HandlingInstructions>|null $handlingInstructions
      * @return self
      */
-    public function setHandlingInstructions(array $handlingInstructions): self
+    public function setHandlingInstructions(?array $handlingInstructions = null): self
     {
         $this->handlingInstructions = $handlingInstructions;
 
@@ -2647,10 +2651,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Information> $information
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Information>|null $information
      * @return self
      */
-    public function setInformation(array $information): self
+    public function setInformation(?array $information = null): self
     {
         $this->information = $information;
 
@@ -2738,10 +2742,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalGoodsItemQuantity $totalGoodsItemQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalGoodsItemQuantity|null $totalGoodsItemQuantity
      * @return self
      */
-    public function setTotalGoodsItemQuantity(TotalGoodsItemQuantity $totalGoodsItemQuantity): self
+    public function setTotalGoodsItemQuantity(?TotalGoodsItemQuantity $totalGoodsItemQuantity = null): self
     {
         $this->totalGoodsItemQuantity = $totalGoodsItemQuantity;
 
@@ -2767,11 +2771,11 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalTransportHandlingUnitQuantity $totalTransportHandlingUnitQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalTransportHandlingUnitQuantity|null $totalTransportHandlingUnitQuantity
      * @return self
      */
     public function setTotalTransportHandlingUnitQuantity(
-        TotalTransportHandlingUnitQuantity $totalTransportHandlingUnitQuantity,
+        ?TotalTransportHandlingUnitQuantity $totalTransportHandlingUnitQuantity = null,
     ): self {
         $this->totalTransportHandlingUnitQuantity = $totalTransportHandlingUnitQuantity;
 
@@ -2797,10 +2801,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\InsuranceValueAmount $insuranceValueAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\InsuranceValueAmount|null $insuranceValueAmount
      * @return self
      */
-    public function setInsuranceValueAmount(InsuranceValueAmount $insuranceValueAmount): self
+    public function setInsuranceValueAmount(?InsuranceValueAmount $insuranceValueAmount = null): self
     {
         $this->insuranceValueAmount = $insuranceValueAmount;
 
@@ -2826,11 +2830,11 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\DeclaredForCarriageValueAmount $declaredForCarriageValueAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DeclaredForCarriageValueAmount|null $declaredForCarriageValueAmount
      * @return self
      */
     public function setDeclaredForCarriageValueAmount(
-        DeclaredForCarriageValueAmount $declaredForCarriageValueAmount,
+        ?DeclaredForCarriageValueAmount $declaredForCarriageValueAmount = null,
     ): self {
         $this->declaredForCarriageValueAmount = $declaredForCarriageValueAmount;
 
@@ -2856,11 +2860,11 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\DeclaredStatisticsValueAmount $declaredStatisticsValueAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DeclaredStatisticsValueAmount|null $declaredStatisticsValueAmount
      * @return self
      */
     public function setDeclaredStatisticsValueAmount(
-        DeclaredStatisticsValueAmount $declaredStatisticsValueAmount,
+        ?DeclaredStatisticsValueAmount $declaredStatisticsValueAmount = null,
     ): self {
         $this->declaredStatisticsValueAmount = $declaredStatisticsValueAmount;
 
@@ -2886,10 +2890,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\FreeOnBoardValueAmount $freeOnBoardValueAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\FreeOnBoardValueAmount|null $freeOnBoardValueAmount
      * @return self
      */
-    public function setFreeOnBoardValueAmount(FreeOnBoardValueAmount $freeOnBoardValueAmount): self
+    public function setFreeOnBoardValueAmount(?FreeOnBoardValueAmount $freeOnBoardValueAmount = null): self
     {
         $this->freeOnBoardValueAmount = $freeOnBoardValueAmount;
 
@@ -2905,10 +2909,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\SpecialInstructions> $specialInstructions
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\SpecialInstructions>|null $specialInstructions
      * @return self
      */
-    public function setSpecialInstructions(array $specialInstructions): self
+    public function setSpecialInstructions(?array $specialInstructions = null): self
     {
         $this->specialInstructions = $specialInstructions;
 
@@ -2986,10 +2990,10 @@ class ConsignmentType
     }
 
     /**
-     * @param bool $splitConsignmentIndicator
+     * @param bool|null $splitConsignmentIndicator
      * @return self
      */
-    public function setSplitConsignmentIndicator(bool $splitConsignmentIndicator): self
+    public function setSplitConsignmentIndicator(?bool $splitConsignmentIndicator = null): self
     {
         $this->splitConsignmentIndicator = $splitConsignmentIndicator;
 
@@ -3005,10 +3009,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\DeliveryInstructions> $deliveryInstructions
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\DeliveryInstructions>|null $deliveryInstructions
      * @return self
      */
-    public function setDeliveryInstructions(array $deliveryInstructions): self
+    public function setDeliveryInstructions(?array $deliveryInstructions = null): self
     {
         $this->deliveryInstructions = $deliveryInstructions;
 
@@ -3096,10 +3100,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ConsignmentQuantity $consignmentQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ConsignmentQuantity|null $consignmentQuantity
      * @return self
      */
-    public function setConsignmentQuantity(ConsignmentQuantity $consignmentQuantity): self
+    public function setConsignmentQuantity(?ConsignmentQuantity $consignmentQuantity = null): self
     {
         $this->consignmentQuantity = $consignmentQuantity;
 
@@ -3115,10 +3119,10 @@ class ConsignmentType
     }
 
     /**
-     * @param bool $consolidatableIndicator
+     * @param bool|null $consolidatableIndicator
      * @return self
      */
-    public function setConsolidatableIndicator(bool $consolidatableIndicator): self
+    public function setConsolidatableIndicator(?bool $consolidatableIndicator = null): self
     {
         $this->consolidatableIndicator = $consolidatableIndicator;
 
@@ -3134,10 +3138,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\HaulageInstructions> $haulageInstructions
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\HaulageInstructions>|null $haulageInstructions
      * @return self
      */
-    public function setHaulageInstructions(array $haulageInstructions): self
+    public function setHaulageInstructions(?array $haulageInstructions = null): self
     {
         $this->haulageInstructions = $haulageInstructions;
 
@@ -3225,10 +3229,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LoadingSequenceID $loadingSequenceID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LoadingSequenceID|null $loadingSequenceID
      * @return self
      */
-    public function setLoadingSequenceID(LoadingSequenceID $loadingSequenceID): self
+    public function setLoadingSequenceID(?LoadingSequenceID $loadingSequenceID = null): self
     {
         $this->loadingSequenceID = $loadingSequenceID;
 
@@ -3254,10 +3258,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ChildConsignmentQuantity $childConsignmentQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ChildConsignmentQuantity|null $childConsignmentQuantity
      * @return self
      */
-    public function setChildConsignmentQuantity(ChildConsignmentQuantity $childConsignmentQuantity): self
+    public function setChildConsignmentQuantity(?ChildConsignmentQuantity $childConsignmentQuantity = null): self
     {
         $this->childConsignmentQuantity = $childConsignmentQuantity;
 
@@ -3283,10 +3287,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalPackagesQuantity $totalPackagesQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalPackagesQuantity|null $totalPackagesQuantity
      * @return self
      */
-    public function setTotalPackagesQuantity(TotalPackagesQuantity $totalPackagesQuantity): self
+    public function setTotalPackagesQuantity(?TotalPackagesQuantity $totalPackagesQuantity = null): self
     {
         $this->totalPackagesQuantity = $totalPackagesQuantity;
 
@@ -3302,10 +3306,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ConsolidatedShipment> $consolidatedShipment
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ConsolidatedShipment>|null $consolidatedShipment
      * @return self
      */
-    public function setConsolidatedShipment(array $consolidatedShipment): self
+    public function setConsolidatedShipment(?array $consolidatedShipment = null): self
     {
         $this->consolidatedShipment = $consolidatedShipment;
 
@@ -3383,10 +3387,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CustomsDeclaration> $customsDeclaration
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CustomsDeclaration>|null $customsDeclaration
      * @return self
      */
-    public function setCustomsDeclaration(array $customsDeclaration): self
+    public function setCustomsDeclaration(?array $customsDeclaration = null): self
     {
         $this->customsDeclaration = $customsDeclaration;
 
@@ -3474,11 +3478,11 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\RequestedPickupTransportEvent $requestedPickupTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RequestedPickupTransportEvent|null $requestedPickupTransportEvent
      * @return self
      */
     public function setRequestedPickupTransportEvent(
-        RequestedPickupTransportEvent $requestedPickupTransportEvent,
+        ?RequestedPickupTransportEvent $requestedPickupTransportEvent = null,
     ): self {
         $this->requestedPickupTransportEvent = $requestedPickupTransportEvent;
 
@@ -3504,11 +3508,11 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\RequestedDeliveryTransportEvent $requestedDeliveryTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RequestedDeliveryTransportEvent|null $requestedDeliveryTransportEvent
      * @return self
      */
     public function setRequestedDeliveryTransportEvent(
-        RequestedDeliveryTransportEvent $requestedDeliveryTransportEvent,
+        ?RequestedDeliveryTransportEvent $requestedDeliveryTransportEvent = null,
     ): self {
         $this->requestedDeliveryTransportEvent = $requestedDeliveryTransportEvent;
 
@@ -3534,11 +3538,12 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PlannedPickupTransportEvent $plannedPickupTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PlannedPickupTransportEvent|null $plannedPickupTransportEvent
      * @return self
      */
-    public function setPlannedPickupTransportEvent(PlannedPickupTransportEvent $plannedPickupTransportEvent): self
-    {
+    public function setPlannedPickupTransportEvent(
+        ?PlannedPickupTransportEvent $plannedPickupTransportEvent = null,
+    ): self {
         $this->plannedPickupTransportEvent = $plannedPickupTransportEvent;
 
         return $this;
@@ -3563,11 +3568,11 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PlannedDeliveryTransportEvent $plannedDeliveryTransportEvent
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PlannedDeliveryTransportEvent|null $plannedDeliveryTransportEvent
      * @return self
      */
     public function setPlannedDeliveryTransportEvent(
-        PlannedDeliveryTransportEvent $plannedDeliveryTransportEvent,
+        ?PlannedDeliveryTransportEvent $plannedDeliveryTransportEvent = null,
     ): self {
         $this->plannedDeliveryTransportEvent = $plannedDeliveryTransportEvent;
 
@@ -3583,10 +3588,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Status> $status
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Status>|null $status
      * @return self
      */
-    public function setStatus(array $status): self
+    public function setStatus(?array $status = null): self
     {
         $this->status = $status;
 
@@ -3664,10 +3669,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ChildConsignment> $childConsignment
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ChildConsignment>|null $childConsignment
      * @return self
      */
-    public function setChildConsignment(array $childConsignment): self
+    public function setChildConsignment(?array $childConsignment = null): self
     {
         $this->childConsignment = $childConsignment;
 
@@ -3755,10 +3760,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ConsigneeParty $consigneeParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ConsigneeParty|null $consigneeParty
      * @return self
      */
-    public function setConsigneeParty(ConsigneeParty $consigneeParty): self
+    public function setConsigneeParty(?ConsigneeParty $consigneeParty = null): self
     {
         $this->consigneeParty = $consigneeParty;
 
@@ -3784,10 +3789,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ExporterParty $exporterParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ExporterParty|null $exporterParty
      * @return self
      */
-    public function setExporterParty(ExporterParty $exporterParty): self
+    public function setExporterParty(?ExporterParty $exporterParty = null): self
     {
         $this->exporterParty = $exporterParty;
 
@@ -3813,10 +3818,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ConsignorParty $consignorParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ConsignorParty|null $consignorParty
      * @return self
      */
-    public function setConsignorParty(ConsignorParty $consignorParty): self
+    public function setConsignorParty(?ConsignorParty $consignorParty = null): self
     {
         $this->consignorParty = $consignorParty;
 
@@ -3842,10 +3847,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ImporterParty $importerParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ImporterParty|null $importerParty
      * @return self
      */
-    public function setImporterParty(ImporterParty $importerParty): self
+    public function setImporterParty(?ImporterParty $importerParty = null): self
     {
         $this->importerParty = $importerParty;
 
@@ -3871,10 +3876,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\CarrierParty $carrierParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CarrierParty|null $carrierParty
      * @return self
      */
-    public function setCarrierParty(CarrierParty $carrierParty): self
+    public function setCarrierParty(?CarrierParty $carrierParty = null): self
     {
         $this->carrierParty = $carrierParty;
 
@@ -3900,10 +3905,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\FreightForwarderParty $freightForwarderParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\FreightForwarderParty|null $freightForwarderParty
      * @return self
      */
-    public function setFreightForwarderParty(FreightForwarderParty $freightForwarderParty): self
+    public function setFreightForwarderParty(?FreightForwarderParty $freightForwarderParty = null): self
     {
         $this->freightForwarderParty = $freightForwarderParty;
 
@@ -3929,10 +3934,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\NotifyParty $notifyParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\NotifyParty|null $notifyParty
      * @return self
      */
-    public function setNotifyParty(NotifyParty $notifyParty): self
+    public function setNotifyParty(?NotifyParty $notifyParty = null): self
     {
         $this->notifyParty = $notifyParty;
 
@@ -3958,10 +3963,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\OriginalDespatchParty $originalDespatchParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OriginalDespatchParty|null $originalDespatchParty
      * @return self
      */
-    public function setOriginalDespatchParty(OriginalDespatchParty $originalDespatchParty): self
+    public function setOriginalDespatchParty(?OriginalDespatchParty $originalDespatchParty = null): self
     {
         $this->originalDespatchParty = $originalDespatchParty;
 
@@ -3987,10 +3992,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\FinalDeliveryParty $finalDeliveryParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\FinalDeliveryParty|null $finalDeliveryParty
      * @return self
      */
-    public function setFinalDeliveryParty(FinalDeliveryParty $finalDeliveryParty): self
+    public function setFinalDeliveryParty(?FinalDeliveryParty $finalDeliveryParty = null): self
     {
         $this->finalDeliveryParty = $finalDeliveryParty;
 
@@ -4016,10 +4021,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PerformingCarrierParty $performingCarrierParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PerformingCarrierParty|null $performingCarrierParty
      * @return self
      */
-    public function setPerformingCarrierParty(PerformingCarrierParty $performingCarrierParty): self
+    public function setPerformingCarrierParty(?PerformingCarrierParty $performingCarrierParty = null): self
     {
         $this->performingCarrierParty = $performingCarrierParty;
 
@@ -4045,10 +4050,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\SubstituteCarrierParty $substituteCarrierParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SubstituteCarrierParty|null $substituteCarrierParty
      * @return self
      */
-    public function setSubstituteCarrierParty(SubstituteCarrierParty $substituteCarrierParty): self
+    public function setSubstituteCarrierParty(?SubstituteCarrierParty $substituteCarrierParty = null): self
     {
         $this->substituteCarrierParty = $substituteCarrierParty;
 
@@ -4074,10 +4079,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\LogisticsOperatorParty $logisticsOperatorParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\LogisticsOperatorParty|null $logisticsOperatorParty
      * @return self
      */
-    public function setLogisticsOperatorParty(LogisticsOperatorParty $logisticsOperatorParty): self
+    public function setLogisticsOperatorParty(?LogisticsOperatorParty $logisticsOperatorParty = null): self
     {
         $this->logisticsOperatorParty = $logisticsOperatorParty;
 
@@ -4103,10 +4108,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TransportAdvisorParty $transportAdvisorParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TransportAdvisorParty|null $transportAdvisorParty
      * @return self
      */
-    public function setTransportAdvisorParty(TransportAdvisorParty $transportAdvisorParty): self
+    public function setTransportAdvisorParty(?TransportAdvisorParty $transportAdvisorParty = null): self
     {
         $this->transportAdvisorParty = $transportAdvisorParty;
 
@@ -4132,11 +4137,11 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\HazardousItemNotificationParty $hazardousItemNotificationParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\HazardousItemNotificationParty|null $hazardousItemNotificationParty
      * @return self
      */
     public function setHazardousItemNotificationParty(
-        HazardousItemNotificationParty $hazardousItemNotificationParty,
+        ?HazardousItemNotificationParty $hazardousItemNotificationParty = null,
     ): self {
         $this->hazardousItemNotificationParty = $hazardousItemNotificationParty;
 
@@ -4162,10 +4167,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\InsuranceParty $insuranceParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\InsuranceParty|null $insuranceParty
      * @return self
      */
-    public function setInsuranceParty(InsuranceParty $insuranceParty): self
+    public function setInsuranceParty(?InsuranceParty $insuranceParty = null): self
     {
         $this->insuranceParty = $insuranceParty;
 
@@ -4191,10 +4196,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\MortgageHolderParty $mortgageHolderParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MortgageHolderParty|null $mortgageHolderParty
      * @return self
      */
-    public function setMortgageHolderParty(MortgageHolderParty $mortgageHolderParty): self
+    public function setMortgageHolderParty(?MortgageHolderParty $mortgageHolderParty = null): self
     {
         $this->mortgageHolderParty = $mortgageHolderParty;
 
@@ -4220,10 +4225,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\BillOfLadingHolderParty $billOfLadingHolderParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\BillOfLadingHolderParty|null $billOfLadingHolderParty
      * @return self
      */
-    public function setBillOfLadingHolderParty(BillOfLadingHolderParty $billOfLadingHolderParty): self
+    public function setBillOfLadingHolderParty(?BillOfLadingHolderParty $billOfLadingHolderParty = null): self
     {
         $this->billOfLadingHolderParty = $billOfLadingHolderParty;
 
@@ -4249,10 +4254,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\OriginalDepartureCountry $originalDepartureCountry
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OriginalDepartureCountry|null $originalDepartureCountry
      * @return self
      */
-    public function setOriginalDepartureCountry(OriginalDepartureCountry $originalDepartureCountry): self
+    public function setOriginalDepartureCountry(?OriginalDepartureCountry $originalDepartureCountry = null): self
     {
         $this->originalDepartureCountry = $originalDepartureCountry;
 
@@ -4278,10 +4283,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\FinalDestinationCountry $finalDestinationCountry
+     * @param \horstoeko\invoicesuite\models\ubl\cac\FinalDestinationCountry|null $finalDestinationCountry
      * @return self
      */
-    public function setFinalDestinationCountry(FinalDestinationCountry $finalDestinationCountry): self
+    public function setFinalDestinationCountry(?FinalDestinationCountry $finalDestinationCountry = null): self
     {
         $this->finalDestinationCountry = $finalDestinationCountry;
 
@@ -4297,10 +4302,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TransitCountry> $transitCountry
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TransitCountry>|null $transitCountry
      * @return self
      */
-    public function setTransitCountry(array $transitCountry): self
+    public function setTransitCountry(?array $transitCountry = null): self
     {
         $this->transitCountry = $transitCountry;
 
@@ -4388,10 +4393,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\TransportContract $transportContract
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TransportContract|null $transportContract
      * @return self
      */
-    public function setTransportContract(TransportContract $transportContract): self
+    public function setTransportContract(?TransportContract $transportContract = null): self
     {
         $this->transportContract = $transportContract;
 
@@ -4407,10 +4412,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TransportEvent> $transportEvent
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TransportEvent>|null $transportEvent
      * @return self
      */
-    public function setTransportEvent(array $transportEvent): self
+    public function setTransportEvent(?array $transportEvent = null): self
     {
         $this->transportEvent = $transportEvent;
 
@@ -4498,11 +4503,11 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\OriginalDespatchTransportationService $originalDespatchTransportationService
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OriginalDespatchTransportationService|null $originalDespatchTransportationService
      * @return self
      */
     public function setOriginalDespatchTransportationService(
-        OriginalDespatchTransportationService $originalDespatchTransportationService,
+        ?OriginalDespatchTransportationService $originalDespatchTransportationService = null,
     ): self {
         $this->originalDespatchTransportationService = $originalDespatchTransportationService;
 
@@ -4528,11 +4533,11 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\FinalDeliveryTransportationService $finalDeliveryTransportationService
+     * @param \horstoeko\invoicesuite\models\ubl\cac\FinalDeliveryTransportationService|null $finalDeliveryTransportationService
      * @return self
      */
     public function setFinalDeliveryTransportationService(
-        FinalDeliveryTransportationService $finalDeliveryTransportationService,
+        ?FinalDeliveryTransportationService $finalDeliveryTransportationService = null,
     ): self {
         $this->finalDeliveryTransportationService = $finalDeliveryTransportationService;
 
@@ -4558,10 +4563,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms $deliveryTerms
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms|null $deliveryTerms
      * @return self
      */
-    public function setDeliveryTerms(DeliveryTerms $deliveryTerms): self
+    public function setDeliveryTerms(?DeliveryTerms $deliveryTerms = null): self
     {
         $this->deliveryTerms = $deliveryTerms;
 
@@ -4587,10 +4592,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PaymentTerms $paymentTerms
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PaymentTerms|null $paymentTerms
      * @return self
      */
-    public function setPaymentTerms(PaymentTerms $paymentTerms): self
+    public function setPaymentTerms(?PaymentTerms $paymentTerms = null): self
     {
         $this->paymentTerms = $paymentTerms;
 
@@ -4616,10 +4621,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\CollectPaymentTerms $collectPaymentTerms
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CollectPaymentTerms|null $collectPaymentTerms
      * @return self
      */
-    public function setCollectPaymentTerms(CollectPaymentTerms $collectPaymentTerms): self
+    public function setCollectPaymentTerms(?CollectPaymentTerms $collectPaymentTerms = null): self
     {
         $this->collectPaymentTerms = $collectPaymentTerms;
 
@@ -4645,10 +4650,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\DisbursementPaymentTerms $disbursementPaymentTerms
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DisbursementPaymentTerms|null $disbursementPaymentTerms
      * @return self
      */
-    public function setDisbursementPaymentTerms(DisbursementPaymentTerms $disbursementPaymentTerms): self
+    public function setDisbursementPaymentTerms(?DisbursementPaymentTerms $disbursementPaymentTerms = null): self
     {
         $this->disbursementPaymentTerms = $disbursementPaymentTerms;
 
@@ -4674,10 +4679,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PrepaidPaymentTerms $prepaidPaymentTerms
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PrepaidPaymentTerms|null $prepaidPaymentTerms
      * @return self
      */
-    public function setPrepaidPaymentTerms(PrepaidPaymentTerms $prepaidPaymentTerms): self
+    public function setPrepaidPaymentTerms(?PrepaidPaymentTerms $prepaidPaymentTerms = null): self
     {
         $this->prepaidPaymentTerms = $prepaidPaymentTerms;
 
@@ -4693,10 +4698,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge> $freightAllowanceCharge
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge>|null $freightAllowanceCharge
      * @return self
      */
-    public function setFreightAllowanceCharge(array $freightAllowanceCharge): self
+    public function setFreightAllowanceCharge(?array $freightAllowanceCharge = null): self
     {
         $this->freightAllowanceCharge = $freightAllowanceCharge;
 
@@ -4774,10 +4779,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ExtraAllowanceCharge> $extraAllowanceCharge
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ExtraAllowanceCharge>|null $extraAllowanceCharge
      * @return self
      */
-    public function setExtraAllowanceCharge(array $extraAllowanceCharge): self
+    public function setExtraAllowanceCharge(?array $extraAllowanceCharge = null): self
     {
         $this->extraAllowanceCharge = $extraAllowanceCharge;
 
@@ -4855,10 +4860,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\MainCarriageShipmentStage> $mainCarriageShipmentStage
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\MainCarriageShipmentStage>|null $mainCarriageShipmentStage
      * @return self
      */
-    public function setMainCarriageShipmentStage(array $mainCarriageShipmentStage): self
+    public function setMainCarriageShipmentStage(?array $mainCarriageShipmentStage = null): self
     {
         $this->mainCarriageShipmentStage = $mainCarriageShipmentStage;
 
@@ -4936,10 +4941,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PreCarriageShipmentStage> $preCarriageShipmentStage
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PreCarriageShipmentStage>|null $preCarriageShipmentStage
      * @return self
      */
-    public function setPreCarriageShipmentStage(array $preCarriageShipmentStage): self
+    public function setPreCarriageShipmentStage(?array $preCarriageShipmentStage = null): self
     {
         $this->preCarriageShipmentStage = $preCarriageShipmentStage;
 
@@ -5017,10 +5022,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\OnCarriageShipmentStage> $onCarriageShipmentStage
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\OnCarriageShipmentStage>|null $onCarriageShipmentStage
      * @return self
      */
-    public function setOnCarriageShipmentStage(array $onCarriageShipmentStage): self
+    public function setOnCarriageShipmentStage(?array $onCarriageShipmentStage = null): self
     {
         $this->onCarriageShipmentStage = $onCarriageShipmentStage;
 
@@ -5098,10 +5103,10 @@ class ConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TransportHandlingUnit> $transportHandlingUnit
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TransportHandlingUnit>|null $transportHandlingUnit
      * @return self
      */
-    public function setTransportHandlingUnit(array $transportHandlingUnit): self
+    public function setTransportHandlingUnit(?array $transportHandlingUnit = null): self
     {
         $this->transportHandlingUnit = $transportHandlingUnit;
 
@@ -5189,10 +5194,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\FirstArrivalPortLocation $firstArrivalPortLocation
+     * @param \horstoeko\invoicesuite\models\ubl\cac\FirstArrivalPortLocation|null $firstArrivalPortLocation
      * @return self
      */
-    public function setFirstArrivalPortLocation(FirstArrivalPortLocation $firstArrivalPortLocation): self
+    public function setFirstArrivalPortLocation(?FirstArrivalPortLocation $firstArrivalPortLocation = null): self
     {
         $this->firstArrivalPortLocation = $firstArrivalPortLocation;
 
@@ -5218,10 +5223,10 @@ class ConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\LastExitPortLocation $lastExitPortLocation
+     * @param \horstoeko\invoicesuite\models\ubl\cac\LastExitPortLocation|null $lastExitPortLocation
      * @return self
      */
-    public function setLastExitPortLocation(LastExitPortLocation $lastExitPortLocation): self
+    public function setLastExitPortLocation(?LastExitPortLocation $lastExitPortLocation = null): self
     {
         $this->lastExitPortLocation = $lastExitPortLocation;
 

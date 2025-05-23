@@ -11,7 +11,7 @@ class ShareholderPartyType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PartecipationPercent
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PartecipationPercent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PartecipationPercent")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class ShareholderPartyType
     private $partecipationPercent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Party
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Party|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Party")
      * @JMS\Expose
@@ -51,10 +51,10 @@ class ShareholderPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PartecipationPercent $partecipationPercent
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PartecipationPercent|null $partecipationPercent
      * @return self
      */
-    public function setPartecipationPercent(PartecipationPercent $partecipationPercent): self
+    public function setPartecipationPercent(?PartecipationPercent $partecipationPercent = null): self
     {
         $this->partecipationPercent = $partecipationPercent;
 
@@ -80,10 +80,10 @@ class ShareholderPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Party $party
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Party|null $party
      * @return self
      */
-    public function setParty(Party $party): self
+    public function setParty(?Party $party = null): self
     {
         $this->party = $party;
 

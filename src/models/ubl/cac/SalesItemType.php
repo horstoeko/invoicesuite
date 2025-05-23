@@ -11,7 +11,7 @@ class SalesItemType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Quantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Quantity")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class SalesItemType
     private $quantity;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ActivityProperty>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ActivityProperty>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ActivityProperty>")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class SalesItemType
     private $activityProperty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TaxExclusivePrice>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TaxExclusivePrice>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TaxExclusivePrice>")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class SalesItemType
     private $taxExclusivePrice;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TaxInclusivePrice>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TaxInclusivePrice>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TaxInclusivePrice>")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class SalesItemType
     private $taxInclusivePrice;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Item
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Item|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Item")
      * @JMS\Expose
@@ -87,10 +87,10 @@ class SalesItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Quantity $quantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null $quantity
      * @return self
      */
-    public function setQuantity(Quantity $quantity): self
+    public function setQuantity(?Quantity $quantity = null): self
     {
         $this->quantity = $quantity;
 
@@ -106,10 +106,10 @@ class SalesItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ActivityProperty> $activityProperty
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ActivityProperty>|null $activityProperty
      * @return self
      */
-    public function setActivityProperty(array $activityProperty): self
+    public function setActivityProperty(?array $activityProperty = null): self
     {
         $this->activityProperty = $activityProperty;
 
@@ -187,10 +187,10 @@ class SalesItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TaxExclusivePrice> $taxExclusivePrice
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TaxExclusivePrice>|null $taxExclusivePrice
      * @return self
      */
-    public function setTaxExclusivePrice(array $taxExclusivePrice): self
+    public function setTaxExclusivePrice(?array $taxExclusivePrice = null): self
     {
         $this->taxExclusivePrice = $taxExclusivePrice;
 
@@ -268,10 +268,10 @@ class SalesItemType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TaxInclusivePrice> $taxInclusivePrice
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TaxInclusivePrice>|null $taxInclusivePrice
      * @return self
      */
-    public function setTaxInclusivePrice(array $taxInclusivePrice): self
+    public function setTaxInclusivePrice(?array $taxInclusivePrice = null): self
     {
         $this->taxInclusivePrice = $taxInclusivePrice;
 
@@ -359,10 +359,10 @@ class SalesItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Item $item
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Item|null $item
      * @return self
      */
-    public function setItem(Item $item): self
+    public function setItem(?Item $item = null): self
     {
         $this->item = $item;
 

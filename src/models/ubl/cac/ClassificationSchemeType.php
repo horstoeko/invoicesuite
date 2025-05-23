@@ -21,7 +21,7 @@ class ClassificationSchemeType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class ClassificationSchemeType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\UUID")
      * @JMS\Expose
@@ -43,7 +43,7 @@ class ClassificationSchemeType
     private $uUID;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -54,7 +54,7 @@ class ClassificationSchemeType
     private $lastRevisionDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -65,7 +65,7 @@ class ClassificationSchemeType
     private $lastRevisionTime;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -77,7 +77,7 @@ class ClassificationSchemeType
     private $note;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Name")
      * @JMS\Expose
@@ -88,7 +88,7 @@ class ClassificationSchemeType
     private $name;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -100,7 +100,7 @@ class ClassificationSchemeType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AgencyID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AgencyID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AgencyID")
      * @JMS\Expose
@@ -111,7 +111,7 @@ class ClassificationSchemeType
     private $agencyID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AgencyName
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AgencyName|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AgencyName")
      * @JMS\Expose
@@ -122,7 +122,7 @@ class ClassificationSchemeType
     private $agencyName;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\VersionID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\VersionID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\VersionID")
      * @JMS\Expose
@@ -133,7 +133,7 @@ class ClassificationSchemeType
     private $versionID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\URI
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\URI|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\URI")
      * @JMS\Expose
@@ -144,7 +144,7 @@ class ClassificationSchemeType
     private $uRI;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SchemeURI
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SchemeURI|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SchemeURI")
      * @JMS\Expose
@@ -155,7 +155,7 @@ class ClassificationSchemeType
     private $schemeURI;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LanguageID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LanguageID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LanguageID")
      * @JMS\Expose
@@ -166,7 +166,7 @@ class ClassificationSchemeType
     private $languageID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ClassificationCategory>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ClassificationCategory>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ClassificationCategory>")
      * @JMS\Expose
@@ -196,10 +196,10 @@ class ClassificationSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -225,10 +225,10 @@ class ClassificationSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID $uUID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID|null $uUID
      * @return self
      */
-    public function setUUID(UUID $uUID): self
+    public function setUUID(?UUID $uUID = null): self
     {
         $this->uUID = $uUID;
 
@@ -244,10 +244,10 @@ class ClassificationSchemeType
     }
 
     /**
-     * @param \DateTimeInterface $lastRevisionDate
+     * @param \DateTimeInterface|null $lastRevisionDate
      * @return self
      */
-    public function setLastRevisionDate(\DateTimeInterface $lastRevisionDate): self
+    public function setLastRevisionDate(?\DateTimeInterface $lastRevisionDate = null): self
     {
         $this->lastRevisionDate = $lastRevisionDate;
 
@@ -263,10 +263,10 @@ class ClassificationSchemeType
     }
 
     /**
-     * @param \DateTimeInterface $lastRevisionTime
+     * @param \DateTimeInterface|null $lastRevisionTime
      * @return self
      */
-    public function setLastRevisionTime(\DateTimeInterface $lastRevisionTime): self
+    public function setLastRevisionTime(?\DateTimeInterface $lastRevisionTime = null): self
     {
         $this->lastRevisionTime = $lastRevisionTime;
 
@@ -282,10 +282,10 @@ class ClassificationSchemeType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -373,10 +373,10 @@ class ClassificationSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name|null $name
      * @return self
      */
-    public function setName(Name $name): self
+    public function setName(?Name $name = null): self
     {
         $this->name = $name;
 
@@ -392,10 +392,10 @@ class ClassificationSchemeType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -483,10 +483,10 @@ class ClassificationSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AgencyID $agencyID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AgencyID|null $agencyID
      * @return self
      */
-    public function setAgencyID(AgencyID $agencyID): self
+    public function setAgencyID(?AgencyID $agencyID = null): self
     {
         $this->agencyID = $agencyID;
 
@@ -512,10 +512,10 @@ class ClassificationSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AgencyName $agencyName
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AgencyName|null $agencyName
      * @return self
      */
-    public function setAgencyName(AgencyName $agencyName): self
+    public function setAgencyName(?AgencyName $agencyName = null): self
     {
         $this->agencyName = $agencyName;
 
@@ -541,10 +541,10 @@ class ClassificationSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\VersionID $versionID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\VersionID|null $versionID
      * @return self
      */
-    public function setVersionID(VersionID $versionID): self
+    public function setVersionID(?VersionID $versionID = null): self
     {
         $this->versionID = $versionID;
 
@@ -570,10 +570,10 @@ class ClassificationSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\URI $uRI
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\URI|null $uRI
      * @return self
      */
-    public function setURI(URI $uRI): self
+    public function setURI(?URI $uRI = null): self
     {
         $this->uRI = $uRI;
 
@@ -599,10 +599,10 @@ class ClassificationSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SchemeURI $schemeURI
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SchemeURI|null $schemeURI
      * @return self
      */
-    public function setSchemeURI(SchemeURI $schemeURI): self
+    public function setSchemeURI(?SchemeURI $schemeURI = null): self
     {
         $this->schemeURI = $schemeURI;
 
@@ -628,10 +628,10 @@ class ClassificationSchemeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LanguageID $languageID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LanguageID|null $languageID
      * @return self
      */
-    public function setLanguageID(LanguageID $languageID): self
+    public function setLanguageID(?LanguageID $languageID = null): self
     {
         $this->languageID = $languageID;
 
@@ -647,10 +647,10 @@ class ClassificationSchemeType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ClassificationCategory> $classificationCategory
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ClassificationCategory>|null $classificationCategory
      * @return self
      */
-    public function setClassificationCategory(array $classificationCategory): self
+    public function setClassificationCategory(?array $classificationCategory = null): self
     {
         $this->classificationCategory = $classificationCategory;
 

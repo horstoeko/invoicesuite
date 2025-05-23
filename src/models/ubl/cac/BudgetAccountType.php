@@ -12,7 +12,7 @@ class BudgetAccountType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class BudgetAccountType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\BudgetYearNumeric
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\BudgetYearNumeric|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\BudgetYearNumeric")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class BudgetAccountType
     private $budgetYearNumeric;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\RequiredClassificationScheme
+     * @var \horstoeko\invoicesuite\models\ubl\cac\RequiredClassificationScheme|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\RequiredClassificationScheme")
      * @JMS\Expose
@@ -63,10 +63,10 @@ class BudgetAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -92,10 +92,10 @@ class BudgetAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\BudgetYearNumeric $budgetYearNumeric
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\BudgetYearNumeric|null $budgetYearNumeric
      * @return self
      */
-    public function setBudgetYearNumeric(BudgetYearNumeric $budgetYearNumeric): self
+    public function setBudgetYearNumeric(?BudgetYearNumeric $budgetYearNumeric = null): self
     {
         $this->budgetYearNumeric = $budgetYearNumeric;
 
@@ -121,11 +121,12 @@ class BudgetAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\RequiredClassificationScheme $requiredClassificationScheme
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RequiredClassificationScheme|null $requiredClassificationScheme
      * @return self
      */
-    public function setRequiredClassificationScheme(RequiredClassificationScheme $requiredClassificationScheme): self
-    {
+    public function setRequiredClassificationScheme(
+        ?RequiredClassificationScheme $requiredClassificationScheme = null,
+    ): self {
         $this->requiredClassificationScheme = $requiredClassificationScheme;
 
         return $this;

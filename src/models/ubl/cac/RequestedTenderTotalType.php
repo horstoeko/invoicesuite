@@ -16,7 +16,7 @@ class RequestedTenderTotalType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\EstimatedOverallContractAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\EstimatedOverallContractAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\EstimatedOverallContractAmount")
      * @JMS\Expose
@@ -27,7 +27,7 @@ class RequestedTenderTotalType
     private $estimatedOverallContractAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TotalAmount")
      * @JMS\Expose
@@ -38,7 +38,7 @@ class RequestedTenderTotalType
     private $totalAmount;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -49,7 +49,7 @@ class RequestedTenderTotalType
     private $taxIncludedIndicator;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MinimumAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MinimumAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MinimumAmount")
      * @JMS\Expose
@@ -60,7 +60,7 @@ class RequestedTenderTotalType
     private $minimumAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MaximumAmount")
      * @JMS\Expose
@@ -71,7 +71,7 @@ class RequestedTenderTotalType
     private $maximumAmount;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\MonetaryScope>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\MonetaryScope>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\MonetaryScope>")
      * @JMS\Expose
@@ -83,7 +83,7 @@ class RequestedTenderTotalType
     private $monetaryScope;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AverageSubsequentContractAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AverageSubsequentContractAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AverageSubsequentContractAmount")
      * @JMS\Expose
@@ -94,7 +94,7 @@ class RequestedTenderTotalType
     private $averageSubsequentContractAmount;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ApplicableTaxCategory>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ApplicableTaxCategory>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ApplicableTaxCategory>")
      * @JMS\Expose
@@ -124,11 +124,11 @@ class RequestedTenderTotalType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\EstimatedOverallContractAmount $estimatedOverallContractAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\EstimatedOverallContractAmount|null $estimatedOverallContractAmount
      * @return self
      */
     public function setEstimatedOverallContractAmount(
-        EstimatedOverallContractAmount $estimatedOverallContractAmount,
+        ?EstimatedOverallContractAmount $estimatedOverallContractAmount = null,
     ): self {
         $this->estimatedOverallContractAmount = $estimatedOverallContractAmount;
 
@@ -154,10 +154,10 @@ class RequestedTenderTotalType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalAmount $totalAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalAmount|null $totalAmount
      * @return self
      */
-    public function setTotalAmount(TotalAmount $totalAmount): self
+    public function setTotalAmount(?TotalAmount $totalAmount = null): self
     {
         $this->totalAmount = $totalAmount;
 
@@ -173,10 +173,10 @@ class RequestedTenderTotalType
     }
 
     /**
-     * @param bool $taxIncludedIndicator
+     * @param bool|null $taxIncludedIndicator
      * @return self
      */
-    public function setTaxIncludedIndicator(bool $taxIncludedIndicator): self
+    public function setTaxIncludedIndicator(?bool $taxIncludedIndicator = null): self
     {
         $this->taxIncludedIndicator = $taxIncludedIndicator;
 
@@ -202,10 +202,10 @@ class RequestedTenderTotalType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MinimumAmount $minimumAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MinimumAmount|null $minimumAmount
      * @return self
      */
-    public function setMinimumAmount(MinimumAmount $minimumAmount): self
+    public function setMinimumAmount(?MinimumAmount $minimumAmount = null): self
     {
         $this->minimumAmount = $minimumAmount;
 
@@ -231,10 +231,10 @@ class RequestedTenderTotalType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumAmount $maximumAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumAmount|null $maximumAmount
      * @return self
      */
-    public function setMaximumAmount(MaximumAmount $maximumAmount): self
+    public function setMaximumAmount(?MaximumAmount $maximumAmount = null): self
     {
         $this->maximumAmount = $maximumAmount;
 
@@ -250,10 +250,10 @@ class RequestedTenderTotalType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\MonetaryScope> $monetaryScope
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\MonetaryScope>|null $monetaryScope
      * @return self
      */
-    public function setMonetaryScope(array $monetaryScope): self
+    public function setMonetaryScope(?array $monetaryScope = null): self
     {
         $this->monetaryScope = $monetaryScope;
 
@@ -341,11 +341,11 @@ class RequestedTenderTotalType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AverageSubsequentContractAmount $averageSubsequentContractAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AverageSubsequentContractAmount|null $averageSubsequentContractAmount
      * @return self
      */
     public function setAverageSubsequentContractAmount(
-        AverageSubsequentContractAmount $averageSubsequentContractAmount,
+        ?AverageSubsequentContractAmount $averageSubsequentContractAmount = null,
     ): self {
         $this->averageSubsequentContractAmount = $averageSubsequentContractAmount;
 
@@ -361,10 +361,10 @@ class RequestedTenderTotalType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ApplicableTaxCategory> $applicableTaxCategory
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ApplicableTaxCategory>|null $applicableTaxCategory
      * @return self
      */
-    public function setApplicableTaxCategory(array $applicableTaxCategory): self
+    public function setApplicableTaxCategory(?array $applicableTaxCategory = null): self
     {
         $this->applicableTaxCategory = $applicableTaxCategory;
 

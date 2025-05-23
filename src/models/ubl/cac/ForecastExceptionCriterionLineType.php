@@ -15,7 +15,7 @@ class ForecastExceptionCriterionLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ForecastPurposeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ForecastPurposeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ForecastPurposeCode")
      * @JMS\Expose
@@ -26,7 +26,7 @@ class ForecastExceptionCriterionLineType
     private $forecastPurposeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class ForecastExceptionCriterionLineType
     private $forecastTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ComparisonDataSourceCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ComparisonDataSourceCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ComparisonDataSourceCode")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class ForecastExceptionCriterionLineType
     private $comparisonDataSourceCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\DataSourceCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\DataSourceCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\DataSourceCode")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class ForecastExceptionCriterionLineType
     private $dataSourceCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TimeDeltaDaysQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TimeDeltaDaysQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TimeDeltaDaysQuantity")
      * @JMS\Expose
@@ -88,10 +88,10 @@ class ForecastExceptionCriterionLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ForecastPurposeCode $forecastPurposeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ForecastPurposeCode|null $forecastPurposeCode
      * @return self
      */
-    public function setForecastPurposeCode(ForecastPurposeCode $forecastPurposeCode): self
+    public function setForecastPurposeCode(?ForecastPurposeCode $forecastPurposeCode = null): self
     {
         $this->forecastPurposeCode = $forecastPurposeCode;
 
@@ -117,10 +117,10 @@ class ForecastExceptionCriterionLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode $forecastTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode|null $forecastTypeCode
      * @return self
      */
-    public function setForecastTypeCode(ForecastTypeCode $forecastTypeCode): self
+    public function setForecastTypeCode(?ForecastTypeCode $forecastTypeCode = null): self
     {
         $this->forecastTypeCode = $forecastTypeCode;
 
@@ -146,10 +146,10 @@ class ForecastExceptionCriterionLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ComparisonDataSourceCode $comparisonDataSourceCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ComparisonDataSourceCode|null $comparisonDataSourceCode
      * @return self
      */
-    public function setComparisonDataSourceCode(ComparisonDataSourceCode $comparisonDataSourceCode): self
+    public function setComparisonDataSourceCode(?ComparisonDataSourceCode $comparisonDataSourceCode = null): self
     {
         $this->comparisonDataSourceCode = $comparisonDataSourceCode;
 
@@ -175,10 +175,10 @@ class ForecastExceptionCriterionLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\DataSourceCode $dataSourceCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DataSourceCode|null $dataSourceCode
      * @return self
      */
-    public function setDataSourceCode(DataSourceCode $dataSourceCode): self
+    public function setDataSourceCode(?DataSourceCode $dataSourceCode = null): self
     {
         $this->dataSourceCode = $dataSourceCode;
 
@@ -204,10 +204,10 @@ class ForecastExceptionCriterionLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TimeDeltaDaysQuantity $timeDeltaDaysQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TimeDeltaDaysQuantity|null $timeDeltaDaysQuantity
      * @return self
      */
-    public function setTimeDeltaDaysQuantity(TimeDeltaDaysQuantity $timeDeltaDaysQuantity): self
+    public function setTimeDeltaDaysQuantity(?TimeDeltaDaysQuantity $timeDeltaDaysQuantity = null): self
     {
         $this->timeDeltaDaysQuantity = $timeDeltaDaysQuantity;
 

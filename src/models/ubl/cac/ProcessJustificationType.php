@@ -14,7 +14,7 @@ class ProcessJustificationType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PreviousCancellationReasonCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PreviousCancellationReasonCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PreviousCancellationReasonCode")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class ProcessJustificationType
     private $previousCancellationReasonCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ProcessReasonCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ProcessReasonCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ProcessReasonCode")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class ProcessJustificationType
     private $processReasonCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ProcessReason>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ProcessReason>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\ProcessReason>")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class ProcessJustificationType
     private $processReason;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -78,11 +78,11 @@ class ProcessJustificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PreviousCancellationReasonCode $previousCancellationReasonCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PreviousCancellationReasonCode|null $previousCancellationReasonCode
      * @return self
      */
     public function setPreviousCancellationReasonCode(
-        PreviousCancellationReasonCode $previousCancellationReasonCode,
+        ?PreviousCancellationReasonCode $previousCancellationReasonCode = null,
     ): self {
         $this->previousCancellationReasonCode = $previousCancellationReasonCode;
 
@@ -108,10 +108,10 @@ class ProcessJustificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ProcessReasonCode $processReasonCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ProcessReasonCode|null $processReasonCode
      * @return self
      */
-    public function setProcessReasonCode(ProcessReasonCode $processReasonCode): self
+    public function setProcessReasonCode(?ProcessReasonCode $processReasonCode = null): self
     {
         $this->processReasonCode = $processReasonCode;
 
@@ -127,10 +127,10 @@ class ProcessJustificationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ProcessReason> $processReason
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ProcessReason>|null $processReason
      * @return self
      */
-    public function setProcessReason(array $processReason): self
+    public function setProcessReason(?array $processReason = null): self
     {
         $this->processReason = $processReason;
 
@@ -208,10 +208,10 @@ class ProcessJustificationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 

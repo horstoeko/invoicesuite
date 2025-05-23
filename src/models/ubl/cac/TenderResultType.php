@@ -18,7 +18,7 @@ class TenderResultType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TenderResultCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TenderResultCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TenderResultCode")
      * @JMS\Expose
@@ -29,7 +29,7 @@ class TenderResultType
     private $tenderResultCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -41,7 +41,7 @@ class TenderResultType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AdvertisementAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AdvertisementAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AdvertisementAmount")
      * @JMS\Expose
@@ -52,7 +52,7 @@ class TenderResultType
     private $advertisementAmount;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -63,7 +63,7 @@ class TenderResultType
     private $awardDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -74,7 +74,7 @@ class TenderResultType
     private $awardTime;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ReceivedTenderQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ReceivedTenderQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ReceivedTenderQuantity")
      * @JMS\Expose
@@ -85,7 +85,7 @@ class TenderResultType
     private $receivedTenderQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LowerTenderAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LowerTenderAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LowerTenderAmount")
      * @JMS\Expose
@@ -96,7 +96,7 @@ class TenderResultType
     private $lowerTenderAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\HigherTenderAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\HigherTenderAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\HigherTenderAmount")
      * @JMS\Expose
@@ -107,7 +107,7 @@ class TenderResultType
     private $higherTenderAmount;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -118,7 +118,7 @@ class TenderResultType
     private $startDate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ReceivedElectronicTenderQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ReceivedElectronicTenderQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ReceivedElectronicTenderQuantity")
      * @JMS\Expose
@@ -129,7 +129,7 @@ class TenderResultType
     private $receivedElectronicTenderQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ReceivedForeignTenderQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ReceivedForeignTenderQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ReceivedForeignTenderQuantity")
      * @JMS\Expose
@@ -140,7 +140,7 @@ class TenderResultType
     private $receivedForeignTenderQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Contract
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Contract|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Contract")
      * @JMS\Expose
@@ -151,7 +151,7 @@ class TenderResultType
     private $contract;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\AwardedTenderedProject
+     * @var \horstoeko\invoicesuite\models\ubl\cac\AwardedTenderedProject|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\AwardedTenderedProject")
      * @JMS\Expose
@@ -162,7 +162,7 @@ class TenderResultType
     private $awardedTenderedProject;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ContractFormalizationPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ContractFormalizationPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ContractFormalizationPeriod")
      * @JMS\Expose
@@ -173,7 +173,7 @@ class TenderResultType
     private $contractFormalizationPeriod;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SubcontractTerms>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SubcontractTerms>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\SubcontractTerms>")
      * @JMS\Expose
@@ -185,7 +185,7 @@ class TenderResultType
     private $subcontractTerms;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\WinningParty>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\WinningParty>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\WinningParty>")
      * @JMS\Expose
@@ -215,10 +215,10 @@ class TenderResultType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TenderResultCode $tenderResultCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TenderResultCode|null $tenderResultCode
      * @return self
      */
-    public function setTenderResultCode(TenderResultCode $tenderResultCode): self
+    public function setTenderResultCode(?TenderResultCode $tenderResultCode = null): self
     {
         $this->tenderResultCode = $tenderResultCode;
 
@@ -234,10 +234,10 @@ class TenderResultType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -325,10 +325,10 @@ class TenderResultType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AdvertisementAmount $advertisementAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AdvertisementAmount|null $advertisementAmount
      * @return self
      */
-    public function setAdvertisementAmount(AdvertisementAmount $advertisementAmount): self
+    public function setAdvertisementAmount(?AdvertisementAmount $advertisementAmount = null): self
     {
         $this->advertisementAmount = $advertisementAmount;
 
@@ -344,10 +344,10 @@ class TenderResultType
     }
 
     /**
-     * @param \DateTimeInterface $awardDate
+     * @param \DateTimeInterface|null $awardDate
      * @return self
      */
-    public function setAwardDate(\DateTimeInterface $awardDate): self
+    public function setAwardDate(?\DateTimeInterface $awardDate = null): self
     {
         $this->awardDate = $awardDate;
 
@@ -363,10 +363,10 @@ class TenderResultType
     }
 
     /**
-     * @param \DateTimeInterface $awardTime
+     * @param \DateTimeInterface|null $awardTime
      * @return self
      */
-    public function setAwardTime(\DateTimeInterface $awardTime): self
+    public function setAwardTime(?\DateTimeInterface $awardTime = null): self
     {
         $this->awardTime = $awardTime;
 
@@ -392,10 +392,10 @@ class TenderResultType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ReceivedTenderQuantity $receivedTenderQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ReceivedTenderQuantity|null $receivedTenderQuantity
      * @return self
      */
-    public function setReceivedTenderQuantity(ReceivedTenderQuantity $receivedTenderQuantity): self
+    public function setReceivedTenderQuantity(?ReceivedTenderQuantity $receivedTenderQuantity = null): self
     {
         $this->receivedTenderQuantity = $receivedTenderQuantity;
 
@@ -421,10 +421,10 @@ class TenderResultType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LowerTenderAmount $lowerTenderAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LowerTenderAmount|null $lowerTenderAmount
      * @return self
      */
-    public function setLowerTenderAmount(LowerTenderAmount $lowerTenderAmount): self
+    public function setLowerTenderAmount(?LowerTenderAmount $lowerTenderAmount = null): self
     {
         $this->lowerTenderAmount = $lowerTenderAmount;
 
@@ -450,10 +450,10 @@ class TenderResultType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\HigherTenderAmount $higherTenderAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\HigherTenderAmount|null $higherTenderAmount
      * @return self
      */
-    public function setHigherTenderAmount(HigherTenderAmount $higherTenderAmount): self
+    public function setHigherTenderAmount(?HigherTenderAmount $higherTenderAmount = null): self
     {
         $this->higherTenderAmount = $higherTenderAmount;
 
@@ -469,10 +469,10 @@ class TenderResultType
     }
 
     /**
-     * @param \DateTimeInterface $startDate
+     * @param \DateTimeInterface|null $startDate
      * @return self
      */
-    public function setStartDate(\DateTimeInterface $startDate): self
+    public function setStartDate(?\DateTimeInterface $startDate = null): self
     {
         $this->startDate = $startDate;
 
@@ -498,11 +498,11 @@ class TenderResultType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ReceivedElectronicTenderQuantity $receivedElectronicTenderQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ReceivedElectronicTenderQuantity|null $receivedElectronicTenderQuantity
      * @return self
      */
     public function setReceivedElectronicTenderQuantity(
-        ReceivedElectronicTenderQuantity $receivedElectronicTenderQuantity,
+        ?ReceivedElectronicTenderQuantity $receivedElectronicTenderQuantity = null,
     ): self {
         $this->receivedElectronicTenderQuantity = $receivedElectronicTenderQuantity;
 
@@ -528,11 +528,11 @@ class TenderResultType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ReceivedForeignTenderQuantity $receivedForeignTenderQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ReceivedForeignTenderQuantity|null $receivedForeignTenderQuantity
      * @return self
      */
     public function setReceivedForeignTenderQuantity(
-        ReceivedForeignTenderQuantity $receivedForeignTenderQuantity,
+        ?ReceivedForeignTenderQuantity $receivedForeignTenderQuantity = null,
     ): self {
         $this->receivedForeignTenderQuantity = $receivedForeignTenderQuantity;
 
@@ -558,10 +558,10 @@ class TenderResultType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Contract $contract
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Contract|null $contract
      * @return self
      */
-    public function setContract(Contract $contract): self
+    public function setContract(?Contract $contract = null): self
     {
         $this->contract = $contract;
 
@@ -587,10 +587,10 @@ class TenderResultType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\AwardedTenderedProject $awardedTenderedProject
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AwardedTenderedProject|null $awardedTenderedProject
      * @return self
      */
-    public function setAwardedTenderedProject(AwardedTenderedProject $awardedTenderedProject): self
+    public function setAwardedTenderedProject(?AwardedTenderedProject $awardedTenderedProject = null): self
     {
         $this->awardedTenderedProject = $awardedTenderedProject;
 
@@ -616,11 +616,12 @@ class TenderResultType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ContractFormalizationPeriod $contractFormalizationPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ContractFormalizationPeriod|null $contractFormalizationPeriod
      * @return self
      */
-    public function setContractFormalizationPeriod(ContractFormalizationPeriod $contractFormalizationPeriod): self
-    {
+    public function setContractFormalizationPeriod(
+        ?ContractFormalizationPeriod $contractFormalizationPeriod = null,
+    ): self {
         $this->contractFormalizationPeriod = $contractFormalizationPeriod;
 
         return $this;
@@ -635,10 +636,10 @@ class TenderResultType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SubcontractTerms> $subcontractTerms
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SubcontractTerms>|null $subcontractTerms
      * @return self
      */
-    public function setSubcontractTerms(array $subcontractTerms): self
+    public function setSubcontractTerms(?array $subcontractTerms = null): self
     {
         $this->subcontractTerms = $subcontractTerms;
 
@@ -716,10 +717,10 @@ class TenderResultType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\WinningParty> $winningParty
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\WinningParty>|null $winningParty
      * @return self
      */
-    public function setWinningParty(array $winningParty): self
+    public function setWinningParty(?array $winningParty = null): self
     {
         $this->winningParty = $winningParty;
 

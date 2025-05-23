@@ -11,7 +11,7 @@ class PromotionalEventType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PromotionalEventTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PromotionalEventTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PromotionalEventTypeCode")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class PromotionalEventType
     private $promotionalEventTypeCode;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -33,7 +33,7 @@ class PromotionalEventType
     private $submissionDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -44,7 +44,7 @@ class PromotionalEventType
     private $firstShipmentAvailibilityDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -55,7 +55,7 @@ class PromotionalEventType
     private $latestProposalAcceptanceDate;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PromotionalSpecification>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PromotionalSpecification>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PromotionalSpecification>")
      * @JMS\Expose
@@ -85,10 +85,10 @@ class PromotionalEventType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PromotionalEventTypeCode $promotionalEventTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PromotionalEventTypeCode|null $promotionalEventTypeCode
      * @return self
      */
-    public function setPromotionalEventTypeCode(PromotionalEventTypeCode $promotionalEventTypeCode): self
+    public function setPromotionalEventTypeCode(?PromotionalEventTypeCode $promotionalEventTypeCode = null): self
     {
         $this->promotionalEventTypeCode = $promotionalEventTypeCode;
 
@@ -104,10 +104,10 @@ class PromotionalEventType
     }
 
     /**
-     * @param \DateTimeInterface $submissionDate
+     * @param \DateTimeInterface|null $submissionDate
      * @return self
      */
-    public function setSubmissionDate(\DateTimeInterface $submissionDate): self
+    public function setSubmissionDate(?\DateTimeInterface $submissionDate = null): self
     {
         $this->submissionDate = $submissionDate;
 
@@ -123,10 +123,10 @@ class PromotionalEventType
     }
 
     /**
-     * @param \DateTimeInterface $firstShipmentAvailibilityDate
+     * @param \DateTimeInterface|null $firstShipmentAvailibilityDate
      * @return self
      */
-    public function setFirstShipmentAvailibilityDate(\DateTimeInterface $firstShipmentAvailibilityDate): self
+    public function setFirstShipmentAvailibilityDate(?\DateTimeInterface $firstShipmentAvailibilityDate = null): self
     {
         $this->firstShipmentAvailibilityDate = $firstShipmentAvailibilityDate;
 
@@ -142,10 +142,10 @@ class PromotionalEventType
     }
 
     /**
-     * @param \DateTimeInterface $latestProposalAcceptanceDate
+     * @param \DateTimeInterface|null $latestProposalAcceptanceDate
      * @return self
      */
-    public function setLatestProposalAcceptanceDate(\DateTimeInterface $latestProposalAcceptanceDate): self
+    public function setLatestProposalAcceptanceDate(?\DateTimeInterface $latestProposalAcceptanceDate = null): self
     {
         $this->latestProposalAcceptanceDate = $latestProposalAcceptanceDate;
 
@@ -161,10 +161,10 @@ class PromotionalEventType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PromotionalSpecification> $promotionalSpecification
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PromotionalSpecification>|null $promotionalSpecification
      * @return self
      */
-    public function setPromotionalSpecification(array $promotionalSpecification): self
+    public function setPromotionalSpecification(?array $promotionalSpecification = null): self
     {
         $this->promotionalSpecification = $promotionalSpecification;
 

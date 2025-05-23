@@ -13,7 +13,7 @@ class LineReferenceType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LineID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LineID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LineID")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class LineReferenceType
     private $lineID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\UUID")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class LineReferenceType
     private $uUID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LineStatusCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LineStatusCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LineStatusCode")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class LineReferenceType
     private $lineStatusCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\DocumentReference
+     * @var \horstoeko\invoicesuite\models\ubl\cac\DocumentReference|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\DocumentReference")
      * @JMS\Expose
@@ -75,10 +75,10 @@ class LineReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LineID $lineID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LineID|null $lineID
      * @return self
      */
-    public function setLineID(LineID $lineID): self
+    public function setLineID(?LineID $lineID = null): self
     {
         $this->lineID = $lineID;
 
@@ -104,10 +104,10 @@ class LineReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID $uUID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID|null $uUID
      * @return self
      */
-    public function setUUID(UUID $uUID): self
+    public function setUUID(?UUID $uUID = null): self
     {
         $this->uUID = $uUID;
 
@@ -133,10 +133,10 @@ class LineReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LineStatusCode $lineStatusCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LineStatusCode|null $lineStatusCode
      * @return self
      */
-    public function setLineStatusCode(LineStatusCode $lineStatusCode): self
+    public function setLineStatusCode(?LineStatusCode $lineStatusCode = null): self
     {
         $this->lineStatusCode = $lineStatusCode;
 
@@ -162,10 +162,10 @@ class LineReferenceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentReference $documentReference
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentReference|null $documentReference
      * @return self
      */
-    public function setDocumentReference(DocumentReference $documentReference): self
+    public function setDocumentReference(?DocumentReference $documentReference = null): self
     {
         $this->documentReference = $documentReference;
 

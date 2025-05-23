@@ -14,7 +14,7 @@ class EconomicOperatorShortListType
     use HandlesObjectFlags;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\LimitationDescription>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\LimitationDescription>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\LimitationDescription>")
      * @JMS\Expose
@@ -26,7 +26,7 @@ class EconomicOperatorShortListType
     private $limitationDescription;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ExpectedQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ExpectedQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ExpectedQuantity")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class EconomicOperatorShortListType
     private $expectedQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MaximumQuantity")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class EconomicOperatorShortListType
     private $maximumQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MinimumQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MinimumQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MinimumQuantity")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class EconomicOperatorShortListType
     private $minimumQuantity;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PreSelectedParty>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PreSelectedParty>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PreSelectedParty>")
      * @JMS\Expose
@@ -79,10 +79,10 @@ class EconomicOperatorShortListType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\LimitationDescription> $limitationDescription
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\LimitationDescription>|null $limitationDescription
      * @return self
      */
-    public function setLimitationDescription(array $limitationDescription): self
+    public function setLimitationDescription(?array $limitationDescription = null): self
     {
         $this->limitationDescription = $limitationDescription;
 
@@ -170,10 +170,10 @@ class EconomicOperatorShortListType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExpectedQuantity $expectedQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExpectedQuantity|null $expectedQuantity
      * @return self
      */
-    public function setExpectedQuantity(ExpectedQuantity $expectedQuantity): self
+    public function setExpectedQuantity(?ExpectedQuantity $expectedQuantity = null): self
     {
         $this->expectedQuantity = $expectedQuantity;
 
@@ -199,10 +199,10 @@ class EconomicOperatorShortListType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumQuantity $maximumQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumQuantity|null $maximumQuantity
      * @return self
      */
-    public function setMaximumQuantity(MaximumQuantity $maximumQuantity): self
+    public function setMaximumQuantity(?MaximumQuantity $maximumQuantity = null): self
     {
         $this->maximumQuantity = $maximumQuantity;
 
@@ -228,10 +228,10 @@ class EconomicOperatorShortListType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MinimumQuantity $minimumQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MinimumQuantity|null $minimumQuantity
      * @return self
      */
-    public function setMinimumQuantity(MinimumQuantity $minimumQuantity): self
+    public function setMinimumQuantity(?MinimumQuantity $minimumQuantity = null): self
     {
         $this->minimumQuantity = $minimumQuantity;
 
@@ -247,10 +247,10 @@ class EconomicOperatorShortListType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PreSelectedParty> $preSelectedParty
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PreSelectedParty>|null $preSelectedParty
      * @return self
      */
-    public function setPreSelectedParty(array $preSelectedParty): self
+    public function setPreSelectedParty(?array $preSelectedParty = null): self
     {
         $this->preSelectedParty = $preSelectedParty;
 

@@ -18,7 +18,7 @@ class StatusType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ConditionCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ConditionCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ConditionCode")
      * @JMS\Expose
@@ -29,7 +29,7 @@ class StatusType
     private $conditionCode;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -40,7 +40,7 @@ class StatusType
     private $referenceDate;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -51,7 +51,7 @@ class StatusType
     private $referenceTime;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -63,7 +63,7 @@ class StatusType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\StatusReasonCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\StatusReasonCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\StatusReasonCode")
      * @JMS\Expose
@@ -74,7 +74,7 @@ class StatusType
     private $statusReasonCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\StatusReason>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\StatusReason>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\StatusReason>")
      * @JMS\Expose
@@ -86,7 +86,7 @@ class StatusType
     private $statusReason;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SequenceID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SequenceID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SequenceID")
      * @JMS\Expose
@@ -97,7 +97,7 @@ class StatusType
     private $sequenceID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Text>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Text>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Text>")
      * @JMS\Expose
@@ -109,7 +109,7 @@ class StatusType
     private $text;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -120,7 +120,7 @@ class StatusType
     private $indicationIndicator;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Percent
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Percent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Percent")
      * @JMS\Expose
@@ -131,7 +131,7 @@ class StatusType
     private $percent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ReliabilityPercent
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ReliabilityPercent|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ReliabilityPercent")
      * @JMS\Expose
@@ -142,7 +142,7 @@ class StatusType
     private $reliabilityPercent;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Condition>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Condition>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Condition>")
      * @JMS\Expose
@@ -172,10 +172,10 @@ class StatusType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ConditionCode $conditionCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ConditionCode|null $conditionCode
      * @return self
      */
-    public function setConditionCode(ConditionCode $conditionCode): self
+    public function setConditionCode(?ConditionCode $conditionCode = null): self
     {
         $this->conditionCode = $conditionCode;
 
@@ -191,10 +191,10 @@ class StatusType
     }
 
     /**
-     * @param \DateTimeInterface $referenceDate
+     * @param \DateTimeInterface|null $referenceDate
      * @return self
      */
-    public function setReferenceDate(\DateTimeInterface $referenceDate): self
+    public function setReferenceDate(?\DateTimeInterface $referenceDate = null): self
     {
         $this->referenceDate = $referenceDate;
 
@@ -210,10 +210,10 @@ class StatusType
     }
 
     /**
-     * @param \DateTimeInterface $referenceTime
+     * @param \DateTimeInterface|null $referenceTime
      * @return self
      */
-    public function setReferenceTime(\DateTimeInterface $referenceTime): self
+    public function setReferenceTime(?\DateTimeInterface $referenceTime = null): self
     {
         $this->referenceTime = $referenceTime;
 
@@ -229,10 +229,10 @@ class StatusType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -320,10 +320,10 @@ class StatusType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\StatusReasonCode $statusReasonCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\StatusReasonCode|null $statusReasonCode
      * @return self
      */
-    public function setStatusReasonCode(StatusReasonCode $statusReasonCode): self
+    public function setStatusReasonCode(?StatusReasonCode $statusReasonCode = null): self
     {
         $this->statusReasonCode = $statusReasonCode;
 
@@ -339,10 +339,10 @@ class StatusType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\StatusReason> $statusReason
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\StatusReason>|null $statusReason
      * @return self
      */
-    public function setStatusReason(array $statusReason): self
+    public function setStatusReason(?array $statusReason = null): self
     {
         $this->statusReason = $statusReason;
 
@@ -430,10 +430,10 @@ class StatusType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SequenceID $sequenceID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SequenceID|null $sequenceID
      * @return self
      */
-    public function setSequenceID(SequenceID $sequenceID): self
+    public function setSequenceID(?SequenceID $sequenceID = null): self
     {
         $this->sequenceID = $sequenceID;
 
@@ -449,10 +449,10 @@ class StatusType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Text> $text
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Text>|null $text
      * @return self
      */
-    public function setText(array $text): self
+    public function setText(?array $text = null): self
     {
         $this->text = $text;
 
@@ -530,10 +530,10 @@ class StatusType
     }
 
     /**
-     * @param bool $indicationIndicator
+     * @param bool|null $indicationIndicator
      * @return self
      */
-    public function setIndicationIndicator(bool $indicationIndicator): self
+    public function setIndicationIndicator(?bool $indicationIndicator = null): self
     {
         $this->indicationIndicator = $indicationIndicator;
 
@@ -559,10 +559,10 @@ class StatusType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Percent $percent
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Percent|null $percent
      * @return self
      */
-    public function setPercent(Percent $percent): self
+    public function setPercent(?Percent $percent = null): self
     {
         $this->percent = $percent;
 
@@ -588,10 +588,10 @@ class StatusType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ReliabilityPercent $reliabilityPercent
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ReliabilityPercent|null $reliabilityPercent
      * @return self
      */
-    public function setReliabilityPercent(ReliabilityPercent $reliabilityPercent): self
+    public function setReliabilityPercent(?ReliabilityPercent $reliabilityPercent = null): self
     {
         $this->reliabilityPercent = $reliabilityPercent;
 
@@ -607,10 +607,10 @@ class StatusType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Condition> $condition
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Condition>|null $condition
      * @return self
      */
-    public function setCondition(array $condition): self
+    public function setCondition(?array $condition = null): self
     {
         $this->condition = $condition;
 

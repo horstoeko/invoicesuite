@@ -14,7 +14,7 @@ class CapabilityType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CapabilityTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CapabilityTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CapabilityTypeCode")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class CapabilityType
     private $capabilityTypeCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class CapabilityType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ValueAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ValueAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ValueAmount")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class CapabilityType
     private $valueAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ValueQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ValueQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ValueQuantity")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class CapabilityType
     private $valueQuantity;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied>")
      * @JMS\Expose
@@ -71,7 +71,7 @@ class CapabilityType
     private $evidenceSupplied;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod")
      * @JMS\Expose
@@ -100,10 +100,10 @@ class CapabilityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CapabilityTypeCode $capabilityTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CapabilityTypeCode|null $capabilityTypeCode
      * @return self
      */
-    public function setCapabilityTypeCode(CapabilityTypeCode $capabilityTypeCode): self
+    public function setCapabilityTypeCode(?CapabilityTypeCode $capabilityTypeCode = null): self
     {
         $this->capabilityTypeCode = $capabilityTypeCode;
 
@@ -119,10 +119,10 @@ class CapabilityType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -210,10 +210,10 @@ class CapabilityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ValueAmount $valueAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ValueAmount|null $valueAmount
      * @return self
      */
-    public function setValueAmount(ValueAmount $valueAmount): self
+    public function setValueAmount(?ValueAmount $valueAmount = null): self
     {
         $this->valueAmount = $valueAmount;
 
@@ -239,10 +239,10 @@ class CapabilityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ValueQuantity $valueQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ValueQuantity|null $valueQuantity
      * @return self
      */
-    public function setValueQuantity(ValueQuantity $valueQuantity): self
+    public function setValueQuantity(?ValueQuantity $valueQuantity = null): self
     {
         $this->valueQuantity = $valueQuantity;
 
@@ -258,10 +258,10 @@ class CapabilityType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied> $evidenceSupplied
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied>|null $evidenceSupplied
      * @return self
      */
-    public function setEvidenceSupplied(array $evidenceSupplied): self
+    public function setEvidenceSupplied(?array $evidenceSupplied = null): self
     {
         $this->evidenceSupplied = $evidenceSupplied;
 
@@ -349,10 +349,10 @@ class CapabilityType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod $validityPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod|null $validityPeriod
      * @return self
      */
-    public function setValidityPeriod(ValidityPeriod $validityPeriod): self
+    public function setValidityPeriod(?ValidityPeriod $validityPeriod = null): self
     {
         $this->validityPeriod = $validityPeriod;
 

@@ -14,7 +14,7 @@ class FrameworkAgreementType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ExpectedOperatorQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ExpectedOperatorQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ExpectedOperatorQuantity")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class FrameworkAgreementType
     private $expectedOperatorQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumOperatorQuantity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumOperatorQuantity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MaximumOperatorQuantity")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class FrameworkAgreementType
     private $maximumOperatorQuantity;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Justification>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Justification>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Justification>")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class FrameworkAgreementType
     private $justification;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Frequency>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Frequency>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Frequency>")
      * @JMS\Expose
@@ -60,7 +60,7 @@ class FrameworkAgreementType
     private $frequency;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\DurationPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\DurationPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\DurationPeriod")
      * @JMS\Expose
@@ -71,7 +71,7 @@ class FrameworkAgreementType
     private $durationPeriod;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SubsequentProcessTenderRequirement>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SubsequentProcessTenderRequirement>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\SubsequentProcessTenderRequirement>")
      * @JMS\Expose
@@ -101,10 +101,10 @@ class FrameworkAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExpectedOperatorQuantity $expectedOperatorQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExpectedOperatorQuantity|null $expectedOperatorQuantity
      * @return self
      */
-    public function setExpectedOperatorQuantity(ExpectedOperatorQuantity $expectedOperatorQuantity): self
+    public function setExpectedOperatorQuantity(?ExpectedOperatorQuantity $expectedOperatorQuantity = null): self
     {
         $this->expectedOperatorQuantity = $expectedOperatorQuantity;
 
@@ -130,10 +130,10 @@ class FrameworkAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumOperatorQuantity $maximumOperatorQuantity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumOperatorQuantity|null $maximumOperatorQuantity
      * @return self
      */
-    public function setMaximumOperatorQuantity(MaximumOperatorQuantity $maximumOperatorQuantity): self
+    public function setMaximumOperatorQuantity(?MaximumOperatorQuantity $maximumOperatorQuantity = null): self
     {
         $this->maximumOperatorQuantity = $maximumOperatorQuantity;
 
@@ -149,10 +149,10 @@ class FrameworkAgreementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Justification> $justification
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Justification>|null $justification
      * @return self
      */
-    public function setJustification(array $justification): self
+    public function setJustification(?array $justification = null): self
     {
         $this->justification = $justification;
 
@@ -230,10 +230,10 @@ class FrameworkAgreementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Frequency> $frequency
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Frequency>|null $frequency
      * @return self
      */
-    public function setFrequency(array $frequency): self
+    public function setFrequency(?array $frequency = null): self
     {
         $this->frequency = $frequency;
 
@@ -321,10 +321,10 @@ class FrameworkAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\DurationPeriod $durationPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DurationPeriod|null $durationPeriod
      * @return self
      */
-    public function setDurationPeriod(DurationPeriod $durationPeriod): self
+    public function setDurationPeriod(?DurationPeriod $durationPeriod = null): self
     {
         $this->durationPeriod = $durationPeriod;
 
@@ -340,10 +340,10 @@ class FrameworkAgreementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SubsequentProcessTenderRequirement> $subsequentProcessTenderRequirement
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SubsequentProcessTenderRequirement>|null $subsequentProcessTenderRequirement
      * @return self
      */
-    public function setSubsequentProcessTenderRequirement(array $subsequentProcessTenderRequirement): self
+    public function setSubsequentProcessTenderRequirement(?array $subsequentProcessTenderRequirement = null): self
     {
         $this->subsequentProcessTenderRequirement = $subsequentProcessTenderRequirement;
 

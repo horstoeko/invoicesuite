@@ -15,7 +15,7 @@ class TelecommunicationsSupplyType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TelecommunicationsSupplyType
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TelecommunicationsSupplyType|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TelecommunicationsSupplyType")
      * @JMS\Expose
@@ -26,7 +26,7 @@ class TelecommunicationsSupplyType
     private $telecommunicationsSupplyType;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TelecommunicationsSupplyTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TelecommunicationsSupplyTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TelecommunicationsSupplyTypeCode")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class TelecommunicationsSupplyType
     private $telecommunicationsSupplyTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PrivacyCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PrivacyCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PrivacyCode")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class TelecommunicationsSupplyType
     private $privacyCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -60,7 +60,7 @@ class TelecommunicationsSupplyType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\TotalAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\TotalAmount")
      * @JMS\Expose
@@ -71,7 +71,7 @@ class TelecommunicationsSupplyType
     private $totalAmount;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsSupplyLine>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsSupplyLine>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsSupplyLine>")
      * @JMS\Expose
@@ -101,11 +101,12 @@ class TelecommunicationsSupplyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TelecommunicationsSupplyType $telecommunicationsSupplyType
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TelecommunicationsSupplyType|null $telecommunicationsSupplyType
      * @return self
      */
-    public function setTelecommunicationsSupplyType(TelecommunicationsSupplyType1 $telecommunicationsSupplyType): self
-    {
+    public function setTelecommunicationsSupplyType(
+        ?TelecommunicationsSupplyType1 $telecommunicationsSupplyType = null,
+    ): self {
         $this->telecommunicationsSupplyType = $telecommunicationsSupplyType;
 
         return $this;
@@ -130,11 +131,11 @@ class TelecommunicationsSupplyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TelecommunicationsSupplyTypeCode $telecommunicationsSupplyTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TelecommunicationsSupplyTypeCode|null $telecommunicationsSupplyTypeCode
      * @return self
      */
     public function setTelecommunicationsSupplyTypeCode(
-        TelecommunicationsSupplyTypeCode $telecommunicationsSupplyTypeCode,
+        ?TelecommunicationsSupplyTypeCode $telecommunicationsSupplyTypeCode = null,
     ): self {
         $this->telecommunicationsSupplyTypeCode = $telecommunicationsSupplyTypeCode;
 
@@ -160,10 +161,10 @@ class TelecommunicationsSupplyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PrivacyCode $privacyCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PrivacyCode|null $privacyCode
      * @return self
      */
-    public function setPrivacyCode(PrivacyCode $privacyCode): self
+    public function setPrivacyCode(?PrivacyCode $privacyCode = null): self
     {
         $this->privacyCode = $privacyCode;
 
@@ -179,10 +180,10 @@ class TelecommunicationsSupplyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -270,10 +271,10 @@ class TelecommunicationsSupplyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalAmount $totalAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TotalAmount|null $totalAmount
      * @return self
      */
-    public function setTotalAmount(TotalAmount $totalAmount): self
+    public function setTotalAmount(?TotalAmount $totalAmount = null): self
     {
         $this->totalAmount = $totalAmount;
 
@@ -289,10 +290,10 @@ class TelecommunicationsSupplyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsSupplyLine> $telecommunicationsSupplyLine
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsSupplyLine>|null $telecommunicationsSupplyLine
      * @return self
      */
-    public function setTelecommunicationsSupplyLine(array $telecommunicationsSupplyLine): self
+    public function setTelecommunicationsSupplyLine(?array $telecommunicationsSupplyLine = null): self
     {
         $this->telecommunicationsSupplyLine = $telecommunicationsSupplyLine;
 

@@ -12,7 +12,7 @@ class DocumentDistributionType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PrintQualifier
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PrintQualifier|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PrintQualifier")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class DocumentDistributionType
     private $printQualifier;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumCopiesNumeric
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumCopiesNumeric|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MaximumCopiesNumeric")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class DocumentDistributionType
     private $maximumCopiesNumeric;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Party
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Party|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Party")
      * @JMS\Expose
@@ -63,10 +63,10 @@ class DocumentDistributionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PrintQualifier $printQualifier
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PrintQualifier|null $printQualifier
      * @return self
      */
-    public function setPrintQualifier(PrintQualifier $printQualifier): self
+    public function setPrintQualifier(?PrintQualifier $printQualifier = null): self
     {
         $this->printQualifier = $printQualifier;
 
@@ -92,10 +92,10 @@ class DocumentDistributionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumCopiesNumeric $maximumCopiesNumeric
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumCopiesNumeric|null $maximumCopiesNumeric
      * @return self
      */
-    public function setMaximumCopiesNumeric(MaximumCopiesNumeric $maximumCopiesNumeric): self
+    public function setMaximumCopiesNumeric(?MaximumCopiesNumeric $maximumCopiesNumeric = null): self
     {
         $this->maximumCopiesNumeric = $maximumCopiesNumeric;
 
@@ -121,10 +121,10 @@ class DocumentDistributionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Party $party
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Party|null $party
      * @return self
      */
-    public function setParty(Party $party): self
+    public function setParty(?Party $party = null): self
     {
         $this->party = $party;
 

@@ -14,7 +14,7 @@ class FinancialGuaranteeType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\GuaranteeTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\GuaranteeTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\GuaranteeTypeCode")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class FinancialGuaranteeType
     private $guaranteeTypeCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class FinancialGuaranteeType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LiabilityAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LiabilityAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LiabilityAmount")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class FinancialGuaranteeType
     private $liabilityAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\AmountRate
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\AmountRate|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\AmountRate")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class FinancialGuaranteeType
     private $amountRate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ConstitutionPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ConstitutionPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ConstitutionPeriod")
      * @JMS\Expose
@@ -88,10 +88,10 @@ class FinancialGuaranteeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\GuaranteeTypeCode $guaranteeTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\GuaranteeTypeCode|null $guaranteeTypeCode
      * @return self
      */
-    public function setGuaranteeTypeCode(GuaranteeTypeCode $guaranteeTypeCode): self
+    public function setGuaranteeTypeCode(?GuaranteeTypeCode $guaranteeTypeCode = null): self
     {
         $this->guaranteeTypeCode = $guaranteeTypeCode;
 
@@ -107,10 +107,10 @@ class FinancialGuaranteeType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -198,10 +198,10 @@ class FinancialGuaranteeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LiabilityAmount $liabilityAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LiabilityAmount|null $liabilityAmount
      * @return self
      */
-    public function setLiabilityAmount(LiabilityAmount $liabilityAmount): self
+    public function setLiabilityAmount(?LiabilityAmount $liabilityAmount = null): self
     {
         $this->liabilityAmount = $liabilityAmount;
 
@@ -227,10 +227,10 @@ class FinancialGuaranteeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\AmountRate $amountRate
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AmountRate|null $amountRate
      * @return self
      */
-    public function setAmountRate(AmountRate $amountRate): self
+    public function setAmountRate(?AmountRate $amountRate = null): self
     {
         $this->amountRate = $amountRate;
 
@@ -256,10 +256,10 @@ class FinancialGuaranteeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ConstitutionPeriod $constitutionPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ConstitutionPeriod|null $constitutionPeriod
      * @return self
      */
-    public function setConstitutionPeriod(ConstitutionPeriod $constitutionPeriod): self
+    public function setConstitutionPeriod(?ConstitutionPeriod $constitutionPeriod = null): self
     {
         $this->constitutionPeriod = $constitutionPeriod;
 

@@ -13,7 +13,7 @@ class EnvironmentalEmissionType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\EnvironmentalEmissionTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\EnvironmentalEmissionTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\EnvironmentalEmissionTypeCode")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class EnvironmentalEmissionType
     private $environmentalEmissionTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ValueMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ValueMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ValueMeasure")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class EnvironmentalEmissionType
     private $valueMeasure;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class EnvironmentalEmissionType
     private $description;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\EmissionCalculationMethod>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\EmissionCalculationMethod>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\EmissionCalculationMethod>")
      * @JMS\Expose
@@ -77,11 +77,11 @@ class EnvironmentalEmissionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\EnvironmentalEmissionTypeCode $environmentalEmissionTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\EnvironmentalEmissionTypeCode|null $environmentalEmissionTypeCode
      * @return self
      */
     public function setEnvironmentalEmissionTypeCode(
-        EnvironmentalEmissionTypeCode $environmentalEmissionTypeCode,
+        ?EnvironmentalEmissionTypeCode $environmentalEmissionTypeCode = null,
     ): self {
         $this->environmentalEmissionTypeCode = $environmentalEmissionTypeCode;
 
@@ -107,10 +107,10 @@ class EnvironmentalEmissionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ValueMeasure $valueMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ValueMeasure|null $valueMeasure
      * @return self
      */
-    public function setValueMeasure(ValueMeasure $valueMeasure): self
+    public function setValueMeasure(?ValueMeasure $valueMeasure = null): self
     {
         $this->valueMeasure = $valueMeasure;
 
@@ -126,10 +126,10 @@ class EnvironmentalEmissionType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -207,10 +207,10 @@ class EnvironmentalEmissionType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\EmissionCalculationMethod> $emissionCalculationMethod
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\EmissionCalculationMethod>|null $emissionCalculationMethod
      * @return self
      */
-    public function setEmissionCalculationMethod(array $emissionCalculationMethod): self
+    public function setEmissionCalculationMethod(?array $emissionCalculationMethod = null): self
     {
         $this->emissionCalculationMethod = $emissionCalculationMethod;
 

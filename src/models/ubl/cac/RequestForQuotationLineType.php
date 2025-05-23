@@ -15,7 +15,7 @@ class RequestForQuotationLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -26,7 +26,7 @@ class RequestForQuotationLineType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\UUID")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class RequestForQuotationLineType
     private $uUID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -49,7 +49,7 @@ class RequestForQuotationLineType
     private $note;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -60,7 +60,7 @@ class RequestForQuotationLineType
     private $optionalLineItemIndicator;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PrivacyCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PrivacyCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PrivacyCode")
      * @JMS\Expose
@@ -71,7 +71,7 @@ class RequestForQuotationLineType
     private $privacyCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SecurityClassificationCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SecurityClassificationCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SecurityClassificationCode")
      * @JMS\Expose
@@ -82,7 +82,7 @@ class RequestForQuotationLineType
     private $securityClassificationCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DocumentReference>")
      * @JMS\Expose
@@ -94,7 +94,7 @@ class RequestForQuotationLineType
     private $documentReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\LineItem
+     * @var \horstoeko\invoicesuite\models\ubl\cac\LineItem|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\LineItem")
      * @JMS\Expose
@@ -123,10 +123,10 @@ class RequestForQuotationLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -152,10 +152,10 @@ class RequestForQuotationLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID $uUID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID|null $uUID
      * @return self
      */
-    public function setUUID(UUID $uUID): self
+    public function setUUID(?UUID $uUID = null): self
     {
         $this->uUID = $uUID;
 
@@ -171,10 +171,10 @@ class RequestForQuotationLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -252,10 +252,10 @@ class RequestForQuotationLineType
     }
 
     /**
-     * @param bool $optionalLineItemIndicator
+     * @param bool|null $optionalLineItemIndicator
      * @return self
      */
-    public function setOptionalLineItemIndicator(bool $optionalLineItemIndicator): self
+    public function setOptionalLineItemIndicator(?bool $optionalLineItemIndicator = null): self
     {
         $this->optionalLineItemIndicator = $optionalLineItemIndicator;
 
@@ -281,10 +281,10 @@ class RequestForQuotationLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PrivacyCode $privacyCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PrivacyCode|null $privacyCode
      * @return self
      */
-    public function setPrivacyCode(PrivacyCode $privacyCode): self
+    public function setPrivacyCode(?PrivacyCode $privacyCode = null): self
     {
         $this->privacyCode = $privacyCode;
 
@@ -310,11 +310,12 @@ class RequestForQuotationLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SecurityClassificationCode $securityClassificationCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SecurityClassificationCode|null $securityClassificationCode
      * @return self
      */
-    public function setSecurityClassificationCode(SecurityClassificationCode $securityClassificationCode): self
-    {
+    public function setSecurityClassificationCode(
+        ?SecurityClassificationCode $securityClassificationCode = null,
+    ): self {
         $this->securityClassificationCode = $securityClassificationCode;
 
         return $this;
@@ -329,10 +330,10 @@ class RequestForQuotationLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference> $documentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null $documentReference
      * @return self
      */
-    public function setDocumentReference(array $documentReference): self
+    public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
 
@@ -420,10 +421,10 @@ class RequestForQuotationLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\LineItem $lineItem
+     * @param \horstoeko\invoicesuite\models\ubl\cac\LineItem|null $lineItem
      * @return self
      */
-    public function setLineItem(LineItem $lineItem): self
+    public function setLineItem(?LineItem $lineItem = null): self
     {
         $this->lineItem = $lineItem;
 

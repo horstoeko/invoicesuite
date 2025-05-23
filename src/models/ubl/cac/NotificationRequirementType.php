@@ -13,7 +13,7 @@ class NotificationRequirementType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\NotificationTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\NotificationTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\NotificationTypeCode")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class NotificationRequirementType
     private $notificationTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PostEventNotificationDurationMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PostEventNotificationDurationMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PostEventNotificationDurationMeasure")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class NotificationRequirementType
     private $postEventNotificationDurationMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PreEventNotificationDurationMeasure
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PreEventNotificationDurationMeasure|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PreEventNotificationDurationMeasure")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class NotificationRequirementType
     private $preEventNotificationDurationMeasure;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\NotifyParty>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\NotifyParty>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\NotifyParty>")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class NotificationRequirementType
     private $notifyParty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\NotificationPeriod>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\NotificationPeriod>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\NotificationPeriod>")
      * @JMS\Expose
@@ -70,7 +70,7 @@ class NotificationRequirementType
     private $notificationPeriod;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\NotificationLocation>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\NotificationLocation>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\NotificationLocation>")
      * @JMS\Expose
@@ -100,10 +100,10 @@ class NotificationRequirementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\NotificationTypeCode $notificationTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\NotificationTypeCode|null $notificationTypeCode
      * @return self
      */
-    public function setNotificationTypeCode(NotificationTypeCode $notificationTypeCode): self
+    public function setNotificationTypeCode(?NotificationTypeCode $notificationTypeCode = null): self
     {
         $this->notificationTypeCode = $notificationTypeCode;
 
@@ -129,11 +129,11 @@ class NotificationRequirementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PostEventNotificationDurationMeasure $postEventNotificationDurationMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PostEventNotificationDurationMeasure|null $postEventNotificationDurationMeasure
      * @return self
      */
     public function setPostEventNotificationDurationMeasure(
-        PostEventNotificationDurationMeasure $postEventNotificationDurationMeasure,
+        ?PostEventNotificationDurationMeasure $postEventNotificationDurationMeasure = null,
     ): self {
         $this->postEventNotificationDurationMeasure = $postEventNotificationDurationMeasure;
 
@@ -159,11 +159,11 @@ class NotificationRequirementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PreEventNotificationDurationMeasure $preEventNotificationDurationMeasure
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PreEventNotificationDurationMeasure|null $preEventNotificationDurationMeasure
      * @return self
      */
     public function setPreEventNotificationDurationMeasure(
-        PreEventNotificationDurationMeasure $preEventNotificationDurationMeasure,
+        ?PreEventNotificationDurationMeasure $preEventNotificationDurationMeasure = null,
     ): self {
         $this->preEventNotificationDurationMeasure = $preEventNotificationDurationMeasure;
 
@@ -179,10 +179,10 @@ class NotificationRequirementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\NotifyParty> $notifyParty
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\NotifyParty>|null $notifyParty
      * @return self
      */
-    public function setNotifyParty(array $notifyParty): self
+    public function setNotifyParty(?array $notifyParty = null): self
     {
         $this->notifyParty = $notifyParty;
 
@@ -260,10 +260,10 @@ class NotificationRequirementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\NotificationPeriod> $notificationPeriod
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\NotificationPeriod>|null $notificationPeriod
      * @return self
      */
-    public function setNotificationPeriod(array $notificationPeriod): self
+    public function setNotificationPeriod(?array $notificationPeriod = null): self
     {
         $this->notificationPeriod = $notificationPeriod;
 
@@ -341,10 +341,10 @@ class NotificationRequirementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\NotificationLocation> $notificationLocation
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\NotificationLocation>|null $notificationLocation
      * @return self
      */
-    public function setNotificationLocation(array $notificationLocation): self
+    public function setNotificationLocation(?array $notificationLocation = null): self
     {
         $this->notificationLocation = $notificationLocation;
 

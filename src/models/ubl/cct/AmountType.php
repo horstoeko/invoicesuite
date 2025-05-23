@@ -10,7 +10,7 @@ class AmountType
     use HandlesObjectFlags;
 
     /**
-     * @var float
+     * @var float|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("float")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class AmountType
     private $value;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class AmountType
     private $currencyID;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -51,10 +51,10 @@ class AmountType
     }
 
     /**
-     * @param float $value
+     * @param float|null $value
      * @return self
      */
-    public function setValue(float $value): self
+    public function setValue(?float $value = null): self
     {
         $this->value = $value;
 
@@ -70,10 +70,10 @@ class AmountType
     }
 
     /**
-     * @param string $currencyID
+     * @param string|null $currencyID
      * @return self
      */
-    public function setCurrencyID(string $currencyID): self
+    public function setCurrencyID(?string $currencyID = null): self
     {
         $this->currencyID = $currencyID;
 
@@ -89,10 +89,10 @@ class AmountType
     }
 
     /**
-     * @param string $currencyCodeListVersionID
+     * @param string|null $currencyCodeListVersionID
      * @return self
      */
-    public function setCurrencyCodeListVersionID(string $currencyCodeListVersionID): self
+    public function setCurrencyCodeListVersionID(?string $currencyCodeListVersionID = null): self
     {
         $this->currencyCodeListVersionID = $currencyCodeListVersionID;
 

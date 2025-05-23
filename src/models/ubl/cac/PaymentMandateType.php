@@ -15,7 +15,7 @@ class PaymentMandateType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -26,7 +26,7 @@ class PaymentMandateType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MandateTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MandateTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MandateTypeCode")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class PaymentMandateType
     private $mandateTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumPaymentInstructionsNumeric
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumPaymentInstructionsNumeric|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MaximumPaymentInstructionsNumeric")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class PaymentMandateType
     private $maximumPaymentInstructionsNumeric;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumPaidAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\MaximumPaidAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\MaximumPaidAmount")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class PaymentMandateType
     private $maximumPaidAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SignatureID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SignatureID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SignatureID")
      * @JMS\Expose
@@ -70,7 +70,7 @@ class PaymentMandateType
     private $signatureID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PayerParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PayerParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PayerParty")
      * @JMS\Expose
@@ -81,7 +81,7 @@ class PaymentMandateType
     private $payerParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PayerFinancialAccount
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PayerFinancialAccount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PayerFinancialAccount")
      * @JMS\Expose
@@ -92,7 +92,7 @@ class PaymentMandateType
     private $payerFinancialAccount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod")
      * @JMS\Expose
@@ -103,7 +103,7 @@ class PaymentMandateType
     private $validityPeriod;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PaymentReversalPeriod
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PaymentReversalPeriod|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PaymentReversalPeriod")
      * @JMS\Expose
@@ -114,7 +114,7 @@ class PaymentMandateType
     private $paymentReversalPeriod;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Clause>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\Clause>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\Clause>")
      * @JMS\Expose
@@ -144,10 +144,10 @@ class PaymentMandateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -173,10 +173,10 @@ class PaymentMandateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MandateTypeCode $mandateTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MandateTypeCode|null $mandateTypeCode
      * @return self
      */
-    public function setMandateTypeCode(MandateTypeCode $mandateTypeCode): self
+    public function setMandateTypeCode(?MandateTypeCode $mandateTypeCode = null): self
     {
         $this->mandateTypeCode = $mandateTypeCode;
 
@@ -202,11 +202,11 @@ class PaymentMandateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumPaymentInstructionsNumeric $maximumPaymentInstructionsNumeric
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumPaymentInstructionsNumeric|null $maximumPaymentInstructionsNumeric
      * @return self
      */
     public function setMaximumPaymentInstructionsNumeric(
-        MaximumPaymentInstructionsNumeric $maximumPaymentInstructionsNumeric,
+        ?MaximumPaymentInstructionsNumeric $maximumPaymentInstructionsNumeric = null,
     ): self {
         $this->maximumPaymentInstructionsNumeric = $maximumPaymentInstructionsNumeric;
 
@@ -232,10 +232,10 @@ class PaymentMandateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumPaidAmount $maximumPaidAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MaximumPaidAmount|null $maximumPaidAmount
      * @return self
      */
-    public function setMaximumPaidAmount(MaximumPaidAmount $maximumPaidAmount): self
+    public function setMaximumPaidAmount(?MaximumPaidAmount $maximumPaidAmount = null): self
     {
         $this->maximumPaidAmount = $maximumPaidAmount;
 
@@ -261,10 +261,10 @@ class PaymentMandateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SignatureID $signatureID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SignatureID|null $signatureID
      * @return self
      */
-    public function setSignatureID(SignatureID $signatureID): self
+    public function setSignatureID(?SignatureID $signatureID = null): self
     {
         $this->signatureID = $signatureID;
 
@@ -290,10 +290,10 @@ class PaymentMandateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PayerParty $payerParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PayerParty|null $payerParty
      * @return self
      */
-    public function setPayerParty(PayerParty $payerParty): self
+    public function setPayerParty(?PayerParty $payerParty = null): self
     {
         $this->payerParty = $payerParty;
 
@@ -319,10 +319,10 @@ class PaymentMandateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PayerFinancialAccount $payerFinancialAccount
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PayerFinancialAccount|null $payerFinancialAccount
      * @return self
      */
-    public function setPayerFinancialAccount(PayerFinancialAccount $payerFinancialAccount): self
+    public function setPayerFinancialAccount(?PayerFinancialAccount $payerFinancialAccount = null): self
     {
         $this->payerFinancialAccount = $payerFinancialAccount;
 
@@ -348,10 +348,10 @@ class PaymentMandateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod $validityPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod|null $validityPeriod
      * @return self
      */
-    public function setValidityPeriod(ValidityPeriod $validityPeriod): self
+    public function setValidityPeriod(?ValidityPeriod $validityPeriod = null): self
     {
         $this->validityPeriod = $validityPeriod;
 
@@ -377,10 +377,10 @@ class PaymentMandateType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PaymentReversalPeriod $paymentReversalPeriod
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PaymentReversalPeriod|null $paymentReversalPeriod
      * @return self
      */
-    public function setPaymentReversalPeriod(PaymentReversalPeriod $paymentReversalPeriod): self
+    public function setPaymentReversalPeriod(?PaymentReversalPeriod $paymentReversalPeriod = null): self
     {
         $this->paymentReversalPeriod = $paymentReversalPeriod;
 
@@ -396,10 +396,10 @@ class PaymentMandateType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Clause> $clause
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\Clause>|null $clause
      * @return self
      */
-    public function setClause(array $clause): self
+    public function setClause(?array $clause = null): self
     {
         $this->clause = $clause;
 

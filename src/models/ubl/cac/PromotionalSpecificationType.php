@@ -11,7 +11,7 @@ class PromotionalSpecificationType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\SpecificationID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\SpecificationID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\SpecificationID")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class PromotionalSpecificationType
     private $specificationID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PromotionalEventLineItem>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PromotionalEventLineItem>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PromotionalEventLineItem>")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class PromotionalSpecificationType
     private $promotionalEventLineItem;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\EventTactic>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\EventTactic>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\EventTactic>")
      * @JMS\Expose
@@ -64,10 +64,10 @@ class PromotionalSpecificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\SpecificationID $specificationID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SpecificationID|null $specificationID
      * @return self
      */
-    public function setSpecificationID(SpecificationID $specificationID): self
+    public function setSpecificationID(?SpecificationID $specificationID = null): self
     {
         $this->specificationID = $specificationID;
 
@@ -83,10 +83,10 @@ class PromotionalSpecificationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PromotionalEventLineItem> $promotionalEventLineItem
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PromotionalEventLineItem>|null $promotionalEventLineItem
      * @return self
      */
-    public function setPromotionalEventLineItem(array $promotionalEventLineItem): self
+    public function setPromotionalEventLineItem(?array $promotionalEventLineItem = null): self
     {
         $this->promotionalEventLineItem = $promotionalEventLineItem;
 
@@ -164,10 +164,10 @@ class PromotionalSpecificationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\EventTactic> $eventTactic
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\EventTactic>|null $eventTactic
      * @return self
      */
-    public function setEventTactic(array $eventTactic): self
+    public function setEventTactic(?array $eventTactic = null): self
     {
         $this->eventTactic = $eventTactic;
 

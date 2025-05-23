@@ -11,7 +11,7 @@ class LotIdentificationType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LotNumberID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LotNumberID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LotNumberID")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class LotIdentificationType
     private $lotNumberID;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -33,7 +33,7 @@ class LotIdentificationType
     private $expiryDate;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty>")
      * @JMS\Expose
@@ -63,10 +63,10 @@ class LotIdentificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LotNumberID $lotNumberID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LotNumberID|null $lotNumberID
      * @return self
      */
-    public function setLotNumberID(LotNumberID $lotNumberID): self
+    public function setLotNumberID(?LotNumberID $lotNumberID = null): self
     {
         $this->lotNumberID = $lotNumberID;
 
@@ -82,10 +82,10 @@ class LotIdentificationType
     }
 
     /**
-     * @param \DateTimeInterface $expiryDate
+     * @param \DateTimeInterface|null $expiryDate
      * @return self
      */
-    public function setExpiryDate(\DateTimeInterface $expiryDate): self
+    public function setExpiryDate(?\DateTimeInterface $expiryDate = null): self
     {
         $this->expiryDate = $expiryDate;
 
@@ -101,10 +101,10 @@ class LotIdentificationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty> $additionalItemProperty
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty>|null $additionalItemProperty
      * @return self
      */
-    public function setAdditionalItemProperty(array $additionalItemProperty): self
+    public function setAdditionalItemProperty(?array $additionalItemProperty = null): self
     {
         $this->additionalItemProperty = $additionalItemProperty;
 

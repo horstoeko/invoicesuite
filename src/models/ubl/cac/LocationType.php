@@ -18,7 +18,7 @@ class LocationType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -29,7 +29,7 @@ class LocationType
     private $iD;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Description>")
      * @JMS\Expose
@@ -41,7 +41,7 @@ class LocationType
     private $description;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Conditions>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Conditions>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Conditions>")
      * @JMS\Expose
@@ -53,7 +53,7 @@ class LocationType
     private $conditions;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CountrySubentity
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CountrySubentity|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CountrySubentity")
      * @JMS\Expose
@@ -64,7 +64,7 @@ class LocationType
     private $countrySubentity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CountrySubentityCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CountrySubentityCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CountrySubentityCode")
      * @JMS\Expose
@@ -75,7 +75,7 @@ class LocationType
     private $countrySubentityCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\LocationTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\LocationTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\LocationTypeCode")
      * @JMS\Expose
@@ -86,7 +86,7 @@ class LocationType
     private $locationTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\InformationURI
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\InformationURI|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\InformationURI")
      * @JMS\Expose
@@ -97,7 +97,7 @@ class LocationType
     private $informationURI;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\Name")
      * @JMS\Expose
@@ -108,7 +108,7 @@ class LocationType
     private $name;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod>")
      * @JMS\Expose
@@ -120,7 +120,7 @@ class LocationType
     private $validityPeriod;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Address
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Address|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Address")
      * @JMS\Expose
@@ -131,7 +131,7 @@ class LocationType
     private $address;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SubsidiaryLocation>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\SubsidiaryLocation>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\SubsidiaryLocation>")
      * @JMS\Expose
@@ -143,7 +143,7 @@ class LocationType
     private $subsidiaryLocation;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\LocationCoordinate>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\LocationCoordinate>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\LocationCoordinate>")
      * @JMS\Expose
@@ -173,10 +173,10 @@ class LocationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -192,10 +192,10 @@ class LocationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description> $description
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null $description
      * @return self
      */
-    public function setDescription(array $description): self
+    public function setDescription(?array $description = null): self
     {
         $this->description = $description;
 
@@ -273,10 +273,10 @@ class LocationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Conditions> $conditions
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Conditions>|null $conditions
      * @return self
      */
-    public function setConditions(array $conditions): self
+    public function setConditions(?array $conditions = null): self
     {
         $this->conditions = $conditions;
 
@@ -364,10 +364,10 @@ class LocationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CountrySubentity $countrySubentity
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CountrySubentity|null $countrySubentity
      * @return self
      */
-    public function setCountrySubentity(CountrySubentity $countrySubentity): self
+    public function setCountrySubentity(?CountrySubentity $countrySubentity = null): self
     {
         $this->countrySubentity = $countrySubentity;
 
@@ -393,10 +393,10 @@ class LocationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CountrySubentityCode $countrySubentityCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CountrySubentityCode|null $countrySubentityCode
      * @return self
      */
-    public function setCountrySubentityCode(CountrySubentityCode $countrySubentityCode): self
+    public function setCountrySubentityCode(?CountrySubentityCode $countrySubentityCode = null): self
     {
         $this->countrySubentityCode = $countrySubentityCode;
 
@@ -422,10 +422,10 @@ class LocationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\LocationTypeCode $locationTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LocationTypeCode|null $locationTypeCode
      * @return self
      */
-    public function setLocationTypeCode(LocationTypeCode $locationTypeCode): self
+    public function setLocationTypeCode(?LocationTypeCode $locationTypeCode = null): self
     {
         $this->locationTypeCode = $locationTypeCode;
 
@@ -451,10 +451,10 @@ class LocationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\InformationURI $informationURI
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\InformationURI|null $informationURI
      * @return self
      */
-    public function setInformationURI(InformationURI $informationURI): self
+    public function setInformationURI(?InformationURI $informationURI = null): self
     {
         $this->informationURI = $informationURI;
 
@@ -480,10 +480,10 @@ class LocationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name|null $name
      * @return self
      */
-    public function setName(Name $name): self
+    public function setName(?Name $name = null): self
     {
         $this->name = $name;
 
@@ -499,10 +499,10 @@ class LocationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod> $validityPeriod
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod>|null $validityPeriod
      * @return self
      */
-    public function setValidityPeriod(array $validityPeriod): self
+    public function setValidityPeriod(?array $validityPeriod = null): self
     {
         $this->validityPeriod = $validityPeriod;
 
@@ -590,10 +590,10 @@ class LocationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Address $address
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Address|null $address
      * @return self
      */
-    public function setAddress(Address $address): self
+    public function setAddress(?Address $address = null): self
     {
         $this->address = $address;
 
@@ -609,10 +609,10 @@ class LocationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SubsidiaryLocation> $subsidiaryLocation
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\SubsidiaryLocation>|null $subsidiaryLocation
      * @return self
      */
-    public function setSubsidiaryLocation(array $subsidiaryLocation): self
+    public function setSubsidiaryLocation(?array $subsidiaryLocation = null): self
     {
         $this->subsidiaryLocation = $subsidiaryLocation;
 
@@ -690,10 +690,10 @@ class LocationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\LocationCoordinate> $locationCoordinate
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\LocationCoordinate>|null $locationCoordinate
      * @return self
      */
-    public function setLocationCoordinate(array $locationCoordinate): self
+    public function setLocationCoordinate(?array $locationCoordinate = null): self
     {
         $this->locationCoordinate = $locationCoordinate;
 

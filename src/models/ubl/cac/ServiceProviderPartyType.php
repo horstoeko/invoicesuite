@@ -13,7 +13,7 @@ class ServiceProviderPartyType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class ServiceProviderPartyType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ServiceTypeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ServiceTypeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ServiceTypeCode")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class ServiceProviderPartyType
     private $serviceTypeCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ServiceType>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ServiceType>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\ServiceType>")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class ServiceProviderPartyType
     private $serviceType;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\Party
+     * @var \horstoeko\invoicesuite\models\ubl\cac\Party|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\Party")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class ServiceProviderPartyType
     private $party;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\SellerContact
+     * @var \horstoeko\invoicesuite\models\ubl\cac\SellerContact|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\SellerContact")
      * @JMS\Expose
@@ -87,10 +87,10 @@ class ServiceProviderPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -116,10 +116,10 @@ class ServiceProviderPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ServiceTypeCode $serviceTypeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ServiceTypeCode|null $serviceTypeCode
      * @return self
      */
-    public function setServiceTypeCode(ServiceTypeCode $serviceTypeCode): self
+    public function setServiceTypeCode(?ServiceTypeCode $serviceTypeCode = null): self
     {
         $this->serviceTypeCode = $serviceTypeCode;
 
@@ -135,10 +135,10 @@ class ServiceProviderPartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ServiceType> $serviceType
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\ServiceType>|null $serviceType
      * @return self
      */
-    public function setServiceType(array $serviceType): self
+    public function setServiceType(?array $serviceType = null): self
     {
         $this->serviceType = $serviceType;
 
@@ -226,10 +226,10 @@ class ServiceProviderPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\Party $party
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Party|null $party
      * @return self
      */
-    public function setParty(Party $party): self
+    public function setParty(?Party $party = null): self
     {
         $this->party = $party;
 
@@ -255,10 +255,10 @@ class ServiceProviderPartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\SellerContact $sellerContact
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SellerContact|null $sellerContact
      * @return self
      */
-    public function setSellerContact(SellerContact $sellerContact): self
+    public function setSellerContact(?SellerContact $sellerContact = null): self
     {
         $this->sellerContact = $sellerContact;
 

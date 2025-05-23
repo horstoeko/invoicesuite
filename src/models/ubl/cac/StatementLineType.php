@@ -17,7 +17,7 @@ class StatementLineType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\ID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\ID")
      * @JMS\Expose
@@ -28,7 +28,7 @@ class StatementLineType
     private $iD;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cbc\Note>")
      * @JMS\Expose
@@ -40,7 +40,7 @@ class StatementLineType
     private $note;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\UUID")
      * @JMS\Expose
@@ -51,7 +51,7 @@ class StatementLineType
     private $uUID;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -62,7 +62,7 @@ class StatementLineType
     private $balanceBroughtForwardIndicator;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\DebitLineAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\DebitLineAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\DebitLineAmount")
      * @JMS\Expose
@@ -73,7 +73,7 @@ class StatementLineType
     private $debitLineAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\CreditLineAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\CreditLineAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\CreditLineAmount")
      * @JMS\Expose
@@ -84,7 +84,7 @@ class StatementLineType
     private $creditLineAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\BalanceAmount
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\BalanceAmount|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\BalanceAmount")
      * @JMS\Expose
@@ -95,7 +95,7 @@ class StatementLineType
     private $balanceAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cbc\PaymentPurposeCode
+     * @var \horstoeko\invoicesuite\models\ubl\cbc\PaymentPurposeCode|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cbc\PaymentPurposeCode")
      * @JMS\Expose
@@ -106,7 +106,7 @@ class StatementLineType
     private $paymentPurposeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PaymentMeans
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PaymentMeans|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PaymentMeans")
      * @JMS\Expose
@@ -117,7 +117,7 @@ class StatementLineType
     private $paymentMeans;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>")
      * @JMS\Expose
@@ -129,7 +129,7 @@ class StatementLineType
     private $paymentTerms;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\BuyerCustomerParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\BuyerCustomerParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\BuyerCustomerParty")
      * @JMS\Expose
@@ -140,7 +140,7 @@ class StatementLineType
     private $buyerCustomerParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty")
      * @JMS\Expose
@@ -151,7 +151,7 @@ class StatementLineType
     private $sellerSupplierParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\OriginatorCustomerParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\OriginatorCustomerParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\OriginatorCustomerParty")
      * @JMS\Expose
@@ -162,7 +162,7 @@ class StatementLineType
     private $originatorCustomerParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\AccountingCustomerParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\AccountingCustomerParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\AccountingCustomerParty")
      * @JMS\Expose
@@ -173,7 +173,7 @@ class StatementLineType
     private $accountingCustomerParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\AccountingSupplierParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\AccountingSupplierParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\AccountingSupplierParty")
      * @JMS\Expose
@@ -184,7 +184,7 @@ class StatementLineType
     private $accountingSupplierParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\PayeeParty
+     * @var \horstoeko\invoicesuite\models\ubl\cac\PayeeParty|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\PayeeParty")
      * @JMS\Expose
@@ -195,7 +195,7 @@ class StatementLineType
     private $payeeParty;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod>")
      * @JMS\Expose
@@ -207,7 +207,7 @@ class StatementLineType
     private $invoicePeriod;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\BillingReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\BillingReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\BillingReference>")
      * @JMS\Expose
@@ -219,7 +219,7 @@ class StatementLineType
     private $billingReference;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\DocumentReference>")
      * @JMS\Expose
@@ -231,7 +231,7 @@ class StatementLineType
     private $documentReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\ubl\cac\ExchangeRate
+     * @var \horstoeko\invoicesuite\models\ubl\cac\ExchangeRate|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("horstoeko\invoicesuite\models\ubl\cac\ExchangeRate")
      * @JMS\Expose
@@ -242,7 +242,7 @@ class StatementLineType
     private $exchangeRate;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>")
      * @JMS\Expose
@@ -254,7 +254,7 @@ class StatementLineType
     private $allowanceCharge;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CollectedPayment>
+     * @var array<\horstoeko\invoicesuite\models\ubl\cac\CollectedPayment>|null
      * @JMS\Groups({"ubl"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\ubl\cac\CollectedPayment>")
      * @JMS\Expose
@@ -284,10 +284,10 @@ class StatementLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID $iD
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ID|null $iD
      * @return self
      */
-    public function setID(ID $iD): self
+    public function setID(?ID $iD = null): self
     {
         $this->iD = $iD;
 
@@ -303,10 +303,10 @@ class StatementLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note> $note
+     * @param array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null $note
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNote(?array $note = null): self
     {
         $this->note = $note;
 
@@ -394,10 +394,10 @@ class StatementLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID $uUID
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\UUID|null $uUID
      * @return self
      */
-    public function setUUID(UUID $uUID): self
+    public function setUUID(?UUID $uUID = null): self
     {
         $this->uUID = $uUID;
 
@@ -413,10 +413,10 @@ class StatementLineType
     }
 
     /**
-     * @param bool $balanceBroughtForwardIndicator
+     * @param bool|null $balanceBroughtForwardIndicator
      * @return self
      */
-    public function setBalanceBroughtForwardIndicator(bool $balanceBroughtForwardIndicator): self
+    public function setBalanceBroughtForwardIndicator(?bool $balanceBroughtForwardIndicator = null): self
     {
         $this->balanceBroughtForwardIndicator = $balanceBroughtForwardIndicator;
 
@@ -442,10 +442,10 @@ class StatementLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\DebitLineAmount $debitLineAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DebitLineAmount|null $debitLineAmount
      * @return self
      */
-    public function setDebitLineAmount(DebitLineAmount $debitLineAmount): self
+    public function setDebitLineAmount(?DebitLineAmount $debitLineAmount = null): self
     {
         $this->debitLineAmount = $debitLineAmount;
 
@@ -471,10 +471,10 @@ class StatementLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\CreditLineAmount $creditLineAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CreditLineAmount|null $creditLineAmount
      * @return self
      */
-    public function setCreditLineAmount(CreditLineAmount $creditLineAmount): self
+    public function setCreditLineAmount(?CreditLineAmount $creditLineAmount = null): self
     {
         $this->creditLineAmount = $creditLineAmount;
 
@@ -500,10 +500,10 @@ class StatementLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\BalanceAmount $balanceAmount
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\BalanceAmount|null $balanceAmount
      * @return self
      */
-    public function setBalanceAmount(BalanceAmount $balanceAmount): self
+    public function setBalanceAmount(?BalanceAmount $balanceAmount = null): self
     {
         $this->balanceAmount = $balanceAmount;
 
@@ -529,10 +529,10 @@ class StatementLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaymentPurposeCode $paymentPurposeCode
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaymentPurposeCode|null $paymentPurposeCode
      * @return self
      */
-    public function setPaymentPurposeCode(PaymentPurposeCode $paymentPurposeCode): self
+    public function setPaymentPurposeCode(?PaymentPurposeCode $paymentPurposeCode = null): self
     {
         $this->paymentPurposeCode = $paymentPurposeCode;
 
@@ -558,10 +558,10 @@ class StatementLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PaymentMeans $paymentMeans
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PaymentMeans|null $paymentMeans
      * @return self
      */
-    public function setPaymentMeans(PaymentMeans $paymentMeans): self
+    public function setPaymentMeans(?PaymentMeans $paymentMeans = null): self
     {
         $this->paymentMeans = $paymentMeans;
 
@@ -577,10 +577,10 @@ class StatementLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms> $paymentTerms
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>|null $paymentTerms
      * @return self
      */
-    public function setPaymentTerms(array $paymentTerms): self
+    public function setPaymentTerms(?array $paymentTerms = null): self
     {
         $this->paymentTerms = $paymentTerms;
 
@@ -668,10 +668,10 @@ class StatementLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\BuyerCustomerParty $buyerCustomerParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\BuyerCustomerParty|null $buyerCustomerParty
      * @return self
      */
-    public function setBuyerCustomerParty(BuyerCustomerParty $buyerCustomerParty): self
+    public function setBuyerCustomerParty(?BuyerCustomerParty $buyerCustomerParty = null): self
     {
         $this->buyerCustomerParty = $buyerCustomerParty;
 
@@ -697,10 +697,10 @@ class StatementLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty $sellerSupplierParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty|null $sellerSupplierParty
      * @return self
      */
-    public function setSellerSupplierParty(SellerSupplierParty $sellerSupplierParty): self
+    public function setSellerSupplierParty(?SellerSupplierParty $sellerSupplierParty = null): self
     {
         $this->sellerSupplierParty = $sellerSupplierParty;
 
@@ -726,10 +726,10 @@ class StatementLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\OriginatorCustomerParty $originatorCustomerParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OriginatorCustomerParty|null $originatorCustomerParty
      * @return self
      */
-    public function setOriginatorCustomerParty(OriginatorCustomerParty $originatorCustomerParty): self
+    public function setOriginatorCustomerParty(?OriginatorCustomerParty $originatorCustomerParty = null): self
     {
         $this->originatorCustomerParty = $originatorCustomerParty;
 
@@ -755,10 +755,10 @@ class StatementLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\AccountingCustomerParty $accountingCustomerParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AccountingCustomerParty|null $accountingCustomerParty
      * @return self
      */
-    public function setAccountingCustomerParty(AccountingCustomerParty $accountingCustomerParty): self
+    public function setAccountingCustomerParty(?AccountingCustomerParty $accountingCustomerParty = null): self
     {
         $this->accountingCustomerParty = $accountingCustomerParty;
 
@@ -784,10 +784,10 @@ class StatementLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\AccountingSupplierParty $accountingSupplierParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AccountingSupplierParty|null $accountingSupplierParty
      * @return self
      */
-    public function setAccountingSupplierParty(AccountingSupplierParty $accountingSupplierParty): self
+    public function setAccountingSupplierParty(?AccountingSupplierParty $accountingSupplierParty = null): self
     {
         $this->accountingSupplierParty = $accountingSupplierParty;
 
@@ -813,10 +813,10 @@ class StatementLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\PayeeParty $payeeParty
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PayeeParty|null $payeeParty
      * @return self
      */
-    public function setPayeeParty(PayeeParty $payeeParty): self
+    public function setPayeeParty(?PayeeParty $payeeParty = null): self
     {
         $this->payeeParty = $payeeParty;
 
@@ -832,10 +832,10 @@ class StatementLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod> $invoicePeriod
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod>|null $invoicePeriod
      * @return self
      */
-    public function setInvoicePeriod(array $invoicePeriod): self
+    public function setInvoicePeriod(?array $invoicePeriod = null): self
     {
         $this->invoicePeriod = $invoicePeriod;
 
@@ -913,10 +913,10 @@ class StatementLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\BillingReference> $billingReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\BillingReference>|null $billingReference
      * @return self
      */
-    public function setBillingReference(array $billingReference): self
+    public function setBillingReference(?array $billingReference = null): self
     {
         $this->billingReference = $billingReference;
 
@@ -994,10 +994,10 @@ class StatementLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference> $documentReference
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null $documentReference
      * @return self
      */
-    public function setDocumentReference(array $documentReference): self
+    public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
 
@@ -1085,10 +1085,10 @@ class StatementLineType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\ubl\cac\ExchangeRate $exchangeRate
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ExchangeRate|null $exchangeRate
      * @return self
      */
-    public function setExchangeRate(ExchangeRate $exchangeRate): self
+    public function setExchangeRate(?ExchangeRate $exchangeRate = null): self
     {
         $this->exchangeRate = $exchangeRate;
 
@@ -1104,10 +1104,10 @@ class StatementLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge> $allowanceCharge
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null $allowanceCharge
      * @return self
      */
-    public function setAllowanceCharge(array $allowanceCharge): self
+    public function setAllowanceCharge(?array $allowanceCharge = null): self
     {
         $this->allowanceCharge = $allowanceCharge;
 
@@ -1185,10 +1185,10 @@ class StatementLineType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CollectedPayment> $collectedPayment
+     * @param array<\horstoeko\invoicesuite\models\ubl\cac\CollectedPayment>|null $collectedPayment
      * @return self
      */
-    public function setCollectedPayment(array $collectedPayment): self
+    public function setCollectedPayment(?array $collectedPayment = null): self
     {
         $this->collectedPayment = $collectedPayment;
 
