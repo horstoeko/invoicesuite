@@ -1410,7 +1410,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentUltimateShipToName(
-        string $newName
+        ?string $newName = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentUltimateShipToName($newName);
 
@@ -1421,7 +1421,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentUltimateShipToId(
-        string $newId
+        ?string $newId = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentUltimateShipToId($newId);
 
@@ -1432,7 +1432,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function addDocumentUltimateShipToId(
-        string $newId
+        ?string $newId = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentUltimateShipToId($newId);
 
@@ -1443,8 +1443,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentUltimateShipToGlobalId(
-        string $newGlobalId,
-        string $newGlobalIdType
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
 
@@ -1455,8 +1455,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function addDocumentUltimateShipToGlobalId(
-        string $newGlobalId,
-        string $newGlobalIdType
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
 
@@ -1467,8 +1467,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentUltimateShipToTaxRegistration(
-        string $newTaxRegistrationType,
-        string $newTaxRegistrationId
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
@@ -1479,8 +1479,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function addDocumentUltimateShipToTaxRegistration(
-        string $newTaxRegistrationType,
-        string $newTaxRegistrationId
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
@@ -1491,13 +1491,13 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentUltimateShipToAddress(
-        string $newAddressLine1,
-        string $newAddressLine2,
-        string $newAddressLine3,
-        string $newPostcode,
-        string $newCity,
-        string $newCountryId,
-        string $newSubDivision
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentUltimateShipToAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
 
@@ -1508,9 +1508,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentUltimateShipToLegalOrganisation(
-        string $newType,
-        string $newId,
-        string $newName
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentUltimateShipToLegalOrganisation($newType, $newId, $newName);
 
@@ -1521,11 +1521,11 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentUltimateShipToContact(
-        string $newPersonName,
-        string $newDepartmentName,
-        string $newPhoneNumber,
-        string $newFaxNumber,
-        string $newEmailAddress
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentUltimateShipToContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
 
@@ -1536,11 +1536,11 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function addDocumentUltimateShipToContact(
-        string $newPersonName,
-        string $newDepartmentName,
-        string $newPhoneNumber,
-        string $newFaxNumber,
-        string $newEmailAddress
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentUltimateShipToContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
 
@@ -1551,8 +1551,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentUltimateShipToCommunication(
-        string $newType,
-        string $newUri
+        ?string $newType = null,
+        ?string $newUri = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentUltimateShipToCommunication($newType, $newUri);
 
