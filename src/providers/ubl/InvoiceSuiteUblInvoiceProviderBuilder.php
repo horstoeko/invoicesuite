@@ -1749,11 +1749,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     #region Document Tax representativ party
 
     /**
-     * @param string $newName The full formal name under which the party is registered
+     * @param string|null $newName The full formal name under which the party is registered
      * @return self
      */
     public function setDocumentTaxRepresentativeName(
-        string $newName
+        ?string $newName = null
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
@@ -1770,11 +1770,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newId An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
+     * @param string|null $newId An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
      * @return self
      */
     public function setDocumentTaxRepresentativeId(
-        string $newId
+        ?string $newId = null
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -1803,11 +1803,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newId An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
+     * @param string|null $newId An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
      * @return self
      */
     public function addDocumentTaxRepresentativeId(
-        string $newId
+        ?string $newId = null
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -1825,13 +1825,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newGlobalId     The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
-     * @param string $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string|null $newGlobalId     The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
+     * @param string|null $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
     public function setDocumentTaxRepresentativeGlobalId(
-        string $newGlobalId,
-        string $newGlobalIdType
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
@@ -1860,13 +1860,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newGlobalId     The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
-     * @param string $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string|null $newGlobalId     The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
+     * @param string|null $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
     public function addDocumentTaxRepresentativeGlobalId(
-        string $newGlobalId,
-        string $newGlobalIdType
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
@@ -1885,13 +1885,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newTaxRegistrationType Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   Tax number or sales tax identification number
+     * @param string|null $newTaxRegistrationType Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string|null $newTaxRegistrationId   Tax number or sales tax identification number
      * @return self
      */
     public function setDocumentTaxRepresentativeTaxRegistration(
-        string $newTaxRegistrationType,
-        string $newTaxRegistrationId
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
@@ -1908,13 +1908,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newTaxRegistrationType Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string $newTaxRegistrationId   Tax number or sales tax identification number
+     * @param string|null $newTaxRegistrationType Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string|null $newTaxRegistrationId   Tax number or sales tax identification number
      * @return self
      */
     public function addDocumentTaxRepresentativeTaxRegistration(
-        string $newTaxRegistrationType,
-        string $newTaxRegistrationId
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
@@ -1938,22 +1938,22 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newAddressLine1 The main line in the buyers address. This is usually the street name and house number or the post office box
-     * @param string $newAddressLine2 Line 2 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newAddressLine3 Line 3 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newPostcode     Identifier for a group of properties, such as a zip code
-     * @param string $newCity         Usual name of the city or municipality in which the buyers address is located
-     * @param string $newCountryId    Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param string $newSubDivision  The buyers state
+     * @param string|null $newAddressLine1 The main line in the buyers address. This is usually the street name and house number or the post office box
+     * @param string|null $newAddressLine2 Line 2 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param string|null $newAddressLine3 Line 3 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param string|null $newPostcode     Identifier for a group of properties, such as a zip code
+     * @param string|null $newCity         Usual name of the city or municipality in which the buyers address is located
+     * @param string|null $newCountryId    Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
+     * @param string|null $newSubDivision  The buyers state
      */
     public function setDocumentTaxRepresentativeAddress(
-        string $newAddressLine1,
-        string $newAddressLine2,
-        string $newAddressLine3,
-        string $newPostcode,
-        string $newCity,
-        string $newCountryId,
-        string $newSubDivision
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null
     ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -2002,15 +2002,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newType The identifier for the identification scheme of the legal registration of the buyer. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
-     * @param string $newId   An identifier issued by an official registrar that identifies the buyer as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and buyer
-     * @param string $newName A name by which the buyer is known, if different from the buyers name (also known as the company name)
+     * @param string|null $newType The identifier for the identification scheme of the legal registration of the buyer. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
+     * @param string|null $newId   An identifier issued by an official registrar that identifies the buyer as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and buyer
+     * @param string|null $newName A name by which the buyer is known, if different from the buyers name (also known as the company name)
      * @return self
      */
     public function setDocumentTaxRepresentativeLegalOrganisation(
-        string $newType,
-        string $newId,
-        string $newName
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
@@ -2038,19 +2038,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newPersonName     Contact point for a legal entity, such as a personal name of the contact person
-     * @param string $newDepartmentName Contact point for a legal entity, such as a name of the department or office
-     * @param string $newPhoneNumber    A telephone number for the contact point
-     * @param string $newFaxNumber      A fax number of the contact point
-     * @param string $newEmailAddress   An e-mail address of the contact point
+     * @param string|null $newPersonName     Contact point for a legal entity, such as a personal name of the contact person
+     * @param string|null $newDepartmentName Contact point for a legal entity, such as a name of the department or office
+     * @param string|null $newPhoneNumber    A telephone number for the contact point
+     * @param string|null $newFaxNumber      A fax number of the contact point
+     * @param string|null $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
     public function setDocumentTaxRepresentativeContact(
-        string $newPersonName,
-        string $newDepartmentName,
-        string $newPhoneNumber,
-        string $newFaxNumber,
-        string $newEmailAddress
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null
     ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -2093,31 +2093,31 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newPersonName     Contact point for a legal entity, such as a personal name of the contact person
-     * @param string $newDepartmentName Contact point for a legal entity, such as a name of the department or office
-     * @param string $newPhoneNumber    A telephone number for the contact point
-     * @param string $newFaxNumber      A fax number of the contact point
-     * @param string $newEmailAddress   An e-mail address of the contact point
+     * @param string|null $newPersonName     Contact point for a legal entity, such as a personal name of the contact person
+     * @param string|null $newDepartmentName Contact point for a legal entity, such as a name of the department or office
+     * @param string|null $newPhoneNumber    A telephone number for the contact point
+     * @param string|null $newFaxNumber      A fax number of the contact point
+     * @param string|null $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
     public function addDocumentTaxRepresentativeContact(
-        string $newPersonName,
-        string $newDepartmentName,
-        string $newPhoneNumber,
-        string $newFaxNumber,
-        string $newEmailAddress
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null
     ): self {
         return $this->setDocumentTaxRepresentativeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
     }
 
     /**
-     * @param string $newType The identifier for the identification scheme of the buyer's electronic address
-     * @param string $newUri  Specifies the buyer's electronic address to which the invoice is sent
+     * @param string|null $newType The identifier for the identification scheme of the buyer's electronic address
+     * @param string|null $newUri  Specifies the buyer's electronic address to which the invoice is sent
      * @return self
      */
     public function setDocumentTaxRepresentativeCommunication(
-        string $newType,
-        string $newUri
+        ?string $newType = null,
+        ?string $newUri = null
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;

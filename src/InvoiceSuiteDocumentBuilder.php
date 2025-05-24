@@ -939,7 +939,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentTaxRepresentativeName(
-        string $newName
+        ?string $newName = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentTaxRepresentativeName($newName);
 
@@ -950,7 +950,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentTaxRepresentativeId(
-        string $newId
+        ?string $newId = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentTaxRepresentativeId($newId);
 
@@ -961,7 +961,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function addDocumentTaxRepresentativeId(
-        string $newId
+        ?string $newId = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentTaxRepresentativeId($newId);
 
@@ -972,8 +972,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentTaxRepresentativeGlobalId(
-        string $newGlobalId,
-        string $newGlobalIdType
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
 
@@ -984,8 +984,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function addDocumentTaxRepresentativeGlobalId(
-        string $newGlobalId,
-        string $newGlobalIdType
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
 
@@ -996,8 +996,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentTaxRepresentativeTaxRegistration(
-        string $newTaxRegistrationType,
-        string $newTaxRegistrationId
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
@@ -1008,8 +1008,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function addDocumentTaxRepresentativeTaxRegistration(
-        string $newTaxRegistrationType,
-        string $newTaxRegistrationId
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
@@ -1020,13 +1020,13 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentTaxRepresentativeAddress(
-        string $newAddressLine1,
-        string $newAddressLine2,
-        string $newAddressLine3,
-        string $newPostcode,
-        string $newCity,
-        string $newCountryId,
-        string $newSubDivision
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentTaxRepresentativeAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
 
@@ -1037,9 +1037,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentTaxRepresentativeLegalOrganisation(
-        string $newType,
-        string $newId,
-        string $newName
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentTaxRepresentativeLegalOrganisation($newType, $newId, $newName);
 
@@ -1050,11 +1050,11 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentTaxRepresentativeContact(
-        string $newPersonName,
-        string $newDepartmentName,
-        string $newPhoneNumber,
-        string $newFaxNumber,
-        string $newEmailAddress
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentTaxRepresentativeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
 
@@ -1065,11 +1065,11 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function addDocumentTaxRepresentativeContact(
-        string $newPersonName,
-        string $newDepartmentName,
-        string $newPhoneNumber,
-        string $newFaxNumber,
-        string $newEmailAddress
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentTaxRepresentativeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
 
@@ -1080,8 +1080,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentTaxRepresentativeCommunication(
-        string $newType,
-        string $newUri
+        ?string $newType = null,
+        ?string $newUri = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentTaxRepresentativeCommunication($newType, $newUri);
 
