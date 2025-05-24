@@ -782,7 +782,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentBuyerName(
-        string $newName
+        ?string $newName = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentBuyerName($newName);
 
@@ -793,7 +793,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentBuyerId(
-        string $newId
+        ?string $newId = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentBuyerId($newId);
 
@@ -804,7 +804,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function addDocumentBuyerId(
-        string $newId
+        ?string $newId = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentBuyerId($newId);
 
@@ -815,8 +815,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentBuyerGlobalId(
-        string $newGlobalId,
-        string $newGlobalIdType
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentBuyerGlobalId($newGlobalId, $newGlobalIdType);
 
@@ -827,8 +827,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function addDocumentBuyerGlobalId(
-        string $newGlobalId,
-        string $newGlobalIdType
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentBuyerGlobalId($newGlobalId, $newGlobalIdType);
 
@@ -839,8 +839,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentBuyerTaxRegistration(
-        string $newTaxRegistrationType,
-        string $newTaxRegistrationId
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
@@ -851,8 +851,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function addDocumentBuyerTaxRegistration(
-        string $newTaxRegistrationType,
-        string $newTaxRegistrationId
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
@@ -863,13 +863,13 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentBuyerAddress(
-        string $newAddressLine1,
-        string $newAddressLine2,
-        string $newAddressLine3,
-        string $newPostcode,
-        string $newCity,
-        string $newCountryId,
-        string $newSubDivision
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentBuyerAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
 
@@ -880,9 +880,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentBuyerLegalOrganisation(
-        string $newType,
-        string $newId,
-        string $newName
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentBuyerLegalOrganisation($newType, $newId, $newName);
 
@@ -893,11 +893,11 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentBuyerContact(
-        string $newPersonName,
-        string $newDepartmentName,
-        string $newPhoneNumber,
-        string $newFaxNumber,
-        string $newEmailAddress
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentBuyerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
 
@@ -908,11 +908,11 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function addDocumentBuyerContact(
-        string $newPersonName,
-        string $newDepartmentName,
-        string $newPhoneNumber,
-        string $newFaxNumber,
-        string $newEmailAddress
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentBuyerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
 
@@ -923,8 +923,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentBuyerCommunication(
-        string $newType,
-        string $newUri
+        ?string $newType = null,
+        ?string $newUri = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentBuyerCommunication($newType, $newUri);
 

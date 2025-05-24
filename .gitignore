@@ -86,3 +86,4 @@ lint.ps1
 /examples/00_SimpleInvoice.xml
 addusetoclasses.php
 addusetoclasses2.php
+convert_string_params.php
