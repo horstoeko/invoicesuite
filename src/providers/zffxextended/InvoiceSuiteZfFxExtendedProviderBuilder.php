@@ -4008,11 +4008,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     #region Document Invoicer
 
     /**
-     * @param string $newName __BT-X-207, From EXTENDED__ The full formal name under which the party is registered
+     * @param string|null $newName __BT-X-207, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
     public function setDocumentInvoicerName(
-        string $newName
+        ?string $newName = null
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
@@ -4030,11 +4030,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * @param string $newId __BT-X-205, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @param string|null $newId __BT-X-205, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setDocumentInvoicerId(
-        string $newId
+        ?string $newId = null
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -4053,11 +4053,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * @param string $newId __BT-X-205, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @param string|null $newId __BT-X-205, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addDocumentInvoicerId(
-        string $newId
+        ?string $newId = null
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -4075,13 +4075,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * @param string $newGlobalId __BT-X-206, From EXTENDED__ A global identifier of the party.
-     * @param string $newGlobalIdType __BT-X-206-0, From EXTENDED__ Type of the global identifier of the party.
+     * @param string|null $newGlobalId __BT-X-206, From EXTENDED__ A global identifier of the party.
+     * @param string|null $newGlobalIdType __BT-X-206-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
     public function setDocumentInvoicerGlobalId(
-        string $newGlobalId,
-        string $newGlobalIdType
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
     ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -4102,13 +4102,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * @param string $newGlobalId __BT-X-206, From EXTENDED__ A global identifier of the party.
-     * @param string $newGlobalIdType __BT-X-206-0, From EXTENDED__ Type of the global identifier of the party.
+     * @param string|null $newGlobalId __BT-X-206, From EXTENDED__ A global identifier of the party.
+     * @param string|null $newGlobalIdType __BT-X-206-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
     public function addDocumentInvoicerGlobalId(
-        string $newGlobalId,
-        string $newGlobalIdType
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
     ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -4129,13 +4129,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-X-223-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string $newTaxRegistrationId   __BT-X-223, From EXTENDED__ Tax identification number.
+     * @param string|null $newTaxRegistrationType __BT-X-223-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId   __BT-X-223, From EXTENDED__ Tax identification number.
      * @return self
      */
     public function setDocumentInvoicerTaxRegistration(
-        string $newTaxRegistrationType,
-        string $newTaxRegistrationId
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null
     ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -4156,13 +4156,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * @param string $newTaxRegistrationType __BT-X-223-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string $newTaxRegistrationId   __BT-X-223, From EXTENDED__ Tax identification number.
+     * @param string|null $newTaxRegistrationType __BT-X-223-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId   __BT-X-223, From EXTENDED__ Tax identification number.
      * @return self
      */
     public function addDocumentInvoicerTaxRegistration(
-        string $newTaxRegistrationType,
-        string $newTaxRegistrationId
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null
     ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -4184,23 +4184,23 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * @param string $newAddressLine1 __BT-X-216, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string $newAddressLine2 __BT-X-217, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string $newAddressLine3 __BT-X-218, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string $newPostcode     __BT-X-215, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
-     * @param string $newCity         __BT-X-219, From EXTENDED__ Name of the city or municipality in which the party's address is located.
-     * @param string $newCountryId    __BT-X-220, From EXTENDED__ Country in which the party's address is located.
-     * @param string $newSubDivision  __BT-X-221, From EXTENDED__ Region or federal state in which the party's address is located.
+     * @param string|null $newAddressLine1 __BT-X-216, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 __BT-X-217, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 __BT-X-218, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode     __BT-X-215, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity         __BT-X-219, From EXTENDED__ Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId    __BT-X-220, From EXTENDED__ Country in which the party's address is located.
+     * @param string|null $newSubDivision  __BT-X-221, From EXTENDED__ Region or federal state in which the party's address is located.
      * @return self
      */
     public function setDocumentInvoicerAddress(
-        string $newAddressLine1,
-        string $newAddressLine2,
-        string $newAddressLine3,
-        string $newPostcode,
-        string $newCity,
-        string $newCountryId,
-        string $newSubDivision
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null
     ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -4253,15 +4253,15 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * @param string $newType __BT-X-208-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
-     * @param string $newId   __BT-X-208, From EXTENDED__ Identification number of the legal registration of the party.
-     * @param string $newName __BT-X-209, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @param string|null $newType __BT-X-208-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
+     * @param string|null $newId   __BT-X-208, From EXTENDED__ Identification number of the legal registration of the party.
+     * @param string|null $newName __BT-X-209, From EXTENDED__ Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setDocumentInvoicerLegalOrganisation(
-        string $newType,
-        string $newId,
-        string $newName
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
@@ -4287,19 +4287,19 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * @param string $newPersonName     __BT-X-210, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string $newDepartmentName __BT-X-211, From EXTENDED__ Name of the department for the contact point.
-     * @param string $newPhoneNumber    __BT-X-212, From EXTENDED__ Telephone number for the contact point.
-     * @param string $newFaxNumber      __BT-X-213, From EXTENDED__ Fax number of the contact point.
-     * @param string $newEmailAddress   __BT-X-214, From EXTENDED__ E-Mail address of the contact point.
+     * @param string|null $newPersonName     __BT-X-210, From EXTENDED__ Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName __BT-X-211, From EXTENDED__ Name of the department for the contact point.
+     * @param string|null $newPhoneNumber    __BT-X-212, From EXTENDED__ Telephone number for the contact point.
+     * @param string|null $newFaxNumber      __BT-X-213, From EXTENDED__ Fax number of the contact point.
+     * @param string|null $newEmailAddress   __BT-X-214, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
     public function setDocumentInvoicerContact(
-        string $newPersonName,
-        string $newDepartmentName,
-        string $newPhoneNumber,
-        string $newFaxNumber,
-        string $newEmailAddress
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null
     ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -4325,19 +4325,19 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * @param string $newPersonName     __BT-X-210, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string $newDepartmentName __BT-X-211, From EXTENDED__ Name of the department for the contact point.
-     * @param string $newPhoneNumber    __BT-X-212, From EXTENDED__ Telephone number for the contact point.
-     * @param string $newFaxNumber      __BT-X-213, From EXTENDED__ Fax number of the contact point.
-     * @param string $newEmailAddress   __BT-X-214, From EXTENDED__ E-Mail address of the contact point.
+     * @param string|null $newPersonName     __BT-X-210, From EXTENDED__ Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName __BT-X-211, From EXTENDED__ Name of the department for the contact point.
+     * @param string|null $newPhoneNumber    __BT-X-212, From EXTENDED__ Telephone number for the contact point.
+     * @param string|null $newFaxNumber      __BT-X-213, From EXTENDED__ Fax number of the contact point.
+     * @param string|null $newEmailAddress   __BT-X-214, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
     public function addDocumentInvoicerContact(
-        string $newPersonName,
-        string $newDepartmentName,
-        string $newPhoneNumber,
-        string $newFaxNumber,
-        string $newEmailAddress
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null
     ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -4381,13 +4381,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * @param string $newType __BT-X-222-0, From EXTENDED__ The type for the party's electronic address.
-     * @param string $newUri  __BT-X-222, From EXTENDED__ The party's electronic address.
+     * @param string|null $newType __BT-X-222-0, From EXTENDED__ The type for the party's electronic address.
+     * @param string|null $newUri  __BT-X-222, From EXTENDED__ The party's electronic address.
      * @return self
      */
     public function setDocumentInvoicerCommunication(
-        string $newType,
-        string $newUri
+        ?string $newType = null,
+        ?string $newUri = null
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
