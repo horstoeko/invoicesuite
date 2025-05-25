@@ -3,22 +3,20 @@
 namespace horstoeko\invoicesuite\providers\ubl;
 
 use DateTimeInterface;
-use horstoeko\invoicesuite\models\ubl\main\Invoice;
-use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
-use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
-use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
-use horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge;
-use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
-use horstoeko\invoicesuite\models\ubl\cac\PartyIdentification;
-use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
+use horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge;
+use horstoeko\invoicesuite\models\ubl\cac\PartyIdentification;
+use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
+use horstoeko\invoicesuite\models\ubl\main\Invoice;
+use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
+use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatProviderBuilder
 {
-    #region Internal
-
     /**
      * Returns the root object as a Invoice
      *
@@ -46,10 +44,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newProfileId
      * @return static
      */
-    public function setContextParameter(
-        string $newCustomizationId,
-        string $newProfileId = ""
-    ): self {
+    public function setContextParameter(string $newCustomizationId, string $newProfileId = ''): self
+    {
         $this->getUblInvoiceRootObject()->getCustomizationIDWithCreate()->setValue($newCustomizationId);
 
         if ($newProfileId !== "") {
@@ -132,13 +128,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
-    #endregion
-
-    #region Document Generals
-
     /**
-     * @param string $newDocumentNo
-     * @return self
+     * Sets the new document number (e.g. invoice number)
+     *
+     * @param string|null $newDocumentNo The document no issued by the seller
+     * @return static
      */
     public function setDocumentNo(
         ?string $newDocumentNo = null
@@ -153,8 +147,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newDocumentType
-     * @return self
+     * Sets the new document type code
+     *
+     * @param string|null $newDocumentType The type of the document
+     * @return static
      */
     public function setDocumentType(
         ?string $newDocumentType = null
@@ -169,7 +165,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newDocumentDescription Document Type. The documenttype (free text)
+     * Sets the new document description
+     *
+     * @param string|null $newDocumentDescription The documenttype as free text
      * @return self
      */
     public function setDocumentDescription(
@@ -185,7 +183,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newDocumentLanguage Language indicator. The language code in which the document was written
+     * Sets the new document language
+     *
+     * @param string|null $newDocumentLanguage Language indicator. The language code in which the document was written
      * @return self
      */
     public function setDocumentLanguage(
@@ -201,7 +201,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param DateTimeInterface $newDocumentDate Date of invoice. The date when the document was issued by the seller
+     * Sets the new document date (e.g. invoice date)
+     *
+     * @param DateTimeInterface|null $newDocumentDate Date of the document. The date when the document was issued by the seller
      * @return self
      */
     public function setDocumentDate(
@@ -217,7 +219,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param DateTimeInterface $newCompleteDate The contractual due date of the invoice
+     * Sets the new document period
+     *
+     * @param DateTimeInterface|null $newCompleteDate Contractual due date of the document
      * @return self
      */
     public function setDocumentCompleteDate(
@@ -227,7 +231,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newDocumentCurrency Code for the invoice currency
+     * Sets the new document currency
+     *
+     * @param string|null $newDocumentCurrency Code for the invoice currency
      * @return self
      */
     public function setDocumentCurrency(
@@ -244,7 +250,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newDocumentTaxCurrency Code for the tax currency
+     * Sets the new document tax currency
+     *
+     * @param string|null $newDocumentTaxCurrency Code for the tax currency
      * @return self
      */
     public function setDocumentTaxCurrency(
@@ -261,7 +269,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param bool $newDocumentIsCopy
+     * Sets the new status of the copy indicator
+     *
+     * @param boolean $newDocumentIsCopy Indicates that the document is a copy
      * @return self
      */
     public function setDocumentIsCopy(
@@ -273,7 +283,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param bool $newDocumentIsTest
+     * Sets the new status of the test indicator
+     *
+     * @param boolean $newDocumentIsTest Indicates that the document is a test
      * @return self
      */
     public function setDocumentIsTest(
@@ -283,15 +295,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newContent     A free text containing unstructured information that is relevant to the invoice as a whole
-     * @param string $newContentCode A code to classify the content of the free text of the invoice
-     * @param string $newSubjectCode The qualification of the free text for the invoice from
+     * Set a note to the document. This clears all added notes
+     *
+     * @param string|null $newContent Free text containing unstructured information that is relevant to the invoice as a whole
+     * @param string|null $newContentCode Code to classify the content of the free text of the invoice
+     * @param string|null $newSubjectCode Qualification of the free text for the invoice
      * @return self
      */
     public function setDocumentNote(
         ?string $newContent = null,
         ?string $newContentCode = null,
-        ?string $newSubjectCode = null
+        ?string $newSubjectCode = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newContent])) {
             return $this;
@@ -303,15 +317,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string $newContent     A free text containing unstructured information that is relevant to the invoice as a whole
-     * @param string $newContentCode A code to classify the content of the free text of the invoice
-     * @param string $newSubjectCode The qualification of the free text for the invoice from
+     * Add a note to the document
+     *
+     * @param string|null $newContent Free text containing unstructured information that is relevant to the invoice as a whole
+     * @param string|null $newContentCode Code to classify the content of the free text of the invoice
+     * @param string|null $newSubjectCode Qualification of the free text for the invoice
      * @return self
      */
     public function addDocumentNote(
         ?string $newContent = null,
         ?string $newContentCode = null,
-        ?string $newSubjectCode = null
+        ?string $newSubjectCode = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newContent])) {
             return $this;
@@ -323,12 +339,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the start and/or end date of the billing period
+     *
+     * @param null|DateTimeInterface $newStartDate Start of the billing period
+     * @param null|DateTimeInterface $newEndDate End of the billing period
+     * @param null|string $newDescription Further information of the billing period (Obsolete)
+     * @return self
      */
     public function setDocumentBillingPeriod(
         ?DateTimeInterface $newStartDate = null,
         ?DateTimeInterface $newEndDate = null,
-        ?string $newDescription = null
+        ?string $newDescription = null,
     ): self {
         if (is_null($newStartDate) && is_null($newEndDate)) {
             return $this;
@@ -348,12 +369,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add a the start and/or end date of the billing period
+     *
+     * @param null|DateTimeInterface $newStartDate Start of the billing period
+     * @param null|DateTimeInterface $newEndDate End of the billing period
+     * @param null|string $newDescription Further information of the billing period (Obsolete)
+     * @return self
      */
     public function addDocumentBillingPeriod(
         ?DateTimeInterface $newStartDate = null,
         ?DateTimeInterface $newEndDate = null,
-        ?string $newDescription = null
+        ?string $newDescription = null,
     ): self {
         if (is_null($newStartDate) && is_null($newEndDate)) {
             return $this;
@@ -379,12 +405,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set a posting reference
+     *
+     * @param string|null $newType Type of the posting reference
+     * @param string|null $newAccountId Posting reference of the byuer
+     * @return self
      */
-    public function setDocumentPostingReference(
-        ?string $newType = null,
-        ?string $newAccountId = null
-    ): self {
+    public function setDocumentPostingReference(?string $newType = null, ?string $newAccountId = null): self
+    {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newAccountId])) {
             return $this;
         }
@@ -398,12 +426,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add a posting reference
+     *
+     * @param string|null $newType Type of the posting reference
+     * @param string|null $newAccountId Posting reference of the byuer
+     * @return self
      */
-    public function addDocumentPostingReference(
-        ?string $newType = null,
-        ?string $newAccountId = null
-    ): self {
+    public function addDocumentPostingReference(?string $newType = null, ?string $newAccountId = null): self
+    {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newAccountId])) {
             return $this;
         }
@@ -413,16 +443,16 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
-    #endregion
-
-    #region Document References
-
     /**
-     * @inheritDoc
+     * Set the associated seller's order confirmation.
+     *
+     * @param string|null $newReferenceNumber Seller's order confirmation number
+     * @param DateTimeInterface|null $newReferenceDate Seller's order confirmation date
+     * @return self
      */
     public function setDocumentSellerOrderReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -438,21 +468,29 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an associated seller's order confirmation.
+     *
+     * @param string|null $newReferenceNumber Seller's order confirmation number
+     * @param DateTimeInterface|null $newReferenceDate Seller's order confirmation date
+     * @return self
      */
     public function addDocumentSellerOrderReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         return $this->setDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
     }
 
     /**
-     * @inheritDoc
+     * Set the associated buyer's order
+     *
+     * @param string|null $newReferenceNumber Buyers's order number
+     * @param DateTimeInterface|null $newReferenceDate Buyer's order date
+     * @return self
      */
     public function setDocumentBuyerOrderReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -473,21 +511,29 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an associated buyer's order
+     *
+     * @param string|null $newReferenceNumber Buyers's order number
+     * @param DateTimeInterface|null $newReferenceDate Buyer's order date
+     * @return self
      */
     public function addDocumentBuyerOrderReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         return $this->setDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
     }
 
     /**
-     * @inheritDoc
+     * Set the associated quotation
+     *
+     * @param string|null $newReferenceNumber Quotation number
+     * @param DateTimeInterface|null $newReferenceDate quotation date
+     * @return self
      */
     public function setDocumentQuotationReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -530,21 +576,29 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an associated quotation
+     *
+     * @param string|null $newReferenceNumber quotation number
+     * @param DateTimeInterface|null $newReferenceDate quotation date
+     * @return self
      */
     public function addDocumentQuotationReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         return $this->setDocumentQuotationReference($newReferenceNumber, $newReferenceDate);
     }
 
     /**
-     * @inheritDoc
+     * Set the associated contract
+     *
+     * @param string $newReferenceNumber Contract number
+     * @param DateTimeInterface|null $newReferenceDate Contract date
+     * @return self
      */
     public function setDocumentContractReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -558,11 +612,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add am associated contract
+     *
+     * @param string $newReferenceNumber Contract number
+     * @param DateTimeInterface|null $newReferenceDate Contract date
+     * @return self
      */
     public function addDocumentContractReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -582,7 +640,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set an additional associated document
+     *
+     * @param string|null $newReferenceNumber Additional document number
+     * @param DateTimeInterface|null $newReferenceDate Additional document date
+     * @param string|null $newTypeCode Additional document type code
+     * @param string|null $newReferenceTypeCode Additional document reference-type code
+     * @param string|null $newDescription Additional document description
+     * @param InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment Additional document attachment
+     * @return self
      */
     public function setDocumentAdditionalReference(
         ?string $newReferenceNumber = null,
@@ -590,7 +656,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTypeCode = null,
         ?string $newReferenceTypeCode = null,
         ?string $newDescription = null,
-        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -613,7 +679,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an additional associated document
+     *
+     * @param string|null $newReferenceNumber Additional document number
+     * @param DateTimeInterface|null $newReferenceDate Additional document date
+     * @param string|null $newTypeCode Additional document type code
+     * @param string|null $newReferenceTypeCode Additional document reference-type code
+     * @param string|null $newDescription Additional document description
+     * @param InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment Additional document attachment
+     * @return self
      */
     public function addDocumentAdditionalReference(
         ?string $newReferenceNumber = null,
@@ -621,7 +695,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTypeCode = null,
         ?string $newReferenceTypeCode = null,
         ?string $newDescription = null,
-        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -681,12 +755,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set an additional invoice document (reference to preceding invoice)
+     *
+     * @param string|null $newReferenceNumber Identification of an invoice previously sent
+     * @param DateTimeInterface|null $newReferenceDate Date of the previous invoice
+     * @param string|null $newTypeCode Type code of previous invoice
+     * @return self
      */
     public function setDocumentInvoiceReference(
         ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
-        ?string $newTypeCode = null
+        ?string $newTypeCode = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -706,12 +785,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an additional invoice document (reference to preceding invoice)
+     *
+     * @param string|null $newReferenceNumber Identification of an invoice previously sent
+     * @param DateTimeInterface|null $newReferenceDate Date of the previous invoice
+     * @param string|null $newTypeCode Type code of previous invoice
+     * @return self
      */
     public function addDocumentInvoiceReference(
         ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
-        ?string $newTypeCode = null
+        ?string $newTypeCode = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -735,13 +819,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
+     * Set an additional project reference
+     *
      * @param string|null $newReferenceNumber Project number
+     * @param string|null $newName Project name
      * @return self
      */
-    public function setDocumentProjectReference(
-        ?string $newReferenceNumber = null,
-        ?string $newName = null
-    ): self {
+    public function setDocumentProjectReference(?string $newReferenceNumber = null, ?string $newName = null): self
+    {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
         }
@@ -756,12 +841,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an additional project reference
+     *
+     * @param string|null $newReferenceNumber Project number
+     * @param string|null $newName Project name
+     * @return self
      */
-    public function addDocumentProjectReference(
-        ?string $newReferenceNumber = null,
-        ?string $newName = null
-    ): self {
+    public function addDocumentProjectReference(?string $newReferenceNumber = null, ?string $newName = null): self
+    {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
         }
@@ -778,11 +865,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set an additional ultimate customer order reference
+     *
+     * @param string|null $newReferenceNumber
+     * @param DateTimeInterface|null $newReferenceDate
+     * @return self
      */
     public function setDocumentUltimateCustomerOrderReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -794,11 +885,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an additional ultimate customer order reference
+     *
+     * @param string|null $newReferenceNumber
+     * @param DateTimeInterface|null $newReferenceDate
+     * @return self
      */
     public function addDocumentUltimateCustomerOrderReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -810,11 +905,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set an additional despatch advice reference
+     *
+     * @param string|null $newReferenceNumber Shipping notification number
+     * @param DateTimeInterface|null $newReferenceDate Shipping notification date
+     * @return self
      */
     public function setDocumentDespatchAdviceReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -830,11 +929,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an additional despatch advice reference
+     *
+     * @param string|null $newReferenceNumber Shipping notification number
+     * @param DateTimeInterface|null $newReferenceDate Shipping notification date
+     * @return self
      */
     public function addDocumentDespatchAdviceReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -856,11 +959,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set an additional receiving advice reference
+     *
+     * @param string|null $newReferenceNumber Receipt notification number
+     * @param DateTimeInterface|null $newReferenceDate Receipt notification date
+     * @return self
      */
     public function setDocumentReceivingAdviceReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -876,11 +983,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set an additional receiving advice reference
+     *
+     * @param string|null $newReferenceNumber Receipt notification number
+     * @param DateTimeInterface|null $newReferenceDate Receipt notification date
+     * @return self
      */
     public function addDocumentReceivingAdviceReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -902,11 +1013,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set an additional delivery note
+     *
+     * @param string|null $newReferenceNumber Delivery slip number
+     * @param DateTimeInterface|null $newReferenceDate Delivery slip date
+     * @return self
      */
     public function setDocumentDeliveryNoteReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -916,11 +1031,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an additional delivery note
+     *
+     * @param string|null $newReferenceNumber Delivery slip number
+     * @param DateTimeInterface|null $newReferenceDate Delivery slip date
+     * @return self
      */
     public function addDocumentDeliveryNoteReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
@@ -930,7 +1049,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the date of the delivery
+     *
+     * @param DateTimeInterface|null $newDate Actual delivery date
+     * @return self
      */
     public function setDocumentSupplyChainEvent(
         ?DateTimeInterface $newDate = null
@@ -947,12 +1069,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
-    #endregion
-
-    #region Document Seller/Supplier
-
     /**
-     * @inheritDoc
+     * Set the name of the seller/supplier party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
+     * @return self
      */
     public function setDocumentSellerName(
         ?string $newName = null
@@ -973,7 +1094,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the ID of the seller/supplier party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function setDocumentSellerId(
         ?string $newId = null
@@ -1007,7 +1131,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the seller/supplier party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function addDocumentSellerId(
         ?string $newId = null
@@ -1029,12 +1156,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the Global ID of the seller/supplier party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
-    public function setDocumentSellerGlobalId(
-        ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
-    ): self {
+    public function setDocumentSellerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
+    {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
@@ -1064,12 +1193,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the seller/supplier party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
-    public function addDocumentSellerGlobalId(
-        ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
-    ): self {
+    public function addDocumentSellerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
+    {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
@@ -1088,11 +1219,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the Tax Registration of the seller/supplier party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function setDocumentSellerTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
@@ -1110,11 +1245,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an Tax Registration to the seller/supplier party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function addDocumentSellerTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
@@ -1139,7 +1278,16 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the address of the seller/supplier party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
      */
     public function setDocumentSellerAddress(
         ?string $newAddressLine1 = null,
@@ -1148,7 +1296,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null
+        ?string $newSubDivision = null,
     ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -1198,12 +1346,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the legal information of the seller/supplier party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
      */
     public function setDocumentSellerLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null
+        ?string $newName = null,
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
@@ -1233,14 +1386,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the contact information of the seller/supplier party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
      */
     public function setDocumentSellerContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -1284,25 +1444,34 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add contact information of the seller/supplier party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
      */
     public function addDocumentSellerContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         return $this->setDocumentSellerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
     }
 
     /**
-     * @inheritDoc
+     * Add communication information of the seller/supplier party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
      */
-    public function setDocumentSellerCommunication(
-        ?string $newType = null,
-        ?string $newUri = null
-    ): self {
+    public function setDocumentSellerCommunication(?string $newType = null, ?string $newUri = null): self
+    {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
@@ -1324,12 +1493,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
-    #endregion
-
-    #region Document Buyer/Customer
-
     /**
-     * @inheritDoc
+     * Set the name of the buyer/customer party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
+     * @return self
      */
     public function setDocumentBuyerName(
         ?string $newName = null
@@ -1350,7 +1518,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the ID of the buyer/customer party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function setDocumentBuyerId(
         ?string $newId = null
@@ -1389,7 +1560,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the buyer/customer party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function addDocumentBuyerId(
         ?string $newId = null
@@ -1411,12 +1585,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the Global ID of the buyer/customer party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
-    public function setDocumentBuyerGlobalId(
-        ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
-    ): self {
+    public function setDocumentBuyerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
+    {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
@@ -1451,12 +1627,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the buyer/customer party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
-    public function addDocumentBuyerGlobalId(
-        ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
-    ): self {
+    public function addDocumentBuyerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
+    {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
@@ -1475,11 +1653,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the Tax Registration of the buyer/customer party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function setDocumentBuyerTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
@@ -1497,11 +1679,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an Tax Registration to the buyer/customer party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function addDocumentBuyerTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
@@ -1527,7 +1713,16 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the address of the buyer/customer party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
      */
     public function setDocumentBuyerAddress(
         ?string $newAddressLine1 = null,
@@ -1536,7 +1731,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null
+        ?string $newSubDivision = null,
     ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -1586,12 +1781,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the legal information of the buyer/customer party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
      */
     public function setDocumentBuyerLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null
+        ?string $newName = null,
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
@@ -1621,14 +1821,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the contact information of the buyer/customer party
+     *
+     * @param string|null $newPersonName
+     * @param string|null $newDepartmentName
+     * @param string|null $newPhoneNumber
+     * @param string|null $newFaxNumber
+     * @param string|null $newEmailAddress
+     * @return self
      */
     public function setDocumentBuyerContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -1672,25 +1879,34 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add contact information of the buyer/customer party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
      */
     public function addDocumentBuyerContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         return $this->setDocumentBuyerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
     }
 
     /**
-     * @inheritDoc
+     * Add communication information of the buyer/customer party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
      */
-    public function setDocumentBuyerCommunication(
-        ?string $newType = null,
-        ?string $newUri = null
-    ): self {
+    public function setDocumentBuyerCommunication(?string $newType = null, ?string $newUri = null): self
+    {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
@@ -1712,12 +1928,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
-    #endregion
-
-    #region Document Tax representativ party
-
     /**
-     * @inheritDoc
+     * Set the name of the tax representative party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
+     * @return self
      */
     public function setDocumentTaxRepresentativeName(
         ?string $newName = null
@@ -1737,7 +1952,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the ID of the tax representative party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function setDocumentTaxRepresentativeId(
         ?string $newId = null
@@ -1769,7 +1987,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the tax representative party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function addDocumentTaxRepresentativeId(
         ?string $newId = null
@@ -1790,11 +2011,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the Global ID of the tax representative party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
     public function setDocumentTaxRepresentativeGlobalId(
         ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
+        ?string $newGlobalIdType = null,
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
@@ -1823,11 +2048,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the tax representative party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
     public function addDocumentTaxRepresentativeGlobalId(
         ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
+        ?string $newGlobalIdType = null,
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
@@ -1846,11 +2075,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the Tax Registration of the tax representative party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function setDocumentTaxRepresentativeTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
@@ -1867,11 +2100,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an Tax Registration to the tax representative party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function addDocumentTaxRepresentativeTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
@@ -1895,7 +2132,16 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the address of the tax representative party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
      */
     public function setDocumentTaxRepresentativeAddress(
         ?string $newAddressLine1 = null,
@@ -1904,7 +2150,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null
+        ?string $newSubDivision = null,
     ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -1953,12 +2199,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the legal information of the tax representative party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
      */
     public function setDocumentTaxRepresentativeLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null
+        ?string $newName = null,
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
@@ -1986,14 +2237,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the contact information of the tax representative party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
      */
     public function setDocumentTaxRepresentativeContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -2036,25 +2294,34 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add contact information of the tax representative party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
      */
     public function addDocumentTaxRepresentativeContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         return $this->setDocumentTaxRepresentativeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
     }
 
     /**
-     * @inheritDoc
+     * Add communication information of the tax representative party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
      */
-    public function setDocumentTaxRepresentativeCommunication(
-        ?string $newType = null,
-        ?string $newUri = null
-    ): self {
+    public function setDocumentTaxRepresentativeCommunication(?string $newType = null, ?string $newUri = null): self
+    {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
@@ -2075,12 +2342,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
-    #endregion
-
-    #region Document Product Enduser
-
     /**
-     * @inheritDoc
+     * Set the name of the product end-user party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
+     * @return self
      */
     public function setDocumentProductEndUserName(
         ?string $newName = null
@@ -2089,7 +2355,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the ID of the product end-user party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function setDocumentProductEndUserId(
         ?string $newId = null
@@ -2098,7 +2367,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the product end-user party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function addDocumentProductEndUserId(
         ?string $newId = null
@@ -2107,47 +2379,72 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the Global ID of the product end-user party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
     public function setDocumentProductEndUserGlobalId(
         ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
+        ?string $newGlobalIdType = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the product end-user party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
     public function addDocumentProductEndUserGlobalId(
         ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
+        ?string $newGlobalIdType = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the Tax Registration of the product end-user party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function setDocumentProductEndUserTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add an Tax Registration to the product end-user party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function addDocumentProductEndUserTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the address of the product end-user party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
      */
     public function setDocumentProductEndUserAddress(
         ?string $newAddressLine1 = null,
@@ -2156,64 +2453,84 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null
+        ?string $newSubDivision = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the legal information of the product end-user party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
      */
     public function setDocumentProductEndUserLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null
+        ?string $newName = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the contact information of the product end-user party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
      */
     public function setDocumentProductEndUserContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add contact information of the product end-user party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
      */
     public function addDocumentProductEndUserContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add communication information of the product end-user party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
      */
-    public function setDocumentProductEndUserCommunication(
-        ?string $newType = null,
-        ?string $newUri = null
-    ): self {
+    public function setDocumentProductEndUserCommunication(?string $newType = null, ?string $newUri = null): self
+    {
         return $this;
     }
 
-    #endregion
-
-    #region Document Ship-To
-
     /**
-     * @inheritDoc
+     * Set the name of the Ship-To party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
+     * @return self
      */
     public function setDocumentShipToName(
         ?string $newName = null
@@ -2233,7 +2550,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the ID of the Ship-To party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function setDocumentShipToId(
         ?string $newId = null
@@ -2253,7 +2573,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the Ship-To party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function addDocumentShipToId(
         ?string $newId = null
@@ -2268,12 +2591,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the Global ID of the Ship-To party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
-    public function setDocumentShipToGlobalId(
-        ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
-    ): self {
+    public function setDocumentShipToGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
+    {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
@@ -2290,12 +2615,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the Ship-To party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
-    public function addDocumentShipToGlobalId(
-        ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
-    ): self {
+    public function addDocumentShipToGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
+    {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
@@ -2306,27 +2633,44 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the Tax Registration of the Ship-To party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function setDocumentShipToTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add an Tax Registration to the Ship-To party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function addDocumentShipToTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the address of the Ship-To party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
      */
     public function setDocumentShipToAddress(
         ?string $newAddressLine1 = null,
@@ -2335,7 +2679,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null
+        ?string $newSubDivision = null,
     ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -2385,58 +2729,78 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the legal information of the Ship-To party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
      */
     public function setDocumentShipToLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null
+        ?string $newName = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the contact information of the Ship-To party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
      */
     public function setDocumentShipToContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add contact information of the Ship-To party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
      */
     public function addDocumentShipToContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add communication information of the Ship-To party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
      */
-    public function setDocumentShipToCommunication(
-        ?string $newType = null,
-        ?string $newUri = null
-    ): self {
+    public function setDocumentShipToCommunication(?string $newType = null, ?string $newUri = null): self
+    {
         return $this;
     }
 
-    #endregion
-
-    #region Document Ultimate Ship-To
-
     /**
-     * @inheritDoc
+     * Set the name of the ultimate Ship-To party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
+     * @return self
      */
     public function setDocumentUltimateShipToName(
         ?string $newName = null
@@ -2445,7 +2809,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the ID of the ultimate Ship-To party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function setDocumentUltimateShipToId(
         ?string $newId = null
@@ -2454,7 +2821,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the ultimate Ship-To party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function addDocumentUltimateShipToId(
         ?string $newId = null
@@ -2463,47 +2833,72 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the Global ID of the ultimate Ship-To party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
     public function setDocumentUltimateShipToGlobalId(
         ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
+        ?string $newGlobalIdType = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the ultimate Ship-To party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
     public function addDocumentUltimateShipToGlobalId(
         ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
+        ?string $newGlobalIdType = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the Tax Registration of the ultimate Ship-To party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function setDocumentUltimateShipToTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add an Tax Registration to the ultimate Ship-To party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function addDocumentUltimateShipToTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the address of the ultimate Ship-To party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
      */
     public function setDocumentUltimateShipToAddress(
         ?string $newAddressLine1 = null,
@@ -2512,64 +2907,84 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null
+        ?string $newSubDivision = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the legal information of the ultimate Ship-To party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
      */
     public function setDocumentUltimateShipToLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null
+        ?string $newName = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the contact information of the ultimate Ship-To party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
      */
     public function setDocumentUltimateShipToContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add contact information of the ultimate Ship-To party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
      */
     public function addDocumentUltimateShipToContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add communication information of the ultimate Ship-To party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
      */
-    public function setDocumentUltimateShipToCommunication(
-        ?string $newType = null,
-        ?string $newUri = null
-    ): self {
+    public function setDocumentUltimateShipToCommunication(?string $newType = null, ?string $newUri = null): self
+    {
         return $this;
     }
 
-    #endregion
-
-    #region Document Ship-From
-
     /**
-     * @inheritDoc
+     * Set the name of the Ship-From party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
+     * @return self
      */
     public function setDocumentShipFromName(
         ?string $newName = null
@@ -2578,7 +2993,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the ID of the Ship-From party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function setDocumentShipFromId(
         ?string $newId = null
@@ -2587,7 +3005,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the Ship-From party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function addDocumentShipFromId(
         ?string $newId = null
@@ -2596,47 +3017,68 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the Global ID of the Ship-From party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
-    public function setDocumentShipFromGlobalId(
-        ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
-    ): self {
+    public function setDocumentShipFromGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
+    {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the Ship-From party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
-    public function addDocumentShipFromGlobalId(
-        ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
-    ): self {
+    public function addDocumentShipFromGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
+    {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the Tax Registration of the Ship-From party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function setDocumentShipFromTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add an Tax Registration to the Ship-From party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function addDocumentShipFromTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the address of the Ship-From party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
      */
     public function setDocumentShipFromAddress(
         ?string $newAddressLine1 = null,
@@ -2645,64 +3087,84 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null
+        ?string $newSubDivision = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the legal information of the Ship-From party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
      */
     public function setDocumentShipFromLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null
+        ?string $newName = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the contact information of the Ship-From party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
      */
     public function setDocumentShipFromContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add contact information of the Ship-From party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
      */
     public function addDocumentShipFromContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add communication information of the Ship-From party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
      */
-    public function setDocumentShipFromCommunication(
-        ?string $newType = null,
-        ?string $newUri = null
-    ): self {
+    public function setDocumentShipFromCommunication(?string $newType = null, ?string $newUri = null): self
+    {
         return $this;
     }
 
-    #endregion
-
-    #region Document Invoicer
-
     /**
-     * @inheritDoc
+     * Set the name of the Invoicer party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
+     * @return self
      */
     public function setDocumentInvoicerName(
         ?string $newName = null
@@ -2711,7 +3173,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the ID of the Invoicer party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function setDocumentInvoicerId(
         ?string $newId = null
@@ -2720,7 +3185,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the Invoicer party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function addDocumentInvoicerId(
         ?string $newId = null
@@ -2729,47 +3197,68 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the Global ID of the Invoicer party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
-    public function setDocumentInvoicerGlobalId(
-        ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
-    ): self {
+    public function setDocumentInvoicerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
+    {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the Invoicer party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
-    public function addDocumentInvoicerGlobalId(
-        ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
-    ): self {
+    public function addDocumentInvoicerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
+    {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the Tax Registration of the Invoicer party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function setDocumentInvoicerTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add an Tax Registration to the Invoicer party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function addDocumentInvoicerTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the address of the Invoicer party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
      */
     public function setDocumentInvoicerAddress(
         ?string $newAddressLine1 = null,
@@ -2778,64 +3267,83 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null
+        ?string $newSubDivision = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the legal information of the Invoicer party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
      */
     public function setDocumentInvoicerLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null
+        ?string $newName = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the contact information of the Invoicer party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
      */
     public function setDocumentInvoicerContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add contact information of the Invoicer party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
      */
     public function addDocumentInvoicerContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add communication information of the Invoicer party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
      */
-    public function setDocumentInvoicerCommunication(
-        ?string $newType = null,
-        ?string $newUri = null
-    ): self {
+    public function setDocumentInvoicerCommunication(?string $newType = null, ?string $newUri = null): self
+    {
         return $this;
     }
 
-    #endregion
-
-    #region Document Invoicee
-
     /**
-     * @param string|null $newName The full formal name under which the party is registered
+     * Set the name of the Invoicee party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
      * @return self
      */
     public function setDocumentInvoiceeName(
@@ -2845,7 +3353,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newId An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * Set the ID of the Invoicee party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setDocumentInvoiceeId(
@@ -2855,7 +3365,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newId An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * Add an ID to the Invoicee party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addDocumentInvoiceeId(
@@ -2865,61 +3377,67 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newGlobalId Global identifier
-     * @param string|null $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * Set the Global ID of the Invoicee party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
-    public function setDocumentInvoiceeGlobalId(
-        ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
-    ): self {
+    public function setDocumentInvoiceeGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
+    {
         return $this;
     }
 
     /**
-     * @param string|null $newGlobalId Global identifier
-     * @param string|null $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * Add an ID to the Invoicee party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
-    public function addDocumentInvoiceeGlobalId(
-        ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
-    ): self {
+    public function addDocumentInvoiceeGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
+    {
         return $this;
     }
 
     /**
-     * @param string|null $newTaxRegistrationType Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string|null $newTaxRegistrationId Tax number or sales tax identification number
+     * Set the Tax Registration of the Invoicee party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function setDocumentInvoiceeTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         return $this;
     }
 
     /**
-     * @param string|null $newTaxRegistrationType Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string|null $newTaxRegistrationId Tax number or sales tax identification number
+     * Add an Tax Registration to the Invoicee party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function addDocumentInvoiceeTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         return $this;
     }
 
     /**
-     * @param string|null $newAddressLine1 The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param string|null $newAddressLine2 Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string|null $newAddressLine3 Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string|null $newPostcode     Identifier for a group of properties, such as a zip code
-     * @param string|null $newCity         Usual name of the city or municipality in which the party's address is located
-     * @param string|null $newCountryId    Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param string|null $newSubDivision  The party's state
+     * Set the address of the Invoicee party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
      * @return self
      */
     public function setDocumentInvoiceeAddress(
@@ -2929,35 +3447,35 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null
+        ?string $newSubDivision = null,
     ): self {
         return $this;
     }
 
     /**
-     * Set the legal information of the ultimate Ship-To party
+     * Set the legal information of the Invoicee party
      *
-     * @param string|null $newType The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param string|null $newId An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param string|null $newName A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setDocumentInvoiceeLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null
+        ?string $newName = null,
     ): self {
         return $this;
     }
 
     /**
-     * Set the contact information of the ultimate Ship-To party
+     * Set the contact information of the Invoicee party
      *
-     * @param string|null $newPersonName     Such as personal name, name of contact person or department or office
-     * @param string|null $newDepartmentName If a contact person is specified, either the name or the department must be transmitted.
-     * @param string|null $newPhoneNumber    A telephone number for the contact point
-     * @param string|null $newFaxNumber      A fax number of the contact point
-     * @param string|null $newEmailAddress   An e-mail address of the contact point
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function setDocumentInvoiceeContact(
@@ -2965,19 +3483,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         return $this;
     }
 
     /**
-     * Add contact information of the ultimate Ship-To party
+     * Add contact information of the Invoicee party
      *
-     * @param string|null $newPersonName     Such as personal name, name of contact person or department or office
-     * @param string|null $newDepartmentName If a contact person is specified, either the name or the department must be transmitted.
-     * @param string|null $newPhoneNumber    A telephone number for the contact point
-     * @param string|null $newFaxNumber      A fax number of the contact point
-     * @param string|null $newEmailAddress   An e-mail address of the contact point
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function addDocumentInvoiceeContact(
@@ -2985,31 +3503,27 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         return $this;
     }
 
     /**
-     * Add communication information of the ultimate Ship-To party
+     * Add communication information of the Invoicee party
      *
-     * @param string|null $newType The identifier for the identification scheme of the party's electronic address
-     * @param string|null $newUri The party's electronic address
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
      * @return self
      */
-    public function setDocumentInvoiceeCommunication(
-        ?string $newType = null,
-        ?string $newUri = null
-    ): self {
+    public function setDocumentInvoiceeCommunication(?string $newType = null, ?string $newUri = null): self
+    {
         return $this;
     }
 
-    #endregion
-
-    #region Document Payee
-
     /**
-     * @param string|null $newName The full formal name under which the party is registered
+     * Set the name of the Payee party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
      * @return self
      */
     public function setDocumentPayeeName(
@@ -3030,7 +3544,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newId An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * Set the ID of the Payee party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setDocumentPayeeId(
@@ -3063,7 +3579,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newId An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * Add an ID to the Payee party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addDocumentPayeeId(
@@ -3085,14 +3603,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newGlobalId Global identifier
-     * @param string|null $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * Set the Global ID of the Payee party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
-    public function setDocumentPayeeGlobalId(
-        ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
-    ): self {
+    public function setDocumentPayeeGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
+    {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
@@ -3120,14 +3638,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newGlobalId Global identifier
-     * @param string|null $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * Add an ID to the Payee party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
-    public function addDocumentPayeeGlobalId(
-        ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null
-    ): self {
+    public function addDocumentPayeeGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
+    {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
@@ -3145,13 +3663,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newTaxRegistrationType Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string|null $newTaxRegistrationId Tax number or sales tax identification number
+     * Set the Tax Registration of the Payee party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function setDocumentPayeeTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
@@ -3168,13 +3688,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newTaxRegistrationType Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string|null $newTaxRegistrationId Tax number or sales tax identification number
+     * Add an Tax Registration to the Payee party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function addDocumentPayeeTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null
+        ?string $newTaxRegistrationId = null,
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
@@ -3198,13 +3720,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newAddressLine1 The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param string|null $newAddressLine2 Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string|null $newAddressLine3 Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string|null $newPostcode     Identifier for a group of properties, such as a zip code
-     * @param string|null $newCity         Usual name of the city or municipality in which the party's address is located
-     * @param string|null $newCountryId    Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param string|null $newSubDivision  The party's state
+     * Set the address of the Payee party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
      * @return self
      */
     public function setDocumentPayeeAddress(
@@ -3214,7 +3738,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null
+        ?string $newSubDivision = null,
     ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -3263,17 +3787,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * Set the legal information of the ultimate Ship-To party
+     * Set the legal information of the Payee party
      *
-     * @param string|null $newType The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param string|null $newId An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param string|null $newName A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setDocumentPayeeLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null
+        ?string $newName = null,
     ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
@@ -3301,13 +3825,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * Set the contact information of the ultimate Ship-To party
+     * Set the contact information of the Payee party
      *
-     * @param string|null $newPersonName     Such as personal name, name of contact person or department or office
-     * @param string|null $newDepartmentName If a contact person is specified, either the name or the department must be transmitted.
-     * @param string|null $newPhoneNumber    A telephone number for the contact point
-     * @param string|null $newFaxNumber      A fax number of the contact point
-     * @param string|null $newEmailAddress   An e-mail address of the contact point
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function setDocumentPayeeContact(
@@ -3315,7 +3839,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -3358,13 +3882,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * Add contact information of the ultimate Ship-To party
+     * Add contact information of the Payee party
      *
-     * @param string|null $newPersonName     Such as personal name, name of contact person or department or office
-     * @param string|null $newDepartmentName If a contact person is specified, either the name or the department must be transmitted.
-     * @param string|null $newPhoneNumber    A telephone number for the contact point
-     * @param string|null $newFaxNumber      A fax number of the contact point
-     * @param string|null $newEmailAddress   An e-mail address of the contact point
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function addDocumentPayeeContact(
@@ -3372,22 +3896,20 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null
+        ?string $newEmailAddress = null,
     ): self {
         return $this->setDocumentPayeeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
     }
 
     /**
-     * Add communication information of the ultimate Ship-To party
+     * Add communication information of the Payee party
      *
-     * @param string|null $newType The identifier for the identification scheme of the party's electronic address
-     * @param string|null $newUri The party's electronic address
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
      * @return self
      */
-    public function setDocumentPayeeCommunication(
-        ?string $newType = null,
-        ?string $newUri = null
-    ): self {
+    public function setDocumentPayeeCommunication(?string $newType = null, ?string $newUri = null): self
+    {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
@@ -3408,12 +3930,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
-    #endregion
-
-    #region Document Payment
-
     /**
-     * @inheritDoc
+     * Set Payment mean
+     *
+     * @param string|null $newTypeCode Expected or used means of payment expressed as a code
+     * @param string|null $newName Expected or used means of payment expressed in text form
+     * @param string|null $newFinancialCardId Primary account number (PAN) of the payment card
+     * @param string|null $newFinancialCardHolder Name of the payment card holder
+     * @param string|null $newBuyerIban Identifier of the account to be debited
+     * @param string|null $newPayeeIban Payment account identifier
+     * @param string|null $newPayeeAccountName Name of the payment account
+     * @param string|null $newPayeeProprietaryId National account number (not for SEPA)
+     * @param string|null $newPayeeBic Identifier of the payment service provider
+     * @param string|null $newPaymentReference Text value used to link the payment to the invoice issued by the seller
+     * @param string|null $newMandate Identification of the mandate reference
+     * @return self
      */
     public function setDocumentPaymentMean(
         ?string $newTypeCode = null,
@@ -3426,7 +3957,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null,
-        ?string $newMandate = null
+        ?string $newMandate = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTypeCode])) {
             return $this;
@@ -3454,7 +3985,20 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add Payment mean
+     *
+     * @param string|null $newTypeCode Expected or used means of payment expressed as a code
+     * @param string|null $newName Expected or used means of payment expressed in text form
+     * @param string|null $newFinancialCardId Primary account number (PAN) of the payment card
+     * @param string|null $newFinancialCardHolder Name of the payment card holder
+     * @param string|null $newBuyerIban Identifier of the account to be debited
+     * @param string|null $newPayeeIban Payment account identifier
+     * @param string|null $newPayeeAccountName Name of the payment account
+     * @param string|null $newPayeeProprietaryId National account number (not for SEPA)
+     * @param string|null $newPayeeBic Identifier of the payment service provider
+     * @param string|null $newPaymentReference Text value used to link the payment to the invoice issued by the seller
+     * @param string|null $newMandate Identification of the mandate reference
+     * @return self
      */
     public function addDocumentPaymentMean(
         ?string $newTypeCode = null,
@@ -3467,7 +4011,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null,
-        ?string $newMandate = null
+        ?string $newMandate = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTypeCode])) {
             return $this;
@@ -3538,14 +4082,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set Payment mean (as SEPA credit transfer, German: Überweisung)
+     *
+     * @param string|null $newPayeeIban Payment account identifier
+     * @param string|null $newPayeeAccountName Name of the payment account
+     * @param string|null $newPayeeProprietaryId National account number (not for SEPA)
+     * @param string|null $newPayeeBic Identifier of the payment service provider
+     * @param string|null $newPaymentReference Text value used to link the payment to the invoice issued by the seller
+     * @return self
      */
     public function setDocumentPaymentMeanAsCreditTransferSepa(
         ?string $newPayeeIban = null,
         ?string $newPayeeAccountName = null,
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
-        ?string $newPaymentReference = null
+        ?string $newPaymentReference = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
             return $this;
@@ -3564,14 +4115,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add Payment mean (as SEPA credit transfer, German: Überweisung)
+     *
+     * @param string|null $newPayeeIban Payment account identifier
+     * @param string|null $newPayeeAccountName Name of the payment account
+     * @param string|null $newPayeeProprietaryId National account number (not for SEPA)
+     * @param string|null $newPayeeBic Identifier of the payment service provider
+     * @param string|null $newPaymentReference Text value used to link the payment to the invoice issued by the seller
+     * @return self
      */
     public function addDocumentPaymentMeanAsCreditTransferSepa(
         ?string $newPayeeIban = null,
         ?string $newPayeeAccountName = null,
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
-        ?string $newPaymentReference = null
+        ?string $newPaymentReference = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
             return $this;
@@ -3590,14 +4148,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set Payment mean (as non-SEPA credit transfer, German: Überweisung)
+     *
+     * @param string|null $newPayeeIban Payment account identifier
+     * @param string|null $newPayeeAccountName Name of the payment account
+     * @param string|null $newPayeeProprietaryId National account number (not for SEPA)
+     * @param string|null $newPayeeBic Identifier of the payment service provider
+     * @param string|null $newPaymentReference Text value used to link the payment to the invoice issued by the seller
+     * @return self
      */
     public function setDocumentPaymentMeanAsCreditTransferNoSepa(
         ?string $newPayeeIban = null,
         ?string $newPayeeAccountName = null,
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
-        ?string $newPaymentReference = null
+        ?string $newPaymentReference = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
             return $this;
@@ -3616,14 +4181,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add Payment mean (as non-SEPA credit transfer, German: Überweisung)
+     *
+     * @param string|null $newPayeeIban Payment account identifier
+     * @param string|null $newPayeeAccountName Name of the payment account
+     * @param string|null $newPayeeProprietaryId National account number (not for SEPA)
+     * @param string|null $newPayeeBic Identifier of the payment service provider
+     * @param string|null $newPaymentReference Text value used to link the payment to the invoice issued by the seller
+     * @return self
      */
     public function addDocumentPaymentMeanAsCreditTransferNoSepa(
         ?string $newPayeeIban = null,
         ?string $newPayeeAccountName = null,
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
-        ?string $newPaymentReference = null
+        ?string $newPaymentReference = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
             return $this;
@@ -3642,11 +4214,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set Payment mean (as SEPA direct debit, German: Lastschrift)
+     *
+     * @param string|null $newBuyerIban Identifier of the account to be debited
+     * @param string|null $newMandate Identification of the mandate reference
+     * @return self
      */
     public function setDocumentPaymentMeanAsDirectDebitSepa(
         ?string $newBuyerIban = null,
-        ?string $newMandate = null
+        ?string $newMandate = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
             return $this;
@@ -3662,11 +4238,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add Payment mean (as SEPA direct debit, German: Lastschrift)
+     *
+     * @param string|null $newBuyerIban Identifier of the account to be debited
+     * @param string|null $newMandate Identification of the mandate reference
+     * @return self
      */
     public function addDocumentPaymentMeanAsDirectDebitSepa(
         ?string $newBuyerIban = null,
-        ?string $newMandate = null
+        ?string $newMandate = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
             return $this;
@@ -3682,11 +4262,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set Payment mean (as non-SEPA direct debit, German: Lastschrift)
+     *
+     * @param string|null $newBuyerIban Identifier of the account to be debited
+     * @param string|null $newMandate Identification of the mandate reference
+     * @return self
      */
     public function setDocumentPaymentMeanAsDirectDebitNoSepa(
         ?string $newBuyerIban = null,
-        ?string $newMandate = null
+        ?string $newMandate = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
             return $this;
@@ -3702,11 +4286,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add Payment mean (as non SEPA direct debit, German: Lastschrift)
+     *
+     * @param string|null $newBuyerIban Identifier of the account to be debited
+     * @param string|null $newMandate Identification of the mandate reference
+     * @return self
      */
     public function addDocumentPaymentMeanAsDirectDebitNoSepa(
         ?string $newBuyerIban = null,
-        ?string $newMandate = null
+        ?string $newMandate = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
             return $this;
@@ -3722,11 +4310,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set Payment mean (as payment card)
+     *
+     * @param string|null $newFinancialCardId Primary account number (PAN) of the payment card
+     * @param string|null $newFinancialCardHolder Name of the payment card holder
+     * @return self
      */
     public function setDocumentPaymentMeanAsPaymentCard(
         ?string $newFinancialCardId = null,
-        ?string $newFinancialCardHolder = null
+        ?string $newFinancialCardHolder = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardId])) {
             return $this;
@@ -3742,11 +4334,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add Payment mean (as payment card)
+     *
+     * @param string|null $newFinancialCardId Primary account number (PAN) of the payment card
+     * @param string|null $newFinancialCardHolder Name of the payment card holder
+     * @return self
      */
     public function addDocumentPaymentMeanAsPaymentCard(
         ?string $newFinancialCardId = null,
-        ?string $newFinancialCardHolder = null
+        ?string $newFinancialCardHolder = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardId])) {
             return $this;
@@ -3762,7 +4358,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set Unique bank details of the payee or the seller
+     *
+     * @param string|null $newId Creditor identifier
+     * @return self
      */
     public function setDocumentPaymentCreditorReferenceID(
         ?string $newId = null
@@ -3795,7 +4394,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add Unique bank details of the payee or the seller
+     *
+     * @param string|null $newId Creditor identifier
+     * @return self
      */
     public function addDocumentPaymentCreditorReferenceID(
         ?string $newId = null
@@ -3810,11 +4412,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set payment term
+     *
+     * @param string|null $newDescription Text description of the payment terms
+     * @param DateTimeInterface|null $newDueDate Date by which payment is due
+     * @return self
      */
     public function setDocumentPaymentTerm(
         ?string $newDescription = null,
-        ?DateTimeInterface $newDueDate = null
+        ?DateTimeInterface $newDueDate = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDescription])) {
             return $this;
@@ -3833,11 +4439,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add payment term
+     *
+     * @param string|null $newDescription Text description of the payment terms
+     * @param DateTimeInterface|null $newDueDate Date by which payment is due
+     * @return self
      */
     public function addDocumentPaymentTerm(
         ?string $newDescription = null,
-        ?DateTimeInterface $newDueDate = null
+        ?DateTimeInterface $newDueDate = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDescription])) {
             return $this;
@@ -3857,7 +4467,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set payment discount terms in last added payment terms
+     *
+     * @param float|null $newBaseAmount Base amount of the payment discount
+     * @param float|null $newDiscountAmount Amount of the payment discount
+     * @param float|null $newDiscountPercent Percentage of the payment discount
+     * @param DateTimeInterface|null $newBaseDate Due date reference date
+     * @param float|null $newBasePeriod Maturity period (basis)
+     * @param string|null $newBasePeriodUnit Maturity period (unit)
+     * @return self
      */
     public function setDocumentPaymentDiscountTermsInLastPaymentTerm(
         ?float $newBaseAmount = null,
@@ -3865,13 +4483,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newDiscountPercent = null,
         ?DateTimeInterface $newBaseDate = null,
         ?float $newBasePeriod = null,
-        ?string $newBasePeriodUnit = null
+        ?string $newBasePeriodUnit = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add payment discount terms in last added payment terms
+     *
+     * @param float|null $newBaseAmount Base amount of the payment discount
+     * @param float|null $newDiscountAmount Amount of the payment discount
+     * @param float|null $newDiscountPercent Percentage of the payment discount
+     * @param DateTimeInterface|null $newBaseDate Due date reference date
+     * @param float|null $newBasePeriod Maturity period (basis)
+     * @param string|null $newBasePeriodUnit Maturity period (unit)
+     * @return self
      */
     public function addDocumentPaymentDiscountTermsInLastPaymentTerm(
         ?float $newBaseAmount = null,
@@ -3879,13 +4505,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newDiscountPercent = null,
         ?DateTimeInterface $newBaseDate = null,
         ?float $newBasePeriod = null,
-        ?string $newBasePeriodUnit = null
+        ?string $newBasePeriodUnit = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set payment penalty terms in last added payment terms
+     *
+     * @param float|null $newBaseAmount Base amount of the payment penalty
+     * @param float|null $newPenaltyAmount Amount of the payment penalty
+     * @param float|null $newPenaltyPercent Percentage of the payment penalty
+     * @param DateTimeInterface|null $newBaseDate Due date reference date
+     * @param float|null $newBasePeriod Maturity period (basis)
+     * @param string|null $newBasePeriodUnit Maturity period (unit)
+     * @return self
      */
     public function setDocumentPaymentPenaltyTermsInLastPaymentTerm(
         ?float $newBaseAmount = null,
@@ -3893,13 +4527,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newPenaltyPercent = null,
         ?DateTimeInterface $newBaseDate = null,
         ?float $newBasePeriod = null,
-        ?string $newBasePeriodUnit = null
+        ?string $newBasePeriodUnit = null,
     ): self {
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add payment penalty terms in last added payment terms
+     *
+     * @param float|null $newBaseAmount Base amount of the payment penalty
+     * @param float|null $newPenaltyAmount Amount of the payment penalty
+     * @param float|null $newPenaltyPercent Percentage of the payment penalty
+     * @param DateTimeInterface|null $newBaseDate Due date reference date
+     * @param float|null $newBasePeriod Maturity period (basis)
+     * @param string|null $newBasePeriodUnit Maturity period (unit)
+     * @return self
      */
     public function addDocumentPaymentPenaltyTermsInLastPaymentTerm(
         ?float $newBaseAmount = null,
@@ -3907,17 +4549,24 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newPenaltyPercent = null,
         ?DateTimeInterface $newBaseDate = null,
         ?float $newBasePeriod = null,
-        ?string $newBasePeriodUnit = null
+        ?string $newBasePeriodUnit = null,
     ): self {
         return $this;
     }
 
-    #endregion
-
-    #region Document Tax
-
     /**
-     * @inheritDoc
+     * Set Document Tax Breakdown
+     *
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newBasisAmount Tax base amount
+     * @param float|null $newTaxAmount Tax total amount
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newExemptionReason Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode Reason for tax exemption (Code)
+     * @param DateTimeInterface|null $newTaxDueDate Date on which tax is due
+     * @param string|null $newTaxDueCode Code for the date on which tax is due
+     * @return self
      */
     public function setDocumentTax(
         ?string $newTaxCategory = null,
@@ -3928,7 +4577,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newExemptionReason = null,
         ?string $newExemptionReasonCode = null,
         ?DateTimeInterface $newTaxDueDate = null,
-        ?string $newTaxDueCode = null
+        ?string $newTaxDueCode = null,
     ): self {
         if (
             InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType]) ||
@@ -3958,7 +4607,18 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add Document Tax Breakdown
+     *
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newBasisAmount Tax base amount
+     * @param float|null $newTaxAmount Tax total amount
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newExemptionReason Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode Reason for tax exemption (Code)
+     * @param DateTimeInterface|null $newTaxDueDate Date on which tax is due
+     * @param string|null $newTaxDueCode Code for the date on which tax is due
+     * @return self
      */
     public function addDocumentTax(
         ?string $newTaxCategory = null,
@@ -3969,7 +4629,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newExemptionReason = null,
         ?string $newExemptionReasonCode = null,
         ?DateTimeInterface $newTaxDueDate = null,
-        ?string $newTaxDueCode = null
+        ?string $newTaxDueCode = null,
     ): self {
         if (
             InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType]) ||
@@ -4009,12 +4669,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
-    #endregion
-
-    #region Document Allowances/Charges
-
     /**
-     * @inheritDoc
+     * Set Document Allowance/Charge
+     *
+     * @param boolean|null $newChargeIndicator Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param float|null $newAllowanceChargeAmount Amount of the surcharge or discount
+     * @param float|null $newAllowanceChargeBaseAmount The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newAllowanceChargeReason Reason given in text form for the surcharge or discount
+     * @param string|null $newAllowanceChargeReasonCode Reason given as a code for the surcharge or discount
+     * @param float|null $newAllowanceChargePercent Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @return self
      */
     public function setDocumentAllowanceCharge(
         ?bool $newChargeIndicator = null,
@@ -4025,7 +4692,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newTaxPercent = null,
         ?string $newAllowanceChargeReason = null,
         ?string $newAllowanceChargeReasonCode = null,
-        ?float $newAllowanceChargePercent = null
+        ?float $newAllowanceChargePercent = null,
     ): self {
         if (
             InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType]) ||
@@ -4061,7 +4728,18 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add Document Allowance/Charge
+     *
+     * @param boolean|null $newChargeIndicator Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param float|null $newAllowanceChargeAmount Amount of the surcharge or discount
+     * @param float|null $newAllowanceChargeBaseAmount The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newAllowanceChargeReason Reason given in text form for the surcharge or discount
+     * @param string|null $newAllowanceChargeReasonCode Reason given as a code for the surcharge or discount
+     * @param float|null $newAllowanceChargePercent Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @return self
      */
     public function addDocumentAllowanceCharge(
         ?bool $newChargeIndicator = null,
@@ -4072,7 +4750,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newTaxPercent = null,
         ?string $newAllowanceChargeReason = null,
         ?string $newAllowanceChargeReasonCode = null,
-        ?float $newAllowanceChargePercent = null
+        ?float $newAllowanceChargePercent = null,
     ): self {
         if (
             InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType]) ||
@@ -4131,14 +4809,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set Document Logistic Service Charge
+     *
+     * @param float|null $newChargeAmount Amount of the service fee
+     * @param string|null $newDescription Identification of the service fee
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @return self
      */
     public function setDocumentLogisticServiceCharge(
         ?float $newChargeAmount = null,
         ?string $newDescription = null,
         ?string $newTaxCategory = null,
         ?string $newTaxType = null,
-        ?float $newTaxPercent = null
+        ?float $newTaxPercent = null,
     ): self {
         if (
             InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType, $newDescription]) ||
@@ -4168,14 +4853,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add Document Logistic Service Charge
+     *
+     * @param float|null $newChargeAmount Amount of the service fee
+     * @param string|null $newDescription Identification of the service fee
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @return self
      */
     public function addDocumentLogisticServiceCharge(
         ?float $newChargeAmount = null,
         ?string $newDescription = null,
         ?string $newTaxCategory = null,
         ?string $newTaxType = null,
-        ?float $newTaxPercent = null
+        ?float $newTaxPercent = null,
     ): self {
         if (
             InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType, $newDescription]) ||
@@ -4209,12 +4901,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
-    #endregion
-
-    #region Document Amounts
-
     /**
-     * @inheritDoc
+     * Prepare the document-level summation (Sets all values to zero)
+     *
+     * @return self
      */
     public function prepareDocumentSummation(): self
     {
@@ -4222,7 +4912,18 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the document summation
+     *
+     * @param float|null $newNetAmount Sum of the net amounts of all invoice lines
+     * @param float|null $newChargeTotalAmount Sum of the charges
+     * @param float|null $newDiscountTotalAmount Sum of the discounts
+     * @param float|null $newTaxBasisAmount Total invoice amount excluding sales tax
+     * @param float|null $newTaxTotalAmount Total amount of the invoice sales tax (in the invoice currency)
+     * @param float|null $newGrossAmount Total invoice amount including sales tax
+     * @param float|null $newDueAmount Payment amount due
+     * @param float|null $newPrepaidAmount Prepayment amount
+     * @param float|null $newRoungingAmount Rounding amount
+     * @return self
      */
     public function setDocumentSummation(
         ?float $newNetAmount = null,
@@ -4234,7 +4935,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newGrossAmount = null,
         ?float $newDueAmount = null,
         ?float $newPrepaidAmount = null,
-        ?float $newRoungingAmount = null
+        ?float $newRoungingAmount = null,
     ): self {
         if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newNetAmount, $newTaxBasisAmount, $newTaxTotalAmount, $newGrossAmount, $newDueAmount])) {
             return $this;
@@ -4291,18 +4992,20 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
-    #endregion
-
-    #region Document Positions
-
     /**
-     * @inheritDoc
+     * Add a new position to document
+     *
+     * @param string|null $newPositionId Identification of the position
+     * @param string|null $newParentPositionId Identification of the parent position
+     * @param string|null $newLineStatusCode Indicates whether the invoice item contains prices that must be taken into account when calculating the invoice amount or whether only information is included
+     * @param string|null $newLineStatusReasonCode Type to specify whether the invoice line is
+     * @return self
      */
     public function addDocumentPosition(
         ?string $newPositionId = null,
         ?string $newParentPositionId = null,
         ?string $newLineStatusCode = null,
-        ?string $newLineStatusReasonCode = null
+        ?string $newLineStatusReasonCode = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPositionId])) {
             return $this;
@@ -4318,12 +5021,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set text information to latest added position
+     *
+     * @param string|null $newContent Text that contains unstructured information that is relevant to the invoice item
+     * @param string|null $newContentCode Code to classify the content of the free text of the invoice
+     * @param string|null $newSubjectCode Code for qualifying the free text for the invoice item
+     * @return self
      */
     public function setDocumentPositionNote(
         ?string $newContent = null,
         ?string $newContentCode = null,
-        ?string $newSubjectCode = null
+        ?string $newSubjectCode = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newContent])) {
             return $this;
@@ -4343,12 +5051,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add text information to latest added position
+     *
+     * @param string|null $newContent Text that contains unstructured information that is relevant to the invoice item
+     * @param string|null $newContentCode Code to classify the content of the free text of the invoice
+     * @param string|null $newSubjectCode Code for qualifying the free text for the invoice item
+     * @return self
      */
     public function addDocumentPositionNote(
         ?string $newContent = null,
         ?string $newContentCode = null,
-        ?string $newSubjectCode = null
+        ?string $newSubjectCode = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newContent])) {
             return $this;
@@ -4362,7 +5075,22 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add product details to latest added position
+     *
+     * @param string|null $newProductId ID of the product (product id, Order-X interoperable)
+     * @param string|null $newProductName Name of the product (product name)
+     * @param string|null $newProductDescription Product description of the item, the item description makes it possible to describe the item
+     * @param string|null $newProductSellerId Identifier assigned to the product by the seller
+     * @param string|null $newProductBuyerId Identifier assigned to the product by the buyer
+     * @param string|null $newProductGlobalId Product global id
+     * @param string|null $newProductGlobalIdType Type of the product global id
+     * @param string|null $newProductIndustryId Id assigned by the industry
+     * @param string|null $newProductModelId Unique model identifier of the product
+     * @param string|null $newProductBatchId Batch (lot) identifier of the product
+     * @param string|null $newProductBrandName Brand name of the product
+     * @param string|null $newProductModelName Model name of the product
+     * @param string|null $newProductOriginTradeCountry Code indicating the country the goods came from
+     * @return self
      */
     public function setDocumentPositionProductDetails(
         ?string $newProductId = null,
@@ -4377,7 +5105,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newProductBatchId = null,
         ?string $newProductBrandName = null,
         ?string $newProductModelName = null,
-        ?string $newProductOriginTradeCountry = null
+        ?string $newProductOriginTradeCountry = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductName])) {
             return $this;
@@ -4413,14 +5141,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set product characteristics in latest added position
+     *
+     * @param string|null $newProductCharacteristicDescription Name of the attribute or characteristic ("Colour")
+     * @param string|null $newProductCharacteristicValue Value of the attribute or characteristic ("Red")
+     * @param string|null $newProductCharacteristicType Type (Code) of product characteristic
+     * @param float|null $newProductCharacteristicMeasureValue Value of the characteristic (numerical measured)
+     * @param string|null $newProductCharacteristicMeasureUnit Unit of value of the characteristic
+     * @return self
      */
     public function setDocumentPositionProductCharacteristic(
         ?string $newProductCharacteristicDescription = null,
         ?string $newProductCharacteristicValue = null,
         ?string $newProductCharacteristicType = null,
         ?float $newProductCharacteristicMeasureValue = null,
-        ?string $newProductCharacteristicMeasureUnit = null
+        ?string $newProductCharacteristicMeasureUnit = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicDescription, $newProductCharacteristicValue])) {
             return $this;
@@ -4444,14 +5179,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add product characteristics in latest added position
+     *
+     * @param string|null $newProductCharacteristicDescription Name of the attribute or characteristic ("Colour")
+     * @param string|null $newProductCharacteristicValue Value of the attribute or characteristic ("Red")
+     * @param string|null $newProductCharacteristicType Type (Code) of product characteristic
+     * @param float|null $newProductCharacteristicMeasureValue Value of the characteristic (numerical measured)
+     * @param string|null $newProductCharacteristicMeasureUnit Unit of value of the characteristic
+     * @return self
      */
     public function addDocumentPositionProductCharacteristic(
         ?string $newProductCharacteristicDescription = null,
         ?string $newProductCharacteristicValue = null,
         ?string $newProductCharacteristicType = null,
         ?float $newProductCharacteristicMeasureValue = null,
-        ?string $newProductCharacteristicMeasureUnit = null
+        ?string $newProductCharacteristicMeasureUnit = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicDescription, $newProductCharacteristicValue])) {
             return $this;
@@ -4479,13 +5221,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set product classification in latest added position
+     *
+     * @param string|null $newProductClassificationCode Classification identifier
+     * @param string|null $newProductClassificationListId Identifier for the identification scheme of the item classification
+     * @param string|null $newProductClassificationListVersionId Version of the identification scheme
+     * @param string|null $newProductClassificationCodeClassname Name with which an article can be classified according to type or quality
+     * @return self
      */
     public function setDocumentPositionProductClassification(
         ?string $newProductClassificationCode = null,
         ?string $newProductClassificationListId = null,
         ?string $newProductClassificationListVersionId = null,
-        ?string $newProductClassificationCodeClassname = null
+        ?string $newProductClassificationCodeClassname = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductClassificationCode, $newProductClassificationListId])) {
             return $this;
@@ -4508,13 +5256,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add product classification in latest added position
+     *
+     * @param string|null $newProductClassificationCode Classification identifier
+     * @param string|null $newProductClassificationListId Identifier for the identification scheme of the item classification
+     * @param string|null $newProductClassificationListVersionId Version of the identification scheme
+     * @param string|null $newProductClassificationCodeClassname Name with which an article can be classified according to type or quality
+     * @return self
      */
     public function addDocumentPositionProductClassification(
         ?string $newProductClassificationCode = null,
         ?string $newProductClassificationListId = null,
         ?string $newProductClassificationListVersionId = null,
-        ?string $newProductClassificationCodeClassname = null
+        ?string $newProductClassificationCodeClassname = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductClassificationCode, $newProductClassificationListId])) {
             return $this;
@@ -4539,7 +5293,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set referenced product in latest added position
+     *
+     * @param string|null $newProductId ID of the product (product id, Order-X interoperable)
+     * @param string|null $newProductName Name of the product (product name)
+     * @param string|null $newProductDescription Product description of the item, the item description makes it possible to describe the item
+     * @param string|null $newProductSellerId Identifier assigned to the product by the seller
+     * @param string|null $newProductBuyerId Identifier assigned to the product by the buyer
+     * @param string|null $newProductGlobalId Product global id
+     * @param string|null $newProductGlobalIdType Type of the product global id
+     * @param string|null $newProductIndustryId Id assigned by the industry
+     * @param float|null $newProductUnitQuantity Quantity Quantity of the referenced product contained
+     * @param string|null $newProductUnitQuantityUnit Unit code of the quantity of the referenced product contained
+     * @return self
      */
     public function setDocumentPositionReferencedProduct(
         ?string $newProductId = null,
@@ -4551,7 +5317,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newProductGlobalIdType = null,
         ?string $newProductIndustryId = null,
         ?float $newProductUnitQuantity = null,
-        ?string $newProductUnitQuantityUnit = null
+        ?string $newProductUnitQuantityUnit = null,
     ): self {
         // Nothing here...
 
@@ -4559,7 +5325,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add referenced product in latest added position
+     *
+     * @param string|null $newProductId ID of the product (product id, Order-X interoperable)
+     * @param string|null $newProductName Name of the product (product name)
+     * @param string|null $newProductDescription Product description of the item, the item description makes it possible to describe the item
+     * @param string|null $newProductSellerId Identifier assigned to the product by the seller
+     * @param string|null $newProductBuyerId Identifier assigned to the product by the buyer
+     * @param string|null $newProductGlobalId Product global id
+     * @param string|null $newProductGlobalIdType Type of the product global id
+     * @param string|null $newProductIndustryId Id assigned by the industry
+     * @param float|null $newProductUnitQuantity Quantity Quantity of the referenced product contained
+     * @param string|null $newProductUnitQuantityUnit Unit code of the quantity of the referenced product contained
+     * @return self
      */
     public function addDocumentPositionReferencedProduct(
         ?string $newProductId = null,
@@ -4571,7 +5349,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newProductGlobalIdType = null,
         ?string $newProductIndustryId = null,
         ?float $newProductUnitQuantity = null,
-        ?string $newProductUnitQuantityUnit = null
+        ?string $newProductUnitQuantityUnit = null,
     ): self {
         // Nothing here...
 
@@ -4579,12 +5357,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the associated seller's order confirmation (line reference).
+     *
+     * @param string|null $newReferenceNumber Seller's order confirmation number
+     * @param string|null $newReferenceLineNumber Seller's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate Seller's order confirmation date
+     * @return self
      */
     public function setDocumentPositionSellerOrderReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         // Nothing here...
 
@@ -4592,12 +5375,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an associated seller's order confirmation (line reference).
+     *
+     * @param string|null $newReferenceNumber Seller's order confirmation number
+     * @param string|null $newReferenceLineNumber Seller's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate Seller's order confirmation date
+     * @return self
      */
     public function addDocumentPositionSellerOrderReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         // Nothing here...
 
@@ -4605,12 +5393,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the associated buyer's order confirmation (line reference).
+     *
+     * @param string|null $newReferenceNumber Buyer's order confirmation number
+     * @param string|null $newReferenceLineNumber Buyer's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate Buyer's order confirmation date
+     * @return self
      */
     public function setDocumentPositionBuyerOrderReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
             return $this;
@@ -4630,12 +5423,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an associated buyer's order confirmation (line reference).
+     *
+     * @param string|null $newReferenceNumber Buyer's order confirmation number
+     * @param string|null $newReferenceLineNumber Buyer's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate Buyer's order confirmation date
+     * @return self
      */
     public function addDocumentPositionBuyerOrderReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
             return $this;
@@ -4651,12 +5449,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the associated quotation (line reference).
+     *
+     * @param string|null $newReferenceNumber Buyer's order confirmation number
+     * @param string|null $newReferenceLineNumber Buyer's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate Buyer's order confirmation date
+     * @return self
      */
     public function setDocumentPositionQuotationReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         // Nothing here...
 
@@ -4664,12 +5467,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an associated quotation (line reference).
+     *
+     * @param string|null $newReferenceNumber Buyer's order confirmation number
+     * @param string|null $newReferenceLineNumber Buyer's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate Buyer's order confirmation date
+     * @return self
      */
     public function addDocumentPositionQuotationReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         // Nothing here...
 
@@ -4677,12 +5485,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the associated contract (line reference).
+     *
+     * @param string|null $newReferenceNumber Buyer's order confirmation number
+     * @param string|null $newReferenceLineNumber Buyer's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate Buyer's order confirmation date
+     * @return self
      */
     public function setDocumentPositionContractReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         // Nothing here...
 
@@ -4690,12 +5503,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an associated contract (line reference).
+     *
+     * @param string|null $newReferenceNumber Buyer's order confirmation number
+     * @param string|null $newReferenceLineNumber Buyer's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate Buyer's order confirmation date
+     * @return self
      */
     public function addDocumentPositionContractReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         // Nothing here...
 
@@ -4703,7 +5521,16 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set an additional associated document (line reference)
+     *
+     * @param string|null $newReferenceNumber Additional document number
+     * @param string|null $newReferenceLineNumber Additional document line number
+     * @param DateTimeInterface|null $newReferenceDate Additional document date
+     * @param string|null $newTypeCode Additional document type code
+     * @param string|null $newReferenceTypeCode Additional document reference-type code
+     * @param string|null $newDescription Additional document description
+     * @param InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment Additional document attachment
+     * @return self
      */
     public function setDocumentPositionAdditionalReference(
         ?string $newReferenceNumber = null,
@@ -4712,7 +5539,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTypeCode = null,
         ?string $newReferenceTypeCode = null,
         ?string $newDescription = null,
-        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null,
     ): self {
         // Nothing here
 
@@ -4720,7 +5547,16 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an additional associated document (line reference)
+     *
+     * @param string|null $newReferenceNumber Additional document number
+     * @param string|null $newReferenceLineNumber Additional document line number
+     * @param DateTimeInterface|null $newReferenceDate Additional document date
+     * @param string|null $newTypeCode Additional document type code
+     * @param string|null $newReferenceTypeCode Additional document reference-type code
+     * @param string|null $newDescription Additional document description
+     * @param InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment Additional document attachment
+     * @return self
      */
     public function addDocumentPositionAdditionalReference(
         ?string $newReferenceNumber = null,
@@ -4729,7 +5565,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTypeCode = null,
         ?string $newReferenceTypeCode = null,
         ?string $newDescription = null,
-        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null,
     ): self {
         // Nothing here
 
@@ -4737,12 +5573,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set an additional ultimate customer order reference (line reference)
+     *
+     * @param string|null $newReferenceNumber Ultimate customer order number
+     * @param string|null $newReferenceLineNumber Ultimate customer order line number
+     * @param DateTimeInterface|null $newReferenceDate Ultimate customer order date
+     * @return self
      */
     public function setDocumentPositionUltimateCustomerOrderReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         // Nothing here
 
@@ -4750,12 +5591,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an additional ultimate customer order reference (line reference)
+     *
+     * @param string|null $newReferenceNumber Ultimate customer order number
+     * @param string|null $newReferenceLineNumber Ultimate customer order line number
+     * @param DateTimeInterface|null $newReferenceDate Ultimate customer order date
+     * @return self
      */
     public function addDocumentPositionUltimateCustomerOrderReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         // Nothing here
 
@@ -4763,12 +5609,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set an additional despatch advice reference
+     *
+     * @param string|null $newReferenceNumber Shipping notification number
+     * @param string|null $newReferenceLineNumber Shipping notification line number
+     * @param DateTimeInterface|null $newReferenceDate Shipping notification date
+     * @return self
      */
     public function setDocumentPositionDespatchAdviceReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         // Nothing here
 
@@ -4776,12 +5627,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an additional despatch advice reference
+     *
+     * @param string|null $newReferenceNumber Shipping notification number
+     * @param string|null $newReferenceLineNumber Shipping notification line number
+     * @param DateTimeInterface|null $newReferenceDate Shipping notification date
+     * @return self
      */
     public function addDocumentPositionDespatchAdviceReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         // Nothing here
 
@@ -4789,12 +5645,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set an additional despatch advice reference
+     *
+     * @param string|null $newReferenceNumber Receipt notification number
+     * @param string|null $newReferenceLineNumber Receipt notification line number
+     * @param DateTimeInterface|null $newReferenceDate Receipt notification date
+     * @return self
      */
     public function setDocumentPositionReceivingAdviceReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         // Nothing here
 
@@ -4802,12 +5663,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an additional despatch advice reference
+     *
+     * @param string|null $newReferenceNumber Receipt notification number
+     * @param string|null $newReferenceLineNumber Receipt notification line number
+     * @param DateTimeInterface|null $newReferenceDate Receipt notification date
+     * @return self
      */
     public function addDocumentPositionReceivingAdviceReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         // Nothing here
 
@@ -4815,12 +5681,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set an additional delivery note
+     *
+     * @param string|null $newReferenceNumber Delivery slip number
+     * @param string|null $newReferenceLineNumber Delivery slip line number
+     * @param DateTimeInterface|null $newReferenceDate Delivery slip date
+     * @return self
      */
     public function setDocumentPositionDeliveryNoteReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         // Nothing here
 
@@ -4828,12 +5699,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an additional delivery note
+     *
+     * @param string|null $newReferenceNumber Delivery slip number
+     * @param string|null $newReferenceLineNumber Delivery slip line number
+     * @param DateTimeInterface|null $newReferenceDate Delivery slip date
+     * @return self
      */
     public function addDocumentPositionDeliveryNoteReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null
+        ?DateTimeInterface $newReferenceDate = null,
     ): self {
         // Nothing here
 
@@ -4841,13 +5717,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set an additional invoice document (reference to preceding invoice)
+     *
+     * @param string|null $newReferenceNumber Identification of an invoice previously sent
+     * @param string|null $newReferenceLineNumber Identification of an invoice line previously sent
+     * @param DateTimeInterface|null $newReferenceDate Date of the previous invoice
+     * @param string|null $newTypeCode Type code of previous invoice
+     * @return self
      */
     public function setDocumentPositionInvoiceReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
-        ?string $newTypeCode = null
+        ?string $newTypeCode = null,
     ): self {
         // Nothing here
 
@@ -4855,13 +5737,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an additional invoice document (reference to preceding invoice)
+     *
+     * @param string|null $newReferenceNumber Identification of an invoice previously sent
+     * @param string|null $newReferenceLineNumber Identification of an invoice line previously sent
+     * @param DateTimeInterface|null $newReferenceDate Date of the previous invoice
+     * @param string|null $newTypeCode Type code of previous invoice
+     * @return self
      */
     public function addDocumentPositionInvoiceReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
-        ?string $newTypeCode = null
+        ?string $newTypeCode = null,
     ): self {
         // Nothing here
 
@@ -4869,12 +5757,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the position's gross price
+     *
+     * @param null|float $newGrossPrice Unit price excluding sales tax before deduction of the discount on the item price
+     * @param null|float $newGrossPriceBasisQuantity Number of item units for which the price applies
+     * @param null|string $newGrossPriceBasisQuantityUnit Unit code of the number of item units for which the price applies
+     * @return self
      */
     public function setDocumentPositionGrossPrice(
         ?float $newGrossPrice = null,
         ?float $newGrossPriceBasisQuantity = null,
-        ?string $newGrossPriceBasisQuantityUnit = null
+        ?string $newGrossPriceBasisQuantityUnit = null,
     ): self {
         // Nothing here
 
@@ -4882,7 +5775,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set discount or charge to the gross price
+     *
+     * @param null|float $newGrossPriceAllowanceChargeAmount Discount amount or charge amount on the item price
+     * @param null|bool $newIsCharge Switch for charge/discount
+     * @param null|float $newGrossPriceAllowanceChargePercent Discount or charge on the item price in percent
+     * @param null|float $newGrossPriceAllowanceChargeBasisAmount Base amount of the discount or charge
+     * @param null|string $newGrossPriceAllowanceChargeReason Reason for discount or charge (free text)
+     * @param null|string $newGrossPriceAllowanceChargeReasonCode Reason code for discount or charge (free text)
+     * @return self
      */
     public function setDocumentPositionGrossPriceAllowanceCharge(
         ?float $newGrossPriceAllowanceChargeAmount = null,
@@ -4890,7 +5791,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newGrossPriceAllowanceChargePercent = null,
         ?float $newGrossPriceAllowanceChargeBasisAmount = null,
         ?string $newGrossPriceAllowanceChargeReason = null,
-        ?string $newGrossPriceAllowanceChargeReasonCode = null
+        ?string $newGrossPriceAllowanceChargeReasonCode = null,
     ): self {
         // Nothing here
 
@@ -4898,7 +5799,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add discount or charge to the gross price
+     *
+     * @param null|float $newGrossPriceAllowanceChargeAmount Discount amount or charge amount on the item price
+     * @param null|bool $newIsCharge Switch for charge/discount
+     * @param null|float $newGrossPriceAllowanceChargePercent Discount or charge on the item price in percent
+     * @param null|float $newGrossPriceAllowanceChargeBasisAmount Base amount of the discount or charge
+     * @param null|string $newGrossPriceAllowanceChargeReason Reason for discount or charge (free text)
+     * @param null|string $newGrossPriceAllowanceChargeReasonCode Reason code for discount or charge (free text)
+     * @return self
      */
     public function addDocumentPositionGrossPriceAllowanceCharge(
         ?float $newGrossPriceAllowanceChargeAmount = null,
@@ -4906,7 +5815,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newGrossPriceAllowanceChargePercent = null,
         ?float $newGrossPriceAllowanceChargeBasisAmount = null,
         ?string $newGrossPriceAllowanceChargeReason = null,
-        ?string $newGrossPriceAllowanceChargeReasonCode = null
+        ?string $newGrossPriceAllowanceChargeReasonCode = null,
     ): self {
         // Nothing here
 
@@ -4914,12 +5823,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the position's net price
+     *
+     * @param null|float $newNetPrice Unit price excluding sales tax after deduction of the discount on the item price
+     * @param null|float $newNetPriceBasisQuantity Number of item units for which the price applies
+     * @param null|string $newNetPriceBasisQuantityUnit Unit code of the number of item units for which the price applies
+     * @return self
      */
     public function setDocumentPositionNetPrice(
         ?float $newNetPrice = null,
         ?float $newNetPriceBasisQuantity = null,
-        ?string $newNetPriceBasisQuantityUnit = null
+        ?string $newNetPriceBasisQuantityUnit = null,
     ): self {
         if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newNetPrice])) {
             return $this;
@@ -4943,7 +5857,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the position's net price included tax
+     *
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxAmount Tax total amount
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newExemptionReason Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode Reason for tax exemption (Code)
+     * @return self
      */
     public function setDocumentPositionNetPriceTax(
         ?string $newTaxCategory = null,
@@ -4959,7 +5881,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the position's quantities
+     *
+     * @param null|float $newQuantity Invoiced quantity
+     * @param null|string $newQuantityUnit Invoiced quantity unit
+     * @param null|float $newChargeFreeQuantity Charge Free quantity
+     * @param null|string $newChargeFreeQuantityUnit Charge Free quantity unit
+     * @param null|float $newPackageQuantity Package quantity
+     * @param null|string $newPackageQuantityUnit Package quantity unit
+     * @return self
      */
     public function setDocumentPositionQuantities(
         ?float $newQuantity = null,
@@ -4967,7 +5897,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newChargeFreeQuantity = null,
         ?string $newChargeFreeQuantityUnit = null,
         ?float $newPackageQuantity = null,
-        ?string $newPackageQuantityUnit = null
+        ?string $newPackageQuantityUnit = null,
     ): self {
         if (
             InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newQuantity]) ||
@@ -4983,7 +5913,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the name of the Ship-To party
+     *
+     * @param string $newName The full formal name under which the party is registered.
+     * @return self
      */
     public function setDocumentPositionShipToName(
         string $newName
@@ -4994,7 +5927,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the ID of the Ship-To party
+     *
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function setDocumentPositionShipToId(
         string $newId
@@ -5005,7 +5941,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the Ship-To party
+     *
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function addDocumentPositionShipToId(
         string $newId
@@ -5016,35 +5955,43 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the Global ID of the Ship-To party
+     *
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
-    public function setDocumentPositionShipToGlobalId(
-        string $newGlobalId,
-        string $newGlobalIdType
-    ): self {
+    public function setDocumentPositionShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
         // Nothing here
 
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the Ship-To party
+     *
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
-    public function addDocumentPositionShipToGlobalId(
-        string $newGlobalId,
-        string $newGlobalIdType
-    ): self {
+    public function addDocumentPositionShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
         // Nothing here
 
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the Tax Registration of the Ship-To party
+     *
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function setDocumentPositionShipToTaxRegistration(
         string $newTaxRegistrationType,
-        string $newTaxRegistrationId
+        string $newTaxRegistrationId,
     ): self {
         // Nothing here
 
@@ -5052,11 +5999,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an Tax Registration to the Ship-To party
+     *
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function addDocumentPositionShipToTaxRegistration(
         string $newTaxRegistrationType,
-        string $newTaxRegistrationId
+        string $newTaxRegistrationId,
     ): self {
         // Nothing here
 
@@ -5064,7 +6015,16 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the address of the Ship-To party
+     *
+     * @param string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId Country in which the party's address is located.
+     * @param string $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
      */
     public function setDocumentPositionShipToAddress(
         string $newAddressLine1,
@@ -5073,7 +6033,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         string $newPostcode,
         string $newCity,
         string $newCountryId,
-        string $newSubDivision
+        string $newSubDivision,
     ): self {
         // Nothing here
 
@@ -5081,27 +6041,36 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the legal information of the Ship-To party
+     *
+     * @param string $newType Type of the identification number of the legal registration of the party.
+     * @param string $newId Identification number of the legal registration of the party.
+     * @param string $newName Name by which the party is known, if different from the party's name.
+     * @return self
      */
-    public function setDocumentPositionShipToLegalOrganisation(
-        string $newType,
-        string $newId,
-        string $newName
-    ): self {
+    public function setDocumentPositionShipToLegalOrganisation(string $newType, string $newId, string $newName): self
+    {
         // Nothing here
 
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the contact information of the Ship-To party
+     *
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
+     * @return self
      */
     public function setDocumentPositionShipToContact(
         string $newPersonName,
         string $newDepartmentName,
         string $newPhoneNumber,
         string $newFaxNumber,
-        string $newEmailAddress
+        string $newEmailAddress,
     ): self {
         // Nothing here
 
@@ -5109,14 +6078,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add contact information of the Ship-To party
+     *
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
+     * @return self
      */
     public function addDocumentPositionShipToContact(
         string $newPersonName,
         string $newDepartmentName,
         string $newPhoneNumber,
         string $newFaxNumber,
-        string $newEmailAddress
+        string $newEmailAddress,
     ): self {
         // Nothing here
 
@@ -5124,19 +6100,24 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add communication information of the Ship-To party
+     *
+     * @param string $newType The type for the party's electronic address.
+     * @param string $newUri The party's electronic address.
+     * @return self
      */
-    public function setDocumentPositionShipToCommunication(
-        string $newType,
-        string $newUri
-    ): self {
+    public function setDocumentPositionShipToCommunication(string $newType, string $newUri): self
+    {
         // Nothing here
 
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the name of the ultimate Ship-To party
+     *
+     * @param string $newName The full formal name under which the party is registered.
+     * @return self
      */
     public function setDocumentPositionUltimateShipToName(
         string $newName
@@ -5147,7 +6128,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the ID of the ultimate Ship-To party
+     *
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function setDocumentPositionUltimateShipToId(
         string $newId
@@ -5158,7 +6142,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the ultimate Ship-To party
+     *
+     * @param string $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
      */
     public function addDocumentPositionUltimateShipToId(
         string $newId
@@ -5169,35 +6156,43 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the Global ID of the ultimate Ship-To party
+     *
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
-    public function setDocumentPositionUltimateShipToGlobalId(
-        string $newGlobalId,
-        string $newGlobalIdType
-    ): self {
+    public function setDocumentPositionUltimateShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
         // Nothing here
 
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Add an ID to the ultimate Ship-To party
+     *
+     * @param string $newGlobalId A global identifier of the party.
+     * @param string $newGlobalIdType Type of the global identifier of the party.
+     * @return self
      */
-    public function addDocumentPositionUltimateShipToGlobalId(
-        string $newGlobalId,
-        string $newGlobalIdType
-    ): self {
+    public function addDocumentPositionUltimateShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
         // Nothing here
 
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the Tax Registration of the ultimate Ship-To party
+     *
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function setDocumentPositionUltimateShipToTaxRegistration(
         string $newTaxRegistrationType,
-        string $newTaxRegistrationId
+        string $newTaxRegistrationId,
     ): self {
         // Nothing here
 
@@ -5205,11 +6200,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add an Tax Registration to the ultimate Ship-To party
+     *
+     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string $newTaxRegistrationId Tax identification number.
+     * @return self
      */
     public function addDocumentPositionUltimateShipToTaxRegistration(
         string $newTaxRegistrationType,
-        string $newTaxRegistrationId
+        string $newTaxRegistrationId,
     ): self {
         // Nothing here
 
@@ -5217,7 +6216,16 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the address of the ultimate Ship-To party
+     *
+     * @param string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string $newCity Name of the city or municipality in which the party's address is located.
+     * @param string $newCountryId Country in which the party's address is located.
+     * @param string $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
      */
     public function setDocumentPositionUltimateShipToAddress(
         string $newAddressLine1,
@@ -5226,7 +6234,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         string $newPostcode,
         string $newCity,
         string $newCountryId,
-        string $newSubDivision
+        string $newSubDivision,
     ): self {
         // Nothing here
 
@@ -5234,12 +6242,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the legal information of the ultimate Ship-To party
+     *
+     * @param string $newType Type of the identification number of the legal registration of the party.
+     * @param string $newId Identification number of the legal registration of the party.
+     * @param string $newName Name by which the party is known, if different from the party's name.
+     * @return self
      */
     public function setDocumentPositionUltimateShipToLegalOrganisation(
         string $newType,
         string $newId,
-        string $newName
+        string $newName,
     ): self {
         // Nothing here
 
@@ -5247,14 +6260,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the contact information of the ultimate Ship-To party
+     *
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
+     * @return self
      */
     public function setDocumentPositionUltimateShipToContact(
         string $newPersonName,
         string $newDepartmentName,
         string $newPhoneNumber,
         string $newFaxNumber,
-        string $newEmailAddress
+        string $newEmailAddress,
     ): self {
         // Nothing here
 
@@ -5262,14 +6282,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add contact information of the ultimate Ship-To party
+     *
+     * @param string $newPersonName Name of contact person or department or office for the contact point.
+     * @param string $newDepartmentName Name of the department for the contact point.
+     * @param string $newPhoneNumber Telephone number for the contact point.
+     * @param string $newFaxNumber Fax number of the contact point.
+     * @param string $newEmailAddress E-Mail address of the contact point.
+     * @return self
      */
     public function addDocumentPositionUltimateShipToContact(
         string $newPersonName,
         string $newDepartmentName,
         string $newPhoneNumber,
         string $newFaxNumber,
-        string $newEmailAddress
+        string $newEmailAddress,
     ): self {
         // Nothing here
 
@@ -5277,19 +6304,24 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add communication information of the ultimate Ship-To party
+     *
+     * @param string $newType The type for the party's electronic address.
+     * @param string $newUri The party's electronic address.
+     * @return self
      */
-    public function setDocumentPositionUltimateShipToCommunication(
-        string $newType,
-        string $newUri
-    ): self {
+    public function setDocumentPositionUltimateShipToCommunication(string $newType, string $newUri): self
+    {
         // Nothing here
 
         return $this;
     }
 
     /**
-     * @inheritDoc
+     * Set the date of the delivery
+     *
+     * @param DateTimeInterface|null $newDate
+     * @return self
      */
     public function setDocumentPositionSupplyChainEvent(
         ?DateTimeInterface $newDate = null
@@ -5300,12 +6332,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the position's start and/or end date of the billing period
+     *
+     * @param null|DateTimeInterface $newStartDate Start of the billing period
+     * @param null|DateTimeInterface $newEndDate End of the billing period
+     * @param null|string $newDescription Further information of the billing period (Obsolete)
+     * @return self
      */
     public function setDocumentPositionBillingPeriod(
         ?DateTimeInterface $newStartDate = null,
         ?DateTimeInterface $newEndDate = null,
-        ?string $newDescription = null
+        ?string $newDescription = null,
     ): self {
         // Nothing here
 
@@ -5313,7 +6350,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the position's tax information
+     *
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxAmount Tax total amount
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newExemptionReason Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode Reason for tax exemption (Code)
+     * @return self
      */
     public function setDocumentPositionTax(
         ?string $newTaxCategory = null,
@@ -5351,7 +6396,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add a position's tax information
+     *
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxAmount Tax total amount
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newExemptionReason Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode Reason for tax exemption (Code)
+     * @return self
      */
     public function addDocumentPositionTax(
         ?string $newTaxCategory = null,
@@ -5390,8 +6443,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
 
         return $this;
     }
+
     /**
-     * @inheritDoc
+     * Set Document position Allowance/Charge
+     *
+     * @param boolean|null $newChargeIndicator Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param float|null $newAllowanceChargeAmount Amount of the surcharge or discount
+     * @param float|null $newAllowanceChargeBaseAmount The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param string|null $newAllowanceChargeReason Reason given in text form for the surcharge or discount
+     * @param string|null $newAllowanceChargeReasonCode Reason given as a code for the surcharge or discount
+     * @param float|null $newAllowanceChargePercent Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @return self
      */
     public function setDocumentPositionAllowanceCharge(
         ?bool $newChargeIndicator = null,
@@ -5399,7 +6461,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newAllowanceChargeBaseAmount = null,
         ?string $newAllowanceChargeReason = null,
         ?string $newAllowanceChargeReasonCode = null,
-        ?float $newAllowanceChargePercent = null
+        ?float $newAllowanceChargePercent = null,
     ): self {
         if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargeAmount]) || is_null($newChargeIndicator)) {
             return $this;
@@ -5425,7 +6487,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Add Document position Allowance/Charge
+     *
+     * @param boolean|null $newChargeIndicator Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param float|null $newAllowanceChargeAmount Amount of the surcharge or discount
+     * @param float|null $newAllowanceChargeBaseAmount The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param string|null $newAllowanceChargeReason Reason given in text form for the surcharge or discount
+     * @param string|null $newAllowanceChargeReasonCode Reason given as a code for the surcharge or discount
+     * @param float|null $newAllowanceChargePercent Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @return self
      */
     public function addDocumentPositionAllowanceCharge(
         ?bool $newChargeIndicator = null,
@@ -5433,7 +6503,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newAllowanceChargeBaseAmount = null,
         ?string $newAllowanceChargeReason = null,
         ?string $newAllowanceChargeReasonCode = null,
-        ?float $newAllowanceChargePercent = null
+        ?float $newAllowanceChargePercent = null,
     ): self {
         if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargeAmount]) || is_null($newChargeIndicator)) {
             return $this;
@@ -5469,14 +6539,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
+     * Set the document position summation
+     *
+     * @param float|null $newNetAmount Net amount
+     * @param float|null $newChargeTotalAmount Sum of the charges
+     * @param float|null $newDiscountTotalAmount Sum of the discounts
+     * @param float|null $newTaxTotalAmount Total amount of the line (in the invoice currency)
+     * @param float|null $newGrossAmount Total invoice line amount including sales tax
+     * @return self
      */
     public function setDocumentPositionSummation(
         ?float $newNetAmount = null,
         ?float $newChargeTotalAmount = null,
         ?float $newDiscountTotalAmount = null,
         ?float $newTaxTotalAmount = null,
-        ?float $newGrossAmount = null
+        ?float $newGrossAmount = null,
     ): self {
         if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newNetAmount])) {
             return $this;
@@ -5500,10 +6577,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string|null $newAccountId Posting reference of the byuer
      * @return self
      */
-    public function setDocumentPositionPostingReference(
-        ?string $newType = null,
-        ?string $newAccountId = null
-    ): self {
+    public function setDocumentPositionPostingReference(?string $newType = null, ?string $newAccountId = null): self
+    {
         // Nothing here
 
         return $this;
@@ -5516,14 +6591,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string|null $newAccountId Posting reference of the byuer
      * @return self
      */
-    public function addDocumentPositionPostingReference(
-        ?string $newType = null,
-        ?string $newAccountId = null
-    ): self {
+    public function addDocumentPositionPostingReference(?string $newType = null, ?string $newAccountId = null): self
+    {
         // Nothing here
 
         return $this;
     }
-
-    #endregion
 }
