@@ -50,7 +50,7 @@ class InvoiceSuiteAddressDTO
     /**
      * Country
      */
-    public ?string $countryId = null;
+    public ?string $country = null;
 
     /**
      * Subdivision
@@ -65,7 +65,7 @@ class InvoiceSuiteAddressDTO
      * @param string|null $addressLine3
      * @param string|null $postcode
      * @param string|null $city
-     * @param string|null $countryId
+     * @param string|null $country
      * @param string|null $subDivision
      */
     public function __construct(
@@ -74,7 +74,7 @@ class InvoiceSuiteAddressDTO
         ?string $addressLine3 = null,
         ?string $postcode = null,
         ?string $city = null,
-        ?string $countryId = null,
+        ?string $country = null,
         ?string $subDivision = null
     ) {
         $this
@@ -83,7 +83,7 @@ class InvoiceSuiteAddressDTO
             ->setAddressLine3($addressLine3)
             ->setPostcode($postcode)
             ->setCity($city)
-            ->setCountryId($countryId)
+            ->setCountry($country)
             ->setSubDivision($subDivision);
     }
 
@@ -100,12 +100,17 @@ class InvoiceSuiteAddressDTO
     /**
      * Set address line 1
      *
-     * @param string|null $addressLine1
+     * @param string|null $newAddressLine1
      * @return self
      */
-    public function setAddressLine1(?string $addressLine1): self
+    public function setAddressLine1(?string $newAddressLine1): self
     {
-        $this->addressLine1 = $addressLine1;
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newAddressLine1)) {
+            return $this;
+        }
+
+        $this->addressLine1 = $newAddressLine1;
+
         return $this;
     }
 
@@ -132,12 +137,17 @@ class InvoiceSuiteAddressDTO
     /**
      * Set address line 2
      *
-     * @param string|null $addressLine2
+     * @param string|null $newAddressLine2
      * @return self
      */
-    public function setAddressLine2(?string $addressLine2): self
+    public function setAddressLine2(?string $newAddressLine2): self
     {
-        $this->addressLine2 = $addressLine2;
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newAddressLine2)) {
+            return $this;
+        }
+
+        $this->addressLine2 = $newAddressLine2;
+
         return $this;
     }
 
@@ -164,12 +174,17 @@ class InvoiceSuiteAddressDTO
     /**
      * Set address line 3
      *
-     * @param string|null $addressLine3
+     * @param string|null $newAddressLine3
      * @return self
      */
-    public function setAddressLine3(?string $addressLine3): self
+    public function setAddressLine3(?string $newAddressLine3): self
     {
-        $this->addressLine3 = $addressLine3;
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newAddressLine3)) {
+            return $this;
+        }
+
+        $this->addressLine3 = $newAddressLine3;
+
         return $this;
     }
 
@@ -196,12 +211,17 @@ class InvoiceSuiteAddressDTO
     /**
      * Set postcode
      *
-     * @param string|null $postcode
+     * @param string|null $newPostcode
      * @return self
      */
-    public function setPostcode(?string $postcode): self
+    public function setPostcode(?string $newPostcode): self
     {
-        $this->postcode = $postcode;
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPostcode)) {
+            return $this;
+        }
+
+        $this->postcode = $newPostcode;
+
         return $this;
     }
 
@@ -228,12 +248,17 @@ class InvoiceSuiteAddressDTO
     /**
      * Set city
      *
-     * @param string|null $city
+     * @param string|null $newCity
      * @return self
      */
-    public function setCity(?string $city): self
+    public function setCity(?string $newCity): self
     {
-        $this->city = $city;
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCity)) {
+            return $this;
+        }
+
+        $this->city = $newCity;
+
         return $this;
     }
 
@@ -252,20 +277,25 @@ class InvoiceSuiteAddressDTO
      *
      * @return string|null
      */
-    public function getCountryId(): ?string
+    public function getCountry(): ?string
     {
-        return $this->countryId;
+        return $this->country;
     }
 
     /**
      * Set country ID
      *
-     * @param string|null $countryId
+     * @param string|null $newCountry
      * @return self
      */
-    public function setCountryId(?string $countryId): self
+    public function setCountry(?string $newCountry): self
     {
-        $this->countryId = $countryId;
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountry)) {
+            return $this;
+        }
+
+        $this->country = $newCountry;
+
         return $this;
     }
 
@@ -274,9 +304,9 @@ class InvoiceSuiteAddressDTO
      *
      * @return bool
      */
-    public function hasCountryId(): bool
+    public function hasCountry(): bool
     {
-        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->countryId);
+        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->country);
     }
 
     /**
@@ -292,12 +322,17 @@ class InvoiceSuiteAddressDTO
     /**
      * Set subdivision
      *
-     * @param string|null $subDivision
+     * @param string|null $newSubDivision
      * @return self
      */
-    public function setSubDivision(?string $subDivision): self
+    public function setSubDivision(?string $newSubDivision): self
     {
-        $this->subDivision = $subDivision;
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newSubDivision)) {
+            return $this;
+        }
+
+        $this->subDivision = $newSubDivision;
+
         return $this;
     }
 

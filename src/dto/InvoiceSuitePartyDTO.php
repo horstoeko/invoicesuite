@@ -13,6 +13,7 @@ use horstoeko\invoicesuite\dto\InvoiceSuiteIdDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteOrganisationDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 /**
  * Class representing a DTO for a party (e.g. seller or customer)
@@ -90,12 +91,15 @@ class InvoiceSuitePartyDTO
     }
 
     /**
-     * @param array<string> $name
+     * @param array<string> $names
      * @return self
      */
-    public function setName(array $name): self
+    public function setName(array $names): self
     {
-        $this->name = $name;
+        $this->name = array_filter($names, function ($name) {
+            return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($name);
+        });
+
         return $this;
     }
 
@@ -105,7 +109,12 @@ class InvoiceSuitePartyDTO
      */
     public function addName(string $name): self
     {
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($name)) {
+            return $this;
+        }
+
         $this->name[] = $name;
+
         return $this;
     }
 
