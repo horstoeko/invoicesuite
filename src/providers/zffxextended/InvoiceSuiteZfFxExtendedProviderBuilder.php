@@ -3173,6 +3173,24 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
+     * Add a name of the Ship-To party
+     *
+     * @param string|null $newName __BT-70, From BASIC WL__ The full formal name under which the party is registered.
+     * @return self
+     */
+    public function addDocumentShipToName(
+        ?string $newName = null
+    ): self {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            return $this;
+        }
+
+        $this->setDocumentShipToName($newName);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Ship-To party
      *
      * @param string|null $newId __BT-71, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
@@ -3442,6 +3460,28 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
+     * Add a legal information of the Ship-To party
+     *
+     * @param string|null $newType __BT-X-153-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
+     * @param string|null $newId __BT-X-153, From EXTENDED__ Identification number of the legal registration of the party.
+     * @param string|null $newName __BT-X-154, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @return self
+     */
+    public function addDocumentShipToLegalOrganisation(
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null,
+    ): self {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+            return $this;
+        }
+
+        $this->setDocumentShipToLegalOrganisation($newType, $newId, $newName);
+
+        return $this;
+    }
+
+    /**
      * Set the contact information of the Ship-To party
      *
      * @param string|null $newPersonName __BT-X-155, From EXTENDED__ Name of contact person or department or office for the contact point.
@@ -3540,7 +3580,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * Add communication information of the Ship-To party
+     * Set communication information of the Ship-To party
      *
      * @param string|null $newType __BT-X-160, From EXTENDED__ The type for the party's electronic address.
      * @param string|null $newUri __BT-X-160-0, From EXTENDED__ The party's electronic address.
@@ -3565,6 +3605,24 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
             $shipToUniversalCommunication->getURIIDWithCreate()->setValue($newUri);
         }
+
+        return $this;
+    }
+
+    /**
+     * Add a communication information of the Ship-To party
+     *
+     * @param string|null $newType __BT-X-160, From EXTENDED__ The type for the party's electronic address.
+     * @param string|null $newUri __BT-X-160-0, From EXTENDED__ The party's electronic address.
+     * @return self
+     */
+    public function addDocumentShipToCommunication(?string $newType = null, ?string $newUri = null): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+            return $this;
+        }
+
+        $this->setDocumentShipToCommunication($newType, $newUri);
 
         return $this;
     }
