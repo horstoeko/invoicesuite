@@ -403,23 +403,23 @@ class InvoiceSuitePartyDTO
     }
 
     /**
-     * @param array<InvoiceSuiteContactDTO> $contact
+     * @param array<InvoiceSuiteContactDTO> $newContacts
      * @return self
      */
-    public function setContact(array $contact): self
+    public function setContact(array $newContacts): self
     {
-        $this->contacts = $contact;
+        $this->contacts = $newContacts;
 
         return $this;
     }
 
     /**
-     * @param InvoiceSuiteContactDTO $contact
+     * @param InvoiceSuiteContactDTO $newContact
      * @return self
      */
-    public function addContact(InvoiceSuiteContactDTO $contact): self
+    public function addContact(InvoiceSuiteContactDTO $newContact): self
     {
-        $this->contacts[] = $contact;
+        $this->contacts[] = $newContact;
 
         return $this;
     }
@@ -454,23 +454,23 @@ class InvoiceSuitePartyDTO
     }
 
     /**
-     * @param array<InvoiceSuiteCommunicationDTO> $communication
+     * @param array<InvoiceSuiteCommunicationDTO> $newCommunications
      * @return self
      */
-    public function setCommunication(array $communication): self
+    public function setCommunication(array $newCommunications): self
     {
-        $this->communications = $communication;
+        $this->communications = $newCommunications;
 
         return $this;
     }
 
     /**
-     * @param InvoiceSuiteCommunicationDTO $communication
+     * @param InvoiceSuiteCommunicationDTO $newCommunication
      * @return self
      */
-    public function addCommunication(InvoiceSuiteCommunicationDTO $communication): self
+    public function addCommunication(InvoiceSuiteCommunicationDTO $newCommunication): self
     {
-        $this->communications[] = $communication;
+        $this->communications[] = $newCommunication;
 
         return $this;
     }
