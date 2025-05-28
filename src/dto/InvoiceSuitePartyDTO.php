@@ -66,7 +66,7 @@ class InvoiceSuitePartyDTO
      *
      * @var array<InvoiceSuiteOrganisationDTO>
      */
-    protected array $legalOrganisation = [];
+    protected array $legalOrganisations = [];
 
     /**
      * Party contacts
@@ -140,6 +140,19 @@ class InvoiceSuitePartyDTO
     }
 
     /**
+     * @param callable $callback
+     * @return self
+     */
+    public function firstName(callable $callback): self
+    {
+        if (($name = reset($this->names)) !== false) {
+            $callback($name);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return array<InvoiceSuiteIdDTO>
      */
     public function getIds(): array
@@ -185,6 +198,19 @@ class InvoiceSuitePartyDTO
     {
         foreach ($this->ids as $item) {
             $callback($item);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param callable $callback
+     * @return self
+     */
+    public function firstId(callable $callback): self
+    {
+        if (($name = reset($this->ids)) !== false) {
+            $callback($name);
         }
 
         return $this;
@@ -242,6 +268,19 @@ class InvoiceSuitePartyDTO
     }
 
     /**
+     * @param callable $callback
+     * @return self
+     */
+    public function firstGlobalId(callable $callback): self
+    {
+        if (($name = reset($this->globalIds)) !== false) {
+            $callback($name);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return array<InvoiceSuiteIdDTO>
      */
     public function getTaxRegistrations(): array
@@ -287,6 +326,19 @@ class InvoiceSuitePartyDTO
     {
         foreach ($this->taxRegistrations as $item) {
             $callback($item);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param callable $callback
+     * @return self
+     */
+    public function firstTaxRegistration(callable $callback): self
+    {
+        if (($name = reset($this->taxRegistrations)) !== false) {
+            $callback($name);
         }
 
         return $this;
@@ -344,11 +396,24 @@ class InvoiceSuitePartyDTO
     }
 
     /**
+     * @param callable $callback
+     * @return self
+     */
+    public function firstAddress(callable $callback): self
+    {
+        if (($name = reset($this->addresses)) !== false) {
+            $callback($name);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return array<InvoiceSuiteOrganisationDTO>
      */
     public function getLogalOrganisations(): array
     {
-        return $this->legalOrganisation;
+        return $this->legalOrganisations;
     }
 
     /**
@@ -357,7 +422,7 @@ class InvoiceSuitePartyDTO
      */
     public function setLegalOrganisations(array $newLegalOrganisations): self
     {
-        $this->legalOrganisation = $newLegalOrganisations;
+        $this->legalOrganisations = $newLegalOrganisations;
 
         return $this;
     }
@@ -368,7 +433,7 @@ class InvoiceSuitePartyDTO
      */
     public function addLegalOrganisation(InvoiceSuiteOrganisationDTO $newLegalOrganisation): self
     {
-        $this->legalOrganisation[] = $newLegalOrganisation;
+        $this->legalOrganisations[] = $newLegalOrganisation;
 
         return $this;
     }
@@ -378,7 +443,7 @@ class InvoiceSuitePartyDTO
      */
     public function hasLegalOrganisations(): bool
     {
-        return $this->legalOrganisation !== [];
+        return $this->legalOrganisations !== [];
     }
 
     /**
@@ -387,8 +452,21 @@ class InvoiceSuitePartyDTO
      */
     public function forEachLegalOrganisation(callable $callback): self
     {
-        foreach ($this->legalOrganisation as $item) {
+        foreach ($this->legalOrganisations as $item) {
             $callback($item);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param callable $callback
+     * @return self
+     */
+    public function firstLogalOrganisation(callable $callback): self
+    {
+        if (($name = reset($this->legalOrganisations)) !== false) {
+            $callback($name);
         }
 
         return $this;
@@ -446,6 +524,19 @@ class InvoiceSuitePartyDTO
     }
 
     /**
+     * @param callable $callback
+     * @return self
+     */
+    public function firstContact(callable $callback): self
+    {
+        if (($name = reset($this->contacts)) !== false) {
+            $callback($name);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return array<InvoiceSuiteCommunicationDTO>
      */
     public function getCommunication(): array
@@ -491,6 +582,19 @@ class InvoiceSuitePartyDTO
     {
         foreach ($this->communications as $item) {
             $callback($item);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param callable $callback
+     * @return self
+     */
+    public function firstCommunication(callable $callback): self
+    {
+        if (($name = reset($this->communications)) !== false) {
+            $callback($name);
         }
 
         return $this;

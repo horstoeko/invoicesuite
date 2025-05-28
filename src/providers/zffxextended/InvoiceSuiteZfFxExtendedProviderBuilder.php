@@ -13,6 +13,11 @@ use horstoeko\invoicesuite\models\zffxextended\ram\ExchangedDocumentType;
 use horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType;
 use horstoeko\invoicesuite\models\zffxextended\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
+use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteContactDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteIdDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteOrganisationDTO;
 use horstoeko\invoicesuite\models\zffxextended\ram\DocumentContextParameterType;
 use horstoeko\invoicesuite\models\zffxextended\ram\ExchangedDocumentContextType;
 
@@ -114,6 +119,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                 if (!is_null($taxTotalAmount1) && !is_null($invoiceCurrencyCode)) {
                     $taxTotalAmount1->setCurrencyID($invoiceCurrencyCode);
                 }
+
                 if (!is_null($taxTotalAmount2) && !is_null($taxCurrencyCode)) {
                     $taxTotalAmount2->setCurrencyID($taxCurrencyCode);
                 }
@@ -1712,6 +1718,69 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function setDocumentSeller(InvoiceSuitePartyDTO $party): self
     {
+        $party->firstName(
+            fn(string $item) => $this->setDocumentSellerName(
+                $item
+            )
+        );
+
+        $party->forEachId(
+            fn(InvoiceSuiteIdDTO $item) => $this->addDocumentSellerId(
+                $item->getId()
+            )
+        );
+
+        $party->forEachGlobalId(
+            fn(InvoiceSuiteIdDTO $item) => $this->addDocumentSellerGlobalId(
+                $item->getId(),
+                $item->getIdType()
+            )
+        );
+
+        $party->forEachTaxRegistration(
+            fn(InvoiceSuiteIdDTO $item) => $this->addDocumentSellerTaxRegistration(
+                $item->getIdType(),
+                $item->getId()
+            )
+        );
+
+        $party->firstAddress(
+            fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentSellerAddress(
+                $item->getAddressLine1(),
+                $item->getAddressLine2(),
+                $item->getAddressLine3(),
+                $item->getPostcode(),
+                $item->getCity(),
+                $item->getCountry(),
+                $item->getSubDivision()
+            )
+        );
+
+        $party->firstLogalOrganisation(
+            fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentSellerLegalOrganisation(
+                $item->getIdType(),
+                $item->getId(),
+                $item->getName()
+            )
+        );
+
+        $party->forEachContact(
+            fn(InvoiceSuiteContactDTO $item) => $this->addDocumentSellerContact(
+                $item->getPersonName(),
+                $item->getDepartmentName(),
+                $item->getPhoneNumber(),
+                $item->getFaxNumber(),
+                $item->getEmailAddress()
+            )
+        );
+        
+        $party->firstCommunication(
+            fn(InvoiceSuiteCommunicationDTO $item) => $this->setDocumentSellerCommunication(
+                $item->getIdType(),
+                $item->getId()
+            )
+        );
+
         return $this;
     }
 

@@ -121,6 +121,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             if (isset($taxTotal[0]) && !is_null($taxTotal[0]->getTaxAmount()) && !is_null($invoiceCurrencyCode)) {
                 $taxTotal[0]->getTaxAmount()->setCurrencyID($invoiceCurrencyCode);
             }
+
             if (isset($taxTotal[1]) && !is_null($taxTotal[1]->getTaxAmount()) && !is_null($taxCurrencyCode)) {
                 $taxTotal[1]->getTaxAmount()->setCurrencyID($taxCurrencyCode);
             }

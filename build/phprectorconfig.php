@@ -13,8 +13,7 @@ use Rector\Set\ValueObject\SetList;
 
 return RectorConfig::configure()
     ->withPaths([
-        //__DIR__ . '/../src',
-        __DIR__ . '/../src/dto',
+        __DIR__ . '/../src',
     ])
     ->withSkip([
         __DIR__ . '/../src/models',
