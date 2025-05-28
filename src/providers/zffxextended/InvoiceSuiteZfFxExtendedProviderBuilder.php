@@ -1728,6 +1728,24 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
+     * Add a name of the buyer/customer party
+     *
+     * @param string|null $newName __BT-44, From MINIMUM__ The full formal name under which the party is registered.
+     * @return self
+     */
+    public function addDocumentBuyerName(
+        ?string $newName = null
+    ): self {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            return $this;
+        }
+
+        $this->setDocumentBuyerName($newName);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the buyer/customer party
      *
      * @param string|null $newId __BT-46, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
@@ -1997,6 +2015,28 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
+     * Add a legal information of the buyer/customer party
+     *
+     * @param string|null $newType __BT-47-1, From MINIMUM__ Type of the identification number of the legal registration of the party.
+     * @param string|null $newId __BT-47, From MINIMUM__ Identification number of the legal registration of the party.
+     * @param string|null $newName __BT-45, From BASIC WL__ Name by which the party is known, if different from the party's name.
+     * @return self
+     */
+    public function addDocumentBuyerLegalOrganisation(
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null,
+    ): self {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+            return $this;
+        }
+
+        $this->setDocumentBuyerLegalOrganisation($newType, $newId, $newName);
+
+        return $this;
+    }
+
+    /**
      * Set the contact information of the buyer/customer party
      *
      * @param string|null $newPersonName __BT-56, From EN 16931__
@@ -2095,7 +2135,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * Add communication information of the buyer/customer party
+     * Set communication information of the buyer/customer party
      *
      * @param string|null $newType __BT-49-1, From BASIC WL__ The type for the party's electronic address.
      * @param string|null $newUri __BT-49, From BASIC WL__ The party's electronic address.
@@ -2120,6 +2160,24 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
             $buyerUniversalCommunication->getURIIDWithCreate()->setValue($newUri);
         }
+
+        return $this;
+    }
+
+    /**
+     * Add a communication information of the buyer/customer party
+     *
+     * @param string|null $newType __BT-49-1, From BASIC WL__ The type for the party's electronic address.
+     * @param string|null $newUri __BT-49, From BASIC WL__ The party's electronic address.
+     * @return self
+     */
+    public function addDocumentBuyerCommunication(?string $newType = null, ?string $newUri = null): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+            return $this;
+        }
+
+        $this->setDocumentBuyerCommunication($newType, $newUri);
 
         return $this;
     }
