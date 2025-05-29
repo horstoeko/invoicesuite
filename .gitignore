@@ -58,6 +58,7 @@ _backup*
 *.tar
 *.tar.gz
 [D|d][E|e][P|p][L|l][O|o][Y|y]/*
+*.cache
 
 .htpasswd
 /nbproject/private/
