@@ -403,7 +403,7 @@ class InvoiceSuitePaymentMeanDTO
         ?string $payeeBic = null,
         ?string $paymentReference = null,
     ): self {
-        return new InvoiceSuitePaymentMeanDTO(
+        return new static(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value,
             payeeIban: $payeeIban,
             payeeAccountName: $payeeAccountName,
@@ -430,7 +430,7 @@ class InvoiceSuitePaymentMeanDTO
         ?string $payeeBic = null,
         ?string $paymentReference = null,
     ): self {
-        return new InvoiceSuitePaymentMeanDTO(
+        return new static(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value,
             payeeIban: $payeeIban,
             payeeAccountName: $payeeAccountName,
@@ -449,7 +449,7 @@ class InvoiceSuitePaymentMeanDTO
      */
     public static function createAsDirectDebitSepa(?string $buyerIban = null, ?string $mandate = null): self
     {
-        return new InvoiceSuitePaymentMeanDTO(
+        return new static(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
             buyerIban: $buyerIban,
             mandate: $mandate,
@@ -465,7 +465,7 @@ class InvoiceSuitePaymentMeanDTO
      */
     public static function createAsDirectDebitNoSepa(?string $buyerIban = null, ?string $mandate = null): self
     {
-        return new InvoiceSuitePaymentMeanDTO(
+        return new static(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
             buyerIban: $buyerIban,
             mandate: $mandate,
@@ -483,7 +483,7 @@ class InvoiceSuitePaymentMeanDTO
         ?string $financialCardId = null,
         ?string $financialCardHolder = null,
     ): self {
-        return new InvoiceSuitePaymentMeanDTO(
+        return new static(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,
             financialCardId: $financialCardId,
             financialCardHolder: $financialCardHolder,
