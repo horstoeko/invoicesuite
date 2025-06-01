@@ -5,7 +5,7 @@ namespace horstoeko\invoicesuite;
 use DateTimeInterface;
 use JMS\Serializer\Exception\RuntimeException;
 use JMS\Serializer\Exception\InvalidArgumentException;
-use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesFormatProviders;
@@ -116,11 +116,11 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * Create a document by a DTO
      *
-     * @param InvoiceSuiteDocumentDTO $newDocumentDTO Data-Transfer-Object
+     * @param InvoiceSuiteDocumentHeaderDTO $newDocumentDTO Data-Transfer-Object
      * @return self
      */
     public function createFromDTO(
-        InvoiceSuiteDocumentDTO $newDocumentDTO
+        InvoiceSuiteDocumentHeaderDTO $newDocumentDTO
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->createFromDTO($newDocumentDTO);
 

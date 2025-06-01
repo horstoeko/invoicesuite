@@ -13,7 +13,7 @@ use DateTimeInterface;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteDocumentDTO
+class InvoiceSuiteDocumentHeaderDTO
 {
     /**
      * The document number issued by the seller

@@ -6,7 +6,7 @@ use horstoeko\invoicesuite\dto\InvoiceSuitePartyDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePeriodDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteContactDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
@@ -20,7 +20,7 @@ require __DIR__ . "/../vendor/autoload.php";
 $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
 $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
 
-$documentDTO = new InvoiceSuiteDocumentDTO();
+$documentDTO = new InvoiceSuiteDocumentHeaderDTO();
 $documentDTO
     ->setNumber("2025-04-000001")
     ->setType("380")

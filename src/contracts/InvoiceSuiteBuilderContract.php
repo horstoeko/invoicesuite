@@ -10,7 +10,7 @@
 namespace horstoeko\invoicesuite\contracts;
 
 use DateTimeInterface;
-use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 
 /**
@@ -29,11 +29,11 @@ interface InvoiceSuiteBuilderContract
     /**
      * Create a document by a DTO
      *
-     * @param InvoiceSuiteDocumentDTO $newDocumentDTO Data-Transfer-Object
+     * @param InvoiceSuiteDocumentHeaderDTO $newDocumentDTO Data-Transfer-Object
      * @return self
      */
     public function createFromDTO(
-        InvoiceSuiteDocumentDTO $newDocumentDTO
+        InvoiceSuiteDocumentHeaderDTO $newDocumentDTO
     ): self;
 
     #endregion

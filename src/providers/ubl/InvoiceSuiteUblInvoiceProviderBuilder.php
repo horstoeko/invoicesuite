@@ -8,7 +8,7 @@ use horstoeko\invoicesuite\dto\InvoiceSuiteNoteDTO;
 use horstoeko\invoicesuite\models\ubl\main\Invoice;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteContactDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
@@ -142,11 +142,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Create a document by a DTO
      *
-     * @param InvoiceSuiteDocumentDTO $newDocumentDTO Data-Transfer-Object
+     * @param InvoiceSuiteDocumentHeaderDTO $newDocumentDTO Data-Transfer-Object
      * @return self
      */
     public function createFromDTO(
-        InvoiceSuiteDocumentDTO $newDocumentDTO
+        InvoiceSuiteDocumentHeaderDTO $newDocumentDTO
     ): self {
         $this->setDocumentNo($newDocumentDTO->getNumber());
         $this->setDocumentType($newDocumentDTO->getType());
