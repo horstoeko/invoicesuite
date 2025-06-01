@@ -261,11 +261,18 @@ class InvoiceSuiteDocumentHeaderDTO
     protected ?InvoiceSuitePartyDTO $payeeParty = null;
 
     /**
-     * The Payee Party
+     * The payment means
      *
      * @var array<InvoiceSuitePaymentMeanDTO>
      */
-    protected array $paymentmean = [];
+    protected array $paymentMean = [];
+
+    /**
+     * The payment terms
+     *
+     * @var array<InvoiceSuitePaymentTermDTO>
+     */
+    protected array $paymentTerm = [];
 
     /**
      * The Document positions
@@ -312,7 +319,8 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param InvoiceSuitePartyDTO|null $invoicerParty The Invoicer Party
      * @param InvoiceSuitePartyDTO|null $invoiceeParty The Invoicee Party
      * @param InvoiceSuitePartyDTO|null $payeeParty The Payee Party
-     * @param array<InvoiceSuitePaymentMeanDTO> $paymentmean The Payee Party
+     * @param array<InvoiceSuitePaymentMeanDTO> $paymentMean The payment means
+     * @param array<InvoiceSuitePaymentTermDTO> $paymentTerm The payment terms
      * @param array<InvoiceSuiteDocumentPositionDTO> $positions The Document positions
      */
     public function __construct(
@@ -351,7 +359,8 @@ class InvoiceSuiteDocumentHeaderDTO
         ?InvoiceSuitePartyDTO $invoicerParty = null,
         ?InvoiceSuitePartyDTO $invoiceeParty = null,
         ?InvoiceSuitePartyDTO $payeeParty = null,
-        array $paymentmean = [],
+        array $paymentMean = [],
+        array $paymentTerm = [],
         array $positions = [],
     ) {
         $this->setNumber($number);
@@ -389,7 +398,8 @@ class InvoiceSuiteDocumentHeaderDTO
         $this->setInvoicerParty($invoicerParty);
         $this->setInvoiceeParty($invoiceeParty);
         $this->setPayeeParty($payeeParty);
-        $this->setPaymentmean($paymentmean);
+        $this->setPaymentMean($paymentMean);
+        $this->setPaymentTerm($paymentTerm);
         $this->setPositions($positions);
     }
 
@@ -2943,52 +2953,52 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
-     * Returns the Payee Party
+     * Returns the payment means
      *
      * @return array<InvoiceSuitePaymentMeanDTO>
      */
-    public function getPaymentmean(): array
+    public function getPaymentMean(): array
     {
-        return $this->paymentmean;
+        return $this->paymentMean;
     }
 
     /**
-     * Sets the Payee Party
+     * Sets the payment means
      *
-     * @param array<InvoiceSuitePaymentMeanDTO> $paymentmean The Payee Party
+     * @param array<InvoiceSuitePaymentMeanDTO> $paymentMean The payment means
      * @return self
      */
-    public function setPaymentmean(array $paymentmean): self
+    public function setPaymentMean(array $paymentMean): self
     {
-        $this->paymentmean = $paymentmean;
+        $this->paymentMean = $paymentMean;
 
         return $this;
     }
 
     /**
-     * Add single The Payee Party
+     * Add single The payment means
      *
-     * @param InvoiceSuitePaymentMeanDTO $paymentmean The Payee Party
+     * @param InvoiceSuitePaymentMeanDTO $paymentMean The payment means
      * @return self
      */
-    public function addPaymentmean(InvoiceSuitePaymentMeanDTO $paymentmean): self
+    public function addPaymentMean(InvoiceSuitePaymentMeanDTO $paymentMean): self
     {
-        $this->paymentmean[] = $paymentmean;
+        $this->paymentMean[] = $paymentMean;
 
         return $this;
     }
 
     /**
-     * Get first The Payee Party
+     * Get first The payment means
      *
      * @param callable $callback Callback to execute if an item was found
      * @param callable|null $callbackElse Callback to execute if no item was found
      * @return self
      */
-    public function firstPaymentmean(callable $callback, ?callable $callbackElse = null): self
+    public function firstPaymentMean(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($paymentmean = reset($this->paymentmean)) !== false) {
-            $callback($paymentmean);
+        if (($paymentMean = reset($this->paymentMean)) !== false) {
+            $callback($paymentMean);
         } else {
             if (!is_null($callbackElse)) {
                 $callbackElse();
@@ -2999,16 +3009,16 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
-     * Get next The Payee Party
+     * Get next The payment means
      *
      * @param callable $callback Callback to execute if an item was found
      * @param callable|null $callbackElse Callback to execute if no item was found
      * @return self
      */
-    public function nextPaymentmean(callable $callback, ?callable $callbackElse = null): self
+    public function nextPaymentMean(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($paymentmean = next($this->paymentmean)) !== false) {
-            $callback($paymentmean);
+        if (($paymentMean = next($this->paymentMean)) !== false) {
+            $callback($paymentMean);
         } else {
             if (!is_null($callbackElse)) {
                 $callbackElse();
@@ -3019,16 +3029,16 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
-     * Get previous The Payee Party
+     * Get previous The payment means
      *
      * @param callable $callback Callback to execute if an item was found
      * @param callable|null $callbackElse Callback to execute if no item was found
      * @return self
      */
-    public function previousPaymentmean(callable $callback, ?callable $callbackElse = null): self
+    public function previousPaymentMean(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($paymentmean = prev($this->paymentmean)) !== false) {
-            $callback($paymentmean);
+        if (($paymentMean = prev($this->paymentMean)) !== false) {
+            $callback($paymentMean);
         } else {
             if (!is_null($callbackElse)) {
                 $callbackElse();
@@ -3039,16 +3049,16 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
-     * Get last The Payee Party
+     * Get last The payment means
      *
      * @param callable $callback Callback to execute if an item was found
      * @param callable|null $callbackElse Callback to execute if no item was found
      * @return self
      */
-    public function lastPaymentmean(callable $callback, ?callable $callbackElse = null): self
+    public function lastPaymentMean(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($paymentmean = end($this->paymentmean)) !== false) {
-            $callback($paymentmean);
+        if (($paymentMean = end($this->paymentMean)) !== false) {
+            $callback($paymentMean);
         } else {
             if (!is_null($callbackElse)) {
                 $callbackElse();
@@ -3059,25 +3069,170 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
-     * Loop over The Payee Party and execute callback
+     * Loop over The payment means and execute callback
      *
      * @param callable $callback Callback to execute for each item
      * @param callable|null $callbackElse Callback to execute if no item was found
      * @param int|null $limit Maximum number of loops
      * @return self
      */
-    public function forEachPaymentmean(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
+    public function forEachPaymentMean(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
     {
         $count = 0;
 
-        foreach ($this->paymentmean as $paymentmean) {
+        foreach ($this->paymentMean as $paymentMean) {
             if ($limit !== null && $count >= $limit) {
                 break;
             }
 
             $count++;
 
-            $callback($paymentmean);
+            $callback($paymentMean);
+        }
+
+        if ($count === 0 && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Returns the payment terms
+     *
+     * @return array<InvoiceSuitePaymentTermDTO>
+     */
+    public function getPaymentTerm(): array
+    {
+        return $this->paymentTerm;
+    }
+
+    /**
+     * Sets the payment terms
+     *
+     * @param array<InvoiceSuitePaymentTermDTO> $paymentTerm The payment terms
+     * @return self
+     */
+    public function setPaymentTerm(array $paymentTerm): self
+    {
+        $this->paymentTerm = $paymentTerm;
+
+        return $this;
+    }
+
+    /**
+     * Add single The payment terms
+     *
+     * @param InvoiceSuitePaymentTermDTO $paymentTerm The payment terms
+     * @return self
+     */
+    public function addPaymentTerm(InvoiceSuitePaymentTermDTO $paymentTerm): self
+    {
+        $this->paymentTerm[] = $paymentTerm;
+
+        return $this;
+    }
+
+    /**
+     * Get first The payment terms
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function firstPaymentTerm(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($paymentTerm = reset($this->paymentTerm)) !== false) {
+            $callback($paymentTerm);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get next The payment terms
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function nextPaymentTerm(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($paymentTerm = next($this->paymentTerm)) !== false) {
+            $callback($paymentTerm);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get previous The payment terms
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function previousPaymentTerm(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($paymentTerm = prev($this->paymentTerm)) !== false) {
+            $callback($paymentTerm);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last The payment terms
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function lastPaymentTerm(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($paymentTerm = end($this->paymentTerm)) !== false) {
+            $callback($paymentTerm);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The payment terms and execute callback
+     *
+     * @param callable $callback Callback to execute for each item
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param int|null $limit Maximum number of loops
+     * @return self
+     */
+    public function forEachPaymentTerm(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
+    {
+        $count = 0;
+
+        foreach ($this->paymentTerm as $paymentTerm) {
+            if ($limit !== null && $count >= $limit) {
+                break;
+            }
+
+            $count++;
+
+            $callback($paymentTerm);
         }
 
         if ($count === 0 && !is_null($callbackElse)) {

@@ -3,28 +3,31 @@
 namespace horstoeko\invoicesuite\providers\ubl;
 
 use DateTimeInterface;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
+use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
+use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteContactDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteIdDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteNoteDTO;
-use horstoeko\invoicesuite\models\ubl\main\Invoice;
-use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteContactDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteOrganisationDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitePaymentMeanDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDiscountDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermPenaltyDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDTO;
-use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
-use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
-use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
-use horstoeko\invoicesuite\dto\InvoiceSuitePaymentMeanDTO;
-use horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge;
-use horstoeko\invoicesuite\dto\InvoiceSuiteOrganisationDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceExtDTO;
-use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
-use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
+use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
+use horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge;
 use horstoeko\invoicesuite\models\ubl\cac\PartyIdentification;
 use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
-use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
-use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
+use horstoeko\invoicesuite\models\ubl\main\Invoice;
+use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
+use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatProviderBuilder
 {
@@ -390,6 +393,35 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 $item->getPaymentReference(),
                 $item->getMandate()
             )
+        );
+
+        $newDocumentDTO->forEachPaymentTerm(
+            function (InvoiceSuitePaymentTermDTO $item) {
+                $this->addDocumentPaymentTerm(
+                    $item->getDescription(),
+                    $item->getDueDate()
+                );
+                $item->forEachDiscountTerms(
+                    fn(InvoiceSuitePaymentTermDiscountDTO $item) => $this->addDocumentPaymentDiscountTermsInLastPaymentTerm(
+                        $item->getBaseAmount(),
+                        $item->getDiscountAmount(),
+                        $item->getDiscountPercent(),
+                        $item->getBaseDate(),
+                        $item->getBasePeriod(),
+                        $item->getBasePeriodUnit()
+                    )
+                );
+                $item->forEachPenaltyTerms(
+                    fn(InvoiceSuitePaymentTermPenaltyDTO $item) => $this->addDocumentPaymentPenaltyTermsInLastPaymentTerm(
+                        $item->getBaseAmount(),
+                        $item->getDiscountAmount(),
+                        $item->getDiscountPercent(),
+                        $item->getBaseDate(),
+                        $item->getBasePeriod(),
+                        $item->getBasePeriodUnit()
+                    )
+                );
+            }
         );
 
         return $this;

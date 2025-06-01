@@ -14,12 +14,15 @@ use horstoeko\invoicesuite\dto\InvoiceSuiteOrganisationDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceExtDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentMeanDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDiscountDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermPenaltyDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
 
 require __DIR__ . "/../vendor/autoload.php";
 
 $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
-//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
 
 $documentDTO = new InvoiceSuiteDocumentHeaderDTO();
 $documentDTO
@@ -245,6 +248,18 @@ $documentDTO
     )
     ->addPaymentmean(
         InvoiceSuitePaymentMeanDTO::createAsPaymentCardPayment('cardid', 'cardholder')
+    )
+    ->addPaymentterm(
+        (new InvoiceSuitePaymentTermDTO(
+            "30 Tage Netto",
+            new DateTime("+30 days"),
+            [
+                (new InvoiceSuitePaymentTermDiscountDTO(100.0, 10.0, 10.0, new DateTime(), 10.0, 'DAY'))
+            ],
+            [
+                (new InvoiceSuitePaymentTermPenaltyDTO(10.0, 1.0, 5.0, new DateTime(), 2, 'MON'))
+            ]
+        ))
     )
 ;
 
