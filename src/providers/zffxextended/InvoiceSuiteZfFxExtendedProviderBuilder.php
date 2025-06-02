@@ -823,6 +823,19 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
             )
         );
 
+        $this->setDocumentSummation(
+            $newDocumentDTO->getSummation()?->getNetAmount(),
+            $newDocumentDTO->getSummation()?->getChargeTotalAmount(),
+            $newDocumentDTO->getSummation()?->getDiscountTotalAmount(),
+            $newDocumentDTO->getSummation()?->getTaxBasisAmount(),
+            $newDocumentDTO->getSummation()?->getTaxTotalAmount(),
+            $newDocumentDTO->getSummation()?->getTaxTotalAmount2(),
+            $newDocumentDTO->getSummation()?->getGrossAmount(),
+            $newDocumentDTO->getSummation()?->getDueAmount(),
+            $newDocumentDTO->getSummation()?->getPrepaidAmount(),
+            $newDocumentDTO->getSummation()?->getRoungingAmount()
+        );
+
         return $this;
     }
 

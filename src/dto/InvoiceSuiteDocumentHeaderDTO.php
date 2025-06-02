@@ -289,11 +289,18 @@ class InvoiceSuiteDocumentHeaderDTO
     protected array $tax = [];
 
     /**
-     * The VAT breakdown
+     * The allowances/charges
      *
      * @var array<InvoiceSuiteAllowanceChargeDTO>
      */
     protected array $allowanceCharge = [];
+
+    /**
+     * The summation
+     *
+     * @var InvoiceSuitesummationDTO|null
+     */
+    protected ?InvoiceSuitesummationDTO $summation = null;
 
     /**
      * The Document positions
@@ -344,7 +351,8 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuitePaymentTermDTO> $paymentTerm The payment terms
      * @param array<InvoiceSuiteIdDTO> $creditorReference The creditor identifier
      * @param array<InvoiceSuiteTaxDTO> $tax The VAT breakdown
-     * @param array<InvoiceSuiteAllowanceChargeDTO> $allowanceCharge The VAT breakdown
+     * @param array<InvoiceSuiteAllowanceChargeDTO> $allowanceCharge The allowances/charges
+     * @param InvoiceSuitesummationDTO|null $summation The summation
      * @param array<InvoiceSuiteDocumentPositionDTO> $positions The Document positions
      */
     public function __construct(
@@ -388,6 +396,7 @@ class InvoiceSuiteDocumentHeaderDTO
         array $creditorReference = [],
         array $tax = [],
         array $allowanceCharge = [],
+        ?InvoiceSuitesummationDTO $summation = null,
         array $positions = [],
     ) {
         $this->setNumber($number);
@@ -430,6 +439,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $this->setCreditorReference($creditorReference);
         $this->setTax($tax);
         $this->setAllowanceCharge($allowanceCharge);
+        $this->setSummation($summation);
         $this->setPositions($positions);
     }
 
@@ -3422,7 +3432,7 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
-     * Returns the VAT breakdown
+     * Returns the allowances/charges
      *
      * @return array<InvoiceSuiteAllowanceChargeDTO>
      */
@@ -3432,9 +3442,9 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
-     * Sets the VAT breakdown
+     * Sets the allowances/charges
      *
-     * @param array<InvoiceSuiteAllowanceChargeDTO> $allowanceCharge The VAT breakdown
+     * @param array<InvoiceSuiteAllowanceChargeDTO> $allowanceCharge The allowances/charges
      * @return self
      */
     public function setAllowanceCharge(array $allowanceCharge): self
@@ -3445,9 +3455,9 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
-     * Add single The VAT breakdown
+     * Add single The allowances/charges
      *
-     * @param InvoiceSuiteAllowanceChargeDTO $allowanceCharge The VAT breakdown
+     * @param InvoiceSuiteAllowanceChargeDTO $allowanceCharge The allowances/charges
      * @return self
      */
     public function addAllowanceCharge(InvoiceSuiteAllowanceChargeDTO $allowanceCharge): self
@@ -3458,7 +3468,7 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
-     * Get first The VAT breakdown
+     * Get first The allowances/charges
      *
      * @param callable $callback Callback to execute if an item was found
      * @param callable|null $callbackElse Callback to execute if no item was found
@@ -3476,7 +3486,7 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
-     * Get next The VAT breakdown
+     * Get next The allowances/charges
      *
      * @param callable $callback Callback to execute if an item was found
      * @param callable|null $callbackElse Callback to execute if no item was found
@@ -3494,7 +3504,7 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
-     * Get previous The VAT breakdown
+     * Get previous The allowances/charges
      *
      * @param callable $callback Callback to execute if an item was found
      * @param callable|null $callbackElse Callback to execute if no item was found
@@ -3512,7 +3522,7 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
-     * Get last The VAT breakdown
+     * Get last The allowances/charges
      *
      * @param callable $callback Callback to execute if an item was found
      * @param callable|null $callbackElse Callback to execute if no item was found
@@ -3530,7 +3540,7 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
-     * Loop over The VAT breakdown and execute callback
+     * Loop over The allowances/charges and execute callback
      *
      * @param callable $callback Callback to execute for each item
      * @param callable|null $callbackElse Callback to execute if no item was found
@@ -3557,6 +3567,29 @@ class InvoiceSuiteDocumentHeaderDTO
         if ($count === 0 && !is_null($callbackElse)) {
             $callbackElse();
         }
+
+        return $this;
+    }
+
+    /**
+     * Returns the summation
+     *
+     * @return InvoiceSuitesummationDTO|null
+     */
+    public function getSummation(): ?InvoiceSuitesummationDTO
+    {
+        return $this->summation;
+    }
+
+    /**
+     * Sets the summation
+     *
+     * @param InvoiceSuitesummationDTO|null $summation The summation
+     * @return self
+     */
+    public function setSummation(?InvoiceSuitesummationDTO $summation): self
+    {
+        $this->summation = $summation;
 
         return $this;
     }
