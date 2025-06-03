@@ -19,6 +19,7 @@ use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDiscountDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermPenaltyDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteServiceChargeDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitesummationDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteTaxDTO;
 
@@ -275,6 +276,9 @@ $documentDTO
     )
     ->addAllowanceCharge(
         (new InvoiceSuiteAllowanceChargeDTO(true, 10, 100, 2, 'S', 'VAT', 19, 'Reason', 'ReasonCode'))
+    )
+    ->addServiceCharge(
+        (new InvoiceSuiteServiceChargeDTO(50, 'Logisitic Charge', 'S', 'VAT', 19))
     )
     ->setSummation(
         (new InvoiceSuitesummationDTO(100, 10, 20, 90, 90 * 0.19, 50, 107.1, 100.0, 7.10, 0.0))

@@ -20,6 +20,7 @@ use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermPenaltyDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceExtDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteServiceChargeDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteTaxDTO;
 use horstoeko\invoicesuite\models\zffxextended\ram\DocumentContextParameterType;
 use horstoeko\invoicesuite\models\zffxextended\ram\ExchangedDocumentContextType;
@@ -820,6 +821,16 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                 $item->getReason(),
                 $item->getReasonCode(),
                 $item->getPercent()
+            )
+        );
+
+        $newDocumentDTO->forEachServiceCharge(
+            fn(InvoiceSuiteServiceChargeDTO $item) => $this->addDocumentLogisticServiceCharge(
+                $item->getAmount(),
+                $item->getDescription(),
+                $item->getTaxCategory(),
+                $item->getTaxType(),
+                $item->getTaxPercent()
             )
         );
 
