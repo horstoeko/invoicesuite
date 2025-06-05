@@ -14,28 +14,28 @@ namespace horstoeko\invoicesuite\dto;
 class InvoiceSuiteProductCharacteristicDTO
 {
     /**
-     * THe name of the attribute or characteristic ("Colour")
+     * The name of the attribute or characteristic ("Colour")
      *
      * @var string|null
      */
     protected ?string $description = null;
 
     /**
-     * THe value of the attribute or characteristic ("Red")
+     * The value of the attribute or characteristic ("Red")
      *
      * @var string|null
      */
     protected ?string $value = null;
 
     /**
-     * THe type (Code) of product characteristic
+     * The type (Code) of product characteristic
      *
      * @var string|null
      */
     protected ?string $type = null;
 
     /**
-     * THe value of the product property (numerical measured variable)
+     * The value of the product property (numerical measured variable)
      *
      * @var InvoiceSuiteMeasurecDTO|null
      */
@@ -44,10 +44,10 @@ class InvoiceSuiteProductCharacteristicDTO
     /**
      * Constructor
      *
-     * @param string|null $description THe name of the attribute or characteristic ("Colour")
-     * @param string|null $value THe value of the attribute or characteristic ("Red")
-     * @param string|null $type THe type (Code) of product characteristic
-     * @param InvoiceSuiteMeasurecDTO|null $valueMeasure THe value of the product property (numerical measured variable)
+     * @param string|null $description The name of the attribute or characteristic ("Colour")
+     * @param string|null $value The value of the attribute or characteristic ("Red")
+     * @param string|null $type The type (Code) of product characteristic
+     * @param InvoiceSuiteMeasurecDTO|null $valueMeasure The value of the product property (numerical measured variable)
      */
     public function __construct(
         ?string $description = null,
@@ -62,7 +62,7 @@ class InvoiceSuiteProductCharacteristicDTO
     }
 
     /**
-     * Returns tHe name of the attribute or characteristic ("Colour")
+     * Returns the name of the attribute or characteristic ("Colour")
      *
      * @return string|null
      */
@@ -72,9 +72,9 @@ class InvoiceSuiteProductCharacteristicDTO
     }
 
     /**
-     * Sets tHe name of the attribute or characteristic ("Colour")
+     * Sets the name of the attribute or characteristic ("Colour")
      *
-     * @param string|null $description THe name of the attribute or characteristic ("Colour")
+     * @param string|null $description The name of the attribute or characteristic ("Colour")
      * @return self
      */
     public function setDescription(?string $description): self
@@ -85,7 +85,7 @@ class InvoiceSuiteProductCharacteristicDTO
     }
 
     /**
-     * Returns tHe value of the attribute or characteristic ("Red")
+     * Returns the value of the attribute or characteristic ("Red")
      *
      * @return string|null
      */
@@ -95,9 +95,9 @@ class InvoiceSuiteProductCharacteristicDTO
     }
 
     /**
-     * Sets tHe value of the attribute or characteristic ("Red")
+     * Sets the value of the attribute or characteristic ("Red")
      *
-     * @param string|null $value THe value of the attribute or characteristic ("Red")
+     * @param string|null $value The value of the attribute or characteristic ("Red")
      * @return self
      */
     public function setValue(?string $value): self
@@ -108,7 +108,7 @@ class InvoiceSuiteProductCharacteristicDTO
     }
 
     /**
-     * Returns tHe type (Code) of product characteristic
+     * Returns the type (Code) of product characteristic
      *
      * @return string|null
      */
@@ -118,9 +118,9 @@ class InvoiceSuiteProductCharacteristicDTO
     }
 
     /**
-     * Sets tHe type (Code) of product characteristic
+     * Sets the type (Code) of product characteristic
      *
-     * @param string|null $type THe type (Code) of product characteristic
+     * @param string|null $type The type (Code) of product characteristic
      * @return self
      */
     public function setType(?string $type): self
@@ -131,7 +131,7 @@ class InvoiceSuiteProductCharacteristicDTO
     }
 
     /**
-     * Returns tHe value of the product property (numerical measured variable)
+     * Returns the value of the product property (numerical measured variable)
      *
      * @return InvoiceSuiteMeasurecDTO|null
      */
@@ -141,9 +141,9 @@ class InvoiceSuiteProductCharacteristicDTO
     }
 
     /**
-     * Sets tHe value of the product property (numerical measured variable)
+     * Sets the value of the product property (numerical measured variable)
      *
-     * @param InvoiceSuiteMeasurecDTO|null $valueMeasure THe value of the product property (numerical measured variable)
+     * @param InvoiceSuiteMeasurecDTO|null $valueMeasure The value of the product property (numerical measured variable)
      * @return self
      */
     public function setValueMeasure(?InvoiceSuiteMeasurecDTO $valueMeasure): self

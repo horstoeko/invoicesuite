@@ -19,6 +19,7 @@ use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDiscountDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermPenaltyDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProductCharacteristicDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteProductClassificationDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceExtDTO;
@@ -889,6 +890,15 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                         $characteristic->getType(),
                         $characteristic->getValueMeasure()?->getValue(),
                         $characteristic->getValueMeasure()?->getUnit()
+                    )
+                );
+
+                $item->getProduct()?->forEachClassification(
+                    fn(InvoiceSuiteProductClassificationDTO $classification) => $this->addDocumentPositionProductClassification(
+                        $classification->getCode(),
+                        $classification->getListId(),
+                        $classification->getListVersionId(),
+                        $classification->getName()
                     )
                 );
             }

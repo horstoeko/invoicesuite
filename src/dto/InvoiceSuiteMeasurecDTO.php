@@ -14,14 +14,14 @@ namespace horstoeko\invoicesuite\dto;
 class InvoiceSuiteMeasurecDTO
 {
     /**
-     * THe value
+     * The value
      *
      * @var float|null
      */
     protected ?float $value = null;
 
     /**
-     * THe value's unit
+     * The value's unit
      *
      * @var string|null
      */
@@ -30,8 +30,8 @@ class InvoiceSuiteMeasurecDTO
     /**
      * Constructor
      *
-     * @param float|null $value THe value
-     * @param string|null $unit THe value's unit
+     * @param float|null $value The value
+     * @param string|null $unit The value's unit
      */
     public function __construct(?float $value = null, ?string $unit = null)
     {
@@ -40,7 +40,7 @@ class InvoiceSuiteMeasurecDTO
     }
 
     /**
-     * Returns tHe value
+     * Returns the value
      *
      * @return float|null
      */
@@ -50,9 +50,9 @@ class InvoiceSuiteMeasurecDTO
     }
 
     /**
-     * Sets tHe value
+     * Sets the value
      *
-     * @param float|null $value THe value
+     * @param float|null $value The value
      * @return self
      */
     public function setValue(?float $value): self
@@ -63,7 +63,7 @@ class InvoiceSuiteMeasurecDTO
     }
 
     /**
-     * Returns tHe value's unit
+     * Returns the value's unit
      *
      * @return string|null
      */
@@ -73,9 +73,9 @@ class InvoiceSuiteMeasurecDTO
     }
 
     /**
-     * Sets tHe value's unit
+     * Sets the value's unit
      *
-     * @param string|null $unit THe value's unit
+     * @param string|null $unit The value's unit
      * @return self
      */
     public function setUnit(?string $unit): self

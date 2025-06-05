@@ -30,6 +30,7 @@ use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermPenaltyDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDiscountDTO;
 use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProductCharacteristicDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteProductClassificationDTO;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
@@ -508,6 +509,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         $characteristic->getType(),
                         $characteristic->getValueMeasure()?->getValue(),
                         $characteristic->getValueMeasure()?->getUnit()
+                    )
+                );
+
+                $item->getProduct()?->forEachClassification(
+                    fn(InvoiceSuiteProductClassificationDTO $classification) => $this->addDocumentPositionProductClassification(
+                        $classification->getCode(),
+                        $classification->getListId(),
+                        $classification->getListVersionId(),
+                        $classification->getName()
                     )
                 );
             }

@@ -21,6 +21,7 @@ use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDiscountDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermPenaltyDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProductCharacteristicDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteProductClassificationDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProductDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteServiceChargeDTO;
@@ -315,6 +316,11 @@ $position->setProduct(
         '1000 Liter',
         'FM',
         new InvoiceSuiteMeasurecDTO(1000.0, "LTR")
+    ))->addClassification(new InvoiceSuiteProductClassificationDTO(
+        'classcode',
+        'classname',
+        'listid',
+        '1.0'
     ))
 );
 $documentDTO->addPosition($position);
