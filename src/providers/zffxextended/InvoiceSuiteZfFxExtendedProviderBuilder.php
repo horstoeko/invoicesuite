@@ -1012,14 +1012,27 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                 );
 
                 $item->getGrossPrice()?->forEachAllowanceCharge(
-                    fn(InvoiceSuiteAllowanceChargeDTO $itemGrossPriceAllowanceCharge) =>
-                    $this->addDocumentPositionGrossPriceAllowanceCharge($itemGrossPriceAllowanceCharge->getAmount(), $itemGrossPriceAllowanceCharge->getChargeIndicator())
+                    fn(InvoiceSuiteAllowanceChargeDTO $itemGrossPriceAllowanceCharge) => $this->addDocumentPositionGrossPriceAllowanceCharge(
+                        $itemGrossPriceAllowanceCharge->getAmount(),
+                        $itemGrossPriceAllowanceCharge->getChargeIndicator()
+                    )
                 );
 
                 $this->setDocumentPositionNetPrice(
                     $item->getNetPrice()?->getAmount(),
                     $item->getNetPrice()?->getPriceQuantity()?->getQuantity(),
                     $item->getNetPrice()?->getPriceQuantity()?->getQuantityUnit()
+                );
+
+                $item->getNetPrice()?->firstTax(
+                    fn(InvoiceSuiteTaxDTO $netPriceTax) => $this->setDocumentPositionNetPriceTax(
+                        $netPriceTax->getCategory(),
+                        $netPriceTax->getType(),
+                        $netPriceTax->getAmount(),
+                        $netPriceTax->getPercent(),
+                        $netPriceTax->getExemptionReason(),
+                        $netPriceTax->getExemptionReasonCode()
+                    )
                 );
             }
         );

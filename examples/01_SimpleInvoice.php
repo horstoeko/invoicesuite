@@ -38,7 +38,7 @@ use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceProductDTO;
 require __DIR__ . "/../vendor/autoload.php";
 
 $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
-//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
 
 $documentDTO = new InvoiceSuiteDocumentHeaderDTO();
 $documentDTO
@@ -352,7 +352,7 @@ $position->addNote(new InvoiceSuiteNoteDTO('Some content'))
 ->addDeliveryNoteReference(new InvoiceSuiteReferenceLineDTO('DELIVERYNOTE-0000001', '500', new DateTime()))
 ->addInvoiceReference((new InvoiceSuiteReferenceLineExtDTO("INVREF-001", "10", new DateTime(), "382")))
 ->setGrossPrice((new InvoiceSuitePriceGrossDTO(110.0, new InvoiceSuiteQuantityDTO(1, "C62")))->addAllowanceCharge(new InvoiceSuiteAllowanceChargeDTO(false, 10)))
-->setNetPrice(new InvoiceSuitePriceNetDTO(100, new InvoiceSuiteQuantityDTO(1.0, "C62")));
+->setNetPrice((new InvoiceSuitePriceNetDTO(100, new InvoiceSuiteQuantityDTO(1.0, "C62")))->addTax(new InvoiceSuiteTaxDTO("S", "VAT", null, 9.0, 7.0, "Reason", "ReasonCode")));
 
 $documentDTO->addPosition($position);
 
