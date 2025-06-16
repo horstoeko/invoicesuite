@@ -392,7 +392,7 @@ $position->addNote(new InvoiceSuiteNoteDTO('Some content'))
     ->setBillingPeriod(new InvoiceSuiteDateRangeDTO(new DateTime("first day of this month"), new DateTime("last day of this month"), "Some Description"))
     ->addPostingReference(new InvoiceSuiteIdDTO("FINACC", "1"))
     ->addTax((new InvoiceSuiteTaxDTO('S', 'VAT', 100.00, 19.00, 19.0, 'Reason', 'ReasonCode', new DateTime(), 'DUECODE')))
-    ->addAllowanceCharge(new InvoiceSuiteAllowanceChargeDTO(true, 10, 100, 2, 'S', 'VAT', 19, 'Reason', 'ReasonCode'))
+    ->addAllowanceCharge(new InvoiceSuiteAllowanceChargeDTO(true, 10, 100, 2, 'S', 'VAT', 19, 'PositionReason', 'PositionReasonCode'))
     ->setSummation(new InvoiceSuitesummationLineDTO(100.0, 0, 0, 19, 119))
 ;
 

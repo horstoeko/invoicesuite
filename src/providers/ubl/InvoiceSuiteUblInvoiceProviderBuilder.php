@@ -559,13 +559,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 );
 
                 $item->forEachAllowanceCharge(
-                    fn(InvoiceSuiteAllowanceChargeDTO $allowanceCharge) => $this->addDocumentAllowanceCharge(
+                    fn(InvoiceSuiteAllowanceChargeDTO $allowanceCharge) => $this->addDocumentPositionAllowanceCharge(
                         $allowanceCharge->getChargeIndicator(),
                         $allowanceCharge->getAmount(),
                         $allowanceCharge->getBaseAmount(),
-                        $allowanceCharge->getTaxCategory(),
-                        $allowanceCharge->getTaxType(),
-                        $allowanceCharge->getTaxPercent(),
                         $allowanceCharge->getReason(),
                         $allowanceCharge->getReasonCode(),
                         $allowanceCharge->getPercent()
