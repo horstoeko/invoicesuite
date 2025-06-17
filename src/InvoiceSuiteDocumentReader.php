@@ -101,4 +101,18 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
     {
         return $this->forwardCallWithCheckTo($this->getCurrentFormatProvider()->getReader(), $method, $parameters);
     }
+
+    /**
+     * Gets the new document number (e.g. invoice number)
+     *
+     * @param string|null $newDocumentNo The document no issued by the seller
+     * @return static
+     */
+    public function getDocumentNo(
+        ?string &$newDocumentNo
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentNo($newDocumentNo);
+
+        return $this;
+    }
 }

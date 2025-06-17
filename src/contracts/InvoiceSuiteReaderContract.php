@@ -20,5 +20,21 @@ namespace horstoeko\invoicesuite\contracts;
  */
 interface InvoiceSuiteReaderContract
 {
-    
+    #region Document DTO
+
+    #endregion
+
+    #region Document Generals
+
+    /**
+     * Gets the new document number (e.g. invoice number)
+     *
+     * @param string|null $newDocumentNo The document no issued by the seller
+     * @return static
+     */
+    public function getDocumentNo(
+        ?string &$newDocumentNo
+    ): self;
+
+    #endregion
 }
