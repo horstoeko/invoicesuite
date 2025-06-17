@@ -39,7 +39,7 @@ use horstoeko\invoicesuite\dto\InvoiceSuitesummationLineDTO;
 require __DIR__ . "/../vendor/autoload.php";
 
 $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
-//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
 
 $documentDTO = new InvoiceSuiteDocumentHeaderDTO();
 $documentDTO
@@ -332,36 +332,36 @@ $position->addNote(new InvoiceSuiteNoteDTO('Some content'))
             '1.0'
         ))->addReferenceProduct(new InvoiceSuiteReferenceProductDTO(
             'id',
-            'some ma,e',
-            'some description',
+            'name',
+            'descr',
             'sellerid',
             'buyerid',
-            new InvoiceSuiteIdDTO('someid', '0088'),
-            'industryid',
-            new InvoiceSuiteQuantityDTO('10', 'KGM')
+            new InvoiceSuiteIdDTO('324423432', '0088'),
+            'industryidentifier',
+            new InvoiceSuiteQuantityDTO('10', 'PCT')
         ))
     )
     ->addSellerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('SO-2025/0000001', '10', new DateTime()))
     ->addBuyerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('PO-0000011', '20', new DateTime()))
     ->addQuotationReference(new InvoiceSuiteReferenceDocumentLineDTO('ANG-2025/0000055', '30', new DateTime()))
     ->addContractReference(new InvoiceSuiteReferenceDocumentLineDTO('CON-2025/0000001', '40', new DateTime()))
-    ->addAdditionalReference(new InvoiceSuiteReferenceDocumentLineExtDTO('ADDDOC-001', '200', new DateTime(), "918", "0815", "Description for additional docuemnt", InvoiceSuiteAttachment::fromBase64String('SWNoIGJpbiBlaW4gVGVzdHRleHQ=', 'att.ext')))
-    ->addAdditionalReference(new InvoiceSuiteReferenceDocumentLineExtDTO('ADDDOC-002', '201', new DateTime(), "918", "0816", "Description for additional docuemnt", InvoiceSuiteAttachment::fromUrl('http://some.url')))
+    ->addAdditionalReference(new InvoiceSuiteReferenceDocumentLineExtDTO('ADDDOC-001', '100', new DateTime(), "918", "0815", "Description for additional docuemnt", InvoiceSuiteAttachment::fromBase64String('SWNoIGJpbiBlaW4gVGVzdHRleHQ=', 'att.ext')))
+    ->addAdditionalReference(new InvoiceSuiteReferenceDocumentLineExtDTO('ADDDOC-002', '101', new DateTime(), "918", "0816", "Description for additional docuemnt", InvoiceSuiteAttachment::fromUrl('http://some.url')))
     ->addUltimateCustomerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('UCOR-0000001', '200', new DateTime()))
     ->addDespatchAdviceReference(new InvoiceSuiteReferenceDocumentLineDTO('DESPATCHADV-0000001', '300', new DateTime()))
     ->addReceivingAdviceReference(new InvoiceSuiteReferenceDocumentLineDTO('RECEIPTADV-0000001', '400', new DateTime()))
     ->addDeliveryNoteReference(new InvoiceSuiteReferenceDocumentLineDTO('DELIVERYNOTE-0000001', '500', new DateTime()))
-    ->addInvoiceReference((new InvoiceSuiteReferenceDocumentLineExtDTO("INVREF-001", "10", new DateTime(), "382")))
-    ->setGrossPrice((new InvoiceSuitePriceGrossDTO(110.0, new InvoiceSuiteQuantityDTO(1, "C62")))->addAllowanceCharge(new InvoiceSuiteAllowanceChargeDTO(false, 10)))
-    ->setNetPrice((new InvoiceSuitePriceNetDTO(100, new InvoiceSuiteQuantityDTO(1.0, "C62")))->addTax(new InvoiceSuiteTaxDTO("S", "VAT", null, 9.0, 7.0, "Reason", "ReasonCode")))
+    ->addInvoiceReference((new InvoiceSuiteReferenceDocumentLineExtDTO("INVREF-001", "4000", new DateTime(), "382")))
+    ->setGrossPrice((new InvoiceSuitePriceGrossDTO(110.0, new InvoiceSuiteQuantityDTO(1, "C62")))->addAllowanceCharge(new InvoiceSuiteAllowanceChargeDTO(false, 10, 100, 10, null, null, null, 'Reason', 'ReasonCode')))
+    ->setNetPrice((new InvoiceSuitePriceNetDTO(100, new InvoiceSuiteQuantityDTO(1.0, "C62")))->addTax(new InvoiceSuiteTaxDTO("S", "VAT", null, 9.0, 7.0, "Reason", "Reasoncode")))
     ->setQuantityBilled(new InvoiceSuiteQuantityDTO(10.0, "C62"))
     ->setQuantityChargeFree(new InvoiceSuiteQuantityDTO(2, "KTR"))
     ->setQuantityPackage(new InvoiceSuiteQuantityDTO(1, "MTR"))
     ->setShipToParty(
         (new InvoiceSuitePartyDTO())
             ->addName("ShipTo GmbH")
-            ->addId(new InvoiceSuiteIdDTO("1111111"))
-            ->addId(new InvoiceSuiteIdDTO("1111111-A"))
+            ->addId(new InvoiceSuiteIdDTO("2222222"))
+            ->addId(new InvoiceSuiteIdDTO("2222222-A"))
             ->addGlobalId(new InvoiceSuiteIdDTO("9999999", "0088"))
             ->addGlobalId(new InvoiceSuiteIdDTO("9999999-A", "0088"))
             ->addGlobalId(new InvoiceSuiteIdDTO("9999999-B", "0088"))
