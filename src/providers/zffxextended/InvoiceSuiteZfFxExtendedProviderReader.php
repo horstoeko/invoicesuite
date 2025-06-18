@@ -18,7 +18,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     }
 
     /**
-     * Gets the new document number (e.g. invoice number)
+     * Gets the document number (e.g. invoice number)
      *
      * @param string|null $newDocumentNo The document no issued by the seller
      * @return static
@@ -27,6 +27,20 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         ?string &$newDocumentNo
     ): self {
         $newDocumentNo = $this->getCrossIndustryRootObject()?->getExchangedDocument()?->getID()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Gets the document type code
+     *
+     * @param string|null $newDocumentType The type of the document
+     * @return static
+     */
+    public function getDocumentType(
+        ?string &$newDocumentType
+    ): self {
+        $newDocumentType = $this->getCrossIndustryRootObject()?->getExchangedDocument()?->getTypeCode()?->getValue() ?? "";
 
         return $this;
     }

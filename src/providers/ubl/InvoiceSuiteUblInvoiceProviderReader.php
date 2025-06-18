@@ -18,7 +18,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     }
 
     /**
-     * Gets the new document number (e.g. invoice number)
+     * Gets the document number (e.g. invoice number)
      *
      * @param string|null $newDocumentNo The document no issued by the seller
      * @return static
@@ -27,6 +27,20 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         ?string &$newDocumentNo
     ): self {
         $newDocumentNo = $this->getUblInvoiceRootObject()?->getID()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Gets the document type code
+     *
+     * @param string|null $newDocumentType The type of the document
+     * @return static
+     */
+    public function getDocumentType(
+        ?string &$newDocumentType
+    ): self {
+        $newDocumentType = $this->getUblInvoiceRootObject()?->getInvoiceTypeCode()?->getValue() ?? "";
 
         return $this;
     }

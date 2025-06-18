@@ -103,7 +103,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
     }
 
     /**
-     * Gets the new document number (e.g. invoice number)
+     * Gets the document number (e.g. invoice number)
      *
      * @param string|null $newDocumentNo The document no issued by the seller
      * @return static
@@ -112,6 +112,20 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         ?string &$newDocumentNo
     ): self {
         $this->getCurrentFormatProvider()->getReader()->getDocumentNo($newDocumentNo);
+
+        return $this;
+    }
+
+    /**
+     * Gets the document type code
+     *
+     * @param string|null $newDocumentType The type of the document
+     * @return static
+     */
+    public function getDocumentType(
+        ?string &$newDocumentType
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentType($newDocumentType);
 
         return $this;
     }

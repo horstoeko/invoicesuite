@@ -27,13 +27,23 @@ interface InvoiceSuiteReaderContract
     #region Document Generals
 
     /**
-     * Gets the new document number (e.g. invoice number)
+     * Gets the document number (e.g. invoice number)
      *
      * @param string|null $newDocumentNo The document no issued by the seller
      * @return static
      */
     public function getDocumentNo(
         ?string &$newDocumentNo
+    ): self;
+
+    /**
+     * Gets the document type code
+     *
+     * @param string|null $newDocumentType The type of the document
+     * @return static
+     */
+    public function getDocumentType(
+        ?string &$newDocumentType
     ): self;
 
     #endregion
