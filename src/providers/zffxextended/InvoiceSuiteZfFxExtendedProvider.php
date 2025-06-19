@@ -85,7 +85,7 @@ class InvoiceSuiteZfFxExtendedProvider extends InvoiceSuiteAbstractFormatProvide
             $contentDomDocument->loadXML($content);
             $contentDomXPath = new \DOMXPath($contentDomDocument);
             $contentQuery = sprintf(
-                '//rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID[text()=\'%s\']',
+                "//rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID[text()='%s']",
                 $this->getParameters()['CONTEXTPARAMETER']
             );
             $contentEntries = $contentDomXPath->query($contentQuery);
