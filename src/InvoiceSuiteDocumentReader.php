@@ -185,4 +185,18 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
 
         return $this;
     }
+
+    /**
+     * Gets the document currency
+     *
+     * @param string|null $newDocumentCurrency Code for the invoice currency
+     * @return self
+     */
+    public function getDocumentCurrency(
+        ?string &$newDocumentCurrency
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentCurrency($newDocumentCurrency);
+
+        return $this;
+    }
 }

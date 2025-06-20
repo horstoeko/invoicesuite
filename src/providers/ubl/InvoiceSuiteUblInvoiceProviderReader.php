@@ -114,4 +114,20 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
 
         return $this;
     }
+
+    /**
+     * Gets the document currency
+     *
+     * @param string|null $newDocumentCurrency Code for the invoice currency
+     * @return self
+     *
+     * @phpstan-param-out string $newDocumentCurrency
+     */
+    public function getDocumentCurrency(
+        ?string &$newDocumentCurrency
+    ): self {
+        $newDocumentCurrency = $this->getUblInvoiceRootObject()->getDocumentCurrencyCode()?->getValue() ?? "";
+
+        return $this;
+    }
 }

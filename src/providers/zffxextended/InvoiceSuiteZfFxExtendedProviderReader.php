@@ -120,4 +120,23 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
 
         return $this;
     }
+
+    /**
+     * Gets the document currency
+     *
+     * @param string|null $newDocumentCurrency __BT-5, From MINIMUM__ Code for the invoice currency
+     * @return self
+     *
+     * @phpstan-param-out string $newDocumentCurrency
+     */
+    public function getDocumentCurrency(
+        ?string &$newDocumentCurrency
+    ): self {
+        $newDocumentCurrency = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getInvoiceCurrencyCode()
+            ?->getValue() ?? "";
+
+        return $this;
+    }
 }

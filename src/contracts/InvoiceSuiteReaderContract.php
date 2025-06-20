@@ -88,5 +88,15 @@ interface InvoiceSuiteReaderContract
         ?DateTimeInterface &$newCompleteDate
     ): self;
 
+    /**
+     * Gets the document currency
+     *
+     * @param string|null $newDocumentCurrency Code for the invoice currency
+     * @return self
+     */
+    public function getDocumentCurrency(
+        ?string &$newDocumentCurrency
+    ): self;
+
     #endregion
 }
