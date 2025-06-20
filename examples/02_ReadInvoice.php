@@ -10,9 +10,11 @@ $reader->getDocumentType($documentType);
 $reader->getDocumentDescription($documentDescription);
 $reader->getDocumentLanguage($documentLanguage);
 $reader->getDocumentDate($documentDate);
+$reader->getDocumentCompleteDate($documentCompleteDate);
 
-echo "Document Number .... $documentNumber\n";
-echo "Document Type ...... $documentType\n";
-echo "Document Name ...... $documentDescription\n";
-echo "Document Language .. $documentLanguage\n";
-echo "Document Date ...... " . $documentDate->format("d.m.Y") . "\n";
+echo "Document Numbe..r .... $documentNumber\n";
+echo "Document Type ........ $documentType\n";
+echo "Document Name ........ $documentDescription\n";
+echo "Document Language .... $documentLanguage\n";
+echo "Document Date ........ " . $documentDate->format("d.m.Y") . "\n";
+echo "Document Compl. Date . " . $documentCompleteDate->format("d.m.Y") . "\n";

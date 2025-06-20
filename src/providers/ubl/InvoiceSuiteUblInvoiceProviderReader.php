@@ -98,4 +98,20 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
 
         return $this;
     }
+
+    /**
+     * Gets the document period
+     *
+     * @param DateTimeInterface|null $newCompleteDate Contractual due date of the document
+     * @return self
+     *
+     * @phpstan-param-out null $newCompleteDate
+     */
+    public function getDocumentCompleteDate(
+        ?DateTimeInterface &$newCompleteDate
+    ): self {
+        $newCompleteDate = null;
+
+        return $this;
+    }
 }

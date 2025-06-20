@@ -78,5 +78,15 @@ interface InvoiceSuiteReaderContract
         ?DateTimeInterface &$newDocumentDate
     ): self;
 
+    /**
+     * Gets the document period
+     *
+     * @param DateTimeInterface|null $newCompleteDate Contractual due date of the document
+     * @return self
+     */
+    public function getDocumentCompleteDate(
+        ?DateTimeInterface &$newCompleteDate
+    ): self;
+
     #endregion
 }
