@@ -2,8 +2,10 @@
 
 namespace horstoeko\invoicesuite\providers\ubl;
 
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderReader;
+use DateTime;
+use DateTimeInterface;
 use horstoeko\invoicesuite\models\ubl\main\Invoice;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderReader;
 
 class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatProviderReader
 {
@@ -77,6 +79,22 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         ?string &$newDocumentLanguage
     ): self {
         $newDocumentLanguage = $this->getUblInvoiceRootObject()->getInvoiceTypeCode()?->getLanguageID() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Gets the document date (e.g. invoice date)
+     *
+     * @param DateTimeInterface|null $newDocumentDate Date of the document. The date when the document was issued by the seller
+     * @return self
+     *
+     * @phpstan-param-out DateTimeInterface $newDocumentDate
+     */
+    public function getDocumentDate(
+        ?DateTimeInterface &$newDocumentDate
+    ): self {
+        $newDocumentDate = $this->getUblInvoiceRootObject()->getIssueDate() ?? new DateTime();
 
         return $this;
     }

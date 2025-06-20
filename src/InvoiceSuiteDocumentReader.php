@@ -2,14 +2,15 @@
 
 namespace horstoeko\invoicesuite;
 
+use DateTimeInterface;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
-use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesFormatProviders;
 use horstoeko\invoicesuite\contracts\InvoiceSuiteReaderContract;
+use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContent;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContent;
 
 /**
  * Class representing the document reader
@@ -154,6 +155,20 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         ?string &$newDocumentLanguage
     ): self {
         $this->getCurrentFormatProvider()->getReader()->getDocumentLanguage($newDocumentLanguage);
+
+        return $this;
+    }
+
+    /**
+     * Gets the document date (e.g. invoice date)
+     *
+     * @param DateTimeInterface|null $newDocumentDate Date of the document. The date when the document was issued by the seller
+     * @return self
+     */
+    public function getDocumentDate(
+        ?DateTimeInterface &$newDocumentDate
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentDate($newDocumentDate);
 
         return $this;
     }

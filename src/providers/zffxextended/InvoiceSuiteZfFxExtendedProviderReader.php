@@ -2,8 +2,10 @@
 
 namespace horstoeko\invoicesuite\providers\zffxextended;
 
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderReader;
+use DateTimeInterface;
 use horstoeko\invoicesuite\models\zffxextended\rsm\CrossIndustryInvoiceType;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderReader;
+use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
 
 class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatProviderReader
 {
@@ -20,7 +22,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     /**
      * Gets the document number (e.g. invoice number)
      *
-     * @param string|null $newDocumentNo The document no issued by the seller
+     * @param string|null $newDocumentNo __BT-1, From MINIMUM__ The document no issued by the seller
      * @return static
      *
      * @phpstan-param-out string $newDocumentNo
@@ -36,7 +38,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     /**
      * Gets the document type code
      *
-     * @param string|null $newDocumentType The type of the document
+     * @param string|null $newDocumentType __BT-3, From MINIMUM__ The type of the document
      * @return static
      *
      * @phpstan-param-out string $newDocumentType
@@ -52,7 +54,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     /**
      * Gets the document description
      *
-     * @param string|null $newDocumentDescription The documenttype as free text
+     * @param string|null $newDocumentDescription __BT-X-2, From EXTENDED__ The documenttype as free text
      * @return self
      *
      * @phpstan-param-out string $newDocumentDescription
@@ -68,7 +70,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     /**
      * Gets the document language
      *
-     * @param string|null $newDocumentLanguage Language indicator. The language code in which the document was written
+     * @param string|null $newDocumentLanguage __BT-X-4, From EXTENDED__ Language indicator. The language code in which the document was written
      * @return self
      *
      * @phpstan-param-out string $newDocumentLanguage
@@ -77,6 +79,25 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         ?string &$newDocumentLanguage
     ): self {
         $newDocumentLanguage = $this->getCrossIndustryRootObject()->getExchangedDocument()?->getLanguageID()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Gets the document date (e.g. invoice date)
+     *
+     * @param DateTimeInterface|null $newDocumentDate __BT-2, From MINIMUM__ Date of the document. The date when the document was issued by the seller
+     * @return self
+     *
+     * @phpstan-param-out DateTimeInterface|null $newDocumentDate
+     */
+    public function getDocumentDate(
+        ?DateTimeInterface &$newDocumentDate
+    ): self {
+        $newDocumentDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $this->getCrossIndustryRootObject()->getExchangedDocument()?->getIssueDateTime()?->getDateTimeString()?->getValue() ?? "",
+            $this->getCrossIndustryRootObject()->getExchangedDocument()?->getIssueDateTime()?->getDateTimeString()?->getFormat() ?? "",
+        );
 
         return $this;
     }

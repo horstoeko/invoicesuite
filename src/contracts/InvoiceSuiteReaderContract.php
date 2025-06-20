@@ -9,6 +9,8 @@
 
 namespace horstoeko\invoicesuite\contracts;
 
+use DateTimeInterface;
+
 /**
  * Interface representing the required methods for a reader
  *
@@ -64,6 +66,16 @@ interface InvoiceSuiteReaderContract
      */
     public function getDocumentLanguage(
         ?string &$newDocumentLanguage
+    ): self;
+
+    /**
+     * Gets the document date (e.g. invoice date)
+     *
+     * @param DateTimeInterface|null $newDocumentDate Date of the document. The date when the document was issued by the seller
+     * @return self
+     */
+    public function getDocumentDate(
+        ?DateTimeInterface &$newDocumentDate
     ): self;
 
     #endregion
