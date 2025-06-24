@@ -96,4 +96,15 @@ class InvoiceSuiteArrayUtils
 
         return current($array);
     }
+
+    /**
+     * Ensure that $value is an array
+     *
+     * @param mixed $value
+     * @return array
+     */
+    public static function ensure($value): array
+    {
+        return !is_array($value) ? [$value] : $value;
+    }
 }
