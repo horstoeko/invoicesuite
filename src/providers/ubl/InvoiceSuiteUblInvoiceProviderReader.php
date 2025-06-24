@@ -5,6 +5,7 @@ namespace horstoeko\invoicesuite\providers\ubl;
 use DateTime;
 use DateTimeInterface;
 use horstoeko\invoicesuite\models\ubl\main\Invoice;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderReader;
 
@@ -229,5 +230,29 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         $newSubjectCode = "";
 
         return $this;
+    }
+
+    /**
+     * Go to the first billing period
+     *
+     * @return boolean
+     */
+    public function firstDocumentBillingPeriod(): bool
+    {
+        InvoiceSuitePointerUtils::first('documentbillingperiod');
+
+        return InvoiceSuitePointerUtils::has(InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getInvoicePeriod() ?? []), 'documentbillingperiod');
+    }
+
+    /**
+     * Go to the next billing period
+     *
+     * @return boolean
+     */
+    public function nextDocumentBillingPeriod(): bool
+    {
+        InvoiceSuitePointerUtils::next('documentbillingperiod');
+
+        return InvoiceSuitePointerUtils::has(InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getInvoicePeriod() ?? []), 'documentbillingperiod');
     }
 }

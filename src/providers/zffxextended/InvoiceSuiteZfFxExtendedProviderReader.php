@@ -5,6 +5,7 @@ namespace horstoeko\invoicesuite\providers\zffxextended;
 use DateTimeInterface;
 use horstoeko\invoicesuite\models\zffxextended\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderReader;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
 
@@ -245,5 +246,29 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         $newSubjectCode = $documentNote->getSubjectCode()?->getValue() ?? "";
 
         return $this;
+    }
+
+    /**
+     * Go to the first billing period
+     *
+     * @return boolean
+     */
+    public function firstDocumentBillingPeriod(): bool
+    {
+        InvoiceSuitePointerUtils::first('documentbillingperiod');
+
+        return InvoiceSuitePointerUtils::has(InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getBillingSpecifiedPeriod() ?? []), 'documentbillingperiod');
+    }
+
+    /**
+     * Go to the next billing period
+     *
+     * @return boolean
+     */
+    public function nextDocumentBillingPeriod(): bool
+    {
+        InvoiceSuitePointerUtils::next('documentbillingperiod');
+
+        return InvoiceSuitePointerUtils::has(InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getBillingSpecifiedPeriod() ?? []), 'documentbillingperiod');
     }
 }

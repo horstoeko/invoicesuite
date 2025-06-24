@@ -279,4 +279,24 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
 
         return $this;
     }
+
+    /**
+     * Go to the first billing period
+     *
+     * @return boolean
+     */
+    public function firstDocumentBillingPeriod(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentBillingPeriod();
+    }
+
+    /**
+     * Go to the next billing period
+     *
+     * @return boolean
+     */
+    public function nextDocumentBillingPeriod(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentBillingPeriod();
+    }
 }

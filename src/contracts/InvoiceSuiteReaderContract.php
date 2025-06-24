@@ -156,5 +156,19 @@ interface InvoiceSuiteReaderContract
         ?string &$newSubjectCode
     ): self;
 
+    /**
+     * Go to the first billing period
+     *
+     * @return boolean
+     */
+    public function firstDocumentBillingPeriod(): bool;
+
+    /**
+     * Go to the next billing period
+     *
+     * @return boolean
+     */
+    public function nextDocumentBillingPeriod(): bool;
+
     #endregion
 }
