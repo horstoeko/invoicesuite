@@ -283,4 +283,40 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             'documentbillingperiod'
         );
     }
+
+    /**
+     * Get the start and/or end date of the billing period
+     *
+     * @param null|DateTimeInterface $newStartDate Start of the billing period
+     * @param null|DateTimeInterface $newEndDate End of the billing period
+     * @param null|string $newDescription Further information of the billing period (Obsolete)
+     * @return self
+     */
+    public function getDocumentBillingPeriod(
+        ?DateTimeInterface &$newStartDate,
+        ?DateTimeInterface &$newEndDate,
+        ?string &$newDescription,
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\SpecifiedPeriodType>
+         */
+        $billingPeriods = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getBillingSpecifiedPeriod() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\SpecifiedPeriodType
+         */
+        $billingPeriod = $billingPeriods[InvoiceSuitePointerUtils::getValue('documentbillingperiod')];
+
+        $newStartDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $billingPeriod->getStartDateTime()?->getDateTimeString()->getValue(),
+            $billingPeriod->getStartDateTime()?->getDateTimeString()->getFormat(),
+        );
+        $newEndDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $billingPeriod->getEndDateTime()?->getDateTimeString()->getValue(),
+            $billingPeriod->getEndDateTime()?->getDateTimeString()->getFormat(),
+        );
+        $newDescription = $billingPeriod->getDescription()?->getValue() ?? "";
+
+        return $this;
+    }
 }

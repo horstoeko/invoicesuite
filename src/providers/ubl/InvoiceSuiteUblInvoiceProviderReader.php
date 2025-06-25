@@ -228,7 +228,14 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         ?string &$newContentCode,
         ?string &$newSubjectCode
     ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Note>
+         */
         $documentNotes = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getNote() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cbc\Note
+         */
         $documentNote = $documentNotes[InvoiceSuitePointerUtils::getValue('documentnote')];
 
         $newContent = $documentNote->getValue() ?? "";
@@ -266,5 +273,39 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
             ),
             'documentbillingperiod'
         );
+    }
+
+    /**
+     * Get the start and/or end date of the billing period
+     *
+     * @param null|DateTimeInterface $newStartDate Start of the billing period
+     * @param null|DateTimeInterface $newEndDate End of the billing period
+     * @param null|string $newDescription Further information of the billing period (Obsolete)
+     * @return self
+     *
+     * @phpstan-param-out DateTimeInterface $newStartDate
+     * @phpstan-param-out DateTimeInterface $newEndDate
+     * @phpstan-param-out string $newDescription
+     */
+    public function getDocumentBillingPeriod(
+        ?DateTimeInterface &$newStartDate,
+        ?DateTimeInterface &$newEndDate,
+        ?string &$newDescription,
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod>
+         */
+        $billingPeriods = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getInvoicePeriod() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod
+         */
+        $billingPeriod = $billingPeriods[InvoiceSuitePointerUtils::getValue('documentbillingperiod')];
+
+        $newStartDate = $billingPeriod->getStartDate();
+        $newEndDate = $billingPeriod->setEndDate();
+        $newDescription = ($billingPeriod->getDescription() ?? [])[0] ?? "";
+
+        return $this;
     }
 }
