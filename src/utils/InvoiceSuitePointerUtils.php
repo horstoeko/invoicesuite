@@ -102,6 +102,34 @@ class InvoiceSuitePointerUtils
     }
 
     /**
+     * Seek to first and check if array has an element
+     *
+     * @param array $array
+     * @param string $name
+     * @return boolean
+     */
+    public static function hasFirst(array $array, string $name): bool
+    {
+        static::first($name);
+
+        return static::has($array, $name);
+    }
+
+    /**
+     * Seek to next and check if array has an element
+     *
+     * @param array $array
+     * @param string $name
+     * @return boolean
+     */
+    public static function hasNext(array $array, string $name): bool
+    {
+        static::next($name);
+
+        return static::has($array, $name);
+    }
+
+    /**
      * Get the pointer value
      *
      * @param string $name
