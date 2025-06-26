@@ -37,7 +37,9 @@ class InvoiceSuiteArrayUtils
             return false;
         }
 
-        return array_key_first($array) !== null;
+        reset($array);
+
+        return key($array) !== null;
     }
 
     /**
@@ -71,7 +73,9 @@ class InvoiceSuiteArrayUtils
             return false;
         }
 
-        return array_key_last($array) !== null;
+        end($array);
+
+        return key($array) !== null;
     }
 
     /**
