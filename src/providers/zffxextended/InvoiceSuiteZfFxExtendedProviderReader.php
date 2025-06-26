@@ -438,6 +438,12 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
          */
         $documentSellerOrderReference = $documentSellerOrderReferences[InvoiceSuitePointerUtils::getValue('documentsellerorderreference')];
 
+        $newReferenceNumber = $documentSellerOrderReference->getIssuerAssignedID()?->getValue() ?? "";
+        $newReferenceDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $documentSellerOrderReference->getFormattedIssueDateTime()->getDateTimeString()?->getValue() ?? "",
+            $documentSellerOrderReference->getFormattedIssueDateTime()->getDateTimeString()?->getFormat() ?? "",
+        );
+
         return $this;
     }
 }

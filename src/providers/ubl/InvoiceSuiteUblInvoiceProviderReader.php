@@ -370,4 +370,64 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
 
         return $this;
     }
+
+    /**
+     * Go to the first associated seller's order confirmation
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerOrderReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getOrderReference()?->getSalesOrderID() ?? []
+            ),
+            'documentsellerorderreference'
+        );
+    }
+
+    /**
+     * Go to the next associated seller's order confirmation
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerOrderReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getOrderReference()?->getSalesOrderID() ?? []
+            ),
+            'documentsellerorderreference'
+        );
+    }
+
+    /**
+     * Get the associated seller's order confirmation.
+     *
+     * @param string|null $newReferenceNumber Seller's order confirmation number
+     * @param DateTimeInterface|null $newReferenceDate Seller's order confirmation date
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     */
+    public function getDocumentSellerOrderReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cbc\SalesOrderID>
+         */
+        $documentSellerOrderReferences = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getOrderReference()?->getSalesOrderID() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cbc\SalesOrderID
+         */
+        $documentSellerOrderReference = $documentSellerOrderReferences[InvoiceSuitePointerUtils::getValue('documentsellerorderreference')];
+
+        $newReferenceNumber = $documentSellerOrderReference->getValue() ?? "";
+        $newReferenceDate = null;
+
+        return $this;
+    }
 }

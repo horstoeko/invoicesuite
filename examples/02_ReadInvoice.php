@@ -37,5 +37,10 @@ while ($reader->nextDocumentBillingPeriod()) {
 
 while ($reader->nextDocumentPostingReference()) {
     $reader->getDocumentPostingReference($documentPostingReferenceType, $documentPostingReferenceAccountId);
-    echo sprintf("%s (%s)", $documentPostingReferenceAccountId, $documentPostingReferenceType);
+    echo sprintf("%s (%s)\n", $documentPostingReferenceAccountId, $documentPostingReferenceType);
+}
+
+while ($reader->nextDocumentSellerOrderReference()) {
+    $reader->getDocumentSellerOrderReference($documentSellerOrderNo, $documentSellerOrderDate);
+    echo sprintf("Seller Order %s by %s\n", $documentSellerOrderNo, $documentSellerOrderDate?->format("d.m.Y") ?? "");
 }
