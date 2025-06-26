@@ -34,3 +34,8 @@ while ($reader->nextDocumentBillingPeriod()) {
     $reader->getDocumentBillingPeriod($documentBillingPeriodStartDate, $documentBillingPeriodEndDate, $documentBillingPeriodDescription);
     echo sprintf("%s - %s (%s)\n", $documentBillingPeriodStartDate?->format("d.m.Y") ?? "", $documentBillingPeriodEndDate?->format("d.m.Y") ?? "", $documentBillingPeriodDescription);
 }
+
+while ($reader->nextDocumentPostingReference()) {
+    $reader->getDocumentPostingReference($documentPostingReferenceType, $documentPostingReferenceAccountId);
+    echo sprintf("%s (%s)", $documentPostingReferenceAccountId, $documentPostingReferenceType);
+}

@@ -310,4 +310,64 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
 
         return $this;
     }
+
+    /**
+     * Go to the first posting reference
+     *
+     * @return boolean
+     */
+    public function firstDocumentPostingReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getAccountingCost() ?? []
+            ),
+            'documentpostingreference'
+        );
+    }
+
+    /**
+     * Go to the next posting reference
+     *
+     * @return boolean
+     */
+    public function nextDocumentPostingReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getAccountingCost() ?? []
+            ),
+            'documentpostingreference'
+        );
+    }
+
+    /**
+     * Get a posting reference
+     *
+     * @param string|null $newType Type of the posting reference
+     * @param string|null $newAccountId Posting reference of the byuer
+     * @return self
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newAccountId
+     */
+    public function getDocumentPostingReference(
+        ?string &$newType,
+        ?string &$newAccountId
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cbc\AccountingCost>
+         */
+        $postingReferences = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getAccountingCost() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cbc\AccountingCost
+         */
+        $postingReference = $postingReferences[InvoiceSuitePointerUtils::getValue('documentpostingreference')];
+
+        $newType = "";
+        $newAccountId = $postingReference->getValue() ?? "";
+
+        return $this;
+    }
 }

@@ -145,7 +145,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     /**
      * Gets the new document tax currency
      *
-     * @param string|null $newDocumentTaxCurrency Code for the tax currency
+     * @param string|null $newDocumentTaxCurrency __BT-6, From BASIC WL__ Code for the tax currency
      * @return self
      *
      * @phpstan-param-out string $newDocumentTaxCurrency
@@ -164,7 +164,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     /**
      * Gets the new status of the copy indicator
      *
-     * @param boolean|null $newDocumentIsCopy Indicates that the document is a copy
+     * @param boolean|null $newDocumentIsCopy __BT-X-1-00, From EXTENDED__ Indicates that the document is a copy
      * @return self
      *
      * @phpstan-param-out boolean $newDocumentIsCopy
@@ -182,7 +182,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     /**
      * Gets the status of the test indicator
      *
-     * @param boolean|null $newDocumentIsTest Indicates that the document is a test
+     * @param boolean|null $newDocumentIsTest __BT-X-3-00, From EXTENDED__ Indicates that the document is a test
      * @return self
      *
      * @phpstan-param-out boolean $newDocumentIsTest
@@ -230,9 +230,9 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     /**
      * Get a note to the document.
      *
-     * @param string|null $newContent Free text containing unstructured information that is relevant to the invoice as a whole
-     * @param string|null $newContentCode Code to classify the content of the free text of the invoice
-     * @param string|null $newSubjectCode Qualification of the free text for the invoice
+     * @param string|null $newContent __BT-22, From BASIC WL__ Free text containing unstructured information that is relevant to the invoice as a whole
+     * @param string|null $newContentCode __BT-X-5, From EXTENDED__ Code to classify the content of the free text of the invoice
+     * @param string|null $newSubjectCode __BT-21, From BASIC WL__ Qualification of the free text for the invoice
      * @return self
      *
      * @phpstan-param-out string $newContent
@@ -287,9 +287,9 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     /**
      * Get the start and/or end date of the billing period
      *
-     * @param null|DateTimeInterface $newStartDate Start of the billing period
-     * @param null|DateTimeInterface $newEndDate End of the billing period
-     * @param null|string $newDescription Further information of the billing period (Obsolete)
+     * @param null|DateTimeInterface $newStartDate __BT-73, From BASIC WL__ Start of the billing period
+     * @param null|DateTimeInterface $newEndDate __BT-74, From BASIC WL__ End of the billing period
+     * @param null|string $newDescription __BT-X-264, From EXTENDED__ Further information of the billing period (Obsolete)
      * @return self
      *
      * @phpstan-param-out DateTimeInterface|null $newStartDate
@@ -320,6 +320,66 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             $billingPeriod->getEndDateTime()?->getDateTimeString()->getFormat(),
         );
         $newDescription = $billingPeriod->getDescription()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first posting reference
+     *
+     * @return boolean
+     */
+    public function firstDocumentPostingReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getReceivableSpecifiedTradeAccountingAccount() ?? []
+            ),
+            'documentpostingreference'
+        );
+    }
+
+    /**
+     * Go to the next posting reference
+     *
+     * @return boolean
+     */
+    public function nextDocumentPostingReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getReceivableSpecifiedTradeAccountingAccount() ?? []
+            ),
+            'documentpostingreference'
+        );
+    }
+
+    /**
+     * Get a posting reference
+     *
+     * @param string|null $newType __BT-X-290, From EXTENDED__ Type of the posting reference
+     * @param string|null $newAccountId __BT-19, From BASIC WL__ Posting reference of the byuer
+     * @return self
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newAccountId
+     */
+    public function getDocumentPostingReference(
+        ?string &$newType,
+        ?string &$newAccountId
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeAccountingAccountType>
+         */
+        $postingReferences = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getReceivableSpecifiedTradeAccountingAccount() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradeAccountingAccountType
+         */
+        $postingReference = $postingReferences[InvoiceSuitePointerUtils::getValue('documentpostingreference')];
+
+        $newType = $postingReference->getTypeCode()?->getValue() ?? "";
+        $newAccountId = $postingReference->getID()?->getValue() ?? "";
 
         return $this;
     }

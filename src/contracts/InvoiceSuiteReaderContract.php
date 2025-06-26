@@ -184,5 +184,31 @@ interface InvoiceSuiteReaderContract
         ?string &$newDescription,
     ): self;
 
+    /**
+     * Go to the first posting reference
+     *
+     * @return boolean
+     */
+    public function firstDocumentPostingReference(): bool;
+
+    /**
+     * Go to the next posting reference
+     *
+     * @return boolean
+     */
+    public function nextDocumentPostingReference(): bool;
+
+    /**
+     * Get a posting reference
+     *
+     * @param string|null $newType Type of the posting reference
+     * @param string|null $newAccountId Posting reference of the byuer
+     * @return self
+     */
+    public function getDocumentPostingReference(
+        ?string &$newType,
+        ?string &$newAccountId
+    ): self;
+
     #endregion
 }
