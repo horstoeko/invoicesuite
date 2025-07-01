@@ -546,6 +546,9 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
      * @param string|null $newReferenceNumber __BT-X-403, From EXTENDED__ Quotation number
      * @param DateTimeInterface|null $newReferenceDate __BT-X-404, From EXTENDED__ Quotation date
      * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
     public function getDocumentQuotationReference(
         ?string &$newReferenceNumber,

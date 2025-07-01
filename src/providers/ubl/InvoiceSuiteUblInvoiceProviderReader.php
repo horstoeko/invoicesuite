@@ -544,6 +544,9 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      * @param string|null $newReferenceNumber Quotation number
      * @param DateTimeInterface|null $newReferenceDate Quotation date
      * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
     public function getDocumentQuotationReference(
         ?string &$newReferenceNumber,
