@@ -461,4 +461,40 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
 
         return $this;
     }
+
+    /**
+     * Go to the first associated contract
+     *
+     * @return boolean
+     */
+    public function firstDocumentContractReference(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentContractReference();
+    }
+
+    /**
+     * Go to the next associated contract
+     *
+     * @return boolean
+     */
+    public function nextDocumentContractReference(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentContractReference();
+    }
+
+    /**
+     * Get the associated contract
+     *
+     * @param string|null $newReferenceNumber Contract number
+     * @param DateTimeInterface|null $newReferenceDate Contract date
+     * @return self
+     */
+    public function getDocumentContractReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentContractReference($newReferenceNumber, $newReferenceDate);
+
+        return $this;
+    }
 }

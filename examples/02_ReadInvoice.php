@@ -54,3 +54,8 @@ while ($reader->nextDocumentQuotationReference()) {
     $reader->getDocumentQuotationReference($documentQuotationNo, $documentQuotationDate);
     echo sprintf("Quotation %s by %s\n", $documentQuotationNo, $documentQuotationDate?->format("d.m.Y") ?? "");
 }
+
+while ($reader->nextDocumentContractReference()) {
+    $reader->getDocumentContractReference($documentContractNo, $documentContractDate);
+    echo sprintf("Contract %s by %s\n", $documentContractNo, $documentContractDate?->format("d.m.Y") ?? "");
+}

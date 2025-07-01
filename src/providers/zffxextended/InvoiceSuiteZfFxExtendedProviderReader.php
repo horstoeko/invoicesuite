@@ -572,4 +572,67 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
 
         return $this;
     }
+
+    /**
+     * Go to the first associated contract
+     *
+     * @return boolean
+     */
+    public function firstDocumentContractReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()->getContractReferencedDocument() ?? []
+            ),
+            'documentcontractreference'
+        );
+    }
+
+    /**
+     * Go to the next associated contract
+     *
+     * @return boolean
+     */
+    public function nextDocumentContractReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()->getContractReferencedDocument() ?? []
+            ),
+            'documentcontractreference'
+        );
+    }
+
+    /**
+     * Get the associated contract
+     *
+     * @param string $newReferenceNumber __BT-12, From BASIC WL__ Contract number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-26, From EXTENDED__ Contract date
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     */
+    public function getDocumentContractReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>
+         */
+        $documentContractReferences = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()->getContractReferencedDocument() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType
+         */
+        $documentContractReference = $documentContractReferences[InvoiceSuitePointerUtils::getValue('documentcontractreference')];
+
+        $newReferenceNumber = $documentContractReference->getIssuerAssignedID()?->getValue() ?? "";
+        $newReferenceDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $documentContractReference->getFormattedIssueDateTime()?->getDateTimeString()?->getValue() ?? "",
+            $documentContractReference->getFormattedIssueDateTime()?->getDateTimeString()?->getFormat() ?? "",
+        );
+
+        return $this;
+    }
 }

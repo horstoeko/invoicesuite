@@ -292,5 +292,31 @@ interface InvoiceSuiteReaderContract
         ?DateTimeInterface &$newReferenceDate
     ): self;
 
+    /**
+     * Go to the first associated contract
+     *
+     * @return boolean
+     */
+    public function firstDocumentContractReference(): bool;
+
+    /**
+     * Go to the next associated contract
+     *
+     * @return boolean
+     */
+    public function nextDocumentContractReference(): bool;
+
+    /**
+     * Get the associated contract
+     *
+     * @param string|null $newReferenceNumber Contract number
+     * @param DateTimeInterface|null $newReferenceDate Contract date
+     * @return self
+     */
+    public function getDocumentContractReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self;
+
     #endregion
 }

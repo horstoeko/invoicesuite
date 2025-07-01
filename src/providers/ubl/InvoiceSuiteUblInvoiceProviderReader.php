@@ -567,4 +567,64 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
 
         return $this;
     }
+
+    /**
+     * Go to the first associated contract
+     *
+     * @return boolean
+     */
+    public function firstDocumentContractReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getContractDocumentReference() ?? []
+            ),
+            'documentcontractreference'
+        );
+    }
+
+    /**
+     * Go to the next associated contract
+     *
+     * @return boolean
+     */
+    public function nextDocumentContractReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getContractDocumentReference() ?? []
+            ),
+            'documentcontractreference'
+        );
+    }
+
+    /**
+     * Get the associated contract
+     *
+     * @param string $newReferenceNumber Contract number
+     * @param DateTimeInterface|null $newReferenceDate Contract date
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     */
+    public function getDocumentContractReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\ContractDocumentReference>
+         */
+        $documentContractReferences = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getContractDocumentReference() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\ContractDocumentReference
+         */
+        $documentContractReference = $documentContractReferences[InvoiceSuitePointerUtils::getValue('documentcontractreference')];
+
+        $newReferenceNumber = $documentContractReference->getID()?->getValue() ?? "";
+        $newReferenceDate = $documentContractReference->getIssueDate();
+
+        return $this;
+    }
 }
