@@ -509,4 +509,64 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
 
         return $this;
     }
+
+    /**
+     * Go to the first associated quotation
+     *
+     * @return boolean
+     */
+    public function firstDocumentQuotationReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()->getQuotationReferencedDocument() ?? []
+            ),
+            'documentquotationreference'
+        );
+    }
+
+    /**
+     * Go to the next associated quotation
+     *
+     * @return boolean
+     */
+    public function nextDocumentQuotationReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()->getQuotationReferencedDocument() ?? []
+            ),
+            'documentquotationreference'
+        );
+    }
+
+    /**
+     * Get the associated quotation
+     *
+     * @param string|null $newReferenceNumber __BT-X-403, From EXTENDED__ Quotation number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-404, From EXTENDED__ Quotation date
+     * @return self
+     */
+    public function getDocumentQuotationReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>
+         */
+        $documentQuotationReferences = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()->getQuotationReferencedDocument() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType
+         */
+        $documentQuotationReference = $documentQuotationReferences[InvoiceSuitePointerUtils::getValue('documentquotationreference')];
+
+        $newReferenceNumber = $documentQuotationReference->getIssuerAssignedID()?->getValue() ?? "";
+        $newReferenceDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $documentQuotationReference->getFormattedIssueDateTime()?->getDateTimeString()?->getValue() ?? "",
+            $documentQuotationReference->getFormattedIssueDateTime()?->getDateTimeString()?->getFormat() ?? "",
+        );
+
+        return $this;
+    }
 }

@@ -6,7 +6,9 @@ use DateTime;
 use DateTimeInterface;
 use horstoeko\invoicesuite\models\ubl\main\Invoice;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
+use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderReader;
 
 class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatProviderReader
@@ -487,6 +489,78 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
 
         $newReferenceNumber = $documentBuyerOrderReference->getID()?->getValue() ?? "";
         $newReferenceDate = $documentBuyerOrderReference->getIssueDate();
+
+        return $this;
+    }
+
+    /**
+     * Helper function for getting associated quotations from additional document references
+     *
+     * @return array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference>
+     */
+    private function getQuotationReferences(): array
+    {
+        $additionalDocTypeCode = $this->getCurrentFormatProviderParameterValue('BUILDER_QUOTATION_DOCTYPECODE', '');
+        $additionalDocDescription = $this->getCurrentFormatProviderParameterValue('BUILDER_QUOTATION_DOCDESCRIPTION', '');
+
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$additionalDocTypeCode, $additionalDocDescription])) {
+            return [];
+        }
+
+        $additionalDocumentReferences =
+            array_filter(
+                $this->getUblInvoiceRootObject()->getAdditionalDocumentReference() ?? [],
+                function (AdditionalDocumentReference $additionalDocumentReference) use ($additionalDocTypeCode) {
+                    return strcasecmp(($additionalDocumentReference->getDocumentTypeCode()?->getValue() ?? ""), $additionalDocTypeCode) !== 0;
+                }
+            );
+
+        return $additionalDocumentReferences;
+    }
+
+    /**
+     * Go to the first associated quotation
+     *
+     * @return boolean
+     */
+    public function firstDocumentQuotationReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(InvoiceSuiteArrayUtils::ensure($this->getQuotationReferences()), 'documentquotationreference');
+    }
+
+    /**
+     * Go to the next associated quotation
+     *
+     * @return boolean
+     */
+    public function nextDocumentQuotationReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(InvoiceSuiteArrayUtils::ensure($this->getQuotationReferences()), 'documentquotationreference');
+    }
+
+    /**
+     * Get the associated quotation
+     *
+     * @param string|null $newReferenceNumber Quotation number
+     * @param DateTimeInterface|null $newReferenceDate Quotation date
+     * @return self
+     */
+    public function getDocumentQuotationReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference>
+         */
+        $documentQuotationReferences = InvoiceSuiteArrayUtils::ensure($this->getQuotationReferences());
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference
+         */
+        $documentQuotationReference = $documentQuotationReferences[InvoiceSuitePointerUtils::getValue('documentquotationreference')];
+
+        $newReferenceNumber = $documentQuotationReference->getID()?->getValue() ?? "";
+        $newReferenceDate = $documentQuotationReference->getIssueDate();
 
         return $this;
     }

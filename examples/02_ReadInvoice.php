@@ -49,3 +49,8 @@ while ($reader->nextDocumentBuyerOrderReference()) {
     $reader->getDocumentBuyerOrderReference($documentBuyerOrderNo, $documentBuyerOrderDate);
     echo sprintf("Buyer Order %s by %s\n", $documentBuyerOrderNo, $documentBuyerOrderDate?->format("d.m.Y") ?? "");
 }
+
+while ($reader->nextDocumentQuotationReference()) {
+    $reader->getDocumentQuotationReference($documentQuotationNo, $documentQuotationDate);
+    echo sprintf("Quotation %s by %s\n", $documentQuotationNo, $documentQuotationDate?->format("d.m.Y") ?? "");
+}

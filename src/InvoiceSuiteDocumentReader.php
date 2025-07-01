@@ -425,4 +425,40 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
 
         return $this;
     }
+
+    /**
+     * Go to the first associated quotation
+     *
+     * @return boolean
+     */
+    public function firstDocumentQuotationReference(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentQuotationReference();
+    }
+
+    /**
+     * Go to the next associated quotation
+     *
+     * @return boolean
+     */
+    public function nextDocumentQuotationReference(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentQuotationReference();
+    }
+
+    /**
+     * Get the associated quotation
+     *
+     * @param string|null $newReferenceNumber Quotation number
+     * @param DateTimeInterface|null $newReferenceDate Quotation date
+     * @return self
+     */
+    public function getDocumentQuotationReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentQuotationReference($newReferenceNumber, $newReferenceDate);
+
+        return $this;
+    }
 }

@@ -1713,7 +1713,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      * Set the associated quotation
      *
      * @param string|null $newReferenceNumber __BT-X-403, From EXTENDED__ Quotation number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-404, From EXTENDED__ quotation date
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-404, From EXTENDED__ Quotation date
      * @return self
      */
     public function setDocumentQuotationReference(

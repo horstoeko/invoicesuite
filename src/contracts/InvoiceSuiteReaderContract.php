@@ -266,5 +266,31 @@ interface InvoiceSuiteReaderContract
         ?DateTimeInterface &$newReferenceDate
     ): self;
 
+    /**
+     * Go to the first associated quotation
+     *
+     * @return boolean
+     */
+    public function firstDocumentQuotationReference(): bool;
+
+    /**
+     * Go to the next associated quotation
+     *
+     * @return boolean
+     */
+    public function nextDocumentQuotationReference(): bool;
+
+    /**
+     * Get the associated quotation
+     *
+     * @param string|null $newReferenceNumber Quotation number
+     * @param DateTimeInterface|null $newReferenceDate Quotation date
+     * @return self
+     */
+    public function getDocumentQuotationReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self;
+
     #endregion
 }
