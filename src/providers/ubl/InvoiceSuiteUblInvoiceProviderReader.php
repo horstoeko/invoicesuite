@@ -705,4 +705,68 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
 
         return $this;
     }
+
+    /**
+     * Go to the first additional invoice document (reference to preceding invoice)
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getBillingReference() ?? []
+            ),
+            'documentinvoicereference'
+        );
+    }
+
+    /**
+     * Go to the next additional invoice document (reference to preceding invoice)
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getBillingReference() ?? []
+            ),
+            'documentinvoicereference'
+        );
+    }
+
+    /**
+     * Get an additional invoice document (reference to preceding invoice)
+     *
+     * @param string|null $newReferenceNumber Identification of an invoice previously sent
+     * @param DateTimeInterface|null $newReferenceDate Date of the previous invoice
+     * @param string|null $newTypeCode Type code of previous invoice
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     * @phpstan-param-out string $newTypeCode
+     */
+    public function getDocumentInvoiceReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate,
+        ?string &$newTypeCode
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\BillingReference>
+         */
+        $documentInvoiceReferences = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getBillingReference() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\BillingReference
+         */
+        $documentInvoiceReference = $documentInvoiceReferences[InvoiceSuitePointerUtils::getValue('documentinvoicereference')];
+
+        $newReferenceNumber = $documentInvoiceReference->getInvoiceDocumentReference()?->getID()?->getValue() ?? "";
+        $newReferenceDate = $documentInvoiceReference->getInvoiceDocumentReference()?->getIssueDate();
+        $newTypeCode = "";
+
+        return $this;
+    }
 }

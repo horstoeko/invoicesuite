@@ -352,6 +352,34 @@ interface InvoiceSuiteReaderContract
         ?string &$newDescription,
         ?InvoiceSuiteAttachment &$newInvoiceSuiteAttachment
     ): self;
-    
+
+    /**
+     * Go to the first additional invoice document (reference to preceding invoice)
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceReference(): bool;
+
+    /**
+     * Go to the next additional invoice document (reference to preceding invoice)
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceReference(): bool;
+
+    /**
+     * Get an additional invoice document (reference to preceding invoice)
+     *
+     * @param string|null $newReferenceNumber Identification of an invoice previously sent
+     * @param DateTimeInterface|null $newReferenceDate Date of the previous invoice
+     * @param string|null $newTypeCode Type code of previous invoice
+     * @return self
+     */
+    public function getDocumentInvoiceReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate,
+        ?string &$newTypeCode
+    ): self;
+
     #endregion
 }

@@ -714,4 +714,71 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
 
         return $this;
     }
+
+    /**
+     * Go to the first additional invoice document (reference to preceding invoice)
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getInvoiceReferencedDocument() ?? []
+            ),
+            'documentinvoicereference'
+        );
+    }
+
+    /**
+     * Go to the next additional invoice document (reference to preceding invoice)
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getInvoiceReferencedDocument() ?? []
+            ),
+            'documentinvoicereference'
+        );
+    }
+
+    /**
+     * Get an additional invoice document (reference to preceding invoice)
+     *
+     * @param string|null $newReferenceNumber __BT-25, From BASIC WL__ Identification of an invoice previously sent
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-555, From EXTENDED__ Date of the previous invoice
+     * @param string|null $newTypeCode __BT-26, From BASIC WL__ Type code of previous invoice
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     * @phpstan-param-out string $newTypeCode
+     */
+    public function getDocumentInvoiceReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate,
+        ?string &$newTypeCode
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>
+         */
+        $documentInvoiceReferences = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getInvoiceReferencedDocument() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType
+         */
+        $documentInvoiceReference = $documentInvoiceReferences[InvoiceSuitePointerUtils::getValue('documentinvoicereference')];
+
+        $newReferenceNumber = $documentInvoiceReference->getIssuerAssignedID()?->getValue() ?? "";
+        $newReferenceDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $documentInvoiceReference->getFormattedIssueDateTime()?->getDateTimeString()?->getValue() ?? "",
+            $documentInvoiceReference->getFormattedIssueDateTime()?->getDateTimeString()?->getFormat() ?? "",
+        );
+        $newTypeCode = $documentInvoiceReference->getTypeCode()?->getValue() ?? "";
+
+        return $this;
+    }
 }
