@@ -712,6 +712,17 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         $newReferenceTypeCode = $documentAdditionalReference->getReferenceTypeCode()?->getValue() ?? "";
         $newDescription = $documentAdditionalReference->getName()?->getValue() ?? "";
 
+        if ($documentAdditionalReference->getAttachmentBinaryObject()) {
+            $newInvoiceSuiteAttachment = InvoiceSuiteAttachment::fromBase64String(
+                $documentAdditionalReference->getAttachmentBinaryObject()->getValue(),
+                $documentAdditionalReference->getAttachmentBinaryObject()->getFilename()
+            );
+        }
+
+        if ($documentAdditionalReference->getURIID()) {
+            $newInvoiceSuiteAttachment = InvoiceSuiteAttachment::fromUrl($documentAdditionalReference->getURIID()->getValue() ?? "");
+        }
+
         return $this;
     }
 

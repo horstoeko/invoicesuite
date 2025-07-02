@@ -146,13 +146,33 @@ class InvoiceSuiteAttachment
     }
 
     /**
+     * Returns true if the attachment contains data from a file
+     *
+     * @return boolean
+     */
+    public function isFileAttachment(): bool
+    {
+        return $this->internalType == static::IS_FROM_FILE;
+    }
+
+    /**
+     * Returns true if the attachment contains BASE64-Data
+     *
+     * @return boolean
+     */
+    public function isBase64StringAttachment(): bool
+    {
+        return $this->internalType == static::IS_FROM_BASE64_STRING;
+    }
+
+    /**
      * Returns true if the attachment contains binary data
      *
      * @return boolean
      */
-    public function isBinaryAttachment(): bool
+    public function isBinaryStringAttachment(): bool
     {
-        return in_array($this->internalType, [static::IS_FROM_FILE, static::IS_FROM_BASE64_STRING, static::IS_FROM_BINARY_STRING]);
+        return $this->internalType == static::IS_FROM_BINARY_STRING;
     }
 
     /**
@@ -163,6 +183,16 @@ class InvoiceSuiteAttachment
     public function isUrlAttachment(): bool
     {
         return $this->internalType == static::IS_FROM_URL;
+    }
+
+    /**
+     * Returns true if the attachment contains binary data
+     *
+     * @return boolean
+     */
+    public function isBinaryAttachment(): bool
+    {
+        return $this->isFileAttachment() || $this->isBinaryStringAttachment() || $this->isFileAttachment();
     }
 
     /**
@@ -183,6 +213,10 @@ class InvoiceSuiteAttachment
     public function getContent(): string
     {
         if ($this->isUrlAttachment()) {
+            return $this->getRawContent();
+        }
+
+        if ($this->isBase64StringAttachment()) {
             return $this->getRawContent();
         }
 

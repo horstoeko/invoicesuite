@@ -62,7 +62,7 @@ while ($reader->nextDocumentContractReference()) {
 
 while ($reader->nextDocumentAdditionalReference()) {
     $reader->getDocumentAdditionalReference($documentAdditionalNo, $documentAdditionalDate, $documentAdditionalTypeCode, $documentAdditionalRefTypeCode, $documentAdditionalDescription, $documentAdditionalAttachment);
-    echo sprintf("Additional Document %s by %s\n", $documentAdditionalNo, $documentAdditionalDate?->format("d.m.Y") ?? "");
+    echo sprintf("Additional Document %s by %s (%s)\n", $documentAdditionalNo, $documentAdditionalDate?->format("d.m.Y") ?? "", $documentAdditionalTypeCode);
 }
 
 while ($reader->nextDocumentInvoiceReference()) {
