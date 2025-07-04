@@ -79,3 +79,8 @@ while ($reader->nextDocumentUltimateCustomerOrderReference()) {
     $reader->getDocumentUltimateCustomerOrderReference($documentUltimateCustomerOrderNo, $documentUltimateCustomerOrderDate);
     echo sprintf("Ultimate Customer Order %s by %s\n", $documentUltimateCustomerOrderNo, $documentUltimateCustomerOrderDate?->format("d.m.Y") ?? "");
 }
+
+while ($reader->nextDocumentDespatchAdviceReference()) {
+    $reader->getDocumentDespatchAdviceReference($documentDespatchAdviceNo, $documentDespatchAdviceDate);
+    echo sprintf("Despatch Advice %s by %s\n", $documentDespatchAdviceNo, $documentDespatchAdviceDate?->format("d.m.Y") ?? "");
+}

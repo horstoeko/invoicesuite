@@ -433,5 +433,31 @@ interface InvoiceSuiteReaderContract
         ?DateTimeInterface &$newReferenceDate
     ): self;
 
+    /**
+     * Go to the first additional despatch advice reference
+     *
+     * @return boolean
+     */
+    public function firstDocumentDespatchAdviceReference(): bool;
+
+    /**
+     * Go to the next additional despatch advice reference
+     *
+     * @return boolean
+     */
+    public function nextDocumentDespatchAdviceReference(): bool;
+
+    /**
+     * Get an additional despatch advice reference
+     *
+     * @param string|null $newReferenceNumber Shipping notification number
+     * @param DateTimeInterface|null $newReferenceDate Shipping notification date
+     * @return self
+     */
+    public function getDocumentDespatchAdviceReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self;
+
     #endregion
 }

@@ -915,4 +915,67 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
 
         return $this;
     }
+
+    /**
+     * Go to the first additional despatch advice reference
+     *
+     * @return boolean
+     */
+    public function firstDocumentDespatchAdviceReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()->getDespatchAdviceReferencedDocument() ?? []
+            ),
+            'documentdespatchadvicereference'
+        );
+    }
+
+    /**
+     * Go to the next additional despatch advice reference
+     *
+     * @return boolean
+     */
+    public function nextDocumentDespatchAdviceReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()->getDespatchAdviceReferencedDocument() ?? []
+            ),
+            'documentdespatchadvicereference'
+        );
+    }
+
+    /**
+     * Get an additional despatch advice reference
+     *
+     * @param string|null $newReferenceNumber __BT-16, From BASIC WL__ Shipping notification number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-200, From EXTENDED__ Shipping notification date
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     */
+    public function getDocumentDespatchAdviceReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>
+         */
+        $documentDespatchAdviceReferences = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()->getDespatchAdviceReferencedDocument() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType
+         */
+        $documentDespatchAdviceReference = $documentDespatchAdviceReferences[InvoiceSuitePointerUtils::getValue('documentdespatchadvicereference')];
+
+        $newReferenceNumber = $documentDespatchAdviceReference->getIssuerAssignedID()?->getValue() ?? "";
+        $newReferenceDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $documentDespatchAdviceReference->getFormattedIssueDateTime()?->getDateTimeString()?->getValue(),
+            $documentDespatchAdviceReference->getFormattedIssueDateTime()?->getDateTimeString()?->getFormat()
+        );
+
+        return $this;
+    }
 }

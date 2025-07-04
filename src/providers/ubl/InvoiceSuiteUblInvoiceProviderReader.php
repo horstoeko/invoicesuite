@@ -915,4 +915,64 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
 
         return $this;
     }
+
+    /**
+     * Go to the first additional despatch advice reference
+     *
+     * @return boolean
+     */
+    public function firstDocumentDespatchAdviceReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getDespatchDocumentReference() ?? []
+            ),
+            'documentdespatchadvicereference'
+        );
+    }
+
+    /**
+     * Go to the next additional despatch advice reference
+     *
+     * @return boolean
+     */
+    public function nextDocumentDespatchAdviceReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getDespatchDocumentReference() ?? []
+            ),
+            'documentdespatchadvicereference'
+        );
+    }
+
+    /**
+     * Get an additional despatch advice reference
+     *
+     * @param string|null $newReferenceNumber Shipping notification number
+     * @param DateTimeInterface|null $newReferenceDate Shipping notification date
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     */
+    public function getDocumentDespatchAdviceReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\DespatchDocumentReference>
+         */
+        $documentDespatchAdviceReferences = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getDespatchDocumentReference() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\DespatchDocumentReference
+         */
+        $documentDespatchAdviceReference = $documentDespatchAdviceReferences[InvoiceSuitePointerUtils::getValue('documentdespatchadvicereference')];
+
+        $newReferenceNumber = $documentDespatchAdviceReference->getID()?->getValue() ?? "";
+        $newReferenceDate = $documentDespatchAdviceReference->getIssueDate();
+
+        return $this;
+    }
 }
