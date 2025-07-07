@@ -829,4 +829,40 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
 
         return $this;
     }
+
+    /**
+     * Go to the first global ID of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerGlobalId(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentSellerGlobalId();
+    }
+
+    /**
+     * Go to the next global ID of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerGlobalId(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentSellerGlobalId();
+    }
+
+    /**
+     * Get the Global ID of the seller/supplier party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
+     */
+    public function getDocumentSellerGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentSellerGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
 }

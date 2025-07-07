@@ -106,6 +106,11 @@ $reader->getDocumentSellerName($documentSellerName);
 echo sprintf("Seller Name ........ %s\n", $documentSellerName);
 
 while ($reader->nextDocumentSellerId()) {
-    $reader->getDocumentSellerId($documentSellerId);
-    echo sprintf("Seller ID .......... %s\n", $documentSellerId);
+    $reader->getDocumentSellerId($documentSellerGlobalId);
+    echo sprintf("Seller ID .......... %s\n", $documentSellerGlobalId);
+}
+
+while ($reader->nextDocumentSellerGlobalId()) {
+    $reader->getDocumentSellerGlobalId($documentSellerGlobalId, $documentSellerGlobalIdType);
+    echo sprintf("Seller Global ID ... %s (%s)\n", $documentSellerGlobalId, $documentSellerGlobalIdType);
 }

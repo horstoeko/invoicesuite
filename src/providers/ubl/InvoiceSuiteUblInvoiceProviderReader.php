@@ -1173,6 +1173,8 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      *
      * @param string|null $newId An identifier of the party. In many systems, identification is key information.
      * @return self
+     *
+     * @phpstan-param-out string $newId
      */
     public function getDocumentSellerId(
         ?string &$newId
@@ -1188,6 +1190,77 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         $documentSellerId = $documentSellerIds[InvoiceSuitePointerUtils::getValue('documentsellerid')];
 
         $newId = $documentSellerId->getID()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Get all seller/supplier global IDs
+     *
+     * @return array<\horstoeko\invoicesuite\models\ubl\cac\PartyIdentification>
+     */
+    private function resolveDocumentSellerGlobalIds(): array
+    {
+        return array_filter(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getAccountingSupplierParty()?->getParty()?->getPartyIdentification() ?? []
+            ),
+            fn(PartyIdentificationType $partyIdentification) => ($partyIdentification->getID()?->getSchemeID() ?? "") !== ""
+        );
+    }
+
+    /**
+     * Go to the first global ID of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerGlobalId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            $this->resolveDocumentSellerGlobalIds(),
+            'documentsellerglobalid'
+        );
+    }
+
+    /**
+     * Go to the next global ID of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerGlobalId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            $this->resolveDocumentSellerGlobalIds(),
+            'documentsellerglobalid'
+        );
+    }
+
+    /**
+     * Get the Global ID of the seller/supplier party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
+     */
+    public function getDocumentSellerGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\PartyIdentification>
+         */
+        $documentSellerGlobalIds = $this->resolveDocumentSellerGlobalIds();
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\PartyIdentification
+         */
+        $documentSellerGlobalId = $documentSellerGlobalIds[InvoiceSuitePointerUtils::getValue('documentsellerglobalid')];
+
+        $newGlobalId = $documentSellerGlobalId->getID()?->getValue() ?? "";
+        $newGlobalIdType = $documentSellerGlobalId->getID()?->getSchemeID() ?? "";
 
         return $this;
     }

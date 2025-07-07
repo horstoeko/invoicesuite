@@ -559,5 +559,31 @@ interface InvoiceSuiteReaderContract
         ?string &$newId
     ): self;
 
+    /**
+     * Go to the first global ID of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerGlobalId(): bool;
+
+    /**
+     * Go to the next global ID of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerGlobalId(): bool;
+
+    /**
+     * Get the Global ID of the seller/supplier party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
+     */
+    public function getDocumentSellerGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): self;
+
     #endregion
 }

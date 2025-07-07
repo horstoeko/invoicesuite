@@ -1175,6 +1175,8 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
      *
      * @param string|null $newId __BT-29, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
+     *
+     * @phpstan-param-out string $newId
      */
     public function getDocumentSellerId(
         ?string &$newId
@@ -1190,6 +1192,66 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         $documentSellerId = $documentSellerIds[InvoiceSuitePointerUtils::getValue('documentsellerid')];
 
         $newId = $documentSellerId->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first ID of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerGlobalId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()->getSellerTradeParty()->getGlobalID() ?? []
+            ),
+            'documentsellerglobalid'
+        );
+    }
+
+    /**
+     * Go to the next ID of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerGlobalId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()->getSellerTradeParty()->getGlobalID() ?? []
+            ),
+            'documentsellerglobalid'
+        );
+    }
+
+    /**
+     * Get the Global ID of the seller/supplier party
+     *
+     * @param string|null $newGlobalId __BT-29-0, From BASIC WL__ A global identifier of the party.
+     * @param string|null $newGlobalIdType __BT-29-1, From BASIC WL__ Type of the global identifier of the party.
+     * @return self
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
+     */
+    public function getDocumentSellerGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\udt\IDType>
+         */
+        $documentSellerGlobalIds = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()->getSellerTradeParty()->getGlobalID() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+         */
+        $documentSellerGlobalId = $documentSellerGlobalIds[InvoiceSuitePointerUtils::getValue('documentsellerglobalid')];
+
+        $newGlobalId = $documentSellerGlobalId->getValue() ?? "";
+        $newGlobalIdType = $documentSellerGlobalId->getSchemeID() ?? "";
 
         return $this;
     }
