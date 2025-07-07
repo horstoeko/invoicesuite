@@ -9,6 +9,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
+use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
 use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderReader;
 
@@ -499,7 +500,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      *
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference>
      */
-    private function getQuotationReferences(): array
+    private function resolveQuotationReferences(): array
     {
         $additionalDocTypeCode = $this->getCurrentFormatProviderParameterValue('BUILDER_QUOTATION_DOCTYPECODE', '');
         $additionalDocDescription = $this->getCurrentFormatProviderParameterValue('BUILDER_QUOTATION_DOCDESCRIPTION', '');
@@ -527,7 +528,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     public function firstDocumentQuotationReference(): bool
     {
         return InvoiceSuitePointerUtils::hasFirst(
-            InvoiceSuiteArrayUtils::ensure($this->getQuotationReferences()),
+            InvoiceSuiteArrayUtils::ensure($this->resolveQuotationReferences()),
             'documentquotationreference'
         );
     }
@@ -540,7 +541,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     public function nextDocumentQuotationReference(): bool
     {
         return InvoiceSuitePointerUtils::hasNext(
-            InvoiceSuiteArrayUtils::ensure($this->getQuotationReferences()),
+            InvoiceSuiteArrayUtils::ensure($this->resolveQuotationReferences()),
             'documentquotationreference'
         );
     }
@@ -562,7 +563,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         /**
          * @var array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference>
          */
-        $documentQuotationReferences = InvoiceSuiteArrayUtils::ensure($this->getQuotationReferences());
+        $documentQuotationReferences = InvoiceSuiteArrayUtils::ensure($this->resolveQuotationReferences());
 
         /**
          * @var \horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference
@@ -841,7 +842,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      *
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference>
      */
-    private function getDocumentUltimateCustomerOrderReferences(): array
+    private function resolveDocumentUltimateCustomerOrderReferences(): array
     {
         $ultimateCustomerOrderDocTypeCode = $this->getCurrentFormatProviderParameterValue('BUILDER_ULTIMATECUSTOMERORDER_DOCTYPECODE', '220');
 
@@ -868,7 +869,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     public function firstDocumentUltimateCustomerOrderReference(): bool
     {
         return InvoiceSuitePointerUtils::hasFirst(
-            InvoiceSuiteArrayUtils::ensure($this->getDocumentUltimateCustomerOrderReferences()),
+            InvoiceSuiteArrayUtils::ensure($this->resolveDocumentUltimateCustomerOrderReferences()),
             'documentultimatecustomerorderreference'
         );
     }
@@ -881,7 +882,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     public function nextDocumentUltimateCustomerOrderReference(): bool
     {
         return InvoiceSuitePointerUtils::hasNext(
-            InvoiceSuiteArrayUtils::ensure($this->getDocumentUltimateCustomerOrderReferences()),
+            InvoiceSuiteArrayUtils::ensure($this->resolveDocumentUltimateCustomerOrderReferences()),
             'documentultimatecustomerorderreference'
         );
     }
@@ -903,7 +904,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         /**
          * @var array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference>
          */
-        $documentUltimateCustomerOrderReferences = InvoiceSuiteArrayUtils::ensure($this->getDocumentUltimateCustomerOrderReferences());
+        $documentUltimateCustomerOrderReferences = InvoiceSuiteArrayUtils::ensure($this->resolveDocumentUltimateCustomerOrderReferences());
 
         /**
          * @var \horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference
@@ -1122,6 +1123,71 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         }
 
         $newName = $sellerLegalEntity->getRegistrationName()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Get all seller/supplier IDs
+     *
+     * @return array<\horstoeko\invoicesuite\models\ubl\cac\PartyIdentification>
+     */
+    private function resolveDocumentSellerIds(): array
+    {
+        return array_filter(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getAccountingSupplierParty()?->getParty()?->getPartyIdentification() ?? []
+            ),
+            fn(PartyIdentificationType $partyIdentification) => ($partyIdentification->getID()?->getSchemeID() ?? "") === ""
+        );
+    }
+
+    /**
+     * Go to the first ID of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            $this->resolveDocumentSellerIds(),
+            'documentsellerid'
+        );
+    }
+
+    /**
+     * Go to the next ID of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            $this->resolveDocumentSellerIds(),
+            'documentsellerid'
+        );
+    }
+
+    /**
+     * Get the ID of the seller/supplier party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
+     */
+    public function getDocumentSellerId(
+        ?string &$newId
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\PartyIdentification>
+         */
+        $documentSellerIds = $this->resolveDocumentSellerIds();
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\PartyIdentification
+         */
+        $documentSellerId = $documentSellerIds[InvoiceSuitePointerUtils::getValue('documentsellerid')];
+
+        $newId = $documentSellerId->getID()?->getValue() ?? "";
 
         return $this;
     }

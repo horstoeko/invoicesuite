@@ -1127,7 +1127,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     /**
      * Get the name of the seller/supplier party
      *
-     * @param string|null $newName The full formal name under which the party is registered.
+     * @param string|null $newName __BT-27, From MINIMUM__ The full formal name under which the party is registered.
      * @return self
      *
      * @phpstan-param-out string $newName
@@ -1136,6 +1136,60 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         ?string &$newName
     ): self {
         $newName = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getName()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first ID of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()->getSellerTradeParty()->getID() ?? []
+            ),
+            'documentsellerid'
+        );
+    }
+
+    /**
+     * Go to the next ID of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()->getSellerTradeParty()->getID() ?? []
+            ),
+            'documentsellerid'
+        );
+    }
+
+    /**
+     * Get the ID of the seller/supplier party
+     *
+     * @param string|null $newId __BT-29, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
+     * @return self
+     */
+    public function getDocumentSellerId(
+        ?string &$newId
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\udt\IDType>
+         */
+        $documentSellerIds = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()->getSellerTradeParty()->getID() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+         */
+        $documentSellerId = $documentSellerIds[InvoiceSuitePointerUtils::getValue('documentsellerid')];
+
+        $newId = $documentSellerId->getValue() ?? "";
 
         return $this;
     }

@@ -104,3 +104,8 @@ echo "\n";
 
 $reader->getDocumentSellerName($documentSellerName);
 echo sprintf("Seller Name ........ %s\n", $documentSellerName);
+
+while ($reader->nextDocumentSellerId()) {
+    $reader->getDocumentSellerId($documentSellerId);
+    echo sprintf("Seller ID .......... %s\n", $documentSellerId);
+}

@@ -795,4 +795,38 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
 
         return $this;
     }
+
+    /**
+     * Go to the first ID of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerId(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentSellerId();
+    }
+
+    /**
+     * Go to the next ID of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerId(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentSellerId();
+    }
+
+    /**
+     * Get the ID of the seller/supplier party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
+     */
+    public function getDocumentSellerId(
+        ?string &$newId
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentSellerId($newId);
+
+        return $this;
+    }
 }
