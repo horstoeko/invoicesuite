@@ -142,3 +142,8 @@ while ($reader->nextDocumentSellerContact()) {
     echo sprintf("               ..... %s\n", $documentSellerContactFaxNumber);
     echo sprintf("               ..... %s\n", $documentSellerContactEmailAddress);
 }
+
+while ($reader->nextDocumentSellerCommunication()) {
+    $reader->getDocumentSellerCommunication($documentSellerCommunicationType, $documentSellerCommunicationUri);
+    echo sprintf("Seller Comm. ....... %s (%s)\n", $documentSellerCommunicationUri, $documentSellerCommunicationType);
+}

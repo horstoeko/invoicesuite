@@ -1544,4 +1544,64 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
 
         return $this;
     }
+
+    /**
+     * Go to the first communication information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerCommunication(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getAccountingSupplierParty()?->getParty()?->getEndpointID() ?? []
+            ),
+            'documentsellerecommunication'
+        );
+    }
+
+    /**
+     * Go to the next communication information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerCommunication(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getAccountingSupplierParty()?->getParty()?->getEndpointID() ?? []
+            ),
+            'documentsellerecommunication'
+        );
+    }
+
+    /**
+     * Get communication information of the seller/supplier party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
+     */
+    public function getDocumentSellerCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cbc\EndpointID>
+         */
+        $documentSellerElectronicCommunications = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getAccountingSupplierParty()?->getParty()?->getEndpointID() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cbc\EndpointID
+         */
+        $documentSellerElectronicCommunication = $documentSellerElectronicCommunications[InvoiceSuitePointerUtils::getValue('documentsellerecommunication')];
+
+        $newType = $documentSellerElectronicCommunication->getSchemeID() ?? "";
+        $newUri = $documentSellerElectronicCommunication->getValue() ?? "";
+
+        return $this;
+    }
 }

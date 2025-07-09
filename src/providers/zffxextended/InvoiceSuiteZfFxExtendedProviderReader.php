@@ -1531,4 +1531,64 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
 
         return $this;
     }
+
+    /**
+     * Go to the first communication information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerCommunication(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getURIUniversalCommunication() ?? []
+            ),
+            'documentsellerecommunication'
+        );
+    }
+
+    /**
+     * Go to the next communication information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerCommunication(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getURIUniversalCommunication() ?? []
+            ),
+            'documentsellerecommunication'
+        );
+    }
+
+    /**
+     * Get communication information of the seller/supplier party
+     *
+     * @param string|null $newType __BT-34-1, From BASIC WL__ The type for the party's electronic address.
+     * @param string|null $newUri __BT-34, From BASIC WL__ The party's electronic address.
+     * @return self
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
+     */
+    public function getDocumentSellerCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\UniversalCommunicationType>
+         */
+        $documentSellerElectronicCommunications = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getURIUniversalCommunication() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\UniversalCommunicationType
+         */
+        $documentSellerElectronicCommunication = $documentSellerElectronicCommunications[InvoiceSuitePointerUtils::getValue('documentsellerecommunication')];
+
+        $newType = $documentSellerElectronicCommunication->getURIID()?->getSchemeID() ?? "";
+        $newUri = $documentSellerElectronicCommunication->getURIID()?->getValue() ?? "";
+
+        return $this;
+    }
 }

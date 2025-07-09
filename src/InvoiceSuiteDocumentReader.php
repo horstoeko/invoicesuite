@@ -1041,4 +1041,40 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
 
         return $this;
     }
+
+    /**
+     * Go to the first communication information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerCommunication(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentSellerCommunication();
+    }
+
+    /**
+     * Go to the next communication information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerCommunication(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentSellerCommunication();
+    }
+
+    /**
+     * Get communication information of the seller/supplier party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
+     */
+    public function getDocumentSellerCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentSellerCommunication($newType, $newUri);
+
+        return $this;
+    }
 }
