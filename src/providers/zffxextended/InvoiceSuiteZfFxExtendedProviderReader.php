@@ -1395,4 +1395,68 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
 
         return $this;
     }
+
+    /**
+     * Go to the first the legal information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerLegalOrganisation(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getSpecifiedLegalOrganization() ?? []
+            ),
+            'documentsellerlegalorganisation'
+        );
+    }
+
+    /**
+     * Go to the next the legal information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerLegalOrganisation(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getSpecifiedLegalOrganization() ?? []
+            ),
+            'documentsellerlegalorganisation'
+        );
+    }
+
+    /**
+     * Get the legal information of the seller/supplier party
+     *
+     * @param string|null $newType __BT-30-1, From MINIMUM__ Type of the identification number of the legal registration of the party.
+     * @param string|null $newId __BT-30, From MINIMUM__ Identification number of the legal registration of the party.
+     * @param string|null $newName __BT-28, From BASIC WL__ Name by which the party is known, if different from the party's name.
+     * @return self
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentSellerLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\LegalOrganizationType>
+         */
+        $documentSellerLegalOrganisations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getSpecifiedLegalOrganization() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\LegalOrganizationType
+         */
+        $documentSellerLegalOrganisation = $documentSellerLegalOrganisations[InvoiceSuitePointerUtils::getValue('documentsellerlegalorganisation')];
+
+        $newType = $documentSellerLegalOrganisation->getID()?->getSchemeID() ?? "";
+        $newId = $documentSellerLegalOrganisation->getID()?->getValue() ?? "";
+        $newName = $documentSellerLegalOrganisation->getTradingBusinessName()?->getValue() ?? "";
+
+        return $this;
+    }
 }

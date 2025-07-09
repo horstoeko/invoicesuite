@@ -955,4 +955,42 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
 
         return $this;
     }
+
+    /**
+     * Go to the first the legal information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerLegalOrganisation(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentSellerLegalOrganisation();
+    }
+
+    /**
+     * Go to the next the legal information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerLegalOrganisation(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentSellerLegalOrganisation();
+    }
+
+    /**
+     * Get the legal information of the seller/supplier party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
+     */
+    public function getDocumentSellerLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentSellerLegalOrganisation($newType, $newId, $newName);
+
+        return $this;
+    }
 }

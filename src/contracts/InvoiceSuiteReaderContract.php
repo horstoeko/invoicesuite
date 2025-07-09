@@ -626,7 +626,7 @@ interface InvoiceSuiteReaderContract
     public function nextDocumentSellerAddress(): bool;
 
     /**
-     * Set the address of the seller/supplier party
+     * Get the address of the seller/supplier party
      *
      * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
      * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
@@ -645,6 +645,34 @@ interface InvoiceSuiteReaderContract
         ?string &$newCity,
         ?string &$newCountryId,
         ?string &$newSubDivision
+    ): self;
+
+    /**
+     * Go to the first the legal information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerLegalOrganisation(): bool;
+
+    /**
+     * Go to the next the legal information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerLegalOrganisation(): bool;
+
+    /**
+     * Get the legal information of the seller/supplier party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
+     */
+    public function getDocumentSellerLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
     ): self;
 
     #endregion

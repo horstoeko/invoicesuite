@@ -128,3 +128,8 @@ while ($reader->nextDocumentSellerAddress()) {
     echo sprintf("               ..... %s %s %s\n", $documentSellerCountryId, $documentSellerPostCode, $documentSellerCity);
     echo sprintf("               ..... %s\n", $documentSellerSubDivision);
 }
+
+while ($reader->nextDocumentSellerLegalOrganisation()) {
+    $reader->getDocumentSellerLegalOrganisation($documentSellerLegalOrgType, $documentSellerLegalOrgId, $documentSellerLegalOrgName);
+    echo sprintf("Seller Legal ....... %s (%s), %s\n", $documentSellerLegalOrgId, $documentSellerLegalOrgType, $documentSellerLegalOrgName);
+}

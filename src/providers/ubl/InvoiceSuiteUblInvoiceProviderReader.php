@@ -1404,4 +1404,67 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
 
         return $this;
     }
+
+    /**
+     * Go to the first the legal information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerLegalOrganisation(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getAccountingSupplierParty()?->getParty()?->getPartyLegalEntity() ?? []
+            ),
+            'documentsellerlegalorganisation'
+        );
+    }
+
+    /**
+     * Go to the next the legal information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerLegalOrganisation(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getAccountingSupplierParty()?->getParty()?->getPartyLegalEntity() ?? []
+            ),
+            'documentsellerlegalorganisation'
+        );
+    }
+
+    /**
+     * Get the legal information of the seller/supplier party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
+     */
+    public function getDocumentSellerLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\PartyLegalEntity>
+         */
+        $documentSellerLegalOrganisations = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getAccountingSupplierParty()?->getParty()?->getPartyLegalEntity() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\PartyLegalEntity
+         */
+        $documentSellerLegalOrganisation = $documentSellerLegalOrganisations[InvoiceSuitePointerUtils::getValue('documentsellerlegalorganisation')];
+
+        $newType = $documentSellerLegalOrganisation->getCompanyID()?->getSchemeID() ?? "";
+        $newId = $documentSellerLegalOrganisation->getCompanyID()?->getValue() ?? "";
+
+        // Trading name and Party name are swapped in UBL
+        $partyNames = $this->getUblInvoiceRootObject()->getAccountingSupplierParty()?->getParty()?->getPartyName() ?? [];
+        $newName = reset($partyNames) !== false ? reset($partyNames) : "";
+
+        return $this;
+    }
 }
