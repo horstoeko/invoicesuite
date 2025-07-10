@@ -734,4 +734,8 @@ interface InvoiceSuiteReaderContract
     ): self;
 
     #endregion
+
+    #region Document Buyer/Customer
+
+    #endregion
 }
