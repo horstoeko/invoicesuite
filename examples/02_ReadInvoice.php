@@ -5,7 +5,7 @@ use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 require __DIR__ . "/../vendor/autoload.php";
 
 $reader = InvoiceSuiteDocumentReader::createFromCFile(__DIR__ . "/01_SimpleInvoice.xml");
-//$reader = InvoiceSuiteDocumentReader::createFromCFile(__DIR__ . "/01_SimpleInvoice_UBL.xml");
+$reader = InvoiceSuiteDocumentReader::createFromCFile(__DIR__ . "/01_SimpleInvoice_UBL.xml");
 $reader->getDocumentNo($documentNumber);
 $reader->getDocumentType($documentType);
 $reader->getDocumentDescription($documentDescription);
@@ -261,7 +261,7 @@ while ($reader->nextDocumentTaxRepresentativeCommunication()) {
 
 #endregion
 
-#region Document Product Enduser
+#region Product Enduser Output
 
 echo "\n";
 echo "Product End User Party\n";
@@ -311,6 +311,60 @@ while ($reader->nextDocumentProductEndUserContact()) {
 while ($reader->nextDocumentProductEndUserCommunication()) {
     $reader->getDocumentProductEndUserCommunication($documentProductEndUserCommunicationType, $documentProductEndUserCommunicationUri);
     echo sprintf("ProductEndUser Comm. ....... %s (%s)\n", $documentProductEndUserCommunicationUri, $documentProductEndUserCommunicationType);
+}
+
+#endregion
+
+#region Ship-To Output
+
+echo "\n";
+echo "Ship-To Party\n";
+echo "\n";
+
+$reader->getDocumentShipToName($documentShipToName);
+echo sprintf("ShipTo Name ........ %s\n", $documentShipToName);
+
+while ($reader->nextDocumentShipToId()) {
+    $reader->getDocumentShipToId($documentShipToGlobalId);
+    echo sprintf("ShipTo ID .......... %s\n", $documentShipToGlobalId);
+}
+
+while ($reader->nextDocumentShipToGlobalId()) {
+    $reader->getDocumentShipToGlobalId($documentShipToGlobalId, $documentShipToGlobalIdType);
+    echo sprintf("ShipTo Global ID ... %s (%s)\n", $documentShipToGlobalId, $documentShipToGlobalIdType);
+}
+
+while ($reader->nextDocumentShipToTaxRegistration()) {
+    $reader->getDocumentShipToTaxRegistration($documentShipToTaxRegistrationType, $documentShipToTaxRegistrationId);
+    echo sprintf("ShipTo Tax Reg. .... %s (%s)\n", $documentShipToTaxRegistrationId, $documentShipToTaxRegistrationType);
+}
+
+while ($reader->nextDocumentShipToAddress()) {
+    $reader->getDocumentShipToAddress($documentShipToAddressLine1, $documentShipToAddressLine2, $documentShipToAddressLine3, $documentShipToPostCode, $documentShipToCity, $documentShipToCountryId, $documentShipToSubDivision);
+    echo sprintf("ShipTo Address ..... %s\n", $documentShipToAddressLine1);
+    echo sprintf("               ..... %s\n", $documentShipToAddressLine2);
+    echo sprintf("               ..... %s\n", $documentShipToAddressLine3);
+    echo sprintf("               ..... %s %s %s\n", $documentShipToCountryId, $documentShipToPostCode, $documentShipToCity);
+    echo sprintf("               ..... %s\n", $documentShipToSubDivision);
+}
+
+while ($reader->nextDocumentShipToLegalOrganisation()) {
+    $reader->getDocumentShipToLegalOrganisation($documentShipToLegalOrgType, $documentShipToLegalOrgId, $documentShipToLegalOrgName);
+    echo sprintf("ShipTo Legal ....... %s (%s), %s\n", $documentShipToLegalOrgId, $documentShipToLegalOrgType, $documentShipToLegalOrgName);
+}
+
+while ($reader->nextDocumentShipToContact()) {
+    $reader->getDocumentShipToContact($documentShipToContactName, $documentShipToContactDepartmenrName, $documentShipToContactPhoneNumber, $documentShipToContactFaxNumber, $documentShipToContactEmailAddress);
+    echo sprintf("ShipTo Contact ..... %s\n", $documentShipToContactName);
+    echo sprintf("               ..... %s\n", $documentShipToContactDepartmenrName);
+    echo sprintf("               ..... %s\n", $documentShipToContactPhoneNumber);
+    echo sprintf("               ..... %s\n", $documentShipToContactFaxNumber);
+    echo sprintf("               ..... %s\n", $documentShipToContactEmailAddress);
+}
+
+while ($reader->nextDocumentShipToCommunication()) {
+    $reader->getDocumentShipToCommunication($documentShipToCommunicationType, $documentShipToCommunicationUri);
+    echo sprintf("ShipTo Comm. ....... %s (%s)\n", $documentShipToCommunicationUri, $documentShipToCommunicationType);
 }
 
 #endregion

@@ -12,6 +12,8 @@ use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
 use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
 use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderReader;
+use horstoeko\invoicesuite\models\ubl\cac\Delivery;
+use horstoeko\invoicesuite\models\ubl\cbc\ID;
 
 class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatProviderReader
 {
@@ -2968,6 +2970,472 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      * @phpstan-param-out string $newUri
      */
     public function getDocumentProductEndUserCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): self {
+        $newType = "";
+        $newUri = "";
+
+        return $this;
+    }
+
+    #endregion
+
+    #region Document Ship-To
+
+    /**
+     * Resolve the first delivery node
+     *
+     * @return null|Delivery
+     */
+    private function resolveFirstDocumentDelivery(): ?Delivery
+    {
+        $deliveryNodes = $this->getUblInvoiceRootObject()->getDelivery() ?? [];
+        $deliveryNode = reset($deliveryNodes);
+
+        if ($deliveryNode === false) {
+            return null;
+        }
+
+        return $deliveryNode;
+    }
+
+    /**
+     * Get the name of the Ship-To party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
+     * @return self
+     *
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentShipToName(
+        ?string &$newName
+    ): self {
+        $newName = "";
+
+        $shipToMames = $this->resolveFirstDocumentDelivery()?->getDeliveryParty()?->getPartyName() ?? [];
+        $shipToMame = reset($shipToMames);
+
+        if ($shipToMame === false) {
+            return $this;
+        }
+
+        $newName = $shipToMame->getName()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Get all buyer/customer IDs
+     *
+     * @return array<\horstoeko\invoicesuite\models\ubl\cac\PartyIdentification>
+     */
+    private function resolveDocumentShipToIds(): array
+    {
+        return
+            array_values(
+                array_filter(
+                    InvoiceSuiteArrayUtils::ensure(
+                        $this->resolveFirstDocumentDelivery()?->getDeliveryLocation()?->getID() ?? []
+                    ),
+                    fn(ID $partyIdentification) => ($partyIdentification->getSchemeID() ?? "") === ""
+                )
+            );
+    }
+
+    /**
+     * Go to the first ID of the Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentShipToId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            $this->resolveDocumentShipToIds(),
+            'documentshiptoid'
+        );
+    }
+
+    /**
+     * Go to the next ID of the Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentShipToId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            $this->resolveDocumentShipToIds(),
+            'documentshiptoid'
+        );
+    }
+
+    /**
+     * Get the ID of the Ship-To party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
+     *
+     * @phpstan-param-out string $newId
+     */
+    public function getDocumentShipToId(
+        ?string &$newId
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ID>
+         */
+        $documentShipToIds = $this->resolveDocumentShipToIds();
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+         */
+        $documentShipToId = $documentShipToIds[InvoiceSuitePointerUtils::getValue('documentshiptoid')];
+
+        $newId = $documentShipToId->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Get all buyer/customer global IDs
+     *
+     * @return array<\horstoeko\invoicesuite\models\ubl\cac\PartyIdentification>
+     */
+    private function resolveDocumentShipToGlobalIds(): array
+    {
+        return
+            array_values(
+                array_filter(
+                    InvoiceSuiteArrayUtils::ensure(
+                        $this->resolveFirstDocumentDelivery()?->getDeliveryLocation()?->getID() ?? []
+                    ),
+                    fn(ID $partyIdentification) => ($partyIdentification->getSchemeID() ?? "") !== ""
+                )
+            );
+    }
+
+    /**
+     * Go to the first global ID of the Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentShipToGlobalId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            $this->resolveDocumentShipToGlobalIds(),
+            'documentshiptoglobalid'
+        );
+    }
+
+    /**
+     * Go to the next global ID of the Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentShipToGlobalId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            $this->resolveDocumentShipToGlobalIds(),
+            'documentshiptoglobalid'
+        );
+    }
+
+    /**
+     * Get the Global ID of the Ship-To party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
+     */
+    public function getDocumentShipToGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cbc\ID>
+         */
+        $documentShipToGlobalIds = $this->resolveDocumentShipToGlobalIds();
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
+         */
+        $documentShipToGlobalId = $documentShipToGlobalIds[InvoiceSuitePointerUtils::getValue('documentshiptoglobalid')];
+
+        $newGlobalId = $documentShipToGlobalId->getValue() ?? "";
+        $newGlobalIdType = $documentShipToGlobalId->getSchemeID() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Tax Registration of the Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentShipToTaxRegistration(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveFirstDocumentDelivery()?->getDeliveryParty()?->getPartyTaxScheme() ?? []
+            ),
+            'documentshiptotaxregistration'
+        );
+    }
+
+    /**
+     * Go to the next Tax Registration of the Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentShipToTaxRegistration(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveFirstDocumentDelivery()?->getDeliveryParty()?->getPartyTaxScheme() ?? []
+            ),
+            'documentshiptotaxregistration'
+        );
+    }
+
+    /**
+     * Get the Tax Registration of the Ship-To party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
+     */
+    public function getDocumentShipToTaxRegistration(
+        ?string &$newTaxRegistrationType,
+        ?string &$newTaxRegistrationId
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\PartyTaxScheme>
+         */
+        $documentShipToTaxRegistrations = InvoiceSuiteArrayUtils::ensure($this->resolveFirstDocumentDelivery()?->getDeliveryParty()?->getPartyTaxScheme() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\PartyTaxScheme
+         */
+        $documentShipToTaxRegistration = $documentShipToTaxRegistrations[InvoiceSuitePointerUtils::getValue('documentshiptotaxregistration')];
+
+        $newTaxRegistrationType = $documentShipToTaxRegistration->getTaxScheme()?->getID()?->getValue() ?? "";
+        $newTaxRegistrationId = $documentShipToTaxRegistration->getCompanyID()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first address of the Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentShipToAddress(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveFirstDocumentDelivery()?->getDeliveryLocation()?->getAddress() ?? []
+            ),
+            'documentshiptoaddress'
+        );
+    }
+
+    /**
+     * Go to the next address of the Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentShipToAddress(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveFirstDocumentDelivery()?->getDeliveryLocation()?->getAddress() ?? []
+            ),
+            'documentshiptoaddress'
+        );
+    }
+
+    /**
+     * Set the address of the Ship-To party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
+     */
+    public function getDocumentShipToAddress(
+        ?string &$newAddressLine1,
+        ?string &$newAddressLine2,
+        ?string &$newAddressLine3,
+        ?string &$newPostcode,
+        ?string &$newCity,
+        ?string &$newCountryId,
+        ?string &$newSubDivision
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\PostalAddress>
+         */
+        $documentShipToAddresses = InvoiceSuiteArrayUtils::ensure($this->resolveFirstDocumentDelivery()?->getDeliveryLocation()?->getAddress() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\PostalAddress
+         */
+        $documentShipToAddress = $documentShipToAddresses[InvoiceSuitePointerUtils::getValue('documentshiptoaddress')];
+
+        $newAddressLine1 = $documentShipToAddress->getStreetName()?->getValue() ?? "";
+        $newAddressLine2 = $documentShipToAddress->getAdditionalStreetName()?->getValue() ?? "";
+        $newAddressLine3 = "";
+        $newPostcode = $documentShipToAddress->getPostalZone()?->getValue() ?? "";
+        $newCity = $documentShipToAddress->getCityName()?->getValue() ?? "";
+        $newCountryId = $documentShipToAddress->getCountry()?->getIdentificationCode()?->getValue() ?? "";
+        $newSubDivision = $documentShipToAddress->getCountrySubentity()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first the legal information of the Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentShipToLegalOrganisation(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next the legal information of the Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentShipToLegalOrganisation(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get the legal information of the Ship-To party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentShipToLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): self {
+        $newType = "";
+        $newId = "";
+        $newName = "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first contact information of the Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentShipToContact(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next contact information of the Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentShipToContact(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get the contact information of the Ship-To party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
+     */
+    public function getDocumentShipToContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): self {
+        $newPersonName = "";
+        $newDepartmentName = "";
+        $newPhoneNumber = "";
+        $newFaxNumber = "";
+        $newEmailAddress = "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first communication information of the Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentShipToCommunication(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next communication information of the Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentShipToCommunication(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get communication information of the Ship-To party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
+     */
+    public function getDocumentShipToCommunication(
         ?string &$newType,
         ?string &$newUri
     ): self {
