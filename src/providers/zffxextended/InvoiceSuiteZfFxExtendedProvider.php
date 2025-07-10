@@ -80,18 +80,37 @@ class InvoiceSuiteZfFxExtendedProvider extends InvoiceSuiteAbstractFormatProvide
      */
     public function isSatisfiableBy(string $content): bool
     {
+        $prevUseInternalErrors = libxml_use_internal_errors(true);
+        libxml_clear_errors();
+
         try {
             $contentDomDocument = new \DOMDocument();
             $contentDomDocument->loadXML($content);
             $contentDomXPath = new \DOMXPath($contentDomDocument);
+            $contentDomXPath->registerNamespace('rsm', 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100');
+            $contentDomXPath->registerNamespace('ram', 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100');
+
             $contentQuery = sprintf(
                 "//rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID[text()='%s']",
                 $this->getParameters()['CONTEXTPARAMETER']
             );
+
             $contentEntries = $contentDomXPath->query($contentQuery);
-            return $contentEntries->length === 1;
+
+            if ($contentEntries === false) {
+                return false;
+            }
+
+            if ($contentEntries->length !== 1) {
+                return false;
+            }
+
+            return true;
         } catch (\Throwable $throwable) {
             // Do nothing
+        } finally {
+            libxml_clear_errors();
+            libxml_use_internal_errors($prevUseInternalErrors);
         }
 
         return false;

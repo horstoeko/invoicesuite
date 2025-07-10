@@ -81,6 +81,48 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractFormatProvider
      */
     public function isSatisfiableBy(string $content): bool
     {
+        $prevUseInternalErrors = libxml_use_internal_errors(true);
+        libxml_clear_errors();
+
+        try {
+            $contentDomDocument = new \DOMDocument();
+            $contentDomDocument->loadXML($content);
+            $contentDomXPath = new \DOMXPath($contentDomDocument);
+            $contentDomXPath->registerNamespace('inv', 'urn:oasis:names:specification:ubl:schema:xsd:Invoice-2');
+            $contentDomXPath->registerNamespace('cbc', 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2');
+
+            $contentQuery = sprintf("//inv:Invoice/cbc:CustomizationID[text()='%s']", $this->getParameters()['CUSTOMIZATIONID']);
+
+            $contentEntries = $contentDomXPath->query($contentQuery);
+
+            if ($contentEntries === false) {
+                return false;
+            }
+
+            if ($contentEntries->length !== 1) {
+                return false;
+            }
+
+            $contentQuery = sprintf("//inv:Invoice/cbc:ProfileID[text()='%s']", $this->getParameters()['PROFILEID']);
+
+            $contentEntries = $contentDomXPath->query($contentQuery);
+
+            if ($contentEntries === false) {
+                return false;
+            }
+
+            if ($contentEntries->length !== 1) {
+                return false;
+            }
+
+            return true;
+        } catch (\Throwable $throwable) {
+            // Do nothing
+        } finally {
+            libxml_clear_errors();
+            libxml_use_internal_errors($prevUseInternalErrors);
+        }
+
         return false;
     }
 
