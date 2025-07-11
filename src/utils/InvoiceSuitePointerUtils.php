@@ -3,7 +3,7 @@
 namespace horstoeko\invoicesuite\utils;
 
 /**
- * class representing float utilities
+ * class representing array-pointer utilities
  *
  * @category InvoiceSuite
  * @package  InvoiceSuite
