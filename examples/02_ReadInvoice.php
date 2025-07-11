@@ -422,3 +422,57 @@ while ($reader->nextDocumentUltimateShipToCommunication()) {
 }
 
 #endregion
+
+#region Ship-From Output
+
+echo "\n";
+echo "Ship-From Party\n";
+echo "\n";
+
+$reader->getDocumentShipFromName($documentShipFromName);
+echo sprintf("Ship-From Name ........ %s\n", $documentShipFromName);
+
+while ($reader->nextDocumentShipFromId()) {
+    $reader->getDocumentShipFromId($documentShipFromGlobalId);
+    echo sprintf("Ship-From ID .......... %s\n", $documentShipFromGlobalId);
+}
+
+while ($reader->nextDocumentShipFromGlobalId()) {
+    $reader->getDocumentShipFromGlobalId($documentShipFromGlobalId, $documentShipFromGlobalIdType);
+    echo sprintf("Ship-From Global ID ... %s (%s)\n", $documentShipFromGlobalId, $documentShipFromGlobalIdType);
+}
+
+while ($reader->nextDocumentShipFromTaxRegistration()) {
+    $reader->getDocumentShipFromTaxRegistration($documentShipFromTaxRegistrationType, $documentShipFromTaxRegistrationId);
+    echo sprintf("Ship-From Tax Reg. .... %s (%s)\n", $documentShipFromTaxRegistrationId, $documentShipFromTaxRegistrationType);
+}
+
+while ($reader->nextDocumentShipFromAddress()) {
+    $reader->getDocumentShipFromAddress($documentShipFromAddressLine1, $documentShipFromAddressLine2, $documentShipFromAddressLine3, $documentShipFromPostCode, $documentShipFromCity, $documentShipFromCountryId, $documentShipFromSubDivision);
+    echo sprintf("Ship-From Address ..... %s\n", $documentShipFromAddressLine1);
+    echo sprintf("                  ..... %s\n", $documentShipFromAddressLine2);
+    echo sprintf("                  ..... %s\n", $documentShipFromAddressLine3);
+    echo sprintf("                  ..... %s %s %s\n", $documentShipFromCountryId, $documentShipFromPostCode, $documentShipFromCity);
+    echo sprintf("                  ..... %s\n", $documentShipFromSubDivision);
+}
+
+while ($reader->nextDocumentShipFromLegalOrganisation()) {
+    $reader->getDocumentShipFromLegalOrganisation($documentShipFromLegalOrgType, $documentShipFromLegalOrgId, $documentShipFromLegalOrgName);
+    echo sprintf("Ship-From Legal ....... %s (%s), %s\n", $documentShipFromLegalOrgId, $documentShipFromLegalOrgType, $documentShipFromLegalOrgName);
+}
+
+while ($reader->nextDocumentShipFromContact()) {
+    $reader->getDocumentShipFromContact($documentShipFromContactName, $documentShipFromContactDepartmenrName, $documentShipFromContactPhoneNumber, $documentShipFromContactFaxNumber, $documentShipFromContactEmailAddress);
+    echo sprintf("Ship-From Contact ..... %s\n", $documentShipFromContactName);
+    echo sprintf("                  ..... %s\n", $documentShipFromContactDepartmenrName);
+    echo sprintf("                  ..... %s\n", $documentShipFromContactPhoneNumber);
+    echo sprintf("                  ..... %s\n", $documentShipFromContactFaxNumber);
+    echo sprintf("                  ..... %s\n", $documentShipFromContactEmailAddress);
+}
+
+while ($reader->nextDocumentShipFromCommunication()) {
+    $reader->getDocumentShipFromCommunication($documentShipFromCommunicationType, $documentShipFromCommunicationUri);
+    echo sprintf("Ship-From Comm. ....... %s (%s)\n", $documentShipFromCommunicationUri, $documentShipFromCommunicationType);
+}
+
+#endregion

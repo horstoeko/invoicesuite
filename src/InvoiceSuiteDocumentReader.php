@@ -28,6 +28,8 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
     use HandlesCurrentFormatProvider;
     use HandlesFormatProviders;
 
+    #region Reader
+
     /**
      * Create reader by file
      *
@@ -102,6 +104,8 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
     {
         return $this->forwardCallWithCheckTo($this->getCurrentFormatProvider()->getReader(), $method, $parameters);
     }
+
+    #endregion
 
     #region Document Generals
 
@@ -2584,6 +2588,306 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         ?string &$newUri
     ): self {
         $this->getCurrentFormatProvider()->getReader()->getDocumentUltimateShipToCommunication($newType, $newUri);
+
+        return $this;
+    }
+
+    #endregion
+
+    #region Document Ship-From
+
+    /**
+     * Get the name of the Ship-From party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
+     * @return self
+     */
+    public function getDocumentShipFromName(
+        ?string &$newName
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentShipFromName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first ID of the Ship-From party
+     *
+     * @return boolean
+     */
+    public function firstDocumentShipFromId(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentShipFromId();
+    }
+
+    /**
+     * Go to the next ID of the Ship-From party
+     *
+     * @return boolean
+     */
+    public function nextDocumentShipFromId(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipFromId();
+    }
+
+    /**
+     * Get the ID of the Ship-From party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
+     */
+    public function getDocumentShipFromId(
+        ?string &$newId
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentShipFromId($newId);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first global ID of the Ship-From party
+     *
+     * @return boolean
+     */
+    public function firstDocumentShipFromGlobalId(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentShipFromGlobalId();
+    }
+
+    /**
+     * Go to the next global ID of the Ship-From party
+     *
+     * @return boolean
+     */
+    public function nextDocumentShipFromGlobalId(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipFromGlobalId();
+    }
+
+    /**
+     * Get the Global ID of the Ship-From party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
+     */
+    public function getDocumentShipFromGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentShipFromGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Tax Registration of the Ship-From party
+     *
+     * @return boolean
+     */
+    public function firstDocumentShipFromTaxRegistration(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentShipFromTaxRegistration();
+    }
+
+    /**
+     * Go to the next Tax Registration of the Ship-From party
+     *
+     * @return boolean
+     */
+    public function nextDocumentShipFromTaxRegistration(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipFromTaxRegistration();
+    }
+
+    /**
+     * Get the Tax Registration of the Ship-From party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
+     */
+    public function getDocumentShipFromTaxRegistration(
+        ?string &$newTaxRegistrationType,
+        ?string &$newTaxRegistrationId
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentShipFromTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first address of the Ship-From party
+     *
+     * @return boolean
+     */
+    public function firstDocumentShipFromAddress(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
+    }
+
+    /**
+     * Go to the next address of the Ship-From party
+     *
+     * @return boolean
+     */
+    public function nextDocumentShipFromAddress(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipFromAddress();
+    }
+
+    /**
+     * Set the address of the Ship-From party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
+     */
+    public function getDocumentShipFromAddress(
+        ?string &$newAddressLine1,
+        ?string &$newAddressLine2,
+        ?string &$newAddressLine3,
+        ?string &$newPostcode,
+        ?string &$newCity,
+        ?string &$newCountryId,
+        ?string &$newSubDivision
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentShipFromAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        return $this;
+    }
+
+    /**
+     * Go to the first the legal information of the Ship-From party
+     *
+     * @return boolean
+     */
+    public function firstDocumentShipFromLegalOrganisation(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentShipFromLegalOrganisation();
+    }
+
+    /**
+     * Go to the next the legal information of the Ship-From party
+     *
+     * @return boolean
+     */
+    public function nextDocumentShipFromLegalOrganisation(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipFromLegalOrganisation();
+    }
+
+    /**
+     * Get the legal information of the Ship-From party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
+     */
+    public function getDocumentShipFromLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentShipFromLegalOrganisation($newType, $newId, $newName);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first contact information of the Ship-From party
+     *
+     * @return boolean
+     */
+    public function firstDocumentShipFromContact(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentShipFromContact();
+    }
+
+    /**
+     * Go to the next contact information of the Ship-From party
+     *
+     * @return boolean
+     */
+    public function nextDocumentShipFromContact(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipFromContact();
+    }
+
+    /**
+     * Get the contact information of the Ship-From party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
+     */
+    public function getDocumentShipFromContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentShipFromContact(
+            $newPersonName,
+            $newDepartmentName,
+            $newPhoneNumber,
+            $newFaxNumber,
+            $newEmailAddress
+        );
+
+        return $this;
+    }
+
+    /**
+     * Go to the first communication information of the Ship-From party
+     *
+     * @return boolean
+     */
+    public function firstDocumentShipFromCommunication(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentShipFromCommunication();
+    }
+
+    /**
+     * Go to the next communication information of the Ship-From party
+     *
+     * @return boolean
+     */
+    public function nextDocumentShipFromCommunication(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipFromCommunication();
+    }
+
+    /**
+     * Get communication information of the Ship-From party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
+     */
+    public function getDocumentShipFromCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentShipFromCommunication($newType, $newUri);
 
         return $this;
     }
