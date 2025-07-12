@@ -6066,6 +6066,9 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         ?string &$newDescription,
         ?DateTimeInterface &$newDueDate
     ): self {
+        InvoiceSuitePointerUtils::resetSingle('documentpaymenttermpaymentdiscount');
+        InvoiceSuitePointerUtils::resetSingle('documentpaymenttermpaymentpenalty');
+
         /**
          * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType>
          */
@@ -6081,9 +6084,6 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             $documentPaymentTerm->getDueDateDateTime()?->getDateTimeString()?->getValue() ?? "",
             $documentPaymentTerm->getDueDateDateTime()?->getDateTimeString()?->getFormat() ?? "",
         );
-
-        InvoiceSuitePointerUtils::resetSingle('documentpaymenttermpaymentdiscount');
-        InvoiceSuitePointerUtils::resetSingle('documentpaymenttermpaymentpenalty');
 
         return $this;
     }
