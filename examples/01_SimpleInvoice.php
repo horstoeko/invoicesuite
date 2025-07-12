@@ -38,8 +38,14 @@ use horstoeko\invoicesuite\dto\InvoiceSuitesummationLineDTO;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
-$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+$creationMode = 1; // 0 = UBL, 1 ZF/FX
+
+if ($creationMode === 0) {
+    $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
+}
+if ($creationMode === 1) {
+    $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+}
 
 $documentDTO = new InvoiceSuiteDocumentHeaderDTO();
 $documentDTO
@@ -258,10 +264,10 @@ $documentDTO
         new DateTime()
     )
     ->addPaymentmean(
-        InvoiceSuitePaymentMeanDTO::createAsDirectDebitSepa('0000000000000815', 'MANDATE-1')
+        InvoiceSuitePaymentMeanDTO::createAsCreditTransferSepa('payeeiban', 'payeeaccountname', 'payeepropid', 'payeebic', 'paymentref')
     )
     ->addPaymentmean(
-        InvoiceSuitePaymentMeanDTO::createAsCreditTransferSepa('payeeiban', 'payeeaccountname', 'payeepropid', 'payeebic', 'paymentref')
+        InvoiceSuitePaymentMeanDTO::createAsDirectDebitSepa('0000000000000815', 'MANDATE-1')
     )
     ->addPaymentmean(
         InvoiceSuitePaymentMeanDTO::createAsPaymentCardPayment('cardid', 'cardholder')
@@ -399,5 +405,10 @@ $position->addNote(new InvoiceSuiteNoteDTO('Some content'))
 $documentDTO->addPosition($position);
 
 $builder->createFromDTO($documentDTO);
-$builder->saveAsXmlFile(__DIR__ . "/01_SimpleInvoice.xml");
-//$builder->saveAsXmlFile(__DIR__ . "/01_SimpleInvoice_UBL.xml");
+
+if ($creationMode === 0) {
+    $builder->saveAsXmlFile(__DIR__ . "/01_SimpleInvoice_UBL.xml");
+}
+if ($creationMode === 1) {
+    $builder->saveAsXmlFile(__DIR__ . "/01_SimpleInvoice.xml");
+}

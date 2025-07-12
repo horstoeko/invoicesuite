@@ -4,8 +4,14 @@ use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-$reader = InvoiceSuiteDocumentReader::createFromCFile(__DIR__ . "/01_SimpleInvoice.xml");
-$reader = InvoiceSuiteDocumentReader::createFromCFile(__DIR__ . "/01_SimpleInvoice_UBL.xml");
+$readMode = 1; // 0 = UBL, 1 = ZF/FX
+
+if ($readMode === 0) {
+    $reader = InvoiceSuiteDocumentReader::createFromCFile(__DIR__ . "/01_SimpleInvoice_UBL.xml");
+}
+if ($readMode === 1) {
+    $reader = InvoiceSuiteDocumentReader::createFromCFile(__DIR__ . "/01_SimpleInvoice.xml");
+}
 
 #region General
 
@@ -640,6 +646,43 @@ while ($reader->nextDocumentPayeeContact()) {
 while ($reader->nextDocumentPayeeCommunication()) {
     $reader->getDocumentPayeeCommunication($documentPayeeCommunicationType, $documentPayeeCommunicationUri);
     echo sprintf("Payee Comm. ....... %s (%s)\n", $documentPayeeCommunicationUri, $documentPayeeCommunicationType);
+}
+
+#endregion
+
+#region Payment Mean Output
+
+echo "\n";
+echo "Payments Means\n";
+echo "\n";
+
+while ($reader->nextDocumentPaymentMean()) {
+    $reader->getDocumentPaymentMean(
+        $paymentMeanTypeCode,
+        $paymentMeanName,
+        $paymentMeanFinancialCardId,
+        $paymentMeanFinancialCardHolder,
+        $paymentMeanBuyerIban,
+        $paymentMeanPayeeIban,
+        $paymentMeanPayeeAccountName,
+        $paymentMeanPayeeProprietaryId,
+        $paymentMeanPayeeBic,
+        $paymentMeanPaymentReference,
+        $paymentMeanMandate
+    );
+
+    echo "Type ..................... $paymentMeanTypeCode\n";
+    echo "Name ..................... $paymentMeanName\n";
+    echo "Financial Card ID ........ $paymentMeanFinancialCardId\n";
+    echo "Financial Card Holder .... $paymentMeanFinancialCardHolder\n";
+    echo "Buyer IBAN ............... $paymentMeanBuyerIban\n";
+    echo "Payee IBAN ............... $paymentMeanPayeeIban\n";
+    echo "Payee Account Name ....... $paymentMeanPayeeAccountName\n";
+    echo "Payee Prop. ID ........... $paymentMeanPayeeProprietaryId\n";
+    echo "Payee BIC ................ $paymentMeanPayeeBic\n";
+    echo "Payment Reference ........ $paymentMeanPaymentReference\n";
+    echo "Payment Mandate .......... $paymentMeanMandate\n";
+    echo "\n";
 }
 
 #endregion

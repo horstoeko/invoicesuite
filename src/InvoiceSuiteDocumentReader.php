@@ -3793,4 +3793,74 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
     }
 
     #endregion
+
+    #region Document Payment
+
+    /**
+     * Go to the first Payment mean
+     *
+     * @return boolean
+     */
+    public function firstDocumentPaymentMean(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPaymentMean();
+    }
+
+    /**
+     * Go to the next Payment mean
+     *
+     * @return boolean
+     */
+    public function nextDocumentPaymentMean(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPaymentMean();
+    }
+
+    /**
+     * Get Payment mean
+     *
+     * @param string|null $newTypeCode Expected or used means of payment expressed as a code
+     * @param string|null $newName Expected or used means of payment expressed in text form
+     * @param string|null $newFinancialCardId Primary account number (PAN) of the payment card
+     * @param string|null $newFinancialCardHolder Name of the payment card holder
+     * @param string|null $newBuyerIban Identifier of the account to be debited
+     * @param string|null $newPayeeIban Payment account identifier
+     * @param string|null $newPayeeAccountName Name of the payment account
+     * @param string|null $newPayeeProprietaryId National account number (not for SEPA)
+     * @param string|null $newPayeeBic Identifier of the payment service provider
+     * @param string|null $newPaymentReference Text value used to link the payment to the invoice issued by the seller
+     * @param string|null $newMandate Identification of the mandate reference
+     * @return self
+     */
+    public function getDocumentPaymentMean(
+        ?string &$newTypeCode,
+        ?string &$newName,
+        ?string &$newFinancialCardId,
+        ?string &$newFinancialCardHolder,
+        ?string &$newBuyerIban,
+        ?string &$newPayeeIban,
+        ?string &$newPayeeAccountName,
+        ?string &$newPayeeProprietaryId,
+        ?string &$newPayeeBic,
+        ?string &$newPaymentReference,
+        ?string &$newMandate
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPaymentMean(
+            $newTypeCode,
+            $newName,
+            $newFinancialCardId,
+            $newFinancialCardHolder,
+            $newBuyerIban,
+            $newPayeeIban,
+            $newPayeeAccountName,
+            $newPayeeProprietaryId,
+            $newPayeeBic,
+            $newPaymentReference,
+            $newMandate
+        );
+
+        return $this;
+    }
+
+    #endregion
 }

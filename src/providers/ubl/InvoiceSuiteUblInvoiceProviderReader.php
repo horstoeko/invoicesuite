@@ -5283,4 +5283,95 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     }
 
     #endregion
+
+    #region Document Payment
+
+    /**
+     * Go to the first Payment mean
+     *
+     * @return boolean
+     */
+    public function firstDocumentPaymentMean(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getPaymentMeans() ?? []
+            ),
+            'documentpaymentmean'
+        );
+    }
+
+    /**
+     * Go to the next Payment mean
+     *
+     * @return boolean
+     */
+    public function nextDocumentPaymentMean(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getPaymentMeans() ?? []
+            ),
+            'documentpaymentmean'
+        );
+    }
+
+    /**
+     * Get Payment mean
+     *
+     * @param string|null $newTypeCode Expected or used means of payment expressed as a code
+     * @param string|null $newName Expected or used means of payment expressed in text form
+     * @param string|null $newFinancialCardId Primary account number (PAN) of the payment card
+     * @param string|null $newFinancialCardHolder Name of the payment card holder
+     * @param string|null $newBuyerIban Identifier of the account to be debited
+     * @param string|null $newPayeeIban Payment account identifier
+     * @param string|null $newPayeeAccountName Name of the payment account
+     * @param string|null $newPayeeProprietaryId National account number (not for SEPA)
+     * @param string|null $newPayeeBic Identifier of the payment service provider
+     * @param string|null $newPaymentReference Text value used to link the payment to the invoice issued by the seller
+     * @param string|null $newMandate Identification of the mandate reference
+     * @return self
+     */
+    public function getDocumentPaymentMean(
+        ?string &$newTypeCode,
+        ?string &$newName,
+        ?string &$newFinancialCardId,
+        ?string &$newFinancialCardHolder,
+        ?string &$newBuyerIban,
+        ?string &$newPayeeIban,
+        ?string &$newPayeeAccountName,
+        ?string &$newPayeeProprietaryId,
+        ?string &$newPayeeBic,
+        ?string &$newPaymentReference,
+        ?string &$newMandate
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\PaymentMeans>
+         */
+        $documentPaymentMeans = $this->getUblInvoiceRootObject()->getPaymentMeans() ?? [];
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\PaymentMeans
+         */
+        $documentPaymentMean = $documentPaymentMeans[InvoiceSuitePointerUtils::getValue('documentpaymentmean')];
+
+        $paymentMeanPaymentIds = $documentPaymentMean->getPaymentID() ?? [];
+        $paymentMeanPaymentId = reset($paymentMeanPaymentIds);
+
+        $newTypeCode = $documentPaymentMean->getPaymentMeansCode()?->getValue() ?? "";
+        $newName = $documentPaymentMean->getPaymentMeansCode()?->getName() ?? "";
+        $newFinancialCardId = $documentPaymentMean->getCardAccount()?->getPrimaryAccountNumberID()?->getValue() ?? "";
+        $newFinancialCardHolder = $documentPaymentMean->getCardAccount()?->getHolderName()?->getValue() ?? "";
+        $newBuyerIban = $documentPaymentMean->getPaymentMandate()?->getPayerFinancialAccount()?->getID()?->getValue() ?? "";
+        $newPayeeIban = $documentPaymentMean->getPayeeFinancialAccount()?->getId()?->getValue() ?? "";
+        $newPayeeAccountName = $documentPaymentMean->getPayeeFinancialAccount()?->getName()?->getValue() ?? "";
+        $newPayeeProprietaryId = "";
+        $newPayeeBic = $documentPaymentMean->getPayeeFinancialAccount()?->getFinancialInstitutionBranch()?->getID()?->getValue() ?? "";
+        $newPaymentReference = $paymentMeanPaymentId !== false ? $paymentMeanPaymentId->getValue() ?? "" : "";
+        $newMandate = $documentPaymentMean->getPaymentMandate()?->getID()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    #endregion
 }

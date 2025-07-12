@@ -7,6 +7,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
+use horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType;
 use horstoeko\invoicesuite\models\zffxextended\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderReader;
 
@@ -5846,6 +5847,104 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
 
         $newType = $documentPayeeElectronicCommunication->getURIID()?->getSchemeID() ?? "";
         $newUri = $documentPayeeElectronicCommunication->getURIID()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    #endregion
+
+    #region Document Payment
+
+    /**
+     * Go to the first Payment mean
+     *
+     * @return boolean
+     */
+    public function firstDocumentPaymentMean(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradeSettlementPaymentMeans() ?? []
+            ),
+            'documentpaymentmean'
+        );
+    }
+
+    /**
+     * Go to the next Payment mean
+     *
+     * @return boolean
+     */
+    public function nextDocumentPaymentMean(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradeSettlementPaymentMeans() ?? []
+            ),
+            'documentpaymentmean'
+        );
+    }
+
+    /**
+     * Get Payment mean
+     *
+     * @param string|null $newTypeCode __BT-81, From BASIC WL__ Expected or used means of payment expressed as a code
+     * @param string|null $newName __BT-82, From EN 16931__ Expected or used means of payment expressed in text form
+     * @param string|null $newFinancialCardId __BT-87, From EN 16931__ Primary account number (PAN) of the payment card
+     * @param string|null $newFinancialCardHolder __BT-88, From EN 16931__ Name of the payment card holder
+     * @param string|null $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @param string|null $newPayeeIban __BT-84, From BASIC WL__ Payment account identifier
+     * @param string|null $newPayeeAccountName __BT-85, From BASIC WL__ Name of the payment account
+     * @param string|null $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
+     * @param string|null $newPayeeBic __BT-86, From EN 16931__ Identifier of the payment service provider
+     * @param string|null $newPaymentReference __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
+     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @return self
+     */
+    public function getDocumentPaymentMean(
+        ?string &$newTypeCode,
+        ?string &$newName,
+        ?string &$newFinancialCardId,
+        ?string &$newFinancialCardHolder,
+        ?string &$newBuyerIban,
+        ?string &$newPayeeIban,
+        ?string &$newPayeeAccountName,
+        ?string &$newPayeeProprietaryId,
+        ?string &$newPayeeBic,
+        ?string &$newPaymentReference,
+        ?string &$newMandate
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeSettlementPaymentMeansType>
+         */
+        $documentPaymentMeans = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradeSettlementPaymentMeans() ?? [];
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradeSettlementPaymentMeansType
+         */
+        $documentPaymentMean = $documentPaymentMeans[InvoiceSuitePointerUtils::getValue('documentpaymentmean')];
+
+        $newTypeCode = $documentPaymentMean->getTypeCode()?->getValue() ?? "";
+        $newName = $documentPaymentMean->getInformation()?->getValue() ?? "";
+        $newFinancialCardId = $documentPaymentMean->getApplicableTradeSettlementFinancialCard()?->getID()?->getValue() ?? "";
+        $newFinancialCardHolder = $documentPaymentMean->getApplicableTradeSettlementFinancialCard()?->getCardholderName()?->getValue() ?? "";
+        $newBuyerIban = $documentPaymentMean->getPayerPartyDebtorFinancialAccount()?->getIBANID()?->getValue() ?? "";
+        $newPayeeIban = $documentPaymentMean->getPayeePartyCreditorFinancialAccount()?->getIBANID()?->getValue() ?? "";
+        $newPayeeAccountName = $documentPaymentMean->getPayeePartyCreditorFinancialAccount()?->getAccountName()?->getValue() ?? "";
+        $newPayeeProprietaryId = $documentPaymentMean->getPayeePartyCreditorFinancialAccount()?->getProprietaryID()?->getValue() ?? "";
+        $newPayeeBic = $documentPaymentMean->getPayeeSpecifiedCreditorFinancialInstitution()?->getBICID()?->getValue() ?? "";
+        $newPaymentReference = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPaymentReference()?->getValue() ?? "";
+
+        $paymentTerms = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? [];
+        $paymentTerms = array_filter($paymentTerms, function (TradePaymentTermsType $paymentTerm) {
+            return ($paymentTerm->getDirectDebitMandateIDWithCreate()?->getValue() ?? "") !== "";
+        });
+
+        $paymentTerm = reset($paymentTerms);
+
+        if ($paymentTerm !== false) {
+            $newMandate = $paymentTerm->getDirectDebitMandateID()?->getValue() ?? "";
+        }
 
         return $this;
     }
