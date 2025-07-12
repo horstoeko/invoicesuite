@@ -710,47 +710,45 @@ while ($reader->nextDocumentPaymentTerm()) {
     $reader->getDocumentPaymentTerm($paymentTermDescription, $paymentTermDueDate);
     echo sprintf("%s, %s\n", $paymentTermDescription, $paymentTermDueDate?->format("d.m.Y") ?? "");
 
-    if ($reader->firstDocumentPaymentDiscountTermsInLastPaymentTerm()) {
-        echo sprintf("  DiscountTerm\n");
-        do {
-            $reader->getDocumentPaymentDiscountTermsInLastPaymentTerm(
-                $baseAmount,
-                $discountAmount,
-                $discountpercent,
-                $baseDate,
-                $baseperiod,
-                $baseperiodUnnit
-            );
+    echo sprintf("  DiscountTerm\n");
 
-            echo sprintf("  DiscountTerm Base Amount ....... %s\n", $baseAmount);
-            echo sprintf("  DiscountTerm Discount Amount ... %s\n", $discountAmount);
-            echo sprintf("  DiscountTerm Discount Percent .. %s\n", $discountpercent);
-            echo sprintf("  DiscountTerm Base Date ......... %s\n", $baseDate?->format("d.m.Y") ?? "");
-            echo sprintf("  DiscountTerm Period ............ %s\n", $baseperiod);
-            echo sprintf("  DiscountTerm Period Unit ....... %s\n", $baseperiodUnnit);
-        } while ($reader->nextDocumentPaymentDiscountTermsInLastPaymentTerm());
+    while ($reader->nextDocumentPaymentDiscountTermsInLastPaymentTerm()) {
+        $reader->getDocumentPaymentDiscountTermsInLastPaymentTerm(
+            $baseAmount,
+            $discountAmount,
+            $discountpercent,
+            $baseDate,
+            $baseperiod,
+            $baseperiodUnnit
+        );
+
+        echo sprintf("  DiscountTerm Base Amount ....... %s\n", $baseAmount);
+        echo sprintf("  DiscountTerm Discount Amount ... %s\n", $discountAmount);
+        echo sprintf("  DiscountTerm Discount Percent .. %s\n", $discountpercent);
+        echo sprintf("  DiscountTerm Base Date ......... %s\n", $baseDate?->format("d.m.Y") ?? "");
+        echo sprintf("  DiscountTerm Period ............ %s\n", $baseperiod);
+        echo sprintf("  DiscountTerm Period Unit ....... %s\n", $baseperiodUnnit);
     }
 
-    if ($reader->firstDocumentPaymentPenaltyTermsInLastPaymentTerm()) {
-        echo sprintf("  PenaltyTerm\n");
-        do {
-            $reader->getDocumentPaymentPenaltyTermsInLastPaymentTerm(
-                $baseAmount,
-                $penaltyAmount,
-                $penaltypercent,
-                $baseDate,
-                $baseperiod,
-                $baseperiodUnnit
-            );
+    echo sprintf("  PenaltyTerm\n");
 
-            echo sprintf("  PenaltyTerm Base Amount ....... %s\n", $baseAmount);
-            echo sprintf("  PenaltyTerm Penalty Amount ... %s\n", $penaltyAmount);
-            echo sprintf("  PenaltyTerm Penalty Percent .. %s\n", $penaltypercent);
-            echo sprintf("  PenaltyTerm Base Date ......... %s\n", $baseDate?->format("d.m.Y") ?? "");
-            echo sprintf("  PenaltyTerm Period ............ %s\n", $baseperiod);
-            echo sprintf("  PenaltyTerm Period Unit ....... %s\n", $baseperiodUnnit);
-        } while ($reader->nextDocumentPaymentPenaltyTermsInLastPaymentTerm());
-    }
+    while ($reader->nextDocumentPaymentPenaltyTermsInLastPaymentTerm()) {
+        $reader->getDocumentPaymentPenaltyTermsInLastPaymentTerm(
+            $baseAmount,
+            $penaltyAmount,
+            $penaltypercent,
+            $baseDate,
+            $baseperiod,
+            $baseperiodUnnit
+        );
+
+        echo sprintf("  PenaltyTerm Base Amount ....... %s\n", $baseAmount);
+        echo sprintf("  PenaltyTerm Penalty Amount ... %s\n", $penaltyAmount);
+        echo sprintf("  PenaltyTerm Penalty Percent .. %s\n", $penaltypercent);
+        echo sprintf("  PenaltyTerm Base Date ......... %s\n", $baseDate?->format("d.m.Y") ?? "");
+        echo sprintf("  PenaltyTerm Period ............ %s\n", $baseperiod);
+        echo sprintf("  PenaltyTerm Period Unit ....... %s\n", $baseperiodUnnit);
+    };
 }
 
 #endregion

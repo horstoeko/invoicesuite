@@ -6024,6 +6024,9 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
      */
     public function firstDocumentPaymentTerm(): bool
     {
+        InvoiceSuitePointerUtils::resetSingle('documentpaymenttermpaymentdiscount');
+        InvoiceSuitePointerUtils::resetSingle('documentpaymenttermpaymentpenalty');
+
         return InvoiceSuitePointerUtils::hasFirst(
             InvoiceSuiteArrayUtils::ensure(
                 $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? []
@@ -6039,6 +6042,9 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
      */
     public function nextDocumentPaymentTerm(): bool
     {
+        InvoiceSuitePointerUtils::resetSingle('documentpaymenttermpaymentdiscount');
+        InvoiceSuitePointerUtils::resetSingle('documentpaymenttermpaymentpenalty');
+
         return InvoiceSuitePointerUtils::hasNext(
             InvoiceSuiteArrayUtils::ensure(
                 $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? []
@@ -6075,6 +6081,9 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             $documentPaymentTerm->getDueDateDateTime()?->getDateTimeString()?->getValue() ?? "",
             $documentPaymentTerm->getDueDateDateTime()?->getDateTimeString()?->getFormat() ?? "",
         );
+
+        InvoiceSuitePointerUtils::resetSingle('documentpaymenttermpaymentdiscount');
+        InvoiceSuitePointerUtils::resetSingle('documentpaymenttermpaymentpenalty');
 
         return $this;
     }
