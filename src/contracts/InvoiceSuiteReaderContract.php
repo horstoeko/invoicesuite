@@ -2773,5 +2773,39 @@ interface InvoiceSuiteReaderContract
         ?string &$newBasePeriodUnit
     ): self;
 
+    /**
+     * Go to the first payment penalty term in latest resolved payment term
+     *
+     * @return boolean
+     */
+    public function firstDocumentPaymentPenaltyTermsInLastPaymentTerm(): bool;
+
+    /**
+     * Go to the last payment penalty term in latest resolved payment term
+     *
+     * @return boolean
+     */
+    public function nextDocumentPaymentPenaltyTermsInLastPaymentTerm(): bool;
+
+    /**
+     * Get payment penalty terms in latest resolved payment terms
+     *
+     * @param float|null $newBaseAmount Base amount of the payment penalty
+     * @param float|null $newPenaltyAmount Amount of the payment penalty
+     * @param float|null $newPenaltyPercent Percentage of the payment penalty
+     * @param DateTimeInterface|null $newBaseDate Due date reference date
+     * @param float|null $newBasePeriod Maturity period (basis)
+     * @param string|null $newBasePeriodUnit Maturity period (unit)
+     * @return self
+     */
+    public function getDocumentPaymentPenaltyTermsInLastPaymentTerm(
+        ?float &$newBaseAmount,
+        ?float &$newPenaltyAmount,
+        ?float &$newPenaltyPercent,
+        ?DateTimeInterface &$newBaseDate,
+        ?float &$newBasePeriod,
+        ?string &$newBasePeriodUnit
+    ): self;
+
     #endregion
 }

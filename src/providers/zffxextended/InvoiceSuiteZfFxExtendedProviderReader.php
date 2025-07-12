@@ -6181,5 +6181,107 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         return $this;
     }
 
+    /**
+     * Go to the first payment penalty term in latest resolved payment term
+     *
+     * @return boolean
+     */
+    public function firstDocumentPaymentPenaltyTermsInLastPaymentTerm(): bool
+    {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType>
+         */
+        $documentPaymentTerms = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType
+         */
+        $documentPaymentTerm = $documentPaymentTerms[InvoiceSuitePointerUtils::getValue('documentpaymentterm')];
+
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $documentPaymentTerm->getApplicableTradePaymentPenaltyTerms() ?? []
+            ),
+            'documentpaymenttermpaymentpenalty'
+        );
+    }
+
+    /**
+     * Go to the last payment penalty term in latest resolved payment term
+     *
+     * @return boolean
+     */
+    public function nextDocumentPaymentPenaltyTermsInLastPaymentTerm(): bool
+    {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType>
+         */
+        $documentPaymentTerms = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType
+         */
+        $documentPaymentTerm = $documentPaymentTerms[InvoiceSuitePointerUtils::getValue('documentpaymentterm')];
+
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $documentPaymentTerm->getApplicableTradePaymentPenaltyTerms() ?? []
+            ),
+            'documentpaymenttermpaymentpenalty'
+        );
+    }
+
+    /**
+     * Get payment penalty terms in latest resolved payment terms
+     *
+     * @param float|null $newBaseAmount __BT-X-285, From EXTENDED__ Base amount of the payment penalty
+     * @param float|null $newPenaltyAmount __BT-X-287, From EXTENDED__ Amount of the payment penalty
+     * @param float|null $newPenaltyPercent __BT-X-286, From EXTENDED__ Percentage of the payment penalty
+     * @param DateTimeInterface|null $newBaseDate __BT-X-282, From EXTENDED__ Due date reference date
+     * @param float|null $newBasePeriod __BT-X-283, From EXTENDED__ Maturity period (basis)
+     * @param string|null $newBasePeriodUnit __BT-X-284, From EXTENDED__ Maturity period (unit)
+     * @return self
+     */
+    public function getDocumentPaymentPenaltyTermsInLastPaymentTerm(
+        ?float &$newBaseAmount,
+        ?float &$newPenaltyAmount,
+        ?float &$newPenaltyPercent,
+        ?DateTimeInterface &$newBaseDate,
+        ?float &$newBasePeriod,
+        ?string &$newBasePeriodUnit
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType>
+         */
+        $documentPaymentTerms = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType
+         */
+        $documentPaymentTerm = $documentPaymentTerms[InvoiceSuitePointerUtils::getValue('documentpaymentterm')];
+
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentPenaltyTermsType>
+         */
+        $documentPaymentTermsPaymentPenaltyTerms = InvoiceSuiteArrayUtils::ensure($documentPaymentTerm->getApplicableTradePaymentPenaltyTerms() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentPenaltyTermsType
+         */
+        $documentPaymentTermsPaymentPenaltyTerm = $documentPaymentTermsPaymentPenaltyTerms[InvoiceSuitePointerUtils::getValue('documentpaymenttermpaymentpenalty')];
+
+        $newBaseAmount = $documentPaymentTermsPaymentPenaltyTerm->getBasisAmount()?->getValue() ?? 0.0;
+        $newPenaltyAmount = $documentPaymentTermsPaymentPenaltyTerm->getActualPenaltyAmount()?->getValue() ?? 0.0;
+        $newPenaltyPercent = $documentPaymentTermsPaymentPenaltyTerm->getCalculationPercent()?->getValue() ?? 0.0;
+        $newBaseDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $documentPaymentTermsPaymentPenaltyTerm->getBasisDateTime()?->getDateTimeString()?->getValue(),
+            $documentPaymentTermsPaymentPenaltyTerm->getBasisDateTime()?->getDateTimeString()?->getFormat(),
+        );
+        $newBasePeriod = $documentPaymentTermsPaymentPenaltyTerm->getBasisPeriodMeasure()?->getValue() ?? 0.0;
+        $newBasePeriodUnit = $documentPaymentTermsPaymentPenaltyTerm->getBasisPeriodMeasure()?->getUnitCode() ?? "";
+
+        return $this;
+    }
+
     #endregion
 }

@@ -730,6 +730,27 @@ while ($reader->nextDocumentPaymentTerm()) {
             echo sprintf("  DiscountTerm Period Unit ....... %s\n", $baseperiodUnnit);
         } while ($reader->nextDocumentPaymentDiscountTermsInLastPaymentTerm());
     }
+
+    if ($reader->firstDocumentPaymentPenaltyTermsInLastPaymentTerm()) {
+        echo sprintf("  PenaltyTerm\n");
+        do {
+            $reader->getDocumentPaymentPenaltyTermsInLastPaymentTerm(
+                $baseAmount,
+                $penaltyAmount,
+                $penaltypercent,
+                $baseDate,
+                $baseperiod,
+                $baseperiodUnnit
+            );
+
+            echo sprintf("  PenaltyTerm Base Amount ....... %s\n", $baseAmount);
+            echo sprintf("  PenaltyTerm Penalty Amount ... %s\n", $penaltyAmount);
+            echo sprintf("  PenaltyTerm Penalty Percent .. %s\n", $penaltypercent);
+            echo sprintf("  PenaltyTerm Base Date ......... %s\n", $baseDate?->format("d.m.Y") ?? "");
+            echo sprintf("  PenaltyTerm Period ............ %s\n", $baseperiod);
+            echo sprintf("  PenaltyTerm Period Unit ....... %s\n", $baseperiodUnnit);
+        } while ($reader->nextDocumentPaymentPenaltyTermsInLastPaymentTerm());
+    }
 }
 
 #endregion
