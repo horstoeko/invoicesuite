@@ -3193,4 +3193,304 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
     }
 
     #endregion
+
+    #region Document Invoicee
+
+    /**
+     * Get the name of the Invoicee party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
+     * @return self
+     */
+    public function getDocumentInvoiceeName(
+        ?string &$newName
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoiceeName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first ID of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceeId(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentInvoiceeId();
+    }
+
+    /**
+     * Go to the next ID of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceeId(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoiceeId();
+    }
+
+    /**
+     * Get the ID of the Invoicee party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
+     */
+    public function getDocumentInvoiceeId(
+        ?string &$newId
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoiceeId($newId);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first global ID of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceeGlobalId(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentInvoiceeGlobalId();
+    }
+
+    /**
+     * Go to the next global ID of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceeGlobalId(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoiceeGlobalId();
+    }
+
+    /**
+     * Get the Global ID of the Invoicee party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
+     */
+    public function getDocumentInvoiceeGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoiceeGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Tax Registration of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceeTaxRegistration(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentInvoiceeTaxRegistration();
+    }
+
+    /**
+     * Go to the next Tax Registration of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceeTaxRegistration(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoiceeTaxRegistration();
+    }
+
+    /**
+     * Get the Tax Registration of the Invoicee party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
+     */
+    public function getDocumentInvoiceeTaxRegistration(
+        ?string &$newTaxRegistrationType,
+        ?string &$newTaxRegistrationId
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoiceeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first address of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceeAddress(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
+    }
+
+    /**
+     * Go to the next address of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceeAddress(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoiceeAddress();
+    }
+
+    /**
+     * Set the address of the Invoicee party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
+     */
+    public function getDocumentInvoiceeAddress(
+        ?string &$newAddressLine1,
+        ?string &$newAddressLine2,
+        ?string &$newAddressLine3,
+        ?string &$newPostcode,
+        ?string &$newCity,
+        ?string &$newCountryId,
+        ?string &$newSubDivision
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoiceeAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        return $this;
+    }
+
+    /**
+     * Go to the first the legal information of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceeLegalOrganisation(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentInvoiceeLegalOrganisation();
+    }
+
+    /**
+     * Go to the next the legal information of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceeLegalOrganisation(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoiceeLegalOrganisation();
+    }
+
+    /**
+     * Get the legal information of the Invoicee party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
+     */
+    public function getDocumentInvoiceeLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoiceeLegalOrganisation($newType, $newId, $newName);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first contact information of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceeContact(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentInvoiceeContact();
+    }
+
+    /**
+     * Go to the next contact information of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceeContact(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoiceeContact();
+    }
+
+    /**
+     * Get the contact information of the Invoicee party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
+     */
+    public function getDocumentInvoiceeContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoiceeContact(
+            $newPersonName,
+            $newDepartmentName,
+            $newPhoneNumber,
+            $newFaxNumber,
+            $newEmailAddress
+        );
+
+        return $this;
+    }
+
+    /**
+     * Go to the first communication information of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceeCommunication(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentInvoiceeCommunication();
+    }
+
+    /**
+     * Go to the next communication information of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceeCommunication(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoiceeCommunication();
+    }
+
+    /**
+     * Get communication information of the Invoicee party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
+     */
+    public function getDocumentInvoiceeCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoiceeCommunication($newType, $newUri);
+
+        return $this;
+    }
+
+    #endregion
 }

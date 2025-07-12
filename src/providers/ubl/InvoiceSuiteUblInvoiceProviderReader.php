@@ -4442,4 +4442,336 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     }
 
     #endregion
+
+    #region Document Invoicee
+
+    /**
+     * Get the name of the Invoicee party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
+     * @return self
+     *
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentInvoiceeName(
+        ?string &$newName
+    ): self {
+        $newName = "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first ID of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceeId(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next ID of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceeId(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get the ID of the Invoicee party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
+     *
+     * @phpstan-param-out string $newId
+     */
+    public function getDocumentInvoiceeId(
+        ?string &$newId
+    ): self {
+        $newId = "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first global ID of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceeGlobalId(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next global ID of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceeGlobalId(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get the Global ID of the Invoicee party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
+     */
+    public function getDocumentInvoiceeGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): self {
+        $newGlobalId = "";
+        $newGlobalIdType = "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Tax Registration of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceeTaxRegistration(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next Tax Registration of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceeTaxRegistration(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get the Tax Registration of the Invoicee party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
+     */
+    public function getDocumentInvoiceeTaxRegistration(
+        ?string &$newTaxRegistrationType,
+        ?string &$newTaxRegistrationId
+    ): self {
+        $newTaxRegistrationType = "";
+        $newTaxRegistrationId = "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first address of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceeAddress(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next address of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceeAddress(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Set the address of the Invoicee party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
+     */
+    public function getDocumentInvoiceeAddress(
+        ?string &$newAddressLine1,
+        ?string &$newAddressLine2,
+        ?string &$newAddressLine3,
+        ?string &$newPostcode,
+        ?string &$newCity,
+        ?string &$newCountryId,
+        ?string &$newSubDivision
+    ): self {
+        $newAddressLine1 = "";
+        $newAddressLine2 = "";
+        $newAddressLine3 = "";
+        $newPostcode = "";
+        $newCity = "";
+        $newCountryId = "";
+        $newSubDivision = "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first the legal information of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceeLegalOrganisation(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next the legal information of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceeLegalOrganisation(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get the legal information of the Invoicee party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentInvoiceeLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): self {
+        $newType = "";
+        $newId = "";
+        $newName = "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first contact information of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceeContact(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next contact information of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceeContact(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get the contact information of the Invoicee party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
+     */
+    public function getDocumentInvoiceeContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): self {
+        $newPersonName = "";
+        $newDepartmentName = "";
+        $newPhoneNumber = "";
+        $newFaxNumber = "";
+        $newEmailAddress = "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first communication information of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceeCommunication(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next communication information of the Invoicee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceeCommunication(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get communication information of the Invoicee party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
+     */
+    public function getDocumentInvoiceeCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): self {
+        $newType = "";
+        $newUri = "";
+
+        return $this;
+    }
+
+    #endregion
 }

@@ -6,6 +6,9 @@ require __DIR__ . "/../vendor/autoload.php";
 
 $reader = InvoiceSuiteDocumentReader::createFromCFile(__DIR__ . "/01_SimpleInvoice.xml");
 //$reader = InvoiceSuiteDocumentReader::createFromCFile(__DIR__ . "/01_SimpleInvoice_UBL.xml");
+
+#region General
+
 $reader->getDocumentNo($documentNumber);
 $reader->getDocumentType($documentType);
 $reader->getDocumentDescription($documentDescription);
@@ -98,6 +101,8 @@ while ($reader->nextDocumentDeliveryNoteReference()) {
 
 $reader->getDocumentSupplyChainEvent($documemtSupplyChainEventDate);
 echo sprintf("Supply Chain event at %s\n", $documemtSupplyChainEventDate?->format("d.m.Y") ?? "");
+
+#endregion
 
 #region Seller Output
 
@@ -527,6 +532,60 @@ while ($reader->nextDocumentInvoicerContact()) {
 while ($reader->nextDocumentInvoicerCommunication()) {
     $reader->getDocumentInvoicerCommunication($documentInvoicerCommunicationType, $documentInvoicerCommunicationUri);
     echo sprintf("Invoicer Comm. ....... %s (%s)\n", $documentInvoicerCommunicationUri, $documentInvoicerCommunicationType);
+}
+
+#endregion
+
+#region Invoicee Output
+
+echo "\n";
+echo "Invoicee Party\n";
+echo "\n";
+
+$reader->getDocumentInvoiceeName($documentInvoiceeName);
+echo sprintf("Invoicee Name ........ %s\n", $documentInvoiceeName);
+
+while ($reader->nextDocumentInvoiceeId()) {
+    $reader->getDocumentInvoiceeId($documentInvoiceeGlobalId);
+    echo sprintf("Invoicee ID .......... %s\n", $documentInvoiceeGlobalId);
+}
+
+while ($reader->nextDocumentInvoiceeGlobalId()) {
+    $reader->getDocumentInvoiceeGlobalId($documentInvoiceeGlobalId, $documentInvoiceeGlobalIdType);
+    echo sprintf("Invoicee Global ID ... %s (%s)\n", $documentInvoiceeGlobalId, $documentInvoiceeGlobalIdType);
+}
+
+while ($reader->nextDocumentInvoiceeTaxRegistration()) {
+    $reader->getDocumentInvoiceeTaxRegistration($documentInvoiceeTaxRegistrationType, $documentInvoiceeTaxRegistrationId);
+    echo sprintf("Invoicee Tax Reg. .... %s (%s)\n", $documentInvoiceeTaxRegistrationId, $documentInvoiceeTaxRegistrationType);
+}
+
+while ($reader->nextDocumentInvoiceeAddress()) {
+    $reader->getDocumentInvoiceeAddress($documentInvoiceeAddressLine1, $documentInvoiceeAddressLine2, $documentInvoiceeAddressLine3, $documentInvoiceePostCode, $documentInvoiceeCity, $documentInvoiceeCountryId, $documentInvoiceeSubDivision);
+    echo sprintf("Invoicee Address ..... %s\n", $documentInvoiceeAddressLine1);
+    echo sprintf("                 ..... %s\n", $documentInvoiceeAddressLine2);
+    echo sprintf("                 ..... %s\n", $documentInvoiceeAddressLine3);
+    echo sprintf("                 ..... %s %s %s\n", $documentInvoiceeCountryId, $documentInvoiceePostCode, $documentInvoiceeCity);
+    echo sprintf("                 ..... %s\n", $documentInvoiceeSubDivision);
+}
+
+while ($reader->nextDocumentInvoiceeLegalOrganisation()) {
+    $reader->getDocumentInvoiceeLegalOrganisation($documentInvoiceeLegalOrgType, $documentInvoiceeLegalOrgId, $documentInvoiceeLegalOrgName);
+    echo sprintf("Invoicee Legal ....... %s (%s), %s\n", $documentInvoiceeLegalOrgId, $documentInvoiceeLegalOrgType, $documentInvoiceeLegalOrgName);
+}
+
+while ($reader->nextDocumentInvoiceeContact()) {
+    $reader->getDocumentInvoiceeContact($documentInvoiceeContactName, $documentInvoiceeContactDepartmenrName, $documentInvoiceeContactPhoneNumber, $documentInvoiceeContactFaxNumber, $documentInvoiceeContactEmailAddress);
+    echo sprintf("Invoicee Contact ..... %s\n", $documentInvoiceeContactName);
+    echo sprintf("                 ..... %s\n", $documentInvoiceeContactDepartmenrName);
+    echo sprintf("                 ..... %s\n", $documentInvoiceeContactPhoneNumber);
+    echo sprintf("                 ..... %s\n", $documentInvoiceeContactFaxNumber);
+    echo sprintf("                 ..... %s\n", $documentInvoiceeContactEmailAddress);
+}
+
+while ($reader->nextDocumentInvoiceeCommunication()) {
+    $reader->getDocumentInvoiceeCommunication($documentInvoiceeCommunicationType, $documentInvoiceeCommunicationUri);
+    echo sprintf("Invoicee Comm. ....... %s (%s)\n", $documentInvoiceeCommunicationUri, $documentInvoiceeCommunicationType);
 }
 
 #endregion
