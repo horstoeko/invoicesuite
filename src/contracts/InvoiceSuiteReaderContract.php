@@ -2739,5 +2739,39 @@ interface InvoiceSuiteReaderContract
         ?DateTimeInterface &$newDueDate
     ): self;
 
+    /**
+     * Go to the first payment discount term in latest resolved payment term
+     *
+     * @return boolean
+     */
+    public function firstDocumentPaymentDiscountTermsInLastPaymentTerm(): bool;
+
+    /**
+     * Go to the last payment discount term in latest resolved payment term
+     *
+     * @return boolean
+     */
+    public function nextDocumentPaymentDiscountTermsInLastPaymentTerm(): bool;
+
+    /**
+     * Get payment discount terms in latest resolved payment terms
+     *
+     * @param float|null $newBaseAmount Base amount of the payment discount
+     * @param float|null $newDiscountAmount Amount of the payment discount
+     * @param float|null $newDiscountPercent Percentage of the payment discount
+     * @param DateTimeInterface|null $newBaseDate Due date reference date
+     * @param float|null $newBasePeriod Maturity period (basis)
+     * @param string|null $newBasePeriodUnit Maturity period (unit)
+     * @return self
+     */
+    public function getDocumentPaymentDiscountTermsInLastPaymentTerm(
+        ?float &$newBaseAmount,
+        ?float &$newDiscountAmount,
+        ?float &$newDiscountPercent,
+        ?DateTimeInterface &$newBaseDate,
+        ?float &$newBasePeriod,
+        ?string &$newBasePeriodUnit
+    ): self;
+
     #endregion
 }

@@ -6079,5 +6079,107 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         return $this;
     }
 
+    /**
+     * Go to the first payment discount term in latest resolved payment term
+     *
+     * @return boolean
+     */
+    public function firstDocumentPaymentDiscountTermsInLastPaymentTerm(): bool
+    {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType>
+         */
+        $documentPaymentTerms = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType
+         */
+        $documentPaymentTerm = $documentPaymentTerms[InvoiceSuitePointerUtils::getValue('documentpaymentterm')];
+
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $documentPaymentTerm->getApplicableTradePaymentDiscountTerms() ?? []
+            ),
+            'documentpaymenttermpaymentdiscount'
+        );
+    }
+
+    /**
+     * Go to the last payment discount term in latest resolved payment term
+     *
+     * @return boolean
+     */
+    public function nextDocumentPaymentDiscountTermsInLastPaymentTerm(): bool
+    {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType>
+         */
+        $documentPaymentTerms = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType
+         */
+        $documentPaymentTerm = $documentPaymentTerms[InvoiceSuitePointerUtils::getValue('documentpaymentterm')];
+
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $documentPaymentTerm->getApplicableTradePaymentDiscountTerms() ?? []
+            ),
+            'documentpaymenttermpaymentdiscount'
+        );
+    }
+
+    /**
+     * Get payment discount terms in latest resolved payment terms
+     *
+     * @param float|null $newBaseAmount __BT-X-285, From EXTENDED__ Base amount of the payment discount
+     * @param float|null $newDiscountAmount __BT-X-287, From EXTENDED__ Amount of the payment discount
+     * @param float|null $newDiscountPercent __BT-X-286, From EXTENDED__ Percentage of the payment discount
+     * @param DateTimeInterface|null $newBaseDate __BT-X-282, From EXTENDED__ Due date reference date
+     * @param float|null $newBasePeriod __BT-X-283, From EXTENDED__ Maturity period (basis)
+     * @param string|null $newBasePeriodUnit __BT-X-284, From EXTENDED__ Maturity period (unit)
+     * @return self
+     */
+    public function getDocumentPaymentDiscountTermsInLastPaymentTerm(
+        ?float &$newBaseAmount,
+        ?float &$newDiscountAmount,
+        ?float &$newDiscountPercent,
+        ?DateTimeInterface &$newBaseDate,
+        ?float &$newBasePeriod,
+        ?string &$newBasePeriodUnit
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType>
+         */
+        $documentPaymentTerms = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType
+         */
+        $documentPaymentTerm = $documentPaymentTerms[InvoiceSuitePointerUtils::getValue('documentpaymentterm')];
+
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentDiscountTermsType>
+         */
+        $documentPaymentTermsPaymentDiscountTerms = InvoiceSuiteArrayUtils::ensure($documentPaymentTerm->getApplicableTradePaymentDiscountTerms() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentDiscountTermsType
+         */
+        $documentPaymentTermsPaymentDiscountTerm = $documentPaymentTermsPaymentDiscountTerms[InvoiceSuitePointerUtils::getValue('documentpaymenttermpaymentdiscount')];
+
+        $newBaseAmount = $documentPaymentTermsPaymentDiscountTerm->getBasisAmount()?->getValue() ?? 0.0;
+        $newDiscountAmount = $documentPaymentTermsPaymentDiscountTerm->getActualDiscountAmount()?->getValue() ?? 0.0;
+        $newDiscountPercent = $documentPaymentTermsPaymentDiscountTerm->getCalculationPercent()?->getValue() ?? 0.0;
+        $newBaseDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $documentPaymentTermsPaymentDiscountTerm->getBasisDateTime()?->getDateTimeString()?->getValue(),
+            $documentPaymentTermsPaymentDiscountTerm->getBasisDateTime()?->getDateTimeString()?->getFormat(),
+        );
+        $newBasePeriod = $documentPaymentTermsPaymentDiscountTerm->getBasisPeriodMeasure()?->getValue() ?? 0.0;
+        $newBasePeriodUnit = $documentPaymentTermsPaymentDiscountTerm->getBasisPeriodMeasure()?->getUnitCode() ?? "";
+
+        return $this;
+    }
+
     #endregion
 }

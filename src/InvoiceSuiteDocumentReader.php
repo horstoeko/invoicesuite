@@ -3932,5 +3932,56 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         return $this;
     }
 
+    /**
+     * Go to the first payment discount term in latest resolved payment term
+     *
+     * @return boolean
+     */
+    public function firstDocumentPaymentDiscountTermsInLastPaymentTerm(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPaymentDiscountTermsInLastPaymentTerm();
+    }
+
+    /**
+     * Go to the last payment discount term in latest resolved payment term
+     *
+     * @return boolean
+     */
+    public function nextDocumentPaymentDiscountTermsInLastPaymentTerm(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPaymentDiscountTermsInLastPaymentTerm();
+    }
+
+    /**
+     * Get payment discount terms in latest resolved payment terms
+     *
+     * @param float|null $newBaseAmount Base amount of the payment discount
+     * @param float|null $newDiscountAmount Amount of the payment discount
+     * @param float|null $newDiscountPercent Percentage of the payment discount
+     * @param DateTimeInterface|null $newBaseDate Due date reference date
+     * @param float|null $newBasePeriod Maturity period (basis)
+     * @param string|null $newBasePeriodUnit Maturity period (unit)
+     * @return self
+     */
+    public function getDocumentPaymentDiscountTermsInLastPaymentTerm(
+        ?float &$newBaseAmount,
+        ?float &$newDiscountAmount,
+        ?float &$newDiscountPercent,
+        ?DateTimeInterface &$newBaseDate,
+        ?float &$newBasePeriod,
+        ?string &$newBasePeriodUnit
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPaymentDiscountTermsInLastPaymentTerm(
+            $newBaseAmount,
+            $newDiscountAmount,
+            $newDiscountPercent,
+            $newBaseDate,
+            $newBasePeriod,
+            $newBasePeriodUnit
+        );
+
+        return $this;
+    }
+
     #endregion
 }
