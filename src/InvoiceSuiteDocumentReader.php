@@ -4035,4 +4035,68 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
     }
 
     #endregion
+
+    #region Document Tax
+
+    /**
+     * Go to the first Document Tax Breakdown
+     *
+     * @return boolean
+     */
+    public function firstDocumentTax(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentTax();
+    }
+
+    /**
+     * Go to the next Document Tax Breakdown
+     *
+     * @return boolean
+     */
+    public function nextDocumentTax(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentTax();
+    }
+
+    /**
+     * Get Document Tax Breakdown
+     *
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newBasisAmount Tax base amount
+     * @param float|null $newTaxAmount Tax total amount
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newExemptionReason Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode Reason for tax exemption (Code)
+     * @param DateTimeInterface|null $newTaxDueDate Date on which tax is due
+     * @param string|null $newTaxDueCode Code for the date on which tax is due
+     * @return self
+     */
+    public function getDocumentTax(
+        ?string &$newTaxCategory,
+        ?string &$newTaxType,
+        ?float &$newBasisAmount,
+        ?float &$newTaxAmount,
+        ?float &$newTaxPercent,
+        ?string &$newExemptionReason,
+        ?string &$newExemptionReasonCode,
+        ?DateTimeInterface &$newTaxDueDate,
+        ?string &$newTaxDueCode
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newBasisAmount,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode,
+            $newTaxDueDate,
+            $newTaxDueCode
+        );
+
+        return $this;
+    }
+
+    #endregion
 }

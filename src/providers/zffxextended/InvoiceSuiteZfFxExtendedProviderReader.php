@@ -5949,14 +5949,12 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
 
         $paymentTerms = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? [];
         $paymentTerms = array_filter($paymentTerms, function (TradePaymentTermsType $paymentTerm) {
-            return ($paymentTerm->getDirectDebitMandateIDWithCreate()?->getValue() ?? "") !== "";
+            return ($paymentTerm->getDirectDebitMandateID()?->getValue() ?? "") !== "";
         });
 
         $paymentTerm = reset($paymentTerms);
 
-        if ($paymentTerm !== false) {
-            $newMandate = $paymentTerm->getDirectDebitMandateID()?->getValue() ?? "";
-        }
+        $newMandate = $paymentTerm !== false ? ($paymentTerm->getDirectDebitMandateID()?->getValue() ?? "") : "";
 
         return $this;
     }
@@ -6148,6 +6146,12 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
      * @param float|null $newBasePeriod __BT-X-283, From EXTENDED__ Maturity period (basis)
      * @param string|null $newBasePeriodUnit __BT-X-284, From EXTENDED__ Maturity period (unit)
      * @return self
+     *
+     * @phpstan-param-out float $newBaseAmount
+     * @phpstan-param-out float $newDiscountAmount
+     * @phpstan-param-out float $newDiscountPercent
+     * @phpstan-param-out float $newBasePeriod
+     * @phpstan-param-out string $newBasePeriodUnit
      */
     public function getDocumentPaymentDiscountTermsInLastPaymentTerm(
         ?float &$newBaseAmount,
@@ -6250,6 +6254,12 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
      * @param float|null $newBasePeriod __BT-X-283, From EXTENDED__ Maturity period (basis)
      * @param string|null $newBasePeriodUnit __BT-X-284, From EXTENDED__ Maturity period (unit)
      * @return self
+     *
+     * @phpstan-param-out float $newBaseAmount
+     * @phpstan-param-out float $newPenaltyAmount
+     * @phpstan-param-out float $newPenaltyPercent
+     * @phpstan-param-out float $newBasePeriod
+     * @phpstan-param-out string $newBasePeriodUnit
      */
     public function getDocumentPaymentPenaltyTermsInLastPaymentTerm(
         ?float &$newBaseAmount,
@@ -6288,6 +6298,100 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         );
         $newBasePeriod = $documentPaymentTermsPaymentPenaltyTerm->getBasisPeriodMeasure()?->getValue() ?? 0.0;
         $newBasePeriodUnit = $documentPaymentTermsPaymentPenaltyTerm->getBasisPeriodMeasure()?->getUnitCode() ?? "";
+
+        return $this;
+    }
+
+    #endregion
+
+    #region Document Tax
+
+    /**
+     * Go to the first Document Tax Breakdown
+     *
+     * @return boolean
+     */
+    public function firstDocumentTax(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getApplicableTradeTax() ?? []
+            ),
+            'documenttax'
+        );
+    }
+
+    /**
+     * Go to the next Document Tax Breakdown
+     *
+     * @return boolean
+     */
+    public function nextDocumentTax(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getApplicableTradeTax() ?? []
+            ),
+            'documenttax'
+        );
+    }
+
+    /**
+     * Get Document Tax Breakdown
+     *
+     * @param string|null $newTaxCategory __BT-118, From BASIC WL__ Coded description of the tax category
+     * @param string|null $newTaxType __BT-118-0, From BASIC WL__ Coded description of the tax type
+     * @param float|null $newBasisAmount __BT-116, From BASIC WL__ Tax base amount
+     * @param float|null $newTaxAmount __BT-117, From BASIC WL__ Tax total amount
+     * @param float|null $newTaxPercent __BT-119, From BASIC WL__ Tax Rate (Percentage)
+     * @param string|null $newExemptionReason __BT-120, From BASIC WL__ Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode __BT-121, From BASIC WL__ Reason for tax exemption (Code)
+     * @param DateTimeInterface|null $newTaxDueDate __BT-7-00, From EN 16931__ Date on which tax is due
+     * @param string|null $newTaxDueCode __BT-8, From BASIC WL__ Code for the date on which tax is due
+     * @return self
+     *
+     * @phpstan-param-out string $newTaxCategory
+     * @phpstan-param-out string $newTaxType
+     * @phpstan-param-out float $newBasisAmount
+     * @phpstan-param-out float $newTaxAmount
+     * @phpstan-param-out float $newTaxPercent
+     * @phpstan-param-out string $newExemptionReason
+     * @phpstan-param-out string $newExemptionReasonCode
+     * @phpstan-param-out string $newTaxDueCode
+     */
+    public function getDocumentTax(
+        ?string &$newTaxCategory,
+        ?string &$newTaxType,
+        ?float &$newBasisAmount,
+        ?float &$newTaxAmount,
+        ?float &$newTaxPercent,
+        ?string &$newExemptionReason,
+        ?string &$newExemptionReasonCode,
+        ?DateTimeInterface &$newTaxDueDate,
+        ?string &$newTaxDueCode
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType>
+         */
+        $documentTaxes = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getApplicableTradeTax() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType
+         */
+        $documentTax = $documentTaxes[InvoiceSuitePointerUtils::getValue('documenttax')];
+
+        $newTaxCategory = $documentTax->getCategoryCode()?->getValue() ?? "";
+        $newTaxType = $documentTax->getTypeCode()?->getValue() ?? "";
+        $newBasisAmount = $documentTax->getBasisAmount()?->getValue() ?? 0.0;
+        $newTaxAmount = $documentTax->getCalculatedAmount()?->getValue() ?? 0.0;
+        $newTaxPercent = $documentTax->getRateApplicablePercent()?->getValue() ?? 0.0;
+        $newExemptionReason = $documentTax->getExemptionReason()?->getValue() ?? "";
+        $newExemptionReasonCode = $documentTax->getExemptionReasonCode()?->getValue() ?? "";
+        $newTaxDueDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $documentTax->getTaxPointDate()?->getDateString()?->getValue(),
+            $documentTax->getTaxPointDate()?->getDateString()?->getFormat()
+        );
+        $newTaxDueCode = $documentTax->getDueDateTypeCode()?->getValue() ?? "";
 
         return $this;
     }

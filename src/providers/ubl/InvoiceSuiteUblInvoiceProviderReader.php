@@ -15,6 +15,7 @@ use horstoeko\invoicesuite\models\ubl\cac\PartyIdentification;
 use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
 use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderReader;
+use horstoeko\invoicesuite\contracts\InvoiceSuiteReaderContract;
 
 class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatProviderReader
 {
@@ -4791,7 +4792,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     ): self {
         $newName = "";
 
-        $documentPayeeNames = $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPartyName() ?? [];
+        $documentPayeeNames = $this->getUblInvoiceRootObject()->getPayeeParty()?->getPartyName() ?? [];
         $documentPayeeName = reset($documentPayeeNames);
 
         if ($documentPayeeName === false) {
@@ -4814,7 +4815,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
             array_values(
                 array_filter(
                     InvoiceSuiteArrayUtils::ensure(
-                        $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPartyIdentification() ?? []
+                        $this->getUblInvoiceRootObject()->getPayeeParty()?->getPartyIdentification() ?? []
                     ),
                     fn(PartyIdentificationType $partyIdentification) => ($partyIdentification->getID()?->getSchemeID() ?? "") === ""
                 )
@@ -4884,7 +4885,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
             array_values(
                 array_filter(
                     InvoiceSuiteArrayUtils::ensure(
-                        $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPartyIdentification() ?? []
+                        $this->getUblInvoiceRootObject()->getPayeeParty()?->getPartyIdentification() ?? []
                     ),
                     fn(PartyIdentificationType $partyIdentification) => ($partyIdentification->getID()?->getSchemeID() ?? "") !== ""
                 )
@@ -4956,7 +4957,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     {
         return InvoiceSuitePointerUtils::hasFirst(
             InvoiceSuiteArrayUtils::ensure(
-                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPartyTaxScheme() ?? []
+                $this->getUblInvoiceRootObject()->getPayeeParty()?->getPartyTaxScheme() ?? []
             ),
             'documentpayeetaxregistration'
         );
@@ -4971,7 +4972,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     {
         return InvoiceSuitePointerUtils::hasNext(
             InvoiceSuiteArrayUtils::ensure(
-                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPartyTaxScheme() ?? []
+                $this->getUblInvoiceRootObject()->getPayeeParty()?->getPartyTaxScheme() ?? []
             ),
             'documentpayeetaxregistration'
         );
@@ -4994,7 +4995,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         /**
          * @var array<\horstoeko\invoicesuite\models\ubl\cac\PartyTaxScheme>
          */
-        $documentPayeeTaxRegistrations = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPartyTaxScheme() ?? []);
+        $documentPayeeTaxRegistrations = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getPayeeParty()?->getPartyTaxScheme() ?? []);
 
         /**
          * @var \horstoeko\invoicesuite\models\ubl\cac\PartyTaxScheme
@@ -5016,7 +5017,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     {
         return InvoiceSuitePointerUtils::hasFirst(
             InvoiceSuiteArrayUtils::ensure(
-                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPostalAddress() ?? []
+                $this->getUblInvoiceRootObject()->getPayeeParty()?->getPostalAddress() ?? []
             ),
             'documentpayeeaddress'
         );
@@ -5031,7 +5032,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     {
         return InvoiceSuitePointerUtils::hasNext(
             InvoiceSuiteArrayUtils::ensure(
-                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPostalAddress() ?? []
+                $this->getUblInvoiceRootObject()->getPayeeParty()?->getPostalAddress() ?? []
             ),
             'documentpayeeaddress'
         );
@@ -5069,7 +5070,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         /**
          * @var array<\horstoeko\invoicesuite\models\ubl\cac\PostalAddress>
          */
-        $documentPayeeAddresses = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPostalAddress() ?? []);
+        $documentPayeeAddresses = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getPayeeParty()?->getPostalAddress() ?? []);
 
         /**
          * @var \horstoeko\invoicesuite\models\ubl\cac\PostalAddress
@@ -5096,7 +5097,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     {
         return InvoiceSuitePointerUtils::hasFirst(
             InvoiceSuiteArrayUtils::ensure(
-                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPartyLegalEntity() ?? []
+                $this->getUblInvoiceRootObject()->getPayeeParty()?->getPartyLegalEntity() ?? []
             ),
             'documentpayeelegalorganisation'
         );
@@ -5111,7 +5112,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     {
         return InvoiceSuitePointerUtils::hasNext(
             InvoiceSuiteArrayUtils::ensure(
-                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPartyLegalEntity() ?? []
+                $this->getUblInvoiceRootObject()->getPayeeParty()?->getPartyLegalEntity() ?? []
             ),
             'documentpayeelegalorganisation'
         );
@@ -5137,7 +5138,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         /**
          * @var array<\horstoeko\invoicesuite\models\ubl\cac\PartyLegalEntity>
          */
-        $documentPayeeLegalOrganisations = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPartyLegalEntity() ?? []);
+        $documentPayeeLegalOrganisations = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getPayeeParty()?->getPartyLegalEntity() ?? []);
 
         /**
          * @var \horstoeko\invoicesuite\models\ubl\cac\PartyLegalEntity
@@ -5160,7 +5161,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     {
         return InvoiceSuitePointerUtils::hasFirst(
             InvoiceSuiteArrayUtils::ensure(
-                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getContact() ?? []
+                $this->getUblInvoiceRootObject()->getPayeeParty()?->getContact() ?? []
             ),
             'documentpayeecontact'
         );
@@ -5175,7 +5176,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     {
         return InvoiceSuitePointerUtils::hasNext(
             InvoiceSuiteArrayUtils::ensure(
-                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getContact() ?? []
+                $this->getUblInvoiceRootObject()->getPayeeParty()?->getContact() ?? []
             ),
             'documentpayeecontact'
         );
@@ -5207,7 +5208,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         /**
          * @var array<\horstoeko\invoicesuite\models\ubl\cac\Contact>
          */
-        $documentPayeeContacts = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getContact() ?? []);
+        $documentPayeeContacts = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getPayeeParty()?->getContact() ?? []);
 
         /**
          * @var \horstoeko\invoicesuite\models\ubl\cac\Contact
@@ -5232,7 +5233,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     {
         return InvoiceSuitePointerUtils::hasFirst(
             InvoiceSuiteArrayUtils::ensure(
-                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getEndpointID() ?? []
+                $this->getUblInvoiceRootObject()->getPayeeParty()?->getEndpointID() ?? []
             ),
             'documentpayeeecommunication'
         );
@@ -5247,7 +5248,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     {
         return InvoiceSuitePointerUtils::hasNext(
             InvoiceSuiteArrayUtils::ensure(
-                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getEndpointID() ?? []
+                $this->getUblInvoiceRootObject()->getPayeeParty()?->getEndpointID() ?? []
             ),
             'documentpayeeecommunication'
         );
@@ -5270,7 +5271,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         /**
          * @var array<\horstoeko\invoicesuite\models\ubl\cbc\EndpointID>
          */
-        $documentPayeeElectronicCommunications = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getEndpointID() ?? []);
+        $documentPayeeElectronicCommunications = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getPayeeParty()?->getEndpointID() ?? []);
 
         /**
          * @var \horstoeko\invoicesuite\models\ubl\cbc\EndpointID
@@ -5393,7 +5394,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      */
     private function resolveDocumentPaymentCreditorReferenceIDs(): array
     {
-        $partyIdentifications = $this->getUblInvoiceRootObject()->getAccountingSupplierPartyWithCreate()?->getPartyWithCreate()?->getPartyIdentification();
+        $partyIdentifications = $this->getUblInvoiceRootObject()->getAccountingSupplierParty()?->getPartyWithCreate()?->getPartyIdentification();
 
         return array_values(
             array_filter($partyIdentifications ?? [], function (PartyIdentification $id) {
@@ -5490,6 +5491,8 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      * @param string|null $newDescription Text description of the payment terms
      * @param DateTimeInterface|null $newDueDate Date by which payment is due
      * @return self
+     *
+     * @phpstan-param-out string $newDescription
      */
     public function getDocumentPaymentTerm(
         ?string &$newDescription,
@@ -5544,6 +5547,13 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      * @param float|null $newBasePeriod Maturity period (basis)
      * @param string|null $newBasePeriodUnit Maturity period (unit)
      * @return self
+     *
+     * @phpstan-param-out float $newBaseAmount
+     * @phpstan-param-out float $newDiscountAmount
+     * @phpstan-param-out float $newDiscountPercent
+     * @phpstan-param-out null $newBaseDate
+     * @phpstan-param-out float $newBasePeriod
+     * @phpstan-param-out string $newBasePeriodUnit
      */
     public function getDocumentPaymentDiscountTermsInLastPaymentTerm(
         ?float &$newBaseAmount,
@@ -5593,6 +5603,13 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      * @param float|null $newBasePeriod Maturity period (basis)
      * @param string|null $newBasePeriodUnit Maturity period (unit)
      * @return self
+     *
+     * @phpstan-param-out float $newBaseAmount
+     * @phpstan-param-out float $newPenaltyAmount
+     * @phpstan-param-out float $newPenaltyPercent
+     * @phpstan-param-out null $newBaseDate
+     * @phpstan-param-out float $newBasePeriod
+     * @phpstan-param-out string $newBasePeriodUnit
      */
     public function getDocumentPaymentPenaltyTermsInLastPaymentTerm(
         ?float &$newBaseAmount,
@@ -5608,6 +5625,117 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         $newBaseDate = null;
         $newBasePeriod = 0.0;
         $newBasePeriodUnit = "";
+
+        return $this;
+    }
+
+    #endregion
+
+    #region Document Tax
+
+    /**
+     * Resolve tax total
+     *
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TaxTotal|null
+     */
+    private function resolveTaxTotal()
+    {
+        $taxTotals = $this->getUblInvoiceRootObject()->getTaxTotal();
+        $taxTotal = reset($taxTotals);
+
+        if ($taxTotal === false) {
+            return null;
+        }
+
+        return $taxTotal;
+    }
+
+    /**
+     * Go to the first Document Tax Breakdown
+     *
+     * @return boolean
+     */
+    public function firstDocumentTax(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveTaxTotal()?->getTaxSubtotal() ?? []
+            ),
+            'documenttax'
+        );
+    }
+
+    /**
+     * Go to the next Document Tax Breakdown
+     *
+     * @return boolean
+     */
+    public function nextDocumentTax(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveTaxTotal()?->getTaxSubtotal() ?? []
+            ),
+            'documenttax'
+        );
+    }
+
+    /**
+     * Get Document Tax Breakdown
+     *
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newBasisAmount Tax base amount
+     * @param float|null $newTaxAmount Tax total amount
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newExemptionReason Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode Reason for tax exemption (Code)
+     * @param DateTimeInterface|null $newTaxDueDate Date on which tax is due
+     * @param string|null $newTaxDueCode Code for the date on which tax is due
+     * @return self
+     *
+     * @phpstan-param-out string $newTaxCategory
+     * @phpstan-param-out string $newTaxType
+     * @phpstan-param-out float $newBasisAmount
+     * @phpstan-param-out float $newTaxAmount
+     * @phpstan-param-out float $newTaxPercent
+     * @phpstan-param-out string $newExemptionReason
+     * @phpstan-param-out string $newExemptionReasonCode
+     * @phpstan-param-out string $newTaxDueCode
+     */
+    public function getDocumentTax(
+        ?string &$newTaxCategory,
+        ?string &$newTaxType,
+        ?float &$newBasisAmount,
+        ?float &$newTaxAmount,
+        ?float &$newTaxPercent,
+        ?string &$newExemptionReason,
+        ?string &$newExemptionReasonCode,
+        ?DateTimeInterface &$newTaxDueDate,
+        ?string &$newTaxDueCode
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\TaxSubtotal>
+         */
+        $documentTaxes = InvoiceSuiteArrayUtils::ensure($this->resolveTaxTotal()?->getTaxSubtotal() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\TaxSubtotal
+         */
+        $documentTax = $documentTaxes[InvoiceSuitePointerUtils::getValue('documenttax')];
+
+        $taxExceptionReasons = $documentTax->getTaxCategory()?->getTaxExemptionReason() ?? [];
+        $taxExceptionReason = reset($taxExceptionReasons);
+
+        $newTaxCategory = $documentTax->getTaxCategory()?->getID()?->getValue() ?? "";
+        $newTaxType = $documentTax->getTaxCategory()?->getTaxScheme()?->getID()?->getValue() ?? "";
+        $newBasisAmount = $documentTax->getTaxableAmount()?->getValue() ?? 0.0;
+        $newTaxAmount = $documentTax->getTaxAmount()?->getValue() ?? 0.0;
+        $newTaxPercent = $documentTax->getTaxCategory()?->getPercent()?->getValue() ?? 0.0;
+        $newExemptionReason = $taxExceptionReason !== false ? ($taxExceptionReason->getValue() ?? "") : "";
+        $newExemptionReasonCode = $documentTax->getTaxCategory()?->getTaxExemptionReasonCode()?->getValue() ?? "";
+        $newTaxDueDate = $this->getUblInvoiceRootObject()->getTaxPointDate();
+        $newTaxDueCode = "";
 
         return $this;
     }

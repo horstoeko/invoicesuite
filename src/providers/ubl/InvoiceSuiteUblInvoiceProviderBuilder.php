@@ -5968,7 +5968,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         $taxSubTotal = $this
             ->getUblInvoiceRootObject()
             ->addOnceToTaxTotalWithCreate()
-            ->addOnceToTaxSubtotalWithCreate();
+            ->addToTaxSubtotalWithCreate();
 
         $taxCategory = $taxSubTotal->getTaxCategoryWithCreate();
         $taxCategory->getIDWithCreate()->setValue($newTaxCategory);

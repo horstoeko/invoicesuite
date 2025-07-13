@@ -752,3 +752,25 @@ while ($reader->nextDocumentPaymentTerm()) {
 }
 
 #endregion
+
+#region Document Taxes Output
+
+echo "\n";
+echo "Document Taxes\n";
+echo "\n";
+
+while ($reader->nextDocumentTax()) {
+    $reader->getDocumentTax($taxCategory, $taxType, $taxBasisAmount, $taxAmount, $taxPercent, $taxExcemptionReson, $taxExcemptionResonCode, $taxDueDate, $taxDueCode);
+    echo " - Tax\n";
+    echo sprintf("   Category .............. %s\n", $taxCategory);
+    echo sprintf("   Type .................. %s\n", $taxType);
+    echo sprintf("   Basis Amount .......... %s\n", $taxBasisAmount);
+    echo sprintf("   Tax Amount ............ %s\n", $taxAmount);
+    echo sprintf("   Tax Percent ........... %s\n", $taxPercent);
+    echo sprintf("   Excemption Reason ....  %s\n", $taxExcemptionReson);
+    echo sprintf("   Excemption Reason Code  %s\n", $taxExcemptionResonCode);
+    echo sprintf("   Tax Due Date .........  %s\n", $taxDueDate?->format("d.m.y") ?? "");
+    echo sprintf("   Tax Due Code .........  %s\n", $taxDueCode);
+}
+
+#endregion
