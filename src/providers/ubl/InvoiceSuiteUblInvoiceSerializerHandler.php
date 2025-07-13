@@ -2,15 +2,19 @@
 
 namespace horstoeko\invoicesuite\providers\ubl;
 
+use DOMElement;
+use DOMText;
 use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use JMS\Serializer\GraphNavigator;
-use JMS\Serializer\XmlSerializationVisitor;
 use JMS\Serializer\Handler\SubscribingHandlerInterface;
+use JMS\Serializer\XmlSerializationVisitor;
 
 class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInterface
 {
     /**
-     * @inheritDoc
+     * Get subscribing methods
+     *
+     * @return array<int, array{direction: int, format: string, type: string, method: string}>
      */
     public static function getSubscribingMethods()
     {
@@ -133,7 +137,7 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
      */
-    public function serializeAmountType(XmlSerializationVisitor $visitor, $data)
+    public function serializeAmountType(XmlSerializationVisitor $visitor, $data): DOMText
     {
         $node = $visitor->getDocument()->createTextNode(
             number_format(
@@ -160,7 +164,7 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
      */
-    public function serializeQuantityType(XmlSerializationVisitor $visitor, $data)
+    public function serializeQuantityType(XmlSerializationVisitor $visitor, $data): DOMText
     {
         $node = $visitor->getDocument()->createTextNode(
             number_format(
@@ -187,7 +191,7 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
      */
-    public function serializePercentType(XmlSerializationVisitor $visitor, $data)
+    public function serializePercentType(XmlSerializationVisitor $visitor, $data): DOMText
     {
         return $visitor->getDocument()->createTextNode(
             number_format(
@@ -206,7 +210,7 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
      */
-    public function serializeMeasureType(XmlSerializationVisitor $visitor, $data)
+    public function serializeMeasureType(XmlSerializationVisitor $visitor, $data): DOMText
     {
         $node = $visitor->getDocument()->createTextNode(
             number_format(
@@ -234,7 +238,7 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
      */
-    public function serializeIndicatorType(XmlSerializationVisitor $visitor, $data)
+    public function serializeIndicatorType(XmlSerializationVisitor $visitor, $data): DOMElement
     {
         return $visitor->getDocument()->createElement('udt:Indicator', $data->getIndicator() == false ? 'false' : 'true');
     }
