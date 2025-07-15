@@ -6754,9 +6754,9 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     /**
      * Get text information from latest position
      *
-     * @param string|null $newContent Text that contains unstructured information that is relevant to the invoice item
-     * @param string|null $newContentCode Code to classify the content of the free text of the invoice
-     * @param string|null $newSubjectCode Code for qualifying the free text for the invoice item
+     * @param string|null $newContent __BT-127, From BASIC__ Text that contains unstructured information that is relevant to the invoice item
+     * @param string|null $newContentCode __BT-X-9, From EXTENDED__ Code to classify the content of the free text of the invoice
+     * @param string|null $newSubjectCode __BT-X-10, From EXTENDED__ Code for qualifying the free text for the invoice item
      * @return self
      *
      * @phpstan-param-out string $newContent
@@ -6781,6 +6781,85 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         $newContent = $documentPositionNote->getContent()?->getValue() ?? "";
         $newContentCode = $documentPositionNote->getContentCode()?->getValue() ?? "";
         $newSubjectCode = $documentPositionNote->getSubjectCode()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Get product details from latest position
+     *
+     * @param string|null $newProductId __BT-X-305, From EXTENDED__ ID of the product (product id, Order-X interoperable)
+     * @param string|null $newProductName __BT-153, From BASIC__ Name of the product (product name)
+     * @param string|null $newProductDescription __BT-154, From EN 16931__ Product description of the item, the item description makes it possible to describe the item
+     * @param string|null $newProductSellerId __BT-155, From EN 16931__ Identifier assigned to the product by the seller
+     * @param string|null $newProductBuyerId __BT-156, From EN 16931__ Identifier assigned to the product by the buyer
+     * @param string|null $newProductGlobalId __BT-157, From BASIC__ Product global id
+     * @param string|null $newProductGlobalIdType __BT-157-1, From BASIC__ Type of the product global id
+     * @param string|null $newProductIndustryId __BT-X-309, From EXTENDED__ Id assigned by the industry
+     * @param string|null $newProductModelId __BT-X-533, From EXTENDED__ Unique model identifier of the product
+     * @param string|null $newProductBatchId __BT-X-534. From EXTENDED__ Batch (lot) identifier of the product
+     * @param string|null $newProductBrandName __BT-X-535. From EXTENDED__ Brand name of the product
+     * @param string|null $newProductModelName __BT-X-536. From EXTENDED__ Model name of the product
+     * @param string|null $newProductOriginTradeCountry __BT-159, From EN 16931__ Code indicating the country the goods came from
+     * @return self
+     *
+     * @phpstan-param-out string $newProductId
+     * @phpstan-param-out string $newProductName
+     * @phpstan-param-out string $newProductDescription
+     * @phpstan-param-out string $newProductSellerId
+     * @phpstan-param-out string $newProductBuyerId
+     * @phpstan-param-out string $newProductGlobalId
+     * @phpstan-param-out string $newProductGlobalIdType
+     * @phpstan-param-out string $newProductIndustryId
+     * @phpstan-param-out string $newProductModelId
+     * @phpstan-param-out string $newProductBatchId
+     * @phpstan-param-out string $newProductBrandName
+     * @phpstan-param-out string $newProductModelName
+     * @phpstan-param-out string $newProductOriginTradeCountry
+     */
+    public function getDocumentPositionProductDetails(
+        ?string &$newProductId,
+        ?string &$newProductName,
+        ?string &$newProductDescription,
+        ?string &$newProductSellerId,
+        ?string &$newProductBuyerId,
+        ?string &$newProductGlobalId,
+        ?string &$newProductGlobalIdType,
+        ?string &$newProductIndustryId,
+        ?string &$newProductModelId,
+        ?string &$newProductBatchId,
+        ?string &$newProductBrandName,
+        ?string &$newProductModelName,
+        ?string &$newProductOriginTradeCountry
+    ): self {
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradeProductType
+         */
+        $documentPositionProduct = $this->resolveCurrentDocumentPosition()->getSpecifiedTradeProduct();
+
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\udt\IDType>
+         */
+        $documentPositionProductBatchIds = $documentPositionProduct?->getBatchID() ?? [];
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+         */
+        $documentPositionProductBatchId = reset($documentPositionProductBatchIds);
+
+        $newProductId = $documentPositionProduct?->getID()?->getValue() ?? "";
+        $newProductName = $documentPositionProduct?->getName()?->getValue() ?? "";
+        $newProductDescription = $documentPositionProduct?->getDescription()?->getValue() ?? "";
+        $newProductSellerId = $documentPositionProduct?->getSellerAssignedID()?->getValue() ?? "";
+        $newProductBuyerId = $documentPositionProduct?->getBuyerAssignedID()?->getValue() ?? "";
+        $newProductGlobalId = $documentPositionProduct?->getGlobalID()?->getValue() ?? "";
+        $newProductGlobalIdType = $documentPositionProduct?->getGlobalID()?->getSchemeID() ?? "";
+        $newProductIndustryId = $documentPositionProduct?->getIndustryAssignedID()?->getValue() ?? "";
+        $newProductModelId = $documentPositionProduct?->getModelID()?->getValue() ?? "";
+        $newProductBatchId = $documentPositionProductBatchId !== false ? ($documentPositionProductBatchId?->getValue() ?? "") : "";
+        $newProductBrandName = $documentPositionProduct?->getBrandName()?->getValue() ?? "";
+        $newProductModelName = $documentPositionProduct?->getModelName()?->getValue() ?? "";
+        $newProductOriginTradeCountry = $documentPositionProduct?->getOriginTradeCountry()?->getID()?->getValue();
 
         return $this;
     }

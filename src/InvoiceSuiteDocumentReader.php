@@ -4343,5 +4343,57 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         return $this;
     }
 
+    /**
+     * Get product details from latest position
+     *
+     * @param string|null $newProductId ID of the product (product id, Order-X interoperable)
+     * @param string|null $newProductName Name of the product (product name)
+     * @param string|null $newProductDescription Product description of the item, the item description makes it possible to describe the item
+     * @param string|null $newProductSellerId Identifier assigned to the product by the seller
+     * @param string|null $newProductBuyerId Identifier assigned to the product by the buyer
+     * @param string|null $newProductGlobalId Product global id
+     * @param string|null $newProductGlobalIdType Type of the product global id
+     * @param string|null $newProductIndustryId Id assigned by the industry
+     * @param string|null $newProductModelId Unique model identifier of the product
+     * @param string|null $newProductBatchId Batch (lot) identifier of the product
+     * @param string|null $newProductBrandName Brand name of the product
+     * @param string|null $newProductModelName Model name of the product
+     * @param string|null $newProductOriginTradeCountry Code indicating the country the goods came from
+     * @return self
+     */
+    public function getDocumentPositionProductDetails(
+        ?string &$newProductId,
+        ?string &$newProductName,
+        ?string &$newProductDescription,
+        ?string &$newProductSellerId,
+        ?string &$newProductBuyerId,
+        ?string &$newProductGlobalId,
+        ?string &$newProductGlobalIdType,
+        ?string &$newProductIndustryId,
+        ?string &$newProductModelId,
+        ?string &$newProductBatchId,
+        ?string &$newProductBrandName,
+        ?string &$newProductModelName,
+        ?string &$newProductOriginTradeCountry
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionProductDetails(
+            $newProductId,
+            $newProductName,
+            $newProductDescription,
+            $newProductSellerId,
+            $newProductBuyerId,
+            $newProductGlobalId,
+            $newProductGlobalIdType,
+            $newProductIndustryId,
+            $newProductModelId,
+            $newProductBatchId,
+            $newProductBrandName,
+            $newProductModelName,
+            $newProductOriginTradeCountry
+        );
+
+        return $this;
+    }
+
     #endregion
 }

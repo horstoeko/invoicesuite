@@ -873,6 +873,36 @@ while ($reader->nextDocumentPosition()) {
         $reader->getDocumentPositionNote($positionNoteContent, $positionNoteContentCode, $positionNoteSubjectCode);
         echo sprintf(" - Note: %s (%s, %s)\n", $positionNoteContent, $positionNoteContentCode, $positionNoteSubjectCode);
     }
+
+    $reader->getDocumentPositionProductDetails(
+        $positionProductId,
+        $positionProductName,
+        $positionProductDescription,
+        $positionProductSellerId,
+        $positionProductBuyerId,
+        $positionProductGlobalId,
+        $positionProductGlobalIdType,
+        $positionProductIndustryId,
+        $positionProductModelId,
+        $positionProductBatchId,
+        $positionProductBrandName,
+        $positionProductModelName,
+        $positionProductOriginTradeCountry
+    );
+
+    echo " - Product:\n";
+    echo sprintf("   Product ID .............. %s\n", $positionProductId);
+    echo sprintf("   Product Name ............ %s\n", $positionProductName);
+    echo sprintf("   Product Description ..... %s\n", $positionProductDescription);
+    echo sprintf("   Product Seller ID ....... %s\n", $positionProductSellerId);
+    echo sprintf("   Product Buyer ID ........ %s\n", $positionProductBuyerId);
+    echo sprintf("   Product Global ID ....... %s (%s)\n", $positionProductGlobalId, $positionProductGlobalIdType);
+    echo sprintf("   Product Industy ID ...... %s\n", $positionProductIndustryId);
+    echo sprintf("   Product Model ID ........ %s\n", $positionProductModelId);
+    echo sprintf("   Product Batch ID ........ %s\n", $positionProductBatchId);
+    echo sprintf("   Product Brandname ....... %s\n", $positionProductBrandName);
+    echo sprintf("   Product Modelname ....... %s\n", $positionProductModelName);
+    echo sprintf("   Product Country ......... %s\n", $positionProductOriginTradeCountry);
 }
 
 #endregion
