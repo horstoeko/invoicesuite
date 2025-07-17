@@ -1073,6 +1073,21 @@ while ($reader->nextDocumentPosition()) {
         echo sprintf("      Line ID ............... %s\n", $positionDespatchAdviceReferenceLineId);
         echo sprintf("      Date .................. %s\n", $positionDespatchAdviceReferenceDate?->format("d.m.Y") ?? "");
     }
+
+    echo " - ReceivingAdvice Line References:\n";
+
+    while ($reader->nextDocumentPositionReceivingAdviceReference()) {
+        $reader->getDocumentPositionReceivingAdviceReference(
+            $positionReceivingAdviceReferenceId,
+            $positionReceivingAdviceReferenceLineId,
+            $positionReceivingAdviceReferenceDate
+        );
+
+        echo "    - ReceivingAdvice Line Referencet:\n";
+        echo sprintf("      ID .................... %s\n", $positionReceivingAdviceReferenceId);
+        echo sprintf("      Line ID ............... %s\n", $positionReceivingAdviceReferenceLineId);
+        echo sprintf("      Date .................. %s\n", $positionReceivingAdviceReferenceDate?->format("d.m.Y") ?? "");
+    }
 }
 
 #endregion

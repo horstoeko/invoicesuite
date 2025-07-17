@@ -3695,7 +3695,7 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
-     * Set an additional despatch advice reference
+     * Set an additional receiving advice reference
      *
      * @param string|null $newReferenceNumber Receipt notification number
      * @param string|null $newReferenceLineNumber Receipt notification line number
@@ -3709,7 +3709,7 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
-     * Add an additional despatch advice reference
+     * Add an additional receiving advice reference
      *
      * @param string|null $newReferenceNumber Receipt notification number
      * @param string|null $newReferenceLineNumber Receipt notification line number

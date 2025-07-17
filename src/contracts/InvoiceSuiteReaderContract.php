@@ -3362,5 +3362,33 @@ interface InvoiceSuiteReaderContract
         ?DateTimeInterface &$newReferenceDate
     ): self;
 
+    /**
+     * Go to the first additional receiving advice reference (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionReceivingAdviceReference(): bool;
+
+    /**
+     * Go to the next additional receiving advice reference (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionReceivingAdviceReference(): bool;
+
+    /**
+     * Get an additional receiving advice reference (line reference) from latest position
+     *
+     * @param string|null $newReferenceNumber Receipt notification number
+     * @param string|null $newReferenceLineNumber Receipt notification line number
+     * @param DateTimeInterface|null $newReferenceDate Receipt notification date
+     * @return self
+     */
+    public function getDocumentPositionReceivingAdviceReference(
+        ?string &$newReferenceNumber,
+        ?string &$newReferenceLineNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self;
+
     #endregion
 }
