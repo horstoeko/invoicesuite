@@ -3086,5 +3086,35 @@ interface InvoiceSuiteReaderContract
         ?string &$newProductCharacteristicMeasureUnit
     ): self;
 
+    /**
+     * Go to the first product classification from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionProductClassification(): bool;
+
+    /**
+     * Go to the next product classification from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionProductClassification(): bool;
+
+    /**
+     * Get product classification from latest position
+     *
+     * @param string|null $newProductClassificationCode Classification identifier
+     * @param string|null $newProductClassificationListId Identifier for the identification scheme of the item classification
+     * @param string|null $newProductClassificationListVersionId Version of the identification scheme
+     * @param string|null $newProductClassificationCodeClassname Name with which an article can be classified according to type or quality
+     * @return self
+     */
+    public function getDocumentPositionProductClassification(
+        ?string &$newProductClassificationCode,
+        ?string &$newProductClassificationListId,
+        ?string &$newProductClassificationListVersionId,
+        ?string &$newProductClassificationCodeClassname
+    ): self;
+
     #endregion
 }

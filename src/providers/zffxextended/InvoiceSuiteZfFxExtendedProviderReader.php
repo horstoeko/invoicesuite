@@ -6694,6 +6694,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     {
         InvoiceSuitePointerUtils::resetSingle('documentpositionnote');
         InvoiceSuitePointerUtils::resetSingle('documentpositionproductcharacteristic');
+        InvoiceSuitePointerUtils::resetSingle('documentpositionproductclassification');
     }
 
     /**
@@ -6929,6 +6930,70 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         $newProductCharacteristicType = $documentPositionProductCharacteristic->getTypeCode()?->getValue() ?? "";
         $newProductCharacteristicMeasureValue = $documentPositionProductCharacteristic->getValueMeasure()?->getValue() ?? 0.0;
         $newProductCharacteristicMeasureUnit = $documentPositionProductCharacteristic->getValueMeasure()?->getUnitCode() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first product classification from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionProductClassification(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedTradeProduct()?->getDesignatedProductClassification() ?? []),
+            'documentpositionproductclassification'
+        );
+    }
+
+    /**
+     * Go to the next product classification from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionProductClassification(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedTradeProduct()?->getDesignatedProductClassification() ?? []),
+            'documentpositionproductclassification'
+        );
+    }
+
+    /**
+     * Get product classification from latest position
+     *
+     * @param string|null $newProductClassificationCode Classification identifier
+     * @param string|null $newProductClassificationListId Identifier for the identification scheme of the item classification
+     * @param string|null $newProductClassificationListVersionId Version of the identification scheme
+     * @param string|null $newProductClassificationCodeClassname Name with which an article can be classified according to type or quality
+     * @return self
+     *
+     * @phpstan-param-out string $newProductClassificationCode
+     * @phpstan-param-out string $newProductClassificationListId
+     * @phpstan-param-out string $newProductClassificationListVersionId
+     * @phpstan-param-out string $newProductClassificationCodeClassname
+     */
+    public function getDocumentPositionProductClassification(
+        ?string &$newProductClassificationCode,
+        ?string &$newProductClassificationListId,
+        ?string &$newProductClassificationListVersionId,
+        ?string &$newProductClassificationCodeClassname
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ProductClassificationType>
+         */
+        $documentPositionProductClassifications = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedTradeProduct()?->getDesignatedProductClassification() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\ProductClassificationType
+         */
+        $documentPositionProductClassification = $documentPositionProductClassifications[InvoiceSuitePointerUtils::getValue('documentpositionproductclassification')];
+
+        $newProductClassificationCode = $documentPositionProductClassification->getClassCode()?->getValue() ?? "";
+        $newProductClassificationListId = $documentPositionProductClassification->getClassCode()?->getListID() ?? "";
+        $newProductClassificationListVersionId = $documentPositionProductClassification->getClassCode()?->getListVersionID() ?? "";
+        $newProductClassificationCodeClassname = $documentPositionProductClassification->getClassName()?->getValue() ?? "";
 
         return $this;
     }

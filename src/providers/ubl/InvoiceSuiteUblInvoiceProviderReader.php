@@ -6257,5 +6257,69 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         return $this;
     }
 
+    /**
+     * Go to the first product classification from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionProductClassification(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getItem()?->getCommodityClassification() ?? []),
+            'documentpositionproductclassification'
+        );
+    }
+
+    /**
+     * Go to the next product classification from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionProductClassification(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getItem()?->getCommodityClassification() ?? []),
+            'documentpositionproductclassification'
+        );
+    }
+
+    /**
+     * Get product classification from latest position
+     *
+     * @param string|null $newProductClassificationCode Classification identifier
+     * @param string|null $newProductClassificationListId Identifier for the identification scheme of the item classification
+     * @param string|null $newProductClassificationListVersionId Version of the identification scheme
+     * @param string|null $newProductClassificationCodeClassname Name with which an article can be classified according to type or quality
+     * @return self
+     *
+     * @phpstan-param-out string $newProductClassificationCode
+     * @phpstan-param-out string $newProductClassificationListId
+     * @phpstan-param-out string $newProductClassificationListVersionId
+     * @phpstan-param-out string $newProductClassificationCodeClassname
+     */
+    public function getDocumentPositionProductClassification(
+        ?string &$newProductClassificationCode,
+        ?string &$newProductClassificationListId,
+        ?string &$newProductClassificationListVersionId,
+        ?string &$newProductClassificationCodeClassname
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\CommodityClassification>
+         */
+        $documentPositionProductClassifications = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getItem()?->getCommodityClassification() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\CommodityClassification
+         */
+        $documentPositionProductClassification = $$documentPositionProductClassifications[InvoiceSuitePointerUtils::getValue('documentpositionproductclassification')];
+
+        $newProductClassificationCode = $documentPositionProductClassification->getItemClassificationCode()?->getValue() ?? "";
+        $newProductClassificationListId = $documentPositionProductClassification->getItemClassificationCode()?->getListID() ?? "";
+        $newProductClassificationListVersionId = $documentPositionProductClassification->getItemClassificationCode()?->getListVersionID() ?? "";
+        $newProductClassificationCodeClassname = "";
+
+        return $this;
+    }
+
     #endregion
 }

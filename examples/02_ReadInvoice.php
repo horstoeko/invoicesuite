@@ -920,6 +920,22 @@ while ($reader->nextDocumentPosition()) {
         echo sprintf("      Type Code ............. %s\n", $positionProductCharacteristicType);
         echo sprintf("      Quantity ....-......... %s %s\n", $positionProductCharacteristicQtyValue, $positionProductCharacteristicQtyValueUnit);
     }
+
+    echo " - Product Classifications:\n";
+
+    while ($reader->nextDocumentPositionProductClassification()) {
+        $reader->getDocumentPositionProductClassification(
+            $positionProductClassificationCode,
+            $positionProductClassificationListId,
+            $positionProductClassificationListVersionId,
+            $positionProductClassificationClassname,
+        );
+        echo "    - Product Characteristic:\n";
+        echo sprintf("      Code .................. %s\n", $positionProductClassificationCode);
+        echo sprintf("      List ID ............... %s\n", $positionProductClassificationListId);
+        echo sprintf("      List Version ID ....... %s\n", $positionProductClassificationListVersionId);
+        echo sprintf("      Classname ............. %s\n", $positionProductClassificationClassname);
+    }
 }
 
 #endregion
