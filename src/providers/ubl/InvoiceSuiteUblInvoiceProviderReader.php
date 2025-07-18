@@ -6029,6 +6029,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         InvoiceSuitePointerUtils::resetSingle('documentpositionreceivingadvicereference');
         InvoiceSuitePointerUtils::resetSingle('documentpositiondeliverynotereference');
         InvoiceSuitePointerUtils::resetSingle('documentpositioninvoicereference');
+        InvoiceSuitePointerUtils::resetSingle('documentpositiongrosspriceallowancecharge');
     }
 
     /**
@@ -6900,6 +6901,62 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         $newGrossPrice = 0.0;
         $newGrossPriceBasisQuantity = 0.0;
         $newGrossPriceBasisQuantityUnit = "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first discount or charge from the gross price from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionGrossPriceAllowanceCharge(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next discount or charge from the gross price from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionGrossPriceAllowanceCharge(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get discount or charge from the gross price from latest position
+     *
+     * @param null|float $newGrossPriceAllowanceChargeAmount Discount amount or charge amount on the item price
+     * @param null|bool $newIsCharge Switch for charge/discount
+     * @param null|float $newGrossPriceAllowanceChargePercent Discount or charge on the item price in percent
+     * @param null|float $newGrossPriceAllowanceChargeBasisAmount Base amount of the discount or charge
+     * @param null|string $newGrossPriceAllowanceChargeReason Reason for discount or charge (free text)
+     * @param null|string $newGrossPriceAllowanceChargeReasonCode Reason code for discount or charge (free text)
+     * @return self
+     *
+     * @phpstan-param-out float $newGrossPriceAllowanceChargeAmount
+     * @phpstan-param-out bool $newIsCharge
+     * @phpstan-param-out float $newGrossPriceAllowanceChargePercent
+     * @phpstan-param-out float $newGrossPriceAllowanceChargeBasisAmount
+     * @phpstan-param-out string $newGrossPriceAllowanceChargeReason
+     * @phpstan-param-out string $newGrossPriceAllowanceChargeReasonCode
+     */
+    public function getDocumentPositionGrossPriceAllowanceCharge(
+        ?float &$newGrossPriceAllowanceChargeAmount,
+        ?bool &$newIsCharge,
+        ?float &$newGrossPriceAllowanceChargePercent,
+        ?float &$newGrossPriceAllowanceChargeBasisAmount,
+        ?string &$newGrossPriceAllowanceChargeReason,
+        ?string &$newGrossPriceAllowanceChargeReasonCode
+    ): self {
+        $newGrossPriceAllowanceChargeAmount = 0.0;
+        $newIsCharge = false;
+        $newGrossPriceAllowanceChargePercent = 0.0;
+        $newGrossPriceAllowanceChargeBasisAmount = 0.0;
+        $newGrossPriceAllowanceChargeReason = "";
+        $newGrossPriceAllowanceChargeReasonCode = "";
 
         return $this;
     }

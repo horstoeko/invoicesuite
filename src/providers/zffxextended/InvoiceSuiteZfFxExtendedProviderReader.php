@@ -6707,6 +6707,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         InvoiceSuitePointerUtils::resetSingle('documentpositionreceivingadvicereference');
         InvoiceSuitePointerUtils::resetSingle('documentpositiondeliverynotereference');
         InvoiceSuitePointerUtils::resetSingle('documentpositioninvoicereference');
+        InvoiceSuitePointerUtils::resetSingle('documentpositiongrosspriceallowancecharge');
     }
 
     /**
@@ -7791,6 +7792,78 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         $newGrossPrice = $documentPosition->getSpecifiedLineTradeAgreement()?->getGrossPriceProductTradePrice()?->getChargeAmount()?->getValue() ?? 0.0;
         $newGrossPriceBasisQuantity = $documentPosition->getSpecifiedLineTradeAgreement()?->getGrossPriceProductTradePrice()?->getBasisQuantity()?->getValue() ?? 0.0;
         $newGrossPriceBasisQuantityUnit = $documentPosition->getSpecifiedLineTradeAgreement()?->getGrossPriceProductTradePrice()?->getBasisQuantity()?->getUnitCode() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first discount or charge from the gross price from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionGrossPriceAllowanceCharge(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeAgreement()?->getGrossPriceProductTradePrice()?->getAppliedTradeAllowanceCharge() ?? []),
+            'documentpositiongrosspriceallowancecharge'
+        );
+    }
+
+    /**
+     * Go to the next discount or charge from the gross price from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionGrossPriceAllowanceCharge(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeAgreement()?->getGrossPriceProductTradePrice()?->getAppliedTradeAllowanceCharge() ?? []),
+            'documentpositiongrosspriceallowancecharge'
+        );
+    }
+
+    /**
+     * Get discount or charge from the gross price from latest position
+     *
+     * @param null|float $newGrossPriceAllowanceChargeAmount __BT-147, From BASIC__ Discount amount or charge amount on the item price
+     * @param null|bool $newIsCharge __BT-147-02, From BASIC__ Switch for charge/discount
+     * @param null|float $newGrossPriceAllowanceChargePercent __BT-X-34, From EXTENDED__ Discount or charge on the item price in percent
+     * @param null|float $newGrossPriceAllowanceChargeBasisAmount __BT-X-35, From EXTENDED__ Base amount of the discount or charge
+     * @param null|string $newGrossPriceAllowanceChargeReason __BT-X-36, From EXTENDED__ Reason for discount or charge (free text)
+     * @param null|string $newGrossPriceAllowanceChargeReasonCode __BT-X-313, From EXTENDED__ Reason code for discount or charge (free text)
+     * @return self
+     *
+     * @phpstan-param-out float $newGrossPriceAllowanceChargeAmount
+     * @phpstan-param-out bool $newIsCharge
+     * @phpstan-param-out float $newGrossPriceAllowanceChargePercent
+     * @phpstan-param-out float $newGrossPriceAllowanceChargeBasisAmount
+     * @phpstan-param-out string $newGrossPriceAllowanceChargeReason
+     * @phpstan-param-out string $newGrossPriceAllowanceChargeReasonCode
+     */
+    public function getDocumentPositionGrossPriceAllowanceCharge(
+        ?float &$newGrossPriceAllowanceChargeAmount,
+        ?bool &$newIsCharge,
+        ?float &$newGrossPriceAllowanceChargePercent,
+        ?float &$newGrossPriceAllowanceChargeBasisAmount,
+        ?string &$newGrossPriceAllowanceChargeReason,
+        ?string &$newGrossPriceAllowanceChargeReasonCode
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeAllowanceChargeType>
+         */
+        $positionGrossPriceAllowanceCharges = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeAgreement()?->getGrossPriceProductTradePrice()?->getAppliedTradeAllowanceCharge() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradeAllowanceChargeType
+         */
+        $positionGrossPriceAllowanceCharge = $positionGrossPriceAllowanceCharges[InvoiceSuitePointerUtils::getValue('documentpositiongrosspriceallowancecharge')];
+
+        $newGrossPriceAllowanceChargeAmount = $positionGrossPriceAllowanceCharge->getActualAmount()?->getValue() ?? 0.0;
+        $newIsCharge = $positionGrossPriceAllowanceCharge->getChargeIndicator()?->getIndicator() ?? false;
+        $newGrossPriceAllowanceChargePercent = $positionGrossPriceAllowanceCharge->getCalculationPercent()?->getValue() ?? 0.0;
+        $newGrossPriceAllowanceChargeBasisAmount = $positionGrossPriceAllowanceCharge->getBasisAmount()?->getValue() ?? 0.0;
+        $newGrossPriceAllowanceChargeReason = $positionGrossPriceAllowanceCharge->getReason()?->getValue() ?? "";
+        $newGrossPriceAllowanceChargeReasonCode = $positionGrossPriceAllowanceCharge->getReasonCode()?->getValue() ?? "";
 
         return $this;
     }

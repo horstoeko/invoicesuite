@@ -5008,5 +5008,56 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         return $this;
     }
 
+    /**
+     * Go to the first discount or charge from the gross price from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionGrossPriceAllowanceCharge(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionGrossPriceAllowanceCharge();
+    }
+
+    /**
+     * Go to the next discount or charge from the gross price from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionGrossPriceAllowanceCharge(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionGrossPriceAllowanceCharge();
+    }
+
+    /**
+     * Get discount or charge from the gross price from latest position
+     *
+     * @param null|float $newGrossPriceAllowanceChargeAmount Discount amount or charge amount on the item price
+     * @param null|bool $newIsCharge Switch for charge/discount
+     * @param null|float $newGrossPriceAllowanceChargePercent Discount or charge on the item price in percent
+     * @param null|float $newGrossPriceAllowanceChargeBasisAmount Base amount of the discount or charge
+     * @param null|string $newGrossPriceAllowanceChargeReason Reason for discount or charge (free text)
+     * @param null|string $newGrossPriceAllowanceChargeReasonCode Reason code for discount or charge (free text)
+     * @return self
+     */
+    public function getDocumentPositionGrossPriceAllowanceCharge(
+        ?float &$newGrossPriceAllowanceChargeAmount,
+        ?bool &$newIsCharge,
+        ?float &$newGrossPriceAllowanceChargePercent,
+        ?float &$newGrossPriceAllowanceChargeBasisAmount,
+        ?string &$newGrossPriceAllowanceChargeReason,
+        ?string &$newGrossPriceAllowanceChargeReasonCode
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionGrossPriceAllowanceCharge(
+            $newGrossPriceAllowanceChargeAmount,
+            $newIsCharge,
+            $newGrossPriceAllowanceChargePercent,
+            $newGrossPriceAllowanceChargeBasisAmount,
+            $newGrossPriceAllowanceChargeReason,
+            $newGrossPriceAllowanceChargeReasonCode
+        );
+
+        return $this;
+    }
+
     #endregion
 }
