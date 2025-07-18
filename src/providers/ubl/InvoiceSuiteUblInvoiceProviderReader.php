@@ -7023,5 +7023,43 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         return $this;
     }
 
+    /**
+     * Get the position's quantities from latest position
+     *
+     * @param null|float $newQuantity Invoiced quantity
+     * @param null|string $newQuantityUnit Invoiced quantity unit
+     * @param null|float $newChargeFreeQuantity Charge Free quantity
+     * @param null|string $newChargeFreeQuantityUnit Charge Free quantity unit
+     * @param null|float $newPackageQuantity Package quantity
+     * @param null|string $newPackageQuantityUnit Package quantity unit
+     * @return self
+     *
+     * @phpstan-param-out string $newQuantity
+     * @phpstan-param-out float $newQuantityUnit
+     * @phpstan-param-out string $newChargeFreeQuantity
+     * @phpstan-param-out float $newChargeFreeQuantityUnit
+     * @phpstan-param-out string $newPackageQuantity
+     * @phpstan-param-out float $newPackageQuantityUnit
+     */
+    public function getDocumentPositionQuantities(
+        ?float &$newQuantity,
+        ?string &$newQuantityUnit,
+        ?float &$newChargeFreeQuantity,
+        ?string &$newChargeFreeQuantityUnit,
+        ?float &$newPackageQuantity,
+        ?string &$newPackageQuantityUnit
+    ): self {
+        $documentPosition = $this->resolveCurrentDocumentPosition();
+
+        $newQuantity = $documentPosition->getInvoicedQuantity()?->getValue() ?? 0.0;
+        $newQuantityUnit = $documentPosition->getInvoicedQuantity()?->getUnitCode() ?? "";
+        $newChargeFreeQuantity = 0.0;
+        $newChargeFreeQuantityUnit = "";
+        $newPackageQuantity = 0.0;
+        $newPackageQuantityUnit = "";
+
+        return $this;
+    }
+
     #endregion
 }

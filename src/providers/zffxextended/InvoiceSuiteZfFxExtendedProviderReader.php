@@ -7930,5 +7930,43 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         return $this;
     }
 
+    /**
+     * Get the position's quantities from latest position
+     *
+     * @param null|float $newQuantity __BT-129, From BASIC__ Invoiced quantity
+     * @param null|string $newQuantityUnit __BT-130, From BASIC__ Invoiced quantity unit
+     * @param null|float $newChargeFreeQuantity __BT-X-46, From EXTENDED__ Charge Free quantity
+     * @param null|string $newChargeFreeQuantityUnit __BT-X-46-0, From EXTENDED__ Charge Free quantity unit
+     * @param null|float $newPackageQuantity __BT-X-47, From EXTENDED__ Package quantity
+     * @param null|string $newPackageQuantityUnit __BT-X-47-0, From EXTENDED__ Package quantity unit
+     * @return self
+     *
+     * @phpstan-param-out string $newQuantity
+     * @phpstan-param-out float $newQuantityUnit
+     * @phpstan-param-out string $newChargeFreeQuantity
+     * @phpstan-param-out float $newChargeFreeQuantityUnit
+     * @phpstan-param-out string $newPackageQuantity
+     * @phpstan-param-out float $newPackageQuantityUnit
+     */
+    public function getDocumentPositionQuantities(
+        ?float &$newQuantity,
+        ?string &$newQuantityUnit,
+        ?float &$newChargeFreeQuantity,
+        ?string &$newChargeFreeQuantityUnit,
+        ?float &$newPackageQuantity,
+        ?string &$newPackageQuantityUnit
+    ): self {
+        $documentPosition = $this->resolveCurrentDocumentPosition();
+
+        $newQuantity = $documentPosition->getSpecifiedLineTradeDelivery()?->getBilledQuantity()?->getValue() ?? 0.0;
+        $newQuantityUnit = $documentPosition->getSpecifiedLineTradeDelivery()?->getBilledQuantity()?->getUnitCode() ?? "";
+        $newChargeFreeQuantity = $documentPosition->getSpecifiedLineTradeDelivery()?->getChargeFreeQuantity()?->getValue() ?? 0.0;
+        $newChargeFreeQuantityUnit = $documentPosition->getSpecifiedLineTradeDelivery()?->getChargeFreeQuantity()?->getUnitCode() ?? "";
+        $newPackageQuantity = $documentPosition->getSpecifiedLineTradeDelivery()?->getPackageQuantity()?->getValue() ?? 0.0;
+        $newPackageQuantityUnit = $documentPosition->getSpecifiedLineTradeDelivery()?->getPackageQuantity()?->getUnitCode() ?? "";
+
+        return $this;
+    }
+
     #endregion
 }

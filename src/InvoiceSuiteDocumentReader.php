@@ -5112,5 +5112,36 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         return $this;
     }
 
+    /**
+     * Get the position's quantities from latest position
+     *
+     * @param null|float $newQuantity Invoiced quantity
+     * @param null|string $newQuantityUnit Invoiced quantity unit
+     * @param null|float $newChargeFreeQuantity Charge Free quantity
+     * @param null|string $newChargeFreeQuantityUnit Charge Free quantity unit
+     * @param null|float $newPackageQuantity Package quantity
+     * @param null|string $newPackageQuantityUnit Package quantity unit
+     * @return self
+     */
+    public function getDocumentPositionQuantities(
+        ?float &$newQuantity,
+        ?string &$newQuantityUnit,
+        ?float &$newChargeFreeQuantity,
+        ?string &$newChargeFreeQuantityUnit,
+        ?float &$newPackageQuantity,
+        ?string &$newPackageQuantityUnit
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionQuantities(
+            $newQuantity,
+            $newQuantityUnit,
+            $newChargeFreeQuantity,
+            $newChargeFreeQuantityUnit,
+            $newPackageQuantity,
+            $newPackageQuantityUnit
+        );
+
+        return $this;
+    }
+
     #endregion
 }
