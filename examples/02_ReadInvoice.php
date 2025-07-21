@@ -1187,6 +1187,57 @@ while ($reader->nextDocumentPosition()) {
     echo sprintf("    - Invoiced Quantity ...... %s %s\n", $positionQuantity, $positionQuantityUnit);
     echo sprintf("    - Charge-Free Quantity ... %s %s\n", $positionChargeFreeQuantity, $positionChargeFreeQuantityUnit);
     echo sprintf("    - Package Quantity ....... %s %s\n", $positionPackageQuantity, $positionPackageQuantityUnit);
+
+
+    echo "\n";
+    echo " - Position Ship-To Party\n";
+    echo "\n";
+
+    $reader->getDocumentPositionShipToName($documentPositionShipToName);
+    echo sprintf("   ShipTo Name ........ %s\n", $documentPositionShipToName);
+
+    while ($reader->nextDocumentPositionShipToId()) {
+        $reader->getDocumentPositionShipToId($documentPositionShipToGlobalId);
+        echo sprintf("   ShipTo ID .......... %s\n", $documentPositionShipToGlobalId);
+    }
+
+    while ($reader->nextDocumentPositionShipToGlobalId()) {
+        $reader->getDocumentPositionShipToGlobalId($documentPositionShipToGlobalId, $documentPositionShipToGlobalIdType);
+        echo sprintf("   ShipTo Global ID ... %s (%s)\n", $documentPositionShipToGlobalId, $documentPositionShipToGlobalIdType);
+    }
+
+    while ($reader->nextDocumentPositionShipToTaxRegistration()) {
+        $reader->getDocumentPositionShipToTaxRegistration($documentPositionShipToTaxRegistrationType, $documentPositionShipToTaxRegistrationId);
+        echo sprintf("   ShipTo Tax Reg. .... %s (%s)\n", $documentPositionShipToTaxRegistrationId, $documentPositionShipToTaxRegistrationType);
+    }
+
+    while ($reader->nextDocumentPositionShipToAddress()) {
+        $reader->getDocumentPositionShipToAddress($documentPositionShipToAddressLine1, $documentPositionShipToAddressLine2, $documentPositionShipToAddressLine3, $documentPositionShipToPostCode, $documentPositionShipToCity, $documentPositionShipToCountryId, $documentPositionShipToSubDivision);
+        echo sprintf("   ShipTo Address ..... %s\n", $documentPositionShipToAddressLine1);
+        echo sprintf("                  ..... %s\n", $documentPositionShipToAddressLine2);
+        echo sprintf("                  ..... %s\n", $documentPositionShipToAddressLine3);
+        echo sprintf("                  ..... %s %s %s\n", $documentPositionShipToCountryId, $documentPositionShipToPostCode, $documentPositionShipToCity);
+        echo sprintf("                  ..... %s\n", $documentPositionShipToSubDivision);
+    }
+
+    while ($reader->nextDocumentPositionShipToLegalOrganisation()) {
+        $reader->getDocumentPositionShipToLegalOrganisation($documentPositionShipToLegalOrgType, $documentPositionShipToLegalOrgId, $documentPositionShipToLegalOrgName);
+        echo sprintf("   ShipTo Legal ....... %s (%s), %s\n", $documentPositionShipToLegalOrgId, $documentPositionShipToLegalOrgType, $documentPositionShipToLegalOrgName);
+    }
+
+    while ($reader->nextDocumentPositionShipToContact()) {
+        $reader->getDocumentPositionShipToContact($documentPositionShipToContactName, $documentPositionShipToContactDepartmenrName, $documentPositionShipToContactPhoneNumber, $documentPositionShipToContactFaxNumber, $documentPositionShipToContactEmailAddress);
+        echo sprintf("   ShipTo Contact ..... %s\n", $documentPositionShipToContactName);
+        echo sprintf("                  ..... %s\n", $documentPositionShipToContactDepartmenrName);
+        echo sprintf("                  ..... %s\n", $documentPositionShipToContactPhoneNumber);
+        echo sprintf("                  ..... %s\n", $documentPositionShipToContactFaxNumber);
+        echo sprintf("                  ..... %s\n", $documentPositionShipToContactEmailAddress);
+    }
+
+    while ($reader->nextDocumentPositionShipToCommunication()) {
+        $reader->getDocumentPositionShipToCommunication($documentPositionShipToCommunicationType, $documentPositionShipToCommunicationUri);
+        echo sprintf("   ShipTo Comm. ....... %s (%s)\n", $documentPositionShipToCommunicationUri, $documentPositionShipToCommunicationType);
+    }
 }
 
 #endregion
