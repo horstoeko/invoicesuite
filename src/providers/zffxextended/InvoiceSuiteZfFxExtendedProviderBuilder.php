@@ -10403,6 +10403,24 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
+     * Add a name of the Ship-To party
+     *
+     * @param string|null $newName __BT-X-50, From EXTENDED__ The full formal name under which the party is registered.
+     * @return self
+     */
+    public function addDocumentPositionShipToName(
+        ?string $newName = null
+    ): self {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            return $this;
+        }
+
+        $this->setDocumentPositionShipToName($newName);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Ship-To party
      *
      * @param string|null $newId __BT-X-48, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
@@ -10651,6 +10669,44 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
+     * Add an address to the Ship-To party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
+     */
+    public function addDocumentPositionShipToAddress(
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null
+    ): self {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision])) {
+            return $this;
+        }
+
+        $this->setDocumentPositionShipToAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        return $this;
+    }
+
+    /**
      * Set the legal information of the Ship-To party
      *
      * @param string|null $newType __BT-X-51-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
@@ -10686,6 +10742,28 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             $shipToTradeParty->getSpecifiedLegalOrganizationWithCreate()->getTradingBusinessNameWithCreate()->setValue($newName);
         }
+
+        return $this;
+    }
+
+    /**
+     * Add a legal information of the Ship-To party
+     *
+     * @param string|null $newType __BT-X-51-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
+     * @param string|null $newId __BT-X-51, From EXTENDED__ Identification number of the legal registration of the party.
+     * @param string|null $newName __BT-X-52, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @return self
+     */
+    public function addDocumentPositionShipToLegalOrganisation(
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null
+    ): self {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+            return $this;
+        }
+
+        $this->setDocumentPositionShipToLegalOrganisation($newType, $newId, $newName);
 
         return $this;
     }
@@ -10828,6 +10906,26 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
+     * Add a communication information of the Ship-To party
+     *
+     * @param string|null $newType __BT-X-65-0, From EXTENDED__ The type for the party's electronic address.
+     * @param string|null $newUri __BT-X-65, From EXTENDED__ The party's electronic address.
+     * @return self
+     */
+    public function addDocumentPositionShipToCommunication(
+        ?string $newType = null,
+        ?string $newUri = null
+    ): self {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+            return $this;
+        }
+
+        $this->setDocumentPositionShipToCommunication($newType, $newUri);
+
+        return $this;
+    }
+
+    /**
      * Set the name of the ultimate Ship-To party
      *
      * @param string|null $newName __BT-X-69, From EXTENDED__ The full formal name under which the party is registered.
@@ -10852,6 +10950,24 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         $ultimateShipToTradeParty
             ->getNameWithCreate()
             ->setValue($newName);
+
+        return $this;
+    }
+
+    /**
+     * Add a name of the ultimate Ship-To party
+     *
+     * @param string|null $newName __BT-X-69, From EXTENDED__ The full formal name under which the party is registered.
+     * @return self
+     */
+    public function addDocumentPositionUltimateShipToName(
+        ?string $newName = null
+    ): self {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            return $this;
+        }
+
+        $this->setDocumentPositionUltimateShipToName($newName);
 
         return $this;
     }
@@ -11105,6 +11221,44 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
+     * Add a address of the ultimate Ship-To party
+     *
+     * @param string|null $newAddressLine1 __BT_X-77, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 __BT_X-78, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 __BT_X-79, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode __BT_X-76, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity __BT_X-80, From EXTENDED__ Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId __BT_X-81, From EXTENDED__ Country in which the party's address is located.
+     * @param string|null $newSubDivision __BT_X-82, From EXTENDED__ Region or federal state in which the party's address is located.
+     * @return self
+     */
+    public function addDocumentPositionUltimateShipToAddress(
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null
+    ): self {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision])) {
+            return $this;
+        }
+
+        $this->setDocumentPositionUltimateShipToAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        return $this;
+    }
+
+    /**
      * Set the legal information of the ultimate Ship-To party
      *
      * @param string|null $newType __BT-X-70-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
@@ -11140,6 +11294,32 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             $ultimateShipToTradeParty->getSpecifiedLegalOrganizationWithCreate()->getTradingBusinessNameWithCreate()->setValue($newName);
         }
+
+        return $this;
+    }
+
+    /**
+     * Set the legal information of the ultimate Ship-To party
+     *
+     * @param string|null $newType __BT-X-70-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
+     * @param string|null $newId __BT-X-70, From EXTENDED__ Identification number of the legal registration of the party.
+     * @param string|null $newName __BT-X-71, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @return self
+     */
+    public function addDocumentPositionUltimateShipToLegalOrganisation(
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null
+    ): self {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+            return $this;
+        }
+
+        $this->setDocumentPositionUltimateShipToLegalOrganisation(
+            $newType,
+            $newId,
+            $newName
+        );
 
         return $this;
     }
@@ -11277,6 +11457,26 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
             $ultimateShipToUniversalCommunication->getURIIDWithCreate()->setValue($newUri);
         }
+
+        return $this;
+    }
+
+    /**
+     * Add communication information of the ultimate Ship-To party
+     *
+     * @param string|null $newType __BT-X-75-0, From EXTENDED__ The type for the party's electronic address.
+     * @param string|null $newUri __BT-X-75, From EXTENDED__ The party's electronic address.
+     * @return self
+     */
+    public function addDocumentPositionUltimateShipToCommunication(
+        ?string $newType = null,
+        ?string $newUri = null
+    ): self {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+            return $this;
+        }
+
+        $this->setDocumentPositionUltimateShipToCommunication($newType, $newUri);
 
         return $this;
     }

@@ -5293,6 +5293,22 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     /**
+     * Add a name of the Ship-To party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
+     * @return self
+     */
+    public function addDocumentPositionShipToName(
+        ?string $newName = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionShipToName(
+            $newName
+        );
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Ship-To party
      *
      * @param string|null $newId An identifier of the party. In many systems, identification is key information.
@@ -5435,6 +5451,40 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     /**
+     * Add an address to the Ship-To party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
+     */
+    public function addDocumentPositionShipToAddress(
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionShipToAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        return $this;
+    }
+
+    /**
      * Set the legal information of the Ship-To party
      *
      * @param string|null $newType Type of the identification number of the legal registration of the party.
@@ -5448,6 +5498,28 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         ?string $newName = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionShipToLegalOrganisation(
+            $newType,
+            $newId,
+            $newName
+        );
+
+        return $this;
+    }
+
+    /**
+     * Add a legal information of the Ship-To party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
+     */
+    public function addDocumentPositionShipToLegalOrganisation(
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionShipToLegalOrganisation(
             $newType,
             $newId,
             $newName
@@ -5532,6 +5604,25 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     /**
+     * Add a communication information of the Ship-To party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
+     */
+    public function addDocumentPositionShipToCommunication(
+        ?string $newType = null,
+        ?string $newUri = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionShipToCommunication(
+            $newType,
+            $newUri
+        );
+
+        return $this;
+    }
+
+    /**
      * Set the name of the ultimate Ship-To party
      *
      * @param string|null $newName The full formal name under which the party is registered.
@@ -5541,6 +5632,22 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         ?string $newName = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToName(
+            $newName
+        );
+
+        return $this;
+    }
+
+    /**
+     * Add a name of the ultimate Ship-To party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
+     * @return self
+     */
+    public function addDocumentPositionUltimateShipToName(
+        ?string $newName = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToName(
             $newName
         );
 
@@ -5690,6 +5797,40 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     /**
+     * Add a address of the ultimate Ship-To party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
+     */
+    public function addDocumentPositionUltimateShipToAddress(
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        return $this;
+    }
+
+    /**
      * Set the legal information of the ultimate Ship-To party
      *
      * @param string|null $newType Type of the identification number of the legal registration of the party.
@@ -5703,6 +5844,28 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         ?string $newName = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToLegalOrganisation(
+            $newType,
+            $newId,
+            $newName
+        );
+
+        return $this;
+    }
+
+    /**
+     * Add a legal information of the ultimate Ship-To party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
+     */
+    public function addDocumentPositionUltimateShipToLegalOrganisation(
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToLegalOrganisation(
             $newType,
             $newId,
             $newName
@@ -5779,6 +5942,25 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         ?string $newUri = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToCommunication(
+            $newType,
+            $newUri
+        );
+
+        return $this;
+    }
+
+    /**
+     * Add communication information of the ultimate Ship-To party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
+     */
+    public function addDocumentPositionUltimateShipToCommunication(
+        ?string $newType = null,
+        ?string $newUri = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToCommunication(
             $newType,
             $newUri
         );
