@@ -5143,5 +5143,19 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         return $this;
     }
 
+    /**
+     * Get the name of the Ship-To party from latest position
+     *
+     * @param string $newName The full formal name under which the party is registered.
+     * @return self
+     */
+    public function getDocumentPositionShipToName(
+        string &$newName
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionShipToName($newName);
+
+        return $this;
+    }
+
     #endregion
 }

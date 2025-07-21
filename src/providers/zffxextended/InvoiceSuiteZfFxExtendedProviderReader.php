@@ -7968,5 +7968,21 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         return $this;
     }
 
+    /**
+     * Get the name of the Ship-To party from latest position
+     *
+     * @param string $newName __BT-X-50, From EXTENDED__ The full formal name under which the party is registered.
+     * @return self
+     */
+    public function getDocumentPositionShipToName(
+        string &$newName
+    ): self {
+        $documentPosition = $this->resolveCurrentDocumentPosition();
+
+        $newName = $documentPosition->getSpecifiedLineTradeDelivery()?->getShipToTradeParty()?->getName()?->getValue() ?? "";
+
+        return $this;
+    }
+
     #endregion
 }

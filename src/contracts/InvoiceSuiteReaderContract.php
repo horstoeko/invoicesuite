@@ -3550,5 +3550,15 @@ interface InvoiceSuiteReaderContract
         ?string &$newPackageQuantityUnit
     ): self;
 
+    /**
+     * Get the name of the Ship-To party from latest position
+     *
+     * @param string $newName The full formal name under which the party is registered.
+     * @return self
+     */
+    public function getDocumentPositionShipToName(
+        string &$newName
+    ): self;
+
     #endregion
 }
