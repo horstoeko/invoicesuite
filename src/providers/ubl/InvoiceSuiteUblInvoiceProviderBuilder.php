@@ -7242,11 +7242,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Set the name of the Ship-To party
      *
-     * @param string $newName The full formal name under which the party is registered.
+     * @param string|null $newName The full formal name under which the party is registered.
      * @return self
      */
     public function setDocumentPositionShipToName(
-        string $newName
+        ?string $newName = null
     ): self {
         // Nothing here
 
@@ -7256,11 +7256,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Set the ID of the Ship-To party
      *
-     * @param string $newId An identifier of the party. In many systems, identification is key information.
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setDocumentPositionShipToId(
-        string $newId
+        ?string $newId = null
     ): self {
         // Nothing here
 
@@ -7270,11 +7270,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Add an ID to the Ship-To party
      *
-     * @param string $newId An identifier of the party. In many systems, identification is key information.
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addDocumentPositionShipToId(
-        string $newId
+        ?string $newId = null
     ): self {
         // Nothing here
 
@@ -7284,12 +7284,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Set the Global ID of the Ship-To party
      *
-     * @param string $newGlobalId A global identifier of the party.
-     * @param string $newGlobalIdType Type of the global identifier of the party.
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
-    public function setDocumentPositionShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function setDocumentPositionShipToGlobalId(
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
+    ): self {
         // Nothing here
 
         return $this;
@@ -7298,12 +7300,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Add an ID to the Ship-To party
      *
-     * @param string $newGlobalId A global identifier of the party.
-     * @param string $newGlobalIdType Type of the global identifier of the party.
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
-    public function addDocumentPositionShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function addDocumentPositionShipToGlobalId(
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
+    ): self {
         // Nothing here
 
         return $this;
@@ -7312,13 +7316,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Set the Tax Registration of the Ship-To party
      *
-     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string $newTaxRegistrationId Tax identification number.
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function setDocumentPositionShipToTaxRegistration(
-        string $newTaxRegistrationType,
-        string $newTaxRegistrationId,
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null
     ): self {
         // Nothing here
 
@@ -7328,13 +7332,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Add an Tax Registration to the Ship-To party
      *
-     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string $newTaxRegistrationId Tax identification number.
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function addDocumentPositionShipToTaxRegistration(
-        string $newTaxRegistrationType,
-        string $newTaxRegistrationId,
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null
     ): self {
         // Nothing here
 
@@ -7344,23 +7348,23 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Set the address of the Ship-To party
      *
-     * @param string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string $newPostcode Zip code of the city or municipality in which the party's address is located.
-     * @param string $newCity Name of the city or municipality in which the party's address is located.
-     * @param string $newCountryId Country in which the party's address is located.
-     * @param string $newSubDivision Region or federal state in which the party's address is located.
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
      * @return self
      */
     public function setDocumentPositionShipToAddress(
-        string $newAddressLine1,
-        string $newAddressLine2,
-        string $newAddressLine3,
-        string $newPostcode,
-        string $newCity,
-        string $newCountryId,
-        string $newSubDivision,
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null
     ): self {
         // Nothing here
 
@@ -7370,13 +7374,16 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Set the legal information of the Ship-To party
      *
-     * @param string $newType Type of the identification number of the legal registration of the party.
-     * @param string $newId Identification number of the legal registration of the party.
-     * @param string $newName Name by which the party is known, if different from the party's name.
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
      * @return self
      */
-    public function setDocumentPositionShipToLegalOrganisation(string $newType, string $newId, string $newName): self
-    {
+    public function setDocumentPositionShipToLegalOrganisation(
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null
+    ): self {
         // Nothing here
 
         return $this;
@@ -7385,19 +7392,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Set the contact information of the Ship-To party
      *
-     * @param string $newPersonName Name of contact person or department or office for the contact point.
-     * @param string $newDepartmentName Name of the department for the contact point.
-     * @param string $newPhoneNumber Telephone number for the contact point.
-     * @param string $newFaxNumber Fax number of the contact point.
-     * @param string $newEmailAddress E-Mail address of the contact point.
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function setDocumentPositionShipToContact(
-        string $newPersonName,
-        string $newDepartmentName,
-        string $newPhoneNumber,
-        string $newFaxNumber,
-        string $newEmailAddress,
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null
     ): self {
         // Nothing here
 
@@ -7407,19 +7414,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Add contact information of the Ship-To party
      *
-     * @param string $newPersonName Name of contact person or department or office for the contact point.
-     * @param string $newDepartmentName Name of the department for the contact point.
-     * @param string $newPhoneNumber Telephone number for the contact point.
-     * @param string $newFaxNumber Fax number of the contact point.
-     * @param string $newEmailAddress E-Mail address of the contact point.
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function addDocumentPositionShipToContact(
-        string $newPersonName,
-        string $newDepartmentName,
-        string $newPhoneNumber,
-        string $newFaxNumber,
-        string $newEmailAddress,
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null
     ): self {
         // Nothing here
 
@@ -7429,12 +7436,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Add communication information of the Ship-To party
      *
-     * @param string $newType The type for the party's electronic address.
-     * @param string $newUri The party's electronic address.
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
      * @return self
      */
-    public function setDocumentPositionShipToCommunication(string $newType, string $newUri): self
-    {
+    public function setDocumentPositionShipToCommunication(
+        ?string $newType = null,
+        ?string $newUri = null
+    ): self {
         // Nothing here
 
         return $this;
@@ -7443,11 +7452,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Set the name of the ultimate Ship-To party
      *
-     * @param string $newName The full formal name under which the party is registered.
+     * @param string|null $newName The full formal name under which the party is registered.
      * @return self
      */
     public function setDocumentPositionUltimateShipToName(
-        string $newName
+        ?string $newName = null
     ): self {
         // Nothing here
 
@@ -7457,11 +7466,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Set the ID of the ultimate Ship-To party
      *
-     * @param string $newId An identifier of the party. In many systems, identification is key information.
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setDocumentPositionUltimateShipToId(
-        string $newId
+        ?string $newId = null
     ): self {
         // Nothing here
 
@@ -7471,11 +7480,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Add an ID to the ultimate Ship-To party
      *
-     * @param string $newId An identifier of the party. In many systems, identification is key information.
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addDocumentPositionUltimateShipToId(
-        string $newId
+        ?string $newId = null
     ): self {
         // Nothing here
 
@@ -7485,12 +7494,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Set the Global ID of the ultimate Ship-To party
      *
-     * @param string $newGlobalId A global identifier of the party.
-     * @param string $newGlobalIdType Type of the global identifier of the party.
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
-    public function setDocumentPositionUltimateShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function setDocumentPositionUltimateShipToGlobalId(
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
+    ): self {
         // Nothing here
 
         return $this;
@@ -7499,12 +7510,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Add an ID to the ultimate Ship-To party
      *
-     * @param string $newGlobalId A global identifier of the party.
-     * @param string $newGlobalIdType Type of the global identifier of the party.
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
      * @return self
      */
-    public function addDocumentPositionUltimateShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function addDocumentPositionUltimateShipToGlobalId(
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
+    ): self {
         // Nothing here
 
         return $this;
@@ -7513,13 +7526,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Set the Tax Registration of the ultimate Ship-To party
      *
-     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string $newTaxRegistrationId Tax identification number.
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function setDocumentPositionUltimateShipToTaxRegistration(
-        string $newTaxRegistrationType,
-        string $newTaxRegistrationId,
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null
     ): self {
         // Nothing here
 
@@ -7529,13 +7542,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Add an Tax Registration to the ultimate Ship-To party
      *
-     * @param string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string $newTaxRegistrationId Tax identification number.
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
      * @return self
      */
     public function addDocumentPositionUltimateShipToTaxRegistration(
-        string $newTaxRegistrationType,
-        string $newTaxRegistrationId,
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null
     ): self {
         // Nothing here
 
@@ -7545,23 +7558,23 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Set the address of the ultimate Ship-To party
      *
-     * @param string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string $newPostcode Zip code of the city or municipality in which the party's address is located.
-     * @param string $newCity Name of the city or municipality in which the party's address is located.
-     * @param string $newCountryId Country in which the party's address is located.
-     * @param string $newSubDivision Region or federal state in which the party's address is located.
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
      * @return self
      */
     public function setDocumentPositionUltimateShipToAddress(
-        string $newAddressLine1,
-        string $newAddressLine2,
-        string $newAddressLine3,
-        string $newPostcode,
-        string $newCity,
-        string $newCountryId,
-        string $newSubDivision,
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null
     ): self {
         // Nothing here
 
@@ -7571,15 +7584,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Set the legal information of the ultimate Ship-To party
      *
-     * @param string $newType Type of the identification number of the legal registration of the party.
-     * @param string $newId Identification number of the legal registration of the party.
-     * @param string $newName Name by which the party is known, if different from the party's name.
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
      * @return self
      */
     public function setDocumentPositionUltimateShipToLegalOrganisation(
-        string $newType,
-        string $newId,
-        string $newName,
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null
     ): self {
         // Nothing here
 
@@ -7589,19 +7602,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Set the contact information of the ultimate Ship-To party
      *
-     * @param string $newPersonName Name of contact person or department or office for the contact point.
-     * @param string $newDepartmentName Name of the department for the contact point.
-     * @param string $newPhoneNumber Telephone number for the contact point.
-     * @param string $newFaxNumber Fax number of the contact point.
-     * @param string $newEmailAddress E-Mail address of the contact point.
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function setDocumentPositionUltimateShipToContact(
-        string $newPersonName,
-        string $newDepartmentName,
-        string $newPhoneNumber,
-        string $newFaxNumber,
-        string $newEmailAddress,
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null
     ): self {
         // Nothing here
 
@@ -7611,19 +7624,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Add contact information of the ultimate Ship-To party
      *
-     * @param string $newPersonName Name of contact person or department or office for the contact point.
-     * @param string $newDepartmentName Name of the department for the contact point.
-     * @param string $newPhoneNumber Telephone number for the contact point.
-     * @param string $newFaxNumber Fax number of the contact point.
-     * @param string $newEmailAddress E-Mail address of the contact point.
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
      * @return self
      */
     public function addDocumentPositionUltimateShipToContact(
-        string $newPersonName,
-        string $newDepartmentName,
-        string $newPhoneNumber,
-        string $newFaxNumber,
-        string $newEmailAddress,
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null
     ): self {
         // Nothing here
 
@@ -7633,12 +7646,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * Add communication information of the ultimate Ship-To party
      *
-     * @param string $newType The type for the party's electronic address.
-     * @param string $newUri The party's electronic address.
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
      * @return self
      */
-    public function setDocumentPositionUltimateShipToCommunication(string $newType, string $newUri): self
-    {
+    public function setDocumentPositionUltimateShipToCommunication(
+        ?string $newType = null,
+        ?string $newUri = null
+    ): self {
         // Nothing here
 
         return $this;
