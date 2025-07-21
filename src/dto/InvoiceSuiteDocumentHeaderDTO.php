@@ -102,9 +102,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * The start and/or end date of the billing period
      *
-     * @var InvoiceSuiteDateRangeDTO|null
+     * @var array<InvoiceSuiteDateRangeDTO>
      */
-    protected ?InvoiceSuiteDateRangeDTO $billingPeriod = null;
+    protected array $billingPeriods = [];
 
     /**
      * The posting reference
@@ -331,7 +331,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param bool|null $isCopy The flag that indicated that this document is a copy
      * @param bool|null $isTest The flag that indicated that this document is a test
      * @param array<InvoiceSuiteNoteDTO> $notes The notes for this document
-     * @param InvoiceSuiteDateRangeDTO|null $billingPeriod The start and/or end date of the billing period
+     * @param array<InvoiceSuiteDateRangeDTO> $billingPeriods The start and/or end date of the billing period
      * @param array<InvoiceSuiteIdDTO> $postingReferences The posting reference
      * @param array<InvoiceSuiteReferenceDocumentDTO> $sellerOrderReferences The associated seller's order confirmation
      * @param array<InvoiceSuiteReferenceDocumentDTO> $buyerOrderReferences The associated buyer's order
@@ -376,7 +376,7 @@ class InvoiceSuiteDocumentHeaderDTO
         ?bool $isCopy = null,
         ?bool $isTest = null,
         array $notes = [],
-        ?InvoiceSuiteDateRangeDTO $billingPeriod = null,
+        array $billingPeriods = [],
         array $postingReferences = [],
         array $sellerOrderReferences = [],
         array $buyerOrderReferences = [],
@@ -420,7 +420,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $this->setIsCopy($isCopy);
         $this->setIsTest($isTest);
         $this->setNotes($notes);
-        $this->setBillingPeriod($billingPeriod);
+        $this->setBillingPeriods($billingPeriods);
         $this->setPostingReferences($postingReferences);
         $this->setSellerOrderReferences($sellerOrderReferences);
         $this->setBuyerOrderReferences($buyerOrderReferences);
@@ -846,22 +846,136 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the start and/or end date of the billing period
      *
-     * @return InvoiceSuiteDateRangeDTO|null
+     * @return array<InvoiceSuiteDateRangeDTO>
      */
-    public function getBillingPeriod(): ?InvoiceSuiteDateRangeDTO
+    public function getBillingPeriods(): array
     {
-        return $this->billingPeriod;
+        return $this->billingPeriods;
     }
 
     /**
      * Sets the start and/or end date of the billing period
      *
-     * @param InvoiceSuiteDateRangeDTO|null $billingPeriod The start and/or end date of the billing period
+     * @param array<InvoiceSuiteDateRangeDTO> $billingPeriods The start and/or end date of the billing period
      * @return self
      */
-    public function setBillingPeriod(?InvoiceSuiteDateRangeDTO $billingPeriod): self
+    public function setBillingPeriods(array $billingPeriods): self
     {
-        $this->billingPeriod = $billingPeriod;
+        $this->billingPeriods = $billingPeriods;
+
+        return $this;
+    }
+
+    /**
+     * Add single The start and/or end date of the billing period
+     *
+     * @param InvoiceSuiteDateRangeDTO $billingPeriod The start and/or end date of the billing period
+     * @return self
+     */
+    public function addBillingPeriod(InvoiceSuiteDateRangeDTO $billingPeriod): self
+    {
+        $this->billingPeriods[] = $billingPeriod;
+
+        return $this;
+    }
+
+    /**
+     * Get first The start and/or end date of the billing period
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function firstBillingPeriod(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($billingPeriod = reset($this->billingPeriods)) !== false) {
+            $callback($billingPeriod);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get next The start and/or end date of the billing period
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function nextBillingPeriod(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($billingPeriod = next($this->billingPeriods)) !== false) {
+            $callback($billingPeriod);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get previous The start and/or end date of the billing period
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function previousBillingPeriod(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($billingPeriod = prev($this->billingPeriods)) !== false) {
+            $callback($billingPeriod);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last The start and/or end date of the billing period
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function lastBillingPeriod(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($billingPeriod = end($this->billingPeriods)) !== false) {
+            $callback($billingPeriod);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The start and/or end date of the billing period and execute callback
+     *
+     * @param callable $callback Callback to execute for each item
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param int|null $limit Maximum number of loops
+     * @return self
+     */
+    public function forEachBillingPeriod(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
+    {
+        $count = 0;
+
+        foreach ($this->billingPeriods as $billingPeriod) {
+            if ($limit !== null && $count >= $limit) {
+                break;
+            }
+
+            $count++;
+
+            $callback($billingPeriod);
+        }
+
+        if ($count === 0 && !is_null($callbackElse)) {
+            $callbackElse();
+        }
 
         return $this;
     }

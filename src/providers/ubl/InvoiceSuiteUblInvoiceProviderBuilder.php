@@ -3,35 +3,36 @@
 namespace horstoeko\invoicesuite\providers\ubl;
 
 use DateTimeInterface;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
-use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
-use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteAllowanceChargeDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteContactDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentPositionDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteIdDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteNoteDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteOrganisationDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuitePaymentMeanDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteProductCharacteristicDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteProductClassificationDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentExtDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteServiceChargeDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteTaxDTO;
-use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
-use horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge;
-use horstoeko\invoicesuite\models\ubl\cac\PartyIdentification;
-use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
+use horstoeko\invoicesuite\dto\InvoiceSuiteNoteDTO;
 use horstoeko\invoicesuite\models\ubl\main\Invoice;
+use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteContactDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteDateRangeDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
-use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use horstoeko\invoicesuite\dto\InvoiceSuitePaymentMeanDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDTO;
+use horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge;
+use horstoeko\invoicesuite\dto\InvoiceSuiteOrganisationDTO;
+use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
+use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteServiceChargeDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteAllowanceChargeDTO;
+use horstoeko\invoicesuite\models\ubl\cac\PartyIdentification;
+use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentPositionDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentDTO;
+use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentExtDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteProductCharacteristicDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteProductClassificationDTO;
+use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
+use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
 
 class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatProviderBuilder
 {
@@ -429,6 +430,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             )
         );
 
+        $newDocumentDTO->firstBillingPeriod(
+            fn(InvoiceSuiteDateRangeDTO $item) => $this->setDocumentBillingPeriod(
+                $item->getStartDate(),
+                $item->getEndDate(),
+                $item->getDescription()
+            )
+        );
+
         $this->setDocumentSupplyChainEvent($newDocumentDTO->getSupplyChainEvent());
 
         $newDocumentDTO->firstPaymentmean(
@@ -578,10 +587,12 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     $item->getQuantityPackage()?->getQuantityUnit()
                 );
 
-                $this->setDocumentPositionBillingPeriod(
-                    $item->getBillingPeriod()?->getStartDate(),
-                    $item->getBillingPeriod()?->getEndDate(),
-                    $item->getBillingPeriod()?->getDescription()
+                $item->firstBillingPeriod(
+                    fn(InvoiceSuiteDateRangeDTO $item) => $this->setDocumentBillingPeriod(
+                        $item->getStartDate(),
+                        $item->getEndDate(),
+                        $item->getDescription()
+                    )
                 );
 
                 $item->firstPostingReference(

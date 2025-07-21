@@ -1475,14 +1475,14 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
 
         // Billing period
 
-        if ($this->firstDocumentBillingPeriod()) {
+        while ($this->nextDocumentBillingPeriod()) {
             $this->getDocumentBillingPeriod(
                 $newDocumentBillingPeriodStartDate,
                 $newDocumentBillingPeriodEndDate,
                 $newDocumentBillingPeriodDescription
             );
 
-            $newDocumentDTO->setBillingPeriod(
+            $newDocumentDTO->addBillingPeriod(
                 new InvoiceSuiteDateRangeDTO(
                     $newDocumentBillingPeriodStartDate,
                     $newDocumentBillingPeriodEndDate,
