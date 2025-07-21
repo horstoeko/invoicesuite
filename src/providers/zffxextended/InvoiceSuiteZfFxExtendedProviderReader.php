@@ -6724,6 +6724,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         InvoiceSuitePointerUtils::resetSingle('documentpositionultimateshiptoecommunication');
         InvoiceSuitePointerUtils::resetSingle('documentpositionbillingperiod');
         InvoiceSuitePointerUtils::resetSingle('documentpositiontax');
+        InvoiceSuitePointerUtils::resetSingle('documentpositionallowancecharge');
     }
 
     /**
@@ -9085,6 +9086,82 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         $newTaxPercent = $positionTax->getRateApplicablePercent()?->getValue() ?? 0.0;
         $newExemptionReason = $positionTax->getExemptionReason()?->getValue() ?? "";
         $newExemptionReasonCode = $positionTax->getExemptionReasonCode()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Document position Allowance/Charge from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionAllowanceCharge(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getSpecifiedTradeAllowanceCharge() ?? []
+            ),
+            'documentpositionallowancecharge'
+        );
+    }
+
+    /**
+     * Go to the next Document position Allowance/Charge from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionAllowanceCharge(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getSpecifiedTradeAllowanceCharge() ?? []
+            ),
+            'documentpositionallowancecharge'
+        );
+    }
+
+    /**
+     * Get Document position Allowance/Charge from latest position
+     *
+     * @param boolean|null $newChargeIndicator __BT-27-1/BT-28-1, From BASIC__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param float|null $newAllowanceChargeAmount __BT-136/BT-141, From BASIC__ Amount of the surcharge or discount
+     * @param float|null $newAllowanceChargeBaseAmount __BT-137, From EN 16931__ The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param string|null $newAllowanceChargeReason __BT-139/BT-144, From BASIC__ Reason given in text form for the surcharge or discount
+     * @param string|null $newAllowanceChargeReasonCode __BT-140/BT-145, From BASIC__ Reason given as a code for the surcharge or discount
+     * @param float|null $newAllowanceChargePercent __BT-138, From BASIC__ Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @return self
+     *
+     * @phpstan-param-out bool $newChargeIndicator
+     * @phpstan-param-out float $newAllowanceChargeAmount
+     * @phpstan-param-out float $newAllowanceChargeBaseAmount
+     * @phpstan-param-out string $newAllowanceChargeReason
+     * @phpstan-param-out string $newAllowanceChargeReasonCode
+     * @phpstan-param-out float $newAllowanceChargePercent
+     */
+    public function getDocumentPositionAllowanceCharge(
+        ?bool &$newChargeIndicator,
+        ?float &$newAllowanceChargeAmount,
+        ?float &$newAllowanceChargeBaseAmount,
+        ?string &$newAllowanceChargeReason,
+        ?string &$newAllowanceChargeReasonCode,
+        ?float &$newAllowanceChargePercent
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeAllowanceChargeType>
+         */
+        $positionAllowanceCharges = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getSpecifiedTradeAllowanceCharge() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradeAllowanceChargeType
+         */
+        $positionAllowanceCharge = $positionAllowanceCharges[InvoiceSuitePointerUtils::getValue('documentpositionallowancecharge')];
+
+        $newChargeIndicator = $positionAllowanceCharge->getChargeIndicator()?->getIndicator() ?? false;
+        $newAllowanceChargeAmount = $positionAllowanceCharge->getActualAmount()?->getValue() ?? 0.0;
+        $newAllowanceChargeBaseAmount = $positionAllowanceCharge->getBasisAmount()?->getValue() ?? 0.0;
+        $newAllowanceChargeReason = $positionAllowanceCharge->getReason()?->getValue() ?? "";
+        $newAllowanceChargeReasonCode = $positionAllowanceCharge->getReasonCode()?->getValue() ?? "";
+        $newAllowanceChargePercent = $positionAllowanceCharge->getCalculationPercent()->getValue() ?? 0.0;
 
         return $this;
     }

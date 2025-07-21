@@ -5862,5 +5862,56 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         return $this;
     }
 
+    /**
+     * Go to the first Document position Allowance/Charge from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionAllowanceCharge(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionAllowanceCharge();
+    }
+
+    /**
+     * Go to the next Document position Allowance/Charge from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionAllowanceCharge(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionAllowanceCharge();
+    }
+
+    /**
+     * Get Document position Allowance/Charge from latest position
+     *
+     * @param boolean|null $newChargeIndicator Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param float|null $newAllowanceChargeAmount Amount of the surcharge or discount
+     * @param float|null $newAllowanceChargeBaseAmount The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param string|null $newAllowanceChargeReason Reason given in text form for the surcharge or discount
+     * @param string|null $newAllowanceChargeReasonCode Reason given as a code for the surcharge or discount
+     * @param float|null $newAllowanceChargePercent Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @return self
+     */
+    public function getDocumentPositionAllowanceCharge(
+        ?bool &$newChargeIndicator,
+        ?float &$newAllowanceChargeAmount,
+        ?float &$newAllowanceChargeBaseAmount,
+        ?string &$newAllowanceChargeReason,
+        ?string &$newAllowanceChargeReasonCode,
+        ?float &$newAllowanceChargePercent
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionAllowanceCharge(
+            $newChargeIndicator,
+            $newAllowanceChargeAmount,
+            $newAllowanceChargeBaseAmount,
+            $newAllowanceChargeReason,
+            $newAllowanceChargeReasonCode,
+            $newAllowanceChargePercent
+        );
+
+        return $this;
+    }
+
     #endregion
 }

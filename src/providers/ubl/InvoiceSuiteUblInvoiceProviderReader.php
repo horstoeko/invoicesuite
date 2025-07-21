@@ -6047,6 +6047,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         InvoiceSuitePointerUtils::resetSingle('documentpositionultimateshiptoecommunication');
         InvoiceSuitePointerUtils::resetSingle('documentpositionbillingperiod');
         InvoiceSuitePointerUtils::resetSingle('documentpositiontax');
+        InvoiceSuitePointerUtils::resetSingle('documentpositionallowancecharge');
     }
 
     /**
@@ -7892,6 +7893,85 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         $newTaxPercent = $positionTax->getPercent()?->getValue() ?? 0.0;
         $newExemptionReason = $positionTaxExcemptionReason !== false ? ($positionTaxExcemptionReason->getValue() ?? "") : "";
         $newExemptionReasonCode = $positionTax->getTaxExemptionReasonCode()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Document position Allowance/Charge from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionAllowanceCharge(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveCurrentDocumentPosition()->getAllowanceCharge() ?? []
+            ),
+            'documentpositionallowancecharge'
+        );
+    }
+
+    /**
+     * Go to the next Document position Allowance/Charge from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionAllowanceCharge(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveCurrentDocumentPosition()->getAllowanceCharge() ?? []
+            ),
+            'documentpositionallowancecharge'
+        );
+    }
+
+    /**
+     * Get Document position Allowance/Charge from latest position
+     *
+     * @param boolean|null $newChargeIndicator Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param float|null $newAllowanceChargeAmount Amount of the surcharge or discount
+     * @param float|null $newAllowanceChargeBaseAmount The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param string|null $newAllowanceChargeReason Reason given in text form for the surcharge or discount
+     * @param string|null $newAllowanceChargeReasonCode Reason given as a code for the surcharge or discount
+     * @param float|null $newAllowanceChargePercent Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @return self
+     *
+     * @phpstan-param-out bool $newChargeIndicator
+     * @phpstan-param-out float $newAllowanceChargeAmount
+     * @phpstan-param-out float $newAllowanceChargeBaseAmount
+     * @phpstan-param-out string $newAllowanceChargeReason
+     * @phpstan-param-out string $newAllowanceChargeReasonCode
+     * @phpstan-param-out float $newAllowanceChargePercent
+     */
+    public function getDocumentPositionAllowanceCharge(
+        ?bool &$newChargeIndicator,
+        ?float &$newAllowanceChargeAmount,
+        ?float &$newAllowanceChargeBaseAmount,
+        ?string &$newAllowanceChargeReason,
+        ?string &$newAllowanceChargeReasonCode,
+        ?float &$newAllowanceChargePercent
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>
+         */
+        $positionAllowanceCharges = $this->resolveCurrentDocumentPosition()->getAllowanceCharge() ?? [];
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge
+         */
+        $positionAllowanceCharge = $positionAllowanceCharges[InvoiceSuitePointerUtils::getValue('documentpositionallowancecharge')];
+
+        $positionAllowanceChargeReasons = $positionAllowanceCharge->getAllowanceChargeReason() ?? [];
+        $positionAllowanceChargeReason = reset($positionAllowanceChargeReasons);
+
+        $newChargeIndicator = $positionAllowanceCharge->getChargeIndicator() ?? false;
+        $newAllowanceChargeAmount = $positionAllowanceCharge->getAmount()?->getValue() ?? 0.0;
+        $newAllowanceChargeBaseAmount = $positionAllowanceCharge->getBaseAmount()?->getValue() ?? 0.0;
+        $newAllowanceChargeReason = $positionAllowanceChargeReason !== false ? ($positionAllowanceChargeReason->getValue() ?? "") : "";
+        $newAllowanceChargeReasonCode = $positionAllowanceCharge->getAllowanceChargeReasonCode()?->getValue() ?? "";
+        $newAllowanceChargePercent = $positionAllowanceCharge->getMultiplierFactorNumeric()?->getValue() ?? 0.0;
 
         return $this;
     }

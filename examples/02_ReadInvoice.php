@@ -1310,12 +1310,28 @@ while ($reader->nextDocumentPosition()) {
 
     while ($reader->nextDocumentPositionTax()) {
         $reader->getDocumentPositionTax($positionTaxCategory, $positionTaxType, $positionTaxAmount, $positionTaxPercent, $positionTaxExcemptionReason, $positionTaxExcemptionReasonCode);
-        echo sprintf("   Tax Category ........ %s\n", $positionTaxCategory);
-        echo sprintf("   Tax Type ............ %s\n", $positionTaxType);
-        echo sprintf("   Tax Amount .......... %s\n", $positionTaxAmount);
-        echo sprintf("   Tax Percent ......... %s\n", $positionTaxPercent);
-        echo sprintf("   Tax Exc. Reason ..... %s\n", $positionTaxExcemptionReason);
-        echo sprintf("   Tax Exc. Reason Code  %s\n", $positionTaxExcemptionReasonCode);
+        echo sprintf("   - Tax:\n");
+        echo sprintf("     Tax Category ........ %s\n", $positionTaxCategory);
+        echo sprintf("     Tax Type ............ %s\n", $positionTaxType);
+        echo sprintf("     Tax Amount .......... %s\n", $positionTaxAmount);
+        echo sprintf("     Tax Percent ......... %s\n", $positionTaxPercent);
+        echo sprintf("     Tax Exc. Reason ..... %s\n", $positionTaxExcemptionReason);
+        echo sprintf("     Tax Exc. Reason Code  %s\n", $positionTaxExcemptionReasonCode);
+    }
+
+    echo "\n";
+    echo " - Position Allowanced/Charges\n";
+    echo "\n";
+
+    while ($reader->nextDocumentPositionAllowanceCharge()) {
+        $reader->getDocumentPositionAllowanceCharge($positionACIndicator, $positionACAmount, $positionACBaseAmount, $positionACReason, $positionACReasonCode, $positionACPercent);
+        echo sprintf("   - Allowance/Charge:\n");
+        echo sprintf("     Is Charge ........... %s\n", $positionACIndicator === true ? "Yes" : "No");
+        echo sprintf("     Amount .............. %s\n", $positionACAmount);
+        echo sprintf("     Base Amount ......... %s\n", $positionACBaseAmount);
+        echo sprintf("     Percent ............. %s\n", $positionACPercent);
+        echo sprintf("     Reason .............. %s\n", $positionACReason);
+        echo sprintf("     Reason Code ......... %s\n", $positionACReasonCode);
     }
 }
 
