@@ -8,6 +8,8 @@ use horstoeko\invoicesuite\dto\InvoiceSuiteNoteDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePartyDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteContactDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteDateRangeDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
@@ -20,7 +22,6 @@ use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentExtDTO;
 use horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType;
 use horstoeko\invoicesuite\models\zffxextended\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderReader;
-use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
 use horstoeko\invoicesuite\models\zffxextended\ram\SupplyChainTradeLineItemType;
 
 class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatProviderReader
@@ -1468,6 +1469,24 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
                 new InvoiceSuiteIdDTO(
                     $newDocumentPostingReferenceAccountId,
                     $newDocumentPostingReferenceType
+                )
+            );
+        }
+
+        // Billing period
+
+        if ($this->firstDocumentBillingPeriod()) {
+            $this->getDocumentBillingPeriod(
+                $newDocumentBillingPeriodStartDate,
+                $newDocumentBillingPeriodEndDate,
+                $newDocumentBillingPeriodDescription
+            );
+
+            $newDocumentDTO->setBillingPeriod(
+                new InvoiceSuiteDateRangeDTO(
+                    $newDocumentBillingPeriodStartDate,
+                    $newDocumentBillingPeriodEndDate,
+                    $newDocumentBillingPeriodDescription
                 )
             );
         }
