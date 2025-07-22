@@ -6,22 +6,31 @@ use DateTimeInterface;
 use horstoeko\invoicesuite\dto\InvoiceSuiteIdDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteNoteDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePartyDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitePeriodDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteContactDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteDateRangeDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
+use horstoeko\invoicesuite\dto\InvoiceSuitePaymentMeanDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
 use horstoeko\invoicesuite\dto\InvoiceSuiteOrganisationDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
 use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermPenaltyDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDiscountDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentExtDTO;
 use horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType;
 use horstoeko\invoicesuite\models\zffxextended\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderReader;
+use horstoeko\invoicesuite\dto\InvoiceSuiteAllowanceChargeDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteServiceChargeDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitesummationDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteTaxDTO;
 use horstoeko\invoicesuite\models\zffxextended\ram\SupplyChainTradeLineItemType;
 
 class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatProviderReader
@@ -47,13 +56,15 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     public function convertToDTO(
         ?InvoiceSuiteDocumentHeaderDTO &$newDocumentDTO
     ): self {
+        // Initialize
+
         $this->resetCurrentDocumentSubPointers();
 
         // Create DTO
 
         $newDocumentDTO = new InvoiceSuiteDocumentHeaderDTO();
 
-        // General
+        // Document-Level General information
 
         $this->getDocumentNo($newDocumentNo);
         $newDocumentDTO->setNumber($newDocumentNo);
@@ -101,7 +112,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Seller/Supplier Party
+        // Document-Level Seller/Supplier Party
 
         $newDocumentDTO->setSellerParty(new InvoiceSuitePartyDTO());
 
@@ -218,7 +229,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Buyer/Customer Party
+        // Document-Level Buyer/Customer Party
 
         $newDocumentDTO->setBuyerParty(new InvoiceSuitePartyDTO());
 
@@ -335,7 +346,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Seller Tax Representative Party
+        // Document-Level Seller Tax Representative Party
 
         $newDocumentDTO->setTaxRepresentativeParty(new InvoiceSuitePartyDTO());
 
@@ -452,7 +463,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Product End-User Party
+        // Document-Level Product End-User Party
 
         $newDocumentDTO->setProductEndUserParty(new InvoiceSuitePartyDTO());
 
@@ -569,7 +580,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Ship-To Party
+        // Document-Level Ship-To Party
 
         $newDocumentDTO->setShipToParty(new InvoiceSuitePartyDTO());
 
@@ -686,7 +697,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Ultimate Ship-To Party
+        // Document-Level Ultimate Ship-To Party
 
         $newDocumentDTO->setUltimateShipToParty(new InvoiceSuitePartyDTO());
 
@@ -803,7 +814,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Ship-From Party
+        // Document-Level Ship-From Party
 
         $newDocumentDTO->setShipFromParty(new InvoiceSuitePartyDTO());
 
@@ -920,7 +931,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Invoicer Party
+        // Document-Level Invoicer Party
 
         $newDocumentDTO->setInvoicerParty(new InvoiceSuitePartyDTO());
 
@@ -1037,7 +1048,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Invoicee Party
+        // Document-Level Invoicee Party
 
         $newDocumentDTO->setInvoiceeParty(new InvoiceSuitePartyDTO());
 
@@ -1154,7 +1165,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Payee Party
+        // Document-Level Payee Party
 
         $newDocumentDTO->setPayeeParty(new InvoiceSuitePartyDTO());
 
@@ -1271,7 +1282,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Seller Order Reference
+        // Document-Level Seller Order Reference
 
         while ($this->nextDocumentSellerOrderReference()) {
             $this->getDocumentSellerOrderReference(
@@ -1287,7 +1298,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Buyer Order Reference
+        // Document-Level Buyer Order Reference
 
         while ($this->nextDocumentBuyerOrderReference()) {
             $this->getDocumentBuyerOrderReference(
@@ -1303,7 +1314,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Quotation Reference
+        // Document-Level Quotation Reference
 
         while ($this->nextDocumentQuotationReference()) {
             $this->getDocumentQuotationReference(
@@ -1319,7 +1330,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Contract Reference
+        // Document-Level Contract Reference
 
         while ($this->nextDocumentContractReference()) {
             $this->getDocumentContractReference(
@@ -1335,7 +1346,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Additional Reference
+        // Document-Level Additional Reference
 
         while ($this->nextDocumentAdditionalReference()) {
             $this->getDocumentAdditionalReference(
@@ -1359,7 +1370,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Invoice Reference
+        // Document-Level Invoice Reference
 
         while ($this->nextDocumentInvoiceReference()) {
             $this->getDocumentInvoiceReference(
@@ -1377,7 +1388,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Project Reference
+        // Document-Level Project Reference
 
         while ($this->nextDocumentProjectReference()) {
             $this->getDocumentProjectReference(
@@ -1393,7 +1404,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Ultimate Customer Order Reference
+        // Document-Level Ultimate Customer Order Reference
 
         while ($this->nextDocumentUltimateCustomerOrderReference()) {
             $this->getDocumentUltimateCustomerOrderReference(
@@ -1409,7 +1420,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Despatch Advice Reference
+        // Document-Level Despatch Advice Reference
 
         while ($this->nextDocumentDespatchAdviceReference()) {
             $this->getDocumentDespatchAdviceReference(
@@ -1425,7 +1436,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Receiving Advice Reference
+        // Document-Level Receiving Advice Reference
 
         while ($this->nextDocumentReceivingAdviceReference()) {
             $this->getDocumentReceivingAdviceReference(
@@ -1441,7 +1452,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Delivery Note Reference
+        // Document-Level Delivery Note Reference
 
         while ($this->nextDocumentDeliveryNoteReference()) {
             $this->getDocumentDeliveryNoteReference(
@@ -1457,7 +1468,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Posting Reference
+        // Document-Level Posting Reference
 
         while ($this->nextDocumentPostingReference()) {
             $this->getDocumentPostingReference(
@@ -1473,7 +1484,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Billing period
+        // Document-Level Billing period
 
         while ($this->nextDocumentBillingPeriod()) {
             $this->getDocumentBillingPeriod(
@@ -1490,6 +1501,225 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
                 )
             );
         }
+
+        // Document-Level Supply Chain Event
+
+        $this->getDocumentSupplyChainEvent($newDocumentSupplyChainEvent);
+
+        $newDocumentDTO->setSupplyChainEvent($newDocumentSupplyChainEvent);
+
+        // Document-Level Payment Means
+
+        while ($this->nextDocumentPaymentMean()) {
+            $this->getDocumentPaymentMean(
+                $newDocumentPaymentMeanTypeCode,
+                $newDocumentPaymentMeanName,
+                $newDocumentPaymentMeanFinancialCardId,
+                $newDocumentPaymentMeanFinancialCardHolder,
+                $newDocumentPaymentMeanBuyerIban,
+                $newDocumentPaymentMeanPayeeIban,
+                $newDocumentPaymentMeanPayeeAccountName,
+                $newDocumentPaymentMeanPayeeProprietaryId,
+                $newDocumentPaymentMeanPayeeBic,
+                $newDocumentPaymentMeanPaymentReference,
+                $newDocumentPaymentMeanMandate
+            );
+
+            $newDocumentDTO->addPaymentMean(
+                new InvoiceSuitePaymentMeanDTO(
+                    $newDocumentPaymentMeanTypeCode,
+                    $newDocumentPaymentMeanName,
+                    $newDocumentPaymentMeanFinancialCardId,
+                    $newDocumentPaymentMeanFinancialCardHolder,
+                    $newDocumentPaymentMeanBuyerIban,
+                    $newDocumentPaymentMeanPayeeIban,
+                    $newDocumentPaymentMeanPayeeAccountName,
+                    $newDocumentPaymentMeanPayeeProprietaryId,
+                    $newDocumentPaymentMeanPayeeBic,
+                    $newDocumentPaymentMeanPaymentReference,
+                    $newDocumentPaymentMeanMandate
+                )
+            );
+        }
+
+        // Document-Level Payment Terms
+
+        while ($this->nextDocumentPaymentTerm()) {
+            $this->getDocumentPaymentTerm(
+                $newDocumentPaymentTermDescription,
+                $newDocumentPaymentTermDueDate
+            );
+
+            $documentPaymentTermDTO = new InvoiceSuitePaymentTermDTO(
+                $newDocumentPaymentTermDescription,
+                $newDocumentPaymentTermDueDate
+            );
+
+            while ($this->nextDocumentPaymentPenaltyTermsInLastPaymentTerm()) {
+                $this->getDocumentPaymentPenaltyTermsInLastPaymentTerm(
+                    $newDocumentPaymentTermPenaltyBaseAmount,
+                    $newDocumentPaymentTermPenaltyAmount,
+                    $newDocumentPaymentTermPenaltyPercent,
+                    $newDocumentPaymentTermPenaltyBaseDate,
+                    $newDocumentPaymentTermPenaltyBasePeriod,
+                    $newDocumentPaymentTermPenaltyBasePeriodUnit
+                );
+
+                $documentPaymentTermDTO->addPenaltyTerms(
+                    new InvoiceSuitePaymentTermPenaltyDTO(
+                        $newDocumentPaymentTermPenaltyBaseAmount,
+                        $newDocumentPaymentTermPenaltyAmount,
+                        $newDocumentPaymentTermPenaltyPercent,
+                        $newDocumentPaymentTermPenaltyBaseDate,
+                        new InvoiceSuitePeriodDTO(
+                            $newDocumentPaymentTermPenaltyBasePeriod,
+                            $newDocumentPaymentTermPenaltyBasePeriodUnit
+                        )
+                    )
+                );
+
+                $this->getDocumentPaymentDiscountTermsInLastPaymentTerm(
+                    $newDocumentPaymentTermDiscountBaseAmount,
+                    $newDocumentPaymentTermDiscountAmount,
+                    $newDocumentPaymentTermDiscountPercent,
+                    $newDocumentPaymentTermDiscountBaseDate,
+                    $newDocumentPaymentTermDiscountBasePeriod,
+                    $newDocumentPaymentTermDiscountBasePeriodUnit
+                );
+
+                $documentPaymentTermDTO->addDiscountTerms(
+                    new InvoiceSuitePaymentTermDiscountDTO(
+                        $newDocumentPaymentTermDiscountBaseAmount,
+                        $newDocumentPaymentTermDiscountAmount,
+                        $newDocumentPaymentTermDiscountPercent,
+                        $newDocumentPaymentTermDiscountBaseDate,
+                        new InvoiceSuitePeriodDTO(
+                            $newDocumentPaymentTermDiscountBasePeriod,
+                            $newDocumentPaymentTermDiscountBasePeriodUnit
+                        )
+                    )
+                );
+            }
+        }
+
+        // Document-Level Creditor reference
+
+        while ($this->nextDocumentPaymentCreditorReferenceID()) {
+            $this->getDocumentPaymentCreditorReferenceID($newDocumentCreditorReferenceId);
+            $newDocumentDTO->addCreditorReference(new InvoiceSuiteIdDTO($newDocumentCreditorReferenceId));
+        }
+
+        // Document-Level Taxes
+
+        while ($this->nextDocumentTax()) {
+            $this->getDocumentTax(
+                $newDocumentTaxCategory,
+                $newDocumentTaxType,
+                $newDocumentTaxBasisAmount,
+                $newDocumentTaxAmount,
+                $newDocumentTaxPercent,
+                $newDocumentTaxExemptionReason,
+                $newDocumentTaxExemptionReasonCode,
+                $newDocumentTaxDueDate,
+                $newDocumentTaxDueCode
+            );
+
+            $newDocumentDTO->addTax(
+                new InvoiceSuiteTaxDTO(
+                    $newDocumentTaxCategory,
+                    $newDocumentTaxType,
+                    $newDocumentTaxBasisAmount,
+                    $newDocumentTaxAmount,
+                    $newDocumentTaxPercent,
+                    $newDocumentTaxExemptionReason,
+                    $newDocumentTaxExemptionReasonCode,
+                    $newDocumentTaxDueDate,
+                    $newDocumentTaxDueCode
+                )
+            );
+        }
+
+        // Document-Level Allowances/Charges
+
+        while ($this->nextDocumentAllowanceCharge()) {
+            $this->getDocumentAllowanceCharge(
+                $newDocumentAllowanceChargeChargeIndicator,
+                $newDocumentAllowanceChargeAmount,
+                $newDocumentAllowanceChargeBaseAmount,
+                $newDocumentAllowanceChargeTaxCategory,
+                $newDocumentAllowanceChargeTaxType,
+                $newDocumentAllowanceChargeTaxPercent,
+                $newDocumentAllowanceChargeReason,
+                $newDocumentAllowanceChargeReasonCode,
+                $newDocumentAllowanceChargePercent
+            );
+
+            $newDocumentDTO->addAllowanceCharge(
+                new InvoiceSuiteAllowanceChargeDTO(
+                    $newDocumentAllowanceChargeChargeIndicator,
+                    $newDocumentAllowanceChargeAmount,
+                    $newDocumentAllowanceChargeBaseAmount,
+                    $newDocumentAllowanceChargePercent,
+                    $newDocumentAllowanceChargeTaxCategory,
+                    $newDocumentAllowanceChargeTaxType,
+                    $newDocumentAllowanceChargeTaxPercent,
+                    $newDocumentAllowanceChargeReason,
+                    $newDocumentAllowanceChargeReasonCode
+                )
+            );
+        }
+
+        // Document-Level Logistic Service Charges
+
+        while ($this->nextDocumentLogisticServiceCharge()) {
+            $this->getDocumentLogisticServiceCharge(
+                $newDocumentLogServiceChargeAmount,
+                $newDocumentLogServiceChargeDescription,
+                $newDocumentLogServiceChargeTaxCategory,
+                $newDocumentLogServiceChargeTaxType,
+                $newDocumentLogServiceChargeTaxPercent
+            );
+
+            $newDocumentDTO->addServiceCharge(
+                new InvoiceSuiteServiceChargeDTO(
+                    $newDocumentLogServiceChargeAmount,
+                    $newDocumentLogServiceChargeDescription,
+                    $newDocumentLogServiceChargeTaxCategory,
+                    $newDocumentLogServiceChargeTaxType,
+                    $newDocumentLogServiceChargeTaxPercent
+                )
+            );
+        }
+
+        // Document-Level Summation
+
+        $this->getDocumentSummation(
+            $newDocumentNetAmount,
+            $newDocumentChargeTotalAmount,
+            $newDocumentDiscountTotalAmount,
+            $newDocumentTaxBasisAmount,
+            $newDocumentTaxTotalAmount,
+            $newDocumentTaxTotalAmount2,
+            $newDocumentGrossAmount,
+            $newDocumentDueAmount,
+            $newDocumentPrepaidAmount,
+            $newDocumentRoungingAmount
+        );
+
+        $newDocumentDTO->setSummation(
+            new InvoiceSuitesummationDTO(
+                $newDocumentNetAmount,
+                $newDocumentChargeTotalAmount,
+                $newDocumentDiscountTotalAmount,
+                $newDocumentTaxBasisAmount,
+                $newDocumentTaxTotalAmount,
+                $newDocumentTaxTotalAmount2,
+                $newDocumentGrossAmount,
+                $newDocumentDueAmount,
+                $newDocumentPrepaidAmount,
+                $newDocumentRoungingAmount
+            )
+        );
 
         // Finished
 

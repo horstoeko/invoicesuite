@@ -1360,6 +1360,6 @@ while ($reader->nextDocumentPosition()) {
 
 $reader->convertToDTO($dto);
 
-var_dump($dto->getBillingPeriods());
+var_dump($dto->getAllowanceCharges());
 
 #endregion
