@@ -10,11 +10,16 @@ use horstoeko\invoicesuite\dto\InvoiceSuitePartyDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePeriodDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteContactDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteMeasureDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteProductDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitePriceNetDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteQuantityDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteDateRangeDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitesummationDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
+use horstoeko\invoicesuite\dto\InvoiceSuitePriceGrossDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentMeanDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
@@ -25,17 +30,18 @@ use horstoeko\invoicesuite\dto\InvoiceSuiteServiceChargeDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAllowanceChargeDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentPositionDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceProductDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermPenaltyDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDiscountDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentExtDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteProductCharacteristicDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteProductClassificationDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentLineDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentLineExtDTO;
 use horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType;
 use horstoeko\invoicesuite\models\zffxextended\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderReader;
-use horstoeko\invoicesuite\dto\InvoiceSuiteMeasureDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteProductCharacteristicDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteProductClassificationDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteProductDTO;
 use horstoeko\invoicesuite\models\zffxextended\ram\SupplyChainTradeLineItemType;
 
 class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatProviderReader
@@ -1833,7 +1839,289 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
                 );
             }
 
+            while ($this->nextDocumentPositionReferencedProduct()) {
+                $this->getDocumentPositionReferencedProduct(
+                    $newDocumentPositionReferencedProductId,
+                    $newDocumentPositionReferencedProductName,
+                    $newDocumentPositionReferencedProductDescription,
+                    $newDocumentPositionReferencedProductSellerId,
+                    $newDocumentPositionReferencedProductBuyerId,
+                    $newDocumentPositionReferencedProductGlobalId,
+                    $newDocumentPositionReferencedProductGlobalIdType,
+                    $newDocumentPositionReferencedProductIndustryId,
+                    $newDocumentPositionReferencedProductUnitQuantity,
+                    $newDocumentPositionReferencedProductUnitQuantityUnit
+                );
+
+                $newDocumentPositionProductDTO->addReferenceProduct(
+                    new InvoiceSuiteReferenceProductDTO(
+                        $newDocumentPositionReferencedProductId,
+                        $newDocumentPositionReferencedProductName,
+                        $newDocumentPositionReferencedProductDescription,
+                        $newDocumentPositionReferencedProductSellerId,
+                        $newDocumentPositionReferencedProductBuyerId,
+                        new InvoiceSuiteIdDTO(
+                            $newDocumentPositionReferencedProductGlobalId,
+                            $newDocumentPositionReferencedProductGlobalIdType
+                        ),
+                        $newDocumentPositionReferencedProductIndustryId,
+                        new InvoiceSuiteQuantityDTO(
+                            $newDocumentPositionReferencedProductUnitQuantity,
+                            $newDocumentPositionReferencedProductUnitQuantityUnit
+                        )
+                    )
+                );
+            }
+
             $newDocumentPositionDTO->setProduct($newDocumentPositionProductDTO);
+
+            while ($this->nextDocumentPositionSellerOrderReference()) {
+                $this->getDocumentPositionSellerOrderReference(
+                    $newDocumentPositionSellerOrderReferenceNumber,
+                    $newDocumentPositionSellerOrderReferenceLineNumber,
+                    $newDocumentPositionSellerOrderReferenceDate
+                );
+
+                $newDocumentPositionDTO->addSellerOrderReference(
+                    new InvoiceSuiteReferenceDocumentLineDTO(
+                        $newDocumentPositionSellerOrderReferenceNumber,
+                        $newDocumentPositionSellerOrderReferenceLineNumber,
+                        $newDocumentPositionSellerOrderReferenceDate
+                    )
+                );
+            }
+
+            while ($this->nextDocumentPositionBuyerOrderReference()) {
+                $this->getDocumentPositionBuyerOrderReference(
+                    $newDocumentPositionBuyerOrderReferenceNumber,
+                    $newDocumentPositionBuyerOrderReferenceLineNumber,
+                    $newDocumentPositionBuyerOrderReferenceDate
+                );
+
+                $newDocumentPositionDTO->addBuyerOrderReference(
+                    new InvoiceSuiteReferenceDocumentLineDTO(
+                        $newDocumentPositionBuyerOrderReferenceNumber,
+                        $newDocumentPositionBuyerOrderReferenceLineNumber,
+                        $newDocumentPositionBuyerOrderReferenceDate
+                    )
+                );
+            }
+
+            while ($this->nextDocumentPositionQuotationReference()) {
+                $this->getDocumentPositionQuotationReference(
+                    $newDocumentPositionQuotationReferenceNumber,
+                    $newDocumentPositionQuotationReferenceLineNumber,
+                    $newDocumentPositionQuotationReferenceDate
+                );
+
+                $newDocumentPositionDTO->addQuotationReference(
+                    new InvoiceSuiteReferenceDocumentLineDTO(
+                        $newDocumentPositionQuotationReferenceNumber,
+                        $newDocumentPositionQuotationReferenceLineNumber,
+                        $newDocumentPositionQuotationReferenceDate
+                    )
+                );
+            }
+
+            while ($this->nextDocumentPositionContractReference()) {
+                $this->getDocumentPositionContractReference(
+                    $newDocumentPositionContractReferenceNumber,
+                    $newDocumentPositionContractReferenceLineNumber,
+                    $newDocumentPositionContractReferenceDate
+                );
+
+                $newDocumentPositionDTO->addContractReference(
+                    new InvoiceSuiteReferenceDocumentLineDTO(
+                        $newDocumentPositionContractReferenceNumber,
+                        $newDocumentPositionContractReferenceLineNumber,
+                        $newDocumentPositionContractReferenceDate
+                    )
+                );
+            }
+
+            while ($this->nextDocumentPositionAdditionalReference()) {
+                $this->getDocumentPositionAdditionalReference(
+                    $newDocumentPositionAdditionalReferenceNumber,
+                    $newDocumentPositionAdditionalReferenceLineNumber,
+                    $newDocumentPositionAdditionalReferenceDate,
+                    $newDocumentPositionAdditionalReferenceTypeCode,
+                    $newDocumentPositionAdditionalReferenceReferenceTypeCode,
+                    $newDocumentPositionAdditionalReferenceDescription,
+                    $newDocumentPositionAdditionalReferenceAttachment
+                );
+
+                $newDocumentPositionDTO->addAdditionalReference(
+                    new InvoiceSuiteReferenceDocumentLineExtDTO(
+                        $newDocumentPositionAdditionalReferenceNumber,
+                        $newDocumentPositionAdditionalReferenceLineNumber,
+                        $newDocumentPositionAdditionalReferenceDate,
+                        $newDocumentPositionAdditionalReferenceTypeCode,
+                        $newDocumentPositionAdditionalReferenceReferenceTypeCode,
+                        $newDocumentPositionAdditionalReferenceDescription,
+                        $newDocumentPositionAdditionalReferenceAttachment
+                    )
+                );
+            }
+
+            while ($this->nextDocumentPositionUltimateCustomerOrderReference()) {
+                $this->getDocumentPositionUltimateCustomerOrderReference(
+                    $newDocumentPositionUltimateCustomerOrderReferenceNumber,
+                    $newDocumentPositionUltimateCustomerOrderReferenceLineNumber,
+                    $newDocumentPositionUltimateCustomerOrderReferenceDate
+                );
+
+                $newDocumentPositionDTO->addUltimateCustomerOrderReference(
+                    new InvoiceSuiteReferenceDocumentLineDTO(
+                        $newDocumentPositionUltimateCustomerOrderReferenceNumber,
+                        $newDocumentPositionUltimateCustomerOrderReferenceLineNumber,
+                        $newDocumentPositionUltimateCustomerOrderReferenceDate
+                    )
+                );
+            }
+
+            while ($this->nextDocumentPositionDespatchAdviceReference()) {
+                $this->getDocumentPositionDespatchAdviceReference(
+                    $newDocumentPositionDespatchAdviceReferenceNumber,
+                    $newDocumentPositionDespatchAdviceReferenceLineNumber,
+                    $newDocumentPositionDespatchAdviceReferenceDate
+                );
+
+                $newDocumentPositionDTO->addDespatchAdviceReference(
+                    new InvoiceSuiteReferenceDocumentLineDTO(
+                        $newDocumentPositionDespatchAdviceReferenceNumber,
+                        $newDocumentPositionDespatchAdviceReferenceLineNumber,
+                        $newDocumentPositionDespatchAdviceReferenceDate
+                    )
+                );
+            }
+
+            while ($this->nextDocumentPositionReceivingAdviceReference()) {
+                $this->getDocumentPositionReceivingAdviceReference(
+                    $newDocumentPositionReceivingAdviceReferenceNumber,
+                    $newDocumentPositionReceivingAdviceReferenceLineNumber,
+                    $newDocumentPositionReceivingAdviceReferenceDate
+                );
+
+                $newDocumentPositionDTO->addReceivingAdviceReference(
+                    new InvoiceSuiteReferenceDocumentLineDTO(
+                        $newDocumentPositionReceivingAdviceReferenceNumber,
+                        $newDocumentPositionReceivingAdviceReferenceLineNumber,
+                        $newDocumentPositionReceivingAdviceReferenceDate
+                    )
+                );
+            }
+
+            while ($this->nextDocumentPositionDeliveryNoteReference()) {
+                $this->getDocumentPositionDeliveryNoteReference(
+                    $newDocumentPositionDeliveryNoteReferenceNumber,
+                    $newDocumentPositionDeliveryNoteReferenceLineNumber,
+                    $newDocumentPositionDeliveryNoteReferenceDate
+                );
+
+                $newDocumentPositionDTO->addDeliveryNoteReference(
+                    new InvoiceSuiteReferenceDocumentLineDTO(
+                        $newDocumentPositionDeliveryNoteReferenceNumber,
+                        $newDocumentPositionDeliveryNoteReferenceLineNumber,
+                        $newDocumentPositionDeliveryNoteReferenceDate
+                    )
+                );
+            }
+
+            while ($this->nextDocumentPositionInvoiceReference()) {
+                $this->getDocumentPositionInvoiceReference(
+                    $newDocumentPositionInvoiceReferenceNumber,
+                    $newDocumentPositionInvoiceReferenceLineNumber,
+                    $newDocumentPositionInvoiceReferenceDate,
+                    $newDocumentPositionInvoiceReferenceTypeCode
+                );
+
+                $newDocumentPositionDTO->addInvoiceReference(
+                    new InvoiceSuiteReferenceDocumentLineExtDTO(
+                        $newDocumentPositionInvoiceReferenceNumber,
+                        $newDocumentPositionInvoiceReferenceLineNumber,
+                        $newDocumentPositionInvoiceReferenceDate,
+                        $newDocumentPositionInvoiceReferenceTypeCode
+                    )
+                );
+            }
+
+            $this->getDocumentPositionGrossPrice(
+                $newDocumentPositionGrossPrice,
+                $newDocumentPositionGrossPriceBasisQuantity,
+                $newDocumentPositionGrossPriceBasisQuantityUnit
+            );
+
+            $newDocumentPositionGrossPriceDTO = new InvoiceSuitePriceGrossDTO(
+                $newDocumentPositionGrossPrice,
+                new InvoiceSuiteQuantityDTO(
+                    $newDocumentPositionGrossPriceBasisQuantity,
+                    $newDocumentPositionGrossPriceBasisQuantityUnit
+                )
+            );
+
+            while ($this->nextDocumentPositionGrossPriceAllowanceCharge()) {
+                $this->getDocumentPositionGrossPriceAllowanceCharge(
+                    $newDocumentPositionGrossPriceAllowanceChargeAmount,
+                    $newDocumentPositionGrossPriceAllowanceIsCharge,
+                    $newDocumentPositionGrossPriceAllowanceChargePercent,
+                    $newDocumentPositionGrossPriceAllowanceChargeBasisAmount,
+                    $newDocumentPositionGrossPriceAllowanceChargeReason,
+                    $newDocumentPositionGrossPriceAllowanceChargeReasonCode
+                );
+
+                $newDocumentPositionGrossPriceDTO->addAllowanceCharge(
+                    new InvoiceSuiteAllowanceChargeDTO(
+                        $newDocumentPositionGrossPriceAllowanceIsCharge,
+                        $newDocumentPositionGrossPriceAllowanceChargeAmount,
+                        $newDocumentPositionGrossPriceAllowanceChargeBasisAmount,
+                        $newDocumentPositionGrossPriceAllowanceChargePercent,
+                        null,
+                        null,
+                        null,
+                        $newDocumentPositionGrossPriceAllowanceChargeReason,
+                        $newDocumentPositionGrossPriceAllowanceChargeReasonCode
+                    )
+                );
+            }
+
+            $newDocumentPositionDTO->setGrossPrice($newDocumentPositionGrossPriceDTO);
+
+            $this->getDocumentPositionNetPrice(
+                $newDocumentPositionNetPrice,
+                $newDocumentPositionNetPriceBasisQuantity,
+                $newDocumentPositionNetPriceBasisQuantityUnit
+            );
+
+            $newDocumentPositionNetPriceDTO = new InvoiceSuitePriceNetDTO(
+                $newDocumentPositionNetPrice,
+                new InvoiceSuiteQuantityDTO(
+                    $newDocumentPositionNetPriceBasisQuantity,
+                    $newDocumentPositionNetPriceBasisQuantityUnit
+                )
+            );
+
+            $this->getDocumentPositionNetPriceTax(
+                $newDocumentPositionNetPriceTaxCategory,
+                $newDocumentPositionNetPriceTaxType,
+                $newDocumentPositionNetPriceTaxAmount,
+                $newDocumentPositionNetPriceTaxPercent,
+                $newDocumentPositionNetPriceTaxExemptionReason,
+                $newDocumentPositionNetPriceTaxExemptionReasonCode
+            );
+
+            $newDocumentPositionNetPriceDTO->addTax(
+                new InvoiceSuiteTaxDTO(
+                    $newDocumentPositionNetPriceTaxCategory,
+                    $newDocumentPositionNetPriceTaxType,
+                    null,
+                    $newDocumentPositionNetPriceTaxAmount,
+                    $newDocumentPositionNetPriceTaxPercent,
+                    $newDocumentPositionNetPriceTaxExemptionReason,
+                    $newDocumentPositionNetPriceTaxExemptionReasonCode
+                )
+            );
+
+            $newDocumentPositionDTO->setNetPrice($newDocumentPositionNetPriceDTO);
 
             $newDocumentDTO->addPosition($newDocumentPositionDTO);
         }
