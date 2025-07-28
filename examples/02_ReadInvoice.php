@@ -24,6 +24,7 @@ $reader->getDocumentCompleteDate($documentCompleteDate);
 $reader->getDocumentCurrency($documentCurrency);
 $reader->getDocumentTaxCurrency($documentTaxCurrency);
 $reader->getDocumentIsCopy($documentIsCopy);
+$reader->getDocumentBuyerReference($documentBuyerReference);
 
 echo "Document Number ........ $documentNumber\n";
 echo "Document Type .......... $documentType\n";
@@ -34,6 +35,7 @@ echo "Document Compl. Date ... " . $documentCompleteDate?->format("d.m.Y") . "\n
 echo "Document Currency ...... $documentCurrency\n";
 echo "Document Tax Currency .. $documentTaxCurrency\n";
 echo "Document Copy .......... $documentIsCopy\n";
+echo "Document Leitweg ....... $documentBuyerReference\n";
 
 while ($reader->nextDocumentNote()) {
     $reader->getDocumentNote($documentNoteContent, $documentNoteContentCode, $documentNoteSubjectCode);

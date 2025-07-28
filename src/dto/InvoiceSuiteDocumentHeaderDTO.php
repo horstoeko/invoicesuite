@@ -282,6 +282,13 @@ class InvoiceSuiteDocumentHeaderDTO
     protected array $creditorReferences = [];
 
     /**
+     * The ID for internal routing (Leitweg ID)
+     *
+     * @var array<InvoiceSuiteIdDTO>
+     */
+    protected array $buyerReferences = [];
+
+    /**
      * The VAT breakdown
      *
      * @var array<InvoiceSuiteTaxDTO>
@@ -357,6 +364,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuitePaymentMeanDTO> $paymentMeans The payment means
      * @param array<InvoiceSuitePaymentTermDTO> $paymentTerms The payment terms
      * @param array<InvoiceSuiteIdDTO> $creditorReferences The creditor identifier
+     * @param array<InvoiceSuiteIdDTO> $buyerReferences The ID for internal routing (Leitweg ID)
      * @param array<InvoiceSuiteTaxDTO> $taxes The VAT breakdown
      * @param array<InvoiceSuiteAllowanceChargeDTO> $allowanceCharges The allowances/charges
      * @param array<InvoiceSuiteServiceChargeDTO> $serviceCharges The allowances/charges
@@ -402,6 +410,7 @@ class InvoiceSuiteDocumentHeaderDTO
         array $paymentMeans = [],
         array $paymentTerms = [],
         array $creditorReferences = [],
+        array $buyerReferences = [],
         array $taxes = [],
         array $allowanceCharges = [],
         array $serviceCharges = [],
@@ -446,6 +455,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $this->setPaymentMeans($paymentMeans);
         $this->setPaymentTerms($paymentTerms);
         $this->setCreditorReferences($creditorReferences);
+        $this->setBuyerReferences($buyerReferences);
         $this->setTaxes($taxes);
         $this->setAllowanceCharges($allowanceCharges);
         $this->setServiceCharges($serviceCharges);
@@ -3296,6 +3306,146 @@ class InvoiceSuiteDocumentHeaderDTO
             $count++;
 
             $callback($creditorReference);
+        }
+
+        if ($count === 0 && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Returns the ID for internal routing (Leitweg ID)
+     *
+     * @return array<InvoiceSuiteIdDTO>
+     */
+    public function getBuyerReferences(): array
+    {
+        return $this->buyerReferences;
+    }
+
+    /**
+     * Sets the ID for internal routing (Leitweg ID)
+     *
+     * @param array<InvoiceSuiteIdDTO> $buyerReferences The ID for internal routing (Leitweg ID)
+     * @return self
+     */
+    public function setBuyerReferences(array $buyerReferences): self
+    {
+        $this->buyerReferences = $buyerReferences;
+
+        return $this;
+    }
+
+    /**
+     * Add single The ID for internal routing (Leitweg ID)
+     *
+     * @param InvoiceSuiteIdDTO $buyerReference The ID for internal routing (Leitweg ID)
+     * @return self
+     */
+    public function addBuyerReference(InvoiceSuiteIdDTO $buyerReference): self
+    {
+        $this->buyerReferences[] = $buyerReference;
+
+        return $this;
+    }
+
+    /**
+     * Get first The ID for internal routing (Leitweg ID)
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function firstBuyerReference(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($buyerReference = reset($this->buyerReferences)) !== false) {
+            $callback($buyerReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get next The ID for internal routing (Leitweg ID)
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function nextBuyerReference(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($buyerReference = next($this->buyerReferences)) !== false) {
+            $callback($buyerReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get previous The ID for internal routing (Leitweg ID)
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function previousBuyerReference(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($buyerReference = prev($this->buyerReferences)) !== false) {
+            $callback($buyerReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last The ID for internal routing (Leitweg ID)
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function lastBuyerReference(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($buyerReference = end($this->buyerReferences)) !== false) {
+            $callback($buyerReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The ID for internal routing (Leitweg ID) and execute callback
+     *
+     * @param callable $callback Callback to execute for each item
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param int|null $limit Maximum number of loops
+     * @return self
+     */
+    public function forEachBuyerReference(
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): self {
+        $count = 0;
+
+        foreach ($this->buyerReferences as $buyerReference) {
+            if ($limit !== null && $count >= $limit) {
+                break;
+            }
+
+            $count++;
+
+            $callback($buyerReference);
         }
 
         if ($count === 0 && !is_null($callbackElse)) {

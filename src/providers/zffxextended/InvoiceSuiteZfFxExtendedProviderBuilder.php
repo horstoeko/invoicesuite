@@ -811,6 +811,10 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
             fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPaymentCreditorReferenceID($item->getId())
         );
 
+        $newDocumentDTO->firstBuyerReference(
+            fn(InvoiceSuiteIdDTO $item) => $this->setDocumentBuyerReference($item->getId())
+        );
+
         $newDocumentDTO->forEachTax(
             fn(InvoiceSuiteTaxDTO $item) => $this->addDocumentTax(
                 $item->getCategory(),

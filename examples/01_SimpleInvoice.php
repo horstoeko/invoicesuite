@@ -65,6 +65,7 @@ $documentDTO
     ->addNote(new InvoiceSuiteNoteDTO("Some content", "CC00", "SC00"))
     ->addNote(new InvoiceSuiteNoteDTO("Some other content", "CC99", "SC99"))
     ->addBillingPeriod(new InvoiceSuiteDateRangeDTO(new DateTime("first day of this month"), new DateTime("last day of this month"), "Some Description"))
+    ->addBuyerReference(new InvoiceSuiteIdDTO('LEITWEGID'))
     ->setSellerParty(
         (new InvoiceSuitePartyDTO())
             ->addName("Lieferant GmbH")
