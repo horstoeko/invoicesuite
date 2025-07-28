@@ -811,6 +811,20 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         return $this;
     }
 
+    /**
+     * Get the identifier assigned by the buyer and used for internal routing
+     *
+     * @param string|null $newBuyerReference An identifier assigned by the buyer and used for internal routing
+     * @return self
+     */
+    public function getDocumentBuyerReference(
+        ?string &$newBuyerReference
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentBuyerReference($newBuyerReference);
+
+        return $this;
+    }
+
     #endregion
 
     #region Document Seller/Supplier

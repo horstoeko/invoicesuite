@@ -3718,6 +3718,20 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         return $this;
     }
 
+    /**
+     * Get the identifier assigned by the buyer and used for internal routing
+     *
+     * @param string|null $newBuyerReference __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
+     * @return self
+     */
+    public function getDocumentBuyerReference(
+        ?string &$newBuyerReference
+    ): self {
+        $newBuyerReference = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerReference()?->getValue() ?? "";
+
+        return $this;
+    }
+
     #endregion
 
     #region Document Seller/Supplier

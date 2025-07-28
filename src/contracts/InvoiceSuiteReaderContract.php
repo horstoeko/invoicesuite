@@ -532,6 +532,16 @@ interface InvoiceSuiteReaderContract
         ?DateTimeInterface &$newDate
     ): self;
 
+    /**
+     * Get the identifier assigned by the buyer and used for internal routing
+     *
+     * @param string|null $newBuyerReference An identifier assigned by the buyer and used for internal routing
+     * @return self
+     */
+    public function getDocumentBuyerReference(
+        ?string &$newBuyerReference
+    ): self;
+
     #endregion
 
     #region Document Seller/Supplier

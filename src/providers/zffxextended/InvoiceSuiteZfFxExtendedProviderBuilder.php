@@ -2312,6 +2312,29 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
+     * Set the identifier assigned by the buyer and used for internal routing
+     *
+     * @param string|null $newBuyerReference __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
+     * @return self
+     */
+    public function setDocumentBuyerReference(
+        ?string $newBuyerReference = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerReference])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreement()
+            ->getBuyerReferenceWithCreate()
+            ->setValue($newBuyerReference);
+
+        return $this;
+    }
+
+    /**
      * Set the name of the seller/supplier party
      *
      * @param string|null $newName __BT-27, From MINIMUM__ The full formal name under which the party is registered.
