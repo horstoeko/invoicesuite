@@ -102,11 +102,13 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         $this->getDocumentTaxCurrency($newDocumentTaxCurrency);
         $newDocumentDTO->setTaxCurrency($newDocumentTaxCurrency);
 
+        $this->getDocumentIsCopy($newDocumentIsCopy);
+        $newDocumentDTO->setIsCopy($newDocumentIsCopy);
+
         $this->getDocumentIsTest($newDocumentIsTest);
         $newDocumentDTO->setIsTest($newDocumentIsTest);
 
-        $this->getDocumentIsCopy($newDocumentIsCopy);
-        $newDocumentDTO->setIsCopy($newDocumentIsCopy);
+        // Document-Level Notes
 
         while ($this->nextDocumentNote()) {
             $this->getDocumentNote(
@@ -123,6 +125,238 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
                 )
             );
         }
+
+        // Document-Level Billing period
+
+        while ($this->nextDocumentBillingPeriod()) {
+            $this->getDocumentBillingPeriod(
+                $newDocumentBillingPeriodStartDate,
+                $newDocumentBillingPeriodEndDate,
+                $newDocumentBillingPeriodDescription
+            );
+
+            $newDocumentDTO->addBillingPeriod(
+                new InvoiceSuiteDateRangeDTO(
+                    $newDocumentBillingPeriodStartDate,
+                    $newDocumentBillingPeriodEndDate,
+                    $newDocumentBillingPeriodDescription
+                )
+            );
+        }
+
+        // Document-Level Posting Reference
+
+        while ($this->nextDocumentPostingReference()) {
+            $this->getDocumentPostingReference(
+                $newDocumentPostingReferenceType,
+                $newDocumentPostingReferenceAccountId
+            );
+
+            $newDocumentDTO->addPostingReference(
+                new InvoiceSuiteIdDTO(
+                    $newDocumentPostingReferenceAccountId,
+                    $newDocumentPostingReferenceType
+                )
+            );
+        }
+
+        // Document-Level Seller Order Reference
+
+        while ($this->nextDocumentSellerOrderReference()) {
+            $this->getDocumentSellerOrderReference(
+                $newDocumentSellerOrderReferenceNumber,
+                $newDocumentSellerOrderReferenceDate
+            );
+
+            $newDocumentDTO->addSellerOrderReference(
+                new InvoiceSuiteReferenceDocumentDTO(
+                    $newDocumentSellerOrderReferenceNumber,
+                    $newDocumentSellerOrderReferenceDate
+                )
+            );
+        }
+
+        // Document-Level Buyer Order Reference
+
+        while ($this->nextDocumentBuyerOrderReference()) {
+            $this->getDocumentBuyerOrderReference(
+                $newDocumentBuyerOrderReferenceNumber,
+                $newDocumentBuyerOrderReferenceDate
+            );
+
+            $newDocumentDTO->addBuyerOrderReference(
+                new InvoiceSuiteReferenceDocumentDTO(
+                    $newDocumentBuyerOrderReferenceNumber,
+                    $newDocumentBuyerOrderReferenceDate
+                )
+            );
+        }
+
+        // Document-Level Quotation Reference
+
+        while ($this->nextDocumentQuotationReference()) {
+            $this->getDocumentQuotationReference(
+                $newDocumentQuotationReferenceNumber,
+                $newDocumentQuotationReferenceDate
+            );
+
+            $newDocumentDTO->addQuotationReference(
+                new InvoiceSuiteReferenceDocumentDTO(
+                    $newDocumentQuotationReferenceNumber,
+                    $newDocumentQuotationReferenceDate
+                )
+            );
+        }
+
+        // Document-Level Contract Reference
+
+        while ($this->nextDocumentContractReference()) {
+            $this->getDocumentContractReference(
+                $newDocumentContractReferenceNumber,
+                $newDocumentContractReferenceDate
+            );
+
+            $newDocumentDTO->addContractReference(
+                new InvoiceSuiteReferenceDocumentDTO(
+                    $newDocumentContractReferenceNumber,
+                    $newDocumentContractReferenceDate
+                )
+            );
+        }
+
+        // Document-Level Additional Reference
+
+        while ($this->nextDocumentAdditionalReference()) {
+            $this->getDocumentAdditionalReference(
+                $newDocumentAdditionalReferenceNumber,
+                $newDocumentAdditionalReferenceDate,
+                $newDocumentAdditionalReferenceTypeCode,
+                $newDocumentAdditionalReferenceReferenceTypeCode,
+                $newDocumentAdditionalReferenceDescription,
+                $newDocumentAdditionalReferenceAttachment
+            );
+
+            $newDocumentDTO->addAdditionalReference(
+                new InvoiceSuiteReferenceDocumentExtDTO(
+                    $newDocumentAdditionalReferenceNumber,
+                    $newDocumentAdditionalReferenceDate,
+                    $newDocumentAdditionalReferenceTypeCode,
+                    $newDocumentAdditionalReferenceReferenceTypeCode,
+                    $newDocumentAdditionalReferenceDescription,
+                    $newDocumentAdditionalReferenceAttachment
+                )
+            );
+        }
+
+        // Document-Level Invoice Reference
+
+        while ($this->nextDocumentInvoiceReference()) {
+            $this->getDocumentInvoiceReference(
+                $newDocumentInvoiceReferenceNumber,
+                $newDocumentInvoiceReferenceDate,
+                $newDocumentInvoiceReferenceTypeCode
+            );
+
+            $newDocumentDTO->addInvoiceReference(
+                new InvoiceSuiteReferenceDocumentExtDTO(
+                    $newDocumentInvoiceReferenceNumber,
+                    $newDocumentInvoiceReferenceDate,
+                    $newDocumentInvoiceReferenceTypeCode
+                )
+            );
+        }
+
+        // Document-Level Project Reference
+
+        while ($this->nextDocumentProjectReference()) {
+            $this->getDocumentProjectReference(
+                $newDocumentProjectReferenceNumber,
+                $newDocumentProjectReferenceName
+            );
+
+            $newDocumentDTO->addProjectReference(
+                new InvoiceSuiteProjectDTO(
+                    $newDocumentProjectReferenceNumber,
+                    $newDocumentProjectReferenceName
+                )
+            );
+        }
+
+        // Document-Level Ultimate Customer Order Reference
+
+        while ($this->nextDocumentUltimateCustomerOrderReference()) {
+            $this->getDocumentUltimateCustomerOrderReference(
+                $newDocumentUltimateCustomerOrderReferenceNumber,
+                $newDocumentUltimateCustomerOrderReferenceDate
+            );
+
+            $newDocumentDTO->addUltimateCustomerOrderReference(
+                new InvoiceSuiteReferenceDocumentDTO(
+                    $newDocumentUltimateCustomerOrderReferenceNumber,
+                    $newDocumentUltimateCustomerOrderReferenceDate
+                )
+            );
+        }
+
+        // Document-Level Despatch Advice Reference
+
+        while ($this->nextDocumentDespatchAdviceReference()) {
+            $this->getDocumentDespatchAdviceReference(
+                $newDocumentDespatchAdviceReferenceNumber,
+                $newDocumentDespatchAdviceReferenceDate
+            );
+
+            $newDocumentDTO->addDespatchAdviceReference(
+                new InvoiceSuiteReferenceDocumentDTO(
+                    $newDocumentDespatchAdviceReferenceNumber,
+                    $newDocumentDespatchAdviceReferenceDate
+                )
+            );
+        }
+
+        // Document-Level Receiving Advice Reference
+
+        while ($this->nextDocumentReceivingAdviceReference()) {
+            $this->getDocumentReceivingAdviceReference(
+                $newDocumentReceivingAdviceReferenceNumber,
+                $newDocumentReceivingAdviceReferenceDate
+            );
+
+            $newDocumentDTO->addReceivingAdviceReference(
+                new InvoiceSuiteReferenceDocumentDTO(
+                    $newDocumentReceivingAdviceReferenceNumber,
+                    $newDocumentReceivingAdviceReferenceDate
+                )
+            );
+        }
+
+        // Document-Level Delivery Note Reference
+
+        while ($this->nextDocumentDeliveryNoteReference()) {
+            $this->getDocumentDeliveryNoteReference(
+                $newDocumentDeliveryNoteReferenceNumber,
+                $newDocumentDeliveryNoteReferenceDate
+            );
+
+            $newDocumentDTO->addDeliveryNoteReference(
+                new InvoiceSuiteReferenceDocumentDTO(
+                    $newDocumentDeliveryNoteReferenceNumber,
+                    $newDocumentDeliveryNoteReferenceDate
+                )
+            );
+        }
+
+        // Document-Level Supply Chain Event
+
+        $this->getDocumentSupplyChainEvent($newDocumentSupplyChainEvent);
+
+        $newDocumentDTO->setSupplyChainEvent($newDocumentSupplyChainEvent);
+
+        // Document-Level Buyer Reference
+
+        $this->getDocumentBuyerReference($newDocumentBuyerReference);
+
+        $newDocumentDTO->addBuyerReference(new InvoiceSuiteIdDTO($newDocumentBuyerReference));
 
         // Document-Level Seller/Supplier Party
 
@@ -1294,232 +1528,6 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             );
         }
 
-        // Document-Level Seller Order Reference
-
-        while ($this->nextDocumentSellerOrderReference()) {
-            $this->getDocumentSellerOrderReference(
-                $newDocumentSellerOrderReferenceNumber,
-                $newDocumentSellerOrderReferenceDate
-            );
-
-            $newDocumentDTO->addSellerOrderReference(
-                new InvoiceSuiteReferenceDocumentDTO(
-                    $newDocumentSellerOrderReferenceNumber,
-                    $newDocumentSellerOrderReferenceDate
-                )
-            );
-        }
-
-        // Document-Level Buyer Order Reference
-
-        while ($this->nextDocumentBuyerOrderReference()) {
-            $this->getDocumentBuyerOrderReference(
-                $newDocumentBuyerOrderReferenceNumber,
-                $newDocumentBuyerOrderReferenceDate
-            );
-
-            $newDocumentDTO->addBuyerOrderReference(
-                new InvoiceSuiteReferenceDocumentDTO(
-                    $newDocumentBuyerOrderReferenceNumber,
-                    $newDocumentBuyerOrderReferenceDate
-                )
-            );
-        }
-
-        // Document-Level Quotation Reference
-
-        while ($this->nextDocumentQuotationReference()) {
-            $this->getDocumentQuotationReference(
-                $newDocumentQuotationReferenceNumber,
-                $newDocumentQuotationReferenceDate
-            );
-
-            $newDocumentDTO->addQuotationReference(
-                new InvoiceSuiteReferenceDocumentDTO(
-                    $newDocumentQuotationReferenceNumber,
-                    $newDocumentQuotationReferenceDate
-                )
-            );
-        }
-
-        // Document-Level Contract Reference
-
-        while ($this->nextDocumentContractReference()) {
-            $this->getDocumentContractReference(
-                $newDocumentContractReferenceNumber,
-                $newDocumentContractReferenceDate
-            );
-
-            $newDocumentDTO->addContractReference(
-                new InvoiceSuiteReferenceDocumentDTO(
-                    $newDocumentContractReferenceNumber,
-                    $newDocumentContractReferenceDate
-                )
-            );
-        }
-
-        // Document-Level Additional Reference
-
-        while ($this->nextDocumentAdditionalReference()) {
-            $this->getDocumentAdditionalReference(
-                $newDocumentAdditionalReferenceNumber,
-                $newDocumentAdditionalReferenceDate,
-                $newDocumentAdditionalReferenceTypeCode,
-                $newDocumentAdditionalReferenceReferenceTypeCode,
-                $newDocumentAdditionalReferenceDescription,
-                $newDocumentAdditionalReferenceAttachment
-            );
-
-            $newDocumentDTO->addAdditionalReference(
-                new InvoiceSuiteReferenceDocumentExtDTO(
-                    $newDocumentAdditionalReferenceNumber,
-                    $newDocumentAdditionalReferenceDate,
-                    $newDocumentAdditionalReferenceTypeCode,
-                    $newDocumentAdditionalReferenceReferenceTypeCode,
-                    $newDocumentAdditionalReferenceDescription,
-                    $newDocumentAdditionalReferenceAttachment
-                )
-            );
-        }
-
-        // Document-Level Invoice Reference
-
-        while ($this->nextDocumentInvoiceReference()) {
-            $this->getDocumentInvoiceReference(
-                $newDocumentInvoiceReferenceNumber,
-                $newDocumentInvoiceReferenceDate,
-                $newDocumentInvoiceReferenceTypeCode
-            );
-
-            $newDocumentDTO->addInvoiceReference(
-                new InvoiceSuiteReferenceDocumentExtDTO(
-                    $newDocumentInvoiceReferenceNumber,
-                    $newDocumentInvoiceReferenceDate,
-                    $newDocumentInvoiceReferenceTypeCode
-                )
-            );
-        }
-
-        // Document-Level Project Reference
-
-        while ($this->nextDocumentProjectReference()) {
-            $this->getDocumentProjectReference(
-                $newDocumentProjectReferenceNumber,
-                $newDocumentProjectReferenceName
-            );
-
-            $newDocumentDTO->addProjectReference(
-                new InvoiceSuiteProjectDTO(
-                    $newDocumentProjectReferenceNumber,
-                    $newDocumentProjectReferenceName
-                )
-            );
-        }
-
-        // Document-Level Ultimate Customer Order Reference
-
-        while ($this->nextDocumentUltimateCustomerOrderReference()) {
-            $this->getDocumentUltimateCustomerOrderReference(
-                $newDocumentUltimateCustomerOrderReferenceNumber,
-                $newDocumentUltimateCustomerOrderReferenceDate
-            );
-
-            $newDocumentDTO->addUltimateCustomerOrderReference(
-                new InvoiceSuiteReferenceDocumentDTO(
-                    $newDocumentUltimateCustomerOrderReferenceNumber,
-                    $newDocumentUltimateCustomerOrderReferenceDate
-                )
-            );
-        }
-
-        // Document-Level Despatch Advice Reference
-
-        while ($this->nextDocumentDespatchAdviceReference()) {
-            $this->getDocumentDespatchAdviceReference(
-                $newDocumentDespatchAdviceReferenceNumber,
-                $newDocumentDespatchAdviceReferenceDate
-            );
-
-            $newDocumentDTO->addDespatchAdviceReference(
-                new InvoiceSuiteReferenceDocumentDTO(
-                    $newDocumentDespatchAdviceReferenceNumber,
-                    $newDocumentDespatchAdviceReferenceDate
-                )
-            );
-        }
-
-        // Document-Level Receiving Advice Reference
-
-        while ($this->nextDocumentReceivingAdviceReference()) {
-            $this->getDocumentReceivingAdviceReference(
-                $newDocumentReceivingAdviceReferenceNumber,
-                $newDocumentReceivingAdviceReferenceDate
-            );
-
-            $newDocumentDTO->addReceivingAdviceReference(
-                new InvoiceSuiteReferenceDocumentDTO(
-                    $newDocumentReceivingAdviceReferenceNumber,
-                    $newDocumentReceivingAdviceReferenceDate
-                )
-            );
-        }
-
-        // Document-Level Delivery Note Reference
-
-        while ($this->nextDocumentDeliveryNoteReference()) {
-            $this->getDocumentDeliveryNoteReference(
-                $newDocumentDeliveryNoteReferenceNumber,
-                $newDocumentDeliveryNoteReferenceDate
-            );
-
-            $newDocumentDTO->addDeliveryNoteReference(
-                new InvoiceSuiteReferenceDocumentDTO(
-                    $newDocumentDeliveryNoteReferenceNumber,
-                    $newDocumentDeliveryNoteReferenceDate
-                )
-            );
-        }
-
-        // Document-Level Posting Reference
-
-        while ($this->nextDocumentPostingReference()) {
-            $this->getDocumentPostingReference(
-                $newDocumentPostingReferenceType,
-                $newDocumentPostingReferenceAccountId
-            );
-
-            $newDocumentDTO->addPostingReference(
-                new InvoiceSuiteIdDTO(
-                    $newDocumentPostingReferenceAccountId,
-                    $newDocumentPostingReferenceType
-                )
-            );
-        }
-
-        // Document-Level Billing period
-
-        while ($this->nextDocumentBillingPeriod()) {
-            $this->getDocumentBillingPeriod(
-                $newDocumentBillingPeriodStartDate,
-                $newDocumentBillingPeriodEndDate,
-                $newDocumentBillingPeriodDescription
-            );
-
-            $newDocumentDTO->addBillingPeriod(
-                new InvoiceSuiteDateRangeDTO(
-                    $newDocumentBillingPeriodStartDate,
-                    $newDocumentBillingPeriodEndDate,
-                    $newDocumentBillingPeriodDescription
-                )
-            );
-        }
-
-        // Document-Level Supply Chain Event
-
-        $this->getDocumentSupplyChainEvent($newDocumentSupplyChainEvent);
-
-        $newDocumentDTO->setSupplyChainEvent($newDocumentSupplyChainEvent);
-
         // Document-Level Payment Means
 
         while ($this->nextDocumentPaymentMean()) {
@@ -1620,12 +1628,6 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             $this->getDocumentPaymentCreditorReferenceID($newDocumentCreditorReferenceId);
             $newDocumentDTO->addCreditorReference(new InvoiceSuiteIdDTO($newDocumentCreditorReferenceId));
         }
-
-        // Document-Level Buyer Reference
-
-        $this->getDocumentBuyerReference($newDocumentBuyerReference);
-
-        $newDocumentDTO->addBuyerReference(new InvoiceSuiteIdDTO($newDocumentBuyerReference));
 
         // Document-Level Taxes
 
