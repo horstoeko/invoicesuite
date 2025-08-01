@@ -10370,7 +10370,7 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractFormatPr
     ): self {
         $positionSummation = $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getSpecifiedTradeSettlementLineMonetarySummation();
 
-        $newNetAmount = $positionSummation?->getLineTotalAmount()?->getValue() ?? 0.0;;
+        $newNetAmount = $positionSummation?->getLineTotalAmount()?->getValue() ?? 0.0;
         $newChargeTotalAmount = 0.0;
         $newDiscountTotalAmount = 0.0;
         $newTaxTotalAmount = 0.0;

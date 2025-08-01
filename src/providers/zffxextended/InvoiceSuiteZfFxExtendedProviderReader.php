@@ -11803,7 +11803,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     ): self {
         $positionSummation = $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getSpecifiedTradeSettlementLineMonetarySummation();
 
-        $newNetAmount = $positionSummation?->getLineTotalAmount()?->getValue() ?? 0.0;;
+        $newNetAmount = $positionSummation?->getLineTotalAmount()?->getValue() ?? 0.0;
         $newChargeTotalAmount = $positionSummation?->getChargeTotalAmount()?->getValue() ?? 0.0;
         $newDiscountTotalAmount = $positionSummation?->getAllowanceTotalAmount()?->getValue() ?? 0.0;
         $newTaxTotalAmount = $positionSummation?->getTaxTotalAmount()?->getValue() ?? 0.0;
