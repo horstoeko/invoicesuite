@@ -4,7 +4,7 @@ use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-$readMode = 1; // 0 = UBL, 1 = ZF/FX
+$readMode = 1; // 0 = UBL, 1 = ZF/FX Extended, 2 = ZF/FX Comfort
 
 if ($readMode === 0) {
     $reader = InvoiceSuiteDocumentReader::createFromCFile(__DIR__ . "/01_SimpleInvoice_UBL.xml");
