@@ -32,7 +32,6 @@ use horstoeko\invoicesuite\dto\InvoiceSuiteTaxDTO;
 use horstoeko\invoicesuite\models\zffxcomfort\ram\DocumentContextParameterType;
 use horstoeko\invoicesuite\models\zffxcomfort\ram\ExchangedDocumentContextType;
 use horstoeko\invoicesuite\models\zffxcomfort\ram\ExchangedDocumentType;
-use horstoeko\invoicesuite\models\zffxcomfort\ram\TradePaymentTermsType;
 use horstoeko\invoicesuite\models\zffxcomfort\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
