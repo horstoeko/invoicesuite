@@ -2837,11 +2837,18 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractFormatPr
         ?string &$newContentCode,
         ?string &$newSubjectCode
     ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxcomfort\ram\NoteType>
+         */
         $documentNotes = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getExchangedDocument()?->getIncludedNote() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\NoteType
+         */
         $documentNote = $documentNotes[InvoiceSuitePointerUtils::getValue('documentnote')];
 
         $newContent = $documentNote->getContent()?->getValue() ?? "";
-        $newContentCode = $documentNote->getContentCode()?->getValue() ?? "";
+        $newContentCode = "";
         $newSubjectCode = $documentNote->getSubjectCode()?->getValue() ?? "";
 
         return $this;
@@ -7761,7 +7768,7 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractFormatPr
         $newPayeeBic = $documentPaymentMean->getPayeeSpecifiedCreditorFinancialInstitution()?->getBICID()?->getValue() ?? "";
         $newPaymentReference = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPaymentReference()?->getValue() ?? "";
 
-        $paymentTerms = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? [];
+        $paymentTerms = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? []);
         $paymentTerms = array_filter($paymentTerms, function (TradePaymentTermsType $paymentTerm) {
             return ($paymentTerm->getDirectDebitMandateID()?->getValue() ?? "") !== "";
         });

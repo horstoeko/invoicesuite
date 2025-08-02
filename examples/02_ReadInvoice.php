@@ -1364,4 +1364,6 @@ $reader->convertToDTO($dto);
 
 var_dump($dto);
 
+echo sprintf("\n%s\n", $reader->getCurrentFormatProvider()->getUniqueId());
+
 #endregion

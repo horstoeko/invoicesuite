@@ -30,6 +30,7 @@ class InvoiceSuiteZfFxBasicProvider extends InvoiceSuiteAbstractFormatProvider
     {
         return [
             'CONTEXTPARAMETER' => 'urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic',
+            'ALTERNATIVECONTEXTPARAMETERS' => ['urn:cen.eu:en16931:2017#compliant#urn:zugferd.de:2p0:basic'],
         ];
     }
 
@@ -84,24 +85,33 @@ class InvoiceSuiteZfFxBasicProvider extends InvoiceSuiteAbstractFormatProvider
         libxml_clear_errors();
 
         try {
-            $contentDomDocument = new \DOMDocument();
-            $contentDomDocument->loadXML($content);
-            $contentDomXPath = new \DOMXPath($contentDomDocument);
-            $contentDomXPath->registerNamespace('rsm', 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100');
-            $contentDomXPath->registerNamespace('ram', 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100');
-
-            $contentQuery = sprintf(
-                "//rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID[text()='%s']",
-                $this->getParameters()['CONTEXTPARAMETER']
+            $contextParameters = array_merge(
+                [$this->getParameters()['CONTEXTPARAMETER']],
+                $this->getParameters()['ALTERNATIVECONTEXTPARAMETERS']
             );
 
-            $contentEntries = $contentDomXPath->query($contentQuery);
+            foreach ($contextParameters as $contextParameter) {
+                $contentDomDocument = new \DOMDocument();
+                $contentDomDocument->loadXML($content);
+                $contentDomXPath = new \DOMXPath($contentDomDocument);
+                $contentDomXPath->registerNamespace('rsm', 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100');
+                $contentDomXPath->registerNamespace('ram', 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100');
 
-            if ($contentEntries === false) {
-                return false;
+                $contentQuery = sprintf(
+                    "//rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID[text()='%s']",
+                    $contextParameter
+                );
+
+                $contentEntries = $contentDomXPath->query($contentQuery);
+
+                if ($contentEntries === false) {
+                    continue;
+                }
+
+                if ($contentEntries->length === 1) {
+                    return true;
+                }
             }
-
-            return $contentEntries->length === 1;
         } catch (\Throwable $throwable) {
             // Do nothing
         } finally {
