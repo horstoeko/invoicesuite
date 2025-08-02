@@ -39,7 +39,7 @@ use horstoeko\invoicesuite\InvoiceSuiteSettings;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-$creationMode = 3; // 0 = UBL, 1 ZF/FX Extended, 2 = ZF/FX Comfort, 3 = ZF/FX BasicWL
+$creationMode = 4; // 0 = UBL, 1 ZF/FX Extended, 2 = ZF/FX Comfort, 3 = ZF/FX BasicWL, 4 = ZF/FX Basic
 
 if ($creationMode === 0) {
     $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
@@ -52,6 +52,9 @@ if ($creationMode === 2) {
 }
 if ($creationMode === 3) {
     $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxbasicwl');
+}
+if ($creationMode === 4) {
+    $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxbasic');
 }
 
 InvoiceSuiteSettings::setUnitAmountDecimals(5);
@@ -426,5 +429,8 @@ if ($creationMode === 2) {
     $builder->saveAsXmlFile(__DIR__ . "/01_SimpleInvoice.xml");
 }
 if ($creationMode === 3) {
+    $builder->saveAsXmlFile(__DIR__ . "/01_SimpleInvoice.xml");
+}
+if ($creationMode === 4) {
     $builder->saveAsXmlFile(__DIR__ . "/01_SimpleInvoice.xml");
 }
