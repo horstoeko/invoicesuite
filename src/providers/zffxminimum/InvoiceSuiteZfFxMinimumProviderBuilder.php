@@ -70,33 +70,20 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractFormatP
         string $newContextParameter,
         string $newBusinessProcessContextParameter = '',
     ): self {
-        $exchangedDocumentContextType = new ExchangedDocumentContextType();
-        $exchangedDocumentType = new ExchangedDocumentType();
-
         $this
             ->getCrossIndustryRootObject()
-            ->setExchangedDocumentContext($exchangedDocumentContextType);
-
-        $this
-            ->getCrossIndustryRootObject()
-            ->setExchangedDocument($exchangedDocumentType);
-
-        $documentContextParameterType = new DocumentContextParameterType();
-        $documentContextParameterType->getIDWithCreate()->setValue($newContextParameter);
-
-        $this
-            ->getCrossIndustryRootObject()
-            ->getExchangedDocumentContext()
-            ->setGuidelineSpecifiedDocumentContextParameter($documentContextParameterType);
+            ->getExchangedDocumentContextWithCreate()
+            ->getGuidelineSpecifiedDocumentContextParameterWithCreate()
+            ->getIDWithCreate()
+            ->setValue($newContextParameter);
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newBusinessProcessContextParameter)) {
-            $documentContextParameterType = new DocumentContextParameterType();
-            $documentContextParameterType->getIDWithCreate()->setValue($newBusinessProcessContextParameter);
-
             $this
                 ->getCrossIndustryRootObject()
-                ->getExchangedDocumentContext()
-                ->setBusinessProcessSpecifiedDocumentContextParameter($documentContextParameterType);
+                ->getExchangedDocumentContextWithCreate()
+                ->getBusinessProcessSpecifiedDocumentContextParameterWithCreate()
+                ->getIDWithCreate()
+                ->setValue($newBusinessProcessContextParameter);
         }
 
         return $this;
