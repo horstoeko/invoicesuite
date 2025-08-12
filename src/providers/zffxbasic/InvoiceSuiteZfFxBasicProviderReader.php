@@ -7569,9 +7569,7 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractFormatProv
         $newPaymentReference = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPaymentReference()?->getValue() ?? "";
 
         $paymentTerms = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? []);
-        $paymentTerms = array_filter($paymentTerms, function (TradePaymentTermsType $paymentTerm) {
-            return ($paymentTerm->getDirectDebitMandateID()?->getValue() ?? "") !== "";
-        });
+        $paymentTerms = array_filter($paymentTerms, fn(TradePaymentTermsType $paymentTerm) => ($paymentTerm->getDirectDebitMandateID()?->getValue() ?? "") !== "");
 
         $paymentTerm = reset($paymentTerms);
 

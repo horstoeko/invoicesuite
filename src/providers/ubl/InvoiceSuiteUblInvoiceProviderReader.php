@@ -2045,9 +2045,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         return array_values(
             array_filter(
                 $this->getUblInvoiceRootObject()->getAdditionalDocumentReference() ?? [],
-                function (AdditionalDocumentReference $additionalDocumentReference) use ($additionalDocTypeCode) {
-                    return strcasecmp(($additionalDocumentReference->getDocumentTypeCode()?->getValue() ?? ""), $additionalDocTypeCode) !== 0;
-                }
+                fn(AdditionalDocumentReference $additionalDocumentReference) => strcasecmp(($additionalDocumentReference->getDocumentTypeCode()?->getValue() ?? ""), $additionalDocTypeCode) !== 0
             )
         );
     }
@@ -2386,9 +2384,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         return array_values(
             array_filter(
                 $this->getUblInvoiceRootObject()->getAdditionalDocumentReference() ?? [],
-                function (AdditionalDocumentReference $additionalDocumentReference) use ($ultimateCustomerOrderDocTypeCode) {
-                    return strcasecmp(($additionalDocumentReference->getDocumentTypeCode()?->getValue() ?? ""), $ultimateCustomerOrderDocTypeCode) !== 0;
-                }
+                fn(AdditionalDocumentReference $additionalDocumentReference) => strcasecmp(($additionalDocumentReference->getDocumentTypeCode()?->getValue() ?? ""), $ultimateCustomerOrderDocTypeCode) !== 0
             )
         );
     }
@@ -6936,9 +6932,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         $partyIdentifications = $this->getUblInvoiceRootObject()->getAccountingSupplierParty()?->getPartyWithCreate()?->getPartyIdentification();
 
         return array_values(
-            array_filter($partyIdentifications ?? [], function (PartyIdentification $id) {
-                return strcasecmp($id->getID()?->getSchemeID() ?? "", "SEPA") === 0;
-            })
+            array_filter($partyIdentifications ?? [], fn(PartyIdentification $id) => strcasecmp($id->getID()?->getSchemeID() ?? "", "SEPA") === 0)
         );
     }
 

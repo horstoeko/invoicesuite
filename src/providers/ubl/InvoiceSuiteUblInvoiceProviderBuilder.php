@@ -1185,9 +1185,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         $additionalDocumentReferences =
             array_filter(
                 $this->getUblInvoiceRootObject()->getAdditionalDocumentReference() ?? [],
-                function (AdditionalDocumentReference $additionalDocumentReference) use ($additionalDocTypeCode) {
-                    return strcasecmp(($additionalDocumentReference->getDocumentTypeCode()?->getValue() ?? ""), $additionalDocTypeCode) !== 0;
-                }
+                fn(AdditionalDocumentReference $additionalDocumentReference) => strcasecmp(($additionalDocumentReference->getDocumentTypeCode()?->getValue() ?? ""), $additionalDocTypeCode) !== 0
             );
 
         $this->getUblInvoiceRootObject()->setAdditionalDocumentReference($additionalDocumentReferences);
@@ -1787,11 +1785,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         ->getAccountingSupplierPartyWithCreate()
                         ->getPartyWithCreate()
                         ->getPartyIdentification() ?? [],
-                    function (
-                        PartyIdentificationType $partyIdentification
-                    ) {
-                        return !$partyIdentification->hasObjectFlag('id');
-                    }
+                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
                 )
             );
 
@@ -1849,11 +1843,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         ->getAccountingSupplierPartyWithCreate()
                         ->getPartyWithCreate()
                         ->getPartyIdentification() ?? [],
-                    function (
-                        PartyIdentificationType $partyIdentification
-                    ) {
-                        return !$partyIdentification->hasObjectFlag('globalid');
-                    }
+                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
                 )
             );
 
@@ -2317,11 +2307,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         ->getAccountingCustomerPartyWithCreate()
                         ->getPartyWithCreate()
                         ->getPartyIdentification() ?? [],
-                    function (
-                        PartyIdentificationType $partyIdentification
-                    ) {
-                        return !$partyIdentification->hasObjectFlag('id');
-                    }
+                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
                 )
             );
 
@@ -2384,11 +2370,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         ->getAccountingCustomerPartyWithCreate()
                         ->getPartyWithCreate()
                         ->getPartyIdentification() ?? [],
-                    function (
-                        PartyIdentificationType $partyIdentification
-                    ) {
-                        return !$partyIdentification->hasObjectFlag('globalid');
-                    }
+                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
                 )
             );
 
@@ -2860,11 +2842,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         ->getUblInvoiceRootObject()
                         ->getTaxRepresentativePartyWithCreate()
                         ->getPartyIdentification() ?? [],
-                    function (
-                        PartyIdentificationType $partyIdentification
-                    ) {
-                        return !$partyIdentification->hasObjectFlag('id');
-                    }
+                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
                 )
             );
 
@@ -2921,11 +2899,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         ->getUblInvoiceRootObject()
                         ->getTaxRepresentativePartyWithCreate()
                         ->getPartyIdentification() ?? [],
-                    function (
-                        PartyIdentificationType $partyIdentification
-                    ) {
-                        return !$partyIdentification->hasObjectFlag('globalid');
-                    }
+                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
                 )
             );
 
@@ -4973,11 +4947,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         ->getUblInvoiceRootObject()
                         ->getPayeePartyWithCreate()
                         ->getPartyIdentification() ?? [],
-                    function (
-                        PartyIdentificationType $partyIdentification
-                    ) {
-                        return !$partyIdentification->hasObjectFlag('id');
-                    }
+                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
                 )
             );
 
@@ -5032,11 +5002,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         ->getUblInvoiceRootObject()
                         ->getPayeePartyWithCreate()
                         ->getPartyIdentification() ?? [],
-                    function (
-                        PartyIdentificationType $partyIdentification
-                    ) {
-                        return !$partyIdentification->hasObjectFlag('globalid');
-                    }
+                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
                 )
             );
 
@@ -5863,9 +5829,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getPartyWithCreate()
             ->getPartyIdentification();
 
-        $ids = array_filter($ids ?? [], function (PartyIdentification $id) {
-            return strcasecmp($id->getID()?->getSchemeID() ?? "", "SEPA") !== 0;
-        });
+        $ids = array_filter($ids ?? [], fn(PartyIdentification $id) => strcasecmp($id->getID()?->getSchemeID() ?? "", "SEPA") !== 0);
 
         $this
             ->getUblInvoiceRootObject()
@@ -6190,9 +6154,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
 
         $allowanceCharges = array_filter(
             $this->getUblInvoiceRootObject()->getAllowanceCharge() ?? [],
-            function (AllowanceCharge $currentAllowanceChage) {
-                return !$currentAllowanceChage->hasObjectFlag('allowancecharge');
-            }
+            fn(AllowanceCharge $currentAllowanceChage) => !$currentAllowanceChage->hasObjectFlag('allowancecharge')
         );
 
         $this
@@ -6321,9 +6283,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
 
         $allowanceCharges = array_filter(
             $this->getUblInvoiceRootObject()->getAllowanceCharge() ?? [],
-            function (AllowanceCharge $currentAllowanceChage) {
-                return !$currentAllowanceChage->hasObjectFlag('logservicecharge');
-            }
+            fn(AllowanceCharge $currentAllowanceChage) => !$currentAllowanceChage->hasObjectFlag('logservicecharge')
         );
 
         $this->getUblInvoiceRootObject()->setAllowanceCharge($allowanceCharges);

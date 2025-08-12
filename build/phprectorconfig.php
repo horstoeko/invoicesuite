@@ -24,7 +24,7 @@ return RectorConfig::configure()
         RemoveUselessReturnTagRector::class,
         RemoveUselessVarTagRector::class,
     ])
-    ->withPhp73Sets()
+    ->withPhp74Sets()
     ->withSets([
         SetList::DEAD_CODE,
         SetList::CODE_QUALITY,

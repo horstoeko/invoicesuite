@@ -7855,9 +7855,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                 ->getApplicableHeaderTradeSettlementWithCreate()
                 ->getSpecifiedTradePaymentTerms() ?? [];
 
-            $paymentTerms = array_filter($paymentTerms, function (TradePaymentTermsType $paymentTerm) {
-                return $paymentTerm->hasObjectFlag('frompaymentmean') === false;
-            });
+            $paymentTerms = array_filter($paymentTerms, fn(TradePaymentTermsType $paymentTerm) => $paymentTerm->hasObjectFlag('frompaymentmean') === false);
 
             $this
                 ->getCrossIndustryRootObject()
