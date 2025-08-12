@@ -129,4 +129,21 @@ class InvoiceSuiteClassFinder
 
         return $classes;
     }
+
+    /**
+     * Composer helper for clearing cache
+     *
+     * @return void
+     */
+    public static function clearCache(): void
+    {
+        $files = glob(__DIR__ . '/../cache/*.cache');
+
+        foreach ($files as $file) {
+            if (is_file($file)) {
+                unlink($file);
+                echo "Deleted: " . basename($file) . PHP_EOL;
+            }
+        }
+    }
 }

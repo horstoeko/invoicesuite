@@ -52,7 +52,7 @@
     },
     "scripts": {
         "post-autoload-dump": [
-            "@php src/cache/clear-cache.php"
+            "horstoeko\\invoicesuite\\utils\\InvoiceSuiteClassFinder::clearCache"
         ],
         "tests": "./vendor/bin/phpunit ./tests/",
         "testsreal": "./vendor/bin/phpunit --configuration ./build/phpunit.xml",
