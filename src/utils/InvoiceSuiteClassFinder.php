@@ -115,7 +115,7 @@ class InvoiceSuiteClassFinder
                 if (is_subclass_of($className, $isSubClassOf)) {
                     $classes[] = $className;
                 }
-            } catch (\Throwable $ex) {
+            } catch (\Throwable) {
                 // Do nothing
             } finally {
                 error_reporting($previousErrorReportingState);

@@ -113,7 +113,7 @@ class InvoiceSuiteZfFxMinimumProvider extends InvoiceSuiteAbstractFormatProvider
                     return true;
                 }
             }
-        } catch (\Throwable $throwable) {
+        } catch (\Throwable) {
             // Do nothing
         } finally {
             libxml_clear_errors();

@@ -63,7 +63,7 @@ class InvoiceSuiteContentTypeResolver
             libxml_clear_errors();
             $doc = new DOMDocument();
             return $doc->loadXML($fromContent, LIBXML_NOERROR | LIBXML_NOWARNING);
-        } catch (Throwable $throwable) {
+        } catch (Throwable) {
             return false;
         } finally {
             libxml_clear_errors();
@@ -86,7 +86,7 @@ class InvoiceSuiteContentTypeResolver
         try {
             $jsonDecoded = json_decode($fromContent, false, 512, JSON_THROW_ON_ERROR);
             return is_object($jsonDecoded) || is_array($jsonDecoded);
-        } catch (Throwable $throwable) {
+        } catch (Throwable) {
             return false;
         }
     }

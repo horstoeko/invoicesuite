@@ -114,7 +114,7 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractFormatProvider
             }
 
             return $contentEntries->length === 1;
-        } catch (\Throwable $throwable) {
+        } catch (\Throwable) {
             // Do nothing
         } finally {
             libxml_clear_errors();
