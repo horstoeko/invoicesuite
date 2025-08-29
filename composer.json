@@ -57,21 +57,18 @@
         ],
         "tests": "./vendor/bin/phpunit ./tests/",
         "testsreal": "./vendor/bin/phpunit --configuration ./build/phpunit.xml",
-        "phpcs": "./vendor/bin/phpcs --standard=./build/phpcsrules.xml --extensions=php --ignore=autoload.php ./src ./tests",
+        "phpcs": "@phpcs12",
         "phpcs12": "./vendor/bin/phpcs --standard=./build/phpcsrules_psr12.xml --extensions=php --ignore=autoload.php ./src ./tests",
-        "phpcbf": "./vendor/bin/phpcbf -q ./src ./tests",
-        "phpcbf1": "./vendor/bin/phpcbf --standard=./build/phpcsrules_psr1.xml -q ./src ./tests",
-        "phpcbf2": "./vendor/bin/phpcbf --standard=./build/phpcsrules_psr2.xml -q ./src ./tests",
+        "phpcbf": "@phpcbf12",
         "phpcbf12": "./vendor/bin/phpcbf --standard=./build/phpcsrules_psr12.xml -q ./src ./tests",
-        "phpcbfsq": "./vendor/bin/phpcbf --standard=./build/phpcsrules_squiz.xml -q ./src ./tests",
-        "phpstan": "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress",
-        "phpstan_cs": "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress --error-format=checkstyle",
-        "phpmd": "./vendor/bin/phpmd src github ./build/phpmd.xml",
-        "makedoc": "phing -f ./build.xml projectdoc",
+        "phpstan": "@phpstan12",
+        "phpstan12": "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress",
+        "phpmd": "@phpmd12",
+        "phpmd12": "./vendor/bin/phpmd src github ./build/phpmd.xml",
         "checkstyle": [
             "Composer\\Config::disableProcessTimeout",
-            "vendor/bin/phpcs --report=checkstyle --report-file=build/logs/checkstyle.xml --standard=build/phpcsrules_psr12.xml --extensions=php --ignore=autoload.php,./src/entities src tests",
-            "vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress --error-format=checkstyle > build/logs/checkstyle_phpstan.xml"
+            "@phpcs",
+            "@phpstan"
         ],
         "rector": "vendor/bin/rector --config=./build/phprectorconfig.php"
     }
