@@ -74,7 +74,7 @@ class InvoiceSuiteClassFinder
     {
         $classMaps = array_values(ClassLoader::getRegisteredLoaders())[0]->getClassMap();
 
-        foreach ($classMaps as $className => $classFile) {
+        foreach (array_keys($classMaps) as $className) {
             $this->classNames[] = $className;
         }
 
