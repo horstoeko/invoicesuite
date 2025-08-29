@@ -45,12 +45,10 @@
         "nikic/php-parser": "^5.4",
         "pdepend/pdepend": "^2",
         "phpdocumentor/reflection-docblock": "^5",
-        "phploc/phploc": "^7",
-        "phpmd/phpmd": "^2",
+        "phpmd/phpmd": "@stable",
         "phpstan/phpstan": "^1|^2",
         "phpunit/phpunit": "^9",
         "rector/rector": "*",
-        "sebastian/phpcpd": "^6",
         "squizlabs/php_codesniffer": "^3"
     },
     "scripts": {
@@ -68,6 +66,7 @@
         "phpcbfsq": "./vendor/bin/phpcbf --standard=./build/phpcsrules_squiz.xml -q ./src ./tests",
         "phpstan": "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress",
         "phpstan_cs": "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress --error-format=checkstyle",
+        "phpmd": "./vendor/bin/phpmd src github ./build/phpmd.xml",
         "makedoc": "phing -f ./build.xml projectdoc",
         "checkstyle": [
             "Composer\\Config::disableProcessTimeout",
