@@ -2,13 +2,15 @@
 
 namespace horstoeko\invoicesuite\tests\testcases\concerns;
 
+use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\concerns\HandlesRootObject;
+use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
 use horstoeko\invoicesuite\models\zffxextended\rsm\CrossIndustryInvoice;
 use horstoeko\invoicesuite\providers\zffxextended\InvoiceSuiteZfFxExtendedProvider;
-use horstoeko\invoicesuite\tests\TestCase;
 
 class HandlesRootObjectTest extends TestCase
 {
+    use HandlesCurrentFormatProvider;
     use HandlesRootObject;
 
     public function testInitialState(): void

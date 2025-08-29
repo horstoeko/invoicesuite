@@ -2,14 +2,16 @@
 
 namespace horstoeko\invoicesuite\tests\testcases\concerns;
 
-use horstoeko\invoicesuite\concerns\HandlesSerializer;
-use horstoeko\invoicesuite\providers\zffxextended\InvoiceSuiteZfFxExtendedProvider;
-use horstoeko\invoicesuite\tests\TestCase;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
+use horstoeko\invoicesuite\tests\TestCase;
+use horstoeko\invoicesuite\concerns\HandlesSerializer;
+use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
+use horstoeko\invoicesuite\providers\zffxextended\InvoiceSuiteZfFxExtendedProvider;
 
 class HandlesSerializerTest extends TestCase
 {
+    use HandlesCurrentFormatProvider;
     use HandlesSerializer;
 
     public function testInitialState(): void

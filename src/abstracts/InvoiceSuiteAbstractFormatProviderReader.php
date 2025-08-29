@@ -7,6 +7,7 @@ use JMS\Serializer\Exception\RuntimeException;
 use horstoeko\invoicesuite\concerns\HandlesRootObject;
 use horstoeko\invoicesuite\concerns\HandlesSerializer;
 use horstoeko\invoicesuite\contracts\InvoiceSuiteReaderContract;
+use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContent;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
 
@@ -21,6 +22,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
  */
 abstract class InvoiceSuiteAbstractFormatProviderReader implements InvoiceSuiteReaderContract
 {
+    use HandlesCurrentFormatProvider;
     use HandlesRootObject;
     use HandlesSerializer;
 

@@ -2,8 +2,6 @@
 
 namespace horstoeko\invoicesuite\concerns;
 
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProvider;
-
 /**
  * Trait representing root-object handling
  *
@@ -15,8 +13,6 @@ use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProvider;
  */
 trait HandlesRootObject
 {
-    use HandlesCurrentFormatProvider;
-
     /**
      * Invoice root object
      *

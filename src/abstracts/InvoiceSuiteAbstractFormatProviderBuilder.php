@@ -5,6 +5,7 @@ namespace horstoeko\invoicesuite\abstracts;
 use JMS\Serializer\SerializationContext;
 use horstoeko\invoicesuite\concerns\HandlesRootObject;
 use horstoeko\invoicesuite\concerns\HandlesSerializer;
+use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
 use horstoeko\invoicesuite\contracts\InvoiceSuiteBuilderContract;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
 
@@ -19,6 +20,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
  */
 abstract class InvoiceSuiteAbstractFormatProviderBuilder implements InvoiceSuiteBuilderContract
 {
+    use HandlesCurrentFormatProvider;
     use HandlesRootObject;
     use HandlesSerializer;
 

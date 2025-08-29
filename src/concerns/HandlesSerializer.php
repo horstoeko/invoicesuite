@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\concerns;
 
 use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
 use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
-use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
 use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use JMS\Serializer\EventDispatcher\EventDispatcher;
 use JMS\Serializer\Exception\InvalidArgumentException;
@@ -24,8 +23,6 @@ use JMS\Serializer\SerializerInterface;
  */
 trait HandlesSerializer
 {
-    use HandlesCurrentFormatProvider;
-
     /**
      * @var SerializerBuilder $serializerBuilder Serializer builder
      */
