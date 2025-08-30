@@ -23,7 +23,7 @@ namespace horstoeko\invoicesuite\codelists;
  */
 enum InvoiceSuiteCodelistSchemeIdentifiers: string
 {
-    /**
+/**
      * ACTALIS Object Identifiers (0159)
      *
      * The code is primarily intended for the registration of Object Identifiers
@@ -34,7 +34,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ACTA_OBJE_IDEN = '0159';
 
-    /**
+/**
      * Advanced Telecommunications Modules Limited, Corporate Network (0083)
      *
      * Notes on Use of Code: The ICD code will also form part of the Initial
@@ -43,14 +43,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ADVA_TELE_MODU_LIMI_CORP_NETW = '0083';
 
-    /**
+/**
      * Advantis (0120)
      *
      * Issuing agency: Advantis, USA.
      */
     case ADVANTIS = '0120';
 
-    /**
+/**
      * Aeronautical Telecommunications Network (ATN) (0027)
      *
      * Notes on Use of Code: The ICD code forms the initial part of the ISO
@@ -59,14 +59,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case AERO_TELE_NETW_ATN = '0027';
 
-    /**
+/**
      * Affable Software Data Interchange Codes (0121)
      *
      * Issuing agency: Affable Software Corporation, Canada.
      */
     case AFFA_SOFT_DATA_INTE_CODE = '0121';
 
-    /**
+/**
      * AGFA-DIS (0051)
      *
      * Notes on Use of Code: Medical Communication Issuing agency: AGFA N.V.
@@ -74,7 +74,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case AGFADIS = '0051';
 
-    /**
+/**
      * Air Transport Industry Services Communications Network (0019)
      *
      * The ICD code forms the initial part of the OSI network addressing and
@@ -83,7 +83,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case AIR_TRAN_INDU_SERV_COMM_NETW = '0019';
 
-    /**
+/**
      * Alcanet/Alcatel-Alsthom Corporate Network (0075)
      *
      * Notes on Use of Code: The ICD code forms the initial part of the OSI
@@ -92,7 +92,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ALCA_CORP_NETW = '0075';
 
-    /**
+/**
      * Amazon Unique Identification Scheme (0187)
      *
      * Intended Purpose/App. Area: To provide identifiers for properties, classes,
@@ -105,7 +105,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case AMAZ_UNIQ_IDEN_SCHE = '0187';
 
-    /**
+/**
      * APPLiA Pl Standard (0197)
      *
      * Intended Purpose/App. Area: Through their European industry association
@@ -119,7 +119,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case APPL_PL_STAN = '0197';
 
-    /**
+/**
      * ARINC (0074)
      *
      * Notes on Use of Code: ARINC will define its own Objects for use with its
@@ -128,14 +128,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ARINC = '0074';
 
-    /**
+/**
      * ascomOSINet (0063)
      *
      * Issuing agency: Ascom AG, Switzerland.
      */
     case ASCOMOSINET = '0063';
 
-    /**
+/**
      * Association of Swedish Chambers of Commerce and Industry Scheme (EDIRA
      * compliant) (0107)
      *
@@ -144,7 +144,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ASSO_OF_SWED_CHAM_OF_COMM_AND_INDU_SCHE_EDIR_COMP = '0107';
 
-    /**
+/**
      * AT&T/OSI Network (0030)
      *
      * Notes on Use of Code: The ICD code will also form the Initial Domain Part
@@ -154,7 +154,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ATTO_NETW = '0030';
 
-    /**
+/**
      * Athens Chamber of Commerce & Industry Scheme (EDIRA compliant) (0084)
      *
      * Notes on Use of Code : EDIRA recommendations for coding in EDIFACT and
@@ -163,7 +163,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ATHE_CHAM_OF_COMM_INDU_SCHE_EDIR_COMP = '0084';
 
-    /**
+/**
      * ATM Forum (0079)
      *
      * Notes on Use of Code: The ICD code will also form part of the Initial
@@ -172,7 +172,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ATM_FORU = '0079';
 
-    /**
+/**
      * ATM interconnection with the Dutch KPN Telecom (0157)
      *
      * ITO Drager Net. The ICD code also form the initial part of the OSI network
@@ -181,14 +181,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ATM_INTE_WITH_THE_DUTC_KPN_TELE = '0157';
 
-    /**
+/**
      * ATM-Network ZN'96 (0118)
      *
      * Issuing agency: Deutsche Telekom AG, Germany.
      */
     case ATMN_ZN = '0118';
 
-    /**
+/**
      * Auckland Area Health (0049)
      *
      * Notes on Use of Code: ISO 6523 ICD IDI format with binary syntax will be
@@ -197,7 +197,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case AUCK_AREA_HEAL = '0049';
 
-    /**
+/**
      * AUNA (0156)
      *
      * Telecommunication network of operators in the AUNA Group. This code shall
@@ -205,7 +205,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case AUNA = '0156';
 
-    /**
+/**
      * Australian Business Number (ABN) Scheme (0151)
      *
      * The ABN will be a unique identifier for a business to interact with
@@ -220,63 +220,63 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case AUST_BUSI_NUMB_ABN_SCHE = '0151';
 
-    /**
+/**
      * Australian Chambers of Commerce and Industry Scheme (EDIRA compliant) (0108)
      *
      * Issuing agency: Australian Chambers of Commerce and Industry, Australia.
      */
     case AUST_CHAM_OF_COMM_AND_INDU_SCHE_EDIR_COMP = '0108';
 
-    /**
+/**
      * BASF Company ATM-Network (0123)
      *
      * Issuing agency: BASF Computer Services GmbH, Germany.
      */
     case BASF_COMP_ATMN = '0123';
 
-    /**
+/**
      * BB-DATA GmbH (0122)
      *
      * Issuing agency: BB-DATA GmbH, Germany.
      */
     case BBDA_GMBH = '0122';
 
-    /**
+/**
      * BCNR (Swiss Clearing Bank Number) (0128)
      *
      * Issuing agency: Telekurs AG, Switzerland.
      */
     case BCNR_SWIS_CLEA_BANK_NUMB = '0128';
 
-    /**
+/**
      * Bell Atlantic (0110)
      *
      * Issuing agency: Bell Atlantic, USA.
      */
     case BELL_ATLA = '0110';
 
-    /**
+/**
      * BellSouth ICD AESA (ATM End System Address) (0109)
      *
      * Issuing agency: BellSouth Corporation, USA.
      */
     case BELL_ICD_AESA_ATM_END_SYST_ADDR = '0109';
 
-    /**
+/**
      * BPI (Swiss Business Partner Identification) code (0129)
      *
      * Issuing agency: Telekurs AG, Switzerland.
      */
     case BPI_SWIS_BUSI_PART_IDEN_CODE = '0129';
 
-    /**
+/**
      * BT - ICD Coding System (0104)
      *
      * Issuing agency: Tony Holmes, UK.
      */
     case BT_ICD_CODI_SYST = '0104';
 
-    /**
+/**
      * BULL ODI/DSA/UNIX Network (0047)
      *
      * Notes on Use of Code: To be used in data communications to form part of the
@@ -285,14 +285,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case BULL_ODID_NETW = '0047';
 
-    /**
+/**
      * Cable & Wireless Global ATM End-System Address Plan (0136)
      *
      * Issuing agency: Cable & Wireless Global Business Inc., USA
      */
     case CABL_WIRE_GLOB_ATM_ENDS_ADDR_PLAN = '0136';
 
-    /**
+/**
      * CEN/ISSS Object Identifier Scheme (0162)
      *
      * To allocate OIDs to objects defined in the standards and specifications
@@ -304,35 +304,35 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case CENI_OBJE_IDEN_SCHE = '0162';
 
-    /**
+/**
      * Certicom Object Identifiers (0132)
      *
      * Issuing agency: Certicom Corp, U.S.A.
      */
     case CERT_OBJE_IDEN = '0132';
 
-    /**
+/**
      * CHAMBER OF COMMERCE TEL AVIV-JAFFA Scheme (EDIRA compliant) (0098)
      *
      * Issuing agency: Chamber of Commerce Tel Aviv-Jaffa, ISRAEL.
      */
     case CHAM_OF_COMM_TEL_AVIV_SCHE_EDIR_COMP = '0098';
 
-    /**
+/**
      * Check Point Software Technologies (0114)
      *
      * Issuing agency: Check Point Software Technologies Ltd, ISRAEL.
      */
     case CHEC_POIN_SOFT_TECH = '0114';
 
-    /**
+/**
      * Cisco Sysytems / OSI Network (0091)
      *
      * Issuing agency: Cisco Systems, USA.
      */
     case CISC_SYSY_OSI_NETW = '0091';
 
-    /**
+/**
      * Citicorp Global Information Network (0041)
      *
      * Notes on Use of Code: The ICD code will also form the initial part of the
@@ -342,7 +342,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case CITI_GLOB_INFO_NETW = '0041';
 
-    /**
+/**
      * CODDEST (0205)
      *
      * Intended Purpose/App. Area: Electronic Invoicing trough Sdl, the Exchange
@@ -354,7 +354,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case CODDEST = '0205';
 
-    /**
+/**
      * Code for the Identification of National Organizations (0131)
      *
      * Issuing agency: China National Organization Code Registration Authority,
@@ -362,7 +362,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case CODE_FOR_THE_IDEN_OF_NATI_ORGA = '0131';
 
-    /**
+/**
      * CODICE FISCALE (0210)
      *
      * Intended Purpose/App. Area: Electronic Invoicing and e-procurement. Issuing
@@ -370,7 +370,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case CODI_FISC = '0210';
 
-    /**
+/**
      * Codice Univoco Unità Organizzativa iPA (0201)
      *
      * Intended Purpose/App. Area: Used to identify uniquely all organizational
@@ -379,7 +379,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case CODI_UNIV_UNIT_ORGA_IPA = '0201';
 
-    /**
+/**
      * Codification Numerique des Etablissments Financiers En Belgique (0003)
      *
      * Notes on Use of Code: Many financial institutions have more than one code
@@ -391,7 +391,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case CODI_NUME_DES_ETAB_FINA_EN_BELG = '0003';
 
-    /**
+/**
      * COMMON LANGUAGE (0017)
      *
      * Notes on Use of Code: Codes for named populated places, geographic places,
@@ -404,7 +404,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case COMM_LANG = '0017';
 
-    /**
+/**
      * Company Code (Estonia) (0191)
      *
      * Intended Purpose/App. Area: Company code is major and only unique
@@ -418,7 +418,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case COMP_CODE_ESTO = '0191';
 
-    /**
+/**
      * Concert Global Network Services ICD AESA (0153)
      *
      * Global Addressing of the Concert ATM switches and any direct customer ATM
@@ -429,7 +429,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case CONC_GLOB_NETW_SERV_ICD_AESA = '0153';
 
-    /**
+/**
      * Corporate Number of The Social Security and Tax Number System (0188)
      *
      * Intended Purpose/App. Area: The number system of Japan is a social
@@ -444,7 +444,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case CORP_NUMB_OF_THE_SOCI_SECU_AND_TAX_NUMB_SYST = '0188';
 
-    /**
+/**
      * DaimlerChrysler Corporate Network (0070)
      *
      * Notes on Use of Code: The ICD code will form the initial part of the OSI
@@ -455,21 +455,21 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case DAIM_CORP_NETW = '0070';
 
-    /**
+/**
      * DANISH CHAMBER OF COMMERCE Scheme (EDIRA compliant) (0096)
      *
      * Issuing agency: Danish Chamber of Commerce, Denmark.
      */
     case DANI_CHAM_OF_COMM_SCHE_EDIR_COMP = '0096';
 
-    /**
+/**
      * DANZNET (0059)
      *
      * Issuing agency: DANZAS AG, Switzerland.
      */
     case DANZNET = '0059';
 
-    /**
+/**
      * Data Universal Numbering System (D-U-N-S Number) (0060)
      *
      * Notes on Use of Code: The D-U-N-S Number originated to facilitate the
@@ -480,7 +480,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case DATA_UNIV_NUMB_SYST_DUNS_NUMB = '0060';
 
-    /**
+/**
      * DBP Telekom Object Identifiers (0042)
      *
      * Notes on Use of Code: 1) The ICD is primarily intended for the registration
@@ -494,14 +494,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case DBP_TELE_OBJE_IDEN = '0042';
 
-    /**
+/**
      * DEUTSCHER INDUSTRIE- UND HANDELSTAG (DIHT) Scheme (EDIRA compliant) (0094)
      *
      * Issuing agency: Deutscher Industrie -und Handelstag (DIHT), Germany.
      */
     case DEUT_INDU_UND_HAND_DIHT_SCHE_EDIR_COMP = '0094';
 
-    /**
+/**
      * DGCP (Direction Générale de la Comptabilité Publique)administrative
      * accounting identification scheme (0145)
      *
@@ -511,7 +511,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case DGCP_DIRE_GNRA_DE_LA_COMP_PUBL_ACCO_IDEN_SCHE = '0145';
 
-    /**
+/**
      * DGI (Direction Générale des Impots) code (0146)
      *
      * French taxation authority. Issuing agency: DGI (Direction Générale des
@@ -519,7 +519,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case DGI_DIRE_GNRA_DES_IMPO_CODE = '0146';
 
-    /**
+/**
      * DiGAVEID (XR01)
      *
      * eindeutiges Kennzeichen fuer eine Verordnungseinheit einer digitalen
@@ -527,7 +527,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case DIGAVEID = 'XR01';
 
-    /**
+/**
      * Digital Equipment Corporation: DEC (0024)
      *
      * Notes on Use of Code: The ICD code forms the initial part of the OSI
@@ -536,7 +536,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case DIGI_EQUI_CORP_DEC = '0024';
 
-    /**
+/**
      * DIGSTORG (0184)
      *
      * Intended Purpose/App. Area: To be used for identifying Danish companies
@@ -547,14 +547,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case DIGSTORG = '0184';
 
-    /**
+/**
      * Directorates of the European Commission (0130)
      *
      * Issuing agency: European Commission, Belgium
      */
     case DIRE_OF_THE_EURO_COMM = '0130';
 
-    /**
+/**
      * DoDAAC (Department of Defense Activity Address Code) (0144)
      *
      * A code assigned to uniquely identify all military units in the United
@@ -563,21 +563,21 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case DODA_DEPA_OF_DEFE_ACTI_ADDR_CODE = '0144';
 
-    /**
+/**
      * Dresdner Bank Corporate Network (0127)
      *
      * Issuing agency: Dresdner Bank AG, Germany.
      */
     case DRES_BANK_CORP_NETW = '0127';
 
-    /**
+/**
      * EAN Location Code (0088)
      *
      * Issuing agency: EAN International, Belgium.
      */
     case EAN_LOCA_CODE = '0088';
 
-    /**
+/**
      * ECCMA Open Technical Directory (0161)
      *
      * A centralized dictionary of names and definitions of trading concepts,
@@ -590,7 +590,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ECCM_OPEN_TECH_DIRE = '0161';
 
-    /**
+/**
      * eCI@ss (0173)
      *
      * To uniquely identify properties, classes and list of characteristics (LoC)
@@ -600,7 +600,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ECISS = '0173';
 
-    /**
+/**
      * eDelivery Network Participant identifier (0203)
      *
      * Intended Purpose/App. Area: Used as an electronic address identifier for
@@ -609,7 +609,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case EDEL_NETW_PART_IDEN = '0203';
 
-    /**
+/**
      * EDI Partner Identification Code (0031)
      *
      * Notes on Use of Code: To identify EDI partners. Issuing agency: Odette NL,
@@ -617,7 +617,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case EDI_PART_IDEN_CODE = '0031';
 
-    /**
+/**
      * Edira Scheme Identifier Code (0152)
      *
      * For the unambiguous identification of registration scheme used in
@@ -628,7 +628,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case EDIR_SCHE_IDEN_CODE = '0152';
 
-    /**
+/**
      * EINESTEINet AG (0143)
      *
      * Initially the Network covers the geographical area of Germany with the
@@ -640,21 +640,21 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case EINE_AG = '0143';
 
-    /**
+/**
      * Electronic Data Interchange: EDI (0015)
      *
      * Issuing agency: Avon Rubber p.l.c. UK.
      */
     case ELEC_DATA_INTE_EDI = '0015';
 
-    /**
+/**
      * Energy Net (0055)
      *
      * Issuing agency: ABB Asea Brown Boveri Ltd, Switzerland.
      */
     case ENER_NET = '0055';
 
-    /**
+/**
      * ERSTORG (0198)
      *
      * Intended Purpose/App. Area: To be used for identifying Danish companies
@@ -663,7 +663,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ERSTORG = '0198';
 
-    /**
+/**
      * European Business Identifier (EBID) (0189)
      *
      * Intended Purpose/App. Area: For use in EDI or other B2B exchanges to
@@ -674,14 +674,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case EURO_BUSI_IDEN_EBID = '0189';
 
-    /**
+/**
      * European Computer Manufacturers Association: ECMA (0012)
      *
      * Issuing agency: European Computer Manufacturers Association, SWITZERLAND.
      */
     case EURO_COMP_MANU_ASSO_ECMA = '0012';
 
-    /**
+/**
      * European Laboratory for Particle Physics: CERN (0020)
      *
      * Notes on Use of Code: The ICD code forms the initial part of the OSI
@@ -690,7 +690,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case EURO_LABO_FOR_PART_PHYS_CERN = '0020';
 
-    /**
+/**
      * EWOS Object Identifiers (0016)
      *
      * Notes on Use of Code: a) In the SIO the Organization Name will normally be
@@ -702,7 +702,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case EWOS_OBJE_IDEN = '0016';
 
-    /**
+/**
      * FIEIE Object identifiers (0165)
      *
      * To provide identifiers for international enterprises and organizations
@@ -717,7 +717,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case FIEI_OBJE_IDEN = '0165';
 
-    /**
+/**
      * Finnish Organization Identifier (0212)
      *
      * Intended Purpose/App. Area: Identification scheme will be used for
@@ -726,7 +726,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case FINN_ORGA_IDEN = '0212';
 
-    /**
+/**
      * Finnish Organization Value Add Tax Identifier (0213)
      *
      * Intended Purpose/App. Area: Identification scheme will be used for
@@ -735,7 +735,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case FINN_ORGA_VALU_ADD_TAX_IDEN = '0213';
 
-    /**
+/**
      * Firmenich (0050)
      *
      * Notes on Use of Code: Interconnect the plants by an OSI network essentially
@@ -743,7 +743,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case FIRMENICH = '0050';
 
-    /**
+/**
      * France Telecom ATM End System Address Plan (0138)
      *
      * The coding system will be used to provide ATM End System Addresses based on
@@ -758,7 +758,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case FRAN_TELE_ATM_END_SYST_ADDR_PLAN = '0138';
 
-    /**
+/**
      * Freischaltcode (XR02)
      *
      * digitaler Gutschein fuer die Nutzung einer digitale Gesundheitsanwendung
@@ -766,14 +766,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case FREISCHALTCODE = 'XR02';
 
-    /**
+/**
      * FTI - Ediforum Italia, (EDIRA compliant) (0097)
      *
      * Issuing agency: FTI - Ediforum Italia, ITALY.
      */
     case FTI_EDIF_ITAL_EDIR_COMP = '0097';
 
-    /**
+/**
      * FUNLOC (0046)
      *
      * Notes on Use of Code: Current applications are Philips accounting and
@@ -784,7 +784,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case FUNLOC = '0046';
 
-    /**
+/**
      * Global AESA scheme (0137)
      *
      * Construct and Administer AESAs, Routing of ATM switched connections Use to
@@ -793,7 +793,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case GLOB_AESA_SCHE = '0137';
 
-    /**
+/**
      * Global Business Identifier (0149)
      *
      * For a company's ability to obtain complete and accurate information about
@@ -802,7 +802,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case GLOB_BUSI_IDEN = '0149';
 
-    /**
+/**
      * Global Crossing AESA (ATM End System Address) (0155)
      *
      * Construction, administration and implementation of a scalable AESA schema
@@ -812,7 +812,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case GLOB_CROS_AESA_ATM_END_SYST_ADDR = '0155';
 
-    /**
+/**
      * GS1 identification keys (0209)
      *
      * Intended Purpose/App. Area: GS1 identification keys and key qualifiers may
@@ -822,14 +822,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case GS_IDEN_KEYS = '0209';
 
-    /**
+/**
      * GTE/OSI Network (0126)
      *
      * Issuing agency: GTE, Industry Standards, USA.
      */
     case GTEO_NETW = '0126';
 
-    /**
+/**
      * GTIN - Global Trade Item Number (0160)
      *
      * The GTIN is a globally unique identifier of trade items. A trade item is
@@ -843,28 +843,28 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case GTIN_GLOB_TRAD_ITEM_NUMB = '0160';
 
-    /**
+/**
      * HEAG (0102)
      *
      * Issuing agency: Hessische Elektrizitats-AG, Germany.
      */
     case HEAG = '0102';
 
-    /**
+/**
      * Henkel Corporate Network (H-Net) (0125)
      *
      * Issuing agency: Henkel KgaA, Germany.
      */
     case HENK_CORP_NETW_HNET = '0125';
 
-    /**
+/**
      * Hewlett - Packard Company Internal AM Network (0095)
      *
      * Issuing agency: Hewlett - Packard Company, USA.
      */
     case HEWL_PACK_COMP_INTE_AM_NETW = '0095';
 
-    /**
+/**
      * HydroNETT (0043)
      *
      * Notes on Use of Code: The ICD code forms the initial part of the OSI
@@ -873,7 +873,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case HYDRONETT = '0043';
 
-    /**
+/**
      * ICD Formatted ATM address (0073)
      *
      * Notes on Use of Code: Used as an ATM address prefix by, 1) Newbridge ATM
@@ -887,7 +887,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ICD_FORM_ATM_ADDR = '0073';
 
-    /**
+/**
      * Icelandic identifier - Íslensk kennitala (0196)
      *
      * Intended Purpose/App. Area: Identification of Icelandic individuals and
@@ -897,7 +897,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ICEL_IDEN_SLEN_KENN = '0196';
 
-    /**
+/**
      * ICI Company Identification System (0045)
      *
      * Notes on Use of Code: The ICD code will be used to manage NSAP allocation
@@ -907,7 +907,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ICI_COMP_IDEN_SYST = '0045';
 
-    /**
+/**
      * Identification number of economic subject (ICO) Act on State Statistics of
      * 29 November 2001, § 27 (0158)
      *
@@ -919,7 +919,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case IDEN_NUMB_OF_ECON_SUBJ_ICO_ACT_ON_STAT_STAT_OF__NOVE_1_27 = '0158';
 
-    /**
+/**
      * Identification number of economic subjects: (ICO) (0154)
      *
      * Unique identification of economic subjects for all administrative purposes
@@ -929,7 +929,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case IDEN_NUMB_OF_ECON_SUBJ_ICO = '0154';
 
-    /**
+/**
      * IK (XR03)
      *
      * eindeutiges Kennzeichen fuer einen Leistungserbringer nach Paragraph 293
@@ -937,7 +937,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case IK = 'XR03';
 
-    /**
+/**
      * Indirizzo di Posta Elettronica Certificata (0202)
      *
      * Intended Purpose/App. Area: Used to identify senders and receivers of
@@ -946,14 +946,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case INDI_DI_POST_ELET_CERT = '0202';
 
-    /**
+/**
      * Infonet Services Corporation (0134)
      *
      * Issuing agency: Infonet NV/SA, Belgium.
      */
     case INFO_SERV_CORP = '0134';
 
-    /**
+/**
      * Intel Corporation OSI (0068)
      *
      * Notes on Use of Code: The ICD code will be used to form the Initial Domain
@@ -963,7 +963,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case INTE_CORP_OSI = '0068';
 
-    /**
+/**
      * International Code Designator for the Identification of OSI-based, Amateur
      * Radio Organizations, Network Objects and Application Services. (0011)
      *
@@ -973,28 +973,28 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case INTE_CODE_DESI_FOR_THE_IDEN_OF_OSIB_AMAT_RADI_ORGA_NETW_OBJE_AND_APPL_SERV = '0011';
 
-    /**
+/**
      * International NSAP (0081)
      *
      * Issuing agency: Federal Office for Communications, Switzerland.
      */
     case INTE_NSAP = '0081';
 
-    /**
+/**
      * International Standard ISO 6523 (0028)
      *
      * Issuing agency: Styria Federn GmbH, AUSTRIA.
      */
     case INTE_STAN_ISO = '0028';
 
-    /**
+/**
      * Internet IP addressing - ISO 6523 ICD encoding (0090)
      *
      * Issuing agency: Internet Assigned Numbers Authority, USA.
      */
     case INTE_IP_ADDR_ISO__ICD_ENCO = '0090';
 
-    /**
+/**
      * IOTA Identifiers for Organizations for Telecommunications Addressing using
      * the ICD system format defined in ISO/IEC 8348 (0124)
      *
@@ -1002,7 +1002,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case IOTA_IDEN_FOR_ORGA_FOR_TELE_ADDR_USIN_THE_ICD_SYST_FORM_DEFI_IN_ISOI = '0124';
 
-    /**
+/**
      * ISO 6523 - ICD (0035)
      *
      * Notes on Use of Code: This code will be used internationally by BP thus a
@@ -1011,7 +1011,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ISO__ICD = '0035';
 
-    /**
+/**
      * ISO register for Standards producing Organizations (0112)
      *
      * Issuing agency: International Organization for Standardization (ISO),
@@ -1019,7 +1019,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ISO_REGI_FOR_STAN_PROD_ORGA = '0112';
 
-    /**
+/**
      * ISO6523 - ICDPCR (0054)
      *
      * Notes on Use of Code: This code could be used internationally by Pfizer
@@ -1029,7 +1029,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ISO_ICDP = '0054';
 
-    /**
+/**
      * ITU (International Telecommunications Union)Data Network Identification
      * Codes (DNIC) (0148)
      *
@@ -1038,7 +1038,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ITU_INTE_TELE_UNIO_NETW_IDEN_CODE_DNIC = '0148';
 
-    /**
+/**
      * KOIOS Open Technical Dictionary (0194)
      *
      * Intended Purpose/App. Area: The KOIOS OTD is a collection of terminology
@@ -1053,7 +1053,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case KOIO_OPEN_TECH_DICT = '0194';
 
-    /**
+/**
      * KPN OVN (0062)
      *
      * Notes on Use of Code: This code is used in the VTOA network of KPN OVN.
@@ -1061,7 +1061,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case KPN_OVN = '0062';
 
-    /**
+/**
      * LE NUMERO NATIONAL (0008)
      *
      * Issuing agency: Ministere De L'interieur et de la Fonction Publique,
@@ -1069,7 +1069,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case LE_NUME_NATI = '0008';
 
-    /**
+/**
      * Legal entity code (Lithuania) (0200)
      *
      * Intended Purpose/App. Area: For use in EDI (electronic data interchange)
@@ -1078,7 +1078,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case LEGA_ENTI_CODE_LITH = '0200';
 
-    /**
+/**
      * Legal Entity Identifier (LEI) (0199)
      *
      * Intended Purpose/App. Area: The LEI is the global, open identifier
@@ -1100,7 +1100,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case LEGA_ENTI_IDEN_LEI = '0199';
 
-    /**
+/**
      * LEGO /OSI NETWORK (0071)
      *
      * Notes on Use of Code: The ICD code will also form the Initial Domain Part
@@ -1109,7 +1109,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case LEGO_OSI_NETW = '0071';
 
-    /**
+/**
      * Leitweg-ID (0204)
      *
      * Intended Purpose/App. Area: Identification of Public Authorities. Issuing
@@ -1117,7 +1117,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case LEITWEGID = '0204';
 
-    /**
+/**
      * Lithuanian military PKI (0180)
      *
      * dex of the Certification Policies and Certification Practices Statements
@@ -1128,7 +1128,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case LITH_MILI_PKI = '0180';
 
-    /**
+/**
      * Luxembourg CP & CPS (Certification Policy and Certification Practice
      * Statement) Index (0171)
      *
@@ -1138,7 +1138,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case LUXE_CP_CPS_CERT_POLI_AND_CERT_PRAC_STAT_INDE = '0171';
 
-    /**
+/**
      * LY-tunnus (0037)
      *
      * Notes on Use of Code: It is possible to add 0-4 characters set to the code
@@ -1147,7 +1147,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case LYTUNNUS = '0037';
 
-    /**
+/**
      * Madge Networks Ltd- ICD ATM Addressing Scheme (0150)
      *
      * The code will be used as part of an ATM NSAP addressing scheme for the
@@ -1158,7 +1158,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case MADG_NETW_LTD_ICD_ATM_ADDR_SCHE = '0150';
 
-    /**
+/**
      * MCI / OSI Network (0119)
      *
      * Issuing agency: MCI Telecommunications Corporation, Technical Standards
@@ -1166,14 +1166,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case MCI_OSI_NETW = '0119';
 
-    /**
+/**
      * Migros_Network M_NETOPZ (0053)
      *
      * Issuing agency: Migros-Genossenschafts-Bund, Switzerland.
      */
     case MIGR_MNET = '0053';
 
-    /**
+/**
      * Mitel terminal or switching equipment (0078)
      *
      * Notes on Use of Code: The ICD code will form the initial part of the naming
@@ -1184,7 +1184,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case MITE_TERM_OR_SWIT_EQUI = '0078';
 
-    /**
+/**
      * National Federation of Chambers of Commerce & Industry of Belgium, Scheme
      * (EDIRA compliant) (0087)
      *
@@ -1193,7 +1193,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case NATI_FEDE_OF_CHAM_OF_COMM_INDU_OF_BELG_SCHE_EDIR_COMP = '0087';
 
-    /**
+/**
      * NATO Commercial and Government Entity system (0141)
      *
      * To identify all Commercial and Governmental entities that provide material
@@ -1216,7 +1216,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case NATO_COMM_AND_GOVE_ENTI_SYST = '0141';
 
-    /**
+/**
      * NATO ISO 6523 ICDE coding scheme (0026)
      *
      * Notes on Use of Code: The ICD code forms the initial part of the OSI
@@ -1225,7 +1225,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case NATO_ISO__ICDE_CODI_SCHE = '0026';
 
-    /**
+/**
      * NAVISTAR/OSI Network (0072)
      *
      * Notes on Use of Code: The ICD code will also form the Initial Domain Part
@@ -1234,7 +1234,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case NAVI_NETW = '0072';
 
-    /**
+/**
      * NBS/OSI NETWORK (0004)
      *
      * Notes on Use of Code: The ICD code forms the initial part of the OSI
@@ -1243,14 +1243,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case NBSO_NETW = '0004';
 
-    /**
+/**
      * Net service ID (0215)
      *
      * Net service ID
      */
     case NET_SERV_ID = '0215';
 
-    /**
+/**
      * NIST/OSI Implememts' Workshop (0014)
      *
      * Notes on Use of Code: The ICD code forms the initial part of the Workshop
@@ -1260,7 +1260,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case NIST_IMPL_WORK = '0014';
 
-    /**
+/**
      * Nokia Object Identifiers (NOI) (0056)
      *
      * Notes on Use of Code: a) In the SIO the organization name will normally be
@@ -1272,7 +1272,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case NOKI_OBJE_IDEN_NOI = '0056';
 
-    /**
+/**
      * Nordic University and Research Network: NORDUnet (0023)
      *
      * Notes on Use of Code: The ICD code forms the initial part of the OSI
@@ -1281,7 +1281,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case NORD_UNIV_AND_RESE_NETW_NORD = '0023';
 
-    /**
+/**
      * Norwegian Telecommunications Authority's, NTA'S, EDI, identifier scheme
      * (EDIRA compliant) (0082)
      *
@@ -1291,7 +1291,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case NORW_TELE_AUTH_NTAS_EDI_IDEN_SCHE_EDIR_COMP = '0082';
 
-    /**
+/**
      * Numero d'entreprise / ondernemingsnummer / Unternehmensnummer (0208)
      *
      * Intended Purpose/App. Area: Identification number attributed by the
@@ -1303,7 +1303,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case NUME_DENT_ONDE_UNTE = '0208';
 
-    /**
+/**
      * Numéro d'identification suisse des enterprises (IDE), Swiss Unique
      * Business Identification Number (UIDB) (0183)
      *
@@ -1319,14 +1319,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case NUMR_DIDE_SUIS_DES_ENTE_IDE_SWIS_UNIQ_BUSI_IDEN_NUMB_UIDB = '0183';
 
-    /**
+/**
      * Object Identifiers (0111)
      *
      * Issuing agency: Institute of Electrical and Electronics Engineers, USA.
      */
     case OBJE_IDEN = '0111';
 
-    /**
+/**
      * Odette International Limited (0177)
      *
      * For use in EDI and other B2B exchanges in the European automotive industry
@@ -1338,7 +1338,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ODET_INTE_LIMI = '0177';
 
-    /**
+/**
      * Organisasjonsnummer (0192)
      *
      * Intended Purpose/App. Area: Identify entities registered in the Central
@@ -1350,7 +1350,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ORGANISASJONSNUMMER = '0192';
 
-    /**
+/**
      * Organisatie Indentificatie Nummer (OIN) (0190)
      *
      * Intended Purpose/App. Area: The OIN is part of the Dutch standard
@@ -1361,7 +1361,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ORGA_INDE_NUMM_OIN = '0190';
 
-    /**
+/**
      * Organisationsnummer (0007)
      *
      * Notes on Use of Code: The third digit in the organisation number is never
@@ -1370,7 +1370,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ORGANISATIONSNUMMER = '0007';
 
-    /**
+/**
      * Organizational Identifiers for Structured Names under ISO 9541 Part 2 (0010)
      *
      * Notes on Use of Code: The organizational codes established under this
@@ -1383,14 +1383,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ORGA_IDEN_FOR_STRU_NAME_UNDE_ISO__PART = '0010';
 
-    /**
+/**
      * OriginNet (0113)
      *
      * Issuing agency: Origin BV, The Netherlands.
      */
     case ORIGINNET = '0113';
 
-    /**
+/**
      * OSF Distributed Computing Object Identification (0022)
      *
      * Notes on Use of Code: OSF provides public domain software in OS, ISO
@@ -1403,7 +1403,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case OSF_DIST_COMP_OBJE_IDEN = '0022';
 
-    /**
+/**
      * OSI ASIA-OCEANIA WORKSHOP (0025)
      *
      * Notes on Use of Code: The code is used as an element of object identifiers
@@ -1413,7 +1413,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case OSI_ASIA_WORK = '0025';
 
-    /**
+/**
      * OSINZ (0048)
      *
      * Notes on Use of Code: ISO 6523 ICD IDI format with binary syntax will be
@@ -1421,21 +1421,21 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case OSINZ = '0048';
 
-    /**
+/**
      * OVTcode (0216)
      *
      * OVTcode
      */
     case OVTCODE = '0216';
 
-    /**
+/**
      * Pacific Bell Data Communications Network (0115)
      *
      * Issuing agency: Pacific Bell, USA.
      */
     case PACI_BELL_DATA_COMM_NETW = '0115';
 
-    /**
+/**
      * Paradine GmbH (0176)
      *
      * To uniquely identify properties, classes,and list of properties (LoP) for
@@ -1445,7 +1445,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case PARA_GMBH = '0176';
 
-    /**
+/**
      * PARTITA IVA (0211)
      *
      * Intended Purpose/App. Area: Electronic Invoicing and e-procurement. Issuing
@@ -1453,7 +1453,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case PART_IVA = '0211';
 
-    /**
+/**
      * Penango Object Identifiers (0179)
      *
      * To identify objects, policies, and data related to Penango’s products and
@@ -1463,7 +1463,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case PENA_OBJE_IDEN = '0179';
 
-    /**
+/**
      * Perceval Object Code (0185)
      *
      * Intended Purpose/App. Area: Intended to uniquely identify in an
@@ -1476,7 +1476,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case PERC_OBJE_CODE = '0185';
 
-    /**
+/**
      * PiLog Ontology Codification Identifier (POCI) (0207)
      *
      * Intended Purpose/App. Area: A repository of concepts pertaining to any
@@ -1495,21 +1495,21 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case PILO_ONTO_CODI_IDEN_POCI = '0207';
 
-    /**
+/**
      * PNG_ICD Scheme (0100)
      *
      * Issuing agency: GPT Limited, UK.
      */
     case PNGI_SCHE = '0100';
 
-    /**
+/**
      * Portuguese Chamber of Commerce and Industry Scheme (EDIRA compliant) (0105)
      *
      * Issuing agency: Portuguese Chamber of Commerce and Industry, Portugal.
      */
     case PORT_CHAM_OF_COMM_AND_INDU_SCHE_EDIR_COMP = '0105';
 
-    /**
+/**
      * Priority Telecom ATM End System Address Plan (0167)
      *
      * The coding system will be used to provide ATM End System Address based on
@@ -1525,7 +1525,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case PRIO_TELE_ATM_END_SYST_ADDR_PLAN = '0167';
 
-    /**
+/**
      * Project Group “Lists of Properties” (PROLIST®) (0172)
      *
      * To uniquely identify properties, blocks and lists of properties (LOP) for
@@ -1537,14 +1537,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case PROJ_GROU_LIST_OF_PROP_PROL = '0172';
 
-    /**
+/**
      * PSS Object Identifiers (0116)
      *
      * Issuing agency: PSS (Postal Security Services), FINLAND.
      */
     case PSS_OBJE_IDEN = '0116';
 
-    /**
+/**
      * Registre du Commerce et de l’Industrie : RCI (0206)
      *
      * Intended Purpose/App. Area: To provide identifiers for organizations at
@@ -1553,7 +1553,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case REGI_DU_COMM_ET_DE_LIND_RCI = '0206';
 
-    /**
+/**
      * Reuter Open Address Standard (0034)
      *
      * Notes on Use of Code: To be used in the formation of OSI Network Service
@@ -1561,14 +1561,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case REUT_OPEN_ADDR_STAN = '0034';
 
-    /**
+/**
      * Revenue Canada Business Number Registration (EDIRA compliant) (0093)
      *
      * Issuing agency: Revenue Canada, CANADA.
      */
     case REVE_CANA_BUSI_NUMB_REGI_EDIR_COMP = '0093';
 
-    /**
+/**
      * Roche Corporate Network (0066)
      *
      * Notes on Use of Code: Will be used internationaly by Roche thus a
@@ -1577,7 +1577,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ROCH_CORP_NETW = '0066';
 
-    /**
+/**
      * Route1 MobiNET (0178)
      *
      * For rooting OIDs defined by Route1 Security Corporation for Route1 MobiNET.
@@ -1594,7 +1594,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case ROUT_MOBI = '0178';
 
-    /**
+/**
      * S G W OSI Internetwork (0033)
      *
      * Notes on Use of Code: Exclusive use by S G W .Issuing agency: S G Warburg
@@ -1602,7 +1602,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case S_G_W_OSI_INTE = '0033';
 
-    /**
+/**
      * Saint Gobain (0057)
      *
      * Notes on Use of Code: To be used for assignment of: N.E.T (ISO 8348/Add 2),
@@ -1611,7 +1611,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SAIN_GOBA = '0057';
 
-    /**
+/**
      * Savvis Communications AESA:. (0139)
      *
      * Global Addressing of Savvis ATM Switches and any direct customer ATM
@@ -1620,7 +1620,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SAVV_COMM_AESA = '0139';
 
-    /**
+/**
      * SECETI Object Identifiers (0142)
      *
      * The function as the 'Application Centre' for the Italian National Interbank
@@ -1635,7 +1635,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SECE_OBJE_IDEN = '0142';
 
-    /**
+/**
      * SIA Object Identifiers (0135)
      *
      * Issuing agency: SIA-Società Interbancaria per l'Automazione S.p.A.,
@@ -1643,7 +1643,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SIA_OBJE_IDEN = '0135';
 
-    /**
+/**
      * Siemens AG (0175)
      *
      * To uniquely identify properties, blocks, classes and lists of properties
@@ -1653,7 +1653,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SIEM_AG = '0175';
 
-    /**
+/**
      * Siemens Corporate Network (0058)
      *
      * Notes on Use of Code: The ICD code will form the initial part of the OSI
@@ -1663,14 +1663,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SIEM_CORP_NETW = '0058';
 
-    /**
+/**
      * Siemens Supervisory Systems Network (0099)
      *
      * Issuing agency: Siemens AG, Germany.
      */
     case SIEM_SUPE_SYST_NETW = '0099';
 
-    /**
+/**
      * Singapore Nationwide E-lnvoice Framework (0195)
      *
      * Intended Purpose/App. Area: For use in electronic messages in accordance to
@@ -1680,14 +1680,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SING_NATI_ELNV_FRAM = '0195';
 
-    /**
+/**
      * SIRET-CODE (0009)
      *
      * Issuing agency: DU PONT DE NEMOURS (FRANCE) S.A. France.
      */
     case SIRETCODE = '0009';
 
-    /**
+/**
      * Sistema Italiano di Identificazione di ogetti gestito da UNINFO (0076)
      *
      * Notes on Use of Code: To be used for assignments of object identifiers
@@ -1695,7 +1695,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SIST_ITAL_DI_IDEN_DI_OGET_GEST_DA_UNIN = '0076';
 
-    /**
+/**
      * Sistema Italiano di Indirizzamento di Reti OSI Gestito da UNINFO (0077)
      *
      * Notes on Use of Code: The ICD code forms the initial part of the OSI
@@ -1704,7 +1704,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SIST_ITAL_DI_INDI_DI_RETI_OSI_GEST_DA_UNIN = '0077';
 
-    /**
+/**
      * SITA Object Identifier Tree (0069)
      *
      * Notes on Use of Code: SITA intends to use its OID Tree to define its own
@@ -1713,7 +1713,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SITA_OBJE_IDEN_TREE = '0069';
 
-    /**
+/**
      * SNA/OSI Network (0018)
      *
      * Notes on Use of Code: The ICD code will also form the initial part of the
@@ -1722,7 +1722,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SNAO_NETW = '0018';
 
-    /**
+/**
      * SOCIETY FOR WORLDWIDE INTERBANK FINANCIAL, TELECOMMUNICATION S.W.I.F.T. (0021)
      *
      * Notes on Use of Code: To be used for assignment of object identifiers (ISO
@@ -1731,7 +1731,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SOCI_FOR_WORL_INTE_FINA_TELE_SWIF = '0021';
 
-    /**
+/**
      * Society of Motion Picture and Television Engineers (SMPTE) (0052)
      *
      * Notes on Use of Code: The ICD code will also be used to identify SMPTE
@@ -1743,7 +1743,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SOCI_OF_MOTI_PICT_AND_TELE_ENGI_SMPT = '0052';
 
-    /**
+/**
      * SOFFEX OSI (0061)
      *
      * Notes on Use of Code: This code is to assist in uniquely identifying data
@@ -1754,7 +1754,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SOFF_OSI = '0061';
 
-    /**
+/**
      * SOLVAY OSI CODING (0065)
      *
      * Notes on Use of Code: Whenever possible, ISO 8348 addresses using this code
@@ -1765,7 +1765,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SOLV_OSI_CODI = '0065';
 
-    /**
+/**
      * South African Code Allocation (0101)
      *
      * Issuing agency: Thawte Consulting, 33 Protea Way, Durbanville 7550, South
@@ -1773,7 +1773,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SOUT_AFRI_CODE_ALLO = '0101';
 
-    /**
+/**
      * Standard Company Code (0147)
      *
      * Partner identification code which is registered with JIPDEC/ECPC. Issuing
@@ -1782,14 +1782,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case STAN_COMP_CODE = '0147';
 
-    /**
+/**
      * STENTOR-ICD CODING SYSTEM (0117)
      *
      * Issuing agency: Stentor Resource Centre Inc., Canada.
      */
     case STEN_CODI_SYST = '0117';
 
-    /**
+/**
      * StepNexus (0174)
      *
      * To provide identifiers within StepNexus loader objects. These addresses
@@ -1800,7 +1800,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case STEPNEXUS = '0174';
 
-    /**
+/**
      * Swiss Chambers of Commerce Scheme (EDIRA) compliant (0085)
      *
      * Intended Purpose/App. Area Numerical identifiers of organizations. Issuing
@@ -1809,7 +1809,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SWIS_CHAM_OF_COMM_SCHE_EDIR_COMP = '0085';
 
-    /**
+/**
      * Swiss Federal Business Identification Number. Central Business names Index
      * (zefix) Identification Number (0169)
      *
@@ -1824,7 +1824,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SWIS_FEDE_BUSI_IDEN_NUMB_CENT_BUSI_NAME_INDE_ZEFI_IDEN_NUMB = '0169';
 
-    /**
+/**
      * Swissguide Identifier Scheme (0166)
      *
      * To uniquely identify objects, esp. companies and professionals in
@@ -1833,7 +1833,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SWIS_IDEN_SCHE = '0166';
 
-    /**
+/**
      * System Information et Repertoire des Entreprise et des Etablissements:
      * SIRENE (0002)
      *
@@ -1845,14 +1845,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case SYST_INFO_ET_REPE_DES_ENTR_ET_DES_ETAB_SIRE = '0002';
 
-    /**
+/**
      * TC68 OID (0133)
      *
      * Issuing agency: ISO TC68, Banking and Related Financial Services, USA.
      */
     case TC_OID = '0133';
 
-    /**
+/**
      * Teikoku Company Code (0170)
      *
      * Teikoku Company Code is allocated to all incorporations, business owners,
@@ -1868,7 +1868,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case TEIK_COMP_CODE = '0170';
 
-    /**
+/**
      * Telecom Australia (0032)
      *
      * Notes on Use of Code: The code is used as an element of Object Identifier
@@ -1878,7 +1878,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case TELE_AUST = '0032';
 
-    /**
+/**
      * TeleTrust Object Identifiers (0036)
      *
      * Notes on Use of Code: a) In the SIO the Organization name will normally be
@@ -1890,7 +1890,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case TELE_OBJE_IDEN = '0036';
 
-    /**
+/**
      * TELUS Corporation (0164)
      *
      * SA Addressing Scheme for ATM PNNI Implementation ICD is required for PNNI
@@ -1900,7 +1900,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case TELU_CORP = '0164';
 
-    /**
+/**
      * Thai Industrial Standards Institute (TISI) (0044)
      *
      * Notes on Use of Code: The ICD code forms the initial part of international
@@ -1909,7 +1909,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case THAI_INDU_STAN_INST_TISI = '0044';
 
-    /**
+/**
      * The All-Union Classifier of Enterprises and Organisations (0029)
      *
      * Issuing agency: General Computing Centre of the State, Committee of the
@@ -1917,7 +1917,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case THE_ALLU_CLAS_OF_ENTE_AND_ORGA = '0029';
 
-    /**
+/**
      * The Association of British Chambers of Commerce Ltd. Scheme, (EDIRA
      * compliant) (0089)
      *
@@ -1925,7 +1925,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case THE_ASSO_OF_BRIT_CHAM_OF_COMM_LTD_SCHE_EDIR_COMP = '0089';
 
-    /**
+/**
      * The Australian GOSIP Network (0038)
      *
      * Notes on Use of Code: As noted above it will be used as the initial
@@ -1933,7 +1933,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case THE_AUST_GOSI_NETW = '0038';
 
-    /**
+/**
      * The OZ DOD OSI Network (0039)
      *
      * The ICD code forms the initial part of the OSI naming and addressing, tree
@@ -1943,7 +1943,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case THE_OZ_DOD_OSI_NETW = '0039';
 
-    /**
+/**
      * Toshiba Organizations, Partners, And Suppliers' (TOPAS) Code (0140)
      *
      * The purpose of this coding system is to identify organizations world-wide
@@ -1960,14 +1960,14 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case TOSH_ORGA_PART_AND_SUPP_TOPA_CODE = '0140';
 
-    /**
+/**
      * Tradeplace TradePI Standard (0214)
      *
      * Tradeplace TradePI Standard
      */
     case TRAD_TRAD_STAN = '0214';
 
-    /**
+/**
      * TrustPoint Object Identifiers (0186)
      *
      * Intended Purpose/App. Area: To uniquely identify objects and mechanisms
@@ -1979,7 +1979,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case TRUS_OBJE_IDEN = '0186';
 
-    /**
+/**
      * UBL.BE Party Identifier (0193)
      *
      * Intended Purpose/App. Area: Identification and addressing of different
@@ -1987,7 +1987,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case UBLB_PART_IDEN = '0193';
 
-    /**
+/**
      * UK National Health Service Scheme, (EDIRA compliant) (0080)
      *
      * Notes on Use of Code: EDIRA recommendations for coding in EDIFACT and other
@@ -1995,7 +1995,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case UK_NATI_HEAL_SERV_SCHE_EDIR_COMP = '0080';
 
-    /**
+/**
      * Unilever Group Companies (0040)
      *
      * Notes on Use of Code: To be used in data communications to form part of the
@@ -2005,7 +2005,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case UNIL_GROU_COMP = '0040';
 
-    /**
+/**
      * United States Council for International Business (USCIB) Scheme, (EDIRA
      * compliant) (0086)
      *
@@ -2015,7 +2015,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case UNIT_STAT_COUN_FOR_INTE_BUSI_USCI_SCHE_EDIR_COMP = '0086';
 
-    /**
+/**
      * US-EPA Facility Identifier (0163)
      *
      * To provide for the unique identification of facilities regulated or
@@ -2031,7 +2031,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case USEP_FACI_IDEN = '0163';
 
-    /**
+/**
      * USA DOD OSI NETWORK (0006)
      *
      * Notes on Use of Code: The ICD code forms the initial part of the OSI
@@ -2040,7 +2040,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case USA_DOD_OSI_NETW = '0006';
 
-    /**
+/**
      * USA FED GOV OSI NETWORK (0005)
      *
      * Notes on Use of Code: The ICD code forms the initial part of the OSI
@@ -2049,7 +2049,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case USA_FED_GOV_OSI_NETW = '0005';
 
-    /**
+/**
      * UTC: Uniforme Transport Code (0064)
      *
      * Notes on Use of Code: The code identifies an individual transport or
@@ -2059,7 +2059,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case UTC_UNIF_TRAN_CODE = '0064';
 
-    /**
+/**
      * Vereniging van Kamers van Koophandel en Fabrieken in Nederland (Association
      * of Chambers of Commerce and Industry in the Netherlands), Scheme (EDIRA
      * compliant) (0106)
@@ -2069,7 +2069,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case VERE_VAN_KAME_VAN_KOOP_EN_FABR_IN_NEDE_ASSO_OF_CHAM_OF_COMM_AND_INDU_IN_THE_NETH_SCHE_EDIR_COMP = '0106';
 
-    /**
+/**
      * Vodafone Ireland OSI Addressing (0168)
      *
      * Implementation of an ATM network in connection with 3G rollout. The code
@@ -2078,7 +2078,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case VODA_IREL_OSI_ADDR = '0168';
 
-    /**
+/**
      * VSA FTP CODE (FTP = File Transfer Protocol) (0013)
      *
      * Notes on Use of Code: The code serves the addressing between the
@@ -2087,7 +2087,7 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
      */
     case VSA_FTP_CODE_FTP_FILE_TRAN_PROT = '0013';
 
-    /**
+/**
      * ZellwegerOSINet (0067)
      *
      * Notes on Use of Code: BAKOM - Switzerland. Issuing agency: Zellweger Uster
@@ -2444,7 +2444,8 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
             InvoiceSuiteCodelistSchemeIdentifiers::KPN_OVN => "Notes on Use of Code: This code is used in the VTOA network of KPN OVN. Issuing agency: Koninklijke KPN, The Netherlands.",
             InvoiceSuiteCodelistSchemeIdentifiers::LE_NUME_NATI => "Issuing agency: Ministere De Linterieur et de la Fonction Publique, Belgium.",
             InvoiceSuiteCodelistSchemeIdentifiers::LEGA_ENTI_CODE_LITH => "Intended Purpose/App. Area: For use in EDI (electronic data interchange) for C2B and others exchanges to identify legal entities. Issuing agency: State Enterprise Centre of Registers in Lithuania.",
-            InvoiceSuiteCodelistSchemeIdentifiers::LEGA_ENTI_IDEN_LEI => "Intended Purpose/App. Area: The LEI is the global, open identifier established at the urging of the Financial Stability Board and the recommendation of the G20. The LEI is established as the ISO 17442 standard, is governed by the LEI Regulatory Oversight Committee (LEI-ROC) and has been implemented by the Global Legal Entity Identifier Foundation (GLEIF). The LEI code connects to key reference information that enables clear and unique identification of legal entities participating in financial transactions. Each LEI contains information about an entitys ownership structure and thus answers the questions of who is who and who owns whom. Simply put, the publicly available LEI data pool can be regarded as a global directory, which greatly enhances transparency in the global marketplace. Already applied very broadly within financial regulation and rapidly being adopted for KYC and a number of other purposes in financial markets, the LEI is set to spread into a range of other fields, including trade facilitation, business reporting and supply chain management. Issuing agency: GLEIF, a global organization.",
+            InvoiceSuiteCodelistSchemeIdentifiers::LEGA_ENTI_IDEN_LEI => "Intended Purpose/App. Area: The LEI is the global, open identifier established at the urging of the Financial Stability Board and the recommendation of the G20. The LEI is established as the ISO 17442 standard, is governed by the LEI Regulatory Oversight Committee (LEI-ROC) and has been implemented by the Global Legal Entity Identifier Foundation (GLEIF). The LEI code connects to key reference information that enables clear and unique identification of legal entities participating in financial transactions. Each LEI contains information about an entitys ownership structure and thus answers the questions of who is who and who " .
+                "owns whom. Simply put, the publicly available LEI data pool can be regarded as a global directory, which greatly enhances transparency in the global marketplace. Already applied very broadly within financial regulation and rapidly being adopted for KYC and a number of other purposes in financial markets, the LEI is set to spread into a range of other fields, including trade facilitation, business reporting and supply chain management. Issuing agency: GLEIF, a global organization.",
             InvoiceSuiteCodelistSchemeIdentifiers::LEGO_OSI_NETW => "Notes on Use of Code: The ICD code will also form the Initial Domain Part of the OSI network addressing and naming tree as specified in addendum 2 to ISO 8348. Issuing agency: LEGO Systems Inc, USA.",
             InvoiceSuiteCodelistSchemeIdentifiers::LEITWEGID => "Intended Purpose/App. Area: Identification of Public Authorities. Issuing agency: Koordinierungsstelle fuer IT-Standards (KoSIT) in Germany.",
             InvoiceSuiteCodelistSchemeIdentifiers::LITH_MILI_PKI => "dex of the Certification Policies and Certification Practices Statements issued by Lithuanian military PKI The code is used to uniquely identify Certification Policies and Certification Practice Statements in Lithuanian military PKI Issuing agency: The Ministry of National Defence of the Republic of Lithuania, Lithuania.",
@@ -2455,7 +2456,8 @@ enum InvoiceSuiteCodelistSchemeIdentifiers: string
             InvoiceSuiteCodelistSchemeIdentifiers::MIGR_MNET => "Issuing agency: Migros-Genossenschafts-Bund, Switzerland.",
             InvoiceSuiteCodelistSchemeIdentifiers::MITE_TERM_OR_SWIT_EQUI => "Notes on Use of Code: The ICD code will form the initial part of the naming tree for: 1 - Private Integrated Services Network manufacturer-specific information as the Organization identifier forming the initial part of the OBJECT IDENTIFIER tree. 2 - OSI Application Layer such as CSTA (ECMA 179). Issuing agency: Mitel Corporation, Canada.",
             InvoiceSuiteCodelistSchemeIdentifiers::NATI_FEDE_OF_CHAM_OF_COMM_INDU_OF_BELG_SCHE_EDIR_COMP => "Issuing agency: National Federartion of Chambers of Commerce & Industry of, Belgium, Belgium.",
-            InvoiceSuiteCodelistSchemeIdentifiers::NATO_COMM_AND_GOVE_ENTI_SYST => "To identify all Commercial and Governmental entities that provide material and/or services to the Armed Forces of the NATO nations and several non-NATO nations (Sponsored) around the world. This information is used by NATO and Sponsored nations Logisticians to identify Commercial and Government Entities they deal with. This Information is used by all functions of Logistics support such as Acquisition, Sourcing, EDI, Re-Provisioning, Material Management, etc. Determination of the real source for an item of supply is one of the most important prerequisites for proper application of the Uniform System of Item Identification within NATO. It is the source where documentation will be obtained from and its location normally gives advice for codification responsibility. Within the NATO Codification System the term Manufacturer covers the whole range of possible sources of technical data for items entering the supply chains or participating, countries. The primary use of manufacturers coding is in ADP operations related to support management programs such as material management codification, standardization, etc. Issuing agency: NATO Group of National Director on Codification (AC/135), Luxembourg.",
+            InvoiceSuiteCodelistSchemeIdentifiers::NATO_COMM_AND_GOVE_ENTI_SYST => "To identify all Commercial and Governmental entities that provide material and/or services to the Armed Forces of the NATO nations and several non-NATO nations (Sponsored) around the world. This information is used by NATO and Sponsored nations Logisticians to identify Commercial and Government Entities they deal with. This Information is used by all functions of Logistics support such as Acquisition, Sourcing, EDI, Re-Provisioning, Material Management, etc. Determination of the real source for an item of supply is one of the most important prerequisites for proper application of the Uniform System of Item Identification " .
+                "within NATO. It is the source where documentation will be obtained from and its location normally gives advice for codification responsibility. Within the NATO Codification System the term Manufacturer covers the whole range of possible sources of technical data for items entering the supply chains or participating, countries. The primary use of manufacturers coding is in ADP operations related to support management programs such as material management codification, standardization, etc. Issuing agency: NATO Group of National Director on Codification (AC/135), Luxembourg.",
             InvoiceSuiteCodelistSchemeIdentifiers::NATO_ISO__ICDE_CODI_SCHE => "Notes on Use of Code: The ICD code forms the initial part of the OSI network addressing and naming tree depicted in Addendum 2 of ISO 8348. Issuing agency: North Atlantic Treaty Organisation (NATO), Belgium.",
             InvoiceSuiteCodelistSchemeIdentifiers::NAVI_NETW => "Notes on Use of Code: The ICD code will also form the Initial Domain Part of the OSI Network addressing and naming tree as specified in Addendum 2 to ISO 8348. Issuing agency: International Truck & Engine Corp, USA.",
             InvoiceSuiteCodelistSchemeIdentifiers::NBSO_NETW => "Notes on Use of Code: The ICD code forms the initial part of the OSI network addressing and naming tree as depicted in Addendum 2 to ISO 8348. Issuing agency: National Bureau of Standards, USA.",
