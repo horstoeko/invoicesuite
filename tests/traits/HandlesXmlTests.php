@@ -3,6 +3,8 @@
 namespace horstoeko\invoicesuite\tests\traits;
 
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
+use horstoeko\stringmanagement\FileUtils;
+use horstoeko\stringmanagement\PathUtils;
 
 trait HandlesXmlTests
 {
@@ -223,5 +225,18 @@ trait HandlesXmlTests
         $xml = $this->getXml();
         $xmlvalue = $xml->xpath($xpath);
         $this->assertArrayNotHasKey($index, $xmlvalue);
+    }
+
+    /**
+     * Helper for writing the XML to a file
+     *
+     * @return void
+     */
+    public function debugWriteFile(): void
+    {
+        file_put_contents(
+            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(__DIR__, "..", ".."), 'myfile_dbg.xml'),
+            (self::$document)->getContentAsXml()
+        );
     }
 }

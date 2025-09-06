@@ -6388,15 +6388,18 @@ class InvoiceSuiteZfFxComfortProviderBuilder extends InvoiceSuiteAbstractFormatP
             $paymentMean->getInformationWithCreate()->setValue($newName);
         }
 
-        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardId, $newFinancialCardHolder])) {
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardId])) {
             $paymentMean
                 ->getApplicableTradeSettlementFinancialCardWithCreate()
                 ->getIDWithCreate()
                 ->setValue($newFinancialCardId);
-            $paymentMean
-                ->getApplicableTradeSettlementFinancialCardWithCreate()
-                ->getCardholderNameWithCreate()
-                ->setValue($newFinancialCardHolder);
+
+            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardHolder])) {
+                $paymentMean
+                    ->getApplicableTradeSettlementFinancialCardWithCreate()
+                    ->getCardholderNameWithCreate()
+                    ->setValue($newFinancialCardHolder);
+            }
         }
 
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
@@ -6406,26 +6409,32 @@ class InvoiceSuiteZfFxComfortProviderBuilder extends InvoiceSuiteAbstractFormatP
                 ->setValue($newBuyerIban);
         }
 
-        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban, $newPayeeAccountName, $newPayeeProprietaryId, $newPayeeBic])) {
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
             $paymentMean
                 ->getPayeePartyCreditorFinancialAccountWithCreate()
                 ->getIBANIDWithCreate()
                 ->setValue($newPayeeIban);
 
-            $paymentMean
-                ->getPayeePartyCreditorFinancialAccountWithCreate()
-                ->getAccountNameWithCreate()
-                ->setValue($newPayeeAccountName);
+            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeAccountName])) {
+                $paymentMean
+                    ->getPayeePartyCreditorFinancialAccountWithCreate()
+                    ->getAccountNameWithCreate()
+                    ->setValue($newPayeeAccountName);
+            }
 
-            $paymentMean
-                ->getPayeePartyCreditorFinancialAccountWithCreate()
-                ->getProprietaryIDWithCreate()
-                ->setValue($newPayeeProprietaryId);
+            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeProprietaryId])) {
+                $paymentMean
+                    ->getPayeePartyCreditorFinancialAccountWithCreate()
+                    ->getProprietaryIDWithCreate()
+                    ->setValue($newPayeeProprietaryId);
+            }
 
-            $paymentMean
-                ->getPayeeSpecifiedCreditorFinancialInstitutionWithCreate()
-                ->getBICIDWithCreate()
-                ->setValue($newPayeeBic);
+            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeBic])) {
+                $paymentMean
+                    ->getPayeeSpecifiedCreditorFinancialInstitutionWithCreate()
+                    ->getBICIDWithCreate()
+                    ->setValue($newPayeeBic);
+            }
         }
 
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPaymentReference])) {

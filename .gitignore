@@ -93,3 +93,4 @@ convert_string_params.php
 transfer_docblocks*.php
 gendto.php
 gencodelists.php
+myfile_dbg.xml

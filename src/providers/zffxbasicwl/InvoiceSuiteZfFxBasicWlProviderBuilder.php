@@ -5970,16 +5970,18 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
                 ->setValue($newBuyerIban);
         }
 
-        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban, $newPayeeAccountName, $newPayeeProprietaryId, $newPayeeBic])) {
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
             $paymentMean
                 ->getPayeePartyCreditorFinancialAccountWithCreate()
                 ->getIBANIDWithCreate()
                 ->setValue($newPayeeIban);
 
-            $paymentMean
-                ->getPayeePartyCreditorFinancialAccountWithCreate()
-                ->getProprietaryIDWithCreate()
-                ->setValue($newPayeeProprietaryId);
+            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeProprietaryId])) {
+                $paymentMean
+                    ->getPayeePartyCreditorFinancialAccountWithCreate()
+                    ->getProprietaryIDWithCreate()
+                    ->setValue($newPayeeProprietaryId);
+            }
         }
 
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPaymentReference])) {
