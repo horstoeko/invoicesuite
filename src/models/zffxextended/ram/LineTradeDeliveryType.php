@@ -139,6 +139,16 @@ class LineTradeDeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBilledQuantity(): self
+    {
+        $this->billedQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType|null
      */
     public function getChargeFreeQuantity(): ?QuantityType
@@ -163,6 +173,16 @@ class LineTradeDeliveryType
     public function setChargeFreeQuantity(?QuantityType $chargeFreeQuantity = null): self
     {
         $this->chargeFreeQuantity = $chargeFreeQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetChargeFreeQuantity(): self
+    {
+        $this->chargeFreeQuantity = null;
 
         return $this;
     }
@@ -197,6 +217,16 @@ class LineTradeDeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPackageQuantity(): self
+    {
+        $this->packageQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType|null
      */
     public function getShipToTradeParty(): ?TradePartyType
@@ -226,6 +256,16 @@ class LineTradeDeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetShipToTradeParty(): self
+    {
+        $this->shipToTradeParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType|null
      */
     public function getUltimateShipToTradeParty(): ?TradePartyType
@@ -250,6 +290,16 @@ class LineTradeDeliveryType
     public function setUltimateShipToTradeParty(?TradePartyType $ultimateShipToTradeParty = null): self
     {
         $this->ultimateShipToTradeParty = $ultimateShipToTradeParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetUltimateShipToTradeParty(): self
+    {
+        $this->ultimateShipToTradeParty = null;
 
         return $this;
     }
@@ -285,6 +335,16 @@ class LineTradeDeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetActualDeliverySupplyChainEvent(): self
+    {
+        $this->actualDeliverySupplyChainEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null
      */
     public function getDespatchAdviceReferencedDocument(): ?ReferencedDocumentType
@@ -310,6 +370,16 @@ class LineTradeDeliveryType
         ?ReferencedDocumentType $despatchAdviceReferencedDocument = null,
     ): self {
         $this->despatchAdviceReferencedDocument = $despatchAdviceReferencedDocument;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDespatchAdviceReferencedDocument(): self
+    {
+        $this->despatchAdviceReferencedDocument = null;
 
         return $this;
     }
@@ -345,6 +415,16 @@ class LineTradeDeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReceivingAdviceReferencedDocument(): self
+    {
+        $this->receivingAdviceReferencedDocument = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null
      */
     public function getDeliveryNoteReferencedDocument(): ?ReferencedDocumentType
@@ -370,6 +450,16 @@ class LineTradeDeliveryType
         ?ReferencedDocumentType $deliveryNoteReferencedDocument = null,
     ): self {
         $this->deliveryNoteReferencedDocument = $deliveryNoteReferencedDocument;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDeliveryNoteReferencedDocument(): self
+    {
+        $this->deliveryNoteReferencedDocument = null;
 
         return $this;
     }

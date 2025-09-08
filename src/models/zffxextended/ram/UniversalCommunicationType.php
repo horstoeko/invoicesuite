@@ -63,6 +63,16 @@ class UniversalCommunicationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetURIID(): self
+    {
+        $this->uRIID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      */
     public function getCompleteNumber(): ?TextType
@@ -87,6 +97,16 @@ class UniversalCommunicationType
     public function setCompleteNumber(?TextType $completeNumber = null): self
     {
         $this->completeNumber = $completeNumber;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCompleteNumber(): self
+    {
+        $this->completeNumber = null;
 
         return $this;
     }

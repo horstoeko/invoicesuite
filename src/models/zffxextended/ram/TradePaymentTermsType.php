@@ -120,6 +120,16 @@ class TradePaymentTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType|null
      */
     public function getDueDateDateTime(): ?DateTimeType
@@ -144,6 +154,16 @@ class TradePaymentTermsType
     public function setDueDateDateTime(?DateTimeType $dueDateDateTime = null): self
     {
         $this->dueDateDateTime = $dueDateDateTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDueDateDateTime(): self
+    {
+        $this->dueDateDateTime = null;
 
         return $this;
     }
@@ -178,6 +198,16 @@ class TradePaymentTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDirectDebitMandateID(): self
+    {
+        $this->directDebitMandateID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null
      */
     public function getPartialPaymentAmount(): ?AmountType
@@ -202,6 +232,16 @@ class TradePaymentTermsType
     public function setPartialPaymentAmount(?AmountType $partialPaymentAmount = null): self
     {
         $this->partialPaymentAmount = $partialPaymentAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPartialPaymentAmount(): self
+    {
+        $this->partialPaymentAmount = null;
 
         return $this;
     }
@@ -237,6 +277,16 @@ class TradePaymentTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetApplicableTradePaymentPenaltyTerms(): self
+    {
+        $this->applicableTradePaymentPenaltyTerms = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentDiscountTermsType|null
      */
     public function getApplicableTradePaymentDiscountTerms(): ?TradePaymentDiscountTermsType
@@ -267,6 +317,16 @@ class TradePaymentTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetApplicableTradePaymentDiscountTerms(): self
+    {
+        $this->applicableTradePaymentDiscountTerms = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType|null
      */
     public function getPayeeTradeParty(): ?TradePartyType
@@ -291,6 +351,16 @@ class TradePaymentTermsType
     public function setPayeeTradeParty(?TradePartyType $payeeTradeParty = null): self
     {
         $this->payeeTradeParty = $payeeTradeParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPayeeTradeParty(): self
+    {
+        $this->payeeTradeParty = null;
 
         return $this;
     }

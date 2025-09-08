@@ -74,6 +74,16 @@ class TradePriceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetChargeAmount(): self
+    {
+        $this->chargeAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\udt\QuantityType|null
      */
     public function getBasisQuantity(): ?QuantityType
@@ -98,6 +108,16 @@ class TradePriceType
     public function setBasisQuantity(?QuantityType $basisQuantity = null): self
     {
         $this->basisQuantity = $basisQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBasisQuantity(): self
+    {
+        $this->basisQuantity = null;
 
         return $this;
     }
@@ -128,6 +148,16 @@ class TradePriceType
         ?TradeAllowanceChargeType $appliedTradeAllowanceCharge = null,
     ): self {
         $this->appliedTradeAllowanceCharge = $appliedTradeAllowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAppliedTradeAllowanceCharge(): self
+    {
+        $this->appliedTradeAllowanceCharge = null;
 
         return $this;
     }

@@ -49,4 +49,14 @@ class LineTradeDeliveryType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetBilledQuantity(): self
+    {
+        $this->billedQuantity = null;
+
+        return $this;
+    }
 }

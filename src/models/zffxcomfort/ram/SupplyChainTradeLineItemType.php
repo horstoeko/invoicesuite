@@ -95,6 +95,16 @@ class SupplyChainTradeLineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAssociatedDocumentLineDocument(): self
+    {
+        $this->associatedDocumentLineDocument = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeProductType|null
      */
     public function getSpecifiedTradeProduct(): ?TradeProductType
@@ -119,6 +129,16 @@ class SupplyChainTradeLineItemType
     public function setSpecifiedTradeProduct(?TradeProductType $specifiedTradeProduct = null): self
     {
         $this->specifiedTradeProduct = $specifiedTradeProduct;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecifiedTradeProduct(): self
+    {
+        $this->specifiedTradeProduct = null;
 
         return $this;
     }
@@ -153,6 +173,16 @@ class SupplyChainTradeLineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSpecifiedLineTradeAgreement(): self
+    {
+        $this->specifiedLineTradeAgreement = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\ram\LineTradeDeliveryType|null
      */
     public function getSpecifiedLineTradeDelivery(): ?LineTradeDeliveryType
@@ -177,6 +207,16 @@ class SupplyChainTradeLineItemType
     public function setSpecifiedLineTradeDelivery(?LineTradeDeliveryType $specifiedLineTradeDelivery = null): self
     {
         $this->specifiedLineTradeDelivery = $specifiedLineTradeDelivery;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecifiedLineTradeDelivery(): self
+    {
+        $this->specifiedLineTradeDelivery = null;
 
         return $this;
     }
@@ -207,6 +247,16 @@ class SupplyChainTradeLineItemType
         ?LineTradeSettlementType $specifiedLineTradeSettlement = null,
     ): self {
         $this->specifiedLineTradeSettlement = $specifiedLineTradeSettlement;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecifiedLineTradeSettlement(): self
+    {
+        $this->specifiedLineTradeSettlement = null;
 
         return $this;
     }

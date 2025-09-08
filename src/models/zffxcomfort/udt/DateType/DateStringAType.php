@@ -52,6 +52,16 @@ class DateStringAType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
+
+        return $this;
+    }
+
+    /**
      * @return string|null
      */
     public function getFormat(): ?string
@@ -66,6 +76,16 @@ class DateStringAType
     public function setFormat(?string $format = null): self
     {
         $this->format = InvoiceSuiteStringUtils::asNullWhenEmpty($format);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFormat(): self
+    {
+        $this->format = null;
 
         return $this;
     }

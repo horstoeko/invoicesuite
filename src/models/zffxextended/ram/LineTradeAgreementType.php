@@ -130,6 +130,16 @@ class LineTradeAgreementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSellerOrderReferencedDocument(): self
+    {
+        $this->sellerOrderReferencedDocument = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null
      */
     public function getBuyerOrderReferencedDocument(): ?ReferencedDocumentType
@@ -155,6 +165,16 @@ class LineTradeAgreementType
         ?ReferencedDocumentType $buyerOrderReferencedDocument = null,
     ): self {
         $this->buyerOrderReferencedDocument = $buyerOrderReferencedDocument;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBuyerOrderReferencedDocument(): self
+    {
+        $this->buyerOrderReferencedDocument = null;
 
         return $this;
     }
@@ -189,6 +209,16 @@ class LineTradeAgreementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetQuotationReferencedDocument(): self
+    {
+        $this->quotationReferencedDocument = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null
      */
     public function getContractReferencedDocument(): ?ReferencedDocumentType
@@ -218,6 +248,16 @@ class LineTradeAgreementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContractReferencedDocument(): self
+    {
+        $this->contractReferencedDocument = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>|null
      */
     public function getAdditionalReferencedDocument(): ?array
@@ -232,6 +272,16 @@ class LineTradeAgreementType
     public function setAdditionalReferencedDocument(?array $additionalReferencedDocument = null): self
     {
         $this->additionalReferencedDocument = $additionalReferencedDocument;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAdditionalReferencedDocument(): self
+    {
+        $this->additionalReferencedDocument = null;
 
         return $this;
     }
@@ -328,6 +378,16 @@ class LineTradeAgreementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetGrossPriceProductTradePrice(): self
+    {
+        $this->grossPriceProductTradePrice = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\TradePriceType|null
      */
     public function getNetPriceProductTradePrice(): ?TradePriceType
@@ -357,6 +417,16 @@ class LineTradeAgreementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetNetPriceProductTradePrice(): self
+    {
+        $this->netPriceProductTradePrice = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>|null
      */
     public function getUltimateCustomerOrderReferencedDocument(): ?array
@@ -372,6 +442,16 @@ class LineTradeAgreementType
         ?array $ultimateCustomerOrderReferencedDocument = null,
     ): self {
         $this->ultimateCustomerOrderReferencedDocument = $ultimateCustomerOrderReferencedDocument;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetUltimateCustomerOrderReferencedDocument(): self
+    {
+        $this->ultimateCustomerOrderReferencedDocument = null;
 
         return $this;
     }

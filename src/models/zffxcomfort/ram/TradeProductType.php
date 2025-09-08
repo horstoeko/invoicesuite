@@ -131,6 +131,16 @@ class TradeProductType
     }
 
     /**
+     * @return self
+     */
+    public function unsetGlobalID(): self
+    {
+        $this->globalID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType|null
      */
     public function getSellerAssignedID(): ?IDType
@@ -155,6 +165,16 @@ class TradeProductType
     public function setSellerAssignedID(?IDType $sellerAssignedID = null): self
     {
         $this->sellerAssignedID = $sellerAssignedID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSellerAssignedID(): self
+    {
+        $this->sellerAssignedID = null;
 
         return $this;
     }
@@ -189,6 +209,16 @@ class TradeProductType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBuyerAssignedID(): self
+    {
+        $this->buyerAssignedID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null
      */
     public function getName(): ?TextType
@@ -213,6 +243,16 @@ class TradeProductType
     public function setName(?TextType $name = null): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
 
         return $this;
     }
@@ -247,6 +287,16 @@ class TradeProductType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxcomfort\ram\ProductCharacteristicType>|null
      */
     public function getApplicableProductCharacteristic(): ?array
@@ -261,6 +311,16 @@ class TradeProductType
     public function setApplicableProductCharacteristic(?array $applicableProductCharacteristic = null): self
     {
         $this->applicableProductCharacteristic = $applicableProductCharacteristic;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetApplicableProductCharacteristic(): self
+    {
+        $this->applicableProductCharacteristic = null;
 
         return $this;
     }
@@ -344,6 +404,16 @@ class TradeProductType
     public function setDesignatedProductClassification(?array $designatedProductClassification = null): self
     {
         $this->designatedProductClassification = $designatedProductClassification;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDesignatedProductClassification(): self
+    {
+        $this->designatedProductClassification = null;
 
         return $this;
     }
@@ -437,6 +507,16 @@ class TradeProductType
     public function setOriginTradeCountry(?TradeCountryType $originTradeCountry = null): self
     {
         $this->originTradeCountry = $originTradeCountry;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOriginTradeCountry(): self
+    {
+        $this->originTradeCountry = null;
 
         return $this;
     }

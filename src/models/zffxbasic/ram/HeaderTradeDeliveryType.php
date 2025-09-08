@@ -72,6 +72,16 @@ class HeaderTradeDeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetShipToTradeParty(): self
+    {
+        $this->shipToTradeParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasic\ram\SupplyChainEventType|null
      */
     public function getActualDeliverySupplyChainEvent(): ?SupplyChainEventType
@@ -102,6 +112,16 @@ class HeaderTradeDeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetActualDeliverySupplyChainEvent(): self
+    {
+        $this->actualDeliverySupplyChainEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasic\ram\ReferencedDocumentType|null
      */
     public function getDespatchAdviceReferencedDocument(): ?ReferencedDocumentType
@@ -127,6 +147,16 @@ class HeaderTradeDeliveryType
         ?ReferencedDocumentType $despatchAdviceReferencedDocument = null,
     ): self {
         $this->despatchAdviceReferencedDocument = $despatchAdviceReferencedDocument;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDespatchAdviceReferencedDocument(): self
+    {
+        $this->despatchAdviceReferencedDocument = null;
 
         return $this;
     }

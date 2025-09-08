@@ -63,6 +63,16 @@ class TradeAccountingAccountType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\qdt\AccountingAccountTypeCodeType|null
      */
     public function getTypeCode(): ?AccountingAccountTypeCodeType
@@ -87,6 +97,16 @@ class TradeAccountingAccountType
     public function setTypeCode(?AccountingAccountTypeCodeType $typeCode = null): self
     {
         $this->typeCode = $typeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTypeCode(): self
+    {
+        $this->typeCode = null;
 
         return $this;
     }

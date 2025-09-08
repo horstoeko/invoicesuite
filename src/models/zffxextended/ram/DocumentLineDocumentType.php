@@ -98,6 +98,16 @@ class DocumentLineDocumentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineID(): self
+    {
+        $this->lineID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      */
     public function getParentLineID(): ?IDType
@@ -122,6 +132,16 @@ class DocumentLineDocumentType
     public function setParentLineID(?IDType $parentLineID = null): self
     {
         $this->parentLineID = $parentLineID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetParentLineID(): self
+    {
+        $this->parentLineID = null;
 
         return $this;
     }
@@ -156,6 +176,16 @@ class DocumentLineDocumentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineStatusCode(): self
+    {
+        $this->lineStatusCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\CodeType|null
      */
     public function getLineStatusReasonCode(): ?CodeType
@@ -185,6 +215,16 @@ class DocumentLineDocumentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineStatusReasonCode(): self
+    {
+        $this->lineStatusReasonCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxextended\ram\NoteType>|null
      */
     public function getIncludedNote(): ?array
@@ -199,6 +239,16 @@ class DocumentLineDocumentType
     public function setIncludedNote(?array $includedNote = null): self
     {
         $this->includedNote = $includedNote;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIncludedNote(): self
+    {
+        $this->includedNote = null;
 
         return $this;
     }

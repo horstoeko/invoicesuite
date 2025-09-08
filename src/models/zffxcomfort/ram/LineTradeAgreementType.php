@@ -73,6 +73,16 @@ class LineTradeAgreementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBuyerOrderReferencedDocument(): self
+    {
+        $this->buyerOrderReferencedDocument = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\ram\TradePriceType|null
      */
     public function getGrossPriceProductTradePrice(): ?TradePriceType
@@ -102,6 +112,16 @@ class LineTradeAgreementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetGrossPriceProductTradePrice(): self
+    {
+        $this->grossPriceProductTradePrice = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\ram\TradePriceType|null
      */
     public function getNetPriceProductTradePrice(): ?TradePriceType
@@ -126,6 +146,16 @@ class LineTradeAgreementType
     public function setNetPriceProductTradePrice(?TradePriceType $netPriceProductTradePrice = null): self
     {
         $this->netPriceProductTradePrice = $netPriceProductTradePrice;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNetPriceProductTradePrice(): self
+    {
+        $this->netPriceProductTradePrice = null;
 
         return $this;
     }

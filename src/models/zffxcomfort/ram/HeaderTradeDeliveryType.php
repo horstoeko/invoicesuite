@@ -83,6 +83,16 @@ class HeaderTradeDeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetShipToTradeParty(): self
+    {
+        $this->shipToTradeParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\ram\SupplyChainEventType|null
      */
     public function getActualDeliverySupplyChainEvent(): ?SupplyChainEventType
@@ -108,6 +118,16 @@ class HeaderTradeDeliveryType
         ?SupplyChainEventType $actualDeliverySupplyChainEvent = null,
     ): self {
         $this->actualDeliverySupplyChainEvent = $actualDeliverySupplyChainEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetActualDeliverySupplyChainEvent(): self
+    {
+        $this->actualDeliverySupplyChainEvent = null;
 
         return $this;
     }
@@ -143,6 +163,16 @@ class HeaderTradeDeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDespatchAdviceReferencedDocument(): self
+    {
+        $this->despatchAdviceReferencedDocument = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType|null
      */
     public function getReceivingAdviceReferencedDocument(): ?ReferencedDocumentType
@@ -168,6 +198,16 @@ class HeaderTradeDeliveryType
         ?ReferencedDocumentType $receivingAdviceReferencedDocument = null,
     ): self {
         $this->receivingAdviceReferencedDocument = $receivingAdviceReferencedDocument;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetReceivingAdviceReferencedDocument(): self
+    {
+        $this->receivingAdviceReferencedDocument = null;
 
         return $this;
     }

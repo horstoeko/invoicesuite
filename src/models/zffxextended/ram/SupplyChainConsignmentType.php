@@ -43,6 +43,16 @@ class SupplyChainConsignmentType
     /**
      * @return self
      */
+    public function unsetSpecifiedLogisticsTransportMovement(): self
+    {
+        $this->specifiedLogisticsTransportMovement = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearSpecifiedLogisticsTransportMovement(): self
     {
         $this->specifiedLogisticsTransportMovement = [];

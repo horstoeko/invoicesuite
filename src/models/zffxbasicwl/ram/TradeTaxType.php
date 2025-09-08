@@ -134,6 +134,16 @@ class TradeTaxType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCalculatedAmount(): self
+    {
+        $this->calculatedAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasicwl\qdt\TaxTypeCodeType|null
      */
     public function getTypeCode(): ?TaxTypeCodeType
@@ -158,6 +168,16 @@ class TradeTaxType
     public function setTypeCode(?TaxTypeCodeType $typeCode = null): self
     {
         $this->typeCode = $typeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTypeCode(): self
+    {
+        $this->typeCode = null;
 
         return $this;
     }
@@ -192,6 +212,16 @@ class TradeTaxType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExemptionReason(): self
+    {
+        $this->exemptionReason = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasicwl\udt\AmountType|null
      */
     public function getBasisAmount(): ?AmountType
@@ -216,6 +246,16 @@ class TradeTaxType
     public function setBasisAmount(?AmountType $basisAmount = null): self
     {
         $this->basisAmount = $basisAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBasisAmount(): self
+    {
+        $this->basisAmount = null;
 
         return $this;
     }
@@ -250,6 +290,16 @@ class TradeTaxType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCategoryCode(): self
+    {
+        $this->categoryCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasicwl\udt\CodeType|null
      */
     public function getExemptionReasonCode(): ?CodeType
@@ -274,6 +324,16 @@ class TradeTaxType
     public function setExemptionReasonCode(?CodeType $exemptionReasonCode = null): self
     {
         $this->exemptionReasonCode = $exemptionReasonCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExemptionReasonCode(): self
+    {
+        $this->exemptionReasonCode = null;
 
         return $this;
     }
@@ -308,6 +368,16 @@ class TradeTaxType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDueDateTypeCode(): self
+    {
+        $this->dueDateTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasicwl\udt\PercentType|null
      */
     public function getRateApplicablePercent(): ?PercentType
@@ -332,6 +402,16 @@ class TradeTaxType
     public function setRateApplicablePercent(?PercentType $rateApplicablePercent = null): self
     {
         $this->rateApplicablePercent = $rateApplicablePercent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRateApplicablePercent(): self
+    {
+        $this->rateApplicablePercent = null;
 
         return $this;
     }

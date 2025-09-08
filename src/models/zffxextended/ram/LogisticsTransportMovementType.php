@@ -49,4 +49,14 @@ class LogisticsTransportMovementType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetModeCode(): self
+    {
+        $this->modeCode = null;
+
+        return $this;
+    }
 }

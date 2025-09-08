@@ -52,6 +52,16 @@ class IDType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
+
+        return $this;
+    }
+
+    /**
      * @return string|null
      */
     public function getSchemeID(): ?string
@@ -66,6 +76,16 @@ class IDType
     public function setSchemeID(?string $schemeID = null): self
     {
         $this->schemeID = InvoiceSuiteStringUtils::asNullWhenEmpty($schemeID);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSchemeID(): self
+    {
+        $this->schemeID = null;
 
         return $this;
     }

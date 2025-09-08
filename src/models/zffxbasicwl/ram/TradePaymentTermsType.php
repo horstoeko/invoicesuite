@@ -75,6 +75,16 @@ class TradePaymentTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasicwl\udt\DateTimeType|null
      */
     public function getDueDateDateTime(): ?DateTimeType
@@ -104,6 +114,16 @@ class TradePaymentTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDueDateDateTime(): self
+    {
+        $this->dueDateDateTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType|null
      */
     public function getDirectDebitMandateID(): ?IDType
@@ -128,6 +148,16 @@ class TradePaymentTermsType
     public function setDirectDebitMandateID(?IDType $directDebitMandateID = null): self
     {
         $this->directDebitMandateID = $directDebitMandateID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDirectDebitMandateID(): self
+    {
+        $this->directDebitMandateID = null;
 
         return $this;
     }

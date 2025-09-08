@@ -75,6 +75,16 @@ class LogisticsServiceChargeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null
      */
     public function getAppliedAmount(): ?AmountType
@@ -104,6 +114,16 @@ class LogisticsServiceChargeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAppliedAmount(): self
+    {
+        $this->appliedAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType>|null
      */
     public function getAppliedTradeTax(): ?array
@@ -118,6 +138,16 @@ class LogisticsServiceChargeType
     public function setAppliedTradeTax(?array $appliedTradeTax = null): self
     {
         $this->appliedTradeTax = $appliedTradeTax;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAppliedTradeTax(): self
+    {
+        $this->appliedTradeTax = null;
 
         return $this;
     }

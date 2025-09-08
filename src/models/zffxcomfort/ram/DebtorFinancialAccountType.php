@@ -49,4 +49,14 @@ class DebtorFinancialAccountType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetIBANID(): self
+    {
+        $this->iBANID = null;
+
+        return $this;
+    }
 }

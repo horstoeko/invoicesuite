@@ -133,6 +133,16 @@ class ReferencedDocumentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIssuerAssignedID(): self
+    {
+        $this->issuerAssignedID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      */
     public function getURIID(): ?IDType
@@ -157,6 +167,16 @@ class ReferencedDocumentType
     public function setURIID(?IDType $uRIID = null): self
     {
         $this->uRIID = $uRIID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetURIID(): self
+    {
+        $this->uRIID = null;
 
         return $this;
     }
@@ -191,6 +211,16 @@ class ReferencedDocumentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineID(): self
+    {
+        $this->lineID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\qdt\DocumentCodeType|null
      */
     public function getTypeCode(): ?DocumentCodeType
@@ -215,6 +245,16 @@ class ReferencedDocumentType
     public function setTypeCode(?DocumentCodeType $typeCode = null): self
     {
         $this->typeCode = $typeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTypeCode(): self
+    {
+        $this->typeCode = null;
 
         return $this;
     }
@@ -249,6 +289,16 @@ class ReferencedDocumentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\BinaryObjectType|null
      */
     public function getAttachmentBinaryObject(): ?BinaryObjectType
@@ -273,6 +323,16 @@ class ReferencedDocumentType
     public function setAttachmentBinaryObject(?BinaryObjectType $attachmentBinaryObject = null): self
     {
         $this->attachmentBinaryObject = $attachmentBinaryObject;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAttachmentBinaryObject(): self
+    {
+        $this->attachmentBinaryObject = null;
 
         return $this;
     }
@@ -307,6 +367,16 @@ class ReferencedDocumentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReferenceTypeCode(): self
+    {
+        $this->referenceTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\qdt\FormattedDateTimeType|null
      */
     public function getFormattedIssueDateTime(): ?FormattedDateTimeType
@@ -331,6 +401,16 @@ class ReferencedDocumentType
     public function setFormattedIssueDateTime(?FormattedDateTimeType $formattedIssueDateTime = null): self
     {
         $this->formattedIssueDateTime = $formattedIssueDateTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFormattedIssueDateTime(): self
+    {
+        $this->formattedIssueDateTime = null;
 
         return $this;
     }

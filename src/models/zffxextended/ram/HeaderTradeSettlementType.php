@@ -270,6 +270,16 @@ class HeaderTradeSettlementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCreditorReferenceID(): self
+    {
+        $this->creditorReferenceID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      */
     public function getPaymentReference(): ?TextType
@@ -294,6 +304,16 @@ class HeaderTradeSettlementType
     public function setPaymentReference(?TextType $paymentReference = null): self
     {
         $this->paymentReference = $paymentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPaymentReference(): self
+    {
+        $this->paymentReference = null;
 
         return $this;
     }
@@ -328,6 +348,16 @@ class HeaderTradeSettlementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTaxCurrencyCode(): self
+    {
+        $this->taxCurrencyCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\qdt\CurrencyCodeType|null
      */
     public function getInvoiceCurrencyCode(): ?CurrencyCodeType
@@ -352,6 +382,16 @@ class HeaderTradeSettlementType
     public function setInvoiceCurrencyCode(?CurrencyCodeType $invoiceCurrencyCode = null): self
     {
         $this->invoiceCurrencyCode = $invoiceCurrencyCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInvoiceCurrencyCode(): self
+    {
+        $this->invoiceCurrencyCode = null;
 
         return $this;
     }
@@ -386,6 +426,16 @@ class HeaderTradeSettlementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetInvoiceIssuerReference(): self
+    {
+        $this->invoiceIssuerReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType|null
      */
     public function getInvoicerTradeParty(): ?TradePartyType
@@ -410,6 +460,16 @@ class HeaderTradeSettlementType
     public function setInvoicerTradeParty(?TradePartyType $invoicerTradeParty = null): self
     {
         $this->invoicerTradeParty = $invoicerTradeParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInvoicerTradeParty(): self
+    {
+        $this->invoicerTradeParty = null;
 
         return $this;
     }
@@ -444,6 +504,16 @@ class HeaderTradeSettlementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetInvoiceeTradeParty(): self
+    {
+        $this->invoiceeTradeParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType|null
      */
     public function getPayeeTradeParty(): ?TradePartyType
@@ -473,6 +543,16 @@ class HeaderTradeSettlementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPayeeTradeParty(): self
+    {
+        $this->payeeTradeParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType|null
      */
     public function getPayerTradeParty(): ?TradePartyType
@@ -497,6 +577,16 @@ class HeaderTradeSettlementType
     public function setPayerTradeParty(?TradePartyType $payerTradeParty = null): self
     {
         $this->payerTradeParty = $payerTradeParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPayerTradeParty(): self
+    {
+        $this->payerTradeParty = null;
 
         return $this;
     }
@@ -532,6 +622,16 @@ class HeaderTradeSettlementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTaxApplicableTradeCurrencyExchange(): self
+    {
+        $this->taxApplicableTradeCurrencyExchange = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeSettlementPaymentMeansType>|null
      */
     public function getSpecifiedTradeSettlementPaymentMeans(): ?array
@@ -546,6 +646,16 @@ class HeaderTradeSettlementType
     public function setSpecifiedTradeSettlementPaymentMeans(?array $specifiedTradeSettlementPaymentMeans = null): self
     {
         $this->specifiedTradeSettlementPaymentMeans = $specifiedTradeSettlementPaymentMeans;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecifiedTradeSettlementPaymentMeans(): self
+    {
+        $this->specifiedTradeSettlementPaymentMeans = null;
 
         return $this;
     }
@@ -629,6 +739,16 @@ class HeaderTradeSettlementType
     public function setApplicableTradeTax(?array $applicableTradeTax = null): self
     {
         $this->applicableTradeTax = $applicableTradeTax;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetApplicableTradeTax(): self
+    {
+        $this->applicableTradeTax = null;
 
         return $this;
     }
@@ -725,6 +845,16 @@ class HeaderTradeSettlementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBillingSpecifiedPeriod(): self
+    {
+        $this->billingSpecifiedPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeAllowanceChargeType>|null
      */
     public function getSpecifiedTradeAllowanceCharge(): ?array
@@ -739,6 +869,16 @@ class HeaderTradeSettlementType
     public function setSpecifiedTradeAllowanceCharge(?array $specifiedTradeAllowanceCharge = null): self
     {
         $this->specifiedTradeAllowanceCharge = $specifiedTradeAllowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecifiedTradeAllowanceCharge(): self
+    {
+        $this->specifiedTradeAllowanceCharge = null;
 
         return $this;
     }
@@ -821,6 +961,16 @@ class HeaderTradeSettlementType
     public function setSpecifiedLogisticsServiceCharge(?array $specifiedLogisticsServiceCharge = null): self
     {
         $this->specifiedLogisticsServiceCharge = $specifiedLogisticsServiceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecifiedLogisticsServiceCharge(): self
+    {
+        $this->specifiedLogisticsServiceCharge = null;
 
         return $this;
     }
@@ -911,6 +1061,16 @@ class HeaderTradeSettlementType
     /**
      * @return self
      */
+    public function unsetSpecifiedTradePaymentTerms(): self
+    {
+        $this->specifiedTradePaymentTerms = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearSpecifiedTradePaymentTerms(): self
     {
         $this->specifiedTradePaymentTerms = [];
@@ -981,8 +1141,8 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\TradeSettlementHeaderMonetarySummationType
      */
-    public function getSpecifiedTradeSettlementHeaderMonetarySummationWithCreate(): TradeSettlementHeaderMonetarySummationType
-    {
+    public function getSpecifiedTradeSettlementHeaderMonetarySummationWithCreate(
+    ): TradeSettlementHeaderMonetarySummationType {
         $this->specifiedTradeSettlementHeaderMonetarySummation = is_null($this->specifiedTradeSettlementHeaderMonetarySummation) ? new TradeSettlementHeaderMonetarySummationType() : $this->specifiedTradeSettlementHeaderMonetarySummation;
 
         return $this->specifiedTradeSettlementHeaderMonetarySummation;
@@ -996,6 +1156,16 @@ class HeaderTradeSettlementType
         ?TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation = null,
     ): self {
         $this->specifiedTradeSettlementHeaderMonetarySummation = $specifiedTradeSettlementHeaderMonetarySummation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecifiedTradeSettlementHeaderMonetarySummation(): self
+    {
+        $this->specifiedTradeSettlementHeaderMonetarySummation = null;
 
         return $this;
     }
@@ -1015,6 +1185,16 @@ class HeaderTradeSettlementType
     public function setInvoiceReferencedDocument(?array $invoiceReferencedDocument = null): self
     {
         $this->invoiceReferencedDocument = $invoiceReferencedDocument;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInvoiceReferencedDocument(): self
+    {
+        $this->invoiceReferencedDocument = null;
 
         return $this;
     }
@@ -1104,6 +1284,16 @@ class HeaderTradeSettlementType
     /**
      * @return self
      */
+    public function unsetReceivableSpecifiedTradeAccountingAccount(): self
+    {
+        $this->receivableSpecifiedTradeAccountingAccount = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearReceivableSpecifiedTradeAccountingAccount(): self
     {
         $this->receivableSpecifiedTradeAccountingAccount = [];
@@ -1180,6 +1370,16 @@ class HeaderTradeSettlementType
     public function setSpecifiedAdvancePayment(?array $specifiedAdvancePayment = null): self
     {
         $this->specifiedAdvancePayment = $specifiedAdvancePayment;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecifiedAdvancePayment(): self
+    {
+        $this->specifiedAdvancePayment = null;
 
         return $this;
     }

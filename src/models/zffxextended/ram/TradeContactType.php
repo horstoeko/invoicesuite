@@ -107,6 +107,16 @@ class TradeContactType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPersonName(): self
+    {
+        $this->personName = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      */
     public function getDepartmentName(): ?TextType
@@ -136,6 +146,16 @@ class TradeContactType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDepartmentName(): self
+    {
+        $this->departmentName = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\CodeType|null
      */
     public function getTypeCode(): ?CodeType
@@ -160,6 +180,16 @@ class TradeContactType
     public function setTypeCode(?CodeType $typeCode = null): self
     {
         $this->typeCode = $typeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTypeCode(): self
+    {
+        $this->typeCode = null;
 
         return $this;
     }
@@ -195,6 +225,16 @@ class TradeContactType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTelephoneUniversalCommunication(): self
+    {
+        $this->telephoneUniversalCommunication = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\UniversalCommunicationType|null
      */
     public function getFaxUniversalCommunication(): ?UniversalCommunicationType
@@ -219,6 +259,16 @@ class TradeContactType
     public function setFaxUniversalCommunication(?UniversalCommunicationType $faxUniversalCommunication = null): self
     {
         $this->faxUniversalCommunication = $faxUniversalCommunication;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFaxUniversalCommunication(): self
+    {
+        $this->faxUniversalCommunication = null;
 
         return $this;
     }
@@ -249,6 +299,16 @@ class TradeContactType
         ?UniversalCommunicationType $emailURIUniversalCommunication = null,
     ): self {
         $this->emailURIUniversalCommunication = $emailURIUniversalCommunication;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEmailURIUniversalCommunication(): self
+    {
+        $this->emailURIUniversalCommunication = null;
 
         return $this;
     }

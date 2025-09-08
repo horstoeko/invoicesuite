@@ -76,6 +76,16 @@ class SupplyChainTradeTransactionType
     /**
      * @return self
      */
+    public function unsetIncludedSupplyChainTradeLineItem(): self
+    {
+        $this->includedSupplyChainTradeLineItem = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearIncludedSupplyChainTradeLineItem(): self
     {
         $this->includedSupplyChainTradeLineItem = [];
@@ -168,6 +178,16 @@ class SupplyChainTradeTransactionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetApplicableHeaderTradeAgreement(): self
+    {
+        $this->applicableHeaderTradeAgreement = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasic\ram\HeaderTradeDeliveryType|null
      */
     public function getApplicableHeaderTradeDelivery(): ?HeaderTradeDeliveryType
@@ -198,6 +218,16 @@ class SupplyChainTradeTransactionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetApplicableHeaderTradeDelivery(): self
+    {
+        $this->applicableHeaderTradeDelivery = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasic\ram\HeaderTradeSettlementType|null
      */
     public function getApplicableHeaderTradeSettlement(): ?HeaderTradeSettlementType
@@ -223,6 +253,16 @@ class SupplyChainTradeTransactionType
         ?HeaderTradeSettlementType $applicableHeaderTradeSettlement = null,
     ): self {
         $this->applicableHeaderTradeSettlement = $applicableHeaderTradeSettlement;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetApplicableHeaderTradeSettlement(): self
+    {
+        $this->applicableHeaderTradeSettlement = null;
 
         return $this;
     }

@@ -63,6 +63,16 @@ class ProcuringProjectType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      */
     public function getName(): ?TextType
@@ -87,6 +97,16 @@ class ProcuringProjectType
     public function setName(?TextType $name = null): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
 
         return $this;
     }

@@ -84,6 +84,16 @@ class TradeContactType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPersonName(): self
+    {
+        $this->personName = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null
      */
     public function getDepartmentName(): ?TextType
@@ -108,6 +118,16 @@ class TradeContactType
     public function setDepartmentName(?TextType $departmentName = null): self
     {
         $this->departmentName = $departmentName;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDepartmentName(): self
+    {
+        $this->departmentName = null;
 
         return $this;
     }
@@ -143,6 +163,16 @@ class TradeContactType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTelephoneUniversalCommunication(): self
+    {
+        $this->telephoneUniversalCommunication = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\ram\UniversalCommunicationType|null
      */
     public function getEmailURIUniversalCommunication(): ?UniversalCommunicationType
@@ -168,6 +198,16 @@ class TradeContactType
         ?UniversalCommunicationType $emailURIUniversalCommunication = null,
     ): self {
         $this->emailURIUniversalCommunication = $emailURIUniversalCommunication;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEmailURIUniversalCommunication(): self
+    {
+        $this->emailURIUniversalCommunication = null;
 
         return $this;
     }

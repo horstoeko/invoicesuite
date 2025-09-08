@@ -49,4 +49,14 @@ class TradeSettlementLineMonetarySummationType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetLineTotalAmount(): self
+    {
+        $this->lineTotalAmount = null;
+
+        return $this;
+    }
 }

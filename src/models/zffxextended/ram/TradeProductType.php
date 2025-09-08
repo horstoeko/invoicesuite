@@ -222,6 +222,16 @@ class TradeProductType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      */
     public function getGlobalID(): ?IDType
@@ -246,6 +256,16 @@ class TradeProductType
     public function setGlobalID(?IDType $globalID = null): self
     {
         $this->globalID = $globalID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetGlobalID(): self
+    {
+        $this->globalID = null;
 
         return $this;
     }
@@ -280,6 +300,16 @@ class TradeProductType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSellerAssignedID(): self
+    {
+        $this->sellerAssignedID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      */
     public function getBuyerAssignedID(): ?IDType
@@ -304,6 +334,16 @@ class TradeProductType
     public function setBuyerAssignedID(?IDType $buyerAssignedID = null): self
     {
         $this->buyerAssignedID = $buyerAssignedID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBuyerAssignedID(): self
+    {
+        $this->buyerAssignedID = null;
 
         return $this;
     }
@@ -338,6 +378,16 @@ class TradeProductType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIndustryAssignedID(): self
+    {
+        $this->industryAssignedID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      */
     public function getModelID(): ?IDType
@@ -362,6 +412,16 @@ class TradeProductType
     public function setModelID(?IDType $modelID = null): self
     {
         $this->modelID = $modelID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetModelID(): self
+    {
+        $this->modelID = null;
 
         return $this;
     }
@@ -396,6 +456,16 @@ class TradeProductType
     }
 
     /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      */
     public function getDescription(): ?TextType
@@ -425,6 +495,16 @@ class TradeProductType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxextended\udt\IDType>|null
      */
     public function getBatchID(): ?array
@@ -439,6 +519,16 @@ class TradeProductType
     public function setBatchID(?array $batchID = null): self
     {
         $this->batchID = $batchID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBatchID(): self
+    {
+        $this->batchID = null;
 
         return $this;
     }
@@ -535,6 +625,16 @@ class TradeProductType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBrandName(): self
+    {
+        $this->brandName = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      */
     public function getModelName(): ?TextType
@@ -564,6 +664,16 @@ class TradeProductType
     }
 
     /**
+     * @return self
+     */
+    public function unsetModelName(): self
+    {
+        $this->modelName = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxextended\ram\ProductCharacteristicType>|null
      */
     public function getApplicableProductCharacteristic(): ?array
@@ -578,6 +688,16 @@ class TradeProductType
     public function setApplicableProductCharacteristic(?array $applicableProductCharacteristic = null): self
     {
         $this->applicableProductCharacteristic = $applicableProductCharacteristic;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetApplicableProductCharacteristic(): self
+    {
+        $this->applicableProductCharacteristic = null;
 
         return $this;
     }
@@ -668,6 +788,16 @@ class TradeProductType
     /**
      * @return self
      */
+    public function unsetDesignatedProductClassification(): self
+    {
+        $this->designatedProductClassification = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearDesignatedProductClassification(): self
     {
         $this->designatedProductClassification = [];
@@ -744,6 +874,16 @@ class TradeProductType
     public function setIndividualTradeProductInstance(?array $individualTradeProductInstance = null): self
     {
         $this->individualTradeProductInstance = $individualTradeProductInstance;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIndividualTradeProductInstance(): self
+    {
+        $this->individualTradeProductInstance = null;
 
         return $this;
     }
@@ -842,6 +982,16 @@ class TradeProductType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOriginTradeCountry(): self
+    {
+        $this->originTradeCountry = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedProductType>|null
      */
     public function getIncludedReferencedProduct(): ?array
@@ -856,6 +1006,16 @@ class TradeProductType
     public function setIncludedReferencedProduct(?array $includedReferencedProduct = null): self
     {
         $this->includedReferencedProduct = $includedReferencedProduct;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIncludedReferencedProduct(): self
+    {
+        $this->includedReferencedProduct = null;
 
         return $this;
     }

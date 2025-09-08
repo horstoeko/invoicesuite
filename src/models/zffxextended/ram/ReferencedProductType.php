@@ -131,6 +131,16 @@ class ReferencedProductType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxextended\udt\IDType>|null
      */
     public function getGlobalID(): ?array
@@ -145,6 +155,16 @@ class ReferencedProductType
     public function setGlobalID(?array $globalID = null): self
     {
         $this->globalID = $globalID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetGlobalID(): self
+    {
+        $this->globalID = null;
 
         return $this;
     }
@@ -241,6 +261,16 @@ class ReferencedProductType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSellerAssignedID(): self
+    {
+        $this->sellerAssignedID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      */
     public function getBuyerAssignedID(): ?IDType
@@ -265,6 +295,16 @@ class ReferencedProductType
     public function setBuyerAssignedID(?IDType $buyerAssignedID = null): self
     {
         $this->buyerAssignedID = $buyerAssignedID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBuyerAssignedID(): self
+    {
+        $this->buyerAssignedID = null;
 
         return $this;
     }
@@ -299,6 +339,16 @@ class ReferencedProductType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIndustryAssignedID(): self
+    {
+        $this->industryAssignedID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      */
     public function getName(): ?TextType
@@ -323,6 +373,16 @@ class ReferencedProductType
     public function setName(?TextType $name = null): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
 
         return $this;
     }
@@ -357,6 +417,16 @@ class ReferencedProductType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType|null
      */
     public function getUnitQuantity(): ?QuantityType
@@ -381,6 +451,16 @@ class ReferencedProductType
     public function setUnitQuantity(?QuantityType $unitQuantity = null): self
     {
         $this->unitQuantity = $unitQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetUnitQuantity(): self
+    {
+        $this->unitQuantity = null;
 
         return $this;
     }

@@ -52,6 +52,16 @@ class MeasureType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
+
+        return $this;
+    }
+
+    /**
      * @return string|null
      */
     public function getUnitCode(): ?string
@@ -66,6 +76,16 @@ class MeasureType
     public function setUnitCode(?string $unitCode = null): self
     {
         $this->unitCode = InvoiceSuiteStringUtils::asNullWhenEmpty($unitCode);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetUnitCode(): self
+    {
+        $this->unitCode = null;
 
         return $this;
     }

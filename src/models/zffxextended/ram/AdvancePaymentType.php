@@ -86,6 +86,16 @@ class AdvancePaymentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPaidAmount(): self
+    {
+        $this->paidAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\qdt\FormattedDateTimeType|null
      */
     public function getFormattedReceivedDateTime(): ?FormattedDateTimeType
@@ -115,6 +125,16 @@ class AdvancePaymentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFormattedReceivedDateTime(): self
+    {
+        $this->formattedReceivedDateTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType>|null
      */
     public function getIncludedTradeTax(): ?array
@@ -129,6 +149,16 @@ class AdvancePaymentType
     public function setIncludedTradeTax(?array $includedTradeTax = null): self
     {
         $this->includedTradeTax = $includedTradeTax;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIncludedTradeTax(): self
+    {
+        $this->includedTradeTax = null;
 
         return $this;
     }
@@ -221,6 +251,16 @@ class AdvancePaymentType
         ?ReferencedDocumentType $invoiceSpecifiedReferencedDocument = null,
     ): self {
         $this->invoiceSpecifiedReferencedDocument = $invoiceSpecifiedReferencedDocument;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInvoiceSpecifiedReferencedDocument(): self
+    {
+        $this->invoiceSpecifiedReferencedDocument = null;
 
         return $this;
     }

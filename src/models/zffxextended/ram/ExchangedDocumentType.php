@@ -133,6 +133,16 @@ class ExchangedDocumentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      */
     public function getName(): ?TextType
@@ -157,6 +167,16 @@ class ExchangedDocumentType
     public function setName(?TextType $name = null): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
 
         return $this;
     }
@@ -191,6 +211,16 @@ class ExchangedDocumentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTypeCode(): self
+    {
+        $this->typeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType|null
      */
     public function getIssueDateTime(): ?DateTimeType
@@ -215,6 +245,16 @@ class ExchangedDocumentType
     public function setIssueDateTime(?DateTimeType $issueDateTime = null): self
     {
         $this->issueDateTime = $issueDateTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIssueDateTime(): self
+    {
+        $this->issueDateTime = null;
 
         return $this;
     }
@@ -249,6 +289,16 @@ class ExchangedDocumentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCopyIndicator(): self
+    {
+        $this->copyIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      */
     public function getLanguageID(): ?IDType
@@ -278,6 +328,16 @@ class ExchangedDocumentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLanguageID(): self
+    {
+        $this->languageID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxextended\ram\NoteType>|null
      */
     public function getIncludedNote(): ?array
@@ -292,6 +352,16 @@ class ExchangedDocumentType
     public function setIncludedNote(?array $includedNote = null): self
     {
         $this->includedNote = $includedNote;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIncludedNote(): self
+    {
+        $this->includedNote = null;
 
         return $this;
     }
@@ -383,6 +453,16 @@ class ExchangedDocumentType
     public function setEffectiveSpecifiedPeriod(?SpecifiedPeriodType $effectiveSpecifiedPeriod = null): self
     {
         $this->effectiveSpecifiedPeriod = $effectiveSpecifiedPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEffectiveSpecifiedPeriod(): self
+    {
+        $this->effectiveSpecifiedPeriod = null;
 
         return $this;
     }

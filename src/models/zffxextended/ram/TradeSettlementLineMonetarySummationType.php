@@ -106,6 +106,16 @@ class TradeSettlementLineMonetarySummationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineTotalAmount(): self
+    {
+        $this->lineTotalAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null
      */
     public function getChargeTotalAmount(): ?AmountType
@@ -130,6 +140,16 @@ class TradeSettlementLineMonetarySummationType
     public function setChargeTotalAmount(?AmountType $chargeTotalAmount = null): self
     {
         $this->chargeTotalAmount = $chargeTotalAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetChargeTotalAmount(): self
+    {
+        $this->chargeTotalAmount = null;
 
         return $this;
     }
@@ -164,6 +184,16 @@ class TradeSettlementLineMonetarySummationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAllowanceTotalAmount(): self
+    {
+        $this->allowanceTotalAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null
      */
     public function getTaxTotalAmount(): ?AmountType
@@ -188,6 +218,16 @@ class TradeSettlementLineMonetarySummationType
     public function setTaxTotalAmount(?AmountType $taxTotalAmount = null): self
     {
         $this->taxTotalAmount = $taxTotalAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxTotalAmount(): self
+    {
+        $this->taxTotalAmount = null;
 
         return $this;
     }
@@ -222,6 +262,16 @@ class TradeSettlementLineMonetarySummationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetGrandTotalAmount(): self
+    {
+        $this->grandTotalAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null
      */
     public function getTotalAllowanceChargeAmount(): ?AmountType
@@ -246,6 +296,16 @@ class TradeSettlementLineMonetarySummationType
     public function setTotalAllowanceChargeAmount(?AmountType $totalAllowanceChargeAmount = null): self
     {
         $this->totalAllowanceChargeAmount = $totalAllowanceChargeAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTotalAllowanceChargeAmount(): self
+    {
+        $this->totalAllowanceChargeAmount = null;
 
         return $this;
     }

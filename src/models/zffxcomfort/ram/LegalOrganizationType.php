@@ -63,6 +63,16 @@ class LegalOrganizationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null
      */
     public function getTradingBusinessName(): ?TextType
@@ -87,6 +97,16 @@ class LegalOrganizationType
     public function setTradingBusinessName(?TextType $tradingBusinessName = null): self
     {
         $this->tradingBusinessName = $tradingBusinessName;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTradingBusinessName(): self
+    {
+        $this->tradingBusinessName = null;
 
         return $this;
     }

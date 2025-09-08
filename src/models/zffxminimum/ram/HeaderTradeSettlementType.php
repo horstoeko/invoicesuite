@@ -62,6 +62,16 @@ class HeaderTradeSettlementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetInvoiceCurrencyCode(): self
+    {
+        $this->invoiceCurrencyCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxminimum\ram\TradeSettlementHeaderMonetarySummationType|null
      */
     public function getSpecifiedTradeSettlementHeaderMonetarySummation(): ?TradeSettlementHeaderMonetarySummationType
@@ -72,8 +82,8 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zffxminimum\ram\TradeSettlementHeaderMonetarySummationType
      */
-    public function getSpecifiedTradeSettlementHeaderMonetarySummationWithCreate(): TradeSettlementHeaderMonetarySummationType
-    {
+    public function getSpecifiedTradeSettlementHeaderMonetarySummationWithCreate(
+    ): TradeSettlementHeaderMonetarySummationType {
         $this->specifiedTradeSettlementHeaderMonetarySummation = is_null($this->specifiedTradeSettlementHeaderMonetarySummation) ? new TradeSettlementHeaderMonetarySummationType() : $this->specifiedTradeSettlementHeaderMonetarySummation;
 
         return $this->specifiedTradeSettlementHeaderMonetarySummation;
@@ -87,6 +97,16 @@ class HeaderTradeSettlementType
         ?TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation = null,
     ): self {
         $this->specifiedTradeSettlementHeaderMonetarySummation = $specifiedTradeSettlementHeaderMonetarySummation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecifiedTradeSettlementHeaderMonetarySummation(): self
+    {
+        $this->specifiedTradeSettlementHeaderMonetarySummation = null;
 
         return $this;
     }

@@ -107,6 +107,16 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTypeCode(): self
+    {
+        $this->typeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      */
     public function getInformation(): ?TextType
@@ -131,6 +141,16 @@ class TradeSettlementPaymentMeansType
     public function setInformation(?TextType $information = null): self
     {
         $this->information = $information;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInformation(): self
+    {
+        $this->information = null;
 
         return $this;
     }
@@ -166,6 +186,16 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
+     * @return self
+     */
+    public function unsetApplicableTradeSettlementFinancialCard(): self
+    {
+        $this->applicableTradeSettlementFinancialCard = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\DebtorFinancialAccountType|null
      */
     public function getPayerPartyDebtorFinancialAccount(): ?DebtorFinancialAccountType
@@ -191,6 +221,16 @@ class TradeSettlementPaymentMeansType
         ?DebtorFinancialAccountType $payerPartyDebtorFinancialAccount = null,
     ): self {
         $this->payerPartyDebtorFinancialAccount = $payerPartyDebtorFinancialAccount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPayerPartyDebtorFinancialAccount(): self
+    {
+        $this->payerPartyDebtorFinancialAccount = null;
 
         return $this;
     }
@@ -226,6 +266,16 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPayeePartyCreditorFinancialAccount(): self
+    {
+        $this->payeePartyCreditorFinancialAccount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\CreditorFinancialInstitutionType|null
      */
     public function getPayeeSpecifiedCreditorFinancialInstitution(): ?CreditorFinancialInstitutionType
@@ -251,6 +301,16 @@ class TradeSettlementPaymentMeansType
         ?CreditorFinancialInstitutionType $payeeSpecifiedCreditorFinancialInstitution = null,
     ): self {
         $this->payeeSpecifiedCreditorFinancialInstitution = $payeeSpecifiedCreditorFinancialInstitution;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPayeeSpecifiedCreditorFinancialInstitution(): self
+    {
+        $this->payeeSpecifiedCreditorFinancialInstitution = null;
 
         return $this;
     }

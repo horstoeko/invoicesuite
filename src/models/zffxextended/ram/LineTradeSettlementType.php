@@ -111,6 +111,16 @@ class LineTradeSettlementType
     /**
      * @return self
      */
+    public function unsetApplicableTradeTax(): self
+    {
+        $this->applicableTradeTax = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearApplicableTradeTax(): self
     {
         $this->applicableTradeTax = [];
@@ -200,6 +210,16 @@ class LineTradeSettlementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBillingSpecifiedPeriod(): self
+    {
+        $this->billingSpecifiedPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeAllowanceChargeType>|null
      */
     public function getSpecifiedTradeAllowanceCharge(): ?array
@@ -214,6 +234,16 @@ class LineTradeSettlementType
     public function setSpecifiedTradeAllowanceCharge(?array $specifiedTradeAllowanceCharge = null): self
     {
         $this->specifiedTradeAllowanceCharge = $specifiedTradeAllowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecifiedTradeAllowanceCharge(): self
+    {
+        $this->specifiedTradeAllowanceCharge = null;
 
         return $this;
     }
@@ -292,8 +322,8 @@ class LineTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\TradeSettlementLineMonetarySummationType
      */
-    public function getSpecifiedTradeSettlementLineMonetarySummationWithCreate(): TradeSettlementLineMonetarySummationType
-    {
+    public function getSpecifiedTradeSettlementLineMonetarySummationWithCreate(
+    ): TradeSettlementLineMonetarySummationType {
         $this->specifiedTradeSettlementLineMonetarySummation = is_null($this->specifiedTradeSettlementLineMonetarySummation) ? new TradeSettlementLineMonetarySummationType() : $this->specifiedTradeSettlementLineMonetarySummation;
 
         return $this->specifiedTradeSettlementLineMonetarySummation;
@@ -307,6 +337,16 @@ class LineTradeSettlementType
         ?TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation = null,
     ): self {
         $this->specifiedTradeSettlementLineMonetarySummation = $specifiedTradeSettlementLineMonetarySummation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecifiedTradeSettlementLineMonetarySummation(): self
+    {
+        $this->specifiedTradeSettlementLineMonetarySummation = null;
 
         return $this;
     }
@@ -341,6 +381,16 @@ class LineTradeSettlementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetInvoiceReferencedDocument(): self
+    {
+        $this->invoiceReferencedDocument = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>|null
      */
     public function getAdditionalReferencedDocument(): ?array
@@ -355,6 +405,16 @@ class LineTradeSettlementType
     public function setAdditionalReferencedDocument(?array $additionalReferencedDocument = null): self
     {
         $this->additionalReferencedDocument = $additionalReferencedDocument;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAdditionalReferencedDocument(): self
+    {
+        $this->additionalReferencedDocument = null;
 
         return $this;
     }
@@ -447,6 +507,16 @@ class LineTradeSettlementType
         ?TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount = null,
     ): self {
         $this->receivableSpecifiedTradeAccountingAccount = $receivableSpecifiedTradeAccountingAccount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetReceivableSpecifiedTradeAccountingAccount(): self
+    {
+        $this->receivableSpecifiedTradeAccountingAccount = null;
 
         return $this;
     }

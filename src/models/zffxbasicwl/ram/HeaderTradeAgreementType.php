@@ -106,6 +106,16 @@ class HeaderTradeAgreementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBuyerReference(): self
+    {
+        $this->buyerReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasicwl\ram\TradePartyType|null
      */
     public function getSellerTradeParty(): ?TradePartyType
@@ -135,6 +145,16 @@ class HeaderTradeAgreementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSellerTradeParty(): self
+    {
+        $this->sellerTradeParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasicwl\ram\TradePartyType|null
      */
     public function getBuyerTradeParty(): ?TradePartyType
@@ -159,6 +179,16 @@ class HeaderTradeAgreementType
     public function setBuyerTradeParty(?TradePartyType $buyerTradeParty = null): self
     {
         $this->buyerTradeParty = $buyerTradeParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBuyerTradeParty(): self
+    {
+        $this->buyerTradeParty = null;
 
         return $this;
     }
@@ -194,6 +224,16 @@ class HeaderTradeAgreementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSellerTaxRepresentativeTradeParty(): self
+    {
+        $this->sellerTaxRepresentativeTradeParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasicwl\ram\ReferencedDocumentType|null
      */
     public function getBuyerOrderReferencedDocument(): ?ReferencedDocumentType
@@ -224,6 +264,16 @@ class HeaderTradeAgreementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBuyerOrderReferencedDocument(): self
+    {
+        $this->buyerOrderReferencedDocument = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasicwl\ram\ReferencedDocumentType|null
      */
     public function getContractReferencedDocument(): ?ReferencedDocumentType
@@ -248,6 +298,16 @@ class HeaderTradeAgreementType
     public function setContractReferencedDocument(?ReferencedDocumentType $contractReferencedDocument = null): self
     {
         $this->contractReferencedDocument = $contractReferencedDocument;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContractReferencedDocument(): self
+    {
+        $this->contractReferencedDocument = null;
 
         return $this;
     }

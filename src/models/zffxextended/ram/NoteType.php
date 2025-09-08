@@ -74,6 +74,16 @@ class NoteType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContentCode(): self
+    {
+        $this->contentCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      */
     public function getContent(): ?TextType
@@ -103,6 +113,16 @@ class NoteType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContent(): self
+    {
+        $this->content = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\CodeType|null
      */
     public function getSubjectCode(): ?CodeType
@@ -127,6 +147,16 @@ class NoteType
     public function setSubjectCode(?CodeType $subjectCode = null): self
     {
         $this->subjectCode = $subjectCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSubjectCode(): self
+    {
+        $this->subjectCode = null;
 
         return $this;
     }

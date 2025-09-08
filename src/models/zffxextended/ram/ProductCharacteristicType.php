@@ -86,6 +86,16 @@ class ProductCharacteristicType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTypeCode(): self
+    {
+        $this->typeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      */
     public function getDescription(): ?TextType
@@ -110,6 +120,16 @@ class ProductCharacteristicType
     public function setDescription(?TextType $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -144,6 +164,16 @@ class ProductCharacteristicType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValueMeasure(): self
+    {
+        $this->valueMeasure = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      */
     public function getValue(): ?TextType
@@ -168,6 +198,16 @@ class ProductCharacteristicType
     public function setValue(?TextType $value = null): self
     {
         $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
 
         return $this;
     }

@@ -98,6 +98,16 @@ class TradePaymentPenaltyTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBasisDateTime(): self
+    {
+        $this->basisDateTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\MeasureType|null
      */
     public function getBasisPeriodMeasure(): ?MeasureType
@@ -122,6 +132,16 @@ class TradePaymentPenaltyTermsType
     public function setBasisPeriodMeasure(?MeasureType $basisPeriodMeasure = null): self
     {
         $this->basisPeriodMeasure = $basisPeriodMeasure;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBasisPeriodMeasure(): self
+    {
+        $this->basisPeriodMeasure = null;
 
         return $this;
     }
@@ -156,6 +176,16 @@ class TradePaymentPenaltyTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBasisAmount(): self
+    {
+        $this->basisAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\PercentType|null
      */
     public function getCalculationPercent(): ?PercentType
@@ -185,6 +215,16 @@ class TradePaymentPenaltyTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCalculationPercent(): self
+    {
+        $this->calculationPercent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null
      */
     public function getActualPenaltyAmount(): ?AmountType
@@ -209,6 +249,16 @@ class TradePaymentPenaltyTermsType
     public function setActualPenaltyAmount(?AmountType $actualPenaltyAmount = null): self
     {
         $this->actualPenaltyAmount = $actualPenaltyAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetActualPenaltyAmount(): self
+    {
+        $this->actualPenaltyAmount = null;
 
         return $this;
     }

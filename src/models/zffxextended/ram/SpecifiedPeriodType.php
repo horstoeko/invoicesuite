@@ -85,6 +85,16 @@ class SpecifiedPeriodType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType|null
      */
     public function getStartDateTime(): ?DateTimeType
@@ -109,6 +119,16 @@ class SpecifiedPeriodType
     public function setStartDateTime(?DateTimeType $startDateTime = null): self
     {
         $this->startDateTime = $startDateTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetStartDateTime(): self
+    {
+        $this->startDateTime = null;
 
         return $this;
     }
@@ -143,6 +163,16 @@ class SpecifiedPeriodType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEndDateTime(): self
+    {
+        $this->endDateTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType|null
      */
     public function getCompleteDateTime(): ?DateTimeType
@@ -167,6 +197,16 @@ class SpecifiedPeriodType
     public function setCompleteDateTime(?DateTimeType $completeDateTime = null): self
     {
         $this->completeDateTime = $completeDateTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCompleteDateTime(): self
+    {
+        $this->completeDateTime = null;
 
         return $this;
     }

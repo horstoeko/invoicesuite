@@ -63,6 +63,16 @@ class ProductClassificationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetClassCode(): self
+    {
+        $this->classCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      */
     public function getClassName(): ?TextType
@@ -87,6 +97,16 @@ class ProductClassificationType
     public function setClassName(?TextType $className = null): self
     {
         $this->className = $className;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetClassName(): self
+    {
+        $this->className = null;
 
         return $this;
     }

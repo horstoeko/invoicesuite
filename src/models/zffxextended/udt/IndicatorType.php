@@ -38,4 +38,14 @@ class IndicatorType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetIndicator(): self
+    {
+        $this->indicator = null;
+
+        return $this;
+    }
 }

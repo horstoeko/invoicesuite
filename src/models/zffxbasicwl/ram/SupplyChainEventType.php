@@ -49,4 +49,14 @@ class SupplyChainEventType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetOccurrenceDateTime(): self
+    {
+        $this->occurrenceDateTime = null;
+
+        return $this;
+    }
 }

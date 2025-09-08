@@ -84,6 +84,16 @@ class LineTradeSettlementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetApplicableTradeTax(): self
+    {
+        $this->applicableTradeTax = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasic\ram\SpecifiedPeriodType|null
      */
     public function getBillingSpecifiedPeriod(): ?SpecifiedPeriodType
@@ -113,6 +123,16 @@ class LineTradeSettlementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBillingSpecifiedPeriod(): self
+    {
+        $this->billingSpecifiedPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxbasic\ram\TradeAllowanceChargeType>|null
      */
     public function getSpecifiedTradeAllowanceCharge(): ?array
@@ -127,6 +147,16 @@ class LineTradeSettlementType
     public function setSpecifiedTradeAllowanceCharge(?array $specifiedTradeAllowanceCharge = null): self
     {
         $this->specifiedTradeAllowanceCharge = $specifiedTradeAllowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecifiedTradeAllowanceCharge(): self
+    {
+        $this->specifiedTradeAllowanceCharge = null;
 
         return $this;
     }
@@ -205,8 +235,8 @@ class LineTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zffxbasic\ram\TradeSettlementLineMonetarySummationType
      */
-    public function getSpecifiedTradeSettlementLineMonetarySummationWithCreate(): TradeSettlementLineMonetarySummationType
-    {
+    public function getSpecifiedTradeSettlementLineMonetarySummationWithCreate(
+    ): TradeSettlementLineMonetarySummationType {
         $this->specifiedTradeSettlementLineMonetarySummation = is_null($this->specifiedTradeSettlementLineMonetarySummation) ? new TradeSettlementLineMonetarySummationType() : $this->specifiedTradeSettlementLineMonetarySummation;
 
         return $this->specifiedTradeSettlementLineMonetarySummation;
@@ -220,6 +250,16 @@ class LineTradeSettlementType
         ?TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation = null,
     ): self {
         $this->specifiedTradeSettlementLineMonetarySummation = $specifiedTradeSettlementLineMonetarySummation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecifiedTradeSettlementLineMonetarySummation(): self
+    {
+        $this->specifiedTradeSettlementLineMonetarySummation = null;
 
         return $this;
     }

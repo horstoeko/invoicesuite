@@ -62,6 +62,16 @@ class DocumentLineDocumentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineID(): self
+    {
+        $this->lineID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasic\ram\NoteType|null
      */
     public function getIncludedNote(): ?NoteType
@@ -86,6 +96,16 @@ class DocumentLineDocumentType
     public function setIncludedNote(?NoteType $includedNote = null): self
     {
         $this->includedNote = $includedNote;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIncludedNote(): self
+    {
+        $this->includedNote = null;
 
         return $this;
     }

@@ -49,4 +49,14 @@ class TradeAddressType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetCountryID(): self
+    {
+        $this->countryID = null;
+
+        return $this;
+    }
 }

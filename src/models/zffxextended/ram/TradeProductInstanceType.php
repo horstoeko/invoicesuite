@@ -62,6 +62,16 @@ class TradeProductInstanceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBatchID(): self
+    {
+        $this->batchID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      */
     public function getSupplierAssignedSerialID(): ?IDType
@@ -86,6 +96,16 @@ class TradeProductInstanceType
     public function setSupplierAssignedSerialID(?IDType $supplierAssignedSerialID = null): self
     {
         $this->supplierAssignedSerialID = $supplierAssignedSerialID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSupplierAssignedSerialID(): self
+    {
+        $this->supplierAssignedSerialID = null;
 
         return $this;
     }

@@ -49,4 +49,14 @@ class UniversalCommunicationType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetURIID(): self
+    {
+        $this->uRIID = null;
+
+        return $this;
+    }
 }

@@ -63,6 +63,16 @@ class TradeSettlementFinancialCardType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null
      */
     public function getCardholderName(): ?TextType
@@ -87,6 +97,16 @@ class TradeSettlementFinancialCardType
     public function setCardholderName(?TextType $cardholderName = null): self
     {
         $this->cardholderName = $cardholderName;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCardholderName(): self
+    {
+        $this->cardholderName = null;
 
         return $this;
     }

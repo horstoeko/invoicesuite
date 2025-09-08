@@ -86,6 +86,16 @@ class TradeCurrencyExchangeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSourceCurrencyCode(): self
+    {
+        $this->sourceCurrencyCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\qdt\CurrencyCodeType|null
      */
     public function getTargetCurrencyCode(): ?CurrencyCodeType
@@ -110,6 +120,16 @@ class TradeCurrencyExchangeType
     public function setTargetCurrencyCode(?CurrencyCodeType $targetCurrencyCode = null): self
     {
         $this->targetCurrencyCode = $targetCurrencyCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTargetCurrencyCode(): self
+    {
+        $this->targetCurrencyCode = null;
 
         return $this;
     }
@@ -144,6 +164,16 @@ class TradeCurrencyExchangeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetConversionRate(): self
+    {
+        $this->conversionRate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType|null
      */
     public function getConversionRateDateTime(): ?DateTimeType
@@ -168,6 +198,16 @@ class TradeCurrencyExchangeType
     public function setConversionRateDateTime(?DateTimeType $conversionRateDateTime = null): self
     {
         $this->conversionRateDateTime = $conversionRateDateTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetConversionRateDateTime(): self
+    {
+        $this->conversionRateDateTime = null;
 
         return $this;
     }

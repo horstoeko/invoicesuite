@@ -63,6 +63,16 @@ class TradeProductType
     }
 
     /**
+     * @return self
+     */
+    public function unsetGlobalID(): self
+    {
+        $this->globalID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasic\udt\TextType|null
      */
     public function getName(): ?TextType
@@ -87,6 +97,16 @@ class TradeProductType
     public function setName(?TextType $name = null): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
 
         return $this;
     }

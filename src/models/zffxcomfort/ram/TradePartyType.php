@@ -135,6 +135,16 @@ class TradePartyType
     /**
      * @return self
      */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearID(): self
     {
         $this->iD = [];
@@ -209,6 +219,16 @@ class TradePartyType
     public function setGlobalID(?array $globalID = null): self
     {
         $this->globalID = $globalID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetGlobalID(): self
+    {
+        $this->globalID = null;
 
         return $this;
     }
@@ -305,6 +325,16 @@ class TradePartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null
      */
     public function getDescription(): ?TextType
@@ -329,6 +359,16 @@ class TradePartyType
     public function setDescription(?TextType $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -363,6 +403,16 @@ class TradePartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSpecifiedLegalOrganization(): self
+    {
+        $this->specifiedLegalOrganization = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeContactType|null
      */
     public function getDefinedTradeContact(): ?TradeContactType
@@ -387,6 +437,16 @@ class TradePartyType
     public function setDefinedTradeContact(?TradeContactType $definedTradeContact = null): self
     {
         $this->definedTradeContact = $definedTradeContact;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDefinedTradeContact(): self
+    {
+        $this->definedTradeContact = null;
 
         return $this;
     }
@@ -421,6 +481,16 @@ class TradePartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPostalTradeAddress(): self
+    {
+        $this->postalTradeAddress = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\ram\UniversalCommunicationType|null
      */
     public function getURIUniversalCommunication(): ?UniversalCommunicationType
@@ -450,6 +520,16 @@ class TradePartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetURIUniversalCommunication(): self
+    {
+        $this->uRIUniversalCommunication = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxcomfort\ram\TaxRegistrationType>|null
      */
     public function getSpecifiedTaxRegistration(): ?array
@@ -464,6 +544,16 @@ class TradePartyType
     public function setSpecifiedTaxRegistration(?array $specifiedTaxRegistration = null): self
     {
         $this->specifiedTaxRegistration = $specifiedTaxRegistration;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecifiedTaxRegistration(): self
+    {
+        $this->specifiedTaxRegistration = null;
 
         return $this;
     }

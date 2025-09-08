@@ -83,6 +83,16 @@ class CrossIndustryInvoiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExchangedDocumentContext(): self
+    {
+        $this->exchangedDocumentContext = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\ExchangedDocumentType|null
      */
     public function getExchangedDocument(): ?ExchangedDocumentType
@@ -107,6 +117,16 @@ class CrossIndustryInvoiceType
     public function setExchangedDocument(?ExchangedDocumentType $exchangedDocument = null): self
     {
         $this->exchangedDocument = $exchangedDocument;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExchangedDocument(): self
+    {
+        $this->exchangedDocument = null;
 
         return $this;
     }
@@ -137,6 +157,16 @@ class CrossIndustryInvoiceType
         ?SupplyChainTradeTransactionType $supplyChainTradeTransaction = null,
     ): self {
         $this->supplyChainTradeTransaction = $supplyChainTradeTransaction;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSupplyChainTradeTransaction(): self
+    {
+        $this->supplyChainTradeTransaction = null;
 
         return $this;
     }

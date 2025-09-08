@@ -62,6 +62,16 @@ class SpecifiedPeriodType
     }
 
     /**
+     * @return self
+     */
+    public function unsetStartDateTime(): self
+    {
+        $this->startDateTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasicwl\udt\DateTimeType|null
      */
     public function getEndDateTime(): ?DateTimeType
@@ -86,6 +96,16 @@ class SpecifiedPeriodType
     public function setEndDateTime(?DateTimeType $endDateTime = null): self
     {
         $this->endDateTime = $endDateTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEndDateTime(): self
+    {
+        $this->endDateTime = null;
 
         return $this;
     }

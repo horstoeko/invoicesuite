@@ -87,6 +87,16 @@ class ExchangedDocumentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasic\qdt\DocumentCodeType|null
      */
     public function getTypeCode(): ?DocumentCodeType
@@ -111,6 +121,16 @@ class ExchangedDocumentType
     public function setTypeCode(?DocumentCodeType $typeCode = null): self
     {
         $this->typeCode = $typeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTypeCode(): self
+    {
+        $this->typeCode = null;
 
         return $this;
     }
@@ -145,6 +165,16 @@ class ExchangedDocumentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIssueDateTime(): self
+    {
+        $this->issueDateTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxbasic\ram\NoteType>|null
      */
     public function getIncludedNote(): ?array
@@ -159,6 +189,16 @@ class ExchangedDocumentType
     public function setIncludedNote(?array $includedNote = null): self
     {
         $this->includedNote = $includedNote;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIncludedNote(): self
+    {
+        $this->includedNote = null;
 
         return $this;
     }

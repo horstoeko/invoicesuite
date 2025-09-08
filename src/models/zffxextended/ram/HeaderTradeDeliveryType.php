@@ -120,6 +120,16 @@ class HeaderTradeDeliveryType
     /**
      * @return self
      */
+    public function unsetRelatedSupplyChainConsignment(): self
+    {
+        $this->relatedSupplyChainConsignment = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearRelatedSupplyChainConsignment(): self
     {
         $this->relatedSupplyChainConsignment = [];
@@ -211,6 +221,16 @@ class HeaderTradeDeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetShipToTradeParty(): self
+    {
+        $this->shipToTradeParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType|null
      */
     public function getUltimateShipToTradeParty(): ?TradePartyType
@@ -240,6 +260,16 @@ class HeaderTradeDeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUltimateShipToTradeParty(): self
+    {
+        $this->ultimateShipToTradeParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType|null
      */
     public function getShipFromTradeParty(): ?TradePartyType
@@ -264,6 +294,16 @@ class HeaderTradeDeliveryType
     public function setShipFromTradeParty(?TradePartyType $shipFromTradeParty = null): self
     {
         $this->shipFromTradeParty = $shipFromTradeParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetShipFromTradeParty(): self
+    {
+        $this->shipFromTradeParty = null;
 
         return $this;
     }
@@ -299,6 +339,16 @@ class HeaderTradeDeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetActualDeliverySupplyChainEvent(): self
+    {
+        $this->actualDeliverySupplyChainEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null
      */
     public function getDespatchAdviceReferencedDocument(): ?ReferencedDocumentType
@@ -324,6 +374,16 @@ class HeaderTradeDeliveryType
         ?ReferencedDocumentType $despatchAdviceReferencedDocument = null,
     ): self {
         $this->despatchAdviceReferencedDocument = $despatchAdviceReferencedDocument;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDespatchAdviceReferencedDocument(): self
+    {
+        $this->despatchAdviceReferencedDocument = null;
 
         return $this;
     }
@@ -359,6 +419,16 @@ class HeaderTradeDeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReceivingAdviceReferencedDocument(): self
+    {
+        $this->receivingAdviceReferencedDocument = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null
      */
     public function getDeliveryNoteReferencedDocument(): ?ReferencedDocumentType
@@ -384,6 +454,16 @@ class HeaderTradeDeliveryType
         ?ReferencedDocumentType $deliveryNoteReferencedDocument = null,
     ): self {
         $this->deliveryNoteReferencedDocument = $deliveryNoteReferencedDocument;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDeliveryNoteReferencedDocument(): self
+    {
+        $this->deliveryNoteReferencedDocument = null;
 
         return $this;
     }

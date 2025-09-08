@@ -63,6 +63,16 @@ class ReferencedDocumentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIssuerAssignedID(): self
+    {
+        $this->issuerAssignedID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasic\qdt\FormattedDateTimeType|null
      */
     public function getFormattedIssueDateTime(): ?FormattedDateTimeType
@@ -87,6 +97,16 @@ class ReferencedDocumentType
     public function setFormattedIssueDateTime(?FormattedDateTimeType $formattedIssueDateTime = null): self
     {
         $this->formattedIssueDateTime = $formattedIssueDateTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFormattedIssueDateTime(): self
+    {
+        $this->formattedIssueDateTime = null;
 
         return $this;
     }

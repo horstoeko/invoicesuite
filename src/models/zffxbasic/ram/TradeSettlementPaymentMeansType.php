@@ -73,6 +73,16 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTypeCode(): self
+    {
+        $this->typeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasic\ram\DebtorFinancialAccountType|null
      */
     public function getPayerPartyDebtorFinancialAccount(): ?DebtorFinancialAccountType
@@ -103,6 +113,16 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPayerPartyDebtorFinancialAccount(): self
+    {
+        $this->payerPartyDebtorFinancialAccount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasic\ram\CreditorFinancialAccountType|null
      */
     public function getPayeePartyCreditorFinancialAccount(): ?CreditorFinancialAccountType
@@ -128,6 +148,16 @@ class TradeSettlementPaymentMeansType
         ?CreditorFinancialAccountType $payeePartyCreditorFinancialAccount = null,
     ): self {
         $this->payeePartyCreditorFinancialAccount = $payeePartyCreditorFinancialAccount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPayeePartyCreditorFinancialAccount(): self
+    {
+        $this->payeePartyCreditorFinancialAccount = null;
 
         return $this;
     }

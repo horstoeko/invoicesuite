@@ -62,6 +62,16 @@ class ExchangedDocumentContextType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBusinessProcessSpecifiedDocumentContextParameter(): self
+    {
+        $this->businessProcessSpecifiedDocumentContextParameter = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxminimum\ram\DocumentContextParameterType|null
      */
     public function getGuidelineSpecifiedDocumentContextParameter(): ?DocumentContextParameterType
@@ -87,6 +97,16 @@ class ExchangedDocumentContextType
         ?DocumentContextParameterType $guidelineSpecifiedDocumentContextParameter = null,
     ): self {
         $this->guidelineSpecifiedDocumentContextParameter = $guidelineSpecifiedDocumentContextParameter;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetGuidelineSpecifiedDocumentContextParameter(): self
+    {
+        $this->guidelineSpecifiedDocumentContextParameter = null;
 
         return $this;
     }

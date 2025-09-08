@@ -113,6 +113,16 @@ class TradePartyType
     /**
      * @return self
      */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearID(): self
     {
         $this->iD = [];
@@ -187,6 +197,16 @@ class TradePartyType
     public function setGlobalID(?array $globalID = null): self
     {
         $this->globalID = $globalID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetGlobalID(): self
+    {
+        $this->globalID = null;
 
         return $this;
     }
@@ -283,6 +303,16 @@ class TradePartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasicwl\ram\LegalOrganizationType|null
      */
     public function getSpecifiedLegalOrganization(): ?LegalOrganizationType
@@ -307,6 +337,16 @@ class TradePartyType
     public function setSpecifiedLegalOrganization(?LegalOrganizationType $specifiedLegalOrganization = null): self
     {
         $this->specifiedLegalOrganization = $specifiedLegalOrganization;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecifiedLegalOrganization(): self
+    {
+        $this->specifiedLegalOrganization = null;
 
         return $this;
     }
@@ -341,6 +381,16 @@ class TradePartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPostalTradeAddress(): self
+    {
+        $this->postalTradeAddress = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasicwl\ram\UniversalCommunicationType|null
      */
     public function getURIUniversalCommunication(): ?UniversalCommunicationType
@@ -370,6 +420,16 @@ class TradePartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetURIUniversalCommunication(): self
+    {
+        $this->uRIUniversalCommunication = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\TaxRegistrationType>|null
      */
     public function getSpecifiedTaxRegistration(): ?array
@@ -384,6 +444,16 @@ class TradePartyType
     public function setSpecifiedTaxRegistration(?array $specifiedTaxRegistration = null): self
     {
         $this->specifiedTaxRegistration = $specifiedTaxRegistration;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecifiedTaxRegistration(): self
+    {
+        $this->specifiedTaxRegistration = null;
 
         return $this;
     }

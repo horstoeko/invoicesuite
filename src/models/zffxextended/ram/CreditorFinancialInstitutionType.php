@@ -49,4 +49,14 @@ class CreditorFinancialInstitutionType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetBICID(): self
+    {
+        $this->bICID = null;
+
+        return $this;
+    }
 }

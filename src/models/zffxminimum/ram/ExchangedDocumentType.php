@@ -75,6 +75,16 @@ class ExchangedDocumentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxminimum\qdt\DocumentCodeType|null
      */
     public function getTypeCode(): ?DocumentCodeType
@@ -104,6 +114,16 @@ class ExchangedDocumentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTypeCode(): self
+    {
+        $this->typeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxminimum\udt\DateTimeType|null
      */
     public function getIssueDateTime(): ?DateTimeType
@@ -128,6 +148,16 @@ class ExchangedDocumentType
     public function setIssueDateTime(?DateTimeType $issueDateTime = null): self
     {
         $this->issueDateTime = $issueDateTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIssueDateTime(): self
+    {
+        $this->issueDateTime = null;
 
         return $this;
     }

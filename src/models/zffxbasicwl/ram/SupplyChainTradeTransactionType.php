@@ -73,6 +73,16 @@ class SupplyChainTradeTransactionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetApplicableHeaderTradeAgreement(): self
+    {
+        $this->applicableHeaderTradeAgreement = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasicwl\ram\HeaderTradeDeliveryType|null
      */
     public function getApplicableHeaderTradeDelivery(): ?HeaderTradeDeliveryType
@@ -98,6 +108,16 @@ class SupplyChainTradeTransactionType
         ?HeaderTradeDeliveryType $applicableHeaderTradeDelivery = null,
     ): self {
         $this->applicableHeaderTradeDelivery = $applicableHeaderTradeDelivery;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetApplicableHeaderTradeDelivery(): self
+    {
+        $this->applicableHeaderTradeDelivery = null;
 
         return $this;
     }
@@ -130,5 +150,42 @@ class SupplyChainTradeTransactionType
         $this->applicableHeaderTradeSettlement = $applicableHeaderTradeSettlement;
 
         return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetApplicableHeaderTradeSettlement(): self
+    {
+        $this->applicableHeaderTradeSettlement = null;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffxbasicwl\ram\SupplyChainTradeLineItemType|null
+     */
+    public function getLatestIncludedSupplyChainTradeLineItem(): ?SupplyChainTradeLineItemType
+    {
+        $supplyChainTradeLineItems = $this->getIncludedSupplyChainTradeLineItem() ?? [];
+        $supplyChainTradeLineItem = end($supplyChainTradeLineItems);
+
+        if ($supplyChainTradeLineItem === false) {
+            return null;
+        }
+
+        return $supplyChainTradeLineItem;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\zffxbasicwl\ram\SupplyChainTradeLineItemType
+     */
+    public function getLatestIncludedSupplyChainTradeLineItemWithCreate(): SupplyChainTradeLineItemType
+    {
+        if (is_null($supplyChainTradeLineItem = $this->getLatestIncludedSupplyChainTradeLineItem())) {
+            $supplyChainTradeLineItem = $this->addToIncludedSupplyChainTradeLineItemWithCreate();
+        }
+
+        return $supplyChainTradeLineItem;
     }
 }

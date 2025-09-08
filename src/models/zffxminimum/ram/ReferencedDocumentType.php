@@ -49,4 +49,14 @@ class ReferencedDocumentType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetIssuerAssignedID(): self
+    {
+        $this->issuerAssignedID = null;
+
+        return $this;
+    }
 }

@@ -62,6 +62,16 @@ class CreditorFinancialAccountType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIBANID(): self
+    {
+        $this->iBANID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType|null
      */
     public function getProprietaryID(): ?IDType
@@ -86,6 +96,16 @@ class CreditorFinancialAccountType
     public function setProprietaryID(?IDType $proprietaryID = null): self
     {
         $this->proprietaryID = $proprietaryID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetProprietaryID(): self
+    {
+        $this->proprietaryID = null;
 
         return $this;
     }

@@ -74,6 +74,16 @@ class LegalOrganizationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      */
     public function getTradingBusinessName(): ?TextType
@@ -103,6 +113,16 @@ class LegalOrganizationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTradingBusinessName(): self
+    {
+        $this->tradingBusinessName = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\TradeAddressType|null
      */
     public function getPostalTradeAddress(): ?TradeAddressType
@@ -127,6 +147,16 @@ class LegalOrganizationType
     public function setPostalTradeAddress(?TradeAddressType $postalTradeAddress = null): self
     {
         $this->postalTradeAddress = $postalTradeAddress;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPostalTradeAddress(): self
+    {
+        $this->postalTradeAddress = null;
 
         return $this;
     }

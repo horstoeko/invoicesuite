@@ -85,6 +85,16 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTaxBasisTotalAmount(): self
+    {
+        $this->taxBasisTotalAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxminimum\udt\AmountType>|null
      */
     public function getTaxTotalAmount(): ?array
@@ -99,6 +109,16 @@ class TradeSettlementHeaderMonetarySummationType
     public function setTaxTotalAmount(?array $taxTotalAmount = null): self
     {
         $this->taxTotalAmount = $taxTotalAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxTotalAmount(): self
+    {
+        $this->taxTotalAmount = null;
 
         return $this;
     }
@@ -195,6 +215,16 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetGrandTotalAmount(): self
+    {
+        $this->grandTotalAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxminimum\udt\AmountType|null
      */
     public function getDuePayableAmount(): ?AmountType
@@ -219,6 +249,16 @@ class TradeSettlementHeaderMonetarySummationType
     public function setDuePayableAmount(?AmountType $duePayableAmount = null): self
     {
         $this->duePayableAmount = $duePayableAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDuePayableAmount(): self
+    {
+        $this->duePayableAmount = null;
 
         return $this;
     }

@@ -49,4 +49,14 @@ class FormattedDateTimeType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetDateTimeString(): self
+    {
+        $this->dateTimeString = null;
+
+        return $this;
+    }
 }

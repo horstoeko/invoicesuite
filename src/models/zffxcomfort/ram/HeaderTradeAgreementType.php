@@ -140,6 +140,16 @@ class HeaderTradeAgreementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBuyerReference(): self
+    {
+        $this->buyerReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\ram\TradePartyType|null
      */
     public function getSellerTradeParty(): ?TradePartyType
@@ -169,6 +179,16 @@ class HeaderTradeAgreementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSellerTradeParty(): self
+    {
+        $this->sellerTradeParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\ram\TradePartyType|null
      */
     public function getBuyerTradeParty(): ?TradePartyType
@@ -193,6 +213,16 @@ class HeaderTradeAgreementType
     public function setBuyerTradeParty(?TradePartyType $buyerTradeParty = null): self
     {
         $this->buyerTradeParty = $buyerTradeParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBuyerTradeParty(): self
+    {
+        $this->buyerTradeParty = null;
 
         return $this;
     }
@@ -228,6 +258,16 @@ class HeaderTradeAgreementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSellerTaxRepresentativeTradeParty(): self
+    {
+        $this->sellerTaxRepresentativeTradeParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType|null
      */
     public function getSellerOrderReferencedDocument(): ?ReferencedDocumentType
@@ -253,6 +293,16 @@ class HeaderTradeAgreementType
         ?ReferencedDocumentType $sellerOrderReferencedDocument = null,
     ): self {
         $this->sellerOrderReferencedDocument = $sellerOrderReferencedDocument;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSellerOrderReferencedDocument(): self
+    {
+        $this->sellerOrderReferencedDocument = null;
 
         return $this;
     }
@@ -288,6 +338,16 @@ class HeaderTradeAgreementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBuyerOrderReferencedDocument(): self
+    {
+        $this->buyerOrderReferencedDocument = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType|null
      */
     public function getContractReferencedDocument(): ?ReferencedDocumentType
@@ -317,6 +377,16 @@ class HeaderTradeAgreementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContractReferencedDocument(): self
+    {
+        $this->contractReferencedDocument = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType>|null
      */
     public function getAdditionalReferencedDocument(): ?array
@@ -331,6 +401,16 @@ class HeaderTradeAgreementType
     public function setAdditionalReferencedDocument(?array $additionalReferencedDocument = null): self
     {
         $this->additionalReferencedDocument = $additionalReferencedDocument;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAdditionalReferencedDocument(): self
+    {
+        $this->additionalReferencedDocument = null;
 
         return $this;
     }
@@ -422,6 +502,16 @@ class HeaderTradeAgreementType
     public function setSpecifiedProcuringProject(?ProcuringProjectType $specifiedProcuringProject = null): self
     {
         $this->specifiedProcuringProject = $specifiedProcuringProject;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecifiedProcuringProject(): self
+    {
+        $this->specifiedProcuringProject = null;
 
         return $this;
     }

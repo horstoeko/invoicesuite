@@ -52,6 +52,16 @@ class AmountType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
+
+        return $this;
+    }
+
+    /**
      * @return string|null
      */
     public function getCurrencyID(): ?string
@@ -66,6 +76,16 @@ class AmountType
     public function setCurrencyID(?string $currencyID = null): self
     {
         $this->currencyID = InvoiceSuiteStringUtils::asNullWhenEmpty($currencyID);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCurrencyID(): self
+    {
+        $this->currencyID = null;
 
         return $this;
     }

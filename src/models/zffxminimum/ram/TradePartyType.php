@@ -85,6 +85,16 @@ class TradePartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxminimum\ram\LegalOrganizationType|null
      */
     public function getSpecifiedLegalOrganization(): ?LegalOrganizationType
@@ -109,6 +119,16 @@ class TradePartyType
     public function setSpecifiedLegalOrganization(?LegalOrganizationType $specifiedLegalOrganization = null): self
     {
         $this->specifiedLegalOrganization = $specifiedLegalOrganization;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecifiedLegalOrganization(): self
+    {
+        $this->specifiedLegalOrganization = null;
 
         return $this;
     }
@@ -143,6 +163,16 @@ class TradePartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPostalTradeAddress(): self
+    {
+        $this->postalTradeAddress = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\zffxminimum\ram\TaxRegistrationType>|null
      */
     public function getSpecifiedTaxRegistration(): ?array
@@ -157,6 +187,16 @@ class TradePartyType
     public function setSpecifiedTaxRegistration(?array $specifiedTaxRegistration = null): self
     {
         $this->specifiedTaxRegistration = $specifiedTaxRegistration;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecifiedTaxRegistration(): self
+    {
+        $this->specifiedTaxRegistration = null;
 
         return $this;
     }

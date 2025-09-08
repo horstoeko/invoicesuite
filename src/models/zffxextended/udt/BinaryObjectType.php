@@ -63,6 +63,16 @@ class BinaryObjectType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
+
+        return $this;
+    }
+
+    /**
      * @return string|null
      */
     public function getMimeCode(): ?string
@@ -82,6 +92,16 @@ class BinaryObjectType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMimeCode(): self
+    {
+        $this->mimeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return string|null
      */
     public function getFilename(): ?string
@@ -96,6 +116,16 @@ class BinaryObjectType
     public function setFilename(?string $filename = null): self
     {
         $this->filename = InvoiceSuiteStringUtils::asNullWhenEmpty($filename);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFilename(): self
+    {
+        $this->filename = null;
 
         return $this;
     }

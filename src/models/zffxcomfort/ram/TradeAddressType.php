@@ -119,6 +119,16 @@ class TradeAddressType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPostcodeCode(): self
+    {
+        $this->postcodeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null
      */
     public function getLineOne(): ?TextType
@@ -143,6 +153,16 @@ class TradeAddressType
     public function setLineOne(?TextType $lineOne = null): self
     {
         $this->lineOne = $lineOne;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLineOne(): self
+    {
+        $this->lineOne = null;
 
         return $this;
     }
@@ -177,6 +197,16 @@ class TradeAddressType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineTwo(): self
+    {
+        $this->lineTwo = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null
      */
     public function getLineThree(): ?TextType
@@ -201,6 +231,16 @@ class TradeAddressType
     public function setLineThree(?TextType $lineThree = null): self
     {
         $this->lineThree = $lineThree;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLineThree(): self
+    {
+        $this->lineThree = null;
 
         return $this;
     }
@@ -235,6 +275,16 @@ class TradeAddressType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCityName(): self
+    {
+        $this->cityName = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\qdt\CountryIDType|null
      */
     public function getCountryID(): ?CountryIDType
@@ -264,6 +314,16 @@ class TradeAddressType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCountryID(): self
+    {
+        $this->countryID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null
      */
     public function getCountrySubDivisionName(): ?TextType
@@ -288,6 +348,16 @@ class TradeAddressType
     public function setCountrySubDivisionName(?TextType $countrySubDivisionName = null): self
     {
         $this->countrySubDivisionName = $countrySubDivisionName;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCountrySubDivisionName(): self
+    {
+        $this->countrySubDivisionName = null;
 
         return $this;
     }

@@ -63,6 +63,16 @@ class CodeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
+
+        return $this;
+    }
+
+    /**
      * @return string|null
      */
     public function getListID(): ?string
@@ -82,6 +92,16 @@ class CodeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetListID(): self
+    {
+        $this->listID = null;
+
+        return $this;
+    }
+
+    /**
      * @return string|null
      */
     public function getListVersionID(): ?string
@@ -96,6 +116,16 @@ class CodeType
     public function setListVersionID(?string $listVersionID = null): self
     {
         $this->listVersionID = InvoiceSuiteStringUtils::asNullWhenEmpty($listVersionID);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetListVersionID(): self
+    {
+        $this->listVersionID = null;
 
         return $this;
     }

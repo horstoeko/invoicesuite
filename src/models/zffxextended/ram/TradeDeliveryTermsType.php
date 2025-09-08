@@ -49,4 +49,14 @@ class TradeDeliveryTermsType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetDeliveryTypeCode(): self
+    {
+        $this->deliveryTypeCode = null;
+
+        return $this;
+    }
 }

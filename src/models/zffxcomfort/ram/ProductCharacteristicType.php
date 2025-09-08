@@ -62,6 +62,16 @@ class ProductCharacteristicType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null
      */
     public function getValue(): ?TextType
@@ -86,6 +96,16 @@ class ProductCharacteristicType
     public function setValue(?TextType $value = null): self
     {
         $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
 
         return $this;
     }

@@ -145,6 +145,16 @@ class TradeAllowanceChargeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetChargeIndicator(): self
+    {
+        $this->chargeIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\NumericType|null
      */
     public function getSequenceNumeric(): ?NumericType
@@ -169,6 +179,16 @@ class TradeAllowanceChargeType
     public function setSequenceNumeric(?NumericType $sequenceNumeric = null): self
     {
         $this->sequenceNumeric = $sequenceNumeric;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSequenceNumeric(): self
+    {
+        $this->sequenceNumeric = null;
 
         return $this;
     }
@@ -203,6 +223,16 @@ class TradeAllowanceChargeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCalculationPercent(): self
+    {
+        $this->calculationPercent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null
      */
     public function getBasisAmount(): ?AmountType
@@ -227,6 +257,16 @@ class TradeAllowanceChargeType
     public function setBasisAmount(?AmountType $basisAmount = null): self
     {
         $this->basisAmount = $basisAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBasisAmount(): self
+    {
+        $this->basisAmount = null;
 
         return $this;
     }
@@ -261,6 +301,16 @@ class TradeAllowanceChargeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBasisQuantity(): self
+    {
+        $this->basisQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null
      */
     public function getActualAmount(): ?AmountType
@@ -285,6 +335,16 @@ class TradeAllowanceChargeType
     public function setActualAmount(?AmountType $actualAmount = null): self
     {
         $this->actualAmount = $actualAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetActualAmount(): self
+    {
+        $this->actualAmount = null;
 
         return $this;
     }
@@ -319,6 +379,16 @@ class TradeAllowanceChargeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReasonCode(): self
+    {
+        $this->reasonCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      */
     public function getReason(): ?TextType
@@ -348,6 +418,16 @@ class TradeAllowanceChargeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReason(): self
+    {
+        $this->reason = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType|null
      */
     public function getCategoryTradeTax(): ?TradeTaxType
@@ -372,6 +452,16 @@ class TradeAllowanceChargeType
     public function setCategoryTradeTax(?TradeTaxType $categoryTradeTax = null): self
     {
         $this->categoryTradeTax = $categoryTradeTax;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCategoryTradeTax(): self
+    {
+        $this->categoryTradeTax = null;
 
         return $this;
     }

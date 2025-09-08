@@ -49,4 +49,14 @@ class ProductClassificationType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetClassCode(): self
+    {
+        $this->classCode = null;
+
+        return $this;
+    }
 }
