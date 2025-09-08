@@ -88,6 +88,16 @@ class ClassificationCategoryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CodeValue|null
      */
     public function getCodeValue(): ?CodeValue
@@ -117,6 +127,16 @@ class ClassificationCategoryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCodeValue(): self
+    {
+        $this->codeValue = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -131,6 +151,16 @@ class ClassificationCategoryType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -212,6 +242,16 @@ class ClassificationCategoryType
     public function setCategorizesClassificationCategory(?array $categorizesClassificationCategory = null): self
     {
         $this->categorizesClassificationCategory = $categorizesClassificationCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCategorizesClassificationCategory(): self
+    {
+        $this->categorizesClassificationCategory = null;
 
         return $this;
     }

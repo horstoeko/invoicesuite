@@ -75,6 +75,16 @@ class LanguageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      */
     public function getName(): ?Name
@@ -104,6 +114,16 @@ class LanguageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LocaleCode|null
      */
     public function getLocaleCode(): ?LocaleCode
@@ -128,6 +148,16 @@ class LanguageType
     public function setLocaleCode(?LocaleCode $localeCode = null): self
     {
         $this->localeCode = $localeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLocaleCode(): self
+    {
+        $this->localeCode = null;
 
         return $this;
     }

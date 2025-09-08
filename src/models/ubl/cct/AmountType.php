@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\ubl\cct;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class AmountType
 {
@@ -62,6 +63,16 @@ class AmountType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
+
+        return $this;
+    }
+
+    /**
      * @return string|null
      */
     public function getCurrencyID(): ?string
@@ -75,7 +86,17 @@ class AmountType
      */
     public function setCurrencyID(?string $currencyID = null): self
     {
-        $this->currencyID = $currencyID;
+        $this->currencyID = InvoiceSuiteStringUtils::asNullWhenEmpty($currencyID);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCurrencyID(): self
+    {
+        $this->currencyID = null;
 
         return $this;
     }
@@ -94,7 +115,17 @@ class AmountType
      */
     public function setCurrencyCodeListVersionID(?string $currencyCodeListVersionID = null): self
     {
-        $this->currencyCodeListVersionID = $currencyCodeListVersionID;
+        $this->currencyCodeListVersionID = InvoiceSuiteStringUtils::asNullWhenEmpty($currencyCodeListVersionID);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCurrencyCodeListVersionID(): self
+    {
+        $this->currencyCodeListVersionID = null;
 
         return $this;
     }

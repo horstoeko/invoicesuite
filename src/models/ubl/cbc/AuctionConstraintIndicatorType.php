@@ -38,4 +38,14 @@ class AuctionConstraintIndicatorType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
+
+        return $this;
+    }
 }

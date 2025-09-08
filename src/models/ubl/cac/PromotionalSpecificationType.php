@@ -75,6 +75,16 @@ class PromotionalSpecificationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSpecificationID(): self
+    {
+        $this->specificationID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\PromotionalEventLineItem>|null
      */
     public function getPromotionalEventLineItem(): ?array
@@ -89,6 +99,16 @@ class PromotionalSpecificationType
     public function setPromotionalEventLineItem(?array $promotionalEventLineItem = null): self
     {
         $this->promotionalEventLineItem = $promotionalEventLineItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPromotionalEventLineItem(): self
+    {
+        $this->promotionalEventLineItem = null;
 
         return $this;
     }
@@ -170,6 +190,16 @@ class PromotionalSpecificationType
     public function setEventTactic(?array $eventTactic = null): self
     {
         $this->eventTactic = $eventTactic;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEventTactic(): self
+    {
+        $this->eventTactic = null;
 
         return $this;
     }

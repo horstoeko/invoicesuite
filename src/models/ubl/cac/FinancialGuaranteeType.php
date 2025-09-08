@@ -99,6 +99,16 @@ class FinancialGuaranteeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetGuaranteeTypeCode(): self
+    {
+        $this->guaranteeTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -113,6 +123,16 @@ class FinancialGuaranteeType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -209,6 +229,16 @@ class FinancialGuaranteeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLiabilityAmount(): self
+    {
+        $this->liabilityAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\AmountRate|null
      */
     public function getAmountRate(): ?AmountRate
@@ -238,6 +268,16 @@ class FinancialGuaranteeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAmountRate(): self
+    {
+        $this->amountRate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ConstitutionPeriod|null
      */
     public function getConstitutionPeriod(): ?ConstitutionPeriod
@@ -262,6 +302,16 @@ class FinancialGuaranteeType
     public function setConstitutionPeriod(?ConstitutionPeriod $constitutionPeriod = null): self
     {
         $this->constitutionPeriod = $constitutionPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetConstitutionPeriod(): self
+    {
+        $this->constitutionPeriod = null;
 
         return $this;
     }

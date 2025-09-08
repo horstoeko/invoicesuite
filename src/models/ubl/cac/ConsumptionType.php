@@ -119,6 +119,16 @@ class ConsumptionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUtilityStatementTypeCode(): self
+    {
+        $this->utilityStatementTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\MainPeriod|null
      */
     public function getMainPeriod(): ?MainPeriod
@@ -148,6 +158,16 @@ class ConsumptionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMainPeriod(): self
+    {
+        $this->mainPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null
      */
     public function getAllowanceCharge(): ?array
@@ -162,6 +182,16 @@ class ConsumptionType
     public function setAllowanceCharge(?array $allowanceCharge = null): self
     {
         $this->allowanceCharge = $allowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAllowanceCharge(): self
+    {
+        $this->allowanceCharge = null;
 
         return $this;
     }
@@ -243,6 +273,16 @@ class ConsumptionType
     public function setTaxTotal(?array $taxTotal = null): self
     {
         $this->taxTotal = $taxTotal;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxTotal(): self
+    {
+        $this->taxTotal = null;
 
         return $this;
     }
@@ -339,6 +379,16 @@ class ConsumptionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEnergyWaterSupply(): self
+    {
+        $this->energyWaterSupply = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsSupply|null
      */
     public function getTelecommunicationsSupply(): ?TelecommunicationsSupply
@@ -368,6 +418,16 @@ class ConsumptionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTelecommunicationsSupply(): self
+    {
+        $this->telecommunicationsSupply = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\LegalMonetaryTotal|null
      */
     public function getLegalMonetaryTotal(): ?LegalMonetaryTotal
@@ -392,6 +452,16 @@ class ConsumptionType
     public function setLegalMonetaryTotal(?LegalMonetaryTotal $legalMonetaryTotal = null): self
     {
         $this->legalMonetaryTotal = $legalMonetaryTotal;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLegalMonetaryTotal(): self
+    {
+        $this->legalMonetaryTotal = null;
 
         return $this;
     }

@@ -122,6 +122,16 @@ class PartyTaxSchemeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRegistrationName(): self
+    {
+        $this->registrationName = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CompanyID|null
      */
     public function getCompanyID(): ?CompanyID
@@ -146,6 +156,16 @@ class PartyTaxSchemeType
     public function setCompanyID(?CompanyID $companyID = null): self
     {
         $this->companyID = $companyID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCompanyID(): self
+    {
+        $this->companyID = null;
 
         return $this;
     }
@@ -180,6 +200,16 @@ class PartyTaxSchemeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTaxLevelCode(): self
+    {
+        $this->taxLevelCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ExemptionReasonCode|null
      */
     public function getExemptionReasonCode(): ?ExemptionReasonCode
@@ -209,6 +239,16 @@ class PartyTaxSchemeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExemptionReasonCode(): self
+    {
+        $this->exemptionReasonCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\ExemptionReason>|null
      */
     public function getExemptionReason(): ?array
@@ -223,6 +263,16 @@ class PartyTaxSchemeType
     public function setExemptionReason(?array $exemptionReason = null): self
     {
         $this->exemptionReason = $exemptionReason;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExemptionReason(): self
+    {
+        $this->exemptionReason = null;
 
         return $this;
     }
@@ -319,6 +369,16 @@ class PartyTaxSchemeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRegistrationAddress(): self
+    {
+        $this->registrationAddress = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\TaxScheme|null
      */
     public function getTaxScheme(): ?TaxScheme
@@ -343,6 +403,16 @@ class PartyTaxSchemeType
     public function setTaxScheme(?TaxScheme $taxScheme = null): self
     {
         $this->taxScheme = $taxScheme;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxScheme(): self
+    {
+        $this->taxScheme = null;
 
         return $this;
     }

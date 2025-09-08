@@ -183,6 +183,16 @@ class StatusType
     }
 
     /**
+     * @return self
+     */
+    public function unsetConditionCode(): self
+    {
+        $this->conditionCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getReferenceDate(): ?\DateTimeInterface
@@ -197,6 +207,16 @@ class StatusType
     public function setReferenceDate(?\DateTimeInterface $referenceDate = null): self
     {
         $this->referenceDate = $referenceDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetReferenceDate(): self
+    {
+        $this->referenceDate = null;
 
         return $this;
     }
@@ -221,6 +241,16 @@ class StatusType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReferenceTime(): self
+    {
+        $this->referenceTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -235,6 +265,16 @@ class StatusType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -331,6 +371,16 @@ class StatusType
     }
 
     /**
+     * @return self
+     */
+    public function unsetStatusReasonCode(): self
+    {
+        $this->statusReasonCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\StatusReason>|null
      */
     public function getStatusReason(): ?array
@@ -345,6 +395,16 @@ class StatusType
     public function setStatusReason(?array $statusReason = null): self
     {
         $this->statusReason = $statusReason;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetStatusReason(): self
+    {
+        $this->statusReason = null;
 
         return $this;
     }
@@ -441,6 +501,16 @@ class StatusType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSequenceID(): self
+    {
+        $this->sequenceID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Text>|null
      */
     public function getText(): ?array
@@ -455,6 +525,16 @@ class StatusType
     public function setText(?array $text = null): self
     {
         $this->text = $text;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetText(): self
+    {
+        $this->text = null;
 
         return $this;
     }
@@ -541,6 +621,16 @@ class StatusType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIndicationIndicator(): self
+    {
+        $this->indicationIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Percent|null
      */
     public function getPercent(): ?Percent
@@ -565,6 +655,16 @@ class StatusType
     public function setPercent(?Percent $percent = null): self
     {
         $this->percent = $percent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPercent(): self
+    {
+        $this->percent = null;
 
         return $this;
     }
@@ -599,6 +699,16 @@ class StatusType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReliabilityPercent(): self
+    {
+        $this->reliabilityPercent = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Condition>|null
      */
     public function getCondition(): ?array
@@ -613,6 +723,16 @@ class StatusType
     public function setCondition(?array $condition = null): self
     {
         $this->condition = $condition;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCondition(): self
+    {
+        $this->condition = null;
 
         return $this;
     }

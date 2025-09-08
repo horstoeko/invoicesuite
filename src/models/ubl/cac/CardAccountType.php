@@ -169,6 +169,16 @@ class CardAccountType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPrimaryAccountNumberID(): self
+    {
+        $this->primaryAccountNumberID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\NetworkID|null
      */
     public function getNetworkID(): ?NetworkID
@@ -193,6 +203,16 @@ class CardAccountType
     public function setNetworkID(?NetworkID $networkID = null): self
     {
         $this->networkID = $networkID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNetworkID(): self
+    {
+        $this->networkID = null;
 
         return $this;
     }
@@ -227,6 +247,16 @@ class CardAccountType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCardTypeCode(): self
+    {
+        $this->cardTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getValidityStartDate(): ?\DateTimeInterface
@@ -246,6 +276,16 @@ class CardAccountType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValidityStartDate(): self
+    {
+        $this->validityStartDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getExpiryDate(): ?\DateTimeInterface
@@ -260,6 +300,16 @@ class CardAccountType
     public function setExpiryDate(?\DateTimeInterface $expiryDate = null): self
     {
         $this->expiryDate = $expiryDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExpiryDate(): self
+    {
+        $this->expiryDate = null;
 
         return $this;
     }
@@ -294,6 +344,16 @@ class CardAccountType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIssuerID(): self
+    {
+        $this->issuerID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\IssueNumberID|null
      */
     public function getIssueNumberID(): ?IssueNumberID
@@ -318,6 +378,16 @@ class CardAccountType
     public function setIssueNumberID(?IssueNumberID $issueNumberID = null): self
     {
         $this->issueNumberID = $issueNumberID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIssueNumberID(): self
+    {
+        $this->issueNumberID = null;
 
         return $this;
     }
@@ -352,6 +422,16 @@ class CardAccountType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCV2ID(): self
+    {
+        $this->cV2ID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CardChipCode|null
      */
     public function getCardChipCode(): ?CardChipCode
@@ -376,6 +456,16 @@ class CardAccountType
     public function setCardChipCode(?CardChipCode $cardChipCode = null): self
     {
         $this->cardChipCode = $cardChipCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCardChipCode(): self
+    {
+        $this->cardChipCode = null;
 
         return $this;
     }
@@ -410,6 +500,16 @@ class CardAccountType
     }
 
     /**
+     * @return self
+     */
+    public function unsetChipApplicationID(): self
+    {
+        $this->chipApplicationID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\HolderName|null
      */
     public function getHolderName(): ?HolderName
@@ -434,6 +534,16 @@ class CardAccountType
     public function setHolderName(?HolderName $holderName = null): self
     {
         $this->holderName = $holderName;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetHolderName(): self
+    {
+        $this->holderName = null;
 
         return $this;
     }

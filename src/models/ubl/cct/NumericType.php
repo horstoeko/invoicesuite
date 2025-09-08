@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\ubl\cct;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class NumericType
 {
@@ -51,6 +52,16 @@ class NumericType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
+
+        return $this;
+    }
+
+    /**
      * @return string|null
      */
     public function getFormat(): ?string
@@ -64,7 +75,17 @@ class NumericType
      */
     public function setFormat(?string $format = null): self
     {
-        $this->format = $format;
+        $this->format = InvoiceSuiteStringUtils::asNullWhenEmpty($format);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFormat(): self
+    {
+        $this->format = null;
 
         return $this;
     }

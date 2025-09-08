@@ -136,6 +136,16 @@ class RequestedTenderTotalType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEstimatedOverallContractAmount(): self
+    {
+        $this->estimatedOverallContractAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TotalAmount|null
      */
     public function getTotalAmount(): ?TotalAmount
@@ -165,6 +175,16 @@ class RequestedTenderTotalType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTotalAmount(): self
+    {
+        $this->totalAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getTaxIncludedIndicator(): ?bool
@@ -179,6 +199,16 @@ class RequestedTenderTotalType
     public function setTaxIncludedIndicator(?bool $taxIncludedIndicator = null): self
     {
         $this->taxIncludedIndicator = $taxIncludedIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxIncludedIndicator(): self
+    {
+        $this->taxIncludedIndicator = null;
 
         return $this;
     }
@@ -213,6 +243,16 @@ class RequestedTenderTotalType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMinimumAmount(): self
+    {
+        $this->minimumAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MaximumAmount|null
      */
     public function getMaximumAmount(): ?MaximumAmount
@@ -242,6 +282,16 @@ class RequestedTenderTotalType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMaximumAmount(): self
+    {
+        $this->maximumAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\MonetaryScope>|null
      */
     public function getMonetaryScope(): ?array
@@ -256,6 +306,16 @@ class RequestedTenderTotalType
     public function setMonetaryScope(?array $monetaryScope = null): self
     {
         $this->monetaryScope = $monetaryScope;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMonetaryScope(): self
+    {
+        $this->monetaryScope = null;
 
         return $this;
     }
@@ -353,6 +413,16 @@ class RequestedTenderTotalType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAverageSubsequentContractAmount(): self
+    {
+        $this->averageSubsequentContractAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ApplicableTaxCategory>|null
      */
     public function getApplicableTaxCategory(): ?array
@@ -367,6 +437,16 @@ class RequestedTenderTotalType
     public function setApplicableTaxCategory(?array $applicableTaxCategory = null): self
     {
         $this->applicableTaxCategory = $applicableTaxCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetApplicableTaxCategory(): self
+    {
+        $this->applicableTaxCategory = null;
 
         return $this;
     }

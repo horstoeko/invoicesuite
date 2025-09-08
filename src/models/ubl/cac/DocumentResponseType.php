@@ -96,6 +96,16 @@ class DocumentResponseType
     }
 
     /**
+     * @return self
+     */
+    public function unsetResponse(): self
+    {
+        $this->response = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      */
     public function getDocumentReference(): ?array
@@ -110,6 +120,16 @@ class DocumentResponseType
     public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
 
         return $this;
     }
@@ -206,6 +226,16 @@ class DocumentResponseType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIssuerParty(): self
+    {
+        $this->issuerParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\RecipientParty|null
      */
     public function getRecipientParty(): ?RecipientParty
@@ -235,6 +265,16 @@ class DocumentResponseType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRecipientParty(): self
+    {
+        $this->recipientParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\LineResponse>|null
      */
     public function getLineResponse(): ?array
@@ -249,6 +289,16 @@ class DocumentResponseType
     public function setLineResponse(?array $lineResponse = null): self
     {
         $this->lineResponse = $lineResponse;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLineResponse(): self
+    {
+        $this->lineResponse = null;
 
         return $this;
     }

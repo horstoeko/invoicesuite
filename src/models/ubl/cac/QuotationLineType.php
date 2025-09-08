@@ -170,6 +170,16 @@ class QuotationLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -184,6 +194,16 @@ class QuotationLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -280,6 +300,16 @@ class QuotationLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetQuantity(): self
+    {
+        $this->quantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LineExtensionAmount|null
      */
     public function getLineExtensionAmount(): ?LineExtensionAmount
@@ -304,6 +334,16 @@ class QuotationLineType
     public function setLineExtensionAmount(?LineExtensionAmount $lineExtensionAmount = null): self
     {
         $this->lineExtensionAmount = $lineExtensionAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLineExtensionAmount(): self
+    {
+        $this->lineExtensionAmount = null;
 
         return $this;
     }
@@ -338,6 +378,16 @@ class QuotationLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTotalTaxAmount(): self
+    {
+        $this->totalTaxAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\RequestForQuotationLineID|null
      */
     public function getRequestForQuotationLineID(): ?RequestForQuotationLineID
@@ -367,6 +417,16 @@ class QuotationLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRequestForQuotationLineID(): self
+    {
+        $this->requestForQuotationLineID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      */
     public function getDocumentReference(): ?array
@@ -381,6 +441,16 @@ class QuotationLineType
     public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
 
         return $this;
     }
@@ -477,6 +547,16 @@ class QuotationLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineItem(): self
+    {
+        $this->lineItem = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SellerProposedSubstituteLineItem>|null
      */
     public function getSellerProposedSubstituteLineItem(): ?array
@@ -491,6 +571,16 @@ class QuotationLineType
     public function setSellerProposedSubstituteLineItem(?array $sellerProposedSubstituteLineItem = null): self
     {
         $this->sellerProposedSubstituteLineItem = $sellerProposedSubstituteLineItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSellerProposedSubstituteLineItem(): self
+    {
+        $this->sellerProposedSubstituteLineItem = null;
 
         return $this;
     }
@@ -574,6 +664,16 @@ class QuotationLineType
     public function setAlternativeLineItem(?array $alternativeLineItem = null): self
     {
         $this->alternativeLineItem = $alternativeLineItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAlternativeLineItem(): self
+    {
+        $this->alternativeLineItem = null;
 
         return $this;
     }
@@ -665,6 +765,16 @@ class QuotationLineType
     public function setRequestLineReference(?RequestLineReference $requestLineReference = null): self
     {
         $this->requestLineReference = $requestLineReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRequestLineReference(): self
+    {
+        $this->requestLineReference = null;
 
         return $this;
     }

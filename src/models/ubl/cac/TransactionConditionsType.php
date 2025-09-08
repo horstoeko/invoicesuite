@@ -88,6 +88,16 @@ class TransactionConditionsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ActionCode|null
      */
     public function getActionCode(): ?ActionCode
@@ -117,6 +127,16 @@ class TransactionConditionsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetActionCode(): self
+    {
+        $this->actionCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -131,6 +151,16 @@ class TransactionConditionsType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -212,6 +242,16 @@ class TransactionConditionsType
     public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
 
         return $this;
     }

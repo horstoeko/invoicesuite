@@ -217,6 +217,16 @@ class AllowanceChargeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getChargeIndicator(): ?bool
@@ -231,6 +241,16 @@ class AllowanceChargeType
     public function setChargeIndicator(?bool $chargeIndicator = null): self
     {
         $this->chargeIndicator = $chargeIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetChargeIndicator(): self
+    {
+        $this->chargeIndicator = null;
 
         return $this;
     }
@@ -265,6 +285,16 @@ class AllowanceChargeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAllowanceChargeReasonCode(): self
+    {
+        $this->allowanceChargeReasonCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\AllowanceChargeReason>|null
      */
     public function getAllowanceChargeReason(): ?array
@@ -279,6 +309,16 @@ class AllowanceChargeType
     public function setAllowanceChargeReason(?array $allowanceChargeReason = null): self
     {
         $this->allowanceChargeReason = $allowanceChargeReason;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAllowanceChargeReason(): self
+    {
+        $this->allowanceChargeReason = null;
 
         return $this;
     }
@@ -375,6 +415,16 @@ class AllowanceChargeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMultiplierFactorNumeric(): self
+    {
+        $this->multiplierFactorNumeric = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getPrepaidIndicator(): ?bool
@@ -389,6 +439,16 @@ class AllowanceChargeType
     public function setPrepaidIndicator(?bool $prepaidIndicator = null): self
     {
         $this->prepaidIndicator = $prepaidIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPrepaidIndicator(): self
+    {
+        $this->prepaidIndicator = null;
 
         return $this;
     }
@@ -423,6 +483,16 @@ class AllowanceChargeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSequenceNumeric(): self
+    {
+        $this->sequenceNumeric = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Amount|null
      */
     public function getAmount(): ?Amount
@@ -447,6 +517,16 @@ class AllowanceChargeType
     public function setAmount(?Amount $amount = null): self
     {
         $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAmount(): self
+    {
+        $this->amount = null;
 
         return $this;
     }
@@ -481,6 +561,16 @@ class AllowanceChargeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBaseAmount(): self
+    {
+        $this->baseAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode|null
      */
     public function getAccountingCostCode(): ?AccountingCostCode
@@ -505,6 +595,16 @@ class AllowanceChargeType
     public function setAccountingCostCode(?AccountingCostCode $accountingCostCode = null): self
     {
         $this->accountingCostCode = $accountingCostCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAccountingCostCode(): self
+    {
+        $this->accountingCostCode = null;
 
         return $this;
     }
@@ -539,6 +639,16 @@ class AllowanceChargeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAccountingCost(): self
+    {
+        $this->accountingCost = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PerUnitAmount|null
      */
     public function getPerUnitAmount(): ?PerUnitAmount
@@ -568,6 +678,16 @@ class AllowanceChargeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPerUnitAmount(): self
+    {
+        $this->perUnitAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TaxCategory>|null
      */
     public function getTaxCategory(): ?array
@@ -582,6 +702,16 @@ class AllowanceChargeType
     public function setTaxCategory(?array $taxCategory = null): self
     {
         $this->taxCategory = $taxCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxCategory(): self
+    {
+        $this->taxCategory = null;
 
         return $this;
     }
@@ -678,6 +808,16 @@ class AllowanceChargeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTaxTotal(): self
+    {
+        $this->taxTotal = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\PaymentMeans>|null
      */
     public function getPaymentMeans(): ?array
@@ -692,6 +832,16 @@ class AllowanceChargeType
     public function setPaymentMeans(?array $paymentMeans = null): self
     {
         $this->paymentMeans = $paymentMeans;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPaymentMeans(): self
+    {
+        $this->paymentMeans = null;
 
         return $this;
     }

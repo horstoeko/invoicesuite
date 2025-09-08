@@ -145,6 +145,16 @@ class ForecastRevisionLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -159,6 +169,16 @@ class ForecastRevisionLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -240,6 +260,16 @@ class ForecastRevisionLineType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -336,6 +366,16 @@ class ForecastRevisionLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRevisedForecastLineID(): self
+    {
+        $this->revisedForecastLineID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getSourceForecastIssueDate(): ?\DateTimeInterface
@@ -355,6 +395,16 @@ class ForecastRevisionLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSourceForecastIssueDate(): self
+    {
+        $this->sourceForecastIssueDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getSourceForecastIssueTime(): ?\DateTimeInterface
@@ -369,6 +419,16 @@ class ForecastRevisionLineType
     public function setSourceForecastIssueTime(?\DateTimeInterface $sourceForecastIssueTime = null): self
     {
         $this->sourceForecastIssueTime = $sourceForecastIssueTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSourceForecastIssueTime(): self
+    {
+        $this->sourceForecastIssueTime = null;
 
         return $this;
     }
@@ -403,6 +463,16 @@ class ForecastRevisionLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAdjustmentReasonCode(): self
+    {
+        $this->adjustmentReasonCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ForecastPeriod|null
      */
     public function getForecastPeriod(): ?ForecastPeriod
@@ -432,6 +502,16 @@ class ForecastRevisionLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetForecastPeriod(): self
+    {
+        $this->forecastPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\SalesItem|null
      */
     public function getSalesItem(): ?SalesItem
@@ -456,6 +536,16 @@ class ForecastRevisionLineType
     public function setSalesItem(?SalesItem $salesItem = null): self
     {
         $this->salesItem = $salesItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSalesItem(): self
+    {
+        $this->salesItem = null;
 
         return $this;
     }

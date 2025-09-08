@@ -76,6 +76,16 @@ class StowageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLocationID(): self
+    {
+        $this->locationID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Location>|null
      */
     public function getLocation(): ?array
@@ -90,6 +100,16 @@ class StowageType
     public function setLocation(?array $location = null): self
     {
         $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLocation(): self
+    {
+        $this->location = null;
 
         return $this;
     }
@@ -171,6 +191,16 @@ class StowageType
     public function setMeasurementDimension(?array $measurementDimension = null): self
     {
         $this->measurementDimension = $measurementDimension;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMeasurementDimension(): self
+    {
+        $this->measurementDimension = null;
 
         return $this;
     }

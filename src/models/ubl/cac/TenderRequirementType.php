@@ -75,6 +75,16 @@ class TenderRequirementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -89,6 +99,16 @@ class TenderRequirementType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -180,6 +200,16 @@ class TenderRequirementType
     public function setTemplateDocumentReference(?TemplateDocumentReference $templateDocumentReference = null): self
     {
         $this->templateDocumentReference = $templateDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTemplateDocumentReference(): self
+    {
+        $this->templateDocumentReference = null;
 
         return $this;
     }

@@ -122,6 +122,16 @@ class CompletedTaskType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAnnualAverageAmount(): self
+    {
+        $this->annualAverageAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TotalTaskAmount|null
      */
     public function getTotalTaskAmount(): ?TotalTaskAmount
@@ -146,6 +156,16 @@ class CompletedTaskType
     public function setTotalTaskAmount(?TotalTaskAmount $totalTaskAmount = null): self
     {
         $this->totalTaskAmount = $totalTaskAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTotalTaskAmount(): self
+    {
+        $this->totalTaskAmount = null;
 
         return $this;
     }
@@ -180,6 +200,16 @@ class CompletedTaskType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPartyCapacityAmount(): self
+    {
+        $this->partyCapacityAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -194,6 +224,16 @@ class CompletedTaskType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -275,6 +315,16 @@ class CompletedTaskType
     public function setEvidenceSupplied(?array $evidenceSupplied = null): self
     {
         $this->evidenceSupplied = $evidenceSupplied;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEvidenceSupplied(): self
+    {
+        $this->evidenceSupplied = null;
 
         return $this;
     }
@@ -371,6 +421,16 @@ class CompletedTaskType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPeriod(): self
+    {
+        $this->period = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\RecipientCustomerParty|null
      */
     public function getRecipientCustomerParty(): ?RecipientCustomerParty
@@ -395,6 +455,16 @@ class CompletedTaskType
     public function setRecipientCustomerParty(?RecipientCustomerParty $recipientCustomerParty = null): self
     {
         $this->recipientCustomerParty = $recipientCustomerParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRecipientCustomerParty(): self
+    {
+        $this->recipientCustomerParty = null;
 
         return $this;
     }

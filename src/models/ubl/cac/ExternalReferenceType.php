@@ -170,6 +170,16 @@ class ExternalReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetURI(): self
+    {
+        $this->uRI = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\DocumentHash|null
      */
     public function getDocumentHash(): ?DocumentHash
@@ -194,6 +204,16 @@ class ExternalReferenceType
     public function setDocumentHash(?DocumentHash $documentHash = null): self
     {
         $this->documentHash = $documentHash;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentHash(): self
+    {
+        $this->documentHash = null;
 
         return $this;
     }
@@ -228,6 +248,16 @@ class ExternalReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetHashAlgorithmMethod(): self
+    {
+        $this->hashAlgorithmMethod = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getExpiryDate(): ?\DateTimeInterface
@@ -247,6 +277,16 @@ class ExternalReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExpiryDate(): self
+    {
+        $this->expiryDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getExpiryTime(): ?\DateTimeInterface
@@ -261,6 +301,16 @@ class ExternalReferenceType
     public function setExpiryTime(?\DateTimeInterface $expiryTime = null): self
     {
         $this->expiryTime = $expiryTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExpiryTime(): self
+    {
+        $this->expiryTime = null;
 
         return $this;
     }
@@ -295,6 +345,16 @@ class ExternalReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMimeCode(): self
+    {
+        $this->mimeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\FormatCode|null
      */
     public function getFormatCode(): ?FormatCode
@@ -319,6 +379,16 @@ class ExternalReferenceType
     public function setFormatCode(?FormatCode $formatCode = null): self
     {
         $this->formatCode = $formatCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFormatCode(): self
+    {
+        $this->formatCode = null;
 
         return $this;
     }
@@ -353,6 +423,16 @@ class ExternalReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEncodingCode(): self
+    {
+        $this->encodingCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CharacterSetCode|null
      */
     public function getCharacterSetCode(): ?CharacterSetCode
@@ -377,6 +457,16 @@ class ExternalReferenceType
     public function setCharacterSetCode(?CharacterSetCode $characterSetCode = null): self
     {
         $this->characterSetCode = $characterSetCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCharacterSetCode(): self
+    {
+        $this->characterSetCode = null;
 
         return $this;
     }
@@ -411,6 +501,16 @@ class ExternalReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFileName(): self
+    {
+        $this->fileName = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -425,6 +525,16 @@ class ExternalReferenceType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }

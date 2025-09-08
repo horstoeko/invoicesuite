@@ -123,6 +123,16 @@ class DeliveryTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\SpecialTerms>|null
      */
     public function getSpecialTerms(): ?array
@@ -137,6 +147,16 @@ class DeliveryTermsType
     public function setSpecialTerms(?array $specialTerms = null): self
     {
         $this->specialTerms = $specialTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecialTerms(): self
+    {
+        $this->specialTerms = null;
 
         return $this;
     }
@@ -234,6 +254,16 @@ class DeliveryTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLossRiskResponsibilityCode(): self
+    {
+        $this->lossRiskResponsibilityCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\LossRisk>|null
      */
     public function getLossRisk(): ?array
@@ -248,6 +278,16 @@ class DeliveryTermsType
     public function setLossRisk(?array $lossRisk = null): self
     {
         $this->lossRisk = $lossRisk;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLossRisk(): self
+    {
+        $this->lossRisk = null;
 
         return $this;
     }
@@ -344,6 +384,16 @@ class DeliveryTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAmount(): self
+    {
+        $this->amount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\DeliveryLocation|null
      */
     public function getDeliveryLocation(): ?DeliveryLocation
@@ -373,6 +423,16 @@ class DeliveryTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDeliveryLocation(): self
+    {
+        $this->deliveryLocation = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge|null
      */
     public function getAllowanceCharge(): ?AllowanceCharge
@@ -397,6 +457,16 @@ class DeliveryTermsType
     public function setAllowanceCharge(?AllowanceCharge $allowanceCharge = null): self
     {
         $this->allowanceCharge = $allowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAllowanceCharge(): self
+    {
+        $this->allowanceCharge = null;
 
         return $this;
     }

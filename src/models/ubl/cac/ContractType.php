@@ -202,6 +202,16 @@ class ContractType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getIssueDate(): ?\DateTimeInterface
@@ -216,6 +226,16 @@ class ContractType
     public function setIssueDate(?\DateTimeInterface $issueDate = null): self
     {
         $this->issueDate = $issueDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIssueDate(): self
+    {
+        $this->issueDate = null;
 
         return $this;
     }
@@ -240,6 +260,16 @@ class ContractType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIssueTime(): self
+    {
+        $this->issueTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getNominationDate(): ?\DateTimeInterface
@@ -259,6 +289,16 @@ class ContractType
     }
 
     /**
+     * @return self
+     */
+    public function unsetNominationDate(): self
+    {
+        $this->nominationDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getNominationTime(): ?\DateTimeInterface
@@ -273,6 +313,16 @@ class ContractType
     public function setNominationTime(?\DateTimeInterface $nominationTime = null): self
     {
         $this->nominationTime = $nominationTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNominationTime(): self
+    {
+        $this->nominationTime = null;
 
         return $this;
     }
@@ -307,6 +357,16 @@ class ContractType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContractTypeCode(): self
+    {
+        $this->contractTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ContractType|null
      */
     public function getContractType(): ?ContractType1
@@ -336,6 +396,16 @@ class ContractType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContractType(): self
+    {
+        $this->contractType = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -350,6 +420,16 @@ class ContractType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -446,6 +526,16 @@ class ContractType
     }
 
     /**
+     * @return self
+     */
+    public function unsetVersionID(): self
+    {
+        $this->versionID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -460,6 +550,16 @@ class ContractType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -556,6 +656,16 @@ class ContractType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValidityPeriod(): self
+    {
+        $this->validityPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ContractDocumentReference>|null
      */
     public function getContractDocumentReference(): ?array
@@ -570,6 +680,16 @@ class ContractType
     public function setContractDocumentReference(?array $contractDocumentReference = null): self
     {
         $this->contractDocumentReference = $contractDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContractDocumentReference(): self
+    {
+        $this->contractDocumentReference = null;
 
         return $this;
     }
@@ -666,6 +786,16 @@ class ContractType
     }
 
     /**
+     * @return self
+     */
+    public function unsetNominationPeriod(): self
+    {
+        $this->nominationPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ContractualDelivery|null
      */
     public function getContractualDelivery(): ?ContractualDelivery
@@ -690,6 +820,16 @@ class ContractType
     public function setContractualDelivery(?ContractualDelivery $contractualDelivery = null): self
     {
         $this->contractualDelivery = $contractualDelivery;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContractualDelivery(): self
+    {
+        $this->contractualDelivery = null;
 
         return $this;
     }

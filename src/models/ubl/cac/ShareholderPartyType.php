@@ -62,6 +62,16 @@ class ShareholderPartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPartecipationPercent(): self
+    {
+        $this->partecipationPercent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Party|null
      */
     public function getParty(): ?Party
@@ -86,6 +96,16 @@ class ShareholderPartyType
     public function setParty(?Party $party = null): self
     {
         $this->party = $party;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetParty(): self
+    {
+        $this->party = null;
 
         return $this;
     }

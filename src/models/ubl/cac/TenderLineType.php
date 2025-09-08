@@ -288,6 +288,16 @@ class TenderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -302,6 +312,16 @@ class TenderLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -398,6 +418,16 @@ class TenderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetQuantity(): self
+    {
+        $this->quantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LineExtensionAmount|null
      */
     public function getLineExtensionAmount(): ?LineExtensionAmount
@@ -422,6 +452,16 @@ class TenderLineType
     public function setLineExtensionAmount(?LineExtensionAmount $lineExtensionAmount = null): self
     {
         $this->lineExtensionAmount = $lineExtensionAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLineExtensionAmount(): self
+    {
+        $this->lineExtensionAmount = null;
 
         return $this;
     }
@@ -456,6 +496,16 @@ class TenderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTotalTaxAmount(): self
+    {
+        $this->totalTaxAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\OrderableUnit|null
      */
     public function getOrderableUnit(): ?OrderableUnit
@@ -485,6 +535,16 @@ class TenderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOrderableUnit(): self
+    {
+        $this->orderableUnit = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ContentUnitQuantity|null
      */
     public function getContentUnitQuantity(): ?ContentUnitQuantity
@@ -509,6 +569,16 @@ class TenderLineType
     public function setContentUnitQuantity(?ContentUnitQuantity $contentUnitQuantity = null): self
     {
         $this->contentUnitQuantity = $contentUnitQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContentUnitQuantity(): self
+    {
+        $this->contentUnitQuantity = null;
 
         return $this;
     }
@@ -544,6 +614,16 @@ class TenderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOrderQuantityIncrementNumeric(): self
+    {
+        $this->orderQuantityIncrementNumeric = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MinimumOrderQuantity|null
      */
     public function getMinimumOrderQuantity(): ?MinimumOrderQuantity
@@ -568,6 +648,16 @@ class TenderLineType
     public function setMinimumOrderQuantity(?MinimumOrderQuantity $minimumOrderQuantity = null): self
     {
         $this->minimumOrderQuantity = $minimumOrderQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMinimumOrderQuantity(): self
+    {
+        $this->minimumOrderQuantity = null;
 
         return $this;
     }
@@ -602,6 +692,16 @@ class TenderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMaximumOrderQuantity(): self
+    {
+        $this->maximumOrderQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\WarrantyInformation>|null
      */
     public function getWarrantyInformation(): ?array
@@ -616,6 +716,16 @@ class TenderLineType
     public function setWarrantyInformation(?array $warrantyInformation = null): self
     {
         $this->warrantyInformation = $warrantyInformation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetWarrantyInformation(): self
+    {
+        $this->warrantyInformation = null;
 
         return $this;
     }
@@ -712,6 +822,16 @@ class TenderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPackLevelCode(): self
+    {
+        $this->packLevelCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      */
     public function getDocumentReference(): ?array
@@ -726,6 +846,16 @@ class TenderLineType
     public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
 
         return $this;
     }
@@ -822,6 +952,16 @@ class TenderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetItem(): self
+    {
+        $this->item = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\OfferedItemLocationQuantity>|null
      */
     public function getOfferedItemLocationQuantity(): ?array
@@ -836,6 +976,16 @@ class TenderLineType
     public function setOfferedItemLocationQuantity(?array $offeredItemLocationQuantity = null): self
     {
         $this->offeredItemLocationQuantity = $offeredItemLocationQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOfferedItemLocationQuantity(): self
+    {
+        $this->offeredItemLocationQuantity = null;
 
         return $this;
     }
@@ -918,6 +1068,16 @@ class TenderLineType
     public function setReplacementRelatedItem(?array $replacementRelatedItem = null): self
     {
         $this->replacementRelatedItem = $replacementRelatedItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetReplacementRelatedItem(): self
+    {
+        $this->replacementRelatedItem = null;
 
         return $this;
     }
@@ -1014,6 +1174,16 @@ class TenderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetWarrantyParty(): self
+    {
+        $this->warrantyParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\WarrantyValidityPeriod|null
      */
     public function getWarrantyValidityPeriod(): ?WarrantyValidityPeriod
@@ -1043,6 +1213,16 @@ class TenderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetWarrantyValidityPeriod(): self
+    {
+        $this->warrantyValidityPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SubTenderLine>|null
      */
     public function getSubTenderLine(): ?array
@@ -1057,6 +1237,16 @@ class TenderLineType
     public function setSubTenderLine(?array $subTenderLine = null): self
     {
         $this->subTenderLine = $subTenderLine;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSubTenderLine(): self
+    {
+        $this->subTenderLine = null;
 
         return $this;
     }
@@ -1154,6 +1344,16 @@ class TenderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCallForTendersLineReference(): self
+    {
+        $this->callForTendersLineReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\CallForTendersDocumentReference|null
      */
     public function getCallForTendersDocumentReference(): ?CallForTendersDocumentReference
@@ -1179,6 +1379,16 @@ class TenderLineType
         ?CallForTendersDocumentReference $callForTendersDocumentReference = null,
     ): self {
         $this->callForTendersDocumentReference = $callForTendersDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCallForTendersDocumentReference(): self
+    {
+        $this->callForTendersDocumentReference = null;
 
         return $this;
     }

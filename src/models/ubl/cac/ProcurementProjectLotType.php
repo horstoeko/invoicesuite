@@ -73,6 +73,16 @@ class ProcurementProjectLotType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\TenderingTerms|null
      */
     public function getTenderingTerms(): ?TenderingTerms
@@ -102,6 +112,16 @@ class ProcurementProjectLotType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTenderingTerms(): self
+    {
+        $this->tenderingTerms = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ProcurementProject|null
      */
     public function getProcurementProject(): ?ProcurementProject
@@ -126,6 +146,16 @@ class ProcurementProjectLotType
     public function setProcurementProject(?ProcurementProject $procurementProject = null): self
     {
         $this->procurementProject = $procurementProject;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetProcurementProject(): self
+    {
+        $this->procurementProject = null;
 
         return $this;
     }

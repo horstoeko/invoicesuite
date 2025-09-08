@@ -98,6 +98,16 @@ class ServiceProviderPartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ServiceTypeCode|null
      */
     public function getServiceTypeCode(): ?ServiceTypeCode
@@ -127,6 +137,16 @@ class ServiceProviderPartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetServiceTypeCode(): self
+    {
+        $this->serviceTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\ServiceType>|null
      */
     public function getServiceType(): ?array
@@ -141,6 +161,16 @@ class ServiceProviderPartyType
     public function setServiceType(?array $serviceType = null): self
     {
         $this->serviceType = $serviceType;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetServiceType(): self
+    {
+        $this->serviceType = null;
 
         return $this;
     }
@@ -237,6 +267,16 @@ class ServiceProviderPartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetParty(): self
+    {
+        $this->party = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\SellerContact|null
      */
     public function getSellerContact(): ?SellerContact
@@ -261,6 +301,16 @@ class ServiceProviderPartyType
     public function setSellerContact(?SellerContact $sellerContact = null): self
     {
         $this->sellerContact = $sellerContact;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSellerContact(): self
+    {
+        $this->sellerContact = null;
 
         return $this;
     }

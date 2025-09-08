@@ -75,6 +75,16 @@ class ItemPropertyGroupType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      */
     public function getName(): ?Name
@@ -104,6 +114,16 @@ class ItemPropertyGroupType
     }
 
     /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ImportanceCode|null
      */
     public function getImportanceCode(): ?ImportanceCode
@@ -128,6 +148,16 @@ class ItemPropertyGroupType
     public function setImportanceCode(?ImportanceCode $importanceCode = null): self
     {
         $this->importanceCode = $importanceCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetImportanceCode(): self
+    {
+        $this->importanceCode = null;
 
         return $this;
     }

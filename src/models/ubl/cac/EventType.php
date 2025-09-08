@@ -144,6 +144,16 @@ class EventType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIdentificationID(): self
+    {
+        $this->identificationID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getOccurrenceDate(): ?\DateTimeInterface
@@ -163,6 +173,16 @@ class EventType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOccurrenceDate(): self
+    {
+        $this->occurrenceDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getOccurrenceTime(): ?\DateTimeInterface
@@ -177,6 +197,16 @@ class EventType
     public function setOccurrenceTime(?\DateTimeInterface $occurrenceTime = null): self
     {
         $this->occurrenceTime = $occurrenceTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOccurrenceTime(): self
+    {
+        $this->occurrenceTime = null;
 
         return $this;
     }
@@ -211,6 +241,16 @@ class EventType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTypeCode(): self
+    {
+        $this->typeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -225,6 +265,16 @@ class EventType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -311,6 +361,16 @@ class EventType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCompletionIndicator(): self
+    {
+        $this->completionIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\CurrentStatus>|null
      */
     public function getCurrentStatus(): ?array
@@ -325,6 +385,16 @@ class EventType
     public function setCurrentStatus(?array $currentStatus = null): self
     {
         $this->currentStatus = $currentStatus;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCurrentStatus(): self
+    {
+        $this->currentStatus = null;
 
         return $this;
     }
@@ -406,6 +476,16 @@ class EventType
     public function setContact(?array $contact = null): self
     {
         $this->contact = $contact;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContact(): self
+    {
+        $this->contact = null;
 
         return $this;
     }
@@ -497,6 +577,16 @@ class EventType
     public function setOccurenceLocation(?OccurenceLocation $occurenceLocation = null): self
     {
         $this->occurenceLocation = $occurenceLocation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOccurenceLocation(): self
+    {
+        $this->occurenceLocation = null;
 
         return $this;
     }

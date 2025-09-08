@@ -194,6 +194,16 @@ class ItemPropertyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      */
     public function getName(): ?Name
@@ -218,6 +228,16 @@ class ItemPropertyType
     public function setName(?Name $name = null): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
 
         return $this;
     }
@@ -252,6 +272,16 @@ class ItemPropertyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetNameCode(): self
+    {
+        $this->nameCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TestMethod|null
      */
     public function getTestMethod(): ?TestMethod
@@ -276,6 +306,16 @@ class ItemPropertyType
     public function setTestMethod(?TestMethod $testMethod = null): self
     {
         $this->testMethod = $testMethod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTestMethod(): self
+    {
+        $this->testMethod = null;
 
         return $this;
     }
@@ -310,6 +350,16 @@ class ItemPropertyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ValueQuantity|null
      */
     public function getValueQuantity(): ?ValueQuantity
@@ -339,6 +389,16 @@ class ItemPropertyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValueQuantity(): self
+    {
+        $this->valueQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\ValueQualifier>|null
      */
     public function getValueQualifier(): ?array
@@ -353,6 +413,16 @@ class ItemPropertyType
     public function setValueQualifier(?array $valueQualifier = null): self
     {
         $this->valueQualifier = $valueQualifier;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValueQualifier(): self
+    {
+        $this->valueQualifier = null;
 
         return $this;
     }
@@ -449,6 +519,16 @@ class ItemPropertyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetImportanceCode(): self
+    {
+        $this->importanceCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\ListValue>|null
      */
     public function getListValue(): ?array
@@ -463,6 +543,16 @@ class ItemPropertyType
     public function setListValue(?array $listValue = null): self
     {
         $this->listValue = $listValue;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetListValue(): self
+    {
+        $this->listValue = null;
 
         return $this;
     }
@@ -559,6 +649,16 @@ class ItemPropertyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUsabilityPeriod(): self
+    {
+        $this->usabilityPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ItemPropertyGroup>|null
      */
     public function getItemPropertyGroup(): ?array
@@ -573,6 +673,16 @@ class ItemPropertyType
     public function setItemPropertyGroup(?array $itemPropertyGroup = null): self
     {
         $this->itemPropertyGroup = $itemPropertyGroup;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetItemPropertyGroup(): self
+    {
+        $this->itemPropertyGroup = null;
 
         return $this;
     }
@@ -669,6 +779,16 @@ class ItemPropertyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRangeDimension(): self
+    {
+        $this->rangeDimension = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ItemPropertyRange|null
      */
     public function getItemPropertyRange(): ?ItemPropertyRange
@@ -693,6 +813,16 @@ class ItemPropertyType
     public function setItemPropertyRange(?ItemPropertyRange $itemPropertyRange = null): self
     {
         $this->itemPropertyRange = $itemPropertyRange;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetItemPropertyRange(): self
+    {
+        $this->itemPropertyRange = null;
 
         return $this;
     }

@@ -122,6 +122,16 @@ class ImmobilizedSecurityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetImmobilizationCertificateID(): self
+    {
+        $this->immobilizationCertificateID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SecurityID|null
      */
     public function getSecurityID(): ?SecurityID
@@ -151,6 +161,16 @@ class ImmobilizedSecurityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSecurityID(): self
+    {
+        $this->securityID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getIssueDate(): ?\DateTimeInterface
@@ -165,6 +185,16 @@ class ImmobilizedSecurityType
     public function setIssueDate(?\DateTimeInterface $issueDate = null): self
     {
         $this->issueDate = $issueDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIssueDate(): self
+    {
+        $this->issueDate = null;
 
         return $this;
     }
@@ -199,6 +229,16 @@ class ImmobilizedSecurityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFaceValueAmount(): self
+    {
+        $this->faceValueAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MarketValueAmount|null
      */
     public function getMarketValueAmount(): ?MarketValueAmount
@@ -223,6 +263,16 @@ class ImmobilizedSecurityType
     public function setMarketValueAmount(?MarketValueAmount $marketValueAmount = null): self
     {
         $this->marketValueAmount = $marketValueAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMarketValueAmount(): self
+    {
+        $this->marketValueAmount = null;
 
         return $this;
     }
@@ -257,6 +307,16 @@ class ImmobilizedSecurityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSharesNumberQuantity(): self
+    {
+        $this->sharesNumberQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\IssuerParty|null
      */
     public function getIssuerParty(): ?IssuerParty
@@ -281,6 +341,16 @@ class ImmobilizedSecurityType
     public function setIssuerParty(?IssuerParty $issuerParty = null): self
     {
         $this->issuerParty = $issuerParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIssuerParty(): self
+    {
+        $this->issuerParty = null;
 
         return $this;
     }

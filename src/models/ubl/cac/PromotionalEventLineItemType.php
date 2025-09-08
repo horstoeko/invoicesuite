@@ -62,6 +62,16 @@ class PromotionalEventLineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAmount(): self
+    {
+        $this->amount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\EventLineItem|null
      */
     public function getEventLineItem(): ?EventLineItem
@@ -86,6 +96,16 @@ class PromotionalEventLineItemType
     public function setEventLineItem(?EventLineItem $eventLineItem = null): self
     {
         $this->eventLineItem = $eventLineItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEventLineItem(): self
+    {
+        $this->eventLineItem = null;
 
         return $this;
     }

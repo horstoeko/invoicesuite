@@ -120,6 +120,16 @@ class TradeFinancingType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\FinancingInstrumentCode|null
      */
     public function getFinancingInstrumentCode(): ?FinancingInstrumentCode
@@ -144,6 +154,16 @@ class TradeFinancingType
     public function setFinancingInstrumentCode(?FinancingInstrumentCode $financingInstrumentCode = null): self
     {
         $this->financingInstrumentCode = $financingInstrumentCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFinancingInstrumentCode(): self
+    {
+        $this->financingInstrumentCode = null;
 
         return $this;
     }
@@ -178,6 +198,16 @@ class TradeFinancingType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContractDocumentReference(): self
+    {
+        $this->contractDocumentReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      */
     public function getDocumentReference(): ?array
@@ -192,6 +222,16 @@ class TradeFinancingType
     public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
 
         return $this;
     }
@@ -288,6 +328,16 @@ class TradeFinancingType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFinancingParty(): self
+    {
+        $this->financingParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\FinancingFinancialAccount|null
      */
     public function getFinancingFinancialAccount(): ?FinancingFinancialAccount
@@ -317,6 +367,16 @@ class TradeFinancingType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFinancingFinancialAccount(): self
+    {
+        $this->financingFinancialAccount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Clause>|null
      */
     public function getClause(): ?array
@@ -331,6 +391,16 @@ class TradeFinancingType
     public function setClause(?array $clause = null): self
     {
         $this->clause = $clause;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetClause(): self
+    {
+        $this->clause = null;
 
         return $this;
     }

@@ -209,6 +209,16 @@ class DespatchLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      */
     public function getUUID(): ?UUID
@@ -238,6 +248,16 @@ class DespatchLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUUID(): self
+    {
+        $this->uUID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -252,6 +272,16 @@ class DespatchLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -348,6 +378,16 @@ class DespatchLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineStatusCode(): self
+    {
+        $this->lineStatusCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\DeliveredQuantity|null
      */
     public function getDeliveredQuantity(): ?DeliveredQuantity
@@ -372,6 +412,16 @@ class DespatchLineType
     public function setDeliveredQuantity(?DeliveredQuantity $deliveredQuantity = null): self
     {
         $this->deliveredQuantity = $deliveredQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDeliveredQuantity(): self
+    {
+        $this->deliveredQuantity = null;
 
         return $this;
     }
@@ -406,6 +456,16 @@ class DespatchLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBackorderQuantity(): self
+    {
+        $this->backorderQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\BackorderReason>|null
      */
     public function getBackorderReason(): ?array
@@ -420,6 +480,16 @@ class DespatchLineType
     public function setBackorderReason(?array $backorderReason = null): self
     {
         $this->backorderReason = $backorderReason;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBackorderReason(): self
+    {
+        $this->backorderReason = null;
 
         return $this;
     }
@@ -516,6 +586,16 @@ class DespatchLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOutstandingQuantity(): self
+    {
+        $this->outstandingQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\OutstandingReason>|null
      */
     public function getOutstandingReason(): ?array
@@ -530,6 +610,16 @@ class DespatchLineType
     public function setOutstandingReason(?array $outstandingReason = null): self
     {
         $this->outstandingReason = $outstandingReason;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOutstandingReason(): self
+    {
+        $this->outstandingReason = null;
 
         return $this;
     }
@@ -626,6 +716,16 @@ class DespatchLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOversupplyQuantity(): self
+    {
+        $this->oversupplyQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\OrderLineReference>|null
      */
     public function getOrderLineReference(): ?array
@@ -640,6 +740,16 @@ class DespatchLineType
     public function setOrderLineReference(?array $orderLineReference = null): self
     {
         $this->orderLineReference = $orderLineReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOrderLineReference(): self
+    {
+        $this->orderLineReference = null;
 
         return $this;
     }
@@ -721,6 +831,16 @@ class DespatchLineType
     public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
 
         return $this;
     }
@@ -817,6 +937,16 @@ class DespatchLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetItem(): self
+    {
+        $this->item = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Shipment>|null
      */
     public function getShipment(): ?array
@@ -831,6 +961,16 @@ class DespatchLineType
     public function setShipment(?array $shipment = null): self
     {
         $this->shipment = $shipment;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetShipment(): self
+    {
+        $this->shipment = null;
 
         return $this;
     }

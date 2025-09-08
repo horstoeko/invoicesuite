@@ -63,6 +63,16 @@ class ContractingActivityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetActivityTypeCode(): self
+    {
+        $this->activityTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ActivityType|null
      */
     public function getActivityType(): ?ActivityType
@@ -87,6 +97,16 @@ class ContractingActivityType
     public function setActivityType(?ActivityType $activityType = null): self
     {
         $this->activityType = $activityType;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetActivityType(): self
+    {
+        $this->activityType = null;
 
         return $this;
     }

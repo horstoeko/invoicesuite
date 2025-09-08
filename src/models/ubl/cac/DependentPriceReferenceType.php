@@ -73,6 +73,16 @@ class DependentPriceReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPercent(): self
+    {
+        $this->percent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\LocationAddress|null
      */
     public function getLocationAddress(): ?LocationAddress
@@ -102,6 +112,16 @@ class DependentPriceReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLocationAddress(): self
+    {
+        $this->locationAddress = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\DependentLineReference|null
      */
     public function getDependentLineReference(): ?DependentLineReference
@@ -126,6 +146,16 @@ class DependentPriceReferenceType
     public function setDependentLineReference(?DependentLineReference $dependentLineReference = null): self
     {
         $this->dependentLineReference = $dependentLineReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDependentLineReference(): self
+    {
+        $this->dependentLineReference = null;
 
         return $this;
     }

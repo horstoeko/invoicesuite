@@ -76,6 +76,16 @@ class RelatedItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      */
     public function getQuantity(): ?Quantity
@@ -105,6 +115,16 @@ class RelatedItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetQuantity(): self
+    {
+        $this->quantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -119,6 +139,16 @@ class RelatedItemType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }

@@ -73,6 +73,16 @@ class EventCommentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetComment(): self
+    {
+        $this->comment = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getIssueDate(): ?\DateTimeInterface
@@ -92,6 +102,16 @@ class EventCommentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIssueDate(): self
+    {
+        $this->issueDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getIssueTime(): ?\DateTimeInterface
@@ -106,6 +126,16 @@ class EventCommentType
     public function setIssueTime(?\DateTimeInterface $issueTime = null): self
     {
         $this->issueTime = $issueTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIssueTime(): self
+    {
+        $this->issueTime = null;
 
         return $this;
     }

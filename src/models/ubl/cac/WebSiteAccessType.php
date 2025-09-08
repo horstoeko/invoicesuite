@@ -75,6 +75,16 @@ class WebSiteAccessType
     }
 
     /**
+     * @return self
+     */
+    public function unsetURI(): self
+    {
+        $this->uRI = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Password|null
      */
     public function getPassword(): ?Password
@@ -104,6 +114,16 @@ class WebSiteAccessType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPassword(): self
+    {
+        $this->password = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Login|null
      */
     public function getLogin(): ?Login
@@ -128,6 +148,16 @@ class WebSiteAccessType
     public function setLogin(?Login $login = null): self
     {
         $this->login = $login;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLogin(): self
+    {
+        $this->login = null;
 
         return $this;
     }

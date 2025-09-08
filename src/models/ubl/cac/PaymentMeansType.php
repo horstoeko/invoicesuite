@@ -190,6 +190,16 @@ class PaymentMeansType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PaymentMeansCode|null
      */
     public function getPaymentMeansCode(): ?PaymentMeansCode
@@ -219,6 +229,16 @@ class PaymentMeansType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPaymentMeansCode(): self
+    {
+        $this->paymentMeansCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getPaymentDueDate(): ?\DateTimeInterface
@@ -233,6 +253,16 @@ class PaymentMeansType
     public function setPaymentDueDate(?\DateTimeInterface $paymentDueDate = null): self
     {
         $this->paymentDueDate = $paymentDueDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPaymentDueDate(): self
+    {
+        $this->paymentDueDate = null;
 
         return $this;
     }
@@ -267,6 +297,16 @@ class PaymentMeansType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPaymentChannelCode(): self
+    {
+        $this->paymentChannelCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\InstructionID|null
      */
     public function getInstructionID(): ?InstructionID
@@ -296,6 +336,16 @@ class PaymentMeansType
     }
 
     /**
+     * @return self
+     */
+    public function unsetInstructionID(): self
+    {
+        $this->instructionID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\InstructionNote>|null
      */
     public function getInstructionNote(): ?array
@@ -310,6 +360,16 @@ class PaymentMeansType
     public function setInstructionNote(?array $instructionNote = null): self
     {
         $this->instructionNote = $instructionNote;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInstructionNote(): self
+    {
+        $this->instructionNote = null;
 
         return $this;
     }
@@ -391,6 +451,16 @@ class PaymentMeansType
     public function setPaymentID(?array $paymentID = null): self
     {
         $this->paymentID = $paymentID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPaymentID(): self
+    {
+        $this->paymentID = null;
 
         return $this;
     }
@@ -487,6 +557,16 @@ class PaymentMeansType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCardAccount(): self
+    {
+        $this->cardAccount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\PayerFinancialAccount|null
      */
     public function getPayerFinancialAccount(): ?PayerFinancialAccount
@@ -511,6 +591,16 @@ class PaymentMeansType
     public function setPayerFinancialAccount(?PayerFinancialAccount $payerFinancialAccount = null): self
     {
         $this->payerFinancialAccount = $payerFinancialAccount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPayerFinancialAccount(): self
+    {
+        $this->payerFinancialAccount = null;
 
         return $this;
     }
@@ -545,6 +635,16 @@ class PaymentMeansType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPayeeFinancialAccount(): self
+    {
+        $this->payeeFinancialAccount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\CreditAccount|null
      */
     public function getCreditAccount(): ?CreditAccount
@@ -569,6 +669,16 @@ class PaymentMeansType
     public function setCreditAccount(?CreditAccount $creditAccount = null): self
     {
         $this->creditAccount = $creditAccount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCreditAccount(): self
+    {
+        $this->creditAccount = null;
 
         return $this;
     }
@@ -603,6 +713,16 @@ class PaymentMeansType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPaymentMandate(): self
+    {
+        $this->paymentMandate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\TradeFinancing|null
      */
     public function getTradeFinancing(): ?TradeFinancing
@@ -627,6 +747,16 @@ class PaymentMeansType
     public function setTradeFinancing(?TradeFinancing $tradeFinancing = null): self
     {
         $this->tradeFinancing = $tradeFinancing;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTradeFinancing(): self
+    {
+        $this->tradeFinancing = null;
 
         return $this;
     }

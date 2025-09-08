@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\ubl\cct;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class CodeType
 {
@@ -133,7 +134,17 @@ class CodeType
      */
     public function setValue(?string $value = null): self
     {
-        $this->value = $value;
+        $this->value = InvoiceSuiteStringUtils::asNullWhenEmpty($value);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
 
         return $this;
     }
@@ -152,7 +163,17 @@ class CodeType
      */
     public function setListID(?string $listID = null): self
     {
-        $this->listID = $listID;
+        $this->listID = InvoiceSuiteStringUtils::asNullWhenEmpty($listID);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetListID(): self
+    {
+        $this->listID = null;
 
         return $this;
     }
@@ -171,7 +192,17 @@ class CodeType
      */
     public function setListAgencyID(?string $listAgencyID = null): self
     {
-        $this->listAgencyID = $listAgencyID;
+        $this->listAgencyID = InvoiceSuiteStringUtils::asNullWhenEmpty($listAgencyID);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetListAgencyID(): self
+    {
+        $this->listAgencyID = null;
 
         return $this;
     }
@@ -190,7 +221,17 @@ class CodeType
      */
     public function setListAgencyName(?string $listAgencyName = null): self
     {
-        $this->listAgencyName = $listAgencyName;
+        $this->listAgencyName = InvoiceSuiteStringUtils::asNullWhenEmpty($listAgencyName);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetListAgencyName(): self
+    {
+        $this->listAgencyName = null;
 
         return $this;
     }
@@ -209,7 +250,17 @@ class CodeType
      */
     public function setListName(?string $listName = null): self
     {
-        $this->listName = $listName;
+        $this->listName = InvoiceSuiteStringUtils::asNullWhenEmpty($listName);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetListName(): self
+    {
+        $this->listName = null;
 
         return $this;
     }
@@ -228,7 +279,17 @@ class CodeType
      */
     public function setListVersionID(?string $listVersionID = null): self
     {
-        $this->listVersionID = $listVersionID;
+        $this->listVersionID = InvoiceSuiteStringUtils::asNullWhenEmpty($listVersionID);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetListVersionID(): self
+    {
+        $this->listVersionID = null;
 
         return $this;
     }
@@ -247,7 +308,17 @@ class CodeType
      */
     public function setName(?string $name = null): self
     {
-        $this->name = $name;
+        $this->name = InvoiceSuiteStringUtils::asNullWhenEmpty($name);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
 
         return $this;
     }
@@ -266,7 +337,17 @@ class CodeType
      */
     public function setLanguageID(?string $languageID = null): self
     {
-        $this->languageID = $languageID;
+        $this->languageID = InvoiceSuiteStringUtils::asNullWhenEmpty($languageID);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLanguageID(): self
+    {
+        $this->languageID = null;
 
         return $this;
     }
@@ -285,7 +366,17 @@ class CodeType
      */
     public function setListURI(?string $listURI = null): self
     {
-        $this->listURI = $listURI;
+        $this->listURI = InvoiceSuiteStringUtils::asNullWhenEmpty($listURI);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetListURI(): self
+    {
+        $this->listURI = null;
 
         return $this;
     }
@@ -304,7 +395,17 @@ class CodeType
      */
     public function setListSchemeURI(?string $listSchemeURI = null): self
     {
-        $this->listSchemeURI = $listSchemeURI;
+        $this->listSchemeURI = InvoiceSuiteStringUtils::asNullWhenEmpty($listSchemeURI);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetListSchemeURI(): self
+    {
+        $this->listSchemeURI = null;
 
         return $this;
     }

@@ -420,6 +420,16 @@ class ShipmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ShippingPriorityLevelCode|null
      */
     public function getShippingPriorityLevelCode(): ?ShippingPriorityLevelCode
@@ -444,6 +454,16 @@ class ShipmentType
     public function setShippingPriorityLevelCode(?ShippingPriorityLevelCode $shippingPriorityLevelCode = null): self
     {
         $this->shippingPriorityLevelCode = $shippingPriorityLevelCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetShippingPriorityLevelCode(): self
+    {
+        $this->shippingPriorityLevelCode = null;
 
         return $this;
     }
@@ -478,6 +498,16 @@ class ShipmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetHandlingCode(): self
+    {
+        $this->handlingCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\HandlingInstructions>|null
      */
     public function getHandlingInstructions(): ?array
@@ -492,6 +522,16 @@ class ShipmentType
     public function setHandlingInstructions(?array $handlingInstructions = null): self
     {
         $this->handlingInstructions = $handlingInstructions;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetHandlingInstructions(): self
+    {
+        $this->handlingInstructions = null;
 
         return $this;
     }
@@ -573,6 +613,16 @@ class ShipmentType
     public function setInformation(?array $information = null): self
     {
         $this->information = $information;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInformation(): self
+    {
+        $this->information = null;
 
         return $this;
     }
@@ -669,6 +719,16 @@ class ShipmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetGrossWeightMeasure(): self
+    {
+        $this->grossWeightMeasure = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\NetWeightMeasure|null
      */
     public function getNetWeightMeasure(): ?NetWeightMeasure
@@ -693,6 +753,16 @@ class ShipmentType
     public function setNetWeightMeasure(?NetWeightMeasure $netWeightMeasure = null): self
     {
         $this->netWeightMeasure = $netWeightMeasure;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNetWeightMeasure(): self
+    {
+        $this->netWeightMeasure = null;
 
         return $this;
     }
@@ -727,6 +797,16 @@ class ShipmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetNetNetWeightMeasure(): self
+    {
+        $this->netNetWeightMeasure = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\GrossVolumeMeasure|null
      */
     public function getGrossVolumeMeasure(): ?GrossVolumeMeasure
@@ -751,6 +831,16 @@ class ShipmentType
     public function setGrossVolumeMeasure(?GrossVolumeMeasure $grossVolumeMeasure = null): self
     {
         $this->grossVolumeMeasure = $grossVolumeMeasure;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetGrossVolumeMeasure(): self
+    {
+        $this->grossVolumeMeasure = null;
 
         return $this;
     }
@@ -785,6 +875,16 @@ class ShipmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetNetVolumeMeasure(): self
+    {
+        $this->netVolumeMeasure = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TotalGoodsItemQuantity|null
      */
     public function getTotalGoodsItemQuantity(): ?TotalGoodsItemQuantity
@@ -809,6 +909,16 @@ class ShipmentType
     public function setTotalGoodsItemQuantity(?TotalGoodsItemQuantity $totalGoodsItemQuantity = null): self
     {
         $this->totalGoodsItemQuantity = $totalGoodsItemQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTotalGoodsItemQuantity(): self
+    {
+        $this->totalGoodsItemQuantity = null;
 
         return $this;
     }
@@ -844,6 +954,16 @@ class ShipmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTotalTransportHandlingUnitQuantity(): self
+    {
+        $this->totalTransportHandlingUnitQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\InsuranceValueAmount|null
      */
     public function getInsuranceValueAmount(): ?InsuranceValueAmount
@@ -868,6 +988,16 @@ class ShipmentType
     public function setInsuranceValueAmount(?InsuranceValueAmount $insuranceValueAmount = null): self
     {
         $this->insuranceValueAmount = $insuranceValueAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInsuranceValueAmount(): self
+    {
+        $this->insuranceValueAmount = null;
 
         return $this;
     }
@@ -903,6 +1033,16 @@ class ShipmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDeclaredCustomsValueAmount(): self
+    {
+        $this->declaredCustomsValueAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\DeclaredForCarriageValueAmount|null
      */
     public function getDeclaredForCarriageValueAmount(): ?DeclaredForCarriageValueAmount
@@ -928,6 +1068,16 @@ class ShipmentType
         ?DeclaredForCarriageValueAmount $declaredForCarriageValueAmount = null,
     ): self {
         $this->declaredForCarriageValueAmount = $declaredForCarriageValueAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDeclaredForCarriageValueAmount(): self
+    {
+        $this->declaredForCarriageValueAmount = null;
 
         return $this;
     }
@@ -963,6 +1113,16 @@ class ShipmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDeclaredStatisticsValueAmount(): self
+    {
+        $this->declaredStatisticsValueAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\FreeOnBoardValueAmount|null
      */
     public function getFreeOnBoardValueAmount(): ?FreeOnBoardValueAmount
@@ -992,6 +1152,16 @@ class ShipmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFreeOnBoardValueAmount(): self
+    {
+        $this->freeOnBoardValueAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\SpecialInstructions>|null
      */
     public function getSpecialInstructions(): ?array
@@ -1006,6 +1176,16 @@ class ShipmentType
     public function setSpecialInstructions(?array $specialInstructions = null): self
     {
         $this->specialInstructions = $specialInstructions;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSpecialInstructions(): self
+    {
+        $this->specialInstructions = null;
 
         return $this;
     }
@@ -1094,6 +1274,16 @@ class ShipmentType
     /**
      * @return self
      */
+    public function unsetDeliveryInstructions(): self
+    {
+        $this->deliveryInstructions = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearDeliveryInstructions(): self
     {
         $this->deliveryInstructions = [];
@@ -1173,6 +1363,16 @@ class ShipmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSplitConsignmentIndicator(): self
+    {
+        $this->splitConsignmentIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ConsignmentQuantity|null
      */
     public function getConsignmentQuantity(): ?ConsignmentQuantity
@@ -1202,6 +1402,16 @@ class ShipmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetConsignmentQuantity(): self
+    {
+        $this->consignmentQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Consignment>|null
      */
     public function getConsignment(): ?array
@@ -1216,6 +1426,16 @@ class ShipmentType
     public function setConsignment(?array $consignment = null): self
     {
         $this->consignment = $consignment;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetConsignment(): self
+    {
+        $this->consignment = null;
 
         return $this;
     }
@@ -1304,6 +1524,16 @@ class ShipmentType
     /**
      * @return self
      */
+    public function unsetGoodsItem(): self
+    {
+        $this->goodsItem = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearGoodsItem(): self
     {
         $this->goodsItem = [];
@@ -1378,6 +1608,16 @@ class ShipmentType
     public function setShipmentStage(?array $shipmentStage = null): self
     {
         $this->shipmentStage = $shipmentStage;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetShipmentStage(): self
+    {
+        $this->shipmentStage = null;
 
         return $this;
     }
@@ -1474,6 +1714,16 @@ class ShipmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDelivery(): self
+    {
+        $this->delivery = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TransportHandlingUnit>|null
      */
     public function getTransportHandlingUnit(): ?array
@@ -1488,6 +1738,16 @@ class ShipmentType
     public function setTransportHandlingUnit(?array $transportHandlingUnit = null): self
     {
         $this->transportHandlingUnit = $transportHandlingUnit;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTransportHandlingUnit(): self
+    {
+        $this->transportHandlingUnit = null;
 
         return $this;
     }
@@ -1584,6 +1844,16 @@ class ShipmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReturnAddress(): self
+    {
+        $this->returnAddress = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\OriginAddress|null
      */
     public function getOriginAddress(): ?OriginAddress
@@ -1608,6 +1878,16 @@ class ShipmentType
     public function setOriginAddress(?OriginAddress $originAddress = null): self
     {
         $this->originAddress = $originAddress;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOriginAddress(): self
+    {
+        $this->originAddress = null;
 
         return $this;
     }
@@ -1642,6 +1922,16 @@ class ShipmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFirstArrivalPortLocation(): self
+    {
+        $this->firstArrivalPortLocation = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\LastExitPortLocation|null
      */
     public function getLastExitPortLocation(): ?LastExitPortLocation
@@ -1666,6 +1956,16 @@ class ShipmentType
     public function setLastExitPortLocation(?LastExitPortLocation $lastExitPortLocation = null): self
     {
         $this->lastExitPortLocation = $lastExitPortLocation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLastExitPortLocation(): self
+    {
+        $this->lastExitPortLocation = null;
 
         return $this;
     }
@@ -1700,6 +2000,16 @@ class ShipmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExportCountry(): self
+    {
+        $this->exportCountry = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge>|null
      */
     public function getFreightAllowanceCharge(): ?array
@@ -1714,6 +2024,16 @@ class ShipmentType
     public function setFreightAllowanceCharge(?array $freightAllowanceCharge = null): self
     {
         $this->freightAllowanceCharge = $freightAllowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFreightAllowanceCharge(): self
+    {
+        $this->freightAllowanceCharge = null;
 
         return $this;
     }

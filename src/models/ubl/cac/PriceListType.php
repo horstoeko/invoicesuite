@@ -86,6 +86,16 @@ class PriceListType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\StatusCode|null
      */
     public function getStatusCode(): ?StatusCode
@@ -115,6 +125,16 @@ class PriceListType
     }
 
     /**
+     * @return self
+     */
+    public function unsetStatusCode(): self
+    {
+        $this->statusCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod>|null
      */
     public function getValidityPeriod(): ?array
@@ -129,6 +149,16 @@ class PriceListType
     public function setValidityPeriod(?array $validityPeriod = null): self
     {
         $this->validityPeriod = $validityPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValidityPeriod(): self
+    {
+        $this->validityPeriod = null;
 
         return $this;
     }
@@ -220,6 +250,16 @@ class PriceListType
     public function setPreviousPriceList(?PreviousPriceList $previousPriceList = null): self
     {
         $this->previousPriceList = $previousPriceList;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPreviousPriceList(): self
+    {
+        $this->previousPriceList = null;
 
         return $this;
     }

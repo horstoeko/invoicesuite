@@ -64,6 +64,16 @@ class EconomicOperatorRoleType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRoleCode(): self
+    {
+        $this->roleCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\RoleDescription>|null
      */
     public function getRoleDescription(): ?array
@@ -78,6 +88,16 @@ class EconomicOperatorRoleType
     public function setRoleDescription(?array $roleDescription = null): self
     {
         $this->roleDescription = $roleDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRoleDescription(): self
+    {
+        $this->roleDescription = null;
 
         return $this;
     }

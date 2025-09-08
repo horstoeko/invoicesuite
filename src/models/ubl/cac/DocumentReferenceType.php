@@ -238,6 +238,16 @@ class DocumentReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getCopyIndicator(): ?bool
@@ -252,6 +262,16 @@ class DocumentReferenceType
     public function setCopyIndicator(?bool $copyIndicator = null): self
     {
         $this->copyIndicator = $copyIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCopyIndicator(): self
+    {
+        $this->copyIndicator = null;
 
         return $this;
     }
@@ -286,6 +306,16 @@ class DocumentReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUUID(): self
+    {
+        $this->uUID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getIssueDate(): ?\DateTimeInterface
@@ -305,6 +335,16 @@ class DocumentReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIssueDate(): self
+    {
+        $this->issueDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getIssueTime(): ?\DateTimeInterface
@@ -319,6 +359,16 @@ class DocumentReferenceType
     public function setIssueTime(?\DateTimeInterface $issueTime = null): self
     {
         $this->issueTime = $issueTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIssueTime(): self
+    {
+        $this->issueTime = null;
 
         return $this;
     }
@@ -353,6 +403,16 @@ class DocumentReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDocumentTypeCode(): self
+    {
+        $this->documentTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\DocumentType|null
      */
     public function getDocumentType(): ?DocumentType
@@ -382,6 +442,16 @@ class DocumentReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDocumentType(): self
+    {
+        $this->documentType = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\XPath>|null
      */
     public function getXPath(): ?array
@@ -396,6 +466,16 @@ class DocumentReferenceType
     public function setXPath(?array $xPath = null): self
     {
         $this->xPath = $xPath;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetXPath(): self
+    {
+        $this->xPath = null;
 
         return $this;
     }
@@ -492,6 +572,16 @@ class DocumentReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLanguageID(): self
+    {
+        $this->languageID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LocaleCode|null
      */
     public function getLocaleCode(): ?LocaleCode
@@ -516,6 +606,16 @@ class DocumentReferenceType
     public function setLocaleCode(?LocaleCode $localeCode = null): self
     {
         $this->localeCode = $localeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLocaleCode(): self
+    {
+        $this->localeCode = null;
 
         return $this;
     }
@@ -550,6 +650,16 @@ class DocumentReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetVersionID(): self
+    {
+        $this->versionID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\DocumentStatusCode|null
      */
     public function getDocumentStatusCode(): ?DocumentStatusCode
@@ -579,6 +689,16 @@ class DocumentReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDocumentStatusCode(): self
+    {
+        $this->documentStatusCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\DocumentDescription>|null
      */
     public function getDocumentDescription(): ?array
@@ -593,6 +713,16 @@ class DocumentReferenceType
     public function setDocumentDescription(?array $documentDescription = null): self
     {
         $this->documentDescription = $documentDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentDescription(): self
+    {
+        $this->documentDescription = null;
 
         return $this;
     }
@@ -689,6 +819,16 @@ class DocumentReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAttachment(): self
+    {
+        $this->attachment = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod|null
      */
     public function getValidityPeriod(): ?ValidityPeriod
@@ -713,6 +853,16 @@ class DocumentReferenceType
     public function setValidityPeriod(?ValidityPeriod $validityPeriod = null): self
     {
         $this->validityPeriod = $validityPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValidityPeriod(): self
+    {
+        $this->validityPeriod = null;
 
         return $this;
     }
@@ -747,6 +897,16 @@ class DocumentReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIssuerParty(): self
+    {
+        $this->issuerParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ResultOfVerification|null
      */
     public function getResultOfVerification(): ?ResultOfVerification
@@ -771,6 +931,16 @@ class DocumentReferenceType
     public function setResultOfVerification(?ResultOfVerification $resultOfVerification = null): self
     {
         $this->resultOfVerification = $resultOfVerification;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetResultOfVerification(): self
+    {
+        $this->resultOfVerification = null;
 
         return $this;
     }

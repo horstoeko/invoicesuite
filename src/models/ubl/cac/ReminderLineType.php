@@ -206,6 +206,16 @@ class ReminderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -220,6 +230,16 @@ class ReminderLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -316,6 +336,16 @@ class ReminderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUUID(): self
+    {
+        $this->uUID = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getBalanceBroughtForwardIndicator(): ?bool
@@ -330,6 +360,16 @@ class ReminderLineType
     public function setBalanceBroughtForwardIndicator(?bool $balanceBroughtForwardIndicator = null): self
     {
         $this->balanceBroughtForwardIndicator = $balanceBroughtForwardIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBalanceBroughtForwardIndicator(): self
+    {
+        $this->balanceBroughtForwardIndicator = null;
 
         return $this;
     }
@@ -364,6 +404,16 @@ class ReminderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDebitLineAmount(): self
+    {
+        $this->debitLineAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CreditLineAmount|null
      */
     public function getCreditLineAmount(): ?CreditLineAmount
@@ -388,6 +438,16 @@ class ReminderLineType
     public function setCreditLineAmount(?CreditLineAmount $creditLineAmount = null): self
     {
         $this->creditLineAmount = $creditLineAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCreditLineAmount(): self
+    {
+        $this->creditLineAmount = null;
 
         return $this;
     }
@@ -422,6 +482,16 @@ class ReminderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAccountingCostCode(): self
+    {
+        $this->accountingCostCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\AccountingCost|null
      */
     public function getAccountingCost(): ?AccountingCost
@@ -446,6 +516,16 @@ class ReminderLineType
     public function setAccountingCost(?AccountingCost $accountingCost = null): self
     {
         $this->accountingCost = $accountingCost;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAccountingCost(): self
+    {
+        $this->accountingCost = null;
 
         return $this;
     }
@@ -480,6 +560,16 @@ class ReminderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPenaltySurchargePercent(): self
+    {
+        $this->penaltySurchargePercent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Amount|null
      */
     public function getAmount(): ?Amount
@@ -504,6 +594,16 @@ class ReminderLineType
     public function setAmount(?Amount $amount = null): self
     {
         $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAmount(): self
+    {
+        $this->amount = null;
 
         return $this;
     }
@@ -538,6 +638,16 @@ class ReminderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPaymentPurposeCode(): self
+    {
+        $this->paymentPurposeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ReminderPeriod>|null
      */
     public function getReminderPeriod(): ?array
@@ -552,6 +662,16 @@ class ReminderLineType
     public function setReminderPeriod(?array $reminderPeriod = null): self
     {
         $this->reminderPeriod = $reminderPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetReminderPeriod(): self
+    {
+        $this->reminderPeriod = null;
 
         return $this;
     }
@@ -633,6 +753,16 @@ class ReminderLineType
     public function setBillingReference(?array $billingReference = null): self
     {
         $this->billingReference = $billingReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBillingReference(): self
+    {
+        $this->billingReference = null;
 
         return $this;
     }
@@ -724,6 +854,16 @@ class ReminderLineType
     public function setExchangeRate(?ExchangeRate $exchangeRate = null): self
     {
         $this->exchangeRate = $exchangeRate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExchangeRate(): self
+    {
+        $this->exchangeRate = null;
 
         return $this;
     }

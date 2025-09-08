@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\ubl\cct;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class BinaryObjectType
 {
@@ -100,7 +101,17 @@ class BinaryObjectType
      */
     public function setValue(?string $value = null): self
     {
-        $this->value = $value;
+        $this->value = InvoiceSuiteStringUtils::asNullWhenEmpty($value);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
 
         return $this;
     }
@@ -119,7 +130,17 @@ class BinaryObjectType
      */
     public function setFormat(?string $format = null): self
     {
-        $this->format = $format;
+        $this->format = InvoiceSuiteStringUtils::asNullWhenEmpty($format);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFormat(): self
+    {
+        $this->format = null;
 
         return $this;
     }
@@ -138,7 +159,17 @@ class BinaryObjectType
      */
     public function setMimeCode(?string $mimeCode = null): self
     {
-        $this->mimeCode = $mimeCode;
+        $this->mimeCode = InvoiceSuiteStringUtils::asNullWhenEmpty($mimeCode);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMimeCode(): self
+    {
+        $this->mimeCode = null;
 
         return $this;
     }
@@ -157,7 +188,17 @@ class BinaryObjectType
      */
     public function setEncodingCode(?string $encodingCode = null): self
     {
-        $this->encodingCode = $encodingCode;
+        $this->encodingCode = InvoiceSuiteStringUtils::asNullWhenEmpty($encodingCode);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEncodingCode(): self
+    {
+        $this->encodingCode = null;
 
         return $this;
     }
@@ -176,7 +217,17 @@ class BinaryObjectType
      */
     public function setCharacterSetCode(?string $characterSetCode = null): self
     {
-        $this->characterSetCode = $characterSetCode;
+        $this->characterSetCode = InvoiceSuiteStringUtils::asNullWhenEmpty($characterSetCode);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCharacterSetCode(): self
+    {
+        $this->characterSetCode = null;
 
         return $this;
     }
@@ -195,7 +246,17 @@ class BinaryObjectType
      */
     public function setUri(?string $uri = null): self
     {
-        $this->uri = $uri;
+        $this->uri = InvoiceSuiteStringUtils::asNullWhenEmpty($uri);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetUri(): self
+    {
+        $this->uri = null;
 
         return $this;
     }
@@ -214,7 +275,17 @@ class BinaryObjectType
      */
     public function setFilename(?string $filename = null): self
     {
-        $this->filename = $filename;
+        $this->filename = InvoiceSuiteStringUtils::asNullWhenEmpty($filename);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFilename(): self
+    {
+        $this->filename = null;
 
         return $this;
     }

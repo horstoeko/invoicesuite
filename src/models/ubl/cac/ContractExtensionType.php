@@ -91,6 +91,16 @@ class ContractExtensionType
     /**
      * @return self
      */
+    public function unsetOptionsDescription(): self
+    {
+        $this->optionsDescription = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearOptionsDescription(): self
     {
         $this->optionsDescription = [];
@@ -180,6 +190,16 @@ class ContractExtensionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMinimumNumberNumeric(): self
+    {
+        $this->minimumNumberNumeric = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MaximumNumberNumeric|null
      */
     public function getMaximumNumberNumeric(): ?MaximumNumberNumeric
@@ -204,6 +224,16 @@ class ContractExtensionType
     public function setMaximumNumberNumeric(?MaximumNumberNumeric $maximumNumberNumeric = null): self
     {
         $this->maximumNumberNumeric = $maximumNumberNumeric;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMaximumNumberNumeric(): self
+    {
+        $this->maximumNumberNumeric = null;
 
         return $this;
     }
@@ -238,6 +268,16 @@ class ContractExtensionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOptionValidityPeriod(): self
+    {
+        $this->optionValidityPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Renewal>|null
      */
     public function getRenewal(): ?array
@@ -252,6 +292,16 @@ class ContractExtensionType
     public function setRenewal(?array $renewal = null): self
     {
         $this->renewal = $renewal;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRenewal(): self
+    {
+        $this->renewal = null;
 
         return $this;
     }

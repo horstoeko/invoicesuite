@@ -143,6 +143,16 @@ class OrderReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SalesOrderID|null
      */
     public function getSalesOrderID(): ?SalesOrderID
@@ -172,6 +182,16 @@ class OrderReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSalesOrderID(): self
+    {
+        $this->salesOrderID = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getCopyIndicator(): ?bool
@@ -186,6 +206,16 @@ class OrderReferenceType
     public function setCopyIndicator(?bool $copyIndicator = null): self
     {
         $this->copyIndicator = $copyIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCopyIndicator(): self
+    {
+        $this->copyIndicator = null;
 
         return $this;
     }
@@ -220,6 +250,16 @@ class OrderReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUUID(): self
+    {
+        $this->uUID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getIssueDate(): ?\DateTimeInterface
@@ -239,6 +279,16 @@ class OrderReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIssueDate(): self
+    {
+        $this->issueDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getIssueTime(): ?\DateTimeInterface
@@ -253,6 +303,16 @@ class OrderReferenceType
     public function setIssueTime(?\DateTimeInterface $issueTime = null): self
     {
         $this->issueTime = $issueTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIssueTime(): self
+    {
+        $this->issueTime = null;
 
         return $this;
     }
@@ -287,6 +347,16 @@ class OrderReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCustomerReference(): self
+    {
+        $this->customerReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\OrderTypeCode|null
      */
     public function getOrderTypeCode(): ?OrderTypeCode
@@ -316,6 +386,16 @@ class OrderReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOrderTypeCode(): self
+    {
+        $this->orderTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\DocumentReference|null
      */
     public function getDocumentReference(): ?DocumentReference
@@ -340,6 +420,16 @@ class OrderReferenceType
     public function setDocumentReference(?DocumentReference $documentReference = null): self
     {
         $this->documentReference = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
 
         return $this;
     }

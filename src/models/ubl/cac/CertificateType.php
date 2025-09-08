@@ -123,6 +123,16 @@ class CertificateType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CertificateTypeCode|null
      */
     public function getCertificateTypeCode(): ?CertificateTypeCode
@@ -147,6 +157,16 @@ class CertificateType
     public function setCertificateTypeCode(?CertificateTypeCode $certificateTypeCode = null): self
     {
         $this->certificateTypeCode = $certificateTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCertificateTypeCode(): self
+    {
+        $this->certificateTypeCode = null;
 
         return $this;
     }
@@ -181,6 +201,16 @@ class CertificateType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCertificateType(): self
+    {
+        $this->certificateType = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Remarks>|null
      */
     public function getRemarks(): ?array
@@ -195,6 +225,16 @@ class CertificateType
     public function setRemarks(?array $remarks = null): self
     {
         $this->remarks = $remarks;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRemarks(): self
+    {
+        $this->remarks = null;
 
         return $this;
     }
@@ -291,6 +331,16 @@ class CertificateType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIssuerParty(): self
+    {
+        $this->issuerParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      */
     public function getDocumentReference(): ?array
@@ -305,6 +355,16 @@ class CertificateType
     public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
 
         return $this;
     }
@@ -386,6 +446,16 @@ class CertificateType
     public function setSignature(?array $signature = null): self
     {
         $this->signature = $signature;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSignature(): self
+    {
+        $this->signature = null;
 
         return $this;
     }

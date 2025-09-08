@@ -98,6 +98,16 @@ class OrderLineReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineID(): self
+    {
+        $this->lineID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SalesOrderLineID|null
      */
     public function getSalesOrderLineID(): ?SalesOrderLineID
@@ -122,6 +132,16 @@ class OrderLineReferenceType
     public function setSalesOrderLineID(?SalesOrderLineID $salesOrderLineID = null): self
     {
         $this->salesOrderLineID = $salesOrderLineID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSalesOrderLineID(): self
+    {
+        $this->salesOrderLineID = null;
 
         return $this;
     }
@@ -156,6 +176,16 @@ class OrderLineReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUUID(): self
+    {
+        $this->uUID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LineStatusCode|null
      */
     public function getLineStatusCode(): ?LineStatusCode
@@ -185,6 +215,16 @@ class OrderLineReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineStatusCode(): self
+    {
+        $this->lineStatusCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\OrderReference|null
      */
     public function getOrderReference(): ?OrderReference
@@ -209,6 +249,16 @@ class OrderLineReferenceType
     public function setOrderReference(?OrderReference $orderReference = null): self
     {
         $this->orderReference = $orderReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOrderReference(): self
+    {
+        $this->orderReference = null;
 
         return $this;
     }

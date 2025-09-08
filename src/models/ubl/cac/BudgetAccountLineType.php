@@ -75,6 +75,16 @@ class BudgetAccountLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TotalAmount|null
      */
     public function getTotalAmount(): ?TotalAmount
@@ -104,6 +114,16 @@ class BudgetAccountLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTotalAmount(): self
+    {
+        $this->totalAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\BudgetAccount>|null
      */
     public function getBudgetAccount(): ?array
@@ -118,6 +138,16 @@ class BudgetAccountLineType
     public function setBudgetAccount(?array $budgetAccount = null): self
     {
         $this->budgetAccount = $budgetAccount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBudgetAccount(): self
+    {
+        $this->budgetAccount = null;
 
         return $this;
     }

@@ -98,6 +98,16 @@ class ConsumptionReportReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetConsumptionReportID(): self
+    {
+        $this->consumptionReportID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ConsumptionType|null
      */
     public function getConsumptionType(): ?ConsumptionType
@@ -122,6 +132,16 @@ class ConsumptionReportReferenceType
     public function setConsumptionType(?ConsumptionType $consumptionType = null): self
     {
         $this->consumptionType = $consumptionType;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetConsumptionType(): self
+    {
+        $this->consumptionType = null;
 
         return $this;
     }
@@ -156,6 +176,16 @@ class ConsumptionReportReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetConsumptionTypeCode(): self
+    {
+        $this->consumptionTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TotalConsumedQuantity|null
      */
     public function getTotalConsumedQuantity(): ?TotalConsumedQuantity
@@ -185,6 +215,16 @@ class ConsumptionReportReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTotalConsumedQuantity(): self
+    {
+        $this->totalConsumedQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Period|null
      */
     public function getPeriod(): ?Period
@@ -209,6 +249,16 @@ class ConsumptionReportReferenceType
     public function setPeriod(?Period $period = null): self
     {
         $this->period = $period;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPeriod(): self
+    {
+        $this->period = null;
 
         return $this;
     }

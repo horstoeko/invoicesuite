@@ -109,6 +109,16 @@ class ForecastLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -123,6 +133,16 @@ class ForecastLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -209,6 +229,16 @@ class ForecastLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFrozenDocumentIndicator(): self
+    {
+        $this->frozenDocumentIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode|null
      */
     public function getForecastTypeCode(): ?ForecastTypeCode
@@ -233,6 +263,16 @@ class ForecastLineType
     public function setForecastTypeCode(?ForecastTypeCode $forecastTypeCode = null): self
     {
         $this->forecastTypeCode = $forecastTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetForecastTypeCode(): self
+    {
+        $this->forecastTypeCode = null;
 
         return $this;
     }
@@ -267,6 +307,16 @@ class ForecastLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetForecastPeriod(): self
+    {
+        $this->forecastPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\SalesItem|null
      */
     public function getSalesItem(): ?SalesItem
@@ -291,6 +341,16 @@ class ForecastLineType
     public function setSalesItem(?SalesItem $salesItem = null): self
     {
         $this->salesItem = $salesItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSalesItem(): self
+    {
+        $this->salesItem = null;
 
         return $this;
     }

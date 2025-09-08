@@ -93,6 +93,16 @@ class TendererRequirementType
     /**
      * @return self
      */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearName(): self
     {
         $this->name = [];
@@ -183,6 +193,16 @@ class TendererRequirementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTendererRequirementTypeCode(): self
+    {
+        $this->tendererRequirementTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -197,6 +217,16 @@ class TendererRequirementType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -293,6 +323,16 @@ class TendererRequirementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLegalReference(): self
+    {
+        $this->legalReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SuggestedEvidence>|null
      */
     public function getSuggestedEvidence(): ?array
@@ -307,6 +347,16 @@ class TendererRequirementType
     public function setSuggestedEvidence(?array $suggestedEvidence = null): self
     {
         $this->suggestedEvidence = $suggestedEvidence;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSuggestedEvidence(): self
+    {
+        $this->suggestedEvidence = null;
 
         return $this;
     }

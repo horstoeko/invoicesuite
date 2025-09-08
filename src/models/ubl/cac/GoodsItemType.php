@@ -511,6 +511,16 @@ class GoodsItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumberID|null
      */
     public function getSequenceNumberID(): ?SequenceNumberID
@@ -540,6 +550,16 @@ class GoodsItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSequenceNumberID(): self
+    {
+        $this->sequenceNumberID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -554,6 +574,16 @@ class GoodsItemType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -640,6 +670,16 @@ class GoodsItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetHazardousRiskIndicator(): self
+    {
+        $this->hazardousRiskIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\DeclaredCustomsValueAmount|null
      */
     public function getDeclaredCustomsValueAmount(): ?DeclaredCustomsValueAmount
@@ -665,6 +705,16 @@ class GoodsItemType
         ?DeclaredCustomsValueAmount $declaredCustomsValueAmount = null,
     ): self {
         $this->declaredCustomsValueAmount = $declaredCustomsValueAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDeclaredCustomsValueAmount(): self
+    {
+        $this->declaredCustomsValueAmount = null;
 
         return $this;
     }
@@ -700,6 +750,16 @@ class GoodsItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDeclaredForCarriageValueAmount(): self
+    {
+        $this->declaredForCarriageValueAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\DeclaredStatisticsValueAmount|null
      */
     public function getDeclaredStatisticsValueAmount(): ?DeclaredStatisticsValueAmount
@@ -725,6 +785,16 @@ class GoodsItemType
         ?DeclaredStatisticsValueAmount $declaredStatisticsValueAmount = null,
     ): self {
         $this->declaredStatisticsValueAmount = $declaredStatisticsValueAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDeclaredStatisticsValueAmount(): self
+    {
+        $this->declaredStatisticsValueAmount = null;
 
         return $this;
     }
@@ -759,6 +829,16 @@ class GoodsItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFreeOnBoardValueAmount(): self
+    {
+        $this->freeOnBoardValueAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\InsuranceValueAmount|null
      */
     public function getInsuranceValueAmount(): ?InsuranceValueAmount
@@ -783,6 +863,16 @@ class GoodsItemType
     public function setInsuranceValueAmount(?InsuranceValueAmount $insuranceValueAmount = null): self
     {
         $this->insuranceValueAmount = $insuranceValueAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInsuranceValueAmount(): self
+    {
+        $this->insuranceValueAmount = null;
 
         return $this;
     }
@@ -817,6 +907,16 @@ class GoodsItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValueAmount(): self
+    {
+        $this->valueAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\GrossWeightMeasure|null
      */
     public function getGrossWeightMeasure(): ?GrossWeightMeasure
@@ -841,6 +941,16 @@ class GoodsItemType
     public function setGrossWeightMeasure(?GrossWeightMeasure $grossWeightMeasure = null): self
     {
         $this->grossWeightMeasure = $grossWeightMeasure;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetGrossWeightMeasure(): self
+    {
+        $this->grossWeightMeasure = null;
 
         return $this;
     }
@@ -875,6 +985,16 @@ class GoodsItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetNetWeightMeasure(): self
+    {
+        $this->netWeightMeasure = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\NetNetWeightMeasure|null
      */
     public function getNetNetWeightMeasure(): ?NetNetWeightMeasure
@@ -899,6 +1019,16 @@ class GoodsItemType
     public function setNetNetWeightMeasure(?NetNetWeightMeasure $netNetWeightMeasure = null): self
     {
         $this->netNetWeightMeasure = $netNetWeightMeasure;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNetNetWeightMeasure(): self
+    {
+        $this->netNetWeightMeasure = null;
 
         return $this;
     }
@@ -933,6 +1063,16 @@ class GoodsItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetChargeableWeightMeasure(): self
+    {
+        $this->chargeableWeightMeasure = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\GrossVolumeMeasure|null
      */
     public function getGrossVolumeMeasure(): ?GrossVolumeMeasure
@@ -957,6 +1097,16 @@ class GoodsItemType
     public function setGrossVolumeMeasure(?GrossVolumeMeasure $grossVolumeMeasure = null): self
     {
         $this->grossVolumeMeasure = $grossVolumeMeasure;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetGrossVolumeMeasure(): self
+    {
+        $this->grossVolumeMeasure = null;
 
         return $this;
     }
@@ -991,6 +1141,16 @@ class GoodsItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetNetVolumeMeasure(): self
+    {
+        $this->netVolumeMeasure = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      */
     public function getQuantity(): ?Quantity
@@ -1015,6 +1175,16 @@ class GoodsItemType
     public function setQuantity(?Quantity $quantity = null): self
     {
         $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetQuantity(): self
+    {
+        $this->quantity = null;
 
         return $this;
     }
@@ -1049,6 +1219,16 @@ class GoodsItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPreferenceCriterionCode(): self
+    {
+        $this->preferenceCriterionCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\RequiredCustomsID|null
      */
     public function getRequiredCustomsID(): ?RequiredCustomsID
@@ -1073,6 +1253,16 @@ class GoodsItemType
     public function setRequiredCustomsID(?RequiredCustomsID $requiredCustomsID = null): self
     {
         $this->requiredCustomsID = $requiredCustomsID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRequiredCustomsID(): self
+    {
+        $this->requiredCustomsID = null;
 
         return $this;
     }
@@ -1107,6 +1297,16 @@ class GoodsItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCustomsStatusCode(): self
+    {
+        $this->customsStatusCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CustomsTariffQuantity|null
      */
     public function getCustomsTariffQuantity(): ?CustomsTariffQuantity
@@ -1136,6 +1336,16 @@ class GoodsItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCustomsTariffQuantity(): self
+    {
+        $this->customsTariffQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getCustomsImportClassifiedIndicator(): ?bool
@@ -1150,6 +1360,16 @@ class GoodsItemType
     public function setCustomsImportClassifiedIndicator(?bool $customsImportClassifiedIndicator = null): self
     {
         $this->customsImportClassifiedIndicator = $customsImportClassifiedIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCustomsImportClassifiedIndicator(): self
+    {
+        $this->customsImportClassifiedIndicator = null;
 
         return $this;
     }
@@ -1184,6 +1404,16 @@ class GoodsItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetChargeableQuantity(): self
+    {
+        $this->chargeableQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ReturnableQuantity|null
      */
     public function getReturnableQuantity(): ?ReturnableQuantity
@@ -1208,6 +1438,16 @@ class GoodsItemType
     public function setReturnableQuantity(?ReturnableQuantity $returnableQuantity = null): self
     {
         $this->returnableQuantity = $returnableQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetReturnableQuantity(): self
+    {
+        $this->returnableQuantity = null;
 
         return $this;
     }
@@ -1242,6 +1482,16 @@ class GoodsItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTraceID(): self
+    {
+        $this->traceID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Item>|null
      */
     public function getItem(): ?array
@@ -1256,6 +1506,16 @@ class GoodsItemType
     public function setItem(?array $item = null): self
     {
         $this->item = $item;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetItem(): self
+    {
+        $this->item = null;
 
         return $this;
     }
@@ -1344,6 +1604,16 @@ class GoodsItemType
     /**
      * @return self
      */
+    public function unsetGoodsItemContainer(): self
+    {
+        $this->goodsItemContainer = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearGoodsItemContainer(): self
     {
         $this->goodsItemContainer = [];
@@ -1418,6 +1688,16 @@ class GoodsItemType
     public function setFreightAllowanceCharge(?array $freightAllowanceCharge = null): self
     {
         $this->freightAllowanceCharge = $freightAllowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFreightAllowanceCharge(): self
+    {
+        $this->freightAllowanceCharge = null;
 
         return $this;
     }
@@ -1506,6 +1786,16 @@ class GoodsItemType
     /**
      * @return self
      */
+    public function unsetInvoiceLine(): self
+    {
+        $this->invoiceLine = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearInvoiceLine(): self
     {
         $this->invoiceLine = [];
@@ -1587,6 +1877,16 @@ class GoodsItemType
     /**
      * @return self
      */
+    public function unsetTemperature(): self
+    {
+        $this->temperature = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearTemperature(): self
     {
         $this->temperature = [];
@@ -1661,6 +1961,16 @@ class GoodsItemType
     public function setContainedGoodsItem(?array $containedGoodsItem = null): self
     {
         $this->containedGoodsItem = $containedGoodsItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContainedGoodsItem(): self
+    {
+        $this->containedGoodsItem = null;
 
         return $this;
     }
@@ -1757,6 +2067,16 @@ class GoodsItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOriginAddress(): self
+    {
+        $this->originAddress = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Delivery|null
      */
     public function getDelivery(): ?Delivery
@@ -1781,6 +2101,16 @@ class GoodsItemType
     public function setDelivery(?Delivery $delivery = null): self
     {
         $this->delivery = $delivery;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDelivery(): self
+    {
+        $this->delivery = null;
 
         return $this;
     }
@@ -1815,6 +2145,16 @@ class GoodsItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPickup(): self
+    {
+        $this->pickup = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Despatch|null
      */
     public function getDespatch(): ?Despatch
@@ -1844,6 +2184,16 @@ class GoodsItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDespatch(): self
+    {
+        $this->despatch = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>|null
      */
     public function getMeasurementDimension(): ?array
@@ -1858,6 +2208,16 @@ class GoodsItemType
     public function setMeasurementDimension(?array $measurementDimension = null): self
     {
         $this->measurementDimension = $measurementDimension;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMeasurementDimension(): self
+    {
+        $this->measurementDimension = null;
 
         return $this;
     }
@@ -1939,6 +2299,16 @@ class GoodsItemType
     public function setContainingPackage(?array $containingPackage = null): self
     {
         $this->containingPackage = $containingPackage;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContainingPackage(): self
+    {
+        $this->containingPackage = null;
 
         return $this;
     }
@@ -2035,6 +2405,16 @@ class GoodsItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetShipmentDocumentReference(): self
+    {
+        $this->shipmentDocumentReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\MinimumTemperature|null
      */
     public function getMinimumTemperature(): ?MinimumTemperature
@@ -2064,6 +2444,16 @@ class GoodsItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMinimumTemperature(): self
+    {
+        $this->minimumTemperature = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\MaximumTemperature|null
      */
     public function getMaximumTemperature(): ?MaximumTemperature
@@ -2088,6 +2478,16 @@ class GoodsItemType
     public function setMaximumTemperature(?MaximumTemperature $maximumTemperature = null): self
     {
         $this->maximumTemperature = $maximumTemperature;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMaximumTemperature(): self
+    {
+        $this->maximumTemperature = null;
 
         return $this;
     }

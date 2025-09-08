@@ -145,6 +145,16 @@ class ExchangeRateType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSourceCurrencyCode(): self
+    {
+        $this->sourceCurrencyCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SourceCurrencyBaseRate|null
      */
     public function getSourceCurrencyBaseRate(): ?SourceCurrencyBaseRate
@@ -169,6 +179,16 @@ class ExchangeRateType
     public function setSourceCurrencyBaseRate(?SourceCurrencyBaseRate $sourceCurrencyBaseRate = null): self
     {
         $this->sourceCurrencyBaseRate = $sourceCurrencyBaseRate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSourceCurrencyBaseRate(): self
+    {
+        $this->sourceCurrencyBaseRate = null;
 
         return $this;
     }
@@ -203,6 +223,16 @@ class ExchangeRateType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTargetCurrencyCode(): self
+    {
+        $this->targetCurrencyCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TargetCurrencyBaseRate|null
      */
     public function getTargetCurrencyBaseRate(): ?TargetCurrencyBaseRate
@@ -227,6 +257,16 @@ class ExchangeRateType
     public function setTargetCurrencyBaseRate(?TargetCurrencyBaseRate $targetCurrencyBaseRate = null): self
     {
         $this->targetCurrencyBaseRate = $targetCurrencyBaseRate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTargetCurrencyBaseRate(): self
+    {
+        $this->targetCurrencyBaseRate = null;
 
         return $this;
     }
@@ -261,6 +301,16 @@ class ExchangeRateType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExchangeMarketID(): self
+    {
+        $this->exchangeMarketID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CalculationRate|null
      */
     public function getCalculationRate(): ?CalculationRate
@@ -285,6 +335,16 @@ class ExchangeRateType
     public function setCalculationRate(?CalculationRate $calculationRate = null): self
     {
         $this->calculationRate = $calculationRate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCalculationRate(): self
+    {
+        $this->calculationRate = null;
 
         return $this;
     }
@@ -319,6 +379,16 @@ class ExchangeRateType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMathematicOperatorCode(): self
+    {
+        $this->mathematicOperatorCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getDate(): ?\DateTimeInterface
@@ -333,6 +403,16 @@ class ExchangeRateType
     public function setDate(?\DateTimeInterface $date = null): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDate(): self
+    {
+        $this->date = null;
 
         return $this;
     }
@@ -362,6 +442,16 @@ class ExchangeRateType
     public function setForeignExchangeContract(?ForeignExchangeContract $foreignExchangeContract = null): self
     {
         $this->foreignExchangeContract = $foreignExchangeContract;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetForeignExchangeContract(): self
+    {
+        $this->foreignExchangeContract = null;
 
         return $this;
     }

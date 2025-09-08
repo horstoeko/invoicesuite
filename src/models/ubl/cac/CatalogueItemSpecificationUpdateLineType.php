@@ -84,6 +84,16 @@ class CatalogueItemSpecificationUpdateLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ContractorCustomerParty|null
      */
     public function getContractorCustomerParty(): ?ContractorCustomerParty
@@ -108,6 +118,16 @@ class CatalogueItemSpecificationUpdateLineType
     public function setContractorCustomerParty(?ContractorCustomerParty $contractorCustomerParty = null): self
     {
         $this->contractorCustomerParty = $contractorCustomerParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContractorCustomerParty(): self
+    {
+        $this->contractorCustomerParty = null;
 
         return $this;
     }
@@ -142,6 +162,16 @@ class CatalogueItemSpecificationUpdateLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSellerSupplierParty(): self
+    {
+        $this->sellerSupplierParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Item|null
      */
     public function getItem(): ?Item
@@ -166,6 +196,16 @@ class CatalogueItemSpecificationUpdateLineType
     public function setItem(?Item $item = null): self
     {
         $this->item = $item;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetItem(): self
+    {
+        $this->item = null;
 
         return $this;
     }

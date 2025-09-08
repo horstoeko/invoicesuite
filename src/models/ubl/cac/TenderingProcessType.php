@@ -308,6 +308,16 @@ class TenderingProcessType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\OriginalContractingSystemID|null
      */
     public function getOriginalContractingSystemID(): ?OriginalContractingSystemID
@@ -338,6 +348,16 @@ class TenderingProcessType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOriginalContractingSystemID(): self
+    {
+        $this->originalContractingSystemID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -352,6 +372,16 @@ class TenderingProcessType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -433,6 +463,16 @@ class TenderingProcessType
     public function setNegotiationDescription(?array $negotiationDescription = null): self
     {
         $this->negotiationDescription = $negotiationDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNegotiationDescription(): self
+    {
+        $this->negotiationDescription = null;
 
         return $this;
     }
@@ -529,6 +569,16 @@ class TenderingProcessType
     }
 
     /**
+     * @return self
+     */
+    public function unsetProcedureCode(): self
+    {
+        $this->procedureCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\UrgencyCode|null
      */
     public function getUrgencyCode(): ?UrgencyCode
@@ -553,6 +603,16 @@ class TenderingProcessType
     public function setUrgencyCode(?UrgencyCode $urgencyCode = null): self
     {
         $this->urgencyCode = $urgencyCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetUrgencyCode(): self
+    {
+        $this->urgencyCode = null;
 
         return $this;
     }
@@ -587,6 +647,16 @@ class TenderingProcessType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExpenseCode(): self
+    {
+        $this->expenseCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PartPresentationCode|null
      */
     public function getPartPresentationCode(): ?PartPresentationCode
@@ -611,6 +681,16 @@ class TenderingProcessType
     public function setPartPresentationCode(?PartPresentationCode $partPresentationCode = null): self
     {
         $this->partPresentationCode = $partPresentationCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPartPresentationCode(): self
+    {
+        $this->partPresentationCode = null;
 
         return $this;
     }
@@ -645,6 +725,16 @@ class TenderingProcessType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContractingSystemCode(): self
+    {
+        $this->contractingSystemCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SubmissionMethodCode|null
      */
     public function getSubmissionMethodCode(): ?SubmissionMethodCode
@@ -674,6 +764,16 @@ class TenderingProcessType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSubmissionMethodCode(): self
+    {
+        $this->submissionMethodCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getCandidateReductionConstraintIndicator(): ?bool
@@ -694,6 +794,16 @@ class TenderingProcessType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCandidateReductionConstraintIndicator(): self
+    {
+        $this->candidateReductionConstraintIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getGovernmentAgreementConstraintIndicator(): ?bool
@@ -709,6 +819,16 @@ class TenderingProcessType
         ?bool $governmentAgreementConstraintIndicator = null,
     ): self {
         $this->governmentAgreementConstraintIndicator = $governmentAgreementConstraintIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetGovernmentAgreementConstraintIndicator(): self
+    {
+        $this->governmentAgreementConstraintIndicator = null;
 
         return $this;
     }
@@ -744,6 +864,16 @@ class TenderingProcessType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDocumentAvailabilityPeriod(): self
+    {
+        $this->documentAvailabilityPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\TenderSubmissionDeadlinePeriod|null
      */
     public function getTenderSubmissionDeadlinePeriod(): ?TenderSubmissionDeadlinePeriod
@@ -769,6 +899,16 @@ class TenderingProcessType
         ?TenderSubmissionDeadlinePeriod $tenderSubmissionDeadlinePeriod = null,
     ): self {
         $this->tenderSubmissionDeadlinePeriod = $tenderSubmissionDeadlinePeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTenderSubmissionDeadlinePeriod(): self
+    {
+        $this->tenderSubmissionDeadlinePeriod = null;
 
         return $this;
     }
@@ -804,6 +944,16 @@ class TenderingProcessType
     }
 
     /**
+     * @return self
+     */
+    public function unsetInvitationSubmissionPeriod(): self
+    {
+        $this->invitationSubmissionPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ParticipationRequestReceptionPeriod|null
      */
     public function getParticipationRequestReceptionPeriod(): ?ParticipationRequestReceptionPeriod
@@ -834,6 +984,16 @@ class TenderingProcessType
     }
 
     /**
+     * @return self
+     */
+    public function unsetParticipationRequestReceptionPeriod(): self
+    {
+        $this->participationRequestReceptionPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\NoticeDocumentReference>|null
      */
     public function getNoticeDocumentReference(): ?array
@@ -848,6 +1008,16 @@ class TenderingProcessType
     public function setNoticeDocumentReference(?array $noticeDocumentReference = null): self
     {
         $this->noticeDocumentReference = $noticeDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNoticeDocumentReference(): self
+    {
+        $this->noticeDocumentReference = null;
 
         return $this;
     }
@@ -936,6 +1106,16 @@ class TenderingProcessType
     /**
      * @return self
      */
+    public function unsetAdditionalDocumentReference(): self
+    {
+        $this->additionalDocumentReference = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearAdditionalDocumentReference(): self
     {
         $this->additionalDocumentReference = [];
@@ -1011,6 +1191,16 @@ class TenderingProcessType
     public function setProcessJustification(?array $processJustification = null): self
     {
         $this->processJustification = $processJustification;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetProcessJustification(): self
+    {
+        $this->processJustification = null;
 
         return $this;
     }
@@ -1107,6 +1297,16 @@ class TenderingProcessType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEconomicOperatorShortList(): self
+    {
+        $this->economicOperatorShortList = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\OpenTenderEvent>|null
      */
     public function getOpenTenderEvent(): ?array
@@ -1121,6 +1321,16 @@ class TenderingProcessType
     public function setOpenTenderEvent(?array $openTenderEvent = null): self
     {
         $this->openTenderEvent = $openTenderEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOpenTenderEvent(): self
+    {
+        $this->openTenderEvent = null;
 
         return $this;
     }
@@ -1217,6 +1427,16 @@ class TenderingProcessType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAuctionTerms(): self
+    {
+        $this->auctionTerms = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\FrameworkAgreement|null
      */
     public function getFrameworkAgreement(): ?FrameworkAgreement
@@ -1241,6 +1461,16 @@ class TenderingProcessType
     public function setFrameworkAgreement(?FrameworkAgreement $frameworkAgreement = null): self
     {
         $this->frameworkAgreement = $frameworkAgreement;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFrameworkAgreement(): self
+    {
+        $this->frameworkAgreement = null;
 
         return $this;
     }

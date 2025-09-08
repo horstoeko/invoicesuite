@@ -100,6 +100,16 @@ class SupplierConsumptionType
     /**
      * @return self
      */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearDescription(): self
     {
         $this->description = [];
@@ -189,6 +199,16 @@ class SupplierConsumptionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUtilitySupplierParty(): self
+    {
+        $this->utilitySupplierParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\UtilityCustomerParty|null
      */
     public function getUtilityCustomerParty(): ?UtilityCustomerParty
@@ -213,6 +233,16 @@ class SupplierConsumptionType
     public function setUtilityCustomerParty(?UtilityCustomerParty $utilityCustomerParty = null): self
     {
         $this->utilityCustomerParty = $utilityCustomerParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetUtilityCustomerParty(): self
+    {
+        $this->utilityCustomerParty = null;
 
         return $this;
     }
@@ -247,6 +277,16 @@ class SupplierConsumptionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetConsumption(): self
+    {
+        $this->consumption = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Contract|null
      */
     public function getContract(): ?Contract
@@ -276,6 +316,16 @@ class SupplierConsumptionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContract(): self
+    {
+        $this->contract = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ConsumptionLine>|null
      */
     public function getConsumptionLine(): ?array
@@ -290,6 +340,16 @@ class SupplierConsumptionType
     public function setConsumptionLine(?array $consumptionLine = null): self
     {
         $this->consumptionLine = $consumptionLine;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetConsumptionLine(): self
+    {
+        $this->consumptionLine = null;
 
         return $this;
     }

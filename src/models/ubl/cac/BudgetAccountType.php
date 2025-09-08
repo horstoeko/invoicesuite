@@ -74,6 +74,16 @@ class BudgetAccountType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\BudgetYearNumeric|null
      */
     public function getBudgetYearNumeric(): ?BudgetYearNumeric
@@ -98,6 +108,16 @@ class BudgetAccountType
     public function setBudgetYearNumeric(?BudgetYearNumeric $budgetYearNumeric = null): self
     {
         $this->budgetYearNumeric = $budgetYearNumeric;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBudgetYearNumeric(): self
+    {
+        $this->budgetYearNumeric = null;
 
         return $this;
     }
@@ -128,6 +148,16 @@ class BudgetAccountType
         ?RequiredClassificationScheme $requiredClassificationScheme = null,
     ): self {
         $this->requiredClassificationScheme = $requiredClassificationScheme;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRequiredClassificationScheme(): self
+    {
+        $this->requiredClassificationScheme = null;
 
         return $this;
     }

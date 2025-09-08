@@ -63,6 +63,16 @@ class ActivityPropertyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Value|null
      */
     public function getValue(): ?Value
@@ -87,6 +97,16 @@ class ActivityPropertyType
     public function setValue(?Value $value = null): self
     {
         $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
 
         return $this;
     }

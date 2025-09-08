@@ -134,6 +134,16 @@ class MaritimeTransportType
     }
 
     /**
+     * @return self
+     */
+    public function unsetVesselID(): self
+    {
+        $this->vesselID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\VesselName|null
      */
     public function getVesselName(): ?VesselName
@@ -158,6 +168,16 @@ class MaritimeTransportType
     public function setVesselName(?VesselName $vesselName = null): self
     {
         $this->vesselName = $vesselName;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetVesselName(): self
+    {
+        $this->vesselName = null;
 
         return $this;
     }
@@ -192,6 +212,16 @@ class MaritimeTransportType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRadioCallSignID(): self
+    {
+        $this->radioCallSignID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\ShipsRequirements>|null
      */
     public function getShipsRequirements(): ?array
@@ -206,6 +236,16 @@ class MaritimeTransportType
     public function setShipsRequirements(?array $shipsRequirements = null): self
     {
         $this->shipsRequirements = $shipsRequirements;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetShipsRequirements(): self
+    {
+        $this->shipsRequirements = null;
 
         return $this;
     }
@@ -302,6 +342,16 @@ class MaritimeTransportType
     }
 
     /**
+     * @return self
+     */
+    public function unsetGrossTonnageMeasure(): self
+    {
+        $this->grossTonnageMeasure = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\NetTonnageMeasure|null
      */
     public function getNetTonnageMeasure(): ?NetTonnageMeasure
@@ -326,6 +376,16 @@ class MaritimeTransportType
     public function setNetTonnageMeasure(?NetTonnageMeasure $netTonnageMeasure = null): self
     {
         $this->netTonnageMeasure = $netTonnageMeasure;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNetTonnageMeasure(): self
+    {
+        $this->netTonnageMeasure = null;
 
         return $this;
     }
@@ -361,6 +421,16 @@ class MaritimeTransportType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRegistryCertificateDocumentReference(): self
+    {
+        $this->registryCertificateDocumentReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\RegistryPortLocation|null
      */
     public function getRegistryPortLocation(): ?RegistryPortLocation
@@ -385,6 +455,16 @@ class MaritimeTransportType
     public function setRegistryPortLocation(?RegistryPortLocation $registryPortLocation = null): self
     {
         $this->registryPortLocation = $registryPortLocation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRegistryPortLocation(): self
+    {
+        $this->registryPortLocation = null;
 
         return $this;
     }

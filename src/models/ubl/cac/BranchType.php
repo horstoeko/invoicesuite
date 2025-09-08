@@ -85,6 +85,16 @@ class BranchType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      */
     public function getName(): ?Name
@@ -109,6 +119,16 @@ class BranchType
     public function setName(?Name $name = null): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
 
         return $this;
     }
@@ -143,6 +163,16 @@ class BranchType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFinancialInstitution(): self
+    {
+        $this->financialInstitution = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Address|null
      */
     public function getAddress(): ?Address
@@ -167,6 +197,16 @@ class BranchType
     public function setAddress(?Address $address = null): self
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAddress(): self
+    {
+        $this->address = null;
 
         return $this;
     }

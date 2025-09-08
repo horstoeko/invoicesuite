@@ -69,6 +69,16 @@ class ContractExecutionRequirementType
     /**
      * @return self
      */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearName(): self
     {
         $this->name = [];
@@ -158,6 +168,16 @@ class ContractExecutionRequirementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExecutionRequirementCode(): self
+    {
+        $this->executionRequirementCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -172,6 +192,16 @@ class ContractExecutionRequirementType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }

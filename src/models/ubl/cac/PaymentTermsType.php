@@ -263,6 +263,16 @@ class PaymentTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\PaymentMeansID>|null
      */
     public function getPaymentMeansID(): ?array
@@ -277,6 +287,16 @@ class PaymentTermsType
     public function setPaymentMeansID(?array $paymentMeansID = null): self
     {
         $this->paymentMeansID = $paymentMeansID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPaymentMeansID(): self
+    {
+        $this->paymentMeansID = null;
 
         return $this;
     }
@@ -373,6 +393,16 @@ class PaymentTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPrepaidPaymentReferenceID(): self
+    {
+        $this->prepaidPaymentReferenceID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -387,6 +417,16 @@ class PaymentTermsType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -483,6 +523,16 @@ class PaymentTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReferenceEventCode(): self
+    {
+        $this->referenceEventCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SettlementDiscountPercent|null
      */
     public function getSettlementDiscountPercent(): ?SettlementDiscountPercent
@@ -507,6 +557,16 @@ class PaymentTermsType
     public function setSettlementDiscountPercent(?SettlementDiscountPercent $settlementDiscountPercent = null): self
     {
         $this->settlementDiscountPercent = $settlementDiscountPercent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSettlementDiscountPercent(): self
+    {
+        $this->settlementDiscountPercent = null;
 
         return $this;
     }
@@ -541,6 +601,16 @@ class PaymentTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPenaltySurchargePercent(): self
+    {
+        $this->penaltySurchargePercent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PaymentPercent|null
      */
     public function getPaymentPercent(): ?PaymentPercent
@@ -565,6 +635,16 @@ class PaymentTermsType
     public function setPaymentPercent(?PaymentPercent $paymentPercent = null): self
     {
         $this->paymentPercent = $paymentPercent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPaymentPercent(): self
+    {
+        $this->paymentPercent = null;
 
         return $this;
     }
@@ -599,6 +679,16 @@ class PaymentTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAmount(): self
+    {
+        $this->amount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SettlementDiscountAmount|null
      */
     public function getSettlementDiscountAmount(): ?SettlementDiscountAmount
@@ -623,6 +713,16 @@ class PaymentTermsType
     public function setSettlementDiscountAmount(?SettlementDiscountAmount $settlementDiscountAmount = null): self
     {
         $this->settlementDiscountAmount = $settlementDiscountAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSettlementDiscountAmount(): self
+    {
+        $this->settlementDiscountAmount = null;
 
         return $this;
     }
@@ -657,6 +757,16 @@ class PaymentTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPenaltyAmount(): self
+    {
+        $this->penaltyAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PaymentTermsDetailsURI|null
      */
     public function getPaymentTermsDetailsURI(): ?PaymentTermsDetailsURI
@@ -686,6 +796,16 @@ class PaymentTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPaymentTermsDetailsURI(): self
+    {
+        $this->paymentTermsDetailsURI = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getPaymentDueDate(): ?\DateTimeInterface
@@ -705,6 +825,16 @@ class PaymentTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPaymentDueDate(): self
+    {
+        $this->paymentDueDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getInstallmentDueDate(): ?\DateTimeInterface
@@ -719,6 +849,16 @@ class PaymentTermsType
     public function setInstallmentDueDate(?\DateTimeInterface $installmentDueDate = null): self
     {
         $this->installmentDueDate = $installmentDueDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInstallmentDueDate(): self
+    {
+        $this->installmentDueDate = null;
 
         return $this;
     }
@@ -753,6 +893,16 @@ class PaymentTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetInvoicingPartyReference(): self
+    {
+        $this->invoicingPartyReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\SettlementPeriod|null
      */
     public function getSettlementPeriod(): ?SettlementPeriod
@@ -777,6 +927,16 @@ class PaymentTermsType
     public function setSettlementPeriod(?SettlementPeriod $settlementPeriod = null): self
     {
         $this->settlementPeriod = $settlementPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSettlementPeriod(): self
+    {
+        $this->settlementPeriod = null;
 
         return $this;
     }
@@ -811,6 +971,16 @@ class PaymentTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPenaltyPeriod(): self
+    {
+        $this->penaltyPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ExchangeRate|null
      */
     public function getExchangeRate(): ?ExchangeRate
@@ -840,6 +1010,16 @@ class PaymentTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExchangeRate(): self
+    {
+        $this->exchangeRate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod|null
      */
     public function getValidityPeriod(): ?ValidityPeriod
@@ -864,6 +1044,16 @@ class PaymentTermsType
     public function setValidityPeriod(?ValidityPeriod $validityPeriod = null): self
     {
         $this->validityPeriod = $validityPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValidityPeriod(): self
+    {
+        $this->validityPeriod = null;
 
         return $this;
     }

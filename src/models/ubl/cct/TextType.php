@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\ubl\cct;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class TextType
 {
@@ -56,7 +57,17 @@ class TextType
      */
     public function setValue(?string $value = null): self
     {
-        $this->value = $value;
+        $this->value = InvoiceSuiteStringUtils::asNullWhenEmpty($value);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
 
         return $this;
     }
@@ -75,7 +86,17 @@ class TextType
      */
     public function setLanguageID(?string $languageID = null): self
     {
-        $this->languageID = $languageID;
+        $this->languageID = InvoiceSuiteStringUtils::asNullWhenEmpty($languageID);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLanguageID(): self
+    {
+        $this->languageID = null;
 
         return $this;
     }
@@ -94,7 +115,17 @@ class TextType
      */
     public function setLanguageLocaleID(?string $languageLocaleID = null): self
     {
-        $this->languageLocaleID = $languageLocaleID;
+        $this->languageLocaleID = InvoiceSuiteStringUtils::asNullWhenEmpty($languageLocaleID);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLanguageLocaleID(): self
+    {
+        $this->languageLocaleID = null;
 
         return $this;
     }

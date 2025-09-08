@@ -110,6 +110,16 @@ class ItemIdentificationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ExtendedID|null
      */
     public function getExtendedID(): ?ExtendedID
@@ -134,6 +144,16 @@ class ItemIdentificationType
     public function setExtendedID(?ExtendedID $extendedID = null): self
     {
         $this->extendedID = $extendedID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExtendedID(): self
+    {
+        $this->extendedID = null;
 
         return $this;
     }
@@ -168,6 +188,16 @@ class ItemIdentificationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBarcodeSymbologyID(): self
+    {
+        $this->barcodeSymbologyID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\PhysicalAttribute>|null
      */
     public function getPhysicalAttribute(): ?array
@@ -182,6 +212,16 @@ class ItemIdentificationType
     public function setPhysicalAttribute(?array $physicalAttribute = null): self
     {
         $this->physicalAttribute = $physicalAttribute;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPhysicalAttribute(): self
+    {
+        $this->physicalAttribute = null;
 
         return $this;
     }
@@ -263,6 +303,16 @@ class ItemIdentificationType
     public function setMeasurementDimension(?array $measurementDimension = null): self
     {
         $this->measurementDimension = $measurementDimension;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMeasurementDimension(): self
+    {
+        $this->measurementDimension = null;
 
         return $this;
     }
@@ -354,6 +404,16 @@ class ItemIdentificationType
     public function setIssuerParty(?IssuerParty $issuerParty = null): self
     {
         $this->issuerParty = $issuerParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIssuerParty(): self
+    {
+        $this->issuerParty = null;
 
         return $this;
     }

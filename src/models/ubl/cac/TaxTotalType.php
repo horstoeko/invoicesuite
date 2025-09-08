@@ -97,6 +97,16 @@ class TaxTotalType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTaxAmount(): self
+    {
+        $this->taxAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\RoundingAmount|null
      */
     public function getRoundingAmount(): ?RoundingAmount
@@ -126,6 +136,16 @@ class TaxTotalType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRoundingAmount(): self
+    {
+        $this->roundingAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getTaxEvidenceIndicator(): ?bool
@@ -140,6 +160,16 @@ class TaxTotalType
     public function setTaxEvidenceIndicator(?bool $taxEvidenceIndicator = null): self
     {
         $this->taxEvidenceIndicator = $taxEvidenceIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxEvidenceIndicator(): self
+    {
+        $this->taxEvidenceIndicator = null;
 
         return $this;
     }
@@ -164,6 +194,16 @@ class TaxTotalType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTaxIncludedIndicator(): self
+    {
+        $this->taxIncludedIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TaxSubtotal>|null
      */
     public function getTaxSubtotal(): ?array
@@ -178,6 +218,16 @@ class TaxTotalType
     public function setTaxSubtotal(?array $taxSubtotal = null): self
     {
         $this->taxSubtotal = $taxSubtotal;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxSubtotal(): self
+    {
+        $this->taxSubtotal = null;
 
         return $this;
     }

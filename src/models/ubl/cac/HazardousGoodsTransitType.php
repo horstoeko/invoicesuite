@@ -122,6 +122,16 @@ class HazardousGoodsTransitType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTransportEmergencyCardCode(): self
+    {
+        $this->transportEmergencyCardCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PackingCriteriaCode|null
      */
     public function getPackingCriteriaCode(): ?PackingCriteriaCode
@@ -151,6 +161,16 @@ class HazardousGoodsTransitType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPackingCriteriaCode(): self
+    {
+        $this->packingCriteriaCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\HazardousRegulationCode|null
      */
     public function getHazardousRegulationCode(): ?HazardousRegulationCode
@@ -175,6 +195,16 @@ class HazardousGoodsTransitType
     public function setHazardousRegulationCode(?HazardousRegulationCode $hazardousRegulationCode = null): self
     {
         $this->hazardousRegulationCode = $hazardousRegulationCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetHazardousRegulationCode(): self
+    {
+        $this->hazardousRegulationCode = null;
 
         return $this;
     }
@@ -210,6 +240,16 @@ class HazardousGoodsTransitType
     }
 
     /**
+     * @return self
+     */
+    public function unsetInhalationToxicityZoneCode(): self
+    {
+        $this->inhalationToxicityZoneCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TransportAuthorizationCode|null
      */
     public function getTransportAuthorizationCode(): ?TransportAuthorizationCode
@@ -235,6 +275,16 @@ class HazardousGoodsTransitType
         ?TransportAuthorizationCode $transportAuthorizationCode = null,
     ): self {
         $this->transportAuthorizationCode = $transportAuthorizationCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTransportAuthorizationCode(): self
+    {
+        $this->transportAuthorizationCode = null;
 
         return $this;
     }
@@ -269,6 +319,16 @@ class HazardousGoodsTransitType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMaximumTemperature(): self
+    {
+        $this->maximumTemperature = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\MinimumTemperature|null
      */
     public function getMinimumTemperature(): ?MinimumTemperature
@@ -293,6 +353,16 @@ class HazardousGoodsTransitType
     public function setMinimumTemperature(?MinimumTemperature $minimumTemperature = null): self
     {
         $this->minimumTemperature = $minimumTemperature;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMinimumTemperature(): self
+    {
+        $this->minimumTemperature = null;
 
         return $this;
     }

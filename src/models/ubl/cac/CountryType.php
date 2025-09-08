@@ -63,6 +63,16 @@ class CountryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIdentificationCode(): self
+    {
+        $this->identificationCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      */
     public function getName(): ?Name
@@ -87,6 +97,16 @@ class CountryType
     public function setName(?Name $name = null): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
 
         return $this;
     }

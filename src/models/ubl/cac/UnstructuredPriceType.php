@@ -63,6 +63,16 @@ class UnstructuredPriceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPriceAmount(): self
+    {
+        $this->priceAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TimeAmount|null
      */
     public function getTimeAmount(): ?TimeAmount
@@ -87,6 +97,16 @@ class UnstructuredPriceType
     public function setTimeAmount(?TimeAmount $timeAmount = null): self
     {
         $this->timeAmount = $timeAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTimeAmount(): self
+    {
+        $this->timeAmount = null;
 
         return $this;
     }

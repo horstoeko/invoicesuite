@@ -253,6 +253,16 @@ class ConsumptionReportType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ConsumptionType|null
      */
     public function getConsumptionType(): ?ConsumptionType
@@ -277,6 +287,16 @@ class ConsumptionReportType
     public function setConsumptionType(?ConsumptionType $consumptionType = null): self
     {
         $this->consumptionType = $consumptionType;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetConsumptionType(): self
+    {
+        $this->consumptionType = null;
 
         return $this;
     }
@@ -311,6 +331,16 @@ class ConsumptionReportType
     }
 
     /**
+     * @return self
+     */
+    public function unsetConsumptionTypeCode(): self
+    {
+        $this->consumptionTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -325,6 +355,16 @@ class ConsumptionReportType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -421,6 +461,16 @@ class ConsumptionReportType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTotalConsumedQuantity(): self
+    {
+        $this->totalConsumedQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\BasicConsumedQuantity|null
      */
     public function getBasicConsumedQuantity(): ?BasicConsumedQuantity
@@ -445,6 +495,16 @@ class ConsumptionReportType
     public function setBasicConsumedQuantity(?BasicConsumedQuantity $basicConsumedQuantity = null): self
     {
         $this->basicConsumedQuantity = $basicConsumedQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBasicConsumedQuantity(): self
+    {
+        $this->basicConsumedQuantity = null;
 
         return $this;
     }
@@ -479,6 +539,16 @@ class ConsumptionReportType
     }
 
     /**
+     * @return self
+     */
+    public function unsetResidentOccupantsNumeric(): self
+    {
+        $this->residentOccupantsNumeric = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ConsumersEnergyLevelCode|null
      */
     public function getConsumersEnergyLevelCode(): ?ConsumersEnergyLevelCode
@@ -503,6 +573,16 @@ class ConsumptionReportType
     public function setConsumersEnergyLevelCode(?ConsumersEnergyLevelCode $consumersEnergyLevelCode = null): self
     {
         $this->consumersEnergyLevelCode = $consumersEnergyLevelCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetConsumersEnergyLevelCode(): self
+    {
+        $this->consumersEnergyLevelCode = null;
 
         return $this;
     }
@@ -537,6 +617,16 @@ class ConsumptionReportType
     }
 
     /**
+     * @return self
+     */
+    public function unsetConsumersEnergyLevel(): self
+    {
+        $this->consumersEnergyLevel = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ResidenceType|null
      */
     public function getResidenceType(): ?ResidenceType
@@ -561,6 +651,16 @@ class ConsumptionReportType
     public function setResidenceType(?ResidenceType $residenceType = null): self
     {
         $this->residenceType = $residenceType;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetResidenceType(): self
+    {
+        $this->residenceType = null;
 
         return $this;
     }
@@ -595,6 +695,16 @@ class ConsumptionReportType
     }
 
     /**
+     * @return self
+     */
+    public function unsetResidenceTypeCode(): self
+    {
+        $this->residenceTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\HeatingType|null
      */
     public function getHeatingType(): ?HeatingType
@@ -619,6 +729,16 @@ class ConsumptionReportType
     public function setHeatingType(?HeatingType $heatingType = null): self
     {
         $this->heatingType = $heatingType;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetHeatingType(): self
+    {
+        $this->heatingType = null;
 
         return $this;
     }
@@ -653,6 +773,16 @@ class ConsumptionReportType
     }
 
     /**
+     * @return self
+     */
+    public function unsetHeatingTypeCode(): self
+    {
+        $this->heatingTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Period|null
      */
     public function getPeriod(): ?Period
@@ -677,6 +807,16 @@ class ConsumptionReportType
     public function setPeriod(?Period $period = null): self
     {
         $this->period = $period;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPeriod(): self
+    {
+        $this->period = null;
 
         return $this;
     }
@@ -711,6 +851,16 @@ class ConsumptionReportType
     }
 
     /**
+     * @return self
+     */
+    public function unsetGuidanceDocumentReference(): self
+    {
+        $this->guidanceDocumentReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\DocumentReference|null
      */
     public function getDocumentReference(): ?DocumentReference
@@ -740,6 +890,16 @@ class ConsumptionReportType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ConsumptionReportReference>|null
      */
     public function getConsumptionReportReference(): ?array
@@ -754,6 +914,16 @@ class ConsumptionReportType
     public function setConsumptionReportReference(?array $consumptionReportReference = null): self
     {
         $this->consumptionReportReference = $consumptionReportReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetConsumptionReportReference(): self
+    {
+        $this->consumptionReportReference = null;
 
         return $this;
     }
@@ -835,6 +1005,16 @@ class ConsumptionReportType
     public function setConsumptionHistory(?array $consumptionHistory = null): self
     {
         $this->consumptionHistory = $consumptionHistory;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetConsumptionHistory(): self
+    {
+        $this->consumptionHistory = null;
 
         return $this;
     }

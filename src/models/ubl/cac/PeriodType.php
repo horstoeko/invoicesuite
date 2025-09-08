@@ -111,6 +111,16 @@ class PeriodType
     }
 
     /**
+     * @return self
+     */
+    public function unsetStartDate(): self
+    {
+        $this->startDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getStartTime(): ?\DateTimeInterface
@@ -125,6 +135,16 @@ class PeriodType
     public function setStartTime(?\DateTimeInterface $startTime = null): self
     {
         $this->startTime = $startTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetStartTime(): self
+    {
+        $this->startTime = null;
 
         return $this;
     }
@@ -149,6 +169,16 @@ class PeriodType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEndDate(): self
+    {
+        $this->endDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getEndTime(): ?\DateTimeInterface
@@ -163,6 +193,16 @@ class PeriodType
     public function setEndTime(?\DateTimeInterface $endTime = null): self
     {
         $this->endTime = $endTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEndTime(): self
+    {
+        $this->endTime = null;
 
         return $this;
     }
@@ -197,6 +237,16 @@ class PeriodType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDurationMeasure(): self
+    {
+        $this->durationMeasure = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\DescriptionCode>|null
      */
     public function getDescriptionCode(): ?array
@@ -211,6 +261,16 @@ class PeriodType
     public function setDescriptionCode(?array $descriptionCode = null): self
     {
         $this->descriptionCode = $descriptionCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescriptionCode(): self
+    {
+        $this->descriptionCode = null;
 
         return $this;
     }
@@ -292,6 +352,16 @@ class PeriodType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }

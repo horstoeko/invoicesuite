@@ -122,6 +122,16 @@ class EvidenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\EvidenceTypeCode|null
      */
     public function getEvidenceTypeCode(): ?EvidenceTypeCode
@@ -151,6 +161,16 @@ class EvidenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEvidenceTypeCode(): self
+    {
+        $this->evidenceTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -165,6 +185,16 @@ class EvidenceType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -246,6 +276,16 @@ class EvidenceType
     public function setCandidateStatement(?array $candidateStatement = null): self
     {
         $this->candidateStatement = $candidateStatement;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCandidateStatement(): self
+    {
+        $this->candidateStatement = null;
 
         return $this;
     }
@@ -342,6 +382,16 @@ class EvidenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEvidenceIssuingParty(): self
+    {
+        $this->evidenceIssuingParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\DocumentReference|null
      */
     public function getDocumentReference(): ?DocumentReference
@@ -371,6 +421,16 @@ class EvidenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Language|null
      */
     public function getLanguage(): ?Language
@@ -395,6 +455,16 @@ class EvidenceType
     public function setLanguage(?Language $language = null): self
     {
         $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLanguage(): self
+    {
+        $this->language = null;
 
         return $this;
     }

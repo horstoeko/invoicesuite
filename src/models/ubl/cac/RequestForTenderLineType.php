@@ -229,6 +229,16 @@ class RequestForTenderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      */
     public function getUUID(): ?UUID
@@ -258,6 +268,16 @@ class RequestForTenderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUUID(): self
+    {
+        $this->uUID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -272,6 +292,16 @@ class RequestForTenderLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -368,6 +398,16 @@ class RequestForTenderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetQuantity(): self
+    {
+        $this->quantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MinimumQuantity|null
      */
     public function getMinimumQuantity(): ?MinimumQuantity
@@ -392,6 +432,16 @@ class RequestForTenderLineType
     public function setMinimumQuantity(?MinimumQuantity $minimumQuantity = null): self
     {
         $this->minimumQuantity = $minimumQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMinimumQuantity(): self
+    {
+        $this->minimumQuantity = null;
 
         return $this;
     }
@@ -426,6 +476,16 @@ class RequestForTenderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMaximumQuantity(): self
+    {
+        $this->maximumQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getTaxIncludedIndicator(): ?bool
@@ -440,6 +500,16 @@ class RequestForTenderLineType
     public function setTaxIncludedIndicator(?bool $taxIncludedIndicator = null): self
     {
         $this->taxIncludedIndicator = $taxIncludedIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxIncludedIndicator(): self
+    {
+        $this->taxIncludedIndicator = null;
 
         return $this;
     }
@@ -474,6 +544,16 @@ class RequestForTenderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMinimumAmount(): self
+    {
+        $this->minimumAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MaximumAmount|null
      */
     public function getMaximumAmount(): ?MaximumAmount
@@ -498,6 +578,16 @@ class RequestForTenderLineType
     public function setMaximumAmount(?MaximumAmount $maximumAmount = null): self
     {
         $this->maximumAmount = $maximumAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMaximumAmount(): self
+    {
+        $this->maximumAmount = null;
 
         return $this;
     }
@@ -532,6 +622,16 @@ class RequestForTenderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEstimatedAmount(): self
+    {
+        $this->estimatedAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      */
     public function getDocumentReference(): ?array
@@ -546,6 +646,16 @@ class RequestForTenderLineType
     public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
 
         return $this;
     }
@@ -634,6 +744,16 @@ class RequestForTenderLineType
     /**
      * @return self
      */
+    public function unsetDeliveryPeriod(): self
+    {
+        $this->deliveryPeriod = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearDeliveryPeriod(): self
     {
         $this->deliveryPeriod = [];
@@ -708,6 +828,16 @@ class RequestForTenderLineType
     public function setRequiredItemLocationQuantity(?array $requiredItemLocationQuantity = null): self
     {
         $this->requiredItemLocationQuantity = $requiredItemLocationQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRequiredItemLocationQuantity(): self
+    {
+        $this->requiredItemLocationQuantity = null;
 
         return $this;
     }
@@ -806,6 +936,16 @@ class RequestForTenderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetWarrantyValidityPeriod(): self
+    {
+        $this->warrantyValidityPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Item|null
      */
     public function getItem(): ?Item
@@ -835,6 +975,16 @@ class RequestForTenderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetItem(): self
+    {
+        $this->item = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SubRequestForTenderLine>|null
      */
     public function getSubRequestForTenderLine(): ?array
@@ -849,6 +999,16 @@ class RequestForTenderLineType
     public function setSubRequestForTenderLine(?array $subRequestForTenderLine = null): self
     {
         $this->subRequestForTenderLine = $subRequestForTenderLine;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSubRequestForTenderLine(): self
+    {
+        $this->subRequestForTenderLine = null;
 
         return $this;
     }

@@ -90,6 +90,16 @@ class ProcessJustificationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPreviousCancellationReasonCode(): self
+    {
+        $this->previousCancellationReasonCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ProcessReasonCode|null
      */
     public function getProcessReasonCode(): ?ProcessReasonCode
@@ -119,6 +129,16 @@ class ProcessJustificationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetProcessReasonCode(): self
+    {
+        $this->processReasonCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\ProcessReason>|null
      */
     public function getProcessReason(): ?array
@@ -133,6 +153,16 @@ class ProcessJustificationType
     public function setProcessReason(?array $processReason = null): self
     {
         $this->processReason = $processReason;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetProcessReason(): self
+    {
+        $this->processReason = null;
 
         return $this;
     }
@@ -214,6 +244,16 @@ class ProcessJustificationType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }

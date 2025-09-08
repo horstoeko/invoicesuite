@@ -63,6 +63,16 @@ class ItemPropertyRangeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMinimumValue(): self
+    {
+        $this->minimumValue = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MaximumValue|null
      */
     public function getMaximumValue(): ?MaximumValue
@@ -87,6 +97,16 @@ class ItemPropertyRangeType
     public function setMaximumValue(?MaximumValue $maximumValue = null): self
     {
         $this->maximumValue = $maximumValue;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMaximumValue(): self
+    {
+        $this->maximumValue = null;
 
         return $this;
     }

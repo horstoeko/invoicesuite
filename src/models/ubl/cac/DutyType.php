@@ -86,6 +86,16 @@ class DutyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAmount(): self
+    {
+        $this->amount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Duty|null
      */
     public function getDuty(): ?Duty
@@ -110,6 +120,16 @@ class DutyType
     public function setDuty(?Duty $duty = null): self
     {
         $this->duty = $duty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDuty(): self
+    {
+        $this->duty = null;
 
         return $this;
     }
@@ -144,6 +164,16 @@ class DutyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDutyCode(): self
+    {
+        $this->dutyCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\TaxCategory|null
      */
     public function getTaxCategory(): ?TaxCategory
@@ -168,6 +198,16 @@ class DutyType
     public function setTaxCategory(?TaxCategory $taxCategory = null): self
     {
         $this->taxCategory = $taxCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxCategory(): self
+    {
+        $this->taxCategory = null;
 
         return $this;
     }

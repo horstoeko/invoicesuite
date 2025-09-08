@@ -87,6 +87,16 @@ class CommodityClassificationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetNatureCode(): self
+    {
+        $this->natureCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CargoTypeCode|null
      */
     public function getCargoTypeCode(): ?CargoTypeCode
@@ -111,6 +121,16 @@ class CommodityClassificationType
     public function setCargoTypeCode(?CargoTypeCode $cargoTypeCode = null): self
     {
         $this->cargoTypeCode = $cargoTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCargoTypeCode(): self
+    {
+        $this->cargoTypeCode = null;
 
         return $this;
     }
@@ -145,6 +165,16 @@ class CommodityClassificationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCommodityCode(): self
+    {
+        $this->commodityCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ItemClassificationCode|null
      */
     public function getItemClassificationCode(): ?ItemClassificationCode
@@ -169,6 +199,16 @@ class CommodityClassificationType
     public function setItemClassificationCode(?ItemClassificationCode $itemClassificationCode = null): self
     {
         $this->itemClassificationCode = $itemClassificationCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetItemClassificationCode(): self
+    {
+        $this->itemClassificationCode = null;
 
         return $this;
     }

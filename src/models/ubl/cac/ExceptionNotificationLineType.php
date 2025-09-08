@@ -218,6 +218,16 @@ class ExceptionNotificationLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -232,6 +242,16 @@ class ExceptionNotificationLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -313,6 +333,16 @@ class ExceptionNotificationLineType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -409,6 +439,16 @@ class ExceptionNotificationLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExceptionStatusCode(): self
+    {
+        $this->exceptionStatusCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CollaborationPriorityCode|null
      */
     public function getCollaborationPriorityCode(): ?CollaborationPriorityCode
@@ -433,6 +473,16 @@ class ExceptionNotificationLineType
     public function setCollaborationPriorityCode(?CollaborationPriorityCode $collaborationPriorityCode = null): self
     {
         $this->collaborationPriorityCode = $collaborationPriorityCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCollaborationPriorityCode(): self
+    {
+        $this->collaborationPriorityCode = null;
 
         return $this;
     }
@@ -467,6 +517,16 @@ class ExceptionNotificationLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetResolutionCode(): self
+    {
+        $this->resolutionCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ComparedValueMeasure|null
      */
     public function getComparedValueMeasure(): ?ComparedValueMeasure
@@ -491,6 +551,16 @@ class ExceptionNotificationLineType
     public function setComparedValueMeasure(?ComparedValueMeasure $comparedValueMeasure = null): self
     {
         $this->comparedValueMeasure = $comparedValueMeasure;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetComparedValueMeasure(): self
+    {
+        $this->comparedValueMeasure = null;
 
         return $this;
     }
@@ -525,6 +595,16 @@ class ExceptionNotificationLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSourceValueMeasure(): self
+    {
+        $this->sourceValueMeasure = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\VarianceQuantity|null
      */
     public function getVarianceQuantity(): ?VarianceQuantity
@@ -549,6 +629,16 @@ class ExceptionNotificationLineType
     public function setVarianceQuantity(?VarianceQuantity $varianceQuantity = null): self
     {
         $this->varianceQuantity = $varianceQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetVarianceQuantity(): self
+    {
+        $this->varianceQuantity = null;
 
         return $this;
     }
@@ -584,6 +674,16 @@ class ExceptionNotificationLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSupplyChainActivityTypeCode(): self
+    {
+        $this->supplyChainActivityTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode|null
      */
     public function getPerformanceMetricTypeCode(): ?PerformanceMetricTypeCode
@@ -608,6 +708,16 @@ class ExceptionNotificationLineType
     public function setPerformanceMetricTypeCode(?PerformanceMetricTypeCode $performanceMetricTypeCode = null): self
     {
         $this->performanceMetricTypeCode = $performanceMetricTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPerformanceMetricTypeCode(): self
+    {
+        $this->performanceMetricTypeCode = null;
 
         return $this;
     }
@@ -643,6 +753,16 @@ class ExceptionNotificationLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExceptionObservationPeriod(): self
+    {
+        $this->exceptionObservationPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      */
     public function getDocumentReference(): ?array
@@ -657,6 +777,16 @@ class ExceptionNotificationLineType
     public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
 
         return $this;
     }
@@ -753,6 +883,16 @@ class ExceptionNotificationLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetForecastException(): self
+    {
+        $this->forecastException = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\SupplyItem|null
      */
     public function getSupplyItem(): ?SupplyItem
@@ -777,6 +917,16 @@ class ExceptionNotificationLineType
     public function setSupplyItem(?SupplyItem $supplyItem = null): self
     {
         $this->supplyItem = $supplyItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSupplyItem(): self
+    {
+        $this->supplyItem = null;
 
         return $this;
     }

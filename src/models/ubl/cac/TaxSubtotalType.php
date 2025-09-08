@@ -158,6 +158,16 @@ class TaxSubtotalType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTaxableAmount(): self
+    {
+        $this->taxableAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TaxAmount|null
      */
     public function getTaxAmount(): ?TaxAmount
@@ -182,6 +192,16 @@ class TaxSubtotalType
     public function setTaxAmount(?TaxAmount $taxAmount = null): self
     {
         $this->taxAmount = $taxAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxAmount(): self
+    {
+        $this->taxAmount = null;
 
         return $this;
     }
@@ -217,6 +237,16 @@ class TaxSubtotalType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCalculationSequenceNumeric(): self
+    {
+        $this->calculationSequenceNumeric = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TransactionCurrencyTaxAmount|null
      */
     public function getTransactionCurrencyTaxAmount(): ?TransactionCurrencyTaxAmount
@@ -242,6 +272,16 @@ class TaxSubtotalType
         ?TransactionCurrencyTaxAmount $transactionCurrencyTaxAmount = null,
     ): self {
         $this->transactionCurrencyTaxAmount = $transactionCurrencyTaxAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTransactionCurrencyTaxAmount(): self
+    {
+        $this->transactionCurrencyTaxAmount = null;
 
         return $this;
     }
@@ -276,6 +316,16 @@ class TaxSubtotalType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPercent(): self
+    {
+        $this->percent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\BaseUnitMeasure|null
      */
     public function getBaseUnitMeasure(): ?BaseUnitMeasure
@@ -300,6 +350,16 @@ class TaxSubtotalType
     public function setBaseUnitMeasure(?BaseUnitMeasure $baseUnitMeasure = null): self
     {
         $this->baseUnitMeasure = $baseUnitMeasure;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBaseUnitMeasure(): self
+    {
+        $this->baseUnitMeasure = null;
 
         return $this;
     }
@@ -334,6 +394,16 @@ class TaxSubtotalType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPerUnitAmount(): self
+    {
+        $this->perUnitAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TierRange|null
      */
     public function getTierRange(): ?TierRange
@@ -358,6 +428,16 @@ class TaxSubtotalType
     public function setTierRange(?TierRange $tierRange = null): self
     {
         $this->tierRange = $tierRange;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTierRange(): self
+    {
+        $this->tierRange = null;
 
         return $this;
     }
@@ -392,6 +472,16 @@ class TaxSubtotalType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTierRatePercent(): self
+    {
+        $this->tierRatePercent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\TaxCategory|null
      */
     public function getTaxCategory(): ?TaxCategory
@@ -416,6 +506,16 @@ class TaxSubtotalType
     public function setTaxCategory(?TaxCategory $taxCategory = null): self
     {
         $this->taxCategory = $taxCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxCategory(): self
+    {
+        $this->taxCategory = null;
 
         return $this;
     }

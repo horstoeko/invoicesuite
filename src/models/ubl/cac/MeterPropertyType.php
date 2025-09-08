@@ -100,6 +100,16 @@ class MeterPropertyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\NameCode|null
      */
     public function getNameCode(): ?NameCode
@@ -124,6 +134,16 @@ class MeterPropertyType
     public function setNameCode(?NameCode $nameCode = null): self
     {
         $this->nameCode = $nameCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNameCode(): self
+    {
+        $this->nameCode = null;
 
         return $this;
     }
@@ -158,6 +178,16 @@ class MeterPropertyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ValueQuantity|null
      */
     public function getValueQuantity(): ?ValueQuantity
@@ -187,6 +217,16 @@ class MeterPropertyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValueQuantity(): self
+    {
+        $this->valueQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\ValueQualifier>|null
      */
     public function getValueQualifier(): ?array
@@ -201,6 +241,16 @@ class MeterPropertyType
     public function setValueQualifier(?array $valueQualifier = null): self
     {
         $this->valueQualifier = $valueQualifier;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValueQualifier(): self
+    {
+        $this->valueQualifier = null;
 
         return $this;
     }

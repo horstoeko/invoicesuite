@@ -49,4 +49,14 @@ class PartyNameType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
 }

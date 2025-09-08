@@ -112,6 +112,16 @@ class TenderPreparationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTenderEnvelopeID(): self
+    {
+        $this->tenderEnvelopeID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TenderEnvelopeTypeCode|null
      */
     public function getTenderEnvelopeTypeCode(): ?TenderEnvelopeTypeCode
@@ -141,6 +151,16 @@ class TenderPreparationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTenderEnvelopeTypeCode(): self
+    {
+        $this->tenderEnvelopeTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -155,6 +175,16 @@ class TenderPreparationType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -251,6 +281,16 @@ class TenderPreparationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOpenTenderID(): self
+    {
+        $this->openTenderID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ProcurementProjectLot>|null
      */
     public function getProcurementProjectLot(): ?array
@@ -265,6 +305,16 @@ class TenderPreparationType
     public function setProcurementProjectLot(?array $procurementProjectLot = null): self
     {
         $this->procurementProjectLot = $procurementProjectLot;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetProcurementProjectLot(): self
+    {
+        $this->procurementProjectLot = null;
 
         return $this;
     }
@@ -346,6 +396,16 @@ class TenderPreparationType
     public function setDocumentTenderRequirement(?array $documentTenderRequirement = null): self
     {
         $this->documentTenderRequirement = $documentTenderRequirement;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentTenderRequirement(): self
+    {
+        $this->documentTenderRequirement = null;
 
         return $this;
     }

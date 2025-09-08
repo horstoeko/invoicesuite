@@ -74,6 +74,16 @@ class FinancialInstitutionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      */
     public function getName(): ?Name
@@ -103,6 +113,16 @@ class FinancialInstitutionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Address|null
      */
     public function getAddress(): ?Address
@@ -127,6 +147,16 @@ class FinancialInstitutionType
     public function setAddress(?Address $address = null): self
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAddress(): self
+    {
+        $this->address = null;
 
         return $this;
     }

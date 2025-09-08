@@ -131,6 +131,16 @@ class ForecastExceptionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetForecastPurposeCode(): self
+    {
+        $this->forecastPurposeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode|null
      */
     public function getForecastTypeCode(): ?ForecastTypeCode
@@ -160,6 +170,16 @@ class ForecastExceptionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetForecastTypeCode(): self
+    {
+        $this->forecastTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getIssueDate(): ?\DateTimeInterface
@@ -179,6 +199,16 @@ class ForecastExceptionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIssueDate(): self
+    {
+        $this->issueDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getIssueTime(): ?\DateTimeInterface
@@ -193,6 +223,16 @@ class ForecastExceptionType
     public function setIssueTime(?\DateTimeInterface $issueTime = null): self
     {
         $this->issueTime = $issueTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIssueTime(): self
+    {
+        $this->issueTime = null;
 
         return $this;
     }
@@ -227,6 +267,16 @@ class ForecastExceptionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDataSourceCode(): self
+    {
+        $this->dataSourceCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ComparisonDataCode|null
      */
     public function getComparisonDataCode(): ?ComparisonDataCode
@@ -256,6 +306,16 @@ class ForecastExceptionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetComparisonDataCode(): self
+    {
+        $this->comparisonDataCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getComparisonForecastIssueTime(): ?\DateTimeInterface
@@ -275,6 +335,16 @@ class ForecastExceptionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetComparisonForecastIssueTime(): self
+    {
+        $this->comparisonForecastIssueTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getComparisonForecastIssueDate(): ?\DateTimeInterface
@@ -289,6 +359,16 @@ class ForecastExceptionType
     public function setComparisonForecastIssueDate(?\DateTimeInterface $comparisonForecastIssueDate = null): self
     {
         $this->comparisonForecastIssueDate = $comparisonForecastIssueDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetComparisonForecastIssueDate(): self
+    {
+        $this->comparisonForecastIssueDate = null;
 
         return $this;
     }

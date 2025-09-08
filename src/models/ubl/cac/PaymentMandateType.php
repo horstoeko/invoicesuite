@@ -155,6 +155,16 @@ class PaymentMandateType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MandateTypeCode|null
      */
     public function getMandateTypeCode(): ?MandateTypeCode
@@ -179,6 +189,16 @@ class PaymentMandateType
     public function setMandateTypeCode(?MandateTypeCode $mandateTypeCode = null): self
     {
         $this->mandateTypeCode = $mandateTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMandateTypeCode(): self
+    {
+        $this->mandateTypeCode = null;
 
         return $this;
     }
@@ -214,6 +234,16 @@ class PaymentMandateType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMaximumPaymentInstructionsNumeric(): self
+    {
+        $this->maximumPaymentInstructionsNumeric = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MaximumPaidAmount|null
      */
     public function getMaximumPaidAmount(): ?MaximumPaidAmount
@@ -238,6 +268,16 @@ class PaymentMandateType
     public function setMaximumPaidAmount(?MaximumPaidAmount $maximumPaidAmount = null): self
     {
         $this->maximumPaidAmount = $maximumPaidAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMaximumPaidAmount(): self
+    {
+        $this->maximumPaidAmount = null;
 
         return $this;
     }
@@ -272,6 +312,16 @@ class PaymentMandateType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSignatureID(): self
+    {
+        $this->signatureID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\PayerParty|null
      */
     public function getPayerParty(): ?PayerParty
@@ -296,6 +346,16 @@ class PaymentMandateType
     public function setPayerParty(?PayerParty $payerParty = null): self
     {
         $this->payerParty = $payerParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPayerParty(): self
+    {
+        $this->payerParty = null;
 
         return $this;
     }
@@ -330,6 +390,16 @@ class PaymentMandateType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPayerFinancialAccount(): self
+    {
+        $this->payerFinancialAccount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod|null
      */
     public function getValidityPeriod(): ?ValidityPeriod
@@ -354,6 +424,16 @@ class PaymentMandateType
     public function setValidityPeriod(?ValidityPeriod $validityPeriod = null): self
     {
         $this->validityPeriod = $validityPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValidityPeriod(): self
+    {
+        $this->validityPeriod = null;
 
         return $this;
     }
@@ -388,6 +468,16 @@ class PaymentMandateType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPaymentReversalPeriod(): self
+    {
+        $this->paymentReversalPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Clause>|null
      */
     public function getClause(): ?array
@@ -402,6 +492,16 @@ class PaymentMandateType
     public function setClause(?array $clause = null): self
     {
         $this->clause = $clause;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetClause(): self
+    {
+        $this->clause = null;
 
         return $this;
     }

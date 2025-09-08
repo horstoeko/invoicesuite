@@ -122,6 +122,16 @@ class WorkPhaseReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\WorkPhaseCode|null
      */
     public function getWorkPhaseCode(): ?WorkPhaseCode
@@ -151,6 +161,16 @@ class WorkPhaseReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetWorkPhaseCode(): self
+    {
+        $this->workPhaseCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\WorkPhase>|null
      */
     public function getWorkPhase(): ?array
@@ -165,6 +185,16 @@ class WorkPhaseReferenceType
     public function setWorkPhase(?array $workPhase = null): self
     {
         $this->workPhase = $workPhase;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetWorkPhase(): self
+    {
+        $this->workPhase = null;
 
         return $this;
     }
@@ -261,6 +291,16 @@ class WorkPhaseReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetProgressPercent(): self
+    {
+        $this->progressPercent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getStartDate(): ?\DateTimeInterface
@@ -275,6 +315,16 @@ class WorkPhaseReferenceType
     public function setStartDate(?\DateTimeInterface $startDate = null): self
     {
         $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetStartDate(): self
+    {
+        $this->startDate = null;
 
         return $this;
     }
@@ -299,6 +349,16 @@ class WorkPhaseReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEndDate(): self
+    {
+        $this->endDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\WorkOrderDocumentReference>|null
      */
     public function getWorkOrderDocumentReference(): ?array
@@ -313,6 +373,16 @@ class WorkPhaseReferenceType
     public function setWorkOrderDocumentReference(?array $workOrderDocumentReference = null): self
     {
         $this->workOrderDocumentReference = $workOrderDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetWorkOrderDocumentReference(): self
+    {
+        $this->workOrderDocumentReference = null;
 
         return $this;
     }

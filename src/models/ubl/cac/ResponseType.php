@@ -110,6 +110,16 @@ class ResponseType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReferenceID(): self
+    {
+        $this->referenceID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ResponseCode|null
      */
     public function getResponseCode(): ?ResponseCode
@@ -139,6 +149,16 @@ class ResponseType
     }
 
     /**
+     * @return self
+     */
+    public function unsetResponseCode(): self
+    {
+        $this->responseCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -153,6 +173,16 @@ class ResponseType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -239,6 +269,16 @@ class ResponseType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEffectiveDate(): self
+    {
+        $this->effectiveDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getEffectiveTime(): ?\DateTimeInterface
@@ -258,6 +298,16 @@ class ResponseType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEffectiveTime(): self
+    {
+        $this->effectiveTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Status>|null
      */
     public function getStatus(): ?array
@@ -272,6 +322,16 @@ class ResponseType
     public function setStatus(?array $status = null): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetStatus(): self
+    {
+        $this->status = null;
 
         return $this;
     }

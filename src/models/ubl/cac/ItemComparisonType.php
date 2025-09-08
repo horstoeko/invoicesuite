@@ -63,6 +63,16 @@ class ItemComparisonType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPriceAmount(): self
+    {
+        $this->priceAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      */
     public function getQuantity(): ?Quantity
@@ -87,6 +97,16 @@ class ItemComparisonType
     public function setQuantity(?Quantity $quantity = null): self
     {
         $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetQuantity(): self
+    {
+        $this->quantity = null;
 
         return $this;
     }

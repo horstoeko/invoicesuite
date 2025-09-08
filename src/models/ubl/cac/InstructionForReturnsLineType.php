@@ -98,6 +98,16 @@ class InstructionForReturnsLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -112,6 +122,16 @@ class InstructionForReturnsLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -208,6 +228,16 @@ class InstructionForReturnsLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetQuantity(): self
+    {
+        $this->quantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ManufacturerParty|null
      */
     public function getManufacturerParty(): ?ManufacturerParty
@@ -237,6 +267,16 @@ class InstructionForReturnsLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetManufacturerParty(): self
+    {
+        $this->manufacturerParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Item|null
      */
     public function getItem(): ?Item
@@ -261,6 +301,16 @@ class InstructionForReturnsLineType
     public function setItem(?Item $item = null): self
     {
         $this->item = $item;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetItem(): self
+    {
+        $this->item = null;
 
         return $this;
     }

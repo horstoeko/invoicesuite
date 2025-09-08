@@ -64,6 +64,16 @@ class MiscellaneousEventType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMiscellaneousEventTypeCode(): self
+    {
+        $this->miscellaneousEventTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\EventLineItem>|null
      */
     public function getEventLineItem(): ?array
@@ -78,6 +88,16 @@ class MiscellaneousEventType
     public function setEventLineItem(?array $eventLineItem = null): self
     {
         $this->eventLineItem = $eventLineItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEventLineItem(): self
+    {
+        $this->eventLineItem = null;
 
         return $this;
     }

@@ -311,6 +311,16 @@ class DeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      */
     public function getQuantity(): ?Quantity
@@ -335,6 +345,16 @@ class DeliveryType
     public function setQuantity(?Quantity $quantity = null): self
     {
         $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetQuantity(): self
+    {
+        $this->quantity = null;
 
         return $this;
     }
@@ -369,6 +389,16 @@ class DeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMinimumQuantity(): self
+    {
+        $this->minimumQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MaximumQuantity|null
      */
     public function getMaximumQuantity(): ?MaximumQuantity
@@ -398,6 +428,16 @@ class DeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMaximumQuantity(): self
+    {
+        $this->maximumQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getActualDeliveryDate(): ?\DateTimeInterface
@@ -412,6 +452,16 @@ class DeliveryType
     public function setActualDeliveryDate(?\DateTimeInterface $actualDeliveryDate = null): self
     {
         $this->actualDeliveryDate = $actualDeliveryDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetActualDeliveryDate(): self
+    {
+        $this->actualDeliveryDate = null;
 
         return $this;
     }
@@ -436,6 +486,16 @@ class DeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetActualDeliveryTime(): self
+    {
+        $this->actualDeliveryTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getLatestDeliveryDate(): ?\DateTimeInterface
@@ -455,6 +515,16 @@ class DeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLatestDeliveryDate(): self
+    {
+        $this->latestDeliveryDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getLatestDeliveryTime(): ?\DateTimeInterface
@@ -469,6 +539,16 @@ class DeliveryType
     public function setLatestDeliveryTime(?\DateTimeInterface $latestDeliveryTime = null): self
     {
         $this->latestDeliveryTime = $latestDeliveryTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLatestDeliveryTime(): self
+    {
+        $this->latestDeliveryTime = null;
 
         return $this;
     }
@@ -503,6 +583,16 @@ class DeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReleaseID(): self
+    {
+        $this->releaseID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TrackingID|null
      */
     public function getTrackingID(): ?TrackingID
@@ -527,6 +617,16 @@ class DeliveryType
     public function setTrackingID(?TrackingID $trackingID = null): self
     {
         $this->trackingID = $trackingID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTrackingID(): self
+    {
+        $this->trackingID = null;
 
         return $this;
     }
@@ -561,6 +661,16 @@ class DeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDeliveryAddress(): self
+    {
+        $this->deliveryAddress = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\DeliveryLocation|null
      */
     public function getDeliveryLocation(): ?DeliveryLocation
@@ -585,6 +695,16 @@ class DeliveryType
     public function setDeliveryLocation(?DeliveryLocation $deliveryLocation = null): self
     {
         $this->deliveryLocation = $deliveryLocation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDeliveryLocation(): self
+    {
+        $this->deliveryLocation = null;
 
         return $this;
     }
@@ -620,6 +740,16 @@ class DeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAlternativeDeliveryLocation(): self
+    {
+        $this->alternativeDeliveryLocation = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\RequestedDeliveryPeriod|null
      */
     public function getRequestedDeliveryPeriod(): ?RequestedDeliveryPeriod
@@ -644,6 +774,16 @@ class DeliveryType
     public function setRequestedDeliveryPeriod(?RequestedDeliveryPeriod $requestedDeliveryPeriod = null): self
     {
         $this->requestedDeliveryPeriod = $requestedDeliveryPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRequestedDeliveryPeriod(): self
+    {
+        $this->requestedDeliveryPeriod = null;
 
         return $this;
     }
@@ -678,6 +818,16 @@ class DeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPromisedDeliveryPeriod(): self
+    {
+        $this->promisedDeliveryPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\EstimatedDeliveryPeriod|null
      */
     public function getEstimatedDeliveryPeriod(): ?EstimatedDeliveryPeriod
@@ -702,6 +852,16 @@ class DeliveryType
     public function setEstimatedDeliveryPeriod(?EstimatedDeliveryPeriod $estimatedDeliveryPeriod = null): self
     {
         $this->estimatedDeliveryPeriod = $estimatedDeliveryPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEstimatedDeliveryPeriod(): self
+    {
+        $this->estimatedDeliveryPeriod = null;
 
         return $this;
     }
@@ -736,6 +896,16 @@ class DeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCarrierParty(): self
+    {
+        $this->carrierParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\DeliveryParty|null
      */
     public function getDeliveryParty(): ?DeliveryParty
@@ -765,6 +935,16 @@ class DeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDeliveryParty(): self
+    {
+        $this->deliveryParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\NotifyParty>|null
      */
     public function getNotifyParty(): ?array
@@ -779,6 +959,16 @@ class DeliveryType
     public function setNotifyParty(?array $notifyParty = null): self
     {
         $this->notifyParty = $notifyParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNotifyParty(): self
+    {
+        $this->notifyParty = null;
 
         return $this;
     }
@@ -875,6 +1065,16 @@ class DeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDespatch(): self
+    {
+        $this->despatch = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms>|null
      */
     public function getDeliveryTerms(): ?array
@@ -889,6 +1089,16 @@ class DeliveryType
     public function setDeliveryTerms(?array $deliveryTerms = null): self
     {
         $this->deliveryTerms = $deliveryTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDeliveryTerms(): self
+    {
+        $this->deliveryTerms = null;
 
         return $this;
     }
@@ -985,6 +1195,16 @@ class DeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMinimumDeliveryUnit(): self
+    {
+        $this->minimumDeliveryUnit = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\MaximumDeliveryUnit|null
      */
     public function getMaximumDeliveryUnit(): ?MaximumDeliveryUnit
@@ -1014,6 +1234,16 @@ class DeliveryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMaximumDeliveryUnit(): self
+    {
+        $this->maximumDeliveryUnit = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Shipment|null
      */
     public function getShipment(): ?Shipment
@@ -1038,6 +1268,16 @@ class DeliveryType
     public function setShipment(?Shipment $shipment = null): self
     {
         $this->shipment = $shipment;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetShipment(): self
+    {
+        $this->shipment = null;
 
         return $this;
     }

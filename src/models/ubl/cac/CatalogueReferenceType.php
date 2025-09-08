@@ -157,6 +157,16 @@ class CatalogueReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      */
     public function getUUID(): ?UUID
@@ -186,6 +196,16 @@ class CatalogueReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUUID(): self
+    {
+        $this->uUID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getIssueDate(): ?\DateTimeInterface
@@ -200,6 +220,16 @@ class CatalogueReferenceType
     public function setIssueDate(?\DateTimeInterface $issueDate = null): self
     {
         $this->issueDate = $issueDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIssueDate(): self
+    {
+        $this->issueDate = null;
 
         return $this;
     }
@@ -224,6 +254,16 @@ class CatalogueReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIssueTime(): self
+    {
+        $this->issueTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getRevisionDate(): ?\DateTimeInterface
@@ -238,6 +278,16 @@ class CatalogueReferenceType
     public function setRevisionDate(?\DateTimeInterface $revisionDate = null): self
     {
         $this->revisionDate = $revisionDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRevisionDate(): self
+    {
+        $this->revisionDate = null;
 
         return $this;
     }
@@ -262,6 +312,16 @@ class CatalogueReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRevisionTime(): self
+    {
+        $this->revisionTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -276,6 +336,16 @@ class CatalogueReferenceType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -357,6 +427,16 @@ class CatalogueReferenceType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -453,6 +533,16 @@ class CatalogueReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetVersionID(): self
+    {
+        $this->versionID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PreviousVersionID|null
      */
     public function getPreviousVersionID(): ?PreviousVersionID
@@ -477,6 +567,16 @@ class CatalogueReferenceType
     public function setPreviousVersionID(?PreviousVersionID $previousVersionID = null): self
     {
         $this->previousVersionID = $previousVersionID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPreviousVersionID(): self
+    {
+        $this->previousVersionID = null;
 
         return $this;
     }

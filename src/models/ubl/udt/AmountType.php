@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\ubl\udt;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\models\ubl\cct\AmountType as AmountTypeBase;
 
 class AmountType extends AmountTypeBase
@@ -35,7 +36,17 @@ class AmountType extends AmountTypeBase
      */
     public function setCurrencyID(?string $currencyID = null): self
     {
-        $this->currencyID = $currencyID;
+        $this->currencyID = InvoiceSuiteStringUtils::asNullWhenEmpty($currencyID);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCurrencyID(): self
+    {
+        $this->currencyID = null;
 
         return $this;
     }

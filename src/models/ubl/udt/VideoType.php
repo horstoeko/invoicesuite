@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\ubl\udt;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\models\ubl\cct\BinaryObjectType;
 
 class VideoType extends BinaryObjectType
@@ -35,7 +36,17 @@ class VideoType extends BinaryObjectType
      */
     public function setMimeCode(?string $mimeCode = null): self
     {
-        $this->mimeCode = $mimeCode;
+        $this->mimeCode = InvoiceSuiteStringUtils::asNullWhenEmpty($mimeCode);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMimeCode(): self
+    {
+        $this->mimeCode = null;
 
         return $this;
     }

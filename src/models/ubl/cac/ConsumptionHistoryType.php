@@ -123,6 +123,16 @@ class ConsumptionHistoryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMeterNumber(): self
+    {
+        $this->meterNumber = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      */
     public function getQuantity(): ?Quantity
@@ -147,6 +157,16 @@ class ConsumptionHistoryType
     public function setQuantity(?Quantity $quantity = null): self
     {
         $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetQuantity(): self
+    {
+        $this->quantity = null;
 
         return $this;
     }
@@ -181,6 +201,16 @@ class ConsumptionHistoryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAmount(): self
+    {
+        $this->amount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ConsumptionLevelCode|null
      */
     public function getConsumptionLevelCode(): ?ConsumptionLevelCode
@@ -205,6 +235,16 @@ class ConsumptionHistoryType
     public function setConsumptionLevelCode(?ConsumptionLevelCode $consumptionLevelCode = null): self
     {
         $this->consumptionLevelCode = $consumptionLevelCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetConsumptionLevelCode(): self
+    {
+        $this->consumptionLevelCode = null;
 
         return $this;
     }
@@ -239,6 +279,16 @@ class ConsumptionHistoryType
     }
 
     /**
+     * @return self
+     */
+    public function unsetConsumptionLevel(): self
+    {
+        $this->consumptionLevel = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -253,6 +303,16 @@ class ConsumptionHistoryType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -344,6 +404,16 @@ class ConsumptionHistoryType
     public function setPeriod(?Period $period = null): self
     {
         $this->period = $period;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPeriod(): self
+    {
+        $this->period = null;
 
         return $this;
     }

@@ -64,6 +64,16 @@ class ConsumptionAverageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAverageAmount(): self
+    {
+        $this->averageAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -78,6 +88,16 @@ class ConsumptionAverageType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }

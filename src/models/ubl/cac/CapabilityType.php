@@ -111,6 +111,16 @@ class CapabilityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCapabilityTypeCode(): self
+    {
+        $this->capabilityTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -125,6 +135,16 @@ class CapabilityType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -221,6 +241,16 @@ class CapabilityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValueAmount(): self
+    {
+        $this->valueAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ValueQuantity|null
      */
     public function getValueQuantity(): ?ValueQuantity
@@ -250,6 +280,16 @@ class CapabilityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValueQuantity(): self
+    {
+        $this->valueQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied>|null
      */
     public function getEvidenceSupplied(): ?array
@@ -264,6 +304,16 @@ class CapabilityType
     public function setEvidenceSupplied(?array $evidenceSupplied = null): self
     {
         $this->evidenceSupplied = $evidenceSupplied;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEvidenceSupplied(): self
+    {
+        $this->evidenceSupplied = null;
 
         return $this;
     }
@@ -355,6 +405,16 @@ class CapabilityType
     public function setValidityPeriod(?ValidityPeriod $validityPeriod = null): self
     {
         $this->validityPeriod = $validityPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValidityPeriod(): self
+    {
+        $this->validityPeriod = null;
 
         return $this;
     }

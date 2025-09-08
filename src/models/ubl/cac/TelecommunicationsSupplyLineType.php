@@ -136,6 +136,16 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PhoneNumber|null
      */
     public function getPhoneNumber(): ?PhoneNumber
@@ -165,6 +175,16 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPhoneNumber(): self
+    {
+        $this->phoneNumber = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -179,6 +199,16 @@ class TelecommunicationsSupplyLineType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -275,6 +305,16 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineExtensionAmount(): self
+    {
+        $this->lineExtensionAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ExchangeRate>|null
      */
     public function getExchangeRate(): ?array
@@ -289,6 +329,16 @@ class TelecommunicationsSupplyLineType
     public function setExchangeRate(?array $exchangeRate = null): self
     {
         $this->exchangeRate = $exchangeRate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExchangeRate(): self
+    {
+        $this->exchangeRate = null;
 
         return $this;
     }
@@ -377,6 +427,16 @@ class TelecommunicationsSupplyLineType
     /**
      * @return self
      */
+    public function unsetAllowanceCharge(): self
+    {
+        $this->allowanceCharge = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearAllowanceCharge(): self
     {
         $this->allowanceCharge = [];
@@ -458,6 +518,16 @@ class TelecommunicationsSupplyLineType
     /**
      * @return self
      */
+    public function unsetTaxTotal(): self
+    {
+        $this->taxTotal = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearTaxTotal(): self
     {
         $this->taxTotal = [];
@@ -532,6 +602,16 @@ class TelecommunicationsSupplyLineType
     public function setTelecommunicationsService(?array $telecommunicationsService = null): self
     {
         $this->telecommunicationsService = $telecommunicationsService;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTelecommunicationsService(): self
+    {
+        $this->telecommunicationsService = null;
 
         return $this;
     }

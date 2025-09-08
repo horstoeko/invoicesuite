@@ -85,6 +85,16 @@ class EndorserPartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRoleCode(): self
+    {
+        $this->roleCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric|null
      */
     public function getSequenceNumeric(): ?SequenceNumeric
@@ -109,6 +119,16 @@ class EndorserPartyType
     public function setSequenceNumeric(?SequenceNumeric $sequenceNumeric = null): self
     {
         $this->sequenceNumeric = $sequenceNumeric;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSequenceNumeric(): self
+    {
+        $this->sequenceNumeric = null;
 
         return $this;
     }
@@ -143,6 +163,16 @@ class EndorserPartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetParty(): self
+    {
+        $this->party = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\SignatoryContact|null
      */
     public function getSignatoryContact(): ?SignatoryContact
@@ -167,6 +197,16 @@ class EndorserPartyType
     public function setSignatoryContact(?SignatoryContact $signatoryContact = null): self
     {
         $this->signatoryContact = $signatoryContact;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSignatoryContact(): self
+    {
+        $this->signatoryContact = null;
 
         return $this;
     }

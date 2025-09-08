@@ -157,6 +157,16 @@ class OrderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSubstitutionStatusCode(): self
+    {
+        $this->substitutionStatusCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -171,6 +181,16 @@ class OrderLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -267,6 +287,16 @@ class OrderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineItem(): self
+    {
+        $this->lineItem = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SellerProposedSubstituteLineItem>|null
      */
     public function getSellerProposedSubstituteLineItem(): ?array
@@ -281,6 +311,16 @@ class OrderLineType
     public function setSellerProposedSubstituteLineItem(?array $sellerProposedSubstituteLineItem = null): self
     {
         $this->sellerProposedSubstituteLineItem = $sellerProposedSubstituteLineItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSellerProposedSubstituteLineItem(): self
+    {
+        $this->sellerProposedSubstituteLineItem = null;
 
         return $this;
     }
@@ -371,6 +411,16 @@ class OrderLineType
     /**
      * @return self
      */
+    public function unsetSellerSubstitutedLineItem(): self
+    {
+        $this->sellerSubstitutedLineItem = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearSellerSubstitutedLineItem(): self
     {
         $this->sellerSubstitutedLineItem = [];
@@ -445,6 +495,16 @@ class OrderLineType
     public function setBuyerProposedSubstituteLineItem(?array $buyerProposedSubstituteLineItem = null): self
     {
         $this->buyerProposedSubstituteLineItem = $buyerProposedSubstituteLineItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBuyerProposedSubstituteLineItem(): self
+    {
+        $this->buyerProposedSubstituteLineItem = null;
 
         return $this;
     }
@@ -543,6 +603,16 @@ class OrderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCatalogueLineReference(): self
+    {
+        $this->catalogueLineReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\QuotationLineReference|null
      */
     public function getQuotationLineReference(): ?QuotationLineReference
@@ -572,6 +642,16 @@ class OrderLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetQuotationLineReference(): self
+    {
+        $this->quotationLineReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\OrderLineReference>|null
      */
     public function getOrderLineReference(): ?array
@@ -586,6 +666,16 @@ class OrderLineType
     public function setOrderLineReference(?array $orderLineReference = null): self
     {
         $this->orderLineReference = $orderLineReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOrderLineReference(): self
+    {
+        $this->orderLineReference = null;
 
         return $this;
     }
@@ -667,6 +757,16 @@ class OrderLineType
     public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
 
         return $this;
     }

@@ -249,6 +249,16 @@ class RemittanceAdviceLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -263,6 +273,16 @@ class RemittanceAdviceLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -359,6 +379,16 @@ class RemittanceAdviceLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUUID(): self
+    {
+        $this->uUID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\DebitLineAmount|null
      */
     public function getDebitLineAmount(): ?DebitLineAmount
@@ -383,6 +413,16 @@ class RemittanceAdviceLineType
     public function setDebitLineAmount(?DebitLineAmount $debitLineAmount = null): self
     {
         $this->debitLineAmount = $debitLineAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDebitLineAmount(): self
+    {
+        $this->debitLineAmount = null;
 
         return $this;
     }
@@ -417,6 +457,16 @@ class RemittanceAdviceLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCreditLineAmount(): self
+    {
+        $this->creditLineAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\BalanceAmount|null
      */
     public function getBalanceAmount(): ?BalanceAmount
@@ -441,6 +491,16 @@ class RemittanceAdviceLineType
     public function setBalanceAmount(?BalanceAmount $balanceAmount = null): self
     {
         $this->balanceAmount = $balanceAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBalanceAmount(): self
+    {
+        $this->balanceAmount = null;
 
         return $this;
     }
@@ -475,6 +535,16 @@ class RemittanceAdviceLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPaymentPurposeCode(): self
+    {
+        $this->paymentPurposeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\InvoicingPartyReference|null
      */
     public function getInvoicingPartyReference(): ?InvoicingPartyReference
@@ -499,6 +569,16 @@ class RemittanceAdviceLineType
     public function setInvoicingPartyReference(?InvoicingPartyReference $invoicingPartyReference = null): self
     {
         $this->invoicingPartyReference = $invoicingPartyReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInvoicingPartyReference(): self
+    {
+        $this->invoicingPartyReference = null;
 
         return $this;
     }
@@ -533,6 +613,16 @@ class RemittanceAdviceLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAccountingSupplierParty(): self
+    {
+        $this->accountingSupplierParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\AccountingCustomerParty|null
      */
     public function getAccountingCustomerParty(): ?AccountingCustomerParty
@@ -557,6 +647,16 @@ class RemittanceAdviceLineType
     public function setAccountingCustomerParty(?AccountingCustomerParty $accountingCustomerParty = null): self
     {
         $this->accountingCustomerParty = $accountingCustomerParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAccountingCustomerParty(): self
+    {
+        $this->accountingCustomerParty = null;
 
         return $this;
     }
@@ -591,6 +691,16 @@ class RemittanceAdviceLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBuyerCustomerParty(): self
+    {
+        $this->buyerCustomerParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty|null
      */
     public function getSellerSupplierParty(): ?SellerSupplierParty
@@ -615,6 +725,16 @@ class RemittanceAdviceLineType
     public function setSellerSupplierParty(?SellerSupplierParty $sellerSupplierParty = null): self
     {
         $this->sellerSupplierParty = $sellerSupplierParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSellerSupplierParty(): self
+    {
+        $this->sellerSupplierParty = null;
 
         return $this;
     }
@@ -649,6 +769,16 @@ class RemittanceAdviceLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOriginatorCustomerParty(): self
+    {
+        $this->originatorCustomerParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\PayeeParty|null
      */
     public function getPayeeParty(): ?PayeeParty
@@ -678,6 +808,16 @@ class RemittanceAdviceLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPayeeParty(): self
+    {
+        $this->payeeParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod>|null
      */
     public function getInvoicePeriod(): ?array
@@ -692,6 +832,16 @@ class RemittanceAdviceLineType
     public function setInvoicePeriod(?array $invoicePeriod = null): self
     {
         $this->invoicePeriod = $invoicePeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInvoicePeriod(): self
+    {
+        $this->invoicePeriod = null;
 
         return $this;
     }
@@ -780,6 +930,16 @@ class RemittanceAdviceLineType
     /**
      * @return self
      */
+    public function unsetBillingReference(): self
+    {
+        $this->billingReference = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearBillingReference(): self
     {
         $this->billingReference = [];
@@ -854,6 +1014,16 @@ class RemittanceAdviceLineType
     public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
 
         return $this;
     }
@@ -945,6 +1115,16 @@ class RemittanceAdviceLineType
     public function setExchangeRate(?ExchangeRate $exchangeRate = null): self
     {
         $this->exchangeRate = $exchangeRate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExchangeRate(): self
+    {
+        $this->exchangeRate = null;
 
         return $this;
     }

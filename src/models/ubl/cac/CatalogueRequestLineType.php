@@ -110,6 +110,16 @@ class CatalogueRequestLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ContractSubdivision|null
      */
     public function getContractSubdivision(): ?ContractSubdivision
@@ -139,6 +149,16 @@ class CatalogueRequestLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContractSubdivision(): self
+    {
+        $this->contractSubdivision = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -153,6 +173,16 @@ class CatalogueRequestLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -249,6 +279,16 @@ class CatalogueRequestLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineValidityPeriod(): self
+    {
+        $this->lineValidityPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity>|null
      */
     public function getRequiredItemLocationQuantity(): ?array
@@ -263,6 +303,16 @@ class CatalogueRequestLineType
     public function setRequiredItemLocationQuantity(?array $requiredItemLocationQuantity = null): self
     {
         $this->requiredItemLocationQuantity = $requiredItemLocationQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRequiredItemLocationQuantity(): self
+    {
+        $this->requiredItemLocationQuantity = null;
 
         return $this;
     }
@@ -356,6 +406,16 @@ class CatalogueRequestLineType
     public function setItem(?Item $item = null): self
     {
         $this->item = $item;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetItem(): self
+    {
+        $this->item = null;
 
         return $this;
     }

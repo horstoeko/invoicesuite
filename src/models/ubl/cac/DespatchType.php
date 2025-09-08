@@ -253,6 +253,16 @@ class DespatchType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getRequestedDespatchDate(): ?\DateTimeInterface
@@ -267,6 +277,16 @@ class DespatchType
     public function setRequestedDespatchDate(?\DateTimeInterface $requestedDespatchDate = null): self
     {
         $this->requestedDespatchDate = $requestedDespatchDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRequestedDespatchDate(): self
+    {
+        $this->requestedDespatchDate = null;
 
         return $this;
     }
@@ -291,6 +311,16 @@ class DespatchType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRequestedDespatchTime(): self
+    {
+        $this->requestedDespatchTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getEstimatedDespatchDate(): ?\DateTimeInterface
@@ -305,6 +335,16 @@ class DespatchType
     public function setEstimatedDespatchDate(?\DateTimeInterface $estimatedDespatchDate = null): self
     {
         $this->estimatedDespatchDate = $estimatedDespatchDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEstimatedDespatchDate(): self
+    {
+        $this->estimatedDespatchDate = null;
 
         return $this;
     }
@@ -329,6 +369,16 @@ class DespatchType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEstimatedDespatchTime(): self
+    {
+        $this->estimatedDespatchTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getActualDespatchDate(): ?\DateTimeInterface
@@ -343,6 +393,16 @@ class DespatchType
     public function setActualDespatchDate(?\DateTimeInterface $actualDespatchDate = null): self
     {
         $this->actualDespatchDate = $actualDespatchDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetActualDespatchDate(): self
+    {
+        $this->actualDespatchDate = null;
 
         return $this;
     }
@@ -367,6 +427,16 @@ class DespatchType
     }
 
     /**
+     * @return self
+     */
+    public function unsetActualDespatchTime(): self
+    {
+        $this->actualDespatchTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getGuaranteedDespatchDate(): ?\DateTimeInterface
@@ -386,6 +456,16 @@ class DespatchType
     }
 
     /**
+     * @return self
+     */
+    public function unsetGuaranteedDespatchDate(): self
+    {
+        $this->guaranteedDespatchDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getGuaranteedDespatchTime(): ?\DateTimeInterface
@@ -400,6 +480,16 @@ class DespatchType
     public function setGuaranteedDespatchTime(?\DateTimeInterface $guaranteedDespatchTime = null): self
     {
         $this->guaranteedDespatchTime = $guaranteedDespatchTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetGuaranteedDespatchTime(): self
+    {
+        $this->guaranteedDespatchTime = null;
 
         return $this;
     }
@@ -434,6 +524,16 @@ class DespatchType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReleaseID(): self
+    {
+        $this->releaseID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Instructions>|null
      */
     public function getInstructions(): ?array
@@ -448,6 +548,16 @@ class DespatchType
     public function setInstructions(?array $instructions = null): self
     {
         $this->instructions = $instructions;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInstructions(): self
+    {
+        $this->instructions = null;
 
         return $this;
     }
@@ -544,6 +654,16 @@ class DespatchType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDespatchAddress(): self
+    {
+        $this->despatchAddress = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\DespatchLocation|null
      */
     public function getDespatchLocation(): ?DespatchLocation
@@ -568,6 +688,16 @@ class DespatchType
     public function setDespatchLocation(?DespatchLocation $despatchLocation = null): self
     {
         $this->despatchLocation = $despatchLocation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDespatchLocation(): self
+    {
+        $this->despatchLocation = null;
 
         return $this;
     }
@@ -602,6 +732,16 @@ class DespatchType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDespatchParty(): self
+    {
+        $this->despatchParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\CarrierParty|null
      */
     public function getCarrierParty(): ?CarrierParty
@@ -631,6 +771,16 @@ class DespatchType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCarrierParty(): self
+    {
+        $this->carrierParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\NotifyParty>|null
      */
     public function getNotifyParty(): ?array
@@ -645,6 +795,16 @@ class DespatchType
     public function setNotifyParty(?array $notifyParty = null): self
     {
         $this->notifyParty = $notifyParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNotifyParty(): self
+    {
+        $this->notifyParty = null;
 
         return $this;
     }
@@ -741,6 +901,16 @@ class DespatchType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContact(): self
+    {
+        $this->contact = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\EstimatedDespatchPeriod|null
      */
     public function getEstimatedDespatchPeriod(): ?EstimatedDespatchPeriod
@@ -770,6 +940,16 @@ class DespatchType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEstimatedDespatchPeriod(): self
+    {
+        $this->estimatedDespatchPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\RequestedDespatchPeriod|null
      */
     public function getRequestedDespatchPeriod(): ?RequestedDespatchPeriod
@@ -794,6 +974,16 @@ class DespatchType
     public function setRequestedDespatchPeriod(?RequestedDespatchPeriod $requestedDespatchPeriod = null): self
     {
         $this->requestedDespatchPeriod = $requestedDespatchPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRequestedDespatchPeriod(): self
+    {
+        $this->requestedDespatchPeriod = null;
 
         return $this;
     }

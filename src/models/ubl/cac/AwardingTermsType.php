@@ -173,6 +173,16 @@ class AwardingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetWeightingAlgorithmCode(): self
+    {
+        $this->weightingAlgorithmCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -187,6 +197,16 @@ class AwardingTermsType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -268,6 +288,16 @@ class AwardingTermsType
     public function setTechnicalCommitteeDescription(?array $technicalCommitteeDescription = null): self
     {
         $this->technicalCommitteeDescription = $technicalCommitteeDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTechnicalCommitteeDescription(): self
+    {
+        $this->technicalCommitteeDescription = null;
 
         return $this;
     }
@@ -358,6 +388,16 @@ class AwardingTermsType
     /**
      * @return self
      */
+    public function unsetLowTendersDescription(): self
+    {
+        $this->lowTendersDescription = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearLowTendersDescription(): self
     {
         $this->lowTendersDescription = [];
@@ -437,6 +477,16 @@ class AwardingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPrizeIndicator(): self
+    {
+        $this->prizeIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\PrizeDescription>|null
      */
     public function getPrizeDescription(): ?array
@@ -451,6 +501,16 @@ class AwardingTermsType
     public function setPrizeDescription(?array $prizeDescription = null): self
     {
         $this->prizeDescription = $prizeDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPrizeDescription(): self
+    {
+        $this->prizeDescription = null;
 
         return $this;
     }
@@ -539,6 +599,16 @@ class AwardingTermsType
     /**
      * @return self
      */
+    public function unsetPaymentDescription(): self
+    {
+        $this->paymentDescription = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearPaymentDescription(): self
     {
         $this->paymentDescription = [];
@@ -618,6 +688,16 @@ class AwardingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFollowupContractIndicator(): self
+    {
+        $this->followupContractIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getBindingOnBuyerIndicator(): ?bool
@@ -637,6 +717,16 @@ class AwardingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBindingOnBuyerIndicator(): self
+    {
+        $this->bindingOnBuyerIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AwardingCriterion>|null
      */
     public function getAwardingCriterion(): ?array
@@ -651,6 +741,16 @@ class AwardingTermsType
     public function setAwardingCriterion(?array $awardingCriterion = null): self
     {
         $this->awardingCriterion = $awardingCriterion;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAwardingCriterion(): self
+    {
+        $this->awardingCriterion = null;
 
         return $this;
     }
@@ -732,6 +832,16 @@ class AwardingTermsType
     public function setTechnicalCommitteePerson(?array $technicalCommitteePerson = null): self
     {
         $this->technicalCommitteePerson = $technicalCommitteePerson;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTechnicalCommitteePerson(): self
+    {
+        $this->technicalCommitteePerson = null;
 
         return $this;
     }

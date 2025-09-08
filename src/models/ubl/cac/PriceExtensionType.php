@@ -63,6 +63,16 @@ class PriceExtensionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAmount(): self
+    {
+        $this->amount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal>|null
      */
     public function getTaxTotal(): ?array
@@ -77,6 +87,16 @@ class PriceExtensionType
     public function setTaxTotal(?array $taxTotal = null): self
     {
         $this->taxTotal = $taxTotal;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxTotal(): self
+    {
+        $this->taxTotal = null;
 
         return $this;
     }

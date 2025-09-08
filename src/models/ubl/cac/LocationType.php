@@ -184,6 +184,16 @@ class LocationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -198,6 +208,16 @@ class LocationType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -279,6 +299,16 @@ class LocationType
     public function setConditions(?array $conditions = null): self
     {
         $this->conditions = $conditions;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetConditions(): self
+    {
+        $this->conditions = null;
 
         return $this;
     }
@@ -375,6 +405,16 @@ class LocationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCountrySubentity(): self
+    {
+        $this->countrySubentity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CountrySubentityCode|null
      */
     public function getCountrySubentityCode(): ?CountrySubentityCode
@@ -399,6 +439,16 @@ class LocationType
     public function setCountrySubentityCode(?CountrySubentityCode $countrySubentityCode = null): self
     {
         $this->countrySubentityCode = $countrySubentityCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCountrySubentityCode(): self
+    {
+        $this->countrySubentityCode = null;
 
         return $this;
     }
@@ -433,6 +483,16 @@ class LocationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLocationTypeCode(): self
+    {
+        $this->locationTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\InformationURI|null
      */
     public function getInformationURI(): ?InformationURI
@@ -457,6 +517,16 @@ class LocationType
     public function setInformationURI(?InformationURI $informationURI = null): self
     {
         $this->informationURI = $informationURI;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInformationURI(): self
+    {
+        $this->informationURI = null;
 
         return $this;
     }
@@ -491,6 +561,16 @@ class LocationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod>|null
      */
     public function getValidityPeriod(): ?array
@@ -505,6 +585,16 @@ class LocationType
     public function setValidityPeriod(?array $validityPeriod = null): self
     {
         $this->validityPeriod = $validityPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValidityPeriod(): self
+    {
+        $this->validityPeriod = null;
 
         return $this;
     }
@@ -601,6 +691,16 @@ class LocationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAddress(): self
+    {
+        $this->address = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SubsidiaryLocation>|null
      */
     public function getSubsidiaryLocation(): ?array
@@ -615,6 +715,16 @@ class LocationType
     public function setSubsidiaryLocation(?array $subsidiaryLocation = null): self
     {
         $this->subsidiaryLocation = $subsidiaryLocation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSubsidiaryLocation(): self
+    {
+        $this->subsidiaryLocation = null;
 
         return $this;
     }
@@ -696,6 +806,16 @@ class LocationType
     public function setLocationCoordinate(?array $locationCoordinate = null): self
     {
         $this->locationCoordinate = $locationCoordinate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLocationCoordinate(): self
+    {
+        $this->locationCoordinate = null;
 
         return $this;
     }

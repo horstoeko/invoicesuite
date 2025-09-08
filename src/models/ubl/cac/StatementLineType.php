@@ -295,6 +295,16 @@ class StatementLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -309,6 +319,16 @@ class StatementLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -405,6 +425,16 @@ class StatementLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUUID(): self
+    {
+        $this->uUID = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getBalanceBroughtForwardIndicator(): ?bool
@@ -419,6 +449,16 @@ class StatementLineType
     public function setBalanceBroughtForwardIndicator(?bool $balanceBroughtForwardIndicator = null): self
     {
         $this->balanceBroughtForwardIndicator = $balanceBroughtForwardIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBalanceBroughtForwardIndicator(): self
+    {
+        $this->balanceBroughtForwardIndicator = null;
 
         return $this;
     }
@@ -453,6 +493,16 @@ class StatementLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDebitLineAmount(): self
+    {
+        $this->debitLineAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CreditLineAmount|null
      */
     public function getCreditLineAmount(): ?CreditLineAmount
@@ -477,6 +527,16 @@ class StatementLineType
     public function setCreditLineAmount(?CreditLineAmount $creditLineAmount = null): self
     {
         $this->creditLineAmount = $creditLineAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCreditLineAmount(): self
+    {
+        $this->creditLineAmount = null;
 
         return $this;
     }
@@ -511,6 +571,16 @@ class StatementLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBalanceAmount(): self
+    {
+        $this->balanceAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PaymentPurposeCode|null
      */
     public function getPaymentPurposeCode(): ?PaymentPurposeCode
@@ -535,6 +605,16 @@ class StatementLineType
     public function setPaymentPurposeCode(?PaymentPurposeCode $paymentPurposeCode = null): self
     {
         $this->paymentPurposeCode = $paymentPurposeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPaymentPurposeCode(): self
+    {
+        $this->paymentPurposeCode = null;
 
         return $this;
     }
@@ -569,6 +649,16 @@ class StatementLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPaymentMeans(): self
+    {
+        $this->paymentMeans = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>|null
      */
     public function getPaymentTerms(): ?array
@@ -583,6 +673,16 @@ class StatementLineType
     public function setPaymentTerms(?array $paymentTerms = null): self
     {
         $this->paymentTerms = $paymentTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPaymentTerms(): self
+    {
+        $this->paymentTerms = null;
 
         return $this;
     }
@@ -679,6 +779,16 @@ class StatementLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBuyerCustomerParty(): self
+    {
+        $this->buyerCustomerParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty|null
      */
     public function getSellerSupplierParty(): ?SellerSupplierParty
@@ -703,6 +813,16 @@ class StatementLineType
     public function setSellerSupplierParty(?SellerSupplierParty $sellerSupplierParty = null): self
     {
         $this->sellerSupplierParty = $sellerSupplierParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSellerSupplierParty(): self
+    {
+        $this->sellerSupplierParty = null;
 
         return $this;
     }
@@ -737,6 +857,16 @@ class StatementLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOriginatorCustomerParty(): self
+    {
+        $this->originatorCustomerParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\AccountingCustomerParty|null
      */
     public function getAccountingCustomerParty(): ?AccountingCustomerParty
@@ -761,6 +891,16 @@ class StatementLineType
     public function setAccountingCustomerParty(?AccountingCustomerParty $accountingCustomerParty = null): self
     {
         $this->accountingCustomerParty = $accountingCustomerParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAccountingCustomerParty(): self
+    {
+        $this->accountingCustomerParty = null;
 
         return $this;
     }
@@ -795,6 +935,16 @@ class StatementLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAccountingSupplierParty(): self
+    {
+        $this->accountingSupplierParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\PayeeParty|null
      */
     public function getPayeeParty(): ?PayeeParty
@@ -824,6 +974,16 @@ class StatementLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPayeeParty(): self
+    {
+        $this->payeeParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod>|null
      */
     public function getInvoicePeriod(): ?array
@@ -838,6 +998,16 @@ class StatementLineType
     public function setInvoicePeriod(?array $invoicePeriod = null): self
     {
         $this->invoicePeriod = $invoicePeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInvoicePeriod(): self
+    {
+        $this->invoicePeriod = null;
 
         return $this;
     }
@@ -926,6 +1096,16 @@ class StatementLineType
     /**
      * @return self
      */
+    public function unsetBillingReference(): self
+    {
+        $this->billingReference = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearBillingReference(): self
     {
         $this->billingReference = [];
@@ -1000,6 +1180,16 @@ class StatementLineType
     public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
 
         return $this;
     }
@@ -1096,6 +1286,16 @@ class StatementLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExchangeRate(): self
+    {
+        $this->exchangeRate = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null
      */
     public function getAllowanceCharge(): ?array
@@ -1110,6 +1310,16 @@ class StatementLineType
     public function setAllowanceCharge(?array $allowanceCharge = null): self
     {
         $this->allowanceCharge = $allowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAllowanceCharge(): self
+    {
+        $this->allowanceCharge = null;
 
         return $this;
     }
@@ -1191,6 +1401,16 @@ class StatementLineType
     public function setCollectedPayment(?array $collectedPayment = null): self
     {
         $this->collectedPayment = $collectedPayment;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCollectedPayment(): self
+    {
+        $this->collectedPayment = null;
 
         return $this;
     }

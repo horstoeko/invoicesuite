@@ -63,6 +63,16 @@ class RailTransportType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTrainID(): self
+    {
+        $this->trainID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\RailCarID|null
      */
     public function getRailCarID(): ?RailCarID
@@ -87,6 +97,16 @@ class RailTransportType
     public function setRailCarID(?RailCarID $railCarID = null): self
     {
         $this->railCarID = $railCarID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRailCarID(): self
+    {
+        $this->railCarID = null;
 
         return $this;
     }

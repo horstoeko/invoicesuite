@@ -133,6 +133,16 @@ class InventoryReportLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -147,6 +157,16 @@ class InventoryReportLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -243,6 +263,16 @@ class InventoryReportLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetQuantity(): self
+    {
+        $this->quantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\InventoryValueAmount|null
      */
     public function getInventoryValueAmount(): ?InventoryValueAmount
@@ -272,6 +302,16 @@ class InventoryReportLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetInventoryValueAmount(): self
+    {
+        $this->inventoryValueAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getAvailabilityDate(): ?\DateTimeInterface
@@ -286,6 +326,16 @@ class InventoryReportLineType
     public function setAvailabilityDate(?\DateTimeInterface $availabilityDate = null): self
     {
         $this->availabilityDate = $availabilityDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAvailabilityDate(): self
+    {
+        $this->availabilityDate = null;
 
         return $this;
     }
@@ -320,6 +370,16 @@ class InventoryReportLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAvailabilityStatusCode(): self
+    {
+        $this->availabilityStatusCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Item|null
      */
     public function getItem(): ?Item
@@ -349,6 +409,16 @@ class InventoryReportLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetItem(): self
+    {
+        $this->item = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\InventoryLocation|null
      */
     public function getInventoryLocation(): ?InventoryLocation
@@ -373,6 +443,16 @@ class InventoryReportLineType
     public function setInventoryLocation(?InventoryLocation $inventoryLocation = null): self
     {
         $this->inventoryLocation = $inventoryLocation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInventoryLocation(): self
+    {
+        $this->inventoryLocation = null;
 
         return $this;
     }

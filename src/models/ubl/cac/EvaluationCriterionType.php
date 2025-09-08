@@ -137,6 +137,16 @@ class EvaluationCriterionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEvaluationCriterionTypeCode(): self
+    {
+        $this->evaluationCriterionTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -151,6 +161,16 @@ class EvaluationCriterionType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -247,6 +267,16 @@ class EvaluationCriterionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetThresholdAmount(): self
+    {
+        $this->thresholdAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ThresholdQuantity|null
      */
     public function getThresholdQuantity(): ?ThresholdQuantity
@@ -271,6 +301,16 @@ class EvaluationCriterionType
     public function setThresholdQuantity(?ThresholdQuantity $thresholdQuantity = null): self
     {
         $this->thresholdQuantity = $thresholdQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetThresholdQuantity(): self
+    {
+        $this->thresholdQuantity = null;
 
         return $this;
     }
@@ -305,6 +345,16 @@ class EvaluationCriterionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExpressionCode(): self
+    {
+        $this->expressionCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Expression>|null
      */
     public function getExpression(): ?array
@@ -319,6 +369,16 @@ class EvaluationCriterionType
     public function setExpression(?array $expression = null): self
     {
         $this->expression = $expression;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExpression(): self
+    {
+        $this->expression = null;
 
         return $this;
     }
@@ -415,6 +475,16 @@ class EvaluationCriterionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDurationPeriod(): self
+    {
+        $this->durationPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SuggestedEvidence>|null
      */
     public function getSuggestedEvidence(): ?array
@@ -429,6 +499,16 @@ class EvaluationCriterionType
     public function setSuggestedEvidence(?array $suggestedEvidence = null): self
     {
         $this->suggestedEvidence = $suggestedEvidence;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSuggestedEvidence(): self
+    {
+        $this->suggestedEvidence = null;
 
         return $this;
     }

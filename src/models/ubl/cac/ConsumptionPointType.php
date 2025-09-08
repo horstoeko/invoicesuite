@@ -146,6 +146,16 @@ class ConsumptionPointType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -160,6 +170,16 @@ class ConsumptionPointType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -256,6 +276,16 @@ class ConsumptionPointType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSubscriberID(): self
+    {
+        $this->subscriberID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SubscriberType|null
      */
     public function getSubscriberType(): ?SubscriberType
@@ -280,6 +310,16 @@ class ConsumptionPointType
     public function setSubscriberType(?SubscriberType $subscriberType = null): self
     {
         $this->subscriberType = $subscriberType;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSubscriberType(): self
+    {
+        $this->subscriberType = null;
 
         return $this;
     }
@@ -314,6 +354,16 @@ class ConsumptionPointType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSubscriberTypeCode(): self
+    {
+        $this->subscriberTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TotalDeliveredQuantity|null
      */
     public function getTotalDeliveredQuantity(): ?TotalDeliveredQuantity
@@ -338,6 +388,16 @@ class ConsumptionPointType
     public function setTotalDeliveredQuantity(?TotalDeliveredQuantity $totalDeliveredQuantity = null): self
     {
         $this->totalDeliveredQuantity = $totalDeliveredQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTotalDeliveredQuantity(): self
+    {
+        $this->totalDeliveredQuantity = null;
 
         return $this;
     }
@@ -372,6 +432,16 @@ class ConsumptionPointType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAddress(): self
+    {
+        $this->address = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\WebSiteAccess|null
      */
     public function getWebSiteAccess(): ?WebSiteAccess
@@ -401,6 +471,16 @@ class ConsumptionPointType
     }
 
     /**
+     * @return self
+     */
+    public function unsetWebSiteAccess(): self
+    {
+        $this->webSiteAccess = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\UtilityMeter>|null
      */
     public function getUtilityMeter(): ?array
@@ -415,6 +495,16 @@ class ConsumptionPointType
     public function setUtilityMeter(?array $utilityMeter = null): self
     {
         $this->utilityMeter = $utilityMeter;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetUtilityMeter(): self
+    {
+        $this->utilityMeter = null;
 
         return $this;
     }

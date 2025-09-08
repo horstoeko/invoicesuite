@@ -239,6 +239,16 @@ class PersonType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\FirstName|null
      */
     public function getFirstName(): ?FirstName
@@ -263,6 +273,16 @@ class PersonType
     public function setFirstName(?FirstName $firstName = null): self
     {
         $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFirstName(): self
+    {
+        $this->firstName = null;
 
         return $this;
     }
@@ -297,6 +317,16 @@ class PersonType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFamilyName(): self
+    {
+        $this->familyName = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Title|null
      */
     public function getTitle(): ?Title
@@ -321,6 +351,16 @@ class PersonType
     public function setTitle(?Title $title = null): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTitle(): self
+    {
+        $this->title = null;
 
         return $this;
     }
@@ -355,6 +395,16 @@ class PersonType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMiddleName(): self
+    {
+        $this->middleName = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\OtherName|null
      */
     public function getOtherName(): ?OtherName
@@ -379,6 +429,16 @@ class PersonType
     public function setOtherName(?OtherName $otherName = null): self
     {
         $this->otherName = $otherName;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOtherName(): self
+    {
+        $this->otherName = null;
 
         return $this;
     }
@@ -413,6 +473,16 @@ class PersonType
     }
 
     /**
+     * @return self
+     */
+    public function unsetNameSuffix(): self
+    {
+        $this->nameSuffix = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\JobTitle|null
      */
     public function getJobTitle(): ?JobTitle
@@ -437,6 +507,16 @@ class PersonType
     public function setJobTitle(?JobTitle $jobTitle = null): self
     {
         $this->jobTitle = $jobTitle;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetJobTitle(): self
+    {
+        $this->jobTitle = null;
 
         return $this;
     }
@@ -471,6 +551,16 @@ class PersonType
     }
 
     /**
+     * @return self
+     */
+    public function unsetNationalityID(): self
+    {
+        $this->nationalityID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\GenderCode|null
      */
     public function getGenderCode(): ?GenderCode
@@ -500,6 +590,16 @@ class PersonType
     }
 
     /**
+     * @return self
+     */
+    public function unsetGenderCode(): self
+    {
+        $this->genderCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getBirthDate(): ?\DateTimeInterface
@@ -514,6 +614,16 @@ class PersonType
     public function setBirthDate(?\DateTimeInterface $birthDate = null): self
     {
         $this->birthDate = $birthDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBirthDate(): self
+    {
+        $this->birthDate = null;
 
         return $this;
     }
@@ -548,6 +658,16 @@ class PersonType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBirthplaceName(): self
+    {
+        $this->birthplaceName = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\OrganizationDepartment|null
      */
     public function getOrganizationDepartment(): ?OrganizationDepartment
@@ -572,6 +692,16 @@ class PersonType
     public function setOrganizationDepartment(?OrganizationDepartment $organizationDepartment = null): self
     {
         $this->organizationDepartment = $organizationDepartment;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOrganizationDepartment(): self
+    {
+        $this->organizationDepartment = null;
 
         return $this;
     }
@@ -606,6 +736,16 @@ class PersonType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContact(): self
+    {
+        $this->contact = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\FinancialAccount|null
      */
     public function getFinancialAccount(): ?FinancialAccount
@@ -635,6 +775,16 @@ class PersonType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFinancialAccount(): self
+    {
+        $this->financialAccount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\IdentityDocumentReference>|null
      */
     public function getIdentityDocumentReference(): ?array
@@ -649,6 +799,16 @@ class PersonType
     public function setIdentityDocumentReference(?array $identityDocumentReference = null): self
     {
         $this->identityDocumentReference = $identityDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIdentityDocumentReference(): self
+    {
+        $this->identityDocumentReference = null;
 
         return $this;
     }
@@ -740,6 +900,16 @@ class PersonType
     public function setResidenceAddress(?ResidenceAddress $residenceAddress = null): self
     {
         $this->residenceAddress = $residenceAddress;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetResidenceAddress(): self
+    {
+        $this->residenceAddress = null;
 
         return $this;
     }

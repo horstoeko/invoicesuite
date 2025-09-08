@@ -87,6 +87,16 @@ class CorporateRegistrationSchemeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      */
     public function getName(): ?Name
@@ -111,6 +121,16 @@ class CorporateRegistrationSchemeType
     public function setName(?Name $name = null): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
 
         return $this;
     }
@@ -146,6 +166,16 @@ class CorporateRegistrationSchemeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCorporateRegistrationTypeCode(): self
+    {
+        $this->corporateRegistrationTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\JurisdictionRegionAddress>|null
      */
     public function getJurisdictionRegionAddress(): ?array
@@ -160,6 +190,16 @@ class CorporateRegistrationSchemeType
     public function setJurisdictionRegionAddress(?array $jurisdictionRegionAddress = null): self
     {
         $this->jurisdictionRegionAddress = $jurisdictionRegionAddress;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetJurisdictionRegionAddress(): self
+    {
+        $this->jurisdictionRegionAddress = null;
 
         return $this;
     }

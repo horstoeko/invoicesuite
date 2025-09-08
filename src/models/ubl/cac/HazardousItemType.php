@@ -313,6 +313,16 @@ class HazardousItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PlacardNotation|null
      */
     public function getPlacardNotation(): ?PlacardNotation
@@ -337,6 +347,16 @@ class HazardousItemType
     public function setPlacardNotation(?PlacardNotation $placardNotation = null): self
     {
         $this->placardNotation = $placardNotation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPlacardNotation(): self
+    {
+        $this->placardNotation = null;
 
         return $this;
     }
@@ -371,6 +391,16 @@ class HazardousItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPlacardEndorsement(): self
+    {
+        $this->placardEndorsement = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalInformation>|null
      */
     public function getAdditionalInformation(): ?array
@@ -385,6 +415,16 @@ class HazardousItemType
     public function setAdditionalInformation(?array $additionalInformation = null): self
     {
         $this->additionalInformation = $additionalInformation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAdditionalInformation(): self
+    {
+        $this->additionalInformation = null;
 
         return $this;
     }
@@ -481,6 +521,16 @@ class HazardousItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUNDGCode(): self
+    {
+        $this->uNDGCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\EmergencyProceduresCode|null
      */
     public function getEmergencyProceduresCode(): ?EmergencyProceduresCode
@@ -505,6 +555,16 @@ class HazardousItemType
     public function setEmergencyProceduresCode(?EmergencyProceduresCode $emergencyProceduresCode = null): self
     {
         $this->emergencyProceduresCode = $emergencyProceduresCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEmergencyProceduresCode(): self
+    {
+        $this->emergencyProceduresCode = null;
 
         return $this;
     }
@@ -539,6 +599,16 @@ class HazardousItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMedicalFirstAidGuideCode(): self
+    {
+        $this->medicalFirstAidGuideCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TechnicalName|null
      */
     public function getTechnicalName(): ?TechnicalName
@@ -563,6 +633,16 @@ class HazardousItemType
     public function setTechnicalName(?TechnicalName $technicalName = null): self
     {
         $this->technicalName = $technicalName;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTechnicalName(): self
+    {
+        $this->technicalName = null;
 
         return $this;
     }
@@ -597,6 +677,16 @@ class HazardousItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCategoryName(): self
+    {
+        $this->categoryName = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\HazardousCategoryCode|null
      */
     public function getHazardousCategoryCode(): ?HazardousCategoryCode
@@ -621,6 +711,16 @@ class HazardousItemType
     public function setHazardousCategoryCode(?HazardousCategoryCode $hazardousCategoryCode = null): self
     {
         $this->hazardousCategoryCode = $hazardousCategoryCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetHazardousCategoryCode(): self
+    {
+        $this->hazardousCategoryCode = null;
 
         return $this;
     }
@@ -656,6 +756,16 @@ class HazardousItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUpperOrangeHazardPlacardID(): self
+    {
+        $this->upperOrangeHazardPlacardID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LowerOrangeHazardPlacardID|null
      */
     public function getLowerOrangeHazardPlacardID(): ?LowerOrangeHazardPlacardID
@@ -681,6 +791,16 @@ class HazardousItemType
         ?LowerOrangeHazardPlacardID $lowerOrangeHazardPlacardID = null,
     ): self {
         $this->lowerOrangeHazardPlacardID = $lowerOrangeHazardPlacardID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLowerOrangeHazardPlacardID(): self
+    {
+        $this->lowerOrangeHazardPlacardID = null;
 
         return $this;
     }
@@ -715,6 +835,16 @@ class HazardousItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMarkingID(): self
+    {
+        $this->markingID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\HazardClassID|null
      */
     public function getHazardClassID(): ?HazardClassID
@@ -739,6 +869,16 @@ class HazardousItemType
     public function setHazardClassID(?HazardClassID $hazardClassID = null): self
     {
         $this->hazardClassID = $hazardClassID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetHazardClassID(): self
+    {
+        $this->hazardClassID = null;
 
         return $this;
     }
@@ -773,6 +913,16 @@ class HazardousItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetNetWeightMeasure(): self
+    {
+        $this->netWeightMeasure = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\NetVolumeMeasure|null
      */
     public function getNetVolumeMeasure(): ?NetVolumeMeasure
@@ -797,6 +947,16 @@ class HazardousItemType
     public function setNetVolumeMeasure(?NetVolumeMeasure $netVolumeMeasure = null): self
     {
         $this->netVolumeMeasure = $netVolumeMeasure;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNetVolumeMeasure(): self
+    {
+        $this->netVolumeMeasure = null;
 
         return $this;
     }
@@ -831,6 +991,16 @@ class HazardousItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetQuantity(): self
+    {
+        $this->quantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ContactParty|null
      */
     public function getContactParty(): ?ContactParty
@@ -860,6 +1030,16 @@ class HazardousItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContactParty(): self
+    {
+        $this->contactParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SecondaryHazard>|null
      */
     public function getSecondaryHazard(): ?array
@@ -874,6 +1054,16 @@ class HazardousItemType
     public function setSecondaryHazard(?array $secondaryHazard = null): self
     {
         $this->secondaryHazard = $secondaryHazard;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSecondaryHazard(): self
+    {
+        $this->secondaryHazard = null;
 
         return $this;
     }
@@ -955,6 +1145,16 @@ class HazardousItemType
     public function setHazardousGoodsTransit(?array $hazardousGoodsTransit = null): self
     {
         $this->hazardousGoodsTransit = $hazardousGoodsTransit;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetHazardousGoodsTransit(): self
+    {
+        $this->hazardousGoodsTransit = null;
 
         return $this;
     }
@@ -1051,6 +1251,16 @@ class HazardousItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEmergencyTemperature(): self
+    {
+        $this->emergencyTemperature = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\FlashpointTemperature|null
      */
     public function getFlashpointTemperature(): ?FlashpointTemperature
@@ -1080,6 +1290,16 @@ class HazardousItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFlashpointTemperature(): self
+    {
+        $this->flashpointTemperature = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalTemperature>|null
      */
     public function getAdditionalTemperature(): ?array
@@ -1094,6 +1314,16 @@ class HazardousItemType
     public function setAdditionalTemperature(?array $additionalTemperature = null): self
     {
         $this->additionalTemperature = $additionalTemperature;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAdditionalTemperature(): self
+    {
+        $this->additionalTemperature = null;
 
         return $this;
     }

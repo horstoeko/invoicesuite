@@ -128,6 +128,16 @@ class BillingReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetInvoiceDocumentReference(): self
+    {
+        $this->invoiceDocumentReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\SelfBilledInvoiceDocumentReference|null
      */
     public function getSelfBilledInvoiceDocumentReference(): ?SelfBilledInvoiceDocumentReference
@@ -153,6 +163,16 @@ class BillingReferenceType
         ?SelfBilledInvoiceDocumentReference $selfBilledInvoiceDocumentReference = null,
     ): self {
         $this->selfBilledInvoiceDocumentReference = $selfBilledInvoiceDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSelfBilledInvoiceDocumentReference(): self
+    {
+        $this->selfBilledInvoiceDocumentReference = null;
 
         return $this;
     }
@@ -188,6 +208,16 @@ class BillingReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCreditNoteDocumentReference(): self
+    {
+        $this->creditNoteDocumentReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\SelfBilledCreditNoteDocumentReference|null
      */
     public function getSelfBilledCreditNoteDocumentReference(): ?SelfBilledCreditNoteDocumentReference
@@ -213,6 +243,16 @@ class BillingReferenceType
         ?SelfBilledCreditNoteDocumentReference $selfBilledCreditNoteDocumentReference = null,
     ): self {
         $this->selfBilledCreditNoteDocumentReference = $selfBilledCreditNoteDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSelfBilledCreditNoteDocumentReference(): self
+    {
+        $this->selfBilledCreditNoteDocumentReference = null;
 
         return $this;
     }
@@ -248,6 +288,16 @@ class BillingReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDebitNoteDocumentReference(): self
+    {
+        $this->debitNoteDocumentReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ReminderDocumentReference|null
      */
     public function getReminderDocumentReference(): ?ReminderDocumentReference
@@ -272,6 +322,16 @@ class BillingReferenceType
     public function setReminderDocumentReference(?ReminderDocumentReference $reminderDocumentReference = null): self
     {
         $this->reminderDocumentReference = $reminderDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetReminderDocumentReference(): self
+    {
+        $this->reminderDocumentReference = null;
 
         return $this;
     }
@@ -307,6 +367,16 @@ class BillingReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAdditionalDocumentReference(): self
+    {
+        $this->additionalDocumentReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\BillingReferenceLine>|null
      */
     public function getBillingReferenceLine(): ?array
@@ -321,6 +391,16 @@ class BillingReferenceType
     public function setBillingReferenceLine(?array $billingReferenceLine = null): self
     {
         $this->billingReferenceLine = $billingReferenceLine;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBillingReferenceLine(): self
+    {
+        $this->billingReferenceLine = null;
 
         return $this;
     }

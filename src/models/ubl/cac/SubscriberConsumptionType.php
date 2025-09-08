@@ -145,6 +145,16 @@ class SubscriberConsumptionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetConsumptionID(): self
+    {
+        $this->consumptionID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SpecificationTypeCode|null
      */
     public function getSpecificationTypeCode(): ?SpecificationTypeCode
@@ -174,6 +184,16 @@ class SubscriberConsumptionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSpecificationTypeCode(): self
+    {
+        $this->specificationTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -188,6 +208,16 @@ class SubscriberConsumptionType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -284,6 +314,16 @@ class SubscriberConsumptionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTotalMeteredQuantity(): self
+    {
+        $this->totalMeteredQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\SubscriberParty|null
      */
     public function getSubscriberParty(): ?SubscriberParty
@@ -308,6 +348,16 @@ class SubscriberConsumptionType
     public function setSubscriberParty(?SubscriberParty $subscriberParty = null): self
     {
         $this->subscriberParty = $subscriberParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSubscriberParty(): self
+    {
+        $this->subscriberParty = null;
 
         return $this;
     }
@@ -342,6 +392,16 @@ class SubscriberConsumptionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUtilityConsumptionPoint(): self
+    {
+        $this->utilityConsumptionPoint = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\OnAccountPayment>|null
      */
     public function getOnAccountPayment(): ?array
@@ -356,6 +416,16 @@ class SubscriberConsumptionType
     public function setOnAccountPayment(?array $onAccountPayment = null): self
     {
         $this->onAccountPayment = $onAccountPayment;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOnAccountPayment(): self
+    {
+        $this->onAccountPayment = null;
 
         return $this;
     }
@@ -452,6 +522,16 @@ class SubscriberConsumptionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetConsumption(): self
+    {
+        $this->consumption = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SupplierConsumption>|null
      */
     public function getSupplierConsumption(): ?array
@@ -466,6 +546,16 @@ class SubscriberConsumptionType
     public function setSupplierConsumption(?array $supplierConsumption = null): self
     {
         $this->supplierConsumption = $supplierConsumption;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSupplierConsumption(): self
+    {
+        $this->supplierConsumption = null;
 
         return $this;
     }

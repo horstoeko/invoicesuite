@@ -415,6 +415,16 @@ class LineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SalesOrderID|null
      */
     public function getSalesOrderID(): ?SalesOrderID
@@ -439,6 +449,16 @@ class LineItemType
     public function setSalesOrderID(?SalesOrderID $salesOrderID = null): self
     {
         $this->salesOrderID = $salesOrderID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSalesOrderID(): self
+    {
+        $this->salesOrderID = null;
 
         return $this;
     }
@@ -473,6 +493,16 @@ class LineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUUID(): self
+    {
+        $this->uUID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -487,6 +517,16 @@ class LineItemType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -583,6 +623,16 @@ class LineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineStatusCode(): self
+    {
+        $this->lineStatusCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      */
     public function getQuantity(): ?Quantity
@@ -607,6 +657,16 @@ class LineItemType
     public function setQuantity(?Quantity $quantity = null): self
     {
         $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetQuantity(): self
+    {
+        $this->quantity = null;
 
         return $this;
     }
@@ -641,6 +701,16 @@ class LineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineExtensionAmount(): self
+    {
+        $this->lineExtensionAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TotalTaxAmount|null
      */
     public function getTotalTaxAmount(): ?TotalTaxAmount
@@ -665,6 +735,16 @@ class LineItemType
     public function setTotalTaxAmount(?TotalTaxAmount $totalTaxAmount = null): self
     {
         $this->totalTaxAmount = $totalTaxAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTotalTaxAmount(): self
+    {
+        $this->totalTaxAmount = null;
 
         return $this;
     }
@@ -699,6 +779,16 @@ class LineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMinimumQuantity(): self
+    {
+        $this->minimumQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MaximumQuantity|null
      */
     public function getMaximumQuantity(): ?MaximumQuantity
@@ -723,6 +813,16 @@ class LineItemType
     public function setMaximumQuantity(?MaximumQuantity $maximumQuantity = null): self
     {
         $this->maximumQuantity = $maximumQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMaximumQuantity(): self
+    {
+        $this->maximumQuantity = null;
 
         return $this;
     }
@@ -757,6 +857,16 @@ class LineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMinimumBackorderQuantity(): self
+    {
+        $this->minimumBackorderQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MaximumBackorderQuantity|null
      */
     public function getMaximumBackorderQuantity(): ?MaximumBackorderQuantity
@@ -781,6 +891,16 @@ class LineItemType
     public function setMaximumBackorderQuantity(?MaximumBackorderQuantity $maximumBackorderQuantity = null): self
     {
         $this->maximumBackorderQuantity = $maximumBackorderQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMaximumBackorderQuantity(): self
+    {
+        $this->maximumBackorderQuantity = null;
 
         return $this;
     }
@@ -815,6 +935,16 @@ class LineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetInspectionMethodCode(): self
+    {
+        $this->inspectionMethodCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getPartialDeliveryIndicator(): ?bool
@@ -834,6 +964,16 @@ class LineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPartialDeliveryIndicator(): self
+    {
+        $this->partialDeliveryIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getBackOrderAllowedIndicator(): ?bool
@@ -848,6 +988,16 @@ class LineItemType
     public function setBackOrderAllowedIndicator(?bool $backOrderAllowedIndicator = null): self
     {
         $this->backOrderAllowedIndicator = $backOrderAllowedIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBackOrderAllowedIndicator(): self
+    {
+        $this->backOrderAllowedIndicator = null;
 
         return $this;
     }
@@ -882,6 +1032,16 @@ class LineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAccountingCostCode(): self
+    {
+        $this->accountingCostCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\AccountingCost|null
      */
     public function getAccountingCost(): ?AccountingCost
@@ -911,6 +1071,16 @@ class LineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAccountingCost(): self
+    {
+        $this->accountingCost = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\WarrantyInformation>|null
      */
     public function getWarrantyInformation(): ?array
@@ -925,6 +1095,16 @@ class LineItemType
     public function setWarrantyInformation(?array $warrantyInformation = null): self
     {
         $this->warrantyInformation = $warrantyInformation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetWarrantyInformation(): self
+    {
+        $this->warrantyInformation = null;
 
         return $this;
     }
@@ -1006,6 +1186,16 @@ class LineItemType
     public function setDelivery(?array $delivery = null): self
     {
         $this->delivery = $delivery;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDelivery(): self
+    {
+        $this->delivery = null;
 
         return $this;
     }
@@ -1102,6 +1292,16 @@ class LineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDeliveryTerms(): self
+    {
+        $this->deliveryTerms = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\OriginatorParty|null
      */
     public function getOriginatorParty(): ?OriginatorParty
@@ -1131,6 +1331,16 @@ class LineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOriginatorParty(): self
+    {
+        $this->originatorParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\OrderedShipment>|null
      */
     public function getOrderedShipment(): ?array
@@ -1145,6 +1355,16 @@ class LineItemType
     public function setOrderedShipment(?array $orderedShipment = null): self
     {
         $this->orderedShipment = $orderedShipment;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOrderedShipment(): self
+    {
+        $this->orderedShipment = null;
 
         return $this;
     }
@@ -1241,6 +1461,16 @@ class LineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPricingReference(): self
+    {
+        $this->pricingReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null
      */
     public function getAllowanceCharge(): ?array
@@ -1255,6 +1485,16 @@ class LineItemType
     public function setAllowanceCharge(?array $allowanceCharge = null): self
     {
         $this->allowanceCharge = $allowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAllowanceCharge(): self
+    {
+        $this->allowanceCharge = null;
 
         return $this;
     }
@@ -1351,6 +1591,16 @@ class LineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPrice(): self
+    {
+        $this->price = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Item|null
      */
     public function getItem(): ?Item
@@ -1380,6 +1630,16 @@ class LineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetItem(): self
+    {
+        $this->item = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SubLineItem>|null
      */
     public function getSubLineItem(): ?array
@@ -1394,6 +1654,16 @@ class LineItemType
     public function setSubLineItem(?array $subLineItem = null): self
     {
         $this->subLineItem = $subLineItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSubLineItem(): self
+    {
+        $this->subLineItem = null;
 
         return $this;
     }
@@ -1490,6 +1760,16 @@ class LineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetWarrantyValidityPeriod(): self
+    {
+        $this->warrantyValidityPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\WarrantyParty|null
      */
     public function getWarrantyParty(): ?WarrantyParty
@@ -1519,6 +1799,16 @@ class LineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetWarrantyParty(): self
+    {
+        $this->warrantyParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal>|null
      */
     public function getTaxTotal(): ?array
@@ -1533,6 +1823,16 @@ class LineItemType
     public function setTaxTotal(?array $taxTotal = null): self
     {
         $this->taxTotal = $taxTotal;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxTotal(): self
+    {
+        $this->taxTotal = null;
 
         return $this;
     }
@@ -1629,6 +1929,16 @@ class LineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetItemPriceExtension(): self
+    {
+        $this->itemPriceExtension = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\LineReference>|null
      */
     public function getLineReference(): ?array
@@ -1643,6 +1953,16 @@ class LineItemType
     public function setLineReference(?array $lineReference = null): self
     {
         $this->lineReference = $lineReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLineReference(): self
+    {
+        $this->lineReference = null;
 
         return $this;
     }

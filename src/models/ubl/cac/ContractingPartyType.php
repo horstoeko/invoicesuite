@@ -87,6 +87,16 @@ class ContractingPartyType extends ContractingPartyTypeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBuyerProfileURI(): self
+    {
+        $this->buyerProfileURI = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ContractingPartyType>|null
      */
     public function getContractingPartyType(): ?array
@@ -101,6 +111,16 @@ class ContractingPartyType extends ContractingPartyTypeType
     public function setContractingPartyType(?array $contractingPartyType = null): self
     {
         $this->contractingPartyType = $contractingPartyType;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContractingPartyType(): self
+    {
+        $this->contractingPartyType = null;
 
         return $this;
     }
@@ -182,6 +202,16 @@ class ContractingPartyType extends ContractingPartyTypeType
     public function setContractingActivity(?array $contractingActivity = null): self
     {
         $this->contractingActivity = $contractingActivity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContractingActivity(): self
+    {
+        $this->contractingActivity = null;
 
         return $this;
     }
@@ -273,6 +303,16 @@ class ContractingPartyType extends ContractingPartyTypeType
     public function setParty(?Party $party = null): self
     {
         $this->party = $party;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetParty(): self
+    {
+        $this->party = null;
 
         return $this;
     }

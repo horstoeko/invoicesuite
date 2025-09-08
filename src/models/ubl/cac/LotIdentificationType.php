@@ -74,6 +74,16 @@ class LotIdentificationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLotNumberID(): self
+    {
+        $this->lotNumberID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getExpiryDate(): ?\DateTimeInterface
@@ -93,6 +103,16 @@ class LotIdentificationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExpiryDate(): self
+    {
+        $this->expiryDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty>|null
      */
     public function getAdditionalItemProperty(): ?array
@@ -107,6 +127,16 @@ class LotIdentificationType
     public function setAdditionalItemProperty(?array $additionalItemProperty = null): self
     {
         $this->additionalItemProperty = $additionalItemProperty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAdditionalItemProperty(): self
+    {
+        $this->additionalItemProperty = null;
 
         return $this;
     }

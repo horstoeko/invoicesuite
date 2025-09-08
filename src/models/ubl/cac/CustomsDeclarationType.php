@@ -62,6 +62,16 @@ class CustomsDeclarationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\IssuerParty|null
      */
     public function getIssuerParty(): ?IssuerParty
@@ -86,6 +96,16 @@ class CustomsDeclarationType
     public function setIssuerParty(?IssuerParty $issuerParty = null): self
     {
         $this->issuerParty = $issuerParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIssuerParty(): self
+    {
+        $this->issuerParty = null;
 
         return $this;
     }

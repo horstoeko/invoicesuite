@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\ubl\udt;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\models\ubl\cct\MeasureType as MeasureTypeBase;
 
 class MeasureType extends MeasureTypeBase
@@ -35,7 +36,17 @@ class MeasureType extends MeasureTypeBase
      */
     public function setUnitCode(?string $unitCode = null): self
     {
-        $this->unitCode = $unitCode;
+        $this->unitCode = InvoiceSuiteStringUtils::asNullWhenEmpty($unitCode);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetUnitCode(): self
+    {
+        $this->unitCode = null;
 
         return $this;
     }

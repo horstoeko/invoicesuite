@@ -89,6 +89,16 @@ class EnvironmentalEmissionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEnvironmentalEmissionTypeCode(): self
+    {
+        $this->environmentalEmissionTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ValueMeasure|null
      */
     public function getValueMeasure(): ?ValueMeasure
@@ -118,6 +128,16 @@ class EnvironmentalEmissionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValueMeasure(): self
+    {
+        $this->valueMeasure = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -132,6 +152,16 @@ class EnvironmentalEmissionType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -213,6 +243,16 @@ class EnvironmentalEmissionType
     public function setEmissionCalculationMethod(?array $emissionCalculationMethod = null): self
     {
         $this->emissionCalculationMethod = $emissionCalculationMethod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEmissionCalculationMethod(): self
+    {
+        $this->emissionCalculationMethod = null;
 
         return $this;
     }

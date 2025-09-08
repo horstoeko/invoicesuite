@@ -157,6 +157,16 @@ class ItemManagementProfileType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFrozenPeriodDaysNumeric(): self
+    {
+        $this->frozenPeriodDaysNumeric = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MinimumInventoryQuantity|null
      */
     public function getMinimumInventoryQuantity(): ?MinimumInventoryQuantity
@@ -181,6 +191,16 @@ class ItemManagementProfileType
     public function setMinimumInventoryQuantity(?MinimumInventoryQuantity $minimumInventoryQuantity = null): self
     {
         $this->minimumInventoryQuantity = $minimumInventoryQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMinimumInventoryQuantity(): self
+    {
+        $this->minimumInventoryQuantity = null;
 
         return $this;
     }
@@ -215,6 +235,16 @@ class ItemManagementProfileType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMultipleOrderQuantity(): self
+    {
+        $this->multipleOrderQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\OrderIntervalDaysNumeric|null
      */
     public function getOrderIntervalDaysNumeric(): ?OrderIntervalDaysNumeric
@@ -244,6 +274,16 @@ class ItemManagementProfileType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOrderIntervalDaysNumeric(): self
+    {
+        $this->orderIntervalDaysNumeric = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\ReplenishmentOwnerDescription>|null
      */
     public function getReplenishmentOwnerDescription(): ?array
@@ -258,6 +298,16 @@ class ItemManagementProfileType
     public function setReplenishmentOwnerDescription(?array $replenishmentOwnerDescription = null): self
     {
         $this->replenishmentOwnerDescription = $replenishmentOwnerDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetReplenishmentOwnerDescription(): self
+    {
+        $this->replenishmentOwnerDescription = null;
 
         return $this;
     }
@@ -356,6 +406,16 @@ class ItemManagementProfileType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTargetServicePercent(): self
+    {
+        $this->targetServicePercent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TargetInventoryQuantity|null
      */
     public function getTargetInventoryQuantity(): ?TargetInventoryQuantity
@@ -380,6 +440,16 @@ class ItemManagementProfileType
     public function setTargetInventoryQuantity(?TargetInventoryQuantity $targetInventoryQuantity = null): self
     {
         $this->targetInventoryQuantity = $targetInventoryQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTargetInventoryQuantity(): self
+    {
+        $this->targetInventoryQuantity = null;
 
         return $this;
     }
@@ -414,6 +484,16 @@ class ItemManagementProfileType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEffectivePeriod(): self
+    {
+        $this->effectivePeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Item|null
      */
     public function getItem(): ?Item
@@ -443,6 +523,16 @@ class ItemManagementProfileType
     }
 
     /**
+     * @return self
+     */
+    public function unsetItem(): self
+    {
+        $this->item = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ItemLocationQuantity|null
      */
     public function getItemLocationQuantity(): ?ItemLocationQuantity
@@ -467,6 +557,16 @@ class ItemManagementProfileType
     public function setItemLocationQuantity(?ItemLocationQuantity $itemLocationQuantity = null): self
     {
         $this->itemLocationQuantity = $itemLocationQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetItemLocationQuantity(): self
+    {
+        $this->itemLocationQuantity = null;
 
         return $this;
     }

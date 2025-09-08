@@ -75,6 +75,16 @@ class RegulationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LegalReference|null
      */
     public function getLegalReference(): ?LegalReference
@@ -104,6 +114,16 @@ class RegulationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLegalReference(): self
+    {
+        $this->legalReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\OntologyURI|null
      */
     public function getOntologyURI(): ?OntologyURI
@@ -128,6 +148,16 @@ class RegulationType
     public function setOntologyURI(?OntologyURI $ontologyURI = null): self
     {
         $this->ontologyURI = $ontologyURI;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOntologyURI(): self
+    {
+        $this->ontologyURI = null;
 
         return $this;
     }

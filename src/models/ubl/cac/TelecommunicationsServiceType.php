@@ -287,6 +287,16 @@ class TelecommunicationsServiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getCallDate(): ?\DateTimeInterface
@@ -306,6 +316,16 @@ class TelecommunicationsServiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCallDate(): self
+    {
+        $this->callDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getCallTime(): ?\DateTimeInterface
@@ -320,6 +340,16 @@ class TelecommunicationsServiceType
     public function setCallTime(?\DateTimeInterface $callTime = null): self
     {
         $this->callTime = $callTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCallTime(): self
+    {
+        $this->callTime = null;
 
         return $this;
     }
@@ -349,6 +379,16 @@ class TelecommunicationsServiceType
     public function setServiceNumberCalled(?ServiceNumberCalled $serviceNumberCalled = null): self
     {
         $this->serviceNumberCalled = $serviceNumberCalled;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetServiceNumberCalled(): self
+    {
+        $this->serviceNumberCalled = null;
 
         return $this;
     }
@@ -384,6 +424,16 @@ class TelecommunicationsServiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTelecommunicationsServiceCategory(): self
+    {
+        $this->telecommunicationsServiceCategory = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TelecommunicationsServiceCategoryCode|null
      */
     public function getTelecommunicationsServiceCategoryCode(): ?TelecommunicationsServiceCategoryCode
@@ -409,6 +459,16 @@ class TelecommunicationsServiceType
         ?TelecommunicationsServiceCategoryCode $telecommunicationsServiceCategoryCode = null,
     ): self {
         $this->telecommunicationsServiceCategoryCode = $telecommunicationsServiceCategoryCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTelecommunicationsServiceCategoryCode(): self
+    {
+        $this->telecommunicationsServiceCategoryCode = null;
 
         return $this;
     }
@@ -443,6 +503,16 @@ class TelecommunicationsServiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMovieTitle(): self
+    {
+        $this->movieTitle = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\RoamingPartnerName|null
      */
     public function getRoamingPartnerName(): ?RoamingPartnerName
@@ -467,6 +537,16 @@ class TelecommunicationsServiceType
     public function setRoamingPartnerName(?RoamingPartnerName $roamingPartnerName = null): self
     {
         $this->roamingPartnerName = $roamingPartnerName;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRoamingPartnerName(): self
+    {
+        $this->roamingPartnerName = null;
 
         return $this;
     }
@@ -501,6 +581,16 @@ class TelecommunicationsServiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPayPerView(): self
+    {
+        $this->payPerView = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      */
     public function getQuantity(): ?Quantity
@@ -525,6 +615,16 @@ class TelecommunicationsServiceType
     public function setQuantity(?Quantity $quantity = null): self
     {
         $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetQuantity(): self
+    {
+        $this->quantity = null;
 
         return $this;
     }
@@ -560,6 +660,16 @@ class TelecommunicationsServiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTelecommunicationsServiceCall(): self
+    {
+        $this->telecommunicationsServiceCall = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TelecommunicationsServiceCallCode|null
      */
     public function getTelecommunicationsServiceCallCode(): ?TelecommunicationsServiceCallCode
@@ -585,6 +695,16 @@ class TelecommunicationsServiceType
         ?TelecommunicationsServiceCallCode $telecommunicationsServiceCallCode = null,
     ): self {
         $this->telecommunicationsServiceCallCode = $telecommunicationsServiceCallCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTelecommunicationsServiceCallCode(): self
+    {
+        $this->telecommunicationsServiceCallCode = null;
 
         return $this;
     }
@@ -619,6 +739,16 @@ class TelecommunicationsServiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCallBaseAmount(): self
+    {
+        $this->callBaseAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CallExtensionAmount|null
      */
     public function getCallExtensionAmount(): ?CallExtensionAmount
@@ -643,6 +773,16 @@ class TelecommunicationsServiceType
     public function setCallExtensionAmount(?CallExtensionAmount $callExtensionAmount = null): self
     {
         $this->callExtensionAmount = $callExtensionAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCallExtensionAmount(): self
+    {
+        $this->callExtensionAmount = null;
 
         return $this;
     }
@@ -677,6 +817,16 @@ class TelecommunicationsServiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPrice(): self
+    {
+        $this->price = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Country|null
      */
     public function getCountry(): ?Country
@@ -706,6 +856,16 @@ class TelecommunicationsServiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCountry(): self
+    {
+        $this->country = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ExchangeRate>|null
      */
     public function getExchangeRate(): ?array
@@ -720,6 +880,16 @@ class TelecommunicationsServiceType
     public function setExchangeRate(?array $exchangeRate = null): self
     {
         $this->exchangeRate = $exchangeRate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExchangeRate(): self
+    {
+        $this->exchangeRate = null;
 
         return $this;
     }
@@ -808,6 +978,16 @@ class TelecommunicationsServiceType
     /**
      * @return self
      */
+    public function unsetAllowanceCharge(): self
+    {
+        $this->allowanceCharge = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearAllowanceCharge(): self
     {
         $this->allowanceCharge = [];
@@ -882,6 +1062,16 @@ class TelecommunicationsServiceType
     public function setTaxTotal(?array $taxTotal = null): self
     {
         $this->taxTotal = $taxTotal;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxTotal(): self
+    {
+        $this->taxTotal = null;
 
         return $this;
     }
@@ -970,6 +1160,16 @@ class TelecommunicationsServiceType
     /**
      * @return self
      */
+    public function unsetCallDuty(): self
+    {
+        $this->callDuty = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearCallDuty(): self
     {
         $this->callDuty = [];
@@ -1044,6 +1244,16 @@ class TelecommunicationsServiceType
     public function setTimeDuty(?array $timeDuty = null): self
     {
         $this->timeDuty = $timeDuty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTimeDuty(): self
+    {
+        $this->timeDuty = null;
 
         return $this;
     }

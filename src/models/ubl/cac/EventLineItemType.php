@@ -85,6 +85,16 @@ class EventLineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineNumberNumeric(): self
+    {
+        $this->lineNumberNumeric = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ParticipatingLocationsLocation|null
      */
     public function getParticipatingLocationsLocation(): ?ParticipatingLocationsLocation
@@ -115,6 +125,16 @@ class EventLineItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetParticipatingLocationsLocation(): self
+    {
+        $this->participatingLocationsLocation = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\RetailPlannedImpact>|null
      */
     public function getRetailPlannedImpact(): ?array
@@ -129,6 +149,16 @@ class EventLineItemType
     public function setRetailPlannedImpact(?array $retailPlannedImpact = null): self
     {
         $this->retailPlannedImpact = $retailPlannedImpact;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRetailPlannedImpact(): self
+    {
+        $this->retailPlannedImpact = null;
 
         return $this;
     }
@@ -220,6 +250,16 @@ class EventLineItemType
     public function setSupplyItem(?SupplyItem $supplyItem = null): self
     {
         $this->supplyItem = $supplyItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSupplyItem(): self
+    {
+        $this->supplyItem = null;
 
         return $this;
     }

@@ -74,6 +74,16 @@ class DeliveryUnitType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBatchQuantity(): self
+    {
+        $this->batchQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ConsumerUnitQuantity|null
      */
     public function getConsumerUnitQuantity(): ?ConsumerUnitQuantity
@@ -103,6 +113,16 @@ class DeliveryUnitType
     }
 
     /**
+     * @return self
+     */
+    public function unsetConsumerUnitQuantity(): self
+    {
+        $this->consumerUnitQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getHazardousRiskIndicator(): ?bool
@@ -117,6 +137,16 @@ class DeliveryUnitType
     public function setHazardousRiskIndicator(?bool $hazardousRiskIndicator = null): self
     {
         $this->hazardousRiskIndicator = $hazardousRiskIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetHazardousRiskIndicator(): self
+    {
+        $this->hazardousRiskIndicator = null;
 
         return $this;
     }

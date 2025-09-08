@@ -79,6 +79,16 @@ class EnergyWaterSupplyType
     /**
      * @return self
      */
+    public function unsetConsumptionReport(): self
+    {
+        $this->consumptionReport = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearConsumptionReport(): self
     {
         $this->consumptionReport = [];
@@ -153,6 +163,16 @@ class EnergyWaterSupplyType
     public function setEnergyTaxReport(?array $energyTaxReport = null): self
     {
         $this->energyTaxReport = $energyTaxReport;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEnergyTaxReport(): self
+    {
+        $this->energyTaxReport = null;
 
         return $this;
     }
@@ -241,6 +261,16 @@ class EnergyWaterSupplyType
     /**
      * @return self
      */
+    public function unsetConsumptionAverage(): self
+    {
+        $this->consumptionAverage = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearConsumptionAverage(): self
     {
         $this->consumptionAverage = [];
@@ -315,6 +345,16 @@ class EnergyWaterSupplyType
     public function setEnergyWaterConsumptionCorrection(?array $energyWaterConsumptionCorrection = null): self
     {
         $this->energyWaterConsumptionCorrection = $energyWaterConsumptionCorrection;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEnergyWaterConsumptionCorrection(): self
+    {
+        $this->energyWaterConsumptionCorrection = null;
 
         return $this;
     }

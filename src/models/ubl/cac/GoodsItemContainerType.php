@@ -75,6 +75,16 @@ class GoodsItemContainerType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      */
     public function getQuantity(): ?Quantity
@@ -104,6 +114,16 @@ class GoodsItemContainerType
     }
 
     /**
+     * @return self
+     */
+    public function unsetQuantity(): self
+    {
+        $this->quantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TransportEquipment>|null
      */
     public function getTransportEquipment(): ?array
@@ -118,6 +138,16 @@ class GoodsItemContainerType
     public function setTransportEquipment(?array $transportEquipment = null): self
     {
         $this->transportEquipment = $transportEquipment;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTransportEquipment(): self
+    {
+        $this->transportEquipment = null;
 
         return $this;
     }

@@ -387,6 +387,16 @@ class ItemType
     /**
      * @return self
      */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearDescription(): self
     {
         $this->description = [];
@@ -476,6 +486,16 @@ class ItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPackQuantity(): self
+    {
+        $this->packQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PackSizeNumeric|null
      */
     public function getPackSizeNumeric(): ?PackSizeNumeric
@@ -505,6 +525,16 @@ class ItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPackSizeNumeric(): self
+    {
+        $this->packSizeNumeric = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getCatalogueIndicator(): ?bool
@@ -519,6 +549,16 @@ class ItemType
     public function setCatalogueIndicator(?bool $catalogueIndicator = null): self
     {
         $this->catalogueIndicator = $catalogueIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCatalogueIndicator(): self
+    {
+        $this->catalogueIndicator = null;
 
         return $this;
     }
@@ -553,6 +593,16 @@ class ItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getHazardousRiskIndicator(): ?bool
@@ -572,6 +622,16 @@ class ItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetHazardousRiskIndicator(): self
+    {
+        $this->hazardousRiskIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalInformation>|null
      */
     public function getAdditionalInformation(): ?array
@@ -586,6 +646,16 @@ class ItemType
     public function setAdditionalInformation(?array $additionalInformation = null): self
     {
         $this->additionalInformation = $additionalInformation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAdditionalInformation(): self
+    {
+        $this->additionalInformation = null;
 
         return $this;
     }
@@ -674,6 +744,16 @@ class ItemType
     /**
      * @return self
      */
+    public function unsetKeyword(): self
+    {
+        $this->keyword = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearKeyword(): self
     {
         $this->keyword = [];
@@ -755,6 +835,16 @@ class ItemType
     /**
      * @return self
      */
+    public function unsetBrandName(): self
+    {
+        $this->brandName = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearBrandName(): self
     {
         $this->brandName = [];
@@ -829,6 +919,16 @@ class ItemType
     public function setModelName(?array $modelName = null): self
     {
         $this->modelName = $modelName;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetModelName(): self
+    {
+        $this->modelName = null;
 
         return $this;
     }
@@ -925,6 +1025,16 @@ class ItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBuyersItemIdentification(): self
+    {
+        $this->buyersItemIdentification = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\SellersItemIdentification|null
      */
     public function getSellersItemIdentification(): ?SellersItemIdentification
@@ -954,6 +1064,16 @@ class ItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSellersItemIdentification(): self
+    {
+        $this->sellersItemIdentification = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ManufacturersItemIdentification>|null
      */
     public function getManufacturersItemIdentification(): ?array
@@ -968,6 +1088,16 @@ class ItemType
     public function setManufacturersItemIdentification(?array $manufacturersItemIdentification = null): self
     {
         $this->manufacturersItemIdentification = $manufacturersItemIdentification;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetManufacturersItemIdentification(): self
+    {
+        $this->manufacturersItemIdentification = null;
 
         return $this;
     }
@@ -1067,6 +1197,16 @@ class ItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetStandardItemIdentification(): self
+    {
+        $this->standardItemIdentification = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\CatalogueItemIdentification|null
      */
     public function getCatalogueItemIdentification(): ?CatalogueItemIdentification
@@ -1097,6 +1237,16 @@ class ItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCatalogueItemIdentification(): self
+    {
+        $this->catalogueItemIdentification = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemIdentification>|null
      */
     public function getAdditionalItemIdentification(): ?array
@@ -1111,6 +1261,16 @@ class ItemType
     public function setAdditionalItemIdentification(?array $additionalItemIdentification = null): self
     {
         $this->additionalItemIdentification = $additionalItemIdentification;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAdditionalItemIdentification(): self
+    {
+        $this->additionalItemIdentification = null;
 
         return $this;
     }
@@ -1210,6 +1370,16 @@ class ItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCatalogueDocumentReference(): self
+    {
+        $this->catalogueDocumentReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ItemSpecificationDocumentReference>|null
      */
     public function getItemSpecificationDocumentReference(): ?array
@@ -1224,6 +1394,16 @@ class ItemType
     public function setItemSpecificationDocumentReference(?array $itemSpecificationDocumentReference = null): self
     {
         $this->itemSpecificationDocumentReference = $itemSpecificationDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetItemSpecificationDocumentReference(): self
+    {
+        $this->itemSpecificationDocumentReference = null;
 
         return $this;
     }
@@ -1322,6 +1502,16 @@ class ItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOriginCountry(): self
+    {
+        $this->originCountry = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\CommodityClassification>|null
      */
     public function getCommodityClassification(): ?array
@@ -1336,6 +1526,16 @@ class ItemType
     public function setCommodityClassification(?array $commodityClassification = null): self
     {
         $this->commodityClassification = $commodityClassification;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCommodityClassification(): self
+    {
+        $this->commodityClassification = null;
 
         return $this;
     }
@@ -1424,6 +1624,16 @@ class ItemType
     /**
      * @return self
      */
+    public function unsetTransactionConditions(): self
+    {
+        $this->transactionConditions = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearTransactionConditions(): self
     {
         $this->transactionConditions = [];
@@ -1498,6 +1708,16 @@ class ItemType
     public function setHazardousItem(?array $hazardousItem = null): self
     {
         $this->hazardousItem = $hazardousItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetHazardousItem(): self
+    {
+        $this->hazardousItem = null;
 
         return $this;
     }
@@ -1586,6 +1806,16 @@ class ItemType
     /**
      * @return self
      */
+    public function unsetClassifiedTaxCategory(): self
+    {
+        $this->classifiedTaxCategory = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearClassifiedTaxCategory(): self
     {
         $this->classifiedTaxCategory = [];
@@ -1667,6 +1897,16 @@ class ItemType
     /**
      * @return self
      */
+    public function unsetAdditionalItemProperty(): self
+    {
+        $this->additionalItemProperty = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearAdditionalItemProperty(): self
     {
         $this->additionalItemProperty = [];
@@ -1741,6 +1981,16 @@ class ItemType
     public function setManufacturerParty(?array $manufacturerParty = null): self
     {
         $this->manufacturerParty = $manufacturerParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetManufacturerParty(): self
+    {
+        $this->manufacturerParty = null;
 
         return $this;
     }
@@ -1838,6 +2088,16 @@ class ItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetInformationContentProviderParty(): self
+    {
+        $this->informationContentProviderParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\OriginAddress>|null
      */
     public function getOriginAddress(): ?array
@@ -1852,6 +2112,16 @@ class ItemType
     public function setOriginAddress(?array $originAddress = null): self
     {
         $this->originAddress = $originAddress;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOriginAddress(): self
+    {
+        $this->originAddress = null;
 
         return $this;
     }
@@ -1940,6 +2210,16 @@ class ItemType
     /**
      * @return self
      */
+    public function unsetItemInstance(): self
+    {
+        $this->itemInstance = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearItemInstance(): self
     {
         $this->itemInstance = [];
@@ -2021,6 +2301,16 @@ class ItemType
     /**
      * @return self
      */
+    public function unsetCertificate(): self
+    {
+        $this->certificate = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearCertificate(): self
     {
         $this->certificate = [];
@@ -2095,6 +2385,16 @@ class ItemType
     public function setDimension(?array $dimension = null): self
     {
         $this->dimension = $dimension;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDimension(): self
+    {
+        $this->dimension = null;
 
         return $this;
     }

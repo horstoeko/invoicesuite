@@ -226,6 +226,16 @@ class TenderResultType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTenderResultCode(): self
+    {
+        $this->tenderResultCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -240,6 +250,16 @@ class TenderResultType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -336,6 +356,16 @@ class TenderResultType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAdvertisementAmount(): self
+    {
+        $this->advertisementAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getAwardDate(): ?\DateTimeInterface
@@ -355,6 +385,16 @@ class TenderResultType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAwardDate(): self
+    {
+        $this->awardDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getAwardTime(): ?\DateTimeInterface
@@ -369,6 +409,16 @@ class TenderResultType
     public function setAwardTime(?\DateTimeInterface $awardTime = null): self
     {
         $this->awardTime = $awardTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAwardTime(): self
+    {
+        $this->awardTime = null;
 
         return $this;
     }
@@ -403,6 +453,16 @@ class TenderResultType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReceivedTenderQuantity(): self
+    {
+        $this->receivedTenderQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LowerTenderAmount|null
      */
     public function getLowerTenderAmount(): ?LowerTenderAmount
@@ -427,6 +487,16 @@ class TenderResultType
     public function setLowerTenderAmount(?LowerTenderAmount $lowerTenderAmount = null): self
     {
         $this->lowerTenderAmount = $lowerTenderAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLowerTenderAmount(): self
+    {
+        $this->lowerTenderAmount = null;
 
         return $this;
     }
@@ -461,6 +531,16 @@ class TenderResultType
     }
 
     /**
+     * @return self
+     */
+    public function unsetHigherTenderAmount(): self
+    {
+        $this->higherTenderAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getStartDate(): ?\DateTimeInterface
@@ -475,6 +555,16 @@ class TenderResultType
     public function setStartDate(?\DateTimeInterface $startDate = null): self
     {
         $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetStartDate(): self
+    {
+        $this->startDate = null;
 
         return $this;
     }
@@ -510,6 +600,16 @@ class TenderResultType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReceivedElectronicTenderQuantity(): self
+    {
+        $this->receivedElectronicTenderQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ReceivedForeignTenderQuantity|null
      */
     public function getReceivedForeignTenderQuantity(): ?ReceivedForeignTenderQuantity
@@ -535,6 +635,16 @@ class TenderResultType
         ?ReceivedForeignTenderQuantity $receivedForeignTenderQuantity = null,
     ): self {
         $this->receivedForeignTenderQuantity = $receivedForeignTenderQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetReceivedForeignTenderQuantity(): self
+    {
+        $this->receivedForeignTenderQuantity = null;
 
         return $this;
     }
@@ -569,6 +679,16 @@ class TenderResultType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContract(): self
+    {
+        $this->contract = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\AwardedTenderedProject|null
      */
     public function getAwardedTenderedProject(): ?AwardedTenderedProject
@@ -593,6 +713,16 @@ class TenderResultType
     public function setAwardedTenderedProject(?AwardedTenderedProject $awardedTenderedProject = null): self
     {
         $this->awardedTenderedProject = $awardedTenderedProject;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAwardedTenderedProject(): self
+    {
+        $this->awardedTenderedProject = null;
 
         return $this;
     }
@@ -628,6 +758,16 @@ class TenderResultType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContractFormalizationPeriod(): self
+    {
+        $this->contractFormalizationPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SubcontractTerms>|null
      */
     public function getSubcontractTerms(): ?array
@@ -642,6 +782,16 @@ class TenderResultType
     public function setSubcontractTerms(?array $subcontractTerms = null): self
     {
         $this->subcontractTerms = $subcontractTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSubcontractTerms(): self
+    {
+        $this->subcontractTerms = null;
 
         return $this;
     }
@@ -723,6 +873,16 @@ class TenderResultType
     public function setWinningParty(?array $winningParty = null): self
     {
         $this->winningParty = $winningParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetWinningParty(): self
+    {
+        $this->winningParty = null;
 
         return $this;
     }

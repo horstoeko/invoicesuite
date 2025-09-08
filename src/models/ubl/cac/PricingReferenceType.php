@@ -63,6 +63,16 @@ class PricingReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOriginalItemLocationQuantity(): self
+    {
+        $this->originalItemLocationQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AlternativeConditionPrice>|null
      */
     public function getAlternativeConditionPrice(): ?array
@@ -77,6 +87,16 @@ class PricingReferenceType
     public function setAlternativeConditionPrice(?array $alternativeConditionPrice = null): self
     {
         $this->alternativeConditionPrice = $alternativeConditionPrice;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAlternativeConditionPrice(): self
+    {
+        $this->alternativeConditionPrice = null;
 
         return $this;
     }

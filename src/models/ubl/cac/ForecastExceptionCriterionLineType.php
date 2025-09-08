@@ -99,6 +99,16 @@ class ForecastExceptionCriterionLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetForecastPurposeCode(): self
+    {
+        $this->forecastPurposeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode|null
      */
     public function getForecastTypeCode(): ?ForecastTypeCode
@@ -123,6 +133,16 @@ class ForecastExceptionCriterionLineType
     public function setForecastTypeCode(?ForecastTypeCode $forecastTypeCode = null): self
     {
         $this->forecastTypeCode = $forecastTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetForecastTypeCode(): self
+    {
+        $this->forecastTypeCode = null;
 
         return $this;
     }
@@ -157,6 +177,16 @@ class ForecastExceptionCriterionLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetComparisonDataSourceCode(): self
+    {
+        $this->comparisonDataSourceCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\DataSourceCode|null
      */
     public function getDataSourceCode(): ?DataSourceCode
@@ -186,6 +216,16 @@ class ForecastExceptionCriterionLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDataSourceCode(): self
+    {
+        $this->dataSourceCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TimeDeltaDaysQuantity|null
      */
     public function getTimeDeltaDaysQuantity(): ?TimeDeltaDaysQuantity
@@ -210,6 +250,16 @@ class ForecastExceptionCriterionLineType
     public function setTimeDeltaDaysQuantity(?TimeDeltaDaysQuantity $timeDeltaDaysQuantity = null): self
     {
         $this->timeDeltaDaysQuantity = $timeDeltaDaysQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTimeDeltaDaysQuantity(): self
+    {
+        $this->timeDeltaDaysQuantity = null;
 
         return $this;
     }

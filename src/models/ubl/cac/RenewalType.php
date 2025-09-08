@@ -62,6 +62,16 @@ class RenewalType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAmount(): self
+    {
+        $this->amount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Period|null
      */
     public function getPeriod(): ?Period
@@ -86,6 +96,16 @@ class RenewalType
     public function setPeriod(?Period $period = null): self
     {
         $this->period = $period;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPeriod(): self
+    {
+        $this->period = null;
 
         return $this;
     }

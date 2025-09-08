@@ -64,6 +64,16 @@ class ClauseType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Content>|null
      */
     public function getContent(): ?array
@@ -78,6 +88,16 @@ class ClauseType
     public function setContent(?array $content = null): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContent(): self
+    {
+        $this->content = null;
 
         return $this;
     }

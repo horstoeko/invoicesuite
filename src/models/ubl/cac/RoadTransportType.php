@@ -49,4 +49,14 @@ class RoadTransportType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetLicensePlateID(): self
+    {
+        $this->licensePlateID = null;
+
+        return $this;
+    }
 }

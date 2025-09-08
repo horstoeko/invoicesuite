@@ -96,6 +96,16 @@ class PromotionalEventType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPromotionalEventTypeCode(): self
+    {
+        $this->promotionalEventTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getSubmissionDate(): ?\DateTimeInterface
@@ -110,6 +120,16 @@ class PromotionalEventType
     public function setSubmissionDate(?\DateTimeInterface $submissionDate = null): self
     {
         $this->submissionDate = $submissionDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSubmissionDate(): self
+    {
+        $this->submissionDate = null;
 
         return $this;
     }
@@ -134,6 +154,16 @@ class PromotionalEventType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFirstShipmentAvailibilityDate(): self
+    {
+        $this->firstShipmentAvailibilityDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getLatestProposalAcceptanceDate(): ?\DateTimeInterface
@@ -153,6 +183,16 @@ class PromotionalEventType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLatestProposalAcceptanceDate(): self
+    {
+        $this->latestProposalAcceptanceDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\PromotionalSpecification>|null
      */
     public function getPromotionalSpecification(): ?array
@@ -167,6 +207,16 @@ class PromotionalEventType
     public function setPromotionalSpecification(?array $promotionalSpecification = null): self
     {
         $this->promotionalSpecification = $promotionalSpecification;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPromotionalSpecification(): self
+    {
+        $this->promotionalSpecification = null;
 
         return $this;
     }

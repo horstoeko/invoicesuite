@@ -135,6 +135,16 @@ class LocationCoordinateType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCoordinateSystemCode(): self
+    {
+        $this->coordinateSystemCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LatitudeDegreesMeasure|null
      */
     public function getLatitudeDegreesMeasure(): ?LatitudeDegreesMeasure
@@ -159,6 +169,16 @@ class LocationCoordinateType
     public function setLatitudeDegreesMeasure(?LatitudeDegreesMeasure $latitudeDegreesMeasure = null): self
     {
         $this->latitudeDegreesMeasure = $latitudeDegreesMeasure;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLatitudeDegreesMeasure(): self
+    {
+        $this->latitudeDegreesMeasure = null;
 
         return $this;
     }
@@ -193,6 +213,16 @@ class LocationCoordinateType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLatitudeMinutesMeasure(): self
+    {
+        $this->latitudeMinutesMeasure = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LatitudeDirectionCode|null
      */
     public function getLatitudeDirectionCode(): ?LatitudeDirectionCode
@@ -217,6 +247,16 @@ class LocationCoordinateType
     public function setLatitudeDirectionCode(?LatitudeDirectionCode $latitudeDirectionCode = null): self
     {
         $this->latitudeDirectionCode = $latitudeDirectionCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLatitudeDirectionCode(): self
+    {
+        $this->latitudeDirectionCode = null;
 
         return $this;
     }
@@ -251,6 +291,16 @@ class LocationCoordinateType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLongitudeDegreesMeasure(): self
+    {
+        $this->longitudeDegreesMeasure = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LongitudeMinutesMeasure|null
      */
     public function getLongitudeMinutesMeasure(): ?LongitudeMinutesMeasure
@@ -275,6 +325,16 @@ class LocationCoordinateType
     public function setLongitudeMinutesMeasure(?LongitudeMinutesMeasure $longitudeMinutesMeasure = null): self
     {
         $this->longitudeMinutesMeasure = $longitudeMinutesMeasure;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLongitudeMinutesMeasure(): self
+    {
+        $this->longitudeMinutesMeasure = null;
 
         return $this;
     }
@@ -309,6 +369,16 @@ class LocationCoordinateType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLongitudeDirectionCode(): self
+    {
+        $this->longitudeDirectionCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\AltitudeMeasure|null
      */
     public function getAltitudeMeasure(): ?AltitudeMeasure
@@ -333,6 +403,16 @@ class LocationCoordinateType
     public function setAltitudeMeasure(?AltitudeMeasure $altitudeMeasure = null): self
     {
         $this->altitudeMeasure = $altitudeMeasure;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAltitudeMeasure(): self
+    {
+        $this->altitudeMeasure = null;
 
         return $this;
     }

@@ -205,6 +205,16 @@ class QualifyingPartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetParticipationPercent(): self
+    {
+        $this->participationPercent = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\PersonalSituation>|null
      */
     public function getPersonalSituation(): ?array
@@ -219,6 +229,16 @@ class QualifyingPartyType
     public function setPersonalSituation(?array $personalSituation = null): self
     {
         $this->personalSituation = $personalSituation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPersonalSituation(): self
+    {
+        $this->personalSituation = null;
 
         return $this;
     }
@@ -315,6 +335,16 @@ class QualifyingPartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOperatingYearsQuantity(): self
+    {
+        $this->operatingYearsQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\EmployeeQuantity|null
      */
     public function getEmployeeQuantity(): ?EmployeeQuantity
@@ -339,6 +369,16 @@ class QualifyingPartyType
     public function setEmployeeQuantity(?EmployeeQuantity $employeeQuantity = null): self
     {
         $this->employeeQuantity = $employeeQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEmployeeQuantity(): self
+    {
+        $this->employeeQuantity = null;
 
         return $this;
     }
@@ -374,6 +414,16 @@ class QualifyingPartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBusinessClassificationEvidenceID(): self
+    {
+        $this->businessClassificationEvidenceID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\BusinessIdentityEvidenceID|null
      */
     public function getBusinessIdentityEvidenceID(): ?BusinessIdentityEvidenceID
@@ -404,6 +454,16 @@ class QualifyingPartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBusinessIdentityEvidenceID(): self
+    {
+        $this->businessIdentityEvidenceID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TendererRoleCode|null
      */
     public function getTendererRoleCode(): ?TendererRoleCode
@@ -428,6 +488,16 @@ class QualifyingPartyType
     public function setTendererRoleCode(?TendererRoleCode $tendererRoleCode = null): self
     {
         $this->tendererRoleCode = $tendererRoleCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTendererRoleCode(): self
+    {
+        $this->tendererRoleCode = null;
 
         return $this;
     }
@@ -463,6 +533,16 @@ class QualifyingPartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBusinessClassificationScheme(): self
+    {
+        $this->businessClassificationScheme = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TechnicalCapability>|null
      */
     public function getTechnicalCapability(): ?array
@@ -477,6 +557,16 @@ class QualifyingPartyType
     public function setTechnicalCapability(?array $technicalCapability = null): self
     {
         $this->technicalCapability = $technicalCapability;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTechnicalCapability(): self
+    {
+        $this->technicalCapability = null;
 
         return $this;
     }
@@ -565,6 +655,16 @@ class QualifyingPartyType
     /**
      * @return self
      */
+    public function unsetFinancialCapability(): self
+    {
+        $this->financialCapability = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearFinancialCapability(): self
     {
         $this->financialCapability = [];
@@ -646,6 +746,16 @@ class QualifyingPartyType
     /**
      * @return self
      */
+    public function unsetCompletedTask(): self
+    {
+        $this->completedTask = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearCompletedTask(): self
     {
         $this->completedTask = [];
@@ -720,6 +830,16 @@ class QualifyingPartyType
     public function setDeclaration(?array $declaration = null): self
     {
         $this->declaration = $declaration;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDeclaration(): self
+    {
+        $this->declaration = null;
 
         return $this;
     }
@@ -816,6 +936,16 @@ class QualifyingPartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetParty(): self
+    {
+        $this->party = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\EconomicOperatorRole|null
      */
     public function getEconomicOperatorRole(): ?EconomicOperatorRole
@@ -840,6 +970,16 @@ class QualifyingPartyType
     public function setEconomicOperatorRole(?EconomicOperatorRole $economicOperatorRole = null): self
     {
         $this->economicOperatorRole = $economicOperatorRole;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEconomicOperatorRole(): self
+    {
+        $this->economicOperatorRole = null;
 
         return $this;
     }

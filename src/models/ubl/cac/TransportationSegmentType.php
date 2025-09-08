@@ -108,6 +108,16 @@ class TransportationSegmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSequenceNumeric(): self
+    {
+        $this->sequenceNumeric = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TransportExecutionPlanReferenceID|null
      */
     public function getTransportExecutionPlanReferenceID(): ?TransportExecutionPlanReferenceID
@@ -138,6 +148,16 @@ class TransportationSegmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTransportExecutionPlanReferenceID(): self
+    {
+        $this->transportExecutionPlanReferenceID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\TransportationService|null
      */
     public function getTransportationService(): ?TransportationService
@@ -162,6 +182,16 @@ class TransportationSegmentType
     public function setTransportationService(?TransportationService $transportationService = null): self
     {
         $this->transportationService = $transportationService;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTransportationService(): self
+    {
+        $this->transportationService = null;
 
         return $this;
     }
@@ -197,6 +227,16 @@ class TransportationSegmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTransportServiceProviderParty(): self
+    {
+        $this->transportServiceProviderParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ReferencedConsignment|null
      */
     public function getReferencedConsignment(): ?ReferencedConsignment
@@ -226,6 +266,16 @@ class TransportationSegmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReferencedConsignment(): self
+    {
+        $this->referencedConsignment = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ShipmentStage>|null
      */
     public function getShipmentStage(): ?array
@@ -240,6 +290,16 @@ class TransportationSegmentType
     public function setShipmentStage(?array $shipmentStage = null): self
     {
         $this->shipmentStage = $shipmentStage;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetShipmentStage(): self
+    {
+        $this->shipmentStage = null;
 
         return $this;
     }

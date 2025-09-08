@@ -49,4 +49,14 @@ class ServiceFrequencyType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetWeekDayCode(): self
+    {
+        $this->weekDayCode = null;
+
+        return $this;
+    }
 }

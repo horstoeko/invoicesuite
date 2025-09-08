@@ -130,6 +130,16 @@ class ActivityDataLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SupplyChainActivityTypeCode|null
      */
     public function getSupplyChainActivityTypeCode(): ?SupplyChainActivityTypeCode
@@ -155,6 +165,16 @@ class ActivityDataLineType
         ?SupplyChainActivityTypeCode $supplyChainActivityTypeCode = null,
     ): self {
         $this->supplyChainActivityTypeCode = $supplyChainActivityTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSupplyChainActivityTypeCode(): self
+    {
+        $this->supplyChainActivityTypeCode = null;
 
         return $this;
     }
@@ -189,6 +209,16 @@ class ActivityDataLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBuyerCustomerParty(): self
+    {
+        $this->buyerCustomerParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\SellerSupplierParty|null
      */
     public function getSellerSupplierParty(): ?SellerSupplierParty
@@ -213,6 +243,16 @@ class ActivityDataLineType
     public function setSellerSupplierParty(?SellerSupplierParty $sellerSupplierParty = null): self
     {
         $this->sellerSupplierParty = $sellerSupplierParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSellerSupplierParty(): self
+    {
+        $this->sellerSupplierParty = null;
 
         return $this;
     }
@@ -247,6 +287,16 @@ class ActivityDataLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetActivityPeriod(): self
+    {
+        $this->activityPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ActivityOriginLocation|null
      */
     public function getActivityOriginLocation(): ?ActivityOriginLocation
@@ -271,6 +321,16 @@ class ActivityDataLineType
     public function setActivityOriginLocation(?ActivityOriginLocation $activityOriginLocation = null): self
     {
         $this->activityOriginLocation = $activityOriginLocation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetActivityOriginLocation(): self
+    {
+        $this->activityOriginLocation = null;
 
         return $this;
     }
@@ -305,6 +365,16 @@ class ActivityDataLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetActivityFinalLocation(): self
+    {
+        $this->activityFinalLocation = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SalesItem>|null
      */
     public function getSalesItem(): ?array
@@ -319,6 +389,16 @@ class ActivityDataLineType
     public function setSalesItem(?array $salesItem = null): self
     {
         $this->salesItem = $salesItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSalesItem(): self
+    {
+        $this->salesItem = null;
 
         return $this;
     }

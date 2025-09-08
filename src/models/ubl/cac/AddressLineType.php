@@ -49,4 +49,14 @@ class AddressLineType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetLine(): self
+    {
+        $this->line = null;
+
+        return $this;
+    }
 }

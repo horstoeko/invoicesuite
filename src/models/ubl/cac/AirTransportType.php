@@ -49,4 +49,14 @@ class AirTransportType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetAircraftID(): self
+    {
+        $this->aircraftID = null;
+
+        return $this;
+    }
 }

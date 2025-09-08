@@ -362,6 +362,16 @@ class AddressType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\AddressTypeCode|null
      */
     public function getAddressTypeCode(): ?AddressTypeCode
@@ -386,6 +396,16 @@ class AddressType
     public function setAddressTypeCode(?AddressTypeCode $addressTypeCode = null): self
     {
         $this->addressTypeCode = $addressTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAddressTypeCode(): self
+    {
+        $this->addressTypeCode = null;
 
         return $this;
     }
@@ -420,6 +440,16 @@ class AddressType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAddressFormatCode(): self
+    {
+        $this->addressFormatCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Postbox|null
      */
     public function getPostbox(): ?Postbox
@@ -444,6 +474,16 @@ class AddressType
     public function setPostbox(?Postbox $postbox = null): self
     {
         $this->postbox = $postbox;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPostbox(): self
+    {
+        $this->postbox = null;
 
         return $this;
     }
@@ -478,6 +518,16 @@ class AddressType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFloor(): self
+    {
+        $this->floor = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Room|null
      */
     public function getRoom(): ?Room
@@ -502,6 +552,16 @@ class AddressType
     public function setRoom(?Room $room = null): self
     {
         $this->room = $room;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRoom(): self
+    {
+        $this->room = null;
 
         return $this;
     }
@@ -536,6 +596,16 @@ class AddressType
     }
 
     /**
+     * @return self
+     */
+    public function unsetStreetName(): self
+    {
+        $this->streetName = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\AdditionalStreetName|null
      */
     public function getAdditionalStreetName(): ?AdditionalStreetName
@@ -560,6 +630,16 @@ class AddressType
     public function setAdditionalStreetName(?AdditionalStreetName $additionalStreetName = null): self
     {
         $this->additionalStreetName = $additionalStreetName;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAdditionalStreetName(): self
+    {
+        $this->additionalStreetName = null;
 
         return $this;
     }
@@ -594,6 +674,16 @@ class AddressType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBlockName(): self
+    {
+        $this->blockName = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\BuildingName|null
      */
     public function getBuildingName(): ?BuildingName
@@ -618,6 +708,16 @@ class AddressType
     public function setBuildingName(?BuildingName $buildingName = null): self
     {
         $this->buildingName = $buildingName;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBuildingName(): self
+    {
+        $this->buildingName = null;
 
         return $this;
     }
@@ -652,6 +752,16 @@ class AddressType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBuildingNumber(): self
+    {
+        $this->buildingNumber = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\InhouseMail|null
      */
     public function getInhouseMail(): ?InhouseMail
@@ -676,6 +786,16 @@ class AddressType
     public function setInhouseMail(?InhouseMail $inhouseMail = null): self
     {
         $this->inhouseMail = $inhouseMail;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInhouseMail(): self
+    {
+        $this->inhouseMail = null;
 
         return $this;
     }
@@ -710,6 +830,16 @@ class AddressType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDepartment(): self
+    {
+        $this->department = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MarkAttention|null
      */
     public function getMarkAttention(): ?MarkAttention
@@ -734,6 +864,16 @@ class AddressType
     public function setMarkAttention(?MarkAttention $markAttention = null): self
     {
         $this->markAttention = $markAttention;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMarkAttention(): self
+    {
+        $this->markAttention = null;
 
         return $this;
     }
@@ -768,6 +908,16 @@ class AddressType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMarkCare(): self
+    {
+        $this->markCare = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PlotIdentification|null
      */
     public function getPlotIdentification(): ?PlotIdentification
@@ -792,6 +942,16 @@ class AddressType
     public function setPlotIdentification(?PlotIdentification $plotIdentification = null): self
     {
         $this->plotIdentification = $plotIdentification;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPlotIdentification(): self
+    {
+        $this->plotIdentification = null;
 
         return $this;
     }
@@ -826,6 +986,16 @@ class AddressType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCitySubdivisionName(): self
+    {
+        $this->citySubdivisionName = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CityName|null
      */
     public function getCityName(): ?CityName
@@ -850,6 +1020,16 @@ class AddressType
     public function setCityName(?CityName $cityName = null): self
     {
         $this->cityName = $cityName;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCityName(): self
+    {
+        $this->cityName = null;
 
         return $this;
     }
@@ -884,6 +1064,16 @@ class AddressType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPostalZone(): self
+    {
+        $this->postalZone = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CountrySubentity|null
      */
     public function getCountrySubentity(): ?CountrySubentity
@@ -908,6 +1098,16 @@ class AddressType
     public function setCountrySubentity(?CountrySubentity $countrySubentity = null): self
     {
         $this->countrySubentity = $countrySubentity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCountrySubentity(): self
+    {
+        $this->countrySubentity = null;
 
         return $this;
     }
@@ -942,6 +1142,16 @@ class AddressType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCountrySubentityCode(): self
+    {
+        $this->countrySubentityCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Region|null
      */
     public function getRegion(): ?Region
@@ -966,6 +1176,16 @@ class AddressType
     public function setRegion(?Region $region = null): self
     {
         $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRegion(): self
+    {
+        $this->region = null;
 
         return $this;
     }
@@ -1000,6 +1220,16 @@ class AddressType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDistrict(): self
+    {
+        $this->district = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TimezoneOffset|null
      */
     public function getTimezoneOffset(): ?TimezoneOffset
@@ -1029,6 +1259,16 @@ class AddressType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTimezoneOffset(): self
+    {
+        $this->timezoneOffset = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AddressLine>|null
      */
     public function getAddressLine(): ?array
@@ -1043,6 +1283,16 @@ class AddressType
     public function setAddressLine(?array $addressLine = null): self
     {
         $this->addressLine = $addressLine;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAddressLine(): self
+    {
+        $this->addressLine = null;
 
         return $this;
     }
@@ -1139,6 +1389,16 @@ class AddressType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCountry(): self
+    {
+        $this->country = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\LocationCoordinate>|null
      */
     public function getLocationCoordinate(): ?array
@@ -1153,6 +1413,16 @@ class AddressType
     public function setLocationCoordinate(?array $locationCoordinate = null): self
     {
         $this->locationCoordinate = $locationCoordinate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLocationCoordinate(): self
+    {
+        $this->locationCoordinate = null;
 
         return $this;
     }

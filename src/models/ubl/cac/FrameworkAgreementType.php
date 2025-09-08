@@ -112,6 +112,16 @@ class FrameworkAgreementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExpectedOperatorQuantity(): self
+    {
+        $this->expectedOperatorQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MaximumOperatorQuantity|null
      */
     public function getMaximumOperatorQuantity(): ?MaximumOperatorQuantity
@@ -141,6 +151,16 @@ class FrameworkAgreementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMaximumOperatorQuantity(): self
+    {
+        $this->maximumOperatorQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Justification>|null
      */
     public function getJustification(): ?array
@@ -155,6 +175,16 @@ class FrameworkAgreementType
     public function setJustification(?array $justification = null): self
     {
         $this->justification = $justification;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetJustification(): self
+    {
+        $this->justification = null;
 
         return $this;
     }
@@ -236,6 +266,16 @@ class FrameworkAgreementType
     public function setFrequency(?array $frequency = null): self
     {
         $this->frequency = $frequency;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFrequency(): self
+    {
+        $this->frequency = null;
 
         return $this;
     }
@@ -332,6 +372,16 @@ class FrameworkAgreementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDurationPeriod(): self
+    {
+        $this->durationPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SubsequentProcessTenderRequirement>|null
      */
     public function getSubsequentProcessTenderRequirement(): ?array
@@ -346,6 +396,16 @@ class FrameworkAgreementType
     public function setSubsequentProcessTenderRequirement(?array $subsequentProcessTenderRequirement = null): self
     {
         $this->subsequentProcessTenderRequirement = $subsequentProcessTenderRequirement;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSubsequentProcessTenderRequirement(): self
+    {
+        $this->subsequentProcessTenderRequirement = null;
 
         return $this;
     }

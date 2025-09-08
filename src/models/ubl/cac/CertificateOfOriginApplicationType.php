@@ -226,6 +226,16 @@ class CertificateOfOriginApplicationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReferenceID(): self
+    {
+        $this->referenceID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CertificateType|null
      */
     public function getCertificateType(): ?CertificateType
@@ -250,6 +260,16 @@ class CertificateOfOriginApplicationType
     public function setCertificateType(?CertificateType $certificateType = null): self
     {
         $this->certificateType = $certificateType;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCertificateType(): self
+    {
+        $this->certificateType = null;
 
         return $this;
     }
@@ -284,6 +304,16 @@ class CertificateOfOriginApplicationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetApplicationStatusCode(): self
+    {
+        $this->applicationStatusCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\OriginalJobID|null
      */
     public function getOriginalJobID(): ?OriginalJobID
@@ -308,6 +338,16 @@ class CertificateOfOriginApplicationType
     public function setOriginalJobID(?OriginalJobID $originalJobID = null): self
     {
         $this->originalJobID = $originalJobID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOriginalJobID(): self
+    {
+        $this->originalJobID = null;
 
         return $this;
     }
@@ -342,6 +382,16 @@ class CertificateOfOriginApplicationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPreviousJobID(): self
+    {
+        $this->previousJobID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Remarks>|null
      */
     public function getRemarks(): ?array
@@ -356,6 +406,16 @@ class CertificateOfOriginApplicationType
     public function setRemarks(?array $remarks = null): self
     {
         $this->remarks = $remarks;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRemarks(): self
+    {
+        $this->remarks = null;
 
         return $this;
     }
@@ -452,6 +512,16 @@ class CertificateOfOriginApplicationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetShipment(): self
+    {
+        $this->shipment = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\EndorserParty>|null
      */
     public function getEndorserParty(): ?array
@@ -466,6 +536,16 @@ class CertificateOfOriginApplicationType
     public function setEndorserParty(?array $endorserParty = null): self
     {
         $this->endorserParty = $endorserParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEndorserParty(): self
+    {
+        $this->endorserParty = null;
 
         return $this;
     }
@@ -562,6 +642,16 @@ class CertificateOfOriginApplicationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPreparationParty(): self
+    {
+        $this->preparationParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\IssuerParty|null
      */
     public function getIssuerParty(): ?IssuerParty
@@ -586,6 +676,16 @@ class CertificateOfOriginApplicationType
     public function setIssuerParty(?IssuerParty $issuerParty = null): self
     {
         $this->issuerParty = $issuerParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIssuerParty(): self
+    {
+        $this->issuerParty = null;
 
         return $this;
     }
@@ -620,6 +720,16 @@ class CertificateOfOriginApplicationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExporterParty(): self
+    {
+        $this->exporterParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ImporterParty|null
      */
     public function getImporterParty(): ?ImporterParty
@@ -644,6 +754,16 @@ class CertificateOfOriginApplicationType
     public function setImporterParty(?ImporterParty $importerParty = null): self
     {
         $this->importerParty = $importerParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetImporterParty(): self
+    {
+        $this->importerParty = null;
 
         return $this;
     }
@@ -678,6 +798,16 @@ class CertificateOfOriginApplicationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIssuingCountry(): self
+    {
+        $this->issuingCountry = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DocumentDistribution>|null
      */
     public function getDocumentDistribution(): ?array
@@ -692,6 +822,16 @@ class CertificateOfOriginApplicationType
     public function setDocumentDistribution(?array $documentDistribution = null): self
     {
         $this->documentDistribution = $documentDistribution;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentDistribution(): self
+    {
+        $this->documentDistribution = null;
 
         return $this;
     }
@@ -780,6 +920,16 @@ class CertificateOfOriginApplicationType
     /**
      * @return self
      */
+    public function unsetSupportingDocumentReference(): self
+    {
+        $this->supportingDocumentReference = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearSupportingDocumentReference(): self
     {
         $this->supportingDocumentReference = [];
@@ -855,6 +1005,16 @@ class CertificateOfOriginApplicationType
     public function setSignature(?array $signature = null): self
     {
         $this->signature = $signature;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSignature(): self
+    {
+        $this->signature = null;
 
         return $this;
     }

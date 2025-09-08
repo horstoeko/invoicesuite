@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\ubl\cct;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class IdentifierType
 {
@@ -111,7 +112,17 @@ class IdentifierType
      */
     public function setValue(?string $value = null): self
     {
-        $this->value = $value;
+        $this->value = InvoiceSuiteStringUtils::asNullWhenEmpty($value);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
 
         return $this;
     }
@@ -130,7 +141,17 @@ class IdentifierType
      */
     public function setSchemeID(?string $schemeID = null): self
     {
-        $this->schemeID = $schemeID;
+        $this->schemeID = InvoiceSuiteStringUtils::asNullWhenEmpty($schemeID);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSchemeID(): self
+    {
+        $this->schemeID = null;
 
         return $this;
     }
@@ -149,7 +170,17 @@ class IdentifierType
      */
     public function setSchemeName(?string $schemeName = null): self
     {
-        $this->schemeName = $schemeName;
+        $this->schemeName = InvoiceSuiteStringUtils::asNullWhenEmpty($schemeName);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSchemeName(): self
+    {
+        $this->schemeName = null;
 
         return $this;
     }
@@ -168,7 +199,17 @@ class IdentifierType
      */
     public function setSchemeAgencyID(?string $schemeAgencyID = null): self
     {
-        $this->schemeAgencyID = $schemeAgencyID;
+        $this->schemeAgencyID = InvoiceSuiteStringUtils::asNullWhenEmpty($schemeAgencyID);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSchemeAgencyID(): self
+    {
+        $this->schemeAgencyID = null;
 
         return $this;
     }
@@ -187,7 +228,17 @@ class IdentifierType
      */
     public function setSchemeAgencyName(?string $schemeAgencyName = null): self
     {
-        $this->schemeAgencyName = $schemeAgencyName;
+        $this->schemeAgencyName = InvoiceSuiteStringUtils::asNullWhenEmpty($schemeAgencyName);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSchemeAgencyName(): self
+    {
+        $this->schemeAgencyName = null;
 
         return $this;
     }
@@ -206,7 +257,17 @@ class IdentifierType
      */
     public function setSchemeVersionID(?string $schemeVersionID = null): self
     {
-        $this->schemeVersionID = $schemeVersionID;
+        $this->schemeVersionID = InvoiceSuiteStringUtils::asNullWhenEmpty($schemeVersionID);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSchemeVersionID(): self
+    {
+        $this->schemeVersionID = null;
 
         return $this;
     }
@@ -225,7 +286,17 @@ class IdentifierType
      */
     public function setSchemeDataURI(?string $schemeDataURI = null): self
     {
-        $this->schemeDataURI = $schemeDataURI;
+        $this->schemeDataURI = InvoiceSuiteStringUtils::asNullWhenEmpty($schemeDataURI);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSchemeDataURI(): self
+    {
+        $this->schemeDataURI = null;
 
         return $this;
     }
@@ -244,7 +315,17 @@ class IdentifierType
      */
     public function setSchemeURI(?string $schemeURI = null): self
     {
-        $this->schemeURI = $schemeURI;
+        $this->schemeURI = InvoiceSuiteStringUtils::asNullWhenEmpty($schemeURI);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSchemeURI(): self
+    {
+        $this->schemeURI = null;
 
         return $this;
     }

@@ -86,6 +86,16 @@ class ProjectReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      */
     public function getUUID(): ?UUID
@@ -115,6 +125,16 @@ class ProjectReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUUID(): self
+    {
+        $this->uUID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getIssueDate(): ?\DateTimeInterface
@@ -134,6 +154,16 @@ class ProjectReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIssueDate(): self
+    {
+        $this->issueDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\WorkPhaseReference>|null
      */
     public function getWorkPhaseReference(): ?array
@@ -148,6 +178,16 @@ class ProjectReferenceType
     public function setWorkPhaseReference(?array $workPhaseReference = null): self
     {
         $this->workPhaseReference = $workPhaseReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetWorkPhaseReference(): self
+    {
+        $this->workPhaseReference = null;
 
         return $this;
     }

@@ -167,6 +167,16 @@ class ConsumptionLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ParentDocumentLineReferenceID|null
      */
     public function getParentDocumentLineReferenceID(): ?ParentDocumentLineReferenceID
@@ -192,6 +202,16 @@ class ConsumptionLineType
         ?ParentDocumentLineReferenceID $parentDocumentLineReferenceID = null,
     ): self {
         $this->parentDocumentLineReferenceID = $parentDocumentLineReferenceID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetParentDocumentLineReferenceID(): self
+    {
+        $this->parentDocumentLineReferenceID = null;
 
         return $this;
     }
@@ -226,6 +246,16 @@ class ConsumptionLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetInvoicedQuantity(): self
+    {
+        $this->invoicedQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LineExtensionAmount|null
      */
     public function getLineExtensionAmount(): ?LineExtensionAmount
@@ -250,6 +280,16 @@ class ConsumptionLineType
     public function setLineExtensionAmount(?LineExtensionAmount $lineExtensionAmount = null): self
     {
         $this->lineExtensionAmount = $lineExtensionAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLineExtensionAmount(): self
+    {
+        $this->lineExtensionAmount = null;
 
         return $this;
     }
@@ -284,6 +324,16 @@ class ConsumptionLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPeriod(): self
+    {
+        $this->period = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Delivery>|null
      */
     public function getDelivery(): ?array
@@ -298,6 +348,16 @@ class ConsumptionLineType
     public function setDelivery(?array $delivery = null): self
     {
         $this->delivery = $delivery;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDelivery(): self
+    {
+        $this->delivery = null;
 
         return $this;
     }
@@ -386,6 +446,16 @@ class ConsumptionLineType
     /**
      * @return self
      */
+    public function unsetAllowanceCharge(): self
+    {
+        $this->allowanceCharge = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearAllowanceCharge(): self
     {
         $this->allowanceCharge = [];
@@ -460,6 +530,16 @@ class ConsumptionLineType
     public function setTaxTotal(?array $taxTotal = null): self
     {
         $this->taxTotal = $taxTotal;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxTotal(): self
+    {
+        $this->taxTotal = null;
 
         return $this;
     }
@@ -556,6 +636,16 @@ class ConsumptionLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUtilityItem(): self
+    {
+        $this->utilityItem = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Price|null
      */
     public function getPrice(): ?Price
@@ -585,6 +675,16 @@ class ConsumptionLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPrice(): self
+    {
+        $this->price = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\UnstructuredPrice|null
      */
     public function getUnstructuredPrice(): ?UnstructuredPrice
@@ -609,6 +709,16 @@ class ConsumptionLineType
     public function setUnstructuredPrice(?UnstructuredPrice $unstructuredPrice = null): self
     {
         $this->unstructuredPrice = $unstructuredPrice;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetUnstructuredPrice(): self
+    {
+        $this->unstructuredPrice = null;
 
         return $this;
     }

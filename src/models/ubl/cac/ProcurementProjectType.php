@@ -254,6 +254,16 @@ class ProcurementProjectType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Name>|null
      */
     public function getName(): ?array
@@ -268,6 +278,16 @@ class ProcurementProjectType
     public function setName(?array $name = null): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
 
         return $this;
     }
@@ -349,6 +369,16 @@ class ProcurementProjectType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -445,6 +475,16 @@ class ProcurementProjectType
     }
 
     /**
+     * @return self
+     */
+    public function unsetProcurementTypeCode(): self
+    {
+        $this->procurementTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ProcurementSubTypeCode|null
      */
     public function getProcurementSubTypeCode(): ?ProcurementSubTypeCode
@@ -469,6 +509,16 @@ class ProcurementProjectType
     public function setProcurementSubTypeCode(?ProcurementSubTypeCode $procurementSubTypeCode = null): self
     {
         $this->procurementSubTypeCode = $procurementSubTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetProcurementSubTypeCode(): self
+    {
+        $this->procurementSubTypeCode = null;
 
         return $this;
     }
@@ -503,6 +553,16 @@ class ProcurementProjectType
     }
 
     /**
+     * @return self
+     */
+    public function unsetQualityControlCode(): self
+    {
+        $this->qualityControlCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\RequiredFeeAmount|null
      */
     public function getRequiredFeeAmount(): ?RequiredFeeAmount
@@ -532,6 +592,16 @@ class ProcurementProjectType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRequiredFeeAmount(): self
+    {
+        $this->requiredFeeAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\FeeDescription>|null
      */
     public function getFeeDescription(): ?array
@@ -546,6 +616,16 @@ class ProcurementProjectType
     public function setFeeDescription(?array $feeDescription = null): self
     {
         $this->feeDescription = $feeDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFeeDescription(): self
+    {
+        $this->feeDescription = null;
 
         return $this;
     }
@@ -632,6 +712,16 @@ class ProcurementProjectType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRequestedDeliveryDate(): self
+    {
+        $this->requestedDeliveryDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\EstimatedOverallContractQuantity|null
      */
     public function getEstimatedOverallContractQuantity(): ?EstimatedOverallContractQuantity
@@ -662,6 +752,16 @@ class ProcurementProjectType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEstimatedOverallContractQuantity(): self
+    {
+        $this->estimatedOverallContractQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -676,6 +776,16 @@ class ProcurementProjectType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -772,6 +882,16 @@ class ProcurementProjectType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRequestedTenderTotal(): self
+    {
+        $this->requestedTenderTotal = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\MainCommodityClassification|null
      */
     public function getMainCommodityClassification(): ?MainCommodityClassification
@@ -802,6 +922,16 @@ class ProcurementProjectType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMainCommodityClassification(): self
+    {
+        $this->mainCommodityClassification = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalCommodityClassification>|null
      */
     public function getAdditionalCommodityClassification(): ?array
@@ -816,6 +946,16 @@ class ProcurementProjectType
     public function setAdditionalCommodityClassification(?array $additionalCommodityClassification = null): self
     {
         $this->additionalCommodityClassification = $additionalCommodityClassification;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAdditionalCommodityClassification(): self
+    {
+        $this->additionalCommodityClassification = null;
 
         return $this;
     }
@@ -899,6 +1039,16 @@ class ProcurementProjectType
     public function setRealizedLocation(?array $realizedLocation = null): self
     {
         $this->realizedLocation = $realizedLocation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRealizedLocation(): self
+    {
+        $this->realizedLocation = null;
 
         return $this;
     }
@@ -995,6 +1145,16 @@ class ProcurementProjectType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPlannedPeriod(): self
+    {
+        $this->plannedPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ContractExtension|null
      */
     public function getContractExtension(): ?ContractExtension
@@ -1024,6 +1184,16 @@ class ProcurementProjectType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContractExtension(): self
+    {
+        $this->contractExtension = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\RequestForTenderLine>|null
      */
     public function getRequestForTenderLine(): ?array
@@ -1038,6 +1208,16 @@ class ProcurementProjectType
     public function setRequestForTenderLine(?array $requestForTenderLine = null): self
     {
         $this->requestForTenderLine = $requestForTenderLine;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRequestForTenderLine(): self
+    {
+        $this->requestForTenderLine = null;
 
         return $this;
     }

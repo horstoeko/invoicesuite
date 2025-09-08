@@ -173,6 +173,16 @@ class TendererQualificationRequestType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCompanyLegalFormCode(): self
+    {
+        $this->companyLegalFormCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalForm|null
      */
     public function getCompanyLegalForm(): ?CompanyLegalForm
@@ -202,6 +212,16 @@ class TendererQualificationRequestType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCompanyLegalForm(): self
+    {
+        $this->companyLegalForm = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\PersonalSituation>|null
      */
     public function getPersonalSituation(): ?array
@@ -216,6 +236,16 @@ class TendererQualificationRequestType
     public function setPersonalSituation(?array $personalSituation = null): self
     {
         $this->personalSituation = $personalSituation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPersonalSituation(): self
+    {
+        $this->personalSituation = null;
 
         return $this;
     }
@@ -312,6 +342,16 @@ class TendererQualificationRequestType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOperatingYearsQuantity(): self
+    {
+        $this->operatingYearsQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\EmployeeQuantity|null
      */
     public function getEmployeeQuantity(): ?EmployeeQuantity
@@ -341,6 +381,16 @@ class TendererQualificationRequestType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEmployeeQuantity(): self
+    {
+        $this->employeeQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -355,6 +405,16 @@ class TendererQualificationRequestType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -436,6 +496,16 @@ class TendererQualificationRequestType
     public function setRequiredBusinessClassificationScheme(?array $requiredBusinessClassificationScheme = null): self
     {
         $this->requiredBusinessClassificationScheme = $requiredBusinessClassificationScheme;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRequiredBusinessClassificationScheme(): self
+    {
+        $this->requiredBusinessClassificationScheme = null;
 
         return $this;
     }
@@ -526,6 +596,16 @@ class TendererQualificationRequestType
     /**
      * @return self
      */
+    public function unsetTechnicalEvaluationCriterion(): self
+    {
+        $this->technicalEvaluationCriterion = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearTechnicalEvaluationCriterion(): self
     {
         $this->technicalEvaluationCriterion = [];
@@ -602,6 +682,16 @@ class TendererQualificationRequestType
     public function setFinancialEvaluationCriterion(?array $financialEvaluationCriterion = null): self
     {
         $this->financialEvaluationCriterion = $financialEvaluationCriterion;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFinancialEvaluationCriterion(): self
+    {
+        $this->financialEvaluationCriterion = null;
 
         return $this;
     }
@@ -692,6 +782,16 @@ class TendererQualificationRequestType
     /**
      * @return self
      */
+    public function unsetSpecificTendererRequirement(): self
+    {
+        $this->specificTendererRequirement = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearSpecificTendererRequirement(): self
     {
         $this->specificTendererRequirement = [];
@@ -767,6 +867,16 @@ class TendererQualificationRequestType
     public function setEconomicOperatorRole(?array $economicOperatorRole = null): self
     {
         $this->economicOperatorRole = $economicOperatorRole;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEconomicOperatorRole(): self
+    {
+        $this->economicOperatorRole = null;
 
         return $this;
     }

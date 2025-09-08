@@ -207,6 +207,16 @@ class ClassificationSchemeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      */
     public function getUUID(): ?UUID
@@ -236,6 +246,16 @@ class ClassificationSchemeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUUID(): self
+    {
+        $this->uUID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getLastRevisionDate(): ?\DateTimeInterface
@@ -250,6 +270,16 @@ class ClassificationSchemeType
     public function setLastRevisionDate(?\DateTimeInterface $lastRevisionDate = null): self
     {
         $this->lastRevisionDate = $lastRevisionDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLastRevisionDate(): self
+    {
+        $this->lastRevisionDate = null;
 
         return $this;
     }
@@ -274,6 +304,16 @@ class ClassificationSchemeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLastRevisionTime(): self
+    {
+        $this->lastRevisionTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -288,6 +328,16 @@ class ClassificationSchemeType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -384,6 +434,16 @@ class ClassificationSchemeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -398,6 +458,16 @@ class ClassificationSchemeType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -494,6 +564,16 @@ class ClassificationSchemeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAgencyID(): self
+    {
+        $this->agencyID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\AgencyName|null
      */
     public function getAgencyName(): ?AgencyName
@@ -518,6 +598,16 @@ class ClassificationSchemeType
     public function setAgencyName(?AgencyName $agencyName = null): self
     {
         $this->agencyName = $agencyName;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAgencyName(): self
+    {
+        $this->agencyName = null;
 
         return $this;
     }
@@ -552,6 +642,16 @@ class ClassificationSchemeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetVersionID(): self
+    {
+        $this->versionID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\URI|null
      */
     public function getURI(): ?URI
@@ -576,6 +676,16 @@ class ClassificationSchemeType
     public function setURI(?URI $uRI = null): self
     {
         $this->uRI = $uRI;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetURI(): self
+    {
+        $this->uRI = null;
 
         return $this;
     }
@@ -610,6 +720,16 @@ class ClassificationSchemeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSchemeURI(): self
+    {
+        $this->schemeURI = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LanguageID|null
      */
     public function getLanguageID(): ?LanguageID
@@ -639,6 +759,16 @@ class ClassificationSchemeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLanguageID(): self
+    {
+        $this->languageID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ClassificationCategory>|null
      */
     public function getClassificationCategory(): ?array
@@ -653,6 +783,16 @@ class ClassificationSchemeType
     public function setClassificationCategory(?array $classificationCategory = null): self
     {
         $this->classificationCategory = $classificationCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetClassificationCategory(): self
+    {
+        $this->classificationCategory = null;
 
         return $this;
     }

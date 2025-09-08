@@ -108,6 +108,16 @@ class PaymentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PaidAmount|null
      */
     public function getPaidAmount(): ?PaidAmount
@@ -137,6 +147,16 @@ class PaymentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPaidAmount(): self
+    {
+        $this->paidAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getReceivedDate(): ?\DateTimeInterface
@@ -151,6 +171,16 @@ class PaymentType
     public function setReceivedDate(?\DateTimeInterface $receivedDate = null): self
     {
         $this->receivedDate = $receivedDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetReceivedDate(): self
+    {
+        $this->receivedDate = null;
 
         return $this;
     }
@@ -175,6 +205,16 @@ class PaymentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPaidDate(): self
+    {
+        $this->paidDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getPaidTime(): ?\DateTimeInterface
@@ -189,6 +229,16 @@ class PaymentType
     public function setPaidTime(?\DateTimeInterface $paidTime = null): self
     {
         $this->paidTime = $paidTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPaidTime(): self
+    {
+        $this->paidTime = null;
 
         return $this;
     }
@@ -218,6 +268,16 @@ class PaymentType
     public function setInstructionID(?InstructionID $instructionID = null): self
     {
         $this->instructionID = $instructionID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInstructionID(): self
+    {
+        $this->instructionID = null;
 
         return $this;
     }

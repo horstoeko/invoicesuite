@@ -361,6 +361,16 @@ class TransportHandlingUnitType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TransportHandlingUnitTypeCode|null
      */
     public function getTransportHandlingUnitTypeCode(): ?TransportHandlingUnitTypeCode
@@ -386,6 +396,16 @@ class TransportHandlingUnitType
         ?TransportHandlingUnitTypeCode $transportHandlingUnitTypeCode = null,
     ): self {
         $this->transportHandlingUnitTypeCode = $transportHandlingUnitTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTransportHandlingUnitTypeCode(): self
+    {
+        $this->transportHandlingUnitTypeCode = null;
 
         return $this;
     }
@@ -420,6 +440,16 @@ class TransportHandlingUnitType
     }
 
     /**
+     * @return self
+     */
+    public function unsetHandlingCode(): self
+    {
+        $this->handlingCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\HandlingInstructions>|null
      */
     public function getHandlingInstructions(): ?array
@@ -434,6 +464,16 @@ class TransportHandlingUnitType
     public function setHandlingInstructions(?array $handlingInstructions = null): self
     {
         $this->handlingInstructions = $handlingInstructions;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetHandlingInstructions(): self
+    {
+        $this->handlingInstructions = null;
 
         return $this;
     }
@@ -520,6 +560,16 @@ class TransportHandlingUnitType
     }
 
     /**
+     * @return self
+     */
+    public function unsetHazardousRiskIndicator(): self
+    {
+        $this->hazardousRiskIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TotalGoodsItemQuantity|null
      */
     public function getTotalGoodsItemQuantity(): ?TotalGoodsItemQuantity
@@ -544,6 +594,16 @@ class TransportHandlingUnitType
     public function setTotalGoodsItemQuantity(?TotalGoodsItemQuantity $totalGoodsItemQuantity = null): self
     {
         $this->totalGoodsItemQuantity = $totalGoodsItemQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTotalGoodsItemQuantity(): self
+    {
+        $this->totalGoodsItemQuantity = null;
 
         return $this;
     }
@@ -578,6 +638,16 @@ class TransportHandlingUnitType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTotalPackageQuantity(): self
+    {
+        $this->totalPackageQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\DamageRemarks>|null
      */
     public function getDamageRemarks(): ?array
@@ -592,6 +662,16 @@ class TransportHandlingUnitType
     public function setDamageRemarks(?array $damageRemarks = null): self
     {
         $this->damageRemarks = $damageRemarks;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDamageRemarks(): self
+    {
+        $this->damageRemarks = null;
 
         return $this;
     }
@@ -673,6 +753,16 @@ class TransportHandlingUnitType
     public function setShippingMarks(?array $shippingMarks = null): self
     {
         $this->shippingMarks = $shippingMarks;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetShippingMarks(): self
+    {
+        $this->shippingMarks = null;
 
         return $this;
     }
@@ -769,6 +859,16 @@ class TransportHandlingUnitType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTraceID(): self
+    {
+        $this->traceID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\HandlingUnitDespatchLine>|null
      */
     public function getHandlingUnitDespatchLine(): ?array
@@ -783,6 +883,16 @@ class TransportHandlingUnitType
     public function setHandlingUnitDespatchLine(?array $handlingUnitDespatchLine = null): self
     {
         $this->handlingUnitDespatchLine = $handlingUnitDespatchLine;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetHandlingUnitDespatchLine(): self
+    {
+        $this->handlingUnitDespatchLine = null;
 
         return $this;
     }
@@ -871,6 +981,16 @@ class TransportHandlingUnitType
     /**
      * @return self
      */
+    public function unsetActualPackage(): self
+    {
+        $this->actualPackage = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearActualPackage(): self
     {
         $this->actualPackage = [];
@@ -945,6 +1065,16 @@ class TransportHandlingUnitType
     public function setReceivedHandlingUnitReceiptLine(?array $receivedHandlingUnitReceiptLine = null): self
     {
         $this->receivedHandlingUnitReceiptLine = $receivedHandlingUnitReceiptLine;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetReceivedHandlingUnitReceiptLine(): self
+    {
+        $this->receivedHandlingUnitReceiptLine = null;
 
         return $this;
     }
@@ -1035,6 +1165,16 @@ class TransportHandlingUnitType
     /**
      * @return self
      */
+    public function unsetTransportEquipment(): self
+    {
+        $this->transportEquipment = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearTransportEquipment(): self
     {
         $this->transportEquipment = [];
@@ -1109,6 +1249,16 @@ class TransportHandlingUnitType
     public function setTransportMeans(?array $transportMeans = null): self
     {
         $this->transportMeans = $transportMeans;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTransportMeans(): self
+    {
+        $this->transportMeans = null;
 
         return $this;
     }
@@ -1197,6 +1347,16 @@ class TransportHandlingUnitType
     /**
      * @return self
      */
+    public function unsetHazardousGoodsTransit(): self
+    {
+        $this->hazardousGoodsTransit = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearHazardousGoodsTransit(): self
     {
         $this->hazardousGoodsTransit = [];
@@ -1271,6 +1431,16 @@ class TransportHandlingUnitType
     public function setMeasurementDimension(?array $measurementDimension = null): self
     {
         $this->measurementDimension = $measurementDimension;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMeasurementDimension(): self
+    {
+        $this->measurementDimension = null;
 
         return $this;
     }
@@ -1367,6 +1537,16 @@ class TransportHandlingUnitType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMinimumTemperature(): self
+    {
+        $this->minimumTemperature = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\MaximumTemperature|null
      */
     public function getMaximumTemperature(): ?MaximumTemperature
@@ -1396,6 +1576,16 @@ class TransportHandlingUnitType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMaximumTemperature(): self
+    {
+        $this->maximumTemperature = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\GoodsItem>|null
      */
     public function getGoodsItem(): ?array
@@ -1410,6 +1600,16 @@ class TransportHandlingUnitType
     public function setGoodsItem(?array $goodsItem = null): self
     {
         $this->goodsItem = $goodsItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetGoodsItem(): self
+    {
+        $this->goodsItem = null;
 
         return $this;
     }
@@ -1507,6 +1707,16 @@ class TransportHandlingUnitType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFloorSpaceMeasurementDimension(): self
+    {
+        $this->floorSpaceMeasurementDimension = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\PalletSpaceMeasurementDimension|null
      */
     public function getPalletSpaceMeasurementDimension(): ?PalletSpaceMeasurementDimension
@@ -1537,6 +1747,16 @@ class TransportHandlingUnitType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPalletSpaceMeasurementDimension(): self
+    {
+        $this->palletSpaceMeasurementDimension = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ShipmentDocumentReference>|null
      */
     public function getShipmentDocumentReference(): ?array
@@ -1551,6 +1771,16 @@ class TransportHandlingUnitType
     public function setShipmentDocumentReference(?array $shipmentDocumentReference = null): self
     {
         $this->shipmentDocumentReference = $shipmentDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetShipmentDocumentReference(): self
+    {
+        $this->shipmentDocumentReference = null;
 
         return $this;
     }
@@ -1639,6 +1869,16 @@ class TransportHandlingUnitType
     /**
      * @return self
      */
+    public function unsetStatus(): self
+    {
+        $this->status = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearStatus(): self
     {
         $this->status = [];
@@ -1713,6 +1953,16 @@ class TransportHandlingUnitType
     public function setCustomsDeclaration(?array $customsDeclaration = null): self
     {
         $this->customsDeclaration = $customsDeclaration;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCustomsDeclaration(): self
+    {
+        $this->customsDeclaration = null;
 
         return $this;
     }
@@ -1801,6 +2051,16 @@ class TransportHandlingUnitType
     /**
      * @return self
      */
+    public function unsetReferencedShipment(): self
+    {
+        $this->referencedShipment = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearReferencedShipment(): self
     {
         $this->referencedShipment = [];
@@ -1875,6 +2135,16 @@ class TransportHandlingUnitType
     public function setPackage(?array $package = null): self
     {
         $this->package = $package;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPackage(): self
+    {
+        $this->package = null;
 
         return $this;
     }

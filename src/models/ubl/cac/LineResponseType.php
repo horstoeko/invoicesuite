@@ -62,6 +62,16 @@ class LineResponseType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineReference(): self
+    {
+        $this->lineReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Response>|null
      */
     public function getResponse(): ?array
@@ -76,6 +86,16 @@ class LineResponseType
     public function setResponse(?array $response = null): self
     {
         $this->response = $response;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetResponse(): self
+    {
+        $this->response = null;
 
         return $this;
     }

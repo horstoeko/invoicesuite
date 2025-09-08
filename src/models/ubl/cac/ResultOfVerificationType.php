@@ -132,6 +132,16 @@ class ResultOfVerificationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValidatorID(): self
+    {
+        $this->validatorID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ValidationResultCode|null
      */
     public function getValidationResultCode(): ?ValidationResultCode
@@ -161,6 +171,16 @@ class ResultOfVerificationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValidationResultCode(): self
+    {
+        $this->validationResultCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getValidationDate(): ?\DateTimeInterface
@@ -180,6 +200,16 @@ class ResultOfVerificationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValidationDate(): self
+    {
+        $this->validationDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getValidationTime(): ?\DateTimeInterface
@@ -194,6 +224,16 @@ class ResultOfVerificationType
     public function setValidationTime(?\DateTimeInterface $validationTime = null): self
     {
         $this->validationTime = $validationTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValidationTime(): self
+    {
+        $this->validationTime = null;
 
         return $this;
     }
@@ -228,6 +268,16 @@ class ResultOfVerificationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValidateProcess(): self
+    {
+        $this->validateProcess = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ValidateTool|null
      */
     public function getValidateTool(): ?ValidateTool
@@ -252,6 +302,16 @@ class ResultOfVerificationType
     public function setValidateTool(?ValidateTool $validateTool = null): self
     {
         $this->validateTool = $validateTool;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValidateTool(): self
+    {
+        $this->validateTool = null;
 
         return $this;
     }
@@ -286,6 +346,16 @@ class ResultOfVerificationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValidateToolVersion(): self
+    {
+        $this->validateToolVersion = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\SignatoryParty|null
      */
     public function getSignatoryParty(): ?SignatoryParty
@@ -310,6 +380,16 @@ class ResultOfVerificationType
     public function setSignatoryParty(?SignatoryParty $signatoryParty = null): self
     {
         $this->signatoryParty = $signatoryParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSignatoryParty(): self
+    {
+        $this->signatoryParty = null;
 
         return $this;
     }

@@ -182,6 +182,16 @@ class ExceptionCriteriaLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -196,6 +206,16 @@ class ExceptionCriteriaLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -293,6 +313,16 @@ class ExceptionCriteriaLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetThresholdValueComparisonCode(): self
+    {
+        $this->thresholdValueComparisonCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ThresholdQuantity|null
      */
     public function getThresholdQuantity(): ?ThresholdQuantity
@@ -317,6 +347,16 @@ class ExceptionCriteriaLineType
     public function setThresholdQuantity(?ThresholdQuantity $thresholdQuantity = null): self
     {
         $this->thresholdQuantity = $thresholdQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetThresholdQuantity(): self
+    {
+        $this->thresholdQuantity = null;
 
         return $this;
     }
@@ -351,6 +391,16 @@ class ExceptionCriteriaLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExceptionStatusCode(): self
+    {
+        $this->exceptionStatusCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CollaborationPriorityCode|null
      */
     public function getCollaborationPriorityCode(): ?CollaborationPriorityCode
@@ -380,6 +430,16 @@ class ExceptionCriteriaLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCollaborationPriorityCode(): self
+    {
+        $this->collaborationPriorityCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ExceptionResolutionCode|null
      */
     public function getExceptionResolutionCode(): ?ExceptionResolutionCode
@@ -404,6 +464,16 @@ class ExceptionCriteriaLineType
     public function setExceptionResolutionCode(?ExceptionResolutionCode $exceptionResolutionCode = null): self
     {
         $this->exceptionResolutionCode = $exceptionResolutionCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExceptionResolutionCode(): self
+    {
+        $this->exceptionResolutionCode = null;
 
         return $this;
     }
@@ -439,6 +509,16 @@ class ExceptionCriteriaLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSupplyChainActivityTypeCode(): self
+    {
+        $this->supplyChainActivityTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode|null
      */
     public function getPerformanceMetricTypeCode(): ?PerformanceMetricTypeCode
@@ -463,6 +543,16 @@ class ExceptionCriteriaLineType
     public function setPerformanceMetricTypeCode(?PerformanceMetricTypeCode $performanceMetricTypeCode = null): self
     {
         $this->performanceMetricTypeCode = $performanceMetricTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPerformanceMetricTypeCode(): self
+    {
+        $this->performanceMetricTypeCode = null;
 
         return $this;
     }
@@ -497,6 +587,16 @@ class ExceptionCriteriaLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEffectivePeriod(): self
+    {
+        $this->effectivePeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SupplyItem>|null
      */
     public function getSupplyItem(): ?array
@@ -511,6 +611,16 @@ class ExceptionCriteriaLineType
     public function setSupplyItem(?array $supplyItem = null): self
     {
         $this->supplyItem = $supplyItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSupplyItem(): self
+    {
+        $this->supplyItem = null;
 
         return $this;
     }
@@ -603,6 +713,16 @@ class ExceptionCriteriaLineType
         ?ForecastExceptionCriterionLine $forecastExceptionCriterionLine = null,
     ): self {
         $this->forecastExceptionCriterionLine = $forecastExceptionCriterionLine;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetForecastExceptionCriterionLine(): self
+    {
+        $this->forecastExceptionCriterionLine = null;
 
         return $this;
     }

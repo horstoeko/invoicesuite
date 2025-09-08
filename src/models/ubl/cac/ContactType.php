@@ -124,6 +124,16 @@ class ContactType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      */
     public function getName(): ?Name
@@ -148,6 +158,16 @@ class ContactType
     public function setName(?Name $name = null): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
 
         return $this;
     }
@@ -182,6 +202,16 @@ class ContactType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTelephone(): self
+    {
+        $this->telephone = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Telefax|null
      */
     public function getTelefax(): ?Telefax
@@ -206,6 +236,16 @@ class ContactType
     public function setTelefax(?Telefax $telefax = null): self
     {
         $this->telefax = $telefax;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTelefax(): self
+    {
+        $this->telefax = null;
 
         return $this;
     }
@@ -240,6 +280,16 @@ class ContactType
     }
 
     /**
+     * @return self
+     */
+    public function unsetElectronicMail(): self
+    {
+        $this->electronicMail = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -254,6 +304,16 @@ class ContactType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -335,6 +395,16 @@ class ContactType
     public function setOtherCommunication(?array $otherCommunication = null): self
     {
         $this->otherCommunication = $otherCommunication;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOtherCommunication(): self
+    {
+        $this->otherCommunication = null;
 
         return $this;
     }

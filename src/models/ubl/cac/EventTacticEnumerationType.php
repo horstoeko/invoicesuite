@@ -88,6 +88,16 @@ class EventTacticEnumerationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetConsumerIncentiveTacticTypeCode(): self
+    {
+        $this->consumerIncentiveTacticTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\DisplayTacticTypeCode|null
      */
     public function getDisplayTacticTypeCode(): ?DisplayTacticTypeCode
@@ -112,6 +122,16 @@ class EventTacticEnumerationType
     public function setDisplayTacticTypeCode(?DisplayTacticTypeCode $displayTacticTypeCode = null): self
     {
         $this->displayTacticTypeCode = $displayTacticTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDisplayTacticTypeCode(): self
+    {
+        $this->displayTacticTypeCode = null;
 
         return $this;
     }
@@ -146,6 +166,16 @@ class EventTacticEnumerationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFeatureTacticTypeCode(): self
+    {
+        $this->featureTacticTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TradeItemPackingLabelingTypeCode|null
      */
     public function getTradeItemPackingLabelingTypeCode(): ?TradeItemPackingLabelingTypeCode
@@ -171,6 +201,16 @@ class EventTacticEnumerationType
         ?TradeItemPackingLabelingTypeCode $tradeItemPackingLabelingTypeCode = null,
     ): self {
         $this->tradeItemPackingLabelingTypeCode = $tradeItemPackingLabelingTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTradeItemPackingLabelingTypeCode(): self
+    {
+        $this->tradeItemPackingLabelingTypeCode = null;
 
         return $this;
     }

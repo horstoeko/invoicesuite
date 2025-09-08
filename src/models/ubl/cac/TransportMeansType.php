@@ -190,6 +190,16 @@ class TransportMeansType
     }
 
     /**
+     * @return self
+     */
+    public function unsetJourneyID(): self
+    {
+        $this->journeyID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\RegistrationNationalityID|null
      */
     public function getRegistrationNationalityID(): ?RegistrationNationalityID
@@ -219,6 +229,16 @@ class TransportMeansType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRegistrationNationalityID(): self
+    {
+        $this->registrationNationalityID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\RegistrationNationality>|null
      */
     public function getRegistrationNationality(): ?array
@@ -233,6 +253,16 @@ class TransportMeansType
     public function setRegistrationNationality(?array $registrationNationality = null): self
     {
         $this->registrationNationality = $registrationNationality;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRegistrationNationality(): self
+    {
+        $this->registrationNationality = null;
 
         return $this;
     }
@@ -329,6 +359,16 @@ class TransportMeansType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDirectionCode(): self
+    {
+        $this->directionCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TransportMeansTypeCode|null
      */
     public function getTransportMeansTypeCode(): ?TransportMeansTypeCode
@@ -353,6 +393,16 @@ class TransportMeansType
     public function setTransportMeansTypeCode(?TransportMeansTypeCode $transportMeansTypeCode = null): self
     {
         $this->transportMeansTypeCode = $transportMeansTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTransportMeansTypeCode(): self
+    {
+        $this->transportMeansTypeCode = null;
 
         return $this;
     }
@@ -387,6 +437,16 @@ class TransportMeansType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTradeServiceCode(): self
+    {
+        $this->tradeServiceCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Stowage|null
      */
     public function getStowage(): ?Stowage
@@ -411,6 +471,16 @@ class TransportMeansType
     public function setStowage(?Stowage $stowage = null): self
     {
         $this->stowage = $stowage;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetStowage(): self
+    {
+        $this->stowage = null;
 
         return $this;
     }
@@ -445,6 +515,16 @@ class TransportMeansType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAirTransport(): self
+    {
+        $this->airTransport = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\RoadTransport|null
      */
     public function getRoadTransport(): ?RoadTransport
@@ -469,6 +549,16 @@ class TransportMeansType
     public function setRoadTransport(?RoadTransport $roadTransport = null): self
     {
         $this->roadTransport = $roadTransport;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRoadTransport(): self
+    {
+        $this->roadTransport = null;
 
         return $this;
     }
@@ -503,6 +593,16 @@ class TransportMeansType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRailTransport(): self
+    {
+        $this->railTransport = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\MaritimeTransport|null
      */
     public function getMaritimeTransport(): ?MaritimeTransport
@@ -527,6 +627,16 @@ class TransportMeansType
     public function setMaritimeTransport(?MaritimeTransport $maritimeTransport = null): self
     {
         $this->maritimeTransport = $maritimeTransport;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMaritimeTransport(): self
+    {
+        $this->maritimeTransport = null;
 
         return $this;
     }
@@ -561,6 +671,16 @@ class TransportMeansType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOwnerParty(): self
+    {
+        $this->ownerParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>|null
      */
     public function getMeasurementDimension(): ?array
@@ -575,6 +695,16 @@ class TransportMeansType
     public function setMeasurementDimension(?array $measurementDimension = null): self
     {
         $this->measurementDimension = $measurementDimension;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMeasurementDimension(): self
+    {
+        $this->measurementDimension = null;
 
         return $this;
     }

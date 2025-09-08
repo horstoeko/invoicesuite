@@ -158,6 +158,16 @@ class PriceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPriceAmount(): self
+    {
+        $this->priceAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\BaseQuantity|null
      */
     public function getBaseQuantity(): ?BaseQuantity
@@ -187,6 +197,16 @@ class PriceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBaseQuantity(): self
+    {
+        $this->baseQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\PriceChangeReason>|null
      */
     public function getPriceChangeReason(): ?array
@@ -201,6 +221,16 @@ class PriceType
     public function setPriceChangeReason(?array $priceChangeReason = null): self
     {
         $this->priceChangeReason = $priceChangeReason;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPriceChangeReason(): self
+    {
+        $this->priceChangeReason = null;
 
         return $this;
     }
@@ -297,6 +327,16 @@ class PriceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPriceTypeCode(): self
+    {
+        $this->priceTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PriceType|null
      */
     public function getPriceType(): ?PriceType1
@@ -321,6 +361,16 @@ class PriceType
     public function setPriceType(?PriceType1 $priceType = null): self
     {
         $this->priceType = $priceType;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPriceType(): self
+    {
+        $this->priceType = null;
 
         return $this;
     }
@@ -355,6 +405,16 @@ class PriceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOrderableUnitFactorRate(): self
+    {
+        $this->orderableUnitFactorRate = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod>|null
      */
     public function getValidityPeriod(): ?array
@@ -369,6 +429,16 @@ class PriceType
     public function setValidityPeriod(?array $validityPeriod = null): self
     {
         $this->validityPeriod = $validityPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValidityPeriod(): self
+    {
+        $this->validityPeriod = null;
 
         return $this;
     }
@@ -465,6 +535,16 @@ class PriceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPriceList(): self
+    {
+        $this->priceList = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null
      */
     public function getAllowanceCharge(): ?array
@@ -479,6 +559,16 @@ class PriceType
     public function setAllowanceCharge(?array $allowanceCharge = null): self
     {
         $this->allowanceCharge = $allowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAllowanceCharge(): self
+    {
+        $this->allowanceCharge = null;
 
         return $this;
     }
@@ -570,6 +660,16 @@ class PriceType
     public function setPricingExchangeRate(?PricingExchangeRate $pricingExchangeRate = null): self
     {
         $this->pricingExchangeRate = $pricingExchangeRate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPricingExchangeRate(): self
+    {
+        $this->pricingExchangeRate = null;
 
         return $this;
     }

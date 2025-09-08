@@ -49,4 +49,14 @@ class CreditAccountType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetAccountID(): self
+    {
+        $this->accountID = null;
+
+        return $this;
+    }
 }

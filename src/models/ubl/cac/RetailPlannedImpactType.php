@@ -86,6 +86,16 @@ class RetailPlannedImpactType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAmount(): self
+    {
+        $this->amount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ForecastPurposeCode|null
      */
     public function getForecastPurposeCode(): ?ForecastPurposeCode
@@ -110,6 +120,16 @@ class RetailPlannedImpactType
     public function setForecastPurposeCode(?ForecastPurposeCode $forecastPurposeCode = null): self
     {
         $this->forecastPurposeCode = $forecastPurposeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetForecastPurposeCode(): self
+    {
+        $this->forecastPurposeCode = null;
 
         return $this;
     }
@@ -144,6 +164,16 @@ class RetailPlannedImpactType
     }
 
     /**
+     * @return self
+     */
+    public function unsetForecastTypeCode(): self
+    {
+        $this->forecastTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Period|null
      */
     public function getPeriod(): ?Period
@@ -168,6 +198,16 @@ class RetailPlannedImpactType
     public function setPeriod(?Period $period = null): self
     {
         $this->period = $period;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPeriod(): self
+    {
+        $this->period = null;
 
         return $this;
     }

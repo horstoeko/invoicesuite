@@ -132,6 +132,16 @@ class PowerOfAttorneyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getIssueDate(): ?\DateTimeInterface
@@ -146,6 +156,16 @@ class PowerOfAttorneyType
     public function setIssueDate(?\DateTimeInterface $issueDate = null): self
     {
         $this->issueDate = $issueDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetIssueDate(): self
+    {
+        $this->issueDate = null;
 
         return $this;
     }
@@ -170,6 +190,16 @@ class PowerOfAttorneyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIssueTime(): self
+    {
+        $this->issueTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -184,6 +214,16 @@ class PowerOfAttorneyType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -280,6 +320,16 @@ class PowerOfAttorneyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetNotaryParty(): self
+    {
+        $this->notaryParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\AgentParty|null
      */
     public function getAgentParty(): ?AgentParty
@@ -309,6 +359,16 @@ class PowerOfAttorneyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAgentParty(): self
+    {
+        $this->agentParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\WitnessParty>|null
      */
     public function getWitnessParty(): ?array
@@ -323,6 +383,16 @@ class PowerOfAttorneyType
     public function setWitnessParty(?array $witnessParty = null): self
     {
         $this->witnessParty = $witnessParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetWitnessParty(): self
+    {
+        $this->witnessParty = null;
 
         return $this;
     }
@@ -404,6 +474,16 @@ class PowerOfAttorneyType
     public function setMandateDocumentReference(?array $mandateDocumentReference = null): self
     {
         $this->mandateDocumentReference = $mandateDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMandateDocumentReference(): self
+    {
+        $this->mandateDocumentReference = null;
 
         return $this;
     }

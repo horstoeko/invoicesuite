@@ -99,6 +99,16 @@ class EndorsementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDocumentID(): self
+    {
+        $this->documentID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ApprovalStatus|null
      */
     public function getApprovalStatus(): ?ApprovalStatus
@@ -128,6 +138,16 @@ class EndorsementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetApprovalStatus(): self
+    {
+        $this->approvalStatus = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Remarks>|null
      */
     public function getRemarks(): ?array
@@ -142,6 +162,16 @@ class EndorsementType
     public function setRemarks(?array $remarks = null): self
     {
         $this->remarks = $remarks;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRemarks(): self
+    {
+        $this->remarks = null;
 
         return $this;
     }
@@ -238,6 +268,16 @@ class EndorsementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEndorserParty(): self
+    {
+        $this->endorserParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Signature>|null
      */
     public function getSignature(): ?array
@@ -252,6 +292,16 @@ class EndorsementType
     public function setSignature(?array $signature = null): self
     {
         $this->signature = $signature;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSignature(): self
+    {
+        $this->signature = null;
 
         return $this;
     }

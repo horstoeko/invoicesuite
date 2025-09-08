@@ -76,6 +76,16 @@ class TemperatureType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAttributeID(): self
+    {
+        $this->attributeID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Measure|null
      */
     public function getMeasure(): ?Measure
@@ -105,6 +115,16 @@ class TemperatureType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMeasure(): self
+    {
+        $this->measure = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -119,6 +139,16 @@ class TemperatureType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }

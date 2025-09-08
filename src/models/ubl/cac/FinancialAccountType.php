@@ -146,6 +146,16 @@ class FinancialAccountType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      */
     public function getName(): ?Name
@@ -170,6 +180,16 @@ class FinancialAccountType
     public function setName(?Name $name = null): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
 
         return $this;
     }
@@ -204,6 +224,16 @@ class FinancialAccountType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAliasName(): self
+    {
+        $this->aliasName = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\AccountTypeCode|null
      */
     public function getAccountTypeCode(): ?AccountTypeCode
@@ -228,6 +258,16 @@ class FinancialAccountType
     public function setAccountTypeCode(?AccountTypeCode $accountTypeCode = null): self
     {
         $this->accountTypeCode = $accountTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAccountTypeCode(): self
+    {
+        $this->accountTypeCode = null;
 
         return $this;
     }
@@ -262,6 +302,16 @@ class FinancialAccountType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAccountFormatCode(): self
+    {
+        $this->accountFormatCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CurrencyCode|null
      */
     public function getCurrencyCode(): ?CurrencyCode
@@ -291,6 +341,16 @@ class FinancialAccountType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCurrencyCode(): self
+    {
+        $this->currencyCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\PaymentNote>|null
      */
     public function getPaymentNote(): ?array
@@ -305,6 +365,16 @@ class FinancialAccountType
     public function setPaymentNote(?array $paymentNote = null): self
     {
         $this->paymentNote = $paymentNote;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPaymentNote(): self
+    {
+        $this->paymentNote = null;
 
         return $this;
     }
@@ -402,6 +472,16 @@ class FinancialAccountType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFinancialInstitutionBranch(): self
+    {
+        $this->financialInstitutionBranch = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Country|null
      */
     public function getCountry(): ?Country
@@ -426,6 +506,16 @@ class FinancialAccountType
     public function setCountry(?Country $country = null): self
     {
         $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCountry(): self
+    {
+        $this->country = null;
 
         return $this;
     }

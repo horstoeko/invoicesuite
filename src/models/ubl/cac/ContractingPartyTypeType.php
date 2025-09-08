@@ -63,6 +63,16 @@ class ContractingPartyTypeType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPartyTypeCode(): self
+    {
+        $this->partyTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PartyType|null
      */
     public function getPartyType(): ?PartyType
@@ -87,6 +97,16 @@ class ContractingPartyTypeType
     public function setPartyType(?PartyType $partyType = null): self
     {
         $this->partyType = $partyType;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPartyType(): self
+    {
+        $this->partyType = null;
 
         return $this;
     }

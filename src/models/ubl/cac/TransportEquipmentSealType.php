@@ -99,6 +99,16 @@ class TransportEquipmentSealType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SealIssuerTypeCode|null
      */
     public function getSealIssuerTypeCode(): ?SealIssuerTypeCode
@@ -123,6 +133,16 @@ class TransportEquipmentSealType
     public function setSealIssuerTypeCode(?SealIssuerTypeCode $sealIssuerTypeCode = null): self
     {
         $this->sealIssuerTypeCode = $sealIssuerTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSealIssuerTypeCode(): self
+    {
+        $this->sealIssuerTypeCode = null;
 
         return $this;
     }
@@ -157,6 +177,16 @@ class TransportEquipmentSealType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCondition(): self
+    {
+        $this->condition = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SealStatusCode|null
      */
     public function getSealStatusCode(): ?SealStatusCode
@@ -186,6 +216,16 @@ class TransportEquipmentSealType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSealStatusCode(): self
+    {
+        $this->sealStatusCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SealingPartyType|null
      */
     public function getSealingPartyType(): ?SealingPartyType
@@ -210,6 +250,16 @@ class TransportEquipmentSealType
     public function setSealingPartyType(?SealingPartyType $sealingPartyType = null): self
     {
         $this->sealingPartyType = $sealingPartyType;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSealingPartyType(): self
+    {
+        $this->sealingPartyType = null;
 
         return $this;
     }

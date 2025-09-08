@@ -85,6 +85,16 @@ class CataloguePricingUpdateLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ContractorCustomerParty|null
      */
     public function getContractorCustomerParty(): ?ContractorCustomerParty
@@ -109,6 +119,16 @@ class CataloguePricingUpdateLineType
     public function setContractorCustomerParty(?ContractorCustomerParty $contractorCustomerParty = null): self
     {
         $this->contractorCustomerParty = $contractorCustomerParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContractorCustomerParty(): self
+    {
+        $this->contractorCustomerParty = null;
 
         return $this;
     }
@@ -143,6 +163,16 @@ class CataloguePricingUpdateLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSellerSupplierParty(): self
+    {
+        $this->sellerSupplierParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity>|null
      */
     public function getRequiredItemLocationQuantity(): ?array
@@ -157,6 +187,16 @@ class CataloguePricingUpdateLineType
     public function setRequiredItemLocationQuantity(?array $requiredItemLocationQuantity = null): self
     {
         $this->requiredItemLocationQuantity = $requiredItemLocationQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRequiredItemLocationQuantity(): self
+    {
+        $this->requiredItemLocationQuantity = null;
 
         return $this;
     }

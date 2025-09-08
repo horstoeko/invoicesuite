@@ -139,6 +139,16 @@ class PickupType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getActualPickupDate(): ?\DateTimeInterface
@@ -153,6 +163,16 @@ class PickupType
     public function setActualPickupDate(?\DateTimeInterface $actualPickupDate = null): self
     {
         $this->actualPickupDate = $actualPickupDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetActualPickupDate(): self
+    {
+        $this->actualPickupDate = null;
 
         return $this;
     }
@@ -177,6 +197,16 @@ class PickupType
     }
 
     /**
+     * @return self
+     */
+    public function unsetActualPickupTime(): self
+    {
+        $this->actualPickupTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getEarliestPickupDate(): ?\DateTimeInterface
@@ -191,6 +221,16 @@ class PickupType
     public function setEarliestPickupDate(?\DateTimeInterface $earliestPickupDate = null): self
     {
         $this->earliestPickupDate = $earliestPickupDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEarliestPickupDate(): self
+    {
+        $this->earliestPickupDate = null;
 
         return $this;
     }
@@ -215,6 +255,16 @@ class PickupType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEarliestPickupTime(): self
+    {
+        $this->earliestPickupTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getLatestPickupDate(): ?\DateTimeInterface
@@ -234,6 +284,16 @@ class PickupType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLatestPickupDate(): self
+    {
+        $this->latestPickupDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getLatestPickupTime(): ?\DateTimeInterface
@@ -248,6 +308,16 @@ class PickupType
     public function setLatestPickupTime(?\DateTimeInterface $latestPickupTime = null): self
     {
         $this->latestPickupTime = $latestPickupTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLatestPickupTime(): self
+    {
+        $this->latestPickupTime = null;
 
         return $this;
     }
@@ -282,6 +352,16 @@ class PickupType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPickupLocation(): self
+    {
+        $this->pickupLocation = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\PickupParty|null
      */
     public function getPickupParty(): ?PickupParty
@@ -306,6 +386,16 @@ class PickupType
     public function setPickupParty(?PickupParty $pickupParty = null): self
     {
         $this->pickupParty = $pickupParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPickupParty(): self
+    {
+        $this->pickupParty = null;
 
         return $this;
     }

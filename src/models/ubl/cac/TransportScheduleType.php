@@ -175,6 +175,16 @@ class TransportScheduleType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSequenceNumeric(): self
+    {
+        $this->sequenceNumeric = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getReferenceDate(): ?\DateTimeInterface
@@ -194,6 +204,16 @@ class TransportScheduleType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReferenceDate(): self
+    {
+        $this->referenceDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getReferenceTime(): ?\DateTimeInterface
@@ -208,6 +228,16 @@ class TransportScheduleType
     public function setReferenceTime(?\DateTimeInterface $referenceTime = null): self
     {
         $this->referenceTime = $referenceTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetReferenceTime(): self
+    {
+        $this->referenceTime = null;
 
         return $this;
     }
@@ -242,6 +272,16 @@ class TransportScheduleType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReliabilityPercent(): self
+    {
+        $this->reliabilityPercent = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Remarks>|null
      */
     public function getRemarks(): ?array
@@ -256,6 +296,16 @@ class TransportScheduleType
     public function setRemarks(?array $remarks = null): self
     {
         $this->remarks = $remarks;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRemarks(): self
+    {
+        $this->remarks = null;
 
         return $this;
     }
@@ -352,6 +402,16 @@ class TransportScheduleType
     }
 
     /**
+     * @return self
+     */
+    public function unsetStatusLocation(): self
+    {
+        $this->statusLocation = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ActualArrivalTransportEvent|null
      */
     public function getActualArrivalTransportEvent(): ?ActualArrivalTransportEvent
@@ -377,6 +437,16 @@ class TransportScheduleType
         ?ActualArrivalTransportEvent $actualArrivalTransportEvent = null,
     ): self {
         $this->actualArrivalTransportEvent = $actualArrivalTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetActualArrivalTransportEvent(): self
+    {
+        $this->actualArrivalTransportEvent = null;
 
         return $this;
     }
@@ -412,6 +482,16 @@ class TransportScheduleType
     }
 
     /**
+     * @return self
+     */
+    public function unsetActualDepartureTransportEvent(): self
+    {
+        $this->actualDepartureTransportEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\EstimatedDepartureTransportEvent|null
      */
     public function getEstimatedDepartureTransportEvent(): ?EstimatedDepartureTransportEvent
@@ -437,6 +517,16 @@ class TransportScheduleType
         ?EstimatedDepartureTransportEvent $estimatedDepartureTransportEvent = null,
     ): self {
         $this->estimatedDepartureTransportEvent = $estimatedDepartureTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEstimatedDepartureTransportEvent(): self
+    {
+        $this->estimatedDepartureTransportEvent = null;
 
         return $this;
     }
@@ -472,6 +562,16 @@ class TransportScheduleType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEstimatedArrivalTransportEvent(): self
+    {
+        $this->estimatedArrivalTransportEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\PlannedDepartureTransportEvent|null
      */
     public function getPlannedDepartureTransportEvent(): ?PlannedDepartureTransportEvent
@@ -502,6 +602,16 @@ class TransportScheduleType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPlannedDepartureTransportEvent(): self
+    {
+        $this->plannedDepartureTransportEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\PlannedArrivalTransportEvent|null
      */
     public function getPlannedArrivalTransportEvent(): ?PlannedArrivalTransportEvent
@@ -527,6 +637,16 @@ class TransportScheduleType
         ?PlannedArrivalTransportEvent $plannedArrivalTransportEvent = null,
     ): self {
         $this->plannedArrivalTransportEvent = $plannedArrivalTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPlannedArrivalTransportEvent(): self
+    {
+        $this->plannedArrivalTransportEvent = null;
 
         return $this;
     }

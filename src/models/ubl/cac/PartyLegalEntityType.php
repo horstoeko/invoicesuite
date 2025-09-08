@@ -200,6 +200,16 @@ class PartyLegalEntityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRegistrationName(): self
+    {
+        $this->registrationName = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CompanyID|null
      */
     public function getCompanyID(): ?CompanyID
@@ -229,6 +239,16 @@ class PartyLegalEntityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCompanyID(): self
+    {
+        $this->companyID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getRegistrationDate(): ?\DateTimeInterface
@@ -248,6 +268,16 @@ class PartyLegalEntityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRegistrationDate(): self
+    {
+        $this->registrationDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getRegistrationExpirationDate(): ?\DateTimeInterface
@@ -262,6 +292,16 @@ class PartyLegalEntityType
     public function setRegistrationExpirationDate(?\DateTimeInterface $registrationExpirationDate = null): self
     {
         $this->registrationExpirationDate = $registrationExpirationDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRegistrationExpirationDate(): self
+    {
+        $this->registrationExpirationDate = null;
 
         return $this;
     }
@@ -296,6 +336,16 @@ class PartyLegalEntityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCompanyLegalFormCode(): self
+    {
+        $this->companyLegalFormCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalForm|null
      */
     public function getCompanyLegalForm(): ?CompanyLegalForm
@@ -325,6 +375,16 @@ class PartyLegalEntityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCompanyLegalForm(): self
+    {
+        $this->companyLegalForm = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getSoleProprietorshipIndicator(): ?bool
@@ -339,6 +399,16 @@ class PartyLegalEntityType
     public function setSoleProprietorshipIndicator(?bool $soleProprietorshipIndicator = null): self
     {
         $this->soleProprietorshipIndicator = $soleProprietorshipIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSoleProprietorshipIndicator(): self
+    {
+        $this->soleProprietorshipIndicator = null;
 
         return $this;
     }
@@ -374,6 +444,16 @@ class PartyLegalEntityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCompanyLiquidationStatusCode(): self
+    {
+        $this->companyLiquidationStatusCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CorporateStockAmount|null
      */
     public function getCorporateStockAmount(): ?CorporateStockAmount
@@ -403,6 +483,16 @@ class PartyLegalEntityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCorporateStockAmount(): self
+    {
+        $this->corporateStockAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getFullyPaidSharesIndicator(): ?bool
@@ -417,6 +507,16 @@ class PartyLegalEntityType
     public function setFullyPaidSharesIndicator(?bool $fullyPaidSharesIndicator = null): self
     {
         $this->fullyPaidSharesIndicator = $fullyPaidSharesIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFullyPaidSharesIndicator(): self
+    {
+        $this->fullyPaidSharesIndicator = null;
 
         return $this;
     }
@@ -446,6 +546,16 @@ class PartyLegalEntityType
     public function setRegistrationAddress(?RegistrationAddress $registrationAddress = null): self
     {
         $this->registrationAddress = $registrationAddress;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRegistrationAddress(): self
+    {
+        $this->registrationAddress = null;
 
         return $this;
     }
@@ -481,6 +591,16 @@ class PartyLegalEntityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCorporateRegistrationScheme(): self
+    {
+        $this->corporateRegistrationScheme = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\HeadOfficeParty|null
      */
     public function getHeadOfficeParty(): ?HeadOfficeParty
@@ -510,6 +630,16 @@ class PartyLegalEntityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetHeadOfficeParty(): self
+    {
+        $this->headOfficeParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ShareholderParty>|null
      */
     public function getShareholderParty(): ?array
@@ -524,6 +654,16 @@ class PartyLegalEntityType
     public function setShareholderParty(?array $shareholderParty = null): self
     {
         $this->shareholderParty = $shareholderParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetShareholderParty(): self
+    {
+        $this->shareholderParty = null;
 
         return $this;
     }

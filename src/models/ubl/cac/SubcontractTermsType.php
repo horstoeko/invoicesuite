@@ -123,6 +123,16 @@ class SubcontractTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRate(): self
+    {
+        $this->rate = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getUnknownPriceIndicator(): ?bool
@@ -142,6 +152,16 @@ class SubcontractTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUnknownPriceIndicator(): self
+    {
+        $this->unknownPriceIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -156,6 +176,16 @@ class SubcontractTermsType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -252,6 +282,16 @@ class SubcontractTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAmount(): self
+    {
+        $this->amount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SubcontractingConditionsCode|null
      */
     public function getSubcontractingConditionsCode(): ?SubcontractingConditionsCode
@@ -277,6 +317,16 @@ class SubcontractTermsType
         ?SubcontractingConditionsCode $subcontractingConditionsCode = null,
     ): self {
         $this->subcontractingConditionsCode = $subcontractingConditionsCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSubcontractingConditionsCode(): self
+    {
+        $this->subcontractingConditionsCode = null;
 
         return $this;
     }
@@ -311,6 +361,16 @@ class SubcontractTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMaximumPercent(): self
+    {
+        $this->maximumPercent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MinimumPercent|null
      */
     public function getMinimumPercent(): ?MinimumPercent
@@ -335,6 +395,16 @@ class SubcontractTermsType
     public function setMinimumPercent(?MinimumPercent $minimumPercent = null): self
     {
         $this->minimumPercent = $minimumPercent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMinimumPercent(): self
+    {
+        $this->minimumPercent = null;
 
         return $this;
     }

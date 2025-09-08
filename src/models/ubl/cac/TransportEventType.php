@@ -178,6 +178,16 @@ class TransportEventType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIdentificationID(): self
+    {
+        $this->identificationID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getOccurrenceDate(): ?\DateTimeInterface
@@ -197,6 +207,16 @@ class TransportEventType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOccurrenceDate(): self
+    {
+        $this->occurrenceDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getOccurrenceTime(): ?\DateTimeInterface
@@ -211,6 +231,16 @@ class TransportEventType
     public function setOccurrenceTime(?\DateTimeInterface $occurrenceTime = null): self
     {
         $this->occurrenceTime = $occurrenceTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOccurrenceTime(): self
+    {
+        $this->occurrenceTime = null;
 
         return $this;
     }
@@ -245,6 +275,16 @@ class TransportEventType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTransportEventTypeCode(): self
+    {
+        $this->transportEventTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -259,6 +299,16 @@ class TransportEventType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -345,6 +395,16 @@ class TransportEventType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCompletionIndicator(): self
+    {
+        $this->completionIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ReportedShipment|null
      */
     public function getReportedShipment(): ?ReportedShipment
@@ -374,6 +434,16 @@ class TransportEventType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReportedShipment(): self
+    {
+        $this->reportedShipment = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\CurrentStatus>|null
      */
     public function getCurrentStatus(): ?array
@@ -388,6 +458,16 @@ class TransportEventType
     public function setCurrentStatus(?array $currentStatus = null): self
     {
         $this->currentStatus = $currentStatus;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCurrentStatus(): self
+    {
+        $this->currentStatus = null;
 
         return $this;
     }
@@ -469,6 +549,16 @@ class TransportEventType
     public function setContact(?array $contact = null): self
     {
         $this->contact = $contact;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContact(): self
+    {
+        $this->contact = null;
 
         return $this;
     }
@@ -565,6 +655,16 @@ class TransportEventType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLocation(): self
+    {
+        $this->location = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Signature|null
      */
     public function getSignature(): ?Signature
@@ -594,6 +694,16 @@ class TransportEventType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSignature(): self
+    {
+        $this->signature = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Period>|null
      */
     public function getPeriod(): ?array
@@ -608,6 +718,16 @@ class TransportEventType
     public function setPeriod(?array $period = null): self
     {
         $this->period = $period;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPeriod(): self
+    {
+        $this->period = null;
 
         return $this;
     }

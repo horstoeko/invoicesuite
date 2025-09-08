@@ -162,6 +162,16 @@ class TransportExecutionTermsType
     /**
      * @return self
      */
+    public function unsetTransportUserSpecialTerms(): self
+    {
+        $this->transportUserSpecialTerms = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearTransportUserSpecialTerms(): self
     {
         $this->transportUserSpecialTerms = [];
@@ -236,6 +246,16 @@ class TransportExecutionTermsType
     public function setTransportServiceProviderSpecialTerms(?array $transportServiceProviderSpecialTerms = null): self
     {
         $this->transportServiceProviderSpecialTerms = $transportServiceProviderSpecialTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTransportServiceProviderSpecialTerms(): self
+    {
+        $this->transportServiceProviderSpecialTerms = null;
 
         return $this;
     }
@@ -326,6 +346,16 @@ class TransportExecutionTermsType
     /**
      * @return self
      */
+    public function unsetChangeConditions(): self
+    {
+        $this->changeConditions = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearChangeConditions(): self
     {
         $this->changeConditions = [];
@@ -407,6 +437,16 @@ class TransportExecutionTermsType
     /**
      * @return self
      */
+    public function unsetPaymentTerms(): self
+    {
+        $this->paymentTerms = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearPaymentTerms(): self
     {
         $this->paymentTerms = [];
@@ -481,6 +521,16 @@ class TransportExecutionTermsType
     public function setDeliveryTerms(?array $deliveryTerms = null): self
     {
         $this->deliveryTerms = $deliveryTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDeliveryTerms(): self
+    {
+        $this->deliveryTerms = null;
 
         return $this;
     }
@@ -577,6 +627,16 @@ class TransportExecutionTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetBonusPaymentTerms(): self
+    {
+        $this->bonusPaymentTerms = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\CommissionPaymentTerms|null
      */
     public function getCommissionPaymentTerms(): ?CommissionPaymentTerms
@@ -601,6 +661,16 @@ class TransportExecutionTermsType
     public function setCommissionPaymentTerms(?CommissionPaymentTerms $commissionPaymentTerms = null): self
     {
         $this->commissionPaymentTerms = $commissionPaymentTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCommissionPaymentTerms(): self
+    {
+        $this->commissionPaymentTerms = null;
 
         return $this;
     }
@@ -635,6 +705,16 @@ class TransportExecutionTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPenaltyPaymentTerms(): self
+    {
+        $this->penaltyPaymentTerms = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\EnvironmentalEmission>|null
      */
     public function getEnvironmentalEmission(): ?array
@@ -649,6 +729,16 @@ class TransportExecutionTermsType
     public function setEnvironmentalEmission(?array $environmentalEmission = null): self
     {
         $this->environmentalEmission = $environmentalEmission;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEnvironmentalEmission(): self
+    {
+        $this->environmentalEmission = null;
 
         return $this;
     }
@@ -730,6 +820,16 @@ class TransportExecutionTermsType
     public function setNotificationRequirement(?array $notificationRequirement = null): self
     {
         $this->notificationRequirement = $notificationRequirement;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNotificationRequirement(): self
+    {
+        $this->notificationRequirement = null;
 
         return $this;
     }
@@ -821,6 +921,16 @@ class TransportExecutionTermsType
     public function setServiceChargePaymentTerms(?ServiceChargePaymentTerms $serviceChargePaymentTerms = null): self
     {
         $this->serviceChargePaymentTerms = $serviceChargePaymentTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetServiceChargePaymentTerms(): self
+    {
+        $this->serviceChargePaymentTerms = null;
 
         return $this;
     }

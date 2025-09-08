@@ -86,6 +86,16 @@ class LineReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineID(): self
+    {
+        $this->lineID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      */
     public function getUUID(): ?UUID
@@ -110,6 +120,16 @@ class LineReferenceType
     public function setUUID(?UUID $uUID = null): self
     {
         $this->uUID = $uUID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetUUID(): self
+    {
+        $this->uUID = null;
 
         return $this;
     }
@@ -144,6 +164,16 @@ class LineReferenceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineStatusCode(): self
+    {
+        $this->lineStatusCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\DocumentReference|null
      */
     public function getDocumentReference(): ?DocumentReference
@@ -168,6 +198,16 @@ class LineReferenceType
     public function setDocumentReference(?DocumentReference $documentReference = null): self
     {
         $this->documentReference = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
 
         return $this;
     }

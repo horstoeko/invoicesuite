@@ -110,6 +110,16 @@ class PerformanceDataLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -124,6 +134,16 @@ class PerformanceDataLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -220,6 +240,16 @@ class PerformanceDataLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPerformanceValueQuantity(): self
+    {
+        $this->performanceValueQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode|null
      */
     public function getPerformanceMetricTypeCode(): ?PerformanceMetricTypeCode
@@ -244,6 +274,16 @@ class PerformanceDataLineType
     public function setPerformanceMetricTypeCode(?PerformanceMetricTypeCode $performanceMetricTypeCode = null): self
     {
         $this->performanceMetricTypeCode = $performanceMetricTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPerformanceMetricTypeCode(): self
+    {
+        $this->performanceMetricTypeCode = null;
 
         return $this;
     }
@@ -278,6 +318,16 @@ class PerformanceDataLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPeriod(): self
+    {
+        $this->period = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Item|null
      */
     public function getItem(): ?Item
@@ -302,6 +352,16 @@ class PerformanceDataLineType
     public function setItem(?Item $item = null): self
     {
         $this->item = $item;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetItem(): self
+    {
+        $this->item = null;
 
         return $this;
     }

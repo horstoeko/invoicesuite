@@ -111,6 +111,16 @@ class NotificationRequirementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetNotificationTypeCode(): self
+    {
+        $this->notificationTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PostEventNotificationDurationMeasure|null
      */
     public function getPostEventNotificationDurationMeasure(): ?PostEventNotificationDurationMeasure
@@ -136,6 +146,16 @@ class NotificationRequirementType
         ?PostEventNotificationDurationMeasure $postEventNotificationDurationMeasure = null,
     ): self {
         $this->postEventNotificationDurationMeasure = $postEventNotificationDurationMeasure;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPostEventNotificationDurationMeasure(): self
+    {
+        $this->postEventNotificationDurationMeasure = null;
 
         return $this;
     }
@@ -171,6 +191,16 @@ class NotificationRequirementType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPreEventNotificationDurationMeasure(): self
+    {
+        $this->preEventNotificationDurationMeasure = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\NotifyParty>|null
      */
     public function getNotifyParty(): ?array
@@ -185,6 +215,16 @@ class NotificationRequirementType
     public function setNotifyParty(?array $notifyParty = null): self
     {
         $this->notifyParty = $notifyParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNotifyParty(): self
+    {
+        $this->notifyParty = null;
 
         return $this;
     }
@@ -273,6 +313,16 @@ class NotificationRequirementType
     /**
      * @return self
      */
+    public function unsetNotificationPeriod(): self
+    {
+        $this->notificationPeriod = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearNotificationPeriod(): self
     {
         $this->notificationPeriod = [];
@@ -347,6 +397,16 @@ class NotificationRequirementType
     public function setNotificationLocation(?array $notificationLocation = null): self
     {
         $this->notificationLocation = $notificationLocation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNotificationLocation(): self
+    {
+        $this->notificationLocation = null;
 
         return $this;
     }

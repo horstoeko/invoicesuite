@@ -100,6 +100,16 @@ class SecondaryHazardType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PlacardNotation|null
      */
     public function getPlacardNotation(): ?PlacardNotation
@@ -124,6 +134,16 @@ class SecondaryHazardType
     public function setPlacardNotation(?PlacardNotation $placardNotation = null): self
     {
         $this->placardNotation = $placardNotation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPlacardNotation(): self
+    {
+        $this->placardNotation = null;
 
         return $this;
     }
@@ -158,6 +178,16 @@ class SecondaryHazardType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPlacardEndorsement(): self
+    {
+        $this->placardEndorsement = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\EmergencyProceduresCode|null
      */
     public function getEmergencyProceduresCode(): ?EmergencyProceduresCode
@@ -187,6 +217,16 @@ class SecondaryHazardType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEmergencyProceduresCode(): self
+    {
+        $this->emergencyProceduresCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Extension>|null
      */
     public function getExtension(): ?array
@@ -201,6 +241,16 @@ class SecondaryHazardType
     public function setExtension(?array $extension = null): self
     {
         $this->extension = $extension;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExtension(): self
+    {
+        $this->extension = null;
 
         return $this;
     }

@@ -288,6 +288,16 @@ class DebitNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      */
     public function getUUID(): ?UUID
@@ -317,6 +327,16 @@ class DebitNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUUID(): self
+    {
+        $this->uUID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -331,6 +351,16 @@ class DebitNoteLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -427,6 +457,16 @@ class DebitNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDebitedQuantity(): self
+    {
+        $this->debitedQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LineExtensionAmount|null
      */
     public function getLineExtensionAmount(): ?LineExtensionAmount
@@ -456,6 +496,16 @@ class DebitNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineExtensionAmount(): self
+    {
+        $this->lineExtensionAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getTaxPointDate(): ?\DateTimeInterface
@@ -470,6 +520,16 @@ class DebitNoteLineType
     public function setTaxPointDate(?\DateTimeInterface $taxPointDate = null): self
     {
         $this->taxPointDate = $taxPointDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxPointDate(): self
+    {
+        $this->taxPointDate = null;
 
         return $this;
     }
@@ -504,6 +564,16 @@ class DebitNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAccountingCostCode(): self
+    {
+        $this->accountingCostCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\AccountingCost|null
      */
     public function getAccountingCost(): ?AccountingCost
@@ -528,6 +598,16 @@ class DebitNoteLineType
     public function setAccountingCost(?AccountingCost $accountingCost = null): self
     {
         $this->accountingCost = $accountingCost;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAccountingCost(): self
+    {
+        $this->accountingCost = null;
 
         return $this;
     }
@@ -562,6 +642,16 @@ class DebitNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPaymentPurposeCode(): self
+    {
+        $this->paymentPurposeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DiscrepancyResponse>|null
      */
     public function getDiscrepancyResponse(): ?array
@@ -576,6 +666,16 @@ class DebitNoteLineType
     public function setDiscrepancyResponse(?array $discrepancyResponse = null): self
     {
         $this->discrepancyResponse = $discrepancyResponse;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDiscrepancyResponse(): self
+    {
+        $this->discrepancyResponse = null;
 
         return $this;
     }
@@ -664,6 +764,16 @@ class DebitNoteLineType
     /**
      * @return self
      */
+    public function unsetDespatchLineReference(): self
+    {
+        $this->despatchLineReference = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearDespatchLineReference(): self
     {
         $this->despatchLineReference = [];
@@ -738,6 +848,16 @@ class DebitNoteLineType
     public function setReceiptLineReference(?array $receiptLineReference = null): self
     {
         $this->receiptLineReference = $receiptLineReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetReceiptLineReference(): self
+    {
+        $this->receiptLineReference = null;
 
         return $this;
     }
@@ -826,6 +946,16 @@ class DebitNoteLineType
     /**
      * @return self
      */
+    public function unsetBillingReference(): self
+    {
+        $this->billingReference = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearBillingReference(): self
     {
         $this->billingReference = [];
@@ -900,6 +1030,16 @@ class DebitNoteLineType
     public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
 
         return $this;
     }
@@ -996,6 +1136,16 @@ class DebitNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPricingReference(): self
+    {
+        $this->pricingReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Delivery>|null
      */
     public function getDelivery(): ?array
@@ -1010,6 +1160,16 @@ class DebitNoteLineType
     public function setDelivery(?array $delivery = null): self
     {
         $this->delivery = $delivery;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDelivery(): self
+    {
+        $this->delivery = null;
 
         return $this;
     }
@@ -1098,6 +1258,16 @@ class DebitNoteLineType
     /**
      * @return self
      */
+    public function unsetTaxTotal(): self
+    {
+        $this->taxTotal = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearTaxTotal(): self
     {
         $this->taxTotal = [];
@@ -1172,6 +1342,16 @@ class DebitNoteLineType
     public function setAllowanceCharge(?array $allowanceCharge = null): self
     {
         $this->allowanceCharge = $allowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAllowanceCharge(): self
+    {
+        $this->allowanceCharge = null;
 
         return $this;
     }
@@ -1268,6 +1448,16 @@ class DebitNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetItem(): self
+    {
+        $this->item = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Price|null
      */
     public function getPrice(): ?Price
@@ -1297,6 +1487,16 @@ class DebitNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPrice(): self
+    {
+        $this->price = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SubDebitNoteLine>|null
      */
     public function getSubDebitNoteLine(): ?array
@@ -1311,6 +1511,16 @@ class DebitNoteLineType
     public function setSubDebitNoteLine(?array $subDebitNoteLine = null): self
     {
         $this->subDebitNoteLine = $subDebitNoteLine;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSubDebitNoteLine(): self
+    {
+        $this->subDebitNoteLine = null;
 
         return $this;
     }

@@ -120,6 +120,16 @@ class SupplierPartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCustomerAssignedAccountID(): self
+    {
+        $this->customerAssignedAccountID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalAccountID>|null
      */
     public function getAdditionalAccountID(): ?array
@@ -134,6 +144,16 @@ class SupplierPartyType
     public function setAdditionalAccountID(?array $additionalAccountID = null): self
     {
         $this->additionalAccountID = $additionalAccountID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAdditionalAccountID(): self
+    {
+        $this->additionalAccountID = null;
 
         return $this;
     }
@@ -230,6 +250,16 @@ class SupplierPartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDataSendingCapability(): self
+    {
+        $this->dataSendingCapability = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Party|null
      */
     public function getParty(): ?Party
@@ -254,6 +284,16 @@ class SupplierPartyType
     public function setParty(?Party $party = null): self
     {
         $this->party = $party;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetParty(): self
+    {
+        $this->party = null;
 
         return $this;
     }
@@ -288,6 +328,16 @@ class SupplierPartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDespatchContact(): self
+    {
+        $this->despatchContact = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\AccountingContact|null
      */
     public function getAccountingContact(): ?AccountingContact
@@ -317,6 +367,16 @@ class SupplierPartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAccountingContact(): self
+    {
+        $this->accountingContact = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\SellerContact|null
      */
     public function getSellerContact(): ?SellerContact
@@ -341,6 +401,16 @@ class SupplierPartyType
     public function setSellerContact(?SellerContact $sellerContact = null): self
     {
         $this->sellerContact = $sellerContact;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSellerContact(): self
+    {
+        $this->sellerContact = null;
 
         return $this;
     }

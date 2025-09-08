@@ -151,6 +151,16 @@ class UBLExtensionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      */
     public function getName(): ?Name
@@ -175,6 +185,16 @@ class UBLExtensionType
     public function setName(?Name $name = null): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
 
         return $this;
     }
@@ -209,6 +229,16 @@ class UBLExtensionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExtensionAgencyID(): self
+    {
+        $this->extensionAgencyID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\ext\ExtensionAgencyName|null
      */
     public function getExtensionAgencyName(): ?ExtensionAgencyName
@@ -233,6 +263,16 @@ class UBLExtensionType
     public function setExtensionAgencyName(?ExtensionAgencyName $extensionAgencyName = null): self
     {
         $this->extensionAgencyName = $extensionAgencyName;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExtensionAgencyName(): self
+    {
+        $this->extensionAgencyName = null;
 
         return $this;
     }
@@ -267,6 +307,16 @@ class UBLExtensionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExtensionVersionID(): self
+    {
+        $this->extensionVersionID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\ext\ExtensionAgencyURI|null
      */
     public function getExtensionAgencyURI(): ?ExtensionAgencyURI
@@ -291,6 +341,16 @@ class UBLExtensionType
     public function setExtensionAgencyURI(?ExtensionAgencyURI $extensionAgencyURI = null): self
     {
         $this->extensionAgencyURI = $extensionAgencyURI;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExtensionAgencyURI(): self
+    {
+        $this->extensionAgencyURI = null;
 
         return $this;
     }
@@ -325,6 +385,16 @@ class UBLExtensionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExtensionURI(): self
+    {
+        $this->extensionURI = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\ext\ExtensionReasonCode|null
      */
     public function getExtensionReasonCode(): ?ExtensionReasonCode
@@ -349,6 +419,16 @@ class UBLExtensionType
     public function setExtensionReasonCode(?ExtensionReasonCode $extensionReasonCode = null): self
     {
         $this->extensionReasonCode = $extensionReasonCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExtensionReasonCode(): self
+    {
+        $this->extensionReasonCode = null;
 
         return $this;
     }
@@ -383,6 +463,16 @@ class UBLExtensionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExtensionReason(): self
+    {
+        $this->extensionReason = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\ext\ExtensionContent|null
      */
     public function getExtensionContent(): ?ExtensionContent
@@ -407,6 +497,16 @@ class UBLExtensionType
     public function setExtensionContent(?ExtensionContent $extensionContent = null): self
     {
         $this->extensionContent = $extensionContent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExtensionContent(): self
+    {
+        $this->extensionContent = null;
 
         return $this;
     }

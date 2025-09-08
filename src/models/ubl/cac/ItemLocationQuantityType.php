@@ -180,6 +180,16 @@ class ItemLocationQuantityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLeadTimeMeasure(): self
+    {
+        $this->leadTimeMeasure = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MinimumQuantity|null
      */
     public function getMinimumQuantity(): ?MinimumQuantity
@@ -204,6 +214,16 @@ class ItemLocationQuantityType
     public function setMinimumQuantity(?MinimumQuantity $minimumQuantity = null): self
     {
         $this->minimumQuantity = $minimumQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMinimumQuantity(): self
+    {
+        $this->minimumQuantity = null;
 
         return $this;
     }
@@ -238,6 +258,16 @@ class ItemLocationQuantityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMaximumQuantity(): self
+    {
+        $this->maximumQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getHazardousRiskIndicator(): ?bool
@@ -257,6 +287,16 @@ class ItemLocationQuantityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetHazardousRiskIndicator(): self
+    {
+        $this->hazardousRiskIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\TradingRestrictions>|null
      */
     public function getTradingRestrictions(): ?array
@@ -271,6 +311,16 @@ class ItemLocationQuantityType
     public function setTradingRestrictions(?array $tradingRestrictions = null): self
     {
         $this->tradingRestrictions = $tradingRestrictions;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTradingRestrictions(): self
+    {
+        $this->tradingRestrictions = null;
 
         return $this;
     }
@@ -352,6 +402,16 @@ class ItemLocationQuantityType
     public function setApplicableTerritoryAddress(?array $applicableTerritoryAddress = null): self
     {
         $this->applicableTerritoryAddress = $applicableTerritoryAddress;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetApplicableTerritoryAddress(): self
+    {
+        $this->applicableTerritoryAddress = null;
 
         return $this;
     }
@@ -448,6 +508,16 @@ class ItemLocationQuantityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPrice(): self
+    {
+        $this->price = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryUnit>|null
      */
     public function getDeliveryUnit(): ?array
@@ -462,6 +532,16 @@ class ItemLocationQuantityType
     public function setDeliveryUnit(?array $deliveryUnit = null): self
     {
         $this->deliveryUnit = $deliveryUnit;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDeliveryUnit(): self
+    {
+        $this->deliveryUnit = null;
 
         return $this;
     }
@@ -543,6 +623,16 @@ class ItemLocationQuantityType
     public function setApplicableTaxCategory(?array $applicableTaxCategory = null): self
     {
         $this->applicableTaxCategory = $applicableTaxCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetApplicableTaxCategory(): self
+    {
+        $this->applicableTaxCategory = null;
 
         return $this;
     }
@@ -639,6 +729,16 @@ class ItemLocationQuantityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPackage(): self
+    {
+        $this->package = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null
      */
     public function getAllowanceCharge(): ?array
@@ -653,6 +753,16 @@ class ItemLocationQuantityType
     public function setAllowanceCharge(?array $allowanceCharge = null): self
     {
         $this->allowanceCharge = $allowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAllowanceCharge(): self
+    {
+        $this->allowanceCharge = null;
 
         return $this;
     }
@@ -744,6 +854,16 @@ class ItemLocationQuantityType
     public function setDependentPriceReference(?DependentPriceReference $dependentPriceReference = null): self
     {
         $this->dependentPriceReference = $dependentPriceReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDependentPriceReference(): self
+    {
+        $this->dependentPriceReference = null;
 
         return $this;
     }

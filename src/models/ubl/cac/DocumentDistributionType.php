@@ -74,6 +74,16 @@ class DocumentDistributionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPrintQualifier(): self
+    {
+        $this->printQualifier = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MaximumCopiesNumeric|null
      */
     public function getMaximumCopiesNumeric(): ?MaximumCopiesNumeric
@@ -103,6 +113,16 @@ class DocumentDistributionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMaximumCopiesNumeric(): self
+    {
+        $this->maximumCopiesNumeric = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Party|null
      */
     public function getParty(): ?Party
@@ -127,6 +147,16 @@ class DocumentDistributionType
     public function setParty(?Party $party = null): self
     {
         $this->party = $party;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetParty(): self
+    {
+        $this->party = null;
 
         return $this;
     }

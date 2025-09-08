@@ -369,6 +369,16 @@ class CreditNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      */
     public function getUUID(): ?UUID
@@ -398,6 +408,16 @@ class CreditNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUUID(): self
+    {
+        $this->uUID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -412,6 +432,16 @@ class CreditNoteLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -508,6 +538,16 @@ class CreditNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCreditedQuantity(): self
+    {
+        $this->creditedQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LineExtensionAmount|null
      */
     public function getLineExtensionAmount(): ?LineExtensionAmount
@@ -537,6 +577,16 @@ class CreditNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineExtensionAmount(): self
+    {
+        $this->lineExtensionAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getTaxPointDate(): ?\DateTimeInterface
@@ -551,6 +601,16 @@ class CreditNoteLineType
     public function setTaxPointDate(?\DateTimeInterface $taxPointDate = null): self
     {
         $this->taxPointDate = $taxPointDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxPointDate(): self
+    {
+        $this->taxPointDate = null;
 
         return $this;
     }
@@ -585,6 +645,16 @@ class CreditNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAccountingCostCode(): self
+    {
+        $this->accountingCostCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\AccountingCost|null
      */
     public function getAccountingCost(): ?AccountingCost
@@ -609,6 +679,16 @@ class CreditNoteLineType
     public function setAccountingCost(?AccountingCost $accountingCost = null): self
     {
         $this->accountingCost = $accountingCost;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAccountingCost(): self
+    {
+        $this->accountingCost = null;
 
         return $this;
     }
@@ -643,6 +723,16 @@ class CreditNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPaymentPurposeCode(): self
+    {
+        $this->paymentPurposeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getFreeOfChargeIndicator(): ?bool
@@ -662,6 +752,16 @@ class CreditNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFreeOfChargeIndicator(): self
+    {
+        $this->freeOfChargeIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod>|null
      */
     public function getInvoicePeriod(): ?array
@@ -676,6 +776,16 @@ class CreditNoteLineType
     public function setInvoicePeriod(?array $invoicePeriod = null): self
     {
         $this->invoicePeriod = $invoicePeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInvoicePeriod(): self
+    {
+        $this->invoicePeriod = null;
 
         return $this;
     }
@@ -764,6 +874,16 @@ class CreditNoteLineType
     /**
      * @return self
      */
+    public function unsetOrderLineReference(): self
+    {
+        $this->orderLineReference = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearOrderLineReference(): self
     {
         $this->orderLineReference = [];
@@ -838,6 +958,16 @@ class CreditNoteLineType
     public function setDiscrepancyResponse(?array $discrepancyResponse = null): self
     {
         $this->discrepancyResponse = $discrepancyResponse;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDiscrepancyResponse(): self
+    {
+        $this->discrepancyResponse = null;
 
         return $this;
     }
@@ -926,6 +1056,16 @@ class CreditNoteLineType
     /**
      * @return self
      */
+    public function unsetDespatchLineReference(): self
+    {
+        $this->despatchLineReference = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearDespatchLineReference(): self
     {
         $this->despatchLineReference = [];
@@ -1000,6 +1140,16 @@ class CreditNoteLineType
     public function setReceiptLineReference(?array $receiptLineReference = null): self
     {
         $this->receiptLineReference = $receiptLineReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetReceiptLineReference(): self
+    {
+        $this->receiptLineReference = null;
 
         return $this;
     }
@@ -1088,6 +1238,16 @@ class CreditNoteLineType
     /**
      * @return self
      */
+    public function unsetBillingReference(): self
+    {
+        $this->billingReference = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearBillingReference(): self
     {
         $this->billingReference = [];
@@ -1162,6 +1322,16 @@ class CreditNoteLineType
     public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
 
         return $this;
     }
@@ -1258,6 +1428,16 @@ class CreditNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPricingReference(): self
+    {
+        $this->pricingReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\OriginatorParty|null
      */
     public function getOriginatorParty(): ?OriginatorParty
@@ -1287,6 +1467,16 @@ class CreditNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOriginatorParty(): self
+    {
+        $this->originatorParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Delivery>|null
      */
     public function getDelivery(): ?array
@@ -1301,6 +1491,16 @@ class CreditNoteLineType
     public function setDelivery(?array $delivery = null): self
     {
         $this->delivery = $delivery;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDelivery(): self
+    {
+        $this->delivery = null;
 
         return $this;
     }
@@ -1389,6 +1589,16 @@ class CreditNoteLineType
     /**
      * @return self
      */
+    public function unsetPaymentTerms(): self
+    {
+        $this->paymentTerms = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearPaymentTerms(): self
     {
         $this->paymentTerms = [];
@@ -1470,6 +1680,16 @@ class CreditNoteLineType
     /**
      * @return self
      */
+    public function unsetTaxTotal(): self
+    {
+        $this->taxTotal = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearTaxTotal(): self
     {
         $this->taxTotal = [];
@@ -1544,6 +1764,16 @@ class CreditNoteLineType
     public function setAllowanceCharge(?array $allowanceCharge = null): self
     {
         $this->allowanceCharge = $allowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAllowanceCharge(): self
+    {
+        $this->allowanceCharge = null;
 
         return $this;
     }
@@ -1640,6 +1870,16 @@ class CreditNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetItem(): self
+    {
+        $this->item = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Price|null
      */
     public function getPrice(): ?Price
@@ -1669,6 +1909,16 @@ class CreditNoteLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPrice(): self
+    {
+        $this->price = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms>|null
      */
     public function getDeliveryTerms(): ?array
@@ -1683,6 +1933,16 @@ class CreditNoteLineType
     public function setDeliveryTerms(?array $deliveryTerms = null): self
     {
         $this->deliveryTerms = $deliveryTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDeliveryTerms(): self
+    {
+        $this->deliveryTerms = null;
 
         return $this;
     }
@@ -1764,6 +2024,16 @@ class CreditNoteLineType
     public function setSubCreditNoteLine(?array $subCreditNoteLine = null): self
     {
         $this->subCreditNoteLine = $subCreditNoteLine;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSubCreditNoteLine(): self
+    {
+        $this->subCreditNoteLine = null;
 
         return $this;
     }
@@ -1855,6 +2125,16 @@ class CreditNoteLineType
     public function setItemPriceExtension(?ItemPriceExtension $itemPriceExtension = null): self
     {
         $this->itemPriceExtension = $itemPriceExtension;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetItemPriceExtension(): self
+    {
+        $this->itemPriceExtension = null;
 
         return $this;
     }

@@ -125,6 +125,16 @@ class AwardingCriterionResponseType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\AwardingCriterionID|null
      */
     public function getAwardingCriterionID(): ?AwardingCriterionID
@@ -154,6 +164,16 @@ class AwardingCriterionResponseType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAwardingCriterionID(): self
+    {
+        $this->awardingCriterionID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\AwardingCriterionDescription>|null
      */
     public function getAwardingCriterionDescription(): ?array
@@ -168,6 +188,16 @@ class AwardingCriterionResponseType
     public function setAwardingCriterionDescription(?array $awardingCriterionDescription = null): self
     {
         $this->awardingCriterionDescription = $awardingCriterionDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAwardingCriterionDescription(): self
+    {
+        $this->awardingCriterionDescription = null;
 
         return $this;
     }
@@ -251,6 +281,16 @@ class AwardingCriterionResponseType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -347,6 +387,16 @@ class AwardingCriterionResponseType
     }
 
     /**
+     * @return self
+     */
+    public function unsetQuantity(): self
+    {
+        $this->quantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Amount|null
      */
     public function getAmount(): ?Amount
@@ -376,6 +426,16 @@ class AwardingCriterionResponseType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAmount(): self
+    {
+        $this->amount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SubordinateAwardingCriterionResponse>|null
      */
     public function getSubordinateAwardingCriterionResponse(): ?array
@@ -390,6 +450,16 @@ class AwardingCriterionResponseType
     public function setSubordinateAwardingCriterionResponse(?array $subordinateAwardingCriterionResponse = null): self
     {
         $this->subordinateAwardingCriterionResponse = $subordinateAwardingCriterionResponse;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSubordinateAwardingCriterionResponse(): self
+    {
+        $this->subordinateAwardingCriterionResponse = null;
 
         return $this;
     }

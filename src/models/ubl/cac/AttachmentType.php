@@ -63,6 +63,16 @@ class AttachmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEmbeddedDocumentBinaryObject(): self
+    {
+        $this->embeddedDocumentBinaryObject = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ExternalReference|null
      */
     public function getExternalReference(): ?ExternalReference
@@ -87,6 +97,16 @@ class AttachmentType
     public function setExternalReference(?ExternalReference $externalReference = null): self
     {
         $this->externalReference = $externalReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExternalReference(): self
+    {
+        $this->externalReference = null;
 
         return $this;
     }

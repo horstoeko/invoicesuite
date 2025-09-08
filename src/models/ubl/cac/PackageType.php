@@ -215,6 +215,16 @@ class PackageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      */
     public function getQuantity(): ?Quantity
@@ -244,6 +254,16 @@ class PackageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetQuantity(): self
+    {
+        $this->quantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getReturnableMaterialIndicator(): ?bool
@@ -258,6 +278,16 @@ class PackageType
     public function setReturnableMaterialIndicator(?bool $returnableMaterialIndicator = null): self
     {
         $this->returnableMaterialIndicator = $returnableMaterialIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetReturnableMaterialIndicator(): self
+    {
+        $this->returnableMaterialIndicator = null;
 
         return $this;
     }
@@ -292,6 +322,16 @@ class PackageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPackageLevelCode(): self
+    {
+        $this->packageLevelCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PackagingTypeCode|null
      */
     public function getPackagingTypeCode(): ?PackagingTypeCode
@@ -321,6 +361,16 @@ class PackageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPackagingTypeCode(): self
+    {
+        $this->packagingTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\PackingMaterial>|null
      */
     public function getPackingMaterial(): ?array
@@ -335,6 +385,16 @@ class PackageType
     public function setPackingMaterial(?array $packingMaterial = null): self
     {
         $this->packingMaterial = $packingMaterial;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPackingMaterial(): self
+    {
+        $this->packingMaterial = null;
 
         return $this;
     }
@@ -431,6 +491,16 @@ class PackageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTraceID(): self
+    {
+        $this->traceID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ContainedPackage>|null
      */
     public function getContainedPackage(): ?array
@@ -445,6 +515,16 @@ class PackageType
     public function setContainedPackage(?array $containedPackage = null): self
     {
         $this->containedPackage = $containedPackage;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContainedPackage(): self
+    {
+        $this->containedPackage = null;
 
         return $this;
     }
@@ -542,6 +622,16 @@ class PackageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContainingTransportEquipment(): self
+    {
+        $this->containingTransportEquipment = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\GoodsItem>|null
      */
     public function getGoodsItem(): ?array
@@ -556,6 +646,16 @@ class PackageType
     public function setGoodsItem(?array $goodsItem = null): self
     {
         $this->goodsItem = $goodsItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetGoodsItem(): self
+    {
+        $this->goodsItem = null;
 
         return $this;
     }
@@ -644,6 +744,16 @@ class PackageType
     /**
      * @return self
      */
+    public function unsetMeasurementDimension(): self
+    {
+        $this->measurementDimension = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearMeasurementDimension(): self
     {
         $this->measurementDimension = [];
@@ -718,6 +828,16 @@ class PackageType
     public function setDeliveryUnit(?array $deliveryUnit = null): self
     {
         $this->deliveryUnit = $deliveryUnit;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDeliveryUnit(): self
+    {
+        $this->deliveryUnit = null;
 
         return $this;
     }
@@ -814,6 +934,16 @@ class PackageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDelivery(): self
+    {
+        $this->delivery = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Pickup|null
      */
     public function getPickup(): ?Pickup
@@ -843,6 +973,16 @@ class PackageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPickup(): self
+    {
+        $this->pickup = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Despatch|null
      */
     public function getDespatch(): ?Despatch
@@ -867,6 +1007,16 @@ class PackageType
     public function setDespatch(?Despatch $despatch = null): self
     {
         $this->despatch = $despatch;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDespatch(): self
+    {
+        $this->despatch = null;
 
         return $this;
     }

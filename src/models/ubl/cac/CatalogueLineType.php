@@ -404,6 +404,16 @@ class CatalogueLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ActionCode|null
      */
     public function getActionCode(): ?ActionCode
@@ -428,6 +438,16 @@ class CatalogueLineType
     public function setActionCode(?ActionCode $actionCode = null): self
     {
         $this->actionCode = $actionCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetActionCode(): self
+    {
+        $this->actionCode = null;
 
         return $this;
     }
@@ -462,6 +482,16 @@ class CatalogueLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLifeCycleStatusCode(): self
+    {
+        $this->lifeCycleStatusCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ContractSubdivision|null
      */
     public function getContractSubdivision(): ?ContractSubdivision
@@ -491,6 +521,16 @@ class CatalogueLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContractSubdivision(): self
+    {
+        $this->contractSubdivision = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -505,6 +545,16 @@ class CatalogueLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -591,6 +641,16 @@ class CatalogueLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOrderableIndicator(): self
+    {
+        $this->orderableIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\OrderableUnit|null
      */
     public function getOrderableUnit(): ?OrderableUnit
@@ -620,6 +680,16 @@ class CatalogueLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOrderableUnit(): self
+    {
+        $this->orderableUnit = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ContentUnitQuantity|null
      */
     public function getContentUnitQuantity(): ?ContentUnitQuantity
@@ -644,6 +714,16 @@ class CatalogueLineType
     public function setContentUnitQuantity(?ContentUnitQuantity $contentUnitQuantity = null): self
     {
         $this->contentUnitQuantity = $contentUnitQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContentUnitQuantity(): self
+    {
+        $this->contentUnitQuantity = null;
 
         return $this;
     }
@@ -679,6 +759,16 @@ class CatalogueLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOrderQuantityIncrementNumeric(): self
+    {
+        $this->orderQuantityIncrementNumeric = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MinimumOrderQuantity|null
      */
     public function getMinimumOrderQuantity(): ?MinimumOrderQuantity
@@ -703,6 +793,16 @@ class CatalogueLineType
     public function setMinimumOrderQuantity(?MinimumOrderQuantity $minimumOrderQuantity = null): self
     {
         $this->minimumOrderQuantity = $minimumOrderQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMinimumOrderQuantity(): self
+    {
+        $this->minimumOrderQuantity = null;
 
         return $this;
     }
@@ -737,6 +837,16 @@ class CatalogueLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMaximumOrderQuantity(): self
+    {
+        $this->maximumOrderQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\WarrantyInformation>|null
      */
     public function getWarrantyInformation(): ?array
@@ -751,6 +861,16 @@ class CatalogueLineType
     public function setWarrantyInformation(?array $warrantyInformation = null): self
     {
         $this->warrantyInformation = $warrantyInformation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetWarrantyInformation(): self
+    {
+        $this->warrantyInformation = null;
 
         return $this;
     }
@@ -847,6 +967,16 @@ class CatalogueLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPackLevelCode(): self
+    {
+        $this->packLevelCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ContractorCustomerParty|null
      */
     public function getContractorCustomerParty(): ?ContractorCustomerParty
@@ -871,6 +1001,16 @@ class CatalogueLineType
     public function setContractorCustomerParty(?ContractorCustomerParty $contractorCustomerParty = null): self
     {
         $this->contractorCustomerParty = $contractorCustomerParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContractorCustomerParty(): self
+    {
+        $this->contractorCustomerParty = null;
 
         return $this;
     }
@@ -905,6 +1045,16 @@ class CatalogueLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSellerSupplierParty(): self
+    {
+        $this->sellerSupplierParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\WarrantyParty|null
      */
     public function getWarrantyParty(): ?WarrantyParty
@@ -929,6 +1079,16 @@ class CatalogueLineType
     public function setWarrantyParty(?WarrantyParty $warrantyParty = null): self
     {
         $this->warrantyParty = $warrantyParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetWarrantyParty(): self
+    {
+        $this->warrantyParty = null;
 
         return $this;
     }
@@ -963,6 +1123,16 @@ class CatalogueLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetWarrantyValidityPeriod(): self
+    {
+        $this->warrantyValidityPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\LineValidityPeriod|null
      */
     public function getLineValidityPeriod(): ?LineValidityPeriod
@@ -992,6 +1162,16 @@ class CatalogueLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineValidityPeriod(): self
+    {
+        $this->lineValidityPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ItemComparison>|null
      */
     public function getItemComparison(): ?array
@@ -1006,6 +1186,16 @@ class CatalogueLineType
     public function setItemComparison(?array $itemComparison = null): self
     {
         $this->itemComparison = $itemComparison;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetItemComparison(): self
+    {
+        $this->itemComparison = null;
 
         return $this;
     }
@@ -1094,6 +1284,16 @@ class CatalogueLineType
     /**
      * @return self
      */
+    public function unsetComponentRelatedItem(): self
+    {
+        $this->componentRelatedItem = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearComponentRelatedItem(): self
     {
         $this->componentRelatedItem = [];
@@ -1168,6 +1368,16 @@ class CatalogueLineType
     public function setAccessoryRelatedItem(?array $accessoryRelatedItem = null): self
     {
         $this->accessoryRelatedItem = $accessoryRelatedItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAccessoryRelatedItem(): self
+    {
+        $this->accessoryRelatedItem = null;
 
         return $this;
     }
@@ -1256,6 +1466,16 @@ class CatalogueLineType
     /**
      * @return self
      */
+    public function unsetRequiredRelatedItem(): self
+    {
+        $this->requiredRelatedItem = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearRequiredRelatedItem(): self
     {
         $this->requiredRelatedItem = [];
@@ -1330,6 +1550,16 @@ class CatalogueLineType
     public function setReplacementRelatedItem(?array $replacementRelatedItem = null): self
     {
         $this->replacementRelatedItem = $replacementRelatedItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetReplacementRelatedItem(): self
+    {
+        $this->replacementRelatedItem = null;
 
         return $this;
     }
@@ -1418,6 +1648,16 @@ class CatalogueLineType
     /**
      * @return self
      */
+    public function unsetComplementaryRelatedItem(): self
+    {
+        $this->complementaryRelatedItem = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearComplementaryRelatedItem(): self
     {
         $this->complementaryRelatedItem = [];
@@ -1492,6 +1732,16 @@ class CatalogueLineType
     public function setReplacedRelatedItem(?array $replacedRelatedItem = null): self
     {
         $this->replacedRelatedItem = $replacedRelatedItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetReplacedRelatedItem(): self
+    {
+        $this->replacedRelatedItem = null;
 
         return $this;
     }
@@ -1580,6 +1830,16 @@ class CatalogueLineType
     /**
      * @return self
      */
+    public function unsetRequiredItemLocationQuantity(): self
+    {
+        $this->requiredItemLocationQuantity = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearRequiredItemLocationQuantity(): self
     {
         $this->requiredItemLocationQuantity = [];
@@ -1656,6 +1916,16 @@ class CatalogueLineType
     public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
 
         return $this;
     }
@@ -1752,6 +2022,16 @@ class CatalogueLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetItem(): self
+    {
+        $this->item = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\KeywordItemProperty>|null
      */
     public function getKeywordItemProperty(): ?array
@@ -1766,6 +2046,16 @@ class CatalogueLineType
     public function setKeywordItemProperty(?array $keywordItemProperty = null): self
     {
         $this->keywordItemProperty = $keywordItemProperty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetKeywordItemProperty(): self
+    {
+        $this->keywordItemProperty = null;
 
         return $this;
     }
@@ -1863,6 +2153,16 @@ class CatalogueLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCallForTendersLineReference(): self
+    {
+        $this->callForTendersLineReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\CallForTendersDocumentReference|null
      */
     public function getCallForTendersDocumentReference(): ?CallForTendersDocumentReference
@@ -1888,6 +2188,16 @@ class CatalogueLineType
         ?CallForTendersDocumentReference $callForTendersDocumentReference = null,
     ): self {
         $this->callForTendersDocumentReference = $callForTendersDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCallForTendersDocumentReference(): self
+    {
+        $this->callForTendersDocumentReference = null;
 
         return $this;
     }

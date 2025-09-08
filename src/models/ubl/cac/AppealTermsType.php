@@ -88,6 +88,16 @@ class AppealTermsType
     /**
      * @return self
      */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearDescription(): self
     {
         $this->description = [];
@@ -177,6 +187,16 @@ class AppealTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPresentationPeriod(): self
+    {
+        $this->presentationPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\AppealInformationParty|null
      */
     public function getAppealInformationParty(): ?AppealInformationParty
@@ -201,6 +221,16 @@ class AppealTermsType
     public function setAppealInformationParty(?AppealInformationParty $appealInformationParty = null): self
     {
         $this->appealInformationParty = $appealInformationParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAppealInformationParty(): self
+    {
+        $this->appealInformationParty = null;
 
         return $this;
     }
@@ -235,6 +265,16 @@ class AppealTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAppealReceiverParty(): self
+    {
+        $this->appealReceiverParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\MediationParty|null
      */
     public function getMediationParty(): ?MediationParty
@@ -259,6 +299,16 @@ class AppealTermsType
     public function setMediationParty(?MediationParty $mediationParty = null): self
     {
         $this->mediationParty = $mediationParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMediationParty(): self
+    {
+        $this->mediationParty = null;
 
         return $this;
     }

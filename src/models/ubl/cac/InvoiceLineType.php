@@ -368,6 +368,16 @@ class InvoiceLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      */
     public function getUUID(): ?UUID
@@ -397,6 +407,16 @@ class InvoiceLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUUID(): self
+    {
+        $this->uUID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -411,6 +431,16 @@ class InvoiceLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -507,6 +537,16 @@ class InvoiceLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetInvoicedQuantity(): self
+    {
+        $this->invoicedQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LineExtensionAmount|null
      */
     public function getLineExtensionAmount(): ?LineExtensionAmount
@@ -536,6 +576,16 @@ class InvoiceLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineExtensionAmount(): self
+    {
+        $this->lineExtensionAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getTaxPointDate(): ?\DateTimeInterface
@@ -550,6 +600,16 @@ class InvoiceLineType
     public function setTaxPointDate(?\DateTimeInterface $taxPointDate = null): self
     {
         $this->taxPointDate = $taxPointDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxPointDate(): self
+    {
+        $this->taxPointDate = null;
 
         return $this;
     }
@@ -584,6 +644,16 @@ class InvoiceLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAccountingCostCode(): self
+    {
+        $this->accountingCostCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\AccountingCost|null
      */
     public function getAccountingCost(): ?AccountingCost
@@ -608,6 +678,16 @@ class InvoiceLineType
     public function setAccountingCost(?AccountingCost $accountingCost = null): self
     {
         $this->accountingCost = $accountingCost;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAccountingCost(): self
+    {
+        $this->accountingCost = null;
 
         return $this;
     }
@@ -642,6 +722,16 @@ class InvoiceLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPaymentPurposeCode(): self
+    {
+        $this->paymentPurposeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getFreeOfChargeIndicator(): ?bool
@@ -661,6 +751,16 @@ class InvoiceLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFreeOfChargeIndicator(): self
+    {
+        $this->freeOfChargeIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod>|null
      */
     public function getInvoicePeriod(): ?array
@@ -675,6 +775,16 @@ class InvoiceLineType
     public function setInvoicePeriod(?array $invoicePeriod = null): self
     {
         $this->invoicePeriod = $invoicePeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInvoicePeriod(): self
+    {
+        $this->invoicePeriod = null;
 
         return $this;
     }
@@ -763,6 +873,16 @@ class InvoiceLineType
     /**
      * @return self
      */
+    public function unsetOrderLineReference(): self
+    {
+        $this->orderLineReference = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearOrderLineReference(): self
     {
         $this->orderLineReference = [];
@@ -837,6 +957,16 @@ class InvoiceLineType
     public function setDespatchLineReference(?array $despatchLineReference = null): self
     {
         $this->despatchLineReference = $despatchLineReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDespatchLineReference(): self
+    {
+        $this->despatchLineReference = null;
 
         return $this;
     }
@@ -925,6 +1055,16 @@ class InvoiceLineType
     /**
      * @return self
      */
+    public function unsetReceiptLineReference(): self
+    {
+        $this->receiptLineReference = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearReceiptLineReference(): self
     {
         $this->receiptLineReference = [];
@@ -1006,6 +1146,16 @@ class InvoiceLineType
     /**
      * @return self
      */
+    public function unsetBillingReference(): self
+    {
+        $this->billingReference = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearBillingReference(): self
     {
         $this->billingReference = [];
@@ -1080,6 +1230,16 @@ class InvoiceLineType
     public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
 
         return $this;
     }
@@ -1176,6 +1336,16 @@ class InvoiceLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPricingReference(): self
+    {
+        $this->pricingReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\OriginatorParty|null
      */
     public function getOriginatorParty(): ?OriginatorParty
@@ -1205,6 +1375,16 @@ class InvoiceLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOriginatorParty(): self
+    {
+        $this->originatorParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Delivery>|null
      */
     public function getDelivery(): ?array
@@ -1219,6 +1399,16 @@ class InvoiceLineType
     public function setDelivery(?array $delivery = null): self
     {
         $this->delivery = $delivery;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDelivery(): self
+    {
+        $this->delivery = null;
 
         return $this;
     }
@@ -1307,6 +1497,16 @@ class InvoiceLineType
     /**
      * @return self
      */
+    public function unsetPaymentTerms(): self
+    {
+        $this->paymentTerms = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearPaymentTerms(): self
     {
         $this->paymentTerms = [];
@@ -1381,6 +1581,16 @@ class InvoiceLineType
     public function setAllowanceCharge(?array $allowanceCharge = null): self
     {
         $this->allowanceCharge = $allowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAllowanceCharge(): self
+    {
+        $this->allowanceCharge = null;
 
         return $this;
     }
@@ -1469,6 +1679,16 @@ class InvoiceLineType
     /**
      * @return self
      */
+    public function unsetTaxTotal(): self
+    {
+        $this->taxTotal = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearTaxTotal(): self
     {
         $this->taxTotal = [];
@@ -1543,6 +1763,16 @@ class InvoiceLineType
     public function setWithholdingTaxTotal(?array $withholdingTaxTotal = null): self
     {
         $this->withholdingTaxTotal = $withholdingTaxTotal;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetWithholdingTaxTotal(): self
+    {
+        $this->withholdingTaxTotal = null;
 
         return $this;
     }
@@ -1639,6 +1869,16 @@ class InvoiceLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetItem(): self
+    {
+        $this->item = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Price|null
      */
     public function getPrice(): ?Price
@@ -1663,6 +1903,16 @@ class InvoiceLineType
     public function setPrice(?Price $price = null): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPrice(): self
+    {
+        $this->price = null;
 
         return $this;
     }
@@ -1697,6 +1947,16 @@ class InvoiceLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDeliveryTerms(): self
+    {
+        $this->deliveryTerms = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SubInvoiceLine>|null
      */
     public function getSubInvoiceLine(): ?array
@@ -1711,6 +1971,16 @@ class InvoiceLineType
     public function setSubInvoiceLine(?array $subInvoiceLine = null): self
     {
         $this->subInvoiceLine = $subInvoiceLine;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSubInvoiceLine(): self
+    {
+        $this->subInvoiceLine = null;
 
         return $this;
     }
@@ -1802,6 +2072,16 @@ class InvoiceLineType
     public function setItemPriceExtension(?ItemPriceExtension $itemPriceExtension = null): self
     {
         $this->itemPriceExtension = $itemPriceExtension;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetItemPriceExtension(): self
+    {
+        $this->itemPriceExtension = null;
 
         return $this;
     }

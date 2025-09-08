@@ -170,6 +170,16 @@ class TenderedProjectType
     }
 
     /**
+     * @return self
+     */
+    public function unsetVariantID(): self
+    {
+        $this->variantID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\FeeAmount|null
      */
     public function getFeeAmount(): ?FeeAmount
@@ -199,6 +209,16 @@ class TenderedProjectType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFeeAmount(): self
+    {
+        $this->feeAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\FeeDescription>|null
      */
     public function getFeeDescription(): ?array
@@ -213,6 +233,16 @@ class TenderedProjectType
     public function setFeeDescription(?array $feeDescription = null): self
     {
         $this->feeDescription = $feeDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFeeDescription(): self
+    {
+        $this->feeDescription = null;
 
         return $this;
     }
@@ -309,6 +339,16 @@ class TenderedProjectType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTenderEnvelopeID(): self
+    {
+        $this->tenderEnvelopeID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TenderEnvelopeTypeCode|null
      */
     public function getTenderEnvelopeTypeCode(): ?TenderEnvelopeTypeCode
@@ -333,6 +373,16 @@ class TenderedProjectType
     public function setTenderEnvelopeTypeCode(?TenderEnvelopeTypeCode $tenderEnvelopeTypeCode = null): self
     {
         $this->tenderEnvelopeTypeCode = $tenderEnvelopeTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTenderEnvelopeTypeCode(): self
+    {
+        $this->tenderEnvelopeTypeCode = null;
 
         return $this;
     }
@@ -367,6 +417,16 @@ class TenderedProjectType
     }
 
     /**
+     * @return self
+     */
+    public function unsetProcurementProjectLot(): self
+    {
+        $this->procurementProjectLot = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\EvidenceDocumentReference>|null
      */
     public function getEvidenceDocumentReference(): ?array
@@ -381,6 +441,16 @@ class TenderedProjectType
     public function setEvidenceDocumentReference(?array $evidenceDocumentReference = null): self
     {
         $this->evidenceDocumentReference = $evidenceDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEvidenceDocumentReference(): self
+    {
+        $this->evidenceDocumentReference = null;
 
         return $this;
     }
@@ -462,6 +532,16 @@ class TenderedProjectType
     public function setTaxTotal(?array $taxTotal = null): self
     {
         $this->taxTotal = $taxTotal;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxTotal(): self
+    {
+        $this->taxTotal = null;
 
         return $this;
     }
@@ -558,6 +638,16 @@ class TenderedProjectType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLegalMonetaryTotal(): self
+    {
+        $this->legalMonetaryTotal = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TenderLine>|null
      */
     public function getTenderLine(): ?array
@@ -572,6 +662,16 @@ class TenderedProjectType
     public function setTenderLine(?array $tenderLine = null): self
     {
         $this->tenderLine = $tenderLine;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTenderLine(): self
+    {
+        $this->tenderLine = null;
 
         return $this;
     }
@@ -653,6 +753,16 @@ class TenderedProjectType
     public function setAwardingCriterionResponse(?array $awardingCriterionResponse = null): self
     {
         $this->awardingCriterionResponse = $awardingCriterionResponse;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAwardingCriterionResponse(): self
+    {
+        $this->awardingCriterionResponse = null;
 
         return $this;
     }

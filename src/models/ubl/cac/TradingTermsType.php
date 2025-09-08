@@ -67,6 +67,16 @@ class TradingTermsType
     /**
      * @return self
      */
+    public function unsetInformation(): self
+    {
+        $this->information = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearInformation(): self
     {
         $this->information = [];
@@ -156,6 +166,16 @@ class TradingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReference(): self
+    {
+        $this->reference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ApplicableAddress|null
      */
     public function getApplicableAddress(): ?ApplicableAddress
@@ -180,6 +200,16 @@ class TradingTermsType
     public function setApplicableAddress(?ApplicableAddress $applicableAddress = null): self
     {
         $this->applicableAddress = $applicableAddress;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetApplicableAddress(): self
+    {
+        $this->applicableAddress = null;
 
         return $this;
     }

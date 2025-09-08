@@ -117,6 +117,16 @@ class AuctionTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAuctionConstraintIndicator(): self
+    {
+        $this->auctionConstraintIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\JustificationDescription>|null
      */
     public function getJustificationDescription(): ?array
@@ -131,6 +141,16 @@ class AuctionTermsType
     public function setJustificationDescription(?array $justificationDescription = null): self
     {
         $this->justificationDescription = $justificationDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetJustificationDescription(): self
+    {
+        $this->justificationDescription = null;
 
         return $this;
     }
@@ -219,6 +239,16 @@ class AuctionTermsType
     /**
      * @return self
      */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearDescription(): self
     {
         $this->description = [];
@@ -293,6 +323,16 @@ class AuctionTermsType
     public function setProcessDescription(?array $processDescription = null): self
     {
         $this->processDescription = $processDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetProcessDescription(): self
+    {
+        $this->processDescription = null;
 
         return $this;
     }
@@ -381,6 +421,16 @@ class AuctionTermsType
     /**
      * @return self
      */
+    public function unsetConditionsDescription(): self
+    {
+        $this->conditionsDescription = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearConditionsDescription(): self
     {
         $this->conditionsDescription = [];
@@ -455,6 +505,16 @@ class AuctionTermsType
     public function setElectronicDeviceDescription(?array $electronicDeviceDescription = null): self
     {
         $this->electronicDeviceDescription = $electronicDeviceDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetElectronicDeviceDescription(): self
+    {
+        $this->electronicDeviceDescription = null;
 
         return $this;
     }
@@ -547,6 +607,16 @@ class AuctionTermsType
     public function setAuctionURI(?AuctionURI $auctionURI = null): self
     {
         $this->auctionURI = $auctionURI;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAuctionURI(): self
+    {
+        $this->auctionURI = null;
 
         return $this;
     }

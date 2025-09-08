@@ -731,6 +731,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TransportModeCode|null
      */
     public function getTransportModeCode(): ?TransportModeCode
@@ -755,6 +765,16 @@ class ShipmentStageType
     public function setTransportModeCode(?TransportModeCode $transportModeCode = null): self
     {
         $this->transportModeCode = $transportModeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTransportModeCode(): self
+    {
+        $this->transportModeCode = null;
 
         return $this;
     }
@@ -789,6 +809,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTransportMeansTypeCode(): self
+    {
+        $this->transportMeansTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TransitDirectionCode|null
      */
     public function getTransitDirectionCode(): ?TransitDirectionCode
@@ -818,6 +848,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTransitDirectionCode(): self
+    {
+        $this->transitDirectionCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getPreCarriageIndicator(): ?bool
@@ -832,6 +872,16 @@ class ShipmentStageType
     public function setPreCarriageIndicator(?bool $preCarriageIndicator = null): self
     {
         $this->preCarriageIndicator = $preCarriageIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPreCarriageIndicator(): self
+    {
+        $this->preCarriageIndicator = null;
 
         return $this;
     }
@@ -856,6 +906,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOnCarriageIndicator(): self
+    {
+        $this->onCarriageIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getEstimatedDeliveryDate(): ?\DateTimeInterface
@@ -870,6 +930,16 @@ class ShipmentStageType
     public function setEstimatedDeliveryDate(?\DateTimeInterface $estimatedDeliveryDate = null): self
     {
         $this->estimatedDeliveryDate = $estimatedDeliveryDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEstimatedDeliveryDate(): self
+    {
+        $this->estimatedDeliveryDate = null;
 
         return $this;
     }
@@ -894,6 +964,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEstimatedDeliveryTime(): self
+    {
+        $this->estimatedDeliveryTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getRequiredDeliveryDate(): ?\DateTimeInterface
@@ -913,6 +993,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRequiredDeliveryDate(): self
+    {
+        $this->requiredDeliveryDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getRequiredDeliveryTime(): ?\DateTimeInterface
@@ -927,6 +1017,16 @@ class ShipmentStageType
     public function setRequiredDeliveryTime(?\DateTimeInterface $requiredDeliveryTime = null): self
     {
         $this->requiredDeliveryTime = $requiredDeliveryTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRequiredDeliveryTime(): self
+    {
+        $this->requiredDeliveryTime = null;
 
         return $this;
     }
@@ -961,6 +1061,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLoadingSequenceID(): self
+    {
+        $this->loadingSequenceID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SuccessiveSequenceID|null
      */
     public function getSuccessiveSequenceID(): ?SuccessiveSequenceID
@@ -990,6 +1100,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSuccessiveSequenceID(): self
+    {
+        $this->successiveSequenceID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Instructions>|null
      */
     public function getInstructions(): ?array
@@ -1004,6 +1124,16 @@ class ShipmentStageType
     public function setInstructions(?array $instructions = null): self
     {
         $this->instructions = $instructions;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetInstructions(): self
+    {
+        $this->instructions = null;
 
         return $this;
     }
@@ -1085,6 +1215,16 @@ class ShipmentStageType
     public function setDemurrageInstructions(?array $demurrageInstructions = null): self
     {
         $this->demurrageInstructions = $demurrageInstructions;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDemurrageInstructions(): self
+    {
+        $this->demurrageInstructions = null;
 
         return $this;
     }
@@ -1181,6 +1321,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCrewQuantity(): self
+    {
+        $this->crewQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PassengerQuantity|null
      */
     public function getPassengerQuantity(): ?PassengerQuantity
@@ -1205,6 +1355,16 @@ class ShipmentStageType
     public function setPassengerQuantity(?PassengerQuantity $passengerQuantity = null): self
     {
         $this->passengerQuantity = $passengerQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPassengerQuantity(): self
+    {
+        $this->passengerQuantity = null;
 
         return $this;
     }
@@ -1239,6 +1399,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTransitPeriod(): self
+    {
+        $this->transitPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\CarrierParty>|null
      */
     public function getCarrierParty(): ?array
@@ -1253,6 +1423,16 @@ class ShipmentStageType
     public function setCarrierParty(?array $carrierParty = null): self
     {
         $this->carrierParty = $carrierParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCarrierParty(): self
+    {
+        $this->carrierParty = null;
 
         return $this;
     }
@@ -1349,6 +1529,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTransportMeans(): self
+    {
+        $this->transportMeans = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\LoadingPortLocation|null
      */
     public function getLoadingPortLocation(): ?LoadingPortLocation
@@ -1373,6 +1563,16 @@ class ShipmentStageType
     public function setLoadingPortLocation(?LoadingPortLocation $loadingPortLocation = null): self
     {
         $this->loadingPortLocation = $loadingPortLocation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLoadingPortLocation(): self
+    {
+        $this->loadingPortLocation = null;
 
         return $this;
     }
@@ -1407,6 +1607,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUnloadingPortLocation(): self
+    {
+        $this->unloadingPortLocation = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\TransshipPortLocation|null
      */
     public function getTransshipPortLocation(): ?TransshipPortLocation
@@ -1431,6 +1641,16 @@ class ShipmentStageType
     public function setTransshipPortLocation(?TransshipPortLocation $transshipPortLocation = null): self
     {
         $this->transshipPortLocation = $transshipPortLocation;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTransshipPortLocation(): self
+    {
+        $this->transshipPortLocation = null;
 
         return $this;
     }
@@ -1465,6 +1685,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLoadingTransportEvent(): self
+    {
+        $this->loadingTransportEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ExaminationTransportEvent|null
      */
     public function getExaminationTransportEvent(): ?ExaminationTransportEvent
@@ -1489,6 +1719,16 @@ class ShipmentStageType
     public function setExaminationTransportEvent(?ExaminationTransportEvent $examinationTransportEvent = null): self
     {
         $this->examinationTransportEvent = $examinationTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExaminationTransportEvent(): self
+    {
+        $this->examinationTransportEvent = null;
 
         return $this;
     }
@@ -1524,6 +1764,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAvailabilityTransportEvent(): self
+    {
+        $this->availabilityTransportEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ExportationTransportEvent|null
      */
     public function getExportationTransportEvent(): ?ExportationTransportEvent
@@ -1548,6 +1798,16 @@ class ShipmentStageType
     public function setExportationTransportEvent(?ExportationTransportEvent $exportationTransportEvent = null): self
     {
         $this->exportationTransportEvent = $exportationTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExportationTransportEvent(): self
+    {
+        $this->exportationTransportEvent = null;
 
         return $this;
     }
@@ -1582,6 +1842,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDischargeTransportEvent(): self
+    {
+        $this->dischargeTransportEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\WarehousingTransportEvent|null
      */
     public function getWarehousingTransportEvent(): ?WarehousingTransportEvent
@@ -1611,6 +1881,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetWarehousingTransportEvent(): self
+    {
+        $this->warehousingTransportEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\TakeoverTransportEvent|null
      */
     public function getTakeoverTransportEvent(): ?TakeoverTransportEvent
@@ -1635,6 +1915,16 @@ class ShipmentStageType
     public function setTakeoverTransportEvent(?TakeoverTransportEvent $takeoverTransportEvent = null): self
     {
         $this->takeoverTransportEvent = $takeoverTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTakeoverTransportEvent(): self
+    {
+        $this->takeoverTransportEvent = null;
 
         return $this;
     }
@@ -1670,6 +1960,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOptionalTakeoverTransportEvent(): self
+    {
+        $this->optionalTakeoverTransportEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\DropoffTransportEvent|null
      */
     public function getDropoffTransportEvent(): ?DropoffTransportEvent
@@ -1694,6 +1994,16 @@ class ShipmentStageType
     public function setDropoffTransportEvent(?DropoffTransportEvent $dropoffTransportEvent = null): self
     {
         $this->dropoffTransportEvent = $dropoffTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDropoffTransportEvent(): self
+    {
+        $this->dropoffTransportEvent = null;
 
         return $this;
     }
@@ -1729,6 +2039,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetActualPickupTransportEvent(): self
+    {
+        $this->actualPickupTransportEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\DeliveryTransportEvent|null
      */
     public function getDeliveryTransportEvent(): ?DeliveryTransportEvent
@@ -1753,6 +2073,16 @@ class ShipmentStageType
     public function setDeliveryTransportEvent(?DeliveryTransportEvent $deliveryTransportEvent = null): self
     {
         $this->deliveryTransportEvent = $deliveryTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDeliveryTransportEvent(): self
+    {
+        $this->deliveryTransportEvent = null;
 
         return $this;
     }
@@ -1787,6 +2117,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReceiptTransportEvent(): self
+    {
+        $this->receiptTransportEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\StorageTransportEvent|null
      */
     public function getStorageTransportEvent(): ?StorageTransportEvent
@@ -1811,6 +2151,16 @@ class ShipmentStageType
     public function setStorageTransportEvent(?StorageTransportEvent $storageTransportEvent = null): self
     {
         $this->storageTransportEvent = $storageTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetStorageTransportEvent(): self
+    {
+        $this->storageTransportEvent = null;
 
         return $this;
     }
@@ -1845,6 +2195,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAcceptanceTransportEvent(): self
+    {
+        $this->acceptanceTransportEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\TerminalOperatorParty|null
      */
     public function getTerminalOperatorParty(): ?TerminalOperatorParty
@@ -1869,6 +2229,16 @@ class ShipmentStageType
     public function setTerminalOperatorParty(?TerminalOperatorParty $terminalOperatorParty = null): self
     {
         $this->terminalOperatorParty = $terminalOperatorParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTerminalOperatorParty(): self
+    {
+        $this->terminalOperatorParty = null;
 
         return $this;
     }
@@ -1903,6 +2273,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCustomsAgentParty(): self
+    {
+        $this->customsAgentParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\EstimatedTransitPeriod|null
      */
     public function getEstimatedTransitPeriod(): ?EstimatedTransitPeriod
@@ -1932,6 +2312,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEstimatedTransitPeriod(): self
+    {
+        $this->estimatedTransitPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge>|null
      */
     public function getFreightAllowanceCharge(): ?array
@@ -1946,6 +2336,16 @@ class ShipmentStageType
     public function setFreightAllowanceCharge(?array $freightAllowanceCharge = null): self
     {
         $this->freightAllowanceCharge = $freightAllowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFreightAllowanceCharge(): self
+    {
+        $this->freightAllowanceCharge = null;
 
         return $this;
     }
@@ -2042,6 +2442,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFreightChargeLocation(): self
+    {
+        $this->freightChargeLocation = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DetentionTransportEvent>|null
      */
     public function getDetentionTransportEvent(): ?array
@@ -2056,6 +2466,16 @@ class ShipmentStageType
     public function setDetentionTransportEvent(?array $detentionTransportEvent = null): self
     {
         $this->detentionTransportEvent = $detentionTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDetentionTransportEvent(): self
+    {
+        $this->detentionTransportEvent = null;
 
         return $this;
     }
@@ -2153,6 +2573,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRequestedDepartureTransportEvent(): self
+    {
+        $this->requestedDepartureTransportEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\RequestedArrivalTransportEvent|null
      */
     public function getRequestedArrivalTransportEvent(): ?RequestedArrivalTransportEvent
@@ -2183,6 +2613,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRequestedArrivalTransportEvent(): self
+    {
+        $this->requestedArrivalTransportEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\RequestedWaypointTransportEvent>|null
      */
     public function getRequestedWaypointTransportEvent(): ?array
@@ -2197,6 +2637,16 @@ class ShipmentStageType
     public function setRequestedWaypointTransportEvent(?array $requestedWaypointTransportEvent = null): self
     {
         $this->requestedWaypointTransportEvent = $requestedWaypointTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRequestedWaypointTransportEvent(): self
+    {
+        $this->requestedWaypointTransportEvent = null;
 
         return $this;
     }
@@ -2296,6 +2746,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPlannedDepartureTransportEvent(): self
+    {
+        $this->plannedDepartureTransportEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\PlannedArrivalTransportEvent|null
      */
     public function getPlannedArrivalTransportEvent(): ?PlannedArrivalTransportEvent
@@ -2326,6 +2786,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPlannedArrivalTransportEvent(): self
+    {
+        $this->plannedArrivalTransportEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\PlannedWaypointTransportEvent>|null
      */
     public function getPlannedWaypointTransportEvent(): ?array
@@ -2340,6 +2810,16 @@ class ShipmentStageType
     public function setPlannedWaypointTransportEvent(?array $plannedWaypointTransportEvent = null): self
     {
         $this->plannedWaypointTransportEvent = $plannedWaypointTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPlannedWaypointTransportEvent(): self
+    {
+        $this->plannedWaypointTransportEvent = null;
 
         return $this;
     }
@@ -2439,6 +2919,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetActualDepartureTransportEvent(): self
+    {
+        $this->actualDepartureTransportEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ActualWaypointTransportEvent|null
      */
     public function getActualWaypointTransportEvent(): ?ActualWaypointTransportEvent
@@ -2464,6 +2954,16 @@ class ShipmentStageType
         ?ActualWaypointTransportEvent $actualWaypointTransportEvent = null,
     ): self {
         $this->actualWaypointTransportEvent = $actualWaypointTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetActualWaypointTransportEvent(): self
+    {
+        $this->actualWaypointTransportEvent = null;
 
         return $this;
     }
@@ -2499,6 +2999,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetActualArrivalTransportEvent(): self
+    {
+        $this->actualArrivalTransportEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TransportEvent>|null
      */
     public function getTransportEvent(): ?array
@@ -2513,6 +3023,16 @@ class ShipmentStageType
     public function setTransportEvent(?array $transportEvent = null): self
     {
         $this->transportEvent = $transportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTransportEvent(): self
+    {
+        $this->transportEvent = null;
 
         return $this;
     }
@@ -2610,6 +3130,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEstimatedDepartureTransportEvent(): self
+    {
+        $this->estimatedDepartureTransportEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\EstimatedArrivalTransportEvent|null
      */
     public function getEstimatedArrivalTransportEvent(): ?EstimatedArrivalTransportEvent
@@ -2640,6 +3170,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEstimatedArrivalTransportEvent(): self
+    {
+        $this->estimatedArrivalTransportEvent = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\PassengerPerson>|null
      */
     public function getPassengerPerson(): ?array
@@ -2654,6 +3194,16 @@ class ShipmentStageType
     public function setPassengerPerson(?array $passengerPerson = null): self
     {
         $this->passengerPerson = $passengerPerson;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPassengerPerson(): self
+    {
+        $this->passengerPerson = null;
 
         return $this;
     }
@@ -2735,6 +3285,16 @@ class ShipmentStageType
     public function setDriverPerson(?array $driverPerson = null): self
     {
         $this->driverPerson = $driverPerson;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDriverPerson(): self
+    {
+        $this->driverPerson = null;
 
         return $this;
     }
@@ -2831,6 +3391,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReportingPerson(): self
+    {
+        $this->reportingPerson = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\CrewMemberPerson>|null
      */
     public function getCrewMemberPerson(): ?array
@@ -2845,6 +3415,16 @@ class ShipmentStageType
     public function setCrewMemberPerson(?array $crewMemberPerson = null): self
     {
         $this->crewMemberPerson = $crewMemberPerson;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCrewMemberPerson(): self
+    {
+        $this->crewMemberPerson = null;
 
         return $this;
     }
@@ -2941,6 +3521,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSecurityOfficerPerson(): self
+    {
+        $this->securityOfficerPerson = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\MasterPerson|null
      */
     public function getMasterPerson(): ?MasterPerson
@@ -2970,6 +3560,16 @@ class ShipmentStageType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMasterPerson(): self
+    {
+        $this->masterPerson = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ShipsSurgeonPerson|null
      */
     public function getShipsSurgeonPerson(): ?ShipsSurgeonPerson
@@ -2994,6 +3594,16 @@ class ShipmentStageType
     public function setShipsSurgeonPerson(?ShipsSurgeonPerson $shipsSurgeonPerson = null): self
     {
         $this->shipsSurgeonPerson = $shipsSurgeonPerson;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetShipsSurgeonPerson(): self
+    {
+        $this->shipsSurgeonPerson = null;
 
         return $this;
     }

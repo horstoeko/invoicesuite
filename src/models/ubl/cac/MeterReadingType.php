@@ -194,6 +194,16 @@ class MeterReadingType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MeterReadingType|null
      */
     public function getMeterReadingType(): ?MeterReadingType1
@@ -218,6 +228,16 @@ class MeterReadingType
     public function setMeterReadingType(?MeterReadingType1 $meterReadingType = null): self
     {
         $this->meterReadingType = $meterReadingType;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMeterReadingType(): self
+    {
+        $this->meterReadingType = null;
 
         return $this;
     }
@@ -252,6 +272,16 @@ class MeterReadingType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMeterReadingTypeCode(): self
+    {
+        $this->meterReadingTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getPreviousMeterReadingDate(): ?\DateTimeInterface
@@ -266,6 +296,16 @@ class MeterReadingType
     public function setPreviousMeterReadingDate(?\DateTimeInterface $previousMeterReadingDate = null): self
     {
         $this->previousMeterReadingDate = $previousMeterReadingDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPreviousMeterReadingDate(): self
+    {
+        $this->previousMeterReadingDate = null;
 
         return $this;
     }
@@ -300,6 +340,16 @@ class MeterReadingType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPreviousMeterQuantity(): self
+    {
+        $this->previousMeterQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getLatestMeterReadingDate(): ?\DateTimeInterface
@@ -314,6 +364,16 @@ class MeterReadingType
     public function setLatestMeterReadingDate(?\DateTimeInterface $latestMeterReadingDate = null): self
     {
         $this->latestMeterReadingDate = $latestMeterReadingDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLatestMeterReadingDate(): self
+    {
+        $this->latestMeterReadingDate = null;
 
         return $this;
     }
@@ -343,6 +403,16 @@ class MeterReadingType
     public function setLatestMeterQuantity(?LatestMeterQuantity $latestMeterQuantity = null): self
     {
         $this->latestMeterQuantity = $latestMeterQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLatestMeterQuantity(): self
+    {
+        $this->latestMeterQuantity = null;
 
         return $this;
     }
@@ -378,6 +448,16 @@ class MeterReadingType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPreviousMeterReadingMethod(): self
+    {
+        $this->previousMeterReadingMethod = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PreviousMeterReadingMethodCode|null
      */
     public function getPreviousMeterReadingMethodCode(): ?PreviousMeterReadingMethodCode
@@ -408,6 +488,16 @@ class MeterReadingType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPreviousMeterReadingMethodCode(): self
+    {
+        $this->previousMeterReadingMethodCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LatestMeterReadingMethod|null
      */
     public function getLatestMeterReadingMethod(): ?LatestMeterReadingMethod
@@ -432,6 +522,16 @@ class MeterReadingType
     public function setLatestMeterReadingMethod(?LatestMeterReadingMethod $latestMeterReadingMethod = null): self
     {
         $this->latestMeterReadingMethod = $latestMeterReadingMethod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLatestMeterReadingMethod(): self
+    {
+        $this->latestMeterReadingMethod = null;
 
         return $this;
     }
@@ -467,6 +567,16 @@ class MeterReadingType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLatestMeterReadingMethodCode(): self
+    {
+        $this->latestMeterReadingMethodCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\MeterReadingComments>|null
      */
     public function getMeterReadingComments(): ?array
@@ -481,6 +591,16 @@ class MeterReadingType
     public function setMeterReadingComments(?array $meterReadingComments = null): self
     {
         $this->meterReadingComments = $meterReadingComments;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMeterReadingComments(): self
+    {
+        $this->meterReadingComments = null;
 
         return $this;
     }
@@ -572,6 +692,16 @@ class MeterReadingType
     public function setDeliveredQuantity(?DeliveredQuantity $deliveredQuantity = null): self
     {
         $this->deliveredQuantity = $deliveredQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDeliveredQuantity(): self
+    {
+        $this->deliveredQuantity = null;
 
         return $this;
     }

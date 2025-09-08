@@ -110,6 +110,16 @@ class QualificationResolutionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAdmissionCode(): self
+    {
+        $this->admissionCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\ExclusionReason>|null
      */
     public function getExclusionReason(): ?array
@@ -124,6 +134,16 @@ class QualificationResolutionType
     public function setExclusionReason(?array $exclusionReason = null): self
     {
         $this->exclusionReason = $exclusionReason;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetExclusionReason(): self
+    {
+        $this->exclusionReason = null;
 
         return $this;
     }
@@ -212,6 +232,16 @@ class QualificationResolutionType
     /**
      * @return self
      */
+    public function unsetResolution(): self
+    {
+        $this->resolution = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearResolution(): self
     {
         $this->resolution = [];
@@ -291,6 +321,16 @@ class QualificationResolutionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetResolutionDate(): self
+    {
+        $this->resolutionDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getResolutionTime(): ?\DateTimeInterface
@@ -305,6 +345,16 @@ class QualificationResolutionType
     public function setResolutionTime(?\DateTimeInterface $resolutionTime = null): self
     {
         $this->resolutionTime = $resolutionTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetResolutionTime(): self
+    {
+        $this->resolutionTime = null;
 
         return $this;
     }
@@ -334,6 +384,16 @@ class QualificationResolutionType
     public function setProcurementProjectLot(?ProcurementProjectLot $procurementProjectLot = null): self
     {
         $this->procurementProjectLot = $procurementProjectLot;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetProcurementProjectLot(): self
+    {
+        $this->procurementProjectLot = null;
 
         return $this;
     }

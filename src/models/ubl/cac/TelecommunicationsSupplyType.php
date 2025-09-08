@@ -113,6 +113,16 @@ class TelecommunicationsSupplyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTelecommunicationsSupplyType(): self
+    {
+        $this->telecommunicationsSupplyType = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TelecommunicationsSupplyTypeCode|null
      */
     public function getTelecommunicationsSupplyTypeCode(): ?TelecommunicationsSupplyTypeCode
@@ -138,6 +148,16 @@ class TelecommunicationsSupplyType
         ?TelecommunicationsSupplyTypeCode $telecommunicationsSupplyTypeCode = null,
     ): self {
         $this->telecommunicationsSupplyTypeCode = $telecommunicationsSupplyTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTelecommunicationsSupplyTypeCode(): self
+    {
+        $this->telecommunicationsSupplyTypeCode = null;
 
         return $this;
     }
@@ -172,6 +192,16 @@ class TelecommunicationsSupplyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPrivacyCode(): self
+    {
+        $this->privacyCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -186,6 +216,16 @@ class TelecommunicationsSupplyType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -282,6 +322,16 @@ class TelecommunicationsSupplyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTotalAmount(): self
+    {
+        $this->totalAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsSupplyLine>|null
      */
     public function getTelecommunicationsSupplyLine(): ?array
@@ -296,6 +346,16 @@ class TelecommunicationsSupplyType
     public function setTelecommunicationsSupplyLine(?array $telecommunicationsSupplyLine = null): self
     {
         $this->telecommunicationsSupplyLine = $telecommunicationsSupplyLine;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTelecommunicationsSupplyLine(): self
+    {
+        $this->telecommunicationsSupplyLine = null;
 
         return $this;
     }

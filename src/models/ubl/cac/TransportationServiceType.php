@@ -311,6 +311,16 @@ class TransportationServiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTransportServiceCode(): self
+    {
+        $this->transportServiceCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TariffClassCode|null
      */
     public function getTariffClassCode(): ?TariffClassCode
@@ -335,6 +345,16 @@ class TransportationServiceType
     public function setTariffClassCode(?TariffClassCode $tariffClassCode = null): self
     {
         $this->tariffClassCode = $tariffClassCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTariffClassCode(): self
+    {
+        $this->tariffClassCode = null;
 
         return $this;
     }
@@ -369,6 +389,16 @@ class TransportationServiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPriority(): self
+    {
+        $this->priority = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\FreightRateClassCode|null
      */
     public function getFreightRateClassCode(): ?FreightRateClassCode
@@ -398,6 +428,16 @@ class TransportationServiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFreightRateClassCode(): self
+    {
+        $this->freightRateClassCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\TransportationServiceDescription>|null
      */
     public function getTransportationServiceDescription(): ?array
@@ -412,6 +452,16 @@ class TransportationServiceType
     public function setTransportationServiceDescription(?array $transportationServiceDescription = null): self
     {
         $this->transportationServiceDescription = $transportationServiceDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTransportationServiceDescription(): self
+    {
+        $this->transportationServiceDescription = null;
 
         return $this;
     }
@@ -511,6 +561,16 @@ class TransportationServiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTransportationServiceDetailsURI(): self
+    {
+        $this->transportationServiceDetailsURI = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getNominationDate(): ?\DateTimeInterface
@@ -530,6 +590,16 @@ class TransportationServiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetNominationDate(): self
+    {
+        $this->nominationDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getNominationTime(): ?\DateTimeInterface
@@ -544,6 +614,16 @@ class TransportationServiceType
     public function setNominationTime(?\DateTimeInterface $nominationTime = null): self
     {
         $this->nominationTime = $nominationTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNominationTime(): self
+    {
+        $this->nominationTime = null;
 
         return $this;
     }
@@ -578,6 +658,16 @@ class TransportationServiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric|null
      */
     public function getSequenceNumeric(): ?SequenceNumeric
@@ -607,6 +697,16 @@ class TransportationServiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSequenceNumeric(): self
+    {
+        $this->sequenceNumeric = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TransportEquipment>|null
      */
     public function getTransportEquipment(): ?array
@@ -621,6 +721,16 @@ class TransportationServiceType
     public function setTransportEquipment(?array $transportEquipment = null): self
     {
         $this->transportEquipment = $transportEquipment;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTransportEquipment(): self
+    {
+        $this->transportEquipment = null;
 
         return $this;
     }
@@ -709,6 +819,16 @@ class TransportationServiceType
     /**
      * @return self
      */
+    public function unsetSupportedTransportEquipment(): self
+    {
+        $this->supportedTransportEquipment = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearSupportedTransportEquipment(): self
     {
         $this->supportedTransportEquipment = [];
@@ -784,6 +904,16 @@ class TransportationServiceType
     public function setUnsupportedTransportEquipment(?array $unsupportedTransportEquipment = null): self
     {
         $this->unsupportedTransportEquipment = $unsupportedTransportEquipment;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetUnsupportedTransportEquipment(): self
+    {
+        $this->unsupportedTransportEquipment = null;
 
         return $this;
     }
@@ -874,6 +1004,16 @@ class TransportationServiceType
     /**
      * @return self
      */
+    public function unsetCommodityClassification(): self
+    {
+        $this->commodityClassification = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearCommodityClassification(): self
     {
         $this->commodityClassification = [];
@@ -948,6 +1088,16 @@ class TransportationServiceType
     public function setSupportedCommodityClassification(?array $supportedCommodityClassification = null): self
     {
         $this->supportedCommodityClassification = $supportedCommodityClassification;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSupportedCommodityClassification(): self
+    {
+        $this->supportedCommodityClassification = null;
 
         return $this;
     }
@@ -1031,6 +1181,16 @@ class TransportationServiceType
     public function setUnsupportedCommodityClassification(?array $unsupportedCommodityClassification = null): self
     {
         $this->unsupportedCommodityClassification = $unsupportedCommodityClassification;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetUnsupportedCommodityClassification(): self
+    {
+        $this->unsupportedCommodityClassification = null;
 
         return $this;
     }
@@ -1129,6 +1289,16 @@ class TransportationServiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTotalCapacityDimension(): self
+    {
+        $this->totalCapacityDimension = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ShipmentStage>|null
      */
     public function getShipmentStage(): ?array
@@ -1143,6 +1313,16 @@ class TransportationServiceType
     public function setShipmentStage(?array $shipmentStage = null): self
     {
         $this->shipmentStage = $shipmentStage;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetShipmentStage(): self
+    {
+        $this->shipmentStage = null;
 
         return $this;
     }
@@ -1224,6 +1404,16 @@ class TransportationServiceType
     public function setTransportEvent(?array $transportEvent = null): self
     {
         $this->transportEvent = $transportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTransportEvent(): self
+    {
+        $this->transportEvent = null;
 
         return $this;
     }
@@ -1321,6 +1511,16 @@ class TransportationServiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetResponsibleTransportServiceProviderParty(): self
+    {
+        $this->responsibleTransportServiceProviderParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\EnvironmentalEmission>|null
      */
     public function getEnvironmentalEmission(): ?array
@@ -1335,6 +1535,16 @@ class TransportationServiceType
     public function setEnvironmentalEmission(?array $environmentalEmission = null): self
     {
         $this->environmentalEmission = $environmentalEmission;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEnvironmentalEmission(): self
+    {
+        $this->environmentalEmission = null;
 
         return $this;
     }
@@ -1431,6 +1641,16 @@ class TransportationServiceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEstimatedDurationPeriod(): self
+    {
+        $this->estimatedDurationPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ScheduledServiceFrequency>|null
      */
     public function getScheduledServiceFrequency(): ?array
@@ -1445,6 +1665,16 @@ class TransportationServiceType
     public function setScheduledServiceFrequency(?array $scheduledServiceFrequency = null): self
     {
         $this->scheduledServiceFrequency = $scheduledServiceFrequency;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetScheduledServiceFrequency(): self
+    {
+        $this->scheduledServiceFrequency = null;
 
         return $this;
     }

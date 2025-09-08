@@ -279,6 +279,16 @@ class ReceiptLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      */
     public function getUUID(): ?UUID
@@ -308,6 +318,16 @@ class ReceiptLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUUID(): self
+    {
+        $this->uUID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -322,6 +342,16 @@ class ReceiptLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -418,6 +448,16 @@ class ReceiptLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetReceivedQuantity(): self
+    {
+        $this->receivedQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ShortQuantity|null
      */
     public function getShortQuantity(): ?ShortQuantity
@@ -442,6 +482,16 @@ class ReceiptLineType
     public function setShortQuantity(?ShortQuantity $shortQuantity = null): self
     {
         $this->shortQuantity = $shortQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetShortQuantity(): self
+    {
+        $this->shortQuantity = null;
 
         return $this;
     }
@@ -476,6 +526,16 @@ class ReceiptLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetShortageActionCode(): self
+    {
+        $this->shortageActionCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\RejectedQuantity|null
      */
     public function getRejectedQuantity(): ?RejectedQuantity
@@ -500,6 +560,16 @@ class ReceiptLineType
     public function setRejectedQuantity(?RejectedQuantity $rejectedQuantity = null): self
     {
         $this->rejectedQuantity = $rejectedQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRejectedQuantity(): self
+    {
+        $this->rejectedQuantity = null;
 
         return $this;
     }
@@ -534,6 +604,16 @@ class ReceiptLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRejectReasonCode(): self
+    {
+        $this->rejectReasonCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\RejectReason>|null
      */
     public function getRejectReason(): ?array
@@ -548,6 +628,16 @@ class ReceiptLineType
     public function setRejectReason(?array $rejectReason = null): self
     {
         $this->rejectReason = $rejectReason;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRejectReason(): self
+    {
+        $this->rejectReason = null;
 
         return $this;
     }
@@ -644,6 +734,16 @@ class ReceiptLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRejectActionCode(): self
+    {
+        $this->rejectActionCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\QuantityDiscrepancyCode|null
      */
     public function getQuantityDiscrepancyCode(): ?QuantityDiscrepancyCode
@@ -668,6 +768,16 @@ class ReceiptLineType
     public function setQuantityDiscrepancyCode(?QuantityDiscrepancyCode $quantityDiscrepancyCode = null): self
     {
         $this->quantityDiscrepancyCode = $quantityDiscrepancyCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetQuantityDiscrepancyCode(): self
+    {
+        $this->quantityDiscrepancyCode = null;
 
         return $this;
     }
@@ -702,6 +812,16 @@ class ReceiptLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOversupplyQuantity(): self
+    {
+        $this->oversupplyQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getReceivedDate(): ?\DateTimeInterface
@@ -716,6 +836,16 @@ class ReceiptLineType
     public function setReceivedDate(?\DateTimeInterface $receivedDate = null): self
     {
         $this->receivedDate = $receivedDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetReceivedDate(): self
+    {
+        $this->receivedDate = null;
 
         return $this;
     }
@@ -750,6 +880,16 @@ class ReceiptLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTimingComplaintCode(): self
+    {
+        $this->timingComplaintCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TimingComplaint|null
      */
     public function getTimingComplaint(): ?TimingComplaint
@@ -774,6 +914,16 @@ class ReceiptLineType
     public function setTimingComplaint(?TimingComplaint $timingComplaint = null): self
     {
         $this->timingComplaint = $timingComplaint;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTimingComplaint(): self
+    {
+        $this->timingComplaint = null;
 
         return $this;
     }
@@ -808,6 +958,16 @@ class ReceiptLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOrderLineReference(): self
+    {
+        $this->orderLineReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DespatchLineReference>|null
      */
     public function getDespatchLineReference(): ?array
@@ -822,6 +982,16 @@ class ReceiptLineType
     public function setDespatchLineReference(?array $despatchLineReference = null): self
     {
         $this->despatchLineReference = $despatchLineReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDespatchLineReference(): self
+    {
+        $this->despatchLineReference = null;
 
         return $this;
     }
@@ -910,6 +1080,16 @@ class ReceiptLineType
     /**
      * @return self
      */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearDocumentReference(): self
     {
         $this->documentReference = [];
@@ -991,6 +1171,16 @@ class ReceiptLineType
     /**
      * @return self
      */
+    public function unsetItem(): self
+    {
+        $this->item = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearItem(): self
     {
         $this->item = [];
@@ -1065,6 +1255,16 @@ class ReceiptLineType
     public function setShipment(?array $shipment = null): self
     {
         $this->shipment = $shipment;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetShipment(): self
+    {
+        $this->shipment = null;
 
         return $this;
     }

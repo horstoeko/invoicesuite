@@ -155,6 +155,16 @@ class SignatureType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -169,6 +179,16 @@ class SignatureType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -255,6 +275,16 @@ class SignatureType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValidationDate(): self
+    {
+        $this->validationDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getValidationTime(): ?\DateTimeInterface
@@ -269,6 +299,16 @@ class SignatureType
     public function setValidationTime(?\DateTimeInterface $validationTime = null): self
     {
         $this->validationTime = $validationTime;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValidationTime(): self
+    {
+        $this->validationTime = null;
 
         return $this;
     }
@@ -303,6 +343,16 @@ class SignatureType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValidatorID(): self
+    {
+        $this->validatorID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CanonicalizationMethod|null
      */
     public function getCanonicalizationMethod(): ?CanonicalizationMethod
@@ -327,6 +377,16 @@ class SignatureType
     public function setCanonicalizationMethod(?CanonicalizationMethod $canonicalizationMethod = null): self
     {
         $this->canonicalizationMethod = $canonicalizationMethod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCanonicalizationMethod(): self
+    {
+        $this->canonicalizationMethod = null;
 
         return $this;
     }
@@ -361,6 +421,16 @@ class SignatureType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSignatureMethod(): self
+    {
+        $this->signatureMethod = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\SignatoryParty|null
      */
     public function getSignatoryParty(): ?SignatoryParty
@@ -385,6 +455,16 @@ class SignatureType
     public function setSignatoryParty(?SignatoryParty $signatoryParty = null): self
     {
         $this->signatoryParty = $signatoryParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSignatoryParty(): self
+    {
+        $this->signatoryParty = null;
 
         return $this;
     }
@@ -420,6 +500,16 @@ class SignatureType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDigitalSignatureAttachment(): self
+    {
+        $this->digitalSignatureAttachment = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\OriginalDocumentReference|null
      */
     public function getOriginalDocumentReference(): ?OriginalDocumentReference
@@ -444,6 +534,16 @@ class SignatureType
     public function setOriginalDocumentReference(?OriginalDocumentReference $originalDocumentReference = null): self
     {
         $this->originalDocumentReference = $originalDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOriginalDocumentReference(): self
+    {
+        $this->originalDocumentReference = null;
 
         return $this;
     }

@@ -62,6 +62,16 @@ class OrderedShipmentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetShipment(): self
+    {
+        $this->shipment = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Package>|null
      */
     public function getPackage(): ?array
@@ -76,6 +86,16 @@ class OrderedShipmentType
     public function setPackage(?array $package = null): self
     {
         $this->package = $package;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPackage(): self
+    {
+        $this->package = null;
 
         return $this;
     }

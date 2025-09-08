@@ -98,6 +98,16 @@ class SalesItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetQuantity(): self
+    {
+        $this->quantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ActivityProperty>|null
      */
     public function getActivityProperty(): ?array
@@ -112,6 +122,16 @@ class SalesItemType
     public function setActivityProperty(?array $activityProperty = null): self
     {
         $this->activityProperty = $activityProperty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetActivityProperty(): self
+    {
+        $this->activityProperty = null;
 
         return $this;
     }
@@ -200,6 +220,16 @@ class SalesItemType
     /**
      * @return self
      */
+    public function unsetTaxExclusivePrice(): self
+    {
+        $this->taxExclusivePrice = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearTaxExclusivePrice(): self
     {
         $this->taxExclusivePrice = [];
@@ -274,6 +304,16 @@ class SalesItemType
     public function setTaxInclusivePrice(?array $taxInclusivePrice = null): self
     {
         $this->taxInclusivePrice = $taxInclusivePrice;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxInclusivePrice(): self
+    {
+        $this->taxInclusivePrice = null;
 
         return $this;
     }
@@ -365,6 +405,16 @@ class SalesItemType
     public function setItem(?Item $item = null): self
     {
         $this->item = $item;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetItem(): self
+    {
+        $this->item = null;
 
         return $this;
     }

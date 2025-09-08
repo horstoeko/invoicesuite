@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\ubl\cct;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class QuantityType
 {
@@ -84,6 +85,16 @@ class QuantityType
     }
 
     /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
+
+        return $this;
+    }
+
+    /**
      * @return string|null
      */
     public function getUnitCode(): ?string
@@ -97,7 +108,17 @@ class QuantityType
      */
     public function setUnitCode(?string $unitCode = null): self
     {
-        $this->unitCode = $unitCode;
+        $this->unitCode = InvoiceSuiteStringUtils::asNullWhenEmpty($unitCode);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetUnitCode(): self
+    {
+        $this->unitCode = null;
 
         return $this;
     }
@@ -116,7 +137,17 @@ class QuantityType
      */
     public function setUnitCodeListID(?string $unitCodeListID = null): self
     {
-        $this->unitCodeListID = $unitCodeListID;
+        $this->unitCodeListID = InvoiceSuiteStringUtils::asNullWhenEmpty($unitCodeListID);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetUnitCodeListID(): self
+    {
+        $this->unitCodeListID = null;
 
         return $this;
     }
@@ -135,7 +166,17 @@ class QuantityType
      */
     public function setUnitCodeListAgencyID(?string $unitCodeListAgencyID = null): self
     {
-        $this->unitCodeListAgencyID = $unitCodeListAgencyID;
+        $this->unitCodeListAgencyID = InvoiceSuiteStringUtils::asNullWhenEmpty($unitCodeListAgencyID);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetUnitCodeListAgencyID(): self
+    {
+        $this->unitCodeListAgencyID = null;
 
         return $this;
     }
@@ -154,7 +195,17 @@ class QuantityType
      */
     public function setUnitCodeListAgencyName(?string $unitCodeListAgencyName = null): self
     {
-        $this->unitCodeListAgencyName = $unitCodeListAgencyName;
+        $this->unitCodeListAgencyName = InvoiceSuiteStringUtils::asNullWhenEmpty($unitCodeListAgencyName);
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetUnitCodeListAgencyName(): self
+    {
+        $this->unitCodeListAgencyName = null;
 
         return $this;
     }

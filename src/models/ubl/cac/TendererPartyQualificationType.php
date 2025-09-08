@@ -66,6 +66,16 @@ class TendererPartyQualificationType
     /**
      * @return self
      */
+    public function unsetInterestedProcurementProjectLot(): self
+    {
+        $this->interestedProcurementProjectLot = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearInterestedProcurementProjectLot(): self
     {
         $this->interestedProcurementProjectLot = [];
@@ -157,6 +167,16 @@ class TendererPartyQualificationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMainQualifyingParty(): self
+    {
+        $this->mainQualifyingParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalQualifyingParty>|null
      */
     public function getAdditionalQualifyingParty(): ?array
@@ -171,6 +191,16 @@ class TendererPartyQualificationType
     public function setAdditionalQualifyingParty(?array $additionalQualifyingParty = null): self
     {
         $this->additionalQualifyingParty = $additionalQualifyingParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAdditionalQualifyingParty(): self
+    {
+        $this->additionalQualifyingParty = null;
 
         return $this;
     }

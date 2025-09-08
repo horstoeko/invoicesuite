@@ -123,6 +123,16 @@ class MeterType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMeterNumber(): self
+    {
+        $this->meterNumber = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MeterName|null
      */
     public function getMeterName(): ?MeterName
@@ -147,6 +157,16 @@ class MeterType
     public function setMeterName(?MeterName $meterName = null): self
     {
         $this->meterName = $meterName;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMeterName(): self
+    {
+        $this->meterName = null;
 
         return $this;
     }
@@ -181,6 +201,16 @@ class MeterType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMeterConstant(): self
+    {
+        $this->meterConstant = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MeterConstantCode|null
      */
     public function getMeterConstantCode(): ?MeterConstantCode
@@ -205,6 +235,16 @@ class MeterType
     public function setMeterConstantCode(?MeterConstantCode $meterConstantCode = null): self
     {
         $this->meterConstantCode = $meterConstantCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMeterConstantCode(): self
+    {
+        $this->meterConstantCode = null;
 
         return $this;
     }
@@ -239,6 +279,16 @@ class MeterType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTotalDeliveredQuantity(): self
+    {
+        $this->totalDeliveredQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\MeterReading>|null
      */
     public function getMeterReading(): ?array
@@ -253,6 +303,16 @@ class MeterType
     public function setMeterReading(?array $meterReading = null): self
     {
         $this->meterReading = $meterReading;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMeterReading(): self
+    {
+        $this->meterReading = null;
 
         return $this;
     }
@@ -334,6 +394,16 @@ class MeterType
     public function setMeterProperty(?array $meterProperty = null): self
     {
         $this->meterProperty = $meterProperty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMeterProperty(): self
+    {
+        $this->meterProperty = null;
 
         return $this;
     }

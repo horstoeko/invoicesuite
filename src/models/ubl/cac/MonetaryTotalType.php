@@ -147,6 +147,16 @@ class MonetaryTotalType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLineExtensionAmount(): self
+    {
+        $this->lineExtensionAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TaxExclusiveAmount|null
      */
     public function getTaxExclusiveAmount(): ?TaxExclusiveAmount
@@ -171,6 +181,16 @@ class MonetaryTotalType
     public function setTaxExclusiveAmount(?TaxExclusiveAmount $taxExclusiveAmount = null): self
     {
         $this->taxExclusiveAmount = $taxExclusiveAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTaxExclusiveAmount(): self
+    {
+        $this->taxExclusiveAmount = null;
 
         return $this;
     }
@@ -205,6 +225,16 @@ class MonetaryTotalType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTaxInclusiveAmount(): self
+    {
+        $this->taxInclusiveAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\AllowanceTotalAmount|null
      */
     public function getAllowanceTotalAmount(): ?AllowanceTotalAmount
@@ -229,6 +259,16 @@ class MonetaryTotalType
     public function setAllowanceTotalAmount(?AllowanceTotalAmount $allowanceTotalAmount = null): self
     {
         $this->allowanceTotalAmount = $allowanceTotalAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAllowanceTotalAmount(): self
+    {
+        $this->allowanceTotalAmount = null;
 
         return $this;
     }
@@ -263,6 +303,16 @@ class MonetaryTotalType
     }
 
     /**
+     * @return self
+     */
+    public function unsetChargeTotalAmount(): self
+    {
+        $this->chargeTotalAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PrepaidAmount|null
      */
     public function getPrepaidAmount(): ?PrepaidAmount
@@ -287,6 +337,16 @@ class MonetaryTotalType
     public function setPrepaidAmount(?PrepaidAmount $prepaidAmount = null): self
     {
         $this->prepaidAmount = $prepaidAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPrepaidAmount(): self
+    {
+        $this->prepaidAmount = null;
 
         return $this;
     }
@@ -321,6 +381,16 @@ class MonetaryTotalType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPayableRoundingAmount(): self
+    {
+        $this->payableRoundingAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PayableAmount|null
      */
     public function getPayableAmount(): ?PayableAmount
@@ -350,6 +420,16 @@ class MonetaryTotalType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPayableAmount(): self
+    {
+        $this->payableAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PayableAlternativeAmount|null
      */
     public function getPayableAlternativeAmount(): ?PayableAlternativeAmount
@@ -374,6 +454,16 @@ class MonetaryTotalType
     public function setPayableAlternativeAmount(?PayableAlternativeAmount $payableAlternativeAmount = null): self
     {
         $this->payableAlternativeAmount = $payableAlternativeAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPayableAlternativeAmount(): self
+    {
+        $this->payableAlternativeAmount = null;
 
         return $this;
     }

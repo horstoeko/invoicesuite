@@ -85,6 +85,16 @@ class EventTacticType
     }
 
     /**
+     * @return self
+     */
+    public function unsetComment(): self
+    {
+        $this->comment = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      */
     public function getQuantity(): ?Quantity
@@ -109,6 +119,16 @@ class EventTacticType
     public function setQuantity(?Quantity $quantity = null): self
     {
         $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetQuantity(): self
+    {
+        $this->quantity = null;
 
         return $this;
     }
@@ -143,6 +163,16 @@ class EventTacticType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEventTacticEnumeration(): self
+    {
+        $this->eventTacticEnumeration = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Period|null
      */
     public function getPeriod(): ?Period
@@ -167,6 +197,16 @@ class EventTacticType
     public function setPeriod(?Period $period = null): self
     {
         $this->period = $period;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPeriod(): self
+    {
+        $this->period = null;
 
         return $this;
     }

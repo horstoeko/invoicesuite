@@ -75,6 +75,16 @@ class CommunicationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetChannelCode(): self
+    {
+        $this->channelCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Channel|null
      */
     public function getChannel(): ?Channel
@@ -104,6 +114,16 @@ class CommunicationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetChannel(): self
+    {
+        $this->channel = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Value|null
      */
     public function getValue(): ?Value
@@ -128,6 +148,16 @@ class CommunicationType
     public function setValue(?Value $value = null): self
     {
         $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetValue(): self
+    {
+        $this->value = null;
 
         return $this;
     }

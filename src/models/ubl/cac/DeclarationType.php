@@ -81,6 +81,16 @@ class DeclarationType
     /**
      * @return self
      */
+    public function unsetName(): self
+    {
+        $this->name = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearName(): self
     {
         $this->name = [];
@@ -170,6 +180,16 @@ class DeclarationType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDeclarationTypeCode(): self
+    {
+        $this->declarationTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -184,6 +204,16 @@ class DeclarationType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -265,6 +295,16 @@ class DeclarationType
     public function setEvidenceSupplied(?array $evidenceSupplied = null): self
     {
         $this->evidenceSupplied = $evidenceSupplied;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEvidenceSupplied(): self
+    {
+        $this->evidenceSupplied = null;
 
         return $this;
     }

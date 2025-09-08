@@ -131,6 +131,16 @@ class ItemInstanceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetProductTraceID(): self
+    {
+        $this->productTraceID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getManufactureDate(): ?\DateTimeInterface
@@ -145,6 +155,16 @@ class ItemInstanceType
     public function setManufactureDate(?\DateTimeInterface $manufactureDate = null): self
     {
         $this->manufactureDate = $manufactureDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetManufactureDate(): self
+    {
+        $this->manufactureDate = null;
 
         return $this;
     }
@@ -169,6 +189,16 @@ class ItemInstanceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetManufactureTime(): self
+    {
+        $this->manufactureTime = null;
+
+        return $this;
+    }
+
+    /**
      * @return \DateTimeInterface|null
      */
     public function getBestBeforeDate(): ?\DateTimeInterface
@@ -183,6 +213,16 @@ class ItemInstanceType
     public function setBestBeforeDate(?\DateTimeInterface $bestBeforeDate = null): self
     {
         $this->bestBeforeDate = $bestBeforeDate;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBestBeforeDate(): self
+    {
+        $this->bestBeforeDate = null;
 
         return $this;
     }
@@ -217,6 +257,16 @@ class ItemInstanceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetRegistrationID(): self
+    {
+        $this->registrationID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SerialID|null
      */
     public function getSerialID(): ?SerialID
@@ -246,6 +296,16 @@ class ItemInstanceType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSerialID(): self
+    {
+        $this->serialID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty>|null
      */
     public function getAdditionalItemProperty(): ?array
@@ -260,6 +320,16 @@ class ItemInstanceType
     public function setAdditionalItemProperty(?array $additionalItemProperty = null): self
     {
         $this->additionalItemProperty = $additionalItemProperty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAdditionalItemProperty(): self
+    {
+        $this->additionalItemProperty = null;
 
         return $this;
     }
@@ -351,6 +421,16 @@ class ItemInstanceType
     public function setLotIdentification(?LotIdentification $lotIdentification = null): self
     {
         $this->lotIdentification = $lotIdentification;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLotIdentification(): self
+    {
+        $this->lotIdentification = null;
 
         return $this;
     }

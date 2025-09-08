@@ -92,6 +92,16 @@ class EconomicOperatorShortListType
     /**
      * @return self
      */
+    public function unsetLimitationDescription(): self
+    {
+        $this->limitationDescription = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearLimitationDescription(): self
     {
         $this->limitationDescription = [];
@@ -181,6 +191,16 @@ class EconomicOperatorShortListType
     }
 
     /**
+     * @return self
+     */
+    public function unsetExpectedQuantity(): self
+    {
+        $this->expectedQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MaximumQuantity|null
      */
     public function getMaximumQuantity(): ?MaximumQuantity
@@ -205,6 +225,16 @@ class EconomicOperatorShortListType
     public function setMaximumQuantity(?MaximumQuantity $maximumQuantity = null): self
     {
         $this->maximumQuantity = $maximumQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMaximumQuantity(): self
+    {
+        $this->maximumQuantity = null;
 
         return $this;
     }
@@ -239,6 +269,16 @@ class EconomicOperatorShortListType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMinimumQuantity(): self
+    {
+        $this->minimumQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\PreSelectedParty>|null
      */
     public function getPreSelectedParty(): ?array
@@ -253,6 +293,16 @@ class EconomicOperatorShortListType
     public function setPreSelectedParty(?array $preSelectedParty = null): self
     {
         $this->preSelectedParty = $preSelectedParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPreSelectedParty(): self
+    {
+        $this->preSelectedParty = null;
 
         return $this;
     }

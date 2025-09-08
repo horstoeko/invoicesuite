@@ -249,6 +249,16 @@ class PartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMarkCareIndicator(): self
+    {
+        $this->markCareIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getMarkAttentionIndicator(): ?bool
@@ -263,6 +273,16 @@ class PartyType
     public function setMarkAttentionIndicator(?bool $markAttentionIndicator = null): self
     {
         $this->markAttentionIndicator = $markAttentionIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMarkAttentionIndicator(): self
+    {
+        $this->markAttentionIndicator = null;
 
         return $this;
     }
@@ -297,6 +317,16 @@ class PartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetWebsiteURI(): self
+    {
+        $this->websiteURI = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LogoReferenceID|null
      */
     public function getLogoReferenceID(): ?LogoReferenceID
@@ -326,6 +356,16 @@ class PartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLogoReferenceID(): self
+    {
+        $this->logoReferenceID = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\EndpointID|null
      */
     public function getEndpointID(): ?EndpointID
@@ -350,6 +390,16 @@ class PartyType
     public function setEndpointID(?EndpointID $endpointID = null): self
     {
         $this->endpointID = $endpointID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEndpointID(): self
+    {
+        $this->endpointID = null;
 
         return $this;
     }
@@ -385,6 +435,16 @@ class PartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetIndustryClassificationCode(): self
+    {
+        $this->industryClassificationCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\PartyIdentification>|null
      */
     public function getPartyIdentification(): ?array
@@ -399,6 +459,16 @@ class PartyType
     public function setPartyIdentification(?array $partyIdentification = null): self
     {
         $this->partyIdentification = $partyIdentification;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPartyIdentification(): self
+    {
+        $this->partyIdentification = null;
 
         return $this;
     }
@@ -480,6 +550,16 @@ class PartyType
     public function setPartyName(?array $partyName = null): self
     {
         $this->partyName = $partyName;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPartyName(): self
+    {
+        $this->partyName = null;
 
         return $this;
     }
@@ -576,6 +656,16 @@ class PartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLanguage(): self
+    {
+        $this->language = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\PostalAddress|null
      */
     public function getPostalAddress(): ?PostalAddress
@@ -600,6 +690,16 @@ class PartyType
     public function setPostalAddress(?PostalAddress $postalAddress = null): self
     {
         $this->postalAddress = $postalAddress;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPostalAddress(): self
+    {
+        $this->postalAddress = null;
 
         return $this;
     }
@@ -634,6 +734,16 @@ class PartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPhysicalLocation(): self
+    {
+        $this->physicalLocation = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\PartyTaxScheme>|null
      */
     public function getPartyTaxScheme(): ?array
@@ -648,6 +758,16 @@ class PartyType
     public function setPartyTaxScheme(?array $partyTaxScheme = null): self
     {
         $this->partyTaxScheme = $partyTaxScheme;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPartyTaxScheme(): self
+    {
+        $this->partyTaxScheme = null;
 
         return $this;
     }
@@ -729,6 +849,16 @@ class PartyType
     public function setPartyLegalEntity(?array $partyLegalEntity = null): self
     {
         $this->partyLegalEntity = $partyLegalEntity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPartyLegalEntity(): self
+    {
+        $this->partyLegalEntity = null;
 
         return $this;
     }
@@ -825,6 +955,16 @@ class PartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContact(): self
+    {
+        $this->contact = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Person>|null
      */
     public function getPerson(): ?array
@@ -839,6 +979,16 @@ class PartyType
     public function setPerson(?array $person = null): self
     {
         $this->person = $person;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPerson(): self
+    {
+        $this->person = null;
 
         return $this;
     }
@@ -935,6 +1085,16 @@ class PartyType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAgentParty(): self
+    {
+        $this->agentParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ServiceProviderParty>|null
      */
     public function getServiceProviderParty(): ?array
@@ -949,6 +1109,16 @@ class PartyType
     public function setServiceProviderParty(?array $serviceProviderParty = null): self
     {
         $this->serviceProviderParty = $serviceProviderParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetServiceProviderParty(): self
+    {
+        $this->serviceProviderParty = null;
 
         return $this;
     }
@@ -1030,6 +1200,16 @@ class PartyType
     public function setPowerOfAttorney(?array $powerOfAttorney = null): self
     {
         $this->powerOfAttorney = $powerOfAttorney;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPowerOfAttorney(): self
+    {
+        $this->powerOfAttorney = null;
 
         return $this;
     }
@@ -1121,6 +1301,16 @@ class PartyType
     public function setFinancialAccount(?FinancialAccount $financialAccount = null): self
     {
         $this->financialAccount = $financialAccount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFinancialAccount(): self
+    {
+        $this->financialAccount = null;
 
         return $this;
     }

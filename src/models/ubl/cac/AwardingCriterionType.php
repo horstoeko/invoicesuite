@@ -199,6 +199,16 @@ class AwardingCriterionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\AwardingCriterionTypeCode|null
      */
     public function getAwardingCriterionTypeCode(): ?AwardingCriterionTypeCode
@@ -228,6 +238,16 @@ class AwardingCriterionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAwardingCriterionTypeCode(): self
+    {
+        $this->awardingCriterionTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -242,6 +262,16 @@ class AwardingCriterionType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -338,6 +368,16 @@ class AwardingCriterionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetWeightNumeric(): self
+    {
+        $this->weightNumeric = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Weight>|null
      */
     public function getWeight(): ?array
@@ -352,6 +392,16 @@ class AwardingCriterionType
     public function setWeight(?array $weight = null): self
     {
         $this->weight = $weight;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetWeight(): self
+    {
+        $this->weight = null;
 
         return $this;
     }
@@ -433,6 +483,16 @@ class AwardingCriterionType
     public function setCalculationExpression(?array $calculationExpression = null): self
     {
         $this->calculationExpression = $calculationExpression;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCalculationExpression(): self
+    {
+        $this->calculationExpression = null;
 
         return $this;
     }
@@ -529,6 +589,16 @@ class AwardingCriterionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCalculationExpressionCode(): self
+    {
+        $this->calculationExpressionCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MinimumQuantity|null
      */
     public function getMinimumQuantity(): ?MinimumQuantity
@@ -553,6 +623,16 @@ class AwardingCriterionType
     public function setMinimumQuantity(?MinimumQuantity $minimumQuantity = null): self
     {
         $this->minimumQuantity = $minimumQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMinimumQuantity(): self
+    {
+        $this->minimumQuantity = null;
 
         return $this;
     }
@@ -587,6 +667,16 @@ class AwardingCriterionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMaximumQuantity(): self
+    {
+        $this->maximumQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MinimumAmount|null
      */
     public function getMinimumAmount(): ?MinimumAmount
@@ -611,6 +701,16 @@ class AwardingCriterionType
     public function setMinimumAmount(?MinimumAmount $minimumAmount = null): self
     {
         $this->minimumAmount = $minimumAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMinimumAmount(): self
+    {
+        $this->minimumAmount = null;
 
         return $this;
     }
@@ -645,6 +745,16 @@ class AwardingCriterionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMaximumAmount(): self
+    {
+        $this->maximumAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\MinimumImprovementBid>|null
      */
     public function getMinimumImprovementBid(): ?array
@@ -659,6 +769,16 @@ class AwardingCriterionType
     public function setMinimumImprovementBid(?array $minimumImprovementBid = null): self
     {
         $this->minimumImprovementBid = $minimumImprovementBid;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetMinimumImprovementBid(): self
+    {
+        $this->minimumImprovementBid = null;
 
         return $this;
     }
@@ -740,6 +860,16 @@ class AwardingCriterionType
     public function setSubordinateAwardingCriterion(?array $subordinateAwardingCriterion = null): self
     {
         $this->subordinateAwardingCriterion = $subordinateAwardingCriterion;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSubordinateAwardingCriterion(): self
+    {
+        $this->subordinateAwardingCriterion = null;
 
         return $this;
     }

@@ -134,6 +134,16 @@ class RequestForQuotationLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      */
     public function getUUID(): ?UUID
@@ -163,6 +173,16 @@ class RequestForQuotationLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetUUID(): self
+    {
+        $this->uUID = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -177,6 +197,16 @@ class RequestForQuotationLineType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -263,6 +293,16 @@ class RequestForQuotationLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOptionalLineItemIndicator(): self
+    {
+        $this->optionalLineItemIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PrivacyCode|null
      */
     public function getPrivacyCode(): ?PrivacyCode
@@ -287,6 +327,16 @@ class RequestForQuotationLineType
     public function setPrivacyCode(?PrivacyCode $privacyCode = null): self
     {
         $this->privacyCode = $privacyCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPrivacyCode(): self
+    {
+        $this->privacyCode = null;
 
         return $this;
     }
@@ -322,6 +372,16 @@ class RequestForQuotationLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSecurityClassificationCode(): self
+    {
+        $this->securityClassificationCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      */
     public function getDocumentReference(): ?array
@@ -336,6 +396,16 @@ class RequestForQuotationLineType
     public function setDocumentReference(?array $documentReference = null): self
     {
         $this->documentReference = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDocumentReference(): self
+    {
+        $this->documentReference = null;
 
         return $this;
     }
@@ -427,6 +497,16 @@ class RequestForQuotationLineType
     public function setLineItem(?LineItem $lineItem = null): self
     {
         $this->lineItem = $lineItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLineItem(): self
+    {
+        $this->lineItem = null;
 
         return $this;
     }

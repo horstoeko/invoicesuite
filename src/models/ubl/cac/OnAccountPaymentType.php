@@ -76,6 +76,16 @@ class OnAccountPaymentType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEstimatedConsumedQuantity(): self
+    {
+        $this->estimatedConsumedQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -90,6 +100,16 @@ class OnAccountPaymentType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -171,6 +191,16 @@ class OnAccountPaymentType
     public function setPaymentTerms(?array $paymentTerms = null): self
     {
         $this->paymentTerms = $paymentTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPaymentTerms(): self
+    {
+        $this->paymentTerms = null;
 
         return $this;
     }

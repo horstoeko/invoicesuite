@@ -43,6 +43,16 @@ class UBLExtensionsType
     /**
      * @return self
      */
+    public function unsetUBLExtension(): self
+    {
+        $this->uBLExtension = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearUBLExtension(): self
     {
         $this->uBLExtension = [];

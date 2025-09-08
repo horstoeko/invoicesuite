@@ -111,6 +111,16 @@ class ItemInformationRequestLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTimeFrequencyCode(): self
+    {
+        $this->timeFrequencyCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SupplyChainActivityTypeCode|null
      */
     public function getSupplyChainActivityTypeCode(): ?SupplyChainActivityTypeCode
@@ -136,6 +146,16 @@ class ItemInformationRequestLineType
         ?SupplyChainActivityTypeCode $supplyChainActivityTypeCode = null,
     ): self {
         $this->supplyChainActivityTypeCode = $supplyChainActivityTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSupplyChainActivityTypeCode(): self
+    {
+        $this->supplyChainActivityTypeCode = null;
 
         return $this;
     }
@@ -170,6 +190,16 @@ class ItemInformationRequestLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetForecastTypeCode(): self
+    {
+        $this->forecastTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode|null
      */
     public function getPerformanceMetricTypeCode(): ?PerformanceMetricTypeCode
@@ -199,6 +229,16 @@ class ItemInformationRequestLineType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPerformanceMetricTypeCode(): self
+    {
+        $this->performanceMetricTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Period>|null
      */
     public function getPeriod(): ?array
@@ -213,6 +253,16 @@ class ItemInformationRequestLineType
     public function setPeriod(?array $period = null): self
     {
         $this->period = $period;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPeriod(): self
+    {
+        $this->period = null;
 
         return $this;
     }
@@ -294,6 +344,16 @@ class ItemInformationRequestLineType
     public function setSalesItem(?array $salesItem = null): self
     {
         $this->salesItem = $salesItem;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSalesItem(): self
+    {
+        $this->salesItem = null;
 
         return $this;
     }

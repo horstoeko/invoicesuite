@@ -184,6 +184,16 @@ class ConsumptionCorrectionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCorrectionType(): self
+    {
+        $this->correctionType = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CorrectionTypeCode|null
      */
     public function getCorrectionTypeCode(): ?CorrectionTypeCode
@@ -208,6 +218,16 @@ class ConsumptionCorrectionType
     public function setCorrectionTypeCode(?CorrectionTypeCode $correctionTypeCode = null): self
     {
         $this->correctionTypeCode = $correctionTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCorrectionTypeCode(): self
+    {
+        $this->correctionTypeCode = null;
 
         return $this;
     }
@@ -242,6 +262,16 @@ class ConsumptionCorrectionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMeterNumber(): self
+    {
+        $this->meterNumber = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\GasPressureQuantity|null
      */
     public function getGasPressureQuantity(): ?GasPressureQuantity
@@ -266,6 +296,16 @@ class ConsumptionCorrectionType
     public function setGasPressureQuantity(?GasPressureQuantity $gasPressureQuantity = null): self
     {
         $this->gasPressureQuantity = $gasPressureQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetGasPressureQuantity(): self
+    {
+        $this->gasPressureQuantity = null;
 
         return $this;
     }
@@ -301,6 +341,16 @@ class ConsumptionCorrectionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetActualTemperatureReductionQuantity(): self
+    {
+        $this->actualTemperatureReductionQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\NormalTemperatureReductionQuantity|null
      */
     public function getNormalTemperatureReductionQuantity(): ?NormalTemperatureReductionQuantity
@@ -326,6 +376,16 @@ class ConsumptionCorrectionType
         ?NormalTemperatureReductionQuantity $normalTemperatureReductionQuantity = null,
     ): self {
         $this->normalTemperatureReductionQuantity = $normalTemperatureReductionQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNormalTemperatureReductionQuantity(): self
+    {
+        $this->normalTemperatureReductionQuantity = null;
 
         return $this;
     }
@@ -361,6 +421,16 @@ class ConsumptionCorrectionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDifferenceTemperatureReductionQuantity(): self
+    {
+        $this->differenceTemperatureReductionQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -375,6 +445,16 @@ class ConsumptionCorrectionType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -471,6 +551,16 @@ class ConsumptionCorrectionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCorrectionUnitAmount(): self
+    {
+        $this->correctionUnitAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ConsumptionEnergyQuantity|null
      */
     public function getConsumptionEnergyQuantity(): ?ConsumptionEnergyQuantity
@@ -495,6 +585,16 @@ class ConsumptionCorrectionType
     public function setConsumptionEnergyQuantity(?ConsumptionEnergyQuantity $consumptionEnergyQuantity = null): self
     {
         $this->consumptionEnergyQuantity = $consumptionEnergyQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetConsumptionEnergyQuantity(): self
+    {
+        $this->consumptionEnergyQuantity = null;
 
         return $this;
     }
@@ -529,6 +629,16 @@ class ConsumptionCorrectionType
     }
 
     /**
+     * @return self
+     */
+    public function unsetConsumptionWaterQuantity(): self
+    {
+        $this->consumptionWaterQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CorrectionAmount|null
      */
     public function getCorrectionAmount(): ?CorrectionAmount
@@ -553,6 +663,16 @@ class ConsumptionCorrectionType
     public function setCorrectionAmount(?CorrectionAmount $correctionAmount = null): self
     {
         $this->correctionAmount = $correctionAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCorrectionAmount(): self
+    {
+        $this->correctionAmount = null;
 
         return $this;
     }

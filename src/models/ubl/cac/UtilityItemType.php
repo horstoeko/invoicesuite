@@ -218,6 +218,16 @@ class UtilityItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SubscriberID|null
      */
     public function getSubscriberID(): ?SubscriberID
@@ -242,6 +252,16 @@ class UtilityItemType
     public function setSubscriberID(?SubscriberID $subscriberID = null): self
     {
         $this->subscriberID = $subscriberID;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetSubscriberID(): self
+    {
+        $this->subscriberID = null;
 
         return $this;
     }
@@ -276,6 +296,16 @@ class UtilityItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSubscriberType(): self
+    {
+        $this->subscriberType = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SubscriberTypeCode|null
      */
     public function getSubscriberTypeCode(): ?SubscriberTypeCode
@@ -305,6 +335,16 @@ class UtilityItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetSubscriberTypeCode(): self
+    {
+        $this->subscriberTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -319,6 +359,16 @@ class UtilityItemType
     public function setDescription(?array $description = null): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetDescription(): self
+    {
+        $this->description = null;
 
         return $this;
     }
@@ -415,6 +465,16 @@ class UtilityItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPackQuantity(): self
+    {
+        $this->packQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PackSizeNumeric|null
      */
     public function getPackSizeNumeric(): ?PackSizeNumeric
@@ -439,6 +499,16 @@ class UtilityItemType
     public function setPackSizeNumeric(?PackSizeNumeric $packSizeNumeric = null): self
     {
         $this->packSizeNumeric = $packSizeNumeric;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPackSizeNumeric(): self
+    {
+        $this->packSizeNumeric = null;
 
         return $this;
     }
@@ -473,6 +543,16 @@ class UtilityItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetConsumptionType(): self
+    {
+        $this->consumptionType = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ConsumptionTypeCode|null
      */
     public function getConsumptionTypeCode(): ?ConsumptionTypeCode
@@ -497,6 +577,16 @@ class UtilityItemType
     public function setConsumptionTypeCode(?ConsumptionTypeCode $consumptionTypeCode = null): self
     {
         $this->consumptionTypeCode = $consumptionTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetConsumptionTypeCode(): self
+    {
+        $this->consumptionTypeCode = null;
 
         return $this;
     }
@@ -531,6 +621,16 @@ class UtilityItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCurrentChargeType(): self
+    {
+        $this->currentChargeType = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\CurrentChargeTypeCode|null
      */
     public function getCurrentChargeTypeCode(): ?CurrentChargeTypeCode
@@ -555,6 +655,16 @@ class UtilityItemType
     public function setCurrentChargeTypeCode(?CurrentChargeTypeCode $currentChargeTypeCode = null): self
     {
         $this->currentChargeTypeCode = $currentChargeTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetCurrentChargeTypeCode(): self
+    {
+        $this->currentChargeTypeCode = null;
 
         return $this;
     }
@@ -589,6 +699,16 @@ class UtilityItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOneTimeChargeType(): self
+    {
+        $this->oneTimeChargeType = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\OneTimeChargeTypeCode|null
      */
     public function getOneTimeChargeTypeCode(): ?OneTimeChargeTypeCode
@@ -613,6 +733,16 @@ class UtilityItemType
     public function setOneTimeChargeTypeCode(?OneTimeChargeTypeCode $oneTimeChargeTypeCode = null): self
     {
         $this->oneTimeChargeTypeCode = $oneTimeChargeTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetOneTimeChargeTypeCode(): self
+    {
+        $this->oneTimeChargeTypeCode = null;
 
         return $this;
     }
@@ -647,6 +777,16 @@ class UtilityItemType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTaxCategory(): self
+    {
+        $this->taxCategory = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Contract|null
      */
     public function getContract(): ?Contract
@@ -671,6 +811,16 @@ class UtilityItemType
     public function setContract(?Contract $contract = null): self
     {
         $this->contract = $contract;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContract(): self
+    {
+        $this->contract = null;
 
         return $this;
     }

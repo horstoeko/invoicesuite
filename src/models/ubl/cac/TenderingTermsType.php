@@ -541,6 +541,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAwardingMethodTypeCode(): self
+    {
+        $this->awardingMethodTypeCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PriceEvaluationCode|null
      */
     public function getPriceEvaluationCode(): ?PriceEvaluationCode
@@ -565,6 +575,16 @@ class TenderingTermsType
     public function setPriceEvaluationCode(?PriceEvaluationCode $priceEvaluationCode = null): self
     {
         $this->priceEvaluationCode = $priceEvaluationCode;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPriceEvaluationCode(): self
+    {
+        $this->priceEvaluationCode = null;
 
         return $this;
     }
@@ -599,6 +619,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMaximumVariantQuantity(): self
+    {
+        $this->maximumVariantQuantity = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getVariantConstraintIndicator(): ?bool
@@ -618,6 +648,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetVariantConstraintIndicator(): self
+    {
+        $this->variantConstraintIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\AcceptedVariantsDescription>|null
      */
     public function getAcceptedVariantsDescription(): ?array
@@ -632,6 +672,16 @@ class TenderingTermsType
     public function setAcceptedVariantsDescription(?array $acceptedVariantsDescription = null): self
     {
         $this->acceptedVariantsDescription = $acceptedVariantsDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAcceptedVariantsDescription(): self
+    {
+        $this->acceptedVariantsDescription = null;
 
         return $this;
     }
@@ -714,6 +764,16 @@ class TenderingTermsType
     public function setPriceRevisionFormulaDescription(?array $priceRevisionFormulaDescription = null): self
     {
         $this->priceRevisionFormulaDescription = $priceRevisionFormulaDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPriceRevisionFormulaDescription(): self
+    {
+        $this->priceRevisionFormulaDescription = null;
 
         return $this;
     }
@@ -812,6 +872,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFundingProgramCode(): self
+    {
+        $this->fundingProgramCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\FundingProgram>|null
      */
     public function getFundingProgram(): ?array
@@ -826,6 +896,16 @@ class TenderingTermsType
     public function setFundingProgram(?array $fundingProgram = null): self
     {
         $this->fundingProgram = $fundingProgram;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetFundingProgram(): self
+    {
+        $this->fundingProgram = null;
 
         return $this;
     }
@@ -923,6 +1003,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetMaximumAdvertisementAmount(): self
+    {
+        $this->maximumAdvertisementAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Note>|null
      */
     public function getNote(): ?array
@@ -937,6 +1027,16 @@ class TenderingTermsType
     public function setNote(?array $note = null): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetNote(): self
+    {
+        $this->note = null;
 
         return $this;
     }
@@ -1033,6 +1133,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetPaymentFrequencyCode(): self
+    {
+        $this->paymentFrequencyCode = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\EconomicOperatorRegistryURI|null
      */
     public function getEconomicOperatorRegistryURI(): ?EconomicOperatorRegistryURI
@@ -1063,6 +1173,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEconomicOperatorRegistryURI(): self
+    {
+        $this->economicOperatorRegistryURI = null;
+
+        return $this;
+    }
+
+    /**
      * @return bool|null
      */
     public function getRequiredCurriculaIndicator(): ?bool
@@ -1077,6 +1197,16 @@ class TenderingTermsType
     public function setRequiredCurriculaIndicator(?bool $requiredCurriculaIndicator = null): self
     {
         $this->requiredCurriculaIndicator = $requiredCurriculaIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRequiredCurriculaIndicator(): self
+    {
+        $this->requiredCurriculaIndicator = null;
 
         return $this;
     }
@@ -1101,6 +1231,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetOtherConditionsIndicator(): self
+    {
+        $this->otherConditionsIndicator = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\AdditionalConditions>|null
      */
     public function getAdditionalConditions(): ?array
@@ -1115,6 +1255,16 @@ class TenderingTermsType
     public function setAdditionalConditions(?array $additionalConditions = null): self
     {
         $this->additionalConditions = $additionalConditions;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAdditionalConditions(): self
+    {
+        $this->additionalConditions = null;
 
         return $this;
     }
@@ -1201,6 +1351,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetLatestSecurityClearanceDate(): self
+    {
+        $this->latestSecurityClearanceDate = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\DocumentationFeeAmount|null
      */
     public function getDocumentationFeeAmount(): ?DocumentationFeeAmount
@@ -1230,6 +1390,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDocumentationFeeAmount(): self
+    {
+        $this->documentationFeeAmount = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\PenaltyClause>|null
      */
     public function getPenaltyClause(): ?array
@@ -1244,6 +1414,16 @@ class TenderingTermsType
     public function setPenaltyClause(?array $penaltyClause = null): self
     {
         $this->penaltyClause = $penaltyClause;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPenaltyClause(): self
+    {
+        $this->penaltyClause = null;
 
         return $this;
     }
@@ -1325,6 +1505,16 @@ class TenderingTermsType
     public function setRequiredFinancialGuarantee(?array $requiredFinancialGuarantee = null): self
     {
         $this->requiredFinancialGuarantee = $requiredFinancialGuarantee;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetRequiredFinancialGuarantee(): self
+    {
+        $this->requiredFinancialGuarantee = null;
 
         return $this;
     }
@@ -1422,6 +1612,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetProcurementLegislationDocumentReference(): self
+    {
+        $this->procurementLegislationDocumentReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\FiscalLegislationDocumentReference|null
      */
     public function getFiscalLegislationDocumentReference(): ?FiscalLegislationDocumentReference
@@ -1452,6 +1652,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetFiscalLegislationDocumentReference(): self
+    {
+        $this->fiscalLegislationDocumentReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\EnvironmentalLegislationDocumentReference|null
      */
     public function getEnvironmentalLegislationDocumentReference(): ?EnvironmentalLegislationDocumentReference
@@ -1462,8 +1672,8 @@ class TenderingTermsType
     /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\EnvironmentalLegislationDocumentReference
      */
-    public function getEnvironmentalLegislationDocumentReferenceWithCreate(): EnvironmentalLegislationDocumentReference
-    {
+    public function getEnvironmentalLegislationDocumentReferenceWithCreate(
+    ): EnvironmentalLegislationDocumentReference {
         $this->environmentalLegislationDocumentReference = is_null($this->environmentalLegislationDocumentReference) ? new EnvironmentalLegislationDocumentReference() : $this->environmentalLegislationDocumentReference;
 
         return $this->environmentalLegislationDocumentReference;
@@ -1477,6 +1687,16 @@ class TenderingTermsType
         ?EnvironmentalLegislationDocumentReference $environmentalLegislationDocumentReference = null,
     ): self {
         $this->environmentalLegislationDocumentReference = $environmentalLegislationDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetEnvironmentalLegislationDocumentReference(): self
+    {
+        $this->environmentalLegislationDocumentReference = null;
 
         return $this;
     }
@@ -1512,6 +1732,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetEmploymentLegislationDocumentReference(): self
+    {
+        $this->employmentLegislationDocumentReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ContractualDocumentReference>|null
      */
     public function getContractualDocumentReference(): ?array
@@ -1526,6 +1756,16 @@ class TenderingTermsType
     public function setContractualDocumentReference(?array $contractualDocumentReference = null): self
     {
         $this->contractualDocumentReference = $contractualDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContractualDocumentReference(): self
+    {
+        $this->contractualDocumentReference = null;
 
         return $this;
     }
@@ -1625,6 +1865,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetCallForTendersDocumentReference(): self
+    {
+        $this->callForTendersDocumentReference = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\WarrantyValidityPeriod|null
      */
     public function getWarrantyValidityPeriod(): ?WarrantyValidityPeriod
@@ -1654,6 +1904,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetWarrantyValidityPeriod(): self
+    {
+        $this->warrantyValidityPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>|null
      */
     public function getPaymentTerms(): ?array
@@ -1668,6 +1928,16 @@ class TenderingTermsType
     public function setPaymentTerms(?array $paymentTerms = null): self
     {
         $this->paymentTerms = $paymentTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetPaymentTerms(): self
+    {
+        $this->paymentTerms = null;
 
         return $this;
     }
@@ -1749,6 +2019,16 @@ class TenderingTermsType
     public function setTendererQualificationRequest(?array $tendererQualificationRequest = null): self
     {
         $this->tendererQualificationRequest = $tendererQualificationRequest;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTendererQualificationRequest(): self
+    {
+        $this->tendererQualificationRequest = null;
 
         return $this;
     }
@@ -1839,6 +2119,16 @@ class TenderingTermsType
     /**
      * @return self
      */
+    public function unsetAllowedSubcontractTerms(): self
+    {
+        $this->allowedSubcontractTerms = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearAllowedSubcontractTerms(): self
     {
         $this->allowedSubcontractTerms = [];
@@ -1920,6 +2210,16 @@ class TenderingTermsType
     /**
      * @return self
      */
+    public function unsetTenderPreparation(): self
+    {
+        $this->tenderPreparation = null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
     public function clearTenderPreparation(): self
     {
         $this->tenderPreparation = [];
@@ -1994,6 +2294,16 @@ class TenderingTermsType
     public function setContractExecutionRequirement(?array $contractExecutionRequirement = null): self
     {
         $this->contractExecutionRequirement = $contractExecutionRequirement;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContractExecutionRequirement(): self
+    {
+        $this->contractExecutionRequirement = null;
 
         return $this;
     }
@@ -2092,6 +2402,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAwardingTerms(): self
+    {
+        $this->awardingTerms = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\AdditionalInformationParty|null
      */
     public function getAdditionalInformationParty(): ?AdditionalInformationParty
@@ -2117,6 +2437,16 @@ class TenderingTermsType
         ?AdditionalInformationParty $additionalInformationParty = null,
     ): self {
         $this->additionalInformationParty = $additionalInformationParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetAdditionalInformationParty(): self
+    {
+        $this->additionalInformationParty = null;
 
         return $this;
     }
@@ -2151,6 +2481,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetDocumentProviderParty(): self
+    {
+        $this->documentProviderParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\TenderRecipientParty|null
      */
     public function getTenderRecipientParty(): ?TenderRecipientParty
@@ -2175,6 +2515,16 @@ class TenderingTermsType
     public function setTenderRecipientParty(?TenderRecipientParty $tenderRecipientParty = null): self
     {
         $this->tenderRecipientParty = $tenderRecipientParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTenderRecipientParty(): self
+    {
+        $this->tenderRecipientParty = null;
 
         return $this;
     }
@@ -2209,6 +2559,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetContractResponsibleParty(): self
+    {
+        $this->contractResponsibleParty = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TenderEvaluationParty>|null
      */
     public function getTenderEvaluationParty(): ?array
@@ -2223,6 +2583,16 @@ class TenderingTermsType
     public function setTenderEvaluationParty(?array $tenderEvaluationParty = null): self
     {
         $this->tenderEvaluationParty = $tenderEvaluationParty;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetTenderEvaluationParty(): self
+    {
+        $this->tenderEvaluationParty = null;
 
         return $this;
     }
@@ -2319,6 +2689,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetTenderValidityPeriod(): self
+    {
+        $this->tenderValidityPeriod = null;
+
+        return $this;
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ContractAcceptancePeriod|null
      */
     public function getContractAcceptancePeriod(): ?ContractAcceptancePeriod
@@ -2343,6 +2723,16 @@ class TenderingTermsType
     public function setContractAcceptancePeriod(?ContractAcceptancePeriod $contractAcceptancePeriod = null): self
     {
         $this->contractAcceptancePeriod = $contractAcceptancePeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetContractAcceptancePeriod(): self
+    {
+        $this->contractAcceptancePeriod = null;
 
         return $this;
     }
@@ -2377,6 +2767,16 @@ class TenderingTermsType
     }
 
     /**
+     * @return self
+     */
+    public function unsetAppealTerms(): self
+    {
+        $this->appealTerms = null;
+
+        return $this;
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Language>|null
      */
     public function getLanguage(): ?array
@@ -2391,6 +2791,16 @@ class TenderingTermsType
     public function setLanguage(?array $language = null): self
     {
         $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetLanguage(): self
+    {
+        $this->language = null;
 
         return $this;
     }
@@ -2472,6 +2882,16 @@ class TenderingTermsType
     public function setBudgetAccountLine(?array $budgetAccountLine = null): self
     {
         $this->budgetAccountLine = $budgetAccountLine;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetBudgetAccountLine(): self
+    {
+        $this->budgetAccountLine = null;
 
         return $this;
     }
@@ -2564,6 +2984,16 @@ class TenderingTermsType
         ?ReplacedNoticeDocumentReference $replacedNoticeDocumentReference = null,
     ): self {
         $this->replacedNoticeDocumentReference = $replacedNoticeDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function unsetReplacedNoticeDocumentReference(): self
+    {
+        $this->replacedNoticeDocumentReference = null;
 
         return $this;
     }

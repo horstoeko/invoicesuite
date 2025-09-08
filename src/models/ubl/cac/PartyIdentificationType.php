@@ -49,4 +49,14 @@ class PartyIdentificationType
 
         return $this;
     }
+
+    /**
+     * @return self
+     */
+    public function unsetID(): self
+    {
+        $this->iD = null;
+
+        return $this;
+    }
 }
