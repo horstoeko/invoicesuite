@@ -58,13 +58,25 @@
         "tests": "./vendor/bin/phpunit ./tests/",
         "testsreal": "./vendor/bin/phpunit --configuration ./build/phpunit.xml",
         "phpcs": "@phpcs12",
-        "phpcs12": "./vendor/bin/phpcs --standard=./build/phpcsrules_psr12.xml --extensions=php --ignore=autoload.php ./src ./tests",
+        "phpcs12": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpcs --standard=./build/phpcsrules_psr12.xml --extensions=php --ignore=autoload.php ./src ./tests"
+        ],
         "phpcbf": "@phpcbf12",
-        "phpcbf12": "./vendor/bin/phpcbf --standard=./build/phpcsrules_psr12.xml -q ./src ./tests",
+        "phpcbf12": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpcbf --standard=./build/phpcsrules_psr12.xml -q ./src ./tests"
+        ],
         "phpstan": "@phpstan12",
-        "phpstan12": "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress",
+        "phpstan12": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress"
+        ],
         "phpmd": "@phpmd12",
-        "phpmd12": "./vendor/bin/phpmd src xml ./build/phpmd.xml",
+        "phpmd12": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpmd src xml ./build/phpmd.xml"
+        ],
         "checkstyle": [
             "Composer\\Config::disableProcessTimeout",
             "@phpmd",
