@@ -36,16 +36,6 @@ trait HandlesXmlTests
     }
 
     /**
-     * Dummy Test
-     *
-     * @return void
-     */
-    public function testDummy()
-    {
-        $this->assertTrue(true);
-    }
-
-    /**
      * Get XML-Object from documents content
      *
      * @return \SimpleXMLElement

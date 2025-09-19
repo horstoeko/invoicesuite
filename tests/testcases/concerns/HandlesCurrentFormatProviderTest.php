@@ -29,7 +29,6 @@ class HandlesCurrentFormatProviderTest extends TestCase
     {
         $this->assertNull($this->currentInvoiceSuiteAbstractFormatProvider);
         $this->setCurrentFormatProvider(new InvoiceSuiteZfFxExtendedProvider());
-        $this->assertIsArray($this->resolveCurrentFormatProviderParameters());
         $this->assertNotEmpty($this->resolveCurrentFormatProviderParameters());
         $this->assertCount(3, $this->resolveCurrentFormatProviderParameters());
     }

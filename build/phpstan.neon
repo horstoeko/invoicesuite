@@ -1,6 +1,7 @@
 parameters:
     paths:
         - ../src
+        - ../tests/testcases
     level: 6
     treatPhpDocTypesAsCertain: false
     excludePaths:

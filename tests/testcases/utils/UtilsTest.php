@@ -25,10 +25,16 @@ class UtilsTest extends TestCase
     {
         $variable = "X";
 
+        /**
+         * @phpstan-ignore method.alreadyNarrowedType
+         */
         $this->assertIsNotArray($variable);
 
         $variable = InvoiceSuiteArrayUtils::ensure($variable);
 
+        /**
+         * @phpstan-ignore method.alreadyNarrowedType
+         */
         $this->assertIsArray($variable);
         $this->assertCount(1, $variable);
     }
@@ -37,10 +43,16 @@ class UtilsTest extends TestCase
     {
         $variable = ["X", "y", "z"];
 
+        /**
+         * @phpstan-ignore method.alreadyNarrowedType
+         */
         $this->assertIsArray($variable);
 
         $variable = InvoiceSuiteArrayUtils::ensure($variable);
 
+        /**
+         * @phpstan-ignore method.alreadyNarrowedType
+         */
         $this->assertIsArray($variable);
         $this->assertCount(3, $variable);
     }
@@ -537,7 +549,7 @@ class UtilsTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Not a valid URL: Dummy');
 
-        $attachment = InvoiceSuiteAttachment::fromUrl('Dummy', 'test.txt');
+        $attachment = InvoiceSuiteAttachment::fromUrl('Dummy');
     }
 
     #endregion
@@ -559,7 +571,7 @@ class UtilsTest extends TestCase
         $classNames = $this->getPrivatePropertyFromObject($classFinder, 'classNames');
 
         $this->assertIsArray($classNames->getValue($classFinder));
-        $this->assertNotEmpty($classNames, 'Classnames should have been filled by Init ()');
+        $this->assertNotEmpty($classNames->getValue($classFinder));
 
         // Two
 
@@ -570,10 +582,13 @@ class UtilsTest extends TestCase
         $classNames = $this->getPrivatePropertyFromObject($classFinder, 'classNames');
 
         $this->assertIsArray($classNames->getValue($classFinder));
-        $this->assertNotEmpty($classNames, 'Classnames should have been filled by Init ()');
+        $this->assertNotEmpty($classNames->getValue($classFinder), 'Classnames should have been filled by Init ()');
 
         $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractFormatProvider::class, true);
 
+        /**
+         * @phpstan-ignore method.alreadyNarrowedType
+         */
         $this->assertIsArray($classNames);
         $this->assertCount(6, $classNames);
 
@@ -588,6 +603,9 @@ class UtilsTest extends TestCase
 
         $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractFormatProvider::class, true);
 
+        /**
+         * @phpstan-ignore method.alreadyNarrowedType
+         */
         $this->assertIsArray($classNames);
         $this->assertEmpty($classNames);
         $this->assertFileDoesNotExist($cacheFullFilename);
@@ -601,18 +619,27 @@ class UtilsTest extends TestCase
 
         $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractFormatProvider::class, true);
 
+        /**
+         * @phpstan-ignore method.alreadyNarrowedType
+         */
         $this->assertIsArray($classNames);
         $this->assertCount(6, $classNames);
         $this->assertFileDoesNotExist($cacheFullFilename);
 
         $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractFormatProvider::class, false);
 
+        /**
+         * @phpstan-ignore method.alreadyNarrowedType
+         */
         $this->assertIsArray($classNames);
         $this->assertCount(6, $classNames);
         $this->assertFileExists($cacheFullFilename);
 
         $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractFormatProvider::class, false);
 
+        /**
+         * @phpstan-ignore method.alreadyNarrowedType
+         */
         $this->assertIsArray($classNames);
         $this->assertCount(6, $classNames);
         $this->assertFileExists($cacheFullFilename);

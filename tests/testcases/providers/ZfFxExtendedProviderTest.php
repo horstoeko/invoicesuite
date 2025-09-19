@@ -27,8 +27,6 @@ class ZfFxExtendedProviderTest extends TestCase
     {
         $provider = new InvoiceSuiteZfFxExtendedProvider();
 
-        $this->assertIsArray($provider->getParameters());
-
         $this->assertArrayHasKey('CONTEXTPARAMETER', $provider->getParameters());
         $this->assertArrayHasKey('ALTERNATIVECONTEXTPARAMETERS', $provider->getParameters());
         $this->assertArrayHasKey('BUSINESSPROCESS', $provider->getParameters());
@@ -48,7 +46,6 @@ class ZfFxExtendedProviderTest extends TestCase
     {
         $provider = new InvoiceSuiteZfFxExtendedProvider();
 
-        $this->assertIsArray($provider->getSerializerMetadataDirectories());
         $this->assertEmpty($provider->getSerializerMetadataDirectories());
     }
 
@@ -56,7 +53,6 @@ class ZfFxExtendedProviderTest extends TestCase
     {
         $provider = new InvoiceSuiteZfFxExtendedProvider();
 
-        $this->assertIsArray($provider->getSerializerHandlers());
         $this->assertCount(1, $provider->getSerializerHandlers());
         $this->assertContains(InvoiceSuiteZfFxExtendedSerializerHandler::class, $provider->getSerializerHandlers());
     }
@@ -65,7 +61,6 @@ class ZfFxExtendedProviderTest extends TestCase
     {
         $provider = new InvoiceSuiteZfFxExtendedProvider();
 
-        $this->assertIsArray($provider->getSerializerListeners());
         $this->assertEmpty($provider->getSerializerListeners());
     }
 
@@ -73,7 +68,6 @@ class ZfFxExtendedProviderTest extends TestCase
     {
         $provider = new InvoiceSuiteZfFxExtendedProvider();
 
-        $this->assertIsArray($provider->getSerializerSubscribers());
         $this->assertEmpty($provider->getSerializerSubscribers());
     }
 
@@ -81,7 +75,6 @@ class ZfFxExtendedProviderTest extends TestCase
     {
         $provider = new InvoiceSuiteZfFxExtendedProvider();
 
-        $this->assertIsArray($provider->getSerializerGroups());
         $this->assertCount(1, $provider->getSerializerGroups());
         $this->assertContains('zffx', $provider->getSerializerGroups());
     }
