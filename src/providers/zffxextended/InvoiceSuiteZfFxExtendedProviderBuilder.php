@@ -9889,12 +9889,10 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
             return $this;
         }
 
-        $latestPosition = $this
+        $sellerOrderReference = $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
-            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
-
-        $sellerOrderReference = $latestPosition
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
             ->getSpecifiedLineTradeAgreementWithCreate()
             ->getSellerOrderReferencedDocumentWithCreate();
 
@@ -9962,12 +9960,10 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
             return $this;
         }
 
-        $latestPosition = $this
+        $buyerOrderReference = $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
-            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
-
-        $buyerOrderReference = $latestPosition
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
             ->getSpecifiedLineTradeAgreementWithCreate()
             ->getBuyerOrderReferencedDocumentWithCreate();
 
@@ -10035,12 +10031,10 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
             return $this;
         }
 
-        $latestPosition = $this
+        $quotationOrderReference = $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
-            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
-
-        $quotationOrderReference = $latestPosition
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
             ->getSpecifiedLineTradeAgreementWithCreate()
             ->getQuotationReferencedDocumentWithCreate();
 
@@ -10108,12 +10102,10 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
             return $this;
         }
 
-        $latestPosition = $this
+        $contractOrderReference = $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
-            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
-
-        $contractOrderReference = $latestPosition
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
             ->getSpecifiedLineTradeAgreementWithCreate()
             ->getContractReferencedDocumentWithCreate();
 
@@ -10227,12 +10219,10 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
             return $this;
         }
 
-        $latestPosition = $this
+        $additionalReference = $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
-            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
-
-        $additionalReference = $latestPosition
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
             ->getSpecifiedLineTradeAgreementWithCreate()
             ->addToAdditionalReferencedDocumentWithCreate();
 
@@ -10337,12 +10327,10 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
             return $this;
         }
 
-        $latestPosition = $this
+        $ultimateCustomerOrderReference = $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
-            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
-
-        $ultimateCustomerOrderReference = $latestPosition
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
             ->getSpecifiedLineTradeAgreementWithCreate()
             ->addToUltimateCustomerOrderReferencedDocumentWithCreate();
 
@@ -10384,12 +10372,10 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
             return $this;
         }
 
-        $latestPosition = $this
+        $despatchAdviceReference = $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
-            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
-
-        $despatchAdviceReference = $latestPosition
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
             ->getSpecifiedLineTradeDeliveryWithCreate()
             ->getDespatchAdviceReferencedDocumentWithCreate();
 
@@ -10457,12 +10443,10 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
             return $this;
         }
 
-        $latestPosition = $this
+        $receivingAdviceReference = $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
-            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
-
-        $receivingAdviceReference = $latestPosition
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
             ->getSpecifiedLineTradeDeliveryWithCreate()
             ->getReceivingAdviceReferencedDocumentWithCreate();
 
@@ -10530,12 +10514,10 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
             return $this;
         }
 
-        $latestPosition = $this
+        $deliveryNoteReference = $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
-            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
-
-        $deliveryNoteReference = $latestPosition
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
             ->getSpecifiedLineTradeDeliveryWithCreate()
             ->getDeliveryNoteReferencedDocumentWithCreate();
 
@@ -10605,12 +10587,10 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
             return $this;
         }
 
-        $latestPosition = $this
+        $invoiceReference = $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
-            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
-
-        $invoiceReference = $latestPosition
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
             ->getSpecifiedLineTradeSettlementWithCreate()
             ->getInvoiceReferencedDocumentWithCreate();
 
@@ -10682,12 +10662,10 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
             return $this;
         }
 
-        $latestPosition = $this
+        $grossPrice = $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
-            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
-
-        $grossPrice = $latestPosition
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
             ->getSpecifiedLineTradeAgreementWithCreate()
             ->getGrossPriceProductTradePriceWithCreate();
 

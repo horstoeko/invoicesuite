@@ -8048,12 +8048,10 @@ class InvoiceSuiteZfFxComfortProviderBuilder extends InvoiceSuiteAbstractFormatP
             return $this;
         }
 
-        $latestPosition = $this
+        $buyerOrderReference = $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
-            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
-
-        $buyerOrderReference = $latestPosition
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
             ->getSpecifiedLineTradeAgreementWithCreate()
             ->getBuyerOrderReferencedDocumentWithCreate();
 
@@ -8429,12 +8427,10 @@ class InvoiceSuiteZfFxComfortProviderBuilder extends InvoiceSuiteAbstractFormatP
             return $this;
         }
 
-        $latestPosition = $this
+        $grossPrice = $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
-            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
-
-        $grossPrice = $latestPosition
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
             ->getSpecifiedLineTradeAgreementWithCreate()
             ->getGrossPriceProductTradePriceWithCreate();
 
