@@ -172,7 +172,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
 
         // Document-Level Notes
 
-        $newDocumentDTO->forEachNote(fn(InvoiceSuiteNoteDTO $note) => $this->addDocumentNote(
+        $newDocumentDTO->forEachNote(fn (InvoiceSuiteNoteDTO $note) => $this->addDocumentNote(
             $note->getContent(),
             $note->getContentCode(),
             $note->getSubjectCode()
@@ -181,7 +181,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         // Document-Level Billing period
 
         $newDocumentDTO->firstBillingPeriod(
-            fn(InvoiceSuiteDateRangeDTO $item) => $this->setDocumentBillingPeriod(
+            fn (InvoiceSuiteDateRangeDTO $item) => $this->setDocumentBillingPeriod(
                 $item->getStartDate(),
                 $item->getEndDate(),
                 $item->getDescription()
@@ -191,7 +191,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         // Document-Level Posting Reference
 
         $newDocumentDTO->firstPostingReference(
-            fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPostingReference(
+            fn (InvoiceSuiteIdDTO $item) => $this->setDocumentPostingReference(
                 $item->getIdType(),
                 $item->getId()
             )
@@ -200,7 +200,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         // Document-Level Seller Order Reference
 
         $newDocumentDTO->firstSellerOrderReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentSellerOrderReference(
+            fn (InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentSellerOrderReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
@@ -209,7 +209,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         // Document-Level Buyer Order Reference
 
         $newDocumentDTO->firstBuyerOrderReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentBuyerOrderReference(
+            fn (InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentBuyerOrderReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
@@ -218,7 +218,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         // Document-Level Quotation Reference
 
         $newDocumentDTO->firstQuotationReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentQuotationReference(
+            fn (InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentQuotationReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
@@ -227,7 +227,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         // Document-Level Contract Reference
 
         $newDocumentDTO->firstContractReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentContractReference(
+            fn (InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentContractReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
@@ -236,7 +236,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         // Document-Level Additional Reference
 
         $newDocumentDTO->forEachAdditionalReference(
-            fn(InvoiceSuiteReferenceDocumentExtDTO $item) => $this->addDocumentAdditionalReference(
+            fn (InvoiceSuiteReferenceDocumentExtDTO $item) => $this->addDocumentAdditionalReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate(),
                 $item->getTypeCode(),
@@ -249,7 +249,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         // Document-Level Invoice Reference
 
         $newDocumentDTO->forEachInvoiceReference(
-            fn(InvoiceSuiteReferenceDocumentExtDTO $item) => $this->addDocumentInvoiceReference(
+            fn (InvoiceSuiteReferenceDocumentExtDTO $item) => $this->addDocumentInvoiceReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate(),
                 $item->getTypeCode()
@@ -259,7 +259,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         // Document-Level Project Reference
 
         $newDocumentDTO->firstProjectReference(
-            fn(InvoiceSuiteProjectDTO $item) => $this->setDocumentProjectReference(
+            fn (InvoiceSuiteProjectDTO $item) => $this->setDocumentProjectReference(
                 $item->getProjectNumber(),
                 $item->getProjectName()
             )
@@ -272,7 +272,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         // Document-Level Despatch Advice Reference
 
         $newDocumentDTO->firstDespatchAdviceReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentDespatchAdviceReference(
+            fn (InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentDespatchAdviceReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
@@ -281,7 +281,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         // Document-Level Receiving Advice Reference
 
         $newDocumentDTO->firstReceivingAdviceReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentReceivingAdviceReference(
+            fn (InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentReceivingAdviceReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
@@ -298,7 +298,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         // Document-Level Buyer Reference
 
         $newDocumentDTO->firstBuyerReference(
-            fn(InvoiceSuiteIdDTO $item) => $this->setDocumentBuyerReference($item->getId())
+            fn (InvoiceSuiteIdDTO $item) => $this->setDocumentBuyerReference($item->getId())
         );
 
         // Document-Level Seller/Supplier Party
@@ -306,21 +306,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         $newDocumentDTO
             ->getSellerParty()
             ?->firstName(
-                fn(string $item) => $this->setDocumentSellerName($item)
+                fn (string $item) => $this->setDocumentSellerName($item)
             )
             ?->forEachId(
-                fn(InvoiceSuiteIdDTO $item) => $this->addDocumentSellerId($item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentSellerId($item->getId())
             )
             ?->forEachGlobalId(
-                fn(InvoiceSuiteIdDTO $item) => $this->addDocumentSellerGlobalId($item->getId(), $item->getIdType())
+                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentSellerGlobalId($item->getId(), $item->getIdType())
             )
             ?->forEachTaxRegistration(
-                fn(InvoiceSuiteIdDTO $item) => $this->addDocumentSellerTaxRegistration($item->getIdType(), $item->getId()),
+                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentSellerTaxRegistration($item->getIdType(), $item->getId()),
                 null,
                 2
             )
             ?->firstAddress(
-                fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentSellerAddress(
+                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentSellerAddress(
                     $item->getAddressLine1(),
                     $item->getAddressLine2(),
                     $item->getAddressLine3(),
@@ -331,14 +331,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 )
             )
             ?->firstLegalOrganisation(
-                fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentSellerLegalOrganisation(
+                fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentSellerLegalOrganisation(
                     $item->getIdType(),
                     $item->getId(),
                     $item->getName()
                 )
             )
             ?->firstContact(
-                fn(InvoiceSuiteContactDTO $item) => $this->setDocumentSellerContact(
+                fn (InvoiceSuiteContactDTO $item) => $this->setDocumentSellerContact(
                     $item->getPersonName(),
                     $item->getDepartmentName(),
                     $item->getPhoneNumber(),
@@ -347,7 +347,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 )
             )
             ?->firstCommunication(
-                fn(InvoiceSuiteCommunicationDTO $item) => $this->setDocumentSellerCommunication(
+                fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentSellerCommunication(
                     $item->getIdType(),
                     $item->getId()
                 )
@@ -358,17 +358,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         $newDocumentDTO
             ->getBuyerParty()
             ?->firstName(
-                fn(string $item) => $this->setDocumentBuyerName($item)
+                fn (string $item) => $this->setDocumentBuyerName($item)
             )
             ?->firstId(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentBuyerId($item->getId()),
-                fn() => $newDocumentDTO->getBuyerParty()->firstGlobalId(fn($item) => $this->setDocumentBuyerGlobalId($item->getId(), $item->getIdType()))
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentBuyerId($item->getId()),
+                fn () => $newDocumentDTO->getBuyerParty()->firstGlobalId(fn ($item) => $this->setDocumentBuyerGlobalId($item->getId(), $item->getIdType()))
             )
             ?->firstTaxRegistration(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentBuyerTaxRegistration($item->getIdType(), $item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentBuyerTaxRegistration($item->getIdType(), $item->getId())
             )
             ?->firstAddress(
-                fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentBuyerAddress(
+                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentBuyerAddress(
                     $item->getAddressLine1(),
                     $item->getAddressLine2(),
                     $item->getAddressLine3(),
@@ -379,14 +379,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 )
             )
             ?->firstLegalOrganisation(
-                fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentBuyerLegalOrganisation(
+                fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentBuyerLegalOrganisation(
                     $item->getIdType(),
                     $item->getId(),
                     $item->getName()
                 )
             )
             ?->firstContact(
-                fn(InvoiceSuiteContactDTO $item) => $this->addDocumentBuyerContact(
+                fn (InvoiceSuiteContactDTO $item) => $this->addDocumentBuyerContact(
                     $item->getPersonName(),
                     $item->getDepartmentName(),
                     $item->getPhoneNumber(),
@@ -395,7 +395,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 )
             )
             ?->firstCommunication(
-                fn(InvoiceSuiteCommunicationDTO $item) => $this->setDocumentBuyerCommunication(
+                fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentBuyerCommunication(
                     $item->getIdType(),
                     $item->getId()
                 )
@@ -406,13 +406,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         $newDocumentDTO
             ->getTaxRepresentativeParty()
             ->firstName(
-                fn(string $item) => $this->setDocumentTaxRepresentativeName($item)
+                fn (string $item) => $this->setDocumentTaxRepresentativeName($item)
             )
             ->firstTaxRegistration(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentTaxRepresentativeTaxRegistration($item->getIdType(), $item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentTaxRepresentativeTaxRegistration($item->getIdType(), $item->getId())
             )
             ->firstAddress(
-                fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentTaxRepresentativeAddress(
+                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentTaxRepresentativeAddress(
                     $item->getAddressLine1(),
                     $item->getAddressLine2(),
                     $item->getAddressLine3(),
@@ -432,14 +432,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         $newDocumentDTO
             ->getShipToParty()
             ?->firstName(
-                fn(string $item) => $this->setDocumentShipToName($item)
+                fn (string $item) => $this->setDocumentShipToName($item)
             )
             ?->firstId(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentShipToId($item->getId()),
-                fn() => $newDocumentDTO->getShipToParty()->firstGlobalId(fn($item) => $this->setDocumentShipToGlobalId($item->getId(), $item->getIdType()))
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentShipToId($item->getId()),
+                fn () => $newDocumentDTO->getShipToParty()->firstGlobalId(fn ($item) => $this->setDocumentShipToGlobalId($item->getId(), $item->getIdType()))
             )
             ?->firstAddress(
-                fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentShipToAddress(
+                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentShipToAddress(
                     $item->getAddressLine1(),
                     $item->getAddressLine2(),
                     $item->getAddressLine3(),
@@ -471,17 +471,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         $newDocumentDTO
             ->getPayeeParty()
             ?->firstName(
-                fn(string $item) => $this->setDocumentPayeeName($item)
+                fn (string $item) => $this->setDocumentPayeeName($item)
             )
             ?->firstId(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPayeeId($item->getId()),
-                fn() => $newDocumentDTO->getPayeeParty()->firstGlobalId(fn($item) => $this->setDocumentPayeeGlobalId($item->getId(), $item->getIdType()))
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentPayeeId($item->getId()),
+                fn () => $newDocumentDTO->getPayeeParty()->firstGlobalId(fn ($item) => $this->setDocumentPayeeGlobalId($item->getId(), $item->getIdType()))
             )
             ?->firstTaxRegistration(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPayeeTaxRegistration($item->getIdType(), $item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentPayeeTaxRegistration($item->getIdType(), $item->getId())
             )
             ?->firstAddress(
-                fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentPayeeAddress(
+                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentPayeeAddress(
                     $item->getAddressLine1(),
                     $item->getAddressLine2(),
                     $item->getAddressLine3(),
@@ -492,14 +492,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 )
             )
             ?->firstLegalOrganisation(
-                fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentPayeeLegalOrganisation(
+                fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentPayeeLegalOrganisation(
                     $item->getIdType(),
                     $item->getId(),
                     $item->getName()
                 )
             )
             ?->firstContact(
-                fn(InvoiceSuiteContactDTO $item) => $this->addDocumentPayeeContact(
+                fn (InvoiceSuiteContactDTO $item) => $this->addDocumentPayeeContact(
                     $item->getPersonName(),
                     $item->getDepartmentName(),
                     $item->getPhoneNumber(),
@@ -508,7 +508,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 )
             )
             ?->firstCommunication(
-                fn(InvoiceSuiteCommunicationDTO $item) => $this->setDocumentPayeeCommunication(
+                fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentPayeeCommunication(
                     $item->getIdType(),
                     $item->getId()
                 )
@@ -517,7 +517,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         // Document-Level Payment Means
 
         $newDocumentDTO->firstPaymentmean(
-            fn(InvoiceSuitePaymentMeanDTO $item) => $this->setDocumentPaymentMean(
+            fn (InvoiceSuitePaymentMeanDTO $item) => $this->setDocumentPaymentMean(
                 $item->getTypeCode(),
                 $item->getName(),
                 $item->getFinancialCardId(),
@@ -546,13 +546,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         // Document-Level Creditor reference
 
         $newDocumentDTO->firstCreditorReference(
-            fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPaymentCreditorReferenceID($item->getId())
+            fn (InvoiceSuiteIdDTO $item) => $this->setDocumentPaymentCreditorReferenceID($item->getId())
         );
 
         // Document-Level Taxes
 
         $newDocumentDTO->forEachTax(
-            fn(InvoiceSuiteTaxDTO $item) => $this->addDocumentTax(
+            fn (InvoiceSuiteTaxDTO $item) => $this->addDocumentTax(
                 $item->getCategory(),
                 $item->getType(),
                 $item->getBasisAmount(),
@@ -568,7 +568,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         // Document-Level Allowances/Charges
 
         $newDocumentDTO->forEachAllowanceCharge(
-            fn(InvoiceSuiteAllowanceChargeDTO $item) => $this->addDocumentAllowanceCharge(
+            fn (InvoiceSuiteAllowanceChargeDTO $item) => $this->addDocumentAllowanceCharge(
                 $item->getChargeIndicator(),
                 $item->getAmount(),
                 $item->getBaseAmount(),
@@ -584,7 +584,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         // Document-Level Logistic Service Charges
 
         $newDocumentDTO->forEachServiceCharge(
-            fn(InvoiceSuiteServiceChargeDTO $item) => $this->addDocumentLogisticServiceCharge(
+            fn (InvoiceSuiteServiceChargeDTO $item) => $this->addDocumentLogisticServiceCharge(
                 $item->getAmount(),
                 $item->getDescription(),
                 $item->getTaxCategory(),
@@ -620,7 +620,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 );
 
                 $item->firstNote(
-                    fn(InvoiceSuiteNoteDTO $itemNote) => $this->setDocumentPositionNote(
+                    fn (InvoiceSuiteNoteDTO $itemNote) => $this->setDocumentPositionNote(
                         $itemNote->getContent(),
                         $itemNote->getContentCode(),
                         $itemNote->getSubjectCode()
@@ -644,7 +644,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 );
 
                 $item->getProduct()?->forEachCharacteristic(
-                    fn(InvoiceSuiteProductCharacteristicDTO $characteristic) => $this->addDocumentPositionProductCharacteristic(
+                    fn (InvoiceSuiteProductCharacteristicDTO $characteristic) => $this->addDocumentPositionProductCharacteristic(
                         $characteristic->getDescription(),
                         $characteristic->getValue(),
                         $characteristic->getType(),
@@ -654,7 +654,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 );
 
                 $item->getProduct()?->forEachClassification(
-                    fn(InvoiceSuiteProductClassificationDTO $classification) => $this->addDocumentPositionProductClassification(
+                    fn (InvoiceSuiteProductClassificationDTO $classification) => $this->addDocumentPositionProductClassification(
                         $classification->getCode(),
                         $classification->getListId(),
                         $classification->getListVersionId(),
@@ -663,7 +663,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 );
 
                 $item->firstBuyerOrderReference(
-                    fn(InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionBuyerOrderReference(
+                    fn (InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionBuyerOrderReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate()
@@ -708,7 +708,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 // Position billing period
 
                 $item->firstBillingPeriod(
-                    fn(InvoiceSuiteDateRangeDTO $item) => $this->setDocumentPositionBillingPeriod(
+                    fn (InvoiceSuiteDateRangeDTO $item) => $this->setDocumentPositionBillingPeriod(
                         $item->getStartDate(),
                         $item->getEndDate(),
                         $item->getDescription()
@@ -718,7 +718,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 // Position posting references
 
                 $item->firstPostingReference(
-                    fn(InvoiceSuiteIdDTO $postingReference) => $this->setDocumentPositionPostingReference(
+                    fn (InvoiceSuiteIdDTO $postingReference) => $this->setDocumentPositionPostingReference(
                         $postingReference->getIdType(),
                         $postingReference->getId()
                     )
@@ -727,7 +727,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 // Position taxes
 
                 $item->forEachTax(
-                    fn(InvoiceSuiteTaxDTO $tax) => $this->addDocumentPositionTax(
+                    fn (InvoiceSuiteTaxDTO $tax) => $this->addDocumentPositionTax(
                         $tax->getCategory(),
                         $tax->getType(),
                         $tax->getAmount(),
@@ -740,7 +740,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 // Position allowances/charges
 
                 $item->forEachAllowanceCharge(
-                    fn(InvoiceSuiteAllowanceChargeDTO $allowanceCharge) => $this->addDocumentPositionAllowanceCharge(
+                    fn (InvoiceSuiteAllowanceChargeDTO $allowanceCharge) => $this->addDocumentPositionAllowanceCharge(
                         $allowanceCharge->getChargeIndicator(),
                         $allowanceCharge->getAmount(),
                         $allowanceCharge->getBaseAmount(),
@@ -1219,7 +1219,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         $additionalDocumentReferences =
             array_filter(
                 $this->getUblInvoiceRootObject()->getAdditionalDocumentReference() ?? [],
-                fn(AdditionalDocumentReference $additionalDocumentReference) => strcasecmp(($additionalDocumentReference->getDocumentTypeCode()?->getValue() ?? ""), $additionalDocTypeCode) !== 0
+                fn (AdditionalDocumentReference $additionalDocumentReference) => strcasecmp(($additionalDocumentReference->getDocumentTypeCode()?->getValue() ?? ""), $additionalDocTypeCode) !== 0
             );
 
         $this->getUblInvoiceRootObject()->setAdditionalDocumentReference($additionalDocumentReferences);
@@ -1805,7 +1805,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         ->getAccountingSupplierPartyWithCreate()
                         ->getPartyWithCreate()
                         ->getPartyIdentification() ?? [],
-                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
+                    fn (PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
                 )
             );
 
@@ -1863,7 +1863,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         ->getAccountingSupplierPartyWithCreate()
                         ->getPartyWithCreate()
                         ->getPartyIdentification() ?? [],
-                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
+                    fn (PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
                 )
             );
 
@@ -2373,7 +2373,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         ->getAccountingCustomerParty()
                         ?->getPartyWithCreate()
                         ?->getPartyIdentification() ?? [],
-                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
+                    fn (PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
                 )
             );
 
@@ -2431,7 +2431,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         ->getAccountingCustomerParty()
                         ->getParty()
                         ?->getPartyIdentification() ?? [],
-                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
+                    fn (PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
                 )
             );
 
@@ -2936,7 +2936,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         ->getUblInvoiceRootObject()
                         ->getTaxRepresentativeParty()
                         ->getPartyIdentification() ?? [],
-                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
+                    fn (PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
                 )
             );
 
@@ -2993,7 +2993,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         ->getUblInvoiceRootObject()
                         ->getTaxRepresentativeParty()
                         ->getPartyIdentification() ?? [],
-                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
+                    fn (PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
                 )
             );
 
@@ -5277,7 +5277,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         ->getUblInvoiceRootObject()
                         ->getPayeeParty()
                         ->getPartyIdentification() ?? [],
-                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
+                    fn (PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
                 )
             );
 
@@ -5332,7 +5332,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         ->getUblInvoiceRootObject()
                         ->getPayeeParty()
                         ->getPartyIdentification() ?? [],
-                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
+                    fn (PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
                 )
             );
 
@@ -5920,10 +5920,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
-            return $this;
-        }
-
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value,
             newPayeeIban: $newPayeeIban,
@@ -5953,10 +5949,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
-            return $this;
-        }
-
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value,
             newPayeeIban: $newPayeeIban,
@@ -5986,10 +5978,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
-            return $this;
-        }
-
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value,
             newPayeeIban: $newPayeeIban,
@@ -6019,10 +6007,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
-            return $this;
-        }
-
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value,
             newPayeeIban: $newPayeeIban,
@@ -6046,10 +6030,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newBuyerIban = null,
         ?string $newMandate = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
-            return $this;
-        }
-
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
             newBuyerIban: $newBuyerIban,
@@ -6070,10 +6050,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newBuyerIban = null,
         ?string $newMandate = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
-            return $this;
-        }
-
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
             newBuyerIban: $newBuyerIban,
@@ -6094,10 +6070,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newBuyerIban = null,
         ?string $newMandate = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
-            return $this;
-        }
-
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
             newBuyerIban: $newBuyerIban,
@@ -6118,10 +6090,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newBuyerIban = null,
         ?string $newMandate = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
-            return $this;
-        }
-
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
             newBuyerIban: $newBuyerIban,
@@ -6142,10 +6110,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFinancialCardId = null,
         ?string $newFinancialCardHolder = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardId])) {
-            return $this;
-        }
-
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,
             newFinancialCardId: $newFinancialCardId,
@@ -6166,10 +6130,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFinancialCardId = null,
         ?string $newFinancialCardHolder = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardId])) {
-            return $this;
-        }
-
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,
             newFinancialCardId: $newFinancialCardId,
@@ -6198,7 +6158,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getPartyWithCreate()
             ->getPartyIdentification();
 
-        $ids = array_filter($ids ?? [], fn(PartyIdentification $id) => strcasecmp($id->getID()?->getSchemeID() ?? "", "SEPA") !== 0);
+        $ids = array_filter(
+            $ids ?? [],
+            fn (PartyIdentification $id) => strcasecmp($id->getID()?->getSchemeID() ?? "", "SEPA") !== 0
+        );
 
         $this
             ->getUblInvoiceRootObject()
@@ -6279,7 +6242,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->addToNoteWithCreate()
             ->setValue($newDescription);
 
-        if (!is_null($newDueDate)) {
+        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)) {
             $this->getUblInvoiceRootObject()->setDueDate($newDueDate);
         }
 
@@ -6526,7 +6489,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getUblInvoiceRootObject()
             ->setAllowanceCharge(array_filter(
                 $this->getUblInvoiceRootObject()->getAllowanceCharge() ?? [],
-                fn(AllowanceCharge $currentAllowanceChage) => !$currentAllowanceChage->hasObjectFlag('allowancecharge')
+                fn (AllowanceCharge $currentAllowanceChage) => !$currentAllowanceChage->hasObjectFlag('allowancecharge')
             ));
 
         if (
@@ -6653,7 +6616,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->setAllowanceCharge(
                 array_filter(
                     $this->getUblInvoiceRootObject()->getAllowanceCharge() ?? [],
-                    fn(AllowanceCharge $currentAllowanceChage) => !$currentAllowanceChage->hasObjectFlag('logservicecharge')
+                    fn (AllowanceCharge $currentAllowanceChage) => !$currentAllowanceChage->hasObjectFlag('logservicecharge')
                 )
             );
 
