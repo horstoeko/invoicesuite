@@ -91,8 +91,8 @@ class InvoiceSuiteZfFxMinimumProvider extends InvoiceSuiteAbstractFormatProvider
 
         try {
             $contextParameters = array_merge(
-                [$this->getParameters()['ContextParameter']],
-                $this->getParameters()['AlternativeContextParameters']
+                [$this->getFormatProviderParameterValue('ContextParameter', '')],
+                $this->getFormatProviderParameterValue('AlternativeContextParameters', '')
             );
 
             foreach ($contextParameters as $contextParameter) {

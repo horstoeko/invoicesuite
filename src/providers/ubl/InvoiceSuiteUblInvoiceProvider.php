@@ -94,7 +94,7 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractFormatProvider
             $contentDomXPath->registerNamespace('inv', 'urn:oasis:names:specification:ubl:schema:xsd:Invoice-2');
             $contentDomXPath->registerNamespace('cbc', 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2');
 
-            $contentQuery = sprintf("//inv:Invoice/cbc:CustomizationID[text()='%s']", $this->getParameters()['CustomizationId']);
+            $contentQuery = sprintf("//inv:Invoice/cbc:CustomizationID[text()='%s']", $this->getFormatProviderParameterValue('CustomizationId', ''));
 
             $contentEntries = $contentDomXPath->query($contentQuery);
 
@@ -106,7 +106,7 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractFormatProvider
                 return false;
             }
 
-            $contentQuery = sprintf("//inv:Invoice/cbc:ProfileID[text()='%s']", $this->getParameters()['ProfileId']);
+            $contentQuery = sprintf("//inv:Invoice/cbc:ProfileID[text()='%s']", $this->getFormatProviderParameterValue('ProfileId', ''));
 
             $contentEntries = $contentDomXPath->query($contentQuery);
 
