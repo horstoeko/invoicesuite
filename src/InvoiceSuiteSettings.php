@@ -59,20 +59,6 @@ class InvoiceSuiteSettings
     protected static $thousandsSeparator = "";
 
     /**
-     * The filename of a ICC profile
-     *
-     * @var string
-     */
-    protected static $pdfIccProfileFilename = "pdficcprofile.icc";
-
-    /**
-     * The filename of the XMP meta data
-     *
-     * @var string
-     */
-    protected static $pdfXmpMetaDataFilename = "pdfxmpmetadata.xml";
-
-    /**
      * Node paths which present an amount. Used for special amount formatting
      *
      * @var array<string,integer>
@@ -213,48 +199,6 @@ class InvoiceSuiteSettings
     }
 
     /**
-     * Get the filename of the ICC Profile
-     *
-     * @return string
-     */
-    public static function getPdfIccProfileFilename(): string
-    {
-        return static::$pdfIccProfileFilename;
-    }
-
-    /**
-     * Set the filename of the ICC Profile
-     *
-     * @param  string $iccProfileFilename
-     * @return void
-     */
-    public static function setPdfIccProfileFilename(string $iccProfileFilename): void
-    {
-        static::$pdfIccProfileFilename = $iccProfileFilename;
-    }
-
-    /**
-     * Get the filename for the XMP meta data
-     *
-     * @return string
-     */
-    public static function getPdfXmpMetaDataFilename(): string
-    {
-        return static::$pdfXmpMetaDataFilename;
-    }
-
-    /**
-     * Set the filename for the XMP meta data
-     *
-     * @param  string $xmpMetaDataFilename
-     * @return void
-     */
-    public static function setPdfXmpMetaDataFilename(string $xmpMetaDataFilename): void
-    {
-        static::$pdfXmpMetaDataFilename = $xmpMetaDataFilename;
-    }
-
-    /**
      * Returns a list of node paths which have a special number of decimal places
      *
      * @return array<string,integer>
@@ -366,35 +310,5 @@ class InvoiceSuiteSettings
     public static function getSourceDirectory(): string
     {
         return InvoiceSuitePathUtils::combineAllPaths(static::getRootDirectory(), "src");
-    }
-
-    /**
-     * Get the directory where all the assets are stored
-     *
-     * @return string
-     */
-    public static function getPdfAssetsDirectory(): string
-    {
-        return InvoiceSuitePathUtils::combineAllPaths(static::getSourceDirectory(), "pdf", "assets");
-    }
-
-    /**
-     * Get the full filename of the ICC profile to use
-     *
-     * @return string
-     */
-    public static function getFullPdfIccProfileFilename(): string
-    {
-        return InvoiceSuitePathUtils::combinePathWithFile(static::getPdfAssetsDirectory(), static::$pdfIccProfileFilename);
-    }
-
-    /**
-     * Get the full filename containg the XNP information to user
-     *
-     * @return string
-     */
-    public static function getFullPdfXmpMetaDataFilename(): string
-    {
-        return InvoiceSuitePathUtils::combinePathWithFile(static::getPdfAssetsDirectory(), static::$pdfXmpMetaDataFilename);
     }
 }
