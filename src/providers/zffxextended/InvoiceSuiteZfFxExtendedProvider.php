@@ -34,11 +34,6 @@ class InvoiceSuiteZfFxExtendedProvider extends InvoiceSuiteAbstractFormatProvide
             'ContextParameter' => 'urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended',
             'AlternativeContextParameters' => ['urn:cen.eu:en16931:2017#conformant#urn:zugferd.de:2p0:extended'],
             'BusinessProcess' => 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0',
-            'PDFEmbeddable' => true,
-            'PDFXmpName' => 'EXTENDED',
-            'PDFXmpVersion' => '1.0',
-            'PDFXmlAttachmentFilename' => 'factur-x.xml',
-            'PDFXmlAttachmentName' => 'Factur-X Invoice',
         ];
     }
 

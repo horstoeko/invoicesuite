@@ -32,11 +32,6 @@ class InvoiceSuiteZfFxComfortProvider extends InvoiceSuiteAbstractFormatProvider
         return [
             'ContextParameter' => 'urn:cen.eu:en16931:2017',
             'AlternativeContextParameters' => [],
-            'PDFEmbeddable' => true,
-            'PDFXmpName' => 'EN 16931',
-            'PDFXmpVersion' => '1.0',
-            'PDFXmlAttachmentFilename' => 'factur-x.xml',
-            'PDFXmlAttachmentName' => 'Factur-X Invoice',
         ];
     }
 

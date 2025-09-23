@@ -32,11 +32,6 @@ class InvoiceSuiteZfFxMinimumProvider extends InvoiceSuiteAbstractFormatProvider
         return [
             'ContextParameter' => 'urn:factur-x.eu:1p0:minimum',
             'AlternativeContextParameters' => ['urn:zugferd.de:2p0:minimum'],
-            'PDFEmbeddable' => true,
-            'PDFXmpName' => 'MINIMUM',
-            'PDFXmpVersion' => '1.0',
-            'PDFXmlAttachmentFilename' => 'factur-x.xml',
-            'PDFXmlAttachmentName' => 'Factur-X Invoice',
         ];
     }
 
