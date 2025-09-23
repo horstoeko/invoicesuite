@@ -155,11 +155,13 @@ class InvoiceSuitePdfDocumentBuilder
     }
 
     /**
-     * Create a new instance of InvoiceSuitePdfDocumentBuilder by given PDF content and an InvoiceSuiteDocumentBuilder
+     * Create a new instance of InvoiceSuitePdfDocumentBuilder by given PDF filename and an InvoiceSuiteDocumentBuilder
      *
-     * @param string $newPdfContent
+     * @param string $newPdfFile
      * @param InvoiceSuiteDocumentBuilder $newDocumentBuilder
      * @return InvoiceSuitePdfDocumentBuilder
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
      * @throws InvalidArgumentException
      * @throws RuntimeException
      */
