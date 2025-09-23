@@ -25,6 +25,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
+use horstoeko\invoicesuite\InvoiceSuitePackageVersion;
 
 class InvoiceSuitePdfDocumentBuilder
 {
@@ -580,7 +581,7 @@ class InvoiceSuitePdfDocumentBuilder
      */
     private function getMetadataCreatorToolName(): string
     {
-        $toolName = sprintf('Factur-X PHP library v%s by HorstOeko', '1.0');
+        $toolName = sprintf('InvoiceSuite Library v%s by HorstOeko', InvoiceSuitePackageVersion::getInstalledVersion());
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->getMetadataAdditionalCreatorTool())) {
             return $this->getMetadataAdditionalCreatorTool() . ' / ' . $toolName;
