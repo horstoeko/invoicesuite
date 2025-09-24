@@ -5032,6 +5032,16 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
     }
 
     /**
+     * Returns true if a gross price was specified
+     *
+     * @return boolean
+     */
+    public function hasDcumentPositionGrossPrice(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->hasDcumentPositionGrossPrice();
+    }
+
+    /**
      * Get the position's gross price from latest position
      *
      * @param null|float $newGrossPrice Unit price excluding sales tax before deduction of the discount on the item price
@@ -5102,6 +5112,16 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         );
 
         return $this;
+    }
+
+    /**
+     * Returns true if a net price was specified
+     *
+     * @return boolean
+     */
+    public function hasDocumentPositionNetPrice(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->hasDocumentPositionNetPrice();
     }
 
     /**

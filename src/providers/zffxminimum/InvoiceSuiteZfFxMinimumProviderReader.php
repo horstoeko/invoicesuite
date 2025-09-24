@@ -2060,85 +2060,89 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractFormatPr
 
             // Position Gross Price
 
-            $this->getDocumentPositionGrossPrice(
-                $newDocumentPositionGrossPrice,
-                $newDocumentPositionGrossPriceBasisQuantity,
-                $newDocumentPositionGrossPriceBasisQuantityUnit
-            );
-
-            $newDocumentPositionGrossPriceDTO = new InvoiceSuitePriceGrossDTO(
-                $newDocumentPositionGrossPrice,
-                new InvoiceSuiteQuantityDTO(
+            if ($this->hasDcumentPositionGrossPrice()) {
+                $this->getDocumentPositionGrossPrice(
+                    $newDocumentPositionGrossPrice,
                     $newDocumentPositionGrossPriceBasisQuantity,
                     $newDocumentPositionGrossPriceBasisQuantityUnit
-                )
-            );
-
-            while ($this->nextDocumentPositionGrossPriceAllowanceCharge()) {
-                $this->getDocumentPositionGrossPriceAllowanceCharge(
-                    $newDocumentPositionGrossPriceAllowanceChargeAmount,
-                    $newDocumentPositionGrossPriceAllowanceIsCharge,
-                    $newDocumentPositionGrossPriceAllowanceChargePercent,
-                    $newDocumentPositionGrossPriceAllowanceChargeBasisAmount,
-                    $newDocumentPositionGrossPriceAllowanceChargeReason,
-                    $newDocumentPositionGrossPriceAllowanceChargeReasonCode
                 );
 
-                $newDocumentPositionGrossPriceDTO->addAllowanceCharge(
-                    new InvoiceSuiteAllowanceChargeDTO(
-                        $newDocumentPositionGrossPriceAllowanceIsCharge,
-                        $newDocumentPositionGrossPriceAllowanceChargeAmount,
-                        $newDocumentPositionGrossPriceAllowanceChargeBasisAmount,
-                        $newDocumentPositionGrossPriceAllowanceChargePercent,
-                        null,
-                        null,
-                        null,
-                        $newDocumentPositionGrossPriceAllowanceChargeReason,
-                        $newDocumentPositionGrossPriceAllowanceChargeReasonCode
+                $newDocumentPositionGrossPriceDTO = new InvoiceSuitePriceGrossDTO(
+                    $newDocumentPositionGrossPrice,
+                    new InvoiceSuiteQuantityDTO(
+                        $newDocumentPositionGrossPriceBasisQuantity,
+                        $newDocumentPositionGrossPriceBasisQuantityUnit
                     )
                 );
-            }
 
-            $newDocumentPositionDTO->setGrossPrice($newDocumentPositionGrossPriceDTO);
+                while ($this->nextDocumentPositionGrossPriceAllowanceCharge()) {
+                    $this->getDocumentPositionGrossPriceAllowanceCharge(
+                        $newDocumentPositionGrossPriceAllowanceChargeAmount,
+                        $newDocumentPositionGrossPriceAllowanceIsCharge,
+                        $newDocumentPositionGrossPriceAllowanceChargePercent,
+                        $newDocumentPositionGrossPriceAllowanceChargeBasisAmount,
+                        $newDocumentPositionGrossPriceAllowanceChargeReason,
+                        $newDocumentPositionGrossPriceAllowanceChargeReasonCode
+                    );
+
+                    $newDocumentPositionGrossPriceDTO->addAllowanceCharge(
+                        new InvoiceSuiteAllowanceChargeDTO(
+                            $newDocumentPositionGrossPriceAllowanceIsCharge,
+                            $newDocumentPositionGrossPriceAllowanceChargeAmount,
+                            $newDocumentPositionGrossPriceAllowanceChargeBasisAmount,
+                            $newDocumentPositionGrossPriceAllowanceChargePercent,
+                            null,
+                            null,
+                            null,
+                            $newDocumentPositionGrossPriceAllowanceChargeReason,
+                            $newDocumentPositionGrossPriceAllowanceChargeReasonCode
+                        )
+                    );
+                }
+
+                $newDocumentPositionDTO->setGrossPrice($newDocumentPositionGrossPriceDTO);
+            }
 
             // Position Net Price
 
-            $this->getDocumentPositionNetPrice(
-                $newDocumentPositionNetPrice,
-                $newDocumentPositionNetPriceBasisQuantity,
-                $newDocumentPositionNetPriceBasisQuantityUnit
-            );
-
-            $newDocumentPositionNetPriceDTO = new InvoiceSuitePriceNetDTO(
-                $newDocumentPositionNetPrice,
-                new InvoiceSuiteQuantityDTO(
+            if ($this->hasDocumentPositionNetPrice()) {
+                $this->getDocumentPositionNetPrice(
+                    $newDocumentPositionNetPrice,
                     $newDocumentPositionNetPriceBasisQuantity,
                     $newDocumentPositionNetPriceBasisQuantityUnit
-                )
-            );
+                );
 
-            $this->getDocumentPositionNetPriceTax(
-                $newDocumentPositionNetPriceTaxCategory,
-                $newDocumentPositionNetPriceTaxType,
-                $newDocumentPositionNetPriceTaxAmount,
-                $newDocumentPositionNetPriceTaxPercent,
-                $newDocumentPositionNetPriceTaxExemptionReason,
-                $newDocumentPositionNetPriceTaxExemptionReasonCode
-            );
+                $newDocumentPositionNetPriceDTO = new InvoiceSuitePriceNetDTO(
+                    $newDocumentPositionNetPrice,
+                    new InvoiceSuiteQuantityDTO(
+                        $newDocumentPositionNetPriceBasisQuantity,
+                        $newDocumentPositionNetPriceBasisQuantityUnit
+                    )
+                );
 
-            $newDocumentPositionNetPriceDTO->addTax(
-                new InvoiceSuiteTaxDTO(
+                $this->getDocumentPositionNetPriceTax(
                     $newDocumentPositionNetPriceTaxCategory,
                     $newDocumentPositionNetPriceTaxType,
-                    null,
                     $newDocumentPositionNetPriceTaxAmount,
                     $newDocumentPositionNetPriceTaxPercent,
                     $newDocumentPositionNetPriceTaxExemptionReason,
                     $newDocumentPositionNetPriceTaxExemptionReasonCode
-                )
-            );
+                );
 
-            $newDocumentPositionDTO->setNetPrice($newDocumentPositionNetPriceDTO);
+                $newDocumentPositionNetPriceDTO->addTax(
+                    new InvoiceSuiteTaxDTO(
+                        $newDocumentPositionNetPriceTaxCategory,
+                        $newDocumentPositionNetPriceTaxType,
+                        null,
+                        $newDocumentPositionNetPriceTaxAmount,
+                        $newDocumentPositionNetPriceTaxPercent,
+                        $newDocumentPositionNetPriceTaxExemptionReason,
+                        $newDocumentPositionNetPriceTaxExemptionReasonCode
+                    )
+                );
+
+                $newDocumentPositionDTO->setNetPrice($newDocumentPositionNetPriceDTO);
+            }
 
             // Position Quantities
 
@@ -8246,6 +8250,16 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
+     * Returns true if a gross price was specified
+     *
+     * @return boolean
+     */
+    public function hasDcumentPositionGrossPrice(): bool
+    {
+        return false;
+    }
+
+    /**
      * Get the position's gross price from latest position
      *
      * @param null|float $newGrossPrice __BT-148, From BASIC__ Unit price excluding sales tax before deduction of the discount on the item price
@@ -8323,6 +8337,16 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractFormatPr
         $newGrossPriceAllowanceChargeReasonCode = "";
 
         return $this;
+    }
+
+    /**
+     * Returns true if a net price was specified
+     *
+     * @return boolean
+     */
+    public function hasDocumentPositionNetPrice(): bool
+    {
+        return false;
     }
 
     /**

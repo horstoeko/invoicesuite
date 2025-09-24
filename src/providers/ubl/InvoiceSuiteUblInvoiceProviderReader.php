@@ -1287,21 +1287,23 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
 
             // Position Net Price
 
-            $this->getDocumentPositionNetPrice(
-                $newDocumentPositionNetPrice,
-                $newDocumentPositionNetPriceBasisQuantity,
-                $newDocumentPositionNetPriceBasisQuantityUnit
-            );
-
-            $newDocumentPositionNetPriceDTO = new InvoiceSuitePriceNetDTO(
-                $newDocumentPositionNetPrice,
-                new InvoiceSuiteQuantityDTO(
+            if ($this->hasDocumentPositionNetPrice()) {
+                $this->getDocumentPositionNetPrice(
+                    $newDocumentPositionNetPrice,
                     $newDocumentPositionNetPriceBasisQuantity,
                     $newDocumentPositionNetPriceBasisQuantityUnit
-                )
-            );
+                );
 
-            $newDocumentPositionDTO->setNetPrice($newDocumentPositionNetPriceDTO);
+                $newDocumentPositionNetPriceDTO = new InvoiceSuitePriceNetDTO(
+                    $newDocumentPositionNetPrice,
+                    new InvoiceSuiteQuantityDTO(
+                        $newDocumentPositionNetPriceBasisQuantity,
+                        $newDocumentPositionNetPriceBasisQuantityUnit
+                    )
+                );
+
+                $newDocumentPositionDTO->setNetPrice($newDocumentPositionNetPriceDTO);
+            }
 
             // Position Quantities
 
@@ -8437,6 +8439,16 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     }
 
     /**
+     * Returns true if a gross price was specified
+     *
+     * @return boolean
+     */
+    public function hasDcumentPositionGrossPrice(): bool
+    {
+        return false;
+    }
+
+    /**
      * Get the position's gross price from latest position
      *
      * @param null|float $newGrossPrice Unit price excluding sales tax before deduction of the discount on the item price
@@ -8514,6 +8526,16 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         $newGrossPriceAllowanceChargeReasonCode = "";
 
         return $this;
+    }
+
+    /**
+     * Returns true if a net price was specified
+     *
+     * @return boolean
+     */
+    public function hasDocumentPositionNetPrice(): bool
+    {
+        return !is_null($this->resolveCurrentDocumentPosition()->getPrice());
     }
 
     /**

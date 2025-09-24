@@ -3470,6 +3470,13 @@ interface InvoiceSuiteReaderContract
     ): self;
 
     /**
+     * Returns true if a gross price was specified
+     *
+     * @return boolean
+     */
+    public function hasDcumentPositionGrossPrice(): bool;
+
+    /**
      * Get the position's gross price from latest position
      *
      * @param null|float $newGrossPrice Unit price excluding sales tax before deduction of the discount on the item price
@@ -3516,6 +3523,13 @@ interface InvoiceSuiteReaderContract
         ?string &$newGrossPriceAllowanceChargeReason,
         ?string &$newGrossPriceAllowanceChargeReasonCode
     ): self;
+
+    /**
+     * Returns true if a net price was specified
+     *
+     * @return boolean
+     */
+    public function hasDocumentPositionNetPrice(): bool;
 
     /**
      * Get the position's net price from latest position
