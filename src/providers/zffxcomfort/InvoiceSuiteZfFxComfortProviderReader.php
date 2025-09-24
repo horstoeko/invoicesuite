@@ -2489,23 +2489,25 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractFormatPr
 
             // Position summation
 
-            $this->getDocumentPositionSummation(
-                $newDocumentPositionNetAmount,
-                $newDocumentPositionChargeTotalAmount,
-                $newDocumentPositionDiscountTotalAmount,
-                $newDocumentPositionTaxTotalAmount,
-                $newDocumentPositionGrossAmount
-            );
-
-            $newDocumentPositionDTO->setSummation(
-                new InvoiceSuitesummationLineDTO(
+            if ($this->hasDocumentPositionSummation()) {
+                $this->getDocumentPositionSummation(
                     $newDocumentPositionNetAmount,
                     $newDocumentPositionChargeTotalAmount,
                     $newDocumentPositionDiscountTotalAmount,
                     $newDocumentPositionTaxTotalAmount,
                     $newDocumentPositionGrossAmount
-                )
-            );
+                );
+
+                $newDocumentPositionDTO->setSummation(
+                    new InvoiceSuitesummationLineDTO(
+                        $newDocumentPositionNetAmount,
+                        $newDocumentPositionChargeTotalAmount,
+                        $newDocumentPositionDiscountTotalAmount,
+                        $newDocumentPositionTaxTotalAmount,
+                        $newDocumentPositionGrossAmount
+                    )
+                );
+            }
 
             // Finally add the position
 
@@ -10398,6 +10400,16 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractFormatPr
         $newAllowanceChargePercent = $positionAllowanceCharge->getCalculationPercent()->getValue() ?? 0.0;
 
         return $this;
+    }
+
+    /**
+     * Returns true if a position summation exists
+     *
+     * @return boolean
+     */
+    public function hasDocumentPositionSummation(): bool
+    {
+        return !is_null($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getSpecifiedTradeSettlementLineMonetarySummation());
     }
 
     /**

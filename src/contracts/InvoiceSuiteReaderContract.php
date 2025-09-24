@@ -4108,6 +4108,13 @@ interface InvoiceSuiteReaderContract
     ): self;
 
     /**
+     * Returns true if a position summation exists
+     *
+     * @return boolean
+     */
+    public function hasDocumentPositionSummation(): bool;
+
+    /**
      * Get the document position summation from latest position
      *
      * @param float|null $newNetAmount Net amount
