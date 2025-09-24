@@ -2060,7 +2060,7 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractFormatProv
 
             // Position Gross Price
 
-            if ($this->hasDcumentPositionGrossPrice()) {
+            if ($this->firstDcumentPositionGrossPrice()) {
                 $this->getDocumentPositionGrossPrice(
                     $newDocumentPositionGrossPrice,
                     $newDocumentPositionGrossPriceBasisQuantity,
@@ -2105,7 +2105,7 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractFormatProv
 
             // Position Net Price
 
-            if ($this->hasDocumentPositionNetPrice()) {
+            if ($this->firstDocumentPositionNetPrice()) {
                 $this->getDocumentPositionNetPrice(
                     $newDocumentPositionNetPrice,
                     $newDocumentPositionNetPriceBasisQuantity,
@@ -2489,7 +2489,7 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractFormatProv
 
             // Position summation
 
-            if ($this->hasDocumentPositionSummation()) {
+            if ($this->firstDocumentPositionSummation()) {
                 $this->getDocumentPositionSummation(
                     $newDocumentPositionNetAmount,
                     $newDocumentPositionChargeTotalAmount,
@@ -9043,7 +9043,7 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractFormatProv
      *
      * @return boolean
      */
-    public function hasDcumentPositionGrossPrice(): bool
+    public function firstDcumentPositionGrossPrice(): bool
     {
         return !is_null($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeAgreement()?->getGrossPriceProductTradePrice());
     }
@@ -9149,7 +9149,7 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractFormatProv
      *
      * @return boolean
      */
-    public function hasDocumentPositionNetPrice(): bool
+    public function firstDocumentPositionNetPrice(): bool
     {
         return !is_null($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeAgreement()?->getNetPriceProductTradePrice());
     }
@@ -10153,7 +10153,7 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractFormatProv
      *
      * @return boolean
      */
-    public function hasDocumentPositionSummation(): bool
+    public function firstDocumentPositionSummation(): bool
     {
         return !is_null($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getSpecifiedTradeSettlementLineMonetarySummation());
     }

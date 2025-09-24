@@ -3474,7 +3474,7 @@ interface InvoiceSuiteReaderContract
      *
      * @return boolean
      */
-    public function hasDcumentPositionGrossPrice(): bool;
+    public function firstDcumentPositionGrossPrice(): bool;
 
     /**
      * Get the position's gross price from latest position
@@ -3529,7 +3529,7 @@ interface InvoiceSuiteReaderContract
      *
      * @return boolean
      */
-    public function hasDocumentPositionNetPrice(): bool;
+    public function firstDocumentPositionNetPrice(): bool;
 
     /**
      * Get the position's net price from latest position
@@ -4112,7 +4112,7 @@ interface InvoiceSuiteReaderContract
      *
      * @return boolean
      */
-    public function hasDocumentPositionSummation(): bool;
+    public function firstDocumentPositionSummation(): bool;
 
     /**
      * Get the document position summation from latest position

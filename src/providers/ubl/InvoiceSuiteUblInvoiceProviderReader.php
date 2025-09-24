@@ -1287,7 +1287,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
 
             // Position Net Price
 
-            if ($this->hasDocumentPositionNetPrice()) {
+            if ($this->firstDocumentPositionNetPrice()) {
                 $this->getDocumentPositionNetPrice(
                     $newDocumentPositionNetPrice,
                     $newDocumentPositionNetPriceBasisQuantity,
@@ -1420,7 +1420,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
 
             // Position summation
 
-            if ($this->hasDocumentPositionSummation()) {
+            if ($this->firstDocumentPositionSummation()) {
                 $this->getDocumentPositionSummation(
                     $newDocumentPositionNetAmount,
                     $newDocumentPositionChargeTotalAmount,
@@ -8445,7 +8445,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      *
      * @return boolean
      */
-    public function hasDcumentPositionGrossPrice(): bool
+    public function firstDcumentPositionGrossPrice(): bool
     {
         return false;
     }
@@ -8535,7 +8535,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      *
      * @return boolean
      */
-    public function hasDocumentPositionNetPrice(): bool
+    public function firstDocumentPositionNetPrice(): bool
     {
         return !is_null($this->resolveCurrentDocumentPosition()->getPrice());
     }
@@ -9542,7 +9542,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      *
      * @return boolean
      */
-    public function hasDocumentPositionSummation(): bool
+    public function firstDocumentPositionSummation(): bool
     {
         return !is_null($this->resolveCurrentDocumentPosition()->getLineExtensionAmount());
     }

@@ -5036,9 +5036,9 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
      *
      * @return boolean
      */
-    public function hasDcumentPositionGrossPrice(): bool
+    public function firstDcumentPositionGrossPrice(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->hasDcumentPositionGrossPrice();
+        return $this->getCurrentFormatProvider()->getReader()->firstDcumentPositionGrossPrice();
     }
 
     /**
@@ -5119,9 +5119,9 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
      *
      * @return boolean
      */
-    public function hasDocumentPositionNetPrice(): bool
+    public function firstDocumentPositionNetPrice(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->hasDocumentPositionNetPrice();
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionNetPrice();
     }
 
     /**
@@ -5983,9 +5983,9 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
      *
      * @return boolean
      */
-    public function hasDocumentPositionSummation(): bool
+    public function firstDocumentPositionSummation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->hasDocumentPositionSummation();
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionSummation();
     }
 
     /**

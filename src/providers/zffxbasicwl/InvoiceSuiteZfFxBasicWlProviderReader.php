@@ -2060,7 +2060,7 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractFormatPr
 
             // Position Gross Price
 
-            if ($this->hasDcumentPositionGrossPrice()) {
+            if ($this->firstDcumentPositionGrossPrice()) {
                 $this->getDocumentPositionGrossPrice(
                     $newDocumentPositionGrossPrice,
                     $newDocumentPositionGrossPriceBasisQuantity,
@@ -2105,7 +2105,7 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractFormatPr
 
             // Position Net Price
 
-            if ($this->hasDocumentPositionNetPrice()) {
+            if ($this->firstDocumentPositionNetPrice()) {
                 $this->getDocumentPositionNetPrice(
                     $newDocumentPositionNetPrice,
                     $newDocumentPositionNetPriceBasisQuantity,
@@ -2489,7 +2489,7 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractFormatPr
 
             // Position summation
 
-            if ($this->hasDocumentPositionSummation()) {
+            if ($this->firstDocumentPositionSummation()) {
                 $this->getDocumentPositionSummation(
                     $newDocumentPositionNetAmount,
                     $newDocumentPositionChargeTotalAmount,
@@ -8988,7 +8988,7 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractFormatPr
      *
      * @return boolean
      */
-    public function hasDcumentPositionGrossPrice(): bool
+    public function firstDcumentPositionGrossPrice(): bool
     {
         return false;
     }
@@ -9078,7 +9078,7 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractFormatPr
      *
      * @return boolean
      */
-    public function hasDocumentPositionNetPrice(): bool
+    public function firstDocumentPositionNetPrice(): bool
     {
         return false;
     }
@@ -10012,7 +10012,7 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractFormatPr
      *
      * @return boolean
      */
-    public function hasDocumentPositionSummation(): bool
+    public function firstDocumentPositionSummation(): bool
     {
         return false;
     }
