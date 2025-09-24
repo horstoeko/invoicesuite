@@ -437,8 +437,8 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractFormatPr
             );
 
             $newDocumentDTO->getSellerParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
-                $newDocumentSellerLegalOrganisationType,
                 $newDocumentSellerLegalOrganisationId,
+                $newDocumentSellerLegalOrganisationType,
                 $newDocumentSellerLegalOrganisationName
             ));
         }
@@ -554,8 +554,8 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractFormatPr
             );
 
             $newDocumentDTO->getBuyerParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
-                $newDocumentBuyerLegalOrganisationType,
                 $newDocumentBuyerLegalOrganisationId,
+                $newDocumentBuyerLegalOrganisationType,
                 $newDocumentBuyerLegalOrganisationName
             ));
         }
@@ -671,8 +671,8 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractFormatPr
             );
 
             $newDocumentDTO->getTaxRepresentativeParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
-                $newDocumentTaxRepresentativeLegalOrganisationType,
                 $newDocumentTaxRepresentativeLegalOrganisationId,
+                $newDocumentTaxRepresentativeLegalOrganisationType,
                 $newDocumentTaxRepresentativeLegalOrganisationName
             ));
         }
@@ -788,8 +788,8 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractFormatPr
             );
 
             $newDocumentDTO->getProductEndUserParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
-                $newDocumentProductEndUserLegalOrganisationType,
                 $newDocumentProductEndUserLegalOrganisationId,
+                $newDocumentProductEndUserLegalOrganisationType,
                 $newDocumentProductEndUserLegalOrganisationName
             ));
         }
@@ -905,8 +905,8 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractFormatPr
             );
 
             $newDocumentDTO->getShipToParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
-                $newDocumentShipToLegalOrganisationType,
                 $newDocumentShipToLegalOrganisationId,
+                $newDocumentShipToLegalOrganisationType,
                 $newDocumentShipToLegalOrganisationName
             ));
         }
@@ -1022,8 +1022,8 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractFormatPr
             );
 
             $newDocumentDTO->getUltimateShipToParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
-                $newDocumentUltimateShipToLegalOrganisationType,
                 $newDocumentUltimateShipToLegalOrganisationId,
+                $newDocumentUltimateShipToLegalOrganisationType,
                 $newDocumentUltimateShipToLegalOrganisationName
             ));
         }
@@ -1139,8 +1139,8 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractFormatPr
             );
 
             $newDocumentDTO->getShipFromParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
-                $newDocumentShipFromLegalOrganisationType,
                 $newDocumentShipFromLegalOrganisationId,
+                $newDocumentShipFromLegalOrganisationType,
                 $newDocumentShipFromLegalOrganisationName
             ));
         }
@@ -1256,8 +1256,8 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractFormatPr
             );
 
             $newDocumentDTO->getInvoicerParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
-                $newDocumentInvoicerLegalOrganisationType,
                 $newDocumentInvoicerLegalOrganisationId,
+                $newDocumentInvoicerLegalOrganisationType,
                 $newDocumentInvoicerLegalOrganisationName
             ));
         }
@@ -1373,8 +1373,8 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractFormatPr
             );
 
             $newDocumentDTO->getInvoiceeParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
-                $newDocumentInvoiceeLegalOrganisationType,
                 $newDocumentInvoiceeLegalOrganisationId,
+                $newDocumentInvoiceeLegalOrganisationType,
                 $newDocumentInvoiceeLegalOrganisationName
             ));
         }
@@ -1490,8 +1490,8 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractFormatPr
             );
 
             $newDocumentDTO->getPayeeParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
-                $newDocumentPayeeLegalOrganisationType,
                 $newDocumentPayeeLegalOrganisationId,
+                $newDocumentPayeeLegalOrganisationType,
                 $newDocumentPayeeLegalOrganisationName
             ));
         }
@@ -1621,6 +1621,8 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractFormatPr
                         )
                     )
                 );
+
+                $newDocumentDTO->addPaymentTerm($documentPaymentTermDTO);
             }
         }
 
@@ -2231,8 +2233,8 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractFormatPr
                 );
 
                 $newDocumentPositionDTO->getShipToParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
-                    $newDocumentPositionShipToLegalOrganisationType,
                     $newDocumentPositionShipToLegalOrganisationId,
+                    $newDocumentPositionShipToLegalOrganisationType,
                     $newDocumentPositionShipToLegalOrganisationName
                 ));
             }
@@ -2349,8 +2351,8 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractFormatPr
                 );
 
                 $newDocumentPositionDTO->getUltimateShipToParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
-                    $newDocumentPositionUltimateShipToLegalOrganisationType,
                     $newDocumentPositionUltimateShipToLegalOrganisationId,
+                    $newDocumentPositionUltimateShipToLegalOrganisationType,
                     $newDocumentPositionUltimateShipToLegalOrganisationName
                 ));
             }

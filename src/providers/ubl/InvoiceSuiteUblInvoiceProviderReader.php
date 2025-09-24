@@ -415,8 +415,8 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
             );
 
             $newDocumentDTO->getSellerParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
-                $newDocumentSellerLegalOrganisationType,
                 $newDocumentSellerLegalOrganisationId,
+                $newDocumentSellerLegalOrganisationType,
                 $newDocumentSellerLegalOrganisationName
             ));
         }
@@ -532,8 +532,8 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
             );
 
             $newDocumentDTO->getBuyerParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
-                $newDocumentBuyerLegalOrganisationType,
                 $newDocumentBuyerLegalOrganisationId,
+                $newDocumentBuyerLegalOrganisationType,
                 $newDocumentBuyerLegalOrganisationName
             ));
         }
@@ -649,8 +649,8 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
             );
 
             $newDocumentDTO->getTaxRepresentativeParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
-                $newDocumentTaxRepresentativeLegalOrganisationType,
                 $newDocumentTaxRepresentativeLegalOrganisationId,
+                $newDocumentTaxRepresentativeLegalOrganisationType,
                 $newDocumentTaxRepresentativeLegalOrganisationName
             ));
         }
@@ -770,8 +770,8 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
             );
 
             $newDocumentDTO->getShipToParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
-                $newDocumentShipToLegalOrganisationType,
                 $newDocumentShipToLegalOrganisationId,
+                $newDocumentShipToLegalOrganisationType,
                 $newDocumentShipToLegalOrganisationName
             ));
         }
@@ -903,8 +903,8 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
             );
 
             $newDocumentDTO->getPayeeParty()->addLegalOrganisation(new InvoiceSuiteOrganisationDTO(
-                $newDocumentPayeeLegalOrganisationType,
                 $newDocumentPayeeLegalOrganisationId,
+                $newDocumentPayeeLegalOrganisationType,
                 $newDocumentPayeeLegalOrganisationName
             ));
         }
@@ -1034,6 +1034,8 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
                         )
                     )
                 );
+
+                $newDocumentDTO->addPaymentTerm($documentPaymentTermDTO);
             }
         }
 
