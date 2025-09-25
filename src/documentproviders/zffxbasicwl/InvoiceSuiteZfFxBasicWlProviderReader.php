@@ -44,8 +44,8 @@ use horstoeko\invoicesuite\documentdto\InvoiceSuiteServiceChargeDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuitesummationDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuitesummationLineDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteTaxDTO;
-use horstoeko\invoicesuite\models\zffxbasicwl\ram\TradePaymentTermsType;
-use horstoeko\invoicesuite\models\zffxbasicwl\rsm\CrossIndustryInvoiceType;
+use horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradePaymentTermsType;
+use horstoeko\invoicesuite\documentmodels\zffxbasicwl\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
@@ -2852,12 +2852,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newSubjectCode
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\NoteType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\NoteType>
          */
         $documentNotes = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getExchangedDocument()?->getIncludedNote() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\NoteType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\NoteType
          */
         $documentNote = $documentNotes[InvoiceSuitePointerUtils::getValue('documentnote')];
 
@@ -2916,12 +2916,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newDescription,
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\SpecifiedPeriodType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\SpecifiedPeriodType>
          */
         $billingPeriods = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getBillingSpecifiedPeriod() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\SpecifiedPeriodType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\SpecifiedPeriodType
          */
         $billingPeriod = $billingPeriods[InvoiceSuitePointerUtils::getValue('documentbillingperiod')];
 
@@ -2983,12 +2983,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newAccountId
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\TradeAccountingAccountType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradeAccountingAccountType>
          */
         $documentPostingReferences = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getReceivableSpecifiedTradeAccountingAccount() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\TradeAccountingAccountType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradeAccountingAccountType
          */
         $documentPostingReference = $documentPostingReferences[InvoiceSuitePointerUtils::getValue('documentpostingreference')];
 
@@ -3087,12 +3087,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?DateTimeInterface &$newReferenceDate
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\ReferencedDocumentType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\ReferencedDocumentType>
          */
         $documentBuyerOrderReferences = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerOrderReferencedDocument() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\ReferencedDocumentType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\ReferencedDocumentType
          */
         $documentBuyerOrderReference = $documentBuyerOrderReferences[InvoiceSuitePointerUtils::getValue('documentbuyerorderreference')];
 
@@ -3190,12 +3190,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?DateTimeInterface &$newReferenceDate
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxextended\ram\ReferencedDocumentType>
          */
         $documentContractReferences = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getContractReferencedDocument() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxextended\ram\ReferencedDocumentType
          */
         $documentContractReference = $documentContractReferences[InvoiceSuitePointerUtils::getValue('documentcontractreference')];
 
@@ -3312,12 +3312,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newTypeCode
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\ReferencedDocumentType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\ReferencedDocumentType>
          */
         $documentInvoiceReferences = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getInvoiceReferencedDocument() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\ReferencedDocumentType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\ReferencedDocumentType
          */
         $documentInvoiceReference = $documentInvoiceReferences[InvoiceSuitePointerUtils::getValue('documentinvoicereference')];
 
@@ -3456,12 +3456,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?DateTimeInterface &$newReferenceDate
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\ReferencedDocumentType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\ReferencedDocumentType>
          */
         $documentDespatchAdviceReferences = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getDespatchAdviceReferencedDocument() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\ReferencedDocumentType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\ReferencedDocumentType
          */
         $documentDespatchAdviceReference = $documentDespatchAdviceReferences[InvoiceSuitePointerUtils::getValue('documentdespatchadvicereference')];
 
@@ -3651,12 +3651,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newId
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType>
          */
         $documentSellerIds = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getID() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType
          */
         $documentSellerId = $documentSellerIds[InvoiceSuitePointerUtils::getValue('documentsellerid')];
 
@@ -3710,12 +3710,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newGlobalIdType
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType>
          */
         $documentSellerGlobalIds = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getGlobalID() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType
          */
         $documentSellerGlobalId = $documentSellerGlobalIds[InvoiceSuitePointerUtils::getValue('documentsellerglobalid')];
 
@@ -3770,12 +3770,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newTaxRegistrationId
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\TaxRegistrationType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TaxRegistrationType>
          */
         $documentSellerTaxRegistrations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getSpecifiedTaxRegistration() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\TaxRegistrationType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TaxRegistrationType
          */
         $documentSellerTaxRegistration = $documentSellerTaxRegistrations[InvoiceSuitePointerUtils::getValue('documentsellertaxregistration')];
 
@@ -3845,12 +3845,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newSubDivision
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\TradeAddressType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradeAddressType>
          */
         $documentSellerAddresses = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getPostalTradeAddress() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\TradeAddressType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradeAddressType
          */
         $documentSellerAddress = $documentSellerAddresses[InvoiceSuitePointerUtils::getValue('documentselleraddress')];
 
@@ -3913,12 +3913,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newName
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\LegalOrganizationType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\LegalOrganizationType>
          */
         $documentSellerLegalOrganisations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getSpecifiedLegalOrganization() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\LegalOrganizationType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\LegalOrganizationType
          */
         $documentSellerLegalOrganisation = $documentSellerLegalOrganisations[InvoiceSuitePointerUtils::getValue('documentsellerlegalorganisation')];
 
@@ -4026,12 +4026,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newUri
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\UniversalCommunicationType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\UniversalCommunicationType>
          */
         $documentSellerElectronicCommunications = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getURIUniversalCommunication() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\UniversalCommunicationType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\UniversalCommunicationType
          */
         $documentSellerElectronicCommunication = $documentSellerElectronicCommunications[InvoiceSuitePointerUtils::getValue('documentsellerecommunication')];
 
@@ -4103,12 +4103,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newId
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType>
          */
         $documentBuyerIds = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerTradeParty()?->getID() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType
          */
         $documentBuyerId = $documentBuyerIds[InvoiceSuitePointerUtils::getValue('documentbuyerid')];
 
@@ -4162,12 +4162,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newGlobalIdType
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType>
          */
         $documentBuyerGlobalIds = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerTradeParty()?->getGlobalID() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType
          */
         $documentBuyerGlobalId = $documentBuyerGlobalIds[InvoiceSuitePointerUtils::getValue('documentbuyerglobalid')];
 
@@ -4222,12 +4222,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newTaxRegistrationId
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\TaxRegistrationType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TaxRegistrationType>
          */
         $documentBuyerTaxRegistrations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerTradeParty()?->getSpecifiedTaxRegistration() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\TaxRegistrationType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TaxRegistrationType
          */
         $documentBuyerTaxRegistration = $documentBuyerTaxRegistrations[InvoiceSuitePointerUtils::getValue('documentbuyertaxregistration')];
 
@@ -4297,12 +4297,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newSubDivision
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\TradeAddressType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradeAddressType>
          */
         $documentBuyerAddresses = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerTradeParty()?->getPostalTradeAddress() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\TradeAddressType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradeAddressType
          */
         $documentBuyerAddress = $documentBuyerAddresses[InvoiceSuitePointerUtils::getValue('documentbuyeraddress')];
 
@@ -4365,12 +4365,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newName
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\LegalOrganizationType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\LegalOrganizationType>
          */
         $documentBuyerLegalOrganisations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerTradeParty()?->getSpecifiedLegalOrganization() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\LegalOrganizationType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\LegalOrganizationType
          */
         $documentBuyerLegalOrganisation = $documentBuyerLegalOrganisations[InvoiceSuitePointerUtils::getValue('documentbuyerlegalorganisation')];
 
@@ -4478,12 +4478,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newUri
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\UniversalCommunicationType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\UniversalCommunicationType>
          */
         $documentBuyerElectronicCommunications = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerTradeParty()?->getURIUniversalCommunication() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\UniversalCommunicationType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\UniversalCommunicationType
          */
         $documentBuyerElectronicCommunication = $documentBuyerElectronicCommunications[InvoiceSuitePointerUtils::getValue('documentbuyerecommunication')];
 
@@ -4555,12 +4555,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newId
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType>
          */
         $documentTaxRepresentativeIds = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTaxRepresentativeTradeParty()?->getID() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType
          */
         $documentTaxRepresentativeId = $documentTaxRepresentativeIds[InvoiceSuitePointerUtils::getValue('documenttaxrepresentativeid')];
 
@@ -4614,12 +4614,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newGlobalIdType
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType>
          */
         $documentTaxRepresentativeGlobalIds = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTaxRepresentativeTradeParty()?->getGlobalID() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType
          */
         $documentTaxRepresentativeGlobalId = $documentTaxRepresentativeGlobalIds[InvoiceSuitePointerUtils::getValue('documenttaxrepresentativeglobalid')];
 
@@ -4674,12 +4674,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newTaxRegistrationId
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\TaxRegistrationType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TaxRegistrationType>
          */
         $documentTaxRepresentativeTaxRegistrations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTaxRepresentativeTradeParty()?->getSpecifiedTaxRegistration() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\TaxRegistrationType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TaxRegistrationType
          */
         $documentTaxRepresentativeTaxRegistration = $documentTaxRepresentativeTaxRegistrations[InvoiceSuitePointerUtils::getValue('documenttaxrepresentativetaxregistration')];
 
@@ -4749,12 +4749,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newSubDivision
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\TradeAddressType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradeAddressType>
          */
         $documentTaxRepresentativeAddresses = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTaxRepresentativeTradeParty()?->getPostalTradeAddress() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\TradeAddressType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradeAddressType
          */
         $documentTaxRepresentativeAddress = $documentTaxRepresentativeAddresses[InvoiceSuitePointerUtils::getValue('documenttaxrepresentativeaddress')];
 
@@ -4817,12 +4817,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newName
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\LegalOrganizationType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\LegalOrganizationType>
          */
         $documentTaxRepresentativeLegalOrganisations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTaxRepresentativeTradeParty()?->getSpecifiedLegalOrganization() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\LegalOrganizationType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\LegalOrganizationType
          */
         $documentTaxRepresentativeLegalOrganisation = $documentTaxRepresentativeLegalOrganisations[InvoiceSuitePointerUtils::getValue('documenttaxrepresentativelegalorganisation')];
 
@@ -4930,12 +4930,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newUri
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\UniversalCommunicationType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\UniversalCommunicationType>
          */
         $documentTaxRepresentativeElectronicCommunications = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTaxRepresentativeTradeParty()?->getURIUniversalCommunication() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\UniversalCommunicationType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\UniversalCommunicationType
          */
         $documentTaxRepresentativeElectronicCommunication = $documentTaxRepresentativeElectronicCommunications[InvoiceSuitePointerUtils::getValue('documenttaxrepresentativeecommunication')];
 
@@ -5339,12 +5339,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newId
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType>
          */
         $documentShipToIds = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getShipToTradeParty()?->getID() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType
          */
         $documentShipToId = $documentShipToIds[InvoiceSuitePointerUtils::getValue('documentshiptoid')];
 
@@ -5398,12 +5398,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newGlobalIdType
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType>
          */
         $documentShipToGlobalIds = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getShipToTradeParty()?->getGlobalID() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType
          */
         $documentShipToGlobalId = $documentShipToGlobalIds[InvoiceSuitePointerUtils::getValue('documentshiptoglobalid')];
 
@@ -5458,12 +5458,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newTaxRegistrationId
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\TaxRegistrationType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TaxRegistrationType>
          */
         $documentShipToTaxRegistrations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getShipToTradeParty()?->getSpecifiedTaxRegistration() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\TaxRegistrationType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TaxRegistrationType
          */
         $documentShipToTaxRegistration = $documentShipToTaxRegistrations[InvoiceSuitePointerUtils::getValue('documentshiptotaxregistration')];
 
@@ -5533,12 +5533,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newSubDivision
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\TradeAddressType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradeAddressType>
          */
         $documentShipToAddresses = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getShipToTradeParty()?->getPostalTradeAddress() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\TradeAddressType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradeAddressType
          */
         $documentShipToAddress = $documentShipToAddresses[InvoiceSuitePointerUtils::getValue('documentshiptoaddress')];
 
@@ -5601,12 +5601,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newName
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\LegalOrganizationType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\LegalOrganizationType>
          */
         $documentShipToLegalOrganisations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getShipToTradeParty()?->getSpecifiedLegalOrganization() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\LegalOrganizationType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\LegalOrganizationType
          */
         $documentShipToLegalOrganisation = $documentShipToLegalOrganisations[InvoiceSuitePointerUtils::getValue('documentshiptolegalorganisation')];
 
@@ -5714,12 +5714,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newUri
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\UniversalCommunicationType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\UniversalCommunicationType>
          */
         $documentShipToElectronicCommunications = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getShipToTradeParty()?->getURIUniversalCommunication() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\UniversalCommunicationType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\UniversalCommunicationType
          */
         $documentShipToElectronicCommunication = $documentShipToElectronicCommunications[InvoiceSuitePointerUtils::getValue('documentshiptoecommunication')];
 
@@ -7119,12 +7119,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newId
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType>
          */
         $documentPayeeIds = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayeeTradeParty()?->getID() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType
          */
         $documentPayeeId = $documentPayeeIds[InvoiceSuitePointerUtils::getValue('documentpayeeid')];
 
@@ -7178,12 +7178,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newGlobalIdType
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType>
          */
         $documentPayeeGlobalIds = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayeeTradeParty()?->getGlobalID() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType
          */
         $documentPayeeGlobalId = $documentPayeeGlobalIds[InvoiceSuitePointerUtils::getValue('documentpayeeglobalid')];
 
@@ -7238,12 +7238,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newTaxRegistrationId
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\TaxRegistrationType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TaxRegistrationType>
          */
         $documentPayeeTaxRegistrations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayeeTradeParty()?->getSpecifiedTaxRegistration() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\TaxRegistrationType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TaxRegistrationType
          */
         $documentPayeeTaxRegistration = $documentPayeeTaxRegistrations[InvoiceSuitePointerUtils::getValue('documentpayeetaxregistration')];
 
@@ -7313,12 +7313,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newSubDivision
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\TradeAddressType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradeAddressType>
          */
         $documentPayeeAddresses = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayeeTradeParty()?->getPostalTradeAddress() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\TradeAddressType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradeAddressType
          */
         $documentPayeeAddress = $documentPayeeAddresses[InvoiceSuitePointerUtils::getValue('documentpayeeaddress')];
 
@@ -7381,12 +7381,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newName
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\LegalOrganizationType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\LegalOrganizationType>
          */
         $documentPayeeLegalOrganisations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayeeTradeParty()?->getSpecifiedLegalOrganization() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\LegalOrganizationType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\LegalOrganizationType
          */
         $documentPayeeLegalOrganisation = $documentPayeeLegalOrganisations[InvoiceSuitePointerUtils::getValue('documentpayeelegalorganisation')];
 
@@ -7494,12 +7494,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newUri
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\UniversalCommunicationType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\UniversalCommunicationType>
          */
         $documentPayeeElectronicCommunications = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPayeeTradeParty()?->getURIUniversalCommunication() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\UniversalCommunicationType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\UniversalCommunicationType
          */
         $documentPayeeElectronicCommunication = $documentPayeeElectronicCommunications[InvoiceSuitePointerUtils::getValue('documentpayeecommunication')];
 
@@ -7585,12 +7585,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newMandate
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\TradeSettlementPaymentMeansType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradeSettlementPaymentMeansType>
          */
         $documentPaymentMeans = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradeSettlementPaymentMeans() ?? [];
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\TradeSettlementPaymentMeansType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradeSettlementPaymentMeansType
          */
         $documentPaymentMean = $documentPaymentMeans[InvoiceSuitePointerUtils::getValue('documentpaymentmean')];
 
@@ -7657,12 +7657,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newId
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType>
          */
         $documentCreditorReferences = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getCreditorReferenceID() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\udt\IDType
          */
         $documentCreditorReference = $documentCreditorReferences[InvoiceSuitePointerUtils::getValue('documentcreditorreference')];
 
@@ -7724,12 +7724,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         InvoiceSuitePointerUtils::resetSingle('documentpaymenttermpaymentpenalty');
 
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\TradePaymentTermsType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradePaymentTermsType>
          */
         $documentPaymentTerms = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\TradePaymentTermsType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradePaymentTermsType
          */
         $documentPaymentTerm = $documentPaymentTerms[InvoiceSuitePointerUtils::getValue('documentpaymentterm')];
 
@@ -7924,12 +7924,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newTaxDueCode
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\TradeTaxType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradeTaxType>
          */
         $documentTaxes = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getApplicableTradeTax() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\TradeTaxType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradeTaxType
          */
         $documentTax = $documentTaxes[InvoiceSuitePointerUtils::getValue('documenttax')];
 
@@ -8016,12 +8016,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?float &$newAllowanceChargePercent
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxbasicwl\ram\TradeAllowanceChargeType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradeAllowanceChargeType>
          */
         $documentAllowanceCharges = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradeAllowanceCharge() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\TradeAllowanceChargeType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxbasicwl\ram\TradeAllowanceChargeType
          */
         $documentAllowanceCharge = $documentAllowanceCharges[InvoiceSuitePointerUtils::getValue('documentallowancecharge')];
 

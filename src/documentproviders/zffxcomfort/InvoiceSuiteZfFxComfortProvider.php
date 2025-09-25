@@ -10,7 +10,7 @@
 namespace horstoeko\invoicesuite\documentproviders\zffxcomfort;
 
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
-use horstoeko\invoicesuite\models\zffxcomfort\rsm\CrossIndustryInvoice;
+use horstoeko\invoicesuite\documentmodels\zffxcomfort\rsm\CrossIndustryInvoice;
 
 class InvoiceSuiteZfFxComfortProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {

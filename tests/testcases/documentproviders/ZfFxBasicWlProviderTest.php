@@ -3,7 +3,7 @@
 namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 
 use horstoeko\invoicesuite\tests\TestCase;
-use horstoeko\invoicesuite\models\zffxbasicwl\rsm\CrossIndustryInvoice;
+use horstoeko\invoicesuite\documentmodels\zffxbasicwl\rsm\CrossIndustryInvoice;
 use horstoeko\invoicesuite\documentproviders\zffxbasicwl\InvoiceSuiteZfFxBasicWlProvider;
 use horstoeko\invoicesuite\documentproviders\zffxbasicwl\InvoiceSuiteZfFxBasicWlProviderReader;
 use horstoeko\invoicesuite\documentproviders\zffxbasicwl\InvoiceSuiteZfFxBasicWlSerializerHandler;

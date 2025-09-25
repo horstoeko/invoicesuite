@@ -29,31 +29,31 @@ class InvoiceSuiteZfFxBasicSerializerHandler implements SubscribingHandlerInterf
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
-                'type' => 'horstoeko\invoicesuite\models\zffxbasic\udt\AmountType',
+                'type' => 'horstoeko\invoicesuite\documentmodels\zffxbasic\udt\AmountType',
                 'method' => 'serializeAmountType'
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
-                'type' => 'horstoeko\invoicesuite\models\zffxbasic\udt\QuantityType',
+                'type' => 'horstoeko\invoicesuite\documentmodels\zffxbasic\udt\QuantityType',
                 'method' => 'serializeQuantityType'
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
-                'type' => 'horstoeko\invoicesuite\models\zffxbasic\udt\PercentType',
+                'type' => 'horstoeko\invoicesuite\documentmodels\zffxbasic\udt\PercentType',
                 'method' => 'serializePercentType'
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
-                'type' => 'horstoeko\invoicesuite\models\zffxbasic\udt\IndicatorType',
+                'type' => 'horstoeko\invoicesuite\documentmodels\zffxbasic\udt\IndicatorType',
                 'method' => 'serializeIndicatorType'
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
-                'type' => 'horstoeko\invoicesuite\models\zffxbasic\udt\MeasureType',
+                'type' => 'horstoeko\invoicesuite\documentmodels\zffxbasic\udt\MeasureType',
                 'method' => 'serializeMeasureType'
             ],
         ];

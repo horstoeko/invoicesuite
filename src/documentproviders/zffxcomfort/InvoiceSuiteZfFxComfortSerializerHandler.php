@@ -29,31 +29,31 @@ class InvoiceSuiteZfFxComfortSerializerHandler implements SubscribingHandlerInte
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
-                'type' => 'horstoeko\invoicesuite\models\zffxcomfort\udt\AmountType',
+                'type' => 'horstoeko\invoicesuite\documentmodels\zffxcomfort\udt\AmountType',
                 'method' => 'serializeAmountType'
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
-                'type' => 'horstoeko\invoicesuite\models\zffxcomfort\udt\QuantityType',
+                'type' => 'horstoeko\invoicesuite\documentmodels\zffxcomfort\udt\QuantityType',
                 'method' => 'serializeQuantityType'
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
-                'type' => 'horstoeko\invoicesuite\models\zffxcomfort\udt\PercentType',
+                'type' => 'horstoeko\invoicesuite\documentmodels\zffxcomfort\udt\PercentType',
                 'method' => 'serializePercentType'
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
-                'type' => 'horstoeko\invoicesuite\models\zffxcomfort\udt\IndicatorType',
+                'type' => 'horstoeko\invoicesuite\documentmodels\zffxcomfort\udt\IndicatorType',
                 'method' => 'serializeIndicatorType'
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
-                'type' => 'horstoeko\invoicesuite\models\zffxcomfort\udt\MeasureType',
+                'type' => 'horstoeko\invoicesuite\documentmodels\zffxcomfort\udt\MeasureType',
                 'method' => 'serializeMeasureType'
             ],
         ];

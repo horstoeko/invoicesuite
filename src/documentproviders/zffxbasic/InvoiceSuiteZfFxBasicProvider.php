@@ -10,7 +10,7 @@
 namespace horstoeko\invoicesuite\documentproviders\zffxbasic;
 
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
-use horstoeko\invoicesuite\models\zffxbasic\rsm\CrossIndustryInvoice;
+use horstoeko\invoicesuite\documentmodels\zffxbasic\rsm\CrossIndustryInvoice;
 
 class InvoiceSuiteZfFxBasicProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {

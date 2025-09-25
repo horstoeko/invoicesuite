@@ -44,7 +44,7 @@ use horstoeko\invoicesuite\documentdto\InvoiceSuiteServiceChargeDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuitesummationDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuitesummationLineDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteTaxDTO;
-use horstoeko\invoicesuite\models\zffxminimum\rsm\CrossIndustryInvoiceType;
+use horstoeko\invoicesuite\documentmodels\zffxminimum\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
@@ -3017,12 +3017,12 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractDocument
         ?DateTimeInterface &$newReferenceDate
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxminimum\ram\ReferencedDocumentType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxminimum\ram\ReferencedDocumentType>
          */
         $documentBuyerOrderReferences = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerOrderReferencedDocument() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxminimum\ram\ReferencedDocumentType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxminimum\ram\ReferencedDocumentType
          */
         $documentBuyerOrderReference = $documentBuyerOrderReferences[InvoiceSuitePointerUtils::getValue('documentbuyerorderreference')];
 
@@ -3585,12 +3585,12 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newTaxRegistrationId
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxminimum\ram\TaxRegistrationType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxminimum\ram\TaxRegistrationType>
          */
         $documentSellerTaxRegistrations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getSpecifiedTaxRegistration() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxminimum\ram\TaxRegistrationType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxminimum\ram\TaxRegistrationType
          */
         $documentSellerTaxRegistration = $documentSellerTaxRegistrations[InvoiceSuitePointerUtils::getValue('documentsellertaxregistration')];
 
@@ -3660,12 +3660,12 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newSubDivision
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxminimum\ram\TradeAddressType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxminimum\ram\TradeAddressType>
          */
         $documentSellerAddresses = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getPostalTradeAddress() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxminimum\ram\TradeAddressType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxminimum\ram\TradeAddressType
          */
         $documentSellerAddress = $documentSellerAddresses[InvoiceSuitePointerUtils::getValue('documentselleraddress')];
 
@@ -3728,12 +3728,12 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newName
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxminimum\ram\LegalOrganizationType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxminimum\ram\LegalOrganizationType>
          */
         $documentSellerLegalOrganisations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getSpecifiedLegalOrganization() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxminimum\ram\LegalOrganizationType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxminimum\ram\LegalOrganizationType
          */
         $documentSellerLegalOrganisation = $documentSellerLegalOrganisations[InvoiceSuitePointerUtils::getValue('documentsellerlegalorganisation')];
 
@@ -3977,12 +3977,12 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newTaxRegistrationId
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxminimum\ram\TaxRegistrationType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxminimum\ram\TaxRegistrationType>
          */
         $documentBuyerTaxRegistrations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerTradeParty()?->getSpecifiedTaxRegistration() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxminimum\ram\TaxRegistrationType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxminimum\ram\TaxRegistrationType
          */
         $documentBuyerTaxRegistration = $documentBuyerTaxRegistrations[InvoiceSuitePointerUtils::getValue('documentbuyertaxregistration')];
 
@@ -4052,12 +4052,12 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newSubDivision
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxminimum\ram\TradeAddressType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxminimum\ram\TradeAddressType>
          */
         $documentBuyerAddresses = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerTradeParty()?->getPostalTradeAddress() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxminimum\ram\TradeAddressType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxminimum\ram\TradeAddressType
          */
         $documentBuyerAddress = $documentBuyerAddresses[InvoiceSuitePointerUtils::getValue('documentbuyeraddress')];
 
@@ -4120,12 +4120,12 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newName
     ): self {
         /**
-         * @var array<\horstoeko\invoicesuite\models\zffxminimum\ram\LegalOrganizationType>
+         * @var array<\horstoeko\invoicesuite\documentmodels\zffxminimum\ram\LegalOrganizationType>
          */
         $documentBuyerLegalOrganisations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerTradeParty()?->getSpecifiedLegalOrganization() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffxminimum\ram\LegalOrganizationType
+         * @var \horstoeko\invoicesuite\documentmodels\zffxminimum\ram\LegalOrganizationType
          */
         $documentBuyerLegalOrganisation = $documentBuyerLegalOrganisations[InvoiceSuitePointerUtils::getValue('documentbuyerlegalorganisation')];
 

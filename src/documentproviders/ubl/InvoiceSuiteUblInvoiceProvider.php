@@ -10,7 +10,7 @@
 namespace horstoeko\invoicesuite\documentproviders\ubl;
 
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
-use horstoeko\invoicesuite\models\ubl\main\Invoice;
+use horstoeko\invoicesuite\documentmodels\ubl\main\Invoice;
 
 class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {

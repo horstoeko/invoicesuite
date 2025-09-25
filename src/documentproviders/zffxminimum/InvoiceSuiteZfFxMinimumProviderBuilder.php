@@ -36,7 +36,7 @@ use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceProductDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteServiceChargeDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuitesummationDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteTaxDTO;
-use horstoeko\invoicesuite\models\zffxminimum\rsm\CrossIndustryInvoiceType;
+use horstoeko\invoicesuite\documentmodels\zffxminimum\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;

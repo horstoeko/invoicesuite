@@ -6,7 +6,7 @@ use DateTime;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistCurrencyCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
-use horstoeko\invoicesuite\models\zffxminimum\rsm\CrossIndustryInvoice;
+use horstoeko\invoicesuite\documentmodels\zffxminimum\rsm\CrossIndustryInvoice;
 use horstoeko\invoicesuite\documentproviders\zffxminimum\InvoiceSuiteZfFxMinimumProvider;
 use horstoeko\invoicesuite\documentproviders\zffxminimum\InvoiceSuiteZfFxMinimumProviderBuilder;
 use horstoeko\invoicesuite\tests\TestCase;
