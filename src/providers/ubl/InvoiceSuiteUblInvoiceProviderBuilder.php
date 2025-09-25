@@ -45,17 +45,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
      */
     protected function getUblInvoiceRootObject(): Invoice
     {
-        return $this->getRootObject();
+        return $this->getDocumentRootObject();
     }
 
     /**
      * @inheritDoc
      */
-    public function initRootObject(): InvoiceSuiteUblInvoiceProviderBuilder
+    public function initDocumentRootObject(): InvoiceSuiteUblInvoiceProviderBuilder
     {
         $this->setContextParameter(
-            $this->getCurrentFormatProviderParameterValue('CustomizationId', ''),
-            $this->getCurrentFormatProviderParameterValue('ProfileId', '')
+            $this->getCurrentDocumentFormatProviderParameterValue('CustomizationId', ''),
+            $this->getCurrentDocumentFormatProviderParameterValue('ProfileId', '')
         );
 
         return $this;
@@ -1214,8 +1214,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
         ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
     ): self {
-        $additionalDocTypeCode = $this->getCurrentFormatProviderParameterValue('QuotationDocTypeCode', '');
-        $additionalDocDescription = $this->getCurrentFormatProviderParameterValue('QuotationDocDescription', '');
+        $additionalDocTypeCode = $this->getCurrentDocumentFormatProviderParameterValue('QuotationDocTypeCode', '');
+        $additionalDocDescription = $this->getCurrentDocumentFormatProviderParameterValue('QuotationDocDescription', '');
 
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$additionalDocTypeCode, $additionalDocDescription])) {
             return $this;

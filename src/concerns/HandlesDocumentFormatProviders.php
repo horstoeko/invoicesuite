@@ -15,23 +15,23 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteClassFinder;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-trait HandlesFormatProviders
+trait HandlesDocumentFormatProviders
 {
     /**
      * List of registered format providers
      *
      * @var array<InvoiceSuiteAbstractDocumentFormatProvider>
      */
-    protected $registeredFormatProviders = [];
+    protected $registeredDocumentFormatProviders = [];
 
     /**
      * Get the list of registered format providers
      *
      * @return array<InvoiceSuiteAbstractDocumentFormatProvider>
      */
-    public function getRegisteredFormatProviders(): array
+    public function getRegisteredDocumentFormatProviders(): array
     {
-        return $this->registeredFormatProviders;
+        return $this->registeredDocumentFormatProviders;
     }
 
     /**
@@ -40,13 +40,13 @@ trait HandlesFormatProviders
      * @param InvoiceSuiteAbstractDocumentFormatProvider $invoiceSuiteAbstractFormatProvider
      * @return static
      */
-    public function addFormatProvider(InvoiceSuiteAbstractDocumentFormatProvider $invoiceSuiteAbstractFormatProvider): self
+    public function registerDocumentFormatProvider(InvoiceSuiteAbstractDocumentFormatProvider $invoiceSuiteAbstractFormatProvider): self
     {
-        if (in_array($invoiceSuiteAbstractFormatProvider, $this->registeredFormatProviders)) {
+        if (in_array($invoiceSuiteAbstractFormatProvider, $this->registeredDocumentFormatProviders)) {
             return $this;
         }
 
-        $this->registeredFormatProviders[] = $invoiceSuiteAbstractFormatProvider;
+        $this->registeredDocumentFormatProviders[] = $invoiceSuiteAbstractFormatProvider;
 
         return $this;
     }
@@ -54,16 +54,16 @@ trait HandlesFormatProviders
     /**
      * Remove an already defined format provider
      *
-     * @param InvoiceSuiteAbstractDocumentFormatProvider $invoiceSuiteAbstractFormatProvider
+     * @param InvoiceSuiteAbstractDocumentFormatProvider $existingProvider
      * @return static
      */
-    public function removeFormatProvider(InvoiceSuiteAbstractDocumentFormatProvider $invoiceSuiteAbstractFormatProvider): self
+    public function unregisterDocumentFormatProvider(InvoiceSuiteAbstractDocumentFormatProvider $existingProvider): self
     {
-        if (($key = array_search($invoiceSuiteAbstractFormatProvider, $this->registeredFormatProviders, true)) === false) {
+        if (($key = array_search($existingProvider, $this->registeredDocumentFormatProviders, true)) === false) {
             return $this;
         }
 
-        unset($this->registeredFormatProviders[$key]);
+        unset($this->registeredDocumentFormatProviders[$key]);
 
         return $this;
     }
@@ -74,9 +74,9 @@ trait HandlesFormatProviders
      * @param string $formatProviderUniqueId
      * @return null|InvoiceSuiteAbstractDocumentFormatProvider
      */
-    public function findFormatProviderByUniqueId(string $formatProviderUniqueId)
+    public function findDocumentFormatProviderByUniqueId(string $formatProviderUniqueId)
     {
-        $formatProvider = array_filter($this->registeredFormatProviders, fn($formatProvider) => strcasecmp($formatProvider->getUniqueId(), $formatProviderUniqueId) === 0);
+        $formatProvider = array_filter($this->registeredDocumentFormatProviders, fn($formatProvider) => strcasecmp($formatProvider->getUniqueId(), $formatProviderUniqueId) === 0);
 
         if ($formatProvider === []) {
             return null;
@@ -92,9 +92,9 @@ trait HandlesFormatProviders
      * @return null|InvoiceSuiteAbstractDocumentFormatProvider
      * @throws InvoiceSuiteFormatProviderNotFoundException
      */
-    public function findFormatProviderByUniqueIdOrFail(string $formatProviderUniqueId)
+    public function findDocumentFormatProviderByUniqueIdOrFail(string $formatProviderUniqueId)
     {
-        $formatProvider = $this->findFormatProviderByUniqueId($formatProviderUniqueId);
+        $formatProvider = $this->findDocumentFormatProviderByUniqueId($formatProviderUniqueId);
 
         if (is_null($formatProvider)) {
             throw new InvoiceSuiteFormatProviderNotFoundException($formatProviderUniqueId);
@@ -108,13 +108,13 @@ trait HandlesFormatProviders
      *
      * @return static
      */
-    public function resolveAvailableFormatProviders(): self
+    public function resolveAvailableDocumentFormatProviders(): self
     {
         $classFinder = InvoiceSuiteClassFinder::factory();
         $classesWhichAreFormatProviders = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class);
 
         foreach ($classesWhichAreFormatProviders as $classWhichIsFormatProvider) {
-            $this->addFormatProvider(new $classWhichIsFormatProvider());
+            $this->registerDocumentFormatProvider(new $classWhichIsFormatProvider());
         }
 
         return $this;

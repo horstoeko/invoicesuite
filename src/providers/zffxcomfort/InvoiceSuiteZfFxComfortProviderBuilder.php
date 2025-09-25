@@ -41,11 +41,11 @@ class InvoiceSuiteZfFxComfortProviderBuilder extends InvoiceSuiteAbstractDocumen
     /**
      * @inheritDoc
      */
-    public function initRootObject(): InvoiceSuiteZfFxComfortProviderBuilder
+    public function initDocumentRootObject(): InvoiceSuiteZfFxComfortProviderBuilder
     {
         $this->setContextParameter(
-            $this->getCurrentFormatProviderParameterValue('ContextParameter', ''),
-            $this->getCurrentFormatProviderParameterValue('BusinessProcess', '')
+            $this->getCurrentDocumentFormatProviderParameterValue('ContextParameter', ''),
+            $this->getCurrentDocumentFormatProviderParameterValue('BusinessProcess', '')
         );
 
         return $this;
@@ -58,7 +58,7 @@ class InvoiceSuiteZfFxComfortProviderBuilder extends InvoiceSuiteAbstractDocumen
      */
     protected function getCrossIndustryRootObject(): CrossIndustryInvoiceType
     {
-        return $this->getRootObject();
+        return $this->getDocumentRootObject();
     }
 
     /**

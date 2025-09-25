@@ -4,10 +4,10 @@ namespace horstoeko\invoicesuite\abstracts;
 
 use JMS\Serializer\DeserializationContext;
 use JMS\Serializer\Exception\RuntimeException;
-use horstoeko\invoicesuite\concerns\HandlesRootObject;
-use horstoeko\invoicesuite\concerns\HandlesSerializer;
+use horstoeko\invoicesuite\concerns\HandlesDocumentRootObject;
+use horstoeko\invoicesuite\concerns\HandlesDocumentSerializer;
 use horstoeko\invoicesuite\contracts\InvoiceSuiteDocumentReaderContract;
-use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
+use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContent;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
 
@@ -22,9 +22,9 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
  */
 abstract class InvoiceSuiteAbstractDocumentFormatReader implements InvoiceSuiteDocumentReaderContract
 {
-    use HandlesCurrentFormatProvider;
-    use HandlesRootObject;
-    use HandlesSerializer;
+    use HandlesCurrentDocumentFormatProvider;
+    use HandlesDocumentRootObject;
+    use HandlesDocumentSerializer;
 
     /**
      * Constructor
@@ -33,8 +33,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader implements InvoiceSuiteD
      */
     public function __construct(InvoiceSuiteAbstractDocumentFormatProvider $newProvider)
     {
-        $this->setCurrentFormatProvider($newProvider);
-        $this->createAndInitSerializerByFormatProvider();
+        $this->setCurrentDocumentFormatProvider($newProvider);
+        $this->createAndInitDocumentSerializerByFormatProvider();
     }
 
     /**
@@ -95,10 +95,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader implements InvoiceSuiteD
      */
     protected function deserializeFromContentByContentType(string $fromContent, string $contentType): self
     {
-        $this->setRootObject(
-            $this->serializer->deserialize(
+        $this->setDocumentRootObject(
+            $this->documentSerializer->deserialize(
                 $fromContent,
-                $this->getCurrentFormatProvider()->getRootClassName(),
+                $this->getCurrentDocumentFormatProvider()->getRootClassName(),
                 $contentType,
                 DeserializationContext::create()
             )

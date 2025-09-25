@@ -40,11 +40,11 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractDocumen
     /**
      * @inheritDoc
      */
-    public function initRootObject(): InvoiceSuiteZfFxMinimumProviderBuilder
+    public function initDocumentRootObject(): InvoiceSuiteZfFxMinimumProviderBuilder
     {
         $this->setContextParameter(
-            $this->getCurrentFormatProviderParameterValue('ContextParameter', ''),
-            $this->getCurrentFormatProviderParameterValue('BusinessProcess', '')
+            $this->getCurrentDocumentFormatProviderParameterValue('ContextParameter', ''),
+            $this->getCurrentDocumentFormatProviderParameterValue('BusinessProcess', '')
         );
 
         return $this;
@@ -57,7 +57,7 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractDocumen
      */
     protected function getCrossIndustryRootObject(): CrossIndustryInvoiceType
     {
-        return $this->getRootObject();
+        return $this->getDocumentRootObject();
     }
 
     /**

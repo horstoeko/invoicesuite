@@ -13,34 +13,34 @@ use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-trait HandlesCurrentFormatProvider
+trait HandlesCurrentDocumentFormatProvider
 {
     /**
      * The format provider for which the serializer was created
      *
      * @var InvoiceSuiteAbstractDocumentFormatProvider
      */
-    protected $currentInvoiceSuiteAbstractFormatProvider;
+    protected $currentDocumentFormatProvider;
 
     /**
      * Returns the requested format provider
      *
      * @return InvoiceSuiteAbstractDocumentFormatProvider|null
      */
-    public function getCurrentFormatProvider(): ?InvoiceSuiteAbstractDocumentFormatProvider
+    public function getCurrentDocumentFormatProvider(): ?InvoiceSuiteAbstractDocumentFormatProvider
     {
-        return $this->currentInvoiceSuiteAbstractFormatProvider;
+        return $this->currentDocumentFormatProvider;
     }
 
     /**
      * Set the requested format provider
      *
-     * @param InvoiceSuiteAbstractDocumentFormatProvider $invoiceSuiteAbstractFormatProvider
+     * @param InvoiceSuiteAbstractDocumentFormatProvider $newDocumentFormatProvider
      * @return void
      */
-    public function setCurrentFormatProvider(InvoiceSuiteAbstractDocumentFormatProvider $invoiceSuiteAbstractFormatProvider): void
+    public function setCurrentDocumentFormatProvider(InvoiceSuiteAbstractDocumentFormatProvider $newDocumentFormatProvider): void
     {
-        $this->currentInvoiceSuiteAbstractFormatProvider = $invoiceSuiteAbstractFormatProvider;
+        $this->currentDocumentFormatProvider = $newDocumentFormatProvider;
     }
 
     /**
@@ -48,9 +48,9 @@ trait HandlesCurrentFormatProvider
      *
      * @return array<string,mixed>
      */
-    public function resolveCurrentFormatProviderParameters(): array
+    public function resolveCurrentDocumentFormatProviderParameters(): array
     {
-        return $this->currentInvoiceSuiteAbstractFormatProvider->getParameters();
+        return $this->currentDocumentFormatProvider->getParameters();
     }
 
     /**
@@ -59,9 +59,9 @@ trait HandlesCurrentFormatProvider
      * @param string $parameterName
      * @return boolean
      */
-    public function hasCurrentFormatProviderParameter(string $parameterName): bool
+    public function hasCurrentDocumentFormatProviderParameter(string $parameterName): bool
     {
-        return $this->currentInvoiceSuiteAbstractFormatProvider->hasFormatProviderParameter($parameterName);
+        return $this->currentDocumentFormatProvider->hasFormatProviderParameter($parameterName);
     }
 
     /**
@@ -71,8 +71,8 @@ trait HandlesCurrentFormatProvider
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function getCurrentFormatProviderParameterValue(string $parameterName, $defaultValue)
+    public function getCurrentDocumentFormatProviderParameterValue(string $parameterName, $defaultValue)
     {
-        return $this->currentInvoiceSuiteAbstractFormatProvider->getFormatProviderParameterValue($parameterName, $defaultValue);
+        return $this->currentDocumentFormatProvider->getFormatProviderParameterValue($parameterName, $defaultValue);
     }
 }

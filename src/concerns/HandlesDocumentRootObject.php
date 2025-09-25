@@ -11,25 +11,25 @@ namespace horstoeko\invoicesuite\concerns;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-trait HandlesRootObject
+trait HandlesDocumentRootObject
 {
     /**
      * Invoice root object
      *
      * @var mixed
      */
-    protected $rootObject;
+    protected $documentRootObject;
 
     /**
      * Initialize the root object
      *
      * @return self
      */
-    public function createAndInitRootObjectByFormatProvider(): self
+    public function createAndInitDocumentRootObjectByFormatProvider(): self
     {
-        $className = $this->getCurrentFormatProvider()->getRootClassName();
+        $className = $this->getCurrentDocumentFormatProvider()->getRootClassName();
 
-        return $this->setRootObject(new $className())->initRootObject();
+        return $this->setDocumentRootObject(new $className())->initDocumentRootObject();
     }
 
     /**
@@ -37,9 +37,9 @@ trait HandlesRootObject
      *
      * @return object
      */
-    public function getRootObject()
+    public function getDocumentRootObject()
     {
-        return $this->rootObject;
+        return $this->documentRootObject;
     }
 
     /**
@@ -48,9 +48,9 @@ trait HandlesRootObject
      * @param object $rootObject
      * @return self
      */
-    public function setRootObject(object $rootObject): self
+    public function setDocumentRootObject(object $rootObject): self
     {
-        $this->rootObject = $rootObject;
+        $this->documentRootObject = $rootObject;
 
         return $this;
     }
@@ -60,7 +60,7 @@ trait HandlesRootObject
      *
      * @return self
      */
-    public function initRootObject(): self
+    public function initDocumentRootObject(): self
     {
         return $this;
     }

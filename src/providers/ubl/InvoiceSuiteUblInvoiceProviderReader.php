@@ -56,7 +56,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractDocumentF
      */
     protected function getUblInvoiceRootObject(): Invoice
     {
-        return $this->getRootObject();
+        return $this->getDocumentRootObject();
     }
 
     #region Document DTO
@@ -2041,8 +2041,8 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractDocumentF
      */
     private function resolveQuotationReferences(): array
     {
-        $additionalDocTypeCode = $this->getCurrentFormatProviderParameterValue('BUILDER_QUOTATION_DOCTYPECODE', '');
-        $additionalDocDescription = $this->getCurrentFormatProviderParameterValue('BUILDER_QUOTATION_DOCDESCRIPTION', '');
+        $additionalDocTypeCode = $this->getCurrentDocumentFormatProviderParameterValue('BUILDER_QUOTATION_DOCTYPECODE', '');
+        $additionalDocDescription = $this->getCurrentDocumentFormatProviderParameterValue('BUILDER_QUOTATION_DOCDESCRIPTION', '');
 
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$additionalDocTypeCode, $additionalDocDescription])) {
             return [];
@@ -2381,7 +2381,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractDocumentF
      */
     private function resolveDocumentUltimateCustomerOrderReferences(): array
     {
-        $ultimateCustomerOrderDocTypeCode = $this->getCurrentFormatProviderParameterValue('BUILDER_ULTIMATECUSTOMERORDER_DOCTYPECODE', '220');
+        $ultimateCustomerOrderDocTypeCode = $this->getCurrentDocumentFormatProviderParameterValue('BUILDER_ULTIMATECUSTOMERORDER_DOCTYPECODE', '220');
 
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$ultimateCustomerOrderDocTypeCode])) {
             return [];

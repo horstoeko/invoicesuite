@@ -3,27 +3,27 @@
 namespace horstoeko\invoicesuite\tests\testcases\concerns;
 
 use horstoeko\invoicesuite\tests\TestCase;
-use horstoeko\invoicesuite\concerns\HandlesRootObject;
-use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
+use horstoeko\invoicesuite\concerns\HandlesDocumentRootObject;
+use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\models\zffxextended\rsm\CrossIndustryInvoice;
 use horstoeko\invoicesuite\providers\zffxextended\InvoiceSuiteZfFxExtendedProvider;
 
 class HandlesRootObjectTest extends TestCase
 {
-    use HandlesCurrentFormatProvider;
-    use HandlesRootObject;
+    use HandlesCurrentDocumentFormatProvider;
+    use HandlesDocumentRootObject;
 
     public function testInitialState(): void
     {
-        $this->assertNull($this->rootObject);
-        $this->assertNull($this->getRootObject());
+        $this->assertNull($this->documentRootObject);
+        $this->assertNull($this->getDocumentRootObject());
     }
 
-    public function testCreateAndInitRootObjectByFormatProvider(): void
+    public function testCreateAndInitDocumentRootObjectByFormatProvider(): void
     {
-        $this->setCurrentFormatProvider(new InvoiceSuiteZfFxExtendedProvider());
-        $this->createAndInitRootObjectByFormatProvider();
-        $this->assertInstanceOf(CrossIndustryInvoice::class, $this->rootObject);
-        $this->assertInstanceOf(CrossIndustryInvoice::class, $this->getRootObject());
+        $this->setCurrentDocumentFormatProvider(new InvoiceSuiteZfFxExtendedProvider());
+        $this->createAndInitDocumentRootObjectByFormatProvider();
+        $this->assertInstanceOf(CrossIndustryInvoice::class, $this->documentRootObject);
+        $this->assertInstanceOf(CrossIndustryInvoice::class, $this->getDocumentRootObject());
     }
 }

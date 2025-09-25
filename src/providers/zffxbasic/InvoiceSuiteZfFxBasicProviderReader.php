@@ -54,7 +54,7 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractDocumentFo
      */
     protected function getCrossIndustryRootObject(): CrossIndustryInvoiceType
     {
-        return $this->getRootObject();
+        return $this->getDocumentRootObject();
     }
 
     #region Document DTO

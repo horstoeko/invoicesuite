@@ -4,8 +4,8 @@ namespace horstoeko\invoicesuite;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
-use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
-use horstoeko\invoicesuite\concerns\HandlesFormatProviders;
+use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
+use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
 use horstoeko\invoicesuite\contracts\InvoiceSuiteDocumentReaderContract;
 use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
@@ -26,8 +26,8 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
 {
     use HandlesCallForwarding;
-    use HandlesCurrentFormatProvider;
-    use HandlesFormatProviders;
+    use HandlesCurrentDocumentFormatProvider;
+    use HandlesDocumentFormatProviders;
 
     #region Reader
 
@@ -75,10 +75,10 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     final protected function __construct(string $fromContent)
     {
-        $this->resolveAvailableFormatProviders();
+        $this->resolveAvailableDocumentFormatProviders();
 
         $formatProviders = array_filter(
-            $this->getRegisteredFormatProviders(),
+            $this->getRegisteredDocumentFormatProviders(),
             fn($formatProvider) => $formatProvider->isSatisfiableBySerializedContent($fromContent)
         );
 
@@ -88,8 +88,8 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
 
         $formatProvider = reset($formatProviders);
 
-        $this->setCurrentFormatProvider($formatProvider);
-        $this->getCurrentFormatProvider()->initReader()->getReader()->deserializeFromContent($fromContent);
+        $this->setCurrentDocumentFormatProvider($formatProvider);
+        $this->getCurrentDocumentFormatProvider()->initReader()->getReader()->deserializeFromContent($fromContent);
     }
 
     /**
@@ -101,7 +101,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function __call($method, $parameters)
     {
-        return $this->forwardCallWithCheckTo($this->getCurrentFormatProvider()->getReader(), $method, $parameters);
+        return $this->forwardCallWithCheckTo($this->getCurrentDocumentFormatProvider()->getReader(), $method, $parameters);
     }
 
     /**
@@ -114,7 +114,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         $this->convertToDTO($dto);
 
         return (InvoiceSuiteDocumentBuilder::createByProviderUniqueId(
-            $this->getCurrentFormatProvider()->getUniqueId()
+            $this->getCurrentDocumentFormatProvider()->getUniqueId()
         ))->createFromDTO($dto);
     }
 
@@ -131,7 +131,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function convertToDTO(
         ?InvoiceSuiteDocumentHeaderDTO &$newDocumentDTO
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->convertToDTO($newDocumentDTO);
+        $this->getCurrentDocumentFormatProvider()->getReader()->convertToDTO($newDocumentDTO);
 
         return $this;
     }
@@ -149,7 +149,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentNo(
         ?string &$newDocumentNo
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentNo($newDocumentNo);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentNo($newDocumentNo);
 
         return $this;
     }
@@ -163,7 +163,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentType(
         ?string &$newDocumentType
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentType($newDocumentType);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentType($newDocumentType);
 
         return $this;
     }
@@ -177,7 +177,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentDescription(
         ?string &$newDocumentDescription
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentDescription($newDocumentDescription);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentDescription($newDocumentDescription);
 
         return $this;
     }
@@ -191,7 +191,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentLanguage(
         ?string &$newDocumentLanguage
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentLanguage($newDocumentLanguage);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentLanguage($newDocumentLanguage);
 
         return $this;
     }
@@ -205,7 +205,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentDate(
         ?DateTimeInterface &$newDocumentDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentDate($newDocumentDate);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentDate($newDocumentDate);
 
         return $this;
     }
@@ -219,7 +219,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentCompleteDate(
         ?DateTimeInterface &$newCompleteDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentCompleteDate($newCompleteDate);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentCompleteDate($newCompleteDate);
 
         return $this;
     }
@@ -233,7 +233,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentCurrency(
         ?string &$newDocumentCurrency
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentCurrency($newDocumentCurrency);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentCurrency($newDocumentCurrency);
 
         return $this;
     }
@@ -247,7 +247,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentTaxCurrency(
         ?string &$newDocumentTaxCurrency
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentTaxCurrency($newDocumentTaxCurrency);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTaxCurrency($newDocumentTaxCurrency);
 
         return $this;
     }
@@ -261,7 +261,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentIsCopy(
         ?bool &$newDocumentIsCopy
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentIsCopy($newDocumentIsCopy);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentIsCopy($newDocumentIsCopy);
 
         return $this;
     }
@@ -275,7 +275,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentIsTest(
         ?bool &$newDocumentIsTest
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentIsTest($newDocumentIsTest);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentIsTest($newDocumentIsTest);
 
         return $this;
     }
@@ -287,7 +287,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentNote(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentNote();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentNote();
     }
 
     /**
@@ -297,7 +297,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentNote(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentNote();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentNote();
     }
 
     /**
@@ -313,7 +313,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newContentCode,
         ?string &$newSubjectCode
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentNote($newContent, $newContentCode, $newSubjectCode);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentNote($newContent, $newContentCode, $newSubjectCode);
 
         return $this;
     }
@@ -325,7 +325,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentBillingPeriod(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentBillingPeriod();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentBillingPeriod();
     }
 
     /**
@@ -335,7 +335,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentBillingPeriod(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentBillingPeriod();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentBillingPeriod();
     }
 
     /**
@@ -351,7 +351,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?DateTimeInterface &$newEndDate,
         ?string &$newDescription,
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentBillingPeriod($newStartDate, $newEndDate, $newDescription);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBillingPeriod($newStartDate, $newEndDate, $newDescription);
 
         return $this;
     }
@@ -363,7 +363,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPostingReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPostingReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPostingReference();
     }
 
     /**
@@ -373,7 +373,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPostingReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPostingReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPostingReference();
     }
 
     /**
@@ -387,7 +387,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newType,
         ?string &$newAccountId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPostingReference($newType, $newAccountId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPostingReference($newType, $newAccountId);
 
         return $this;
     }
@@ -403,7 +403,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentSellerOrderReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentSellerOrderReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentSellerOrderReference();
     }
 
     /**
@@ -413,7 +413,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentSellerOrderReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentSellerOrderReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentSellerOrderReference();
     }
 
     /**
@@ -427,7 +427,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newReferenceNumber,
         ?DateTimeInterface &$newReferenceDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
 
         return $this;
     }
@@ -439,7 +439,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentBuyerOrderReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentBuyerOrderReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentBuyerOrderReference();
     }
 
     /**
@@ -449,7 +449,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentBuyerOrderReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentBuyerOrderReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentBuyerOrderReference();
     }
 
     /**
@@ -463,7 +463,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newReferenceNumber,
         ?DateTimeInterface &$newReferenceDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
 
         return $this;
     }
@@ -475,7 +475,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentQuotationReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentQuotationReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentQuotationReference();
     }
 
     /**
@@ -485,7 +485,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentQuotationReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentQuotationReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentQuotationReference();
     }
 
     /**
@@ -499,7 +499,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newReferenceNumber,
         ?DateTimeInterface &$newReferenceDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentQuotationReference($newReferenceNumber, $newReferenceDate);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentQuotationReference($newReferenceNumber, $newReferenceDate);
 
         return $this;
     }
@@ -511,7 +511,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentContractReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentContractReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentContractReference();
     }
 
     /**
@@ -521,7 +521,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentContractReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentContractReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentContractReference();
     }
 
     /**
@@ -535,7 +535,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newReferenceNumber,
         ?DateTimeInterface &$newReferenceDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentContractReference($newReferenceNumber, $newReferenceDate);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentContractReference($newReferenceNumber, $newReferenceDate);
 
         return $this;
     }
@@ -547,7 +547,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentAdditionalReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentAdditionalReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentAdditionalReference();
     }
 
     /**
@@ -557,7 +557,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentAdditionalReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentAdditionalReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentAdditionalReference();
     }
 
     /**
@@ -579,7 +579,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newDescription,
         ?InvoiceSuiteAttachment &$newInvoiceSuiteAttachment
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentAdditionalReference(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentAdditionalReference(
             $newReferenceNumber,
             $newReferenceDate,
             $newTypeCode,
@@ -598,7 +598,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentInvoiceReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentInvoiceReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoiceReference();
     }
 
     /**
@@ -608,7 +608,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentInvoiceReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoiceReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoiceReference();
     }
 
     /**
@@ -624,7 +624,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?DateTimeInterface &$newReferenceDate,
         ?string &$newTypeCode
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoiceReference($newReferenceNumber, $newReferenceDate, $newTypeCode);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceReference($newReferenceNumber, $newReferenceDate, $newTypeCode);
 
         return $this;
     }
@@ -636,7 +636,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentProjectReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentProjectReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentProjectReference();
     }
 
     /**
@@ -646,7 +646,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentProjectReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentProjectReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentProjectReference();
     }
 
     /**
@@ -660,7 +660,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newReferenceNumber,
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentProjectReference($newReferenceNumber, $newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProjectReference($newReferenceNumber, $newName);
 
         return $this;
     }
@@ -672,7 +672,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentUltimateCustomerOrderReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentUltimateCustomerOrderReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentUltimateCustomerOrderReference();
     }
 
     /**
@@ -682,7 +682,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentUltimateCustomerOrderReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentUltimateCustomerOrderReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentUltimateCustomerOrderReference();
     }
 
     /**
@@ -696,7 +696,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newReferenceNumber,
         ?DateTimeInterface &$newReferenceDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentUltimateCustomerOrderReference($newReferenceNumber, $newReferenceDate);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateCustomerOrderReference($newReferenceNumber, $newReferenceDate);
 
         return $this;
     }
@@ -708,7 +708,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentDespatchAdviceReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentDespatchAdviceReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentDespatchAdviceReference();
     }
 
     /**
@@ -718,7 +718,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentDespatchAdviceReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentDespatchAdviceReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentDespatchAdviceReference();
     }
 
     /**
@@ -732,7 +732,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newReferenceNumber,
         ?DateTimeInterface &$newReferenceDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentDespatchAdviceReference($newReferenceNumber, $newReferenceDate);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentDespatchAdviceReference($newReferenceNumber, $newReferenceDate);
 
         return $this;
     }
@@ -744,7 +744,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentReceivingAdviceReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentReceivingAdviceReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentReceivingAdviceReference();
     }
 
     /**
@@ -754,7 +754,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentReceivingAdviceReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentReceivingAdviceReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentReceivingAdviceReference();
     }
 
     /**
@@ -768,7 +768,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newReferenceNumber,
         ?DateTimeInterface &$newReferenceDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentReceivingAdviceReference($newReferenceNumber, $newReferenceDate);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentReceivingAdviceReference($newReferenceNumber, $newReferenceDate);
 
         return $this;
     }
@@ -780,7 +780,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentDeliveryNoteReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentDeliveryNoteReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentDeliveryNoteReference();
     }
 
     /**
@@ -790,7 +790,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentDeliveryNoteReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentDeliveryNoteReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentDeliveryNoteReference();
     }
 
     /**
@@ -804,7 +804,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newReferenceNumber,
         ?DateTimeInterface &$newReferenceDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentDeliveryNoteReference($newReferenceNumber, $newReferenceDate);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentDeliveryNoteReference($newReferenceNumber, $newReferenceDate);
 
         return $this;
     }
@@ -818,7 +818,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentSupplyChainEvent(
         ?DateTimeInterface &$newDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentSupplyChainEvent($newDate);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSupplyChainEvent($newDate);
 
         return $this;
     }
@@ -832,7 +832,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentBuyerReference(
         ?string &$newBuyerReference
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentBuyerReference($newBuyerReference);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerReference($newBuyerReference);
 
         return $this;
     }
@@ -850,7 +850,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentSellerName(
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentSellerName($newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerName($newName);
 
         return $this;
     }
@@ -862,7 +862,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentSellerId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentSellerId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentSellerId();
     }
 
     /**
@@ -872,7 +872,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentSellerId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentSellerId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentSellerId();
     }
 
     /**
@@ -884,7 +884,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentSellerId(
         ?string &$newId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentSellerId($newId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerId($newId);
 
         return $this;
     }
@@ -896,7 +896,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentSellerGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentSellerGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentSellerGlobalId();
     }
 
     /**
@@ -906,7 +906,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentSellerGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentSellerGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentSellerGlobalId();
     }
 
     /**
@@ -920,7 +920,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentSellerGlobalId($newGlobalId, $newGlobalIdType);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -932,7 +932,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentSellerTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentSellerTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentSellerTaxRegistration();
     }
 
     /**
@@ -942,7 +942,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentSellerTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentSellerTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentSellerTaxRegistration();
     }
 
     /**
@@ -956,7 +956,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentSellerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -968,7 +968,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentSellerAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentSellerAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentSellerAddress();
     }
 
     /**
@@ -978,7 +978,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentSellerAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentSellerAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentSellerAddress();
     }
 
     /**
@@ -1002,7 +1002,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newCountryId,
         ?string &$newSubDivision
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentSellerAddress(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -1022,7 +1022,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentSellerLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentSellerLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentSellerLegalOrganisation();
     }
 
     /**
@@ -1032,7 +1032,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentSellerLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentSellerLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentSellerLegalOrganisation();
     }
 
     /**
@@ -1048,7 +1048,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newId,
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentSellerLegalOrganisation($newType, $newId, $newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerLegalOrganisation($newType, $newId, $newName);
 
         return $this;
     }
@@ -1060,7 +1060,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentSellerContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentSellerContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentSellerContact();
     }
 
     /**
@@ -1070,7 +1070,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentSellerContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentSellerContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentSellerContact();
     }
 
     /**
@@ -1090,7 +1090,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentSellerContact(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -1108,7 +1108,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentSellerCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentSellerCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentSellerCommunication();
     }
 
     /**
@@ -1118,7 +1118,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentSellerCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentSellerCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentSellerCommunication();
     }
 
     /**
@@ -1132,7 +1132,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newType,
         ?string &$newUri
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentSellerCommunication($newType, $newUri);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerCommunication($newType, $newUri);
 
         return $this;
     }
@@ -1150,7 +1150,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentBuyerName(
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentBuyerName($newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerName($newName);
 
         return $this;
     }
@@ -1162,7 +1162,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentBuyerId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentBuyerId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentBuyerId();
     }
 
     /**
@@ -1172,7 +1172,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentBuyerId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentBuyerId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentBuyerId();
     }
 
     /**
@@ -1184,7 +1184,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentBuyerId(
         ?string &$newId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentBuyerId($newId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerId($newId);
 
         return $this;
     }
@@ -1196,7 +1196,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentBuyerGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentBuyerGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentBuyerGlobalId();
     }
 
     /**
@@ -1206,7 +1206,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentBuyerGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentBuyerGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentBuyerGlobalId();
     }
 
     /**
@@ -1220,7 +1220,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentBuyerGlobalId($newGlobalId, $newGlobalIdType);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -1232,7 +1232,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentBuyerTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentBuyerTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentBuyerTaxRegistration();
     }
 
     /**
@@ -1242,7 +1242,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentBuyerTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentBuyerTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentBuyerTaxRegistration();
     }
 
     /**
@@ -1256,7 +1256,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -1268,7 +1268,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentBuyerAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentBuyerAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentBuyerAddress();
     }
 
     /**
@@ -1278,7 +1278,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentBuyerAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentBuyerAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentBuyerAddress();
     }
 
     /**
@@ -1302,7 +1302,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newCountryId,
         ?string &$newSubDivision
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentBuyerAddress(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -1322,7 +1322,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentBuyerLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentBuyerLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentBuyerLegalOrganisation();
     }
 
     /**
@@ -1332,7 +1332,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentBuyerLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentBuyerLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentBuyerLegalOrganisation();
     }
 
     /**
@@ -1348,7 +1348,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newId,
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentBuyerLegalOrganisation($newType, $newId, $newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerLegalOrganisation($newType, $newId, $newName);
 
         return $this;
     }
@@ -1360,7 +1360,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentBuyerContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentBuyerContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentBuyerContact();
     }
 
     /**
@@ -1370,7 +1370,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentBuyerContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentBuyerContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentBuyerContact();
     }
 
     /**
@@ -1390,7 +1390,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentBuyerContact(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -1408,7 +1408,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentBuyerCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentBuyerCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentBuyerCommunication();
     }
 
     /**
@@ -1418,7 +1418,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentBuyerCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentBuyerCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentBuyerCommunication();
     }
 
     /**
@@ -1432,7 +1432,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newType,
         ?string &$newUri
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentBuyerCommunication($newType, $newUri);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerCommunication($newType, $newUri);
 
         return $this;
     }
@@ -1450,7 +1450,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentTaxRepresentativeName(
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentTaxRepresentativeName($newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTaxRepresentativeName($newName);
 
         return $this;
     }
@@ -1462,7 +1462,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentTaxRepresentativeId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentTaxRepresentativeId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeId();
     }
 
     /**
@@ -1472,7 +1472,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentTaxRepresentativeId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentTaxRepresentativeId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentTaxRepresentativeId();
     }
 
     /**
@@ -1484,7 +1484,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentTaxRepresentativeId(
         ?string &$newId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentTaxRepresentativeId($newId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTaxRepresentativeId($newId);
 
         return $this;
     }
@@ -1496,7 +1496,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentTaxRepresentativeGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentTaxRepresentativeGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeGlobalId();
     }
 
     /**
@@ -1506,7 +1506,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentTaxRepresentativeGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentTaxRepresentativeGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentTaxRepresentativeGlobalId();
     }
 
     /**
@@ -1520,7 +1520,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -1532,7 +1532,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentTaxRepresentativeTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentTaxRepresentativeTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeTaxRegistration();
     }
 
     /**
@@ -1542,7 +1542,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentTaxRepresentativeTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentTaxRepresentativeTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentTaxRepresentativeTaxRegistration();
     }
 
     /**
@@ -1556,7 +1556,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -1568,7 +1568,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentTaxRepresentativeAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
     }
 
     /**
@@ -1578,7 +1578,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentTaxRepresentativeAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentTaxRepresentativeAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentTaxRepresentativeAddress();
     }
 
     /**
@@ -1602,7 +1602,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newCountryId,
         ?string &$newSubDivision
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentTaxRepresentativeAddress(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTaxRepresentativeAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -1622,7 +1622,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentTaxRepresentativeLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentTaxRepresentativeLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeLegalOrganisation();
     }
 
     /**
@@ -1632,7 +1632,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentTaxRepresentativeLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentTaxRepresentativeLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentTaxRepresentativeLegalOrganisation();
     }
 
     /**
@@ -1648,7 +1648,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newId,
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentTaxRepresentativeLegalOrganisation($newType, $newId, $newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTaxRepresentativeLegalOrganisation($newType, $newId, $newName);
 
         return $this;
     }
@@ -1660,7 +1660,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentTaxRepresentativeContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentTaxRepresentativeContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeContact();
     }
 
     /**
@@ -1670,7 +1670,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentTaxRepresentativeContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentTaxRepresentativeContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentTaxRepresentativeContact();
     }
 
     /**
@@ -1690,7 +1690,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentTaxRepresentativeContact(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTaxRepresentativeContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -1708,7 +1708,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentTaxRepresentativeCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentTaxRepresentativeCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeCommunication();
     }
 
     /**
@@ -1718,7 +1718,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentTaxRepresentativeCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentTaxRepresentativeCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentTaxRepresentativeCommunication();
     }
 
     /**
@@ -1732,7 +1732,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newType,
         ?string &$newUri
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentTaxRepresentativeCommunication($newType, $newUri);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTaxRepresentativeCommunication($newType, $newUri);
 
         return $this;
     }
@@ -1750,7 +1750,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentProductEndUserName(
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentProductEndUserName($newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProductEndUserName($newName);
 
         return $this;
     }
@@ -1762,7 +1762,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentProductEndUserId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentProductEndUserId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentProductEndUserId();
     }
 
     /**
@@ -1772,7 +1772,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentProductEndUserId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentProductEndUserId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentProductEndUserId();
     }
 
     /**
@@ -1784,7 +1784,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentProductEndUserId(
         ?string &$newId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentProductEndUserId($newId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProductEndUserId($newId);
 
         return $this;
     }
@@ -1796,7 +1796,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentProductEndUserGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentProductEndUserGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentProductEndUserGlobalId();
     }
 
     /**
@@ -1806,7 +1806,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentProductEndUserGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentProductEndUserGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentProductEndUserGlobalId();
     }
 
     /**
@@ -1820,7 +1820,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentProductEndUserGlobalId($newGlobalId, $newGlobalIdType);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProductEndUserGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -1832,7 +1832,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentProductEndUserTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentProductEndUserTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentProductEndUserTaxRegistration();
     }
 
     /**
@@ -1842,7 +1842,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentProductEndUserTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentProductEndUserTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentProductEndUserTaxRegistration();
     }
 
     /**
@@ -1856,7 +1856,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentProductEndUserTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProductEndUserTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -1868,7 +1868,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentProductEndUserAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
     }
 
     /**
@@ -1878,7 +1878,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentProductEndUserAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentProductEndUserAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentProductEndUserAddress();
     }
 
     /**
@@ -1902,7 +1902,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newCountryId,
         ?string &$newSubDivision
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentProductEndUserAddress(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProductEndUserAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -1922,7 +1922,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentProductEndUserLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentProductEndUserLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentProductEndUserLegalOrganisation();
     }
 
     /**
@@ -1932,7 +1932,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentProductEndUserLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentProductEndUserLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentProductEndUserLegalOrganisation();
     }
 
     /**
@@ -1948,7 +1948,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newId,
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentProductEndUserLegalOrganisation($newType, $newId, $newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProductEndUserLegalOrganisation($newType, $newId, $newName);
 
         return $this;
     }
@@ -1960,7 +1960,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentProductEndUserContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentProductEndUserContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentProductEndUserContact();
     }
 
     /**
@@ -1970,7 +1970,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentProductEndUserContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentProductEndUserContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentProductEndUserContact();
     }
 
     /**
@@ -1990,7 +1990,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentProductEndUserContact(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProductEndUserContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -2008,7 +2008,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentProductEndUserCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentProductEndUserCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentProductEndUserCommunication();
     }
 
     /**
@@ -2018,7 +2018,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentProductEndUserCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentProductEndUserCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentProductEndUserCommunication();
     }
 
     /**
@@ -2032,7 +2032,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newType,
         ?string &$newUri
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentProductEndUserCommunication($newType, $newUri);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProductEndUserCommunication($newType, $newUri);
 
         return $this;
     }
@@ -2050,7 +2050,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentShipToName(
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentShipToName($newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToName($newName);
 
         return $this;
     }
@@ -2062,7 +2062,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentShipToId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentShipToId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipToId();
     }
 
     /**
@@ -2072,7 +2072,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentShipToId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipToId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipToId();
     }
 
     /**
@@ -2084,7 +2084,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentShipToId(
         ?string &$newId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentShipToId($newId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToId($newId);
 
         return $this;
     }
@@ -2096,7 +2096,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentShipToGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentShipToGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipToGlobalId();
     }
 
     /**
@@ -2106,7 +2106,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentShipToGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipToGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipToGlobalId();
     }
 
     /**
@@ -2120,7 +2120,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentShipToGlobalId($newGlobalId, $newGlobalIdType);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -2132,7 +2132,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentShipToTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentShipToTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipToTaxRegistration();
     }
 
     /**
@@ -2142,7 +2142,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentShipToTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipToTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipToTaxRegistration();
     }
 
     /**
@@ -2156,7 +2156,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -2168,7 +2168,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentShipToAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
     }
 
     /**
@@ -2178,7 +2178,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentShipToAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipToAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipToAddress();
     }
 
     /**
@@ -2202,7 +2202,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newCountryId,
         ?string &$newSubDivision
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentShipToAddress(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -2222,7 +2222,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentShipToLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentShipToLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipToLegalOrganisation();
     }
 
     /**
@@ -2232,7 +2232,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentShipToLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipToLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipToLegalOrganisation();
     }
 
     /**
@@ -2248,7 +2248,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newId,
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentShipToLegalOrganisation($newType, $newId, $newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToLegalOrganisation($newType, $newId, $newName);
 
         return $this;
     }
@@ -2260,7 +2260,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentShipToContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentShipToContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipToContact();
     }
 
     /**
@@ -2270,7 +2270,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentShipToContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipToContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipToContact();
     }
 
     /**
@@ -2290,7 +2290,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentShipToContact(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -2308,7 +2308,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentShipToCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentShipToCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipToCommunication();
     }
 
     /**
@@ -2318,7 +2318,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentShipToCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipToCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipToCommunication();
     }
 
     /**
@@ -2332,7 +2332,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newType,
         ?string &$newUri
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentShipToCommunication($newType, $newUri);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToCommunication($newType, $newUri);
 
         return $this;
     }
@@ -2350,7 +2350,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentUltimateShipToName(
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentUltimateShipToName($newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateShipToName($newName);
 
         return $this;
     }
@@ -2362,7 +2362,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentUltimateShipToId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentUltimateShipToId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentUltimateShipToId();
     }
 
     /**
@@ -2372,7 +2372,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentUltimateShipToId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentUltimateShipToId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentUltimateShipToId();
     }
 
     /**
@@ -2384,7 +2384,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentUltimateShipToId(
         ?string &$newId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentUltimateShipToId($newId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateShipToId($newId);
 
         return $this;
     }
@@ -2396,7 +2396,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentUltimateShipToGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentUltimateShipToGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentUltimateShipToGlobalId();
     }
 
     /**
@@ -2406,7 +2406,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentUltimateShipToGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentUltimateShipToGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentUltimateShipToGlobalId();
     }
 
     /**
@@ -2420,7 +2420,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -2432,7 +2432,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentUltimateShipToTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentUltimateShipToTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentUltimateShipToTaxRegistration();
     }
 
     /**
@@ -2442,7 +2442,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentUltimateShipToTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentUltimateShipToTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentUltimateShipToTaxRegistration();
     }
 
     /**
@@ -2456,7 +2456,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -2468,7 +2468,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentUltimateShipToAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
     }
 
     /**
@@ -2478,7 +2478,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentUltimateShipToAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentUltimateShipToAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentUltimateShipToAddress();
     }
 
     /**
@@ -2502,7 +2502,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newCountryId,
         ?string &$newSubDivision
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentUltimateShipToAddress(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateShipToAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -2522,7 +2522,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentUltimateShipToLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentUltimateShipToLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentUltimateShipToLegalOrganisation();
     }
 
     /**
@@ -2532,7 +2532,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentUltimateShipToLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentUltimateShipToLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentUltimateShipToLegalOrganisation();
     }
 
     /**
@@ -2548,7 +2548,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newId,
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentUltimateShipToLegalOrganisation($newType, $newId, $newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateShipToLegalOrganisation($newType, $newId, $newName);
 
         return $this;
     }
@@ -2560,7 +2560,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentUltimateShipToContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentUltimateShipToContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentUltimateShipToContact();
     }
 
     /**
@@ -2570,7 +2570,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentUltimateShipToContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentUltimateShipToContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentUltimateShipToContact();
     }
 
     /**
@@ -2590,7 +2590,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentUltimateShipToContact(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateShipToContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -2608,7 +2608,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentUltimateShipToCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentUltimateShipToCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentUltimateShipToCommunication();
     }
 
     /**
@@ -2618,7 +2618,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentUltimateShipToCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentUltimateShipToCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentUltimateShipToCommunication();
     }
 
     /**
@@ -2632,7 +2632,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newType,
         ?string &$newUri
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentUltimateShipToCommunication($newType, $newUri);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateShipToCommunication($newType, $newUri);
 
         return $this;
     }
@@ -2650,7 +2650,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentShipFromName(
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentShipFromName($newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromName($newName);
 
         return $this;
     }
@@ -2662,7 +2662,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentShipFromId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentShipFromId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipFromId();
     }
 
     /**
@@ -2672,7 +2672,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentShipFromId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipFromId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipFromId();
     }
 
     /**
@@ -2684,7 +2684,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentShipFromId(
         ?string &$newId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentShipFromId($newId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromId($newId);
 
         return $this;
     }
@@ -2696,7 +2696,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentShipFromGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentShipFromGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipFromGlobalId();
     }
 
     /**
@@ -2706,7 +2706,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentShipFromGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipFromGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipFromGlobalId();
     }
 
     /**
@@ -2720,7 +2720,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentShipFromGlobalId($newGlobalId, $newGlobalIdType);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -2732,7 +2732,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentShipFromTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentShipFromTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipFromTaxRegistration();
     }
 
     /**
@@ -2742,7 +2742,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentShipFromTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipFromTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipFromTaxRegistration();
     }
 
     /**
@@ -2756,7 +2756,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentShipFromTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -2768,7 +2768,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentShipFromAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
     }
 
     /**
@@ -2778,7 +2778,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentShipFromAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipFromAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipFromAddress();
     }
 
     /**
@@ -2802,7 +2802,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newCountryId,
         ?string &$newSubDivision
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentShipFromAddress(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -2822,7 +2822,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentShipFromLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentShipFromLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipFromLegalOrganisation();
     }
 
     /**
@@ -2832,7 +2832,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentShipFromLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipFromLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipFromLegalOrganisation();
     }
 
     /**
@@ -2848,7 +2848,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newId,
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentShipFromLegalOrganisation($newType, $newId, $newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromLegalOrganisation($newType, $newId, $newName);
 
         return $this;
     }
@@ -2860,7 +2860,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentShipFromContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentShipFromContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipFromContact();
     }
 
     /**
@@ -2870,7 +2870,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentShipFromContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipFromContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipFromContact();
     }
 
     /**
@@ -2890,7 +2890,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentShipFromContact(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -2908,7 +2908,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentShipFromCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentShipFromCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipFromCommunication();
     }
 
     /**
@@ -2918,7 +2918,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentShipFromCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentShipFromCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipFromCommunication();
     }
 
     /**
@@ -2932,7 +2932,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newType,
         ?string &$newUri
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentShipFromCommunication($newType, $newUri);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromCommunication($newType, $newUri);
 
         return $this;
     }
@@ -2950,7 +2950,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentInvoicerName(
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoicerName($newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoicerName($newName);
 
         return $this;
     }
@@ -2962,7 +2962,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentInvoicerId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentInvoicerId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoicerId();
     }
 
     /**
@@ -2972,7 +2972,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentInvoicerId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoicerId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoicerId();
     }
 
     /**
@@ -2984,7 +2984,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentInvoicerId(
         ?string &$newId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoicerId($newId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoicerId($newId);
 
         return $this;
     }
@@ -2996,7 +2996,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentInvoicerGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentInvoicerGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoicerGlobalId();
     }
 
     /**
@@ -3006,7 +3006,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentInvoicerGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoicerGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoicerGlobalId();
     }
 
     /**
@@ -3020,7 +3020,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoicerGlobalId($newGlobalId, $newGlobalIdType);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoicerGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -3032,7 +3032,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentInvoicerTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentInvoicerTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoicerTaxRegistration();
     }
 
     /**
@@ -3042,7 +3042,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentInvoicerTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoicerTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoicerTaxRegistration();
     }
 
     /**
@@ -3056,7 +3056,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoicerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoicerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -3068,7 +3068,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentInvoicerAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
     }
 
     /**
@@ -3078,7 +3078,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentInvoicerAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoicerAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoicerAddress();
     }
 
     /**
@@ -3102,7 +3102,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newCountryId,
         ?string &$newSubDivision
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoicerAddress(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoicerAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -3122,7 +3122,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentInvoicerLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentInvoicerLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoicerLegalOrganisation();
     }
 
     /**
@@ -3132,7 +3132,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentInvoicerLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoicerLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoicerLegalOrganisation();
     }
 
     /**
@@ -3148,7 +3148,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newId,
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoicerLegalOrganisation($newType, $newId, $newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoicerLegalOrganisation($newType, $newId, $newName);
 
         return $this;
     }
@@ -3160,7 +3160,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentInvoicerContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentInvoicerContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoicerContact();
     }
 
     /**
@@ -3170,7 +3170,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentInvoicerContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoicerContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoicerContact();
     }
 
     /**
@@ -3190,7 +3190,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoicerContact(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoicerContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -3208,7 +3208,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentInvoicerCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentInvoicerCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoicerCommunication();
     }
 
     /**
@@ -3218,7 +3218,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentInvoicerCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoicerCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoicerCommunication();
     }
 
     /**
@@ -3232,7 +3232,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newType,
         ?string &$newUri
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoicerCommunication($newType, $newUri);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoicerCommunication($newType, $newUri);
 
         return $this;
     }
@@ -3250,7 +3250,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentInvoiceeName(
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoiceeName($newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeName($newName);
 
         return $this;
     }
@@ -3262,7 +3262,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentInvoiceeId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentInvoiceeId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoiceeId();
     }
 
     /**
@@ -3272,7 +3272,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentInvoiceeId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoiceeId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoiceeId();
     }
 
     /**
@@ -3284,7 +3284,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentInvoiceeId(
         ?string &$newId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoiceeId($newId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeId($newId);
 
         return $this;
     }
@@ -3296,7 +3296,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentInvoiceeGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentInvoiceeGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoiceeGlobalId();
     }
 
     /**
@@ -3306,7 +3306,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentInvoiceeGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoiceeGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoiceeGlobalId();
     }
 
     /**
@@ -3320,7 +3320,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoiceeGlobalId($newGlobalId, $newGlobalIdType);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -3332,7 +3332,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentInvoiceeTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentInvoiceeTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoiceeTaxRegistration();
     }
 
     /**
@@ -3342,7 +3342,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentInvoiceeTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoiceeTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoiceeTaxRegistration();
     }
 
     /**
@@ -3356,7 +3356,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoiceeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -3368,7 +3368,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentInvoiceeAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
     }
 
     /**
@@ -3378,7 +3378,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentInvoiceeAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoiceeAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoiceeAddress();
     }
 
     /**
@@ -3402,7 +3402,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newCountryId,
         ?string &$newSubDivision
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoiceeAddress(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -3422,7 +3422,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentInvoiceeLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentInvoiceeLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoiceeLegalOrganisation();
     }
 
     /**
@@ -3432,7 +3432,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentInvoiceeLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoiceeLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoiceeLegalOrganisation();
     }
 
     /**
@@ -3448,7 +3448,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newId,
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoiceeLegalOrganisation($newType, $newId, $newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeLegalOrganisation($newType, $newId, $newName);
 
         return $this;
     }
@@ -3460,7 +3460,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentInvoiceeContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentInvoiceeContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoiceeContact();
     }
 
     /**
@@ -3470,7 +3470,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentInvoiceeContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoiceeContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoiceeContact();
     }
 
     /**
@@ -3490,7 +3490,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoiceeContact(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -3508,7 +3508,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentInvoiceeCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentInvoiceeCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoiceeCommunication();
     }
 
     /**
@@ -3518,7 +3518,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentInvoiceeCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentInvoiceeCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoiceeCommunication();
     }
 
     /**
@@ -3532,7 +3532,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newType,
         ?string &$newUri
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentInvoiceeCommunication($newType, $newUri);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeCommunication($newType, $newUri);
 
         return $this;
     }
@@ -3550,7 +3550,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentPayeeName(
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPayeeName($newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayeeName($newName);
 
         return $this;
     }
@@ -3562,7 +3562,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPayeeId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPayeeId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayeeId();
     }
 
     /**
@@ -3572,7 +3572,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPayeeId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPayeeId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayeeId();
     }
 
     /**
@@ -3584,7 +3584,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentPayeeId(
         ?string &$newId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPayeeId($newId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayeeId($newId);
 
         return $this;
     }
@@ -3596,7 +3596,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPayeeGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPayeeGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayeeGlobalId();
     }
 
     /**
@@ -3606,7 +3606,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPayeeGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPayeeGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayeeGlobalId();
     }
 
     /**
@@ -3620,7 +3620,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPayeeGlobalId($newGlobalId, $newGlobalIdType);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayeeGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -3632,7 +3632,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPayeeTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPayeeTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayeeTaxRegistration();
     }
 
     /**
@@ -3642,7 +3642,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPayeeTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPayeeTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayeeTaxRegistration();
     }
 
     /**
@@ -3656,7 +3656,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPayeeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayeeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -3668,7 +3668,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPayeeAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
     }
 
     /**
@@ -3678,7 +3678,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPayeeAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPayeeAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayeeAddress();
     }
 
     /**
@@ -3702,7 +3702,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newCountryId,
         ?string &$newSubDivision
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPayeeAddress(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayeeAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -3722,7 +3722,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPayeeLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPayeeLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayeeLegalOrganisation();
     }
 
     /**
@@ -3732,7 +3732,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPayeeLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPayeeLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayeeLegalOrganisation();
     }
 
     /**
@@ -3748,7 +3748,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newId,
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPayeeLegalOrganisation($newType, $newId, $newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayeeLegalOrganisation($newType, $newId, $newName);
 
         return $this;
     }
@@ -3760,7 +3760,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPayeeContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPayeeContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayeeContact();
     }
 
     /**
@@ -3770,7 +3770,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPayeeContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPayeeContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayeeContact();
     }
 
     /**
@@ -3790,7 +3790,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPayeeContact(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayeeContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -3808,7 +3808,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPayeeCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPayeeCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayeeCommunication();
     }
 
     /**
@@ -3818,7 +3818,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPayeeCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPayeeCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayeeCommunication();
     }
 
     /**
@@ -3832,7 +3832,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newType,
         ?string &$newUri
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPayeeCommunication($newType, $newUri);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayeeCommunication($newType, $newUri);
 
         return $this;
     }
@@ -3848,7 +3848,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPaymentMean(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPaymentMean();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPaymentMean();
     }
 
     /**
@@ -3858,7 +3858,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPaymentMean(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPaymentMean();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPaymentMean();
     }
 
     /**
@@ -3890,7 +3890,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newPaymentReference,
         ?string &$newMandate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPaymentMean(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPaymentMean(
             $newTypeCode,
             $newName,
             $newFinancialCardId,
@@ -3914,7 +3914,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPaymentCreditorReferenceID(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPaymentCreditorReferenceID();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPaymentCreditorReferenceID();
     }
 
     /**
@@ -3924,7 +3924,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPaymentCreditorReferenceID(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPaymentCreditorReferenceID();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPaymentCreditorReferenceID();
     }
 
     /**
@@ -3936,7 +3936,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentPaymentCreditorReferenceID(
         ?string &$newId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPaymentCreditorReferenceID($newId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPaymentCreditorReferenceID($newId);
 
         return $this;
     }
@@ -3948,7 +3948,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPaymentTerm(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPaymentTerm();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPaymentTerm();
     }
 
     /**
@@ -3958,7 +3958,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPaymentTerm(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPaymentTerm();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPaymentTerm();
     }
 
     /**
@@ -3972,7 +3972,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newDescription,
         ?DateTimeInterface &$newDueDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPaymentTerm($newDescription, $newDueDate);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPaymentTerm($newDescription, $newDueDate);
 
         return $this;
     }
@@ -3984,7 +3984,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPaymentDiscountTermsInLastPaymentTerm(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPaymentDiscountTermsInLastPaymentTerm();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPaymentDiscountTermsInLastPaymentTerm();
     }
 
     /**
@@ -3994,7 +3994,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPaymentDiscountTermsInLastPaymentTerm(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPaymentDiscountTermsInLastPaymentTerm();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPaymentDiscountTermsInLastPaymentTerm();
     }
 
     /**
@@ -4016,7 +4016,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?float &$newBasePeriod,
         ?string &$newBasePeriodUnit
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPaymentDiscountTermsInLastPaymentTerm(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPaymentDiscountTermsInLastPaymentTerm(
             $newBaseAmount,
             $newDiscountAmount,
             $newDiscountPercent,
@@ -4035,7 +4035,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPaymentPenaltyTermsInLastPaymentTerm(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPaymentPenaltyTermsInLastPaymentTerm();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPaymentPenaltyTermsInLastPaymentTerm();
     }
 
     /**
@@ -4045,7 +4045,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPaymentPenaltyTermsInLastPaymentTerm(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPaymentPenaltyTermsInLastPaymentTerm();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPaymentPenaltyTermsInLastPaymentTerm();
     }
 
     /**
@@ -4067,7 +4067,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?float &$newBasePeriod,
         ?string &$newBasePeriodUnit
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPaymentPenaltyTermsInLastPaymentTerm(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPaymentPenaltyTermsInLastPaymentTerm(
             $newBaseAmount,
             $newPenaltyAmount,
             $newPenaltyPercent,
@@ -4090,7 +4090,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentTax(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentTax();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTax();
     }
 
     /**
@@ -4100,7 +4100,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentTax(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentTax();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentTax();
     }
 
     /**
@@ -4128,7 +4128,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?DateTimeInterface &$newTaxDueDate,
         ?string &$newTaxDueCode
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentTax(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTax(
             $newTaxCategory,
             $newTaxType,
             $newBasisAmount,
@@ -4154,7 +4154,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentAllowanceCharge(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentAllowanceCharge();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentAllowanceCharge();
     }
 
     /**
@@ -4164,7 +4164,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentAllowanceCharge(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentAllowanceCharge();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentAllowanceCharge();
     }
 
     /**
@@ -4192,7 +4192,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newAllowanceChargeReasonCode,
         ?float &$newAllowanceChargePercent
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentAllowanceCharge(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentAllowanceCharge(
             $newChargeIndicator,
             $newAllowanceChargeAmount,
             $newAllowanceChargeBaseAmount,
@@ -4214,7 +4214,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentLogisticServiceCharge(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentLogisticServiceCharge();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentLogisticServiceCharge();
     }
 
     /**
@@ -4224,7 +4224,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentLogisticServiceCharge(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentLogisticServiceCharge();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentLogisticServiceCharge();
     }
 
     /**
@@ -4244,7 +4244,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newTaxType,
         ?float &$newTaxPercent
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentLogisticServiceCharge(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentLogisticServiceCharge(
             $newChargeAmount,
             $newDescription,
             $newTaxCategory,
@@ -4285,7 +4285,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?float &$newPrepaidAmount,
         ?float &$newRoungingAmount
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentSummation(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSummation(
             $newNetAmount,
             $newChargeTotalAmount,
             $newDiscountTotalAmount,
@@ -4312,7 +4312,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPosition(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPosition();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPosition();
     }
 
     /**
@@ -4322,7 +4322,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPosition(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPosition();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPosition();
     }
 
     /**
@@ -4340,7 +4340,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newLineStatusCode,
         ?string &$newLineStatusReasonCode
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPosition(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPosition(
             $newPositionId,
             $newParentPositionId,
             $newLineStatusCode,
@@ -4357,7 +4357,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionNote(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionNote();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionNote();
     }
 
     /**
@@ -4367,7 +4367,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionNote(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionNote();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionNote();
     }
 
     /**
@@ -4383,7 +4383,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newContentCode,
         ?string &$newSubjectCode
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionNote($newContent, $newContentCode, $newSubjectCode);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionNote($newContent, $newContentCode, $newSubjectCode);
 
         return $this;
     }
@@ -4421,7 +4421,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newProductModelName,
         ?string &$newProductOriginTradeCountry
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionProductDetails(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionProductDetails(
             $newProductId,
             $newProductName,
             $newProductDescription,
@@ -4447,7 +4447,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionProductCharacteristic(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionProductCharacteristic();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionProductCharacteristic();
     }
 
     /**
@@ -4457,7 +4457,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionProductCharacteristic(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionProductCharacteristic();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionProductCharacteristic();
     }
 
     /**
@@ -4477,7 +4477,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?float &$newProductCharacteristicMeasureValue,
         ?string &$newProductCharacteristicMeasureUnit
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionProductCharacteristic(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionProductCharacteristic(
             $newProductCharacteristicDescription,
             $newProductCharacteristicValue,
             $newProductCharacteristicType,
@@ -4495,7 +4495,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionProductClassification(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionProductClassification();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionProductClassification();
     }
 
     /**
@@ -4505,7 +4505,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionProductClassification(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionProductClassification();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionProductClassification();
     }
 
     /**
@@ -4523,7 +4523,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newProductClassificationListVersionId,
         ?string &$newProductClassificationCodeClassname
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionProductClassification(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionProductClassification(
             $newProductClassificationCode,
             $newProductClassificationListId,
             $newProductClassificationListVersionId,
@@ -4540,7 +4540,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionReferencedProduct(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionReferencedProduct();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionReferencedProduct();
     }
 
     /**
@@ -4550,7 +4550,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionReferencedProduct(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionReferencedProduct();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionReferencedProduct();
     }
 
     /**
@@ -4580,7 +4580,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?float &$newProductUnitQuantity,
         ?string &$newProductUnitQuantityUnit
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionReferencedProduct(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionReferencedProduct(
             $newProductId,
             $newProductName,
             $newProductDescription,
@@ -4603,7 +4603,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionSellerOrderReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionSellerOrderReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionSellerOrderReference();
     }
 
     /**
@@ -4613,7 +4613,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionSellerOrderReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionSellerOrderReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionSellerOrderReference();
     }
 
     /**
@@ -4629,7 +4629,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newReferenceLineNumber,
         ?DateTimeInterface &$newReferenceDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionSellerOrderReference(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionSellerOrderReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate
@@ -4645,7 +4645,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionBuyerOrderReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionBuyerOrderReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionBuyerOrderReference();
     }
 
     /**
@@ -4655,7 +4655,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionBuyerOrderReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionBuyerOrderReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionBuyerOrderReference();
     }
 
     /**
@@ -4671,7 +4671,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newReferenceLineNumber = null,
         ?DateTimeInterface &$newReferenceDate = null
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionBuyerOrderReference(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionBuyerOrderReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate
@@ -4687,7 +4687,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionQuotationReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionQuotationReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionQuotationReference();
     }
 
     /**
@@ -4697,7 +4697,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionQuotationReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionQuotationReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionQuotationReference();
     }
 
     /**
@@ -4713,7 +4713,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newReferenceLineNumber,
         ?DateTimeInterface &$newReferenceDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionQuotationReference(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionQuotationReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate
@@ -4729,7 +4729,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionContractReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionContractReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionContractReference();
     }
 
     /**
@@ -4739,7 +4739,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionContractReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionContractReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionContractReference();
     }
 
     /**
@@ -4755,7 +4755,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newReferenceLineNumber,
         ?DateTimeInterface &$newReferenceDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionContractReference(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionContractReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate
@@ -4771,7 +4771,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionAdditionalReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionAdditionalReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionAdditionalReference();
     }
 
     /**
@@ -4781,7 +4781,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionAdditionalReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionAdditionalReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionAdditionalReference();
     }
 
     /**
@@ -4805,7 +4805,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newDescription,
         ?InvoiceSuiteAttachment &$newInvoiceSuiteAttachment
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionAdditionalReference(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionAdditionalReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate,
@@ -4825,7 +4825,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionUltimateCustomerOrderReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionUltimateCustomerOrderReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionUltimateCustomerOrderReference();
     }
 
     /**
@@ -4835,7 +4835,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionUltimateCustomerOrderReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionUltimateCustomerOrderReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionUltimateCustomerOrderReference();
     }
 
     /**
@@ -4851,7 +4851,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newReferenceLineNumber,
         ?DateTimeInterface &$newReferenceDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionUltimateCustomerOrderReference(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateCustomerOrderReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate
@@ -4867,7 +4867,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionDespatchAdviceReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionDespatchAdviceReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionDespatchAdviceReference();
     }
 
     /**
@@ -4877,7 +4877,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionDespatchAdviceReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionDespatchAdviceReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionDespatchAdviceReference();
     }
 
     /**
@@ -4893,7 +4893,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newReferenceLineNumber,
         ?DateTimeInterface &$newReferenceDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionDespatchAdviceReference(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionDespatchAdviceReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate
@@ -4909,7 +4909,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionReceivingAdviceReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionReceivingAdviceReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionReceivingAdviceReference();
     }
 
     /**
@@ -4919,7 +4919,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionReceivingAdviceReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionReceivingAdviceReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionReceivingAdviceReference();
     }
 
     /**
@@ -4935,7 +4935,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newReferenceLineNumber,
         ?DateTimeInterface &$newReferenceDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionReceivingAdviceReference(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionReceivingAdviceReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate
@@ -4951,7 +4951,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionDeliveryNoteReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionDeliveryNoteReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionDeliveryNoteReference();
     }
 
     /**
@@ -4961,7 +4961,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionDeliveryNoteReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionDeliveryNoteReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionDeliveryNoteReference();
     }
 
     /**
@@ -4977,7 +4977,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newReferenceLineNumber,
         ?DateTimeInterface &$newReferenceDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionDeliveryNoteReference(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionDeliveryNoteReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate
@@ -4993,7 +4993,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionInvoiceReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionInvoiceReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionInvoiceReference();
     }
 
     /**
@@ -5003,7 +5003,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionInvoiceReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionInvoiceReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionInvoiceReference();
     }
 
     /**
@@ -5021,7 +5021,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?DateTimeInterface &$newReferenceDate,
         ?string &$newTypeCode
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionInvoiceReference(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionInvoiceReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate,
@@ -5038,7 +5038,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDcumentPositionGrossPrice(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDcumentPositionGrossPrice();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDcumentPositionGrossPrice();
     }
 
     /**
@@ -5054,7 +5054,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?float &$newGrossPriceBasisQuantity,
         ?string &$newGrossPriceBasisQuantityUnit
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionGrossPrice(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionGrossPrice(
             $newGrossPrice,
             $newGrossPriceBasisQuantity,
             $newGrossPriceBasisQuantityUnit
@@ -5070,7 +5070,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionGrossPriceAllowanceCharge(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionGrossPriceAllowanceCharge();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionGrossPriceAllowanceCharge();
     }
 
     /**
@@ -5080,7 +5080,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionGrossPriceAllowanceCharge(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionGrossPriceAllowanceCharge();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionGrossPriceAllowanceCharge();
     }
 
     /**
@@ -5102,7 +5102,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newGrossPriceAllowanceChargeReason,
         ?string &$newGrossPriceAllowanceChargeReasonCode
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionGrossPriceAllowanceCharge(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionGrossPriceAllowanceCharge(
             $newGrossPriceAllowanceChargeAmount,
             $newIsCharge,
             $newGrossPriceAllowanceChargePercent,
@@ -5121,7 +5121,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionNetPrice(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionNetPrice();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionNetPrice();
     }
 
     /**
@@ -5137,7 +5137,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?float &$newNetPriceBasisQuantity,
         ?string &$newNetPriceBasisQuantityUnit
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionNetPrice(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionNetPrice(
             $newNetPrice,
             $newNetPriceBasisQuantity,
             $newNetPriceBasisQuantityUnit
@@ -5165,7 +5165,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newExemptionReason,
         ?string &$newExemptionReasonCode
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionNetPriceTax(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionNetPriceTax(
             $newTaxCategory,
             $newTaxType,
             $newTaxAmount,
@@ -5196,7 +5196,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?float &$newPackageQuantity,
         ?string &$newPackageQuantityUnit
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionQuantities(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionQuantities(
             $newQuantity,
             $newQuantityUnit,
             $newChargeFreeQuantity,
@@ -5217,7 +5217,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentPositionShipToName(
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionShipToName($newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionShipToName($newName);
 
         return $this;
     }
@@ -5229,7 +5229,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionShipToId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionShipToId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionShipToId();
     }
 
     /**
@@ -5239,7 +5239,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionShipToId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionShipToId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionShipToId();
     }
 
     /**
@@ -5251,7 +5251,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentPositionShipToId(
         ?string &$newId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionShipToId($newId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionShipToId($newId);
 
         return $this;
     }
@@ -5263,7 +5263,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionShipToGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionShipToGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionShipToGlobalId();
     }
 
     /**
@@ -5273,7 +5273,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionShipToGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionShipToGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionShipToGlobalId();
     }
 
     /**
@@ -5287,7 +5287,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionShipToGlobalId($newGlobalId, $newGlobalIdType);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionShipToGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -5299,7 +5299,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionShipToTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionShipToTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionShipToTaxRegistration();
     }
 
     /**
@@ -5309,7 +5309,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionShipToTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionShipToTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionShipToTaxRegistration();
     }
 
     /**
@@ -5323,7 +5323,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionShipToTaxRegistration(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionShipToTaxRegistration(
             $newTaxRegistrationType,
             $newTaxRegistrationId
         );
@@ -5338,7 +5338,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionShipToAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionShipToAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionShipToAddress();
     }
 
     /**
@@ -5348,7 +5348,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionShipToAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionShipToAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionShipToAddress();
     }
 
     /**
@@ -5372,7 +5372,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newCountryId,
         ?string &$newSubDivision
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionShipToAddress(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionShipToAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -5392,7 +5392,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionShipToLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionShipToLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionShipToLegalOrganisation();
     }
 
     /**
@@ -5402,7 +5402,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionShipToLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionShipToLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionShipToLegalOrganisation();
     }
 
     /**
@@ -5418,7 +5418,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newId,
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionShipToLegalOrganisation(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionShipToLegalOrganisation(
             $newType,
             $newId,
             $newName
@@ -5434,7 +5434,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionShipToContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionShipToContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionShipToContact();
     }
 
     /**
@@ -5444,7 +5444,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionShipToContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionShipToContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionShipToContact();
     }
 
     /**
@@ -5464,7 +5464,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionShipToContact(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionShipToContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -5482,7 +5482,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionShipToCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionShipToCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionShipToCommunication();
     }
 
     /**
@@ -5492,7 +5492,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionShipToCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionShipToCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionShipToCommunication();
     }
 
     /**
@@ -5506,7 +5506,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newType,
         ?string &$newUri
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionShipToCommunication(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionShipToCommunication(
             $newType,
             $newUri
         );
@@ -5523,7 +5523,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentPositionUltimateShipToName(
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionUltimateShipToName($newName);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToName($newName);
 
         return $this;
     }
@@ -5535,7 +5535,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionUltimateShipToId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToId();
     }
 
     /**
@@ -5545,7 +5545,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionUltimateShipToId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToId();
     }
 
     /**
@@ -5557,7 +5557,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentPositionUltimateShipToId(
         ?string &$newId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionUltimateShipToId($newId);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToId($newId);
 
         return $this;
     }
@@ -5569,7 +5569,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionUltimateShipToGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToGlobalId();
     }
 
     /**
@@ -5579,7 +5579,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionUltimateShipToGlobalId(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToGlobalId();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToGlobalId();
     }
 
     /**
@@ -5593,7 +5593,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -5605,7 +5605,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionUltimateShipToTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToTaxRegistration();
     }
 
     /**
@@ -5615,7 +5615,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionUltimateShipToTaxRegistration(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToTaxRegistration();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToTaxRegistration();
     }
 
     /**
@@ -5629,7 +5629,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionUltimateShipToTaxRegistration(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToTaxRegistration(
             $newTaxRegistrationType,
             $newTaxRegistrationId
         );
@@ -5644,7 +5644,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionUltimateShipToAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToAddress();
     }
 
     /**
@@ -5654,7 +5654,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionUltimateShipToAddress(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToAddress();
     }
 
     /**
@@ -5678,7 +5678,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newCountryId,
         ?string &$newSubDivision
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionUltimateShipToAddress(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -5698,7 +5698,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionUltimateShipToLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToLegalOrganisation();
     }
 
     /**
@@ -5708,7 +5708,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionUltimateShipToLegalOrganisation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToLegalOrganisation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToLegalOrganisation();
     }
 
     /**
@@ -5724,7 +5724,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newId,
         ?string &$newName
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionUltimateShipToLegalOrganisation(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToLegalOrganisation(
             $newType,
             $newId,
             $newName
@@ -5740,7 +5740,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionUltimateShipToContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToContact();
     }
 
     /**
@@ -5750,7 +5750,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionUltimateShipToContact(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToContact();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToContact();
     }
 
     /**
@@ -5770,7 +5770,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionUltimateShipToContact(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -5788,7 +5788,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionUltimateShipToCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToCommunication();
     }
 
     /**
@@ -5798,7 +5798,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionUltimateShipToCommunication(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToCommunication();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToCommunication();
     }
 
     /**
@@ -5812,7 +5812,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newType,
         ?string &$newUri
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionUltimateShipToCommunication(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToCommunication(
             $newType,
             $newUri
         );
@@ -5829,7 +5829,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
     public function getDocumentPositionSupplyChainEvent(
         ?DateTimeInterface &$newDate
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionSupplyChainEvent($newDate);
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionSupplyChainEvent($newDate);
 
         return $this;
     }
@@ -5841,7 +5841,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionBillingPeriod(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionBillingPeriod();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionBillingPeriod();
     }
 
     /**
@@ -5851,7 +5851,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionBillingPeriod(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionBillingPeriod();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionBillingPeriod();
     }
 
     /**
@@ -5867,7 +5867,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?DateTimeInterface &$newEndDate,
         ?string &$newDescription,
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionBillingPeriod(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionBillingPeriod(
             $newStartDate,
             $newEndDate,
             $newDescription
@@ -5883,7 +5883,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionTax(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionTax();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionTax();
     }
 
     /**
@@ -5893,7 +5893,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionTax(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionTax();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionTax();
     }
 
     /**
@@ -5915,7 +5915,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newExemptionReason,
         ?string &$newExemptionReasonCode,
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionTax(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionTax(
             $newTaxCategory,
             $newTaxType,
             $newTaxAmount,
@@ -5934,7 +5934,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionAllowanceCharge(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionAllowanceCharge();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionAllowanceCharge();
     }
 
     /**
@@ -5944,7 +5944,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionAllowanceCharge(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionAllowanceCharge();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionAllowanceCharge();
     }
 
     /**
@@ -5966,7 +5966,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newAllowanceChargeReasonCode,
         ?float &$newAllowanceChargePercent
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionAllowanceCharge(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionAllowanceCharge(
             $newChargeIndicator,
             $newAllowanceChargeAmount,
             $newAllowanceChargeBaseAmount,
@@ -5985,7 +5985,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionSummation(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionSummation();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionSummation();
     }
 
     /**
@@ -6005,7 +6005,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?float &$newTaxTotalAmount,
         ?float &$newGrossAmount
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionSummation(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionSummation(
             $newNetAmount,
             $newChargeTotalAmount,
             $newDiscountTotalAmount,
@@ -6023,7 +6023,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function firstDocumentPositionPostingReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionPostingReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionPostingReference();
     }
 
     /**
@@ -6033,7 +6033,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
      */
     public function nextDocumentPositionPostingReference(): bool
     {
-        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionPostingReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionPostingReference();
     }
 
     /**
@@ -6047,7 +6047,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteDocumentReaderContract
         ?string &$newType,
         ?string &$newAccountId
     ): self {
-        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionPostingReference(
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionPostingReference(
             $newType,
             $newAccountId
         );

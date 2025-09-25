@@ -3,9 +3,9 @@
 namespace horstoeko\invoicesuite\abstracts;
 
 use JMS\Serializer\SerializationContext;
-use horstoeko\invoicesuite\concerns\HandlesRootObject;
-use horstoeko\invoicesuite\concerns\HandlesSerializer;
-use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
+use horstoeko\invoicesuite\concerns\HandlesDocumentRootObject;
+use horstoeko\invoicesuite\concerns\HandlesDocumentSerializer;
+use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\contracts\InvoiceSuiteDocumentBuilderContract;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
 
@@ -20,9 +20,9 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
  */
 abstract class InvoiceSuiteAbstractDocumentFormatBuilder implements InvoiceSuiteDocumentBuilderContract
 {
-    use HandlesCurrentFormatProvider;
-    use HandlesRootObject;
-    use HandlesSerializer;
+    use HandlesCurrentDocumentFormatProvider;
+    use HandlesDocumentRootObject;
+    use HandlesDocumentSerializer;
 
     /**
      * Constructor
@@ -31,9 +31,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatBuilder implements InvoiceSuite
      */
     public function __construct(InvoiceSuiteAbstractDocumentFormatProvider $newProvider)
     {
-        $this->setCurrentFormatProvider($newProvider);
-        $this->createAndInitSerializerByFormatProvider();
-        $this->createAndInitRootObjectByFormatProvider();
+        $this->setCurrentDocumentFormatProvider($newProvider);
+        $this->createAndInitDocumentSerializerByFormatProvider();
+        $this->createAndInitDocumentRootObjectByFormatProvider();
     }
 
     /**
@@ -63,10 +63,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatBuilder implements InvoiceSuite
      */
     protected function getContentByType(string $contentType): string
     {
-        return $this->serializer->serialize(
-            $this->getRootObject(),
+        return $this->documentSerializer->serialize(
+            $this->getDocumentRootObject(),
             $contentType,
-            SerializationContext::create()->setGroups($this->getCurrentFormatProvider()->getSerializerGroups())
+            SerializationContext::create()->setGroups($this->getCurrentDocumentFormatProvider()->getSerializerGroups())
         );
     }
 

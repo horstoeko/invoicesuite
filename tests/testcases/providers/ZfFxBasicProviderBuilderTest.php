@@ -22,11 +22,11 @@ class ZfFxBasicProviderBuilderTest extends TestCase
         self::$document = new InvoiceSuiteZfFxBasicProviderBuilder(new InvoiceSuiteZfFxBasicProvider());
     }
 
-    public function testInitRootObject(): void
+    public function testInitDocumentRootObject(): void
     {
-        self::$document->initRootObject();
+        self::$document->initDocumentRootObject();
 
-        $this->assertInstanceOf(CrossIndustryInvoice::class, self::$document->getRootObject());
+        $this->assertInstanceOf(CrossIndustryInvoice::class, self::$document->getDocumentRootObject());
     }
 
     public function testSetDocumentNo(): void

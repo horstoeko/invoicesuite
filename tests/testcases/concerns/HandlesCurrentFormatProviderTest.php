@@ -2,55 +2,55 @@
 
 namespace horstoeko\invoicesuite\tests\testcases\concerns;
 
-use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
+use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\providers\zffxextended\InvoiceSuiteZfFxExtendedProvider;
 use horstoeko\invoicesuite\tests\TestCase;
 
 class HandlesCurrentFormatProviderTest extends TestCase
 {
-    use HandlesCurrentFormatProvider;
+    use HandlesCurrentDocumentFormatProvider;
 
     public function testInitialState(): void
     {
-        $this->assertNull($this->currentInvoiceSuiteAbstractFormatProvider);
-        $this->assertNull($this->getCurrentFormatProvider());
+        $this->assertNull($this->currentDocumentFormatProvider);
+        $this->assertNull($this->getCurrentDocumentFormatProvider());
     }
 
     public function testSetCurrentFormatProvider(): void
     {
-        $this->assertNull($this->currentInvoiceSuiteAbstractFormatProvider);
-        $this->assertNull($this->getCurrentFormatProvider());
-        $this->setCurrentFormatProvider(new InvoiceSuiteZfFxExtendedProvider());
-        $this->assertInstanceOf(InvoiceSuiteZfFxExtendedProvider::class, $this->currentInvoiceSuiteAbstractFormatProvider);
-        $this->assertInstanceOf(InvoiceSuiteZfFxExtendedProvider::class, $this->getCurrentFormatProvider());
+        $this->assertNull($this->currentDocumentFormatProvider);
+        $this->assertNull($this->getCurrentDocumentFormatProvider());
+        $this->setCurrentDocumentFormatProvider(new InvoiceSuiteZfFxExtendedProvider());
+        $this->assertInstanceOf(InvoiceSuiteZfFxExtendedProvider::class, $this->currentDocumentFormatProvider);
+        $this->assertInstanceOf(InvoiceSuiteZfFxExtendedProvider::class, $this->getCurrentDocumentFormatProvider());
     }
 
     public function testResolveCurrentFormatProviderParameters(): void
     {
-        $this->assertNull($this->currentInvoiceSuiteAbstractFormatProvider);
-        $this->setCurrentFormatProvider(new InvoiceSuiteZfFxExtendedProvider());
-        $this->assertNotEmpty($this->resolveCurrentFormatProviderParameters());
-        $this->assertCount(3, $this->resolveCurrentFormatProviderParameters());
+        $this->assertNull($this->currentDocumentFormatProvider);
+        $this->setCurrentDocumentFormatProvider(new InvoiceSuiteZfFxExtendedProvider());
+        $this->assertNotEmpty($this->resolveCurrentDocumentFormatProviderParameters());
+        $this->assertCount(3, $this->resolveCurrentDocumentFormatProviderParameters());
     }
 
     public function testHasCurrentFormatProviderParameter(): void
     {
-        $this->assertNull($this->currentInvoiceSuiteAbstractFormatProvider);
-        $this->setCurrentFormatProvider(new InvoiceSuiteZfFxExtendedProvider());
-        $this->assertTrue($this->hasCurrentFormatProviderParameter('ContextParameter'));
-        $this->assertTrue($this->hasCurrentFormatProviderParameter('AlternativeContextParameters'));
-        $this->assertTrue($this->hasCurrentFormatProviderParameter('BusinessProcess'));
-        $this->assertFalse($this->hasCurrentFormatProviderParameter('__UNKNOWN__'));
+        $this->assertNull($this->currentDocumentFormatProvider);
+        $this->setCurrentDocumentFormatProvider(new InvoiceSuiteZfFxExtendedProvider());
+        $this->assertTrue($this->hasCurrentDocumentFormatProviderParameter('ContextParameter'));
+        $this->assertTrue($this->hasCurrentDocumentFormatProviderParameter('AlternativeContextParameters'));
+        $this->assertTrue($this->hasCurrentDocumentFormatProviderParameter('BusinessProcess'));
+        $this->assertFalse($this->hasCurrentDocumentFormatProviderParameter('__UNKNOWN__'));
     }
 
     public function testGetCurrentFormatProviderParameterValue(): void
     {
-        $this->assertNull($this->currentInvoiceSuiteAbstractFormatProvider);
-        $this->setCurrentFormatProvider(new InvoiceSuiteZfFxExtendedProvider());
-        $this->assertSame('urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended', $this->getCurrentFormatProviderParameterValue('ContextParameter', ''));
-        $this->assertIsArray($this->getCurrentFormatProviderParameterValue('AlternativeContextParameters', ''));
-        $this->assertNotEmpty($this->getCurrentFormatProviderParameterValue('AlternativeContextParameters', ''));
-        $this->assertSame('urn:fdc:peppol.eu:2017:poacc:billing:01:1.0', $this->getCurrentFormatProviderParameterValue('BusinessProcess', ''));
-        $this->assertSame('__DEFAULT__', $this->getCurrentFormatProviderParameterValue('__UNKNOWN__', '__DEFAULT__'));
+        $this->assertNull($this->currentDocumentFormatProvider);
+        $this->setCurrentDocumentFormatProvider(new InvoiceSuiteZfFxExtendedProvider());
+        $this->assertSame('urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended', $this->getCurrentDocumentFormatProviderParameterValue('ContextParameter', ''));
+        $this->assertIsArray($this->getCurrentDocumentFormatProviderParameterValue('AlternativeContextParameters', ''));
+        $this->assertNotEmpty($this->getCurrentDocumentFormatProviderParameterValue('AlternativeContextParameters', ''));
+        $this->assertSame('urn:fdc:peppol.eu:2017:poacc:billing:01:1.0', $this->getCurrentDocumentFormatProviderParameterValue('BusinessProcess', ''));
+        $this->assertSame('__DEFAULT__', $this->getCurrentDocumentFormatProviderParameterValue('__UNKNOWN__', '__DEFAULT__'));
     }
 }
