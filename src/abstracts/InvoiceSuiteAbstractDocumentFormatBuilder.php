@@ -18,7 +18,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-abstract class InvoiceSuiteAbstractFormatProviderBuilder implements InvoiceSuiteDocumentBuilderContract
+abstract class InvoiceSuiteAbstractDocumentFormatBuilder implements InvoiceSuiteDocumentBuilderContract
 {
     use HandlesCurrentFormatProvider;
     use HandlesRootObject;
@@ -27,11 +27,11 @@ abstract class InvoiceSuiteAbstractFormatProviderBuilder implements InvoiceSuite
     /**
      * Constructor
      *
-     * @param InvoiceSuiteAbstractFormatProvider $invoiceSuiteAbstractFormatProvider
+     * @param InvoiceSuiteAbstractDocumentFormatProvider $newProvider
      */
-    public function __construct(InvoiceSuiteAbstractFormatProvider $invoiceSuiteAbstractFormatProvider)
+    public function __construct(InvoiceSuiteAbstractDocumentFormatProvider $newProvider)
     {
-        $this->setCurrentFormatProvider($invoiceSuiteAbstractFormatProvider);
+        $this->setCurrentFormatProvider($newProvider);
         $this->createAndInitSerializerByFormatProvider();
         $this->createAndInitRootObjectByFormatProvider();
     }

@@ -4,7 +4,7 @@ namespace horstoeko\invoicesuite\providers\ubl;
 
 use DateTime;
 use DateTimeInterface;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderReader;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatReader;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAllowanceChargeDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
@@ -47,7 +47,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
-class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatProviderReader
+class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractDocumentFormatReader
 {
     /**
      * Returns the root object as a Invoice

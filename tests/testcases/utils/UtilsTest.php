@@ -5,8 +5,9 @@ namespace horstoeko\invoicesuite\tests\testcases\utils;
 use DateTime;
 use DateTimeInterface;
 use InvalidArgumentException;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProvider;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
@@ -527,7 +528,7 @@ class UtilsTest extends TestCase
         $this->assertSame('application/json', $attachment->getContentMimeType());
         $this->assertSame('test.json', $attachment->getFilename());
 
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(InvoiceSuiteInvalidArgumentException::class);
         $this->expectExceptionMessage('Not a BASE64 string');
 
         InvoiceSuiteAttachment::fromBase64String('{"a":"b","c":2}', 'test.txt');
@@ -546,7 +547,7 @@ class UtilsTest extends TestCase
         $this->assertSame(false, $attachment->getContentMimeType());
         $this->assertSame(false, $attachment->getFilename());
 
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(InvoiceSuiteInvalidArgumentException::class);
         $this->expectExceptionMessage('Not a valid URL: Dummy');
 
         InvoiceSuiteAttachment::fromUrl('Dummy');
@@ -558,7 +559,7 @@ class UtilsTest extends TestCase
 
     public function testInvoiceSuiteClassFinderFactory(): void
     {
-        $cacheFilename = md5(preg_replace("/[^a-zA-Z0-9]/", "", sprintf("invoicesuite-cf-%s", InvoiceSuiteAbstractFormatProvider::class))) . ".cache";
+        $cacheFilename = md5(preg_replace("/[^a-zA-Z0-9]/", "", sprintf("invoicesuite-cf-%s", InvoiceSuiteAbstractDocumentFormatProvider::class))) . ".cache";
         $cacheFullFilename = __DIR__ . '/../../../src/cache/' . $cacheFilename;
         @unlink($cacheFullFilename);
 
@@ -584,7 +585,7 @@ class UtilsTest extends TestCase
         $this->assertIsArray($classNames->getValue($classFinder));
         $this->assertNotEmpty($classNames->getValue($classFinder), 'Classnames should have been filled by Init ()');
 
-        $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractFormatProvider::class, true);
+        $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, true);
 
         /**
          * @phpstan-ignore method.alreadyNarrowedType
@@ -601,7 +602,7 @@ class UtilsTest extends TestCase
         $this->assertIsArray($classNames->getValue($classFinder));
         $this->assertEmpty($classNames->getValue($classFinder));
 
-        $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractFormatProvider::class, true);
+        $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, true);
 
         /**
          * @phpstan-ignore method.alreadyNarrowedType
@@ -617,7 +618,7 @@ class UtilsTest extends TestCase
         $this->assertIsArray($classNames->getValue($classFinder));
         $this->assertNotEmpty($classNames->getValue($classFinder));
 
-        $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractFormatProvider::class, true);
+        $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, true);
 
         /**
          * @phpstan-ignore method.alreadyNarrowedType
@@ -626,7 +627,7 @@ class UtilsTest extends TestCase
         $this->assertCount(6, $classNames);
         $this->assertFileDoesNotExist($cacheFullFilename);
 
-        $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractFormatProvider::class, false);
+        $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, false);
 
         /**
          * @phpstan-ignore method.alreadyNarrowedType
@@ -635,7 +636,7 @@ class UtilsTest extends TestCase
         $this->assertCount(6, $classNames);
         $this->assertFileExists($cacheFullFilename);
 
-        $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractFormatProvider::class, false);
+        $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, false);
 
         /**
          * @phpstan-ignore method.alreadyNarrowedType

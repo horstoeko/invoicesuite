@@ -20,7 +20,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-abstract class InvoiceSuiteAbstractFormatProviderReader implements InvoiceSuiteDocumentReaderContract
+abstract class InvoiceSuiteAbstractDocumentFormatReader implements InvoiceSuiteDocumentReaderContract
 {
     use HandlesCurrentFormatProvider;
     use HandlesRootObject;
@@ -29,11 +29,11 @@ abstract class InvoiceSuiteAbstractFormatProviderReader implements InvoiceSuiteD
     /**
      * Constructor
      *
-     * @param InvoiceSuiteAbstractFormatProvider $invoiceSuiteAbstractFormatProvider
+     * @param InvoiceSuiteAbstractDocumentFormatProvider $newProvider
      */
-    public function __construct(InvoiceSuiteAbstractFormatProvider $invoiceSuiteAbstractFormatProvider)
+    public function __construct(InvoiceSuiteAbstractDocumentFormatProvider $newProvider)
     {
-        $this->setCurrentFormatProvider($invoiceSuiteAbstractFormatProvider);
+        $this->setCurrentFormatProvider($newProvider);
         $this->createAndInitSerializerByFormatProvider();
     }
 
@@ -41,7 +41,7 @@ abstract class InvoiceSuiteAbstractFormatProviderReader implements InvoiceSuiteD
      * Deserialize from content (will guess)
      *
      * @param  string $fromContent
-     * @return InvoiceSuiteAbstractFormatProviderReader
+     * @return InvoiceSuiteAbstractDocumentFormatReader
      * @throws InvoiceSuiteUnknownContent
      */
     public function deserializeFromContent(string $fromContent): self
@@ -61,7 +61,7 @@ abstract class InvoiceSuiteAbstractFormatProviderReader implements InvoiceSuiteD
      * Read from XML content
      *
      * @param  string $fromContent
-     * @return InvoiceSuiteAbstractFormatProviderReader
+     * @return InvoiceSuiteAbstractDocumentFormatReader
      * @throws RuntimeException
      */
     protected function deserializeFromXmlContent(string $fromContent): self
@@ -75,7 +75,7 @@ abstract class InvoiceSuiteAbstractFormatProviderReader implements InvoiceSuiteD
      * Read from JSON content
      *
      * @param  string $fromContent
-     * @return InvoiceSuiteAbstractFormatProviderReader
+     * @return InvoiceSuiteAbstractDocumentFormatReader
      * @throws RuntimeException
      */
     protected function deserializeFromJsonContent(string $fromContent): self
@@ -90,7 +90,7 @@ abstract class InvoiceSuiteAbstractFormatProviderReader implements InvoiceSuiteD
      *
      * @param  string $fromContent
      * @param  string $contentType
-     * @return InvoiceSuiteAbstractFormatProviderReader
+     * @return InvoiceSuiteAbstractDocumentFormatReader
      * @throws RuntimeException
      */
     protected function deserializeFromContentByContentType(string $fromContent, string $contentType): self

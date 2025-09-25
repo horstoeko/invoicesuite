@@ -4,7 +4,7 @@ namespace horstoeko\invoicesuite\tests\testcases\concerns;
 
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\concerns\HandlesFormatProviders;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProvider;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\providers\zffxminimum\InvoiceSuiteZfFxMinimumProvider;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\providers\zffxextended\InvoiceSuiteZfFxExtendedProvider;
@@ -57,7 +57,7 @@ class HandlesFormatProvidersTest extends TestCase
         $this->addFormatProvider($provider1);
         $this->addFormatProvider($provider2);
 
-        $this->assertInstanceOf(InvoiceSuiteAbstractFormatProvider::class, $this->findFormatProviderByUniqueId('zffxextended'));
+        $this->assertInstanceOf(InvoiceSuiteAbstractDocumentFormatProvider::class, $this->findFormatProviderByUniqueId('zffxextended'));
         $this->assertNull($this->findFormatProviderByUniqueId('__unknownprovider__'));
     }
 
@@ -69,7 +69,7 @@ class HandlesFormatProvidersTest extends TestCase
         $this->addFormatProvider($provider1);
         $this->addFormatProvider($provider2);
 
-        $this->assertInstanceOf(InvoiceSuiteAbstractFormatProvider::class, $this->findFormatProviderByUniqueIdOrFail('zffxextended'));
+        $this->assertInstanceOf(InvoiceSuiteAbstractDocumentFormatProvider::class, $this->findFormatProviderByUniqueIdOrFail('zffxextended'));
         $this->expectException(InvoiceSuiteFormatProviderNotFoundException::class);
         $this->findFormatProviderByUniqueIdOrFail('__unknownprovider__');
     }

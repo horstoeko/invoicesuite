@@ -2,14 +2,14 @@
 
 namespace horstoeko\invoicesuite\tests\traits;
 
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatBuilder;
 use horstoeko\stringmanagement\FileUtils;
 use horstoeko\stringmanagement\PathUtils;
 
 trait HandlesXmlTests
 {
     /**
-     * @var InvoiceSuiteAbstractFormatProviderBuilder
+     * @var InvoiceSuiteAbstractDocumentFormatBuilder
      */
     protected static $document;
 

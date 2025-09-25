@@ -2,7 +2,7 @@
 
 namespace horstoeko\invoicesuite\concerns;
 
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProvider;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 
 /**
  * Trait representing methods for handling the current format provider
@@ -18,16 +18,16 @@ trait HandlesCurrentFormatProvider
     /**
      * The format provider for which the serializer was created
      *
-     * @var InvoiceSuiteAbstractFormatProvider
+     * @var InvoiceSuiteAbstractDocumentFormatProvider
      */
     protected $currentInvoiceSuiteAbstractFormatProvider;
 
     /**
      * Returns the requested format provider
      *
-     * @return InvoiceSuiteAbstractFormatProvider|null
+     * @return InvoiceSuiteAbstractDocumentFormatProvider|null
      */
-    public function getCurrentFormatProvider(): ?InvoiceSuiteAbstractFormatProvider
+    public function getCurrentFormatProvider(): ?InvoiceSuiteAbstractDocumentFormatProvider
     {
         return $this->currentInvoiceSuiteAbstractFormatProvider;
     }
@@ -35,10 +35,10 @@ trait HandlesCurrentFormatProvider
     /**
      * Set the requested format provider
      *
-     * @param InvoiceSuiteAbstractFormatProvider $invoiceSuiteAbstractFormatProvider
+     * @param InvoiceSuiteAbstractDocumentFormatProvider $invoiceSuiteAbstractFormatProvider
      * @return void
      */
-    public function setCurrentFormatProvider(InvoiceSuiteAbstractFormatProvider $invoiceSuiteAbstractFormatProvider): void
+    public function setCurrentFormatProvider(InvoiceSuiteAbstractDocumentFormatProvider $invoiceSuiteAbstractFormatProvider): void
     {
         $this->currentInvoiceSuiteAbstractFormatProvider = $invoiceSuiteAbstractFormatProvider;
     }

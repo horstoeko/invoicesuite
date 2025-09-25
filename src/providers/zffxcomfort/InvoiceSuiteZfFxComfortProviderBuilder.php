@@ -3,7 +3,7 @@
 namespace horstoeko\invoicesuite\providers\zffxcomfort;
 
 use DateTimeInterface;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatBuilder;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAllowanceChargeDTO;
@@ -36,7 +36,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
-class InvoiceSuiteZfFxComfortProviderBuilder extends InvoiceSuiteAbstractFormatProviderBuilder
+class InvoiceSuiteZfFxComfortProviderBuilder extends InvoiceSuiteAbstractDocumentFormatBuilder
 {
     /**
      * @inheritDoc

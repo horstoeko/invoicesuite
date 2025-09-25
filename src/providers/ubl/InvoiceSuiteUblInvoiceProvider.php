@@ -2,10 +2,10 @@
 
 namespace horstoeko\invoicesuite\providers\ubl;
 
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProvider;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\models\ubl\main\Invoice;
 
-class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractFormatProvider
+class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
     /**
      * @inheritDoc

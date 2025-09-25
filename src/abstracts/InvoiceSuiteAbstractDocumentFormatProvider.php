@@ -13,19 +13,19 @@ use Closure;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-abstract class InvoiceSuiteAbstractFormatProvider
+abstract class InvoiceSuiteAbstractDocumentFormatProvider
 {
     /**
      * The instance of the internal reader class
      *
-     * @var InvoiceSuiteAbstractFormatProviderReader
+     * @var InvoiceSuiteAbstractDocumentFormatReader
      */
     public $readerInstance;
 
     /**
      * The intance of the internal builder class
      *
-     * @var InvoiceSuiteAbstractFormatProviderBuilder
+     * @var InvoiceSuiteAbstractDocumentFormatBuilder
      */
     public $builderInstance;
 
@@ -117,9 +117,9 @@ abstract class InvoiceSuiteAbstractFormatProvider
     /**
      * Create a new reader instance
      *
-     * @return InvoiceSuiteAbstractFormatProvider
+     * @return InvoiceSuiteAbstractDocumentFormatProvider
      */
-    public function initReader(): InvoiceSuiteAbstractFormatProvider
+    public function initReader(): InvoiceSuiteAbstractDocumentFormatProvider
     {
         $this->readerInstance = new ($this->getReaderClassName())($this);
 
@@ -129,9 +129,9 @@ abstract class InvoiceSuiteAbstractFormatProvider
     /**
      * Returns the reader for this format provider
      *
-     * @return InvoiceSuiteAbstractFormatProviderReader
+     * @return InvoiceSuiteAbstractDocumentFormatReader
      */
-    public function getReader(): InvoiceSuiteAbstractFormatProviderReader
+    public function getReader(): InvoiceSuiteAbstractDocumentFormatReader
     {
         return $this->readerInstance;
     }
@@ -139,9 +139,9 @@ abstract class InvoiceSuiteAbstractFormatProvider
     /**
      * Create a new builder instance
      *
-     * @return InvoiceSuiteAbstractFormatProvider
+     * @return InvoiceSuiteAbstractDocumentFormatProvider
      */
-    public function initBuilder(): InvoiceSuiteAbstractFormatProvider
+    public function initBuilder(): InvoiceSuiteAbstractDocumentFormatProvider
     {
         $this->builderInstance = new ($this->getBuilderClassName())($this);
 
@@ -151,9 +151,9 @@ abstract class InvoiceSuiteAbstractFormatProvider
     /**
      * Returns the builder for this format provider
      *
-     * @return InvoiceSuiteAbstractFormatProviderBuilder
+     * @return InvoiceSuiteAbstractDocumentFormatBuilder
      */
-    public function getBuilder(): InvoiceSuiteAbstractFormatProviderBuilder
+    public function getBuilder(): InvoiceSuiteAbstractDocumentFormatBuilder
     {
         return $this->builderInstance;
     }

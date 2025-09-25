@@ -3,7 +3,7 @@
 namespace horstoeko\invoicesuite\providers\zffxminimum;
 
 use DateTimeInterface;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatBuilder;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAllowanceChargeDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
@@ -35,7 +35,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
-class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractFormatProviderBuilder
+class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractDocumentFormatBuilder
 {
     /**
      * @inheritDoc
