@@ -1,7 +1,7 @@
 <?php
 
-use horstoeko\invoicesuite\contracts\InvoiceSuiteBuilderContract;
-use horstoeko\invoicesuite\contracts\InvoiceSuiteReaderContract;
+use horstoeko\invoicesuite\contracts\InvoiceSuiteDocumentBuilderContract;
+use horstoeko\invoicesuite\contracts\InvoiceSuiteDocumentReaderContract;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\providers\ubl\InvoiceSuiteUblInvoiceProviderBuilder;
@@ -678,8 +678,8 @@ class BatchMarkDownGenerator
 }
 
 BatchMarkDownGenerator::generate([
-    InvoiceSuiteReaderContract::class => dirname(__FILE__) . '/classes/Interface-InvoiceSuiteReaderContract.md',
-    InvoiceSuiteBuilderContract::class => dirname(__FILE__) . '/classes/Interface-InvoiceSuiteBuilderContract.md',
+    InvoiceSuiteDocumentReaderContract::class => dirname(__FILE__) . '/classes/Interface-InvoiceSuiteReaderContract.md',
+    InvoiceSuiteDocumentBuilderContract::class => dirname(__FILE__) . '/classes/Interface-InvoiceSuiteBuilderContract.md',
     InvoiceSuiteDocumentReader::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteDocumentReader.md',
     InvoiceSuiteDocumentBuilder::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteDocumentBuilder.md',
     InvoiceSuiteZfFxExtendedProviderBuilder::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteZfFxExtendedProviderBuilder.md',

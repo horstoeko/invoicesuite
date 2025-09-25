@@ -22,7 +22,7 @@ use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-interface InvoiceSuiteReaderContract
+interface InvoiceSuiteDocumentReaderContract
 {
     #region Document DTO
 

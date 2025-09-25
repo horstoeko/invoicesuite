@@ -6,7 +6,7 @@ use JMS\Serializer\SerializationContext;
 use horstoeko\invoicesuite\concerns\HandlesRootObject;
 use horstoeko\invoicesuite\concerns\HandlesSerializer;
 use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
-use horstoeko\invoicesuite\contracts\InvoiceSuiteBuilderContract;
+use horstoeko\invoicesuite\contracts\InvoiceSuiteDocumentBuilderContract;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
 
 /**
@@ -18,7 +18,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-abstract class InvoiceSuiteAbstractFormatProviderBuilder implements InvoiceSuiteBuilderContract
+abstract class InvoiceSuiteAbstractFormatProviderBuilder implements InvoiceSuiteDocumentBuilderContract
 {
     use HandlesCurrentFormatProvider;
     use HandlesRootObject;

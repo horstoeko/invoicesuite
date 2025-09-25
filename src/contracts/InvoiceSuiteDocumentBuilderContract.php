@@ -22,7 +22,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-interface InvoiceSuiteBuilderContract
+interface InvoiceSuiteDocumentBuilderContract
 {
     #region Document DTO
 

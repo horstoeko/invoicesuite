@@ -6,7 +6,7 @@ use DateTimeInterface;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesFormatProviders;
-use horstoeko\invoicesuite\contracts\InvoiceSuiteBuilderContract;
+use horstoeko\invoicesuite\contracts\InvoiceSuiteDocumentBuilderContract;
 use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
@@ -23,7 +23,7 @@ use JMS\Serializer\Exception\RuntimeException;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
+class InvoiceSuiteDocumentBuilder implements InvoiceSuiteDocumentBuilderContract
 {
     use HandlesCallForwarding;
     use HandlesCurrentFormatProvider;
