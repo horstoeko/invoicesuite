@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\tests\testcases\utils;
 
 use DateTime;
 use DateTimeInterface;
-use InvalidArgumentException;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
