@@ -16,7 +16,7 @@ use horstoeko\invoicesuite\documentproviders\zffxextended\InvoiceSuiteZfFxExtend
 use horstoeko\invoicesuite\documentproviders\zffxextended\InvoiceSuiteZfFxExtendedProviderReader;
 use horstoeko\invoicesuite\documentproviders\zffxminimum\InvoiceSuiteZfFxMinimumProviderBuilder;
 use horstoeko\invoicesuite\documentproviders\zffxminimum\InvoiceSuiteZfFxMinimumProviderReader;
-use horstoeko\invoicesuite\pdfutils\InvoiceSuitePdfAttachmentExtractor;
+use horstoeko\invoicesuite\pdfutils\InvoiceSuitePdfExtractor;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use Nette\PhpGenerator\ClassType;
@@ -679,7 +679,7 @@ class BatchMarkDownGenerator
 }
 
 BatchMarkDownGenerator::generate([
-    InvoiceSuitePdfAttachmentExtractor::class => dirname(__FILE__) . '/classes/Class-InvoiceSuitePdfExtractor.md',
+    InvoiceSuitePdfExtractor::class => dirname(__FILE__) . '/classes/Class-InvoiceSuitePdfExtractor.md',
     InvoiceSuiteDocumentReaderContract::class => dirname(__FILE__) . '/classes/Interface-InvoiceSuiteReaderContract.md',
     InvoiceSuiteDocumentBuilderContract::class => dirname(__FILE__) . '/classes/Interface-InvoiceSuiteBuilderContract.md',
     InvoiceSuiteDocumentReader::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteDocumentReader.md',
