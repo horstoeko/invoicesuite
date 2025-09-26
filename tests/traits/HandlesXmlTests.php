@@ -3,7 +3,6 @@
 namespace horstoeko\invoicesuite\tests\traits;
 
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatBuilder;
-use horstoeko\stringmanagement\FileUtils;
 use horstoeko\stringmanagement\PathUtils;
 
 trait HandlesXmlTests
