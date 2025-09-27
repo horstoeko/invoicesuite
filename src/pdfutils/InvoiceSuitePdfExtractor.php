@@ -83,59 +83,6 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
     }
 
     /**
-     * Get an attachment by it's filename. If no matching attachment is not available null is returned
-     *
-     * @param string $filename
-     * @return null|string
-     */
-    public function getAttachmentContentByFilename(string $filename): ?string
-    {
-        $filteredAttachments = array_filter(
-            $this->attachmentList,
-            fn($attachment) => strcasecmp($attachment->getNewAttachmentFilename(), $filename) === 0
-        );
-
-        if ($filteredAttachments === []) {
-            return null;
-        }
-
-        $firstAttachment = reset($filteredAttachments);
-
-        return $firstAttachment->getNewAttachmentContent();
-    }
-
-    /**
-     * Iterate over available attachments
-     *
-     * @param callable $callback Callback called when attachment is available. The callback gets the current attachment and it's internal undex
-     * @param null|callable $callbackElse Callback called when no attachment is available
-     * @param null|int $limit Maximum iterations. When null through all attachments is iterated
-     * @return InvoiceSuitePdfExtractor
-     */
-    public function foreachAttachment(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
-    {
-        $attachmentIndex = 0;
-
-        foreach ($this->attachmentList as $attachment) {
-            if ($limit !== null && $attachmentIndex >= $limit) {
-                break;
-            }
-
-            $attachmentIndex++;
-
-            if ($callback($attachment, $attachmentIndex) === false) {
-                break;
-            };
-        }
-
-        if ($attachmentIndex === 0 && !is_null($callbackElse)) {
-            $callbackElse();
-        }
-
-        return $this;
-    }
-
-    /**
      * Get a list of all the attachments.
      *
      * @param string $pdfContent
