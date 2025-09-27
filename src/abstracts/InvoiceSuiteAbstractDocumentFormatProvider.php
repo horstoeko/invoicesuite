@@ -12,7 +12,7 @@ namespace horstoeko\invoicesuite\abstracts;
 use Closure;
 
 /**
- * Class representing methods for a provider definition
+ * Class representing methods for a document format provider definition
  *
  * @category InvoiceSuite
  * @package  InvoiceSuite
