@@ -13,7 +13,6 @@ use Exception;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesCurrentPdfDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesPdfDocumentFormatProviders;
-use horstoeko\invoicesuite\contracts\InvoiceSuitePdfDocumentReaderContract;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
@@ -29,7 +28,7 @@ use horstoeko\invoicesuite\pdfutils\InvoiceSuitePdfExtractor;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuitePdfDocumentReader implements InvoiceSuitePdfDocumentReaderContract
+class InvoiceSuitePdfDocumentReader
 {
     use HandlesCallForwarding;
     use HandlesCurrentPdfDocumentFormatProvider;

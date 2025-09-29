@@ -10,7 +10,6 @@
 namespace horstoeko\invoicesuite\abstracts;
 
 use horstoeko\invoicesuite\concerns\HandlesPdfDocumentReaderObject;
-use horstoeko\invoicesuite\contracts\InvoiceSuitePdfDocumentReaderContract;
 use horstoeko\invoicesuite\concerns\HandlesCurrentPdfDocumentFormatProvider;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 
@@ -23,7 +22,7 @@ use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-abstract class InvoiceSuiteAbstractPdfDocumentFormatReader implements InvoiceSuitePdfDocumentReaderContract
+abstract class InvoiceSuiteAbstractPdfDocumentFormatReader
 {
     use HandlesCurrentPdfDocumentFormatProvider;
     use HandlesPdfDocumentReaderObject;

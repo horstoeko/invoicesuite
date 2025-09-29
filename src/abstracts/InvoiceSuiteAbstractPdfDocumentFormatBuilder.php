@@ -10,7 +10,6 @@
 namespace horstoeko\invoicesuite\abstracts;
 
 use horstoeko\invoicesuite\concerns\HandlesCurrentPdfDocumentFormatProvider;
-use horstoeko\invoicesuite\contracts\InvoiceSuitePdfDocumentBuilderContract;
 
 /**
  * Class representing methods for a PDF builder
@@ -21,7 +20,7 @@ use horstoeko\invoicesuite\contracts\InvoiceSuitePdfDocumentBuilderContract;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-abstract class InvoiceSuiteAbstractPdfDocumentFormatBuilder implements InvoiceSuitePdfDocumentBuilderContract
+abstract class InvoiceSuiteAbstractPdfDocumentFormatBuilder
 {
     use HandlesCurrentPdfDocumentFormatProvider;
 
