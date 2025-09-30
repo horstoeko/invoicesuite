@@ -15,12 +15,13 @@ use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractPdfDocumentFormatReader
 class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractPdfDocumentFormatReader
 {
     /**
-     * Initialize, Set contents to merge
+     * Initialize, Set contents to read
+     *
+     * @param string $fromContent
+     * @return InvoiceSuiteZfFxExtendedProviderReader
      */
     public function setContents(string $fromContent): self
     {
-        $this->setDocumentReaderObject(InvoiceSuiteDocumentReader::createFromContent($fromContent));
-
-        return $this;
+        return $this->setDocumentReaderObject(InvoiceSuiteDocumentReader::createFromContent($fromContent));
     }
 }

@@ -20,7 +20,7 @@ use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\pdfutils\InvoiceSuitePdfExtractor;
 
 /**
- * Class representing the document reader
+ * Class representing the PDF document reader
  *
  * @category InvoiceSuite
  * @package  InvoiceSuite
