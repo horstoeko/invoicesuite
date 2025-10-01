@@ -133,7 +133,7 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
      *
      * @return boolean
      */
-    abstract public function getPdfSupportAvailable(): bool;
+    abstract public function isPdfSupportAvailable(): bool;
 
     /**
      * Returns a list of valid PDF attachment filenames

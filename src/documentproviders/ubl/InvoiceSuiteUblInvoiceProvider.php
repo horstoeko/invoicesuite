@@ -160,7 +160,7 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatP
      *
      * @return boolean
      */
-    public function getPdfSupportAvailable(): bool
+    public function isPdfSupportAvailable(): bool
     {
         return false;
     }

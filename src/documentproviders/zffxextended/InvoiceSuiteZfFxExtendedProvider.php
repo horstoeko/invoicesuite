@@ -161,7 +161,7 @@ class InvoiceSuiteZfFxExtendedProvider extends InvoiceSuiteAbstractDocumentForma
      *
      * @return boolean
      */
-    public function getPdfSupportAvailable(): bool
+    public function isPdfSupportAvailable(): bool
     {
         return true;
     }
