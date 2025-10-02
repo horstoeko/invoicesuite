@@ -19,6 +19,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContent;
 use horstoeko\invoicesuite\pdf\InvoiceSuitePdfExtractor;
+use horstoeko\invoicesuite\pdf\InvoiceSuitePdfExtractorAttachment;
 
 /**
  * Class representing the PDF document reader
@@ -34,6 +35,20 @@ class InvoiceSuitePdfDocumentReader
     use HandlesCallForwarding;
     use HandlesCurrentDocumentFormatProvider;
     use HandlesDocumentFormatProviders;
+
+    /**
+     * The internal buffer for the attached invoice document attachment
+     *
+     * @var InvoiceSuitePdfExtractorAttachment
+     */
+    private $invoiceDocumentAttachment;
+
+    /**
+     * The internal buffer for additional document attachments
+     *
+     * @var array<int,InvoiceSuitePdfExtractorAttachment>
+     */
+    private $additionalDocumentAttachments = [];
 
     /**
      * Create PDF reader by file
@@ -85,6 +100,11 @@ class InvoiceSuitePdfDocumentReader
         $pdfExtractor = InvoiceSuitePdfExtractor::fromContent($fromContent);
 
         foreach ($pdfExtractor as $pdfExtractorAttachment) {
+            if (!is_null($this->getCurrentDocumentFormatProvider())) {
+                $this->addAdditionalDocumentAttachments($pdfExtractorAttachment);
+                continue;
+            }
+
             $formatProviders = array_filter(
                 $this->getRegisteredDocumentFormatProviders(),
                 fn($formatProvider) =>
@@ -94,15 +114,15 @@ class InvoiceSuitePdfDocumentReader
             );
 
             if ($formatProviders === []) {
+                $this->addAdditionalDocumentAttachments($pdfExtractorAttachment);
                 continue;
             }
 
             $formatProvider = reset($formatProviders);
 
+            $this->setInvoiceDocumentAttachment($pdfExtractorAttachment);
             $this->setCurrentDocumentFormatProvider($formatProvider);
             $this->getCurrentDocumentFormatProvider()->getReader()->deserializeFromContent($pdfExtractorAttachment->getAttachmentContent());
-
-            break;
         }
 
         if (is_null($this->getCurrentDocumentFormatProvider())) {
@@ -118,5 +138,64 @@ class InvoiceSuitePdfDocumentReader
     public function getDocumentReader(): InvoiceSuiteAbstractDocumentFormatReader
     {
         return $this->getCurrentDocumentFormatProvider()->getReader();
+    }
+
+    /**
+     * Internal method to set the invoice document attachment
+     *
+     * @param InvoiceSuitePdfExtractorAttachment $attachment
+     * @return InvoiceSuitePdfDocumentReader
+     */
+    protected function setInvoiceDocumentAttachment(InvoiceSuitePdfExtractorAttachment $attachment): self
+    {
+        $this->invoiceDocumentAttachment = $attachment;
+
+        return $this;
+    }
+
+    /**
+     * Get the invoice document attachment
+     *
+     * @return InvoiceSuitePdfExtractorAttachment|null
+     */
+    public function getInvoiceDocumentAttachment(): ?InvoiceSuitePdfExtractorAttachment
+    {
+        return $this->invoiceDocumentAttachment;
+    }
+
+    /**
+     * Internal method to set a bulk of additional attachments
+     *
+     * @param array<int,InvoiceSuitePdfExtractorAttachment> $attachments
+     * @return InvoiceSuitePdfDocumentReader
+     */
+    protected function setAdditionalDocumentAttachments(array $attachments): self
+    {
+        $this->additionalDocumentAttachments = $attachments;
+
+        return $this;
+    }
+
+    /**
+     * Internal method to add a single additional attachments
+     *
+     * @param InvoiceSuitePdfExtractorAttachment $attachment
+     * @return InvoiceSuitePdfDocumentReader
+     */
+    protected function addAdditionalDocumentAttachments(InvoiceSuitePdfExtractorAttachment $attachment): self
+    {
+        $this->additionalDocumentAttachments[] = $attachment;
+
+        return $this;
+    }
+
+    /**
+     * Get all additional document attachment
+     *
+     * @return array<int,InvoiceSuitePdfExtractorAttachment>
+     */
+    public function getAdditionalDocumentAttachments(): array
+    {
+        return $this->additionalDocumentAttachments;
     }
 }
