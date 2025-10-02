@@ -22,7 +22,7 @@ use JMS\Serializer\Exception\LogicException;
 use JMS\Serializer\Exception\RuntimeException;
 
 /**
- * Class representing the PDF document build
+ * Class representing the PDF document builder
  *
  * @category InvoiceSuite
  * @package  InvoiceSuite
