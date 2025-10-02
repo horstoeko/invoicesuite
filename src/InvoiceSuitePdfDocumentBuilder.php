@@ -69,7 +69,7 @@ class InvoiceSuitePdfDocumentBuilder
      * @throws LogicException
      * @throws RuntimeException
      */
-    public static function createFromDocumentBuilderAndPdfFile(InvoiceSuiteDocumentBuilder $fromDocumentBuilder, string $fromPdfFilename): InvoiceSuitePdfDocumentBuilder
+    public static function createFromDocumentBuilderAndPdfFile(InvoiceSuiteDocumentBuilder $fromDocumentBuilder, string $fromPdfFilename): self
     {
         if (!file_exists($fromPdfFilename)) {
             throw new InvoiceSuiteFileNotFoundException($fromPdfFilename);
@@ -94,7 +94,7 @@ class InvoiceSuitePdfDocumentBuilder
      * @throws LogicException
      * @throws RuntimeException
      */
-    public static function createFromDocumentBuilderAndPdfContent(InvoiceSuiteDocumentBuilder $fromDocumentBuilder, string $fromPdfContent): InvoiceSuitePdfDocumentBuilder
+    public static function createFromDocumentBuilderAndPdfContent(InvoiceSuiteDocumentBuilder $fromDocumentBuilder, string $fromPdfContent): self
     {
         return (new static())->setDocumentBuilder($fromDocumentBuilder)->setPdfContentDirect($fromPdfContent)->initPdfConstructor();
     }
@@ -109,7 +109,7 @@ class InvoiceSuitePdfDocumentBuilder
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
      */
-    public static function createFromDocumentContentAndPdfFile(string $fromDocumentContent, string $fromPdfFilename): InvoiceSuitePdfDocumentBuilder
+    public static function createFromDocumentContentAndPdfFile(string $fromDocumentContent, string $fromPdfFilename): self
     {
         if (!file_exists($fromPdfFilename)) {
             throw new InvoiceSuiteFileNotFoundException($fromPdfFilename);
@@ -132,7 +132,7 @@ class InvoiceSuitePdfDocumentBuilder
      * @return InvoiceSuitePdfDocumentBuilder
      * @throws InvoiceSuiteFormatProviderNotFoundException
      */
-    public static function createFromDocumentContentAndPdfContent(string $fromDocumentContent, string $fromPdfContent): InvoiceSuitePdfDocumentBuilder
+    public static function createFromDocumentContentAndPdfContent(string $fromDocumentContent, string $fromPdfContent): self
     {
         return (new static())->setDocumentContent($fromDocumentContent)->setPdfContentDirect($fromPdfContent)->initPdfConstructor();
     }
@@ -154,7 +154,7 @@ class InvoiceSuitePdfDocumentBuilder
      * @throws LogicException
      * @throws RuntimeException
      */
-    protected function setDocumentBuilder(InvoiceSuiteDocumentBuilder $fromDocumentBuilder): InvoiceSuitePdfDocumentBuilder
+    protected function setDocumentBuilder(InvoiceSuiteDocumentBuilder $fromDocumentBuilder): self
     {
         if (!$fromDocumentBuilder->getCurrentDocumentFormatProvider()->isPdfSupportAvailable()) {
             throw new InvoiceSuiteInvalidArgumentException(sprintf("Provider %s does not support PDF embedding", $this->getCurrentDocumentFormatProvider()->getUniqueId()));
@@ -178,13 +178,16 @@ class InvoiceSuitePdfDocumentBuilder
      * @return InvoiceSuitePdfDocumentBuilder
      * @throws InvoiceSuiteFormatProviderNotFoundException
      */
-    protected function setDocumentContent(string $fromDocumentContent): InvoiceSuitePdfDocumentBuilder
+    protected function setDocumentContent(string $fromDocumentContent): self
     {
         $this->resolveAvailableDocumentFormatProviders();
 
         $formatProviders = array_filter(
             $this->getRegisteredDocumentFormatProviders(),
-            fn($formatProvider) => $formatProvider->isPdfSupportAvailable() && is_subclass_of($formatProvider->getPdfConstructorClassName(), InvoiceSuiteAbstractPdfConstructor::class) && $formatProvider->isSatisfiableBySerializedContent($fromDocumentContent())
+            fn($formatProvider) => (
+                $formatProvider->isPdfSupportAvailable() &&
+                is_subclass_of($formatProvider->getPdfConstructorClassName(), InvoiceSuiteAbstractPdfConstructor::class) &&
+                $formatProvider->isSatisfiableBySerializedContent($fromDocumentContent()))
         );
 
         if ($formatProviders === []) {
@@ -205,7 +208,7 @@ class InvoiceSuitePdfDocumentBuilder
      * @param string $fromDocumentContent
      * @return InvoiceSuitePdfDocumentBuilder
      */
-    protected function setDocumentContentDirect(string $fromDocumentContent): InvoiceSuitePdfDocumentBuilder
+    protected function setDocumentContentDirect(string $fromDocumentContent): self
     {
         $this->documentContent = $fromDocumentContent;
 
@@ -228,7 +231,7 @@ class InvoiceSuitePdfDocumentBuilder
      * @param string $fromPdfContent
      * @return InvoiceSuitePdfDocumentBuilder
      */
-    protected function setPdfContentDirect(string $fromPdfContent): InvoiceSuitePdfDocumentBuilder
+    protected function setPdfContentDirect(string $fromPdfContent): self
     {
         $this->pdfContent = $fromPdfContent;
 
@@ -250,7 +253,7 @@ class InvoiceSuitePdfDocumentBuilder
      *
      * @return InvoiceSuitePdfDocumentBuilder
      */
-    protected function initPdfConstructor(): InvoiceSuitePdfDocumentBuilder
+    protected function initPdfConstructor(): self
     {
         $this->pdfConstructorInstance = new ($this->getCurrentDocumentFormatProvider()->getPdfConstructorClassName())(
             $this->getCurrentDocumentFormatProvider(),
