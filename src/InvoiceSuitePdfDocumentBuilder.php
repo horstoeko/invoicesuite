@@ -55,7 +55,7 @@ class InvoiceSuitePdfDocumentBuilder
      *
      * @var \horstoeko\invoicesuite\pdf\InvoiceSuiteAbstractPdfConstructor
      */
-    private $currentPdfConstructorInstance;
+    private $currentPdfConstructor;
 
     /**
      * Create the PDF builder from a document builder and a PDF file
@@ -276,18 +276,18 @@ class InvoiceSuitePdfDocumentBuilder
      */
     protected function getCurrentPdfConstructor(): InvoiceSuiteAbstractPdfConstructor
     {
-        return $this->currentPdfConstructorInstance;
+        return $this->currentPdfConstructor;
     }
 
     /**
      * Set the internal PDF constructor implementation
      *
-     * @param InvoiceSuiteAbstractPdfConstructor $pdfConstructorInstance
+     * @param InvoiceSuiteAbstractPdfConstructor $pdfConstructor
      * @return self
      */
-    protected function setCurrentPdfConstructor(InvoiceSuiteAbstractPdfConstructor $pdfConstructorInstance): self
+    protected function setCurrentPdfConstructor(InvoiceSuiteAbstractPdfConstructor $pdfConstructor): self
     {
-        $this->currentPdfConstructorInstance = $pdfConstructorInstance;
+        $this->currentPdfConstructor = $pdfConstructor;
 
         return $this;
     }
