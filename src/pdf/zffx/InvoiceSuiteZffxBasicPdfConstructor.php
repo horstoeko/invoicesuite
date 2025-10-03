@@ -39,14 +39,4 @@ class InvoiceSuiteZffxBasicPdfConstructor extends InvoiceSuiteZffxAbstractPdfCon
     {
         return '1.0';
     }
-
-    /**
-     * Return the attachment filename for the invoice document
-     *
-     * @return string
-     */
-    protected function getXmlAttachmentFilename(): string
-    {
-        return 'factur-x.xml';
-    }
 }

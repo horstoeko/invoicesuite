@@ -67,7 +67,7 @@ abstract class InvoiceSuiteZffxAbstractPdfConstructor extends InvoiceSuiteAbstra
 
         $this->pdfWriter->attach(
             PdfStreamReader::createByString($this->getRawDocumentContent()),
-            $this->getXmlAttachmentFilename(),
+            $this->getCurrentDocumentFormatProvider()->getDefaultPdfAttachmentFilename(),
             'Factur-X Invoice',
             $this->getDocumentRelationshipType(),
             'text#2Fxml'
@@ -142,7 +142,7 @@ abstract class InvoiceSuiteZffxAbstractPdfConstructor extends InvoiceSuiteAbstra
         $descFx = $descriptionNodes[0];
         $descFx->children('fx', true)->{'ConformanceLevel'} = strtoupper($this->getXmlAttachmentXmpName());
         $descFx->children('fx', true)->{'Version'} = strtoupper($this->getXmlAttachmentXmpVersion());
-        $descFx->children('fx', true)->{'DocumentFileName'} = $this->getXmlAttachmentFilename();
+        $descFx->children('fx', true)->{'DocumentFileName'} = $this->getCurrentDocumentFormatProvider()->getDefaultPdfAttachmentFilename();
         $this->pdfWriter->addMetadataDescriptionNode($descFx->asXML());
 
         $this->pdfWriter->addMetadataDescriptionNode($descriptionNodes[1]->asXML());
@@ -301,11 +301,4 @@ abstract class InvoiceSuiteZffxAbstractPdfConstructor extends InvoiceSuiteAbstra
      * @return string
      */
     abstract protected function getXmlAttachmentXmpVersion(): string;
-
-    /**
-     * Return the attachment filename for the invoice document
-     *
-     * @return string
-     */
-    abstract protected function getXmlAttachmentFilename(): string;
 }
