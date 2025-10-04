@@ -31,4 +31,6 @@ class InvoiceSuiteExceptionCodes
     public const BAD_METHOD_CALL = -1004;
 
     public const INVALID_ARGUMENT = -1005;
+
+    public const UNKNOWN_PROVIDER_PARAMETER = -1006;
 }
