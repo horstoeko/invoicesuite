@@ -22,6 +22,8 @@
             <file>../tests/testcases/documentproviders/ZfFxBasicWlProviderBuilderTest.php</file>
             <file>../tests/testcases/documentproviders/ZfFxMinimumProviderTest.php</file>
             <file>../tests/testcases/documentproviders/ZfFxMinimumProviderBuilderTest.php</file>
+            <file>../tests/testcases/documentproviders/XRechnungProviderTest.php</file>
+            <file>../tests/testcases/documentproviders/XRechnungProviderBuilderTest.php</file>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
