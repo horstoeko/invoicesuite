@@ -10,6 +10,7 @@
             <file>../tests/testcases/concerns/HandlesObjectFlagsTest.php</file>
             <file>../tests/testcases/concerns/HandlesRootObjectTest.php</file>
             <file>../tests/testcases/concerns/HandlesSerializerTest.php</file>
+            <file>../tests/testcases/concerns/HandlesPdfConstructorRawContentsTest.php</file>
         </testsuite>
         <testsuite name="providers">
             <file>../tests/testcases/documentproviders/ZfFxExtendedProviderTest.php</file>
