@@ -256,11 +256,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
      * InvoiceSuiteUnknownProviderParameterException is thrown
      *
      * @param string $parameterName
-     * @param mixed $defaultValue
      * @return mixed
      * @throws InvoiceSuiteUnknownProviderParameterException
      */
-    public function getFormatProviderRequiredParameterValue(string $parameterName, $defaultValue)
+    public function getFormatProviderRequiredParameterValue(string $parameterName)
     {
         if (!$this->hasFormatProviderParameter($parameterName)) {
             throw new InvoiceSuiteUnknownProviderParameterException($parameterName);
