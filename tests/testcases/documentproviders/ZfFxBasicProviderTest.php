@@ -37,6 +37,11 @@ class ZfFxBasicProviderTest extends TestCase
         $this->assertIsArray($provider->getParameters()['AlternativeContextParameters']);
         $this->assertCount(1, $provider->getParameters()['AlternativeContextParameters']);
         $this->assertContains('urn:cen.eu:en16931:2017#compliant#urn:zugferd.de:2p0:basic', $provider->getParameters()['AlternativeContextParameters']);
+
+        $this->assertArrayHasKey('PdfXmpName', $provider->getParameters());
+        $this->assertSame('BASIC', $provider->getParameters()['PdfXmpName']);
+        $this->assertArrayHasKey('PdfXmüVersion', $provider->getParameters());
+        $this->assertSame('1.0', $provider->getParameters()['PdfXmüVersion']);
     }
 
     public function testGetSerializerMetadataDirectories(): void

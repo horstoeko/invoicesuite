@@ -37,6 +37,11 @@ class ZfFxBasicWlProviderTest extends TestCase
         $this->assertIsArray($provider->getParameters()['AlternativeContextParameters']);
         $this->assertCount(1, $provider->getParameters()['AlternativeContextParameters']);
         $this->assertContains('urn:zugferd.de:2p0:basicwl', $provider->getParameters()['AlternativeContextParameters']);
+
+        $this->assertArrayHasKey('PdfXmpName', $provider->getParameters());
+        $this->assertSame('BASIC WL', $provider->getParameters()['PdfXmpName']);
+        $this->assertArrayHasKey('PdfXmüVersion', $provider->getParameters());
+        $this->assertSame('1.0', $provider->getParameters()['PdfXmüVersion']);
     }
 
     public function testGetSerializerMetadataDirectories(): void

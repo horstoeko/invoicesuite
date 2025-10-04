@@ -36,6 +36,11 @@ class ZfFxComfortProviderTest extends TestCase
 
         $this->assertIsArray($provider->getParameters()['AlternativeContextParameters']);
         $this->assertCount(0, $provider->getParameters()['AlternativeContextParameters']);
+
+        $this->assertArrayHasKey('PdfXmpName', $provider->getParameters());
+        $this->assertSame('EN 16931', $provider->getParameters()['PdfXmpName']);
+        $this->assertArrayHasKey('PdfXmüVersion', $provider->getParameters());
+        $this->assertSame('1.0', $provider->getParameters()['PdfXmüVersion']);
     }
 
     public function testGetSerializerMetadataDirectories(): void

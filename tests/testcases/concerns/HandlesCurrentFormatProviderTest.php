@@ -30,7 +30,7 @@ class HandlesCurrentFormatProviderTest extends TestCase
         $this->assertNull($this->currentDocumentFormatProvider);
         $this->setCurrentDocumentFormatProvider(new InvoiceSuiteZfFxExtendedProvider());
         $this->assertNotEmpty($this->resolveCurrentDocumentFormatProviderParameters());
-        $this->assertCount(3, $this->resolveCurrentDocumentFormatProviderParameters());
+        $this->assertCount(5, $this->resolveCurrentDocumentFormatProviderParameters());
     }
 
     public function testHasCurrentFormatProviderParameter(): void

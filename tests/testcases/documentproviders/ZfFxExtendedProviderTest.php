@@ -40,6 +40,11 @@ class ZfFxExtendedProviderTest extends TestCase
 
         $this->assertIsString($provider->getParameters()['BusinessProcess']);
         $this->assertSame('urn:fdc:peppol.eu:2017:poacc:billing:01:1.0', $provider->getParameters()['BusinessProcess']);
+
+        $this->assertArrayHasKey('PdfXmpName', $provider->getParameters());
+        $this->assertSame('EXTENDED', $provider->getParameters()['PdfXmpName']);
+        $this->assertArrayHasKey('PdfXmüVersion', $provider->getParameters());
+        $this->assertSame('1.0', $provider->getParameters()['PdfXmüVersion']);
     }
 
     public function testGetSerializerMetadataDirectories(): void
