@@ -10,7 +10,7 @@
 namespace horstoeko\invoicesuite\pdf\zffx;
 
 /**
- * Class representing the basics for a ZUGFeRD/Factor-X PDF document constructor
+ * Class representing the basics for a ZUGFeRD/Factor-X PDF document constructor in MINIMUM profile
  *
  * @category InvoiceSuite
  * @package  InvoiceSuite
