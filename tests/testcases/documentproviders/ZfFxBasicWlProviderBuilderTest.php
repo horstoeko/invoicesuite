@@ -22,6 +22,13 @@ class ZfFxBasicWlProviderBuilderTest extends TestCase
         self::$document = new InvoiceSuiteZfFxBasicWlProviderBuilder(new InvoiceSuiteZfFxBasicWlProvider());
     }
 
+    public function testHasCurrentDocumentProvider(): void
+    {
+        $this->assertTrue(self::$document->hasCurrentDocumentFormatProvider());
+        $this->assertFalse(self::$document->hasNotCurrentDocumentFormatProvider());
+        $this->assertInstanceOf(InvoiceSuiteZfFxBasicWlProvider::class, self::$document->getCurrentDocumentFormatProvider());
+    }
+
     public function testInitDocumentRootObject(): void
     {
         self::$document->initDocumentRootObject();

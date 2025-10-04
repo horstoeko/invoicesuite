@@ -22,6 +22,13 @@ class ZfFxComfortProviderBuilderTest extends TestCase
         self::$document = new InvoiceSuiteZfFxComfortProviderBuilder(new InvoiceSuiteZfFxComfortProvider());
     }
 
+    public function testHasCurrentDocumentProvider(): void
+    {
+        $this->assertTrue(self::$document->hasCurrentDocumentFormatProvider());
+        $this->assertFalse(self::$document->hasNotCurrentDocumentFormatProvider());
+        $this->assertInstanceOf(InvoiceSuiteZfFxComfortProvider::class, self::$document->getCurrentDocumentFormatProvider());
+    }
+
     public function testInitDocumentRootObject(): void
     {
         self::$document->initDocumentRootObject();

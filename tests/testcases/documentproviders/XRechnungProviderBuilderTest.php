@@ -22,6 +22,13 @@ class XRechnungProviderBuilderTest extends TestCase
         self::$document = new InvoiceSuiteXRechnungProviderBuilder(new InvoiceSuiteXRechnungProvider());
     }
 
+    public function testHasCurrentDocumentProvider(): void
+    {
+        $this->assertTrue(self::$document->hasCurrentDocumentFormatProvider());
+        $this->assertFalse(self::$document->hasNotCurrentDocumentFormatProvider());
+        $this->assertInstanceOf(InvoiceSuiteXRechnungProvider::class, self::$document->getCurrentDocumentFormatProvider());
+    }
+
     public function testInitDocumentRootObject(): void
     {
         self::$document->initDocumentRootObject();

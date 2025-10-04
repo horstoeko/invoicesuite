@@ -22,6 +22,13 @@ class ZfFxMinimumProviderBuilderTest extends TestCase
         self::$document = new InvoiceSuiteZfFxMinimumProviderBuilder(new InvoiceSuiteZfFxMinimumProvider());
     }
 
+    public function testHasCurrentDocumentProvider(): void
+    {
+        $this->assertTrue(self::$document->hasCurrentDocumentFormatProvider());
+        $this->assertFalse(self::$document->hasNotCurrentDocumentFormatProvider());
+        $this->assertInstanceOf(InvoiceSuiteZfFxMinimumProvider::class, self::$document->getCurrentDocumentFormatProvider());
+    }
+
     public function testInitDocumentRootObject(): void
     {
         self::$document->initDocumentRootObject();
