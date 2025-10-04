@@ -65,63 +65,63 @@ abstract class InvoiceSuiteAbstractPdfConstructor
      *
      * @var string
      */
-    protected $additionalCreatorTool = "";
+    private $additionalCreatorTool = "";
 
     /**
      * The relationship type of the attached invoice document
      *
      * @var string
      */
-    protected $documentRelationshipType = "Data";
+    private $documentRelationshipType = "Data";
 
     /**
      * List which holds the additional attachments
      *
      * @var array<int, array{content: string, filename: string, displayname: string, relationship: string, mimetype: string}>
      */
-    protected $additionalDocumentsToAttach = [];
+    private $additionalDocumentsToAttach = [];
 
     /**
      * Status of deterministic mode
      *
      * @var boolean
      */
-    protected $deterministicMode = false;
+    private $deterministicMode = false;
 
     /**
      * User-defined template for the author-metainformation
      *
      * @var string
      */
-    protected $metaInformationAuthorTemplate = "";
+    private $metaInformationAuthorTemplate = "";
 
     /**
      * User-defined template for the keyword-metainformation
      *
      * @var string
      */
-    protected $metaInformationKeywordTemplate = "";
+    private $metaInformationKeywordTemplate = "";
 
     /**
      * User-defined template for the title-metainformation
      *
      * @var string
      */
-    protected $metaInformationTitleTemplate = "";
+    private $metaInformationTitleTemplate = "";
 
     /**
      * User-defined template for the subject-metainformation
      *
      * @var string
      */
-    protected $metaInformationSubjectTemplate = "";
+    private $metaInformationSubjectTemplate = "";
 
     /**
      * User-defined callback function for all meta information
      *
      * @var callable|null
      */
-    protected $metaInformationCallback;
+    private $metaInformationCallback;
 
     /**
      * Flag which indicates, that attachment pane should be opened or is closed
@@ -270,7 +270,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
      *
      * @return array<int, array{content: string, filename: string, displayname: string, relationship: string, mimetype: string}>
      */
-    public function getaddAdditionalDocument(): array
+    public function getaddAdditionalDocuments(): array
     {
         return $this->additionalDocumentsToAttach;
     }
@@ -359,6 +359,16 @@ abstract class InvoiceSuiteAbstractPdfConstructor
         ];
 
         return $this;
+    }
+
+    /**
+     * Get the status of deterministic mode
+     *
+     * @return boolean
+     */
+    public function getDeterministicMode(): bool
+    {
+        return $this->deterministicMode;
     }
 
     /**

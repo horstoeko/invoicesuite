@@ -63,6 +63,10 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
      */
     protected function generatePdfDocument(): InvoiceSuiteAbstractPdfConstructor
     {
+        // Set deterministic mode
+
+        $this->pdfWriter->setDeterministicModeEnabled($this->getDeterministicMode());
+
         // Attach the invoice document
 
         $this->pdfWriter->attach(
@@ -75,7 +79,7 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
 
         // Attach additional documents
 
-        foreach ($this->additionalDocumentsToAttach as $additionalDocumentToAttach) {
+        foreach ($this->getaddAdditionalDocuments() as $additionalDocumentToAttach) {
             $this->pdfWriter->attach(
                 PdfStreamReader::createByString($additionalDocumentToAttach['content']),
                 $additionalDocumentToAttach['filename'],
@@ -257,8 +261,8 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
     {
         $xmlContent = $this->getRawDocumentContent();
 
-        if (is_callable($this->metaInformationCallback)) {
-            $callbackResult = call_user_func($this->metaInformationCallback, $whichTemplate, $xmlContent, $invoiceInformation, $defaultValue);
+        if (is_callable($this->getMetaInformationCallback())) {
+            $callbackResult = call_user_func($this->getMetaInformationCallback(), $whichTemplate, $xmlContent, $invoiceInformation, $defaultValue);
             if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($callbackResult)) {
                 return $callbackResult;
             }

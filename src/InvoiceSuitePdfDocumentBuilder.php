@@ -347,7 +347,7 @@ class InvoiceSuitePdfDocumentBuilder
      */
     public function getaddAdditionalDocument(): array
     {
-        return $this->getCurrentPdfConstructor()->getaddAdditionalDocument();
+        return $this->getCurrentPdfConstructor()->getaddAdditionalDocuments();
     }
 
     /**
