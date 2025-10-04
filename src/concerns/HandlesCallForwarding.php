@@ -21,6 +21,8 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteBadMethodCallException;
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
+ * 
+ * @codeCoverageIgnore
  */
 trait HandlesCallForwarding
 {
