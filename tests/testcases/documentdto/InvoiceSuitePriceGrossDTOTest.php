@@ -236,5 +236,76 @@ class InvoiceSuitePriceGrossDTOTest extends TestCase
         $this->assertSame(2, $count);
     }
 
+    public function testCollectionIteratorsCallbackElseOnEmpty(): void
+    {
+        $dto = new InvoiceSuitePriceGrossDTO();
+
+        $singular = 'AllowanceCharge';
+
+        $first = 'first' . $singular;
+        $next  = 'next' . $singular;
+        $prev  = 'previous' . $singular;
+        $last  = 'last' . $singular;
+        $each  = 'forEach' . $singular;
+
+        $calledFirst = false;
+        $calledNext  = false;
+        $calledPrev  = false;
+        $calledLast  = false;
+        $calledEach  = false;
+
+        $dto->$first(
+            function () {
+                $this->fail('first* primary callback should not be called for empty list');
+            },
+            function () use (&$calledFirst) {
+                $calledFirst = true;
+            }
+        );
+
+        $dto->$next(
+            function () {
+                $this->fail('next* primary callback should not be called for empty list');
+            },
+            function () use (&$calledNext) {
+                $calledNext = true;
+            }
+        );
+
+        $dto->$prev(
+            function () {
+                $this->fail('previous* primary callback should not be called for empty list');
+            },
+            function () use (&$calledPrev) {
+                $calledPrev = true;
+            }
+        );
+
+        $dto->$last(
+            function () {
+                $this->fail('last* primary callback should not be called for empty list');
+            },
+            function () use (&$calledLast) {
+                $calledLast = true;
+            }
+        );
+
+        $dto->$each(
+            function () {
+                $this->fail('forEach* item callback should not be called for empty list');
+            },
+            function () use (&$calledEach) {
+                $calledEach = true;
+            },
+            null
+        );
+
+        $this->assertTrue($calledFirst, 'callbackElse for first* was not called');
+        $this->assertTrue($calledNext,  'callbackElse for next* was not called');
+        $this->assertTrue($calledPrev,  'callbackElse for previous* was not called');
+        $this->assertTrue($calledLast,  'callbackElse for last* was not called');
+        $this->assertTrue($calledEach,  'callbackElse for forEach* was not called');
+    }
+
     #endregion
 }
