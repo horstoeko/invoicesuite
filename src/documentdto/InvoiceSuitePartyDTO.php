@@ -25,56 +25,56 @@ class InvoiceSuitePartyDTO
      *
      * @var array<string>
      */
-    protected array $name = [];
+    protected array $names = [];
 
     /**
      * Party IDs
      *
      * @var array<InvoiceSuiteIdDTO>
      */
-    protected array $id = [];
+    protected array $ids = [];
 
     /**
      * Party global IDs
      *
      * @var array<InvoiceSuiteIdDTO>
      */
-    protected array $globalId = [];
+    protected array $globalIds = [];
 
     /**
      * Party tax registrations
      *
      * @var array<InvoiceSuiteIdDTO>
      */
-    protected array $taxRegistration = [];
+    protected array $taxRegistrations = [];
 
     /**
      * Party addresses
      *
      * @var array<InvoiceSuiteAddressDTO>
      */
-    protected array $address = [];
+    protected array $addresses = [];
 
     /**
      * Party legal organisations
      *
      * @var array<InvoiceSuiteOrganisationDTO>
      */
-    protected array $legalOrganisation = [];
+    protected array $legalOrganisations = [];
 
     /**
      * Party contacts
      *
      * @var array<InvoiceSuiteContactDTO>
      */
-    protected array $contact = [];
+    protected array $contacts = [];
 
     /**
      * Party electronic communications
      *
      * @var array<InvoiceSuiteCommunicationDTO>
      */
-    protected array $communication = [];
+    protected array $communications = [];
 
     /**
      * Constructor
@@ -98,14 +98,14 @@ class InvoiceSuitePartyDTO
         array $contact = [],
         array $communication = [],
     ) {
-        $this->setName($name);
-        $this->setId($id);
-        $this->setGlobalId($globalId);
-        $this->setTaxRegistration($taxRegistration);
-        $this->setAddress($address);
-        $this->setLegalOrganisation($legalOrganisation);
-        $this->setContact($contact);
-        $this->setCommunication($communication);
+        $this->setNames($name);
+        $this->setIds($id);
+        $this->setGlobalIds($globalId);
+        $this->setTaxRegistrations($taxRegistration);
+        $this->setAddresses($address);
+        $this->setLegalOrganisations($legalOrganisation);
+        $this->setContacts($contact);
+        $this->setCommunications($communication);
     }
 
     /**
@@ -113,9 +113,9 @@ class InvoiceSuitePartyDTO
      *
      * @return array<string>
      */
-    public function getName(): array
+    public function getNames(): array
     {
-        return $this->name;
+        return $this->names;
     }
 
     /**
@@ -124,9 +124,9 @@ class InvoiceSuitePartyDTO
      * @param array<string> $name Party names
      * @return self
      */
-    public function setName(array $name): self
+    public function setNames(array $name): self
     {
-        $this->name = $name;
+        $this->names = $name;
 
         return $this;
     }
@@ -139,7 +139,7 @@ class InvoiceSuitePartyDTO
      */
     public function addName(string $name): self
     {
-        $this->name[] = $name;
+        $this->names[] = $name;
 
         return $this;
     }
@@ -153,7 +153,7 @@ class InvoiceSuitePartyDTO
      */
     public function firstName(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($name = reset($this->name)) !== false) {
+        if (($name = reset($this->names)) !== false) {
             $callback($name);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -171,7 +171,7 @@ class InvoiceSuitePartyDTO
      */
     public function nextName(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($name = next($this->name)) !== false) {
+        if (($name = next($this->names)) !== false) {
             $callback($name);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -189,7 +189,7 @@ class InvoiceSuitePartyDTO
      */
     public function previousName(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($name = prev($this->name)) !== false) {
+        if (($name = prev($this->names)) !== false) {
             $callback($name);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -207,7 +207,7 @@ class InvoiceSuitePartyDTO
      */
     public function lastName(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($name = end($this->name)) !== false) {
+        if (($name = end($this->names)) !== false) {
             $callback($name);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -228,7 +228,7 @@ class InvoiceSuitePartyDTO
     {
         $count = 0;
 
-        foreach ($this->name as $name) {
+        foreach ($this->names as $name) {
             if ($limit !== null && $count >= $limit) {
                 break;
             }
@@ -250,9 +250,9 @@ class InvoiceSuitePartyDTO
      *
      * @return array<InvoiceSuiteIdDTO>
      */
-    public function getId(): array
+    public function getIds(): array
     {
-        return $this->id;
+        return $this->ids;
     }
 
     /**
@@ -261,9 +261,9 @@ class InvoiceSuitePartyDTO
      * @param array<InvoiceSuiteIdDTO> $id Party IDs
      * @return self
      */
-    public function setId(array $id): self
+    public function setIds(array $id): self
     {
-        $this->id = $id;
+        $this->ids = $id;
 
         return $this;
     }
@@ -276,7 +276,7 @@ class InvoiceSuitePartyDTO
      */
     public function addId(InvoiceSuiteIdDTO $id): self
     {
-        $this->id[] = $id;
+        $this->ids[] = $id;
 
         return $this;
     }
@@ -290,7 +290,7 @@ class InvoiceSuitePartyDTO
      */
     public function firstId(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($id = reset($this->id)) !== false) {
+        if (($id = reset($this->ids)) !== false) {
             $callback($id);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -308,7 +308,7 @@ class InvoiceSuitePartyDTO
      */
     public function nextId(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($id = next($this->id)) !== false) {
+        if (($id = next($this->ids)) !== false) {
             $callback($id);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -326,7 +326,7 @@ class InvoiceSuitePartyDTO
      */
     public function previousId(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($id = prev($this->id)) !== false) {
+        if (($id = prev($this->ids)) !== false) {
             $callback($id);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -344,7 +344,7 @@ class InvoiceSuitePartyDTO
      */
     public function lastId(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($id = end($this->id)) !== false) {
+        if (($id = end($this->ids)) !== false) {
             $callback($id);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -365,7 +365,7 @@ class InvoiceSuitePartyDTO
     {
         $count = 0;
 
-        foreach ($this->id as $id) {
+        foreach ($this->ids as $id) {
             if ($limit !== null && $count >= $limit) {
                 break;
             }
@@ -387,9 +387,9 @@ class InvoiceSuitePartyDTO
      *
      * @return array<InvoiceSuiteIdDTO>
      */
-    public function getGlobalId(): array
+    public function getGlobalIds(): array
     {
-        return $this->globalId;
+        return $this->globalIds;
     }
 
     /**
@@ -398,9 +398,9 @@ class InvoiceSuitePartyDTO
      * @param array<InvoiceSuiteIdDTO> $globalId Party global IDs
      * @return self
      */
-    public function setGlobalId(array $globalId): self
+    public function setGlobalIds(array $globalId): self
     {
-        $this->globalId = $globalId;
+        $this->globalIds = $globalId;
 
         return $this;
     }
@@ -413,7 +413,7 @@ class InvoiceSuitePartyDTO
      */
     public function addGlobalId(InvoiceSuiteIdDTO $globalId): self
     {
-        $this->globalId[] = $globalId;
+        $this->globalIds[] = $globalId;
 
         return $this;
     }
@@ -427,7 +427,7 @@ class InvoiceSuitePartyDTO
      */
     public function firstGlobalId(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($globalId = reset($this->globalId)) !== false) {
+        if (($globalId = reset($this->globalIds)) !== false) {
             $callback($globalId);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -445,7 +445,7 @@ class InvoiceSuitePartyDTO
      */
     public function nextGlobalId(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($globalId = next($this->globalId)) !== false) {
+        if (($globalId = next($this->globalIds)) !== false) {
             $callback($globalId);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -463,7 +463,7 @@ class InvoiceSuitePartyDTO
      */
     public function previousGlobalId(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($globalId = prev($this->globalId)) !== false) {
+        if (($globalId = prev($this->globalIds)) !== false) {
             $callback($globalId);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -481,7 +481,7 @@ class InvoiceSuitePartyDTO
      */
     public function lastGlobalId(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($globalId = end($this->globalId)) !== false) {
+        if (($globalId = end($this->globalIds)) !== false) {
             $callback($globalId);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -502,7 +502,7 @@ class InvoiceSuitePartyDTO
     {
         $count = 0;
 
-        foreach ($this->globalId as $globalId) {
+        foreach ($this->globalIds as $globalId) {
             if ($limit !== null && $count >= $limit) {
                 break;
             }
@@ -524,9 +524,9 @@ class InvoiceSuitePartyDTO
      *
      * @return array<InvoiceSuiteIdDTO>
      */
-    public function getTaxRegistration(): array
+    public function getTaxRegistrations(): array
     {
-        return $this->taxRegistration;
+        return $this->taxRegistrations;
     }
 
     /**
@@ -535,9 +535,9 @@ class InvoiceSuitePartyDTO
      * @param array<InvoiceSuiteIdDTO> $taxRegistration Party tax registrations
      * @return self
      */
-    public function setTaxRegistration(array $taxRegistration): self
+    public function setTaxRegistrations(array $taxRegistration): self
     {
-        $this->taxRegistration = $taxRegistration;
+        $this->taxRegistrations = $taxRegistration;
 
         return $this;
     }
@@ -550,7 +550,7 @@ class InvoiceSuitePartyDTO
      */
     public function addTaxRegistration(InvoiceSuiteIdDTO $taxRegistration): self
     {
-        $this->taxRegistration[] = $taxRegistration;
+        $this->taxRegistrations[] = $taxRegistration;
 
         return $this;
     }
@@ -564,7 +564,7 @@ class InvoiceSuitePartyDTO
      */
     public function firstTaxRegistration(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($taxRegistration = reset($this->taxRegistration)) !== false) {
+        if (($taxRegistration = reset($this->taxRegistrations)) !== false) {
             $callback($taxRegistration);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -582,7 +582,7 @@ class InvoiceSuitePartyDTO
      */
     public function nextTaxRegistration(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($taxRegistration = next($this->taxRegistration)) !== false) {
+        if (($taxRegistration = next($this->taxRegistrations)) !== false) {
             $callback($taxRegistration);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -600,7 +600,7 @@ class InvoiceSuitePartyDTO
      */
     public function previousTaxRegistration(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($taxRegistration = prev($this->taxRegistration)) !== false) {
+        if (($taxRegistration = prev($this->taxRegistrations)) !== false) {
             $callback($taxRegistration);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -618,7 +618,7 @@ class InvoiceSuitePartyDTO
      */
     public function lastTaxRegistration(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($taxRegistration = end($this->taxRegistration)) !== false) {
+        if (($taxRegistration = end($this->taxRegistrations)) !== false) {
             $callback($taxRegistration);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -642,7 +642,7 @@ class InvoiceSuitePartyDTO
     ): self {
         $count = 0;
 
-        foreach ($this->taxRegistration as $taxRegistration) {
+        foreach ($this->taxRegistrations as $taxRegistration) {
             if ($limit !== null && $count >= $limit) {
                 break;
             }
@@ -664,9 +664,9 @@ class InvoiceSuitePartyDTO
      *
      * @return array<InvoiceSuiteAddressDTO>
      */
-    public function getAddress(): array
+    public function getAddresses(): array
     {
-        return $this->address;
+        return $this->addresses;
     }
 
     /**
@@ -675,9 +675,9 @@ class InvoiceSuitePartyDTO
      * @param array<InvoiceSuiteAddressDTO> $address Party addresses
      * @return self
      */
-    public function setAddress(array $address): self
+    public function setAddresses(array $address): self
     {
-        $this->address = $address;
+        $this->addresses = $address;
 
         return $this;
     }
@@ -690,7 +690,7 @@ class InvoiceSuitePartyDTO
      */
     public function addAddress(InvoiceSuiteAddressDTO $address): self
     {
-        $this->address[] = $address;
+        $this->addresses[] = $address;
 
         return $this;
     }
@@ -704,7 +704,7 @@ class InvoiceSuitePartyDTO
      */
     public function firstAddress(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($address = reset($this->address)) !== false) {
+        if (($address = reset($this->addresses)) !== false) {
             $callback($address);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -722,7 +722,7 @@ class InvoiceSuitePartyDTO
      */
     public function nextAddress(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($address = next($this->address)) !== false) {
+        if (($address = next($this->addresses)) !== false) {
             $callback($address);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -740,7 +740,7 @@ class InvoiceSuitePartyDTO
      */
     public function previousAddress(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($address = prev($this->address)) !== false) {
+        if (($address = prev($this->addresses)) !== false) {
             $callback($address);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -758,7 +758,7 @@ class InvoiceSuitePartyDTO
      */
     public function lastAddress(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($address = end($this->address)) !== false) {
+        if (($address = end($this->addresses)) !== false) {
             $callback($address);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -779,7 +779,7 @@ class InvoiceSuitePartyDTO
     {
         $count = 0;
 
-        foreach ($this->address as $address) {
+        foreach ($this->addresses as $address) {
             if ($limit !== null && $count >= $limit) {
                 break;
             }
@@ -801,9 +801,9 @@ class InvoiceSuitePartyDTO
      *
      * @return array<InvoiceSuiteOrganisationDTO>
      */
-    public function getLegalOrganisation(): array
+    public function getLegalOrganisations(): array
     {
-        return $this->legalOrganisation;
+        return $this->legalOrganisations;
     }
 
     /**
@@ -812,9 +812,9 @@ class InvoiceSuitePartyDTO
      * @param array<InvoiceSuiteOrganisationDTO> $legalOrganisation Party legal organisations
      * @return self
      */
-    public function setLegalOrganisation(array $legalOrganisation): self
+    public function setLegalOrganisations(array $legalOrganisation): self
     {
-        $this->legalOrganisation = $legalOrganisation;
+        $this->legalOrganisations = $legalOrganisation;
 
         return $this;
     }
@@ -827,7 +827,7 @@ class InvoiceSuitePartyDTO
      */
     public function addLegalOrganisation(InvoiceSuiteOrganisationDTO $legalOrganisation): self
     {
-        $this->legalOrganisation[] = $legalOrganisation;
+        $this->legalOrganisations[] = $legalOrganisation;
 
         return $this;
     }
@@ -841,7 +841,7 @@ class InvoiceSuitePartyDTO
      */
     public function firstLegalOrganisation(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($legalOrganisation = reset($this->legalOrganisation)) !== false) {
+        if (($legalOrganisation = reset($this->legalOrganisations)) !== false) {
             $callback($legalOrganisation);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -859,7 +859,7 @@ class InvoiceSuitePartyDTO
      */
     public function nextLegalOrganisation(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($legalOrganisation = next($this->legalOrganisation)) !== false) {
+        if (($legalOrganisation = next($this->legalOrganisations)) !== false) {
             $callback($legalOrganisation);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -877,7 +877,7 @@ class InvoiceSuitePartyDTO
      */
     public function previousLegalOrganisation(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($legalOrganisation = prev($this->legalOrganisation)) !== false) {
+        if (($legalOrganisation = prev($this->legalOrganisations)) !== false) {
             $callback($legalOrganisation);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -895,7 +895,7 @@ class InvoiceSuitePartyDTO
      */
     public function lastLegalOrganisation(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($legalOrganisation = end($this->legalOrganisation)) !== false) {
+        if (($legalOrganisation = end($this->legalOrganisations)) !== false) {
             $callback($legalOrganisation);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -919,7 +919,7 @@ class InvoiceSuitePartyDTO
     ): self {
         $count = 0;
 
-        foreach ($this->legalOrganisation as $legalOrganisation) {
+        foreach ($this->legalOrganisations as $legalOrganisation) {
             if ($limit !== null && $count >= $limit) {
                 break;
             }
@@ -941,9 +941,9 @@ class InvoiceSuitePartyDTO
      *
      * @return array<InvoiceSuiteContactDTO>
      */
-    public function getContact(): array
+    public function getContacts(): array
     {
-        return $this->contact;
+        return $this->contacts;
     }
 
     /**
@@ -952,9 +952,9 @@ class InvoiceSuitePartyDTO
      * @param array<InvoiceSuiteContactDTO> $contact Party contacts
      * @return self
      */
-    public function setContact(array $contact): self
+    public function setContacts(array $contact): self
     {
-        $this->contact = $contact;
+        $this->contacts = $contact;
 
         return $this;
     }
@@ -967,7 +967,7 @@ class InvoiceSuitePartyDTO
      */
     public function addContact(InvoiceSuiteContactDTO $contact): self
     {
-        $this->contact[] = $contact;
+        $this->contacts[] = $contact;
 
         return $this;
     }
@@ -981,7 +981,7 @@ class InvoiceSuitePartyDTO
      */
     public function firstContact(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($contact = reset($this->contact)) !== false) {
+        if (($contact = reset($this->contacts)) !== false) {
             $callback($contact);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -999,7 +999,7 @@ class InvoiceSuitePartyDTO
      */
     public function nextContact(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($contact = next($this->contact)) !== false) {
+        if (($contact = next($this->contacts)) !== false) {
             $callback($contact);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -1017,7 +1017,7 @@ class InvoiceSuitePartyDTO
      */
     public function previousContact(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($contact = prev($this->contact)) !== false) {
+        if (($contact = prev($this->contacts)) !== false) {
             $callback($contact);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -1035,7 +1035,7 @@ class InvoiceSuitePartyDTO
      */
     public function lastContact(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($contact = end($this->contact)) !== false) {
+        if (($contact = end($this->contacts)) !== false) {
             $callback($contact);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -1056,7 +1056,7 @@ class InvoiceSuitePartyDTO
     {
         $count = 0;
 
-        foreach ($this->contact as $contact) {
+        foreach ($this->contacts as $contact) {
             if ($limit !== null && $count >= $limit) {
                 break;
             }
@@ -1078,9 +1078,9 @@ class InvoiceSuitePartyDTO
      *
      * @return array<InvoiceSuiteCommunicationDTO>
      */
-    public function getCommunication(): array
+    public function getCommunications(): array
     {
-        return $this->communication;
+        return $this->communications;
     }
 
     /**
@@ -1089,9 +1089,9 @@ class InvoiceSuitePartyDTO
      * @param array<InvoiceSuiteCommunicationDTO> $communication Party electronic communications
      * @return self
      */
-    public function setCommunication(array $communication): self
+    public function setCommunications(array $communication): self
     {
-        $this->communication = $communication;
+        $this->communications = $communication;
 
         return $this;
     }
@@ -1104,7 +1104,7 @@ class InvoiceSuitePartyDTO
      */
     public function addCommunication(InvoiceSuiteCommunicationDTO $communication): self
     {
-        $this->communication[] = $communication;
+        $this->communications[] = $communication;
 
         return $this;
     }
@@ -1118,7 +1118,7 @@ class InvoiceSuitePartyDTO
      */
     public function firstCommunication(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($communication = reset($this->communication)) !== false) {
+        if (($communication = reset($this->communications)) !== false) {
             $callback($communication);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -1136,7 +1136,7 @@ class InvoiceSuitePartyDTO
      */
     public function nextCommunication(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($communication = next($this->communication)) !== false) {
+        if (($communication = next($this->communications)) !== false) {
             $callback($communication);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -1154,7 +1154,7 @@ class InvoiceSuitePartyDTO
      */
     public function previousCommunication(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($communication = prev($this->communication)) !== false) {
+        if (($communication = prev($this->communications)) !== false) {
             $callback($communication);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -1172,7 +1172,7 @@ class InvoiceSuitePartyDTO
      */
     public function lastCommunication(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($communication = end($this->communication)) !== false) {
+        if (($communication = end($this->communications)) !== false) {
             $callback($communication);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -1193,7 +1193,7 @@ class InvoiceSuitePartyDTO
     {
         $count = 0;
 
-        foreach ($this->communication as $communication) {
+        foreach ($this->communications as $communication) {
             if ($limit !== null && $count >= $limit) {
                 break;
             }
