@@ -19,7 +19,7 @@ use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentExtDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteServiceChargeDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteTaxDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuitesummationDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\tests\TestCase;
 
 class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
@@ -101,8 +101,8 @@ class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $scA = new InvoiceSuiteServiceChargeDTO(2.5, 'SERVICE1');
         $scB = new InvoiceSuiteServiceChargeDTO(3.5, 'SERVICE2');
 
-        $sumA = new InvoiceSuitesummationDTO(100.0, 119.0);
-        $sumB = new InvoiceSuitesummationDTO(200.0, 238.0);
+        $sumA = new InvoiceSuiteSummationDTO(100.0, 119.0);
+        $sumB = new InvoiceSuiteSummationDTO(200.0, 238.0);
 
         $posA = new InvoiceSuiteDocumentPositionDTO("1");
         $posB = new InvoiceSuiteDocumentPositionDTO("2");

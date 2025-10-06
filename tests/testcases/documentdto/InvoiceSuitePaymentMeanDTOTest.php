@@ -1,25 +1,61 @@
 <?php
 
-declare(strict_types=1);
-
 namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 
+use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\documentdto\InvoiceSuitePaymentMeanDTO;
 use horstoeko\invoicesuite\tests\TestCase;
 
-final class InvoiceSuitePaymentMeanDTOTest extends TestCase
+class InvoiceSuitePaymentMeanDTOTest extends TestCase
 {
     #region DataProviders
 
-    public function stringValues(): array
+    public static function dpConstructorDefaults(): array
     {
-        return [[null], [''], ['X']];
+        return [['default']];
+    }
+
+    public static function dpConstructorWithValues(): array
+    {
+        return [[[
+            'typeCode'           => '58',
+            'name'               => 'SEPA Credit Transfer',
+            'financialCardId'    => '4111111111111111',
+            'financialCardHolder'=> 'Jane Doe',
+            'buyerIban'          => 'DE02120300000000202051',
+            'payeeIban'          => 'DE89370400440532013000',
+            'payeeAccountName'   => 'ACME GmbH',
+            'payeeProprietaryId' => '1234567890',
+            'payeeBic'           => 'COBADEFFXXX',
+            'paymentReference'   => 'INV-2024-0001',
+            'mandate'            => 'MDT-42',
+        ]]];
+    }
+
+    public static function dpScalarSetters(): array
+    {
+        return [
+            ['setTypeCode',           'getTypeCode',           '30'],
+            ['setName',               'getName',               'Direct Debit'],
+            ['setFinancialCardId',    'getFinancialCardId',    '5555444433331111'],
+            ['setFinancialCardHolder','getFinancialCardHolder','John Smith'],
+            ['setBuyerIban',          'getBuyerIban',          'DE44500105175407324931'],
+            ['setPayeeIban',          'getPayeeIban',          'DE21500500009876543210'],
+            ['setPayeeAccountName',   'getPayeeAccountName',   'Widgets Ltd'],
+            ['setPayeeProprietaryId', 'getPayeeProprietaryId', '987654321'],
+            ['setPayeeBic',           'getPayeeBic',           'DEUTDEFF500'],
+            ['setPaymentReference',   'getPaymentReference',   'REF-ABC-123'],
+            ['setMandate',            'getMandate',            'MAND-0007'],
+        ];
     }
 
     #endregion
 
     #region Tests
 
+    /**
+     * @dataProvider dpConstructorDefaults
+     */
     public function testConstructorDefaults(): void
     {
         $dto = new InvoiceSuitePaymentMeanDTO();
@@ -35,98 +71,143 @@ final class InvoiceSuitePaymentMeanDTOTest extends TestCase
         $this->assertNull($dto->getPayeeBic());
         $this->assertNull($dto->getPaymentReference());
         $this->assertNull($dto->getMandate());
-
-        $this->assertInstanceOf(
-            InvoiceSuitePaymentMeanDTO::class,
-            $dto
-        );
-    }
-
-    public function testFluentSettersReturnSelf(): void
-    {
-        $dto = new InvoiceSuitePaymentMeanDTO();
-
-        $this->assertSame($dto, $dto->setTypeCode('58'));
-        $this->assertSame($dto, $dto->setName('Überweisung'));
-        $this->assertSame($dto, $dto->setFinancialCardId('411111******1111'));
-        $this->assertSame($dto, $dto->setFinancialCardHolder('Max Mustermann'));
-        $this->assertSame($dto, $dto->setBuyerIban('DE00123456780000000001'));
-        $this->assertSame($dto, $dto->setPayeeIban('DE00987654320000000002'));
-        $this->assertSame($dto, $dto->setPayeeAccountName('ACME GmbH'));
-        $this->assertSame($dto, $dto->setPayeeProprietaryId('1234567'));
-        $this->assertSame($dto, $dto->setPayeeBic('BANKDEFFXXX'));
-        $this->assertSame($dto, $dto->setPaymentReference('Rechnung 4711'));
-        $this->assertSame($dto, $dto->setMandate('MAND-123'));
+        $this->assertInstanceOf(InvoiceSuitePaymentMeanDTO::class, $dto);
     }
 
     /**
-     * @dataProvider stringValues
+     * @dataProvider dpConstructorWithValues
      */
-    public function testStringSetters(?string $value): void
-    {
-        $dto = new InvoiceSuitePaymentMeanDTO();
-
-        $dto->setTypeCode($value);
-        $this->assertSame($value, $dto->getTypeCode());
-
-        $dto->setName($value);
-        $this->assertSame($value, $dto->getName());
-
-        $dto->setFinancialCardId($value);
-        $this->assertSame($value, $dto->getFinancialCardId());
-
-        $dto->setFinancialCardHolder($value);
-        $this->assertSame($value, $dto->getFinancialCardHolder());
-
-        $dto->setBuyerIban($value);
-        $this->assertSame($value, $dto->getBuyerIban());
-
-        $dto->setPayeeIban($value);
-        $this->assertSame($value, $dto->getPayeeIban());
-
-        $dto->setPayeeAccountName($value);
-        $this->assertSame($value, $dto->getPayeeAccountName());
-
-        $dto->setPayeeProprietaryId($value);
-        $this->assertSame($value, $dto->getPayeeProprietaryId());
-
-        $dto->setPayeeBic($value);
-        $this->assertSame($value, $dto->getPayeeBic());
-
-        $dto->setPaymentReference($value);
-        $this->assertSame($value, $dto->getPaymentReference());
-
-        $dto->setMandate($value);
-        $this->assertSame($value, $dto->getMandate());
-    }
-
-    public function testConstructorWithValuesUsesSetterChain(): void
+    public function testConstructorWithValuesUsesSetterChain(array $v): void
     {
         $dto = new InvoiceSuitePaymentMeanDTO(
-            '58',
-            'Überweisung',
-            '411111******1111',
-            'Max Mustermann',
-            'DE00123456780000000001',
-            'DE00987654320000000002',
-            'ACME GmbH',
-            '1234567',
-            'BANKDEFFXXX',
-            'Rechnung 4711',
-            'MAND-123'
+            $v['typeCode'],
+            $v['name'],
+            $v['financialCardId'],
+            $v['financialCardHolder'],
+            $v['buyerIban'],
+            $v['payeeIban'],
+            $v['payeeAccountName'],
+            $v['payeeProprietaryId'],
+            $v['payeeBic'],
+            $v['paymentReference'],
+            $v['mandate']
         );
 
-        $this->assertSame('58', $dto->getTypeCode());
-        $this->assertSame('Überweisung', $dto->getName());
-        $this->assertSame('411111******1111', $dto->getFinancialCardId());
-        $this->assertSame('Max Mustermann', $dto->getFinancialCardHolder());
-        $this->assertSame('DE00123456780000000001', $dto->getBuyerIban());
-        $this->assertSame('DE00987654320000000002', $dto->getPayeeIban());
-        $this->assertSame('ACME GmbH', $dto->getPayeeAccountName());
-        $this->assertSame('1234567', $dto->getPayeeProprietaryId());
-        $this->assertSame('BANKDEFFXXX', $dto->getPayeeBic());
-        $this->assertSame('Rechnung 4711', $dto->getPaymentReference());
-        $this->assertSame('MAND-123', $dto->getMandate());
+        $this->assertSame($v['typeCode'], $dto->getTypeCode());
+        $this->assertSame($v['name'], $dto->getName());
+        $this->assertSame($v['financialCardId'], $dto->getFinancialCardId());
+        $this->assertSame($v['financialCardHolder'], $dto->getFinancialCardHolder());
+        $this->assertSame($v['buyerIban'], $dto->getBuyerIban());
+        $this->assertSame($v['payeeIban'], $dto->getPayeeIban());
+        $this->assertSame($v['payeeAccountName'], $dto->getPayeeAccountName());
+        $this->assertSame($v['payeeProprietaryId'], $dto->getPayeeProprietaryId());
+        $this->assertSame($v['payeeBic'], $dto->getPayeeBic());
+        $this->assertSame($v['paymentReference'], $dto->getPaymentReference());
+        $this->assertSame($v['mandate'], $dto->getMandate());
+    }
+
+    /**
+     * @dataProvider dpScalarSetters
+     */
+    public function testScalarSetters(string $setter, string $getter, string $value): void
+    {
+        $dto = new InvoiceSuitePaymentMeanDTO();
+        $ret = $dto->{$setter}($value);
+
+        $this->assertSame($dto, $ret);
+        $this->assertSame($value, $dto->{$getter}());
+    }
+
+    public function testFactoryCreateAsCreditTransferSepa(): void
+    {
+        $dto = InvoiceSuitePaymentMeanDTO::createAsCreditTransferSepa(
+            'DE44500105175407324931',
+            'Widgets Ltd',
+            'ACC-001',
+            'DEUTDEFF500',
+            'INV-1'
+        );
+
+        $this->assertSame(InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value, $dto->getTypeCode());
+        $this->assertSame('DE44500105175407324931', $dto->getPayeeIban());
+        $this->assertSame('Widgets Ltd', $dto->getPayeeAccountName());
+        $this->assertSame('ACC-001', $dto->getPayeeProprietaryId());
+        $this->assertSame('DEUTDEFF500', $dto->getPayeeBic());
+        $this->assertSame('INV-1', $dto->getPaymentReference());
+        $this->assertNull($dto->getBuyerIban());
+        $this->assertNull($dto->getMandate());
+        $this->assertNull($dto->getFinancialCardId());
+        $this->assertNull($dto->getFinancialCardHolder());
+    }
+
+    public function testFactoryCreateAsCreditTransferNoSepa(): void
+    {
+        $dto = InvoiceSuitePaymentMeanDTO::createAsCreditTransferNoSepa(
+            'GB33BUKB20201555555555',
+            'ACME LTD',
+            'UK-ACC-99',
+            'BUKBGB22',
+            'INV-2'
+        );
+
+        $this->assertSame(InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value, $dto->getTypeCode());
+        $this->assertSame('GB33BUKB20201555555555', $dto->getPayeeIban());
+        $this->assertSame('ACME LTD', $dto->getPayeeAccountName());
+        $this->assertSame('UK-ACC-99', $dto->getPayeeProprietaryId());
+        $this->assertSame('BUKBGB22', $dto->getPayeeBic());
+        $this->assertSame('INV-2', $dto->getPaymentReference());
+        $this->assertNull($dto->getBuyerIban());
+        $this->assertNull($dto->getMandate());
+        $this->assertNull($dto->getFinancialCardId());
+        $this->assertNull($dto->getFinancialCardHolder());
+    }
+
+    public function testFactoryCreateAsDirectDebitSepa(): void
+    {
+        $dto = InvoiceSuitePaymentMeanDTO::createAsDirectDebitSepa('DE02120300000000202051', 'MDT-42');
+
+        $this->assertSame(InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value, $dto->getTypeCode());
+        $this->assertSame('DE02120300000000202051', $dto->getBuyerIban());
+        $this->assertSame('MDT-42', $dto->getMandate());
+        $this->assertNull($dto->getPayeeIban());
+        $this->assertNull($dto->getPayeeAccountName());
+        $this->assertNull($dto->getPayeeProprietaryId());
+        $this->assertNull($dto->getPayeeBic());
+        $this->assertNull($dto->getPaymentReference());
+        $this->assertNull($dto->getFinancialCardId());
+        $this->assertNull($dto->getFinancialCardHolder());
+    }
+
+    public function testFactoryCreateAsDirectDebitNoSepa(): void
+    {
+        $dto = InvoiceSuitePaymentMeanDTO::createAsDirectDebitNoSepa('FR1420041010050500013M02606', 'MDT-99');
+
+        $this->assertSame(InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value, $dto->getTypeCode());
+        $this->assertSame('FR1420041010050500013M02606', $dto->getBuyerIban());
+        $this->assertSame('MDT-99', $dto->getMandate());
+        $this->assertNull($dto->getPayeeIban());
+        $this->assertNull($dto->getPayeeAccountName());
+        $this->assertNull($dto->getPayeeProprietaryId());
+        $this->assertNull($dto->getPayeeBic());
+        $this->assertNull($dto->getPaymentReference());
+        $this->assertNull($dto->getFinancialCardId());
+        $this->assertNull($dto->getFinancialCardHolder());
+    }
+
+    public function testFactoryCreateAsPaymentCardPayment(): void
+    {
+        $dto = InvoiceSuitePaymentMeanDTO::createAsPaymentCardPayment('5555444433331111', 'John Smith');
+
+        $this->assertSame(InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value, $dto->getTypeCode());
+        $this->assertSame('5555444433331111', $dto->getFinancialCardId());
+        $this->assertSame('John Smith', $dto->getFinancialCardHolder());
+        $this->assertNull($dto->getBuyerIban());
+        $this->assertNull($dto->getMandate());
+        $this->assertNull($dto->getPayeeIban());
+        $this->assertNull($dto->getPayeeAccountName());
+        $this->assertNull($dto->getPayeeProprietaryId());
+        $this->assertNull($dto->getPayeeBic());
+        $this->assertNull($dto->getPaymentReference());
     }
 
     #endregion

@@ -31,7 +31,7 @@ use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentExtDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentLineDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteServiceChargeDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuitesummationDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteTaxDTO;
 use horstoeko\invoicesuite\documentmodels\ubl\cac\AdditionalDocumentReference;
 use horstoeko\invoicesuite\documentmodels\ubl\cac\AllowanceCharge;
@@ -606,7 +606,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
         // Document-Level Summation
 
         $newDocumentDTO->firstSummation(
-            fn(InvoiceSuitesummationDTO $item) => $this->setDocumentSummation(
+            fn(InvoiceSuiteSummationDTO $item) => $this->setDocumentSummation(
                 $item->getNetAmount(),
                 $item->getChargeTotalAmount(),
                 $item->getDiscountTotalAmount(),

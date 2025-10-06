@@ -18,12 +18,32 @@
             <file>../tests/testcases/documentdto/InvoiceSuiteContactDTOTest.php</file>
             <file>../tests/testcases/documentdto/InvoiceSuiteDateRangeDTOTest.php</file>
             <file>../tests/testcases/documentdto/InvoiceSuiteIdDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuiteCommunicationDTOTest.php</file>
             <file>../tests/testcases/documentdto/InvoiceSuiteMeasureDTOTest.php</file>
             <file>../tests/testcases/documentdto/InvoiceSuiteNoteDTOTest.php</file>
             <file>../tests/testcases/documentdto/InvoiceSuiteOrganisationDTOTest.php</file>
             <file>../tests/testcases/documentdto/InvoiceSuitePaymentMeanDTOTest.php</file>
             <file>../tests/testcases/documentdto/InvoiceSuiteDocumentHeaderDTOTest.php</file>
             <file>../tests/testcases/documentdto/InvoiceSuiteDocumentPositionDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuitePartyDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuitePaymentTermDiscountDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuitePaymentTermPenaltyDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuitePaymentTermDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuitePeriodDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuitePriceDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuitePriceGrossDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuitePriceNetDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuiteProductCharacteristicDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuiteProductClassificationDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuiteProductDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuiteProjectDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuiteReferenceDocumentDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuiteReferenceDocumentExtDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuiteReferenceDocumentLineExtDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuiteReferenceProductDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuiteServiceChargeDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuitesummationDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuitesummationLineDTOTest.php</file>
         </testsuite>
         <testsuite name="providers">
             <file>../tests/testcases/documentproviders/ZfFxExtendedProviderTest.php</file>

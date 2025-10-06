@@ -39,7 +39,7 @@ use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentExtDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentLineDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteServiceChargeDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuitesummationDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuitesummationLineDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteTaxDTO;
 use horstoeko\invoicesuite\documentmodels\ubl\cac\AdditionalDocumentReference;
@@ -1151,7 +1151,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractDocumentF
         );
 
         $newDocumentDTO->addSummation(
-            new InvoiceSuitesummationDTO(
+            new InvoiceSuiteSummationDTO(
                 $newDocumentNetAmount,
                 $newDocumentChargeTotalAmount,
                 $newDocumentDiscountTotalAmount,

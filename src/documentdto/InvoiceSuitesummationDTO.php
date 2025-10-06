@@ -18,7 +18,7 @@ namespace horstoeko\invoicesuite\documentdto;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuitesummationDTO
+class InvoiceSuiteSummationDTO
 {
     /**
      * The sum of the net amounts of all invoice lines

@@ -30,7 +30,7 @@ use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentLineDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentLineExtDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceProductDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteServiceChargeDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuitesummationDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuitesummationLineDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteTaxDTO;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
@@ -319,7 +319,7 @@ $documentDTO
         (new InvoiceSuiteServiceChargeDTO(50, 'Logisitic Charge', 'S', 'VAT', 19))
     )
     ->addSummation(
-        (new InvoiceSuitesummationDTO(100, 10, 20, 90, 90 * 0.19, 50, 107.1, 100.0, 7.10, 0.0))
+        (new InvoiceSuiteSummationDTO(100, 10, 20, 90, 90 * 0.19, 50, 107.1, 100.0, 7.10, 0.0))
     );
 
 $position = new InvoiceSuiteDocumentPositionDTO('1', null, null, 'GROUP');

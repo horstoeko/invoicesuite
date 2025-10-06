@@ -34,7 +34,7 @@ use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentLineDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentLineExtDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceProductDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteServiceChargeDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuitesummationDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteTaxDTO;
 use horstoeko\invoicesuite\documentmodels\zffxminimum\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
@@ -877,7 +877,7 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractDocumen
         // Document-Level Summation
 
         $newDocumentDTO->firstSummation(
-            fn(InvoiceSuitesummationDTO $item) => $this->setDocumentSummation(
+            fn(InvoiceSuiteSummationDTO $item) => $this->setDocumentSummation(
                 $item->getNetAmount(),
                 $item->getChargeTotalAmount(),
                 $item->getDiscountTotalAmount(),
