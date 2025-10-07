@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\codelists;
 
-use PHPUnit\Framework\TestCase;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistAllowanceChargeCodes as InvoiceSuiteCodelistAllowanceChargeCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistCountryCodes as InvoiceSuiteCodelistCountryCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistCurrencyCodes as InvoiceSuiteCodelistCurrencyCodes;
@@ -17,8 +16,9 @@ use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistSchemeIdentifiers as In
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistTextSubjectCodeQualifiers as InvoiceSuiteCodelistTextSubjectCodeQualifiers;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistUnitCodes as InvoiceSuiteCodelistUnitCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistVatCategoryCodes as InvoiceSuiteCodelistVatCategoryCodes;
+use horstoeko\invoicesuite\tests\TestCase;
 
-final class AllCodelistsEnumsTest extends TestCase
+class AllCodelistsEnumsTest extends TestCase
 {
     public function provideExpectedOrder(): iterable
     {
