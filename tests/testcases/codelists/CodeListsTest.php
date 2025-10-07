@@ -5445,7 +5445,7 @@ final class AllCodelistsEnumsTest extends TestCase
 
     public function testCasesAreNotEmptyAndUnique(): void
     {
-        $enums = [
+        $enumClasses = [
             InvoiceSuiteCodelistAllowanceChargeCodes::class,
             InvoiceSuiteCodelistCountryCodes::class,
             InvoiceSuiteCodelistCurrencyCodes::class,
@@ -5460,13 +5460,13 @@ final class AllCodelistsEnumsTest extends TestCase
             InvoiceSuiteCodelistVatCategoryCodes::class,
         ];
 
-        foreach ($enums as $enumClass) {
-            $names = array_map(fn($c) => $c->name, $enumClass::cases());
-            $values = array_map(fn($c) => $c->value, $enumClass::cases());
+        foreach ($enumClasses as $enumClass) {
+            $enumNames = array_map(fn($c) => $c->name, $enumClass::cases());
+            $enumValues = array_map(fn($c) => $c->value, $enumClass::cases());
 
             $this->assertNotEmpty($enumClass::cases(), 'Enum must declare at least one case.');
-            $this->assertSameSize(array_unique($names), $names, 'Case names must be unique.');
-            $this->assertSameSize(array_unique($values), $values, 'Case values must be unique.');
+            $this->assertSameSize(array_unique($enumNames), $enumNames, 'Case names must be unique.');
+            $this->assertSameSize(array_unique($enumValues), $enumValues, 'Case values must be unique.');
         }
     }
 
