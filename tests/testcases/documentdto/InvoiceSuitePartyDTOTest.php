@@ -4,8 +4,13 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 
-use horstoeko\invoicesuite\documentdto\InvoiceSuitePartyDTO;
 use horstoeko\invoicesuite\tests\TestCase;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteIdDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuitePartyDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteAddressDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteCommunicationDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteContactDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteOrganisationDTO;
 
 class InvoiceSuitePartyDTOTest extends TestCase
 {
@@ -93,5 +98,477 @@ class InvoiceSuitePartyDTOTest extends TestCase
         $invoiceSuitePartyDTO->setCommunications($communicationValue);
 
         $this->assertSame($communicationValue, $invoiceSuitePartyDTO->getCommunications());
+    }
+
+    public function testCollectionNameIteratorsWithCallbacks(): void
+    {
+        $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
+        $invoiceSuitePartyDTO->addName("Name 1");
+        $invoiceSuitePartyDTO->addName("Name 2");
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+
+        $invoiceSuitePartyDTO->firstName($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextName($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextName($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->firstName($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextName($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousName($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousName($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->lastName($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->forEachName($cb, $cbElse);
+        $invoiceSuitePartyDTO->forEachName($cb, $cbElse, 1);
+
+        $this->assertSame(9, $hitCount);
+        $this->assertSame(2, $elseCount);
+
+        $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+
+        $invoiceSuitePartyDTO->firstName($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextName($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextName($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousName($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousName($cb, $cbElse);
+        $invoiceSuitePartyDTO->lastName($cb, $cbElse);
+        $invoiceSuitePartyDTO->forEachName($cb, $cbElse);
+
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionIdIteratorsWithCallbacks(): void
+    {
+        $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
+        $invoiceSuitePartyDTO->addId(new InvoiceSuiteIdDTO('ID1'));
+        $invoiceSuitePartyDTO->addId(new InvoiceSuiteIdDTO('ID2'));
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+
+        $invoiceSuitePartyDTO->firstId($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextId($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextId($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->firstId($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextId($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousId($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousId($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->lastId($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->forEachId($cb, $cbElse);
+        $invoiceSuitePartyDTO->forEachId($cb, $cbElse, 1);
+
+        $this->assertSame(9, $hitCount);
+        $this->assertSame(2, $elseCount);
+
+        $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+
+        $invoiceSuitePartyDTO->firstId($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextId($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextId($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousId($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousId($cb, $cbElse);
+        $invoiceSuitePartyDTO->lastId($cb, $cbElse);
+        $invoiceSuitePartyDTO->forEachId($cb, $cbElse);
+
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionGlobalIdIteratorsWithCallbacks(): void
+    {
+        $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
+        $invoiceSuitePartyDTO->addGlobalId(new InvoiceSuiteIdDTO('ID1'));
+        $invoiceSuitePartyDTO->addGlobalId(new InvoiceSuiteIdDTO('ID2'));
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+
+        $invoiceSuitePartyDTO->firstGlobalId($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextGlobalId($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextGlobalId($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->firstGlobalId($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextGlobalId($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousGlobalId($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousGlobalId($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->lastGlobalId($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->forEachGlobalId($cb, $cbElse);
+        $invoiceSuitePartyDTO->forEachGlobalId($cb, $cbElse, 1);
+
+        $this->assertSame(9, $hitCount);
+        $this->assertSame(2, $elseCount);
+
+        $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+
+        $invoiceSuitePartyDTO->firstGlobalId($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextGlobalId($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextGlobalId($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousGlobalId($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousGlobalId($cb, $cbElse);
+        $invoiceSuitePartyDTO->lastGlobalId($cb, $cbElse);
+        $invoiceSuitePartyDTO->forEachGlobalId($cb, $cbElse);
+
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionTaxRegistrationIteratorsWithCallbacks(): void
+    {
+        $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
+        $invoiceSuitePartyDTO->addTaxRegistration(new InvoiceSuiteIdDTO('ID1', 'VA'));
+        $invoiceSuitePartyDTO->addTaxRegistration(new InvoiceSuiteIdDTO('ID2', 'FC'));
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+
+        $invoiceSuitePartyDTO->firstTaxRegistration($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextTaxRegistration($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextTaxRegistration($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->firstTaxRegistration($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextTaxRegistration($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousTaxRegistration($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousTaxRegistration($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->lastTaxRegistration($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->forEachTaxRegistration($cb, $cbElse);
+        $invoiceSuitePartyDTO->forEachTaxRegistration($cb, $cbElse, 1);
+
+        $this->assertSame(9, $hitCount);
+        $this->assertSame(2, $elseCount);
+
+        $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+
+        $invoiceSuitePartyDTO->firstTaxRegistration($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextTaxRegistration($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextTaxRegistration($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousTaxRegistration($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousTaxRegistration($cb, $cbElse);
+        $invoiceSuitePartyDTO->lastTaxRegistration($cb, $cbElse);
+        $invoiceSuitePartyDTO->forEachTaxRegistration($cb, $cbElse);
+
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionAddressIteratorsWithCallbacks(): void
+    {
+        $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
+        $invoiceSuitePartyDTO->addAddress(new InvoiceSuiteAddressDTO());
+        $invoiceSuitePartyDTO->addAddress(new InvoiceSuiteAddressDTO());
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+
+        $invoiceSuitePartyDTO->firstAddress($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextAddress($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextAddress($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->firstAddress($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextAddress($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousAddress($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousAddress($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->lastAddress($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->forEachAddress($cb, $cbElse);
+        $invoiceSuitePartyDTO->forEachAddress($cb, $cbElse, 1);
+
+        $this->assertSame(9, $hitCount);
+        $this->assertSame(2, $elseCount);
+
+        $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+
+        $invoiceSuitePartyDTO->firstAddress($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextAddress($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextAddress($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousAddress($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousAddress($cb, $cbElse);
+        $invoiceSuitePartyDTO->lastAddress($cb, $cbElse);
+        $invoiceSuitePartyDTO->forEachGlobalId($cb, $cbElse);
+
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionLegalOrganisationIteratorsWithCallbacks(): void
+    {
+        $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
+        $invoiceSuitePartyDTO->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('ID1'), null, "Name 1");
+        $invoiceSuitePartyDTO->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('ID2'), null, "Name 1");
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+
+        $invoiceSuitePartyDTO->firstLegalOrganisation($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextLegalOrganisation($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextLegalOrganisation($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->firstLegalOrganisation($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextLegalOrganisation($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousLegalOrganisation($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousLegalOrganisation($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->lastLegalOrganisation($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->forEachLegalOrganisation($cb, $cbElse);
+        $invoiceSuitePartyDTO->forEachLegalOrganisation($cb, $cbElse, 1);
+
+        $this->assertSame(9, $hitCount);
+        $this->assertSame(2, $elseCount);
+
+        $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+
+        $invoiceSuitePartyDTO->firstLegalOrganisation($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextLegalOrganisation($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextLegalOrganisation($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousLegalOrganisation($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousLegalOrganisation($cb, $cbElse);
+        $invoiceSuitePartyDTO->lastLegalOrganisation($cb, $cbElse);
+        $invoiceSuitePartyDTO->forEachLegalOrganisation($cb, $cbElse);
+
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionContactIteratorsWithCallbacks(): void
+    {
+        $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
+        $invoiceSuitePartyDTO->addContact(new InvoiceSuiteContactDTO());
+        $invoiceSuitePartyDTO->addContact(new InvoiceSuiteContactDTO());
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+
+        $invoiceSuitePartyDTO->firstContact($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextContact($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextContact($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->firstContact($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextContact($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousContact($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousContact($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->lastContact($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->forEachContact($cb, $cbElse);
+        $invoiceSuitePartyDTO->forEachContact($cb, $cbElse, 1);
+
+        $this->assertSame(9, $hitCount);
+        $this->assertSame(2, $elseCount);
+
+        $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+
+        $invoiceSuitePartyDTO->firstContact($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextContact($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextContact($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousContact($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousContact($cb, $cbElse);
+        $invoiceSuitePartyDTO->lastContact($cb, $cbElse);
+        $invoiceSuitePartyDTO->forEachContact($cb, $cbElse);
+
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionCommunicationIteratorsWithCallbacks(): void
+    {
+        $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
+        $invoiceSuitePartyDTO->addCommunication(new InvoiceSuiteCommunicationDTO());
+        $invoiceSuitePartyDTO->addCommunication(new InvoiceSuiteCommunicationDTO());
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+
+        $invoiceSuitePartyDTO->firstCommunication($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextCommunication($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextCommunication($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->firstCommunication($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextCommunication($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousCommunication($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousCommunication($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->lastCommunication($cb, $cbElse);
+
+        $invoiceSuitePartyDTO->forEachCommunication($cb, $cbElse);
+        $invoiceSuitePartyDTO->forEachCommunication($cb, $cbElse, 1);
+
+        $this->assertSame(9, $hitCount);
+        $this->assertSame(2, $elseCount);
+
+        $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+
+        $invoiceSuitePartyDTO->firstCommunication($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextCommunication($cb, $cbElse);
+        $invoiceSuitePartyDTO->nextCommunication($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousCommunication($cb, $cbElse);
+        $invoiceSuitePartyDTO->previousCommunication($cb, $cbElse);
+        $invoiceSuitePartyDTO->lastCommunication($cb, $cbElse);
+        $invoiceSuitePartyDTO->forEachCommunication($cb, $cbElse);
+
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
     }
 }
