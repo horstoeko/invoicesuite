@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 
-use horstoeko\invoicesuite\documentdto\InvoiceSuitePaymentMeanDTO;
 use horstoeko\invoicesuite\tests\TestCase;
+use horstoeko\invoicesuite\documentdto\InvoiceSuitePaymentMeanDTO;
+use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 
 class InvoiceSuitePaymentMeanDTOTest extends TestCase
 {
@@ -123,5 +124,128 @@ class InvoiceSuitePaymentMeanDTOTest extends TestCase
         $invoiceSuitePaymentMeanDTO->setMandate($mandateValue);
 
         $this->assertSame($mandateValue, $invoiceSuitePaymentMeanDTO->getMandate());
+    }
+
+    public function testCreateAsCreditTransferSepaWithValues(): void
+    {
+        $dto = InvoiceSuitePaymentMeanDTO::createAsCreditTransferSepa(
+            'DE12500105170648489890',
+            'ACME GmbH',
+            'ACME-4711',
+            'BELADEBEXXX',
+            'Invoice 123'
+        );
+
+        $this->assertSame(InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value, $dto->getTypeCode());
+        $this->assertSame('DE12500105170648489890', $dto->getPayeeIban());
+        $this->assertSame('ACME GmbH', $dto->getPayeeAccountName());
+        $this->assertSame('ACME-4711', $dto->getPayeeProprietaryId());
+        $this->assertSame('BELADEBEXXX', $dto->getPayeeBic());
+        $this->assertSame('Invoice 123', $dto->getPaymentReference());
+    }
+
+    public function testCreateAsCreditTransferSepaDefaults(): void
+    {
+        $dto = InvoiceSuitePaymentMeanDTO::createAsCreditTransferSepa();
+
+        $this->assertSame(InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value, $dto->getTypeCode());
+        $this->assertNull($dto->getPayeeIban());
+        $this->assertNull($dto->getPayeeAccountName());
+        $this->assertNull($dto->getPayeeProprietaryId());
+        $this->assertNull($dto->getPayeeBic());
+        $this->assertNull($dto->getPaymentReference());
+    }
+
+    public function testCreateAsCreditTransferNoSepaWithValues(): void
+    {
+        $dto = InvoiceSuitePaymentMeanDTO::createAsCreditTransferNoSepa(
+            'US001234567890',
+            'ACME Inc.',
+            'ACME-US-99',
+            'BOFAUS3N',
+            'INV-2025-0001'
+        );
+
+        $this->assertSame(InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value, $dto->getTypeCode());
+        $this->assertSame('US001234567890', $dto->getPayeeIban());
+        $this->assertSame('ACME Inc.', $dto->getPayeeAccountName());
+        $this->assertSame('ACME-US-99', $dto->getPayeeProprietaryId());
+        $this->assertSame('BOFAUS3N', $dto->getPayeeBic());
+        $this->assertSame('INV-2025-0001', $dto->getPaymentReference());
+    }
+
+    public function testCreateAsCreditTransferNoSepaDefaults(): void
+    {
+        $dto = InvoiceSuitePaymentMeanDTO::createAsCreditTransferNoSepa();
+
+        $this->assertSame(InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value, $dto->getTypeCode());
+        $this->assertNull($dto->getPayeeIban());
+        $this->assertNull($dto->getPayeeAccountName());
+        $this->assertNull($dto->getPayeeProprietaryId());
+        $this->assertNull($dto->getPayeeBic());
+        $this->assertNull($dto->getPaymentReference());
+    }
+
+    public function testCreateAsDirectDebitSepaWithValues(): void
+    {
+        $dto = InvoiceSuitePaymentMeanDTO::createAsDirectDebitSepa(
+            'DE44500105175407324931',
+            'MANDATE-2025-ABC'
+        );
+
+        $this->assertSame(InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value, $dto->getTypeCode());
+        $this->assertSame('DE44500105175407324931', $dto->getBuyerIban());
+        $this->assertSame('MANDATE-2025-ABC', $dto->getMandate());
+    }
+
+    public function testCreateAsDirectDebitSepaDefaults(): void
+    {
+        $dto = InvoiceSuitePaymentMeanDTO::createAsDirectDebitSepa();
+
+        $this->assertSame(InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value, $dto->getTypeCode());
+        $this->assertNull($dto->getBuyerIban());
+        $this->assertNull($dto->getMandate());
+    }
+
+    public function testCreateAsDirectDebitNoSepaWithValues(): void
+    {
+        $dto = InvoiceSuitePaymentMeanDTO::createAsDirectDebitNoSepa(
+            'GB29NWBK60161331926819',
+            'MANDATE-EN-007'
+        );
+
+        $this->assertSame(InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value, $dto->getTypeCode());
+        $this->assertSame('GB29NWBK60161331926819', $dto->getBuyerIban());
+        $this->assertSame('MANDATE-EN-007', $dto->getMandate());
+    }
+
+    public function testCreateAsDirectDebitNoSepaDefaults(): void
+    {
+        $dto = InvoiceSuitePaymentMeanDTO::createAsDirectDebitNoSepa();
+
+        $this->assertSame(InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value, $dto->getTypeCode());
+        $this->assertNull($dto->getBuyerIban());
+        $this->assertNull($dto->getMandate());
+    }
+
+    public function testCreateAsPaymentCardPaymentWithValues(): void
+    {
+        $dto = InvoiceSuitePaymentMeanDTO::createAsPaymentCardPayment(
+            '**** **** **** 4242',
+            'Max Mustermann'
+        );
+
+        $this->assertSame(InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value, $dto->getTypeCode());
+        $this->assertSame('**** **** **** 4242', $dto->getFinancialCardId());
+        $this->assertSame('Max Mustermann', $dto->getFinancialCardHolder());
+    }
+
+    public function testCreateAsPaymentCardPaymentDefaults(): void
+    {
+        $dto = InvoiceSuitePaymentMeanDTO::createAsPaymentCardPayment();
+
+        $this->assertSame(InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value, $dto->getTypeCode());
+        $this->assertNull($dto->getFinancialCardId());
+        $this->assertNull($dto->getFinancialCardHolder());
     }
 }
