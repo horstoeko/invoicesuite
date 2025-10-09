@@ -18,7 +18,7 @@ final class InvoiceSuitePdfExtractorTest extends TestCase
     /**
      * Locate a sample PDF next to this test file.
      */
-    private function getSamplePdfPath(): ?string
+    private function getSamplePdfPath(): string
     {
         return InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..", "..", "assets"), "pdf_with_multiple_attachments.pdf");
     }
@@ -64,6 +64,9 @@ final class InvoiceSuitePdfExtractorTest extends TestCase
         $iterated = 0;
 
         foreach ($extractor as $index => $iterAttachment) {
+            /**
+             * @phpstan-ignore method.alreadyNarrowedType
+             */
             $this->assertIsInt($index);
             $this->assertInstanceOf(InvoiceSuitePdfExtractorAttachment::class, $iterAttachment);
             $iterated++;
@@ -109,7 +112,13 @@ final class InvoiceSuitePdfExtractorTest extends TestCase
         $attachmentsArrayA = $extractor->toArray();
         $attachmentsArrayB = $extractor->toArray();
 
+        /**
+         * @phpstan-ignore method.alreadyNarrowedType
+         */
         $this->assertIsArray($attachmentsArrayA);
+        /**
+         * @phpstan-ignore method.alreadyNarrowedType
+         */
         $this->assertIsArray($attachmentsArrayB);
         $this->assertSame($attachmentsArrayA, $attachmentsArrayB, 'toArray should not return a copy.');
         $this->assertCount(3, $attachmentsArrayA);
