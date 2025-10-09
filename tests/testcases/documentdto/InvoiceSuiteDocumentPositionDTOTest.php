@@ -584,7 +584,7 @@ class InvoiceSuiteDocumentPositionDTOTest extends TestCase
         $invoiceSuiteDocumentPositionDTO->lastContractReference($cb, $cbElse);
 
         $invoiceSuiteDocumentPositionDTO->forEachContractReference($cb, $cbElse);
-        $invoiceSuiteDocumentPositionDTO->forEachContractReference($cb, $cbElse,1);
+        $invoiceSuiteDocumentPositionDTO->forEachContractReference($cb, $cbElse, 1);
 
         $this->assertSame(9, $hitCount);
         $this->assertSame(2, $elseCount);
