@@ -1257,8 +1257,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
                 // Position posting references
 
-                $item->forEachPostingReference(
-                    fn(InvoiceSuiteIdDTO $postingReference) => $this->addDocumentPositionPostingReference(
+                $item->firstPostingReference(
+                    fn(InvoiceSuiteIdDTO $postingReference) => $this->setDocumentPositionPostingReference(
                         $postingReference->getIdType(),
                         $postingReference->getId()
                     )

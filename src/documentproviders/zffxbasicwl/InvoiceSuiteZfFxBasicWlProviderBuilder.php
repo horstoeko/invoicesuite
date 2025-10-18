@@ -1265,8 +1265,8 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractDocumen
 
                 // Position taxes
 
-                $item->forEachTax(
-                    fn(InvoiceSuiteTaxDTO $tax) => $this->addDocumentPositionTax(
+                $item->firstTax(
+                    fn(InvoiceSuiteTaxDTO $tax) => $this->setDocumentPositionTax(
                         $tax->getCategory(),
                         $tax->getType(),
                         $tax->getAmount(),
