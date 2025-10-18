@@ -18,7 +18,7 @@
         "sort-packages": true
     },
     "suggest": {
-        "smalot/pdfparser": "A PDF parser under LGPL license (used in ZugferdDocumentPdfReaderExt)"
+        "smalot/pdfparser": "A PDF parser under LGPL license (used in InvoiceSuitePdfExtractor)"
     },
     "autoload": {
         "psr-4": {
