@@ -89,14 +89,15 @@
             "Composer\\Config::disableProcessTimeout",
             "./vendor/bin/phpstan clear-result-cache"
         ],
-        "checkstyle": [
-            "Composer\\Config::disableProcessTimeout",
-            "@phpcs",
-            "@phpstan"
-        ],
         "rector": [
             "Composer\\Config::disableProcessTimeout",
             "vendor/bin/rector --config=./build/phprectorconfig.php --clear-cache"
+        ],
+        "checkstyle": [
+            "Composer\\Config::disableProcessTimeout",
+            "@phpcs",
+            "@phpstan",
+            "@rector"
         ]
     }
 }
