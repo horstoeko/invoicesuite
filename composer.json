@@ -48,7 +48,6 @@
         "nikic/php-parser": "^5.4",
         "pdepend/pdepend": "^2",
         "phpdocumentor/reflection-docblock": "^5",
-        "phpmd/phpmd": "@stable",
         "phpstan/phpstan": "^1|^2",
         "phpunit/phpunit": "^9",
         "rector/rector": "*",
@@ -85,11 +84,6 @@
             "Composer\\Config::disableProcessTimeout",
             "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress"
         ],
-        "phpmd": "@phpmd12",
-        "phpmd12": [
-            "Composer\\Config::disableProcessTimeout",
-            "./vendor/bin/phpmd src xml ./build/phpmd.xml"
-        ],
         "phpstancache": "@phpstan12cache",
         "phpstan12cache": [
             "Composer\\Config::disableProcessTimeout",
@@ -97,7 +91,6 @@
         ],
         "checkstyle": [
             "Composer\\Config::disableProcessTimeout",
-            "@phpmd",
             "@phpcs",
             "@phpstan"
         ],

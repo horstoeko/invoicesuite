@@ -90,11 +90,6 @@ jobs:
              php -l $afile
           done
 
-      - name: Run PHPMD
-        continue-on-error: true
-        run: |
-          vendor/bin/phpmd src xml build/phpmd.xml --reportfile build/logs/pmd.xml
-
       - name: Run PHPCS
         continue-on-error: true
         run: |

@@ -73,7 +73,7 @@ jobs:
           mkdir build/dist
           mkdir build/phpdoc
 
-      - name: Run Lint (PHP 8.1 and higher)
+      - name: Run Lint
         run: |
           for afile in $(find . -type f -name '*.php' -path './src*/*' -print); do
              php -l $afile
@@ -81,11 +81,6 @@ jobs:
           for afile in $(find . -type f -name '*.php' -path './tests*/*' -print); do
              php -l $afile
           done
-
-      - name: Run PHPMD
-        continue-on-error: true
-        run: |
-          vendor/bin/phpmd src xml build/phpmd.xml --reportfile build/logs/pmd.xml
 
       - name: Run PHPCS
         continue-on-error: true
