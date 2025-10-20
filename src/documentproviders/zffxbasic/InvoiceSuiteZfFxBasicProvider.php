@@ -96,18 +96,18 @@ class InvoiceSuiteZfFxBasicProvider extends InvoiceSuiteAbstractDocumentFormatPr
         libxml_clear_errors();
 
         try {
+            $contentDomDocument = new \DOMDocument();
+            $contentDomDocument->loadXML($serializedContent);
+            $contentDomXPath = new \DOMXPath($contentDomDocument);
+            $contentDomXPath->registerNamespace('rsm', 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100');
+            $contentDomXPath->registerNamespace('ram', 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100');
+
             $contextParameters = array_merge(
                 InvoiceSuiteArrayUtils::ensure($this->getFormatProviderParameterValue('ContextParameter', '')),
                 InvoiceSuiteArrayUtils::ensure($this->getFormatProviderParameterValue('AlternativeContextParameters', ''))
             );
 
             foreach ($contextParameters as $contextParameter) {
-                $contentDomDocument = new \DOMDocument();
-                $contentDomDocument->loadXML($serializedContent);
-                $contentDomXPath = new \DOMXPath($contentDomDocument);
-                $contentDomXPath->registerNamespace('rsm', 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100');
-                $contentDomXPath->registerNamespace('ram', 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100');
-
                 $contentQuery = sprintf(
                     "//rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID[text()='%s']",
                     $contextParameter
