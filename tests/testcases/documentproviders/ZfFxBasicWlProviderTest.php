@@ -40,8 +40,8 @@ class ZfFxBasicWlProviderTest extends TestCase
 
         $this->assertArrayHasKey('PdfXmpName', $provider->getParameters());
         $this->assertSame('BASIC WL', $provider->getParameters()['PdfXmpName']);
-        $this->assertArrayHasKey('PdfXmüVersion', $provider->getParameters());
-        $this->assertSame('1.0', $provider->getParameters()['PdfXmüVersion']);
+        $this->assertArrayHasKey('PdfXmpVersion', $provider->getParameters());
+        $this->assertSame('1.0', $provider->getParameters()['PdfXmpVersion']);
     }
 
     public function testGetSerializerMetadataDirectories(): void

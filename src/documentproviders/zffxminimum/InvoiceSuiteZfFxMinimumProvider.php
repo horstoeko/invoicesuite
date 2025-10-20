@@ -41,7 +41,7 @@ class InvoiceSuiteZfFxMinimumProvider extends InvoiceSuiteAbstractDocumentFormat
             'ContextParameter' => 'urn:factur-x.eu:1p0:minimum',
             'AlternativeContextParameters' => ['urn:zugferd.de:2p0:minimum'],
             'PdfXmpName' => 'MINIMUM',
-            'PdfXmüVersion' => '1.0',
+            'PdfXmpVersion' => '1.0',
         ];
     }
 

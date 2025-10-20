@@ -333,6 +333,6 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
      */
     protected function getXmlAttachmentXmpVersion(): string
     {
-        return $this->getCurrentDocumentFormatProvider()->getFormatProviderParameterValue('PdfXmüVersion', '');
+        return $this->getCurrentDocumentFormatProvider()->getFormatProviderParameterValue('PdfXmpVersion', '');
     }
 }

@@ -49,7 +49,7 @@ class InvoiceSuiteXRechnungProvider extends InvoiceSuiteAbstractDocumentFormatPr
                 'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3',
             ],
             'PdfXmpName' => 'XRECHNUNG',
-            'PdfXmüVersion' => '3.0',
+            'PdfXmpVersion' => '3.0',
         ];
     }
 

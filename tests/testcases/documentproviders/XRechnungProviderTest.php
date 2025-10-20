@@ -47,8 +47,8 @@ class XRechnungProviderTest extends TestCase
 
         $this->assertArrayHasKey('PdfXmpName', $provider->getParameters());
         $this->assertSame('XRECHNUNG', $provider->getParameters()['PdfXmpName']);
-        $this->assertArrayHasKey('PdfXmüVersion', $provider->getParameters());
-        $this->assertSame('3.0', $provider->getParameters()['PdfXmüVersion']);
+        $this->assertArrayHasKey('PdfXmpVersion', $provider->getParameters());
+        $this->assertSame('3.0', $provider->getParameters()['PdfXmpVersion']);
     }
 
     public function testGetSerializerMetadataDirectories(): void

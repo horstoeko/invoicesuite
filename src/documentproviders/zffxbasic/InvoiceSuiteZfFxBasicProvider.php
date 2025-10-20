@@ -40,7 +40,7 @@ class InvoiceSuiteZfFxBasicProvider extends InvoiceSuiteAbstractDocumentFormatPr
             'ContextParameter' => 'urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic',
             'AlternativeContextParameters' => ['urn:cen.eu:en16931:2017#compliant#urn:zugferd.de:2p0:basic'],
             'PdfXmpName' => 'BASIC',
-            'PdfXmüVersion' => '1.0',
+            'PdfXmpVersion' => '1.0',
         ];
     }
 

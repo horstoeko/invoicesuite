@@ -42,7 +42,7 @@ class InvoiceSuiteZfFxBasicWlProvider extends InvoiceSuiteAbstractDocumentFormat
             'ContextParameter' => 'urn:factur-x.eu:1p0:basicwl',
             'AlternativeContextParameters' => ['urn:zugferd.de:2p0:basicwl'],
             'PdfXmpName' => 'BASIC WL',
-            'PdfXmüVersion' => '1.0',
+            'PdfXmpVersion' => '1.0',
         ];
     }
 

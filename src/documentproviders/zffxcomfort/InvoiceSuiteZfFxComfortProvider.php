@@ -41,7 +41,7 @@ class InvoiceSuiteZfFxComfortProvider extends InvoiceSuiteAbstractDocumentFormat
             'ContextParameter' => 'urn:cen.eu:en16931:2017',
             'AlternativeContextParameters' => [],
             'PdfXmpName' => 'EN 16931',
-            'PdfXmüVersion' => '1.0',
+            'PdfXmpVersion' => '1.0',
         ];
     }
 
