@@ -2,7 +2,7 @@
 
 namespace horstoeko\invoicesuite\concerns;
 
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
+use horstoeko\invoicesuite\documentabstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 
 /**
  * Trait representing methods for handling the current format provider

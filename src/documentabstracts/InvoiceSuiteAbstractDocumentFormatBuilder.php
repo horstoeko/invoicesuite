@@ -7,10 +7,10 @@
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\abstracts;
+namespace horstoeko\invoicesuite\documentabstracts;
 
 use DateTimeInterface;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
+use horstoeko\invoicesuite\documentabstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesDocumentRootObject;
 use horstoeko\invoicesuite\concerns\HandlesDocumentSerializer;

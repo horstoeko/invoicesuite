@@ -11,7 +11,7 @@ namespace horstoeko\invoicesuite\documentproviders\ubl;
 
 use DateTime;
 use DateTimeInterface;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatReader;
+use horstoeko\invoicesuite\documentabstracts\InvoiceSuiteAbstractDocumentFormatReader;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteAllowanceChargeDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteCommunicationDTO;

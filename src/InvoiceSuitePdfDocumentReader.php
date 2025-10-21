@@ -10,7 +10,7 @@
 namespace horstoeko\invoicesuite;
 
 use Exception;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatReader;
+use horstoeko\invoicesuite\documentabstracts\InvoiceSuiteAbstractDocumentFormatReader;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;

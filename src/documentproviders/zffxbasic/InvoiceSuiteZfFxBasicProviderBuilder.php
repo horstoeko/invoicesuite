@@ -10,7 +10,7 @@
 namespace horstoeko\invoicesuite\documentproviders\zffxbasic;
 
 use DateTimeInterface;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatBuilder;
+use horstoeko\invoicesuite\documentabstracts\InvoiceSuiteAbstractDocumentFormatBuilder;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteAllowanceChargeDTO;

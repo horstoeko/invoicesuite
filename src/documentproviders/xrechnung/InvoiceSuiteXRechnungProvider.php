@@ -9,7 +9,7 @@
 
 namespace horstoeko\invoicesuite\documentproviders\xrechnung;
 
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
+use horstoeko\invoicesuite\documentabstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\documentmodels\zffxcomfort\rsm\CrossIndustryInvoice;
 use horstoeko\invoicesuite\pdf\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;

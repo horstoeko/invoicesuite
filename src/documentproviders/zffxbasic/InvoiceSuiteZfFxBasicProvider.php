@@ -12,7 +12,7 @@ namespace horstoeko\invoicesuite\documentproviders\zffxbasic;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\pdf\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\documentmodels\zffxbasic\rsm\CrossIndustryInvoice;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
+use horstoeko\invoicesuite\documentabstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 
 class InvoiceSuiteZfFxBasicProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {

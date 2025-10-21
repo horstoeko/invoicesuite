@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\abstracts;
+namespace horstoeko\invoicesuite\documentabstracts;
 
 use Closure;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownProviderParameterException;

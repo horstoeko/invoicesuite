@@ -14,7 +14,7 @@ use DateTime;
 use DOMXPath;
 use DOMDocument;
 use Exception;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
+use horstoeko\invoicesuite\documentabstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
 use horstoeko\invoicesuite\pdf\InvoiceSuiteAbstractPdfConstructor;
 use horstoeko\invoicesuite\pdf\zffx\InvoiceSuiteZffxPdfWriter;
