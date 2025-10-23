@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <rsm:ExchangedDocumentContext>
+    <ram:TestIndicator>
+      <udt:Indicator>true</udt:Indicator>
+    </ram:TestIndicator>
+    <ram:BusinessProcessSpecifiedDocumentContextParameter>
+      <ram:ID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</ram:ID>
+    </ram:BusinessProcessSpecifiedDocumentContextParameter>
+    <ram:GuidelineSpecifiedDocumentContextParameter>
+      <ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>
+    </ram:GuidelineSpecifiedDocumentContextParameter>
+  </rsm:ExchangedDocumentContext>
+  <rsm:ExchangedDocument>
+    <ram:ID>2025-04-000001</ram:ID>
+    <ram:Name>Some document description</ram:Name>
+    <ram:TypeCode>380</ram:TypeCode>
+    <ram:IssueDateTime>
+      <udt:DateTimeString format="102">19700101</udt:DateTimeString>
+    </ram:IssueDateTime>
+    <ram:CopyIndicator>
+      <udt:Indicator>true</udt:Indicator>
+    </ram:CopyIndicator>
+    <ram:LanguageID>de-DE</ram:LanguageID>
+    <ram:IncludedNote>
+      <ram:ContentCode>CC00</ram:ContentCode>
+      <ram:Content>Some content</ram:Content>
+      <ram:SubjectCode>SC00</ram:SubjectCode>
+    </ram:IncludedNote>
+    <ram:IncludedNote>
+      <ram:ContentCode>CC99</ram:ContentCode>
+      <ram:Content>Some other content</ram:Content>
+      <ram:SubjectCode>SC99</ram:SubjectCode>
+    </ram:IncludedNote>
+    <ram:EffectiveSpecifiedPeriod>
+      <ram:CompleteDateTime>
+        <udt:DateTimeString format="102">19700102</udt:DateTimeString>
+      </ram:CompleteDateTime>
+    </ram:EffectiveSpecifiedPeriod>
+  </rsm:ExchangedDocument>
+  <rsm:SupplyChainTradeTransaction>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>1.1</ram:LineID>
+        <ram:ParentLineID>1</ram:ParentLineID>
+        <ram:LineStatusCode>LINESTATUS</ram:LineStatusCode>
+        <ram:LineStatusReasonCode>LINESTATUSREASON</ram:LineStatusReasonCode>
+        <ram:IncludedNote>
+          <ram:ContentCode>CONTENTCODE-1</ram:ContentCode>
+          <ram:Content>CONTENT-1</ram:Content>
+          <ram:SubjectCode>SUBJECTCODE-1</ram:SubjectCode>
+        </ram:IncludedNote>
+      </ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:ID>PRODUCTID-1</ram:ID>
+        <ram:GlobalID schemeID="PRODUCTGLOBALIDTYPE-1">PRODUCTGLOBALID-1</ram:GlobalID>
+        <ram:SellerAssignedID>PRODUCTSELLERID-1</ram:SellerAssignedID>
+        <ram:BuyerAssignedID>PRODUCTBUYER-1</ram:BuyerAssignedID>
+        <ram:IndustryAssignedID>PRODUCTIND-1</ram:IndustryAssignedID>
+        <ram:ModelID>PRODUCTMODELID-1</ram:ModelID>
+        <ram:Name>PRODUCTNAME-1</ram:Name>
+        <ram:Description>PRODUCTDESC-1</ram:Description>
+        <ram:BatchID>PRODUCTBATCH-1</ram:BatchID>
+        <ram:BrandName>PRODUCTBRAND-1</ram:BrandName>
+        <ram:ModelName>PRODUCTMODEL-1</ram:ModelName>
+        <ram:ApplicableProductCharacteristic>
+          <ram:TypeCode>PRODUCTCHARACTERISTICTYPE-1</ram:TypeCode>
+          <ram:Description>PRODUCTCHARACTERISTICDESC-1</ram:Description>
+          <ram:ValueMeasure unitCode="C62">1.00</ram:ValueMeasure>
+          <ram:Value>PRODUCTCHARACTERISTICVALUE-1</ram:Value>
+        </ram:ApplicableProductCharacteristic>
+        <ram:DesignatedProductClassification>
+          <ram:ClassCode listID="PRODUCTLISTID-1" listVersionID="PRODUCTLISTVERSIONID-1">PRODUCTCLASSCODE-1</ram:ClassCode>
+          <ram:ClassName>PRODUCTCLASSNAME-1</ram:ClassName>
+        </ram:DesignatedProductClassification>
+        <ram:OriginTradeCountry>
+          <ram:ID>PRODUCTCOUNTRY-1</ram:ID>
+        </ram:OriginTradeCountry>
+        <ram:IncludedReferencedProduct>
+          <ram:ID>PRODUCTREFID-1</ram:ID>
+          <ram:GlobalID schemeID="PRODUCTREFGLOBALIDTYPE-1">PRODUCTREFGLOBALID-1</ram:GlobalID>
+          <ram:SellerAssignedID>PRODUCTREFSELLERID-1</ram:SellerAssignedID>
+          <ram:BuyerAssignedID>PRODUCTREFBUYERID-1</ram:BuyerAssignedID>
+          <ram:IndustryAssignedID>PRODUCTREFINDID-1</ram:IndustryAssignedID>
+          <ram:Name>PRODUCTREFNAME-1</ram:Name>
+          <ram:Description>PRODUCTREFDESC-1</ram:Description>
+          <ram:UnitQuantity unitCode="C62">1.00</ram:UnitQuantity>
+        </ram:IncludedReferencedProduct>
+      </ram:SpecifiedTradeProduct>
+      <ram:SpecifiedLineTradeAgreement>
+        <ram:SellerOrderReferencedDocument>
+          <ram:IssuerAssignedID>SO-1</ram:IssuerAssignedID>
+          <ram:LineID>1</ram:LineID>
+          <ram:FormattedIssueDateTime>
+            <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+          </ram:FormattedIssueDateTime>
+        </ram:SellerOrderReferencedDocument>
+        <ram:BuyerOrderReferencedDocument>
+          <ram:IssuerAssignedID>BO-1</ram:IssuerAssignedID>
+          <ram:LineID>10</ram:LineID>
+          <ram:FormattedIssueDateTime>
+            <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+          </ram:FormattedIssueDateTime>
+        </ram:BuyerOrderReferencedDocument>
+        <ram:QuotationReferencedDocument>
+          <ram:IssuerAssignedID>QU-1</ram:IssuerAssignedID>
+          <ram:LineID>100</ram:LineID>
+          <ram:FormattedIssueDateTime>
+            <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+          </ram:FormattedIssueDateTime>
+        </ram:QuotationReferencedDocument>
+        <ram:ContractReferencedDocument>
+          <ram:IssuerAssignedID>CON-1</ram:IssuerAssignedID>
+          <ram:LineID>100</ram:LineID>
+          <ram:FormattedIssueDateTime>
+            <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+          </ram:FormattedIssueDateTime>
+        </ram:ContractReferencedDocument>
+        <ram:AdditionalReferencedDocument>
+          <ram:IssuerAssignedID>ADD-1</ram:IssuerAssignedID>
+          <ram:LineID>100</ram:LineID>
+          <ram:TypeCode>TYPECODE-1</ram:TypeCode>
+          <ram:Name>DESC-1</ram:Name>
+          <ram:ReferenceTypeCode>REFTYPECODE-1</ram:ReferenceTypeCode>
+          <ram:FormattedIssueDateTime>
+            <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+          </ram:FormattedIssueDateTime>
+        </ram:AdditionalReferencedDocument>
+        <ram:AdditionalReferencedDocument>
+          <ram:IssuerAssignedID>ADD-1</ram:IssuerAssignedID>
+          <ram:LineID>200</ram:LineID>
+          <ram:TypeCode>TYPECODE-2</ram:TypeCode>
+          <ram:Name>DESC-2</ram:Name>
+          <ram:ReferenceTypeCode>REFTYPECODE-2</ram:ReferenceTypeCode>
+          <ram:FormattedIssueDateTime>
+            <qdt:DateTimeString format="102">19700102</qdt:DateTimeString>
+          </ram:FormattedIssueDateTime>
+        </ram:AdditionalReferencedDocument>
+        <ram:GrossPriceProductTradePrice>
+          <ram:ChargeAmount>100.00</ram:ChargeAmount>
+          <ram:BasisQuantity unitCode="C62">1.00</ram:BasisQuantity>
+          <ram:AppliedTradeAllowanceCharge>
+            <ram:ChargeIndicator>
+              <udt:Indicator>false</udt:Indicator>
+            </ram:ChargeIndicator>
+            <ram:CalculationPercent>3.00</ram:CalculationPercent>
+            <ram:BasisAmount>2.00</ram:BasisAmount>
+            <ram:ActualAmount>1.00</ram:ActualAmount>
+            <ram:ReasonCode>REASONCODE-1</ram:ReasonCode>
+            <ram:Reason>REASON-1</ram:Reason>
+          </ram:AppliedTradeAllowanceCharge>
+        </ram:GrossPriceProductTradePrice>
+        <ram:NetPriceProductTradePrice>
+          <ram:ChargeAmount>1.00</ram:ChargeAmount>
+          <ram:BasisQuantity unitCode="C62">2.00</ram:BasisQuantity>
+        </ram:NetPriceProductTradePrice>
+        <ram:UltimateCustomerOrderReferencedDocument>
+          <ram:IssuerAssignedID>UCOR-1</ram:IssuerAssignedID>
+          <ram:LineID>10</ram:LineID>
+          <ram:FormattedIssueDateTime>
+            <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+          </ram:FormattedIssueDateTime>
+        </ram:UltimateCustomerOrderReferencedDocument>
+      </ram:SpecifiedLineTradeAgreement>
+      <ram:SpecifiedLineTradeDelivery>
+        <ram:BilledQuantity unitCode="C62">1.00</ram:BilledQuantity>
+        <ram:ChargeFreeQuantity unitCode="C62">2.00</ram:ChargeFreeQuantity>
+        <ram:PackageQuantity unitCode="C62">3.00</ram:PackageQuantity>
+        <ram:ShipToTradeParty>
+          <ram:ID>0815-4711</ram:ID>
+          <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
+          <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
+          <ram:Name>Ship Tó GmbH</ram:Name>
+          <ram:SpecifiedLegalOrganization>
+            <ram:ID schemeID="8884">3874837489237</ram:ID>
+            <ram:TradingBusinessName>Ship To AG</ram:TradingBusinessName>
+          </ram:SpecifiedLegalOrganization>
+          <ram:DefinedTradeContact>
+            <ram:PersonName>Horst Meier</ram:PersonName>
+            <ram:DepartmentName>Buchhaltung</ram:DepartmentName>
+            <ram:TelephoneUniversalCommunication>
+              <ram:CompleteNumber>0815-4711</ram:CompleteNumber>
+            </ram:TelephoneUniversalCommunication>
+            <ram:FaxUniversalCommunication>
+              <ram:CompleteNumber>0815-4712</ram:CompleteNumber>
+            </ram:FaxUniversalCommunication>
+            <ram:EmailURIUniversalCommunication>
+              <ram:URIID>horst.meier@shipto.de</ram:URIID>
+            </ram:EmailURIUniversalCommunication>
+          </ram:DefinedTradeContact>
+          <ram:PostalTradeAddress>
+            <ram:PostcodeCode>06108</ram:PostcodeCode>
+            <ram:LineOne>Line 1</ram:LineOne>
+            <ram:LineTwo>Line 2</ram:LineTwo>
+            <ram:LineThree>Line 3</ram:LineThree>
+            <ram:CityName>City</ram:CityName>
+            <ram:CountryID>DE</ram:CountryID>
+            <ram:CountrySubDivisionName>Bavaria</ram:CountrySubDivisionName>
+          </ram:PostalTradeAddress>
+          <ram:URIUniversalCommunication>
+            <ram:URIID schemeID="EM">info@shipto.de</ram:URIID>
+          </ram:URIUniversalCommunication>
+          <ram:SpecifiedTaxRegistration>
+            <ram:ID schemeID="VA">893489787987</ram:ID>
+          </ram:SpecifiedTaxRegistration>
+        </ram:ShipToTradeParty>
+        <ram:UltimateShipToTradeParty>
+          <ram:ID>0815-4711</ram:ID>
+          <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
+          <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
+          <ram:Name>Ultimate Ship Tó GmbH</ram:Name>
+          <ram:SpecifiedLegalOrganization>
+            <ram:ID schemeID="8884">3874837489237</ram:ID>
+            <ram:TradingBusinessName>Ultimate Ship To AG</ram:TradingBusinessName>
+          </ram:SpecifiedLegalOrganization>
+          <ram:DefinedTradeContact>
+            <ram:PersonName>Horst Meier</ram:PersonName>
+            <ram:DepartmentName>Buchhaltung</ram:DepartmentName>
+            <ram:TelephoneUniversalCommunication>
+              <ram:CompleteNumber>0815-4711</ram:CompleteNumber>
+            </ram:TelephoneUniversalCommunication>
+            <ram:FaxUniversalCommunication>
+              <ram:CompleteNumber>0815-4712</ram:CompleteNumber>
+            </ram:FaxUniversalCommunication>
+            <ram:EmailURIUniversalCommunication>
+              <ram:URIID>horst.meier@ultimateshipto.de</ram:URIID>
+            </ram:EmailURIUniversalCommunication>
+          </ram:DefinedTradeContact>
+          <ram:PostalTradeAddress>
+            <ram:PostcodeCode>06108</ram:PostcodeCode>
+            <ram:LineOne>Line 1</ram:LineOne>
+            <ram:LineTwo>Line 2</ram:LineTwo>
+            <ram:LineThree>Line 3</ram:LineThree>
+            <ram:CityName>City</ram:CityName>
+            <ram:CountryID>DE</ram:CountryID>
+            <ram:CountrySubDivisionName>Bavaria</ram:CountrySubDivisionName>
+          </ram:PostalTradeAddress>
+          <ram:URIUniversalCommunication>
+            <ram:URIID schemeID="EM">info@ultimateshipto.de</ram:URIID>
+          </ram:URIUniversalCommunication>
+          <ram:SpecifiedTaxRegistration>
+            <ram:ID schemeID="VA">893489787987</ram:ID>
+          </ram:SpecifiedTaxRegistration>
+        </ram:UltimateShipToTradeParty>
+        <ram:ActualDeliverySupplyChainEvent>
+          <ram:OccurrenceDateTime>
+            <udt:DateTimeString format="102">19700101</udt:DateTimeString>
+          </ram:OccurrenceDateTime>
+        </ram:ActualDeliverySupplyChainEvent>
+        <ram:DespatchAdviceReferencedDocument>
+          <ram:IssuerAssignedID>DESPADV-1</ram:IssuerAssignedID>
+          <ram:LineID>100</ram:LineID>
+          <ram:FormattedIssueDateTime>
+            <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+          </ram:FormattedIssueDateTime>
+        </ram:DespatchAdviceReferencedDocument>
+        <ram:ReceivingAdviceReferencedDocument>
+          <ram:IssuerAssignedID>RECADV-1</ram:IssuerAssignedID>
+          <ram:LineID>10</ram:LineID>
+          <ram:FormattedIssueDateTime>
+            <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+          </ram:FormattedIssueDateTime>
+        </ram:ReceivingAdviceReferencedDocument>
+        <ram:DeliveryNoteReferencedDocument>
+          <ram:IssuerAssignedID>DEVNOTE-1</ram:IssuerAssignedID>
+          <ram:LineID>10</ram:LineID>
+          <ram:FormattedIssueDateTime>
+            <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+          </ram:FormattedIssueDateTime>
+        </ram:DeliveryNoteReferencedDocument>
+      </ram:SpecifiedLineTradeDelivery>
+      <ram:SpecifiedLineTradeSettlement>
+        <ram:ApplicableTradeTax>
+          <ram:CalculatedAmount>7.00</ram:CalculatedAmount>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:ExemptionReason>Reason</ram:ExemptionReason>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:ExemptionReasonCode>ReasonCode</ram:ExemptionReasonCode>
+          <ram:RateApplicablePercent>7.00</ram:RateApplicablePercent>
+        </ram:ApplicableTradeTax>
+        <ram:ApplicableTradeTax>
+          <ram:CalculatedAmount>7.00</ram:CalculatedAmount>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:ExemptionReason>Reason2</ram:ExemptionReason>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:ExemptionReasonCode>ReasonCode2</ram:ExemptionReasonCode>
+          <ram:RateApplicablePercent>7.00</ram:RateApplicablePercent>
+        </ram:ApplicableTradeTax>
+        <ram:BillingSpecifiedPeriod>
+          <ram:Description>Some Description</ram:Description>
+          <ram:StartDateTime>
+            <udt:DateTimeString format="102">19700101</udt:DateTimeString>
+          </ram:StartDateTime>
+          <ram:EndDateTime>
+            <udt:DateTimeString format="102">19700131</udt:DateTimeString>
+          </ram:EndDateTime>
+        </ram:BillingSpecifiedPeriod>
+        <ram:SpecifiedTradeAllowanceCharge>
+          <ram:ChargeIndicator>
+            <udt:Indicator>true</udt:Indicator>
+          </ram:ChargeIndicator>
+          <ram:CalculationPercent>10.00</ram:CalculationPercent>
+          <ram:BasisAmount>100.00</ram:BasisAmount>
+          <ram:ActualAmount>10.00</ram:ActualAmount>
+          <ram:ReasonCode>ReasonCode</ram:ReasonCode>
+          <ram:Reason>Reason</ram:Reason>
+        </ram:SpecifiedTradeAllowanceCharge>
+        <ram:SpecifiedTradeAllowanceCharge>
+          <ram:ChargeIndicator>
+            <udt:Indicator>false</udt:Indicator>
+          </ram:ChargeIndicator>
+          <ram:CalculationPercent>1.00</ram:CalculationPercent>
+          <ram:BasisAmount>10.00</ram:BasisAmount>
+          <ram:ActualAmount>1.00</ram:ActualAmount>
+          <ram:ReasonCode>ReasonCode2</ram:ReasonCode>
+          <ram:Reason>Reason2</ram:Reason>
+        </ram:SpecifiedTradeAllowanceCharge>
+        <ram:SpecifiedTradeSettlementLineMonetarySummation>
+          <ram:LineTotalAmount>100.00</ram:LineTotalAmount>
+          <ram:ChargeTotalAmount>1.00</ram:ChargeTotalAmount>
+          <ram:AllowanceTotalAmount>2.00</ram:AllowanceTotalAmount>
+          <ram:TaxTotalAmount>3.00</ram:TaxTotalAmount>
+          <ram:GrandTotalAmount>4.00</ram:GrandTotalAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+        <ram:InvoiceReferencedDocument>
+          <ram:IssuerAssignedID>INVREF-1</ram:IssuerAssignedID>
+          <ram:LineID>100</ram:LineID>
+          <ram:TypeCode>TYPECODE-1</ram:TypeCode>
+          <ram:FormattedIssueDateTime>
+            <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+          </ram:FormattedIssueDateTime>
+        </ram:InvoiceReferencedDocument>
+        <ram:ReceivableSpecifiedTradeAccountingAccount>
+          <ram:ID>PREF-1</ram:ID>
+          <ram:TypeCode>PREF-1-TYPE</ram:TypeCode>
+        </ram:ReceivableSpecifiedTradeAccountingAccount>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ram:ApplicableHeaderTradeAgreement>
+      <ram:BuyerReference>LEITWEGID</ram:BuyerReference>
+      <ram:SellerTradeParty>
+        <ram:ID>0815-4711</ram:ID>
+        <ram:ID>0815-4712</ram:ID>
+        <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
+        <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
+        <ram:Name>Lieferant GmbH</ram:Name>
+        <ram:SpecifiedLegalOrganization>
+          <ram:ID schemeID="8884">3874837489237</ram:ID>
+          <ram:TradingBusinessName>Lieferant AG</ram:TradingBusinessName>
+        </ram:SpecifiedLegalOrganization>
+        <ram:DefinedTradeContact>
+          <ram:PersonName>Horst Meier</ram:PersonName>
+          <ram:DepartmentName>Buchhaltung</ram:DepartmentName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:CompleteNumber>0815-4711</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:FaxUniversalCommunication>
+            <ram:CompleteNumber>0815-4712</ram:CompleteNumber>
+          </ram:FaxUniversalCommunication>
+          <ram:EmailURIUniversalCommunication>
+            <ram:URIID>horst.meier@lieferant.de</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>06108</ram:PostcodeCode>
+          <ram:LineOne>Line 1</ram:LineOne>
+          <ram:LineTwo>Line 2</ram:LineTwo>
+          <ram:LineThree>Line 3</ram:LineThree>
+          <ram:CityName>City</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+          <ram:CountrySubDivisionName>Bavaria</ram:CountrySubDivisionName>
+        </ram:PostalTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URIID schemeID="EM">info@lieferant.de</ram:URIID>
+        </ram:URIUniversalCommunication>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="VA">893489787987</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="FC">893489787987-X</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="VA">893489787987-AA</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+      </ram:SellerTradeParty>
+      <ram:BuyerTradeParty>
+        <ram:ID>0815-4711</ram:ID>
+        <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
+        <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
+        <ram:Name>Kunde GmbH</ram:Name>
+        <ram:SpecifiedLegalOrganization>
+          <ram:ID schemeID="8884">3874837489237</ram:ID>
+          <ram:TradingBusinessName>Kunde AG</ram:TradingBusinessName>
+        </ram:SpecifiedLegalOrganization>
+        <ram:DefinedTradeContact>
+          <ram:PersonName>Horst Meier</ram:PersonName>
+          <ram:DepartmentName>Buchhaltung</ram:DepartmentName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:CompleteNumber>0815-4711</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:FaxUniversalCommunication>
+            <ram:CompleteNumber>0815-4712</ram:CompleteNumber>
+          </ram:FaxUniversalCommunication>
+          <ram:EmailURIUniversalCommunication>
+            <ram:URIID>horst.meier@kunde.de</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>06108</ram:PostcodeCode>
+          <ram:LineOne>Line 1</ram:LineOne>
+          <ram:LineTwo>Line 2</ram:LineTwo>
+          <ram:LineThree>Line 3</ram:LineThree>
+          <ram:CityName>City</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+          <ram:CountrySubDivisionName>Bavaria</ram:CountrySubDivisionName>
+        </ram:PostalTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URIID schemeID="EM">info@kunde.de</ram:URIID>
+        </ram:URIUniversalCommunication>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="VA">893489787987</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+      </ram:BuyerTradeParty>
+      <ram:SellerTaxRepresentativeTradeParty>
+        <ram:ID>0815-4711</ram:ID>
+        <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
+        <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
+        <ram:Name>Tax GmbH</ram:Name>
+        <ram:SpecifiedLegalOrganization>
+          <ram:ID schemeID="8884">3874837489237</ram:ID>
+          <ram:TradingBusinessName>Tax AG</ram:TradingBusinessName>
+        </ram:SpecifiedLegalOrganization>
+        <ram:DefinedTradeContact>
+          <ram:PersonName>Horst Meier</ram:PersonName>
+          <ram:DepartmentName>Buchhaltung</ram:DepartmentName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:CompleteNumber>0815-4711</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:FaxUniversalCommunication>
+            <ram:CompleteNumber>0815-4712</ram:CompleteNumber>
+          </ram:FaxUniversalCommunication>
+          <ram:EmailURIUniversalCommunication>
+            <ram:URIID>horst.meier@tax.de</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>06108</ram:PostcodeCode>
+          <ram:LineOne>Line 1</ram:LineOne>
+          <ram:LineTwo>Line 2</ram:LineTwo>
+          <ram:LineThree>Line 3</ram:LineThree>
+          <ram:CityName>City</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+          <ram:CountrySubDivisionName>Bavaria</ram:CountrySubDivisionName>
+        </ram:PostalTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URIID schemeID="EM">info@tax.de</ram:URIID>
+        </ram:URIUniversalCommunication>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="VA">893489787987</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+      </ram:SellerTaxRepresentativeTradeParty>
+      <ram:ProductEndUserTradeParty>
+        <ram:ID>0815-4711</ram:ID>
+        <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
+        <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
+        <ram:Name>Product End User GmbH</ram:Name>
+        <ram:SpecifiedLegalOrganization>
+          <ram:ID schemeID="8884">3874837489237</ram:ID>
+          <ram:TradingBusinessName>Product End User AG</ram:TradingBusinessName>
+        </ram:SpecifiedLegalOrganization>
+        <ram:DefinedTradeContact>
+          <ram:PersonName>Horst Meier</ram:PersonName>
+          <ram:DepartmentName>Buchhaltung</ram:DepartmentName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:CompleteNumber>0815-4711</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:FaxUniversalCommunication>
+            <ram:CompleteNumber>0815-4712</ram:CompleteNumber>
+          </ram:FaxUniversalCommunication>
+          <ram:EmailURIUniversalCommunication>
+            <ram:URIID>horst.meier@productenduser.de</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>06108</ram:PostcodeCode>
+          <ram:LineOne>Line 1</ram:LineOne>
+          <ram:LineTwo>Line 2</ram:LineTwo>
+          <ram:LineThree>Line 3</ram:LineThree>
+          <ram:CityName>City</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+          <ram:CountrySubDivisionName>Bavaria</ram:CountrySubDivisionName>
+        </ram:PostalTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URIID schemeID="EM">info@productenduser.de</ram:URIID>
+        </ram:URIUniversalCommunication>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="VA">893489787987</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+      </ram:ProductEndUserTradeParty>
+      <ram:SellerOrderReferencedDocument>
+        <ram:IssuerAssignedID>SO-1</ram:IssuerAssignedID>
+        <ram:FormattedIssueDateTime>
+          <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+        </ram:FormattedIssueDateTime>
+      </ram:SellerOrderReferencedDocument>
+      <ram:BuyerOrderReferencedDocument>
+        <ram:IssuerAssignedID>BO-1</ram:IssuerAssignedID>
+        <ram:FormattedIssueDateTime>
+          <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+        </ram:FormattedIssueDateTime>
+      </ram:BuyerOrderReferencedDocument>
+      <ram:QuotationReferencedDocument>
+        <ram:IssuerAssignedID>QU-1</ram:IssuerAssignedID>
+        <ram:FormattedIssueDateTime>
+          <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+        </ram:FormattedIssueDateTime>
+      </ram:QuotationReferencedDocument>
+      <ram:ContractReferencedDocument>
+        <ram:IssuerAssignedID>CON-1</ram:IssuerAssignedID>
+        <ram:FormattedIssueDateTime>
+          <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+        </ram:FormattedIssueDateTime>
+      </ram:ContractReferencedDocument>
+      <ram:AdditionalReferencedDocument>
+        <ram:IssuerAssignedID>ADD-1</ram:IssuerAssignedID>
+        <ram:TypeCode>typecode</ram:TypeCode>
+        <ram:Name>description</ram:Name>
+        <ram:ReferenceTypeCode>reftypecode</ram:ReferenceTypeCode>
+        <ram:FormattedIssueDateTime>
+          <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+        </ram:FormattedIssueDateTime>
+      </ram:AdditionalReferencedDocument>
+      <ram:AdditionalReferencedDocument>
+        <ram:IssuerAssignedID>ADD-2</ram:IssuerAssignedID>
+        <ram:TypeCode>typecode2</ram:TypeCode>
+        <ram:Name>description2</ram:Name>
+        <ram:ReferenceTypeCode>reftypecode2</ram:ReferenceTypeCode>
+        <ram:FormattedIssueDateTime>
+          <qdt:DateTimeString format="102">19700102</qdt:DateTimeString>
+        </ram:FormattedIssueDateTime>
+      </ram:AdditionalReferencedDocument>
+      <ram:SpecifiedProcuringProject>
+        <ram:ID>PROJECT-1</ram:ID>
+        <ram:Name>Project 1</ram:Name>
+      </ram:SpecifiedProcuringProject>
+      <ram:UltimateCustomerOrderReferencedDocument>
+        <ram:IssuerAssignedID>UCOR-1</ram:IssuerAssignedID>
+        <ram:FormattedIssueDateTime>
+          <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+        </ram:FormattedIssueDateTime>
+      </ram:UltimateCustomerOrderReferencedDocument>
+      <ram:UltimateCustomerOrderReferencedDocument>
+        <ram:IssuerAssignedID>UCOR-2</ram:IssuerAssignedID>
+        <ram:FormattedIssueDateTime>
+          <qdt:DateTimeString format="102">19700102</qdt:DateTimeString>
+        </ram:FormattedIssueDateTime>
+      </ram:UltimateCustomerOrderReferencedDocument>
+    </ram:ApplicableHeaderTradeAgreement>
+    <ram:ApplicableHeaderTradeDelivery>
+      <ram:ShipToTradeParty>
+        <ram:ID>0815-4711</ram:ID>
+        <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
+        <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
+        <ram:Name>Ship Tó GmbH</ram:Name>
+        <ram:SpecifiedLegalOrganization>
+          <ram:ID schemeID="8884">3874837489237</ram:ID>
+          <ram:TradingBusinessName>Ship To AG</ram:TradingBusinessName>
+        </ram:SpecifiedLegalOrganization>
+        <ram:DefinedTradeContact>
+          <ram:PersonName>Horst Meier</ram:PersonName>
+          <ram:DepartmentName>Buchhaltung</ram:DepartmentName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:CompleteNumber>0815-4711</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:FaxUniversalCommunication>
+            <ram:CompleteNumber>0815-4712</ram:CompleteNumber>
+          </ram:FaxUniversalCommunication>
+          <ram:EmailURIUniversalCommunication>
+            <ram:URIID>horst.meier@shipto.de</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>06108</ram:PostcodeCode>
+          <ram:LineOne>Line 1</ram:LineOne>
+          <ram:LineTwo>Line 2</ram:LineTwo>
+          <ram:LineThree>Line 3</ram:LineThree>
+          <ram:CityName>City</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+          <ram:CountrySubDivisionName>Bavaria</ram:CountrySubDivisionName>
+        </ram:PostalTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URIID schemeID="EM">info@shipto.de</ram:URIID>
+        </ram:URIUniversalCommunication>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="VA">893489787987</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+      </ram:ShipToTradeParty>
+      <ram:UltimateShipToTradeParty>
+        <ram:ID>0815-4711</ram:ID>
+        <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
+        <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
+        <ram:Name>Ultimate Ship Tó GmbH</ram:Name>
+        <ram:SpecifiedLegalOrganization>
+          <ram:ID schemeID="8884">3874837489237</ram:ID>
+          <ram:TradingBusinessName>Ultimate Ship To AG</ram:TradingBusinessName>
+        </ram:SpecifiedLegalOrganization>
+        <ram:DefinedTradeContact>
+          <ram:PersonName>Horst Meier</ram:PersonName>
+          <ram:DepartmentName>Buchhaltung</ram:DepartmentName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:CompleteNumber>0815-4711</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:FaxUniversalCommunication>
+            <ram:CompleteNumber>0815-4712</ram:CompleteNumber>
+          </ram:FaxUniversalCommunication>
+          <ram:EmailURIUniversalCommunication>
+            <ram:URIID>horst.meier@ultimateshipto.de</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>06108</ram:PostcodeCode>
+          <ram:LineOne>Line 1</ram:LineOne>
+          <ram:LineTwo>Line 2</ram:LineTwo>
+          <ram:LineThree>Line 3</ram:LineThree>
+          <ram:CityName>City</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+          <ram:CountrySubDivisionName>Bavaria</ram:CountrySubDivisionName>
+        </ram:PostalTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URIID schemeID="EM">info@ultimateshipto.de</ram:URIID>
+        </ram:URIUniversalCommunication>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="VA">893489787987</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+      </ram:UltimateShipToTradeParty>
+      <ram:ShipFromTradeParty>
+        <ram:ID>0815-4711</ram:ID>
+        <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
+        <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
+        <ram:Name>Ship From GmbH</ram:Name>
+        <ram:SpecifiedLegalOrganization>
+          <ram:ID schemeID="8884">3874837489237</ram:ID>
+          <ram:TradingBusinessName>Ship From AG</ram:TradingBusinessName>
+        </ram:SpecifiedLegalOrganization>
+        <ram:DefinedTradeContact>
+          <ram:PersonName>Horst Meier</ram:PersonName>
+          <ram:DepartmentName>Buchhaltung</ram:DepartmentName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:CompleteNumber>0815-4711</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:FaxUniversalCommunication>
+            <ram:CompleteNumber>0815-4712</ram:CompleteNumber>
+          </ram:FaxUniversalCommunication>
+          <ram:EmailURIUniversalCommunication>
+            <ram:URIID>horst.meier@shipfrom.de</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>06108</ram:PostcodeCode>
+          <ram:LineOne>Line 1</ram:LineOne>
+          <ram:LineTwo>Line 2</ram:LineTwo>
+          <ram:LineThree>Line 3</ram:LineThree>
+          <ram:CityName>City</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+          <ram:CountrySubDivisionName>Bavaria</ram:CountrySubDivisionName>
+        </ram:PostalTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URIID schemeID="EM">info@shipfrom.de</ram:URIID>
+        </ram:URIUniversalCommunication>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="VA">893489787987</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+      </ram:ShipFromTradeParty>
+      <ram:ActualDeliverySupplyChainEvent>
+        <ram:OccurrenceDateTime>
+          <udt:DateTimeString format="102">19700101</udt:DateTimeString>
+        </ram:OccurrenceDateTime>
+      </ram:ActualDeliverySupplyChainEvent>
+      <ram:DespatchAdviceReferencedDocument>
+        <ram:IssuerAssignedID>DESPADV-1</ram:IssuerAssignedID>
+        <ram:FormattedIssueDateTime>
+          <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+        </ram:FormattedIssueDateTime>
+      </ram:DespatchAdviceReferencedDocument>
+      <ram:ReceivingAdviceReferencedDocument>
+        <ram:IssuerAssignedID>RECADV-1</ram:IssuerAssignedID>
+        <ram:FormattedIssueDateTime>
+          <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+        </ram:FormattedIssueDateTime>
+      </ram:ReceivingAdviceReferencedDocument>
+      <ram:DeliveryNoteReferencedDocument>
+        <ram:IssuerAssignedID>DEVNOTE-1</ram:IssuerAssignedID>
+        <ram:FormattedIssueDateTime>
+          <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+        </ram:FormattedIssueDateTime>
+      </ram:DeliveryNoteReferencedDocument>
+    </ram:ApplicableHeaderTradeDelivery>
+    <ram:ApplicableHeaderTradeSettlement>
+      <ram:CreditorReferenceID>CREDREF-1</ram:CreditorReferenceID>
+      <ram:PaymentReference>paymentReference2</ram:PaymentReference>
+      <ram:TaxCurrencyCode>GBP</ram:TaxCurrencyCode>
+      <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
+      <ram:InvoicerTradeParty>
+        <ram:ID>0815-4711</ram:ID>
+        <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
+        <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
+        <ram:Name>Invoicer GmbH</ram:Name>
+        <ram:SpecifiedLegalOrganization>
+          <ram:ID schemeID="8884">3874837489237</ram:ID>
+          <ram:TradingBusinessName>Invoicer AG</ram:TradingBusinessName>
+        </ram:SpecifiedLegalOrganization>
+        <ram:DefinedTradeContact>
+          <ram:PersonName>Horst Meier</ram:PersonName>
+          <ram:DepartmentName>Buchhaltung</ram:DepartmentName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:CompleteNumber>0815-4711</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:FaxUniversalCommunication>
+            <ram:CompleteNumber>0815-4712</ram:CompleteNumber>
+          </ram:FaxUniversalCommunication>
+          <ram:EmailURIUniversalCommunication>
+            <ram:URIID>horst.meier@invoicer.de</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>06108</ram:PostcodeCode>
+          <ram:LineOne>Line 1</ram:LineOne>
+          <ram:LineTwo>Line 2</ram:LineTwo>
+          <ram:LineThree>Line 3</ram:LineThree>
+          <ram:CityName>City</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+          <ram:CountrySubDivisionName>Bavaria</ram:CountrySubDivisionName>
+        </ram:PostalTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URIID schemeID="EM">info@invoicer.de</ram:URIID>
+        </ram:URIUniversalCommunication>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="VA">893489787987</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+      </ram:InvoicerTradeParty>
+      <ram:InvoiceeTradeParty>
+        <ram:ID>0815-4711</ram:ID>
+        <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
+        <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
+        <ram:Name>Invoicee GmbH</ram:Name>
+        <ram:SpecifiedLegalOrganization>
+          <ram:ID schemeID="8884">3874837489237</ram:ID>
+          <ram:TradingBusinessName>Invoicee AG</ram:TradingBusinessName>
+        </ram:SpecifiedLegalOrganization>
+        <ram:DefinedTradeContact>
+          <ram:PersonName>Horst Meier</ram:PersonName>
+          <ram:DepartmentName>Buchhaltung</ram:DepartmentName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:CompleteNumber>0815-4711</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:FaxUniversalCommunication>
+            <ram:CompleteNumber>0815-4712</ram:CompleteNumber>
+          </ram:FaxUniversalCommunication>
+          <ram:EmailURIUniversalCommunication>
+            <ram:URIID>horst.meier@invoicee.de</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>06108</ram:PostcodeCode>
+          <ram:LineOne>Line 1</ram:LineOne>
+          <ram:LineTwo>Line 2</ram:LineTwo>
+          <ram:LineThree>Line 3</ram:LineThree>
+          <ram:CityName>City</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+          <ram:CountrySubDivisionName>Bavaria</ram:CountrySubDivisionName>
+        </ram:PostalTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URIID schemeID="EM">info@invoicee.de</ram:URIID>
+        </ram:URIUniversalCommunication>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="VA">893489787987</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+      </ram:InvoiceeTradeParty>
+      <ram:PayeeTradeParty>
+        <ram:ID>0815-4711</ram:ID>
+        <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
+        <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
+        <ram:Name>Payee GmbH</ram:Name>
+        <ram:SpecifiedLegalOrganization>
+          <ram:ID schemeID="8884">3874837489237</ram:ID>
+          <ram:TradingBusinessName>Payee AG</ram:TradingBusinessName>
+        </ram:SpecifiedLegalOrganization>
+        <ram:DefinedTradeContact>
+          <ram:PersonName>Horst Meier</ram:PersonName>
+          <ram:DepartmentName>Buchhaltung</ram:DepartmentName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:CompleteNumber>0815-4711</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:FaxUniversalCommunication>
+            <ram:CompleteNumber>0815-4712</ram:CompleteNumber>
+          </ram:FaxUniversalCommunication>
+          <ram:EmailURIUniversalCommunication>
+            <ram:URIID>horst.meier@payee.de</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>06108</ram:PostcodeCode>
+          <ram:LineOne>Line 1</ram:LineOne>
+          <ram:LineTwo>Line 2</ram:LineTwo>
+          <ram:LineThree>Line 3</ram:LineThree>
+          <ram:CityName>City</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+          <ram:CountrySubDivisionName>Bavaria</ram:CountrySubDivisionName>
+        </ram:PostalTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URIID schemeID="EM">info@payee.de</ram:URIID>
+        </ram:URIUniversalCommunication>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="VA">893489787987</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+      </ram:PayeeTradeParty>
+      <ram:SpecifiedTradeSettlementPaymentMeans>
+        <ram:TypeCode>typecode</ram:TypeCode>
+        <ram:Information>name</ram:Information>
+        <ram:ApplicableTradeSettlementFinancialCard>
+          <ram:ID>financialCardId</ram:ID>
+          <ram:CardholderName>financialCardHolder</ram:CardholderName>
+        </ram:ApplicableTradeSettlementFinancialCard>
+        <ram:PayerPartyDebtorFinancialAccount>
+          <ram:IBANID>buyeriban</ram:IBANID>
+        </ram:PayerPartyDebtorFinancialAccount>
+        <ram:PayeePartyCreditorFinancialAccount>
+          <ram:IBANID>payeeiban</ram:IBANID>
+          <ram:AccountName>payeeaccountname</ram:AccountName>
+          <ram:ProprietaryID>payeeProprietaryId</ram:ProprietaryID>
+        </ram:PayeePartyCreditorFinancialAccount>
+        <ram:PayeeSpecifiedCreditorFinancialInstitution>
+          <ram:BICID>payeeBic</ram:BICID>
+        </ram:PayeeSpecifiedCreditorFinancialInstitution>
+      </ram:SpecifiedTradeSettlementPaymentMeans>
+      <ram:SpecifiedTradeSettlementPaymentMeans>
+        <ram:TypeCode>typecode2</ram:TypeCode>
+        <ram:Information>name2</ram:Information>
+        <ram:ApplicableTradeSettlementFinancialCard>
+          <ram:ID>financialCardId2</ram:ID>
+          <ram:CardholderName>financialCardHolder2</ram:CardholderName>
+        </ram:ApplicableTradeSettlementFinancialCard>
+        <ram:PayerPartyDebtorFinancialAccount>
+          <ram:IBANID>buyeriban2</ram:IBANID>
+        </ram:PayerPartyDebtorFinancialAccount>
+        <ram:PayeePartyCreditorFinancialAccount>
+          <ram:IBANID>payeeiban2</ram:IBANID>
+          <ram:AccountName>payeeaccountname2</ram:AccountName>
+          <ram:ProprietaryID>payeeProprietaryId2</ram:ProprietaryID>
+        </ram:PayeePartyCreditorFinancialAccount>
+        <ram:PayeeSpecifiedCreditorFinancialInstitution>
+          <ram:BICID>payeeBic2</ram:BICID>
+        </ram:PayeeSpecifiedCreditorFinancialInstitution>
+      </ram:SpecifiedTradeSettlementPaymentMeans>
+      <ram:ApplicableTradeTax>
+        <ram:CalculatedAmount>19.00</ram:CalculatedAmount>
+        <ram:TypeCode>VAT</ram:TypeCode>
+        <ram:ExemptionReason>Reason</ram:ExemptionReason>
+        <ram:BasisAmount>100.00</ram:BasisAmount>
+        <ram:CategoryCode>S</ram:CategoryCode>
+        <ram:ExemptionReasonCode>ReasonCode</ram:ExemptionReasonCode>
+        <ram:TaxPointDate>
+          <udt:DateString format="102">19700101</udt:DateString>
+        </ram:TaxPointDate>
+        <ram:DueDateTypeCode>DUECODE</ram:DueDateTypeCode>
+        <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+      </ram:ApplicableTradeTax>
+      <ram:ApplicableTradeTax>
+        <ram:CalculatedAmount>7.00</ram:CalculatedAmount>
+        <ram:TypeCode>VAT</ram:TypeCode>
+        <ram:ExemptionReason>Reason2</ram:ExemptionReason>
+        <ram:BasisAmount>100.00</ram:BasisAmount>
+        <ram:CategoryCode>S</ram:CategoryCode>
+        <ram:ExemptionReasonCode>ReasonCode2</ram:ExemptionReasonCode>
+        <ram:TaxPointDate>
+          <udt:DateString format="102">19700102</udt:DateString>
+        </ram:TaxPointDate>
+        <ram:DueDateTypeCode>DUECODE2</ram:DueDateTypeCode>
+        <ram:RateApplicablePercent>7.00</ram:RateApplicablePercent>
+      </ram:ApplicableTradeTax>
+      <ram:BillingSpecifiedPeriod>
+        <ram:Description>Some Description</ram:Description>
+        <ram:StartDateTime>
+          <udt:DateTimeString format="102">19700101</udt:DateTimeString>
+        </ram:StartDateTime>
+        <ram:EndDateTime>
+          <udt:DateTimeString format="102">19700131</udt:DateTimeString>
+        </ram:EndDateTime>
+      </ram:BillingSpecifiedPeriod>
+      <ram:SpecifiedTradeAllowanceCharge>
+        <ram:ChargeIndicator>
+          <udt:Indicator>true</udt:Indicator>
+        </ram:ChargeIndicator>
+        <ram:CalculationPercent>10.00</ram:CalculationPercent>
+        <ram:BasisAmount>100.00</ram:BasisAmount>
+        <ram:ActualAmount>10.00</ram:ActualAmount>
+        <ram:ReasonCode>ReasonCode</ram:ReasonCode>
+        <ram:Reason>Reason</ram:Reason>
+        <ram:CategoryTradeTax>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+        </ram:CategoryTradeTax>
+      </ram:SpecifiedTradeAllowanceCharge>
+      <ram:SpecifiedTradeAllowanceCharge>
+        <ram:ChargeIndicator>
+          <udt:Indicator>false</udt:Indicator>
+        </ram:ChargeIndicator>
+        <ram:CalculationPercent>1.00</ram:CalculationPercent>
+        <ram:BasisAmount>10.00</ram:BasisAmount>
+        <ram:ActualAmount>1.00</ram:ActualAmount>
+        <ram:ReasonCode>ReasonCode2</ram:ReasonCode>
+        <ram:Reason>Reason2</ram:Reason>
+        <ram:CategoryTradeTax>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+        </ram:CategoryTradeTax>
+      </ram:SpecifiedTradeAllowanceCharge>
+      <ram:SpecifiedLogisticsServiceCharge>
+        <ram:Description>description</ram:Description>
+        <ram:AppliedAmount>10.00</ram:AppliedAmount>
+        <ram:AppliedTradeTax>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+        </ram:AppliedTradeTax>
+      </ram:SpecifiedLogisticsServiceCharge>
+      <ram:SpecifiedLogisticsServiceCharge>
+        <ram:Description>description2</ram:Description>
+        <ram:AppliedAmount>20.00</ram:AppliedAmount>
+        <ram:AppliedTradeTax>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+        </ram:AppliedTradeTax>
+      </ram:SpecifiedLogisticsServiceCharge>
+      <ram:SpecifiedTradePaymentTerms>
+        <ram:Description>Direct Debit</ram:Description>
+        <ram:DirectDebitMandateID>mandate2</ram:DirectDebitMandateID>
+      </ram:SpecifiedTradePaymentTerms>
+      <ram:SpecifiedTradePaymentTerms>
+        <ram:Description>Payment Term Description 1</ram:Description>
+        <ram:DueDateDateTime>
+          <udt:DateTimeString format="102">19700131</udt:DateTimeString>
+        </ram:DueDateDateTime>
+        <ram:ApplicableTradePaymentPenaltyTerms>
+          <ram:BasisDateTime>
+            <udt:DateTimeString format="102">19700224</udt:DateTimeString>
+          </ram:BasisDateTime>
+          <ram:BasisPeriodMeasure unitCode="DAY">1.00</ram:BasisPeriodMeasure>
+          <ram:BasisAmount>200.00</ram:BasisAmount>
+          <ram:CalculationPercent>2.00</ram:CalculationPercent>
+          <ram:ActualPenaltyAmount>10.00</ram:ActualPenaltyAmount>
+        </ram:ApplicableTradePaymentPenaltyTerms>
+        <ram:ApplicableTradePaymentDiscountTerms>
+          <ram:BasisDateTime>
+            <udt:DateTimeString format="102">19700224</udt:DateTimeString>
+          </ram:BasisDateTime>
+          <ram:BasisPeriodMeasure unitCode="DAY">1.00</ram:BasisPeriodMeasure>
+          <ram:BasisAmount>200.00</ram:BasisAmount>
+          <ram:CalculationPercent>2.00</ram:CalculationPercent>
+          <ram:ActualDiscountAmount>10.00</ram:ActualDiscountAmount>
+        </ram:ApplicableTradePaymentDiscountTerms>
+      </ram:SpecifiedTradePaymentTerms>
+      <ram:SpecifiedTradePaymentTerms>
+        <ram:Description>Payment Term Description 2</ram:Description>
+        <ram:DueDateDateTime>
+          <udt:DateTimeString format="102">19700331</udt:DateTimeString>
+        </ram:DueDateDateTime>
+      </ram:SpecifiedTradePaymentTerms>
+      <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+        <ram:LineTotalAmount>1.00</ram:LineTotalAmount>
+        <ram:ChargeTotalAmount>2.00</ram:ChargeTotalAmount>
+        <ram:AllowanceTotalAmount>3.00</ram:AllowanceTotalAmount>
+        <ram:TaxBasisTotalAmount>4.00</ram:TaxBasisTotalAmount>
+        <ram:TaxTotalAmount currencyID="EUR">5.00</ram:TaxTotalAmount>
+        <ram:TaxTotalAmount currencyID="GBP">6.00</ram:TaxTotalAmount>
+        <ram:RoundingAmount>10.00</ram:RoundingAmount>
+        <ram:GrandTotalAmount>7.00</ram:GrandTotalAmount>
+        <ram:TotalPrepaidAmount>9.00</ram:TotalPrepaidAmount>
+        <ram:DuePayableAmount>8.00</ram:DuePayableAmount>
+      </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+      <ram:InvoiceReferencedDocument>
+        <ram:IssuerAssignedID>INVREF-1</ram:IssuerAssignedID>
+        <ram:TypeCode>typecode</ram:TypeCode>
+        <ram:FormattedIssueDateTime>
+          <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+        </ram:FormattedIssueDateTime>
+      </ram:InvoiceReferencedDocument>
+      <ram:InvoiceReferencedDocument>
+        <ram:IssuerAssignedID>INVREF-2</ram:IssuerAssignedID>
+        <ram:TypeCode>typecode2</ram:TypeCode>
+        <ram:FormattedIssueDateTime>
+          <qdt:DateTimeString format="102">19700102</qdt:DateTimeString>
+        </ram:FormattedIssueDateTime>
+      </ram:InvoiceReferencedDocument>
+      <ram:ReceivableSpecifiedTradeAccountingAccount>
+        <ram:ID>PREF-1</ram:ID>
+        <ram:TypeCode>PREF-1-TYPE</ram:TypeCode>
+      </ram:ReceivableSpecifiedTradeAccountingAccount>
+    </ram:ApplicableHeaderTradeSettlement>
+  </rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>
