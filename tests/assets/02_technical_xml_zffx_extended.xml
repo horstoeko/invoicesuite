@@ -999,6 +999,10 @@
         <ram:ID>PREF-1</ram:ID>
         <ram:TypeCode>PREF-1-TYPE</ram:TypeCode>
       </ram:ReceivableSpecifiedTradeAccountingAccount>
+      <ram:ReceivableSpecifiedTradeAccountingAccount>
+        <ram:ID>PREF-2</ram:ID>
+        <ram:TypeCode>PREF-2-TYPE</ram:TypeCode>
+      </ram:ReceivableSpecifiedTradeAccountingAccount>
     </ram:ApplicableHeaderTradeSettlement>
   </rsm:SupplyChainTradeTransaction>
 </rsm:CrossIndustryInvoice>

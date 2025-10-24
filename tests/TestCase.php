@@ -167,4 +167,37 @@ abstract class TestCase extends PhpUnitTestCase
         $method->setAccessible(true);
         return $method;
     }
+
+    /**
+     * Test for Notices/Warnings
+     *
+     * @param \Closure $run
+     * @param string $expectMessageRegEx
+     * @return void
+     */
+    public function expectNoticeOrWarningExt(\Closure $run, string $expectMessageRegEx = ""): void
+    {
+        $mask = E_WARNING | E_NOTICE;
+        $prevLevel = error_reporting();
+
+        error_reporting($prevLevel | $mask);
+
+        set_error_handler(
+            static function (int $errno, string $errstr, ?string $file = null, ?int $line = null): bool {
+                throw new \ErrorException($errstr, $errno, $errno, $file ?? '', $line ?? 0);
+            },
+            $mask
+        );
+
+        try {
+            $this->expectException(\ErrorException::class);
+            if ($expectMessageRegEx) {
+                $this->expectExceptionMessageMatches($expectMessageRegEx);
+            }
+            $run();
+        } finally {
+            restore_error_handler();
+            error_reporting($prevLevel);
+        }
+    }
 }

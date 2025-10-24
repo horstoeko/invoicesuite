@@ -54,6 +54,7 @@
         <testsuite name="providers">
             <file>../tests/testcases/documentproviders/ZfFxExtendedProviderTest.php</file>
             <file>../tests/testcases/documentproviders/ZfFxExtendedProviderBuilderTest.php</file>
+            <file>../tests/testcases/documentproviders/ZfFxExtendedProviderReaderTest.php</file>
             <file>../tests/testcases/documentproviders/ZfFxComfortProviderTest.php</file>
             <file>../tests/testcases/documentproviders/ZfFxComfortProviderBuilderTest.php</file>
             <file>../tests/testcases/documentproviders/ZfFxBasicProviderTest.php</file>
