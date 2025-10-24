@@ -284,4 +284,29 @@ class ZfFxExtendedProviderReaderTest extends TestCase
             );
         }, '/Undefined (array key|index)/');
     }
+
+    public function testFirstNextGetDocumentInvoiceReference(): void
+    {
+        $this->assertTrue(self::$document->firstDocumentInvoiceReference());
+
+        self::$document->getDocumentInvoiceReference($newReferenceNumber, $newReferenceDate, $newTypeCode);
+
+        $this->assertSame('INVREF-1', $newReferenceNumber);
+        $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
+        $this->assertSame('typecode', $newTypeCode);
+
+        $this->assertTrue(self::$document->nextDocumentInvoiceReference());
+
+        self::$document->getDocumentInvoiceReference($newReferenceNumber, $newReferenceDate, $newTypeCode);
+
+        $this->assertSame('INVREF-2', $newReferenceNumber);
+        $this->assertSame('19700102', $newReferenceDate->format('Ymd'));
+        $this->assertSame('typecode2', $newTypeCode);
+
+        $this->assertFalse(self::$document->nextDocumentInvoiceReference());
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentInvoiceReference($newReferenceNumber, $newReferenceDate, $newTypeCode);
+        }, '/Undefined (array key|index)/');
+    }
 }
