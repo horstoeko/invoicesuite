@@ -748,4 +748,799 @@ class ZfFxExtendedProviderReaderTest extends TestCase
             self::$document->getDocumentBuyerCommunication($newType, $newUri);
         }, '/Undefined (array key|index)/');
     }
+
+    public function testDocumentTaxRepresentative(): void
+    {
+        // Name
+
+        self::$document->getDocumentTaxRepresentativeName($newName);
+
+        $this->assertSame('Tax GmbH', $newName);
+
+        // ID
+
+        $this->assertTrue(self::$document->firstDocumentTaxRepresentativeId());
+
+        self::$document->getDocumentTaxRepresentativeId($newId);
+
+        $this->assertSame('0815-1147', $newId);
+
+        $this->assertFalse(self::$document->nextDocumentTaxRepresentativeId());
+
+        // Global ID
+
+        $this->assertTrue(self::$document->firstDocumentTaxRepresentativeGlobalId());
+
+        self::$document->getDocumentTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('11111-TR', $newGlobalId);
+        $this->assertSame('0088', $newGlobalIdType);
+
+        $this->assertTrue(self::$document->nextDocumentTaxRepresentativeGlobalId());
+
+        self::$document->getDocumentTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('22222-TR', $newGlobalId);
+        $this->assertSame('0088', $newGlobalIdType);
+
+        $this->assertFalse(self::$document->nextDocumentTaxRepresentativeGlobalId());
+
+        // Tax Registration
+
+        $this->assertTrue(self::$document->firstDocumentTaxRepresentativeTaxRegistration());
+
+        self::$document->getDocumentTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        $this->assertSame('893489787987', $newTaxRegistrationId);
+        $this->assertSame('VA', $newTaxRegistrationType);
+
+        $this->assertFalse(self::$document->nextDocumentTaxRepresentativeTaxRegistration());
+
+        // Address
+
+        $this->assertTrue(self::$document->firstDocumentTaxRepresentativeAddress());
+
+        self::$document->getDocumentTaxRepresentativeAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        $this->assertSame('Line 1', $newAddressLine1);
+        $this->assertSame('Line 2', $newAddressLine2);
+        $this->assertSame('Line 3', $newAddressLine3);
+        $this->assertSame('06108', $newPostcode);
+        $this->assertSame('City', $newCity);
+        $this->assertSame('DE', $newCountryId);
+        $this->assertSame('Bavaria', $newSubDivision);
+
+        $this->assertFalse(self::$document->nextDocumentTaxRepresentativeAddress());
+
+        // Legal Organisation
+
+        $this->assertTrue(self::$document->firstDocumentTaxRepresentativeLegalOrganisation());
+
+        self::$document->getDocumentTaxRepresentativeLegalOrganisation($newType, $newId, $newName);
+
+        $this->assertSame('8884', $newType);
+        $this->assertSame('19283746555', $newId);
+        $this->assertSame('Tax AG', $newName);
+
+        $this->assertFalse(self::$document->nextDocumentTaxRepresentativeLegalOrganisation());
+
+        // Contact
+
+        $this->assertTrue(self::$document->firstDocumentTaxRepresentativeContact());
+
+        self::$document->getDocumentTaxRepresentativeContact(
+            $newPersonName,
+            $newDepartmentName,
+            $newPhoneNumber,
+            $newFaxNumber,
+            $newEmailAddress
+        );
+
+        $this->assertSame('Horst Müller', $newPersonName);
+        $this->assertSame('Finance', $newDepartmentName);
+        $this->assertSame('0815-4711-0', $newPhoneNumber);
+        $this->assertSame('0815-4711-99', $newFaxNumber);
+        $this->assertSame('horst.meier@tax.de', $newEmailAddress);
+
+        $this->assertFalse(self::$document->nextDocumentTaxRepresentativeContact());
+
+        // Communication
+
+        $this->assertTrue(self::$document->firstDocumentTaxRepresentativeCommunication());
+
+        self::$document->getDocumentTaxRepresentativeCommunication($newType, $newUri);
+
+        $this->assertSame('EM', $newType);
+        $this->assertSame('info@tax.de', $newUri);
+
+        $this->assertFalse(self::$document->nextDocumentTaxRepresentativeCommunication());
+
+        // Finals
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentTaxRepresentativeId($newId);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentTaxRepresentativeAddress(
+                $newAddressLine1,
+                $newAddressLine2,
+                $newAddressLine3,
+                $newPostcode,
+                $newCity,
+                $newCountryId,
+                $newSubDivision
+            );
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentTaxRepresentativeLegalOrganisation($newType, $newId, $newName);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentTaxRepresentativeContact(
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            );
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentTaxRepresentativeCommunication($newType, $newUri);
+        }, '/Undefined (array key|index)/');
+    }
+
+    public function testDocumentProductEndUser(): void
+    {
+        // Name
+
+        self::$document->getDocumentProductEndUserName($newName);
+
+        $this->assertSame('Product End User GmbH', $newName);
+
+        // ID
+
+        $this->assertTrue(self::$document->firstDocumentProductEndUserId());
+
+        self::$document->getDocumentProductEndUserId($newId);
+
+        $this->assertSame('0815-9999-PEU', $newId);
+
+        $this->assertFalse(self::$document->nextDocumentProductEndUserId());
+
+        // Global ID
+
+        $this->assertTrue(self::$document->firstDocumentProductEndUserGlobalId());
+
+        self::$document->getDocumentProductEndUserGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('11111-PEU', $newGlobalId);
+        $this->assertSame('0088', $newGlobalIdType);
+
+        $this->assertTrue(self::$document->nextDocumentProductEndUserGlobalId());
+
+        self::$document->getDocumentProductEndUserGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('22222-PEU', $newGlobalId);
+        $this->assertSame('0088', $newGlobalIdType);
+
+        $this->assertFalse(self::$document->nextDocumentProductEndUserGlobalId());
+
+        // Tax Registration
+
+        $this->assertTrue(self::$document->firstDocumentProductEndUserTaxRegistration());
+
+        self::$document->getDocumentProductEndUserTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        $this->assertSame('893489787987', $newTaxRegistrationId);
+        $this->assertSame('VA', $newTaxRegistrationType);
+
+        $this->assertFalse(self::$document->nextDocumentProductEndUserTaxRegistration());
+
+        // Address
+
+        $this->assertTrue(self::$document->firstDocumentProductEndUserAddress());
+
+        self::$document->getDocumentProductEndUserAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        $this->assertSame('Line 1', $newAddressLine1);
+        $this->assertSame('Line 2', $newAddressLine2);
+        $this->assertSame('Line 3', $newAddressLine3);
+        $this->assertSame('06108', $newPostcode);
+        $this->assertSame('City', $newCity);
+        $this->assertSame('DE', $newCountryId);
+        $this->assertSame('Bavaria', $newSubDivision);
+
+        $this->assertFalse(self::$document->nextDocumentProductEndUserAddress());
+
+        // Legal Organisation
+
+        $this->assertTrue(self::$document->firstDocumentProductEndUserLegalOrganisation());
+
+        self::$document->getDocumentProductEndUserLegalOrganisation($newType, $newId, $newName);
+
+        $this->assertSame('8884', $newType);
+        $this->assertSame('3874837489237', $newId);
+        $this->assertSame('Product End User AG', $newName);
+
+        $this->assertFalse(self::$document->nextDocumentProductEndUserLegalOrganisation());
+
+        // Contact
+
+        $this->assertTrue(self::$document->firstDocumentProductEndUserContact());
+
+        self::$document->getDocumentProductEndUserContact(
+            $newPersonName,
+            $newDepartmentName,
+            $newPhoneNumber,
+            $newFaxNumber,
+            $newEmailAddress
+        );
+
+        $this->assertSame('Horst Schulze', $newPersonName);
+        $this->assertSame('Sales', $newDepartmentName);
+        $this->assertSame('0816-471111', $newPhoneNumber);
+        $this->assertSame('0816-471222', $newFaxNumber);
+        $this->assertSame('horst.schulze@productenduser.de', $newEmailAddress);
+
+        $this->assertFalse(self::$document->nextDocumentProductEndUserContact());
+
+        // Communication
+
+        $this->assertTrue(self::$document->firstDocumentProductEndUserCommunication());
+
+        self::$document->getDocumentProductEndUserCommunication($newType, $newUri);
+
+        $this->assertSame('EM', $newType);
+        $this->assertSame('info@productenduser.de', $newUri);
+
+        $this->assertFalse(self::$document->nextDocumentProductEndUserCommunication());
+
+        // Finals
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentProductEndUserId($newId);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentProductEndUserGlobalId($newGlobalId, $newGlobalIdType);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentProductEndUserTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentProductEndUserAddress(
+                $newAddressLine1,
+                $newAddressLine2,
+                $newAddressLine3,
+                $newPostcode,
+                $newCity,
+                $newCountryId,
+                $newSubDivision
+            );
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentProductEndUserLegalOrganisation($newType, $newId, $newName);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentProductEndUserContact(
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            );
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentProductEndUserCommunication($newType, $newUri);
+        }, '/Undefined (array key|index)/');
+    }
+
+    public function testDocumentShipTo(): void
+    {
+        // Name
+
+        self::$document->getDocumentShipToName($newName);
+
+        $this->assertSame('Ship Tó GmbH', $newName);
+
+        // ID
+
+        $this->assertTrue(self::$document->firstDocumentShipToId());
+
+        self::$document->getDocumentShipToId($newId);
+
+        $this->assertSame('0815-4711-SH', $newId);
+
+        $this->assertFalse(self::$document->nextDocumentShipToId());
+
+        // Global ID
+
+        $this->assertTrue(self::$document->firstDocumentShipToGlobalId());
+
+        self::$document->getDocumentShipToGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('11111-SH', $newGlobalId);
+        $this->assertSame('0088', $newGlobalIdType);
+
+        $this->assertTrue(self::$document->nextDocumentShipToGlobalId());
+
+        self::$document->getDocumentShipToGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('22222-SH', $newGlobalId);
+        $this->assertSame('0088', $newGlobalIdType);
+
+        $this->assertFalse(self::$document->nextDocumentShipToGlobalId());
+
+        // Tax Registration
+
+        $this->assertTrue(self::$document->firstDocumentShipToTaxRegistration());
+
+        self::$document->getDocumentShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        $this->assertSame('7368366239786-SH', $newTaxRegistrationId);
+        $this->assertSame('VA', $newTaxRegistrationType);
+
+        $this->assertFalse(self::$document->nextDocumentShipToTaxRegistration());
+
+        // Address
+
+        $this->assertTrue(self::$document->firstDocumentShipToAddress());
+
+        self::$document->getDocumentShipToAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        $this->assertSame('Address 1', $newAddressLine1);
+        $this->assertSame('Address 2', $newAddressLine2);
+        $this->assertSame('Address 3', $newAddressLine3);
+        $this->assertSame('99999', $newPostcode);
+        $this->assertSame('Town', $newCity);
+        $this->assertSame('DE', $newCountryId);
+        $this->assertSame('Saxony', $newSubDivision);
+
+        $this->assertFalse(self::$document->nextDocumentShipToAddress());
+
+        // Legal Organisation
+
+        $this->assertTrue(self::$document->firstDocumentShipToLegalOrganisation());
+
+        self::$document->getDocumentShipToLegalOrganisation($newType, $newId, $newName);
+
+        $this->assertSame('8884', $newType);
+        $this->assertSame('3874837489237', $newId);
+        $this->assertSame('Ship To AG', $newName);
+
+        $this->assertFalse(self::$document->nextDocumentShipToLegalOrganisation());
+
+        // Contact
+
+        $this->assertTrue(self::$document->firstDocumentShipToContact());
+
+        self::$document->getDocumentShipToContact(
+            $newPersonName,
+            $newDepartmentName,
+            $newPhoneNumber,
+            $newFaxNumber,
+            $newEmailAddress
+        );
+
+        $this->assertSame('Horst Meier', $newPersonName);
+        $this->assertSame('Buchhaltung', $newDepartmentName);
+        $this->assertSame('0815-4711', $newPhoneNumber);
+        $this->assertSame('0815-4712', $newFaxNumber);
+        $this->assertSame('horst.meier@shipto.de', $newEmailAddress);
+
+        $this->assertFalse(self::$document->nextDocumentShipToContact());
+
+        // Communication
+
+        $this->assertTrue(self::$document->firstDocumentShipToCommunication());
+
+        self::$document->getDocumentShipToCommunication($newType, $newUri);
+
+        $this->assertSame('EM', $newType);
+        $this->assertSame('info@shipto.de', $newUri);
+
+        $this->assertFalse(self::$document->nextDocumentShipToCommunication());
+
+        // Finals
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentShipToId($newId);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentShipToGlobalId($newGlobalId, $newGlobalIdType);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentShipToAddress(
+                $newAddressLine1,
+                $newAddressLine2,
+                $newAddressLine3,
+                $newPostcode,
+                $newCity,
+                $newCountryId,
+                $newSubDivision
+            );
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentShipToLegalOrganisation($newType, $newId, $newName);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentShipToContact(
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            );
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentShipToCommunication($newType, $newUri);
+        }, '/Undefined (array key|index)/');
+    }
+
+    public function testDocumentUltimateShipTo(): void
+    {
+        // Name
+
+        self::$document->getDocumentUltimateShipToName($newName);
+
+        $this->assertSame('Ultimate Ship To GmbH', $newName);
+
+        // ID
+
+        $this->assertTrue(self::$document->firstDocumentUltimateShipToId());
+
+        self::$document->getDocumentUltimateShipToId($newId);
+
+        $this->assertSame('0815-4711', $newId);
+
+        $this->assertFalse(self::$document->nextDocumentUltimateShipToId());
+
+        // Global ID
+
+        $this->assertTrue(self::$document->firstDocumentUltimateShipToGlobalId());
+
+        self::$document->getDocumentUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('11111', $newGlobalId);
+        $this->assertSame('0088', $newGlobalIdType);
+
+        $this->assertTrue(self::$document->nextDocumentUltimateShipToGlobalId());
+
+        self::$document->getDocumentUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('22222', $newGlobalId);
+        $this->assertSame('0088', $newGlobalIdType);
+
+        $this->assertFalse(self::$document->nextDocumentUltimateShipToGlobalId());
+
+        // Tax Registration
+
+        $this->assertTrue(self::$document->firstDocumentUltimateShipToTaxRegistration());
+
+        self::$document->getDocumentUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        $this->assertSame('893489787987', $newTaxRegistrationId);
+        $this->assertSame('VA', $newTaxRegistrationType);
+
+        $this->assertFalse(self::$document->nextDocumentUltimateShipToTaxRegistration());
+
+        // Address
+
+        $this->assertTrue(self::$document->firstDocumentUltimateShipToAddress());
+
+        self::$document->getDocumentUltimateShipToAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        $this->assertSame('Line 1', $newAddressLine1);
+        $this->assertSame('Line 2', $newAddressLine2);
+        $this->assertSame('Line 3', $newAddressLine3);
+        $this->assertSame('06108', $newPostcode);
+        $this->assertSame('City', $newCity);
+        $this->assertSame('DE', $newCountryId);
+        $this->assertSame('Bavaria', $newSubDivision);
+
+        $this->assertFalse(self::$document->nextDocumentUltimateShipToAddress());
+
+        // Legal Organisation
+
+        $this->assertTrue(self::$document->firstDocumentUltimateShipToLegalOrganisation());
+
+        self::$document->getDocumentUltimateShipToLegalOrganisation($newType, $newId, $newName);
+
+        $this->assertSame('8884', $newType);
+        $this->assertSame('3874837489237', $newId);
+        $this->assertSame('Ultimate Ship To AG', $newName);
+
+        $this->assertFalse(self::$document->nextDocumentUltimateShipToLegalOrganisation());
+
+        // Contact
+
+        $this->assertTrue(self::$document->firstDocumentUltimateShipToContact());
+
+        self::$document->getDocumentUltimateShipToContact(
+            $newPersonName,
+            $newDepartmentName,
+            $newPhoneNumber,
+            $newFaxNumber,
+            $newEmailAddress
+        );
+
+        $this->assertSame('Karl-Heinz Meier', $newPersonName);
+        $this->assertSame('Office', $newDepartmentName);
+        $this->assertSame('0815-7777-0', $newPhoneNumber);
+        $this->assertSame('0815-7777-1', $newFaxNumber);
+        $this->assertSame('horst.meier@ultimateshipto.de', $newEmailAddress);
+
+        $this->assertFalse(self::$document->nextDocumentUltimateShipToContact());
+
+        // Communication
+
+        $this->assertTrue(self::$document->firstDocumentUltimateShipToCommunication());
+
+        self::$document->getDocumentUltimateShipToCommunication($newType, $newUri);
+
+        $this->assertSame('EM', $newType);
+        $this->assertSame('info@ultimateshipto.de', $newUri);
+
+        $this->assertFalse(self::$document->nextDocumentUltimateShipToCommunication());
+
+        // Finals
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentUltimateShipToId($newId);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentUltimateShipToAddress(
+                $newAddressLine1,
+                $newAddressLine2,
+                $newAddressLine3,
+                $newPostcode,
+                $newCity,
+                $newCountryId,
+                $newSubDivision
+            );
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentUltimateShipToLegalOrganisation($newType, $newId, $newName);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentUltimateShipToContact(
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            );
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentUltimateShipToCommunication($newType, $newUri);
+        }, '/Undefined (array key|index)/');
+    }
+
+    public function testDocumentShipFrom(): void
+    {
+        // Name
+
+        self::$document->getDocumentShipFromName($newName);
+
+        $this->assertSame('Ship From GmbH', $newName);
+
+        // ID
+
+        $this->assertTrue(self::$document->firstDocumentShipFromId());
+
+        self::$document->getDocumentShipFromId($newId);
+
+        $this->assertSame('0815-4711-SF', $newId);
+
+        $this->assertFalse(self::$document->nextDocumentShipFromId());
+
+        // Global ID
+
+        $this->assertTrue(self::$document->firstDocumentShipFromGlobalId());
+
+        self::$document->getDocumentShipFromGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('11111-SF', $newGlobalId);
+        $this->assertSame('0088', $newGlobalIdType);
+
+        $this->assertTrue(self::$document->nextDocumentShipFromGlobalId());
+
+        self::$document->getDocumentShipFromGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('22222-SF', $newGlobalId);
+        $this->assertSame('0088', $newGlobalIdType);
+
+        $this->assertFalse(self::$document->nextDocumentShipFromGlobalId());
+
+        // Tax Registration
+
+        $this->assertTrue(self::$document->firstDocumentShipFromTaxRegistration());
+
+        self::$document->getDocumentShipFromTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        $this->assertSame('1234567890-SF', $newTaxRegistrationId);
+        $this->assertSame('VA', $newTaxRegistrationType);
+
+        $this->assertFalse(self::$document->nextDocumentShipFromTaxRegistration());
+
+        // Address
+
+        $this->assertTrue(self::$document->firstDocumentShipFromAddress());
+
+        self::$document->getDocumentShipFromAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        $this->assertSame('Line 1', $newAddressLine1);
+        $this->assertSame('Line 2', $newAddressLine2);
+        $this->assertSame('Line 3', $newAddressLine3);
+        $this->assertSame('06108', $newPostcode);
+        $this->assertSame('City', $newCity);
+        $this->assertSame('DE', $newCountryId);
+        $this->assertSame('Bavaria', $newSubDivision);
+
+        $this->assertFalse(self::$document->nextDocumentShipFromAddress());
+
+        // Legal Organisation
+
+        $this->assertTrue(self::$document->firstDocumentShipFromLegalOrganisation());
+
+        self::$document->getDocumentShipFromLegalOrganisation($newType, $newId, $newName);
+
+        $this->assertSame('8884', $newType);
+        $this->assertSame('3874837489237', $newId);
+        $this->assertSame('Ship From AG', $newName);
+
+        $this->assertFalse(self::$document->nextDocumentShipFromLegalOrganisation());
+
+        // Contact
+
+        $this->assertTrue(self::$document->firstDocumentShipFromContact());
+
+        self::$document->getDocumentShipFromContact(
+            $newPersonName,
+            $newDepartmentName,
+            $newPhoneNumber,
+            $newFaxNumber,
+            $newEmailAddress
+        );
+
+        $this->assertSame('Horst Meier', $newPersonName);
+        $this->assertSame('Buchhaltung', $newDepartmentName);
+        $this->assertSame('0815-4711', $newPhoneNumber);
+        $this->assertSame('0815-4712', $newFaxNumber);
+        $this->assertSame('horst.meier@shipfrom.de', $newEmailAddress);
+
+        $this->assertFalse(self::$document->nextDocumentShipFromContact());
+
+        // Communication
+
+        $this->assertTrue(self::$document->firstDocumentShipFromCommunication());
+
+        self::$document->getDocumentShipFromCommunication($newType, $newUri);
+
+        $this->assertSame('EM', $newType);
+        $this->assertSame('info@shipfrom.de', $newUri);
+
+        $this->assertFalse(self::$document->nextDocumentShipFromCommunication());
+
+        // Finals
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentShipFromId($newId);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentShipFromGlobalId($newGlobalId, $newGlobalIdType);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentShipFromTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentShipFromAddress(
+                $newAddressLine1,
+                $newAddressLine2,
+                $newAddressLine3,
+                $newPostcode,
+                $newCity,
+                $newCountryId,
+                $newSubDivision
+            );
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentShipFromLegalOrganisation($newType, $newId, $newName);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentShipFromContact(
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            );
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentShipFromCommunication($newType, $newUri);
+        }, '/Undefined (array key|index)/');
+    }
 }

@@ -422,22 +422,22 @@
         </ram:SpecifiedTaxRegistration>
       </ram:BuyerTradeParty>
       <ram:SellerTaxRepresentativeTradeParty>
-        <ram:ID>0815-4711</ram:ID>
-        <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
-        <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
+        <ram:ID>0815-1147</ram:ID>
+        <ram:GlobalID schemeID="0088">11111-TR</ram:GlobalID>
+        <ram:GlobalID schemeID="0088">22222-TR</ram:GlobalID>
         <ram:Name>Tax GmbH</ram:Name>
         <ram:SpecifiedLegalOrganization>
-          <ram:ID schemeID="8884">3874837489237</ram:ID>
+          <ram:ID schemeID="8884">19283746555</ram:ID>
           <ram:TradingBusinessName>Tax AG</ram:TradingBusinessName>
         </ram:SpecifiedLegalOrganization>
         <ram:DefinedTradeContact>
-          <ram:PersonName>Horst Meier</ram:PersonName>
-          <ram:DepartmentName>Buchhaltung</ram:DepartmentName>
+          <ram:PersonName>Horst Müller</ram:PersonName>
+          <ram:DepartmentName>Finance</ram:DepartmentName>
           <ram:TelephoneUniversalCommunication>
-            <ram:CompleteNumber>0815-4711</ram:CompleteNumber>
+            <ram:CompleteNumber>0815-4711-0</ram:CompleteNumber>
           </ram:TelephoneUniversalCommunication>
           <ram:FaxUniversalCommunication>
-            <ram:CompleteNumber>0815-4712</ram:CompleteNumber>
+            <ram:CompleteNumber>0815-4711-99</ram:CompleteNumber>
           </ram:FaxUniversalCommunication>
           <ram:EmailURIUniversalCommunication>
             <ram:URIID>horst.meier@tax.de</ram:URIID>
@@ -460,25 +460,25 @@
         </ram:SpecifiedTaxRegistration>
       </ram:SellerTaxRepresentativeTradeParty>
       <ram:ProductEndUserTradeParty>
-        <ram:ID>0815-4711</ram:ID>
-        <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
-        <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
+        <ram:ID>0815-9999-PEU</ram:ID>
+        <ram:GlobalID schemeID="0088">11111-PEU</ram:GlobalID>
+        <ram:GlobalID schemeID="0088">22222-PEU</ram:GlobalID>
         <ram:Name>Product End User GmbH</ram:Name>
         <ram:SpecifiedLegalOrganization>
           <ram:ID schemeID="8884">3874837489237</ram:ID>
           <ram:TradingBusinessName>Product End User AG</ram:TradingBusinessName>
         </ram:SpecifiedLegalOrganization>
         <ram:DefinedTradeContact>
-          <ram:PersonName>Horst Meier</ram:PersonName>
-          <ram:DepartmentName>Buchhaltung</ram:DepartmentName>
+          <ram:PersonName>Horst Schulze</ram:PersonName>
+          <ram:DepartmentName>Sales</ram:DepartmentName>
           <ram:TelephoneUniversalCommunication>
-            <ram:CompleteNumber>0815-4711</ram:CompleteNumber>
+            <ram:CompleteNumber>0816-471111</ram:CompleteNumber>
           </ram:TelephoneUniversalCommunication>
           <ram:FaxUniversalCommunication>
-            <ram:CompleteNumber>0815-4712</ram:CompleteNumber>
+            <ram:CompleteNumber>0816-471222</ram:CompleteNumber>
           </ram:FaxUniversalCommunication>
           <ram:EmailURIUniversalCommunication>
-            <ram:URIID>horst.meier@productenduser.de</ram:URIID>
+            <ram:URIID>horst.schulze@productenduser.de</ram:URIID>
           </ram:EmailURIUniversalCommunication>
         </ram:DefinedTradeContact>
         <ram:PostalTradeAddress>
@@ -558,9 +558,9 @@
     </ram:ApplicableHeaderTradeAgreement>
     <ram:ApplicableHeaderTradeDelivery>
       <ram:ShipToTradeParty>
-        <ram:ID>0815-4711</ram:ID>
-        <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
-        <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
+        <ram:ID>0815-4711-SH</ram:ID>
+        <ram:GlobalID schemeID="0088">11111-SH</ram:GlobalID>
+        <ram:GlobalID schemeID="0088">22222-SH</ram:GlobalID>
         <ram:Name>Ship Tó GmbH</ram:Name>
         <ram:SpecifiedLegalOrganization>
           <ram:ID schemeID="8884">3874837489237</ram:ID>
@@ -580,38 +580,38 @@
           </ram:EmailURIUniversalCommunication>
         </ram:DefinedTradeContact>
         <ram:PostalTradeAddress>
-          <ram:PostcodeCode>06108</ram:PostcodeCode>
-          <ram:LineOne>Line 1</ram:LineOne>
-          <ram:LineTwo>Line 2</ram:LineTwo>
-          <ram:LineThree>Line 3</ram:LineThree>
-          <ram:CityName>City</ram:CityName>
+          <ram:PostcodeCode>99999</ram:PostcodeCode>
+          <ram:LineOne>Address 1</ram:LineOne>
+          <ram:LineTwo>Address 2</ram:LineTwo>
+          <ram:LineThree>Address 3</ram:LineThree>
+          <ram:CityName>Town</ram:CityName>
           <ram:CountryID>DE</ram:CountryID>
-          <ram:CountrySubDivisionName>Bavaria</ram:CountrySubDivisionName>
+          <ram:CountrySubDivisionName>Saxony</ram:CountrySubDivisionName>
         </ram:PostalTradeAddress>
         <ram:URIUniversalCommunication>
           <ram:URIID schemeID="EM">info@shipto.de</ram:URIID>
         </ram:URIUniversalCommunication>
         <ram:SpecifiedTaxRegistration>
-          <ram:ID schemeID="VA">893489787987</ram:ID>
+          <ram:ID schemeID="VA">7368366239786-SH</ram:ID>
         </ram:SpecifiedTaxRegistration>
       </ram:ShipToTradeParty>
       <ram:UltimateShipToTradeParty>
         <ram:ID>0815-4711</ram:ID>
         <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
         <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
-        <ram:Name>Ultimate Ship Tó GmbH</ram:Name>
+        <ram:Name>Ultimate Ship To GmbH</ram:Name>
         <ram:SpecifiedLegalOrganization>
           <ram:ID schemeID="8884">3874837489237</ram:ID>
           <ram:TradingBusinessName>Ultimate Ship To AG</ram:TradingBusinessName>
         </ram:SpecifiedLegalOrganization>
         <ram:DefinedTradeContact>
-          <ram:PersonName>Horst Meier</ram:PersonName>
-          <ram:DepartmentName>Buchhaltung</ram:DepartmentName>
+          <ram:PersonName>Karl-Heinz Meier</ram:PersonName>
+          <ram:DepartmentName>Office</ram:DepartmentName>
           <ram:TelephoneUniversalCommunication>
-            <ram:CompleteNumber>0815-4711</ram:CompleteNumber>
+            <ram:CompleteNumber>0815-7777-0</ram:CompleteNumber>
           </ram:TelephoneUniversalCommunication>
           <ram:FaxUniversalCommunication>
-            <ram:CompleteNumber>0815-4712</ram:CompleteNumber>
+            <ram:CompleteNumber>0815-7777-1</ram:CompleteNumber>
           </ram:FaxUniversalCommunication>
           <ram:EmailURIUniversalCommunication>
             <ram:URIID>horst.meier@ultimateshipto.de</ram:URIID>
@@ -634,9 +634,9 @@
         </ram:SpecifiedTaxRegistration>
       </ram:UltimateShipToTradeParty>
       <ram:ShipFromTradeParty>
-        <ram:ID>0815-4711</ram:ID>
-        <ram:GlobalID schemeID="0088">11111</ram:GlobalID>
-        <ram:GlobalID schemeID="0088">22222</ram:GlobalID>
+        <ram:ID>0815-4711-SF</ram:ID>
+        <ram:GlobalID schemeID="0088">11111-SF</ram:GlobalID>
+        <ram:GlobalID schemeID="0088">22222-SF</ram:GlobalID>
         <ram:Name>Ship From GmbH</ram:Name>
         <ram:SpecifiedLegalOrganization>
           <ram:ID schemeID="8884">3874837489237</ram:ID>
@@ -668,7 +668,7 @@
           <ram:URIID schemeID="EM">info@shipfrom.de</ram:URIID>
         </ram:URIUniversalCommunication>
         <ram:SpecifiedTaxRegistration>
-          <ram:ID schemeID="VA">893489787987</ram:ID>
+          <ram:ID schemeID="VA">1234567890-SF</ram:ID>
         </ram:SpecifiedTaxRegistration>
       </ram:ShipFromTradeParty>
       <ram:ActualDeliverySupplyChainEvent>
