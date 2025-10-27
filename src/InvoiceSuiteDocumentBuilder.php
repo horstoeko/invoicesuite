@@ -3931,15 +3931,18 @@ class InvoiceSuiteDocumentBuilder
      *
      * @param string|null $newDescription Text description of the payment terms
      * @param DateTimeInterface|null $newDueDate Date by which payment is due
+     * @param string|null $newMandate Identification of the mandate reference
      * @return self
      */
     public function setDocumentPaymentTerm(
         ?string $newDescription = null,
         ?DateTimeInterface $newDueDate = null,
+        ?string $newMandate = null
     ): self {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPaymentTerm(
             $newDescription,
-            $newDueDate
+            $newDueDate,
+            $newMandate
         );
 
         return $this;
@@ -3950,15 +3953,18 @@ class InvoiceSuiteDocumentBuilder
      *
      * @param string|null $newDescription Text description of the payment terms
      * @param DateTimeInterface|null $newDueDate Date by which payment is due
+     * @param string|null $newMandate Identification of the mandate reference
      * @return self
      */
     public function addDocumentPaymentTerm(
         ?string $newDescription = null,
         ?DateTimeInterface $newDueDate = null,
+        ?string $newMandate = null
     ): self {
         $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPaymentTerm(
             $newDescription,
-            $newDueDate
+            $newDueDate,
+            $newMandate
         );
 
         return $this;

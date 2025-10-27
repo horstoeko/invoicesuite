@@ -548,7 +548,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
             function (InvoiceSuitePaymentTermDTO $item): void {
                 $this->setDocumentPaymentTerm(
                     $item->getDescription(),
-                    $item->getDueDate()
+                    $item->getDueDate(),
+                    $item->getMandate()
                 );
             }
         );
@@ -6211,11 +6212,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
      *
      * @param string|null $newDescription Text description of the payment terms
      * @param DateTimeInterface|null $newDueDate Date by which payment is due
+     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return self
      */
     public function setDocumentPaymentTerm(
         ?string $newDescription = null,
         ?DateTimeInterface $newDueDate = null,
+        ?string $newMandate = null
     ): self {
         $this
             ->getUblInvoiceRootObject()
@@ -6227,7 +6230,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
 
         $this->addDocumentPaymentTerm(
             $newDescription,
-            $newDueDate
+            $newDueDate,
+            $newMandate
         );
 
         return $this;
@@ -6238,11 +6242,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
      *
      * @param string|null $newDescription Text description of the payment terms
      * @param DateTimeInterface|null $newDueDate Date by which payment is due
+     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return self
      */
     public function addDocumentPaymentTerm(
         ?string $newDescription = null,
         ?DateTimeInterface $newDueDate = null,
+        ?string $newMandate = null
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDescription])) {
             return $this;

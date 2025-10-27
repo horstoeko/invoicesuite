@@ -846,7 +846,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             function (InvoiceSuitePaymentTermDTO $item): void {
                 $this->addDocumentPaymentTerm(
                     $item->getDescription(),
-                    $item->getDueDate()
+                    $item->getDueDate(),
+                    $item->getMandate()
                 );
                 $item->firstDiscountTerm(
                     fn(InvoiceSuitePaymentTermDiscountDTO $item) => $this->setDocumentPaymentDiscountTermsInLastPaymentTerm(
@@ -8667,11 +8668,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
      *
      * @param string|null $newDescription __BT-20, From _BASIC WL__ Text description of the payment terms
      * @param DateTimeInterface|null $newDueDate __BT-9, From BASIC WL__ Date by which payment is due
+     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return self
      */
     public function setDocumentPaymentTerm(
         ?string $newDescription = null,
         ?DateTimeInterface $newDueDate = null,
+        ?string $newMandate = null
     ): self {
         $this
             ->getCrossIndustryRootObject()
@@ -8685,7 +8688,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         $this->addDocumentPaymentTerm(
             $newDescription,
-            $newDueDate
+            $newDueDate,
+            $newMandate
         );
 
         return $this;
@@ -8696,11 +8700,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
      *
      * @param string|null $newDescription __BT-20, From _BASIC WL__ Text description of the payment terms
      * @param DateTimeInterface|null $newDueDate __BT-9, From BASIC WL__ Date by which payment is due
+     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return self
      */
     public function addDocumentPaymentTerm(
         ?string $newDescription = null,
         ?DateTimeInterface $newDueDate = null,
+        ?string $newMandate = null
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDescription])) {
             return $this;
@@ -8720,6 +8726,12 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 ->getDateTimeStringWithCreate()
                 ->setValue($newDueDate->format("Ymd"))
                 ->setFormat("102");
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newMandate)) {
+            $paymentTerm
+                ->getDirectDebitMandateIDWithCreate()
+                ->setValue($newMandate);
         }
 
         return $this;

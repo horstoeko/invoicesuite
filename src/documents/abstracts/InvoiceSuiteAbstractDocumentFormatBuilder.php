@@ -3083,11 +3083,13 @@ abstract class InvoiceSuiteAbstractDocumentFormatBuilder
      *
      * @param string|null $newDescription Text description of the payment terms
      * @param DateTimeInterface|null $newDueDate Date by which payment is due
+     * @param string|null $newMandate Identification of the mandate reference
      * @return self
      */
     abstract public function setDocumentPaymentTerm(
         ?string $newDescription = null,
-        ?DateTimeInterface $newDueDate = null
+        ?DateTimeInterface $newDueDate = null,
+        ?string $newMandate = null
     ): self;
 
     /**
@@ -3095,11 +3097,13 @@ abstract class InvoiceSuiteAbstractDocumentFormatBuilder
      *
      * @param string|null $newDescription Text description of the payment terms
      * @param DateTimeInterface|null $newDueDate Date by which payment is due
+     * @param string|null $newMandate Identification of the mandate reference
      * @return self
      */
     abstract public function addDocumentPaymentTerm(
         ?string $newDescription = null,
-        ?DateTimeInterface $newDueDate = null
+        ?DateTimeInterface $newDueDate = null,
+        ?string $newMandate = null
     ): self;
 
     /**

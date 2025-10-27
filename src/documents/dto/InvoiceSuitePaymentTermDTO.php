@@ -51,23 +51,33 @@ class InvoiceSuitePaymentTermDTO
     protected array $penaltyTerms = [];
 
     /**
+     * The mandate reference
+     *
+     * @var string|null
+     */
+    protected ?string $mandate = null;
+
+    /**
      * Constructor
      *
      * @param string|null $description The text description of the payment terms
      * @param DateTimeInterface|null $dueDate The date by which payment is due
      * @param array<InvoiceSuitePaymentTermDiscountDTO> $discountTerms The payment discounts
      * @param array<InvoiceSuitePaymentTermPenaltyDTO> $penaltyTerms The payment penalties
+     * @param string|null $description The mandate reference
      */
     public function __construct(
         ?string $description = null,
         ?DateTimeInterface $dueDate = null,
         array $discountTerms = [],
         array $penaltyTerms = [],
+        ?string $mandate = null,
     ) {
         $this->setDescription($description);
         $this->setDueDate($dueDate);
         $this->setDiscountTerms($discountTerms);
         $this->setPenaltyTerms($penaltyTerms);
+        $this->setMandate($mandate);
     }
 
     /**
@@ -89,6 +99,29 @@ class InvoiceSuitePaymentTermDTO
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Returns the mandate reference
+     *
+     * @return string|null
+     */
+    public function getMandate(): ?string
+    {
+        return $this->mandate;
+    }
+
+    /**
+     * Sets the mandate reference
+     *
+     * @param string|null $description The mandate reference
+     * @return self
+     */
+    public function setMandate(?string $mandate): self
+    {
+        $this->mandate = $mandate;
 
         return $this;
     }
