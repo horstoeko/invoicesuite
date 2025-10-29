@@ -101,6 +101,16 @@
           <ram:Description>PRODUCTREFDESC-1</ram:Description>
           <ram:UnitQuantity unitCode="C62">1.00</ram:UnitQuantity>
         </ram:IncludedReferencedProduct>
+        <ram:IncludedReferencedProduct>
+          <ram:ID>PRODUCTREFID-2</ram:ID>
+          <ram:GlobalID schemeID="PRODUCTREFGLOBALIDTYPE-2">PRODUCTREFGLOBALID-2</ram:GlobalID>
+          <ram:SellerAssignedID>PRODUCTREFSELLERID-2</ram:SellerAssignedID>
+          <ram:BuyerAssignedID>PRODUCTREFBUYERID-2</ram:BuyerAssignedID>
+          <ram:IndustryAssignedID>PRODUCTREFINDID-2</ram:IndustryAssignedID>
+          <ram:Name>PRODUCTREFNAME-2</ram:Name>
+          <ram:Description>PRODUCTREFDESC-2</ram:Description>
+          <ram:UnitQuantity unitCode="H87">2.00</ram:UnitQuantity>
+        </ram:IncludedReferencedProduct>
       </ram:SpecifiedTradeProduct>
       <ram:SpecifiedLineTradeAgreement>
         <ram:SellerOrderReferencedDocument>
@@ -114,21 +124,21 @@
           <ram:IssuerAssignedID>BO-1</ram:IssuerAssignedID>
           <ram:LineID>10</ram:LineID>
           <ram:FormattedIssueDateTime>
-            <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+            <qdt:DateTimeString format="102">19700102</qdt:DateTimeString>
           </ram:FormattedIssueDateTime>
         </ram:BuyerOrderReferencedDocument>
         <ram:QuotationReferencedDocument>
           <ram:IssuerAssignedID>QU-1</ram:IssuerAssignedID>
           <ram:LineID>100</ram:LineID>
           <ram:FormattedIssueDateTime>
-            <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+            <qdt:DateTimeString format="102">19700103</qdt:DateTimeString>
           </ram:FormattedIssueDateTime>
         </ram:QuotationReferencedDocument>
         <ram:ContractReferencedDocument>
           <ram:IssuerAssignedID>CON-1</ram:IssuerAssignedID>
           <ram:LineID>100</ram:LineID>
           <ram:FormattedIssueDateTime>
-            <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+            <qdt:DateTimeString format="102">19700104</qdt:DateTimeString>
           </ram:FormattedIssueDateTime>
         </ram:ContractReferencedDocument>
         <ram:AdditionalReferencedDocument>
@@ -173,7 +183,14 @@
           <ram:IssuerAssignedID>UCOR-1</ram:IssuerAssignedID>
           <ram:LineID>10</ram:LineID>
           <ram:FormattedIssueDateTime>
-            <qdt:DateTimeString format="102">19700101</qdt:DateTimeString>
+            <qdt:DateTimeString format="102">19700110</qdt:DateTimeString>
+          </ram:FormattedIssueDateTime>
+        </ram:UltimateCustomerOrderReferencedDocument>
+        <ram:UltimateCustomerOrderReferencedDocument>
+          <ram:IssuerAssignedID>UCOR-1</ram:IssuerAssignedID>
+          <ram:LineID>20</ram:LineID>
+          <ram:FormattedIssueDateTime>
+            <qdt:DateTimeString format="102">19700111</qdt:DateTimeString>
           </ram:FormattedIssueDateTime>
         </ram:UltimateCustomerOrderReferencedDocument>
       </ram:SpecifiedLineTradeAgreement>

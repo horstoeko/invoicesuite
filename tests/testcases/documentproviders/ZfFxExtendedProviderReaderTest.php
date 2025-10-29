@@ -2554,4 +2554,334 @@ class ZfFxExtendedProviderReaderTest extends TestCase
 
         $this->assertFalse(self::$document->nextDocumentPosition());
     }
+
+    public function testFirstNextGetPositionReferencedProduct(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        $this->assertTrue(self::$document->firstDocumentPositionReferencedProduct());
+
+        self::$document->getDocumentPositionReferencedProduct(
+            $newProductId,
+            $newProductName,
+            $newProductDescription,
+            $newProductSellerId,
+            $newProductBuyerId,
+            $newProductGlobalId,
+            $newProductGlobalIdType,
+            $newProductIndustryId,
+            $newProductUnitQuantity,
+            $newProductUnitQuantityUnit
+        );
+
+        $this->assertSame("PRODUCTREFID-1", $newProductId);
+        $this->assertSame("PRODUCTREFNAME-1", $newProductName);
+        $this->assertSame("PRODUCTREFDESC-1", $newProductDescription);
+        $this->assertSame("PRODUCTREFSELLERID-1", $newProductSellerId);
+        $this->assertSame("PRODUCTREFBUYERID-1", $newProductBuyerId);
+        $this->assertSame("PRODUCTREFGLOBALID-1", $newProductGlobalId);
+        $this->assertSame("PRODUCTREFGLOBALIDTYPE-1", $newProductGlobalIdType);
+        $this->assertSame("PRODUCTREFINDID-1", $newProductIndustryId);
+        $this->assertSame(1.0, $newProductUnitQuantity);
+        $this->assertSame("C62", $newProductUnitQuantityUnit);
+
+        $this->assertTrue(self::$document->nextDocumentPositionReferencedProduct());
+
+        self::$document->getDocumentPositionReferencedProduct(
+            $newProductId,
+            $newProductName,
+            $newProductDescription,
+            $newProductSellerId,
+            $newProductBuyerId,
+            $newProductGlobalId,
+            $newProductGlobalIdType,
+            $newProductIndustryId,
+            $newProductUnitQuantity,
+            $newProductUnitQuantityUnit
+        );
+
+        $this->assertSame("PRODUCTREFID-2", $newProductId);
+        $this->assertSame("PRODUCTREFNAME-2", $newProductName);
+        $this->assertSame("PRODUCTREFDESC-2", $newProductDescription);
+        $this->assertSame("PRODUCTREFSELLERID-2", $newProductSellerId);
+        $this->assertSame("PRODUCTREFBUYERID-2", $newProductBuyerId);
+        $this->assertSame("PRODUCTREFGLOBALID-2", $newProductGlobalId);
+        $this->assertSame("PRODUCTREFGLOBALIDTYPE-2", $newProductGlobalIdType);
+        $this->assertSame("PRODUCTREFINDID-2", $newProductIndustryId);
+        $this->assertSame(2.0, $newProductUnitQuantity);
+        $this->assertSame("H87", $newProductUnitQuantityUnit);
+
+        $this->assertFalse(self::$document->nextDocumentPositionReferencedProduct());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testFirstNextGetDocumentPositionSellerOrderReference(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        $this->assertTrue(self::$document->firstDocumentPositionSellerOrderReference());
+
+        self::$document->getDocumentPositionSellerOrderReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
+
+        $this->assertSame("SO-1", $newReferenceNumber);
+        $this->assertSame("1", $newReferenceLineNumber);
+        $this->assertSame("19700101", $newReferenceDate->format("Ymd"));
+
+        $this->assertFalse(self::$document->nextDocumentPositionSellerOrderReference());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testFirstNextGetDocumentPositionBuyerOrderReference(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        $this->assertTrue(self::$document->firstDocumentPositionBuyerOrderReference());
+
+        self::$document->getDocumentPositionBuyerOrderReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
+
+        $this->assertSame("BO-1", $newReferenceNumber);
+        $this->assertSame("10", $newReferenceLineNumber);
+        $this->assertSame("19700102", $newReferenceDate->format("Ymd"));
+
+        $this->assertFalse(self::$document->nextDocumentPositionBuyerOrderReference());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testFirstNextGetDocumentPositionQuotationReference(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        $this->assertTrue(self::$document->firstDocumentPositionQuotationReference());
+
+        self::$document->getDocumentPositionQuotationReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
+
+        $this->assertSame("QU-1", $newReferenceNumber);
+        $this->assertSame("100", $newReferenceLineNumber);
+        $this->assertSame("19700103", $newReferenceDate->format("Ymd"));
+
+        $this->assertFalse(self::$document->nextDocumentPositionQuotationReference());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testFirstNextGetDocumentPositionContractReference(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        $this->assertTrue(self::$document->firstDocumentPositionContractReference());
+
+        self::$document->getDocumentPositionContractReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
+
+        $this->assertSame("CON-1", $newReferenceNumber);
+        $this->assertSame("100", $newReferenceLineNumber);
+        $this->assertSame("19700104", $newReferenceDate->format("Ymd"));
+
+        $this->assertFalse(self::$document->nextDocumentPositionContractReference());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testFirstNextGetDocumentPositionAdditionalReference(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        $this->assertTrue(self::$document->firstDocumentPositionAdditionalReference());
+
+        self::$document->getDocumentPositionAdditionalReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate,
+            $newTypeCode,
+            $newReferenceTypeCode,
+            $newDescription,
+            $newInvoiceSuiteAttachment
+        );
+
+        $this->assertSame("ADD-1", $newReferenceNumber);
+        $this->assertSame("100", $newReferenceLineNumber);
+        $this->assertSame("19700101", $newReferenceDate->format("Ymd"));
+        $this->assertSame("TYPECODE-1", $newTypeCode);
+        $this->assertSame("REFTYPECODE-1", $newReferenceTypeCode);
+        $this->assertSame("DESC-1", $newDescription);
+        $this->assertNull($newInvoiceSuiteAttachment);
+
+        $this->assertTrue(self::$document->nextDocumentPositionAdditionalReference());
+
+        self::$document->getDocumentPositionAdditionalReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate,
+            $newTypeCode,
+            $newReferenceTypeCode,
+            $newDescription,
+            $newInvoiceSuiteAttachment
+        );
+
+        $this->assertSame("ADD-1", $newReferenceNumber);
+        $this->assertSame("200", $newReferenceLineNumber);
+        $this->assertSame("19700102", $newReferenceDate->format("Ymd"));
+        $this->assertSame("TYPECODE-2", $newTypeCode);
+        $this->assertSame("REFTYPECODE-2", $newReferenceTypeCode);
+        $this->assertSame("DESC-2", $newDescription);
+        $this->assertNull($newInvoiceSuiteAttachment);
+
+        $this->assertFalse(self::$document->nextDocumentPositionAdditionalReference());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testFirstNextGetDocumentPositionUltimateCustomerOrderReference(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        $this->assertTrue(self::$document->firstDocumentPositionUltimateCustomerOrderReference());
+
+        self::$document->getDocumentPositionUltimateCustomerOrderReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
+
+        $this->assertSame("UCOR-1", $newReferenceNumber);
+        $this->assertSame("10", $newReferenceLineNumber);
+        $this->assertSame("19700110", $newReferenceDate->format("Ymd"));
+
+        $this->assertTrue(self::$document->nextDocumentPositionUltimateCustomerOrderReference());
+
+        self::$document->getDocumentPositionUltimateCustomerOrderReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
+
+        $this->assertSame("UCOR-1", $newReferenceNumber);
+        $this->assertSame("20", $newReferenceLineNumber);
+        $this->assertSame("19700111", $newReferenceDate->format("Ymd"));
+
+        $this->assertFalse(self::$document->nextDocumentPositionUltimateCustomerOrderReference());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testFirstNextGetDocumentPositionDespatchAdviceReference(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        $this->assertTrue(self::$document->firstDocumentPositionDespatchAdviceReference());
+
+        self::$document->getDocumentPositionDespatchAdviceReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
+
+        $this->assertSame("DESPADV-1", $newReferenceNumber);
+        $this->assertSame("100", $newReferenceLineNumber);
+        $this->assertSame("19700101", $newReferenceDate->format("Ymd"));
+
+        $this->assertFalse(self::$document->nextDocumentPositionDespatchAdviceReference());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testFirstNextGetDocumentPositionReceivingAdviceReference(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        $this->assertTrue(self::$document->firstDocumentPositionReceivingAdviceReference());
+
+        self::$document->getDocumentPositionReceivingAdviceReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
+
+        $this->assertSame("RECADV-1", $newReferenceNumber);
+        $this->assertSame("10", $newReferenceLineNumber);
+        $this->assertSame("19700101", $newReferenceDate->format("Ymd"));
+
+        $this->assertFalse(self::$document->nextDocumentPositionReceivingAdviceReference());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testFirstNextGetDocumentPositionDeliveryNoteReference(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        $this->assertTrue(self::$document->firstDocumentPositionDeliveryNoteReference());
+
+        self::$document->getDocumentPositionDeliveryNoteReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
+
+        $this->assertSame("DEVNOTE-1", $newReferenceNumber);
+        $this->assertSame("10", $newReferenceLineNumber);
+        $this->assertSame("19700101", $newReferenceDate->format("Ymd"));
+
+        $this->assertFalse(self::$document->nextDocumentPositionDeliveryNoteReference());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
 }
