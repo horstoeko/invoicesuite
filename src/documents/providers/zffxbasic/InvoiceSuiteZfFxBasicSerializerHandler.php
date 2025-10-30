@@ -50,12 +50,6 @@ class InvoiceSuiteZfFxBasicSerializerHandler implements SubscribingHandlerInterf
                 'type' => 'horstoeko\invoicesuite\documents\models\zffxbasic\udt\IndicatorType',
                 'method' => 'serializeIndicatorType'
             ],
-            [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
-                'format' => 'xml',
-                'type' => 'horstoeko\invoicesuite\documents\models\zffxbasic\udt\MeasureType',
-                'method' => 'serializeMeasureType'
-            ],
         ];
     }
 
@@ -130,33 +124,6 @@ class InvoiceSuiteZfFxBasicSerializerHandler implements SubscribingHandlerInterf
                 InvoiceSuiteSettings::getThousandsSeparator()
             )
         );
-    }
-
-    /**
-     * Serialize a meassure value
-     * The valze will be serialized (by default) with a precission of 2 digits
-     *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed                   $data
-     */
-    public function serializeMeasureType(XmlSerializationVisitor $visitor, $data): DOMText
-    {
-        $node = $visitor->getDocument()->createTextNode(
-            number_format(
-                $data->getValue(),
-                InvoiceSuiteSettings::getSpecialDecimalPlacesMap($visitor->getCurrentNode()->getNodePath(), InvoiceSuiteSettings::getMeasureDecimals()),
-                InvoiceSuiteSettings::getDecimalSeparator(),
-                InvoiceSuiteSettings::getThousandsSeparator()
-            )
-        );
-
-        if ($data->getUnitCode() != null) {
-            $attr = $visitor->getDocument()->createAttribute("unitCode");
-            $attr->value = $data->getUnitCode();
-            $visitor->getCurrentNode()->appendChild($attr);
-        }
-
-        return $node;
     }
 
     /**

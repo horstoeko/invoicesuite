@@ -35,12 +35,6 @@ class InvoiceSuiteZfFxBasicWlSerializerHandler implements SubscribingHandlerInte
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
-                'type' => 'horstoeko\invoicesuite\documents\models\zffxbasicwl\udt\QuantityType',
-                'method' => 'serializeQuantityType'
-            ],
-            [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
-                'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\zffxbasicwl\udt\PercentType',
                 'method' => 'serializePercentType'
             ],
@@ -49,12 +43,6 @@ class InvoiceSuiteZfFxBasicWlSerializerHandler implements SubscribingHandlerInte
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\zffxbasicwl\udt\IndicatorType',
                 'method' => 'serializeIndicatorType'
-            ],
-            [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
-                'format' => 'xml',
-                'type' => 'horstoeko\invoicesuite\documents\models\zffxbasicwl\udt\MeasureType',
-                'method' => 'serializeMeasureType'
             ],
         ];
     }
@@ -87,33 +75,6 @@ class InvoiceSuiteZfFxBasicWlSerializerHandler implements SubscribingHandlerInte
     }
 
     /**
-     * Serialize quantity type
-     * The quantity will be serialized (by default) with a precission of 2 digits
-     *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed                   $data
-     */
-    public function serializeQuantityType(XmlSerializationVisitor $visitor, $data): DOMText
-    {
-        $node = $visitor->getDocument()->createTextNode(
-            number_format(
-                $data->getValue(),
-                InvoiceSuiteSettings::getSpecialDecimalPlacesMap($visitor->getCurrentNode()->getNodePath(), InvoiceSuiteSettings::getQuantityDecimals()),
-                InvoiceSuiteSettings::getDecimalSeparator(),
-                InvoiceSuiteSettings::getThousandsSeparator()
-            )
-        );
-
-        if ($data->getUnitCode() != null) {
-            $attr = $visitor->getDocument()->createAttribute("unitCode");
-            $attr->value = $data->getUnitCode();
-            $visitor->getCurrentNode()->appendChild($attr);
-        }
-
-        return $node;
-    }
-
-    /**
      * Serialize a percantage value
      * The valze will be serialized (by default) with a precission of 2 digits
      *
@@ -130,33 +91,6 @@ class InvoiceSuiteZfFxBasicWlSerializerHandler implements SubscribingHandlerInte
                 InvoiceSuiteSettings::getThousandsSeparator()
             )
         );
-    }
-
-    /**
-     * Serialize a meassure value
-     * The valze will be serialized (by default) with a precission of 2 digits
-     *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed                   $data
-     */
-    public function serializeMeasureType(XmlSerializationVisitor $visitor, $data): DOMText
-    {
-        $node = $visitor->getDocument()->createTextNode(
-            number_format(
-                $data->getValue(),
-                InvoiceSuiteSettings::getSpecialDecimalPlacesMap($visitor->getCurrentNode()->getNodePath(), InvoiceSuiteSettings::getMeasureDecimals()),
-                InvoiceSuiteSettings::getDecimalSeparator(),
-                InvoiceSuiteSettings::getThousandsSeparator()
-            )
-        );
-
-        if ($data->getUnitCode() != null) {
-            $attr = $visitor->getDocument()->createAttribute("unitCode");
-            $attr->value = $data->getUnitCode();
-            $visitor->getCurrentNode()->appendChild($attr);
-        }
-
-        return $node;
     }
 
     /**
