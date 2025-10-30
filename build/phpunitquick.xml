@@ -57,6 +57,7 @@
             <file>../tests/testcases/documentproviders/ZfFxExtendedProviderReaderTest.php</file>
             <file>../tests/testcases/documentproviders/ZfFxComfortProviderTest.php</file>
             <file>../tests/testcases/documentproviders/ZfFxComfortProviderBuilderTest.php</file>
+            <file>../tests/testcases/documentproviders/ZfFxComfortProviderReaderTest.php</file>
             <file>../tests/testcases/documentproviders/ZfFxBasicProviderTest.php</file>
             <file>../tests/testcases/documentproviders/ZfFxBasicProviderBuilderTest.php</file>
             <file>../tests/testcases/documentproviders/ZfFxBasicWlProviderTest.php</file>
