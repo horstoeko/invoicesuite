@@ -69,6 +69,7 @@
             <file>../tests/testcases/documentproviders/ZfFxMinimumProviderReaderTest.php</file>
             <file>../tests/testcases/documentproviders/XRechnungProviderTest.php</file>
             <file>../tests/testcases/documentproviders/XRechnungProviderBuilderTest.php</file>
+            <file>../tests/testcases/documentproviders/XRechnungProviderReaderTest.php</file>
             <file>../tests/testcases/documentproviders/UblInvoiceProviderTest.php</file>
         </testsuite>
         <testsuite name="pdf">
