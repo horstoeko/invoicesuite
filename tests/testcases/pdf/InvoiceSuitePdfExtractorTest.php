@@ -8,6 +8,8 @@ use ArrayAccess;
 use Countable;
 use IteratorAggregate;
 use LogicException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteExceptionCodes;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractor;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractorAttachment;
 use horstoeko\invoicesuite\tests\TestCase;
@@ -15,12 +17,14 @@ use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 
 final class InvoiceSuitePdfExtractorTest extends TestCase
 {
-    /**
-     * Locate a sample PDF next to this test file.
-     */
     private function getSamplePdfPath(): string
     {
         return InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..", "..", "assets"), "pdf_with_multiple_attachments.pdf");
+    }
+
+    private function getNotExistingSamplePdfPath(): string
+    {
+        return InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..", "..", "assets"), "notexisting.pdf");
     }
 
     public function testAttachmentConstructorAndAccessors(): void
@@ -135,5 +139,16 @@ final class InvoiceSuitePdfExtractorTest extends TestCase
         $this->assertInstanceOf(InvoiceSuitePdfExtractorAttachment::class, $attachmentsArrayB[1]);
         $this->assertInstanceOf(InvoiceSuitePdfExtractorAttachment::class, $attachmentsArrayA[2]);
         $this->assertInstanceOf(InvoiceSuitePdfExtractorAttachment::class, $attachmentsArrayB[2]);
+    }
+
+    public function testFileNotFound(): void
+    {
+        $this->expectException(InvoiceSuiteFileNotFoundException::class);
+        $this->expectExceptionCode(InvoiceSuiteExceptionCodes::FILENOTFOUND);
+        $this->expectExceptionMessage('notexisting.pdf was not found');
+
+        $pdfPath = $this->getNotExistingSamplePdfPath();
+
+        $extractor = InvoiceSuitePdfExtractor::fromFile($pdfPath);
     }
 }
