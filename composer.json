@@ -65,9 +65,9 @@
             "Composer\\Config::disableProcessTimeout",
             "./vendor/bin/phpunit --configuration ./build/phpunit.xml"
         ],
-        "testsrealquick": [
+        "testsreal:quick": [
             "Composer\\Config::disableProcessTimeout",
-            "./vendor/bin/phpunit --configuration ./build/phpunitquick.xml"
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --no-coverage"
         ],
         "phpcs": "@phpcs12",
         "phpcs12": [
