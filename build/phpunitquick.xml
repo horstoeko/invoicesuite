@@ -93,6 +93,7 @@
             <file>../tests/testcases/documentreadbuild/XRechnungDocumentBuilderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxExtendedDocumentReaderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxComfortDocumentReaderTest.php</file>
+            <file>../tests/testcases/documentreadbuild/ZfFxBasicDocumentReaderTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>
