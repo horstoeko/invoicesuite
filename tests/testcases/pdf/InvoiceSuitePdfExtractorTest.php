@@ -149,6 +149,6 @@ final class InvoiceSuitePdfExtractorTest extends TestCase
 
         $pdfPath = $this->getNotExistingSamplePdfPath();
 
-        $extractor = InvoiceSuitePdfExtractor::fromFile($pdfPath);
+        InvoiceSuitePdfExtractor::fromFile($pdfPath);
     }
 }
