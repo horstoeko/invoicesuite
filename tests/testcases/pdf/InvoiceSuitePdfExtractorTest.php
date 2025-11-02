@@ -54,9 +54,7 @@ final class InvoiceSuitePdfExtractorTest extends TestCase
 
     public function testExtractorFromFileAndTraversals(): void
     {
-        $pdfPath = $this->getSamplePdfPath();
-
-        $extractor = InvoiceSuitePdfExtractor::fromFile($pdfPath);
+        $extractor = InvoiceSuitePdfExtractor::fromFile($this->getSamplePdfPath());
 
         $this->assertInstanceOf(ArrayAccess::class, $extractor);
         $this->assertInstanceOf(Countable::class, $extractor);
@@ -91,8 +89,7 @@ final class InvoiceSuitePdfExtractorTest extends TestCase
 
     public function testExtractorArrayAccessSetThrows(): void
     {
-        $pdfPath = $this->getSamplePdfPath();
-        $extractor = InvoiceSuitePdfExtractor::fromFile($pdfPath);
+        $extractor = InvoiceSuitePdfExtractor::fromFile($this->getSamplePdfPath());
 
         $this->expectException(LogicException::class);
         $extractor[0] = new InvoiceSuitePdfExtractorAttachment('', '', 'text/plain');
@@ -100,8 +97,7 @@ final class InvoiceSuitePdfExtractorTest extends TestCase
 
     public function testExtractorArrayAccessUnsetThrows(): void
     {
-        $pdfPath = $this->getSamplePdfPath();
-        $extractor = InvoiceSuitePdfExtractor::fromFile($pdfPath);
+        $extractor = InvoiceSuitePdfExtractor::fromFile($this->getSamplePdfPath());
 
         $this->expectException(LogicException::class);
         unset($extractor[0]);
@@ -109,9 +105,7 @@ final class InvoiceSuitePdfExtractorTest extends TestCase
 
     public function testExtractorToArrayNotReturnsCopy(): void
     {
-        $pdfPath = $this->getSamplePdfPath();
-
-        $extractor = InvoiceSuitePdfExtractor::fromFile($pdfPath);
+        $extractor = InvoiceSuitePdfExtractor::fromFile($this->getSamplePdfPath());
 
         $attachmentsArrayA = $extractor->toArray();
         $attachmentsArrayB = $extractor->toArray();
@@ -147,8 +141,6 @@ final class InvoiceSuitePdfExtractorTest extends TestCase
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::FILENOTFOUND);
         $this->expectExceptionMessage('notexisting.pdf was not found');
 
-        $pdfPath = $this->getNotExistingSamplePdfPath();
-
-        InvoiceSuitePdfExtractor::fromFile($pdfPath);
+        InvoiceSuitePdfExtractor::fromFile($this->getNotExistingSamplePdfPath());
     }
 }
