@@ -1874,7 +1874,7 @@ class InvoiceSuiteDocumentReader
      */
     public function firstDocumentProductEndUserAddress(): bool
     {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentProductEndUserAddress();
     }
 
     /**
@@ -2174,7 +2174,7 @@ class InvoiceSuiteDocumentReader
      */
     public function firstDocumentShipToAddress(): bool
     {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipToAddress();
     }
 
     /**
@@ -2474,7 +2474,7 @@ class InvoiceSuiteDocumentReader
      */
     public function firstDocumentUltimateShipToAddress(): bool
     {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentUltimateShipToAddress();
     }
 
     /**
@@ -2774,7 +2774,7 @@ class InvoiceSuiteDocumentReader
      */
     public function firstDocumentShipFromAddress(): bool
     {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipFromAddress();
     }
 
     /**
@@ -3074,7 +3074,7 @@ class InvoiceSuiteDocumentReader
      */
     public function firstDocumentInvoicerAddress(): bool
     {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoicerAddress();
     }
 
     /**
@@ -3374,7 +3374,7 @@ class InvoiceSuiteDocumentReader
      */
     public function firstDocumentInvoiceeAddress(): bool
     {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoiceeAddress();
     }
 
     /**
@@ -3674,7 +3674,7 @@ class InvoiceSuiteDocumentReader
      */
     public function firstDocumentPayeeAddress(): bool
     {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayeeAddress();
     }
 
     /**
