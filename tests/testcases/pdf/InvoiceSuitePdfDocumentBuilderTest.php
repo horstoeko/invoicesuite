@@ -14,40 +14,62 @@ use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 
 final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
 {
-    private function getSamplePlainPdfPath(): string
+    private function getSampleXmlPath(): string
     {
-        return InvoiceSuitePathUtils::combinePathWithFile(
-            InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..", "..", "assets"),
-            "pdf_plain.pdf"
-        );
+        return InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..", "..", "assets");
     }
 
-    private function getSampleZfFxBasicXmlPath(): string
+    private function getSamplePdfPath(): string
     {
-        return InvoiceSuitePathUtils::combinePathWithFile(
-            InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..", "..", "assets"),
-            "02_technical_xml_zffx_basic.xml"
-        );
+        return InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..", "..", "assets");
     }
 
-    private function getSampleZfFxBasicBuilder(): InvoiceSuiteDocumentBuilder
+    private function getSamplePlainPdfFile(): string
     {
-        $documentBuilder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxbasic');
-        $documentBuilder->setDocumentNo('2025-00000001');
-
-        return $documentBuilder;
+        return InvoiceSuitePathUtils::combinePathWithFile($this->getSamplePdfPath(), "pdf_plain.pdf");
     }
 
-    public function testZfFxBasicCreateFromDocumentBuilderAndPdfFile(): void
+    public static function profileProvider(): iterable
     {
-        $pdfDOcumentBuilder = InvoiceSuitePdfDocumentBuilder::createFromDocumentBuilderAndPdfFile(
-            $this->getSampleZfFxBasicBuilder(),
-            $this->getSamplePlainPdfPath()
-        );
+        return [
+            'zffxminimum' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', false],
+            'zffxbasicwl' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', false],
+            'zffxbasic' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', false],
+            'zffxcomfort' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', false],
+            'zffxextended' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', false],
+            'zffxminimum2' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', "02_technical_xml_zffx_minimum.xml"],
+            'zffxbasicwl2' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', "02_technical_xml_zffx_basicwl.xml"],
+            'zffxbasic2' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', "02_technical_xml_zffx_basic.xml"],
+            'zffxcomfort2' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', "02_technical_xml_zffx_comfort.xml"],
+            'zffxextended2' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', "02_technical_xml_zffx_extended.xml"],
+        ];
+    }
+
+    /**
+     * @dataProvider profileProvider
+     */
+    public function testZfFxBasicCreateFromDocumentBuilderAndPdfFile(string $expectedProfile, string $expectedXmlContains, $expectedUseOfXmlFile): void
+    {
+        if ($expectedUseOfXmlFile !== false) {
+            $xmlFilename = InvoiceSuitePathUtils::combinePathWithFile($this->getSampleXmlPath(), $expectedUseOfXmlFile);
+            $xmlContent = file_get_contents($xmlFilename);
+            $pdfDOcumentBuilder = InvoiceSuitePdfDocumentBuilder::createFromDocumentContentAndPdfFile(
+                $xmlContent,
+                $this->getSamplePlainPdfFile()
+            );
+        } else {
+            $documentBuilder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId($expectedProfile);
+            $documentBuilder->setDocumentNo('2025-00000001');
+
+            $pdfDOcumentBuilder = InvoiceSuitePdfDocumentBuilder::createFromDocumentBuilderAndPdfFile(
+                $documentBuilder,
+                $this->getSamplePlainPdfFile()
+            );
+        }
 
         // Provider
 
-        $this->assertSame("zffxbasic", $pdfDOcumentBuilder->getCurrentDocumentFormatProvider()->getUniqueId());
+        $this->assertSame($expectedProfile, $pdfDOcumentBuilder->getCurrentDocumentFormatProvider()->getUniqueId());
 
         // PdfConstructor properties
 
@@ -90,15 +112,7 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $prop = $this->getPrivatePropertyFromObject($pdfDOcumentBuilder, 'rawDocumentContent');
         $propValue = $prop->getValue($pdfDOcumentBuilder);
 
-        $this->assertStringContainsString("<rsm:ExchangedDocumentContext>", $propValue);
-        $this->assertStringContainsString("<ram:GuidelineSpecifiedDocumentContextParameter>", $propValue);
-        $this->assertStringContainsString("<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>", $propValue);
-        $this->assertStringContainsString("</ram:GuidelineSpecifiedDocumentContextParameter>", $propValue);
-        $this->assertStringContainsString("</rsm:ExchangedDocumentContext>", $propValue);
-        $this->assertStringContainsString("<rsm:ExchangedDocument>", $propValue);
-        $this->assertStringContainsString("<ram:ID>2025-00000001</ram:ID>", $propValue);
-        $this->assertStringContainsString("</rsm:ExchangedDocument>", $propValue);
-        $this->assertStringContainsString("</rsm:CrossIndustryInvoice>", $propValue);
+        $this->assertStringContainsString($expectedXmlContains, $propValue);
 
         $prop = $this->getPrivatePropertyFromObject($pdfDOcumentBuilder, 'rawPdfContent');
         $propValue = $prop->getValue($pdfDOcumentBuilder);
@@ -110,15 +124,7 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $method = $this->getPrivateMethodFromObject($pdfDOcumentBuilder, 'getRawDocumentContent');
         $methodValue = $method->invoke($pdfDOcumentBuilder);
 
-        $this->assertStringContainsString("<rsm:ExchangedDocumentContext>", $methodValue);
-        $this->assertStringContainsString("<ram:GuidelineSpecifiedDocumentContextParameter>", $methodValue);
-        $this->assertStringContainsString("<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>", $methodValue);
-        $this->assertStringContainsString("</ram:GuidelineSpecifiedDocumentContextParameter>", $methodValue);
-        $this->assertStringContainsString("</rsm:ExchangedDocumentContext>", $methodValue);
-        $this->assertStringContainsString("<rsm:ExchangedDocument>", $methodValue);
-        $this->assertStringContainsString("<ram:ID>2025-00000001</ram:ID>", $methodValue);
-        $this->assertStringContainsString("</rsm:ExchangedDocument>", $methodValue);
-        $this->assertStringContainsString("</rsm:CrossIndustryInvoice>", $methodValue);
+        $this->assertStringContainsString($expectedXmlContains, $methodValue);
 
         $method = $this->getPrivateMethodFromObject($pdfDOcumentBuilder, 'getRawPdfContent');
         $methodValue = $method->invoke($pdfDOcumentBuilder);
@@ -137,6 +143,12 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $pdfDOcumentBuilder->setDocumentRelationshipType('Source');
         $this->assertSame("Source", $pdfDOcumentBuilder->getDocumentRelationshipType());
         $pdfDOcumentBuilder->setDocumentRelationshipType('unknown');
+        $this->assertSame("Data", $pdfDOcumentBuilder->getDocumentRelationshipType());
+        $pdfDOcumentBuilder->setDocumentRelationshipTypeToSource();
+        $this->assertSame("Source", $pdfDOcumentBuilder->getDocumentRelationshipType());
+        $pdfDOcumentBuilder->setDocumentRelationshipTypeToAlternative();
+        $this->assertSame("Alternative", $pdfDOcumentBuilder->getDocumentRelationshipType());
+        $pdfDOcumentBuilder->setDocumentRelationshipTypeToData();
         $this->assertSame("Data", $pdfDOcumentBuilder->getDocumentRelationshipType());
     }
 }
