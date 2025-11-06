@@ -29,7 +29,7 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         return InvoiceSuitePathUtils::combinePathWithFile($this->getSamplePdfPath(), "pdf_plain.pdf");
     }
 
-    public static function profileProvider(): iterable
+    public static function zffxProfileProvider(): iterable
     {
         return [
             // First case
@@ -60,9 +60,9 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
     }
 
     /**
-     * @dataProvider profileProvider
+     * @dataProvider zffxProfileProvider
      */
-    public function testZfFxBasicCreateFromDocumentBuilderAndPdfFile(string $expectedProfile, string $expectedXmlContains, $expectedUseOfXmlFile, bool $expectusePdfContent): void
+    public function testZfFxPdfBuilder(string $expectedProfile, string $expectedXmlContains, $expectedUseOfXmlFile, bool $expectusePdfContent): void
     {
         if ($expectusePdfContent !== true) {
             if ($expectedUseOfXmlFile !== false) {
@@ -182,5 +182,47 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $this->assertSame("Alternative", $pdfDOcumentBuilder->getDocumentRelationshipType());
         $pdfDOcumentBuilder->setDocumentRelationshipTypeToData();
         $this->assertSame("Data", $pdfDOcumentBuilder->getDocumentRelationshipType());
+
+        $pdfDOcumentBuilder->setDeterministicMode(true);
+        $this->assertTrue($pdfDOcumentBuilder->getDeterministicMode());
+        $pdfDOcumentBuilder->setDeterministicMode(false);
+        $this->assertFalse($pdfDOcumentBuilder->getDeterministicMode());
+        $pdfDOcumentBuilder->setDeterministicModeToEnabled();
+        $this->assertTrue($pdfDOcumentBuilder->getDeterministicMode());
+        $pdfDOcumentBuilder->setDeterministicModeToDisabled();
+        $this->assertFalse($pdfDOcumentBuilder->getDeterministicMode());
+
+        $pdfDOcumentBuilder->setMetaInformationAuthorTemplate('Some author template');
+        $this->assertSame("Some author template", $pdfDOcumentBuilder->getMetaInformationAuthorTemplate());
+
+        // PdfConstrucor Getter/Setter
+
+        $propPdfConstructor = $this->getPrivatePropertyFromObject($pdfDOcumentBuilder, 'currentPdfConstructor');
+        $propPdfConstructorValue = $propPdfConstructor->getValue($pdfDOcumentBuilder);
+
+        $this->assertInstanceOf(InvoiceSuiteAbstractPdfConstructor::class, $propPdfConstructorValue);
+        $this->assertInstanceOf(InvoiceSuiteZffxPdfConstructor::class, $propPdfConstructorValue);
+
+        $this->assertSame("Some Creator Tool", $propPdfConstructorValue->getAdditionalCreatorTool());
+        $pdfDOcumentBuilder->setAdditionalCreatorTool('My Creator Tool');
+        $this->assertSame("My Creator Tool", $propPdfConstructorValue->getAdditionalCreatorTool());
+
+        $this->assertSame("Data", $propPdfConstructorValue->getDocumentRelationshipType());
+        $pdfDOcumentBuilder->setDocumentRelationshipType('Source');
+        $this->assertSame("Source", $propPdfConstructorValue->getDocumentRelationshipType());
+
+        $this->assertFalse($propPdfConstructorValue->getDeterministicMode());
+        $pdfDOcumentBuilder->setDeterministicMode(true);
+        $this->assertTrue($propPdfConstructorValue->getDeterministicMode());
+        $pdfDOcumentBuilder->setDeterministicMode(false);
+        $this->assertFalse($propPdfConstructorValue->getDeterministicMode());
+        $pdfDOcumentBuilder->setDeterministicModeToEnabled();
+        $this->assertTrue($propPdfConstructorValue->getDeterministicMode());
+        $pdfDOcumentBuilder->setDeterministicModeToDisabled();
+        $this->assertFalse($propPdfConstructorValue->getDeterministicMode());
+
+        $this->assertSame("Some author template", $propPdfConstructorValue->getMetaInformationAuthorTemplate());
+        $pdfDOcumentBuilder->setMetaInformationAuthorTemplate('My author template');
+        $this->assertSame("My author template", $propPdfConstructorValue->getMetaInformationAuthorTemplate());
     }
 }
