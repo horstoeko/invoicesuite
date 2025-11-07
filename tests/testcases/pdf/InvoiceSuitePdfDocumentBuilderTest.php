@@ -32,37 +32,61 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
     public static function zffxProfileProvider(): iterable
     {
         return [
-            // First case
-            'zffxminimum' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', false, false, 'MINIMUM', '1.0'],
-            'zffxbasicwl' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', false, false, 'BASIC WL', '1.0'],
-            'zffxbasic' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', false, false, 'BASIC', '1.0'],
-            'zffxcomfort' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', false, false, 'EN 16931', '1.0'],
-            'zffxextended' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', false, false, 'EXTENDED', '1.0'],
-            // Second case
-            'zffxminimum2' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', "02_technical_xml_zffx_minimum.xml", false, 'MINIMUM', '1.0'],
-            'zffxbasicwl2' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', "02_technical_xml_zffx_basicwl.xml", false, 'BASIC WL', '1.0'],
-            'zffxbasic2' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', "02_technical_xml_zffx_basic.xml", false, 'BASIC', '1.0'],
-            'zffxcomfort2' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', "02_technical_xml_zffx_comfort.xml", false, 'EN 16931', '1.0'],
-            'zffxextended2' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', "02_technical_xml_zffx_extended.xml", false, 'EXTENDED', '1.0'],
-            // Third case
-            'zffxminimum3' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', false, true, 'MINIMUM', '1.0'],
-            'zffxbasicwl3' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', false, true, 'BASIC WL', '1.0'],
-            'zffxbasic3' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', false, true, 'BASIC', '1.0'],
-            'zffxcomfort3' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', false, true, 'EN 16931', '1.0'],
-            'zffxextended3' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', false, true, 'EXTENDED', '1.0'],
-            // Fourth case
-            'zffxminimum4' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', "02_technical_xml_zffx_minimum.xml", true, 'MINIMUM', '1.0'],
-            'zffxbasicwl4' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', "02_technical_xml_zffx_basicwl.xml", true, 'BASIC WL', '1.0'],
-            'zffxbasic4' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', "02_technical_xml_zffx_basic.xml", true, 'BASIC', '1.0'],
-            'zffxcomfort4' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', "02_technical_xml_zffx_comfort.xml", true, 'EN 16931', '1.0'],
-            'zffxextended4' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', "02_technical_xml_zffx_extended.xml", true, 'EXTENDED', '1.0'],
+            // 1.
+            'zffxminimum' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', false, false, 'MINIMUM', '1.0', 1],
+            'zffxbasicwl' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', false, false, 'BASIC WL', '1.0', 1],
+            'zffxbasic' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', false, false, 'BASIC', '1.0', 1],
+            'zffxcomfort' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', false, false, 'EN 16931', '1.0', 1],
+            'zffxextended' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', false, false, 'EXTENDED', '1.0', 1],
+            // 2.
+            'zffxminimum2' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', "02_technical_xml_zffx_minimum.xml", false, 'MINIMUM', '1.0', 1],
+            'zffxbasicwl2' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', "02_technical_xml_zffx_basicwl.xml", false, 'BASIC WL', '1.0', 1],
+            'zffxbasic2' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', "02_technical_xml_zffx_basic.xml", false, 'BASIC', '1.0', 1],
+            'zffxcomfort2' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', "02_technical_xml_zffx_comfort.xml", false, 'EN 16931', '1.0', 1],
+            'zffxextended2' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', "02_technical_xml_zffx_extended.xml", false, 'EXTENDED', '1.0', 1],
+            // 3.
+            'zffxminimum3' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', false, true, 'MINIMUM', '1.0', 1],
+            'zffxbasicwl3' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', false, true, 'BASIC WL', '1.0', 1],
+            'zffxbasic3' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', false, true, 'BASIC', '1.0', 1],
+            'zffxcomfort3' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', false, true, 'EN 16931', '1.0', 1],
+            'zffxextended3' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', false, true, 'EXTENDED', '1.0', 1],
+            // 4.
+            'zffxminimum4' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', "02_technical_xml_zffx_minimum.xml", true, 'MINIMUM', '1.0', 1],
+            'zffxbasicwl4' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', "02_technical_xml_zffx_basicwl.xml", true, 'BASIC WL', '1.0', 1],
+            'zffxbasic4' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', "02_technical_xml_zffx_basic.xml", true, 'BASIC', '1.0', 1],
+            'zffxcomfort4' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', "02_technical_xml_zffx_comfort.xml", true, 'EN 16931', '1.0', 1],
+            'zffxextended4' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', "02_technical_xml_zffx_extended.xml", true, 'EXTENDED', '1.0', 1],
+            // 5.
+            'zffxminimum5' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', false, false, 'MINIMUM', '1.0', 2],
+            'zffxbasicwl5' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', false, false, 'BASIC WL', '1.0', 2],
+            'zffxbasic5' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', false, false, 'BASIC', '1.0', 2],
+            'zffxcomfort5' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', false, false, 'EN 16931', '1.0', 2],
+            'zffxextended5' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', false, false, 'EXTENDED', '1.0', 2],
+            // 6.
+            'zffxminimum6' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', "02_technical_xml_zffx_minimum.xml", false, 'MINIMUM', '1.0', 2],
+            'zffxbasicwl6' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', "02_technical_xml_zffx_basicwl.xml", false, 'BASIC WL', '1.0', 2],
+            'zffxbasic6' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', "02_technical_xml_zffx_basic.xml", false, 'BASIC', '1.0', 2],
+            'zffxcomfort6' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', "02_technical_xml_zffx_comfort.xml", false, 'EN 16931', '1.0', 2],
+            'zffxextended6' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', "02_technical_xml_zffx_extended.xml", false, 'EXTENDED', '1.0', 2],
+            // 7.
+            'zffxminimum7' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', false, true, 'MINIMUM', '1.0', 2],
+            'zffxbasicwl7' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', false, true, 'BASIC WL', '1.0', 2],
+            'zffxbasic7' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', false, true, 'BASIC', '1.0', 2],
+            'zffxcomfort7' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', false, true, 'EN 16931', '1.0', 2],
+            'zffxextended7' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', false, true, 'EXTENDED', '1.0', 2],
+            // 8.
+            'zffxminimum8' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', "02_technical_xml_zffx_minimum.xml", true, 'MINIMUM', '1.0', 2],
+            'zffxbasicwl8' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', "02_technical_xml_zffx_basicwl.xml", true, 'BASIC WL', '1.0', 2],
+            'zffxbasic8' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', "02_technical_xml_zffx_basic.xml", true, 'BASIC', '1.0', 2],
+            'zffxcomfort8' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', "02_technical_xml_zffx_comfort.xml", true, 'EN 16931', '1.0', 2],
+            'zffxextended8' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', "02_technical_xml_zffx_extended.xml", true, 'EXTENDED', '1.0', 2],
         ];
     }
 
     /**
      * @dataProvider zffxProfileProvider
      */
-    public function testZfFxPdfBuilder(string $expectedProfile, string $expectedXmlContains, $expectedUseOfXmlFile, bool $expectusePdfContent, string $expectXmpName, string $expectXmpVersion): void
+    public function testZfFxPdfBuilder(string $expectedProfile, string $expectedXmlContains, $expectedUseOfXmlFile, bool $expectusePdfContent, string $expectXmpName, string $expectXmpVersion, int $expectOutputType): void
     {
         if ($expectusePdfContent !== true) {
             if ($expectedUseOfXmlFile !== false) {
@@ -423,20 +447,19 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $this->assertStringContainsString(sprintf('<fx:Version>%s</fx:Version>', $expectXmpVersion), $propPdfWriterMetaDataValue[0]);
         $this->assertStringContainsString(sprintf('<fx:ConformanceLevel>%s</fx:ConformanceLevel>', $expectXmpName), $propPdfWriterMetaDataValue[0]);
 
-        // Output as file
-
         $pdfDOcumentBuilder->setDeterministicModeToEnabled();
 
-        $saveToFilename = InvoiceSuitePathUtils::combinePathWithFile(sys_get_temp_dir(), 'output.pdf');
+        if ($expectOutputType == 1) {
+            $pdfContent = $pdfDOcumentBuilder->generatePdfDocumentAndGetContent();
+        }
 
-        $pdfDOcumentBuilder->generatePdfDocumentAndSaveToFile($saveToFilename);
-
-        $this->assertFileExists($saveToFilename);
-        $this->registerFileForTestMethodTeardown($saveToFilename);
-
-        // Output as string
-
-        $pdfContent = file_get_contents($saveToFilename);
+        if ($expectOutputType == 2) {
+            $saveToFilename = InvoiceSuitePathUtils::combinePathWithFile(sys_get_temp_dir(), 'output.pdf');
+            $pdfDOcumentBuilder->generatePdfDocumentAndSaveToFile($saveToFilename);
+            $this->assertFileExists($saveToFilename);
+            $this->registerFileForTestMethodTeardown($saveToFilename);
+            $pdfContent = file_get_contents($saveToFilename);
+        }
 
         $pdfParser = new PdfParser();
         $pdfParsed = $pdfParser->parseString($pdfContent);
