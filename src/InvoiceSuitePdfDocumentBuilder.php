@@ -148,7 +148,7 @@ class InvoiceSuitePdfDocumentBuilder
     protected function setDocumentBuilder(InvoiceSuiteDocumentBuilder $fromDocumentBuilder): self
     {
         if (!$fromDocumentBuilder->getCurrentDocumentFormatProvider()->isPdfSupportAvailable()) {
-            throw new InvoiceSuiteInvalidArgumentException(sprintf("Provider %s does not support PDF embedding", $this->getCurrentDocumentFormatProvider()->getUniqueId()));
+            throw new InvoiceSuiteInvalidArgumentException(sprintf("Provider %s does not support PDF embedding", $fromDocumentBuilder->getCurrentDocumentFormatProvider()->getUniqueId()));
         }
 
         if (!is_subclass_of($fromDocumentBuilder->getCurrentDocumentFormatProvider()->getPdfConstructorClassName(), InvoiceSuiteAbstractPdfConstructor::class)) {
