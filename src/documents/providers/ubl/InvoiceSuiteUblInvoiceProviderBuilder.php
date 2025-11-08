@@ -847,13 +847,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
     public function setDocumentLanguage(
         ?string $newDocumentLanguage = null
     ): self {
-        $this->getUblInvoiceRootObject()->getInvoiceTypeCode()?->unsetLanguageID();
-
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDocumentLanguage])) {
-            return $this;
-        }
-
-        $this->getUblInvoiceRootObject()->getInvoiceTypeCodeWithCreate()->setLanguageID($newDocumentLanguage);
+        // Nothing here...
 
         return $this;
     }
@@ -943,7 +937,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
     public function setDocumentIsCopy(
         ?bool $newDocumentIsCopy = null
     ): self {
-        $this->getUblInvoiceRootObject()->setCopyIndicator($newDocumentIsCopy);
+        // Nothing here...
 
         return $this;
     }
@@ -957,6 +951,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
     public function setDocumentIsTest(
         ?bool $newDocumentIsTest = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 

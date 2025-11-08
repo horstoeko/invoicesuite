@@ -81,6 +81,7 @@
             <file>../tests/testcases/documentproviders/XRechnungProviderBuilderTest.php</file>
             <file>../tests/testcases/documentproviders/XRechnungProviderReaderTest.php</file>
             <file>../tests/testcases/documentproviders/UblInvoiceProviderTest.php</file>
+            <file>../tests/testcases/documentproviders/UblInvoiceProviderBuilderTest.php</file>
         </testsuite>
         <testsuite name="pdf">
             <file>../tests/testcases/pdf/InvoiceSuitePdfExtractorTest.php</file>
