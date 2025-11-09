@@ -3341,4 +3341,321 @@ class UblInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PostalAddress/cac:Country/cbc:IdentificationCode', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PostalAddress/cbc:CountrySubentity', 1);
     }
+
+    public function testSetAddDocumentTaxRepresentativeLegalOrganisation(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:RegistrationName', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:RegistrationName', 1);
+
+        self::$document->setDocumentTaxRepresentativeLegalOrganisation();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:RegistrationName', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:RegistrationName', 1);
+
+        self::$document->setDocumentTaxRepresentativeLegalOrganisation('8884');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:RegistrationName', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:RegistrationName', 1);
+
+        self::$document->setDocumentTaxRepresentativeLegalOrganisation('8884', '123456789');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyID', 0, '123456789');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:RegistrationName', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:RegistrationName', 1);
+
+        self::$document->setDocumentTaxRepresentativeLegalOrganisation('8884', '123456789', 'Company Name');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyID', 0, '123456789');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:RegistrationName', 0, 'Company Name');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:RegistrationName', 1);
+
+        self::$document->addDocumentTaxRepresentativeLegalOrganisation();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyID', 0, '123456789');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:RegistrationName', 0, 'Company Name');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:RegistrationName', 1);
+
+        self::$document->addDocumentTaxRepresentativeLegalOrganisation('8885');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:RegistrationName', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:RegistrationName', 1);
+
+        self::$document->addDocumentTaxRepresentativeLegalOrganisation('8885', '987654321');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyID', 0, '987654321');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:RegistrationName', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:RegistrationName', 1);
+
+        self::$document->addDocumentTaxRepresentativeLegalOrganisation('8885', '987654321', 'Company Name 2');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyID', 0, '987654321');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:RegistrationName', 0, 'Company Name 2');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:CompanyID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:PartyLegalEntity/cbc:RegistrationName', 1);
+    }
+
+    public function testSetAddDocumentTaxRepresentativeContact(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->setDocumentTaxRepresentativeContact();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->setDocumentTaxRepresentativeContact('', '', '', '', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->setDocumentTaxRepresentativeContact('Name', '', '', '', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 0, 'Name');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->setDocumentTaxRepresentativeContact('Name', 'Departement Name', '', '', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 0, 'Name');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->setDocumentTaxRepresentativeContact('Name', 'Departement Name', '+49-111-123456789', '', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 0, 'Name');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 0, '+49-111-123456789');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->setDocumentTaxRepresentativeContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 0, 'Name');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 0, '+49-111-123456789');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 0, '+49-111-987654321');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->setDocumentTaxRepresentativeContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 0, 'Name');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 0, '+49-111-123456789');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 0, '+49-111-987654321');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 0, 'user@nowhere.all');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->addDocumentTaxRepresentativeContact();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 0, 'Name');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 0, '+49-111-123456789');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 0, '+49-111-987654321');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 0, 'user@nowhere.all');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->addDocumentTaxRepresentativeContact('', '', '', '', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 0, 'Name');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 0, '+49-111-123456789');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 0, '+49-111-987654321');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 0, 'user@nowhere.all');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->addDocumentTaxRepresentativeContact('Name 2', 'Departement Name 2', '+49-222-123456789', '+49-222-987654321', 'user2@nowhere.all');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 0, 'Name 2');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 0, '+49-222-123456789');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 0, '+49-222-987654321');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 0, 'user2@nowhere.all');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->setDocumentTaxRepresentativeContact('Name 3', 'Departement Name 3', '+49-333-123456789', '+49-333-987654321', 'user3@nowhere.all');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 0, 'Name 3');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 0, '+49-333-123456789');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 0, '+49-333-987654321');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 0, 'user3@nowhere.all');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cac:Contact/cbc:ElectronicMail', 1);
+    }
+
+    public function testSetAddDocumentTaxRepresentativeCommunication(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 1);
+
+        self::$document->setDocumentTaxRepresentativeCommunication();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 1);
+
+        self::$document->setDocumentTaxRepresentativeCommunication('', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 1);
+
+        self::$document->setDocumentTaxRepresentativeCommunication('EM', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 1);
+
+        self::$document->setDocumentTaxRepresentativeCommunication('', 'user@somewhere.all');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 1);
+
+        self::$document->setDocumentTaxRepresentativeCommunication('EM', 'user@somewhere.all');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 0, 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 1);
+
+        self::$document->addDocumentTaxRepresentativeCommunication();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 0, 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 1);
+
+        self::$document->addDocumentTaxRepresentativeCommunication('', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 0, 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 1);
+
+        self::$document->addDocumentTaxRepresentativeCommunication('EM', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 0, 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 1);
+
+        self::$document->addDocumentTaxRepresentativeCommunication('', 'user2@somewhere.all');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 0, 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 1);
+
+        self::$document->addDocumentTaxRepresentativeCommunication('EM', 'user2@somewhere.all');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 0, 'user2@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxRepresentativeParty/cbc:EndpointID', 1);
+    }
 }
