@@ -4864,4 +4864,239 @@ class UblInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:CompanyID', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:PartyLegalEntity/cbc:RegistrationName', 1);
     }
+
+    public function testSetAddDocumentPayeeContact(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->setDocumentPayeeContact();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->setDocumentPayeeContact('', '', '', '', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->setDocumentPayeeContact('Name', '', '', '', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 0, 'Name');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->setDocumentPayeeContact('Name', 'Departement Name', '', '', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 0, 'Name');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->setDocumentPayeeContact('Name', 'Departement Name', '+49-111-123456789', '', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 0, 'Name');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 0, '+49-111-123456789');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->setDocumentPayeeContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 0, 'Name');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 0, '+49-111-123456789');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 0, '+49-111-987654321');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->setDocumentPayeeContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 0, 'Name');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 0, '+49-111-123456789');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 0, '+49-111-987654321');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 0, 'user@nowhere.all');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->addDocumentPayeeContact();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 0, 'Name');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 0, '+49-111-123456789');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 0, '+49-111-987654321');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 0, 'user@nowhere.all');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->addDocumentPayeeContact('', '', '', '', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 0, 'Name');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 0, '+49-111-123456789');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 0, '+49-111-987654321');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 0, 'user@nowhere.all');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->addDocumentPayeeContact('Name 2', 'Departement Name 2', '+49-222-123456789', '+49-222-987654321', 'user2@nowhere.all');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 0, 'Name 2');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 0, '+49-222-123456789');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 0, '+49-222-987654321');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 0, 'user2@nowhere.all');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 1);
+
+        self::$document->setDocumentPayeeContact('Name 3', 'Departement Name 3', '+49-333-123456789', '+49-333-987654321', 'user3@nowhere.all');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 0, 'Name 3');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 0, '+49-333-123456789');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 0, '+49-333-987654321');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 0, 'user3@nowhere.all');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telephone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:Telefax', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cac:Contact/cbc:ElectronicMail', 1);
+    }
+
+    public function testSetAddDocumentPayeeCommunication(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 1);
+
+        self::$document->setDocumentPayeeCommunication();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 1);
+
+        self::$document->setDocumentPayeeCommunication('', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 1);
+
+        self::$document->setDocumentPayeeCommunication('EM', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 1);
+
+        self::$document->setDocumentPayeeCommunication('', 'user@somewhere.all');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 1);
+
+        self::$document->setDocumentPayeeCommunication('EM', 'user@somewhere.all');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 0, 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 1);
+
+        self::$document->addDocumentPayeeCommunication();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 0, 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 1);
+
+        self::$document->addDocumentPayeeCommunication('', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 0, 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 1);
+
+        self::$document->addDocumentPayeeCommunication('EM', '');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 0, 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 1);
+
+        self::$document->addDocumentPayeeCommunication('', 'user2@somewhere.all');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 0, 'user@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 1);
+
+        self::$document->addDocumentPayeeCommunication('EM', 'user2@somewhere.all');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 0, 'user2@somewhere.all', 'schemeID', 'EM');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 1);
+    }
 }
