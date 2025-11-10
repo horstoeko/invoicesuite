@@ -4177,4 +4177,132 @@ class UblInvoiceProviderBuilderTest extends TestCase
             self::$document->addDocumentShipFromCommunication('EM', 'user@somewhere.all');
         });
     }
+
+    public function testSetAddDocumentInvoicerName(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentInvoicerName('Invoicer Name');
+            self::$document->addDocumentInvoicerName('Invoicer Name 2');
+        });
+    }
+
+    public function testSetAddDocumentInvoicerId(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentInvoicerId('Invoicer Id 1');
+            self::$document->addDocumentInvoicerId('Invoicer Id 2');
+        });
+    }
+
+    public function testSetAddDocumentInvoicerGlobalId(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentInvoicerGlobalId('Invoicer Global Id 1', '0088');
+            self::$document->addDocumentInvoicerGlobalId('Invoicer Global Id 2', '0088');
+        });
+    }
+
+    public function testSetAddDocumentInvoicerTaxRegistration(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentInvoicerTaxRegistration('VA', '123456789');
+            self::$document->addDocumentInvoicerTaxRegistration('VA', '123456789');
+        });
+    }
+
+    public function testSetAddDocumentInvoicerAddress(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentInvoicerAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
+            self::$document->addDocumentInvoicerAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
+        });
+    }
+
+    public function testSetAddDocumentInvoicerLegalOrganisation(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentInvoicerLegalOrganisation('8884', '123456789', 'Company Name');
+            self::$document->addDocumentInvoicerLegalOrganisation('8885', '987654321', 'Company Name 2');
+        });
+    }
+
+    public function testSetAddDocumentInvoicerContact(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentInvoicerContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
+            self::$document->addDocumentInvoicerContact('Name 2', 'Departement Name 2', '+49-222-123456789', '+49-222-987654321', 'user2@nowhere.all');
+        });
+    }
+
+    public function testSetAddDocumentInvoicerCommunication(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentInvoicerCommunication('EM', 'user@somewhere.all');
+            self::$document->addDocumentInvoicerCommunication('EM', 'user2@somewhere.all');
+        });
+    }
+
+    public function testSetAddDocumentInvoiceeName(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentInvoiceeName('Invoicee Name');
+            self::$document->addDocumentInvoiceeName('Invoicee Name 2');
+        });
+    }
+
+    public function testSetAddDocumentInvoiceeId(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentInvoiceeId('Invoicee Id 1');
+            self::$document->addDocumentInvoiceeId('Invoicee Id 2');
+        });
+    }
+
+    public function testSetAddDocumentInvoiceeGlobalId(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentInvoiceeGlobalId('Invoicee Global Id 1', '0088');
+            self::$document->addDocumentInvoiceeGlobalId('Invoicee Global Id 2', '0088');
+        });
+    }
+
+    public function testSetAddDocumentInvoiceeTaxRegistration(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentInvoiceeTaxRegistration('VA', '123456789');
+            self::$document->addDocumentInvoiceeTaxRegistration('VA', '123456789');
+        });
+    }
+
+    public function testSetAddDocumentInvoiceeAddress(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentInvoiceeAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
+            self::$document->addDocumentInvoiceeAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
+        });
+    }
+
+    public function testSetAddDocumentInvoiceeLegalOrganisation(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentInvoiceeLegalOrganisation('8884', '123456789', 'Company Name');
+            self::$document->addDocumentInvoiceeLegalOrganisation('8885', '987654321', 'Company Name 2');
+        });
+    }
+
+    public function testSetAddDocumentInvoiceeContact(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentInvoiceeContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
+            self::$document->addDocumentInvoiceeContact('Name 2', 'Departement Name 2', '+49-222-123456789', '+49-222-987654321', 'user2@nowhere.all');
+        });
+    }
+
+    public function testSetAddDocumentInvoiceeCommunication(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentInvoiceeCommunication('EM', 'user@somewhere.all');
+            self::$document->addDocumentInvoiceeCommunication('EM', 'user2@somewhere.all');
+        });
+    }
 }
