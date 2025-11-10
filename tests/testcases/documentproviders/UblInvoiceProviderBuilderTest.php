@@ -3829,4 +3829,288 @@ class UblInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 0, 'Ship To Id 3');
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 1);
     }
+
+    public function testSetAddDocumentShipToGlobalId(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 0, 'Ship To Id 3');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 1);
+
+        self::$document->setDocumentShipToGlobalId(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 1);
+
+        self::$document->setDocumentShipToGlobalId('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 1);
+
+        self::$document->setDocumentShipToGlobalId('Ship To Global Id 1');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 1);
+
+        self::$document->setDocumentShipToGlobalId(null, '0088');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 1);
+
+        self::$document->setDocumentShipToGlobalId('Ship To Global Id 1', '0088');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 0, 'Ship To Global Id 1', 'schemeID', '0088');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 1);
+
+        self::$document->addDocumentShipToGlobalId(null);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 0, 'Ship To Global Id 1', 'schemeID', '0088');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 1);
+
+        self::$document->addDocumentShipToGlobalId('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 0, 'Ship To Global Id 1', 'schemeID', '0088');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 1);
+
+        self::$document->addDocumentShipToGlobalId('Ship To Global Id 2');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 0, 'Ship To Global Id 1', 'schemeID', '0088');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 1);
+
+        self::$document->addDocumentShipToGlobalId(null, '0088');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 0, 'Ship To Global Id 1', 'schemeID', '0088');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 1);
+
+        self::$document->addDocumentShipToGlobalId('Ship To Global Id 2', '0088');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 0, 'Ship To Global Id 2', 'schemeID', '0088');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 1);
+
+        self::$document->setDocumentShipToGlobalId('Ship To Global Id 3', '0088');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 0, 'Ship To Global Id 3', 'schemeID', '0088');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cbc:ID', 1);
+    }
+
+    public function testSetAddDocumentShipToTaxRegistration(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentShipToTaxRegistration('VA', '123456789');
+            self::$document->addDocumentShipToTaxRegistration('VA', '123456789');
+        });
+    }
+
+    public function testSetAddDocumentShipToAddress(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CountrySubentity', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CountrySubentity', 1);
+
+        self::$document->setDocumentShipToAddress();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CountrySubentity', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CountrySubentity', 1);
+
+        self::$document->setDocumentShipToAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone', 0, '99999');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName', 0, 'Line 1');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName', 0, 'Line 2');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName', 0, 'City');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode', 0, 'DE');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CountrySubentity', 0, 'Bavaria');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CountrySubentity', 1);
+
+        self::$document->setDocumentShipToAddress('Line A', 'Line B', 'Line C');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName', 0, 'Line A');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName', 0, 'Line B');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CountrySubentity', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CountrySubentity', 1);
+
+        self::$document->addDocumentShipToAddress();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName', 0, 'Line A');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName', 0, 'Line B');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CountrySubentity', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CountrySubentity', 1);
+
+        self::$document->addDocumentShipToAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone', 0, '88888');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName', 0, 'Adress-Line 1');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName', 0, 'Adress-Line 2');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName', 0, 'Cityname');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode', 0, 'IR');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CountrySubentity', 0, 'Waterford');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CountrySubentity', 1);
+    }
+
+    public function testSetAddDocumentShipToLegalOrganisation(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentShipToLegalOrganisation('8884', '123456789');
+            self::$document->addDocumentShipToLegalOrganisation('8884', '123456789');
+        });
+    }
+
+    public function testSetAddDocumentShipToContact(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentShipToContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
+            self::$document->addDocumentShipToContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
+        });
+    }
+
+    public function testSetAddDocumentShipToCommunication(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentShipToCommunication('EM', 'user@somewhere.all');
+            self::$document->addDocumentShipToCommunication('EM', 'user@somewhere.all');
+        });
+    }
+
+    public function testSetAddDocumentUltimateShipToName(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentUltimateShipToName('Ultimate Ship To Name');
+            self::$document->addDocumentUltimateShipToName('Ultimate Ship To Name');
+        });
+    }
+
+    public function testSetAddDocumentUltimateShipToId(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentUltimateShipToId('Ultimate Ship To Id 1');
+            self::$document->addDocumentUltimateShipToId('Ultimate Ship To Id 1');
+        });
+    }
+
+    public function testSetAddDocumentUltimateShipToGlobalId(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentUltimateShipToGlobalId('Ultimate Ship To Global Id 1', '0088');
+            self::$document->addDocumentUltimateShipToGlobalId('Ultimate Ship To Global Id 1', '0088');
+        });
+    }
+
+    public function testSetAddDocumentUltimateShipToTaxRegistration(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentUltimateShipToTaxRegistration('VA', '123456789');
+            self::$document->addDocumentUltimateShipToTaxRegistration('VA', '123456789');
+        });
+    }
+
+    public function testSetAddDocumentUltimateShipToAddress(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentUltimateShipToAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
+            self::$document->addDocumentUltimateShipToAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
+        });
+    }
+
+    public function testSetAddDocumentUltimateShipToLegalOrganisation(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentUltimateShipToLegalOrganisation('8884', '123456789', 'Company Name');
+            self::$document->addDocumentUltimateShipToLegalOrganisation('8884', '123456789', 'Company Name');
+        });
+    }
+
+    public function testSetAddDocumentUltimateShipToContact(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentUltimateShipToContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
+            self::$document->addDocumentUltimateShipToContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
+        });
+    }
+
+    public function testSetAddDocumentUltimateShipToCommunication(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentUltimateShipToCommunication('EM', 'user@somewhere.all');
+            self::$document->addDocumentUltimateShipToCommunication('EM', 'user@somewhere.all');
+        });
+    }
 }
