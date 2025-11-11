@@ -3,14 +3,15 @@
 namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 
 use DateTime;
-use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistCurrencyCodes;
-use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
-use horstoeko\invoicesuite\documents\models\ubl\main\Invoice;
-use horstoeko\invoicesuite\documents\providers\ubl\InvoiceSuiteUblInvoiceProvider;
-use horstoeko\invoicesuite\documents\providers\ubl\InvoiceSuiteUblInvoiceProviderBuilder;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\tests\traits\HandlesXmlTests;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
+use horstoeko\invoicesuite\documents\models\ubl\main\Invoice;
+use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
+use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistCurrencyCodes;
+use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
+use horstoeko\invoicesuite\documents\providers\ubl\InvoiceSuiteUblInvoiceProvider;
+use horstoeko\invoicesuite\documents\providers\ubl\InvoiceSuiteUblInvoiceProviderBuilder;
 
 class UblInvoiceProviderBuilderTest extends TestCase
 {
@@ -5098,5 +5099,201 @@ class UblInvoiceProviderBuilderTest extends TestCase
 
         $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 0, 'user2@somewhere.all', 'schemeID', 'EM');
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PayeeParty/cbc:EndpointID', 1);
+    }
+
+    public function testSetAddDocumentPaymentMean(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 1);
+
+        self::$document->setDocumentPaymentMean();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 1);
+
+        self::$document->setDocumentPaymentMean(
+            InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value,
+            'information'
+        );
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 0, InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value, 'name', 'information');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 1);
+
+        self::$document->setDocumentPaymentMean();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 1);
+
+        self::$document->setDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value,
+            newPayeeIban: '',
+            newPayeeAccountName: '',
+            newPayeeProprietaryId: '',
+            newPayeeBic: '',
+            newPaymentReference: ''
+        );
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 0, InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 1);
+
+        self::$document->setDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value,
+            newPayeeIban: 'iban',
+            newPayeeAccountName: 'accountname',
+            newPayeeProprietaryId: 'propid',
+            newPayeeBic: 'bic',
+            newPaymentReference: 'paymentref'
+        );
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 0, InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentID', 0, 'paymentref');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:ID', 0, 'iban');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:Name', 0, 'accountname');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID', 0, 'bic');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 1);
+
+        self::$document->setDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
+            newBuyerIban: 'iban',
+            newMandate: 'mandate'
+        );
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 0, InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PaymentMandate/cbc:ID', 0, 'mandate');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID', 0, 'iban');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 1);
+
+        self::$document->setDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,
+            newFinancialCardId: 'cardid',
+            newFinancialCardHolder: 'cardholder'
+        );
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 0, InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:CardAccount/cbc:PrimaryAccountNumberID', 0, 'cardid');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:CardAccount/cbc:NetworkID', 0, 'mapped-from-cii');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:CardAccount/cbc:HolderName', 0, 'cardholder');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 1);
+
+        self::$document->addDocumentPaymentMean();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 0, InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:CardAccount/cbc:PrimaryAccountNumberID', 0, 'cardid');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:CardAccount/cbc:NetworkID', 0, 'mapped-from-cii');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:CardAccount/cbc:HolderName', 0, 'cardholder');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 1);
+
+        self::$document->addDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,
+            newFinancialCardId: 'cardid2',
+            newFinancialCardHolder: 'cardholder2'
+        );
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 0, InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:CardAccount/cbc:PrimaryAccountNumberID', 0, 'cardid');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:CardAccount/cbc:NetworkID', 0, 'mapped-from-cii');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:CardAccount/cbc:HolderName', 0, 'cardholder');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:CardAccount/cbc:PrimaryAccountNumberID', 1, 'cardid2');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:CardAccount/cbc:NetworkID', 1, 'mapped-from-cii');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:CardAccount/cbc:HolderName', 1, 'cardholder2');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 2);
+
+        self::$document->setDocumentPaymentMean();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 1);
+    }
+
+    public function testSetAddDocumentPaymentMeanAsCreditTransferSepa(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 1);
+
+        self::$document->setDocumentPaymentMeanAsCreditTransferSepa();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 0, InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 1);
+
+        self::$document->setDocumentPaymentMeanAsCreditTransferSepa('iban');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 0, InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentID', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:ID', 0, 'iban');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:Name', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 1);
+
+        self::$document->setDocumentPaymentMeanAsCreditTransferSepa('iban', 'accountname', 'propid', 'bic', 'paymentref');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 0, InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentID', 0, 'paymentref');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:ID', 0, 'iban');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:Name', 0, 'accountname');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID', 0, 'bic');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 1);
+
+        self::$document->addDocumentPaymentMeanAsCreditTransferSepa();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 0, InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentID', 0, 'paymentref');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:ID', 0, 'iban');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:Name', 0, 'accountname');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID', 0, 'bic');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 1, InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:ID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 2);
+
+        self::$document->addDocumentPaymentMeanAsCreditTransferSepa('iban2');
+
+        $this->disableRenderXmlContent();
+        $this->debugWriteFile();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 0, InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentID', 0, 'paymentref');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:ID', 0, 'iban');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:Name', 0, 'accountname');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID', 0, 'bic');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 1, InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentID', 1);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:ID', 1, 'iban2');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:Name', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID', 1);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 2, InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 3);
     }
 }
