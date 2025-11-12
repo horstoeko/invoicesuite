@@ -6676,6 +6676,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
      */
     public function prepareDocumentSummation(): self
     {
+        // Nothing here...
+
         return $this;
     }
 

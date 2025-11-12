@@ -5793,4 +5793,96 @@ class UblInvoiceProviderBuilderTest extends TestCase
             self::$document->addDocumentLogisticServiceCharge(10.0, 'description', 'S', 'VAT', 19.0);
         });
     }
+
+    public function testPrepareDocumentSummation(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->prepareDocumentSummation();
+        });
+    }
+
+    public function testSetDocumentSummation(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:LineExtensionAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PrepaidAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableRoundingAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:LineExtensionAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PrepaidAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableRoundingAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableAmount', 1);
+
+        self::$document->setDocumentSummation();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:LineExtensionAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PrepaidAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableRoundingAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:LineExtensionAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PrepaidAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableRoundingAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableAmount', 1);
+
+        self::$document->setDocumentSummation(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:LineExtensionAmount', 0, '1.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount', 0, '4.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount', 0, '7.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount', 0, '3.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount', 0, '2.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PrepaidAmount', 0, '9.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableRoundingAmount', 0, '10.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableAmount', 0, '8.00');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:LineExtensionAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PrepaidAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableRoundingAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableAmount', 1);
+
+        self::$document->setDocumentSummation();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:LineExtensionAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PrepaidAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableRoundingAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:LineExtensionAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PrepaidAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableRoundingAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableAmount', 1);
+    }
 }
