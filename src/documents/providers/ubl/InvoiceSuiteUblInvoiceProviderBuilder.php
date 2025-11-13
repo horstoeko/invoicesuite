@@ -1808,20 +1808,20 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
     public function setDocumentSellerId(
         ?string $newId = null
     ): self {
+        $ids = array_filter(
+            $this
+                ->getUblInvoiceRootObject()
+                ->getAccountingSupplierParty()
+                ?->getParty()
+                ?->getPartyIdentification() ?? [],
+            fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
+        );
+
         $this
             ->getUblInvoiceRootObject()
             ->getAccountingSupplierParty()
             ?->getParty()
-            ?->setPartyIdentification(
-                array_filter(
-                    $this
-                        ->getUblInvoiceRootObject()
-                        ->getAccountingSupplierParty()
-                        ?->getParty()
-                        ?->getPartyIdentification() ?? [],
-                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
-                )
-            );
+            ?->setPartyIdentification($ids);
 
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -1866,20 +1866,20 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
      */
     public function setDocumentSellerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
+        $ids = array_filter(
+            $this
+                ->getUblInvoiceRootObject()
+                ->getAccountingSupplierParty()
+                ?->getParty()
+                ?->getPartyIdentification() ?? [],
+            fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
+        );
+
         $this
             ->getUblInvoiceRootObject()
             ->getAccountingSupplierParty()
             ?->getParty()
-            ?->setPartyIdentification(
-                array_filter(
-                    $this
-                        ->getUblInvoiceRootObject()
-                        ->getAccountingSupplierParty()
-                        ?->getParty()
-                        ?->getPartyIdentification() ?? [],
-                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
-                )
-            );
+            ?->setPartyIdentification($ids);
 
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
@@ -2376,20 +2376,20 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
     public function setDocumentBuyerId(
         ?string $newId = null
     ): self {
+        $ids = array_filter(
+            $this
+                ->getUblInvoiceRootObject()
+                ->getAccountingCustomerParty()
+                ?->getParty()
+                ?->getPartyIdentification() ?? [],
+            fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
+        );
+
         $this
             ->getUblInvoiceRootObject()
             ->getAccountingCustomerParty()
             ?->getParty()
-            ?->setPartyIdentification(
-                array_filter(
-                    $this
-                        ->getUblInvoiceRootObject()
-                        ->getAccountingCustomerParty()
-                        ?->getPartyWithCreate()
-                        ?->getPartyIdentification() ?? [],
-                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
-                )
-            );
+            ?->setPartyIdentification($ids);
 
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -2434,20 +2434,20 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
      */
     public function setDocumentBuyerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
+        $ids = array_filter(
+            $this
+                ->getUblInvoiceRootObject()
+                ->getAccountingCustomerParty()
+                ?->getParty()
+                ?->getPartyIdentification() ?? [],
+            fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
+        );
+
         $this
             ->getUblInvoiceRootObject()
             ->getAccountingCustomerParty()
             ?->getParty()
-            ?->setPartyIdentification(
-                array_filter(
-                    $this
-                        ->getUblInvoiceRootObject()
-                        ->getAccountingCustomerParty()
-                        ->getParty()
-                        ?->getPartyIdentification() ?? [],
-                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
-                )
-            );
+            ?->setPartyIdentification($ids);
 
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
@@ -2941,18 +2941,18 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
     public function setDocumentTaxRepresentativeId(
         ?string $newId = null
     ): self {
+        $ids = array_filter(
+            $this
+                ->getUblInvoiceRootObject()
+                ->getTaxRepresentativeParty()
+                ?->getPartyIdentification() ?? [],
+            fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
+        );
+
         $this
             ->getUblInvoiceRootObject()
             ->getTaxRepresentativeParty()
-            ?->setPartyIdentification(
-                array_filter(
-                    $this
-                        ->getUblInvoiceRootObject()
-                        ->getTaxRepresentativeParty()
-                        ?->getPartyIdentification() ?? [],
-                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
-                )
-            );
+            ?->setPartyIdentification($ids);
 
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -2998,18 +2998,18 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null,
     ): self {
+        $ids = array_filter(
+            $this
+                ->getUblInvoiceRootObject()
+                ->getTaxRepresentativeParty()
+                ?->getPartyIdentification() ?? [],
+            fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
+        );
+
         $this
             ->getUblInvoiceRootObject()
             ->getTaxRepresentativeParty()
-            ?->setPartyIdentification(
-                array_filter(
-                    $this
-                        ->getUblInvoiceRootObject()
-                        ->getTaxRepresentativeParty()
-                        ?->getPartyIdentification() ?? [],
-                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
-                )
-            );
+            ?->setPartyIdentification($ids);
 
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
@@ -5282,18 +5282,18 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
     public function setDocumentPayeeId(
         ?string $newId = null
     ): self {
+        $ids = array_filter(
+            $this
+                ->getUblInvoiceRootObject()
+                ->getPayeeParty()
+                ?->getPartyIdentification() ?? [],
+            fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
+        );
+
         $this
             ->getUblInvoiceRootObject()
             ->getPayeeParty()
-            ?->setPartyIdentification(
-                array_filter(
-                    $this
-                        ->getUblInvoiceRootObject()
-                        ->getPayeeParty()
-                        ?->getPartyIdentification() ?? [],
-                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
-                )
-            );
+            ?->setPartyIdentification($ids);
 
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -5337,18 +5337,18 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
      */
     public function setDocumentPayeeGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
+        $ids = array_filter(
+            $this
+                ->getUblInvoiceRootObject()
+                ->getPayeeParty()
+                ?->getPartyIdentification() ?? [],
+            fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
+        );
+
         $this
             ->getUblInvoiceRootObject()
             ->getPayeeParty()
-            ?->setPartyIdentification(
-                array_filter(
-                    $this
-                        ->getUblInvoiceRootObject()
-                        ->getPayeeParty()
-                        ?->getPartyIdentification() ?? [],
-                    fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
-                )
-            );
+            ?->setPartyIdentification($ids);
 
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
@@ -6174,18 +6174,18 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
     ): self {
         $ids = $this
             ->getUblInvoiceRootObject()
-            ->getAccountingSupplierPartyWithCreate()
+            ->getAccountingSupplierParty()
             ?->getParty()
             ?->getPartyIdentification() ?? [];
 
         $ids = array_filter(
-            $ids ?? [],
+            $ids,
             fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('creditorreference')
         );
 
         $this
             ->getUblInvoiceRootObject()
-            ->getAccountingSupplierPartyWithCreate()
+            ->getAccountingSupplierParty()
             ?->getParty()
             ?->setPartyIdentification($ids);
 
