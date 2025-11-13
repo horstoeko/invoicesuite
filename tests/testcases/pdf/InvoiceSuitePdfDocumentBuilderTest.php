@@ -89,7 +89,7 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
 
     /**
      * @dataProvider zffxProfileProvider
-     * @phpstan-ignore missingType.iterableValue
+     * @param string|bool $expectedUseOfXmlFile
      */
     public function testZfFxPdfBuilder(string $expectedProfile, string $expectedXmlContains, $expectedUseOfXmlFile, bool $expectusePdfContent, string $expectXmpName, string $expectXmpVersion, int $expectOutputType): void
     {
@@ -254,6 +254,9 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $this->assertCount(2, $pdfDOcumentBuilder->getaddAdditionalDocument());
         $this->assertArrayHasKey(0, $pdfDOcumentBuilder->getaddAdditionalDocument());
         $this->assertArrayHasKey(1, $pdfDOcumentBuilder->getaddAdditionalDocument());
+        /**
+         * @phpstan-ignore offsetAccess.notFound
+         */
         $this->assertIsArray($pdfDOcumentBuilder->getaddAdditionalDocument()[0]);
         $this->assertIsArray($pdfDOcumentBuilder->getaddAdditionalDocument()[1]);
         $this->assertArrayHasKey('content', $pdfDOcumentBuilder->getaddAdditionalDocument()[0]);
