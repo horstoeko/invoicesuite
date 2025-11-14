@@ -144,11 +144,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
         $taxTotal = $this->getUblInvoiceRootObject()->getTaxTotal();
 
         if (!is_null($taxTotal)) {
-            if (isset($taxTotal[0]) && !is_null($taxTotal[0]->getTaxAmount()) && !is_null($invoiceCurrencyCode)) {
+            if (isset($taxTotal[0]) && !is_null($taxTotal[0]->getTaxAmount())) {
                 $taxTotal[0]->getTaxAmount()->setCurrencyID($invoiceCurrencyCode);
             }
 
-            if (isset($taxTotal[1]) && !is_null($taxTotal[1]->getTaxAmount()) && !is_null($taxCurrencyCode)) {
+            if (isset($taxTotal[1]) && !is_null($taxTotal[1]->getTaxAmount())) {
                 $taxTotal[1]->getTaxAmount()->setCurrencyID($taxCurrencyCode);
             }
         }
@@ -897,6 +897,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
         ?string $newDocumentCurrency = null
     ): self {
         $this->getUblInvoiceRootObject()->unsetDocumentCurrencyCode();
+        $this->updateCurrencies();
 
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDocumentCurrency])) {
             return $this;
@@ -918,6 +919,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
         ?string $newDocumentTaxCurrency = null
     ): self {
         $this->getUblInvoiceRootObject()->unsetTaxCurrencyCode();
+        $this->updateCurrencies();
 
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDocumentTaxCurrency])) {
             return $this;

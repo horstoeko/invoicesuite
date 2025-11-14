@@ -1431,6 +1431,7 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractDocumentF
         ?string $newDocumentCurrency = null
     ): self {
         $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->unsetInvoiceCurrencyCode();
+        $this->updateCurrencies();
 
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDocumentCurrency])) {
             return $this;
@@ -1458,6 +1459,7 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractDocumentF
         ?string $newDocumentTaxCurrency = null
     ): self {
         $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->unsetTaxCurrencyCode();
+        $this->updateCurrencies();
 
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDocumentTaxCurrency])) {
             return $this;
