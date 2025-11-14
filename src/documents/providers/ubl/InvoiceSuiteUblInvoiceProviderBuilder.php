@@ -6744,34 +6744,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
         }
 
         if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxTotalAmount)) {
-            if (is_null($this->getUblInvoiceRootObject()->getTaxTotal())) {
-                $this->getUblInvoiceRootObject()->addToTaxTotalWithCreate();
-            }
-
-            $this->getUblInvoiceRootObject()->getTaxTotal()[0]->getTaxAmountWithCreate()->setValue($newTaxTotalAmount);
+            $this->getUblInvoiceRootObject()->addToTaxTotalWithCreateAtIndex(0)->getTaxAmountWithCreate()->setValue($newTaxTotalAmount);
         }
 
         if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxTotalAmount2)) {
-            if (is_null($this->getUblInvoiceRootObject()->getTaxTotal())) {
-                $this->getUblInvoiceRootObject()->addToTaxTotalWithCreate();
-                $this->getUblInvoiceRootObject()->addToTaxTotalWithCreate();
-            }
-
-            if (!isset($this->getUblInvoiceRootObject()->getTaxTotal()[1])) {
-                $this->getUblInvoiceRootObject()->addToTaxTotalWithCreate();
-            }
-
-            $this->getUblInvoiceRootObject()->getTaxTotal()[1]->getTaxAmountWithCreate()->setValue($newTaxTotalAmount2);
-        } else {
-            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->getUblInvoiceRootObject()->getTaxCurrencyCode())) {
-                throw new InvoiceSuiteInvalidArgumentException('You must specify a tax amount for the tax currency if you have specified a tax currency code.');
-            }
-
-            if (isset($this->getUblInvoiceRootObject()->getTaxTotal()[1])) {
-                $taxTotal = $this->getUblInvoiceRootObject()->getTaxTotal();
-                unset($taxTotal[1]);
-                $this->getUblInvoiceRootObject()->setTaxTotal($taxTotal);
-            }
+            $this->getUblInvoiceRootObject()->addToTaxTotalWithCreateAtIndex(1)->getTaxAmountWithCreate()->setValue($newTaxTotalAmount2);
         }
 
         $this->updateCurrencies();
