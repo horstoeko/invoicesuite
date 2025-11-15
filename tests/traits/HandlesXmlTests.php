@@ -160,6 +160,23 @@ trait HandlesXmlTests
     }
 
     /**
+     * Assert a xpath with $expected value in a multiple resule and an non-expected attribute value
+     *
+     * @param  string $xpath
+     * @param  string $expected
+     * @param  string $notExpectedAttribute
+     * @return void
+     */
+    protected function assertXPathValueWithIndexAndNotWithAttribute(string $xpath, int $index, string $expected, string $notExpectedAttribute): void
+    {
+        $xml = $this->getXml();
+        $xmlvalue = $xml->xpath($xpath);
+        $this->assertArrayHasKey($index, $xmlvalue);
+        $this->assertEquals($expected, (string) $xmlvalue[$index]);
+        $this->assertNull($xmlvalue[$index]->attributes()[$notExpectedAttribute]);
+    }
+
+    /**
      * Assert a xpath with $expected value in a multiple resule and an expected attribute value
      *
      * @param  string $xpath

@@ -6712,7 +6712,18 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
     ): self {
         $this
             ->getUblInvoiceRootObject()
-            ->unsetLegalMonetaryTotal();
+            ->unsetLegalMonetaryTotal()
+            ?->getTaxTotal();
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->getTaxTotalAtIndex(0)
+            ?->unsetTaxAmount();
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->getTaxTotalAtIndex(1)
+            ?->unsetTaxAmount();
 
         if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newNetAmount, $newTaxBasisAmount, $newTaxTotalAmount, $newGrossAmount, $newDueAmount])) {
             return $this;
@@ -6743,9 +6754,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
             $summation->getPayableRoundingAmountWithCreate()->setValue($newRoungingAmount);
         }
 
-        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxTotalAmount)) {
-            $this->getUblInvoiceRootObject()->addToTaxTotalWithCreateAtIndex(0)->getTaxAmountWithCreate()->setValue($newTaxTotalAmount);
-        }
+        $this->getUblInvoiceRootObject()->addToTaxTotalWithCreateAtIndex(0)->getTaxAmountWithCreate()->setValue($newTaxTotalAmount);
 
         if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxTotalAmount2)) {
             $this->getUblInvoiceRootObject()->addToTaxTotalWithCreateAtIndex(1)->getTaxAmountWithCreate()->setValue($newTaxTotalAmount2);

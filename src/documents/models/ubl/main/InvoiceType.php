@@ -3984,6 +3984,23 @@ class InvoiceType
     }
 
     /**
+     * @param int $index
+     * @return \horstoeko\invoicesuite\documents\models\ubl\cac\TaxTotal|null
+     */
+    public function getTaxTotalAtIndex(int $index): ?TaxTotal
+    {
+        if (!is_array($this->taxTotal)) {
+            return null;
+        }
+
+        if (!array_key_exists($index, $this->taxTotal)) {
+            return null;
+        }
+
+        return $this->taxTotal[$index];
+    }
+
+    /**
      * @param array<\horstoeko\invoicesuite\documents\models\ubl\cac\TaxTotal>|null $taxTotal
      * @return self
      */
