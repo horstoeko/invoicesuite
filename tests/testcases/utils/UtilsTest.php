@@ -341,8 +341,8 @@ final class UtilsTest extends TestCase
     {
         $guid_regex = "/^(?:\\{{0,1}(?:[0-9a-fA-F]){8}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){12}\\}{0,1})$/";
 
-        $this->assertRegExp($guid_regex, InvoiceSuiteStringUtils::createGuid());
-        $this->assertRegExp($guid_regex, InvoiceSuiteStringUtils::createGuid(false));
+        $this->assertMatchesRegularExpression($guid_regex, InvoiceSuiteStringUtils::createGuid());
+        $this->assertMatchesRegularExpression($guid_regex, InvoiceSuiteStringUtils::createGuid(false));
     }
 
     // endregion
@@ -673,7 +673,7 @@ final class UtilsTest extends TestCase
 
         $this->assertFileExists(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..", "..", "..", "src", "cache"), "fb2c9c3d46a7d2650a8813477106ebca.cache"));
         InvoiceSuiteClassFinder::clearCache();
-        $this->assertFileNotExists(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..", "..", "..", "src", "cache"), "fb2c9c3d46a7d2650a8813477106ebca.cache"));
+        $this->assertFileDoesNotExist(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..", "..", "..", "src", "cache"), "fb2c9c3d46a7d2650a8813477106ebca.cache"));
     }
 
     // endregion

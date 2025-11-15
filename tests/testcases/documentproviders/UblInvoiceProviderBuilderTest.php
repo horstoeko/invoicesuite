@@ -130,6 +130,13 @@ final class UblInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathNotExists('/ns:Invoice/cbc:IssueDate');
     }
 
+    public function testSetDocumentCompleteDate(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentCompleteDate((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
+        });
+    }
+
     public function testSetDocumentCurrency(): void
     {
         self::$document->setDocumentCurrency(null);
@@ -1031,7 +1038,10 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateCustomerOrderReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {});
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentUltimateCustomerOrderReference('UCOR-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
+            self::$document->addDocumentUltimateCustomerOrderReference('UCOR-2', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
+        });
     }
 
     public function testSetAddDocumentDespatchAdviceReference(): void

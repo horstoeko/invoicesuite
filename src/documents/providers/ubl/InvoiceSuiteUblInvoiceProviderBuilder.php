@@ -1543,11 +1543,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
         ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
-            return $this;
-        }
-
-        $this->setDocumentAdditionalReference($newReferenceNumber, $newReferenceDate, "220");
+        // Nothing here...
 
         return $this;
     }
@@ -1563,11 +1559,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
         ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
-            return $this;
-        }
-
-        $this->addDocumentAdditionalReference($newReferenceNumber, $newReferenceDate, "220");
+        // Nothing here...
 
         return $this;
     }
