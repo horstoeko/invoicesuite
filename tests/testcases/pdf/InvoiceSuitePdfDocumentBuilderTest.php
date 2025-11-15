@@ -30,9 +30,6 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         return InvoiceSuitePathUtils::combinePathWithFile($this->getAssetPath(), "pdf_plain.pdf");
     }
 
-    /**
-     * @phpstan-ignore missingType.iterableValue
-     */
     public static function zffxProfileProvider(): \Iterator
     {
         // 1.

@@ -55,13 +55,7 @@ final class InvoiceSuitePdfDocumentReaderTest extends TestCase
         $this->assertStringContainsString('rsm:CrossIndustryInvoice xmlns:rsm', $pdfDocumentReader->getInvoiceDocumentAttachment()->getAttachmentContent());
 
         $this->assertCount(2, $additionalAttachments);
-        /**
-         * @phpstan-ignore arguments.count
-         */
         $this->arrayHasKey(0);
-        /**
-         * @phpstan-ignore arguments.count
-         */
         $this->arrayHasKey(1);
         $this->assertArrayNotHasKey(2, $additionalAttachments);
         $this->assertInstanceOf(InvoiceSuitePdfExtractorAttachment::class, $additionalAttachments[0]);

@@ -6704,8 +6704,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
     ): self {
         $this
             ->getUblInvoiceRootObject()
-            ->unsetLegalMonetaryTotal()
-            ?->getTaxTotal();
+            ->unsetLegalMonetaryTotal();
 
         $this
             ->getUblInvoiceRootObject()
