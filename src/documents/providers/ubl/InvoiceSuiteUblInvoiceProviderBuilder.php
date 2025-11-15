@@ -8451,7 +8451,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
         }
 
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newExemptionReasonCode])) {
-            $tradeTax->getTaxExemptionReasonCodeWithCreate()->setValue($newExemptionReason);
+            $tradeTax->getTaxExemptionReasonCodeWithCreate()->setValue($newExemptionReasonCode);
         }
 
         return $this;

@@ -6976,4 +6976,854 @@ final class UblInvoiceProviderBuilderTest extends TestCase
             );
         });
     }
+
+    public function testSetAddDocumentPositionSellerOrderReference(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionSellerOrderReference('SO-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
+            self::$document->addDocumentPositionSellerOrderReference('SO-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
+        });
+    }
+
+    public function testSetAddDocumentPositionBuyerOrderReference(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 1);
+
+        self::$document->setDocumentPositionBuyerOrderReference('', '', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 1);
+
+        self::$document->setDocumentPositionBuyerOrderReference('BO-1', '', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 1);
+
+        self::$document->setDocumentPositionBuyerOrderReference('BO-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 0, '100');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 1);
+
+        self::$document->setDocumentPositionBuyerOrderReference('', '', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 1);
+
+        self::$document->addDocumentPositionBuyerOrderReference('', '', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 1);
+
+        self::$document->addDocumentPositionBuyerOrderReference('BO-2');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 1);
+
+        self::$document->addDocumentPositionBuyerOrderReference('BO-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 0, '200');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 1);
+
+        self::$document->addDocumentPositionBuyerOrderReference('BO-3', '300', (new DateTime())->createFromFormat('d.m.Y', '03.01.1970'));
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 0, '200');
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 1);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 1, '300');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 2);
+
+        self::$document->setDocumentPositionBuyerOrderReference('BO-4', '400', (new DateTime())->createFromFormat('d.m.Y', '04.01.1970'));
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 0, '400');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 1);
+
+        self::$document->setDocumentPositionBuyerOrderReference('', '', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:OrderLineReference/cbc:LineID', 1);
+    }
+
+    public function testSetAddDocumentPositionQuotationReference(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionQuotationReference('QU-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
+            self::$document->addDocumentPositionQuotationReference('QU-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
+        });
+    }
+
+    public function testSetAddDocumentPositionContractReference(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionContractReference('QU-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
+            self::$document->addDocumentPositionContractReference('QU-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
+        });
+    }
+
+    public function testSetAddDocumentPositionAdditionalReference(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionAdditionalReference('ADD-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 'typecode', 'reftypecode', 'description');
+            self::$document->addDocumentPositionAdditionalReference('ADD-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), 'typecode', 'reftypecode', 'description');
+        });
+    }
+
+    public function testSetAddDocumentPositionUltimateCustomerOrderReference(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionUltimateCustomerOrderReference('UCOR-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
+            self::$document->addDocumentPositionUltimateCustomerOrderReference('UCOR-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
+        });
+    }
+
+    public function testSetAddDocumentPositionDespatchAdviceReference(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionDespatchAdviceReference('DESOADV-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
+            self::$document->addDocumentPositionDespatchAdviceReference('DESOADV-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
+        });
+    }
+
+    public function testSetAddDocumentPositionReceivingAdviceReference(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionReceivingAdviceReference('RECADV-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
+            self::$document->addDocumentPositionReceivingAdviceReference('RECADV-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
+        });
+    }
+
+    public function testSetAddDocumentPositionDeliveryNoteReference(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionDeliveryNoteReference('DEVNOTE-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
+            self::$document->addDocumentPositionDeliveryNoteReference('DEVNOTE-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
+        });
+    }
+
+    public function testSetAddDocumentPositionInvoiceReference(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionInvoiceReference('INVREF-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 'typecode');
+            self::$document->addDocumentPositionInvoiceReference('INVREF-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), 'typecode');
+        });
+    }
+
+    public function testSetAddDocumentPositionGrossPrice(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionGrossPrice(1.00, 2.00, 'C62');
+            self::$document->setDocumentPositionGrossPriceAllowanceCharge(1.0, false, 2.0, 3.0, 'reason', 'reasoncode');
+            self::$document->addDocumentPositionGrossPriceAllowanceCharge(10.0, true, 20.0, 30.0, 'reason2', 'reasoncode2');
+        });
+    }
+
+    public function testSetDocumentPositionNetPrice(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity', 1);
+
+        self::$document->setDocumentPositionNetPrice();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity', 1);
+
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionNetPriceTax('S', 'VAT', 1.0, 19.0, 'reason', 'reasoncode');
+        });
+
+        self::$document->setDocumentPositionNetPrice(1.0, 2.0, 'C62');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', 0, '1.00');
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity', 0, '2.00', 'unitCode', 'C62');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity', 1);
+
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionNetPriceTax('S', 'VAT', 1.0, 19.0, 'reason', 'reasoncode');
+        });
+
+        self::$document->setDocumentPositionNetPrice(3.0);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', 0, '3.00');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity', 1);
+
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionNetPriceTax('S', 'VAT', 1.0, 19.0, 'reason', 'reasoncode');
+        });
+
+        self::$document->setDocumentPositionNetPrice();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity', 1);
+    }
+
+    public function testSetDocumentPositionQuantities(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 1);
+
+        self::$document->setDocumentPositionQuantities();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 1);
+
+        self::$document->setDocumentPositionQuantities(1.0, 'C62');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 0, '1.00', 'unitCode', 'C62');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 1);
+
+        self::$document->setDocumentPositionQuantities(1.0, 'C62', 2.0, 'MTR', 3.0, 'KTR');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 0, '1.00', 'unitCode', 'C62');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 1);
+
+        self::$document->setDocumentPositionQuantities(4.0, 'XPP');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 0, '4.00', 'unitCode', 'XPP');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 1);
+
+        self::$document->setDocumentPositionQuantities();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 1);
+    }
+
+    public function testSetAddDocumentPositionShipToName(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionShipToName('Ship To Name');
+            self::$document->addDocumentPositionShipToName('Ship To Name 2');
+        });
+    }
+
+    public function testSetAddDocumentPositionShipToId(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionShipToId('Ship To Id 1');
+            self::$document->addDocumentPositionShipToId('Ship To Id 2');
+        });
+    }
+
+    public function testSetAddDocumentPositionShipToGlobalId(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionShipToGlobalId('Ship To Global Id 1', '0088');
+            self::$document->addDocumentPositionShipToGlobalId('Ship To Global Id 2', '0088');
+        });
+    }
+
+    public function testSetAddDocumentPositionShipToTaxRegistration(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionShipToTaxRegistration('VA', '123456789');
+            self::$document->addDocumentPositionShipToTaxRegistration('VA', '123456789');
+        });
+    }
+
+    public function testSetAddDocumentPositionShipToAddress(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionShipToAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
+            self::$document->addDocumentPositionShipToAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
+        });
+    }
+
+    public function testSetAddDocumentPositionShipToLegalOrganisation(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionShipToLegalOrganisation('8884', '123456789', 'Company Name');
+            self::$document->addDocumentPositionShipToLegalOrganisation('8885', '987654321', 'Company Name 2');
+        });
+    }
+
+    public function testSetAddDocumentPositionShipToContact(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionShipToContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
+            self::$document->addDocumentPositionShipToContact('Name 2', 'Departement Name 2', '+49-222-123456789', '+49-222-987654321', 'user2@nowhere.all');
+        });
+    }
+
+    public function testSetAddDocumentPositionShipToCommunication(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionShipToCommunication('EM', 'user@somewhere.all');
+            self::$document->addDocumentPositionShipToCommunication('EM', 'user2@somewhere.all');
+        });
+    }
+
+    public function testSetAddDocumentPositionUltimateShipToName(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionUltimateShipToName('Ship To Name');
+            self::$document->addDocumentPositionUltimateShipToName('Ship To Name 2');
+        });
+    }
+
+    public function testSetAddDocumentPositionUltimateShipToId(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionUltimateShipToId('Ship To Id 1');
+            self::$document->addDocumentPositionUltimateShipToId('Ship To Id 2');
+        });
+    }
+
+    public function testSetAddDocumentPositionUltimateShipToGlobalId(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionUltimateShipToGlobalId('Ship To Global Id 1', '0088');
+            self::$document->addDocumentPositionUltimateShipToGlobalId('Ship To Global Id 2', '0088');
+        });
+    }
+
+    public function testSetAddDocumentPositionUltimateShipToTaxRegistration(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionUltimateShipToTaxRegistration('VA', '123456789');
+            self::$document->addDocumentPositionUltimateShipToTaxRegistration('VA', '123456789');
+        });
+    }
+
+    public function testSetAddDocumentPositionUltimateShipToAddress(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionUltimateShipToAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
+            self::$document->addDocumentPositionUltimateShipToAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
+        });
+    }
+
+    public function testSetAddDocumentPositionUltimateShipToLegalOrganisation(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionUltimateShipToLegalOrganisation('8884', '123456789', 'Company Name');
+            self::$document->addDocumentPositionUltimateShipToLegalOrganisation('8885', '987654321', 'Company Name 2');
+        });
+    }
+
+    public function testSetAddDocumentPositionUltimateShipToContact(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionUltimateShipToContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
+            self::$document->addDocumentPositionUltimateShipToContact('Name 2', 'Departement Name 2', '+49-222-123456789', '+49-222-987654321', 'user2@nowhere.all');
+        });
+    }
+
+    public function testSetAddDocumentPositionUltimateShipToCommunication(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionUltimateShipToCommunication('EM', 'user@somewhere.all');
+            self::$document->addDocumentPositionUltimateShipToCommunication('EM', 'user2@somewhere.all');
+        });
+    }
+
+    public function testSetDocumentPositionSupplyChainEvent(): void
+    {
+        $this->assertXmlWasNotChanged(function (): void {
+            self::$document->setDocumentPositionSupplyChainEvent((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
+        });
+    }
+
+    public function testSetAddDocumentPositionBillingPeriod(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:Description', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:Description', 1);
+
+        self::$document->setDocumentPositionBillingPeriod(null, null, 'description');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:Description', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:Description', 1);
+
+        self::$document->setDocumentPositionBillingPeriod(null, (new DateTime())->createFromFormat('d.m.Y', '31.01.1970'), 'description');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:Description', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:Description', 1);
+
+        self::$document->setDocumentPositionBillingPeriod(
+            (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'),
+            (new DateTime())->createFromFormat('d.m.Y', '31.01.1970'),
+            'description'
+        );
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate', 0, '1970-01-01');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate', 0, '1970-01-31');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:Description', 0, 'description');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:Description', 1);
+
+        self::$document->addDocumentPositionBillingPeriod(
+            null,
+            (new DateTime())->createFromFormat('d.m.Y', '31.01.1970'),
+            'description'
+        );
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate', 0, '1970-01-01');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate', 0, '1970-01-31');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:Description', 0, 'description');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:Description', 1);
+
+        self::$document->addDocumentPositionBillingPeriod(
+            (new DateTime())->createFromFormat('d.m.Y', '31.01.1970'),
+            null,
+            'description'
+        );
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate', 0, '1970-01-01');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate', 0, '1970-01-31');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:Description', 0, 'description');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:Description', 1);
+
+        self::$document->addDocumentPositionBillingPeriod(
+            (new DateTime())->createFromFormat('d.m.Y', '01.03.1970'),
+            (new DateTime())->createFromFormat('d.m.Y', '31.03.1970'),
+            'description'
+        );
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate', 0, '1970-01-01');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate', 0, '1970-01-31');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:Description', 0, 'description');
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod', 1);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate', 1, '1970-03-01');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate', 1, '1970-03-31');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:Description', 1, 'description');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:Description', 2);
+
+        self::$document->setDocumentPositionBillingPeriod(null, null, 'description');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:Description', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:Description', 1);
+    }
+
+    public function testSetAddDocumentPositionTax(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReason', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReason', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID', 1);
+
+        self::$document->setDocumentPositionTax();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReason', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReason', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID', 1);
+
+        self::$document->setDocumentPositionTax('S', 'VAT', 1.90, 19.0, 'reason', 'reasoncode');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID', 0, 'S');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent', 0, '19.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode', 0, 'reasoncode');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReason', 0, 'reason');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID', 0, 'VAT');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReason', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID', 1);
+
+        self::$document->addDocumentPositionTax();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID', 0, 'S');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent', 0, '19.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode', 0, 'reasoncode');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReason', 0, 'reason');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID', 0, 'VAT');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReason', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID', 1);
+
+        self::$document->addDocumentPositionTax('O', 'VAT', 0.0, 0.0, 'reason2', 'reasoncode2');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID', 0, 'S');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent', 0, '19.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode', 0, 'reasoncode');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReason', 0, 'reason');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID', 0, 'VAT');
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory', 1);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID', 1, 'O');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent', 1, '0.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode', 1, 'reasoncode2');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReason', 1, 'reason2');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID', 1, 'VAT');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReason', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID', 2);
+
+        self::$document->setDocumentPositionTax('O', 'VAT', 0.0, 0.0, 'reason2', 'reasoncode2');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID', 0, 'O');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent', 0, '0.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode', 0, 'reasoncode2');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReason', 0, 'reason2');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID', 0, 'VAT');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReason', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID', 1);
+    }
+
+    public function testSetAddDocumentPositionAllowanceCharge(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:ChargeIndicator', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReason', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:MultiplierFactorNumeric', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:Amount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:BaseAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:ChargeIndicator', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReason', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:MultiplierFactorNumeric', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:Amount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:BaseAmount', 1);
+
+        self::$document->setDocumentPositionAllowanceCharge();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:ChargeIndicator', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReason', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:MultiplierFactorNumeric', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:Amount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:BaseAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:ChargeIndicator', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReason', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:MultiplierFactorNumeric', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:Amount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:BaseAmount', 1);
+
+        self::$document->setDocumentPositionAllowanceCharge(true, 20.0, 200.0, 'reason', 'reasoncode', 10.0);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:ChargeIndicator', 0, 'true');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode', 0, 'reasoncode');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReason', 0, 'reason');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:MultiplierFactorNumeric', 0, '10.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:Amount', 0, '20.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:BaseAmount', 0, '200.00');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:ChargeIndicator', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReason', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:MultiplierFactorNumeric', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:Amount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:BaseAmount', 1);
+
+        self::$document->addDocumentPositionAllowanceCharge();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:ChargeIndicator', 0, 'true');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode', 0, 'reasoncode');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReason', 0, 'reason');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:MultiplierFactorNumeric', 0, '10.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:Amount', 0, '20.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:BaseAmount', 0, '200.00');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:ChargeIndicator', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReason', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:MultiplierFactorNumeric', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:Amount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:BaseAmount', 1);
+
+        self::$document->addDocumentPositionAllowanceCharge(false, 150.0, 300.0, 'reason2', 'reasoncode2', 50.0);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:ChargeIndicator', 0, 'true');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode', 0, 'reasoncode');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReason', 0, 'reason');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:MultiplierFactorNumeric', 0, '10.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:Amount', 0, '20.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:BaseAmount', 0, '200.00');
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge', 1);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:ChargeIndicator', 1, 'false');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode', 1, 'reasoncode2');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReason', 1, 'reason2');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:MultiplierFactorNumeric', 1, '50.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:Amount', 1, '150.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:BaseAmount', 1, '300.00');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:ChargeIndicator', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReason', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:MultiplierFactorNumeric', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:Amount', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:BaseAmount', 2);
+
+        self::$document->setDocumentPositionAllowanceCharge(true, 200.0, 400.0, 'reason3', 'reasoncode3', 50.0);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:ChargeIndicator', 0, 'true');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode', 0, 'reasoncode3');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReason', 0, 'reason3');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:MultiplierFactorNumeric', 0, '50.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:Amount', 0, '200.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:BaseAmount', 0, '400.00');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:ChargeIndicator', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:AllowanceChargeReason', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:MultiplierFactorNumeric', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:Amount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:AllowanceCharge/cbc:BaseAmount', 1);
+    }
+
+    public function testSetAddDocumentPositionSummation(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:LineExtensionAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:LineExtensionAmount', 1);
+
+        self::$document->setDocumentPositionSummation();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:LineExtensionAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:LineExtensionAmount', 1);
+
+        self::$document->setDocumentPositionSummation(100.0, 10.0, 20.0, 19.0, 1000.0);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:LineExtensionAmount', 0, '100.00');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:LineExtensionAmount', 1);
+    }
+
+    public function testSetAddDocumentPositionPostingReference(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:AccountingCostCode', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:AccountingCostCode', 1);
+
+        self::$document->setDocumentPositionPostingReference();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:AccountingCostCode', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:AccountingCostCode', 1);
+
+        self::$document->setDocumentPositionPostingReference('type', '0815');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:AccountingCostCode', 0, '0815');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:AccountingCostCode', 1);
+
+        self::$document->addDocumentPositionPostingReference();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:AccountingCostCode', 0, '0815');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:AccountingCostCode', 1);
+
+        self::$document->addDocumentPositionPostingReference('type2', '4711');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:AccountingCostCode', 0, '4711');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:AccountingCostCode', 1);
+
+        self::$document->setDocumentPositionPostingReference('type3', '4712');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:AccountingCostCode', 0, '4712');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:AccountingCostCode', 1);
+    }
 }
