@@ -6565,6 +6565,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:AdditionalItemProperty/cbc:Value', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:AdditionalItemProperty/cbc:ValueQuantity', 1);
     }
+
     public function testSetDocumentPositionProductClassification(): void
     {
         // Empty product
