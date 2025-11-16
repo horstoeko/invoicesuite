@@ -16733,7 +16733,7 @@ final class ZfFxBasicDocumentBuilderTest extends TestCase
             )
             ->setShipToParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Ship Tó GmbH")
+                    ->addName("Ship To GmbH")
                     ->addId(new InvoiceSuiteIdDTO("0815-4711"))
                     ->addId(new InvoiceSuiteIdDTO("0815-4712"))
                     ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
@@ -16748,7 +16748,7 @@ final class ZfFxBasicDocumentBuilderTest extends TestCase
             )
             ->setUltimateShipToParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Ultimate Ship Tó GmbH")
+                    ->addName("Ultimate Ship To GmbH")
                     ->addId(new InvoiceSuiteIdDTO("0815-4711"))
                     ->addId(new InvoiceSuiteIdDTO("0815-4712"))
                     ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
@@ -17009,7 +17009,7 @@ final class ZfFxBasicDocumentBuilderTest extends TestCase
                     ->setQuantityPackage(new InvoiceSuiteQuantityDTO(3.0, "C62"))
                     ->setShipToParty(
                         (new InvoiceSuitePartyDTO())
-                            ->addName("Ship Tó GmbH")
+                            ->addName("Ship To GmbH")
                             ->addId(new InvoiceSuiteIdDTO("0815-4711"))
                             ->addId(new InvoiceSuiteIdDTO("0815-4712"))
                             ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
@@ -17024,7 +17024,7 @@ final class ZfFxBasicDocumentBuilderTest extends TestCase
                     )
                     ->setUltimateShipToParty(
                         (new InvoiceSuitePartyDTO())
-                            ->addName("Ultimate Ship Tó GmbH")
+                            ->addName("Ultimate Ship To GmbH")
                             ->addId(new InvoiceSuiteIdDTO("0815-4711"))
                             ->addId(new InvoiceSuiteIdDTO("0815-4712"))
                             ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
@@ -17418,7 +17418,7 @@ final class ZfFxBasicDocumentBuilderTest extends TestCase
 
         // Ship-To Party
 
-        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:Name', 0, 'Ship Tó GmbH');
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:Name', 0, 'Ship To GmbH');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:Name', 1);
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:ID', 0, '0815-4711');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:ID', 1);

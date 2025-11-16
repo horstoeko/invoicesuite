@@ -16719,7 +16719,7 @@ final class ZfFxMinimumDocumentBuilderTest extends TestCase
             )
             ->setShipToParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Ship Tó GmbH")
+                    ->addName("Ship To GmbH")
                     ->addId(new InvoiceSuiteIdDTO("0815-4711"))
                     ->addId(new InvoiceSuiteIdDTO("0815-4712"))
                     ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
@@ -16734,7 +16734,7 @@ final class ZfFxMinimumDocumentBuilderTest extends TestCase
             )
             ->setUltimateShipToParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Ultimate Ship Tó GmbH")
+                    ->addName("Ultimate Ship To GmbH")
                     ->addId(new InvoiceSuiteIdDTO("0815-4711"))
                     ->addId(new InvoiceSuiteIdDTO("0815-4712"))
                     ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
@@ -16994,7 +16994,7 @@ final class ZfFxMinimumDocumentBuilderTest extends TestCase
                     ->setQuantityPackage(new InvoiceSuiteQuantityDTO(3.0, "C62"))
                     ->setShipToParty(
                         (new InvoiceSuitePartyDTO())
-                            ->addName("Ship Tó GmbH")
+                            ->addName("Ship To GmbH")
                             ->addId(new InvoiceSuiteIdDTO("0815-4711"))
                             ->addId(new InvoiceSuiteIdDTO("0815-4712"))
                             ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
@@ -17009,7 +17009,7 @@ final class ZfFxMinimumDocumentBuilderTest extends TestCase
                     )
                     ->setUltimateShipToParty(
                         (new InvoiceSuitePartyDTO())
-                            ->addName("Ultimate Ship Tó GmbH")
+                            ->addName("Ultimate Ship To GmbH")
                             ->addId(new InvoiceSuiteIdDTO("0815-4711"))
                             ->addId(new InvoiceSuiteIdDTO("0815-4712"))
                             ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))

@@ -971,7 +971,7 @@ final class ZfFxBasicProviderReaderTest extends TestCase
 
         self::$document->getDocumentShipToName($newName);
 
-        $this->assertSame('Ship Tó GmbH', $newName);
+        $this->assertSame('Ship To GmbH', $newName);
 
         // ID
 

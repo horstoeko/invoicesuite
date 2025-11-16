@@ -1076,7 +1076,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         self::$document->getDocumentShipToName($newName);
 
-        $this->assertSame('Ship Tó GmbH', $newName);
+        $this->assertSame('Ship To GmbH', $newName);
 
         // ID
 
@@ -3052,7 +3052,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         self::$document->getDocumentPositionShipToName($newName);
 
-        $this->assertSame('Ship Tó GmbH', $newName);
+        $this->assertSame('Ship To GmbH', $newName);
 
         // ID
 

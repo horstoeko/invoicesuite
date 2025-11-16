@@ -233,7 +233,7 @@
     </cac:DeliveryLocation>
     <cac:DeliveryParty>
       <cac:PartyName>
-        <cbc:Name>Ship Tó GmbH</cbc:Name>
+        <cbc:Name>Ship To GmbH</cbc:Name>
       </cac:PartyName>
     </cac:DeliveryParty>
   </cac:Delivery>
