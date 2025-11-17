@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
-use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
+use PhpCsFixer\Runner\Parallel\ParallelConfig;
 
 $rootDir = __DIR__ . '/..';
 
@@ -29,7 +29,7 @@ $finder = (new Finder())
         ]
     )
     ->notPath([
-        'documents/models/',
+        'documents/models',
     ]);
 
 return (new Config())
@@ -39,7 +39,7 @@ return (new Config())
     ->setFinder($finder)
     ->setIndent("    ")
     ->setLineEnding("\n")
-    ->setParallelConfig(new PhpCsFixer\Runner\Parallel\ParallelConfig(4, 20, 3000))
+    ->setParallelConfig(new ParallelConfig(4, 20, 3000))
     ->setRules(
         [
             '@PSR12' => true,
