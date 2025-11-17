@@ -29,7 +29,7 @@ final class InvoiceSuiteQuantityDTOTest extends TestCase
     public function testQuantityUnitGetterAndSetter(): void
     {
         $invoiceSuiteQuantityDTO = new InvoiceSuiteQuantityDTO();
-        $quantityUnitValue = "Example Value";
+        $quantityUnitValue = 'Example Value';
         $invoiceSuiteQuantityDTO->setQuantityUnit($quantityUnitValue);
 
         $this->assertSame($quantityUnitValue, $invoiceSuiteQuantityDTO->getQuantityUnit());

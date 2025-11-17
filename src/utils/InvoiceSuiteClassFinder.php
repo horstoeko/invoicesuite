@@ -9,10 +9,9 @@ use Throwable;
  * class representing tools for classes finding
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteClassFinder
 {
@@ -31,11 +30,19 @@ class InvoiceSuiteClassFinder
     private $classNames = [];
 
     /**
+     * Constructor (Hidden)
+     */
+    final protected function __construct()
+    {
+        $this->init();
+    }
+
+    /**
      * Create a new instance of InvoiceSuiteClassFinder if needed
      *
      * @return InvoiceSuiteClassFinder
      */
-    public static function factory(): InvoiceSuiteClassFinder
+    public static function factory(): self
     {
         if (is_null(static::$invoiceSuiteClassFinder)) {
             static::$invoiceSuiteClassFinder = new static();
@@ -45,19 +52,11 @@ class InvoiceSuiteClassFinder
     }
 
     /**
-     * Constructor (Hidden)
-     */
-    final protected function __construct()
-    {
-        $this->init();
-    }
-
-    /**
      * Clear
      *
      * @return InvoiceSuiteClassFinder
      */
-    public function clear(): InvoiceSuiteClassFinder
+    public function clear(): self
     {
         $this->classNames = [];
 
@@ -69,7 +68,7 @@ class InvoiceSuiteClassFinder
      *
      * @return InvoiceSuiteClassFinder
      */
-    public function init(): InvoiceSuiteClassFinder
+    public function init(): self
     {
         $classMaps = array_values(ClassLoader::getRegisteredLoaders())[0]->getClassMap();
 
@@ -83,21 +82,23 @@ class InvoiceSuiteClassFinder
     /**
      * Returns an array of all classes which are a subclass of $subClassOf
      *
-     * @param string $isSubClassOf
-     * @param boolean $disableCache
+     * @param  string        $isSubClassOf
+     * @param  bool          $disableCache
      * @return array<string>
      */
     public function getClassesWhenItsSubClassOf(string $isSubClassOf, bool $disableCache = false): array
     {
         if (!$disableCache) {
-            $cacheFilename = md5((string) preg_replace("/[^a-zA-Z0-9]/", "", sprintf("invoicesuite-cf-%s", $isSubClassOf))) . ".cache";
-            $cacheFilepath = InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..", "cache");
+            $cacheFilename = md5((string) preg_replace('/[^a-zA-Z0-9]/', '', sprintf('invoicesuite-cf-%s', $isSubClassOf))).'.cache';
+            $cacheFilepath = InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', 'cache');
             $cacheFilenameFq = InvoiceSuitePathUtils::combinePathWithFile($cacheFilepath, $cacheFilename);
 
             if (file_exists($cacheFilenameFq)) {
                 $cacheFilenameContent = file_get_contents($cacheFilenameFq);
+
                 if ($cacheFilenameContent !== false) {
                     $cacheFilenameContentUnserialized = unserialize($cacheFilenameContent);
+
                     if (is_array($cacheFilenameContentUnserialized)) {
                         return $cacheFilenameContentUnserialized;
                     }
@@ -110,6 +111,7 @@ class InvoiceSuiteClassFinder
         foreach ($this->classNames as $className) {
             $previousErrorReportingState = error_reporting();
             error_reporting(E_ALL & ~E_DEPRECATED);
+
             try {
                 if (is_subclass_of($className, $isSubClassOf)) {
                     $classes[] = $className;
@@ -136,7 +138,7 @@ class InvoiceSuiteClassFinder
      */
     public static function clearCache(): void
     {
-        $files = glob(__DIR__ . '/../cache/*.cache');
+        $files = glob(__DIR__.'/../cache/*.cache');
 
         foreach ($files as $file) {
             if (is_file($file)) {

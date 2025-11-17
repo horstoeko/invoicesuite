@@ -13,10 +13,9 @@ namespace horstoeko\invoicesuite\documents\dto;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
 {
@@ -30,9 +29,9 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
     /**
      * Constructor
      *
-     * @param float|null $amount The price value
-     * @param InvoiceSuiteQuantityDTO|null $priceQuantity The number of item units for which the price applies
-     * @param array<InvoiceSuiteTaxDTO> $taxes The net price included tax
+     * @param null|float                   $amount        The price value
+     * @param null|InvoiceSuiteQuantityDTO $priceQuantity The number of item units for which the price applies
+     * @param array<InvoiceSuiteTaxDTO>    $taxes         The net price included tax
      */
     public function __construct(
         ?float $amount = null,
@@ -57,7 +56,7 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
     /**
      * Sets the net price included tax
      *
-     * @param array<InvoiceSuiteTaxDTO> $taxes The net price included tax
+     * @param  array<InvoiceSuiteTaxDTO> $taxes The net price included tax
      * @return self
      */
     public function setTaxes(array $taxes): self
@@ -70,7 +69,7 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
     /**
      * Add single The net price included tax
      *
-     * @param InvoiceSuiteTaxDTO $tax The net price included tax
+     * @param  InvoiceSuiteTaxDTO $tax The net price included tax
      * @return self
      */
     public function addTax(InvoiceSuiteTaxDTO $tax): self
@@ -83,8 +82,8 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
     /**
      * Get first The net price included tax
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstTax(callable $callback, ?callable $callbackElse = null): self
@@ -101,8 +100,8 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
     /**
      * Get next The net price included tax
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextTax(callable $callback, ?callable $callbackElse = null): self
@@ -119,8 +118,8 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
     /**
      * Get previous The net price included tax
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousTax(callable $callback, ?callable $callbackElse = null): self
@@ -137,8 +136,8 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
     /**
      * Get last The net price included tax
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastTax(callable $callback, ?callable $callbackElse = null): self
@@ -155,9 +154,9 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
     /**
      * Loop over The net price included tax and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachTax(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
@@ -169,7 +168,7 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($tax);
         }

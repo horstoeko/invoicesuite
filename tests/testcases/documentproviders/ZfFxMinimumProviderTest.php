@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 
-use horstoeko\invoicesuite\tests\TestCase;
-use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\documents\models\zffxminimum\rsm\CrossIndustryInvoice;
 use horstoeko\invoicesuite\documents\providers\zffxminimum\InvoiceSuiteZfFxMinimumProvider;
-use horstoeko\invoicesuite\documents\providers\zffxminimum\InvoiceSuiteZfFxMinimumProviderReader;
 use horstoeko\invoicesuite\documents\providers\zffxminimum\InvoiceSuiteZfFxMinimumProviderBuilder;
+use horstoeko\invoicesuite\documents\providers\zffxminimum\InvoiceSuiteZfFxMinimumProviderReader;
 use horstoeko\invoicesuite\documents\providers\zffxminimum\InvoiceSuiteZfFxMinimumSerializerHandler;
+use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
+use horstoeko\invoicesuite\tests\TestCase;
 
 final class ZfFxMinimumProviderTest extends TestCase
 {
@@ -53,11 +53,11 @@ final class ZfFxMinimumProviderTest extends TestCase
 
         $this->assertTrue($provider->isPdfSupportAvailable());
         $this->assertCount(4, $provider->getAllowedPdfAttachmentFilenames());
-        $this->assertContains("ZUGFeRD-invoice.xml", $provider->getAllowedPdfAttachmentFilenames());
-        $this->assertContains("zugferd-invoice.xml", $provider->getAllowedPdfAttachmentFilenames());
-        $this->assertContains("factur-x.xml", $provider->getAllowedPdfAttachmentFilenames());
-        $this->assertContains("xrechnung.xml", $provider->getAllowedPdfAttachmentFilenames());
-        $this->assertSame("factur-x.xml", $provider->getDefaultPdfAttachmentFilename());
+        $this->assertContains('ZUGFeRD-invoice.xml', $provider->getAllowedPdfAttachmentFilenames());
+        $this->assertContains('zugferd-invoice.xml', $provider->getAllowedPdfAttachmentFilenames());
+        $this->assertContains('factur-x.xml', $provider->getAllowedPdfAttachmentFilenames());
+        $this->assertContains('xrechnung.xml', $provider->getAllowedPdfAttachmentFilenames());
+        $this->assertSame('factur-x.xml', $provider->getDefaultPdfAttachmentFilename());
         $this->assertSame(InvoiceSuiteZffxPdfConstructor::class, $provider->getPdfConstructorClassName());
     }
 
@@ -102,7 +102,7 @@ final class ZfFxMinimumProviderTest extends TestCase
     {
         $provider = new InvoiceSuiteZfFxMinimumProvider();
 
-        $xml = <<<XML
+        $xml = <<<'XML'
     <?xml version="1.0" encoding="UTF-8"?>
     <rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <rsm:ExchangedDocumentContext>
@@ -121,7 +121,7 @@ final class ZfFxMinimumProviderTest extends TestCase
 
         $this->assertTrue($provider->isSatisfiableBySerializedContent($xml));
 
-        $xml = <<<XML
+        $xml = <<<'XML'
     <?xml version="1.0" encoding="UTF-8"?>
     <rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <rsm:ExchangedDocumentContext>
@@ -140,7 +140,7 @@ final class ZfFxMinimumProviderTest extends TestCase
 
         $this->assertTrue($provider->isSatisfiableBySerializedContent($xml));
 
-        $xml = <<<XML
+        $xml = <<<'XML'
     <?xml version="1.0" encoding="UTF-8"?>
     <rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <rsm:ExchangedDocumentContext>
@@ -159,7 +159,7 @@ final class ZfFxMinimumProviderTest extends TestCase
 
         $this->assertFalse($provider->isSatisfiableBySerializedContent($xml));
 
-        $xml = <<<XML
+        $xml = <<<'XML'
     Dummy
     XML;
 

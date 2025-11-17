@@ -13,80 +13,79 @@ namespace horstoeko\invoicesuite\documents\dto;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteReferenceProductDTO
 {
     /**
      * The ID of the product (product id, Order-X interoperable)
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $id = null;
 
     /**
      * The name of the product (product name)
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $name = null;
 
     /**
      * The product description of the product
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $description = null;
 
     /**
      * The identifier assigned to the product by the seller
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $sellerId = null;
 
     /**
      * The identifier assigned to the product by the buyer
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $buyerId = null;
 
     /**
      * The product global id
      *
-     * @var InvoiceSuiteIdDTO|null
+     * @var null|InvoiceSuiteIdDTO
      */
     protected ?InvoiceSuiteIdDTO $globalId = null;
 
     /**
      * The id assigned by the industry
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $industryId = null;
 
     /**
      * The quantity of the referenced product contained product
      *
-     * @var InvoiceSuiteQuantityDTO|null
+     * @var null|InvoiceSuiteQuantityDTO
      */
     protected ?InvoiceSuiteQuantityDTO $unitQuantity = null;
 
     /**
      * Constructor
      *
-     * @param string|null $id The ID of the product (product id, Order-X interoperable)
-     * @param string|null $name The name of the product (product name)
-     * @param string|null $description The product description of the product
-     * @param string|null $sellerId The identifier assigned to the product by the seller
-     * @param string|null $buyerId The identifier assigned to the product by the buyer
-     * @param InvoiceSuiteIdDTO|null $globalId The product global id
-     * @param string|null $industryId The id assigned by the industry
-     * @param InvoiceSuiteQuantityDTO|null $unitQuantity The quantity of the referenced product contained product
+     * @param null|string                  $id           The ID of the product (product id, Order-X interoperable)
+     * @param null|string                  $name         The name of the product (product name)
+     * @param null|string                  $description  The product description of the product
+     * @param null|string                  $sellerId     The identifier assigned to the product by the seller
+     * @param null|string                  $buyerId      The identifier assigned to the product by the buyer
+     * @param null|InvoiceSuiteIdDTO       $globalId     The product global id
+     * @param null|string                  $industryId   The id assigned by the industry
+     * @param null|InvoiceSuiteQuantityDTO $unitQuantity The quantity of the referenced product contained product
      */
     public function __construct(
         ?string $id = null,
@@ -111,7 +110,7 @@ class InvoiceSuiteReferenceProductDTO
     /**
      * Returns the ID of the product (product id, Order-X interoperable)
      *
-     * @return string|null
+     * @return null|string
      */
     public function getId(): ?string
     {
@@ -121,7 +120,7 @@ class InvoiceSuiteReferenceProductDTO
     /**
      * Sets the ID of the product (product id, Order-X interoperable)
      *
-     * @param string|null $id The ID of the product (product id, Order-X interoperable)
+     * @param  null|string $id The ID of the product (product id, Order-X interoperable)
      * @return self
      */
     public function setId(?string $id): self
@@ -134,7 +133,7 @@ class InvoiceSuiteReferenceProductDTO
     /**
      * Returns the name of the product (product name)
      *
-     * @return string|null
+     * @return null|string
      */
     public function getName(): ?string
     {
@@ -144,7 +143,7 @@ class InvoiceSuiteReferenceProductDTO
     /**
      * Sets the name of the product (product name)
      *
-     * @param string|null $name The name of the product (product name)
+     * @param  null|string $name The name of the product (product name)
      * @return self
      */
     public function setName(?string $name): self
@@ -157,7 +156,7 @@ class InvoiceSuiteReferenceProductDTO
     /**
      * Returns the product description of the product
      *
-     * @return string|null
+     * @return null|string
      */
     public function getDescription(): ?string
     {
@@ -167,7 +166,7 @@ class InvoiceSuiteReferenceProductDTO
     /**
      * Sets the product description of the product
      *
-     * @param string|null $description The product description of the product
+     * @param  null|string $description The product description of the product
      * @return self
      */
     public function setDescription(?string $description): self
@@ -180,7 +179,7 @@ class InvoiceSuiteReferenceProductDTO
     /**
      * Returns the identifier assigned to the product by the seller
      *
-     * @return string|null
+     * @return null|string
      */
     public function getSellerId(): ?string
     {
@@ -190,7 +189,7 @@ class InvoiceSuiteReferenceProductDTO
     /**
      * Sets the identifier assigned to the product by the seller
      *
-     * @param string|null $sellerId The identifier assigned to the product by the seller
+     * @param  null|string $sellerId The identifier assigned to the product by the seller
      * @return self
      */
     public function setSellerId(?string $sellerId): self
@@ -203,7 +202,7 @@ class InvoiceSuiteReferenceProductDTO
     /**
      * Returns the identifier assigned to the product by the buyer
      *
-     * @return string|null
+     * @return null|string
      */
     public function getBuyerId(): ?string
     {
@@ -213,7 +212,7 @@ class InvoiceSuiteReferenceProductDTO
     /**
      * Sets the identifier assigned to the product by the buyer
      *
-     * @param string|null $buyerId The identifier assigned to the product by the buyer
+     * @param  null|string $buyerId The identifier assigned to the product by the buyer
      * @return self
      */
     public function setBuyerId(?string $buyerId): self
@@ -226,7 +225,7 @@ class InvoiceSuiteReferenceProductDTO
     /**
      * Returns the product global id
      *
-     * @return InvoiceSuiteIdDTO|null
+     * @return null|InvoiceSuiteIdDTO
      */
     public function getGlobalId(): ?InvoiceSuiteIdDTO
     {
@@ -236,7 +235,7 @@ class InvoiceSuiteReferenceProductDTO
     /**
      * Sets the product global id
      *
-     * @param InvoiceSuiteIdDTO|null $globalId The product global id
+     * @param  null|InvoiceSuiteIdDTO $globalId The product global id
      * @return self
      */
     public function setGlobalId(?InvoiceSuiteIdDTO $globalId): self
@@ -249,7 +248,7 @@ class InvoiceSuiteReferenceProductDTO
     /**
      * Returns the id assigned by the industry
      *
-     * @return string|null
+     * @return null|string
      */
     public function getIndustryId(): ?string
     {
@@ -259,7 +258,7 @@ class InvoiceSuiteReferenceProductDTO
     /**
      * Sets the id assigned by the industry
      *
-     * @param string|null $industryId The id assigned by the industry
+     * @param  null|string $industryId The id assigned by the industry
      * @return self
      */
     public function setIndustryId(?string $industryId): self
@@ -272,7 +271,7 @@ class InvoiceSuiteReferenceProductDTO
     /**
      * Returns the quantity of the referenced product contained product
      *
-     * @return InvoiceSuiteQuantityDTO|null
+     * @return null|InvoiceSuiteQuantityDTO
      */
     public function getUnitQuantity(): ?InvoiceSuiteQuantityDTO
     {
@@ -282,7 +281,7 @@ class InvoiceSuiteReferenceProductDTO
     /**
      * Sets the quantity of the referenced product contained product
      *
-     * @param InvoiceSuiteQuantityDTO|null $unitQuantity The quantity of the referenced product contained product
+     * @param  null|InvoiceSuiteQuantityDTO $unitQuantity The quantity of the referenced product contained product
      * @return self
      */
     public function setUnitQuantity(?InvoiceSuiteQuantityDTO $unitQuantity): self

@@ -12,24 +12,23 @@ namespace horstoeko\invoicesuite\pdfs\extractor;
 use ArrayAccess;
 use ArrayIterator;
 use Countable;
-use IteratorAggregate;
-use LogicException;
-use Traversable;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
+use IteratorAggregate;
+use LogicException;
 use PrinsFrank\PdfParser\Exception\InvalidArgumentException;
 use PrinsFrank\PdfParser\Exception\ParseFailureException;
 use PrinsFrank\PdfParser\Exception\PdfParserException;
 use PrinsFrank\PdfParser\PdfParser;
+use Traversable;
 
 /**
  * Class representing an extractor for PDF attachments
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  *
  * @implements ArrayAccess<int, InvoiceSuitePdfExtractorAttachment>
  * @implements IteratorAggregate<int, InvoiceSuitePdfExtractorAttachment>
@@ -46,20 +45,18 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
     /**
      * (Hidden) Constructor
      */
-    final protected function __construct()
-    {
-    }
+    final protected function __construct() {}
 
     /**
      * Start getting attached files from a PDF file
      *
-     * @param string $pdfFilename
-     * @return InvoiceSuitePdfExtractor
+     * @param  string                               $pdfFilename
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws PdfParserException
      * @throws InvalidArgumentException
      * @throws ParseFailureException
+     * @return InvoiceSuitePdfExtractor
      */
     public static function fromFile(string $pdfFilename): self
     {
@@ -79,15 +76,94 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
     /**
      * Start getting attached files from a PDF content
      *
-     * @param string $pdfContent
-     * @return InvoiceSuitePdfExtractor
+     * @param  string                   $pdfContent
      * @throws PdfParserException
      * @throws InvalidArgumentException
      * @throws ParseFailureException
+     * @return InvoiceSuitePdfExtractor
      */
     public static function fromContent(string $pdfContent): self
     {
-        return (new InvoiceSuitePdfExtractor())->collectAttachmentsFromPdfContent($pdfContent);
+        return (new self())->collectAttachmentsFromPdfContent($pdfContent);
+    }
+
+    /**
+     * Enable foreach
+     *
+     * @return Traversable<int, InvoiceSuitePdfExtractorAttachment>
+     */
+    public function getIterator(): Traversable
+    {
+        return new ArrayIterator($this->attachmentList);
+    }
+
+    /**
+     * Enable count
+     */
+    public function count(): int
+    {
+        return count($this->attachmentList);
+    }
+
+    /**
+     * Check if an attachment exists at index
+     *
+     * @param  mixed $offset
+     * @return bool
+     */
+    public function offsetExists(mixed $offset): bool
+    {
+        return is_int($offset) && array_key_exists($offset, $this->attachmentList);
+    }
+
+    /**
+     * Get an attachment by index
+     *
+     * @param  mixed                                   $offset
+     * @return null|InvoiceSuitePdfExtractorAttachment
+     */
+    public function offsetGet(mixed $offset): ?InvoiceSuitePdfExtractorAttachment
+    {
+        if (!is_int($offset)) {
+            return null;
+        }
+
+        return $this->attachmentList[$offset] ?? null;
+    }
+
+    /**
+     * Set an attachment at index. Disallow external modification
+     *
+     * @param  mixed          $offset
+     * @param  mixed          $value
+     * @throws LogicException
+     * @return void
+     */
+    public function offsetSet(mixed $offset, mixed $value): void
+    {
+        throw new LogicException('Attachments are read-only via array access.');
+    }
+
+    /**
+     * Remove an attachment at index. Disallow external modification
+     *
+     * @param  mixed          $offset
+     * @throws LogicException
+     * @return void
+     */
+    public function offsetUnset(mixed $offset): void
+    {
+        throw new LogicException('Attachments are read-only via array access.');
+    }
+
+    /**
+     * Get a shallow copy of the attáchments
+     *
+     * @return array<int, InvoiceSuitePdfExtractorAttachment>
+     */
+    public function toArray(): array
+    {
+        return $this->attachmentList;
     }
 
     /**
@@ -113,11 +189,11 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
     /**
      * Get a list of all the attachments.
      *
-     * @param string $pdfContent
-     * @return InvoiceSuitePdfExtractor
+     * @param  string                   $pdfContent
      * @throws InvalidArgumentException
      * @throws ParseFailureException
      * @throws PdfParserException
+     * @return InvoiceSuitePdfExtractor
      */
     protected function collectAttachmentsFromPdfContent(string $pdfContent): self
     {
@@ -130,14 +206,14 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
 
             $fileSpecs = array_filter(
                 $fileSpecs,
-                function ($fileSpec) {
+                static function ($fileSpec) {
                     return $fileSpec->has('F') && $fileSpec->has('EF');
                 }
             );
 
             $fileSpecs = array_filter(
                 $fileSpecs,
-                function ($fileSpec) {
+                static function ($fileSpec) {
                     return $fileSpec->get('EF')->has('F');
                 }
             );
@@ -146,7 +222,7 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
                 $this->attachmentList[] = new InvoiceSuitePdfExtractorAttachment(
                     $fileSpec->get('EF')->get('F')->getContent(),
                     $fileSpec->get('F')->getContent(),
-                    $fileSpec->get('EF')->get('F')->has('Subtype') ? (string)($fileSpec->get('EF')->get('F')->get('Subtype')->getContent()) : ""
+                    $fileSpec->get('EF')->get('F')->has('Subtype') ? (string) ($fileSpec->get('EF')->get('F')->get('Subtype')->getContent()) : ''
                 );
             }
 
@@ -159,7 +235,7 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
 
         $fileSpecs = array_filter(
             $fileSpecs,
-            function ($fileSpec) {
+            static function ($fileSpec) {
                 return !is_null($fileSpec->getEmbeddedFile());
             }
         );
@@ -173,84 +249,5 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
         }
 
         return $this;
-    }
-
-    /**
-     * Enable foreach
-     *
-     * @return Traversable<int, InvoiceSuitePdfExtractorAttachment>
-     */
-    public function getIterator(): Traversable
-    {
-        return new ArrayIterator($this->attachmentList);
-    }
-
-    /**
-     * Enable count
-     */
-    public function count(): int
-    {
-        return count($this->attachmentList);
-    }
-
-    /**
-     * Check if an attachment exists at index
-     *
-     * @param mixed $offset
-     * @return bool
-     */
-    public function offsetExists(mixed $offset): bool
-    {
-        return is_int($offset) && array_key_exists($offset, $this->attachmentList);
-    }
-
-    /**
-     * Get an attachment by index
-     *
-     * @param mixed $offset
-     * @return null|InvoiceSuitePdfExtractorAttachment
-     */
-    public function offsetGet(mixed $offset): ?InvoiceSuitePdfExtractorAttachment
-    {
-        if (!is_int($offset)) {
-            return null;
-        }
-
-        return $this->attachmentList[$offset] ?? null;
-    }
-
-    /**
-     * Set an attachment at index. Disallow external modification
-     *
-     * @param mixed $offset
-     * @param mixed $value
-     * @return void
-     * @throws LogicException
-     */
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        throw new LogicException('Attachments are read-only via array access.');
-    }
-
-    /**
-     * Remove an attachment at index. Disallow external modification
-     *
-     * @param mixed $offset
-     * @return void
-     * @throws LogicException
-     */
-    public function offsetUnset(mixed $offset): void
-    {
-        throw new LogicException('Attachments are read-only via array access.');
-    }
-
-    /**
-     * Get a shallow copy of the attáchments
-     *
-     * @return array<int, InvoiceSuitePdfExtractorAttachment>
-     */
-    public function toArray(): array
-    {
-        return $this->attachmentList;
     }
 }

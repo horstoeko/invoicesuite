@@ -29,7 +29,7 @@ final class InvoiceSuitePeriodDTOTest extends TestCase
     public function testPeriodUnitGetterAndSetter(): void
     {
         $invoiceSuitePeriodDTO = new InvoiceSuitePeriodDTO();
-        $periodUnitValue = "Example Value";
+        $periodUnitValue = 'Example Value';
         $invoiceSuitePeriodDTO->setPeriodUnit($periodUnitValue);
 
         $this->assertSame($periodUnitValue, $invoiceSuitePeriodDTO->getPeriodUnit());

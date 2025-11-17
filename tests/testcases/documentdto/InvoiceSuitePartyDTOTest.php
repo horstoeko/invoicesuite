@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 
-use horstoeko\invoicesuite\tests\TestCase;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteIdDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitePartyDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteCommunicationDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteContactDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteIdDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteOrganisationDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePartyDTO;
+use horstoeko\invoicesuite\tests\TestCase;
 
 final class InvoiceSuitePartyDTOTest extends TestCase
 {
@@ -103,18 +103,18 @@ final class InvoiceSuitePartyDTOTest extends TestCase
     public function testCollectionNameIteratorsWithCallbacks(): void
     {
         $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
-        $invoiceSuitePartyDTO->addName("Name 1");
-        $invoiceSuitePartyDTO->addName("Name 2");
+        $invoiceSuitePartyDTO->addName('Name 1');
+        $invoiceSuitePartyDTO->addName('Name 2');
 
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePartyDTO->firstName($cb, $cbElse);
@@ -139,12 +139,12 @@ final class InvoiceSuitePartyDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePartyDTO->firstName($cb, $cbElse);
@@ -168,12 +168,12 @@ final class InvoiceSuitePartyDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePartyDTO->firstId($cb, $cbElse);
@@ -198,12 +198,12 @@ final class InvoiceSuitePartyDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePartyDTO->firstId($cb, $cbElse);
@@ -227,12 +227,12 @@ final class InvoiceSuitePartyDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePartyDTO->firstGlobalId($cb, $cbElse);
@@ -257,12 +257,12 @@ final class InvoiceSuitePartyDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePartyDTO->firstGlobalId($cb, $cbElse);
@@ -286,12 +286,12 @@ final class InvoiceSuitePartyDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePartyDTO->firstTaxRegistration($cb, $cbElse);
@@ -316,12 +316,12 @@ final class InvoiceSuitePartyDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePartyDTO->firstTaxRegistration($cb, $cbElse);
@@ -345,12 +345,12 @@ final class InvoiceSuitePartyDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePartyDTO->firstAddress($cb, $cbElse);
@@ -375,12 +375,12 @@ final class InvoiceSuitePartyDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePartyDTO->firstAddress($cb, $cbElse);
@@ -398,18 +398,18 @@ final class InvoiceSuitePartyDTOTest extends TestCase
     public function testCollectionLegalOrganisationIteratorsWithCallbacks(): void
     {
         $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
-        $invoiceSuitePartyDTO->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('ID1', null, "Name 1"));
-        $invoiceSuitePartyDTO->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('ID2', null, "Name 1"));
+        $invoiceSuitePartyDTO->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('ID1', null, 'Name 1'));
+        $invoiceSuitePartyDTO->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('ID2', null, 'Name 1'));
 
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePartyDTO->firstLegalOrganisation($cb, $cbElse);
@@ -434,12 +434,12 @@ final class InvoiceSuitePartyDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePartyDTO->firstLegalOrganisation($cb, $cbElse);
@@ -463,12 +463,12 @@ final class InvoiceSuitePartyDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePartyDTO->firstContact($cb, $cbElse);
@@ -493,12 +493,12 @@ final class InvoiceSuitePartyDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePartyDTO->firstContact($cb, $cbElse);
@@ -522,12 +522,12 @@ final class InvoiceSuitePartyDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePartyDTO->firstCommunication($cb, $cbElse);
@@ -552,12 +552,12 @@ final class InvoiceSuitePartyDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePartyDTO->firstCommunication($cb, $cbElse);

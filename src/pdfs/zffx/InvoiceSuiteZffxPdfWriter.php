@@ -9,18 +9,17 @@
 
 namespace horstoeko\invoicesuite\pdfs\zffx;
 
-use setasign\Fpdi\PdfParser\StreamReader;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use setasign\Fpdi\Fpdi as PdfFpdi;
+use setasign\Fpdi\PdfParser\StreamReader;
 
 /**
  * Class representing the tools for a ZUGFeRD/Factor-X PDF document constructor
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteZffxPdfWriter extends PdfFpdi
 {
@@ -43,33 +42,33 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
      *
      * @var array{author: string, keywords: string, title: string, subject: string, createdDate: string, modifiedDate: string}
      */
-    protected $metaDataInfos = ["author" => "", "keywords" => "", "title" => "", "subject" => "", "createdDate" => "", "modifiedDate" => ""];
+    protected $metaDataInfos = ['author' => '', 'keywords' => '', 'title' => '', 'subject' => '', 'createdDate' => '', 'modifiedDate' => ''];
 
     /**
      * Internal index
      *
-     * @var integer
+     * @var int
      */
     protected $fileSpecDictionnaryIndex = 0;
 
     /**
      * Internal index
      *
-     * @var integer
+     * @var int
      */
     protected $descriptionIndex = 0;
 
     /**
      * Internal index
      *
-     * @var integer
+     * @var int
      */
     protected $outputIntentIndex = 0;
 
     /**
      * Internal index
      *
-     * @var integer
+     * @var int
      */
     protected $filesIndex;
 
@@ -77,7 +76,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
      * Internal flag that indicates that the attachment
      * pane should be shown by default
      *
-     * @var boolean
+     * @var bool
      */
     protected $openAttachmentPane = false;
 
@@ -85,14 +84,14 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
      * Internal flag deterministic mode. This mode should only be used
      * for testing purposes
      *
-     * @var boolean
+     * @var bool
      */
     protected $deterministicModeEnabled = false;
 
     /**
      * Set the PDF version.
      *
-     * @param  string $version     Contains the PDF version number.
+     * @param  string $version     contains the PDF version number
      * @param  bool   $binary_data This is true for binary data
      * @return void
      */
@@ -102,9 +101,9 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
 
         if (true == $binary_data) {
             if ($this->deterministicModeEnabled === true) {
-                $this->PDFVersion .= "\n" . '%' . chr(128) . chr(129) . chr(130) . chr(131);
+                $this->PDFVersion .= "\n".'%'.chr(128).chr(129).chr(130).chr(131);
             } else {
-                $this->PDFVersion .= "\n" . '%' . chr(random_int(128, 255)) . chr(random_int(128, 255)) . chr(random_int(128, 255)) . chr(random_int(128, 255));
+                $this->PDFVersion .= "\n".'%'.chr(random_int(128, 255)).chr(random_int(128, 255)).chr(random_int(128, 255)).chr(random_int(128, 255));
             }
         }
     }
@@ -113,23 +112,24 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
      * Attach file to PDF.
      *
      * @param  mixed  $file
-     * Data to embed to the pdf
+     *                              Data to embed to the pdf
      * @param  string $name
-     * The visible attachment filename
+     *                              The visible attachment filename
      * @param  string $desc
-     * The description for the attached file
+     *                              The description for the attached file
      * @param  string $relationship
-     * The type of the relationship of the attached file
+     *                              The type of the relationship of the attached file
      * @param  string $mimetype
-     * The url-encoded mimetype of the attached file
+     *                              The url-encoded mimetype of the attached file
      * @param  bool   $isUTF8
-     * Set to true, if the attached file is UTF-8 encoded
+     *                              Set to true, if the attached file is UTF-8 encoded
      * @return void
      */
     public function attach($file, $name = '', $desc = '', $relationship = 'Unspecified', $mimetype = '', $isUTF8 = false): void
     {
         if ('' == $name) {
             $p = strrpos((string) $file, '/');
+
             if (false === $p) {
                 $p = strrpos((string) $file, '\\');
             }
@@ -143,6 +143,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
 
         if ('' == $mimetype) {
             $mimetype = mime_content_type($file);
+
             if (in_array($mimetype, ['', '0', false], true)) {
                 $mimetype = 'application/octet-stream';
             }
@@ -166,7 +167,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
      * Add metadata description node.
      *
      * @param  string $description
-     * The description of the metadata
+     *                             The description of the metadata
      * @return void
      */
     public function addMetadataDescriptionNode($description): void
@@ -177,14 +178,14 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
     /**
      * Set PDF metadata infos.
      *
-     * @param array{author: string, keywords: string, title: string, subject: string, createdDate: string, modifiedDate: string} $metaDataInfos
+     * @param  array{author: string, keywords: string, title: string, subject: string, createdDate: string, modifiedDate: string} $metaDataInfos
      * @return void
      */
     public function setPdfMetadataInfos(array &$metaDataInfos): void
     {
         if ($this->deterministicModeEnabled === true) {
-            $metaDataInfos['createdDate'] = date('Y-m-d\TH:i:s', strtotime("2000-01-01 23:59:59"));
-            $metaDataInfos['modifiedDate'] = date('Y-m-d\TH:i:s', strtotime("2000-01-01 23:59:59"));
+            $metaDataInfos['createdDate'] = date('Y-m-d\TH:i:s', strtotime('2000-01-01 23:59:59'));
+            $metaDataInfos['modifiedDate'] = date('Y-m-d\TH:i:s', strtotime('2000-01-01 23:59:59'));
         }
 
         $this->metaDataInfos = $metaDataInfos;
@@ -223,7 +224,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
     /**
      * Put file attachment specification.
      *
-     * @param array{file: StreamReader, name: string, desc: string, relationship: string, subtype: string, file_index: int} $file_info
+     * @param  array{file: StreamReader, name: string, desc: string, relationship: string, subtype: string, file_index: int} $file_info
      * @return void
      */
     protected function putFileSpecification(array $file_info): void
@@ -231,20 +232,21 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
         $this->_newobj();
         $this->fileSpecDictionnaryIndex = $this->n;
         $this->_put('<<');
-        $this->_put('/F (' . $this->_escape($file_info['name']) . ')');
+        $this->_put('/F ('.$this->_escape($file_info['name']).')');
         $this->_put('/Type /Filespec');
-        $this->_put('/UF ' . $this->_textstring(mb_convert_encoding($file_info['name'], 'UTF-8', mb_list_encodings())));
+        $this->_put('/UF '.$this->_textstring(mb_convert_encoding($file_info['name'], 'UTF-8', mb_list_encodings())));
+
         if ($file_info['relationship']) {
-            $this->_put('/AFRelationship /' . $file_info['relationship']);
+            $this->_put('/AFRelationship /'.$file_info['relationship']);
         }
 
         if ($file_info['desc']) {
-            $this->_put('/Desc ' . $this->_textstring($file_info['desc']));
+            $this->_put('/Desc '.$this->_textstring($file_info['desc']));
         }
 
         $this->_put('/EF <<');
-        $this->_put('/F ' . ($this->n + 1) . ' 0 R');
-        $this->_put('/UF ' . ($this->n + 1) . ' 0 R');
+        $this->_put('/F '.($this->n + 1).' 0 R');
+        $this->_put('/UF '.($this->n + 1).' 0 R');
         $this->_put('>>');
         $this->_put('>>');
         $this->_put('endobj');
@@ -253,7 +255,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
     /**
      * Put file stream.
      *
-     * @param array{file: StreamReader, name: string, desc: string, relationship: string, subtype: string, file_index: int} $file_info
+     * @param  array{file: StreamReader, name: string, desc: string, relationship: string, subtype: string, file_index: int} $file_info
      * @return void
      */
     protected function putFileStream(array $file_info): void
@@ -261,11 +263,13 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
         $this->_newobj();
         $this->_put('<<');
         $this->_put('/Filter /FlateDecode');
+
         if ($file_info['subtype']) {
-            $this->_put('/Subtype /' . $file_info['subtype']);
+            $this->_put('/Subtype /'.$file_info['subtype']);
         }
 
         $this->_put('/Type /EmbeddedFile');
+
         if (is_string($file_info['file']) && @is_file($file_info['file'])) {
             $fc = file_get_contents($file_info['file']);
         } else {
@@ -279,7 +283,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
         }
 
         if ($this->deterministicModeEnabled === true) {
-            $md = @date('YmdHis', strtotime("2000-01-01 23:59:59"));
+            $md = @date('YmdHis', strtotime('2000-01-01 23:59:59'));
         } elseif (is_string($file_info['file'])) {
             $md = @date('YmdHis', filemtime($file_info['file']));
         } else {
@@ -287,7 +291,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
         }
 
         $fc = gzcompress($fc);
-        $this->_put('/Length ' . strlen($fc));
+        $this->_put('/Length '.strlen($fc));
         $this->_put(sprintf('/Params <</ModDate (D:%s)>>', $md));
         $this->_put('>>');
         $this->_putstream($fc);
@@ -306,7 +310,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
         $this->_put('<<');
         $s = '';
         $files = $this->files;
-        usort($files, function ($a, $b) { // Sorting files in name order as PDF specs (if not, issue with Acrobat Reader when trying to download attachments)
+        usort($files, static function ($a, $b) { // Sorting files in name order as PDF specs (if not, issue with Acrobat Reader when trying to download attachments)
             return strcmp($a['name'], $b['name']);
         });
         foreach ($files as $info) {
@@ -325,20 +329,20 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
      */
     protected function putMetadataDescriptions(): void
     {
-        $s = '<?xpacket begin="" id="W5M0MpCehiHzreSzNTczkc9d"?>' . "\n";
-        $s .= '<x:xmpmeta xmlns:x="adobe:ns:meta/">' . "\n";
-        $s .= '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">' . "\n";
+        $s = '<?xpacket begin="" id="W5M0MpCehiHzreSzNTczkc9d"?>'."\n";
+        $s .= '<x:xmpmeta xmlns:x="adobe:ns:meta/">'."\n";
+        $s .= '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">'."\n";
         $this->_newobj();
         $this->descriptionIndex = $this->n;
         foreach ($this->metaDataDescriptions as $desc) {
-            $s .= $desc . "\n";
+            $s .= $desc."\n";
         }
 
-        $s .= '</rdf:RDF>' . "\n";
-        $s .= '</x:xmpmeta>' . "\n";
+        $s .= '</rdf:RDF>'."\n";
+        $s .= '</x:xmpmeta>'."\n";
         $s .= '<?xpacket end="w"?>';
         $this->_put('<<');
-        $this->_put('/Length ' . strlen($s));
+        $this->_put('/Length '.strlen($s));
         $this->_put('/Type /Metadata');
         $this->_put('/Subtype /XML');
         $this->_put('>>');
@@ -381,18 +385,18 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
         $this->_put('/S /GTS_PDFA1');
         $this->_put('/OuputCondition (sRGB)');
         $this->_put('/OutputConditionIdentifier (Custom)');
-        $this->_put('/DestOutputProfile ' . ($this->n + 1) . ' 0 R');
+        $this->_put('/DestOutputProfile '.($this->n + 1).' 0 R');
         $this->_put('/Info (sRGB V4 ICC)');
         $this->_put('>>');
         $this->_put('endobj');
         $this->outputIntentIndex = $this->n;
 
-        $icc = file_get_contents(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, "assets"), "sRGB2014.icc"));
+        $icc = file_get_contents(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, 'assets'), 'sRGB2014.icc'));
         $icc = gzcompress($icc);
 
         $this->_newobj();
         $this->_put('<<');
-        $this->_put('/Length ' . strlen($icc));
+        $this->_put('/Length '.strlen($icc));
         $this->_put('/N 3');
         $this->_put('/Filter /FlateDecode');
         $this->_put('>>');
@@ -457,8 +461,8 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
     {
         parent::_puttrailer();
 
-        $created_id = md5($this->generateMetadataString("created"));
-        $modified_id = md5($this->generateMetadataString("modified"));
+        $created_id = md5($this->generateMetadataString('created'));
+        $modified_id = md5($this->generateMetadataString('modified'));
 
         $this->_put(sprintf('/ID [<%s><%s>]', $created_id, $modified_id));
     }
@@ -471,7 +475,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
     protected function _putinfo(): void
     {
         if ($this->deterministicModeEnabled === true) {
-            $this->CreationDate = strtotime("2000-01-01 23:59:59");
+            $this->CreationDate = strtotime('2000-01-01 23:59:59');
         }
 
         parent::_putinfo();
@@ -480,14 +484,14 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
     /**
      * Generate metadata string.
      *
-     * @param string|null $dateType
-     * The type of the metadata date
+     * @param  null|string $dateType
+     *                               The type of the metadata date
      * @return string
      * @codingStandardsIgnoreStart
      */
     protected function generateMetadataString(?string $dateType = null)
     {
-        $dateType = $dateType ?? "created";
+        $dateType = $dateType ?? 'created';
         $metaDataString = '';
 
         if (isset($this->metaDataInfos['title'])) {
@@ -498,11 +502,11 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
             $metaDataString .= $this->metaDataInfos['subject'];
         }
 
-        if ($dateType === "modified" && isset($this->metaDataInfos['modifiedDate'])) {
+        if ($dateType === 'modified' && isset($this->metaDataInfos['modifiedDate'])) {
             $metaDataString .= $this->metaDataInfos['modifiedDate'];
         }
 
-        if ($dateType === "created" && isset($this->metaDataInfos['createdDate'])) {
+        if ($dateType === 'created' && isset($this->metaDataInfos['createdDate'])) {
             $metaDataString .= $this->metaDataInfos['createdDate'];
         }
 

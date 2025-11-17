@@ -23,7 +23,7 @@ final class InvoiceSuiteProductCharacteristicDTOTest extends TestCase
     public function testDescriptionGetterAndSetter(): void
     {
         $invoiceSuiteProductCharacteristicDTO = new InvoiceSuiteProductCharacteristicDTO();
-        $descriptionValue = "Example Value";
+        $descriptionValue = 'Example Value';
         $invoiceSuiteProductCharacteristicDTO->setDescription($descriptionValue);
 
         $this->assertSame($descriptionValue, $invoiceSuiteProductCharacteristicDTO->getDescription());
@@ -32,7 +32,7 @@ final class InvoiceSuiteProductCharacteristicDTOTest extends TestCase
     public function testValueGetterAndSetter(): void
     {
         $invoiceSuiteProductCharacteristicDTO = new InvoiceSuiteProductCharacteristicDTO();
-        $valueValue = "Example Value";
+        $valueValue = 'Example Value';
         $invoiceSuiteProductCharacteristicDTO->setValue($valueValue);
 
         $this->assertSame($valueValue, $invoiceSuiteProductCharacteristicDTO->getValue());
@@ -41,7 +41,7 @@ final class InvoiceSuiteProductCharacteristicDTOTest extends TestCase
     public function testTypeGetterAndSetter(): void
     {
         $invoiceSuiteProductCharacteristicDTO = new InvoiceSuiteProductCharacteristicDTO();
-        $typeValue = "Example Value";
+        $typeValue = 'Example Value';
         $invoiceSuiteProductCharacteristicDTO->setType($typeValue);
 
         $this->assertSame($typeValue, $invoiceSuiteProductCharacteristicDTO->getType());

@@ -11,6 +11,4 @@ namespace horstoeko\invoicesuite\documents\providers\xrechnung;
 
 use horstoeko\invoicesuite\documents\providers\zffxcomfort\InvoiceSuiteZfFxComfortProviderReader;
 
-class InvoiceSuiteXRechnungProviderReader extends InvoiceSuiteZfFxComfortProviderReader
-{
-}
+class InvoiceSuiteXRechnungProviderReader extends InvoiceSuiteZfFxComfortProviderReader {}

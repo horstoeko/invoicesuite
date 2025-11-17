@@ -17,29 +17,28 @@ use JMS\Serializer\SerializerInterface;
  * Trait representing methods for handling the serializer/deserializer
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 trait HandlesDocumentSerializer
 {
     /**
-     * @var SerializerBuilder $documentSerializerBuilder Serializer builder
+     * @var SerializerBuilder Serializer builder
      */
     protected $documentSerializerBuilder;
 
     /**
-     * @var SerializerInterface $documentSerializer Serializer
+     * @var SerializerInterface Serializer
      */
     protected $documentSerializer;
 
     /**
      * Build the serializer by a format provider
      *
-     * @return void
      * @throws InvalidArgumentException
      * @throws RuntimeException
+     * @return void
      */
     public function createAndInitDocumentSerializerByFormatProvider(): void
     {
@@ -52,7 +51,7 @@ trait HandlesDocumentSerializer
         if (InvoiceSuiteSettings::hasSerializerCacheDirectory()) {
             $this->documentSerializerBuilder->setCacheDir(InvoiceSuiteSettings::getSerializerCacheDirectory());
         } else {
-            $this->documentSerializerBuilder->setCacheDir(InvoiceSuitePathUtils::combineAllPaths(sys_get_temp_dir(), "jms"));
+            $this->documentSerializerBuilder->setCacheDir(InvoiceSuitePathUtils::combineAllPaths(sys_get_temp_dir(), 'jms'));
         }
 
         $this->documentSerializerBuilder->configureHandlers(function (HandlerRegistryInterface $handlerRegistry): void {

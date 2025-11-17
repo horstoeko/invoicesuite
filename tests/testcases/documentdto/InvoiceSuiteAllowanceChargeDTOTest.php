@@ -63,7 +63,7 @@ final class InvoiceSuiteAllowanceChargeDTOTest extends TestCase
     public function testTaxCategoryGetterAndSetter(): void
     {
         $invoiceSuiteAllowanceChargeDTO = new InvoiceSuiteAllowanceChargeDTO();
-        $taxCategoryValue = "Example Value";
+        $taxCategoryValue = 'Example Value';
         $invoiceSuiteAllowanceChargeDTO->setTaxCategory($taxCategoryValue);
 
         $this->assertSame($taxCategoryValue, $invoiceSuiteAllowanceChargeDTO->getTaxCategory());
@@ -72,7 +72,7 @@ final class InvoiceSuiteAllowanceChargeDTOTest extends TestCase
     public function testTaxTypeGetterAndSetter(): void
     {
         $invoiceSuiteAllowanceChargeDTO = new InvoiceSuiteAllowanceChargeDTO();
-        $taxTypeValue = "Example Value";
+        $taxTypeValue = 'Example Value';
         $invoiceSuiteAllowanceChargeDTO->setTaxType($taxTypeValue);
 
         $this->assertSame($taxTypeValue, $invoiceSuiteAllowanceChargeDTO->getTaxType());
@@ -90,7 +90,7 @@ final class InvoiceSuiteAllowanceChargeDTOTest extends TestCase
     public function testReasonGetterAndSetter(): void
     {
         $invoiceSuiteAllowanceChargeDTO = new InvoiceSuiteAllowanceChargeDTO();
-        $reasonValue = "Example Value";
+        $reasonValue = 'Example Value';
         $invoiceSuiteAllowanceChargeDTO->setReason($reasonValue);
 
         $this->assertSame($reasonValue, $invoiceSuiteAllowanceChargeDTO->getReason());
@@ -99,7 +99,7 @@ final class InvoiceSuiteAllowanceChargeDTOTest extends TestCase
     public function testReasonCodeGetterAndSetter(): void
     {
         $invoiceSuiteAllowanceChargeDTO = new InvoiceSuiteAllowanceChargeDTO();
-        $reasonCodeValue = "Example Value";
+        $reasonCodeValue = 'Example Value';
         $invoiceSuiteAllowanceChargeDTO->setReasonCode($reasonCodeValue);
 
         $this->assertSame($reasonCodeValue, $invoiceSuiteAllowanceChargeDTO->getReasonCode());

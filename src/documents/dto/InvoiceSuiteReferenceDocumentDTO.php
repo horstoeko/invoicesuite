@@ -15,32 +15,31 @@ use DateTimeInterface;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteReferenceDocumentDTO
 {
     /**
      * Reference number
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $referenceNumber = null;
 
     /**
      * Issue date of the reference
      *
-     * @var DateTimeInterface|null
+     * @var null|DateTimeInterface
      */
     protected ?DateTimeInterface $referenceDate = null;
 
     /**
      * Constructor
      *
-     * @param string|null $referenceNumber Reference number
-     * @param DateTimeInterface|null $referenceDate Issue date of the reference
+     * @param null|string            $referenceNumber Reference number
+     * @param null|DateTimeInterface $referenceDate   Issue date of the reference
      */
     public function __construct(?string $referenceNumber = null, ?DateTimeInterface $referenceDate = null)
     {
@@ -51,7 +50,7 @@ class InvoiceSuiteReferenceDocumentDTO
     /**
      * Returns reference number
      *
-     * @return string|null
+     * @return null|string
      */
     public function getReferenceNumber(): ?string
     {
@@ -61,7 +60,7 @@ class InvoiceSuiteReferenceDocumentDTO
     /**
      * Sets reference number
      *
-     * @param string|null $referenceNumber Reference number
+     * @param  null|string $referenceNumber Reference number
      * @return self
      */
     public function setReferenceNumber(?string $referenceNumber): self
@@ -74,7 +73,7 @@ class InvoiceSuiteReferenceDocumentDTO
     /**
      * Returns issue date of the reference
      *
-     * @return DateTimeInterface|null
+     * @return null|DateTimeInterface
      */
     public function getReferenceDate(): ?DateTimeInterface
     {
@@ -84,7 +83,7 @@ class InvoiceSuiteReferenceDocumentDTO
     /**
      * Sets issue date of the reference
      *
-     * @param DateTimeInterface|null $referenceDate Issue date of the reference
+     * @param  null|DateTimeInterface $referenceDate Issue date of the reference
      * @return self
      */
     public function setReferenceDate(?DateTimeInterface $referenceDate): self

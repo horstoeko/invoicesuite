@@ -17,14 +17,13 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
  * Class representing methods for a document format provider definition
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 abstract class InvoiceSuiteAbstractDocumentFormatProvider
 {
-    #region Document
+    // region Document
 
     /**
      * The instance of the internal reader class
@@ -71,7 +70,7 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
     /**
      * Get custom handlers
      *
-     * @return array<integer,string>
+     * @return array<int,string>
      */
     abstract public function getSerializerHandlers(): array;
 
@@ -85,7 +84,7 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
     /**
      * Get event subscribers
      *
-     * @return array<integer,string>
+     * @return array<int,string>
      */
     abstract public function getSerializerSubscribers(): array;
 
@@ -100,7 +99,7 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
      * Returns true if the content matches the requirements for this format provider, otherwise false
      *
      * @param  string $serializedContent
-     * @return boolean
+     * @return bool
      */
     abstract public function isSatisfiableBySerializedContent(string $serializedContent): bool;
 
@@ -125,14 +124,14 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
      */
     abstract public function getBuilderClassName(): string;
 
-    #endregion
+    // endregion
 
-    #region PDF
+    // region PDF
 
     /**
      * Returns true if PDF support is available
      *
-     * @return boolean
+     * @return bool
      */
     abstract public function isPdfSupportAvailable(): bool;
 
@@ -157,16 +156,16 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
      */
     abstract public function getPdfConstructorClassName(): string;
 
-    #endregion
+    // endregion
 
-    #region General
+    // region General
 
     /**
      * Create a new reader instance
      *
      * @return InvoiceSuiteAbstractDocumentFormatProvider
      */
-    public function initReader(): InvoiceSuiteAbstractDocumentFormatProvider
+    public function initReader(): self
     {
         $this->readerInstance = new ($this->getReaderClassName())($this);
 
@@ -192,7 +191,7 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
      *
      * @return InvoiceSuiteAbstractDocumentFormatProvider
      */
-    public function initBuilder(): InvoiceSuiteAbstractDocumentFormatProvider
+    public function initBuilder(): self
     {
         $this->builderInstance = new ($this->getBuilderClassName())($this);
 
@@ -216,8 +215,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
     /**
      * Returns true if the given group is supported by SerializerGroups
      *
-     * @param string $group
-     * @return boolean
+     * @param  string $group
+     * @return bool
      */
     public function hasSerializerGroup(string $group): bool
     {
@@ -227,8 +226,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
     /**
      * Returns true if a parameter exists for the requested format provider
      *
-     * @param string $parameterName
-     * @return boolean
+     * @param  string $parameterName
+     * @return bool
      */
     public function hasFormatProviderParameter(string $parameterName): bool
     {
@@ -238,8 +237,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
     /**
      * Returns the parameter value for the requested parameter
      *
-     * @param string $parameterName
-     * @param mixed $defaultValue
+     * @param  string $parameterName
+     * @param  mixed  $defaultValue
      * @return mixed
      */
     public function getFormatProviderParameterValue(string $parameterName, $defaultValue)
@@ -255,9 +254,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
      * Returns the parameter value for the requested parameter. If the parameter does not exist an
      * InvoiceSuiteUnknownProviderParameterException is thrown
      *
-     * @param string $parameterName
-     * @return mixed
+     * @param  string                                        $parameterName
      * @throws InvoiceSuiteUnknownProviderParameterException
+     * @return mixed
      */
     public function getFormatProviderRequiredParameterValue(string $parameterName)
     {
@@ -271,13 +270,13 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
     /**
      * Returns true if the given filename is a valid PDF attachment filename
      *
-     * @param string $filename
-     * @return boolean
+     * @param  string $filename
+     * @return bool
      */
     public function isValidPdfAttachmentFilename(string $filename): bool
     {
         return InvoiceSuiteArrayUtils::inArrayNoCase($this->getAllowedPdfAttachmentFilenames(), $filename);
     }
 
-    #endregion
+    // endregion
 }

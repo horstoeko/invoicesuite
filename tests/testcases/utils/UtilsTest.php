@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\utils;
 
-use Exception;
 use DateTime;
 use DateTimeInterface;
+use Exception;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
@@ -28,53 +28,43 @@ final class UtilsTest extends TestCase
 
     public function testInvoiceSuiteArrayUtilsEnsureGivenString(): void
     {
-        $variable = "X";
+        $variable = 'X';
 
-        /**
-         * @phpstan-ignore method.alreadyNarrowedType
-         */
+        // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsNotArray($variable);
 
         $variable = InvoiceSuiteArrayUtils::ensure($variable);
 
-        /**
-         * @phpstan-ignore method.alreadyNarrowedType
-         */
+        // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsArray($variable);
         $this->assertCount(1, $variable);
     }
 
     public function testInvoiceSuiteArrayUtilsEnsureGivenArray(): void
     {
-        $variable = ["X", "y", "z"];
+        $variable = ['X', 'y', 'z'];
 
-        /**
-         * @phpstan-ignore method.alreadyNarrowedType
-         */
+        // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsArray($variable);
 
         $variable = InvoiceSuiteArrayUtils::ensure($variable);
 
-        /**
-         * @phpstan-ignore method.alreadyNarrowedType
-         */
+        // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsArray($variable);
         $this->assertCount(3, $variable);
     }
 
     public function testInvoiceSuiteArrayUtilsInArrayNoCase(): void
     {
-        $variable = ["a", "b"];
+        $variable = ['a', 'b'];
 
-        /**
-         * @phpstan-ignore method.alreadyNarrowedType
-         */
+        // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsArray($variable);
 
-        $this->assertTrue(InvoiceSuiteArrayUtils::inArrayNoCase($variable, "a"));
-        $this->assertTrue(InvoiceSuiteArrayUtils::inArrayNoCase($variable, "A"));
-        $this->assertFalse(InvoiceSuiteArrayUtils::inArrayNoCase($variable, "c"));
-        $this->assertFalse(InvoiceSuiteArrayUtils::inArrayNoCase($variable, "C"));
+        $this->assertTrue(InvoiceSuiteArrayUtils::inArrayNoCase($variable, 'a'));
+        $this->assertTrue(InvoiceSuiteArrayUtils::inArrayNoCase($variable, 'A'));
+        $this->assertFalse(InvoiceSuiteArrayUtils::inArrayNoCase($variable, 'c'));
+        $this->assertFalse(InvoiceSuiteArrayUtils::inArrayNoCase($variable, 'C'));
     }
 
     // endregion
@@ -133,102 +123,102 @@ final class UtilsTest extends TestCase
 
     public function testInvoiceSuiteDateTimeUtilsConvertZfFxDateStringToDateTime(): void
     {
-        $dateTimeString = "";
-        $dateTimeFormat = "";
+        $dateTimeString = '';
+        $dateTimeFormat = '';
         $dateTimeValue = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime($dateTimeString, $dateTimeFormat);
 
         $this->assertNotInstanceOf(DateTimeInterface::class, $dateTimeValue);
 
-        $dateTimeString = "";
-        $dateTimeFormat = "";
+        $dateTimeString = '';
+        $dateTimeFormat = '';
         $dateTimeValue = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime($dateTimeString, $dateTimeFormat);
 
         $this->assertNotInstanceOf(DateTimeInterface::class, $dateTimeValue);
 
-        $dateTimeString = "200202";
-        $dateTimeFormat = "101";
+        $dateTimeString = '200202';
+        $dateTimeFormat = '101';
         $dateTimeValue = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime($dateTimeString, $dateTimeFormat);
 
         $this->assertInstanceOf(DateTimeInterface::class, $dateTimeValue);
         $this->assertInstanceOf(DateTimeInterface::class, $dateTimeValue);
-        $this->assertSame("02", $dateTimeValue->format("d"));
-        $this->assertSame("02", $dateTimeValue->format("m"));
-        $this->assertSame("2020", $dateTimeValue->format("Y"));
+        $this->assertSame('02', $dateTimeValue->format('d'));
+        $this->assertSame('02', $dateTimeValue->format('m'));
+        $this->assertSame('2020', $dateTimeValue->format('Y'));
 
-        $dateTimeString = "19700101";
-        $dateTimeFormat = "102";
+        $dateTimeString = '19700101';
+        $dateTimeFormat = '102';
         $dateTimeValue = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime($dateTimeString, $dateTimeFormat);
 
         $this->assertInstanceOf(DateTimeInterface::class, $dateTimeValue);
         $this->assertInstanceOf(DateTimeInterface::class, $dateTimeValue);
-        $this->assertSame("01", $dateTimeValue->format("d"));
-        $this->assertSame("01", $dateTimeValue->format("m"));
-        $this->assertSame("1970", $dateTimeValue->format("Y"));
+        $this->assertSame('01', $dateTimeValue->format('d'));
+        $this->assertSame('01', $dateTimeValue->format('m'));
+        $this->assertSame('1970', $dateTimeValue->format('Y'));
 
-        $dateTimeString = "2002021031";
-        $dateTimeFormat = "201";
+        $dateTimeString = '2002021031';
+        $dateTimeFormat = '201';
         $dateTimeValue = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime($dateTimeString, $dateTimeFormat);
 
         $this->assertInstanceOf(DateTimeInterface::class, $dateTimeValue);
         $this->assertInstanceOf(DateTimeInterface::class, $dateTimeValue);
-        $this->assertSame("02", $dateTimeValue->format("d"));
-        $this->assertSame("02", $dateTimeValue->format("m"));
-        $this->assertSame("2020", $dateTimeValue->format("Y"));
+        $this->assertSame('02', $dateTimeValue->format('d'));
+        $this->assertSame('02', $dateTimeValue->format('m'));
+        $this->assertSame('2020', $dateTimeValue->format('Y'));
 
-        $dateTimeString = "200202103145";
-        $dateTimeFormat = "202";
+        $dateTimeString = '200202103145';
+        $dateTimeFormat = '202';
         $dateTimeValue = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime($dateTimeString, $dateTimeFormat);
 
         $this->assertInstanceOf(DateTimeInterface::class, $dateTimeValue);
         $this->assertInstanceOf(DateTimeInterface::class, $dateTimeValue);
-        $this->assertSame("02", $dateTimeValue->format("d"));
-        $this->assertSame("02", $dateTimeValue->format("m"));
-        $this->assertSame("2020", $dateTimeValue->format("Y"));
-        $this->assertSame("10", $dateTimeValue->format("h"));
-        $this->assertSame("31", $dateTimeValue->format("i"));
-        $this->assertSame("45", $dateTimeValue->format("s"));
+        $this->assertSame('02', $dateTimeValue->format('d'));
+        $this->assertSame('02', $dateTimeValue->format('m'));
+        $this->assertSame('2020', $dateTimeValue->format('Y'));
+        $this->assertSame('10', $dateTimeValue->format('h'));
+        $this->assertSame('31', $dateTimeValue->format('i'));
+        $this->assertSame('45', $dateTimeValue->format('s'));
 
-        $dateTimeString = "202002021031";
-        $dateTimeFormat = "203";
+        $dateTimeString = '202002021031';
+        $dateTimeFormat = '203';
         $dateTimeValue = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime($dateTimeString, $dateTimeFormat);
 
         $this->assertInstanceOf(DateTimeInterface::class, $dateTimeValue);
         $this->assertInstanceOf(DateTimeInterface::class, $dateTimeValue);
-        $this->assertSame("02", $dateTimeValue->format("d"));
-        $this->assertSame("02", $dateTimeValue->format("m"));
-        $this->assertSame("2020", $dateTimeValue->format("Y"));
-        $this->assertSame("10", $dateTimeValue->format("h"));
-        $this->assertSame("31", $dateTimeValue->format("i"));
-        $this->assertSame("00", $dateTimeValue->format("s"));
+        $this->assertSame('02', $dateTimeValue->format('d'));
+        $this->assertSame('02', $dateTimeValue->format('m'));
+        $this->assertSame('2020', $dateTimeValue->format('Y'));
+        $this->assertSame('10', $dateTimeValue->format('h'));
+        $this->assertSame('31', $dateTimeValue->format('i'));
+        $this->assertSame('00', $dateTimeValue->format('s'));
 
-        $dateTimeString = "20200202103145";
-        $dateTimeFormat = "204";
+        $dateTimeString = '20200202103145';
+        $dateTimeFormat = '204';
         $dateTimeValue = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime($dateTimeString, $dateTimeFormat);
 
         $this->assertInstanceOf(DateTimeInterface::class, $dateTimeValue);
         $this->assertInstanceOf(DateTimeInterface::class, $dateTimeValue);
-        $this->assertSame("02", $dateTimeValue->format("d"));
-        $this->assertSame("02", $dateTimeValue->format("m"));
-        $this->assertSame("2020", $dateTimeValue->format("Y"));
-        $this->assertSame("10", $dateTimeValue->format("h"));
-        $this->assertSame("31", $dateTimeValue->format("i"));
-        $this->assertSame("45", $dateTimeValue->format("s"));
+        $this->assertSame('02', $dateTimeValue->format('d'));
+        $this->assertSame('02', $dateTimeValue->format('m'));
+        $this->assertSame('2020', $dateTimeValue->format('Y'));
+        $this->assertSame('10', $dateTimeValue->format('h'));
+        $this->assertSame('31', $dateTimeValue->format('i'));
+        $this->assertSame('45', $dateTimeValue->format('s'));
 
-        $dateTimeString = "202002";
-        $dateTimeFormat = "610";
+        $dateTimeString = '202002';
+        $dateTimeFormat = '610';
         $dateTimeValue = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime($dateTimeString, $dateTimeFormat);
 
         $this->assertInstanceOf(DateTimeInterface::class, $dateTimeValue);
         $this->assertInstanceOf(DateTimeInterface::class, $dateTimeValue);
-        $this->assertSame("01", $dateTimeValue->format("d"));
-        $this->assertSame("02", $dateTimeValue->format("m"));
-        $this->assertSame("2020", $dateTimeValue->format("Y"));
-        $this->assertSame("12", $dateTimeValue->format("h"));
-        $this->assertSame("00", $dateTimeValue->format("i"));
-        $this->assertSame("00", $dateTimeValue->format("s"));
+        $this->assertSame('01', $dateTimeValue->format('d'));
+        $this->assertSame('02', $dateTimeValue->format('m'));
+        $this->assertSame('2020', $dateTimeValue->format('Y'));
+        $this->assertSame('12', $dateTimeValue->format('h'));
+        $this->assertSame('00', $dateTimeValue->format('i'));
+        $this->assertSame('00', $dateTimeValue->format('s'));
 
-        $dateTimeString = "19700101";
-        $dateTimeFormat = "999";
+        $dateTimeString = '19700101';
+        $dateTimeFormat = '999';
         $dateTimeValue = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime($dateTimeString, $dateTimeFormat);
 
         $this->assertNotInstanceOf(DateTimeInterface::class, $dateTimeValue);
@@ -296,7 +286,7 @@ final class UtilsTest extends TestCase
 
         $this->assertTrue(InvoiceSuiteStringUtils::stringIsNullOrEmpty($stringValue));
 
-        $stringValue = "A";
+        $stringValue = 'A';
 
         $this->assertFalse(InvoiceSuiteStringUtils::stringIsNullOrEmpty($stringValue));
     }
@@ -307,7 +297,7 @@ final class UtilsTest extends TestCase
 
         $this->assertTrue(InvoiceSuiteStringUtils::allIsNullOrEmpty($stringValues));
 
-        $stringValues = [null, "A"];
+        $stringValues = [null, 'A'];
 
         $this->assertFalse(InvoiceSuiteStringUtils::allIsNullOrEmpty($stringValues));
     }
@@ -318,11 +308,11 @@ final class UtilsTest extends TestCase
 
         $this->assertTrue(InvoiceSuiteStringUtils::oneIsNullOrEmpty($stringValues));
 
-        $stringValues = [null, "A"];
+        $stringValues = [null, 'A'];
 
         $this->assertTrue(InvoiceSuiteStringUtils::oneIsNullOrEmpty($stringValues));
 
-        $stringValues = ["A", "B"];
+        $stringValues = ['A', 'B'];
 
         $this->assertFalse(InvoiceSuiteStringUtils::oneIsNullOrEmpty($stringValues));
     }
@@ -333,14 +323,14 @@ final class UtilsTest extends TestCase
 
         $this->assertNull(InvoiceSuiteStringUtils::asNullWhenEmpty($stringValue));
 
-        $stringValue = "A";
+        $stringValue = 'A';
 
         $this->assertNotNull(InvoiceSuiteStringUtils::asNullWhenEmpty($stringValue));
     }
 
     public function testInvoiceSuiteStringUtilsCreateGuid(): void
     {
-        $guid_regex = "/^(?:\\{{0,1}(?:[0-9a-fA-F]){8}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){12}\\}{0,1})$/";
+        $guid_regex = '/^(?:\\{{0,1}(?:[0-9a-fA-F]){8}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){12}\\}{0,1})$/';
 
         $this->assertMatchesRegularExpression($guid_regex, InvoiceSuiteStringUtils::createGuid());
         $this->assertMatchesRegularExpression($guid_regex, InvoiceSuiteStringUtils::createGuid(false));
@@ -486,7 +476,7 @@ final class UtilsTest extends TestCase
 
     public function testInvoiceSuiteAttachmentFromFile(): void
     {
-        $attachment = InvoiceSuiteAttachment::fromFile(__DIR__ . '/../../assets/01_InvoiceSuiteAttachment_1.txt');
+        $attachment = InvoiceSuiteAttachment::fromFile(__DIR__.'/../../assets/01_InvoiceSuiteAttachment_1.txt');
 
         $this->assertInstanceOf(InvoiceSuiteAttachment::class, $attachment);
         $this->assertTrue($attachment->isFileAttachment());
@@ -496,7 +486,7 @@ final class UtilsTest extends TestCase
         $this->assertSame('text/plain', $attachment->getContentMimeType());
         $this->assertSame('01_InvoiceSuiteAttachment_1.txt', $attachment->getFilename());
 
-        $attachment = InvoiceSuiteAttachment::fromFile(__DIR__ . '/../../assets/01_InvoiceSuiteAttachment_2.txt');
+        $attachment = InvoiceSuiteAttachment::fromFile(__DIR__.'/../../assets/01_InvoiceSuiteAttachment_2.txt');
 
         $this->assertInstanceOf(InvoiceSuiteAttachment::class, $attachment);
         $this->assertTrue($attachment->isFileAttachment());
@@ -508,7 +498,7 @@ final class UtilsTest extends TestCase
 
         $this->expectException(InvoiceSuiteFileNotFoundException::class);
 
-        InvoiceSuiteAttachment::fromFile(__DIR__ . '/../../assets/01_InvoiceSuiteAttachment_3.txt');
+        InvoiceSuiteAttachment::fromFile(__DIR__.'/../../assets/01_InvoiceSuiteAttachment_3.txt');
     }
 
     public function testInvoiceSuiteAttachmentFromBinaryString(): void
@@ -586,8 +576,8 @@ final class UtilsTest extends TestCase
 
     public function testInvoiceSuiteClassFinderFactory(): void
     {
-        $cacheFilename = md5((string) preg_replace("/[^a-zA-Z0-9]/", "", sprintf("invoicesuite-cf-%s", InvoiceSuiteAbstractDocumentFormatProvider::class))) . ".cache";
-        $cacheFullFilename = __DIR__ . '/../../../src/cache/' . $cacheFilename;
+        $cacheFilename = md5((string) preg_replace('/[^a-zA-Z0-9]/', '', sprintf('invoicesuite-cf-%s', InvoiceSuiteAbstractDocumentFormatProvider::class))).'.cache';
+        $cacheFullFilename = __DIR__.'/../../../src/cache/'.$cacheFilename;
         @unlink($cacheFullFilename);
 
         // One
@@ -614,9 +604,7 @@ final class UtilsTest extends TestCase
 
         $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, true);
 
-        /**
-         * @phpstan-ignore method.alreadyNarrowedType
-         */
+        // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsArray($classNames);
         $this->assertCount(7, $classNames);
 
@@ -631,9 +619,7 @@ final class UtilsTest extends TestCase
 
         $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, true);
 
-        /**
-         * @phpstan-ignore method.alreadyNarrowedType
-         */
+        // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsArray($classNames);
         $this->assertEmpty($classNames);
         $this->assertFileDoesNotExist($cacheFullFilename);
@@ -647,34 +633,28 @@ final class UtilsTest extends TestCase
 
         $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, true);
 
-        /**
-         * @phpstan-ignore method.alreadyNarrowedType
-         */
+        // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsArray($classNames);
         $this->assertCount(7, $classNames);
         $this->assertFileDoesNotExist($cacheFullFilename);
 
         $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, false);
 
-        /**
-         * @phpstan-ignore method.alreadyNarrowedType
-         */
+        // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsArray($classNames);
         $this->assertCount(7, $classNames);
         $this->assertFileExists($cacheFullFilename);
 
         $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, false);
 
-        /**
-         * @phpstan-ignore method.alreadyNarrowedType
-         */
+        // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsArray($classNames);
         $this->assertCount(7, $classNames);
         $this->assertFileExists($cacheFullFilename);
 
-        $this->assertFileExists(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..", "..", "..", "src", "cache"), "fb2c9c3d46a7d2650a8813477106ebca.cache"));
+        $this->assertFileExists(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', '..', 'src', 'cache'), 'fb2c9c3d46a7d2650a8813477106ebca.cache'));
         InvoiceSuiteClassFinder::clearCache();
-        $this->assertFileDoesNotExist(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..", "..", "..", "src", "cache"), "fb2c9c3d46a7d2650a8813477106ebca.cache"));
+        $this->assertFileDoesNotExist(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', '..', 'src', 'cache'), 'fb2c9c3d46a7d2650a8813477106ebca.cache'));
     }
 
     // endregion
@@ -684,77 +664,77 @@ final class UtilsTest extends TestCase
     public function testInvoiceSuiteFileUtils(): void
     {
         $this->assertTrue(InvoiceSuiteFileUtils::fileExists(__FILE__, true));
-        $this->assertFalse(InvoiceSuiteFileUtils::fileExists(__FILE__ . ".xxx", true));
+        $this->assertFalse(InvoiceSuiteFileUtils::fileExists(__FILE__.'.xxx', true));
 
-        $this->assertSame("SSBhbSBhIHRlc3RmaWxl", substr(InvoiceSuiteFileUtils::fileToBase64(__DIR__ . "/../../assets/99_FileUtilsTest_tobase64.txt"), 0, 20));
-        $this->assertEquals(false, InvoiceSuiteFileUtils::fileToBase64(__FILE__ . ".xxx"));
+        $this->assertSame('SSBhbSBhIHRlc3RmaWxl', substr(InvoiceSuiteFileUtils::fileToBase64(__DIR__.'/../../assets/99_FileUtilsTest_tobase64.txt'), 0, 20));
+        $this->assertEquals(false, InvoiceSuiteFileUtils::fileToBase64(__FILE__.'.xxx'));
 
-        $sourceFilename = __DIR__ . "/../../assets/99_FileUtilsTest_tobase64.txt";
-        $destinationFilename = __DIR__ . "/../../assets/encbase64.txt";
+        $sourceFilename = __DIR__.'/../../assets/99_FileUtilsTest_tobase64.txt';
+        $destinationFilename = __DIR__.'/../../assets/encbase64.txt';
         $this->assertTrue(InvoiceSuiteFileUtils::fileToBase64File($sourceFilename, $destinationFilename));
         $this->assertTrue(InvoiceSuiteFileUtils::fileExists($destinationFilename));
         $destinationFilenameContent = file_get_contents($destinationFilename);
-        $this->assertSame("SSBhbSBhIHRlc3RmaWxl", substr($destinationFilenameContent, 0, 20));
+        $this->assertSame('SSBhbSBhIHRlc3RmaWxl', substr($destinationFilenameContent, 0, 20));
         @unlink($destinationFilename);
 
-        $sourceFilename = __DIR__ . "/../../assets/tobase64_2.txt";
-        $destinationFilename = __DIR__ . "/../../assets/encbase64_2.txt";
+        $sourceFilename = __DIR__.'/../../assets/tobase64_2.txt';
+        $destinationFilename = __DIR__.'/../../assets/encbase64_2.txt';
         $this->assertFalse(InvoiceSuiteFileUtils::fileToBase64File($sourceFilename, $destinationFilename));
         $this->assertFalse(InvoiceSuiteFileUtils::fileExists($destinationFilename));
 
-        $sourceData = "SSBhbSBhIHRlc3RmaWxlLiBEb24ndCBtb2RpZnkgbWUuLi4=";
-        $destinationFilename = __DIR__ . "/../../assets/decbase64.txt";
+        $sourceData = 'SSBhbSBhIHRlc3RmaWxlLiBEb24ndCBtb2RpZnkgbWUuLi4=';
+        $destinationFilename = __DIR__.'/../../assets/decbase64.txt';
         $this->assertTrue(InvoiceSuiteFileUtils::base64ToFile($sourceData, $destinationFilename));
         $this->assertTrue(InvoiceSuiteFileUtils::fileExists($destinationFilename));
         $destinationFilenameContent = file_get_contents($destinationFilename);
-        $this->assertSame("I am a testfile. Don", substr($destinationFilenameContent, 0, 20));
+        $this->assertSame('I am a testfile. Don', substr($destinationFilenameContent, 0, 20));
         @unlink($destinationFilename);
 
-        $sourceFilename = __DIR__ . "/../../assets/99_FileUtilsTest_base64.txt";
-        $destinationFilename = __DIR__ . "/../../assets/decbase64.txt";
+        $sourceFilename = __DIR__.'/../../assets/99_FileUtilsTest_base64.txt';
+        $destinationFilename = __DIR__.'/../../assets/decbase64.txt';
         $this->assertTrue(InvoiceSuiteFileUtils::base64FileToFile($sourceFilename, $destinationFilename));
         $this->assertTrue(InvoiceSuiteFileUtils::fileExists($destinationFilename));
         $destinationFilenameContent = file_get_contents($destinationFilename);
-        $this->assertSame("I am a testfile. Don", substr($destinationFilenameContent, 0, 20));
+        $this->assertSame('I am a testfile. Don', substr($destinationFilenameContent, 0, 20));
         @unlink($destinationFilename);
 
-        $this->assertSame("file.txt", InvoiceSuiteFileUtils::combineFilenameWithFileextension("file", "txt"));
-        $this->assertSame("file.txt", InvoiceSuiteFileUtils::combineFilenameWithFileextension("file.", "txt"));
-        $this->assertSame("file.txt", InvoiceSuiteFileUtils::combineFilenameWithFileextension("file.", ".txt"));
-        $this->assertSame("file.txt", InvoiceSuiteFileUtils::combineFilenameWithFileextension("file..", "txt"));
-        $this->assertSame("file.txt", InvoiceSuiteFileUtils::combineFilenameWithFileextension("file..", "..txt"));
-        $this->assertSame("file.x.txt", InvoiceSuiteFileUtils::combineFilenameWithFileextension("file.x", "txt"));
-        $this->assertSame("file.x.txt", InvoiceSuiteFileUtils::combineFilenameWithFileextension("file.x", ".txt"));
-        $this->assertSame("/home/john/file.txt", InvoiceSuiteFileUtils::combineFilenameWithFileextension("/home/john/file", "txt"));
+        $this->assertSame('file.txt', InvoiceSuiteFileUtils::combineFilenameWithFileextension('file', 'txt'));
+        $this->assertSame('file.txt', InvoiceSuiteFileUtils::combineFilenameWithFileextension('file.', 'txt'));
+        $this->assertSame('file.txt', InvoiceSuiteFileUtils::combineFilenameWithFileextension('file.', '.txt'));
+        $this->assertSame('file.txt', InvoiceSuiteFileUtils::combineFilenameWithFileextension('file..', 'txt'));
+        $this->assertSame('file.txt', InvoiceSuiteFileUtils::combineFilenameWithFileextension('file..', '..txt'));
+        $this->assertSame('file.x.txt', InvoiceSuiteFileUtils::combineFilenameWithFileextension('file.x', 'txt'));
+        $this->assertSame('file.x.txt', InvoiceSuiteFileUtils::combineFilenameWithFileextension('file.x', '.txt'));
+        $this->assertSame('/home/john/file.txt', InvoiceSuiteFileUtils::combineFilenameWithFileextension('/home/john/file', 'txt'));
 
-        $this->assertSame("/home/john", InvoiceSuiteFileUtils::getFileDirectory("/home/john/file.txt"));
-        $this->assertSame("/home/john", InvoiceSuiteFileUtils::getFileDirectory("/home/john/file.x.txt"));
+        $this->assertSame('/home/john', InvoiceSuiteFileUtils::getFileDirectory('/home/john/file.txt'));
+        $this->assertSame('/home/john', InvoiceSuiteFileUtils::getFileDirectory('/home/john/file.x.txt'));
 
-        $this->assertSame("file.txt", InvoiceSuiteFileUtils::getFilenameWithExtension("/home/john/file.txt"));
-        $this->assertSame("file.x.txt", InvoiceSuiteFileUtils::getFilenameWithExtension("/home/john/file.x.txt"));
+        $this->assertSame('file.txt', InvoiceSuiteFileUtils::getFilenameWithExtension('/home/john/file.txt'));
+        $this->assertSame('file.x.txt', InvoiceSuiteFileUtils::getFilenameWithExtension('/home/john/file.x.txt'));
 
-        $this->assertSame("file", InvoiceSuiteFileUtils::getFilenameWithoutExtension("/home/john/file.txt"));
-        $this->assertSame("file.x", InvoiceSuiteFileUtils::getFilenameWithoutExtension("/home/john/file.x.txt"));
+        $this->assertSame('file', InvoiceSuiteFileUtils::getFilenameWithoutExtension('/home/john/file.txt'));
+        $this->assertSame('file.x', InvoiceSuiteFileUtils::getFilenameWithoutExtension('/home/john/file.x.txt'));
 
-        $this->assertSame(".txt", InvoiceSuiteFileUtils::getFileExtension("file.txt", true));
-        $this->assertSame(".txt", InvoiceSuiteFileUtils::getFileExtension("file.x.txt", true));
-        $this->assertSame(".txt", InvoiceSuiteFileUtils::getFileExtension("/home/john/file.x.txt", true));
-        $this->assertSame("txt", InvoiceSuiteFileUtils::getFileExtension("file.txt"));
-        $this->assertSame("txt", InvoiceSuiteFileUtils::getFileExtension("file.x.txt"));
-        $this->assertSame("txt", InvoiceSuiteFileUtils::getFileExtension("/home/john/file.x.txt"));
+        $this->assertSame('.txt', InvoiceSuiteFileUtils::getFileExtension('file.txt', true));
+        $this->assertSame('.txt', InvoiceSuiteFileUtils::getFileExtension('file.x.txt', true));
+        $this->assertSame('.txt', InvoiceSuiteFileUtils::getFileExtension('/home/john/file.x.txt', true));
+        $this->assertSame('txt', InvoiceSuiteFileUtils::getFileExtension('file.txt'));
+        $this->assertSame('txt', InvoiceSuiteFileUtils::getFileExtension('file.x.txt'));
+        $this->assertSame('txt', InvoiceSuiteFileUtils::getFileExtension('/home/john/file.x.txt'));
 
         $ds = DIRECTORY_SEPARATOR;
 
-        $this->assertSame(sprintf('.%sfile.new', $ds), InvoiceSuiteFileUtils::changeFileExtension("file.txt", "new"));
-        $this->assertSame(sprintf('.%sfile.new', $ds), InvoiceSuiteFileUtils::changeFileExtension("file.txt", ".new"));
-        $this->assertSame(sprintf('%shome%sjohn%sfile.new', $ds, $ds, $ds), InvoiceSuiteFileUtils::changeFileExtension(sprintf('%shome%sjohn%sfile.txt', $ds, $ds, $ds), "new"));
-        $this->assertSame(sprintf('%shome%sjohn%sfile.new', $ds, $ds, $ds), InvoiceSuiteFileUtils::changeFileExtension(sprintf('%shome%sjohn%sfile.txt', $ds, $ds, $ds), ".new"));
+        $this->assertSame(sprintf('.%sfile.new', $ds), InvoiceSuiteFileUtils::changeFileExtension('file.txt', 'new'));
+        $this->assertSame(sprintf('.%sfile.new', $ds), InvoiceSuiteFileUtils::changeFileExtension('file.txt', '.new'));
+        $this->assertSame(sprintf('%shome%sjohn%sfile.new', $ds, $ds, $ds), InvoiceSuiteFileUtils::changeFileExtension(sprintf('%shome%sjohn%sfile.txt', $ds, $ds, $ds), 'new'));
+        $this->assertSame(sprintf('%shome%sjohn%sfile.new', $ds, $ds, $ds), InvoiceSuiteFileUtils::changeFileExtension(sprintf('%shome%sjohn%sfile.txt', $ds, $ds, $ds), '.new'));
 
-        $this->assertSame(35, InvoiceSuiteFileUtils::getFileSize(__DIR__ . "/../../assets/99_FileUtilsTest_tobase64.txt"));
-        $this->assertSame(0, InvoiceSuiteFileUtils::getFileSize(__DIR__ . "/../../assets/filenotexists.txt"));
+        $this->assertSame(35, InvoiceSuiteFileUtils::getFileSize(__DIR__.'/../../assets/99_FileUtilsTest_tobase64.txt'));
+        $this->assertSame(0, InvoiceSuiteFileUtils::getFileSize(__DIR__.'/../../assets/filenotexists.txt'));
 
-        $this->assertSame(35, InvoiceSuiteFileUtils::getFileSizeFromBase64String("SSBhbSBhIHRlc3RmaWxlLiBEb24ndCBtb2RpZnkgbWUuLi4="));
-        $this->assertSame(0, InvoiceSuiteFileUtils::getFileSizeFromBase64String(""));
+        $this->assertSame(35, InvoiceSuiteFileUtils::getFileSizeFromBase64String('SSBhbSBhIHRlc3RmaWxlLiBEb24ndCBtb2RpZnkgbWUuLi4='));
+        $this->assertSame(0, InvoiceSuiteFileUtils::getFileSizeFromBase64String(''));
     }
 
     // endregion
@@ -765,35 +745,35 @@ final class UtilsTest extends TestCase
     {
         $ds = DIRECTORY_SEPARATOR;
 
-        $this->assertSame(sprintf('%shome%suser%stest.txt', $ds, $ds, $ds), InvoiceSuitePathUtils::combinePathWithFile(sprintf('%shome%suser', $ds, $ds), "test.txt"));
-        $this->assertSame(sprintf('%shome%suser%stest.txt', $ds, $ds, $ds), InvoiceSuitePathUtils::combinePathWithFile(sprintf('%shome%suser%s', $ds, $ds, $ds), "test.txt"));
-        $this->assertSame(sprintf('%shome%suser%stest.txt', $ds, $ds, $ds), InvoiceSuitePathUtils::combinePathWithFile(sprintf('%shome%suser', $ds, $ds), $ds . 'test.txt'));
+        $this->assertSame(sprintf('%shome%suser%stest.txt', $ds, $ds, $ds), InvoiceSuitePathUtils::combinePathWithFile(sprintf('%shome%suser', $ds, $ds), 'test.txt'));
+        $this->assertSame(sprintf('%shome%suser%stest.txt', $ds, $ds, $ds), InvoiceSuitePathUtils::combinePathWithFile(sprintf('%shome%suser%s', $ds, $ds, $ds), 'test.txt'));
+        $this->assertSame(sprintf('%shome%suser%stest.txt', $ds, $ds, $ds), InvoiceSuitePathUtils::combinePathWithFile(sprintf('%shome%suser', $ds, $ds), $ds.'test.txt'));
 
-        $this->assertSame(sprintf('%shome%suser', $ds, $ds), InvoiceSuitePathUtils::combinePathWithPath($ds . 'home', "user"));
-        $this->assertSame(sprintf('%shome%suser', $ds, $ds), InvoiceSuitePathUtils::combinePathWithPath($ds . 'home', $ds . 'user'));
-        $this->assertSame(sprintf('%shome%suser', $ds, $ds), InvoiceSuitePathUtils::combinePathWithPath(sprintf('%shome%s%s', $ds, $ds, $ds), $ds . 'user'));
-        $this->assertSame(sprintf('%shome%suser', $ds, $ds), InvoiceSuitePathUtils::combinePathWithPath(sprintf('%shome%s%s', $ds, $ds, $ds), "user"));
+        $this->assertSame(sprintf('%shome%suser', $ds, $ds), InvoiceSuitePathUtils::combinePathWithPath($ds.'home', 'user'));
+        $this->assertSame(sprintf('%shome%suser', $ds, $ds), InvoiceSuitePathUtils::combinePathWithPath($ds.'home', $ds.'user'));
+        $this->assertSame(sprintf('%shome%suser', $ds, $ds), InvoiceSuitePathUtils::combinePathWithPath(sprintf('%shome%s%s', $ds, $ds, $ds), $ds.'user'));
+        $this->assertSame(sprintf('%shome%suser', $ds, $ds), InvoiceSuitePathUtils::combinePathWithPath(sprintf('%shome%s%s', $ds, $ds, $ds), 'user'));
 
-        $this->assertSame(sprintf('home%suser%sjohn', $ds, $ds), InvoiceSuitePathUtils::combineAllPaths("home", "user", "john"));
-        $this->assertSame(sprintf('%shome%suser%sjohn', $ds, $ds, $ds), InvoiceSuitePathUtils::combineAllPaths($ds . 'home', "user", "john"));
-        $this->assertSame(sprintf('%shome%suser%sjohn', $ds, $ds, $ds), InvoiceSuitePathUtils::combineAllPaths($ds . 'home', $ds . 'user', "john"));
-        $this->assertSame(sprintf('%shome%suser%sjohn', $ds, $ds, $ds), InvoiceSuitePathUtils::combineAllPaths($ds . 'home', $ds . 'user', $ds . 'john'));
-        $this->assertSame(sprintf('%shome%suser%sjohn', $ds, $ds, $ds), InvoiceSuitePathUtils::combineAllPaths(sprintf('%shome%s%s', $ds, $ds, $ds), "user", "john"));
-        $this->assertSame(sprintf('%shome%suser%sjohn', $ds, $ds, $ds), InvoiceSuitePathUtils::combineAllPaths(sprintf('%shome%s%s', $ds, $ds, $ds), sprintf('%suser%s%s', $ds, $ds, $ds), "john"));
-        $this->assertSame(sprintf('%shome%suser%sjohn', $ds, $ds, $ds), InvoiceSuitePathUtils::combineAllPaths(sprintf('%shome%s%s', $ds, $ds, $ds), sprintf('%suser%s%s', $ds, $ds, $ds), $ds . 'john'));
+        $this->assertSame(sprintf('home%suser%sjohn', $ds, $ds), InvoiceSuitePathUtils::combineAllPaths('home', 'user', 'john'));
+        $this->assertSame(sprintf('%shome%suser%sjohn', $ds, $ds, $ds), InvoiceSuitePathUtils::combineAllPaths($ds.'home', 'user', 'john'));
+        $this->assertSame(sprintf('%shome%suser%sjohn', $ds, $ds, $ds), InvoiceSuitePathUtils::combineAllPaths($ds.'home', $ds.'user', 'john'));
+        $this->assertSame(sprintf('%shome%suser%sjohn', $ds, $ds, $ds), InvoiceSuitePathUtils::combineAllPaths($ds.'home', $ds.'user', $ds.'john'));
+        $this->assertSame(sprintf('%shome%suser%sjohn', $ds, $ds, $ds), InvoiceSuitePathUtils::combineAllPaths(sprintf('%shome%s%s', $ds, $ds, $ds), 'user', 'john'));
+        $this->assertSame(sprintf('%shome%suser%sjohn', $ds, $ds, $ds), InvoiceSuitePathUtils::combineAllPaths(sprintf('%shome%s%s', $ds, $ds, $ds), sprintf('%suser%s%s', $ds, $ds, $ds), 'john'));
+        $this->assertSame(sprintf('%shome%suser%sjohn', $ds, $ds, $ds), InvoiceSuitePathUtils::combineAllPaths(sprintf('%shome%s%s', $ds, $ds, $ds), sprintf('%suser%s%s', $ds, $ds, $ds), $ds.'john'));
 
-        $this->assertNotSame("", InvoiceSuitePathUtils::getHashedDirectory(3));
+        $this->assertNotSame('', InvoiceSuitePathUtils::getHashedDirectory(3));
         $this->assertSame(3, substr_count(InvoiceSuitePathUtils::getHashedDirectory(3), DIRECTORY_SEPARATOR));
         $this->assertStringStartsWith(DIRECTORY_SEPARATOR, InvoiceSuitePathUtils::getHashedDirectory(3));
         $this->assertStringEndsNotWith(DIRECTORY_SEPARATOR, InvoiceSuitePathUtils::getHashedDirectory(3));
         $this->expectException(Exception::class);
         InvoiceSuitePathUtils::getHashedDirectory(0);
 
-        $baseDirectory = InvoiceSuitePathUtils::combineAllPaths(__DIR__, "test");
+        $baseDirectory = InvoiceSuitePathUtils::combineAllPaths(__DIR__, 'test');
         $createdDirectory = InvoiceSuitePathUtils::createHashedDirectory($baseDirectory, 3);
 
         $this->assertIsString($createdDirectory);
-        $this->assertNotSame("", InvoiceSuitePathUtils::getHashedDirectory(3));
+        $this->assertNotSame('', InvoiceSuitePathUtils::getHashedDirectory(3));
         $this->assertSame(3, substr_count(InvoiceSuitePathUtils::getHashedDirectory(3), DIRECTORY_SEPARATOR));
         $this->assertStringStartsWith($ds, InvoiceSuitePathUtils::getHashedDirectory(3));
         $this->assertStringEndsNotWith($ds, InvoiceSuitePathUtils::getHashedDirectory(3));

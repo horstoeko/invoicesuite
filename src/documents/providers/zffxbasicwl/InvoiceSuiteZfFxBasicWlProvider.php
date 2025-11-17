@@ -11,16 +11,16 @@ namespace horstoeko\invoicesuite\documents\providers\zffxbasicwl;
 
 use DOMDocument;
 use DOMXPath;
-use Throwable;
-use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
-use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
-use horstoeko\invoicesuite\documents\models\zffxbasicwl\rsm\CrossIndustryInvoice;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
+use horstoeko\invoicesuite\documents\models\zffxbasicwl\rsm\CrossIndustryInvoice;
+use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
+use Throwable;
 
 class InvoiceSuiteZfFxBasicWlProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getUniqueId(): string
     {
@@ -28,17 +28,17 @@ class InvoiceSuiteZfFxBasicWlProvider extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getDescription(): string
     {
-        return 'The BASIC WL profile does not contain any invoice items and therefore cannot display any VAT-compliant ' .
-            'invoices. However, it contains all the information at document level that is required to post the invoice. ' .
-            'It is therefore a booking aid.';
+        return 'The BASIC WL profile does not contain any invoice items and therefore cannot display any VAT-compliant '
+            .'invoices. However, it contains all the information at document level that is required to post the invoice. '
+            .'It is therefore a booking aid.';
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getParameters(): array
     {
@@ -51,7 +51,7 @@ class InvoiceSuiteZfFxBasicWlProvider extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getSerializerMetadataDirectories(): array
     {
@@ -59,17 +59,17 @@ class InvoiceSuiteZfFxBasicWlProvider extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getSerializerHandlers(): array
     {
         return [
-            InvoiceSuiteZfFxBasicWlSerializerHandler::class
+            InvoiceSuiteZfFxBasicWlSerializerHandler::class,
         ];
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getSerializerListeners(): array
     {
@@ -77,7 +77,7 @@ class InvoiceSuiteZfFxBasicWlProvider extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getSerializerSubscribers(): array
     {
@@ -85,15 +85,15 @@ class InvoiceSuiteZfFxBasicWlProvider extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getSerializerGroups(): array
     {
-        return ["zffx"];
+        return ['zffx'];
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function isSatisfiableBySerializedContent(string $serializedContent): bool
     {
@@ -139,7 +139,7 @@ class InvoiceSuiteZfFxBasicWlProvider extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getRootClassName(): string
     {
@@ -147,7 +147,7 @@ class InvoiceSuiteZfFxBasicWlProvider extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getReaderClassName(): string
     {
@@ -155,7 +155,7 @@ class InvoiceSuiteZfFxBasicWlProvider extends InvoiceSuiteAbstractDocumentFormat
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getBuilderClassName(): string
     {
@@ -165,7 +165,7 @@ class InvoiceSuiteZfFxBasicWlProvider extends InvoiceSuiteAbstractDocumentFormat
     /**
      * Returns true if PDF support is available
      *
-     * @return boolean
+     * @return bool
      */
     public function isPdfSupportAvailable(): bool
     {
@@ -180,10 +180,10 @@ class InvoiceSuiteZfFxBasicWlProvider extends InvoiceSuiteAbstractDocumentFormat
     public function getAllowedPdfAttachmentFilenames(): array
     {
         return [
-            'ZUGFeRD-invoice.xml' /*1.0*/,
-            'zugferd-invoice.xml' /*2.0*/,
-            'factur-x.xml' /*2.1*/,
-            'xrechnung.xml'
+            'ZUGFeRD-invoice.xml' /* 1.0 */,
+            'zugferd-invoice.xml' /* 2.0 */,
+            'factur-x.xml' /* 2.1 */,
+            'xrechnung.xml',
         ];
     }
 
@@ -194,7 +194,7 @@ class InvoiceSuiteZfFxBasicWlProvider extends InvoiceSuiteAbstractDocumentFormat
      */
     public function getDefaultPdfAttachmentFilename(): string
     {
-        return "factur-x.xml";
+        return 'factur-x.xml';
     }
 
     /**

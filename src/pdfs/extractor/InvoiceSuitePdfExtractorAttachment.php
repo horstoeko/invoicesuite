@@ -13,10 +13,9 @@ namespace horstoeko\invoicesuite\pdfs\extractor;
  * Class representing an attachment of an PDF extracted by InvoiceSuitePdfExtractor
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuitePdfExtractorAttachment
 {
@@ -25,28 +24,28 @@ class InvoiceSuitePdfExtractorAttachment
      *
      * @var string
      */
-    protected string $attachmentContent = "";
+    protected string $attachmentContent = '';
 
     /**
      * The attachment filename
      *
      * @var string
      */
-    protected string $attachmentFilename = "";
+    protected string $attachmentFilename = '';
 
     /**
      * The attachment mime type
      *
      * @var string
      */
-    protected string $attachmentMimeType = "";
+    protected string $attachmentMimeType = '';
 
     /**
      * Constructor
      *
-     * @param string $newAttachmentContent
-     * @param string $newAttachmentFilename
-     * @param string $newAttachmentMimeType
+     * @param  string $newAttachmentContent
+     * @param  string $newAttachmentFilename
+     * @param  string $newAttachmentMimeType
      * @return void
      */
     public function __construct(

@@ -15,10 +15,9 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * Class representing a DTO for a party identification
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteIdDTO
 {
@@ -35,8 +34,8 @@ class InvoiceSuiteIdDTO
     /**
      * Constructor
      *
-     * @param string|null $id
-     * @param string|null $idType
+     * @param null|string $id
+     * @param null|string $idType
      */
     public function __construct(
         ?string $id = null,
@@ -50,7 +49,7 @@ class InvoiceSuiteIdDTO
     /**
      * Get the ID
      *
-     * @return string|null
+     * @return null|string
      */
     public function getId(): ?string
     {
@@ -60,7 +59,7 @@ class InvoiceSuiteIdDTO
     /**
      * Set the ID
      *
-     * @param string|null $newId
+     * @param  null|string $newId
      * @return self
      */
     public function setId(?string $newId): self
@@ -83,7 +82,7 @@ class InvoiceSuiteIdDTO
     /**
      * Get the ID type
      *
-     * @return string|null
+     * @return null|string
      */
     public function getIdType(): ?string
     {
@@ -93,7 +92,7 @@ class InvoiceSuiteIdDTO
     /**
      * Set the ID type
      *
-     * @param string|null $newIdType
+     * @param  null|string $newIdType
      * @return self
      */
     public function setIdType(?string $newIdType): self

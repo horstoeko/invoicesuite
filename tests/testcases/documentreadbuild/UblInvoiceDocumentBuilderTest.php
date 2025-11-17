@@ -91,9 +91,9 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/ns:Invoice/cbc:ID');
 
-        self::$document->setDocumentNo("2025/08-000001");
+        self::$document->setDocumentNo('2025/08-000001');
 
-        $this->assertXPathValue('/ns:Invoice/cbc:ID', "2025/08-000001");
+        $this->assertXPathValue('/ns:Invoice/cbc:ID', '2025/08-000001');
 
         self::$document->setDocumentNo(null);
 
@@ -145,7 +145,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetDocumentLanguage(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentLanguage('de-DE');
         });
     }
@@ -167,7 +167,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetDocumentCompleteDate(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentCompleteDate((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
         });
     }
@@ -178,7 +178,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/ns:Invoice/cbc:DocumentCurrencyCode');
 
-        self::$document->setDocumentCurrency("");
+        self::$document->setDocumentCurrency('');
 
         $this->assertXPathNotExists('/ns:Invoice/cbc:DocumentCurrencyCode');
 
@@ -201,7 +201,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/ns:Invoice/cbc:TaxCurrencyCode');
 
-        self::$document->setDocumentTaxCurrency("");
+        self::$document->setDocumentTaxCurrency('');
 
         $this->assertXPathNotExists('/ns:Invoice/cbc:TaxCurrencyCode');
 
@@ -220,14 +220,14 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetDocumentIsCopy(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentIsCopy(true);
         });
     }
 
     public function testSetDocumentIsTest(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentIsTest(true);
         });
     }
@@ -1073,7 +1073,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateCustomerOrderReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentUltimateCustomerOrderReference('UCOR-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
             self::$document->addDocumentUltimateCustomerOrderReference('UCOR-2', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
         });
@@ -1221,7 +1221,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentDeliveryNoteReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentDeliveryNoteReference('DEVNOTE-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
             self::$document->addDocumentDeliveryNoteReference('DEVNOTE-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
         });
@@ -3686,7 +3686,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentProductEndUserName(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentProductEndUserName('Product End User Name');
             self::$document->addDocumentProductEndUserName('Product End User Name 2');
         });
@@ -3694,7 +3694,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentProductEndUserId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentProductEndUserId('Product End User Id 1');
             self::$document->addDocumentProductEndUserId('Product End User Id 2');
         });
@@ -3702,7 +3702,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentProductEndUserGlobalId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentProductEndUserGlobalId('Product End User Global Id 1', '0088');
             self::$document->addDocumentProductEndUserGlobalId('Product End User Global Id 1', '0088');
         });
@@ -3710,7 +3710,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentProductEndUserTaxRegistration(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentProductEndUserTaxRegistration('VA', '123456789');
             self::$document->addDocumentProductEndUserTaxRegistration('VA', '999999999');
         });
@@ -3718,7 +3718,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentProductEndUserAddress(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentProductEndUserAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
             self::$document->addDocumentProductEndUserAddress('Adress-Line 1-1', 'Adress-Line 2-2', 'Adress-Line 3-3', '88888', 'Cityname', 'IR', 'Saxony');
         });
@@ -3726,7 +3726,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentProductEndUserLegalOrganisation(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentProductEndUserLegalOrganisation('8884', '123456789', 'Company Name');
             self::$document->addDocumentProductEndUserLegalOrganisation('8884', '123456789', 'Company Name 2');
         });
@@ -3734,7 +3734,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentProductEndUserContact(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentProductEndUserContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
             self::$document->addDocumentProductEndUserContact('Name 2', 'Departement Name 2', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
         });
@@ -3742,7 +3742,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentProductEndUserCommunication(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentProductEndUserCommunication('EM', 'user@somewhere.all');
             self::$document->addDocumentProductEndUserCommunication('EM', 'user2@somewhere.all');
         });
@@ -3963,7 +3963,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentShipToTaxRegistration(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipToTaxRegistration('VA', '123456789');
             self::$document->addDocumentShipToTaxRegistration('VA', '123456789');
         });
@@ -4074,7 +4074,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentShipToLegalOrganisation(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipToLegalOrganisation('8884', '123456789');
             self::$document->addDocumentShipToLegalOrganisation('8884', '123456789');
         });
@@ -4082,7 +4082,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentShipToContact(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipToContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
             self::$document->addDocumentShipToContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
         });
@@ -4090,7 +4090,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentShipToCommunication(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipToCommunication('EM', 'user@somewhere.all');
             self::$document->addDocumentShipToCommunication('EM', 'user@somewhere.all');
         });
@@ -4098,7 +4098,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateShipToName(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentUltimateShipToName('Ultimate Ship To Name');
             self::$document->addDocumentUltimateShipToName('Ultimate Ship To Name');
         });
@@ -4106,7 +4106,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateShipToId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentUltimateShipToId('Ultimate Ship To Id 1');
             self::$document->addDocumentUltimateShipToId('Ultimate Ship To Id 1');
         });
@@ -4114,7 +4114,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateShipToGlobalId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentUltimateShipToGlobalId('Ultimate Ship To Global Id 1', '0088');
             self::$document->addDocumentUltimateShipToGlobalId('Ultimate Ship To Global Id 1', '0088');
         });
@@ -4122,7 +4122,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateShipToTaxRegistration(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentUltimateShipToTaxRegistration('VA', '123456789');
             self::$document->addDocumentUltimateShipToTaxRegistration('VA', '123456789');
         });
@@ -4130,7 +4130,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateShipToAddress(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentUltimateShipToAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
             self::$document->addDocumentUltimateShipToAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
         });
@@ -4138,7 +4138,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateShipToLegalOrganisation(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentUltimateShipToLegalOrganisation('8884', '123456789', 'Company Name');
             self::$document->addDocumentUltimateShipToLegalOrganisation('8884', '123456789', 'Company Name');
         });
@@ -4146,7 +4146,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateShipToContact(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentUltimateShipToContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
             self::$document->addDocumentUltimateShipToContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
         });
@@ -4154,7 +4154,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateShipToCommunication(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentUltimateShipToCommunication('EM', 'user@somewhere.all');
             self::$document->addDocumentUltimateShipToCommunication('EM', 'user@somewhere.all');
         });
@@ -4162,7 +4162,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentShipFromName(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipFromName('Ship From Name');
             self::$document->addDocumentShipFromName('Ship From Name');
         });
@@ -4170,7 +4170,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentShipFromId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipFromId('Ship From Id 1');
             self::$document->addDocumentShipFromId('Ship From Id 1');
         });
@@ -4178,7 +4178,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentShipFromGlobalId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipFromGlobalId('Ship From Global Id 1', '0088');
             self::$document->addDocumentShipFromGlobalId('Ship From Global Id 1', '0088');
         });
@@ -4186,7 +4186,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentShipFromTaxRegistration(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipFromTaxRegistration('VA', '123456789');
             self::$document->addDocumentShipFromTaxRegistration('VA', '123456789');
         });
@@ -4194,7 +4194,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentShipFromAddress(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipFromAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
             self::$document->addDocumentShipFromAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
         });
@@ -4202,7 +4202,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentShipFromLegalOrganisation(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipFromLegalOrganisation('8884', '123456789', 'Company Name');
             self::$document->addDocumentShipFromLegalOrganisation('8884', '123456789', 'Company Name');
         });
@@ -4210,7 +4210,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentShipFromContact(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipFromContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
             self::$document->addDocumentShipFromContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
         });
@@ -4218,7 +4218,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentShipFromCommunication(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipFromCommunication('EM', 'user@somewhere.all');
             self::$document->addDocumentShipFromCommunication('EM', 'user@somewhere.all');
         });
@@ -4226,7 +4226,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoicerName(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoicerName('Invoicer Name');
             self::$document->addDocumentInvoicerName('Invoicer Name 2');
         });
@@ -4234,7 +4234,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoicerId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoicerId('Invoicer Id 1');
             self::$document->addDocumentInvoicerId('Invoicer Id 2');
         });
@@ -4242,7 +4242,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoicerGlobalId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoicerGlobalId('Invoicer Global Id 1', '0088');
             self::$document->addDocumentInvoicerGlobalId('Invoicer Global Id 2', '0088');
         });
@@ -4250,7 +4250,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoicerTaxRegistration(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoicerTaxRegistration('VA', '123456789');
             self::$document->addDocumentInvoicerTaxRegistration('VA', '123456789');
         });
@@ -4258,7 +4258,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoicerAddress(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoicerAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
             self::$document->addDocumentInvoicerAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
         });
@@ -4266,7 +4266,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoicerLegalOrganisation(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoicerLegalOrganisation('8884', '123456789', 'Company Name');
             self::$document->addDocumentInvoicerLegalOrganisation('8885', '987654321', 'Company Name 2');
         });
@@ -4274,7 +4274,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoicerContact(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoicerContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
             self::$document->addDocumentInvoicerContact('Name 2', 'Departement Name 2', '+49-222-123456789', '+49-222-987654321', 'user2@nowhere.all');
         });
@@ -4282,7 +4282,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoicerCommunication(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoicerCommunication('EM', 'user@somewhere.all');
             self::$document->addDocumentInvoicerCommunication('EM', 'user2@somewhere.all');
         });
@@ -4290,7 +4290,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoiceeName(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoiceeName('Invoicee Name');
             self::$document->addDocumentInvoiceeName('Invoicee Name 2');
         });
@@ -4298,7 +4298,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoiceeId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoiceeId('Invoicee Id 1');
             self::$document->addDocumentInvoiceeId('Invoicee Id 2');
         });
@@ -4306,7 +4306,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoiceeGlobalId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoiceeGlobalId('Invoicee Global Id 1', '0088');
             self::$document->addDocumentInvoiceeGlobalId('Invoicee Global Id 2', '0088');
         });
@@ -4314,7 +4314,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoiceeTaxRegistration(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoiceeTaxRegistration('VA', '123456789');
             self::$document->addDocumentInvoiceeTaxRegistration('VA', '123456789');
         });
@@ -4322,7 +4322,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoiceeAddress(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoiceeAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
             self::$document->addDocumentInvoiceeAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
         });
@@ -4330,7 +4330,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoiceeLegalOrganisation(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoiceeLegalOrganisation('8884', '123456789', 'Company Name');
             self::$document->addDocumentInvoiceeLegalOrganisation('8885', '987654321', 'Company Name 2');
         });
@@ -4338,7 +4338,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoiceeContact(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoiceeContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
             self::$document->addDocumentInvoiceeContact('Name 2', 'Departement Name 2', '+49-222-123456789', '+49-222-987654321', 'user2@nowhere.all');
         });
@@ -4346,7 +4346,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoiceeCommunication(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoiceeCommunication('EM', 'user@somewhere.all');
             self::$document->addDocumentInvoiceeCommunication('EM', 'user2@somewhere.all');
         });
@@ -5498,7 +5498,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPaymentDiscountTermsInLastPaymentTerm(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPaymentDiscountTermsInLastPaymentTerm(100.0, 10, 10, (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 2.0, 'DAY');
             self::$document->addDocumentPaymentDiscountTermsInLastPaymentTerm(100.0, 10, 10, (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 2.0, 'DAY');
         });
@@ -5506,7 +5506,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPaymentPenaltyTermsInLastPaymentTerm(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPaymentPenaltyTermsInLastPaymentTerm(100.0, 10, 10, (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 2.0, 'DAY');
             self::$document->addDocumentPaymentPenaltyTermsInLastPaymentTerm(100.0, 10, 10, (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 2.0, 'DAY');
         });
@@ -5835,7 +5835,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentLogisticServiceCharge(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentLogisticServiceCharge(10.0, 'description', 'S', 'VAT', 19.0);
             self::$document->addDocumentLogisticServiceCharge(10.0, 'description', 'S', 'VAT', 19.0);
         });
@@ -5843,7 +5843,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testPrepareDocumentSummation(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->prepareDocumentSummation();
         });
     }
@@ -6985,7 +6985,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionReferencedProduct(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionReferencedProduct(
                 'refproductid',
                 'refproductname',
@@ -7015,7 +7015,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionSellerOrderReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionSellerOrderReference('SO-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
             self::$document->addDocumentPositionSellerOrderReference('SO-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
         });
@@ -7125,7 +7125,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionQuotationReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionQuotationReference('QU-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
             self::$document->addDocumentPositionQuotationReference('QU-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
         });
@@ -7133,7 +7133,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionContractReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionContractReference('QU-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
             self::$document->addDocumentPositionContractReference('QU-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
         });
@@ -7141,7 +7141,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionAdditionalReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionAdditionalReference('ADD-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 'typecode', 'reftypecode', 'description');
             self::$document->addDocumentPositionAdditionalReference('ADD-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), 'typecode', 'reftypecode', 'description');
         });
@@ -7149,7 +7149,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionUltimateCustomerOrderReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionUltimateCustomerOrderReference('UCOR-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
             self::$document->addDocumentPositionUltimateCustomerOrderReference('UCOR-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
         });
@@ -7157,7 +7157,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionDespatchAdviceReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionDespatchAdviceReference('DESOADV-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
             self::$document->addDocumentPositionDespatchAdviceReference('DESOADV-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
         });
@@ -7165,7 +7165,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionReceivingAdviceReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionReceivingAdviceReference('RECADV-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
             self::$document->addDocumentPositionReceivingAdviceReference('RECADV-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
         });
@@ -7173,7 +7173,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionDeliveryNoteReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionDeliveryNoteReference('DEVNOTE-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
             self::$document->addDocumentPositionDeliveryNoteReference('DEVNOTE-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
         });
@@ -7181,7 +7181,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionInvoiceReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionInvoiceReference('INVREF-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 'typecode');
             self::$document->addDocumentPositionInvoiceReference('INVREF-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), 'typecode');
         });
@@ -7189,7 +7189,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionGrossPrice(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionGrossPrice(1.00, 2.00, 'C62');
             self::$document->setDocumentPositionGrossPriceAllowanceCharge(1.0, false, 2.0, 3.0, 'reason', 'reasoncode');
             self::$document->addDocumentPositionGrossPriceAllowanceCharge(10.0, true, 20.0, 30.0, 'reason2', 'reasoncode2');
@@ -7218,7 +7218,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity', 1);
 
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionNetPriceTax('S', 'VAT', 1.0, 19.0, 'reason', 'reasoncode');
         });
 
@@ -7233,7 +7233,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity', 1);
 
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionNetPriceTax('S', 'VAT', 1.0, 19.0, 'reason', 'reasoncode');
         });
 
@@ -7248,7 +7248,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity', 1);
 
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionNetPriceTax('S', 'VAT', 1.0, 19.0, 'reason', 'reasoncode');
         });
 
@@ -7309,7 +7309,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionShipToName(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionShipToName('Ship To Name');
             self::$document->addDocumentPositionShipToName('Ship To Name 2');
         });
@@ -7317,7 +7317,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionShipToId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionShipToId('Ship To Id 1');
             self::$document->addDocumentPositionShipToId('Ship To Id 2');
         });
@@ -7325,7 +7325,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionShipToGlobalId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionShipToGlobalId('Ship To Global Id 1', '0088');
             self::$document->addDocumentPositionShipToGlobalId('Ship To Global Id 2', '0088');
         });
@@ -7333,7 +7333,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionShipToTaxRegistration(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionShipToTaxRegistration('VA', '123456789');
             self::$document->addDocumentPositionShipToTaxRegistration('VA', '123456789');
         });
@@ -7341,7 +7341,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionShipToAddress(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionShipToAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
             self::$document->addDocumentPositionShipToAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
         });
@@ -7349,7 +7349,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionShipToLegalOrganisation(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionShipToLegalOrganisation('8884', '123456789', 'Company Name');
             self::$document->addDocumentPositionShipToLegalOrganisation('8885', '987654321', 'Company Name 2');
         });
@@ -7357,7 +7357,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionShipToContact(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionShipToContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
             self::$document->addDocumentPositionShipToContact('Name 2', 'Departement Name 2', '+49-222-123456789', '+49-222-987654321', 'user2@nowhere.all');
         });
@@ -7365,7 +7365,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionShipToCommunication(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionShipToCommunication('EM', 'user@somewhere.all');
             self::$document->addDocumentPositionShipToCommunication('EM', 'user2@somewhere.all');
         });
@@ -7373,7 +7373,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionUltimateShipToName(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionUltimateShipToName('Ship To Name');
             self::$document->addDocumentPositionUltimateShipToName('Ship To Name 2');
         });
@@ -7381,7 +7381,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionUltimateShipToId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionUltimateShipToId('Ship To Id 1');
             self::$document->addDocumentPositionUltimateShipToId('Ship To Id 2');
         });
@@ -7389,7 +7389,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionUltimateShipToGlobalId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionUltimateShipToGlobalId('Ship To Global Id 1', '0088');
             self::$document->addDocumentPositionUltimateShipToGlobalId('Ship To Global Id 2', '0088');
         });
@@ -7397,7 +7397,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionUltimateShipToTaxRegistration(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionUltimateShipToTaxRegistration('VA', '123456789');
             self::$document->addDocumentPositionUltimateShipToTaxRegistration('VA', '123456789');
         });
@@ -7405,7 +7405,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionUltimateShipToAddress(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionUltimateShipToAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
             self::$document->addDocumentPositionUltimateShipToAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
         });
@@ -7413,7 +7413,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionUltimateShipToLegalOrganisation(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionUltimateShipToLegalOrganisation('8884', '123456789', 'Company Name');
             self::$document->addDocumentPositionUltimateShipToLegalOrganisation('8885', '987654321', 'Company Name 2');
         });
@@ -7421,7 +7421,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionUltimateShipToContact(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionUltimateShipToContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
             self::$document->addDocumentPositionUltimateShipToContact('Name 2', 'Departement Name 2', '+49-222-123456789', '+49-222-987654321', 'user2@nowhere.all');
         });
@@ -7429,7 +7429,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionUltimateShipToCommunication(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionUltimateShipToCommunication('EM', 'user@somewhere.all');
             self::$document->addDocumentPositionUltimateShipToCommunication('EM', 'user2@somewhere.all');
         });
@@ -7437,7 +7437,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSetDocumentPositionSupplyChainEvent(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionSupplyChainEvent((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
         });
     }
@@ -7872,7 +7872,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
     public function testSaveAsXmlFile(): void
     {
-        $xmlFilename = InvoiceSuitePathUtils::combinePathWithFile(__DIR__, "invoice.xml");
+        $xmlFilename = InvoiceSuitePathUtils::combinePathWithFile(__DIR__, 'invoice.xml');
 
         $this->registerFileForTestCaseTeardown($xmlFilename);
 
@@ -7883,9 +7883,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
         $xmlFileContent = file_get_contents($xmlFilename);
 
         $this->assertNotFalse($xmlFileContent);
-        /**
-         * @phpstan-ignore method.alreadyNarrowedType
-         */
+        // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsString($xmlFileContent);
 
         $resolvedContentType = InvoiceSuiteContentTypeResolver::resolveContentType($xmlFileContent);
@@ -7908,22 +7906,22 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
         $documentDTO = new InvoiceSuiteDocumentHeaderDTO();
         $documentDTO
-            ->setNumber("2025-04-000001")
+            ->setNumber('2025-04-000001')
             ->setType(InvoiceSuiteCodelistDocumentTypes::COMMERCIAL_INVOICE->value)
-            ->setDescription("Some document description")
-            ->setLanguage("de-DE")
+            ->setDescription('Some document description')
+            ->setLanguage('de-DE')
             ->setDate((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'))
             ->setCompleteDate((new DateTime())->createFromFormat('d.m.Y', '02.01.1970'))
             ->setCurrency(InvoiceSuiteCodelistCurrencyCodes::EURO->value)
             ->setTaxCurrency(InvoiceSuiteCodelistCurrencyCodes::POUND_STERLING->value)
             ->setIsCopy(true)
             ->setIsTest(true)
-            ->addNote(new InvoiceSuiteNoteDTO("Some content", "CC00", "SC00"))
-            ->addNote(new InvoiceSuiteNoteDTO("Some other content", "CC99", "SC99"))
-            ->addBillingPeriod(new InvoiceSuiteDateRangeDTO((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), (new DateTime())->createFromFormat('d.m.Y', '31.01.1970'), "Some Description"))
-            ->addBillingPeriod(new InvoiceSuiteDateRangeDTO((new DateTime())->createFromFormat('d.m.Y', '01.03.1970'), (new DateTime())->createFromFormat('d.m.Y', '31.03.1970'), "Some Description"))
-            ->addPostingReference(new InvoiceSuiteIdDTO("PREF-1", "PREF-1-TYPE"))
-            ->addPostingReference(new InvoiceSuiteIdDTO("PREF-2", "PREF-2-TYPE"))
+            ->addNote(new InvoiceSuiteNoteDTO('Some content', 'CC00', 'SC00'))
+            ->addNote(new InvoiceSuiteNoteDTO('Some other content', 'CC99', 'SC99'))
+            ->addBillingPeriod(new InvoiceSuiteDateRangeDTO((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), (new DateTime())->createFromFormat('d.m.Y', '31.01.1970'), 'Some Description'))
+            ->addBillingPeriod(new InvoiceSuiteDateRangeDTO((new DateTime())->createFromFormat('d.m.Y', '01.03.1970'), (new DateTime())->createFromFormat('d.m.Y', '31.03.1970'), 'Some Description'))
+            ->addPostingReference(new InvoiceSuiteIdDTO('PREF-1', 'PREF-1-TYPE'))
+            ->addPostingReference(new InvoiceSuiteIdDTO('PREF-2', 'PREF-2-TYPE'))
             ->addSellerOrderReference(new InvoiceSuiteReferenceDocumentDTO('SO-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
             ->addSellerOrderReference(new InvoiceSuiteReferenceDocumentDTO('SO-2', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
             ->addBuyerOrderReference(new InvoiceSuiteReferenceDocumentDTO('BO-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
@@ -7932,12 +7930,12 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
             ->addQuotationReference(new InvoiceSuiteReferenceDocumentDTO('QU-2', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
             ->addContractReference(new InvoiceSuiteReferenceDocumentDTO('CON-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
             ->addContractReference(new InvoiceSuiteReferenceDocumentDTO('CON-2', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
-            ->addAdditionalReference(new InvoiceSuiteReferenceDocumentExtDTO('ADD-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), "typecode", "reftypecode", "description"))
-            ->addAdditionalReference(new InvoiceSuiteReferenceDocumentExtDTO('ADD-2', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), "typecode2", "reftypecode2", "description2"))
-            ->addInvoiceReference(new InvoiceSuiteReferenceDocumentExtDTO('INVREF-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), "typecode", "reftypecode", "description"))
-            ->addInvoiceReference(new InvoiceSuiteReferenceDocumentExtDTO('INVREF-2', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), "typecode2", "reftypecode2", "description2"))
-            ->addProjectReference(new InvoiceSuiteProjectDTO("PROJECT-1", "Project 1"))
-            ->addProjectReference(new InvoiceSuiteProjectDTO("PROJECT-2", "Project 2"))
+            ->addAdditionalReference(new InvoiceSuiteReferenceDocumentExtDTO('ADD-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 'typecode', 'reftypecode', 'description'))
+            ->addAdditionalReference(new InvoiceSuiteReferenceDocumentExtDTO('ADD-2', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), 'typecode2', 'reftypecode2', 'description2'))
+            ->addInvoiceReference(new InvoiceSuiteReferenceDocumentExtDTO('INVREF-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 'typecode', 'reftypecode', 'description'))
+            ->addInvoiceReference(new InvoiceSuiteReferenceDocumentExtDTO('INVREF-2', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), 'typecode2', 'reftypecode2', 'description2'))
+            ->addProjectReference(new InvoiceSuiteProjectDTO('PROJECT-1', 'Project 1'))
+            ->addProjectReference(new InvoiceSuiteProjectDTO('PROJECT-2', 'Project 2'))
             ->addUltimateCustomerOrderReference(new InvoiceSuiteReferenceDocumentDTO('UCOR-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
             ->addUltimateCustomerOrderReference(new InvoiceSuiteReferenceDocumentDTO('UCOR-2', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
             ->addDespatchAdviceReference(new InvoiceSuiteReferenceDocumentDTO('DESPADV-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
@@ -7951,153 +7949,153 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
             ->addBuyerReference(new InvoiceSuiteIdDTO('LEITWEGID'))
             ->setSellerParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Lieferant GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Lieferant AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@lieferant.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@lieferant.de", "EM"))
+                    ->addName('Lieferant GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Lieferant AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@lieferant.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@lieferant.de', 'EM'))
             )
             ->setBuyerParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Kunde GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Kunde AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@kunde.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@kunde.de", "EM"))
+                    ->addName('Kunde GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Kunde AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@kunde.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@kunde.de', 'EM'))
             )
             ->setTaxRepresentativeParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Tax GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Tax AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@tax.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@tax.de", "EM"))
+                    ->addName('Tax GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Tax AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@tax.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@tax.de', 'EM'))
             )
             ->setProductEndUserParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Product End User GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Product End User AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@productenduser.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@productenduser.de", "EM"))
+                    ->addName('Product End User GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Product End User AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@productenduser.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@productenduser.de', 'EM'))
             )
             ->setShipToParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Ship To GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Ship To AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@shipto.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@shipto.de", "EM"))
+                    ->addName('Ship To GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Ship To AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@shipto.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@shipto.de', 'EM'))
             )
             ->setUltimateShipToParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Ultimate Ship To GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Ultimate Ship To AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@ultimateshipto.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@ultimateshipto.de", "EM"))
+                    ->addName('Ultimate Ship To GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Ultimate Ship To AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@ultimateshipto.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@ultimateshipto.de', 'EM'))
             )
             ->setShipFromParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Ship From GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Ship From AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@shipfrom.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@shipfrom.de", "EM"))
+                    ->addName('Ship From GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Ship From AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@shipfrom.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@shipfrom.de', 'EM'))
             )
             ->setInvoicerParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Invoicer GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Invoicer AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@invoicer.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@invoicer.de", "EM"))
+                    ->addName('Invoicer GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Invoicer AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@invoicer.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@invoicer.de', 'EM'))
             )
             ->setInvoiceeParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Invoicee GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Invoicee AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@invoicee.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@invoicee.de", "EM"))
+                    ->addName('Invoicee GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Invoicee AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@invoicee.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@invoicee.de', 'EM'))
             )
             ->setPayeeParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Payee GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Payee AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@payee.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@payee.de", "EM"))
+                    ->addName('Payee GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Payee AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@payee.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@payee.de', 'EM'))
             )
             ->addPaymentMean(
                 (new InvoiceSuitePaymentMeanDTO())
@@ -8129,7 +8127,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
             )
             ->addPaymentTerm(
                 (new InvoiceSuitePaymentTermDTO())
-                    ->setDescription("Payment Term Description 1")
+                    ->setDescription('Payment Term Description 1')
                     ->setDueDate((new DateTime())->createFromFormat('d.m.Y', '31.01.1970'))
                     ->setMandate('MANDATE-1')
                     ->addDiscountTerm(new InvoiceSuitePaymentTermDiscountDTO(200.00, 10, 2.00, (new DateTime())->createFromFormat('d.m.Y', '24.02.1970'), new InvoiceSuitePeriodDTO(1.0, 'DAY')))
@@ -8139,7 +8137,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
             )
             ->addPaymentTerm(
                 (new InvoiceSuitePaymentTermDTO())
-                    ->setDescription("Payment Term Description 2")
+                    ->setDescription('Payment Term Description 2')
                     ->setDueDate((new DateTime())->createFromFormat('d.m.Y', '31.03.1970'))
             )
             ->addCreditorReference(new InvoiceSuiteIdDTO('CREDREF-1'))
@@ -8245,7 +8243,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
                         ->setType('PRODUCTCHARACTERISTICTYPE-1')
                         ->setDescription('PRODUCTCHARACTERISTICDESC-1')
                         ->setValueMeasure(new InvoiceSuiteMeasureDTO(1.0, 'C62'))
-                        ->setValue("PRODUCTCHARACTERISTICVALUE-1"))
+                        ->setValue('PRODUCTCHARACTERISTICVALUE-1'))
                     ->addClassification((new InvoiceSuiteProductClassificationDTO())
                         ->setCode('PRODUCTCLASSCODE-1')
                         ->setName('PRODUCTCLASSNAME-1')
@@ -8280,47 +8278,47 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
                 ->addDeliveryNoteReference(new InvoiceSuiteReferenceDocumentLineDTO('DEVNOTE-1', '20', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
                 ->addInvoiceReference(new InvoiceSuiteReferenceDocumentLineExtDTO('INVREF-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 'TYPECODE-1', 'REFTYPECODE-1', 'DESC-1'))
                 ->addInvoiceReference(new InvoiceSuiteReferenceDocumentLineExtDTO('INVREF-1', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), 'TYPECODE-2', 'REFTYPECODE-2', 'DESC-2'))
-                ->setGrossPrice(new InvoiceSuitePriceGrossDTO(100.0, new InvoiceSuiteQuantityDTO(1.0, 'C62'), [new InvoiceSuiteAllowanceChargeDTO(false, 1.0, 2.0, 3.0, "S", "VAT", 19.0, 'REASON-1', 'REASONCODE-1')]))
+                ->setGrossPrice(new InvoiceSuitePriceGrossDTO(100.0, new InvoiceSuiteQuantityDTO(1.0, 'C62'), [new InvoiceSuiteAllowanceChargeDTO(false, 1.0, 2.0, 3.0, 'S', 'VAT', 19.0, 'REASON-1', 'REASONCODE-1')]))
                 ->setNetPrice(new InvoiceSuitePriceNetDTO(1.0, new InvoiceSuiteQuantityDTO(2.0, 'C62')))
-                ->setQuantityBilled(new InvoiceSuiteQuantityDTO(1.0, "C62"))
-                ->setQuantityChargeFree(new InvoiceSuiteQuantityDTO(2.0, "C62"))
-                ->setQuantityPackage(new InvoiceSuiteQuantityDTO(3.0, "C62"))
+                ->setQuantityBilled(new InvoiceSuiteQuantityDTO(1.0, 'C62'))
+                ->setQuantityChargeFree(new InvoiceSuiteQuantityDTO(2.0, 'C62'))
+                ->setQuantityPackage(new InvoiceSuiteQuantityDTO(3.0, 'C62'))
                 ->setShipToParty(
                     (new InvoiceSuitePartyDTO())
-                        ->addName("Ship To GmbH")
-                        ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                        ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                        ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                        ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                        ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                        ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                        ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                        ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                        ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Ship To AG"))
-                        ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@shipto.de"))
-                        ->addCommunication(new InvoiceSuiteCommunicationDTO("info@shipto.de", "EM"))
+                        ->addName('Ship To GmbH')
+                        ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                        ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                        ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                        ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                        ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                        ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                        ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                        ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                        ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Ship To AG'))
+                        ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@shipto.de'))
+                        ->addCommunication(new InvoiceSuiteCommunicationDTO('info@shipto.de', 'EM'))
                 )
                 ->setUltimateShipToParty(
                     (new InvoiceSuitePartyDTO())
-                        ->addName("Ultimate Ship To GmbH")
-                        ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                        ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                        ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                        ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                        ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                        ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                        ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                        ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                        ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Ultimate Ship To AG"))
-                        ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@ultimateshipto.de"))
-                        ->addCommunication(new InvoiceSuiteCommunicationDTO("info@ultimateshipto.de", "EM"))
+                        ->addName('Ultimate Ship To GmbH')
+                        ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                        ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                        ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                        ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                        ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                        ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                        ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                        ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                        ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Ultimate Ship To AG'))
+                        ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@ultimateshipto.de'))
+                        ->addCommunication(new InvoiceSuiteCommunicationDTO('info@ultimateshipto.de', 'EM'))
                 )
                 ->addSupplyChainEvent((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'))
                 ->addSupplyChainEvent((new DateTime())->createFromFormat('d.m.Y', '02.01.1970'))
-                ->addBillingPeriod(new InvoiceSuiteDateRangeDTO((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), (new DateTime())->createFromFormat('d.m.Y', '31.01.1970'), "Some Description"))
-                ->addBillingPeriod(new InvoiceSuiteDateRangeDTO((new DateTime())->createFromFormat('d.m.Y', '01.03.1970'), (new DateTime())->createFromFormat('d.m.Y', '31.03.1970'), "Some Description 2"))
-                ->addPostingReference(new InvoiceSuiteIdDTO("PREF-1", "PREF-1-TYPE"))
-                ->addPostingReference(new InvoiceSuiteIdDTO("PREF-2", "PREF-2-TYPE"))
+                ->addBillingPeriod(new InvoiceSuiteDateRangeDTO((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), (new DateTime())->createFromFormat('d.m.Y', '31.01.1970'), 'Some Description'))
+                ->addBillingPeriod(new InvoiceSuiteDateRangeDTO((new DateTime())->createFromFormat('d.m.Y', '01.03.1970'), (new DateTime())->createFromFormat('d.m.Y', '31.03.1970'), 'Some Description 2'))
+                ->addPostingReference(new InvoiceSuiteIdDTO('PREF-1', 'PREF-1-TYPE'))
+                ->addPostingReference(new InvoiceSuiteIdDTO('PREF-2', 'PREF-2-TYPE'))
                 ->addTax((new InvoiceSuiteTaxDTO())
                     ->setCategory('S')
                     ->setType('VAT')
@@ -8372,7 +8370,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValue('/ns:Invoice/cbc:ID', "2025-04-000001");
+        $this->assertXPathValue('/ns:Invoice/cbc:ID', '2025-04-000001');
         $this->assertXPathValue('/ns:Invoice/cbc:InvoiceTypeCode', InvoiceSuiteCodelistDocumentTypes::COMMERCIAL_INVOICE->value);
         $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cbc:InvoiceTypeCode', 0, InvoiceSuiteCodelistDocumentTypes::COMMERCIAL_INVOICE->value, 'name', 'Some document description');
         $this->assertXPathValue('/ns:Invoice/cbc:IssueDate', '1970-01-01');

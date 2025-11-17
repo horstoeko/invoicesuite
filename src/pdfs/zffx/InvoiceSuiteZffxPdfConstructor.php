@@ -11,13 +11,12 @@ namespace horstoeko\invoicesuite\pdfs\zffx;
 
 use BadMethodCallException;
 use DateTime;
-use DOMXPath;
 use DOMDocument;
+use DOMXPath;
 use Exception;
-use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
+use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\pdfs\abstracts\InvoiceSuiteAbstractPdfConstructor;
-use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfWriter;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use Random\RandomException;
@@ -32,10 +31,9 @@ use setasign\Fpdi\PdfReader\PdfReaderException;
  * Class representing the basics for a ZUGFeRD/Factor-X PDF document constructor
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
 {
@@ -49,9 +47,9 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
     /**
      * Constructor
      *
-     * @param InvoiceSuiteAbstractDocumentFormatProvider $newProvider
-     * @param string $newRawDocumentContent
-     * @param string $newRawPdfContent
+     * @param  InvoiceSuiteAbstractDocumentFormatProvider $newProvider
+     * @param  string                                     $newRawDocumentContent
+     * @param  string                                     $newRawPdfContent
      * @return self
      */
     public function __construct(
@@ -67,7 +65,6 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
     /**
      * Generate the final PDF
      *
-     * @return InvoiceSuiteAbstractPdfConstructor
      * @throws PdfParserException
      * @throws CrossReferenceException
      * @throws FilterException
@@ -75,6 +72,7 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
      * @throws PdfReaderException
      * @throws BadMethodCallException
      * @throws RandomException
+     * @return InvoiceSuiteAbstractPdfConstructor
      */
     protected function generatePdfDocument(): InvoiceSuiteAbstractPdfConstructor
     {
@@ -134,8 +132,8 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
     /**
      * Get the content of the generated PDF as string
      *
-     * @return string
      * @throws Exception
+     * @return string
      */
     protected function getGeneratedPdfDocumentContent(): string
     {
@@ -145,15 +143,73 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
     /**
      * Save the content of the generated PDF to a file
      *
-     * @param string $toFilename
-     * @return InvoiceSuiteAbstractPdfConstructor
+     * @param  string                             $toFilename
      * @throws Exception
+     * @return InvoiceSuiteAbstractPdfConstructor
      */
     protected function saveGeneratedPdfDocumentToFile(string $toFilename): InvoiceSuiteAbstractPdfConstructor
     {
         $this->pdfWriter->Output('F', $toFilename);
 
         return $this;
+    }
+
+    /**
+     * Extract major invoice information from FacturX/ZUGFeRD XML.
+     *
+     * @return array{invoiceId: string, docTypeName: string, seller: string, date: string}
+     */
+    protected function extractInvoiceInformations(): array
+    {
+        $domDocument = new DOMDocument();
+        $domDocument->loadXML($this->getRawDocumentContent());
+
+        $xpath = new DOMXPath($domDocument);
+
+        $dateXpath = $xpath->query('//rsm:ExchangedDocument/ram:IssueDateTime/udt:DateTimeString');
+        $date = $dateXpath->item(0)->nodeValue;
+        $dateReformatted = (new DateTime())->setTimestamp(strtotime((string) $date))->format('Y-m-d\TH:i:sP');
+
+        $invoiceIdXpath = $xpath->query('//rsm:ExchangedDocument/ram:ID');
+        $invoiceId = $invoiceIdXpath->item(0)->nodeValue;
+
+        $sellerXpath = $xpath->query('//ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Name');
+        $sellerName = $sellerXpath->item(0)->nodeValue;
+
+        $docTypeXpath = $xpath->query('//rsm:ExchangedDocument/ram:TypeCode');
+        $docTypeCode = $docTypeXpath->item(0)->nodeValue;
+
+        $docTypeName = match ($docTypeCode) {
+            InvoiceSuiteCodelistDocumentTypes::CREDIT_NOTE => 'Credit Note',
+            default => 'Invoice',
+        };
+
+        return [
+            'invoiceId' => $invoiceId,
+            'docTypeName' => $docTypeName,
+            'seller' => $sellerName,
+            'date' => $dateReformatted,
+        ];
+    }
+
+    /**
+     * Return the XMP name
+     *
+     * @return string
+     */
+    protected function getXmlAttachmentXmpName(): string
+    {
+        return $this->getCurrentDocumentFormatProvider()->getFormatProviderParameterValue('PdfXmpName', '');
+    }
+
+    /**
+     * Return the XMP veesion
+     *
+     * @return string
+     */
+    protected function getXmlAttachmentXmpVersion(): string
+    {
+        return $this->getCurrentDocumentFormatProvider()->getFormatProviderParameterValue('PdfXmpVersion', '');
     }
 
     /**
@@ -168,7 +224,7 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
         $pdfMetadataInfos = $this->preparePdfMetadata();
         $this->pdfWriter->setPdfMetadataInfos($pdfMetadataInfos);
 
-        $xmp = simplexml_load_file(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, "assets"), "facturx_extension_schema.xmp"));
+        $xmp = simplexml_load_file(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, 'assets'), 'facturx_extension_schema.xmp'));
         $descriptionNodes = $xmp->xpath('rdf:Description');
 
         $descFx = $descriptionNodes[0];
@@ -236,49 +292,11 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
     }
 
     /**
-     * Extract major invoice information from FacturX/ZUGFeRD XML.
-     *
-     * @return array{invoiceId: string, docTypeName: string, seller: string, date: string}
-     */
-    protected function extractInvoiceInformations(): array
-    {
-        $domDocument = new DOMDocument();
-        $domDocument->loadXML($this->getRawDocumentContent());
-
-        $xpath = new DOMXPath($domDocument);
-
-        $dateXpath = $xpath->query('//rsm:ExchangedDocument/ram:IssueDateTime/udt:DateTimeString');
-        $date = $dateXpath->item(0)->nodeValue;
-        $dateReformatted = (new DateTime())->setTimestamp(strtotime((string) $date))->format('Y-m-d\TH:i:sP');
-
-        $invoiceIdXpath = $xpath->query('//rsm:ExchangedDocument/ram:ID');
-        $invoiceId = $invoiceIdXpath->item(0)->nodeValue;
-
-        $sellerXpath = $xpath->query('//ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Name');
-        $sellerName = $sellerXpath->item(0)->nodeValue;
-
-        $docTypeXpath = $xpath->query('//rsm:ExchangedDocument/ram:TypeCode');
-        $docTypeCode = $docTypeXpath->item(0)->nodeValue;
-
-        $docTypeName = match ($docTypeCode) {
-            InvoiceSuiteCodelistDocumentTypes::CREDIT_NOTE => 'Credit Note',
-            default => 'Invoice',
-        };
-
-        return [
-            'invoiceId' => $invoiceId,
-            'docTypeName' => $docTypeName,
-            'seller' => $sellerName,
-            'date' => $dateReformatted,
-        ];
-    }
-
-    /**
      * Returns the parsed meta-field content
      *
-     * @param string $whichTemplate
-     * @param string $defaultValue
-     * @param array{invoiceId: string, docTypeName: string, seller: string, date: string} $invoiceInformation
+     * @param  string                                                                      $whichTemplate
+     * @param  string                                                                      $defaultValue
+     * @param  array{invoiceId: string, docTypeName: string, seller: string, date: string} $invoiceInformation
      * @return string
      */
     private function buildMetadataField(string $whichTemplate, string $defaultValue, array $invoiceInformation): string
@@ -287,6 +305,7 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
 
         if (is_callable($this->getMetaInformationCallback())) {
             $callbackResult = call_user_func($this->getMetaInformationCallback(), $whichTemplate, $xmlContent, $invoiceInformation, $defaultValue);
+
             if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($callbackResult)) {
                 return $callbackResult;
             }
@@ -314,25 +333,5 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
             $invoiceInformation['seller'],
             $invoiceInformation['date']
         );
-    }
-
-    /**
-     * Return the XMP name
-     *
-     * @return string
-     */
-    protected function getXmlAttachmentXmpName(): string
-    {
-        return $this->getCurrentDocumentFormatProvider()->getFormatProviderParameterValue('PdfXmpName', '');
-    }
-
-    /**
-     * Return the XMP veesion
-     *
-     * @return string
-     */
-    protected function getXmlAttachmentXmpVersion(): string
-    {
-        return $this->getCurrentDocumentFormatProvider()->getFormatProviderParameterValue('PdfXmpVersion', '');
     }
 }

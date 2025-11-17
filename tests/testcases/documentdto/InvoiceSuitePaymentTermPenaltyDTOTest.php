@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 
-use DateTimeInterface;
 use DateTimeImmutable;
+use DateTimeInterface;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentTermPenaltyDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuitePeriodDTO;
 use horstoeko\invoicesuite\tests\TestCase;
@@ -53,7 +53,7 @@ final class InvoiceSuitePaymentTermPenaltyDTOTest extends TestCase
     public function testBaseDateGetterAndSetter(): void
     {
         $invoiceSuitePaymentTermPenaltyDTO = new InvoiceSuitePaymentTermPenaltyDTO();
-        $baseDateValue = new DateTimeImmutable("2025-01-02");
+        $baseDateValue = new DateTimeImmutable('2025-01-02');
         $invoiceSuitePaymentTermPenaltyDTO->setBaseDate($baseDateValue);
 
         $this->assertSame($baseDateValue, $invoiceSuitePaymentTermPenaltyDTO->getBaseDate());

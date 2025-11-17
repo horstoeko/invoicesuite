@@ -35,12 +35,12 @@ final class InvoiceSuitePriceGrossDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePriceGrossDTO->firstAllowanceCharge($cb, $cbElse);
@@ -65,12 +65,12 @@ final class InvoiceSuitePriceGrossDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePriceGrossDTO->firstAllowanceCharge($cb, $cbElse);

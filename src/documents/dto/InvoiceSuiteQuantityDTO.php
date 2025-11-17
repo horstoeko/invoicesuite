@@ -13,32 +13,31 @@ namespace horstoeko\invoicesuite\documents\dto;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteQuantityDTO
 {
     /**
      * The value
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $quantity = null;
 
     /**
      * The value's unit
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $quantityUnit = null;
 
     /**
      * Constructor
      *
-     * @param float|null $quantity The value
-     * @param string|null $quantityUnit The value's unit
+     * @param null|float  $quantity     The value
+     * @param null|string $quantityUnit The value's unit
      */
     public function __construct(?float $quantity = null, ?string $quantityUnit = null)
     {
@@ -49,7 +48,7 @@ class InvoiceSuiteQuantityDTO
     /**
      * Returns the value
      *
-     * @return float|null
+     * @return null|float
      */
     public function getQuantity(): ?float
     {
@@ -59,7 +58,7 @@ class InvoiceSuiteQuantityDTO
     /**
      * Sets the value
      *
-     * @param float|null $quantity The value
+     * @param  null|float $quantity The value
      * @return self
      */
     public function setQuantity(?float $quantity): self
@@ -72,7 +71,7 @@ class InvoiceSuiteQuantityDTO
     /**
      * Returns the value's unit
      *
-     * @return string|null
+     * @return null|string
      */
     public function getQuantityUnit(): ?string
     {
@@ -82,7 +81,7 @@ class InvoiceSuiteQuantityDTO
     /**
      * Sets the value's unit
      *
-     * @param string|null $quantityUnit The value's unit
+     * @param  null|string $quantityUnit The value's unit
      * @return self
      */
     public function setQuantityUnit(?string $quantityUnit): self

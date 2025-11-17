@@ -8,10 +8,9 @@ use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentForma
  * Trait representing methods for handling the current format provider
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 trait HandlesCurrentDocumentFormatProvider
 {
@@ -25,7 +24,7 @@ trait HandlesCurrentDocumentFormatProvider
     /**
      * Returns true if a format provider is set, otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasCurrentDocumentFormatProvider(): bool
     {
@@ -35,7 +34,7 @@ trait HandlesCurrentDocumentFormatProvider
     /**
      * Returns true if a format provider is not set, otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasNotCurrentDocumentFormatProvider(): bool
     {
@@ -45,7 +44,7 @@ trait HandlesCurrentDocumentFormatProvider
     /**
      * Returns the requested format provider
      *
-     * @return InvoiceSuiteAbstractDocumentFormatProvider|null
+     * @return null|InvoiceSuiteAbstractDocumentFormatProvider
      */
     public function getCurrentDocumentFormatProvider(): ?InvoiceSuiteAbstractDocumentFormatProvider
     {
@@ -55,7 +54,7 @@ trait HandlesCurrentDocumentFormatProvider
     /**
      * Set the requested format provider
      *
-     * @param InvoiceSuiteAbstractDocumentFormatProvider $newDocumentFormatProvider
+     * @param  InvoiceSuiteAbstractDocumentFormatProvider $newDocumentFormatProvider
      * @return void
      */
     public function setCurrentDocumentFormatProvider(InvoiceSuiteAbstractDocumentFormatProvider $newDocumentFormatProvider): void
@@ -76,8 +75,8 @@ trait HandlesCurrentDocumentFormatProvider
     /**
      * Returns true if a parameter exists for the requested format provider
      *
-     * @param string $parameterName
-     * @return boolean
+     * @param  string $parameterName
+     * @return bool
      */
     public function hasCurrentDocumentFormatProviderParameter(string $parameterName): bool
     {
@@ -87,8 +86,8 @@ trait HandlesCurrentDocumentFormatProvider
     /**
      * Returns the parameter value for the request parameter for the requested format provider
      *
-     * @param string $parameterName
-     * @param mixed $defaultValue
+     * @param  string $parameterName
+     * @param  mixed  $defaultValue
      * @return mixed
      */
     public function getCurrentDocumentFormatProviderParameterValue(string $parameterName, $defaultValue)

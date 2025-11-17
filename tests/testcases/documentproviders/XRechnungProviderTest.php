@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 
-use horstoeko\invoicesuite\tests\TestCase;
-use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\documents\models\zffxcomfort\rsm\CrossIndustryInvoice;
 use horstoeko\invoicesuite\documents\providers\xrechnung\InvoiceSuiteXRechnungProvider;
-use horstoeko\invoicesuite\documents\providers\xrechnung\InvoiceSuiteXRechnungProviderReader;
 use horstoeko\invoicesuite\documents\providers\xrechnung\InvoiceSuiteXRechnungProviderBuilder;
+use horstoeko\invoicesuite\documents\providers\xrechnung\InvoiceSuiteXRechnungProviderReader;
 use horstoeko\invoicesuite\documents\providers\xrechnung\InvoiceSuiteXRechnungSerializerHandler;
+use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
+use horstoeko\invoicesuite\tests\TestCase;
 
 final class XRechnungProviderTest extends TestCase
 {
@@ -60,8 +60,8 @@ final class XRechnungProviderTest extends TestCase
 
         $this->assertTrue($provider->isPdfSupportAvailable());
         $this->assertCount(1, $provider->getAllowedPdfAttachmentFilenames());
-        $this->assertContains("xrechnung.xml", $provider->getAllowedPdfAttachmentFilenames());
-        $this->assertSame("xrechnung.xml", $provider->getDefaultPdfAttachmentFilename());
+        $this->assertContains('xrechnung.xml', $provider->getAllowedPdfAttachmentFilenames());
+        $this->assertSame('xrechnung.xml', $provider->getDefaultPdfAttachmentFilename());
         $this->assertSame(InvoiceSuiteZffxPdfConstructor::class, $provider->getPdfConstructorClassName());
     }
 
@@ -106,7 +106,7 @@ final class XRechnungProviderTest extends TestCase
     {
         $provider = new InvoiceSuiteXRechnungProvider();
 
-        $xml = <<<XML
+        $xml = <<<'XML'
     <?xml version="1.0" encoding="UTF-8"?>
     <rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <rsm:ExchangedDocumentContext>
@@ -125,7 +125,7 @@ final class XRechnungProviderTest extends TestCase
 
         $this->assertTrue($provider->isSatisfiableBySerializedContent($xml));
 
-        $xml = <<<XML
+        $xml = <<<'XML'
     <?xml version="1.0" encoding="UTF-8"?>
     <rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <rsm:ExchangedDocumentContext>
@@ -144,7 +144,7 @@ final class XRechnungProviderTest extends TestCase
 
         $this->assertFalse($provider->isSatisfiableBySerializedContent($xml));
 
-        $xml = <<<XML
+        $xml = <<<'XML'
     Dummy
     XML;
 

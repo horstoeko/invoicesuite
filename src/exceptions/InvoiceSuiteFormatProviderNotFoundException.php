@@ -15,10 +15,9 @@ use Throwable;
  * Class representing the base exception
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteFormatProviderNotFoundException extends InvoiceSuiteBaseException
 {
@@ -26,10 +25,10 @@ class InvoiceSuiteFormatProviderNotFoundException extends InvoiceSuiteBaseExcept
      * Constructor
      *
      * @param string         $formatProviderUniqueId
-     * @param Throwable|null $throwable
+     * @param null|Throwable $throwable
      */
     public function __construct(string $formatProviderUniqueId, ?Throwable $throwable = null)
     {
-        parent::__construct(sprintf("The format provider with unique id %s was not found", $formatProviderUniqueId), InvoiceSuiteExceptionCodes::FORMATPROVIDER_NOTFOUND, $throwable);
+        parent::__construct(sprintf('The format provider with unique id %s was not found', $formatProviderUniqueId), InvoiceSuiteExceptionCodes::FORMATPROVIDER_NOTFOUND, $throwable);
     }
 }

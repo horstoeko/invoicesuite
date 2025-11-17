@@ -37,7 +37,7 @@ final class InvoiceSuiteProductDTOTest extends TestCase
     public function testIdGetterAndSetter(): void
     {
         $invoiceSuiteProductDTO = new InvoiceSuiteProductDTO();
-        $idValue = "Example Value";
+        $idValue = 'Example Value';
         $invoiceSuiteProductDTO->setId($idValue);
 
         $this->assertSame($idValue, $invoiceSuiteProductDTO->getId());
@@ -46,7 +46,7 @@ final class InvoiceSuiteProductDTOTest extends TestCase
     public function testNameGetterAndSetter(): void
     {
         $invoiceSuiteProductDTO = new InvoiceSuiteProductDTO();
-        $nameValue = "Example Value";
+        $nameValue = 'Example Value';
         $invoiceSuiteProductDTO->setName($nameValue);
 
         $this->assertSame($nameValue, $invoiceSuiteProductDTO->getName());
@@ -55,7 +55,7 @@ final class InvoiceSuiteProductDTOTest extends TestCase
     public function testDescriptionGetterAndSetter(): void
     {
         $invoiceSuiteProductDTO = new InvoiceSuiteProductDTO();
-        $descriptionValue = "Example Value";
+        $descriptionValue = 'Example Value';
         $invoiceSuiteProductDTO->setDescription($descriptionValue);
 
         $this->assertSame($descriptionValue, $invoiceSuiteProductDTO->getDescription());
@@ -64,7 +64,7 @@ final class InvoiceSuiteProductDTOTest extends TestCase
     public function testSellerIdGetterAndSetter(): void
     {
         $invoiceSuiteProductDTO = new InvoiceSuiteProductDTO();
-        $sellerIdValue = "Example Value";
+        $sellerIdValue = 'Example Value';
         $invoiceSuiteProductDTO->setSellerId($sellerIdValue);
 
         $this->assertSame($sellerIdValue, $invoiceSuiteProductDTO->getSellerId());
@@ -73,7 +73,7 @@ final class InvoiceSuiteProductDTOTest extends TestCase
     public function testBuyerIdGetterAndSetter(): void
     {
         $invoiceSuiteProductDTO = new InvoiceSuiteProductDTO();
-        $buyerIdValue = "Example Value";
+        $buyerIdValue = 'Example Value';
         $invoiceSuiteProductDTO->setBuyerId($buyerIdValue);
 
         $this->assertSame($buyerIdValue, $invoiceSuiteProductDTO->getBuyerId());
@@ -91,7 +91,7 @@ final class InvoiceSuiteProductDTOTest extends TestCase
     public function testIndustryIdGetterAndSetter(): void
     {
         $invoiceSuiteProductDTO = new InvoiceSuiteProductDTO();
-        $industryIdValue = "Example Value";
+        $industryIdValue = 'Example Value';
         $invoiceSuiteProductDTO->setIndustryId($industryIdValue);
 
         $this->assertSame($industryIdValue, $invoiceSuiteProductDTO->getIndustryId());
@@ -100,7 +100,7 @@ final class InvoiceSuiteProductDTOTest extends TestCase
     public function testModelIdGetterAndSetter(): void
     {
         $invoiceSuiteProductDTO = new InvoiceSuiteProductDTO();
-        $modelIdValue = "Example Value";
+        $modelIdValue = 'Example Value';
         $invoiceSuiteProductDTO->setModelId($modelIdValue);
 
         $this->assertSame($modelIdValue, $invoiceSuiteProductDTO->getModelId());
@@ -109,7 +109,7 @@ final class InvoiceSuiteProductDTOTest extends TestCase
     public function testBatchIdGetterAndSetter(): void
     {
         $invoiceSuiteProductDTO = new InvoiceSuiteProductDTO();
-        $batchIdValue = "Example Value";
+        $batchIdValue = 'Example Value';
         $invoiceSuiteProductDTO->setBatchId($batchIdValue);
 
         $this->assertSame($batchIdValue, $invoiceSuiteProductDTO->getBatchId());
@@ -118,7 +118,7 @@ final class InvoiceSuiteProductDTOTest extends TestCase
     public function testBrandNameGetterAndSetter(): void
     {
         $invoiceSuiteProductDTO = new InvoiceSuiteProductDTO();
-        $brandNameValue = "Example Value";
+        $brandNameValue = 'Example Value';
         $invoiceSuiteProductDTO->setBrandName($brandNameValue);
 
         $this->assertSame($brandNameValue, $invoiceSuiteProductDTO->getBrandName());
@@ -127,7 +127,7 @@ final class InvoiceSuiteProductDTOTest extends TestCase
     public function testModelNameGetterAndSetter(): void
     {
         $invoiceSuiteProductDTO = new InvoiceSuiteProductDTO();
-        $modelNameValue = "Example Value";
+        $modelNameValue = 'Example Value';
         $invoiceSuiteProductDTO->setModelName($modelNameValue);
 
         $this->assertSame($modelNameValue, $invoiceSuiteProductDTO->getModelName());
@@ -136,7 +136,7 @@ final class InvoiceSuiteProductDTOTest extends TestCase
     public function testOriginTradeCountryGetterAndSetter(): void
     {
         $invoiceSuiteProductDTO = new InvoiceSuiteProductDTO();
-        $originTradeCountryValue = "Example Value";
+        $originTradeCountryValue = 'Example Value';
         $invoiceSuiteProductDTO->setOriginTradeCountry($originTradeCountryValue);
 
         $this->assertSame($originTradeCountryValue, $invoiceSuiteProductDTO->getOriginTradeCountry());
@@ -178,12 +178,12 @@ final class InvoiceSuiteProductDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteProductDTO->firstCharacteristic($cb, $cbElse);
@@ -208,12 +208,12 @@ final class InvoiceSuiteProductDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteProductDTO->firstCharacteristic($cb, $cbElse);
@@ -237,12 +237,12 @@ final class InvoiceSuiteProductDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteProductDTO->firstClassification($cb, $cbElse);
@@ -267,12 +267,12 @@ final class InvoiceSuiteProductDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteProductDTO->firstClassification($cb, $cbElse);
@@ -296,12 +296,12 @@ final class InvoiceSuiteProductDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteProductDTO->firstReferenceProduct($cb, $cbElse);
@@ -326,12 +326,12 @@ final class InvoiceSuiteProductDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteProductDTO->firstReferenceProduct($cb, $cbElse);

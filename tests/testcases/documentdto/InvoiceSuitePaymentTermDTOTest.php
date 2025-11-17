@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 
-use DateTimeInterface;
 use DateTimeImmutable;
-use horstoeko\invoicesuite\tests\TestCase;
+use DateTimeInterface;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentTermDiscountDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentTermDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentTermPenaltyDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentTermDiscountDTO;
+use horstoeko\invoicesuite\tests\TestCase;
 
 final class InvoiceSuitePaymentTermDTOTest extends TestCase
 {
@@ -26,7 +26,7 @@ final class InvoiceSuitePaymentTermDTOTest extends TestCase
     public function testDescriptionGetterAndSetter(): void
     {
         $invoiceSuitePaymentTermDTO = new InvoiceSuitePaymentTermDTO();
-        $descriptionValue = "Example Value";
+        $descriptionValue = 'Example Value';
         $invoiceSuitePaymentTermDTO->setDescription($descriptionValue);
 
         $this->assertSame($descriptionValue, $invoiceSuitePaymentTermDTO->getDescription());
@@ -35,7 +35,7 @@ final class InvoiceSuitePaymentTermDTOTest extends TestCase
     public function testDueDateGetterAndSetter(): void
     {
         $invoiceSuitePaymentTermDTO = new InvoiceSuitePaymentTermDTO();
-        $dueDateValue = new DateTimeImmutable("2025-01-02");
+        $dueDateValue = new DateTimeImmutable('2025-01-02');
         $invoiceSuitePaymentTermDTO->setDueDate($dueDateValue);
 
         $this->assertSame($dueDateValue, $invoiceSuitePaymentTermDTO->getDueDate());
@@ -68,12 +68,12 @@ final class InvoiceSuitePaymentTermDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePaymentTermDTO->firstDiscountTerm($cb, $cbElse);
@@ -98,12 +98,12 @@ final class InvoiceSuitePaymentTermDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePaymentTermDTO->firstDiscountTerm($cb, $cbElse);
@@ -127,12 +127,12 @@ final class InvoiceSuitePaymentTermDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePaymentTermDTO->firstPenaltyTerm($cb, $cbElse);
@@ -157,12 +157,12 @@ final class InvoiceSuitePaymentTermDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuitePaymentTermDTO->firstPenaltyTerm($cb, $cbElse);

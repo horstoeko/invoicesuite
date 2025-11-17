@@ -13,32 +13,31 @@ namespace horstoeko\invoicesuite\documents\dto;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuitePeriodDTO
 {
     /**
      * The period value
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $period = null;
 
     /**
      * The periods's unit
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $periodUnit = null;
 
     /**
      * Constructor
      *
-     * @param float|null $period The period value
-     * @param string|null $periodUnit The periods's unit
+     * @param null|float  $period     The period value
+     * @param null|string $periodUnit The periods's unit
      */
     public function __construct(?float $period = null, ?string $periodUnit = null)
     {
@@ -49,7 +48,7 @@ class InvoiceSuitePeriodDTO
     /**
      * Returns the period value
      *
-     * @return float|null
+     * @return null|float
      */
     public function getPeriod(): ?float
     {
@@ -59,7 +58,7 @@ class InvoiceSuitePeriodDTO
     /**
      * Sets the period value
      *
-     * @param float|null $period The period value
+     * @param  null|float $period The period value
      * @return self
      */
     public function setPeriod(?float $period): self
@@ -72,7 +71,7 @@ class InvoiceSuitePeriodDTO
     /**
      * Returns the periods's unit
      *
-     * @return string|null
+     * @return null|string
      */
     public function getPeriodUnit(): ?string
     {
@@ -82,7 +81,7 @@ class InvoiceSuitePeriodDTO
     /**
      * Sets the periods's unit
      *
-     * @param string|null $periodUnit The periods's unit
+     * @param  null|string $periodUnit The periods's unit
      * @return self
      */
     public function setPeriodUnit(?string $periodUnit): self

@@ -30,109 +30,109 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\ubl\cbc\Amount',
-                'method' => 'serializeAmountType'
+                'method' => 'serializeAmountType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\ubl\cbc\BaseAmount',
-                'method' => 'serializeAmountType'
+                'method' => 'serializeAmountType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\ubl\cbc\PriceAmount',
-                'method' => 'serializeAmountType'
+                'method' => 'serializeAmountType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\ubl\cbc\LineExtensionAmount',
-                'method' => 'serializeAmountType'
+                'method' => 'serializeAmountType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\ubl\cbc\TaxExclusiveAmount',
-                'method' => 'serializeAmountType'
+                'method' => 'serializeAmountType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\ubl\cbc\TaxInclusiveAmount',
-                'method' => 'serializeAmountType'
+                'method' => 'serializeAmountType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\ubl\cbc\AllowanceTotalAmount',
-                'method' => 'serializeAmountType'
+                'method' => 'serializeAmountType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\ubl\cbc\ChargeTotalAmount',
-                'method' => 'serializeAmountType'
+                'method' => 'serializeAmountType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\ubl\cbc\PrepaidAmount',
-                'method' => 'serializeAmountType'
+                'method' => 'serializeAmountType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\ubl\cbc\PayableRoundingAmount',
-                'method' => 'serializeAmountType'
+                'method' => 'serializeAmountType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\ubl\cbc\PayableAmount',
-                'method' => 'serializeAmountType'
+                'method' => 'serializeAmountType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\ubl\cbc\TaxAmount',
-                'method' => 'serializeAmountType'
+                'method' => 'serializeAmountType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\ubl\cbc\TaxableAmount',
-                'method' => 'serializeAmountType'
+                'method' => 'serializeAmountType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\ubl\cbc\InvoicedQuantity',
-                'method' => 'serializeQuantityType'
+                'method' => 'serializeQuantityType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\ubl\cbc\ValueQuantity',
-                'method' => 'serializeQuantityType'
+                'method' => 'serializeQuantityType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\ubl\cbc\BaseQuantity',
-                'method' => 'serializeQuantityType'
+                'method' => 'serializeQuantityType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\ubl\cbc\MultiplierFactorNumeric',
-                'method' => 'serializePercentType'
+                'method' => 'serializePercentType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\ubl\cbc\Percent',
-                'method' => 'serializePercentType'
+                'method' => 'serializePercentType',
             ],
         ];
     }
@@ -156,7 +156,7 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
         );
 
         if ($data->getCurrencyID() != null) {
-            $attr = $visitor->getDocument()->createAttribute("currencyID");
+            $attr = $visitor->getDocument()->createAttribute('currencyID');
             $attr->value = $data->getCurrencyID();
             $visitor->getCurrentNode()->appendChild($attr);
         }
@@ -183,7 +183,7 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
         );
 
         if ($data->getUnitCode() != null) {
-            $attr = $visitor->getDocument()->createAttribute("unitCode");
+            $attr = $visitor->getDocument()->createAttribute('unitCode');
             $attr->value = $data->getUnitCode();
             $visitor->getCurrentNode()->appendChild($attr);
         }
@@ -229,7 +229,7 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
         );
 
         if ($data->getUnitCode() != null) {
-            $attr = $visitor->getDocument()->createAttribute("unitCode");
+            $attr = $visitor->getDocument()->createAttribute('unitCode');
             $attr->value = $data->getUnitCode();
             $visitor->getCurrentNode()->appendChild($attr);
         }

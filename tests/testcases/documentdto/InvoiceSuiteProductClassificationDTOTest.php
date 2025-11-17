@@ -22,7 +22,7 @@ final class InvoiceSuiteProductClassificationDTOTest extends TestCase
     public function testCodeGetterAndSetter(): void
     {
         $invoiceSuiteProductClassificationDTO = new InvoiceSuiteProductClassificationDTO();
-        $codeValue = "Example Value";
+        $codeValue = 'Example Value';
         $invoiceSuiteProductClassificationDTO->setCode($codeValue);
 
         $this->assertSame($codeValue, $invoiceSuiteProductClassificationDTO->getCode());
@@ -31,7 +31,7 @@ final class InvoiceSuiteProductClassificationDTOTest extends TestCase
     public function testNameGetterAndSetter(): void
     {
         $invoiceSuiteProductClassificationDTO = new InvoiceSuiteProductClassificationDTO();
-        $nameValue = "Example Value";
+        $nameValue = 'Example Value';
         $invoiceSuiteProductClassificationDTO->setName($nameValue);
 
         $this->assertSame($nameValue, $invoiceSuiteProductClassificationDTO->getName());
@@ -40,7 +40,7 @@ final class InvoiceSuiteProductClassificationDTOTest extends TestCase
     public function testListIdGetterAndSetter(): void
     {
         $invoiceSuiteProductClassificationDTO = new InvoiceSuiteProductClassificationDTO();
-        $listIdValue = "Example Value";
+        $listIdValue = 'Example Value';
         $invoiceSuiteProductClassificationDTO->setListId($listIdValue);
 
         $this->assertSame($listIdValue, $invoiceSuiteProductClassificationDTO->getListId());
@@ -49,7 +49,7 @@ final class InvoiceSuiteProductClassificationDTOTest extends TestCase
     public function testListVersionIdGetterAndSetter(): void
     {
         $invoiceSuiteProductClassificationDTO = new InvoiceSuiteProductClassificationDTO();
-        $listVersionIdValue = "Example Value";
+        $listVersionIdValue = 'Example Value';
         $invoiceSuiteProductClassificationDTO->setListVersionId($listVersionIdValue);
 
         $this->assertSame($listVersionIdValue, $invoiceSuiteProductClassificationDTO->getListVersionId());

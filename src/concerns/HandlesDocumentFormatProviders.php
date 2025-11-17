@@ -10,10 +10,9 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteClassFinder;
  * Trait representing methods for handling format providers
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 trait HandlesDocumentFormatProviders
 {
@@ -37,7 +36,7 @@ trait HandlesDocumentFormatProviders
     /**
      * Register another format provider
      *
-     * @param InvoiceSuiteAbstractDocumentFormatProvider $invoiceSuiteAbstractFormatProvider
+     * @param  InvoiceSuiteAbstractDocumentFormatProvider $invoiceSuiteAbstractFormatProvider
      * @return static
      */
     public function registerDocumentFormatProvider(InvoiceSuiteAbstractDocumentFormatProvider $invoiceSuiteAbstractFormatProvider): self
@@ -54,7 +53,7 @@ trait HandlesDocumentFormatProviders
     /**
      * Remove an already defined format provider
      *
-     * @param InvoiceSuiteAbstractDocumentFormatProvider $existingProvider
+     * @param  InvoiceSuiteAbstractDocumentFormatProvider $existingProvider
      * @return static
      */
     public function unregisterDocumentFormatProvider(InvoiceSuiteAbstractDocumentFormatProvider $existingProvider): self
@@ -71,12 +70,12 @@ trait HandlesDocumentFormatProviders
     /**
      * Find a format provider by it's id
      *
-     * @param string $formatProviderUniqueId
+     * @param  string                                          $formatProviderUniqueId
      * @return null|InvoiceSuiteAbstractDocumentFormatProvider
      */
     public function findDocumentFormatProviderByUniqueId(string $formatProviderUniqueId)
     {
-        $formatProvider = array_filter($this->registeredDocumentFormatProviders, fn($formatProvider) => strcasecmp($formatProvider->getUniqueId(), $formatProviderUniqueId) === 0);
+        $formatProvider = array_filter($this->registeredDocumentFormatProviders, static fn ($formatProvider) => strcasecmp($formatProvider->getUniqueId(), $formatProviderUniqueId) === 0);
 
         if ($formatProvider === []) {
             return null;
@@ -88,9 +87,9 @@ trait HandlesDocumentFormatProviders
     /**
      * Find a format provider by it's id. When no provider for the given unique id was found an exception is raised
      *
-     * @param string $formatProviderUniqueId
-     * @return null|InvoiceSuiteAbstractDocumentFormatProvider
+     * @param  string                                          $formatProviderUniqueId
      * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @return null|InvoiceSuiteAbstractDocumentFormatProvider
      */
     public function findDocumentFormatProviderByUniqueIdOrFail(string $formatProviderUniqueId)
     {

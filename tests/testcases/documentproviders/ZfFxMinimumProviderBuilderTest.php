@@ -56,9 +56,9 @@ final class ZfFxMinimumProviderBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:ID');
 
-        self::$document->setDocumentNo("2025/08-000001");
+        self::$document->setDocumentNo('2025/08-000001');
 
-        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:ID', "2025/08-000001");
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:ID', '2025/08-000001');
 
         self::$document->setDocumentNo(null);
 
@@ -121,7 +121,7 @@ final class ZfFxMinimumProviderBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:LanguageID');
 
-        self::$document->setDocumentLanguage("");
+        self::$document->setDocumentLanguage('');
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:LanguageID');
 
@@ -174,7 +174,7 @@ final class ZfFxMinimumProviderBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceCurrencyCode');
 
-        self::$document->setDocumentCurrency("");
+        self::$document->setDocumentCurrency('');
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceCurrencyCode');
 
@@ -197,7 +197,7 @@ final class ZfFxMinimumProviderBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:TaxCurrencyCode');
 
-        self::$document->setDocumentTaxCurrency("");
+        self::$document->setDocumentTaxCurrency('');
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:TaxCurrencyCode');
 

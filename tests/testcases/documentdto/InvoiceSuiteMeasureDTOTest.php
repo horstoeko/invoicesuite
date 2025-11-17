@@ -29,7 +29,7 @@ final class InvoiceSuiteMeasureDTOTest extends TestCase
     public function testUnitGetterAndSetter(): void
     {
         $invoiceSuiteMeasureDTO = new InvoiceSuiteMeasureDTO();
-        $unitValue = "Example Value";
+        $unitValue = 'Example Value';
         $invoiceSuiteMeasureDTO->setUnit($unitValue);
 
         $this->assertSame($unitValue, $invoiceSuiteMeasureDTO->getUnit());

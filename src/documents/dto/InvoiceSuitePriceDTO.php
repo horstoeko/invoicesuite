@@ -13,32 +13,31 @@ namespace horstoeko\invoicesuite\documents\dto;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuitePriceDTO
 {
     /**
      * The price value
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $amount = null;
 
     /**
      * The number of item units for which the price applies
      *
-     * @var InvoiceSuiteQuantityDTO|null
+     * @var null|InvoiceSuiteQuantityDTO
      */
     protected ?InvoiceSuiteQuantityDTO $priceQuantity = null;
 
     /**
      * Constructor
      *
-     * @param float|null $amount The price value
-     * @param InvoiceSuiteQuantityDTO|null $priceQuantity The number of item units for which the price applies
+     * @param null|float                   $amount        The price value
+     * @param null|InvoiceSuiteQuantityDTO $priceQuantity The number of item units for which the price applies
      */
     public function __construct(?float $amount = null, ?InvoiceSuiteQuantityDTO $priceQuantity = null)
     {
@@ -49,7 +48,7 @@ class InvoiceSuitePriceDTO
     /**
      * Returns the price value
      *
-     * @return float|null
+     * @return null|float
      */
     public function getAmount(): ?float
     {
@@ -59,7 +58,7 @@ class InvoiceSuitePriceDTO
     /**
      * Sets the price value
      *
-     * @param float|null $amount The price value
+     * @param  null|float $amount The price value
      * @return self
      */
     public function setAmount(?float $amount): self
@@ -72,7 +71,7 @@ class InvoiceSuitePriceDTO
     /**
      * Returns the number of item units for which the price applies
      *
-     * @return InvoiceSuiteQuantityDTO|null
+     * @return null|InvoiceSuiteQuantityDTO
      */
     public function getPriceQuantity(): ?InvoiceSuiteQuantityDTO
     {
@@ -82,7 +81,7 @@ class InvoiceSuitePriceDTO
     /**
      * Sets the number of item units for which the price applies
      *
-     * @param InvoiceSuiteQuantityDTO|null $priceQuantity The number of item units for which the price applies
+     * @param  null|InvoiceSuiteQuantityDTO $priceQuantity The number of item units for which the price applies
      * @return self
      */
     public function setPriceQuantity(?InvoiceSuiteQuantityDTO $priceQuantity): self

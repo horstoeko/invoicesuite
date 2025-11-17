@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\concerns;
 
+use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
+use horstoeko\invoicesuite\concerns\HandlesDocumentSerializer;
+use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedProvider;
+use horstoeko\invoicesuite\tests\TestCase;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
-use horstoeko\invoicesuite\tests\TestCase;
-use horstoeko\invoicesuite\concerns\HandlesDocumentSerializer;
-use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
-use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedProvider;
 
 final class HandlesDocumentSerializerTest extends TestCase
 {

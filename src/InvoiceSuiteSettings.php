@@ -16,38 +16,37 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * Class representing the general InvoiceSuite settings
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteSettings
 {
     /**
      * The number of decimals for amount values
      *
-     * @var integer
+     * @var int
      */
     protected static $amountDecimals = 2;
 
     /**
      * The number of decimals for quantity values
      *
-     * @var integer
+     * @var int
      */
     protected static $quantityDecimals = 2;
 
     /**
      * The number of decimals for percent values
      *
-     * @var integer
+     * @var int
      */
     protected static $percentDecimals = 2;
 
     /**
      * The number of decimals for measure values
      *
-     * @var integer
+     * @var int
      */
     protected static $measureDecimals = 2;
 
@@ -56,19 +55,19 @@ class InvoiceSuiteSettings
      *
      * @var string
      */
-    protected static $decimalSeparator = ".";
+    protected static $decimalSeparator = '.';
 
     /**
      * The thousands seperator
      *
      * @var string
      */
-    protected static $thousandsSeparator = "";
+    protected static $thousandsSeparator = '';
 
     /**
      * Node paths which present an amount. Used for special amount formatting
      *
-     * @var array<string,integer>
+     * @var array<string,int>
      */
     protected static $specialDecimalPlacesMaps = [];
 
@@ -77,12 +76,12 @@ class InvoiceSuiteSettings
      *
      * @var string
      */
-    protected static $serializerCacheDirectory = "";
+    protected static $serializerCacheDirectory = '';
 
     /**
      * Get the number of decimals to use for amount values
      *
-     * @return integer
+     * @return int
      */
     public static function getAmountDecimals(): int
     {
@@ -92,7 +91,7 @@ class InvoiceSuiteSettings
     /**
      * Set the number of decimals to use for amount values
      *
-     * @param  integer $amountDecimals
+     * @param  int  $amountDecimals
      * @return void
      */
     public static function setAmountDecimals(int $amountDecimals): void
@@ -103,7 +102,7 @@ class InvoiceSuiteSettings
     /**
      * Get the number of decimals to use for amount values
      *
-     * @return integer
+     * @return int
      */
     public static function getQuantityDecimals(): int
     {
@@ -113,7 +112,7 @@ class InvoiceSuiteSettings
     /**
      * Set the number of decimals to use for quantity values
      *
-     * @param  integer $quantityDecimals
+     * @param  int  $quantityDecimals
      * @return void
      */
     public static function setQuantityDecimals(int $quantityDecimals): void
@@ -124,7 +123,7 @@ class InvoiceSuiteSettings
     /**
      * Get the number of decimals to use for percent values
      *
-     * @return integer
+     * @return int
      */
     public static function getPercentDecimals(): int
     {
@@ -134,7 +133,7 @@ class InvoiceSuiteSettings
     /**
      * Set the number of decimals to use for percent values
      *
-     * @param  integer $percentDecimals
+     * @param  int  $percentDecimals
      * @return void
      */
     public static function setPercentDecimals(int $percentDecimals): void
@@ -145,7 +144,7 @@ class InvoiceSuiteSettings
     /**
      * Get the number of decimals to use for measure values
      *
-     * @return integer
+     * @return int
      */
     public static function getMeasureDecimals(): int
     {
@@ -155,7 +154,7 @@ class InvoiceSuiteSettings
     /**
      * Set the number of decimals to use for measure values
      *
-     * @param  integer $measureDecimals
+     * @param  int  $measureDecimals
      * @return void
      */
     public static function setMeasureDecimals(int $measureDecimals): void
@@ -208,7 +207,7 @@ class InvoiceSuiteSettings
     /**
      * Returns a list of node paths which have a special number of decimal places
      *
-     * @return array<string,integer>
+     * @return array<string,int>
      */
     public static function getSpecialDecimalPlacesMaps(): array
     {
@@ -219,20 +218,21 @@ class InvoiceSuiteSettings
      * Get a specific map for node paths with a special number of decimal places. If not map
      * is found then the default value is returns
      *
-     * @param  string  $nodePath
-     * @param  integer $defaultDecimalPlaces
-     * @return integer
+     * @param  string $nodePath
+     * @param  int    $defaultDecimalPlaces
+     * @return int
      */
     public static function getSpecialDecimalPlacesMap(string $nodePath, int $defaultDecimalPlaces): int
     {
         $nodePath = preg_replace('@\[\d+\]@', '', $nodePath);
+
         return static::$specialDecimalPlacesMaps[$nodePath] ?? $defaultDecimalPlaces;
     }
 
     /**
      * Update the map of node paths which have a special number of decimal places
      *
-     * @param  array<string,integer> $specialDecimalPlacesMaps
+     * @param  array<string,int> $specialDecimalPlacesMaps
      * @return void
      */
     public static function setSpecialDecimalPlacesMaps(array $specialDecimalPlacesMaps): void
@@ -243,8 +243,8 @@ class InvoiceSuiteSettings
     /**
      * Add a new map for a node path with a special number of decimal places
      *
-     * @param  string  $nodePath
-     * @param  integer $defaultDecimalPlaces
+     * @param  string $nodePath
+     * @param  int    $defaultDecimalPlaces
      * @return void
      */
     public static function addSpecialDecimalPlacesMap(string $nodePath, int $defaultDecimalPlaces): void
@@ -257,7 +257,7 @@ class InvoiceSuiteSettings
     /**
      * Set the number of decimals to use for unit single amount (unit prices) values
      *
-     * @param  integer $defaultDecimalPlaces
+     * @param  int  $defaultDecimalPlaces
      * @return void
      */
     public static function setUnitAmountDecimals(int $defaultDecimalPlaces): void
@@ -292,7 +292,7 @@ class InvoiceSuiteSettings
     /**
      * Returns true if a cache directory for the internal serializer is configured, otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public static function hasSerializerCacheDirectory(): bool
     {
@@ -306,7 +306,7 @@ class InvoiceSuiteSettings
      */
     public static function getRootDirectory(): string
     {
-        return InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..");
+        return InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..');
     }
 
     /**
@@ -316,6 +316,6 @@ class InvoiceSuiteSettings
      */
     public static function getSourceDirectory(): string
     {
-        return InvoiceSuitePathUtils::combineAllPaths(static::getRootDirectory(), "src");
+        return InvoiceSuitePathUtils::combineAllPaths(static::getRootDirectory(), 'src');
     }
 }

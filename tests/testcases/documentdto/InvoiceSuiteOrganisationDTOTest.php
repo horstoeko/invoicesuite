@@ -20,7 +20,7 @@ final class InvoiceSuiteOrganisationDTOTest extends TestCase
     public function testNameGetterAndSetter(): void
     {
         $invoiceSuiteOrganisationDTO = new InvoiceSuiteOrganisationDTO();
-        $nameValue = "Example Value";
+        $nameValue = 'Example Value';
         $invoiceSuiteOrganisationDTO->setName($nameValue);
 
         $this->assertSame($nameValue, $invoiceSuiteOrganisationDTO->getName());
@@ -31,10 +31,10 @@ final class InvoiceSuiteOrganisationDTOTest extends TestCase
         $invoiceSuiteOrganisationDTO = new InvoiceSuiteOrganisationDTO();
         $this->assertFalse($invoiceSuiteOrganisationDTO->hasName());
 
-        $invoiceSuiteOrganisationDTO->setName("");
+        $invoiceSuiteOrganisationDTO->setName('');
         $this->assertFalse($invoiceSuiteOrganisationDTO->hasName());
 
-        $invoiceSuiteOrganisationDTO->setName("Non-empty");
+        $invoiceSuiteOrganisationDTO->setName('Non-empty');
         $this->assertTrue($invoiceSuiteOrganisationDTO->hasName());
     }
 }

@@ -4,24 +4,24 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 
-use DateTimeInterface;
 use DateTimeImmutable;
-use horstoeko\invoicesuite\tests\TestCase;
+use DateTimeInterface;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAllowanceChargeDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDateRangeDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentPositionDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteIdDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteNoteDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuitePartyDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProjectDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDateRangeDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentMeanDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentTermDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteServiceChargeDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAllowanceChargeDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentPositionDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProjectDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentExtDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteServiceChargeDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
+use horstoeko\invoicesuite\tests\TestCase;
 
 final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
 {
@@ -78,7 +78,7 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
     public function testNumberGetterAndSetter(): void
     {
         $invoiceSuiteDocumentHeaderDTO = new InvoiceSuiteDocumentHeaderDTO();
-        $numberValue = "Example Value";
+        $numberValue = 'Example Value';
         $invoiceSuiteDocumentHeaderDTO->setNumber($numberValue);
 
         $this->assertSame($numberValue, $invoiceSuiteDocumentHeaderDTO->getNumber());
@@ -87,7 +87,7 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
     public function testTypeGetterAndSetter(): void
     {
         $invoiceSuiteDocumentHeaderDTO = new InvoiceSuiteDocumentHeaderDTO();
-        $typeValue = "Example Value";
+        $typeValue = 'Example Value';
         $invoiceSuiteDocumentHeaderDTO->setType($typeValue);
 
         $this->assertSame($typeValue, $invoiceSuiteDocumentHeaderDTO->getType());
@@ -96,7 +96,7 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
     public function testDescriptionGetterAndSetter(): void
     {
         $invoiceSuiteDocumentHeaderDTO = new InvoiceSuiteDocumentHeaderDTO();
-        $descriptionValue = "Example Value";
+        $descriptionValue = 'Example Value';
         $invoiceSuiteDocumentHeaderDTO->setDescription($descriptionValue);
 
         $this->assertSame($descriptionValue, $invoiceSuiteDocumentHeaderDTO->getDescription());
@@ -105,7 +105,7 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
     public function testLanguageGetterAndSetter(): void
     {
         $invoiceSuiteDocumentHeaderDTO = new InvoiceSuiteDocumentHeaderDTO();
-        $languageValue = "Example Value";
+        $languageValue = 'Example Value';
         $invoiceSuiteDocumentHeaderDTO->setLanguage($languageValue);
 
         $this->assertSame($languageValue, $invoiceSuiteDocumentHeaderDTO->getLanguage());
@@ -114,7 +114,7 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
     public function testDateGetterAndSetter(): void
     {
         $invoiceSuiteDocumentHeaderDTO = new InvoiceSuiteDocumentHeaderDTO();
-        $dateValue = new DateTimeImmutable("2025-01-02");
+        $dateValue = new DateTimeImmutable('2025-01-02');
         $invoiceSuiteDocumentHeaderDTO->setDate($dateValue);
 
         $this->assertSame($dateValue, $invoiceSuiteDocumentHeaderDTO->getDate());
@@ -123,7 +123,7 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
     public function testCompleteDateGetterAndSetter(): void
     {
         $invoiceSuiteDocumentHeaderDTO = new InvoiceSuiteDocumentHeaderDTO();
-        $completeDateValue = new DateTimeImmutable("2025-01-02");
+        $completeDateValue = new DateTimeImmutable('2025-01-02');
         $invoiceSuiteDocumentHeaderDTO->setCompleteDate($completeDateValue);
 
         $this->assertSame($completeDateValue, $invoiceSuiteDocumentHeaderDTO->getCompleteDate());
@@ -141,7 +141,7 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
     public function testCurrencyGetterAndSetter(): void
     {
         $invoiceSuiteDocumentHeaderDTO = new InvoiceSuiteDocumentHeaderDTO();
-        $currencyValue = "Example Value";
+        $currencyValue = 'Example Value';
         $invoiceSuiteDocumentHeaderDTO->setCurrency($currencyValue);
 
         $this->assertSame($currencyValue, $invoiceSuiteDocumentHeaderDTO->getCurrency());
@@ -150,7 +150,7 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
     public function testTaxCurrencyGetterAndSetter(): void
     {
         $invoiceSuiteDocumentHeaderDTO = new InvoiceSuiteDocumentHeaderDTO();
-        $taxCurrencyValue = "Example Value";
+        $taxCurrencyValue = 'Example Value';
         $invoiceSuiteDocumentHeaderDTO->setTaxCurrency($taxCurrencyValue);
 
         $this->assertSame($taxCurrencyValue, $invoiceSuiteDocumentHeaderDTO->getTaxCurrency());
@@ -475,18 +475,18 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
     {
         $invoiceSuiteDocumentHeaderDTO = new InvoiceSuiteDocumentHeaderDTO();
         $invoiceSuiteDocumentHeaderDTO->addSupplyChainEvent(null);
-        $invoiceSuiteDocumentHeaderDTO->addSupplyChainEvent(new DateTimeImmutable("2025-01-02"));
-        $invoiceSuiteDocumentHeaderDTO->addSupplyChainEvent(new DateTimeImmutable("2025-01-02"));
+        $invoiceSuiteDocumentHeaderDTO->addSupplyChainEvent(new DateTimeImmutable('2025-01-02'));
+        $invoiceSuiteDocumentHeaderDTO->addSupplyChainEvent(new DateTimeImmutable('2025-01-02'));
 
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstSupplyChainEvent($cb, $cbElse);
@@ -511,12 +511,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstSupplyChainEvent($cb, $cbElse);
@@ -540,12 +540,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstNote($cb, $cbElse);
@@ -570,12 +570,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstNote($cb, $cbElse);
@@ -599,12 +599,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstBillingPeriod($cb, $cbElse);
@@ -629,12 +629,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstBillingPeriod($cb, $cbElse);
@@ -658,12 +658,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstPostingReference($cb, $cbElse);
@@ -688,12 +688,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstPostingReference($cb, $cbElse);
@@ -717,12 +717,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstSellerOrderReference($cb, $cbElse);
@@ -747,12 +747,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstSellerOrderReference($cb, $cbElse);
@@ -776,12 +776,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstBuyerOrderReference($cb, $cbElse);
@@ -806,12 +806,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstBuyerOrderReference($cb, $cbElse);
@@ -835,12 +835,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstQuotationReference($cb, $cbElse);
@@ -865,12 +865,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstQuotationReference($cb, $cbElse);
@@ -894,12 +894,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstContractReference($cb, $cbElse);
@@ -924,12 +924,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstContractReference($cb, $cbElse);
@@ -953,12 +953,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstAdditionalReference($cb, $cbElse);
@@ -983,12 +983,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstAdditionalReference($cb, $cbElse);
@@ -1012,12 +1012,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstInvoiceReference($cb, $cbElse);
@@ -1042,12 +1042,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstInvoiceReference($cb, $cbElse);
@@ -1071,12 +1071,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstProjectReference($cb, $cbElse);
@@ -1101,12 +1101,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstProjectReference($cb, $cbElse);
@@ -1130,12 +1130,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstUltimateCustomerOrderReference($cb, $cbElse);
@@ -1160,12 +1160,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstUltimateCustomerOrderReference($cb, $cbElse);
@@ -1189,12 +1189,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstDespatchAdviceReference($cb, $cbElse);
@@ -1219,12 +1219,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstDespatchAdviceReference($cb, $cbElse);
@@ -1248,12 +1248,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstReceivingAdviceReference($cb, $cbElse);
@@ -1278,12 +1278,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstReceivingAdviceReference($cb, $cbElse);
@@ -1307,12 +1307,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstDeliveryNoteReference($cb, $cbElse);
@@ -1337,12 +1337,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstDeliveryNoteReference($cb, $cbElse);
@@ -1366,12 +1366,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstPaymentMean($cb, $cbElse);
@@ -1396,12 +1396,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstPaymentMean($cb, $cbElse);
@@ -1425,12 +1425,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstPaymentTerm($cb, $cbElse);
@@ -1455,12 +1455,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstPaymentTerm($cb, $cbElse);
@@ -1484,12 +1484,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstCreditorReference($cb, $cbElse);
@@ -1514,12 +1514,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstCreditorReference($cb, $cbElse);
@@ -1543,12 +1543,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstBuyerReference($cb, $cbElse);
@@ -1573,12 +1573,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstBuyerReference($cb, $cbElse);
@@ -1602,12 +1602,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstTax($cb, $cbElse);
@@ -1632,12 +1632,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstTax($cb, $cbElse);
@@ -1661,12 +1661,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstAllowanceCharge($cb, $cbElse);
@@ -1691,12 +1691,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstAllowanceCharge($cb, $cbElse);
@@ -1720,12 +1720,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstServiceCharge($cb, $cbElse);
@@ -1750,12 +1750,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstServiceCharge($cb, $cbElse);
@@ -1779,12 +1779,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstSummation($cb, $cbElse);
@@ -1809,12 +1809,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstSummation($cb, $cbElse);
@@ -1838,12 +1838,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstPosition($cb, $cbElse);
@@ -1868,12 +1868,12 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $hitCount = 0;
         $elseCount = 0;
 
-        $cb = function ($item) use (&$hitCount): void {
-            $hitCount++;
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
         };
 
-        $cbElse = function () use (&$elseCount): void {
-            $elseCount++;
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
         };
 
         $invoiceSuiteDocumentHeaderDTO->firstPosition($cb, $cbElse);

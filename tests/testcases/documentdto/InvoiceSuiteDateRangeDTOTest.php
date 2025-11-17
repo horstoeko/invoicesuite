@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 
-use DateTimeInterface;
 use DateTimeImmutable;
+use DateTimeInterface;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDateRangeDTO;
 use horstoeko\invoicesuite\tests\TestCase;
 
@@ -23,7 +23,7 @@ final class InvoiceSuiteDateRangeDTOTest extends TestCase
     public function testStartDateGetterAndSetter(): void
     {
         $invoiceSuiteDateRangeDTO = new InvoiceSuiteDateRangeDTO();
-        $startDateValue = new DateTimeImmutable("2025-01-02");
+        $startDateValue = new DateTimeImmutable('2025-01-02');
         $invoiceSuiteDateRangeDTO->setStartDate($startDateValue);
 
         $this->assertSame($startDateValue, $invoiceSuiteDateRangeDTO->getStartDate());
@@ -32,7 +32,7 @@ final class InvoiceSuiteDateRangeDTOTest extends TestCase
     public function testEndDateGetterAndSetter(): void
     {
         $invoiceSuiteDateRangeDTO = new InvoiceSuiteDateRangeDTO();
-        $endDateValue = new DateTimeImmutable("2025-01-02");
+        $endDateValue = new DateTimeImmutable('2025-01-02');
         $invoiceSuiteDateRangeDTO->setEndDate($endDateValue);
 
         $this->assertSame($endDateValue, $invoiceSuiteDateRangeDTO->getEndDate());
@@ -41,7 +41,7 @@ final class InvoiceSuiteDateRangeDTOTest extends TestCase
     public function testDescriptionGetterAndSetter(): void
     {
         $invoiceSuiteDateRangeDTO = new InvoiceSuiteDateRangeDTO();
-        $descriptionValue = "Example Value";
+        $descriptionValue = 'Example Value';
         $invoiceSuiteDateRangeDTO->setDescription($descriptionValue);
 
         $this->assertSame($descriptionValue, $invoiceSuiteDateRangeDTO->getDescription());

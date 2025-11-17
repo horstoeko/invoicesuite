@@ -13,94 +13,93 @@ namespace horstoeko\invoicesuite\documents\dto;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteProductDTO
 {
     /**
      * The ID of the product (product id, Order-X interoperable)
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $id = null;
 
     /**
      * The name of the product (product name)
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $name = null;
 
     /**
      * The product description of the product
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $description = null;
 
     /**
      * The identifier assigned to the product by the seller
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $sellerId = null;
 
     /**
      * The identifier assigned to the product by the buyer
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $buyerId = null;
 
     /**
      * The product global id
      *
-     * @var InvoiceSuiteIdDTO|null
+     * @var null|InvoiceSuiteIdDTO
      */
     protected ?InvoiceSuiteIdDTO $globalId = null;
 
     /**
      * The id assigned by the industry
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $industryId = null;
 
     /**
      * The unique model identifier of the product
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $modelId = null;
 
     /**
      * The batch (lot) identifier of the product
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $batchId = null;
 
     /**
      * The brand name of the product
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $brandName = null;
 
     /**
      * The model name of the product
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $modelName = null;
 
     /**
      * The code indicating the country the goods came from
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $originTradeCountry = null;
 
@@ -128,21 +127,21 @@ class InvoiceSuiteProductDTO
     /**
      * Constructor
      *
-     * @param string|null $id The ID of the product (product id, Order-X interoperable)
-     * @param string|null $name The name of the product (product name)
-     * @param string|null $description The product description of the product
-     * @param string|null $sellerId The identifier assigned to the product by the seller
-     * @param string|null $buyerId The identifier assigned to the product by the buyer
-     * @param InvoiceSuiteIdDTO|null $globalId The product global id
-     * @param string|null $industryId The id assigned by the industry
-     * @param string|null $modelId The unique model identifier of the product
-     * @param string|null $batchId The batch (lot) identifier of the product
-     * @param string|null $brandName The brand name of the product
-     * @param string|null $modelName The model name of the product
-     * @param string|null $originTradeCountry The code indicating the country the goods came from
-     * @param array<InvoiceSuiteProductCharacteristicDTO> $characteristics The product characteristics
-     * @param array<InvoiceSuiteProductClassificationDTO> $classifications The product classification
-     * @param array<InvoiceSuiteReferenceProductDTO> $referenceProducts The reference product
+     * @param null|string                                 $id                 The ID of the product (product id, Order-X interoperable)
+     * @param null|string                                 $name               The name of the product (product name)
+     * @param null|string                                 $description        The product description of the product
+     * @param null|string                                 $sellerId           The identifier assigned to the product by the seller
+     * @param null|string                                 $buyerId            The identifier assigned to the product by the buyer
+     * @param null|InvoiceSuiteIdDTO                      $globalId           The product global id
+     * @param null|string                                 $industryId         The id assigned by the industry
+     * @param null|string                                 $modelId            The unique model identifier of the product
+     * @param null|string                                 $batchId            The batch (lot) identifier of the product
+     * @param null|string                                 $brandName          The brand name of the product
+     * @param null|string                                 $modelName          The model name of the product
+     * @param null|string                                 $originTradeCountry The code indicating the country the goods came from
+     * @param array<InvoiceSuiteProductCharacteristicDTO> $characteristics    The product characteristics
+     * @param array<InvoiceSuiteProductClassificationDTO> $classifications    The product classification
+     * @param array<InvoiceSuiteReferenceProductDTO>      $referenceProducts  The reference product
      */
     public function __construct(
         ?string $id = null,
@@ -181,7 +180,7 @@ class InvoiceSuiteProductDTO
     /**
      * Returns the ID of the product (product id, Order-X interoperable)
      *
-     * @return string|null
+     * @return null|string
      */
     public function getId(): ?string
     {
@@ -191,7 +190,7 @@ class InvoiceSuiteProductDTO
     /**
      * Sets the ID of the product (product id, Order-X interoperable)
      *
-     * @param string|null $id The ID of the product (product id, Order-X interoperable)
+     * @param  null|string $id The ID of the product (product id, Order-X interoperable)
      * @return self
      */
     public function setId(?string $id): self
@@ -204,7 +203,7 @@ class InvoiceSuiteProductDTO
     /**
      * Returns the name of the product (product name)
      *
-     * @return string|null
+     * @return null|string
      */
     public function getName(): ?string
     {
@@ -214,7 +213,7 @@ class InvoiceSuiteProductDTO
     /**
      * Sets the name of the product (product name)
      *
-     * @param string|null $name The name of the product (product name)
+     * @param  null|string $name The name of the product (product name)
      * @return self
      */
     public function setName(?string $name): self
@@ -227,7 +226,7 @@ class InvoiceSuiteProductDTO
     /**
      * Returns the product description of the product
      *
-     * @return string|null
+     * @return null|string
      */
     public function getDescription(): ?string
     {
@@ -237,7 +236,7 @@ class InvoiceSuiteProductDTO
     /**
      * Sets the product description of the product
      *
-     * @param string|null $description The product description of the product
+     * @param  null|string $description The product description of the product
      * @return self
      */
     public function setDescription(?string $description): self
@@ -250,7 +249,7 @@ class InvoiceSuiteProductDTO
     /**
      * Returns the identifier assigned to the product by the seller
      *
-     * @return string|null
+     * @return null|string
      */
     public function getSellerId(): ?string
     {
@@ -260,7 +259,7 @@ class InvoiceSuiteProductDTO
     /**
      * Sets the identifier assigned to the product by the seller
      *
-     * @param string|null $sellerId The identifier assigned to the product by the seller
+     * @param  null|string $sellerId The identifier assigned to the product by the seller
      * @return self
      */
     public function setSellerId(?string $sellerId): self
@@ -273,7 +272,7 @@ class InvoiceSuiteProductDTO
     /**
      * Returns the identifier assigned to the product by the buyer
      *
-     * @return string|null
+     * @return null|string
      */
     public function getBuyerId(): ?string
     {
@@ -283,7 +282,7 @@ class InvoiceSuiteProductDTO
     /**
      * Sets the identifier assigned to the product by the buyer
      *
-     * @param string|null $buyerId The identifier assigned to the product by the buyer
+     * @param  null|string $buyerId The identifier assigned to the product by the buyer
      * @return self
      */
     public function setBuyerId(?string $buyerId): self
@@ -296,7 +295,7 @@ class InvoiceSuiteProductDTO
     /**
      * Returns the product global id
      *
-     * @return InvoiceSuiteIdDTO|null
+     * @return null|InvoiceSuiteIdDTO
      */
     public function getGlobalId(): ?InvoiceSuiteIdDTO
     {
@@ -306,7 +305,7 @@ class InvoiceSuiteProductDTO
     /**
      * Sets the product global id
      *
-     * @param InvoiceSuiteIdDTO|null $globalId The product global id
+     * @param  null|InvoiceSuiteIdDTO $globalId The product global id
      * @return self
      */
     public function setGlobalId(?InvoiceSuiteIdDTO $globalId): self
@@ -319,7 +318,7 @@ class InvoiceSuiteProductDTO
     /**
      * Returns the id assigned by the industry
      *
-     * @return string|null
+     * @return null|string
      */
     public function getIndustryId(): ?string
     {
@@ -329,7 +328,7 @@ class InvoiceSuiteProductDTO
     /**
      * Sets the id assigned by the industry
      *
-     * @param string|null $industryId The id assigned by the industry
+     * @param  null|string $industryId The id assigned by the industry
      * @return self
      */
     public function setIndustryId(?string $industryId): self
@@ -342,7 +341,7 @@ class InvoiceSuiteProductDTO
     /**
      * Returns the unique model identifier of the product
      *
-     * @return string|null
+     * @return null|string
      */
     public function getModelId(): ?string
     {
@@ -352,7 +351,7 @@ class InvoiceSuiteProductDTO
     /**
      * Sets the unique model identifier of the product
      *
-     * @param string|null $modelId The unique model identifier of the product
+     * @param  null|string $modelId The unique model identifier of the product
      * @return self
      */
     public function setModelId(?string $modelId): self
@@ -365,7 +364,7 @@ class InvoiceSuiteProductDTO
     /**
      * Returns the batch (lot) identifier of the product
      *
-     * @return string|null
+     * @return null|string
      */
     public function getBatchId(): ?string
     {
@@ -375,7 +374,7 @@ class InvoiceSuiteProductDTO
     /**
      * Sets the batch (lot) identifier of the product
      *
-     * @param string|null $batchId The batch (lot) identifier of the product
+     * @param  null|string $batchId The batch (lot) identifier of the product
      * @return self
      */
     public function setBatchId(?string $batchId): self
@@ -388,7 +387,7 @@ class InvoiceSuiteProductDTO
     /**
      * Returns the brand name of the product
      *
-     * @return string|null
+     * @return null|string
      */
     public function getBrandName(): ?string
     {
@@ -398,7 +397,7 @@ class InvoiceSuiteProductDTO
     /**
      * Sets the brand name of the product
      *
-     * @param string|null $brandName The brand name of the product
+     * @param  null|string $brandName The brand name of the product
      * @return self
      */
     public function setBrandName(?string $brandName): self
@@ -411,7 +410,7 @@ class InvoiceSuiteProductDTO
     /**
      * Returns the model name of the product
      *
-     * @return string|null
+     * @return null|string
      */
     public function getModelName(): ?string
     {
@@ -421,7 +420,7 @@ class InvoiceSuiteProductDTO
     /**
      * Sets the model name of the product
      *
-     * @param string|null $modelName The model name of the product
+     * @param  null|string $modelName The model name of the product
      * @return self
      */
     public function setModelName(?string $modelName): self
@@ -434,7 +433,7 @@ class InvoiceSuiteProductDTO
     /**
      * Returns the code indicating the country the goods came from
      *
-     * @return string|null
+     * @return null|string
      */
     public function getOriginTradeCountry(): ?string
     {
@@ -444,7 +443,7 @@ class InvoiceSuiteProductDTO
     /**
      * Sets the code indicating the country the goods came from
      *
-     * @param string|null $originTradeCountry The code indicating the country the goods came from
+     * @param  null|string $originTradeCountry The code indicating the country the goods came from
      * @return self
      */
     public function setOriginTradeCountry(?string $originTradeCountry): self
@@ -467,7 +466,7 @@ class InvoiceSuiteProductDTO
     /**
      * Sets the product characteristics
      *
-     * @param array<InvoiceSuiteProductCharacteristicDTO> $characteristics The product characteristics
+     * @param  array<InvoiceSuiteProductCharacteristicDTO> $characteristics The product characteristics
      * @return self
      */
     public function setCharacteristics(array $characteristics): self
@@ -480,7 +479,7 @@ class InvoiceSuiteProductDTO
     /**
      * Add single The product characteristics
      *
-     * @param InvoiceSuiteProductCharacteristicDTO $characteristic The product characteristics
+     * @param  InvoiceSuiteProductCharacteristicDTO $characteristic The product characteristics
      * @return self
      */
     public function addCharacteristic(InvoiceSuiteProductCharacteristicDTO $characteristic): self
@@ -493,8 +492,8 @@ class InvoiceSuiteProductDTO
     /**
      * Get first The product characteristics
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstCharacteristic(callable $callback, ?callable $callbackElse = null): self
@@ -511,8 +510,8 @@ class InvoiceSuiteProductDTO
     /**
      * Get next The product characteristics
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextCharacteristic(callable $callback, ?callable $callbackElse = null): self
@@ -529,8 +528,8 @@ class InvoiceSuiteProductDTO
     /**
      * Get previous The product characteristics
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousCharacteristic(callable $callback, ?callable $callbackElse = null): self
@@ -547,8 +546,8 @@ class InvoiceSuiteProductDTO
     /**
      * Get last The product characteristics
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastCharacteristic(callable $callback, ?callable $callbackElse = null): self
@@ -565,9 +564,9 @@ class InvoiceSuiteProductDTO
     /**
      * Loop over The product characteristics and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachCharacteristic(
@@ -582,7 +581,7 @@ class InvoiceSuiteProductDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($characteristic);
         }
@@ -607,7 +606,7 @@ class InvoiceSuiteProductDTO
     /**
      * Sets the product classification
      *
-     * @param array<InvoiceSuiteProductClassificationDTO> $classifications The product classification
+     * @param  array<InvoiceSuiteProductClassificationDTO> $classifications The product classification
      * @return self
      */
     public function setClassifications(array $classifications): self
@@ -620,7 +619,7 @@ class InvoiceSuiteProductDTO
     /**
      * Add single The product classification
      *
-     * @param InvoiceSuiteProductClassificationDTO $classification The product classification
+     * @param  InvoiceSuiteProductClassificationDTO $classification The product classification
      * @return self
      */
     public function addClassification(InvoiceSuiteProductClassificationDTO $classification): self
@@ -633,8 +632,8 @@ class InvoiceSuiteProductDTO
     /**
      * Get first The product classification
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstClassification(callable $callback, ?callable $callbackElse = null): self
@@ -651,8 +650,8 @@ class InvoiceSuiteProductDTO
     /**
      * Get next The product classification
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextClassification(callable $callback, ?callable $callbackElse = null): self
@@ -669,8 +668,8 @@ class InvoiceSuiteProductDTO
     /**
      * Get previous The product classification
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousClassification(callable $callback, ?callable $callbackElse = null): self
@@ -687,8 +686,8 @@ class InvoiceSuiteProductDTO
     /**
      * Get last The product classification
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastClassification(callable $callback, ?callable $callbackElse = null): self
@@ -705,9 +704,9 @@ class InvoiceSuiteProductDTO
     /**
      * Loop over The product classification and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachClassification(
@@ -722,7 +721,7 @@ class InvoiceSuiteProductDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($classification);
         }
@@ -747,7 +746,7 @@ class InvoiceSuiteProductDTO
     /**
      * Sets the reference product
      *
-     * @param array<InvoiceSuiteReferenceProductDTO> $referenceProducts The reference product
+     * @param  array<InvoiceSuiteReferenceProductDTO> $referenceProducts The reference product
      * @return self
      */
     public function setReferenceProducts(array $referenceProducts): self
@@ -760,7 +759,7 @@ class InvoiceSuiteProductDTO
     /**
      * Add single The reference product
      *
-     * @param InvoiceSuiteReferenceProductDTO $referenceProduct The reference product
+     * @param  InvoiceSuiteReferenceProductDTO $referenceProduct The reference product
      * @return self
      */
     public function addReferenceProduct(InvoiceSuiteReferenceProductDTO $referenceProduct): self
@@ -773,8 +772,8 @@ class InvoiceSuiteProductDTO
     /**
      * Get first The reference product
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstReferenceProduct(callable $callback, ?callable $callbackElse = null): self
@@ -791,8 +790,8 @@ class InvoiceSuiteProductDTO
     /**
      * Get next The reference product
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextReferenceProduct(callable $callback, ?callable $callbackElse = null): self
@@ -809,8 +808,8 @@ class InvoiceSuiteProductDTO
     /**
      * Get previous The reference product
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousReferenceProduct(callable $callback, ?callable $callbackElse = null): self
@@ -827,8 +826,8 @@ class InvoiceSuiteProductDTO
     /**
      * Get last The reference product
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastReferenceProduct(callable $callback, ?callable $callbackElse = null): self
@@ -845,9 +844,9 @@ class InvoiceSuiteProductDTO
     /**
      * Loop over The reference product and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachReferenceProduct(
@@ -862,7 +861,7 @@ class InvoiceSuiteProductDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($referenceProduct);
         }

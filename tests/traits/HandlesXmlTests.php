@@ -5,6 +5,7 @@ namespace horstoeko\invoicesuite\tests\traits;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\stringmanagement\PathUtils;
+use SimpleXMLElement;
 
 trait HandlesXmlTests
 {
@@ -16,19 +17,19 @@ trait HandlesXmlTests
     /**
      * Cache for latest rendered XML
      *
-     * @var \SimpleXMLElement
+     * @var SimpleXMLElement
      */
     protected $latestXml;
 
     /**
      * Dont render xml content
      *
-     * @var boolean
+     * @var bool
      */
     protected $renderingOfXmlDisabled = false;
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function setUp(): void
     {
@@ -36,14 +37,27 @@ trait HandlesXmlTests
     }
 
     /**
+     * Helper for writing the XML to a file
+     *
+     * @return void
+     */
+    public function debugWriteFile(): void
+    {
+        file_put_contents(
+            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(__DIR__, '..', '..'), 'myfile_dbg.xml'),
+            self::$document->getContentAsXml()
+        );
+    }
+
+    /**
      * Get XML-Object from documents content
      *
-     * @return \SimpleXMLElement
+     * @return SimpleXMLElement
      */
-    protected function getXml(): \SimpleXMLElement
+    protected function getXml(): SimpleXMLElement
     {
         if ($this->renderingOfXmlDisabled === false || $this->latestXml === null) {
-            $this->latestXml = new \SimpleXMLElement((self::$document)->getContentAsXml());
+            $this->latestXml = new SimpleXMLElement(self::$document->getContentAsXml());
             $this->registerAllNamespaces($this->latestXml);
         }
 
@@ -57,7 +71,7 @@ trait HandlesXmlTests
      */
     protected function disableRenderXmlContent()
     {
-        $this->latestXml = new \SimpleXMLElement((self::$document)->getContentAsXml());
+        $this->latestXml = new SimpleXMLElement(self::$document->getContentAsXml());
         $this->registerAllNamespaces($this->latestXml);
         $this->renderingOfXmlDisabled = true;
     }
@@ -90,9 +104,9 @@ trait HandlesXmlTests
     /**
      * Assert a xpath with $expected value in a multiple element resultset
      *
-     * @param  string  $xpath
-     * @param  integer $index
-     * @param  string  $expected
+     * @param  string $xpath
+     * @param  int    $index
+     * @param  string $expected
      * @return void
      */
     protected function assertXPathValueWithIndex(string $xpath, int $index, string $expected): void
@@ -106,9 +120,9 @@ trait HandlesXmlTests
     /**
      * Assert a xpath with $expected value in a multiple element resultset
      *
-     * @param  string  $xpath
-     * @param  integer $index
-     * @param  string  $expected
+     * @param  string $xpath
+     * @param  int    $index
+     * @param  string $expected
      * @return void
      */
     protected function assertXPathValueStartsWithIndex(string $xpath, int $index, string $expected): void
@@ -212,8 +226,8 @@ trait HandlesXmlTests
     /**
      * Test that an xml element exists at index
      *
-     * @param  string  $xpath
-     * @param  integer $index
+     * @param  string $xpath
+     * @param  int    $index
      * @return void
      */
     protected function assertXPathExistsWithIndex(string $xpath, int $index)
@@ -239,8 +253,8 @@ trait HandlesXmlTests
     /**
      * Test that an xml element does not exist at index
      *
-     * @param  string  $xpath
-     * @param  integer $index
+     * @param  string $xpath
+     * @param  int    $index
      * @return void
      */
     protected function assertXPathNotExistsWithIndex(string $xpath, int $index)
@@ -251,26 +265,13 @@ trait HandlesXmlTests
     }
 
     /**
-     * Helper for writing the XML to a file
-     *
-     * @return void
-     */
-    public function debugWriteFile(): void
-    {
-        file_put_contents(
-            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(__DIR__, "..", ".."), 'myfile_dbg.xml'),
-            (self::$document)->getContentAsXml()
-        );
-    }
-
-    /**
      * Register all namespaces on the document root.
      * The default namespace receives prefix "ns".
      *
-     * @param \SimpleXMLElement $xml
+     * @param  SimpleXMLElement $xml
      * @return void
      */
-    private function registerAllNamespaces(\SimpleXMLElement $xml): void
+    private function registerAllNamespaces(SimpleXMLElement $xml): void
     {
         $ns = $xml->getDocNamespaces(true);
         foreach ($ns as $prefix => $uri) {
@@ -281,16 +282,16 @@ trait HandlesXmlTests
     /**
      * Assert that XML was not changed by a call to $code
      *
-     * @param callable $code
+     * @param  callable $code
      * @return void
      */
     private function assertXmlWasNotChanged($code): void
     {
-        $previousXml = (self::$document)->getContentAsXml();
+        $previousXml = self::$document->getContentAsXml();
 
         call_user_func($code);
 
-        $currentXml = (self::$document)->getContentAsXml();
+        $currentXml = self::$document->getContentAsXml();
 
         $this->assertEquals($previousXml, $currentXml, 'Nothing should be added to XML');
     }

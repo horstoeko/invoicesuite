@@ -10,8 +10,8 @@
 namespace horstoeko\invoicesuite\documents\providers\zffxextended;
 
 use DateTimeInterface;
-use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatBuilder;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
+use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatBuilder;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAllowanceChargeDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteCommunicationDTO;
@@ -47,9 +47,9 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocumentFormatBuilder
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    public function initDocumentRootObject(): InvoiceSuiteZfFxExtendedProviderBuilder
+    public function initDocumentRootObject(): self
     {
         $this->setContextParameter(
             $this->getCurrentDocumentFormatProviderParameterValue('ContextParameter', ''),
@@ -60,20 +60,10 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     }
 
     /**
-     * Returns the root object as a CrossIndustryInvoiceType
-     *
-     * @return CrossIndustryInvoiceType
-     */
-    protected function getCrossIndustryRootObject(): CrossIndustryInvoiceType
-    {
-        return $this->getDocumentRootObject();
-    }
-
-    /**
      * Init context parameter for profile definition
      *
-     * @param string $newContextParameter
-     * @param string $newBusinessProcessContextParameter
+     * @param  string $newContextParameter
+     * @param  string $newBusinessProcessContextParameter
      * @return static
      */
     public function setContextParameter(
@@ -102,60 +92,14 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     }
 
     /**
-     * Internal helper method which updates currencies in several objects
-     *
-     * @return self
-     */
-    protected function updateCurrencies(): self
-    {
-        $invoiceCurrencyCode = $this
-            ->getCrossIndustryRootObject()
-            ->getSupplyChainTradeTransactionWithCreate()
-            ->getApplicableHeaderTradeSettlementWithCreate()
-            ->getInvoiceCurrencyCode()?->getValue();
-
-        $taxCurrencyCode = $this
-            ->getCrossIndustryRootObject()
-            ->getSupplyChainTradeTransactionWithCreate()
-            ->getApplicableHeaderTradeSettlementWithCreate()
-            ->getTaxCurrencyCode()?->getValue();
-
-        // Update summation
-
-        $summation = $this
-            ->getCrossIndustryRootObject()
-            ->getSupplyChainTradeTransactionWithCreate()
-            ->getApplicableHeaderTradeSettlementWithCreate()
-            ->getSpecifiedTradeSettlementHeaderMonetarySummation();
-
-        if (!is_null($summation)) {
-            $taxTotalAmounts = $summation->getTaxTotalAmount();
-            if (!is_null($taxTotalAmounts)) {
-                $taxTotalAmount1 = $taxTotalAmounts[0] ?? null;
-                $taxTotalAmount2 = $taxTotalAmounts[1] ?? null;
-                if (!is_null($taxTotalAmount1)) {
-                    $taxTotalAmount1->setCurrencyID($invoiceCurrencyCode);
-                }
-
-                if (!is_null($taxTotalAmount2)) {
-                    $taxTotalAmount2->setCurrencyID($taxCurrencyCode);
-                }
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * Create a document by a DTO
      *
-     * @param InvoiceSuiteDocumentHeaderDTO $newDocumentDTO Data-Transfer-Object
+     * @param  InvoiceSuiteDocumentHeaderDTO $newDocumentDTO Data-Transfer-Object
      * @return self
      */
     public function createFromDTO(
         InvoiceSuiteDocumentHeaderDTO $newDocumentDTO
     ): self {
-
         // Document-Level General information
 
         $this->setDocumentNo($newDocumentDTO->getNumber());
@@ -171,7 +115,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         // Document-Level Notes
 
-        $newDocumentDTO->forEachNote(fn(InvoiceSuiteNoteDTO $note) => $this->addDocumentNote(
+        $newDocumentDTO->forEachNote(fn (InvoiceSuiteNoteDTO $note) => $this->addDocumentNote(
             $note->getContent(),
             $note->getContentCode(),
             $note->getSubjectCode()
@@ -180,7 +124,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         // Document-Level Billing period
 
         $newDocumentDTO->firstBillingPeriod(
-            fn(InvoiceSuiteDateRangeDTO $item) => $this->setDocumentBillingPeriod(
+            fn (InvoiceSuiteDateRangeDTO $item) => $this->setDocumentBillingPeriod(
                 $item->getStartDate(),
                 $item->getEndDate(),
                 $item->getDescription()
@@ -190,7 +134,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         // Document-Level Posting Reference
 
         $newDocumentDTO->firstPostingReference(
-            fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPostingReference(
+            fn (InvoiceSuiteIdDTO $item) => $this->setDocumentPostingReference(
                 $item->getIdType(),
                 $item->getId()
             )
@@ -199,7 +143,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         // Document-Level Seller Order Reference
 
         $newDocumentDTO->firstSellerOrderReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentSellerOrderReference(
+            fn (InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentSellerOrderReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
@@ -208,7 +152,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         // Document-Level Buyer Order Reference
 
         $newDocumentDTO->firstBuyerOrderReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentBuyerOrderReference(
+            fn (InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentBuyerOrderReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
@@ -217,7 +161,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         // Document-Level Quotation Reference
 
         $newDocumentDTO->firstQuotationReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentQuotationReference(
+            fn (InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentQuotationReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
@@ -226,7 +170,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         // Document-Level Contract Reference
 
         $newDocumentDTO->firstContractReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentContractReference(
+            fn (InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentContractReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
@@ -235,7 +179,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         // Document-Level Additional Reference
 
         $newDocumentDTO->forEachAdditionalReference(
-            fn(InvoiceSuiteReferenceDocumentExtDTO $item) => $this->addDocumentAdditionalReference(
+            fn (InvoiceSuiteReferenceDocumentExtDTO $item) => $this->addDocumentAdditionalReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate(),
                 $item->getTypeCode(),
@@ -248,7 +192,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         // Document-Level Invoice Reference
 
         $newDocumentDTO->forEachInvoiceReference(
-            fn(InvoiceSuiteReferenceDocumentExtDTO $item) => $this->addDocumentInvoiceReference(
+            fn (InvoiceSuiteReferenceDocumentExtDTO $item) => $this->addDocumentInvoiceReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate(),
                 $item->getTypeCode()
@@ -258,7 +202,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         // Document-Level Project Reference
 
         $newDocumentDTO->firstProjectReference(
-            fn(InvoiceSuiteProjectDTO $item) => $this->setDocumentProjectReference(
+            fn (InvoiceSuiteProjectDTO $item) => $this->setDocumentProjectReference(
                 $item->getProjectNumber(),
                 $item->getProjectName()
             )
@@ -267,7 +211,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         // Document-Level Ultimate Customer Order Reference
 
         $newDocumentDTO->forEachUltimateCustomerOrderReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->addDocumentUltimateCustomerOrderReference(
+            fn (InvoiceSuiteReferenceDocumentDTO $item) => $this->addDocumentUltimateCustomerOrderReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
@@ -276,7 +220,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         // Document-Level Despatch Advice Reference
 
         $newDocumentDTO->firstDespatchAdviceReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentDespatchAdviceReference(
+            fn (InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentDespatchAdviceReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
@@ -285,7 +229,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         // Document-Level Receiving Advice Reference
 
         $newDocumentDTO->firstReceivingAdviceReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentReceivingAdviceReference(
+            fn (InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentReceivingAdviceReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
@@ -294,7 +238,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         // Document-Level Delivery Note Reference
 
         $newDocumentDTO->firstDeliveryNoteReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentDeliveryNoteReference(
+            fn (InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentDeliveryNoteReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
@@ -303,13 +247,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         // Document-Level Supply Chain Event
 
         $newDocumentDTO->firstSupplyChainEvent(
-            fn(DateTimeInterface $item) => $this->setDocumentSupplyChainEvent($item)
+            fn (DateTimeInterface $item) => $this->setDocumentSupplyChainEvent($item)
         );
 
         // Document-Level Buyer Reference
 
         $newDocumentDTO->firstBuyerReference(
-            fn(InvoiceSuiteIdDTO $item) => $this->setDocumentBuyerReference($item->getId())
+            fn (InvoiceSuiteIdDTO $item) => $this->setDocumentBuyerReference($item->getId())
         );
 
         // Document-Level Seller/Supplier Party
@@ -317,19 +261,19 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         $newDocumentDTO
             ->getSellerParty()
             ?->firstName(
-                fn(string $item) => $this->setDocumentSellerName($item)
+                fn (string $item) => $this->setDocumentSellerName($item)
             )
             ?->forEachId(
-                fn(InvoiceSuiteIdDTO $item) => $this->addDocumentSellerId($item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentSellerId($item->getId())
             )
             ?->forEachGlobalId(
-                fn(InvoiceSuiteIdDTO $item) => $this->addDocumentSellerGlobalId($item->getId(), $item->getIdType())
+                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentSellerGlobalId($item->getId(), $item->getIdType())
             )
             ?->forEachTaxRegistration(
-                fn(InvoiceSuiteIdDTO $item) => $this->addDocumentSellerTaxRegistration($item->getIdType(), $item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentSellerTaxRegistration($item->getIdType(), $item->getId())
             )
             ?->firstAddress(
-                fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentSellerAddress(
+                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentSellerAddress(
                     $item->getAddressLine1(),
                     $item->getAddressLine2(),
                     $item->getAddressLine3(),
@@ -340,14 +284,14 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstLegalOrganisation(
-                fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentSellerLegalOrganisation(
+                fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentSellerLegalOrganisation(
                     $item->getIdType(),
                     $item->getId(),
                     $item->getName()
                 )
             )
             ?->forEachContact(
-                fn(InvoiceSuiteContactDTO $item) => $this->addDocumentSellerContact(
+                fn (InvoiceSuiteContactDTO $item) => $this->addDocumentSellerContact(
                     $item->getPersonName(),
                     $item->getDepartmentName(),
                     $item->getPhoneNumber(),
@@ -356,7 +300,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstCommunication(
-                fn(InvoiceSuiteCommunicationDTO $item) => $this->setDocumentSellerCommunication(
+                fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentSellerCommunication(
                     $item->getIdType(),
                     $item->getId()
                 )
@@ -367,19 +311,19 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         $newDocumentDTO
             ->getBuyerParty()
             ?->firstName(
-                fn(string $item) => $this->setDocumentBuyerName($item)
+                fn (string $item) => $this->setDocumentBuyerName($item)
             )
             ?->firstId(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentBuyerId($item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentBuyerId($item->getId())
             )
             ?->forEachGlobalId(
-                fn(InvoiceSuiteIdDTO $item) => $this->addDocumentBuyerGlobalId($item->getId(), $item->getIdType())
+                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentBuyerGlobalId($item->getId(), $item->getIdType())
             )
             ?->firstTaxRegistration(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentBuyerTaxRegistration($item->getIdType(), $item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentBuyerTaxRegistration($item->getIdType(), $item->getId())
             )
             ?->firstAddress(
-                fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentBuyerAddress(
+                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentBuyerAddress(
                     $item->getAddressLine1(),
                     $item->getAddressLine2(),
                     $item->getAddressLine3(),
@@ -390,14 +334,14 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstLegalOrganisation(
-                fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentBuyerLegalOrganisation(
+                fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentBuyerLegalOrganisation(
                     $item->getIdType(),
                     $item->getId(),
                     $item->getName()
                 )
             )
             ?->forEachContact(
-                fn(InvoiceSuiteContactDTO $item) => $this->addDocumentBuyerContact(
+                fn (InvoiceSuiteContactDTO $item) => $this->addDocumentBuyerContact(
                     $item->getPersonName(),
                     $item->getDepartmentName(),
                     $item->getPhoneNumber(),
@@ -406,7 +350,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstCommunication(
-                fn(InvoiceSuiteCommunicationDTO $item) => $this->setDocumentBuyerCommunication(
+                fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentBuyerCommunication(
                     $item->getIdType(),
                     $item->getId()
                 )
@@ -417,19 +361,19 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         $newDocumentDTO
             ->getTaxRepresentativeParty()
             ?->firstName(
-                fn(string $item) => $this->setDocumentTaxRepresentativeName($item)
+                fn (string $item) => $this->setDocumentTaxRepresentativeName($item)
             )
             ?->firstId(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentTaxRepresentativeId($item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentTaxRepresentativeId($item->getId())
             )
             ?->forEachGlobalId(
-                fn(InvoiceSuiteIdDTO $item) => $this->addDocumentTaxRepresentativeGlobalId($item->getId(), $item->getIdType())
+                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentTaxRepresentativeGlobalId($item->getId(), $item->getIdType())
             )
             ?->firstTaxRegistration(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentTaxRepresentativeTaxRegistration($item->getIdType(), $item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentTaxRepresentativeTaxRegistration($item->getIdType(), $item->getId())
             )
             ?->firstAddress(
-                fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentTaxRepresentativeAddress(
+                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentTaxRepresentativeAddress(
                     $item->getAddressLine1(),
                     $item->getAddressLine2(),
                     $item->getAddressLine3(),
@@ -440,14 +384,14 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstLegalOrganisation(
-                fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentTaxRepresentativeLegalOrganisation(
+                fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentTaxRepresentativeLegalOrganisation(
                     $item->getIdType(),
                     $item->getId(),
                     $item->getName()
                 )
             )
             ?->forEachContact(
-                fn(InvoiceSuiteContactDTO $item) => $this->addDocumentTaxRepresentativeContact(
+                fn (InvoiceSuiteContactDTO $item) => $this->addDocumentTaxRepresentativeContact(
                     $item->getPersonName(),
                     $item->getDepartmentName(),
                     $item->getPhoneNumber(),
@@ -456,7 +400,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstCommunication(
-                fn(InvoiceSuiteCommunicationDTO $item) => $this->setDocumentTaxRepresentativeCommunication(
+                fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentTaxRepresentativeCommunication(
                     $item->getIdType(),
                     $item->getId()
                 )
@@ -467,19 +411,19 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         $newDocumentDTO
             ->getProductEndUserParty()
             ?->firstName(
-                fn(string $item) => $this->setDocumentProductEndUserName($item)
+                fn (string $item) => $this->setDocumentProductEndUserName($item)
             )
             ?->firstId(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentProductEndUserId($item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentProductEndUserId($item->getId())
             )
             ?->forEachGlobalId(
-                fn(InvoiceSuiteIdDTO $item) => $this->addDocumentProductEndUserGlobalId($item->getId(), $item->getIdType())
+                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentProductEndUserGlobalId($item->getId(), $item->getIdType())
             )
             ?->firstTaxRegistration(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentProductEndUserTaxRegistration($item->getIdType(), $item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentProductEndUserTaxRegistration($item->getIdType(), $item->getId())
             )
             ?->firstAddress(
-                fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentProductEndUserAddress(
+                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentProductEndUserAddress(
                     $item->getAddressLine1(),
                     $item->getAddressLine2(),
                     $item->getAddressLine3(),
@@ -490,14 +434,14 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstLegalOrganisation(
-                fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentProductEndUserLegalOrganisation(
+                fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentProductEndUserLegalOrganisation(
                     $item->getIdType(),
                     $item->getId(),
                     $item->getName()
                 )
             )
             ?->forEachContact(
-                fn(InvoiceSuiteContactDTO $item) => $this->addDocumentProductEndUserContact(
+                fn (InvoiceSuiteContactDTO $item) => $this->addDocumentProductEndUserContact(
                     $item->getPersonName(),
                     $item->getDepartmentName(),
                     $item->getPhoneNumber(),
@@ -506,7 +450,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstCommunication(
-                fn(InvoiceSuiteCommunicationDTO $item) => $this->setDocumentProductEndUserCommunication(
+                fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentProductEndUserCommunication(
                     $item->getIdType(),
                     $item->getId()
                 )
@@ -517,19 +461,19 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         $newDocumentDTO
             ->getShipToParty()
             ?->firstName(
-                fn(string $item) => $this->setDocumentShipToName($item)
+                fn (string $item) => $this->setDocumentShipToName($item)
             )
             ?->firstId(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentShipToId($item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentShipToId($item->getId())
             )
             ?->forEachGlobalId(
-                fn(InvoiceSuiteIdDTO $item) => $this->addDocumentShipToGlobalId($item->getId(), $item->getIdType())
+                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentShipToGlobalId($item->getId(), $item->getIdType())
             )
             ?->firstTaxRegistration(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentShipToTaxRegistration($item->getIdType(), $item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentShipToTaxRegistration($item->getIdType(), $item->getId())
             )
             ?->firstAddress(
-                fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentShipToAddress(
+                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentShipToAddress(
                     $item->getAddressLine1(),
                     $item->getAddressLine2(),
                     $item->getAddressLine3(),
@@ -540,14 +484,14 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstLegalOrganisation(
-                fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentShipToLegalOrganisation(
+                fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentShipToLegalOrganisation(
                     $item->getIdType(),
                     $item->getId(),
                     $item->getName()
                 )
             )
             ?->forEachContact(
-                fn(InvoiceSuiteContactDTO $item) => $this->addDocumentShipToContact(
+                fn (InvoiceSuiteContactDTO $item) => $this->addDocumentShipToContact(
                     $item->getPersonName(),
                     $item->getDepartmentName(),
                     $item->getPhoneNumber(),
@@ -556,7 +500,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstCommunication(
-                fn(InvoiceSuiteCommunicationDTO $item) => $this->setDocumentShipToCommunication(
+                fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentShipToCommunication(
                     $item->getIdType(),
                     $item->getId()
                 )
@@ -567,19 +511,19 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         $newDocumentDTO
             ->getUltimateShipToParty()
             ?->firstName(
-                fn(string $item) => $this->setDocumentUltimateShipToName($item)
+                fn (string $item) => $this->setDocumentUltimateShipToName($item)
             )
             ?->firstId(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentUltimateShipToId($item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentUltimateShipToId($item->getId())
             )
             ?->forEachGlobalId(
-                fn(InvoiceSuiteIdDTO $item) => $this->addDocumentUltimateShipToGlobalId($item->getId(), $item->getIdType())
+                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentUltimateShipToGlobalId($item->getId(), $item->getIdType())
             )
             ?->firstTaxRegistration(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentUltimateShipToTaxRegistration($item->getIdType(), $item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentUltimateShipToTaxRegistration($item->getIdType(), $item->getId())
             )
             ?->firstAddress(
-                fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentUltimateShipToAddress(
+                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentUltimateShipToAddress(
                     $item->getAddressLine1(),
                     $item->getAddressLine2(),
                     $item->getAddressLine3(),
@@ -590,14 +534,14 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstLegalOrganisation(
-                fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentUltimateShipToLegalOrganisation(
+                fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentUltimateShipToLegalOrganisation(
                     $item->getIdType(),
                     $item->getId(),
                     $item->getName()
                 )
             )
             ?->forEachContact(
-                fn(InvoiceSuiteContactDTO $item) => $this->addDocumentUltimateShipToContact(
+                fn (InvoiceSuiteContactDTO $item) => $this->addDocumentUltimateShipToContact(
                     $item->getPersonName(),
                     $item->getDepartmentName(),
                     $item->getPhoneNumber(),
@@ -606,7 +550,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstCommunication(
-                fn(InvoiceSuiteCommunicationDTO $item) => $this->setDocumentUltimateShipToCommunication(
+                fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentUltimateShipToCommunication(
                     $item->getIdType(),
                     $item->getId()
                 )
@@ -617,19 +561,19 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         $newDocumentDTO
             ->getShipFromParty()
             ?->firstName(
-                fn(string $item) => $this->setDocumentShipfromName($item)
+                fn (string $item) => $this->setDocumentShipfromName($item)
             )
             ?->firstId(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentShipfromId($item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentShipfromId($item->getId())
             )
             ?->forEachGlobalId(
-                fn(InvoiceSuiteIdDTO $item) => $this->addDocumentShipfromGlobalId($item->getId(), $item->getIdType())
+                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentShipfromGlobalId($item->getId(), $item->getIdType())
             )
             ?->firstTaxRegistration(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentShipfromTaxRegistration($item->getIdType(), $item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentShipfromTaxRegistration($item->getIdType(), $item->getId())
             )
             ?->firstAddress(
-                fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentShipfromAddress(
+                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentShipfromAddress(
                     $item->getAddressLine1(),
                     $item->getAddressLine2(),
                     $item->getAddressLine3(),
@@ -640,14 +584,14 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstLegalOrganisation(
-                fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentShipfromLegalOrganisation(
+                fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentShipfromLegalOrganisation(
                     $item->getIdType(),
                     $item->getId(),
                     $item->getName()
                 )
             )
             ?->forEachContact(
-                fn(InvoiceSuiteContactDTO $item) => $this->addDocumentShipfromContact(
+                fn (InvoiceSuiteContactDTO $item) => $this->addDocumentShipfromContact(
                     $item->getPersonName(),
                     $item->getDepartmentName(),
                     $item->getPhoneNumber(),
@@ -656,7 +600,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstCommunication(
-                fn(InvoiceSuiteCommunicationDTO $item) => $this->setDocumentShipfromCommunication(
+                fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentShipfromCommunication(
                     $item->getIdType(),
                     $item->getId()
                 )
@@ -667,19 +611,19 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         $newDocumentDTO
             ->getInvoicerParty()
             ?->firstName(
-                fn(string $item) => $this->setDocumentInvoicerName($item)
+                fn (string $item) => $this->setDocumentInvoicerName($item)
             )
             ?->firstId(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentInvoicerId($item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentInvoicerId($item->getId())
             )
             ?->forEachGlobalId(
-                fn(InvoiceSuiteIdDTO $item) => $this->addDocumentInvoicerGlobalId($item->getId(), $item->getIdType())
+                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentInvoicerGlobalId($item->getId(), $item->getIdType())
             )
             ?->firstTaxRegistration(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentInvoicerTaxRegistration($item->getIdType(), $item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentInvoicerTaxRegistration($item->getIdType(), $item->getId())
             )
             ?->firstAddress(
-                fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentInvoicerAddress(
+                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentInvoicerAddress(
                     $item->getAddressLine1(),
                     $item->getAddressLine2(),
                     $item->getAddressLine3(),
@@ -690,14 +634,14 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstLegalOrganisation(
-                fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentInvoicerLegalOrganisation(
+                fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentInvoicerLegalOrganisation(
                     $item->getIdType(),
                     $item->getId(),
                     $item->getName()
                 )
             )
             ?->forEachContact(
-                fn(InvoiceSuiteContactDTO $item) => $this->addDocumentInvoicerContact(
+                fn (InvoiceSuiteContactDTO $item) => $this->addDocumentInvoicerContact(
                     $item->getPersonName(),
                     $item->getDepartmentName(),
                     $item->getPhoneNumber(),
@@ -706,7 +650,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstCommunication(
-                fn(InvoiceSuiteCommunicationDTO $item) => $this->setDocumentInvoicerCommunication(
+                fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentInvoicerCommunication(
                     $item->getIdType(),
                     $item->getId()
                 )
@@ -717,19 +661,19 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         $newDocumentDTO
             ->getInvoiceeParty()
             ?->firstName(
-                fn(string $item) => $this->setDocumentInvoiceeName($item)
+                fn (string $item) => $this->setDocumentInvoiceeName($item)
             )
             ?->firstId(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentInvoiceeId($item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentInvoiceeId($item->getId())
             )
             ?->forEachGlobalId(
-                fn(InvoiceSuiteIdDTO $item) => $this->addDocumentInvoiceeGlobalId($item->getId(), $item->getIdType())
+                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentInvoiceeGlobalId($item->getId(), $item->getIdType())
             )
             ?->firstTaxRegistration(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentInvoiceeTaxRegistration($item->getIdType(), $item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentInvoiceeTaxRegistration($item->getIdType(), $item->getId())
             )
             ?->firstAddress(
-                fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentInvoiceeAddress(
+                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentInvoiceeAddress(
                     $item->getAddressLine1(),
                     $item->getAddressLine2(),
                     $item->getAddressLine3(),
@@ -740,14 +684,14 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstLegalOrganisation(
-                fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentInvoiceeLegalOrganisation(
+                fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentInvoiceeLegalOrganisation(
                     $item->getIdType(),
                     $item->getId(),
                     $item->getName()
                 )
             )
             ?->forEachContact(
-                fn(InvoiceSuiteContactDTO $item) => $this->addDocumentInvoiceeContact(
+                fn (InvoiceSuiteContactDTO $item) => $this->addDocumentInvoiceeContact(
                     $item->getPersonName(),
                     $item->getDepartmentName(),
                     $item->getPhoneNumber(),
@@ -756,7 +700,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstCommunication(
-                fn(InvoiceSuiteCommunicationDTO $item) => $this->setDocumentInvoiceeCommunication(
+                fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentInvoiceeCommunication(
                     $item->getIdType(),
                     $item->getId()
                 )
@@ -767,29 +711,29 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         $newDocumentDTO
             ->getPayeeParty()
             ?->firstName(
-                fn(string $item) => $this->setDocumentPayeeName(
+                fn (string $item) => $this->setDocumentPayeeName(
                     $item
                 )
             )
             ?->firstId(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPayeeId(
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentPayeeId(
                     $item->getId()
                 )
             )
             ?->forEachGlobalId(
-                fn(InvoiceSuiteIdDTO $item) => $this->addDocumentPayeeGlobalId(
+                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentPayeeGlobalId(
                     $item->getId(),
                     $item->getIdType()
                 )
             )
             ?->firstTaxRegistration(
-                fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPayeeTaxRegistration(
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentPayeeTaxRegistration(
                     $item->getIdType(),
                     $item->getId()
                 )
             )
             ?->firstAddress(
-                fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentPayeeAddress(
+                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentPayeeAddress(
                     $item->getAddressLine1(),
                     $item->getAddressLine2(),
                     $item->getAddressLine3(),
@@ -800,14 +744,14 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstLegalOrganisation(
-                fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentPayeeLegalOrganisation(
+                fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentPayeeLegalOrganisation(
                     $item->getIdType(),
                     $item->getId(),
                     $item->getName()
                 )
             )
             ?->forEachContact(
-                fn(InvoiceSuiteContactDTO $item) => $this->addDocumentPayeeContact(
+                fn (InvoiceSuiteContactDTO $item) => $this->addDocumentPayeeContact(
                     $item->getPersonName(),
                     $item->getDepartmentName(),
                     $item->getPhoneNumber(),
@@ -816,7 +760,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 )
             )
             ?->firstCommunication(
-                fn(InvoiceSuiteCommunicationDTO $item) => $this->setDocumentPayeeCommunication(
+                fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentPayeeCommunication(
                     $item->getIdType(),
                     $item->getId()
                 )
@@ -825,7 +769,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         // Document-Level Payment Means
 
         $newDocumentDTO->forEachPaymentMean(
-            fn(InvoiceSuitePaymentMeanDTO $item) => $this->addDocumentPaymentMean(
+            fn (InvoiceSuitePaymentMeanDTO $item) => $this->addDocumentPaymentMean(
                 $item->getTypeCode(),
                 $item->getName(),
                 $item->getFinancialCardId(),
@@ -850,7 +794,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                     $item->getMandate()
                 );
                 $item->firstDiscountTerm(
-                    fn(InvoiceSuitePaymentTermDiscountDTO $item) => $this->setDocumentPaymentDiscountTermsInLastPaymentTerm(
+                    fn (InvoiceSuitePaymentTermDiscountDTO $item) => $this->setDocumentPaymentDiscountTermsInLastPaymentTerm(
                         $item->getBaseAmount(),
                         $item->getDiscountAmount(),
                         $item->getDiscountPercent(),
@@ -860,7 +804,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                     )
                 );
                 $item->firstPenaltyTerm(
-                    fn(InvoiceSuitePaymentTermPenaltyDTO $item) => $this->setDocumentPaymentPenaltyTermsInLastPaymentTerm(
+                    fn (InvoiceSuitePaymentTermPenaltyDTO $item) => $this->setDocumentPaymentPenaltyTermsInLastPaymentTerm(
                         $item->getBaseAmount(),
                         $item->getPenaltyAmount(),
                         $item->getPenaltyPercent(),
@@ -875,13 +819,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         // Document-Level Creditor reference
 
         $newDocumentDTO->firstCreditorReference(
-            fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPaymentCreditorReferenceID($item->getId())
+            fn (InvoiceSuiteIdDTO $item) => $this->setDocumentPaymentCreditorReferenceID($item->getId())
         );
 
         // Document-Level Taxes
 
         $newDocumentDTO->forEachTax(
-            fn(InvoiceSuiteTaxDTO $item) => $this->addDocumentTax(
+            fn (InvoiceSuiteTaxDTO $item) => $this->addDocumentTax(
                 $item->getCategory(),
                 $item->getType(),
                 $item->getBasisAmount(),
@@ -897,7 +841,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         // Document-Level Allowances/Charges
 
         $newDocumentDTO->forEachAllowanceCharge(
-            fn(InvoiceSuiteAllowanceChargeDTO $item) => $this->addDocumentAllowanceCharge(
+            fn (InvoiceSuiteAllowanceChargeDTO $item) => $this->addDocumentAllowanceCharge(
                 $item->getChargeIndicator(),
                 $item->getAmount(),
                 $item->getBaseAmount(),
@@ -913,7 +857,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         // Document-Level Logistic Service Charges
 
         $newDocumentDTO->forEachServiceCharge(
-            fn(InvoiceSuiteServiceChargeDTO $item) => $this->addDocumentLogisticServiceCharge(
+            fn (InvoiceSuiteServiceChargeDTO $item) => $this->addDocumentLogisticServiceCharge(
                 $item->getAmount(),
                 $item->getDescription(),
                 $item->getTaxCategory(),
@@ -925,7 +869,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         // Document-Level Summation
 
         $newDocumentDTO->firstSummation(
-            fn(InvoiceSuiteSummationDTO $item) => $this->setDocumentSummation(
+            fn (InvoiceSuiteSummationDTO $item) => $this->setDocumentSummation(
                 $item->getNetAmount(),
                 $item->getChargeTotalAmount(),
                 $item->getDiscountTotalAmount(),
@@ -951,7 +895,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 );
 
                 $item->firstNote(
-                    fn(InvoiceSuiteNoteDTO $itemNote) => $this->setDocumentPositionNote(
+                    fn (InvoiceSuiteNoteDTO $itemNote) => $this->setDocumentPositionNote(
                         $itemNote->getContent(),
                         $itemNote->getContentCode(),
                         $itemNote->getSubjectCode()
@@ -975,7 +919,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 );
 
                 $item->getProduct()?->forEachCharacteristic(
-                    fn(InvoiceSuiteProductCharacteristicDTO $characteristic) => $this->addDocumentPositionProductCharacteristic(
+                    fn (InvoiceSuiteProductCharacteristicDTO $characteristic) => $this->addDocumentPositionProductCharacteristic(
                         $characteristic->getDescription(),
                         $characteristic->getValue(),
                         $characteristic->getType(),
@@ -985,7 +929,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 );
 
                 $item->getProduct()?->forEachClassification(
-                    fn(InvoiceSuiteProductClassificationDTO $classification) => $this->addDocumentPositionProductClassification(
+                    fn (InvoiceSuiteProductClassificationDTO $classification) => $this->addDocumentPositionProductClassification(
                         $classification->getCode(),
                         $classification->getListId(),
                         $classification->getListVersionId(),
@@ -994,7 +938,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 );
 
                 $item->getProduct()?->forEachReferenceProduct(
-                    fn(InvoiceSuiteReferenceProductDTO $referencedProduct) => $this->addDocumentPositionReferencedProduct(
+                    fn (InvoiceSuiteReferenceProductDTO $referencedProduct) => $this->addDocumentPositionReferencedProduct(
                         $referencedProduct->getId(),
                         $referencedProduct->getName(),
                         $referencedProduct->getDescription(),
@@ -1009,7 +953,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 );
 
                 $item->firstSellerOrderReference(
-                    fn(InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionSellerOrderReference(
+                    fn (InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionSellerOrderReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate()
@@ -1017,7 +961,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 );
 
                 $item->firstBuyerOrderReference(
-                    fn(InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionBuyerOrderReference(
+                    fn (InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionBuyerOrderReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate()
@@ -1025,7 +969,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 );
 
                 $item->firstQuotationReference(
-                    fn(InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionQuotationReference(
+                    fn (InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionQuotationReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate()
@@ -1033,7 +977,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 );
 
                 $item->firstContractReference(
-                    fn(InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionContractReference(
+                    fn (InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionContractReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate()
@@ -1041,7 +985,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 );
 
                 $item->forEachAdditionalReference(
-                    fn(InvoiceSuiteReferenceDocumentLineExtDTO $item) => $this->addDocumentPositionAdditionalReference(
+                    fn (InvoiceSuiteReferenceDocumentLineExtDTO $item) => $this->addDocumentPositionAdditionalReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate(),
@@ -1053,7 +997,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 );
 
                 $item->forEachUltimateCustomerOrderReference(
-                    fn(InvoiceSuiteReferenceDocumentLineDTO $item) => $this->addDocumentPositionUltimateCustomerOrderReference(
+                    fn (InvoiceSuiteReferenceDocumentLineDTO $item) => $this->addDocumentPositionUltimateCustomerOrderReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate()
@@ -1061,7 +1005,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 );
 
                 $item->firstDespatchAdviceReference(
-                    fn(InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionDespatchAdviceReference(
+                    fn (InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionDespatchAdviceReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate()
@@ -1069,7 +1013,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 );
 
                 $item->firstReceivingAdviceReference(
-                    fn(InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionReceivingAdviceReference(
+                    fn (InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionReceivingAdviceReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate()
@@ -1077,7 +1021,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 );
 
                 $item->firstDeliveryNoteReference(
-                    fn(InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionDeliveryNoteReference(
+                    fn (InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionDeliveryNoteReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate()
@@ -1085,7 +1029,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 );
 
                 $item->firstInvoiceReference(
-                    fn(InvoiceSuiteReferenceDocumentLineExtDTO $item) => $this->setDocumentPositionInvoiceReference(
+                    fn (InvoiceSuiteReferenceDocumentLineExtDTO $item) => $this->setDocumentPositionInvoiceReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate(),
@@ -1102,7 +1046,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 );
 
                 $item->getGrossPrice()?->forEachAllowanceCharge(
-                    fn(InvoiceSuiteAllowanceChargeDTO $itemGrossPriceAllowanceCharge) => $this->addDocumentPositionGrossPriceAllowanceCharge(
+                    fn (InvoiceSuiteAllowanceChargeDTO $itemGrossPriceAllowanceCharge) => $this->addDocumentPositionGrossPriceAllowanceCharge(
                         $itemGrossPriceAllowanceCharge->getAmount(),
                         $itemGrossPriceAllowanceCharge->getChargeIndicator(),
                         $itemGrossPriceAllowanceCharge->getPercent(),
@@ -1121,7 +1065,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 );
 
                 $item->getNetPrice()?->firstTax(
-                    fn(InvoiceSuiteTaxDTO $netPriceTax) => $this->setDocumentPositionNetPriceTax(
+                    fn (InvoiceSuiteTaxDTO $netPriceTax) => $this->setDocumentPositionNetPriceTax(
                         $netPriceTax->getCategory(),
                         $netPriceTax->getType(),
                         $netPriceTax->getAmount(),
@@ -1146,19 +1090,19 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
                 $item->getShipToParty()
                     ?->firstName(
-                        fn(string $item) => $this->setDocumentPositionShipToName($item)
+                        fn (string $item) => $this->setDocumentPositionShipToName($item)
                     )
                     ?->firstId(
-                        fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPositionShipToId($item->getId())
+                        fn (InvoiceSuiteIdDTO $item) => $this->setDocumentPositionShipToId($item->getId())
                     )
                     ?->forEachGlobalId(
-                        fn(InvoiceSuiteIdDTO $item) => $this->addDocumentPositionShipToGlobalId($item->getId(), $item->getIdType())
+                        fn (InvoiceSuiteIdDTO $item) => $this->addDocumentPositionShipToGlobalId($item->getId(), $item->getIdType())
                     )
                     ?->firstTaxRegistration(
-                        fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPositionShipToTaxRegistration($item->getIdType(), $item->getId())
+                        fn (InvoiceSuiteIdDTO $item) => $this->setDocumentPositionShipToTaxRegistration($item->getIdType(), $item->getId())
                     )
                     ?->firstAddress(
-                        fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentPositionShipToAddress(
+                        fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentPositionShipToAddress(
                             $item->getAddressLine1(),
                             $item->getAddressLine2(),
                             $item->getAddressLine3(),
@@ -1169,14 +1113,14 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                         )
                     )
                     ?->firstLegalOrganisation(
-                        fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentPositionShipToLegalOrganisation(
+                        fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentPositionShipToLegalOrganisation(
                             $item->getIdType(),
                             $item->getId(),
                             $item->getName()
                         )
                     )
                     ?->forEachContact(
-                        fn(InvoiceSuiteContactDTO $item) => $this->addDocumentPositionShipToContact(
+                        fn (InvoiceSuiteContactDTO $item) => $this->addDocumentPositionShipToContact(
                             $item->getPersonName(),
                             $item->getDepartmentName(),
                             $item->getPhoneNumber(),
@@ -1185,7 +1129,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                         )
                     )
                     ?->firstCommunication(
-                        fn(InvoiceSuiteCommunicationDTO $item) => $this->setDocumentPositionShipToCommunication(
+                        fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentPositionShipToCommunication(
                             $item->getIdType(),
                             $item->getId()
                         )
@@ -1195,19 +1139,19 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
                 $item->getUltimateShipToParty()
                     ?->firstName(
-                        fn(string $item) => $this->setDocumentPositionUltimateShipToName($item)
+                        fn (string $item) => $this->setDocumentPositionUltimateShipToName($item)
                     )
                     ?->firstId(
-                        fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPositionUltimateShipToId($item->getId())
+                        fn (InvoiceSuiteIdDTO $item) => $this->setDocumentPositionUltimateShipToId($item->getId())
                     )
                     ?->forEachGlobalId(
-                        fn(InvoiceSuiteIdDTO $item) => $this->addDocumentPositionUltimateShipToGlobalId($item->getId(), $item->getIdType())
+                        fn (InvoiceSuiteIdDTO $item) => $this->addDocumentPositionUltimateShipToGlobalId($item->getId(), $item->getIdType())
                     )
                     ?->firstTaxRegistration(
-                        fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPositionUltimateShipToTaxRegistration($item->getIdType(), $item->getId())
+                        fn (InvoiceSuiteIdDTO $item) => $this->setDocumentPositionUltimateShipToTaxRegistration($item->getIdType(), $item->getId())
                     )
                     ?->firstAddress(
-                        fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentPositionUltimateShipToAddress(
+                        fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentPositionUltimateShipToAddress(
                             $item->getAddressLine1(),
                             $item->getAddressLine2(),
                             $item->getAddressLine3(),
@@ -1218,14 +1162,14 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                         )
                     )
                     ?->firstLegalOrganisation(
-                        fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentPositionUltimateShipToLegalOrganisation(
+                        fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentPositionUltimateShipToLegalOrganisation(
                             $item->getIdType(),
                             $item->getId(),
                             $item->getName()
                         )
                     )
                     ?->forEachContact(
-                        fn(InvoiceSuiteContactDTO $item) => $this->addDocumentPositionUltimateShipToContact(
+                        fn (InvoiceSuiteContactDTO $item) => $this->addDocumentPositionUltimateShipToContact(
                             $item->getPersonName(),
                             $item->getDepartmentName(),
                             $item->getPhoneNumber(),
@@ -1234,7 +1178,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                         )
                     )
                     ?->firstCommunication(
-                        fn(InvoiceSuiteCommunicationDTO $item) => $this->setDocumentPositionUltimateShipToCommunication(
+                        fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentPositionUltimateShipToCommunication(
                             $item->getIdType(),
                             $item->getId()
                         )
@@ -1243,13 +1187,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 // Position supply chain event
 
                 $item->firstSupplyChainEvent(
-                    fn(DateTimeInterface $supplyChainEvent) => $this->setDocumentPositionSupplyChainEvent($supplyChainEvent)
+                    fn (DateTimeInterface $supplyChainEvent) => $this->setDocumentPositionSupplyChainEvent($supplyChainEvent)
                 );
 
                 // Position billing period
 
                 $item->firstBillingPeriod(
-                    fn(InvoiceSuiteDateRangeDTO $billingPeriod) => $this->setDocumentPositionBillingPeriod(
+                    fn (InvoiceSuiteDateRangeDTO $billingPeriod) => $this->setDocumentPositionBillingPeriod(
                         $billingPeriod->getStartDate(),
                         $billingPeriod->getEndDate(),
                         $billingPeriod->getDescription()
@@ -1259,7 +1203,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 // Position posting references
 
                 $item->firstPostingReference(
-                    fn(InvoiceSuiteIdDTO $postingReference) => $this->setDocumentPositionPostingReference(
+                    fn (InvoiceSuiteIdDTO $postingReference) => $this->setDocumentPositionPostingReference(
                         $postingReference->getIdType(),
                         $postingReference->getId()
                     )
@@ -1268,7 +1212,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 // Position taxes
 
                 $item->forEachTax(
-                    fn(InvoiceSuiteTaxDTO $tax) => $this->addDocumentPositionTax(
+                    fn (InvoiceSuiteTaxDTO $tax) => $this->addDocumentPositionTax(
                         $tax->getCategory(),
                         $tax->getType(),
                         $tax->getAmount(),
@@ -1281,7 +1225,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 // Position allowances/charges
 
                 $item->forEachAllowanceCharge(
-                    fn(InvoiceSuiteAllowanceChargeDTO $allowanceCharge) => $this->addDocumentPositionAllowanceCharge(
+                    fn (InvoiceSuiteAllowanceChargeDTO $allowanceCharge) => $this->addDocumentPositionAllowanceCharge(
                         $allowanceCharge->getChargeIndicator(),
                         $allowanceCharge->getAmount(),
                         $allowanceCharge->getBaseAmount(),
@@ -1309,7 +1253,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Sets the new document number (e.g. invoice number)
      *
-     * @param string|null $newDocumentNo __BT-1, From MINIMUM__ The document no issued by the seller
+     * @param  null|string $newDocumentNo __BT-1, From MINIMUM__ The document no issued by the seller
      * @return static
      */
     public function setDocumentNo(
@@ -1333,7 +1277,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Sets the new document type code
      *
-     * @param string|null $newDocumentType __BT-3, From MINIMUM__ The type of the document
+     * @param  null|string $newDocumentType __BT-3, From MINIMUM__ The type of the document
      * @return static
      */
     public function setDocumentType(
@@ -1357,7 +1301,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Sets the new document description
      *
-     * @param string|null $newDocumentDescription __BT-X-2, From EXTENDED__ The documenttype as free text
+     * @param  null|string $newDocumentDescription __BT-X-2, From EXTENDED__ The documenttype as free text
      * @return self
      */
     public function setDocumentDescription(
@@ -1381,7 +1325,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Sets the new document language
      *
-     * @param string|null $newDocumentLanguage __BT-X-4, From EXTENDED__ Language indicator. The language code in which the document was written
+     * @param  null|string $newDocumentLanguage __BT-X-4, From EXTENDED__ Language indicator. The language code in which the document was written
      * @return self
      */
     public function setDocumentLanguage(
@@ -1405,7 +1349,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Sets the new document date (e.g. invoice date)
      *
-     * @param DateTimeInterface|null $newDocumentDate __BT-2, From MINIMUM__ Date of the document. The date when the document was issued by the seller
+     * @param  null|DateTimeInterface $newDocumentDate __BT-2, From MINIMUM__ Date of the document. The date when the document was issued by the seller
      * @return self
      */
     public function setDocumentDate(
@@ -1422,7 +1366,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ->getExchangedDocumentWithCreate()
             ->getIssueDateTimeWithCreate()
             ->getDateTimeStringWithCreate()
-            ->setValue($newDocumentDate->format("Ymd"))
+            ->setValue($newDocumentDate->format('Ymd'))
             ->setFormat('102');
 
         return $this;
@@ -1431,7 +1375,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Sets the new document period
      *
-     * @param DateTimeInterface|null $newCompleteDate __BT-X-6-000, From EXTENDED__ Contractual due date of the document
+     * @param  null|DateTimeInterface $newCompleteDate __BT-X-6-000, From EXTENDED__ Contractual due date of the document
      * @return self
      */
     public function setDocumentCompleteDate(
@@ -1449,8 +1393,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ->getEffectiveSpecifiedPeriodWithCreate()
             ->getCompleteDateTimeWithCreate()
             ->getDateTimeStringWithCreate()
-            ->setValue($newCompleteDate->format("Ymd"))
-            ->setFormat("102");
+            ->setValue($newCompleteDate->format('Ymd'))
+            ->setFormat('102');
 
         return $this;
     }
@@ -1458,7 +1402,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Sets the new document currency
      *
-     * @param string|null $newDocumentCurrency __BT-5, From MINIMUM__ Code for the invoice currency
+     * @param  null|string $newDocumentCurrency __BT-5, From MINIMUM__ Code for the invoice currency
      * @return self
      */
     public function setDocumentCurrency(
@@ -1486,7 +1430,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Sets the new document tax currency
      *
-     * @param string|null $newDocumentTaxCurrency __BT-6, From BASIC WL__ Code for the tax currency
+     * @param  null|string $newDocumentTaxCurrency __BT-6, From BASIC WL__ Code for the tax currency
      * @return self
      */
     public function setDocumentTaxCurrency(
@@ -1514,7 +1458,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Sets the new status of the copy indicator
      *
-     * @param boolean|null $newDocumentIsCopy __BT-X-1-00, From EXTENDED__ Indicates that the document is a copy
+     * @param  null|bool $newDocumentIsCopy __BT-X-1-00, From EXTENDED__ Indicates that the document is a copy
      * @return self
      */
     public function setDocumentIsCopy(
@@ -1532,7 +1476,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Sets the new status of the test indicator
      *
-     * @param boolean|null $newDocumentIsTest __BT-X-3-00, From EXTENDED__ Indicates that the document is a test
+     * @param  null|bool $newDocumentIsTest __BT-X-3-00, From EXTENDED__ Indicates that the document is a test
      * @return self
      */
     public function setDocumentIsTest(
@@ -1550,9 +1494,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set a note to the document. This clears all added notes
      *
-     * @param string|null $newContent __BT-22, From BASIC WL__ Free text containing unstructured information that is relevant to the invoice as a whole
-     * @param string|null $newContentCode __BT-X-5, From EXTENDED__ Code to classify the content of the free text of the invoice
-     * @param string|null $newSubjectCode __BT-21, From BASIC WL__ Qualification of the free text for the invoice
+     * @param  null|string $newContent     __BT-22, From BASIC WL__ Free text containing unstructured information that is relevant to the invoice as a whole
+     * @param  null|string $newContentCode __BT-X-5, From EXTENDED__ Code to classify the content of the free text of the invoice
+     * @param  null|string $newSubjectCode __BT-21, From BASIC WL__ Qualification of the free text for the invoice
      * @return self
      */
     public function setDocumentNote(
@@ -1574,9 +1518,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a note to the document
      *
-     * @param string|null $newContent __BT-22, From BASIC WL__ Free text containing unstructured information that is relevant to the invoice as a whole
-     * @param string|null $newContentCode __BT-X-5, From EXTENDED__ Code to classify the content of the free text of the invoice
-     * @param string|null $newSubjectCode __BT-21, From BASIC WL__ Qualification of the free text for the invoice
+     * @param  null|string $newContent     __BT-22, From BASIC WL__ Free text containing unstructured information that is relevant to the invoice as a whole
+     * @param  null|string $newContentCode __BT-X-5, From EXTENDED__ Code to classify the content of the free text of the invoice
+     * @param  null|string $newSubjectCode __BT-21, From BASIC WL__ Qualification of the free text for the invoice
      * @return self
      */
     public function addDocumentNote(
@@ -1609,9 +1553,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the start and/or end date of the billing period
      *
-     * @param null|DateTimeInterface $newStartDate __BT-73, From BASIC WL__ Start of the billing period
-     * @param null|DateTimeInterface $newEndDate __BT-74, From BASIC WL__ End of the billing period
-     * @param null|string $newDescription __BT-X-264, From EXTENDED__ Further information of the billing period (Obsolete)
+     * @param  null|DateTimeInterface $newStartDate   __BT-73, From BASIC WL__ Start of the billing period
+     * @param  null|DateTimeInterface $newEndDate     __BT-74, From BASIC WL__ End of the billing period
+     * @param  null|string            $newDescription __BT-X-264, From EXTENDED__ Further information of the billing period (Obsolete)
      * @return self
      */
     public function setDocumentBillingPeriod(
@@ -1638,14 +1582,14 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         $billingPeriod
             ->getStartDateTimeWithCreate()
             ->getDateTimeStringWithCreate()
-            ->setValue($newStartDate->format("Ymd"))
-            ->setFormat("102");
+            ->setValue($newStartDate->format('Ymd'))
+            ->setFormat('102');
 
         $billingPeriod
             ->getEndDateTimeWithCreate()
             ->getDateTimeStringWithCreate()
-            ->setValue($newEndDate->format("Ymd"))
-            ->setFormat("102");
+            ->setValue($newEndDate->format('Ymd'))
+            ->setFormat('102');
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
             $billingPeriod
@@ -1659,9 +1603,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a the start and/or end date of the billing period
      *
-     * @param null|DateTimeInterface $newStartDate __BT-73, From BASIC WL__ Start of the billing period
-     * @param null|DateTimeInterface $newEndDate __BT-74, From BASIC WL__ End of the billing period
-     * @param null|string $newDescription __BT-X-264, From EXTENDED__ Further information of the billing period (Obsolete)
+     * @param  null|DateTimeInterface $newStartDate   __BT-73, From BASIC WL__ Start of the billing period
+     * @param  null|DateTimeInterface $newEndDate     __BT-74, From BASIC WL__ End of the billing period
+     * @param  null|string            $newDescription __BT-X-264, From EXTENDED__ Further information of the billing period (Obsolete)
      * @return self
      */
     public function addDocumentBillingPeriod(
@@ -1685,8 +1629,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set a posting reference
      *
-     * @param string|null $newType __BT-X-290, From EXTENDED__ Type of the posting reference
-     * @param string|null $newAccountId __BT-19, From BASIC WL__ Posting reference of the byuer
+     * @param  null|string $newType      __BT-X-290, From EXTENDED__ Type of the posting reference
+     * @param  null|string $newAccountId __BT-19, From BASIC WL__ Posting reference of the byuer
      * @return self
      */
     public function setDocumentPostingReference(?string $newType = null, ?string $newAccountId = null): self
@@ -1709,8 +1653,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a posting reference
      *
-     * @param string|null $newType __BT-X-290, From EXTENDED__ Type of the posting reference
-     * @param string|null $newAccountId __BT-19, From BASIC WL__ Posting reference of the byuer
+     * @param  null|string $newType      __BT-X-290, From EXTENDED__ Type of the posting reference
+     * @param  null|string $newAccountId __BT-19, From BASIC WL__ Posting reference of the byuer
      * @return self
      */
     public function addDocumentPostingReference(?string $newType = null, ?string $newAccountId = null): self
@@ -1737,8 +1681,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the associated seller's order confirmation.
      *
-     * @param string|null $newReferenceNumber __BT-14, From EN 16931__ Seller's order confirmation number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-146, From EXTENDED__ Seller's order confirmation date
+     * @param  null|string            $newReferenceNumber __BT-14, From EN 16931__ Seller's order confirmation number
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-146, From EXTENDED__ Seller's order confirmation date
      * @return self
      */
     public function setDocumentSellerOrderReference(
@@ -1769,8 +1713,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $sellerOrderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         return $this;
@@ -1779,8 +1723,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an associated seller's order confirmation.
      *
-     * @param string|null $newReferenceNumber __BT-14, From EN 16931__ Seller's order confirmation number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-146, From EXTENDED__ Seller's order confirmation date
+     * @param  null|string            $newReferenceNumber __BT-14, From EN 16931__ Seller's order confirmation number
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-146, From EXTENDED__ Seller's order confirmation date
      * @return self
      */
     public function addDocumentSellerOrderReference(
@@ -1799,8 +1743,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the associated buyer's order
      *
-     * @param string|null $newReferenceNumber __BT-13, From MINIMUM__ Buyers's order number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-147, From EXTENDED__ Buyer's order date
+     * @param  null|string            $newReferenceNumber __BT-13, From MINIMUM__ Buyers's order number
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-147, From EXTENDED__ Buyer's order date
      * @return self
      */
     public function setDocumentBuyerOrderReference(
@@ -1831,8 +1775,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $buyerOrderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         return $this;
@@ -1841,8 +1785,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an associated buyer's order
      *
-     * @param string|null $newReferenceNumber __BT-13, From MINIMUM__ Buyers's order number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-147, From EXTENDED__ Buyer's order date
+     * @param  null|string            $newReferenceNumber __BT-13, From MINIMUM__ Buyers's order number
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-147, From EXTENDED__ Buyer's order date
      * @return self
      */
     public function addDocumentBuyerOrderReference(
@@ -1861,8 +1805,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the associated quotation
      *
-     * @param string|null $newReferenceNumber __BT-X-403, From EXTENDED__ Quotation number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-404, From EXTENDED__ Quotation date
+     * @param  null|string            $newReferenceNumber __BT-X-403, From EXTENDED__ Quotation number
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-404, From EXTENDED__ Quotation date
      * @return self
      */
     public function setDocumentQuotationReference(
@@ -1893,8 +1837,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $quotationReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         return $this;
@@ -1903,8 +1847,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an associated quotation
      *
-     * @param string|null $newReferenceNumber __BT-X-403, From EXTENDED__ quotation number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-404, From EXTENDED__ quotation date
+     * @param  null|string            $newReferenceNumber __BT-X-403, From EXTENDED__ quotation number
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-404, From EXTENDED__ quotation date
      * @return self
      */
     public function addDocumentQuotationReference(
@@ -1923,8 +1867,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the associated contract
      *
-     * @param string $newReferenceNumber __BT-12, From BASIC WL__ Contract number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-26, From EXTENDED__ Contract date
+     * @param  string                 $newReferenceNumber __BT-12, From BASIC WL__ Contract number
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-26, From EXTENDED__ Contract date
      * @return self
      */
     public function setDocumentContractReference(
@@ -1955,8 +1899,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $contractReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         return $this;
@@ -1965,8 +1909,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add am associated contract
      *
-     * @param string $newReferenceNumber __BT-12, From BASIC WL__ Contract number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-26, From EXTENDED__ Contract date
+     * @param  string                 $newReferenceNumber __BT-12, From BASIC WL__ Contract number
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-26, From EXTENDED__ Contract date
      * @return self
      */
     public function addDocumentContractReference(
@@ -1985,12 +1929,12 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set an additional associated document
      *
-     * @param string|null $newReferenceNumber __BT-122, From EN 16931__ Additional document number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-149, From EXTENDED__ Additional document date
-     * @param string|null $newTypeCode __BT-122-0, From EN 16931__ Additional document type code
-     * @param string|null $newReferenceTypeCode __BT-18-1, From EN 16931__ Additional document reference-type code
-     * @param string|null $newDescription __BT-123, From EN 16931__ Additional document description
-     * @param InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment Additional document attachment
+     * @param  null|string                 $newReferenceNumber        __BT-122, From EN 16931__ Additional document number
+     * @param  null|DateTimeInterface      $newReferenceDate          __BT-X-149, From EXTENDED__ Additional document date
+     * @param  null|string                 $newTypeCode               __BT-122-0, From EN 16931__ Additional document type code
+     * @param  null|string                 $newReferenceTypeCode      __BT-18-1, From EN 16931__ Additional document reference-type code
+     * @param  null|string                 $newDescription            __BT-123, From EN 16931__ Additional document description
+     * @param  null|InvoiceSuiteAttachment $newInvoiceSuiteAttachment Additional document attachment
      * @return self
      */
     public function setDocumentAdditionalReference(
@@ -2026,12 +1970,12 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an additional associated document
      *
-     * @param string|null $newReferenceNumber __BT-122, From EN 16931__ Additional document number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-149, From EXTENDED__ Additional document date
-     * @param string|null $newTypeCode __BT-122-0, From EN 16931__ Additional document type code
-     * @param string|null $newReferenceTypeCode __BT-18-1, From EN 16931__ Additional document reference-type code
-     * @param string|null $newDescription __BT-123, From EN 16931__ Additional document description
-     * @param InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment Additional document attachment
+     * @param  null|string                 $newReferenceNumber        __BT-122, From EN 16931__ Additional document number
+     * @param  null|DateTimeInterface      $newReferenceDate          __BT-X-149, From EXTENDED__ Additional document date
+     * @param  null|string                 $newTypeCode               __BT-122-0, From EN 16931__ Additional document type code
+     * @param  null|string                 $newReferenceTypeCode      __BT-18-1, From EN 16931__ Additional document reference-type code
+     * @param  null|string                 $newDescription            __BT-123, From EN 16931__ Additional document description
+     * @param  null|InvoiceSuiteAttachment $newInvoiceSuiteAttachment Additional document attachment
      * @return self
      */
     public function addDocumentAdditionalReference(
@@ -2064,8 +2008,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $additionalReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newReferenceTypeCode)) {
@@ -2102,9 +2046,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set an additional invoice document (reference to preceding invoice)
      *
-     * @param string|null $newReferenceNumber __BT-25, From BASIC WL__ Identification of an invoice previously sent
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-555, From EXTENDED__ Date of the previous invoice
-     * @param string|null $newTypeCode __BT-26, From BASIC WL__ Type code of previous invoice
+     * @param  null|string            $newReferenceNumber __BT-25, From BASIC WL__ Identification of an invoice previously sent
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-555, From EXTENDED__ Date of the previous invoice
+     * @param  null|string            $newTypeCode        __BT-26, From BASIC WL__ Type code of previous invoice
      * @return self
      */
     public function setDocumentInvoiceReference(
@@ -2134,9 +2078,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an additional invoice document (reference to preceding invoice)
      *
-     * @param string|null $newReferenceNumber __BT-25, From BASIC WL__ Identification of an invoice previously sent
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-555, From EXTENDED__ Date of the previous invoice
-     * @param string|null $newTypeCode __BT-26, From BASIC WL__ Type code of previous invoice
+     * @param  null|string            $newReferenceNumber __BT-25, From BASIC WL__ Identification of an invoice previously sent
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-555, From EXTENDED__ Date of the previous invoice
+     * @param  null|string            $newTypeCode        __BT-26, From BASIC WL__ Type code of previous invoice
      * @return self
      */
     public function addDocumentInvoiceReference(
@@ -2166,8 +2110,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $invoiceReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         return $this;
@@ -2176,8 +2120,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set an additional project reference
      *
-     * @param string|null $newReferenceNumber __BT-11, From EN 16931__ Project number
-     * @param string|null $newName __BT-11-0, From EN 16931__ Project name
+     * @param  null|string $newReferenceNumber __BT-11, From EN 16931__ Project number
+     * @param  null|string $newName            __BT-11-0, From EN 16931__ Project name
      * @return self
      */
     public function setDocumentProjectReference(?string $newReferenceNumber = null, ?string $newName = null): self
@@ -2206,7 +2150,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $projectReference
                 ->getNameWithCreate()
                 ->setValue($newName);
-        };
+        }
 
         return $this;
     }
@@ -2214,8 +2158,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an additional project reference
      *
-     * @param string|null $newReferenceNumber __BT-11, From EN 16931__ Project number
-     * @param string|null $newName __BT-11-0, From EN 16931__ Project name
+     * @param  null|string $newReferenceNumber __BT-11, From EN 16931__ Project number
+     * @param  null|string $newName            __BT-11-0, From EN 16931__ Project name
      * @return self
      */
     public function addDocumentProjectReference(?string $newReferenceNumber = null, ?string $newName = null): self
@@ -2232,8 +2176,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set an additional ultimate customer order reference
      *
-     * @param string|null $newReferenceNumber __BT-X-150, From EXTENDED__
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-151, From EXTENDED__
+     * @param  null|string            $newReferenceNumber __BT-X-150, From EXTENDED__
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-151, From EXTENDED__
      * @return self
      */
     public function setDocumentUltimateCustomerOrderReference(
@@ -2258,8 +2202,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an additional ultimate customer order reference
      *
-     * @param string|null $newReferenceNumber __BT-X-150, From EXTENDED__
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-151, From EXTENDED__
+     * @param  null|string            $newReferenceNumber __BT-X-150, From EXTENDED__
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-151, From EXTENDED__
      * @return self
      */
     public function addDocumentUltimateCustomerOrderReference(
@@ -2284,7 +2228,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $orderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
+                ->setValue($newReferenceDate->format('Ymd'))
                 ->setFormat('102');
         }
 
@@ -2294,8 +2238,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set an additional despatch advice reference
      *
-     * @param string|null $newReferenceNumber __BT-16, From BASIC WL__ Shipping notification number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-200, From EXTENDED__ Shipping notification date
+     * @param  null|string            $newReferenceNumber __BT-16, From BASIC WL__ Shipping notification number
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-200, From EXTENDED__ Shipping notification date
      * @return self
      */
     public function setDocumentDespatchAdviceReference(
@@ -2326,9 +2270,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $despatchAdviceReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
-        };
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
+        }
 
         return $this;
     }
@@ -2336,8 +2280,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an additional despatch advice reference
      *
-     * @param string|null $newReferenceNumber __BT-16, From BASIC WL__ Shipping notification number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-200, From EXTENDED__ Shipping notification date
+     * @param  null|string            $newReferenceNumber __BT-16, From BASIC WL__ Shipping notification number
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-200, From EXTENDED__ Shipping notification date
      * @return self
      */
     public function addDocumentDespatchAdviceReference(
@@ -2356,8 +2300,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set an additional receiving advice reference
      *
-     * @param string|null $newReferenceNumber __BT-15, From BASIC WL__ Receipt notification number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-201, From EXTENDED__ Receipt notification date
+     * @param  null|string            $newReferenceNumber __BT-15, From BASIC WL__ Receipt notification number
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-201, From EXTENDED__ Receipt notification date
      * @return self
      */
     public function setDocumentReceivingAdviceReference(
@@ -2388,9 +2332,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $receivingAdviceReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
-        };
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
+        }
 
         return $this;
     }
@@ -2398,8 +2342,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set an additional receiving advice reference
      *
-     * @param string|null $newReferenceNumber __BT-15, From BASIC WL__ Receipt notification number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-201, From EXTENDED__ Receipt notification date
+     * @param  null|string            $newReferenceNumber __BT-15, From BASIC WL__ Receipt notification number
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-201, From EXTENDED__ Receipt notification date
      * @return self
      */
     public function addDocumentReceivingAdviceReference(
@@ -2418,8 +2362,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set an additional delivery note
      *
-     * @param string|null $newReferenceNumber __BT-X-202, From EXTENDED__ Delivery slip number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-203, From EXTENDED__ Delivery slip date
+     * @param  null|string            $newReferenceNumber __BT-X-202, From EXTENDED__ Delivery slip number
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-203, From EXTENDED__ Delivery slip date
      * @return self
      */
     public function setDocumentDeliveryNoteReference(
@@ -2450,9 +2394,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $deliveryNoteReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
-        };
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
+        }
 
         return $this;
     }
@@ -2460,8 +2404,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an additional delivery note
      *
-     * @param string|null $newReferenceNumber __BT-X-202, From EXTENDED__ Delivery slip number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-203, From EXTENDED__ Delivery slip date
+     * @param  null|string            $newReferenceNumber __BT-X-202, From EXTENDED__ Delivery slip number
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-203, From EXTENDED__ Delivery slip date
      * @return self
      */
     public function addDocumentDeliveryNoteReference(
@@ -2480,7 +2424,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the date of the delivery
      *
-     * @param DateTimeInterface|null $newDate __BT-72, From BASIC WL__ Actual delivery date
+     * @param  null|DateTimeInterface $newDate __BT-72, From BASIC WL__ Actual delivery date
      * @return self
      */
     public function setDocumentSupplyChainEvent(
@@ -2503,7 +2447,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ->getActualDeliverySupplyChainEventWithCreate()
             ->getOccurrenceDateTimeWithCreate()
             ->getDateTimeStringWithCreate()
-            ->setValue($newDate->format("Ymd"))
+            ->setValue($newDate->format('Ymd'))
             ->setFormat('102');
 
         return $this;
@@ -2512,7 +2456,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the identifier assigned by the buyer and used for internal routing
      *
-     * @param string|null $newBuyerReference __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
+     * @param  null|string $newBuyerReference __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
      * @return self
      */
     public function setDocumentBuyerReference(
@@ -2541,7 +2485,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the name of the seller/supplier party
      *
-     * @param string|null $newName __BT-27, From MINIMUM__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-27, From MINIMUM__ The full formal name under which the party is registered
      * @return self
      */
     public function setDocumentSellerName(
@@ -2572,7 +2516,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a name of the seller/supplier party
      *
-     * @param string|null $newName __BT-27, From MINIMUM__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-27, From MINIMUM__ The full formal name under which the party is registered
      * @return self
      */
     public function addDocumentSellerName(
@@ -2590,7 +2534,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the ID of the seller/supplier party
      *
-     * @param string|null $newId __BT-29, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-29, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setDocumentSellerId(
@@ -2615,7 +2559,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the seller/supplier party
      *
-     * @param string|null $newId __BT-29, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-29, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addDocumentSellerId(
@@ -2639,8 +2583,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Global ID of the seller/supplier party
      *
-     * @param string|null $newGlobalId __BT-29-0, From BASIC WL__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-29-1, From BASIC WL__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-29-0, From BASIC WL__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-29-1, From BASIC WL__ Type of the global identifier of the party
      * @return self
      */
     public function setDocumentSellerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
@@ -2664,8 +2608,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the seller/supplier party
      *
-     * @param string|null $newGlobalId __BT-29-0, From BASIC WL__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-29-1, From BASIC WL__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-29-0, From BASIC WL__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-29-1, From BASIC WL__ Type of the global identifier of the party
      * @return self
      */
     public function addDocumentSellerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
@@ -2689,8 +2633,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Tax Registration of the seller/supplier party
      *
-     * @param string|null $newTaxRegistrationType __BT-31-0/BT-32-0, From MINIMUM/EN 16931__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-31/32, From MINIMUM/EN 16931__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-31-0/BT-32-0, From MINIMUM/EN 16931__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-31/32, From MINIMUM/EN 16931__ Tax identification number
      * @return self
      */
     public function setDocumentSellerTaxRegistration(
@@ -2716,8 +2660,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an Tax Registration to the seller/supplier party
      *
-     * @param string|null $newTaxRegistrationType __BT-31-0/BT-32-0, From MINIMUM/EN 16931__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-31/32, From MINIMUM/EN 16931__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-31-0/BT-32-0, From MINIMUM/EN 16931__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-31/32, From MINIMUM/EN 16931__ Tax identification number
      * @return self
      */
     public function addDocumentSellerTaxRegistration(
@@ -2746,13 +2690,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the address of the seller/supplier party
      *
-     * @param string|null $newAddressLine1 __BT-35, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-36, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-162, From BASIC WL__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-38, From BASIC WL__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-37, From BASIC WL__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-40, From MINIMUM__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-39, From BASIC WL__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-35, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-36, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-162, From BASIC WL__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-38, From BASIC WL__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-37, From BASIC WL__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-40, From MINIMUM__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-39, From BASIC WL__ Region or federal state in which the party's address is located
      * @return self
      */
     public function setDocumentSellerAddress(
@@ -2779,7 +2723,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -2825,13 +2769,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an address to the seller/supplier party
      *
-     * @param string|null $newAddressLine1 __BT-35, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-36, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-162, From BASIC WL__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-38, From BASIC WL__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-37, From BASIC WL__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-40, From MINIMUM__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-39, From BASIC WL__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-35, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-36, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-162, From BASIC WL__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-38, From BASIC WL__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-37, From BASIC WL__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-40, From MINIMUM__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-39, From BASIC WL__ Region or federal state in which the party's address is located
      * @return self
      */
     public function addDocumentSellerAddress(
@@ -2851,7 +2795,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -2873,9 +2817,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the legal information of the seller/supplier party
      *
-     * @param string|null $newType __BT-30-1, From MINIMUM__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-30, From MINIMUM__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-28, From BASIC WL__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-30-1, From MINIMUM__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-30, From MINIMUM__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-28, From BASIC WL__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function setDocumentSellerLegalOrganisation(
@@ -2902,6 +2846,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             $sellerTradeParty->getSpecifiedLegalOrganizationWithCreate()->getIDWithCreate()->setValue($newId);
+
             if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
                 $sellerTradeParty->getSpecifiedLegalOrganization()->getID()->setSchemeID($newType);
             }
@@ -2917,9 +2862,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a legal information of the seller/supplier party
      *
-     * @param string|null $newType __BT-30-1, From MINIMUM__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-30, From MINIMUM__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-28, From BASIC WL__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-30-1, From MINIMUM__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-30, From MINIMUM__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-28, From BASIC WL__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function addDocumentSellerLegalOrganisation(
@@ -2939,11 +2884,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the contact information of the seller/supplier party
      *
-     * @param string|null $newPersonName __BT-41, From EN 16931__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-41-0, From EN 16931__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-42, From EN 16931__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-107, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-43, From EN 16931__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-41, From EN 16931__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-41-0, From EN 16931__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-42, From EN 16931__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-107, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-43, From EN 16931__ E-Mail address of the contact point
      * @return self
      */
     public function setDocumentSellerContact(
@@ -2966,7 +2911,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -2986,11 +2931,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add contact information of the seller/supplier party
      *
-     * @param string|null $newPersonName __BT-41, From EN 16931__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-41-0, From EN 16931__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-42, From EN 16931__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-107, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-43, From EN 16931__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-41, From EN 16931__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-41-0, From EN 16931__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-42, From EN 16931__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-107, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-43, From EN 16931__ E-Mail address of the contact point
      * @return self
      */
     public function addDocumentSellerContact(
@@ -3006,7 +2951,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -3045,8 +2990,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set communication information of the seller/supplier party
      *
-     * @param string|null $newType __BT-34-1, From BASIC WL__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-34, From BASIC WL__ The party's electronic address.
+     * @param  null|string $newType __BT-34-1, From BASIC WL__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-34, From BASIC WL__ The party's electronic address
      * @return self
      */
     public function setDocumentSellerCommunication(?string $newType = null, ?string $newUri = null): self
@@ -3078,8 +3023,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add communication information of the seller/supplier party
      *
-     * @param string|null $newType __BT-34-1, From BASIC WL__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-34, From BASIC WL__ The party's electronic address.
+     * @param  null|string $newType __BT-34-1, From BASIC WL__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-34, From BASIC WL__ The party's electronic address
      * @return self
      */
     public function addDocumentSellerCommunication(?string $newType = null, ?string $newUri = null): self
@@ -3096,7 +3041,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the name of the buyer/customer party
      *
-     * @param string|null $newName __BT-44, From MINIMUM__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-44, From MINIMUM__ The full formal name under which the party is registered
      * @return self
      */
     public function setDocumentBuyerName(
@@ -3127,7 +3072,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a name of the buyer/customer party
      *
-     * @param string|null $newName __BT-44, From MINIMUM__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-44, From MINIMUM__ The full formal name under which the party is registered
      * @return self
      */
     public function addDocumentBuyerName(
@@ -3145,7 +3090,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the ID of the buyer/customer party
      *
-     * @param string|null $newId __BT-46, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-46, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setDocumentBuyerId(
@@ -3170,7 +3115,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the buyer/customer party
      *
-     * @param string|null $newId __BT-46, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-46, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addDocumentBuyerId(
@@ -3194,8 +3139,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Global ID of the buyer/customer party
      *
-     * @param string|null $newGlobalId __BT-46-0, From BASIC WL__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-46-1, From BASIC WL__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-46-0, From BASIC WL__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-46-1, From BASIC WL__ Type of the global identifier of the party
      * @return self
      */
     public function setDocumentBuyerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
@@ -3221,8 +3166,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the buyer/customer party
      *
-     * @param string|null $newGlobalId __BT-46-0, From BASIC WL__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-46-1, From BASIC WL__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-46-0, From BASIC WL__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-46-1, From BASIC WL__ Type of the global identifier of the party
      * @return self
      */
     public function addDocumentBuyerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
@@ -3248,8 +3193,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Tax Registration of the buyer/customer party
      *
-     * @param string|null $newTaxRegistrationType __BT-48-0, From MINIMUM__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-48, From MINIMUM__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-48-0, From MINIMUM__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-48, From MINIMUM__ Tax identification number
      * @return self
      */
     public function setDocumentBuyerTaxRegistration(
@@ -3277,8 +3222,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an Tax Registration to the buyer/customer party
      *
-     * @param string|null $newTaxRegistrationType __BT-48-0, From MINIMUM__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-48, From MINIMUM__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-48-0, From MINIMUM__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-48, From MINIMUM__ Tax identification number
      * @return self
      */
     public function addDocumentBuyerTaxRegistration(
@@ -3307,13 +3252,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the address of the buyer/customer party
      *
-     * @param string|null $newAddressLine1 __BT-50, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-51, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-163, From BASIC WL__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-53, From BASIC WL__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-52, From BASIC WL__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-55, From BASIC WL__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-54, From BASIC WL__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-50, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-51, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-163, From BASIC WL__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-53, From BASIC WL__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-52, From BASIC WL__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-55, From BASIC WL__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-54, From BASIC WL__ Region or federal state in which the party's address is located
      * @return self
      */
     public function setDocumentBuyerAddress(
@@ -3340,7 +3285,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -3386,13 +3331,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an address to the buyer/customer party
      *
-     * @param string|null $newAddressLine1 __BT-50, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-51, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-163, From BASIC WL__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-53, From BASIC WL__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-52, From BASIC WL__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-55, From BASIC WL__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-54, From BASIC WL__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-50, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-51, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-163, From BASIC WL__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-53, From BASIC WL__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-52, From BASIC WL__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-55, From BASIC WL__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-54, From BASIC WL__ Region or federal state in which the party's address is located
      * @return self
      */
     public function addDocumentBuyerAddress(
@@ -3412,7 +3357,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -3434,9 +3379,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the legal information of the buyer/customer party
      *
-     * @param string|null $newType __BT-47-1, From MINIMUM__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-47, From MINIMUM__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-45, From BASIC WL__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-47-1, From MINIMUM__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-47, From MINIMUM__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-45, From BASIC WL__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function setDocumentBuyerLegalOrganisation(
@@ -3463,6 +3408,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             $buyerTradeParty->getSpecifiedLegalOrganizationWithCreate()->getIDWithCreate()->setValue($newId);
+
             if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
                 $buyerTradeParty->getSpecifiedLegalOrganization()->getID()->setSchemeID($newType);
             }
@@ -3478,9 +3424,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a legal information of the buyer/customer party
      *
-     * @param string|null $newType __BT-47-1, From MINIMUM__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-47, From MINIMUM__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-45, From BASIC WL__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-47-1, From MINIMUM__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-47, From MINIMUM__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-45, From BASIC WL__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function addDocumentBuyerLegalOrganisation(
@@ -3500,11 +3446,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the contact information of the buyer/customer party
      *
-     * @param string|null $newPersonName __BT-56, From EN 16931__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-56-0, From EN 16931__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-57, From EN 16931__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-115, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-58, From EN 16931__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-56, From EN 16931__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-56-0, From EN 16931__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-57, From EN 16931__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-115, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-58, From EN 16931__ E-Mail address of the contact point
      * @return self
      */
     public function setDocumentBuyerContact(
@@ -3527,7 +3473,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -3547,11 +3493,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add contact information of the buyer/customer party
      *
-     * @param string|null $newPersonName __BT-56, From EN 16931__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-56-0, From EN 16931__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-57, From EN 16931__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-115, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-58, From EN 16931__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-56, From EN 16931__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-56-0, From EN 16931__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-57, From EN 16931__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-115, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-58, From EN 16931__ E-Mail address of the contact point
      * @return self
      */
     public function addDocumentBuyerContact(
@@ -3567,7 +3513,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -3606,8 +3552,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set communication information of the buyer/customer party
      *
-     * @param string|null $newType __BT-49-1, From BASIC WL__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-49, From BASIC WL__ The party's electronic address.
+     * @param  null|string $newType __BT-49-1, From BASIC WL__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-49, From BASIC WL__ The party's electronic address
      * @return self
      */
     public function setDocumentBuyerCommunication(?string $newType = null, ?string $newUri = null): self
@@ -3644,8 +3590,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a communication information of the buyer/customer party
      *
-     * @param string|null $newType __BT-49-1, From BASIC WL__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-49, From BASIC WL__ The party's electronic address.
+     * @param  null|string $newType __BT-49-1, From BASIC WL__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-49, From BASIC WL__ The party's electronic address
      * @return self
      */
     public function addDocumentBuyerCommunication(?string $newType = null, ?string $newUri = null): self
@@ -3662,7 +3608,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the name of the tax representative party
      *
-     * @param string|null $newName __BT-62, From BASIC WL__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-62, From BASIC WL__ The full formal name under which the party is registered
      * @return self
      */
     public function setDocumentTaxRepresentativeName(
@@ -3693,7 +3639,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a name of the tax representative party
      *
-     * @param string|null $newName __BT-62, From BASIC WL__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-62, From BASIC WL__ The full formal name under which the party is registered
      * @return self
      */
     public function addDocumentTaxRepresentativeName(
@@ -3711,7 +3657,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the ID of the tax representative party
      *
-     * @param string|null $newId __BT-X-116, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-X-116, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setDocumentTaxRepresentativeId(
@@ -3736,7 +3682,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the tax representative party
      *
-     * @param string|null $newId __BT-X-116, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-X-116, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addDocumentTaxRepresentativeId(
@@ -3760,8 +3706,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Global ID of the tax representative party
      *
-     * @param string|null $newGlobalId __BT-X-117, From EXTENDED__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-X-117-1, From EXTENDED__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-X-117, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-117-1, From EXTENDED__ Type of the global identifier of the party
      * @return self
      */
     public function setDocumentTaxRepresentativeGlobalId(
@@ -3789,8 +3735,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the tax representative party
      *
-     * @param string|null $newGlobalId __BT-X-117, From EXTENDED__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-X-117-1, From EXTENDED__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-X-117, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-117-1, From EXTENDED__ Type of the global identifier of the party
      * @return self
      */
     public function addDocumentTaxRepresentativeGlobalId(
@@ -3818,8 +3764,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Tax Registration of the tax representative party
      *
-     * @param string|null $newTaxRegistrationType __BT-63-0, From BASIC WL__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-63, From BASIC WL__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-63-0, From BASIC WL__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-63, From BASIC WL__ Tax identification number
      * @return self
      */
     public function setDocumentTaxRepresentativeTaxRegistration(
@@ -3847,8 +3793,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an Tax Registration to the tax representative party
      *
-     * @param string|null $newTaxRegistrationType __BT-63-0, From BASIC WL__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-63, From BASIC WL__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-63-0, From BASIC WL__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-63, From BASIC WL__ Tax identification number
      * @return self
      */
     public function addDocumentTaxRepresentativeTaxRegistration(
@@ -3877,13 +3823,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the address of the tax representative party
      *
-     * @param string|null $newAddressLine1 __BT-64, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-65, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-164, From BASIC WL__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-67, From BASIC WL__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-66, From BASIC WL__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-69, From BASIC WL__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-68, From BASIC WL__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-64, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-65, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-164, From BASIC WL__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-67, From BASIC WL__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-66, From BASIC WL__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-69, From BASIC WL__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-68, From BASIC WL__ Region or federal state in which the party's address is located
      * @return self
      */
     public function setDocumentTaxRepresentativeAddress(
@@ -3910,7 +3856,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -3956,13 +3902,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an address to the tax representative party
      *
-     * @param string|null $newAddressLine1 __BT-64, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-65, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-164, From BASIC WL__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-67, From BASIC WL__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-66, From BASIC WL__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-69, From BASIC WL__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-68, From BASIC WL__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-64, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-65, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-164, From BASIC WL__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-67, From BASIC WL__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-66, From BASIC WL__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-69, From BASIC WL__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-68, From BASIC WL__ Region or federal state in which the party's address is located
      * @return self
      */
     public function addDocumentTaxRepresentativeAddress(
@@ -3982,7 +3928,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -4004,9 +3950,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the legal information of the tax representative party
      *
-     * @param string|null $newType __BT-, From __ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-, From __ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-, From __ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-, From __ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-, From __ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-, From __ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function setDocumentTaxRepresentativeLegalOrganisation(
@@ -4033,6 +3979,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             $taxRepresentativeTradeParty->getSpecifiedLegalOrganizationWithCreate()->getIDWithCreate()->setValue($newId);
+
             if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
                 $taxRepresentativeTradeParty->getSpecifiedLegalOrganization()->getID()->setSchemeID($newType);
             }
@@ -4048,9 +3995,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the legal information of the tax representative party
      *
-     * @param string|null $newType __BT-, From __ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-, From __ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-, From __ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-, From __ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-, From __ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-, From __ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function addDocumentTaxRepresentativeLegalOrganisation(
@@ -4070,11 +4017,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the contact information of the tax representative party
      *
-     * @param string|null $newPersonName __BT-X-120, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-X-121, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-X-122, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-123, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-X-124, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-X-120, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-121, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-122, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-123, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-124, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function setDocumentTaxRepresentativeContact(
@@ -4097,7 +4044,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -4117,11 +4064,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add contact information of the tax representative party
      *
-     * @param string|null $newPersonName __BT-X-120, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-X-121, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-X-122, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-123, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-X-124, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-X-120, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-121, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-122, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-123, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-124, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function addDocumentTaxRepresentativeContact(
@@ -4137,7 +4084,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -4176,8 +4123,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set communication information of the tax representative party
      *
-     * @param string|null $newType __BT-X-125-0, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-125, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-125-0, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-125, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function setDocumentTaxRepresentativeCommunication(?string $newType = null, ?string $newUri = null): self
@@ -4214,8 +4161,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a communication information of the tax representative party
      *
-     * @param string|null $newType __BT-X-125-0, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-125, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-125-0, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-125, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function addDocumentTaxRepresentativeCommunication(?string $newType = null, ?string $newUri = null): self
@@ -4232,7 +4179,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the name of the product end-user party
      *
-     * @param string|null $newName __BT-X-128, From EXTENDED__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-X-128, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
     public function setDocumentProductEndUserName(
@@ -4263,7 +4210,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a name of the product end-user party
      *
-     * @param string|null $newName __BT-X-128, From EXTENDED__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-X-128, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
     public function addDocumentProductEndUserName(
@@ -4281,7 +4228,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the ID of the product end-user party
      *
-     * @param string|null $newId __BT-X-126, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-X-126, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setDocumentProductEndUserId(
@@ -4306,7 +4253,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the product end-user party
      *
-     * @param string|null $newId __BT-X-126, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-X-126, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addDocumentProductEndUserId(
@@ -4330,8 +4277,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Global ID of the product end-user party
      *
-     * @param string|null $newGlobalId __BT-X-127, From EXTENDED__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-X-127-0, From EXTENDED__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-X-127, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-127-0, From EXTENDED__ Type of the global identifier of the party
      * @return self
      */
     public function setDocumentProductEndUserGlobalId(
@@ -4359,8 +4306,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the product end-user party
      *
-     * @param string|null $newGlobalId __BT-X-127, From EXTENDED__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-X-127-0, From EXTENDED__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-X-127, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-127-0, From EXTENDED__ Type of the global identifier of the party
      * @return self
      */
     public function addDocumentProductEndUserGlobalId(
@@ -4388,8 +4335,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Tax Registration of the product end-user party
      *
-     * @param string|null $newTaxRegistrationType __BT-, From __ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-, From __ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-, From __ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-, From __ Tax identification number
      * @return self
      */
     public function setDocumentProductEndUserTaxRegistration(
@@ -4417,8 +4364,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an Tax Registration to the product end-user party
      *
-     * @param string|null $newTaxRegistrationType __BT-, From __ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-, From __ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-, From __ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-, From __ Tax identification number
      * @return self
      */
     public function addDocumentProductEndUserTaxRegistration(
@@ -4447,13 +4394,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the address of the product end-user party
      *
-     * @param string|null $newAddressLine1 __BT-X-397, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-X-398, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-X-399, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-X-396, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-X-400, From EXTENDED__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-X-401, From EXTENDED__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-X-402, From EXTENDED__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-X-397, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-X-398, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-X-399, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-X-396, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-X-400, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-X-401, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-X-402, From EXTENDED__ Region or federal state in which the party's address is located
      * @return self
      */
     public function setDocumentProductEndUserAddress(
@@ -4480,7 +4427,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -4526,13 +4473,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an address to the product end-user party
      *
-     * @param string|null $newAddressLine1 __BT-X-397, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-X-398, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-X-399, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-X-396, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-X-400, From EXTENDED__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-X-401, From EXTENDED__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-X-402, From EXTENDED__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-X-397, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-X-398, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-X-399, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-X-396, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-X-400, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-X-401, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-X-402, From EXTENDED__ Region or federal state in which the party's address is located
      * @return self
      */
     public function addDocumentProductEndUserAddress(
@@ -4552,7 +4499,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -4574,9 +4521,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the legal information of the product end-user party
      *
-     * @param string|null $newType __BT-X-129-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-X-129, From EXTENDED__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-X-130, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-X-129-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-129, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-130, From EXTENDED__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function setDocumentProductEndUserLegalOrganisation(
@@ -4603,6 +4550,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             $productEndUserTradeParty->getSpecifiedLegalOrganizationWithCreate()->getIDWithCreate()->setValue($newId);
+
             if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
                 $productEndUserTradeParty->getSpecifiedLegalOrganization()->getID()->setSchemeID($newType);
             }
@@ -4618,9 +4566,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a legal information of the product end-user party
      *
-     * @param string|null $newType __BT-X-129-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-X-129, From EXTENDED__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-X-130, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-X-129-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-129, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-130, From EXTENDED__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function addDocumentProductEndUserLegalOrganisation(
@@ -4640,11 +4588,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the contact information of the product end-user party
      *
-     * @param string|null $newPersonName __BT-X-131, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-X-132, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-X-133, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-134, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-X-135, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-X-131, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-132, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-133, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-134, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-135, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function setDocumentProductEndUserContact(
@@ -4667,7 +4615,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -4687,11 +4635,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add contact information of the product end-user party
      *
-     * @param string|null $newPersonName __BT-X-131, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-X-132, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-X-133, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-134, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-X-135, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-X-131, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-132, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-133, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-134, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-135, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function addDocumentProductEndUserContact(
@@ -4707,7 +4655,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -4746,8 +4694,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set communication information of the product end-user party
      *
-     * @param string|null $newType __BT-X-143-0, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-143, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-143-0, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-143, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function setDocumentProductEndUserCommunication(?string $newType = null, ?string $newUri = null): self
@@ -4784,8 +4732,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a communication information of the product end-user party
      *
-     * @param string|null $newType __BT-X-143-0, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-143, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-143-0, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-143, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function addDocumentProductEndUserCommunication(?string $newType = null, ?string $newUri = null): self
@@ -4802,7 +4750,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the name of the Ship-To party
      *
-     * @param string|null $newName __BT-70, From BASIC WL__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-70, From BASIC WL__ The full formal name under which the party is registered
      * @return self
      */
     public function setDocumentShipToName(
@@ -4833,7 +4781,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a name of the Ship-To party
      *
-     * @param string|null $newName __BT-70, From BASIC WL__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-70, From BASIC WL__ The full formal name under which the party is registered
      * @return self
      */
     public function addDocumentShipToName(
@@ -4851,7 +4799,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the ID of the Ship-To party
      *
-     * @param string|null $newId __BT-71, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-71, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setDocumentShipToId(
@@ -4876,7 +4824,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the Ship-To party
      *
-     * @param string|null $newId __BT-71, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-71, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addDocumentShipToId(
@@ -4900,8 +4848,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Global ID of the Ship-To party
      *
-     * @param string|null $newGlobalId __BT-71-0, From BASIC WL__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-71-1, From BASIC WL__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-71-0, From BASIC WL__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-71-1, From BASIC WL__ Type of the global identifier of the party
      * @return self
      */
     public function setDocumentShipToGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
@@ -4927,8 +4875,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the Ship-To party
      *
-     * @param string|null $newGlobalId __BT-71-0, From BASIC WL__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-71-1, From BASIC WL__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-71-0, From BASIC WL__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-71-1, From BASIC WL__ Type of the global identifier of the party
      * @return self
      */
     public function addDocumentShipToGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
@@ -4954,8 +4902,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Tax Registration of the Ship-To party
      *
-     * @param string|null $newTaxRegistrationType __BT-X-161-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-X-161, From EXTENDED__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-X-161-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-X-161, From EXTENDED__ Tax identification number
      * @return self
      */
     public function setDocumentShipToTaxRegistration(
@@ -4983,8 +4931,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an Tax Registration to the Ship-To party
      *
-     * @param string|null $newTaxRegistrationType __BT-X-161-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-X-161, From EXTENDED__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-X-161-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-X-161, From EXTENDED__ Tax identification number
      * @return self
      */
     public function addDocumentShipToTaxRegistration(
@@ -5013,13 +4961,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the address of the Ship-To party
      *
-     * @param string|null $newAddressLine1 __BT-75, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-76, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-165, From BASIC WL__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-78, From BASIC WL__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-77, From BASIC WL__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-80, From BASIC WL__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-79, From BASIC WL__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-75, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-76, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-165, From BASIC WL__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-78, From BASIC WL__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-77, From BASIC WL__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-80, From BASIC WL__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-79, From BASIC WL__ Region or federal state in which the party's address is located
      * @return self
      */
     public function setDocumentShipToAddress(
@@ -5046,7 +4994,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -5092,13 +5040,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an address to the Ship-To party
      *
-     * @param string|null $newAddressLine1 __BT-75, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-76, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-165, From BASIC WL__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-78, From BASIC WL__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-77, From BASIC WL__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-80, From BASIC WL__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-79, From BASIC WL__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-75, From BASIC WL__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-76, From BASIC WL__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-165, From BASIC WL__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-78, From BASIC WL__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-77, From BASIC WL__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-80, From BASIC WL__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-79, From BASIC WL__ Region or federal state in which the party's address is located
      * @return self
      */
     public function addDocumentShipToAddress(
@@ -5118,7 +5066,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -5140,9 +5088,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the legal information of the Ship-To party
      *
-     * @param string|null $newType __BT-X-153-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-X-153, From EXTENDED__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-X-154, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-X-153-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-153, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-154, From EXTENDED__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function setDocumentShipToLegalOrganisation(
@@ -5169,6 +5117,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             $shipToTradeParty->getSpecifiedLegalOrganizationWithCreate()->getIDWithCreate()->setValue($newId);
+
             if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
                 $shipToTradeParty->getSpecifiedLegalOrganization()->getID()->setSchemeID($newType);
             }
@@ -5184,9 +5133,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a legal information of the Ship-To party
      *
-     * @param string|null $newType __BT-X-153-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-X-153, From EXTENDED__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-X-154, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-X-153-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-153, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-154, From EXTENDED__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function addDocumentShipToLegalOrganisation(
@@ -5206,11 +5155,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the contact information of the Ship-To party
      *
-     * @param string|null $newPersonName __BT-X-155, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-X-156, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-X-157, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-158, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-X-159, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-X-155, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-156, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-157, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-158, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-159, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function setDocumentShipToContact(
@@ -5233,7 +5182,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -5253,11 +5202,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add contact information of the Ship-To party
      *
-     * @param string|null $newPersonName __BT-X-155, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-X-156, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-X-157, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-158, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-X-159, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-X-155, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-156, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-157, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-158, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-159, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function addDocumentShipToContact(
@@ -5273,7 +5222,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -5312,8 +5261,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set communication information of the Ship-To party
      *
-     * @param string|null $newType __BT-X-160, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-160-0, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-160, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-160-0, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function setDocumentShipToCommunication(?string $newType = null, ?string $newUri = null): self
@@ -5350,8 +5299,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a communication information of the Ship-To party
      *
-     * @param string|null $newType __BT-X-160, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-160-0, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-160, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-160-0, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function addDocumentShipToCommunication(?string $newType = null, ?string $newUri = null): self
@@ -5368,7 +5317,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the name of the ultimate Ship-To party
      *
-     * @param string|null $newName __BT-X-164, From EXTENDED__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-X-164, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
     public function setDocumentUltimateShipToName(
@@ -5399,7 +5348,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a name of the ultimate Ship-To party
      *
-     * @param string|null $newName __BT-X-164, From EXTENDED__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-X-164, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
     public function addDocumentUltimateShipToName(
@@ -5417,7 +5366,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the ID of the ultimate Ship-To party
      *
-     * @param string|null $newId __BT-X-162, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-X-162, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setDocumentUltimateShipToId(
@@ -5442,7 +5391,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the ultimate Ship-To party
      *
-     * @param string|null $newId __BT-X-162, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-X-162, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addDocumentUltimateShipToId(
@@ -5466,8 +5415,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Global ID of the ultimate Ship-To party
      *
-     * @param string|null $newGlobalId __BT-X-163, From EXTENDED__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-X-163-0, From EXTENDED__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-X-163, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-163-0, From EXTENDED__ Type of the global identifier of the party
      * @return self
      */
     public function setDocumentUltimateShipToGlobalId(
@@ -5495,8 +5444,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the ultimate Ship-To party
      *
-     * @param string|null $newGlobalId __BT-X-163, From EXTENDED__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-X-163-0, From EXTENDED__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-X-163, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-163-0, From EXTENDED__ Type of the global identifier of the party
      * @return self
      */
     public function addDocumentUltimateShipToGlobalId(
@@ -5524,8 +5473,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Tax Registration of the ultimate Ship-To party
      *
-     * @param string|null $newTaxRegistrationType __BT-X-180-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-X-180, From EXTENDED__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-X-180-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-X-180, From EXTENDED__ Tax identification number
      * @return self
      */
     public function setDocumentUltimateShipToTaxRegistration(
@@ -5553,8 +5502,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an Tax Registration to the ultimate Ship-To party
      *
-     * @param string|null $newTaxRegistrationType __BT-X-180-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-X-180, From EXTENDED__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-X-180-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-X-180, From EXTENDED__ Tax identification number
      * @return self
      */
     public function addDocumentUltimateShipToTaxRegistration(
@@ -5583,13 +5532,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the address of the ultimate Ship-To party
      *
-     * @param string|null $newAddressLine1 __BT-X-173, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-X-174, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-X-175, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-X-172, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-X-176, From EXTENDED__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-X-177, From EXTENDED__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-X-178, From EXTENDED__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-X-173, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-X-174, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-X-175, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-X-172, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-X-176, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-X-177, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-X-178, From EXTENDED__ Region or federal state in which the party's address is located
      * @return self
      */
     public function setDocumentUltimateShipToAddress(
@@ -5616,7 +5565,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -5662,13 +5611,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an address to the ultimate Ship-To party
      *
-     * @param string|null $newAddressLine1 __BT-X-173, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-X-174, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-X-175, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-X-172, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-X-176, From EXTENDED__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-X-177, From EXTENDED__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-X-178, From EXTENDED__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-X-173, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-X-174, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-X-175, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-X-172, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-X-176, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-X-177, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-X-178, From EXTENDED__ Region or federal state in which the party's address is located
      * @return self
      */
     public function addDocumentUltimateShipToAddress(
@@ -5688,7 +5637,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -5710,9 +5659,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the legal information of the ultimate Ship-To party
      *
-     * @param string|null $newType __BT-X-165-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-X-165, From EXTENDED__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-X-166, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-X-165-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-165, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-166, From EXTENDED__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function setDocumentUltimateShipToLegalOrganisation(
@@ -5739,6 +5688,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             $ultimateShipToTradeParty->getSpecifiedLegalOrganizationWithCreate()->getIDWithCreate()->setValue($newId);
+
             if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
                 $ultimateShipToTradeParty->getSpecifiedLegalOrganization()->getID()->setSchemeID($newType);
             }
@@ -5754,9 +5704,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add legal information of the ultimate Ship-To party
      *
-     * @param string|null $newType __BT-X-165-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-X-165, From EXTENDED__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-X-166, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-X-165-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-165, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-166, From EXTENDED__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function addDocumentUltimateShipToLegalOrganisation(
@@ -5776,11 +5726,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the contact information of the ultimate Ship-To party
      *
-     * @param string|null $newPersonName __BT-X-167, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-X-168, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-X-169, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-170, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-X-171, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-X-167, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-168, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-169, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-170, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-171, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function setDocumentUltimateShipToContact(
@@ -5803,7 +5753,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -5823,11 +5773,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add contact information of the ultimate Ship-To party
      *
-     * @param string|null $newPersonName __BT-X-167, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-X-168, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-X-169, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-170, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-X-171, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-X-167, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-168, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-169, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-170, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-171, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function addDocumentUltimateShipToContact(
@@ -5843,7 +5793,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -5882,8 +5832,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set communication information of the ultimate Ship-To party
      *
-     * @param string|null $newType __BT-X-83, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-83-0, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-83, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-83-0, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function setDocumentUltimateShipToCommunication(?string $newType = null, ?string $newUri = null): self
@@ -5920,8 +5870,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a communication information of the ultimate Ship-To party
      *
-     * @param string|null $newType __BT-X-83, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-83-0, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-83, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-83-0, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function addDocumentUltimateShipToCommunication(?string $newType = null, ?string $newUri = null): self
@@ -5938,7 +5888,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the name of the Ship-From party
      *
-     * @param string|null $newName __BT-X-183, From EXTENDED__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-X-183, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
     public function setDocumentShipFromName(
@@ -5969,7 +5919,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a name of the Ship-From party
      *
-     * @param string|null $newName __BT-X-183, From EXTENDED__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-X-183, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
     public function addDocumentShipFromName(
@@ -5987,7 +5937,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the ID of the Ship-From party
      *
-     * @param string|null $newId __BT-X-181, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-X-181, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setDocumentShipFromId(
@@ -6012,7 +5962,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the Ship-From party
      *
-     * @param string|null $newId __BT-X-181, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-X-181, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addDocumentShipFromId(
@@ -6036,8 +5986,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Global ID of the Ship-From party
      *
-     * @param string|null $newGlobalId __BT-X-182, From EXTENDED__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-X-182-0, From EXTENDED__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-X-182, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-182-0, From EXTENDED__ Type of the global identifier of the party
      * @return self
      */
     public function setDocumentShipFromGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
@@ -6063,8 +6013,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the Ship-From party
      *
-     * @param string|null $newGlobalId __BT-X-182, From EXTENDED__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-X-182-0, From EXTENDED__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-X-182, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-182-0, From EXTENDED__ Type of the global identifier of the party
      * @return self
      */
     public function addDocumentShipFromGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
@@ -6090,8 +6040,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Tax Registration of the Ship-From party
      *
-     * @param string|null $newTaxRegistrationType __BT-X-199-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-X-199, From EXTENDED__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-X-199-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-X-199, From EXTENDED__ Tax identification number
      * @return self
      */
     public function setDocumentShipFromTaxRegistration(
@@ -6119,8 +6069,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an Tax Registration to the Ship-From party
      *
-     * @param string|null $newTaxRegistrationType __BT-X-199-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-X-199, From EXTENDED__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-X-199-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-X-199, From EXTENDED__ Tax identification number
      * @return self
      */
     public function addDocumentShipFromTaxRegistration(
@@ -6149,13 +6099,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the address of the Ship-From party
      *
-     * @param string|null $newAddressLine1 __BT-X-192, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-X-193, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-X-194, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-X-191, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-X-195, From EXTENDED__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-X-196, From EXTENDED__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-X-197, From EXTENDED__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-X-192, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-X-193, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-X-194, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-X-191, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-X-195, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-X-196, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-X-197, From EXTENDED__ Region or federal state in which the party's address is located
      * @return self
      */
     public function setDocumentShipFromAddress(
@@ -6182,7 +6132,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -6228,13 +6178,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an address to the Ship-From party
      *
-     * @param string|null $newAddressLine1 __BT-X-192, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-X-193, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-X-194, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-X-191, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-X-195, From EXTENDED__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-X-196, From EXTENDED__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-X-197, From EXTENDED__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-X-192, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-X-193, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-X-194, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-X-191, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-X-195, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-X-196, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-X-197, From EXTENDED__ Region or federal state in which the party's address is located
      * @return self
      */
     public function addDocumentShipFromAddress(
@@ -6254,7 +6204,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -6276,9 +6226,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the legal information of the Ship-From party
      *
-     * @param string|null $newType __BT-X-184-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-X-184, From EXTENDED__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-X-185, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-X-184-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-184, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-185, From EXTENDED__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function setDocumentShipFromLegalOrganisation(
@@ -6305,6 +6255,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             $shipFromTradeParty->getSpecifiedLegalOrganizationWithCreate()->getIDWithCreate()->setValue($newId);
+
             if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
                 $shipFromTradeParty->getSpecifiedLegalOrganization()->getID()->setSchemeID($newType);
             }
@@ -6320,9 +6271,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a legal information of the Ship-From party
      *
-     * @param string|null $newType __BT-X-184-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-X-184, From EXTENDED__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-X-185, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-X-184-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-184, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-185, From EXTENDED__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function addDocumentShipFromLegalOrganisation(
@@ -6342,11 +6293,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the contact information of the Ship-From party
      *
-     * @param string|null $newPersonName __BT-X-186, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-X-187, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-X-188, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-189, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-X-190, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-X-186, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-187, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-188, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-189, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-190, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function setDocumentShipFromContact(
@@ -6369,7 +6320,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -6389,11 +6340,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add contact information of the Ship-From party
      *
-     * @param string|null $newPersonName __BT-X-186, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-X-187, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-X-188, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-189, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-X-190, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-X-186, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-187, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-188, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-189, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-190, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function addDocumentShipFromContact(
@@ -6409,7 +6360,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -6448,8 +6399,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set communication information of the Ship-From party
      *
-     * @param string|null $newType __BT-X-199, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-199-0, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-199, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-199-0, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function setDocumentShipFromCommunication(?string $newType = null, ?string $newUri = null): self
@@ -6486,8 +6437,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a communication information of the Ship-From party
      *
-     * @param string|null $newType __BT-X-199, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-199-0, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-199, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-199-0, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function addDocumentShipFromCommunication(?string $newType = null, ?string $newUri = null): self
@@ -6504,7 +6455,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the name of the Invoicer party
      *
-     * @param string|null $newName __BT-X-207, From EXTENDED__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-X-207, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
     public function setDocumentInvoicerName(
@@ -6535,7 +6486,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a name of the Invoicer party
      *
-     * @param string|null $newName __BT-X-207, From EXTENDED__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-X-207, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
     public function addDocumentInvoicerName(
@@ -6553,7 +6504,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the ID of the Invoicer party
      *
-     * @param string|null $newId __BT-X-205, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-X-205, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setDocumentInvoicerId(
@@ -6578,7 +6529,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the Invoicer party
      *
-     * @param string|null $newId __BT-X-205, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-X-205, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addDocumentInvoicerId(
@@ -6602,8 +6553,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Global ID of the Invoicer party
      *
-     * @param string|null $newGlobalId __BT-X-206, From EXTENDED__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-X-206-0, From EXTENDED__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-X-206, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-206-0, From EXTENDED__ Type of the global identifier of the party
      * @return self
      */
     public function setDocumentInvoicerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
@@ -6629,8 +6580,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the Invoicer party
      *
-     * @param string|null $newGlobalId __BT-X-206, From EXTENDED__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-X-206-0, From EXTENDED__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-X-206, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-206-0, From EXTENDED__ Type of the global identifier of the party
      * @return self
      */
     public function addDocumentInvoicerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
@@ -6656,8 +6607,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Tax Registration of the Invoicer party
      *
-     * @param string|null $newTaxRegistrationType __BT-X-223-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-X-223, From EXTENDED__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-X-223-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-X-223, From EXTENDED__ Tax identification number
      * @return self
      */
     public function setDocumentInvoicerTaxRegistration(
@@ -6685,8 +6636,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an Tax Registration to the Invoicer party
      *
-     * @param string|null $newTaxRegistrationType __BT-X-223-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-X-223, From EXTENDED__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-X-223-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-X-223, From EXTENDED__ Tax identification number
      * @return self
      */
     public function addDocumentInvoicerTaxRegistration(
@@ -6715,13 +6666,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the address of the Invoicer party
      *
-     * @param string|null $newAddressLine1 __BT-X-216, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-X-217, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-X-218, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-X-215, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-X-219, From EXTENDED__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-X-220, From EXTENDED__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-X-221, From EXTENDED__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-X-216, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-X-217, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-X-218, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-X-215, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-X-219, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-X-220, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-X-221, From EXTENDED__ Region or federal state in which the party's address is located
      * @return self
      */
     public function setDocumentInvoicerAddress(
@@ -6748,7 +6699,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -6794,13 +6745,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the address of the Invoicer party
      *
-     * @param string|null $newAddressLine1 __BT-X-216, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-X-217, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-X-218, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-X-215, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-X-219, From EXTENDED__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-X-220, From EXTENDED__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-X-221, From EXTENDED__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-X-216, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-X-217, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-X-218, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-X-215, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-X-219, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-X-220, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-X-221, From EXTENDED__ Region or federal state in which the party's address is located
      * @return self
      */
     public function addDocumentInvoicerAddress(
@@ -6820,7 +6771,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -6842,9 +6793,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the legal information of the Invoicer party
      *
-     * @param string|null $newType __BT-X-208-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-X-208, From EXTENDED__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-X-209, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-X-208-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-208, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-209, From EXTENDED__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function setDocumentInvoicerLegalOrganisation(
@@ -6871,6 +6822,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             $invoicerTradeParty->getSpecifiedLegalOrganizationWithCreate()->getIDWithCreate()->setValue($newId);
+
             if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
                 $invoicerTradeParty->getSpecifiedLegalOrganization()->getID()->setSchemeID($newType);
             }
@@ -6886,9 +6838,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a legal information of the Invoicer party
      *
-     * @param string|null $newType __BT-X-208-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-X-208, From EXTENDED__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-X-209, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-X-208-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-208, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-209, From EXTENDED__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function addDocumentInvoicerLegalOrganisation(
@@ -6908,11 +6860,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the contact information of the Invoicer party
      *
-     * @param string|null $newPersonName __BT-X-210, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-X-211, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-X-212, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-213, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-X-214, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-X-210, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-211, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-212, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-213, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-214, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function setDocumentInvoicerContact(
@@ -6935,7 +6887,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -6955,11 +6907,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add contact information of the Invoicer party
      *
-     * @param string|null $newPersonName __BT-X-210, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-X-211, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-X-212, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-213, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-X-214, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-X-210, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-211, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-212, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-213, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-214, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function addDocumentInvoicerContact(
@@ -6975,7 +6927,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -7014,8 +6966,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set communication information of the Invoicer party
      *
-     * @param string|null $newType __BT-X-222-0, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-222, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-222-0, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-222, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function setDocumentInvoicerCommunication(?string $newType = null, ?string $newUri = null): self
@@ -7052,8 +7004,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a communication information of the Invoicer party
      *
-     * @param string|null $newType __BT-X-222-0, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-222, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-222-0, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-222, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function addDocumentInvoicerCommunication(?string $newType = null, ?string $newUri = null): self
@@ -7070,7 +7022,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the name of the Invoicee party
      *
-     * @param string|null $newName __BT-X-226, From EXTENDED__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-X-226, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
     public function setDocumentInvoiceeName(
@@ -7101,7 +7053,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a name of the Invoicee party
      *
-     * @param string|null $newName __BT-X-226, From EXTENDED__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-X-226, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
     public function addDocumentInvoiceeName(
@@ -7119,7 +7071,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the ID of the Invoicee party
      *
-     * @param string|null $newId __BT-X-224, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-X-224, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setDocumentInvoiceeId(
@@ -7144,7 +7096,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the Invoicee party
      *
-     * @param string|null $newId __BT-X-224, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-X-224, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addDocumentInvoiceeId(
@@ -7168,8 +7120,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Global ID of the Invoicee party
      *
-     * @param string|null $newGlobalId __BT-X-225, From EXTENDED__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-X-225-0, From EXTENDED__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-X-225, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-225-0, From EXTENDED__ Type of the global identifier of the party
      * @return self
      */
     public function setDocumentInvoiceeGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
@@ -7195,8 +7147,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the Invoicee party
      *
-     * @param string|null $newGlobalId __BT-X-225, From EXTENDED__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-X-225-0, From EXTENDED__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-X-225, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-225-0, From EXTENDED__ Type of the global identifier of the party
      * @return self
      */
     public function addDocumentInvoiceeGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
@@ -7222,8 +7174,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Tax Registration of the Invoicee party
      *
-     * @param string|null $newTaxRegistrationType __BT-X-242-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-X-242, From EXTENDED__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-X-242-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-X-242, From EXTENDED__ Tax identification number
      * @return self
      */
     public function setDocumentInvoiceeTaxRegistration(
@@ -7251,8 +7203,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an Tax Registration to the Invoicee party
      *
-     * @param string|null $newTaxRegistrationType __BT-X-242-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-X-242, From EXTENDED__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-X-242-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-X-242, From EXTENDED__ Tax identification number
      * @return self
      */
     public function addDocumentInvoiceeTaxRegistration(
@@ -7281,13 +7233,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the address of the Invoicee party
      *
-     * @param string|null $newAddressLine1 __BT-X-235, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-X-236, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-X-237, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-X-234, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-X-238, From EXTENDED__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-X-239, From EXTENDED__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-X-240, From EXTENDED__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-X-235, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-X-236, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-X-237, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-X-234, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-X-238, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-X-239, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-X-240, From EXTENDED__ Region or federal state in which the party's address is located
      * @return self
      */
     public function setDocumentInvoiceeAddress(
@@ -7314,7 +7266,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -7360,13 +7312,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an address to the Invoicee party
      *
-     * @param string|null $newAddressLine1 __BT-X-235, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-X-236, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-X-237, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-X-234, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-X-238, From EXTENDED__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-X-239, From EXTENDED__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-X-240, From EXTENDED__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-X-235, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-X-236, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-X-237, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-X-234, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-X-238, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-X-239, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-X-240, From EXTENDED__ Region or federal state in which the party's address is located
      * @return self
      */
     public function addDocumentInvoiceeAddress(
@@ -7386,7 +7338,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -7408,9 +7360,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the legal information of the Invoicee party
      *
-     * @param string|null $newType __BT-X-227-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-X-227, From EXTENDED__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-X-228, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-X-227-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-227, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-228, From EXTENDED__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function setDocumentInvoiceeLegalOrganisation(
@@ -7437,6 +7389,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             $invoiceeTradeParty->getSpecifiedLegalOrganizationWithCreate()->getIDWithCreate()->setValue($newId);
+
             if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
                 $invoiceeTradeParty->getSpecifiedLegalOrganization()->getID()->setSchemeID($newType);
             }
@@ -7452,9 +7405,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a legal information of the Invoicee party
      *
-     * @param string|null $newType __BT-X-227-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-X-227, From EXTENDED__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-X-228, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-X-227-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-227, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-228, From EXTENDED__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function addDocumentInvoiceeLegalOrganisation(
@@ -7474,11 +7427,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the contact information of the Invoicee party
      *
-     * @param string|null $newPersonName __BT-X-229, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-X-230, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-X-231, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-232, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-X-233, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-X-229, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-230, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-231, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-232, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-233, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function setDocumentInvoiceeContact(
@@ -7501,7 +7454,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -7521,11 +7474,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add contact information of the Invoicee party
      *
-     * @param string|null $newPersonName __BT-X-229, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-X-230, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-X-231, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-232, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-X-233, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-X-229, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-230, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-231, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-232, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-233, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function addDocumentInvoiceeContact(
@@ -7541,7 +7494,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -7580,8 +7533,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set communication information of the Invoicee party
      *
-     * @param string|null $newType __BT-X-241-0, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-241, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-241-0, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-241, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function setDocumentInvoiceeCommunication(?string $newType = null, ?string $newUri = null): self
@@ -7618,8 +7571,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a communication information of the Invoicee party
      *
-     * @param string|null $newType __BT-X-241-0, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-241, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-241-0, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-241, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function addDocumentInvoiceeCommunication(?string $newType = null, ?string $newUri = null): self
@@ -7636,7 +7589,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the name of the Payee party
      *
-     * @param string|null $newName __BT-59, From BASIC WL__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-59, From BASIC WL__ The full formal name under which the party is registered
      * @return self
      */
     public function setDocumentPayeeName(
@@ -7667,7 +7620,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a name of the Payee party
      *
-     * @param string|null $newName __BT-59, From BASIC WL__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-59, From BASIC WL__ The full formal name under which the party is registered
      * @return self
      */
     public function addDocumentPayeeName(
@@ -7685,7 +7638,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the ID of the Payee party
      *
-     * @param string|null $newId __BT-60, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-60, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setDocumentPayeeId(
@@ -7710,7 +7663,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the Payee party
      *
-     * @param string|null $newId __BT-60, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-60, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addDocumentPayeeId(
@@ -7734,8 +7687,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Global ID of the Payee party
      *
-     * @param string|null $newGlobalId __BT-60-0, From BASIC WL__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-60-1, From BASIC WL__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-60-0, From BASIC WL__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-60-1, From BASIC WL__ Type of the global identifier of the party
      * @return self
      */
     public function setDocumentPayeeGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
@@ -7761,8 +7714,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the Payee party
      *
-     * @param string|null $newGlobalId __BT-60-0, From BASIC WL__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-60-1, From BASIC WL__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-60-0, From BASIC WL__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-60-1, From BASIC WL__ Type of the global identifier of the party
      * @return self
      */
     public function addDocumentPayeeGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
@@ -7788,8 +7741,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Tax Registration of the Payee party
      *
-     * @param string|null $newTaxRegistrationType __BT-X-257-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-X-257, From EXTENDED__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-X-257-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-X-257, From EXTENDED__ Tax identification number
      * @return self
      */
     public function setDocumentPayeeTaxRegistration(
@@ -7817,8 +7770,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an Tax Registration to the Payee party
      *
-     * @param string|null $newTaxRegistrationType __BT-X-257-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-X-257, From EXTENDED__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-X-257-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-X-257, From EXTENDED__ Tax identification number
      * @return self
      */
     public function addDocumentPayeeTaxRegistration(
@@ -7847,13 +7800,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the address of the Payee party
      *
-     * @param string|null $newAddressLine1 __BT-X-250, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-X-251, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-X-252, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-X-249, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-X-253, From EXTENDED__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-X-254, From EXTENDED__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-X-255, From EXTENDED__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-X-250, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-X-251, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-X-252, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-X-249, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-X-253, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-X-254, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-X-255, From EXTENDED__ Region or federal state in which the party's address is located
      * @return self
      */
     public function setDocumentPayeeAddress(
@@ -7880,7 +7833,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -7926,13 +7879,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an address to the Payee party
      *
-     * @param string|null $newAddressLine1 __BT-X-250, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT-X-251, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT-X-252, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT-X-249, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT-X-253, From EXTENDED__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT-X-254, From EXTENDED__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT-X-255, From EXTENDED__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT-X-250, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-X-251, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-X-252, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-X-249, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-X-253, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-X-254, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-X-255, From EXTENDED__ Region or federal state in which the party's address is located
      * @return self
      */
     public function addDocumentPayeeAddress(
@@ -7952,7 +7905,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision
+                $newSubDivision,
             ])
         ) {
             return $this;
@@ -7974,9 +7927,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the legal information of the Payee party
      *
-     * @param string|null $newType __BT-61-1, From BASIC WL__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-61, From BASIC WL__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-X-243, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-61-1, From BASIC WL__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-61, From BASIC WL__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-243, From EXTENDED__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function setDocumentPayeeLegalOrganisation(
@@ -8003,6 +7956,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             $payeeTradeParty->getSpecifiedLegalOrganizationWithCreate()->getIDWithCreate()->setValue($newId);
+
             if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
                 $payeeTradeParty->getSpecifiedLegalOrganization()->getID()->setSchemeID($newType);
             }
@@ -8018,9 +7972,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a legal information of the Payee party
      *
-     * @param string|null $newType __BT-61-1, From BASIC WL__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-61, From BASIC WL__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-X-243, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-61-1, From BASIC WL__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-61, From BASIC WL__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-243, From EXTENDED__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function addDocumentPayeeLegalOrganisation(
@@ -8040,11 +7994,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the contact information of the Payee party
      *
-     * @param string|null $newPersonName __BT-X-244, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-X-245, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-X-246, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-247, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-X-248, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-X-244, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-245, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-246, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-247, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-248, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function setDocumentPayeeContact(
@@ -8067,7 +8021,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -8087,11 +8041,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add contact information of the Payee party
      *
-     * @param string|null $newPersonName __BT-X-244, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-X-245, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-X-246, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-247, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-X-248, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-X-244, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-245, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-246, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-247, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-248, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function addDocumentPayeeContact(
@@ -8107,7 +8061,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress
+                $newEmailAddress,
             ])
         ) {
             return $this;
@@ -8146,8 +8100,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set communication information of the Payee party
      *
-     * @param string|null $newType __BT-X-256-0, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-256, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-256-0, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-256, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function setDocumentPayeeCommunication(?string $newType = null, ?string $newUri = null): self
@@ -8179,8 +8133,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a communication information of the Payee party
      *
-     * @param string|null $newType __BT-X-256-0, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-256, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-256-0, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-256, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function addDocumentPayeeCommunication(?string $newType = null, ?string $newUri = null): self
@@ -8197,17 +8151,17 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set Payment mean
      *
-     * @param string|null $newTypeCode __BT-81, From BASIC WL__ Expected or used means of payment expressed as a code
-     * @param string|null $newName __BT-82, From EN 16931__ Expected or used means of payment expressed in text form
-     * @param string|null $newFinancialCardId __BT-87, From EN 16931__ Primary account number (PAN) of the payment card
-     * @param string|null $newFinancialCardHolder __BT-88, From EN 16931__ Name of the payment card holder
-     * @param string|null $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
-     * @param string|null $newPayeeIban __BT-84, From BASIC WL__ Payment account identifier
-     * @param string|null $newPayeeAccountName __BT-85, From BASIC WL__ Name of the payment account
-     * @param string|null $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
-     * @param string|null $newPayeeBic __BT-86, From EN 16931__ Identifier of the payment service provider
-     * @param string|null $newPaymentReference __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
-     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param  null|string $newTypeCode            __BT-81, From BASIC WL__ Expected or used means of payment expressed as a code
+     * @param  null|string $newName                __BT-82, From EN 16931__ Expected or used means of payment expressed in text form
+     * @param  null|string $newFinancialCardId     __BT-87, From EN 16931__ Primary account number (PAN) of the payment card
+     * @param  null|string $newFinancialCardHolder __BT-88, From EN 16931__ Name of the payment card holder
+     * @param  null|string $newBuyerIban           __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @param  null|string $newPayeeIban           __BT-84, From BASIC WL__ Payment account identifier
+     * @param  null|string $newPayeeAccountName    __BT-85, From BASIC WL__ Name of the payment account
+     * @param  null|string $newPayeeProprietaryId  __BT-84-0, From BASIC WL__ National account number (not for SEPA)
+     * @param  null|string $newPayeeBic            __BT-86, From EN 16931__ Identifier of the payment service provider
+     * @param  null|string $newPaymentReference    __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
+     * @param  null|string $newMandate             __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return self
      */
     public function setDocumentPaymentMean(
@@ -8253,17 +8207,17 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add Payment mean
      *
-     * @param string|null $newTypeCode __BT-81, From BASIC WL__ Expected or used means of payment expressed as a code
-     * @param string|null $newName __BT-82, From EN 16931__ Expected or used means of payment expressed in text form
-     * @param string|null $newFinancialCardId __BT-87, From EN 16931__ Primary account number (PAN) of the payment card
-     * @param string|null $newFinancialCardHolder __BT-88, From EN 16931__ Name of the payment card holder
-     * @param string|null $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
-     * @param string|null $newPayeeIban __BT-84, From BASIC WL__ Payment account identifier
-     * @param string|null $newPayeeAccountName __BT-85, From BASIC WL__ Name of the payment account
-     * @param string|null $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
-     * @param string|null $newPayeeBic __BT-86, From EN 16931__ Identifier of the payment service provider
-     * @param string|null $newPaymentReference __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
-     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param  null|string $newTypeCode            __BT-81, From BASIC WL__ Expected or used means of payment expressed as a code
+     * @param  null|string $newName                __BT-82, From EN 16931__ Expected or used means of payment expressed in text form
+     * @param  null|string $newFinancialCardId     __BT-87, From EN 16931__ Primary account number (PAN) of the payment card
+     * @param  null|string $newFinancialCardHolder __BT-88, From EN 16931__ Name of the payment card holder
+     * @param  null|string $newBuyerIban           __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @param  null|string $newPayeeIban           __BT-84, From BASIC WL__ Payment account identifier
+     * @param  null|string $newPayeeAccountName    __BT-85, From BASIC WL__ Name of the payment account
+     * @param  null|string $newPayeeProprietaryId  __BT-84-0, From BASIC WL__ National account number (not for SEPA)
+     * @param  null|string $newPayeeBic            __BT-86, From EN 16931__ Identifier of the payment service provider
+     * @param  null|string $newPaymentReference    __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
+     * @param  null|string $newMandate             __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return self
      */
     public function addDocumentPaymentMean(
@@ -8360,7 +8314,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 ->getApplicableHeaderTradeSettlementWithCreate()
                 ->getSpecifiedTradePaymentTerms() ?? [];
 
-            $paymentTerms = array_filter($paymentTerms, fn(TradePaymentTermsType $paymentTerm) => $paymentTerm->hasObjectFlag('frompaymentmean') === false);
+            $paymentTerms = array_filter($paymentTerms, static fn (TradePaymentTermsType $paymentTerm) => $paymentTerm->hasObjectFlag('frompaymentmean') === false);
 
             $this
                 ->getCrossIndustryRootObject()
@@ -8375,7 +8329,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 ->addToSpecifiedTradePaymentTermsWithCreate()
                 ->addToObjectFlags('frompaymentmean');
 
-            $paymentTerm->getDescriptionWithCreate()->setValue("Direct Debit");
+            $paymentTerm->getDescriptionWithCreate()->setValue('Direct Debit');
             $paymentTerm->getDirectDebitMandateIDWithCreate()->setValue($newMandate);
         }
 
@@ -8385,11 +8339,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set Payment mean (as SEPA credit transfer, German: Überweisung)
      *
-     * @param string|null $newPayeeIban __BT-84, From BASIC WL__ Payment account identifier
-     * @param string|null $newPayeeAccountName __BT-85, From BASIC WL__ Name of the payment account
-     * @param string|null $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
-     * @param string|null $newPayeeBic __BT-86, From EN 16931__ Identifier of the payment service provider
-     * @param string|null $newPaymentReference __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
+     * @param  null|string $newPayeeIban          __BT-84, From BASIC WL__ Payment account identifier
+     * @param  null|string $newPayeeAccountName   __BT-85, From BASIC WL__ Name of the payment account
+     * @param  null|string $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
+     * @param  null|string $newPayeeBic           __BT-86, From EN 16931__ Identifier of the payment service provider
+     * @param  null|string $newPaymentReference   __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
      * @return self
      */
     public function setDocumentPaymentMeanAsCreditTransferSepa(
@@ -8414,11 +8368,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add Payment mean (as SEPA credit transfer, German: Überweisung)
      *
-     * @param string|null $newPayeeIban __BT-84, From BASIC WL__ Payment account identifier
-     * @param string|null $newPayeeAccountName __BT-85, From BASIC WL__ Name of the payment account
-     * @param string|null $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
-     * @param string|null $newPayeeBic __BT-86, From EN 16931__ Identifier of the payment service provider
-     * @param string|null $newPaymentReference __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
+     * @param  null|string $newPayeeIban          __BT-84, From BASIC WL__ Payment account identifier
+     * @param  null|string $newPayeeAccountName   __BT-85, From BASIC WL__ Name of the payment account
+     * @param  null|string $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
+     * @param  null|string $newPayeeBic           __BT-86, From EN 16931__ Identifier of the payment service provider
+     * @param  null|string $newPaymentReference   __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
      * @return self
      */
     public function addDocumentPaymentMeanAsCreditTransferSepa(
@@ -8443,11 +8397,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set Payment mean (as non-SEPA credit transfer, German: Überweisung)
      *
-     * @param string|null $newPayeeIban __BT-84, From BASIC WL__ Payment account identifier
-     * @param string|null $newPayeeAccountName __BT-85, From BASIC WL__ Name of the payment account
-     * @param string|null $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
-     * @param string|null $newPayeeBic __BT-86, From EN 16931__ Identifier of the payment service provider
-     * @param string|null $newPaymentReference __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
+     * @param  null|string $newPayeeIban          __BT-84, From BASIC WL__ Payment account identifier
+     * @param  null|string $newPayeeAccountName   __BT-85, From BASIC WL__ Name of the payment account
+     * @param  null|string $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
+     * @param  null|string $newPayeeBic           __BT-86, From EN 16931__ Identifier of the payment service provider
+     * @param  null|string $newPaymentReference   __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
      * @return self
      */
     public function setDocumentPaymentMeanAsCreditTransferNoSepa(
@@ -8472,11 +8426,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add Payment mean (as non-SEPA credit transfer, German: Überweisung)
      *
-     * @param string|null $newPayeeIban __BT-84, From BASIC WL__ Payment account identifier
-     * @param string|null $newPayeeAccountName __BT-85, From BASIC WL__ Name of the payment account
-     * @param string|null $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
-     * @param string|null $newPayeeBic __BT-86, From EN 16931__ Identifier of the payment service provider
-     * @param string|null $newPaymentReference __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
+     * @param  null|string $newPayeeIban          __BT-84, From BASIC WL__ Payment account identifier
+     * @param  null|string $newPayeeAccountName   __BT-85, From BASIC WL__ Name of the payment account
+     * @param  null|string $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
+     * @param  null|string $newPayeeBic           __BT-86, From EN 16931__ Identifier of the payment service provider
+     * @param  null|string $newPaymentReference   __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
      * @return self
      */
     public function addDocumentPaymentMeanAsCreditTransferNoSepa(
@@ -8501,8 +8455,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set Payment mean (as SEPA direct debit, German: Lastschrift)
      *
-     * @param string|null $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
-     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param  null|string $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @param  null|string $newMandate   __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return self
      */
     public function setDocumentPaymentMeanAsDirectDebitSepa(
@@ -8521,8 +8475,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add Payment mean (as SEPA direct debit, German: Lastschrift)
      *
-     * @param string|null $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
-     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param  null|string $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @param  null|string $newMandate   __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return self
      */
     public function addDocumentPaymentMeanAsDirectDebitSepa(
@@ -8541,8 +8495,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set Payment mean (as non-SEPA direct debit, German: Lastschrift)
      *
-     * @param string|null $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
-     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param  null|string $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @param  null|string $newMandate   __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return self
      */
     public function setDocumentPaymentMeanAsDirectDebitNoSepa(
@@ -8561,8 +8515,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add Payment mean (as non SEPA direct debit, German: Lastschrift)
      *
-     * @param string|null $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
-     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param  null|string $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @param  null|string $newMandate   __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return self
      */
     public function addDocumentPaymentMeanAsDirectDebitNoSepa(
@@ -8581,8 +8535,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set Payment mean (as payment card)
      *
-     * @param string|null $newFinancialCardId __BT-87, From EN 16931__ Primary account number (PAN) of the payment card
-     * @param string|null $newFinancialCardHolder __BT-88, From EN 16931__ Name of the payment card holder
+     * @param  null|string $newFinancialCardId     __BT-87, From EN 16931__ Primary account number (PAN) of the payment card
+     * @param  null|string $newFinancialCardHolder __BT-88, From EN 16931__ Name of the payment card holder
      * @return self
      */
     public function setDocumentPaymentMeanAsPaymentCard(
@@ -8601,8 +8555,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add Payment mean (as payment card)
      *
-     * @param string|null $newFinancialCardId __BT-87, From EN 16931__ Primary account number (PAN) of the payment card
-     * @param string|null $newFinancialCardHolder __BT-88, From EN 16931__ Name of the payment card holder
+     * @param  null|string $newFinancialCardId     __BT-87, From EN 16931__ Primary account number (PAN) of the payment card
+     * @param  null|string $newFinancialCardHolder __BT-88, From EN 16931__ Name of the payment card holder
      * @return self
      */
     public function addDocumentPaymentMeanAsPaymentCard(
@@ -8621,7 +8575,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set Unique bank details of the payee or the seller
      *
-     * @param string|null $newId __BT-90, From BASIC WL__ Creditor identifier
+     * @param  null|string $newId __BT-90, From BASIC WL__ Creditor identifier
      * @return self
      */
     public function setDocumentPaymentCreditorReferenceID(
@@ -8650,7 +8604,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add Unique bank details of the payee or the seller
      *
-     * @param string|null $newId __BT-90, From BASIC WL__ Creditor identifier
+     * @param  null|string $newId __BT-90, From BASIC WL__ Creditor identifier
      * @return self
      */
     public function addDocumentPaymentCreditorReferenceID(
@@ -8668,9 +8622,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set payment term
      *
-     * @param string|null $newDescription __BT-20, From _BASIC WL__ Text description of the payment terms
-     * @param DateTimeInterface|null $newDueDate __BT-9, From BASIC WL__ Date by which payment is due
-     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param  null|string            $newDescription __BT-20, From _BASIC WL__ Text description of the payment terms
+     * @param  null|DateTimeInterface $newDueDate     __BT-9, From BASIC WL__ Date by which payment is due
+     * @param  null|string            $newMandate     __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return self
      */
     public function setDocumentPaymentTerm(
@@ -8700,9 +8654,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add payment term
      *
-     * @param string|null $newDescription __BT-20, From _BASIC WL__ Text description of the payment terms
-     * @param DateTimeInterface|null $newDueDate __BT-9, From BASIC WL__ Date by which payment is due
-     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param  null|string            $newDescription __BT-20, From _BASIC WL__ Text description of the payment terms
+     * @param  null|DateTimeInterface $newDueDate     __BT-9, From BASIC WL__ Date by which payment is due
+     * @param  null|string            $newMandate     __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return self
      */
     public function addDocumentPaymentTerm(
@@ -8726,8 +8680,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $paymentTerm
                 ->getDueDateDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newDueDate->format("Ymd"))
-                ->setFormat("102");
+                ->setValue($newDueDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newMandate)) {
@@ -8742,12 +8696,12 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set payment discount terms in last added payment terms
      *
-     * @param float|null $newBaseAmount __BT-X-285, From EXTENDED__ Base amount of the payment discount
-     * @param float|null $newDiscountAmount __BT-X-287, From EXTENDED__ Amount of the payment discount
-     * @param float|null $newDiscountPercent __BT-X-286, From EXTENDED__ Percentage of the payment discount
-     * @param DateTimeInterface|null $newBaseDate __BT-X-282, From EXTENDED__ Due date reference date
-     * @param float|null $newBasePeriod __BT-X-283, From EXTENDED__ Maturity period (basis)
-     * @param string|null $newBasePeriodUnit __BT-X-284, From EXTENDED__ Maturity period (unit)
+     * @param  null|float             $newBaseAmount      __BT-X-285, From EXTENDED__ Base amount of the payment discount
+     * @param  null|float             $newDiscountAmount  __BT-X-287, From EXTENDED__ Amount of the payment discount
+     * @param  null|float             $newDiscountPercent __BT-X-286, From EXTENDED__ Percentage of the payment discount
+     * @param  null|DateTimeInterface $newBaseDate        __BT-X-282, From EXTENDED__ Due date reference date
+     * @param  null|float             $newBasePeriod      __BT-X-283, From EXTENDED__ Maturity period (basis)
+     * @param  null|string            $newBasePeriodUnit  __BT-X-284, From EXTENDED__ Maturity period (unit)
      * @return self
      */
     public function setDocumentPaymentDiscountTermsInLastPaymentTerm(
@@ -8798,13 +8752,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 ->getApplicableTradePaymentDiscountTermsWithCreate()
                 ->getBasisDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newBaseDate->format("Ymd"))
-                ->setFormat("102");
+                ->setValue($newBaseDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         if (
-            !InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newBasePeriod) &&
-            !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newBasePeriodUnit)
+            !InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newBasePeriod)
+            && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newBasePeriodUnit)
         ) {
             $lastPaymentTerm
                 ->getApplicableTradePaymentDiscountTermsWithCreate()
@@ -8819,12 +8773,12 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add payment discount terms in last added payment terms
      *
-     * @param float|null $newBaseAmount __BT-X-285, From EXTENDED__ Base amount of the payment discount
-     * @param float|null $newDiscountAmount __BT-X-287, From EXTENDED__ Amount of the payment discount
-     * @param float|null $newDiscountPercent __BT-X-286, From EXTENDED__ Percentage of the payment discount
-     * @param DateTimeInterface|null $newBaseDate __BT-X-282, From EXTENDED__ Due date reference date
-     * @param float|null $newBasePeriod __BT-X-283, From EXTENDED__ Maturity period (basis)
-     * @param string|null $newBasePeriodUnit __BT-X-284, From EXTENDED__ Maturity period (unit)
+     * @param  null|float             $newBaseAmount      __BT-X-285, From EXTENDED__ Base amount of the payment discount
+     * @param  null|float             $newDiscountAmount  __BT-X-287, From EXTENDED__ Amount of the payment discount
+     * @param  null|float             $newDiscountPercent __BT-X-286, From EXTENDED__ Percentage of the payment discount
+     * @param  null|DateTimeInterface $newBaseDate        __BT-X-282, From EXTENDED__ Due date reference date
+     * @param  null|float             $newBasePeriod      __BT-X-283, From EXTENDED__ Maturity period (basis)
+     * @param  null|string            $newBasePeriodUnit  __BT-X-284, From EXTENDED__ Maturity period (unit)
      * @return self
      */
     public function addDocumentPaymentDiscountTermsInLastPaymentTerm(
@@ -8850,12 +8804,12 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set payment penalty terms in last added payment terms
      *
-     * @param float|null $newBaseAmount __BT-X-279, From EXTENDED__ Base amount of the payment penalty
-     * @param float|null $newPenaltyAmount __BT-X-281, From EXTENDED__ Amount of the payment penalty
-     * @param float|null $newPenaltyPercent __BT-X-280, From EXTENDED__ Percentage of the payment penalty
-     * @param DateTimeInterface|null $newBaseDate __BT-X-276, From EXTENDED__ Due date reference date
-     * @param float|null $newBasePeriod __BT-X-277, From EXTENDED__ Maturity period (basis)
-     * @param string|null $newBasePeriodUnit __BT-X-278, From EXTENDED__ Maturity period (unit)
+     * @param  null|float             $newBaseAmount     __BT-X-279, From EXTENDED__ Base amount of the payment penalty
+     * @param  null|float             $newPenaltyAmount  __BT-X-281, From EXTENDED__ Amount of the payment penalty
+     * @param  null|float             $newPenaltyPercent __BT-X-280, From EXTENDED__ Percentage of the payment penalty
+     * @param  null|DateTimeInterface $newBaseDate       __BT-X-276, From EXTENDED__ Due date reference date
+     * @param  null|float             $newBasePeriod     __BT-X-277, From EXTENDED__ Maturity period (basis)
+     * @param  null|string            $newBasePeriodUnit __BT-X-278, From EXTENDED__ Maturity period (unit)
      * @return self
      */
     public function setDocumentPaymentPenaltyTermsInLastPaymentTerm(
@@ -8906,13 +8860,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 ->getApplicableTradePaymentPenaltyTermsWithCreate()
                 ->getBasisDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newBaseDate->format("Ymd"))
-                ->setFormat("102");
+                ->setValue($newBaseDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         if (
-            !InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newBasePeriod) &&
-            !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newBasePeriodUnit)
+            !InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newBasePeriod)
+            && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newBasePeriodUnit)
         ) {
             $lastPaymentTerm
                 ->getApplicableTradePaymentPenaltyTermsWithCreate()
@@ -8927,12 +8881,12 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add payment penalty terms in last added payment terms
      *
-     * @param float|null $newBaseAmount __BT-X-279, From EXTENDED__ Base amount of the payment penalty
-     * @param float|null $newPenaltyAmount __BT-X-281, From EXTENDED__ Amount of the payment penalty
-     * @param float|null $newPenaltyPercent __BT-X-280, From EXTENDED__ Percentage of the payment penalty
-     * @param DateTimeInterface|null $newBaseDate __BT-X-276, From EXTENDED__ Due date reference date
-     * @param float|null $newBasePeriod __BT-X-277, From EXTENDED__ Maturity period (basis)
-     * @param string|null $newBasePeriodUnit __BT-X-278, From EXTENDED__ Maturity period (unit)
+     * @param  null|float             $newBaseAmount     __BT-X-279, From EXTENDED__ Base amount of the payment penalty
+     * @param  null|float             $newPenaltyAmount  __BT-X-281, From EXTENDED__ Amount of the payment penalty
+     * @param  null|float             $newPenaltyPercent __BT-X-280, From EXTENDED__ Percentage of the payment penalty
+     * @param  null|DateTimeInterface $newBaseDate       __BT-X-276, From EXTENDED__ Due date reference date
+     * @param  null|float             $newBasePeriod     __BT-X-277, From EXTENDED__ Maturity period (basis)
+     * @param  null|string            $newBasePeriodUnit __BT-X-278, From EXTENDED__ Maturity period (unit)
      * @return self
      */
     public function addDocumentPaymentPenaltyTermsInLastPaymentTerm(
@@ -8958,15 +8912,15 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set Document Tax Breakdown
      *
-     * @param string|null $newTaxCategory __BT-118, From BASIC WL__ Coded description of the tax category
-     * @param string|null $newTaxType __BT-118-0, From BASIC WL__ Coded description of the tax type
-     * @param float|null $newBasisAmount __BT-116, From BASIC WL__ Tax base amount
-     * @param float|null $newTaxAmount __BT-117, From BASIC WL__ Tax total amount
-     * @param float|null $newTaxPercent __BT-119, From BASIC WL__ Tax Rate (Percentage)
-     * @param string|null $newExemptionReason __BT-120, From BASIC WL__ Reason for tax exemption (free text)
-     * @param string|null $newExemptionReasonCode __BT-121, From BASIC WL__ Reason for tax exemption (Code)
-     * @param DateTimeInterface|null $newTaxDueDate __BT-7-00, From EN 16931__ Date on which tax is due
-     * @param string|null $newTaxDueCode __BT-8, From BASIC WL__ Code for the date on which tax is due
+     * @param  null|string            $newTaxCategory         __BT-118, From BASIC WL__ Coded description of the tax category
+     * @param  null|string            $newTaxType             __BT-118-0, From BASIC WL__ Coded description of the tax type
+     * @param  null|float             $newBasisAmount         __BT-116, From BASIC WL__ Tax base amount
+     * @param  null|float             $newTaxAmount           __BT-117, From BASIC WL__ Tax total amount
+     * @param  null|float             $newTaxPercent          __BT-119, From BASIC WL__ Tax Rate (Percentage)
+     * @param  null|string            $newExemptionReason     __BT-120, From BASIC WL__ Reason for tax exemption (free text)
+     * @param  null|string            $newExemptionReasonCode __BT-121, From BASIC WL__ Reason for tax exemption (Code)
+     * @param  null|DateTimeInterface $newTaxDueDate          __BT-7-00, From EN 16931__ Date on which tax is due
+     * @param  null|string            $newTaxDueCode          __BT-8, From BASIC WL__ Code for the date on which tax is due
      * @return self
      */
     public function setDocumentTax(
@@ -8987,8 +8941,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ?->unsetApplicableTradeTax();
 
         if (
-            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType]) ||
-            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newBasisAmount, $newTaxAmount])
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])
+            || InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newBasisAmount, $newTaxAmount])
         ) {
             return $this;
         }
@@ -9011,15 +8965,15 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add Document Tax Breakdown
      *
-     * @param string|null $newTaxCategory __BT-118, From BASIC WL__ Coded description of the tax category
-     * @param string|null $newTaxType __BT-118-0, From BASIC WL__ Coded description of the tax type
-     * @param float|null $newBasisAmount __BT-116, From BASIC WL__ Tax base amount
-     * @param float|null $newTaxAmount __BT-117, From BASIC WL__ Tax total amount
-     * @param float|null $newTaxPercent __BT-119, From BASIC WL__ Tax Rate (Percentage)
-     * @param string|null $newExemptionReason __BT-120, From BASIC WL__ Reason for tax exemption (free text)
-     * @param string|null $newExemptionReasonCode __BT-121, From BASIC WL__ Reason for tax exemption (Code)
-     * @param DateTimeInterface|null $newTaxDueDate __BT-7-00, From EN 16931__ Date on which tax is due
-     * @param string|null $newTaxDueCode __BT-8, From BASIC WL__ Code for the date on which tax is due
+     * @param  null|string            $newTaxCategory         __BT-118, From BASIC WL__ Coded description of the tax category
+     * @param  null|string            $newTaxType             __BT-118-0, From BASIC WL__ Coded description of the tax type
+     * @param  null|float             $newBasisAmount         __BT-116, From BASIC WL__ Tax base amount
+     * @param  null|float             $newTaxAmount           __BT-117, From BASIC WL__ Tax total amount
+     * @param  null|float             $newTaxPercent          __BT-119, From BASIC WL__ Tax Rate (Percentage)
+     * @param  null|string            $newExemptionReason     __BT-120, From BASIC WL__ Reason for tax exemption (free text)
+     * @param  null|string            $newExemptionReasonCode __BT-121, From BASIC WL__ Reason for tax exemption (Code)
+     * @param  null|DateTimeInterface $newTaxDueDate          __BT-7-00, From EN 16931__ Date on which tax is due
+     * @param  null|string            $newTaxDueCode          __BT-8, From BASIC WL__ Code for the date on which tax is due
      * @return self
      */
     public function addDocumentTax(
@@ -9034,8 +8988,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         ?string $newTaxDueCode = null,
     ): self {
         if (
-            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType]) ||
-            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newBasisAmount, $newTaxAmount])
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])
+            || InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newBasisAmount, $newTaxAmount])
         ) {
             return $this;
         }
@@ -9067,8 +9021,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $applicableTradeTax
                 ->getTaxPointDateWithCreate()
                 ->getDateStringWithCreate()
-                ->setValue($newTaxDueDate->format("Ymd"))
-                ->setFormat("102");
+                ->setValue($newTaxDueDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTaxDueCode)) {
@@ -9081,15 +9035,15 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set Document Allowance/Charge
      *
-     * @param boolean|null $newChargeIndicator __BT-20-1/BT-21-1, From BASIC WL__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
-     * @param float|null $newAllowanceChargeAmount __BT-92/BT-99, From BASIC WL__ Amount of the surcharge or discount
-     * @param float|null $newAllowanceChargeBaseAmount __BT-93/BT-100, From BASIC WL__ The base amount that may be used in conjunction with the percentage of the surcharge or discount
-     * @param string|null $newTaxCategory __BT-95/BT-102, From BASIC WL__ Coded description of the tax category
-     * @param string|null $newTaxType __BT-95-0/BT-102-0, From BASIC WL__ Coded description of the tax type
-     * @param float|null $newTaxPercent __BT-96/BT-103, From BASIC WL__ Tax Rate (Percentage)
-     * @param string|null $newAllowanceChargeReason __BT-98/BT-105, From BASIC WL__ Reason given in text form for the surcharge or discount
-     * @param string|null $newAllowanceChargeReasonCode __BT-97/BT-104, From BASIC WL__ Reason given as a code for the surcharge or discount
-     * @param float|null $newAllowanceChargePercent __BT-94/BT-101, From BASIC WL__ Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @param  null|bool   $newChargeIndicator           __BT-20-1/BT-21-1, From BASIC WL__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param  null|float  $newAllowanceChargeAmount     __BT-92/BT-99, From BASIC WL__ Amount of the surcharge or discount
+     * @param  null|float  $newAllowanceChargeBaseAmount __BT-93/BT-100, From BASIC WL__ The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param  null|string $newTaxCategory               __BT-95/BT-102, From BASIC WL__ Coded description of the tax category
+     * @param  null|string $newTaxType                   __BT-95-0/BT-102-0, From BASIC WL__ Coded description of the tax type
+     * @param  null|float  $newTaxPercent                __BT-96/BT-103, From BASIC WL__ Tax Rate (Percentage)
+     * @param  null|string $newAllowanceChargeReason     __BT-98/BT-105, From BASIC WL__ Reason given in text form for the surcharge or discount
+     * @param  null|string $newAllowanceChargeReasonCode __BT-97/BT-104, From BASIC WL__ Reason given as a code for the surcharge or discount
+     * @param  null|float  $newAllowanceChargePercent    __BT-94/BT-101, From BASIC WL__ Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
      * @return self
      */
     public function setDocumentAllowanceCharge(
@@ -9110,8 +9064,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ?->unsetSpecifiedTradeAllowanceCharge();
 
         if (
-            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType]) ||
-            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargeAmount])
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])
+            || InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargeAmount])
         ) {
             return $this;
         }
@@ -9134,15 +9088,15 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add Document Allowance/Charge
      *
-     * @param boolean|null $newChargeIndicator __BT-20-1/BT-21-1, From BASIC WL__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
-     * @param float|null $newAllowanceChargeAmount __BT-92/BT-99, From BASIC WL__ Amount of the surcharge or discount
-     * @param float|null $newAllowanceChargeBaseAmount __BT-93/BT-100, From BASIC WL__ The base amount that may be used in conjunction with the percentage of the surcharge or discount
-     * @param string|null $newTaxCategory __BT-95/BT-102, From BASIC WL__ Coded description of the tax category
-     * @param string|null $newTaxType __BT-95-0/BT-102-0, From BASIC WL__ Coded description of the tax type
-     * @param float|null $newTaxPercent __BT-96/BT-103, From BASIC WL__ Tax Rate (Percentage)
-     * @param string|null $newAllowanceChargeReason __BT-98/BT-105, From BASIC WL__ Reason given in text form for the surcharge or discount
-     * @param string|null $newAllowanceChargeReasonCode __BT-97/BT-104, From BASIC WL__ Reason given as a code for the surcharge or discount
-     * @param float|null $newAllowanceChargePercent __BT-94/BT-101, From BASIC WL__ Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @param  null|bool   $newChargeIndicator           __BT-20-1/BT-21-1, From BASIC WL__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param  null|float  $newAllowanceChargeAmount     __BT-92/BT-99, From BASIC WL__ Amount of the surcharge or discount
+     * @param  null|float  $newAllowanceChargeBaseAmount __BT-93/BT-100, From BASIC WL__ The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param  null|string $newTaxCategory               __BT-95/BT-102, From BASIC WL__ Coded description of the tax category
+     * @param  null|string $newTaxType                   __BT-95-0/BT-102-0, From BASIC WL__ Coded description of the tax type
+     * @param  null|float  $newTaxPercent                __BT-96/BT-103, From BASIC WL__ Tax Rate (Percentage)
+     * @param  null|string $newAllowanceChargeReason     __BT-98/BT-105, From BASIC WL__ Reason given in text form for the surcharge or discount
+     * @param  null|string $newAllowanceChargeReasonCode __BT-97/BT-104, From BASIC WL__ Reason given as a code for the surcharge or discount
+     * @param  null|float  $newAllowanceChargePercent    __BT-94/BT-101, From BASIC WL__ Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
      * @return self
      */
     public function addDocumentAllowanceCharge(
@@ -9157,8 +9111,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         ?float $newAllowanceChargePercent = null,
     ): self {
         if (
-            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType]) ||
-            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargeAmount])
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])
+            || InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargeAmount])
         ) {
             return $this;
         }
@@ -9216,11 +9170,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set Document Logistic Service Charge
      *
-     * @param float|null $newChargeAmount __BT-X-272, From EXTENDED__ Amount of the service fee
-     * @param string|null $newDescription __BT-X-271, From EXTENDED__ Identification of the service fee
-     * @param string|null $newTaxCategory __BT-X-273, From EXTENDED__ Coded description of the tax category
-     * @param string|null $newTaxType __BT-X-273-0, From EXTENDED__ Coded description of the tax type
-     * @param float|null $newTaxPercent __BT-X-274, From EXTENDED__ Tax Rate (Percentage)
+     * @param  null|float  $newChargeAmount __BT-X-272, From EXTENDED__ Amount of the service fee
+     * @param  null|string $newDescription  __BT-X-271, From EXTENDED__ Identification of the service fee
+     * @param  null|string $newTaxCategory  __BT-X-273, From EXTENDED__ Coded description of the tax category
+     * @param  null|string $newTaxType      __BT-X-273-0, From EXTENDED__ Coded description of the tax type
+     * @param  null|float  $newTaxPercent   __BT-X-274, From EXTENDED__ Tax Rate (Percentage)
      * @return self
      */
     public function setDocumentLogisticServiceCharge(
@@ -9237,8 +9191,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ?->unsetSpecifiedLogisticsServiceCharge();
 
         if (
-            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType, $newDescription]) ||
-            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent, $newChargeAmount])
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType, $newDescription])
+            || InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent, $newChargeAmount])
         ) {
             return $this;
         }
@@ -9257,11 +9211,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add Document Logistic Service Charge
      *
-     * @param float|null $newChargeAmount __BT-X-272, From EXTENDED__ Amount of the service fee
-     * @param string|null $newDescription __BT-X-271, From EXTENDED__ Identification of the service fee
-     * @param string|null $newTaxCategory __BT-X-273, From EXTENDED__ Coded description of the tax category
-     * @param string|null $newTaxType __BT-X-273-0, From EXTENDED__ Coded description of the tax type
-     * @param float|null $newTaxPercent __BT-X-274, From EXTENDED__ Tax Rate (Percentage)
+     * @param  null|float  $newChargeAmount __BT-X-272, From EXTENDED__ Amount of the service fee
+     * @param  null|string $newDescription  __BT-X-271, From EXTENDED__ Identification of the service fee
+     * @param  null|string $newTaxCategory  __BT-X-273, From EXTENDED__ Coded description of the tax category
+     * @param  null|string $newTaxType      __BT-X-273-0, From EXTENDED__ Coded description of the tax type
+     * @param  null|float  $newTaxPercent   __BT-X-274, From EXTENDED__ Tax Rate (Percentage)
      * @return self
      */
     public function addDocumentLogisticServiceCharge(
@@ -9272,8 +9226,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         ?float $newTaxPercent = null,
     ): self {
         if (
-            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType, $newDescription]) ||
-            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent, $newChargeAmount])
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType, $newDescription])
+            || InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent, $newChargeAmount])
         ) {
             return $this;
         }
@@ -9349,16 +9303,16 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the document summation
      *
-     * @param float|null $newNetAmount __BT-106, From BASIC WL__ Sum of the net amounts of all invoice lines
-     * @param float|null $newChargeTotalAmount __BT-108, From BASIC WL__ Sum of the charges
-     * @param float|null $newDiscountTotalAmount __BT-107, From BASIC WL__ Sum of the discounts
-     * @param float|null $newTaxBasisAmount __BT-109, From BASIC WL__ Total invoice amount excluding sales tax
-     * @param float|null $newTaxTotalAmount __BT-110, From BASIC WL__ Total amount of the invoice sales tax (in the invoice currency)
-     * @param float|null $newTaxTotalAmount2 __BT-111, From BASIC WL__ Total amount of the invoice sales tax (in the ledger currency)
-     * @param float|null $newGrossAmount __BT-112, From BASIC WL__ Total invoice amount including sales tax
-     * @param float|null $newDueAmount __BT-115,  From MINIMUM__ Payment amount due
-     * @param float|null $newPrepaidAmount __BT-113, From BASIC WL__ Prepayment amount
-     * @param float|null $newRoungingAmount __BT-114, From EN16931__ Rounding amount
+     * @param  null|float $newNetAmount           __BT-106, From BASIC WL__ Sum of the net amounts of all invoice lines
+     * @param  null|float $newChargeTotalAmount   __BT-108, From BASIC WL__ Sum of the charges
+     * @param  null|float $newDiscountTotalAmount __BT-107, From BASIC WL__ Sum of the discounts
+     * @param  null|float $newTaxBasisAmount      __BT-109, From BASIC WL__ Total invoice amount excluding sales tax
+     * @param  null|float $newTaxTotalAmount      __BT-110, From BASIC WL__ Total amount of the invoice sales tax (in the invoice currency)
+     * @param  null|float $newTaxTotalAmount2     __BT-111, From BASIC WL__ Total amount of the invoice sales tax (in the ledger currency)
+     * @param  null|float $newGrossAmount         __BT-112, From BASIC WL__ Total invoice amount including sales tax
+     * @param  null|float $newDueAmount           __BT-115,  From MINIMUM__ Payment amount due
+     * @param  null|float $newPrepaidAmount       __BT-113, From BASIC WL__ Prepayment amount
+     * @param  null|float $newRoungingAmount      __BT-114, From EN16931__ Rounding amount
      * @return self
      */
     public function setDocumentSummation(
@@ -9424,10 +9378,10 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a new position to document
      *
-     * @param string|null $newPositionId __BT-126, From BASIC__ Identification of the position
-     * @param string|null $newParentPositionId __BT-X-304, From EXTENDED__ Identification of the parent position
-     * @param string|null $newLineStatusCode __BT-X-7, From EXTENDED__ Indicates whether the invoice item contains prices that must be taken into account when calculating the invoice amount or whether only information is included
-     * @param string|null $newLineStatusReasonCode __BT-X-8, From EXTENDED__ Type to specify whether the invoice line is
+     * @param  null|string $newPositionId           __BT-126, From BASIC__ Identification of the position
+     * @param  null|string $newParentPositionId     __BT-X-304, From EXTENDED__ Identification of the parent position
+     * @param  null|string $newLineStatusCode       __BT-X-7, From EXTENDED__ Indicates whether the invoice item contains prices that must be taken into account when calculating the invoice amount or whether only information is included
+     * @param  null|string $newLineStatusReasonCode __BT-X-8, From EXTENDED__ Type to specify whether the invoice line is
      * @return self
      */
     public function addDocumentPosition(
@@ -9474,9 +9428,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set text information to latest added position
      *
-     * @param string|null $newContent __BT-127, From BASIC__ Text that contains unstructured information that is relevant to the invoice item
-     * @param string|null $newContentCode __BT-X-9, From EXTENDED__ Code to classify the content of the free text of the invoice
-     * @param string|null $newSubjectCode __BT-X-10, From EXTENDED__ Code for qualifying the free text for the invoice item
+     * @param  null|string $newContent     __BT-127, From BASIC__ Text that contains unstructured information that is relevant to the invoice item
+     * @param  null|string $newContentCode __BT-X-9, From EXTENDED__ Code to classify the content of the free text of the invoice
+     * @param  null|string $newSubjectCode __BT-X-10, From EXTENDED__ Code for qualifying the free text for the invoice item
      * @return self
      */
     public function setDocumentPositionNote(
@@ -9507,9 +9461,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add text information to latest added position
      *
-     * @param string|null $newContent __BT-127, From BASIC__ Text that contains unstructured information that is relevant to the invoice item
-     * @param string|null $newContentCode __BT-X-9, From EXTENDED__ Code to classify the content of the free text of the invoice
-     * @param string|null $newSubjectCode __BT-X-10, From EXTENDED__ Code for qualifying the free text for the invoice item
+     * @param  null|string $newContent     __BT-127, From BASIC__ Text that contains unstructured information that is relevant to the invoice item
+     * @param  null|string $newContentCode __BT-X-9, From EXTENDED__ Code to classify the content of the free text of the invoice
+     * @param  null|string $newSubjectCode __BT-X-10, From EXTENDED__ Code for qualifying the free text for the invoice item
      * @return self
      */
     public function addDocumentPositionNote(
@@ -9544,19 +9498,19 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add product details to latest added position
      *
-     * @param string|null $newProductId __BT-X-305, From EXTENDED__ ID of the product (product id, Order-X interoperable)
-     * @param string|null $newProductName __BT-153, From BASIC__ Name of the product (product name)
-     * @param string|null $newProductDescription __BT-154, From EN 16931__ Product description of the item, the item description makes it possible to describe the item
-     * @param string|null $newProductSellerId __BT-155, From EN 16931__ Identifier assigned to the product by the seller
-     * @param string|null $newProductBuyerId __BT-156, From EN 16931__ Identifier assigned to the product by the buyer
-     * @param string|null $newProductGlobalId __BT-157, From BASIC__ Product global id
-     * @param string|null $newProductGlobalIdType __BT-157-1, From BASIC__ Type of the product global id
-     * @param string|null $newProductIndustryId __BT-X-309, From EXTENDED__ Id assigned by the industry
-     * @param string|null $newProductModelId __BT-X-533, From EXTENDED__ Unique model identifier of the product
-     * @param string|null $newProductBatchId __BT-X-534. From EXTENDED__ Batch (lot) identifier of the product
-     * @param string|null $newProductBrandName __BT-X-535. From EXTENDED__ Brand name of the product
-     * @param string|null $newProductModelName __BT-X-536. From EXTENDED__ Model name of the product
-     * @param string|null $newProductOriginTradeCountry __BT-159, From EN 16931__ Code indicating the country the goods came from
+     * @param  null|string $newProductId                 __BT-X-305, From EXTENDED__ ID of the product (product id, Order-X interoperable)
+     * @param  null|string $newProductName               __BT-153, From BASIC__ Name of the product (product name)
+     * @param  null|string $newProductDescription        __BT-154, From EN 16931__ Product description of the item, the item description makes it possible to describe the item
+     * @param  null|string $newProductSellerId           __BT-155, From EN 16931__ Identifier assigned to the product by the seller
+     * @param  null|string $newProductBuyerId            __BT-156, From EN 16931__ Identifier assigned to the product by the buyer
+     * @param  null|string $newProductGlobalId           __BT-157, From BASIC__ Product global id
+     * @param  null|string $newProductGlobalIdType       __BT-157-1, From BASIC__ Type of the product global id
+     * @param  null|string $newProductIndustryId         __BT-X-309, From EXTENDED__ Id assigned by the industry
+     * @param  null|string $newProductModelId            __BT-X-533, From EXTENDED__ Unique model identifier of the product
+     * @param  null|string $newProductBatchId            __BT-X-534. From EXTENDED__ Batch (lot) identifier of the product
+     * @param  null|string $newProductBrandName          __BT-X-535. From EXTENDED__ Brand name of the product
+     * @param  null|string $newProductModelName          __BT-X-536. From EXTENDED__ Model name of the product
+     * @param  null|string $newProductOriginTradeCountry __BT-159, From EN 16931__ Code indicating the country the goods came from
      * @return self
      */
     public function setDocumentPositionProductDetails(
@@ -9642,11 +9596,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set product characteristics in latest added position
      *
-     * @param string|null $newProductCharacteristicDescription __BT-160, From EN 16931__ Name of the attribute or characteristic ("Colour")
-     * @param string|null $newProductCharacteristicValue __BT-161, From EN 16931__ Value of the attribute or characteristic ("Red")
-     * @param string|null $newProductCharacteristicType __BT-X-11, From EXTENDED__ Type (Code) of product characteristic
-     * @param float|null $newProductCharacteristicMeasureValue __BT-X-12, From EXTENDED__ Value of the characteristic (numerical measured)
-     * @param string|null $newProductCharacteristicMeasureUnit __BT-X-12-0, From EXTENDED__ Unit of value of the characteristic
+     * @param  null|string $newProductCharacteristicDescription  __BT-160, From EN 16931__ Name of the attribute or characteristic ("Colour")
+     * @param  null|string $newProductCharacteristicValue        __BT-161, From EN 16931__ Value of the attribute or characteristic ("Red")
+     * @param  null|string $newProductCharacteristicType         __BT-X-11, From EXTENDED__ Type (Code) of product characteristic
+     * @param  null|float  $newProductCharacteristicMeasureValue __BT-X-12, From EXTENDED__ Value of the characteristic (numerical measured)
+     * @param  null|string $newProductCharacteristicMeasureUnit  __BT-X-12-0, From EXTENDED__ Unit of value of the characteristic
      * @return self
      */
     public function setDocumentPositionProductCharacteristic(
@@ -9686,11 +9640,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add product characteristics in latest added position
      *
-     * @param string|null $newProductCharacteristicDescription __BT-160, From EN 16931__ Name of the attribute or characteristic ("Colour")
-     * @param string|null $newProductCharacteristicValue __BT-161, From EN 16931__ Value of the attribute or characteristic ("Red")
-     * @param string|null $newProductCharacteristicType __BT-X-11, From EXTENDED__ Type (Code) of product characteristic
-     * @param float|null $newProductCharacteristicMeasureValue __BT-X-12, From EXTENDED__ Value of the characteristic (numerical measured)
-     * @param string|null $newProductCharacteristicMeasureUnit __BT-X-12-0, From EXTENDED__ Unit of value of the characteristic
+     * @param  null|string $newProductCharacteristicDescription  __BT-160, From EN 16931__ Name of the attribute or characteristic ("Colour")
+     * @param  null|string $newProductCharacteristicValue        __BT-161, From EN 16931__ Value of the attribute or characteristic ("Red")
+     * @param  null|string $newProductCharacteristicType         __BT-X-11, From EXTENDED__ Type (Code) of product characteristic
+     * @param  null|float  $newProductCharacteristicMeasureValue __BT-X-12, From EXTENDED__ Value of the characteristic (numerical measured)
+     * @param  null|string $newProductCharacteristicMeasureUnit  __BT-X-12-0, From EXTENDED__ Unit of value of the characteristic
      * @return self
      */
     public function addDocumentPositionProductCharacteristic(
@@ -9723,8 +9677,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         }
 
         if (
-            !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicMeasureUnit]) &&
-            !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newProductCharacteristicMeasureValue])
+            !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicMeasureUnit])
+            && !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newProductCharacteristicMeasureValue])
         ) {
             $positionProductCharacteristic
                 ->getValueMeasureWithCreate()
@@ -9738,10 +9692,10 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set product classification in latest added position
      *
-     * @param string|null $newProductClassificationCode __BT-158, From EN 16931__ Classification identifier
-     * @param string|null $newProductClassificationListId __BT-158-1, From EN 16931__ Identifier for the identification scheme of the item classification
-     * @param string|null $newProductClassificationListVersionId __BT-158-2, From EN 16931__ Version of the identification scheme
-     * @param string|null $newProductClassificationCodeClassname __BT-X-138, From EXTENDED__ Name with which an article can be classified according to type or quality
+     * @param  null|string $newProductClassificationCode          __BT-158, From EN 16931__ Classification identifier
+     * @param  null|string $newProductClassificationListId        __BT-158-1, From EN 16931__ Identifier for the identification scheme of the item classification
+     * @param  null|string $newProductClassificationListVersionId __BT-158-2, From EN 16931__ Version of the identification scheme
+     * @param  null|string $newProductClassificationCodeClassname __BT-X-138, From EXTENDED__ Name with which an article can be classified according to type or quality
      * @return self
      */
     public function setDocumentPositionProductClassification(
@@ -9779,10 +9733,10 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add product classification in latest added position
      *
-     * @param string|null $newProductClassificationCode __BT-158, From EN 16931__ Classification identifier
-     * @param string|null $newProductClassificationListId __BT-158-1, From EN 16931__ Identifier for the identification scheme of the item classification
-     * @param string|null $newProductClassificationListVersionId __BT-158-2, From EN 16931__ Version of the identification scheme
-     * @param string|null $newProductClassificationCodeClassname __BT-X-138, From EXTENDED__ Name with which an article can be classified according to type or quality
+     * @param  null|string $newProductClassificationCode          __BT-158, From EN 16931__ Classification identifier
+     * @param  null|string $newProductClassificationListId        __BT-158-1, From EN 16931__ Identifier for the identification scheme of the item classification
+     * @param  null|string $newProductClassificationListVersionId __BT-158-2, From EN 16931__ Version of the identification scheme
+     * @param  null|string $newProductClassificationCodeClassname __BT-X-138, From EXTENDED__ Name with which an article can be classified according to type or quality
      * @return self
      */
     public function addDocumentPositionProductClassification(
@@ -9822,16 +9776,16 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set referenced product in latest added position
      *
-     * @param string|null $newProductId __BT-X-301, From EXTENDED__ ID of the product (product id, Order-X interoperable)
-     * @param string|null $newProductName __BT-X-18, From EXTENDED__ Name of the product (product name)
-     * @param string|null $newProductDescription __BT-X-19, From EXTENDED__ Product description of the item, the item description makes it possible to describe the item
-     * @param string|null $newProductSellerId __BT-X-16, From EXTENDED__ Identifier assigned to the product by the seller
-     * @param string|null $newProductBuyerId __BT-X-17, From EXTENDED__ Identifier assigned to the product by the buyer
-     * @param string|null $newProductGlobalId __BT-X-15, From EXTENDED__ Product global id
-     * @param string|null $newProductGlobalIdType __BT-X-15-1, From EXTENDED__ Type of the product global id
-     * @param string|null $newProductIndustryId __BT-X-309, From EXTENDED__ Id assigned by the industry
-     * @param float|null $newProductUnitQuantity __BT-X-20, From EXTENDED__ Quantity Quantity of the referenced product contained
-     * @param string|null $newProductUnitQuantityUnit __BT-X-20-1, From EXTENDED__ Unit code of the quantity of the referenced product contained
+     * @param  null|string $newProductId               __BT-X-301, From EXTENDED__ ID of the product (product id, Order-X interoperable)
+     * @param  null|string $newProductName             __BT-X-18, From EXTENDED__ Name of the product (product name)
+     * @param  null|string $newProductDescription      __BT-X-19, From EXTENDED__ Product description of the item, the item description makes it possible to describe the item
+     * @param  null|string $newProductSellerId         __BT-X-16, From EXTENDED__ Identifier assigned to the product by the seller
+     * @param  null|string $newProductBuyerId          __BT-X-17, From EXTENDED__ Identifier assigned to the product by the buyer
+     * @param  null|string $newProductGlobalId         __BT-X-15, From EXTENDED__ Product global id
+     * @param  null|string $newProductGlobalIdType     __BT-X-15-1, From EXTENDED__ Type of the product global id
+     * @param  null|string $newProductIndustryId       __BT-X-309, From EXTENDED__ Id assigned by the industry
+     * @param  null|float  $newProductUnitQuantity     __BT-X-20, From EXTENDED__ Quantity Quantity of the referenced product contained
+     * @param  null|string $newProductUnitQuantityUnit __BT-X-20-1, From EXTENDED__ Unit code of the quantity of the referenced product contained
      * @return self
      */
     public function setDocumentPositionReferencedProduct(
@@ -9881,16 +9835,16 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add referenced product in latest added position
      *
-     * @param string|null $newProductId __BT-X-301, From EXTENDED__ ID of the product (product id, Order-X interoperable)
-     * @param string|null $newProductName __BT-X-18, From EXTENDED__ Name of the product (product name)
-     * @param string|null $newProductDescription __BT-X-19, From EXTENDED__ Product description of the item, the item description makes it possible to describe the item
-     * @param string|null $newProductSellerId __BT-X-16, From EXTENDED__ Identifier assigned to the product by the seller
-     * @param string|null $newProductBuyerId __BT-X-17, From EXTENDED__ Identifier assigned to the product by the buyer
-     * @param string|null $newProductGlobalId __BT-X-15, From EXTENDED__ Product global id
-     * @param string|null $newProductGlobalIdType __BT-X-15-1, From EXTENDED__ Type of the product global id
-     * @param string|null $newProductIndustryId __BT-X-309, From EXTENDED__ Id assigned by the industry
-     * @param float|null $newProductUnitQuantity __BT-X-20, From EXTENDED__ Quantity Quantity of the referenced product contained
-     * @param string|null $newProductUnitQuantityUnit __BT-X-20-1, From EXTENDED__ Unit code of the quantity of the referenced product contained
+     * @param  null|string $newProductId               __BT-X-301, From EXTENDED__ ID of the product (product id, Order-X interoperable)
+     * @param  null|string $newProductName             __BT-X-18, From EXTENDED__ Name of the product (product name)
+     * @param  null|string $newProductDescription      __BT-X-19, From EXTENDED__ Product description of the item, the item description makes it possible to describe the item
+     * @param  null|string $newProductSellerId         __BT-X-16, From EXTENDED__ Identifier assigned to the product by the seller
+     * @param  null|string $newProductBuyerId          __BT-X-17, From EXTENDED__ Identifier assigned to the product by the buyer
+     * @param  null|string $newProductGlobalId         __BT-X-15, From EXTENDED__ Product global id
+     * @param  null|string $newProductGlobalIdType     __BT-X-15-1, From EXTENDED__ Type of the product global id
+     * @param  null|string $newProductIndustryId       __BT-X-309, From EXTENDED__ Id assigned by the industry
+     * @param  null|float  $newProductUnitQuantity     __BT-X-20, From EXTENDED__ Quantity Quantity of the referenced product contained
+     * @param  null|string $newProductUnitQuantityUnit __BT-X-20-1, From EXTENDED__ Unit code of the quantity of the referenced product contained
      * @return self
      */
     public function addDocumentPositionReferencedProduct(
@@ -9947,8 +9901,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         }
 
         if (
-            !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newProductUnitQuantity]) &&
-            !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductUnitQuantityUnit])
+            !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newProductUnitQuantity])
+            && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductUnitQuantityUnit])
         ) {
             $positionReferencedProduct->getUnitQuantityWithCreate()->setValue($newProductUnitQuantity)->setUnitCode($newProductUnitQuantityUnit);
         }
@@ -9959,9 +9913,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the associated seller's order confirmation (line reference).
      *
-     * @param string|null $newReferenceNumber __BT-X-537, From EXTENDED__ Seller's order confirmation number
-     * @param string|null $newReferenceLineNumber __BT-X-538, From EXTENDED__ Seller's order confirmation line number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-539, From EXTENDED__ Seller's order confirmation date
+     * @param  null|string            $newReferenceNumber     __BT-X-537, From EXTENDED__ Seller's order confirmation number
+     * @param  null|string            $newReferenceLineNumber __BT-X-538, From EXTENDED__ Seller's order confirmation line number
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-539, From EXTENDED__ Seller's order confirmation date
      * @return self
      */
     public function setDocumentPositionSellerOrderReference(
@@ -9994,8 +9948,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $sellerOrderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         return $this;
@@ -10004,9 +9958,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an associated seller's order confirmation (line reference).
      *
-     * @param string|null $newReferenceNumber __BT-X-537, From EXTENDED__ Seller's order confirmation number
-     * @param string|null $newReferenceLineNumber __BT-X-538, From EXTENDED__ Seller's order confirmation line number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-539, From EXTENDED__ Seller's order confirmation date
+     * @param  null|string            $newReferenceNumber     __BT-X-537, From EXTENDED__ Seller's order confirmation number
+     * @param  null|string            $newReferenceLineNumber __BT-X-538, From EXTENDED__ Seller's order confirmation line number
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-539, From EXTENDED__ Seller's order confirmation date
      * @return self
      */
     public function addDocumentPositionSellerOrderReference(
@@ -10030,9 +9984,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the associated buyer's order confirmation (line reference).
      *
-     * @param string|null $newReferenceNumber __BT-X-537, From EXTENDED__ Buyer's order confirmation number
-     * @param string|null $newReferenceLineNumber __BT-X-538, From EXTENDED__ Buyer's order confirmation line number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-539, From EXTENDED__ Buyer's order confirmation date
+     * @param  null|string            $newReferenceNumber     __BT-X-537, From EXTENDED__ Buyer's order confirmation number
+     * @param  null|string            $newReferenceLineNumber __BT-X-538, From EXTENDED__ Buyer's order confirmation line number
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-539, From EXTENDED__ Buyer's order confirmation date
      * @return self
      */
     public function setDocumentPositionBuyerOrderReference(
@@ -10065,8 +10019,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $buyerOrderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         return $this;
@@ -10075,9 +10029,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an associated buyer's order confirmation (line reference).
      *
-     * @param string|null $newReferenceNumber __BT-X-537, From EXTENDED__ Buyer's order confirmation number
-     * @param string|null $newReferenceLineNumber __BT-X-538, From EXTENDED__ Buyer's order confirmation line number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-539, From EXTENDED__ Buyer's order confirmation date
+     * @param  null|string            $newReferenceNumber     __BT-X-537, From EXTENDED__ Buyer's order confirmation number
+     * @param  null|string            $newReferenceLineNumber __BT-X-538, From EXTENDED__ Buyer's order confirmation line number
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-539, From EXTENDED__ Buyer's order confirmation date
      * @return self
      */
     public function addDocumentPositionBuyerOrderReference(
@@ -10101,9 +10055,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the associated quotation (line reference).
      *
-     * @param string|null $newReferenceNumber __BT-X-310, From EXTENDED__ Buyer's order confirmation number
-     * @param string|null $newReferenceLineNumber __BT-X-311, From EXTENDED__ Buyer's order confirmation line number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-312, From EXTENDED__ Buyer's order confirmation date
+     * @param  null|string            $newReferenceNumber     __BT-X-310, From EXTENDED__ Buyer's order confirmation number
+     * @param  null|string            $newReferenceLineNumber __BT-X-311, From EXTENDED__ Buyer's order confirmation line number
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-312, From EXTENDED__ Buyer's order confirmation date
      * @return self
      */
     public function setDocumentPositionQuotationReference(
@@ -10136,8 +10090,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $quotationOrderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         return $this;
@@ -10146,9 +10100,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an associated quotation (line reference).
      *
-     * @param string|null $newReferenceNumber __BT-X-310, From EXTENDED__ Buyer's order confirmation number
-     * @param string|null $newReferenceLineNumber __BT-X-311, From EXTENDED__ Buyer's order confirmation line number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-312, From EXTENDED__ Buyer's order confirmation date
+     * @param  null|string            $newReferenceNumber     __BT-X-310, From EXTENDED__ Buyer's order confirmation number
+     * @param  null|string            $newReferenceLineNumber __BT-X-311, From EXTENDED__ Buyer's order confirmation line number
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-312, From EXTENDED__ Buyer's order confirmation date
      * @return self
      */
     public function addDocumentPositionQuotationReference(
@@ -10172,9 +10126,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the associated contract (line reference).
      *
-     * @param string|null $newReferenceNumber __BT-X-24, From EXTENDED__ Buyer's order confirmation number
-     * @param string|null $newReferenceLineNumber __BT-X-25, From EXTENDED__ Buyer's order confirmation line number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-26, From EXTENDED__ Buyer's order confirmation date
+     * @param  null|string            $newReferenceNumber     __BT-X-24, From EXTENDED__ Buyer's order confirmation number
+     * @param  null|string            $newReferenceLineNumber __BT-X-25, From EXTENDED__ Buyer's order confirmation line number
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-26, From EXTENDED__ Buyer's order confirmation date
      * @return self
      */
     public function setDocumentPositionContractReference(
@@ -10207,8 +10161,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $contractOrderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         return $this;
@@ -10217,9 +10171,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an associated contract (line reference).
      *
-     * @param string|null $newReferenceNumber __BT-X-24, From EXTENDED__ Buyer's order confirmation number
-     * @param string|null $newReferenceLineNumber __BT-X-25, From EXTENDED__ Buyer's order confirmation line number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-26, From EXTENDED__ Buyer's order confirmation date
+     * @param  null|string            $newReferenceNumber     __BT-X-24, From EXTENDED__ Buyer's order confirmation number
+     * @param  null|string            $newReferenceLineNumber __BT-X-25, From EXTENDED__ Buyer's order confirmation line number
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-26, From EXTENDED__ Buyer's order confirmation date
      * @return self
      */
     public function addDocumentPositionContractReference(
@@ -10243,13 +10197,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set an additional associated document (line reference)
      *
-     * @param string|null $newReferenceNumber __BT-X-27, From EXTENDED__ Additional document number
-     * @param string|null $newReferenceLineNumber __BT-X-29, From EXTENDED__ Additional document line number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-33, From EXTENDED__ Additional document date
-     * @param string|null $newTypeCode __BT-X-30, From EXTENDED__ Additional document type code
-     * @param string|null $newReferenceTypeCode __BT-X-32, From EXTENDED__ Additional document reference-type code
-     * @param string|null $newDescription __BT-X-299, From EXTENDED__ Additional document description
-     * @param InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment __BT-X-31, From EXTENDED__ Additional document attachment
+     * @param  null|string                 $newReferenceNumber        __BT-X-27, From EXTENDED__ Additional document number
+     * @param  null|string                 $newReferenceLineNumber    __BT-X-29, From EXTENDED__ Additional document line number
+     * @param  null|DateTimeInterface      $newReferenceDate          __BT-X-33, From EXTENDED__ Additional document date
+     * @param  null|string                 $newTypeCode               __BT-X-30, From EXTENDED__ Additional document type code
+     * @param  null|string                 $newReferenceTypeCode      __BT-X-32, From EXTENDED__ Additional document reference-type code
+     * @param  null|string                 $newDescription            __BT-X-299, From EXTENDED__ Additional document description
+     * @param  null|InvoiceSuiteAttachment $newInvoiceSuiteAttachment __BT-X-31, From EXTENDED__ Additional document attachment
      * @return self
      */
     public function setDocumentPositionAdditionalReference(
@@ -10288,13 +10242,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an additional associated document (line reference)
      *
-     * @param string|null $newReferenceNumber __BT-X-27, From EXTENDED__ Additional document number
-     * @param string|null $newReferenceLineNumber __BT-X-29, From EXTENDED__ Additional document line number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-33, From EXTENDED__ Additional document date
-     * @param string|null $newTypeCode __BT-X-30, From EXTENDED__ Additional document type code
-     * @param string|null $newReferenceTypeCode __BT-X-32, From EXTENDED__ Additional document reference-type code
-     * @param string|null $newDescription __BT-X-299, From EXTENDED__ Additional document description
-     * @param InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment __BT-X-31, From EXTENDED__ Additional document attachment
+     * @param  null|string                 $newReferenceNumber        __BT-X-27, From EXTENDED__ Additional document number
+     * @param  null|string                 $newReferenceLineNumber    __BT-X-29, From EXTENDED__ Additional document line number
+     * @param  null|DateTimeInterface      $newReferenceDate          __BT-X-33, From EXTENDED__ Additional document date
+     * @param  null|string                 $newTypeCode               __BT-X-30, From EXTENDED__ Additional document type code
+     * @param  null|string                 $newReferenceTypeCode      __BT-X-32, From EXTENDED__ Additional document reference-type code
+     * @param  null|string                 $newDescription            __BT-X-299, From EXTENDED__ Additional document description
+     * @param  null|InvoiceSuiteAttachment $newInvoiceSuiteAttachment __BT-X-31, From EXTENDED__ Additional document attachment
      * @return self
      */
     public function addDocumentPositionAdditionalReference(
@@ -10333,8 +10287,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $additionalReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newReferenceTypeCode)) {
@@ -10371,9 +10325,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set an additional ultimate customer order reference (line reference)
      *
-     * @param string|null $newReferenceNumber __BT-X-43, From EXTENDED__ Ultimate customer order number
-     * @param string|null $newReferenceLineNumber __BT-X-44, From EXTENDED__ Ultimate customer order line number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-45, From EXTENDED__ Ultimate customer order date
+     * @param  null|string            $newReferenceNumber     __BT-X-43, From EXTENDED__ Ultimate customer order number
+     * @param  null|string            $newReferenceLineNumber __BT-X-44, From EXTENDED__ Ultimate customer order line number
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-45, From EXTENDED__ Ultimate customer order date
      * @return self
      */
     public function setDocumentPositionUltimateCustomerOrderReference(
@@ -10404,9 +10358,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an additional ultimate customer order reference (line reference)
      *
-     * @param string|null $newReferenceNumber __BT-X-43, From EXTENDED__ Ultimate customer order number
-     * @param string|null $newReferenceLineNumber __BT-X-44, From EXTENDED__ Ultimate customer order line number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-45, From EXTENDED__ Ultimate customer order date
+     * @param  null|string            $newReferenceNumber     __BT-X-43, From EXTENDED__ Ultimate customer order number
+     * @param  null|string            $newReferenceLineNumber __BT-X-44, From EXTENDED__ Ultimate customer order line number
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-45, From EXTENDED__ Ultimate customer order date
      * @return self
      */
     public function addDocumentPositionUltimateCustomerOrderReference(
@@ -10432,8 +10386,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $ultimateCustomerOrderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         return $this;
@@ -10442,9 +10396,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set an additional despatch advice reference
      *
-     * @param string|null $newReferenceNumber __BT-X-86, From EXTENDED__ Shipping notification number
-     * @param string|null $newReferenceLineNumber __BT-X-87, From EXTENDED__ Shipping notification line number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-88, From EXTENDED__ Shipping notification date
+     * @param  null|string            $newReferenceNumber     __BT-X-86, From EXTENDED__ Shipping notification number
+     * @param  null|string            $newReferenceLineNumber __BT-X-87, From EXTENDED__ Shipping notification line number
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-88, From EXTENDED__ Shipping notification date
      * @return self
      */
     public function setDocumentPositionDespatchAdviceReference(
@@ -10477,9 +10431,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $despatchAdviceReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
-        };
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
+        }
 
         return $this;
     }
@@ -10487,9 +10441,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an additional despatch advice reference
      *
-     * @param string|null $newReferenceNumber __BT-X-86, From EXTENDED__ Shipping notification number
-     * @param string|null $newReferenceLineNumber __BT-X-87, From EXTENDED__ Shipping notification line number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-88, From EXTENDED__ Shipping notification date
+     * @param  null|string            $newReferenceNumber     __BT-X-86, From EXTENDED__ Shipping notification number
+     * @param  null|string            $newReferenceLineNumber __BT-X-87, From EXTENDED__ Shipping notification line number
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-88, From EXTENDED__ Shipping notification date
      * @return self
      */
     public function addDocumentPositionDespatchAdviceReference(
@@ -10513,9 +10467,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set an additional receiving advice reference
      *
-     * @param string|null $newReferenceNumber __BT-X-89, From EXTENDED__ Receipt notification number
-     * @param string|null $newReferenceLineNumber __BT-X-90, From EXTENDED__ Receipt notification line number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-91, From EXTENDED__ Receipt notification date
+     * @param  null|string            $newReferenceNumber     __BT-X-89, From EXTENDED__ Receipt notification number
+     * @param  null|string            $newReferenceLineNumber __BT-X-90, From EXTENDED__ Receipt notification line number
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-91, From EXTENDED__ Receipt notification date
      * @return self
      */
     public function setDocumentPositionReceivingAdviceReference(
@@ -10548,9 +10502,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $receivingAdviceReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
-        };
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
+        }
 
         return $this;
     }
@@ -10558,9 +10512,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an additional receiving advice reference
      *
-     * @param string|null $newReferenceNumber __BT-X-89, From EXTENDED__ Receipt notification number
-     * @param string|null $newReferenceLineNumber __BT-X-90, From EXTENDED__ Receipt notification line number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-91, From EXTENDED__ Receipt notification date
+     * @param  null|string            $newReferenceNumber     __BT-X-89, From EXTENDED__ Receipt notification number
+     * @param  null|string            $newReferenceLineNumber __BT-X-90, From EXTENDED__ Receipt notification line number
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-91, From EXTENDED__ Receipt notification date
      * @return self
      */
     public function addDocumentPositionReceivingAdviceReference(
@@ -10584,9 +10538,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set an additional delivery note
      *
-     * @param string|null $newReferenceNumber __BT-X-92, From EXTENDED__ Delivery slip number
-     * @param string|null $newReferenceLineNumber __BT-X-93, From EXTENDED__ Delivery slip line number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-94, From EXTENDED__ Delivery slip date
+     * @param  null|string            $newReferenceNumber     __BT-X-92, From EXTENDED__ Delivery slip number
+     * @param  null|string            $newReferenceLineNumber __BT-X-93, From EXTENDED__ Delivery slip line number
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-94, From EXTENDED__ Delivery slip date
      * @return self
      */
     public function setDocumentPositionDeliveryNoteReference(
@@ -10619,9 +10573,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $deliveryNoteReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
-        };
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
+        }
 
         return $this;
     }
@@ -10629,9 +10583,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an additional delivery note
      *
-     * @param string|null $newReferenceNumber __BT-X-92, From EXTENDED__ Delivery slip number
-     * @param string|null $newReferenceLineNumber __BT-X-93, From EXTENDED__ Delivery slip line number
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-94, From EXTENDED__ Delivery slip date
+     * @param  null|string            $newReferenceNumber     __BT-X-92, From EXTENDED__ Delivery slip number
+     * @param  null|string            $newReferenceLineNumber __BT-X-93, From EXTENDED__ Delivery slip line number
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-94, From EXTENDED__ Delivery slip date
      * @return self
      */
     public function addDocumentPositionDeliveryNoteReference(
@@ -10655,10 +10609,10 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set an additional invoice document (reference to preceding invoice)
      *
-     * @param string|null $newReferenceNumber __BT-X-331, From EXTENDED__ Identification of an invoice previously sent
-     * @param string|null $newReferenceLineNumber __BT-X-540, From EXTENDED__ Identification of an invoice line previously sent
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-333, From EXTENDED__ Date of the previous invoice
-     * @param string|null $newTypeCode __BT-X-332, From EXTENDED__ Type code of previous invoice
+     * @param  null|string            $newReferenceNumber     __BT-X-331, From EXTENDED__ Identification of an invoice previously sent
+     * @param  null|string            $newReferenceLineNumber __BT-X-540, From EXTENDED__ Identification of an invoice line previously sent
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-333, From EXTENDED__ Date of the previous invoice
+     * @param  null|string            $newTypeCode            __BT-X-332, From EXTENDED__ Type code of previous invoice
      * @return self
      */
     public function setDocumentPositionInvoiceReference(
@@ -10693,8 +10647,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $invoiceReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
-                ->setValue($newReferenceDate->format("Ymd"))
-                ->setFormat("102");
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         return $this;
@@ -10703,10 +10657,10 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an additional invoice document (reference to preceding invoice)
      *
-     * @param string|null $newReferenceNumber __BT-X-331, From EXTENDED__ Identification of an invoice previously sent
-     * @param string|null $newReferenceLineNumber __BT-X-540, From EXTENDED__ Identification of an invoice line previously sent
-     * @param DateTimeInterface|null $newReferenceDate __BT-X-333, From EXTENDED__ Date of the previous invoice
-     * @param string|null $newTypeCode __BT-X-332, From EXTENDED__ Type code of previous invoice
+     * @param  null|string            $newReferenceNumber     __BT-X-331, From EXTENDED__ Identification of an invoice previously sent
+     * @param  null|string            $newReferenceLineNumber __BT-X-540, From EXTENDED__ Identification of an invoice line previously sent
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-333, From EXTENDED__ Date of the previous invoice
+     * @param  null|string            $newTypeCode            __BT-X-332, From EXTENDED__ Type code of previous invoice
      * @return self
      */
     public function addDocumentPositionInvoiceReference(
@@ -10732,9 +10686,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the position's gross price
      *
-     * @param null|float $newGrossPrice __BT-148, From BASIC__ Unit price excluding sales tax before deduction of the discount on the item price
-     * @param null|float $newGrossPriceBasisQuantity __BT-149-1, From BASIC__ Number of item units for which the price applies
-     * @param null|string $newGrossPriceBasisQuantityUnit __BT-150-1, From BASIC__ Unit code of the number of item units for which the price applies
+     * @param  null|float  $newGrossPrice                  __BT-148, From BASIC__ Unit price excluding sales tax before deduction of the discount on the item price
+     * @param  null|float  $newGrossPriceBasisQuantity     __BT-149-1, From BASIC__ Number of item units for which the price applies
+     * @param  null|string $newGrossPriceBasisQuantityUnit __BT-150-1, From BASIC__ Unit code of the number of item units for which the price applies
      * @return self
      */
     public function setDocumentPositionGrossPrice(
@@ -10763,8 +10717,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         $grossPrice->getChargeAmountWithCreate()->setValue($newGrossPrice);
 
         if (
-            !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newGrossPriceBasisQuantity]) &&
-            !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGrossPriceBasisQuantityUnit])
+            !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newGrossPriceBasisQuantity])
+            && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGrossPriceBasisQuantityUnit])
         ) {
             $grossPrice->getBasisQuantityWithCreate()->setValue($newGrossPriceBasisQuantity)->setUnitCode($newGrossPriceBasisQuantityUnit);
         }
@@ -10775,12 +10729,12 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set discount or charge to the gross price
      *
-     * @param null|float $newGrossPriceAllowanceChargeAmount __BT-147, From BASIC__ Discount amount or charge amount on the item price
-     * @param null|bool $newIsCharge __BT-147-02, From BASIC__ Switch for charge/discount
-     * @param null|float $newGrossPriceAllowanceChargePercent __BT-X-34, From EXTENDED__ Discount or charge on the item price in percent
-     * @param null|float $newGrossPriceAllowanceChargeBasisAmount __BT-X-35, From EXTENDED__ Base amount of the discount or charge
-     * @param null|string $newGrossPriceAllowanceChargeReason __BT-X-36, From EXTENDED__ Reason for discount or charge (free text)
-     * @param null|string $newGrossPriceAllowanceChargeReasonCode __BT-X-313, From EXTENDED__ Reason code for discount or charge (free text)
+     * @param  null|float  $newGrossPriceAllowanceChargeAmount      __BT-147, From BASIC__ Discount amount or charge amount on the item price
+     * @param  null|bool   $newIsCharge                             __BT-147-02, From BASIC__ Switch for charge/discount
+     * @param  null|float  $newGrossPriceAllowanceChargePercent     __BT-X-34, From EXTENDED__ Discount or charge on the item price in percent
+     * @param  null|float  $newGrossPriceAllowanceChargeBasisAmount __BT-X-35, From EXTENDED__ Base amount of the discount or charge
+     * @param  null|string $newGrossPriceAllowanceChargeReason      __BT-X-36, From EXTENDED__ Reason for discount or charge (free text)
+     * @param  null|string $newGrossPriceAllowanceChargeReasonCode  __BT-X-313, From EXTENDED__ Reason code for discount or charge (free text)
      * @return self
      */
     public function setDocumentPositionGrossPriceAllowanceCharge(
@@ -10823,12 +10777,12 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add discount or charge to the gross price
      *
-     * @param null|float $newGrossPriceAllowanceChargeAmount __BT-147, From BASIC__ Discount amount or charge amount on the item price
-     * @param null|bool $newIsCharge __BT-147-02, From BASIC__ Switch for charge/discount
-     * @param null|float $newGrossPriceAllowanceChargePercent __BT-X-34, From EXTENDED__ Discount or charge on the item price in percent
-     * @param null|float $newGrossPriceAllowanceChargeBasisAmount __BT-X-35, From EXTENDED__ Base amount of the discount or charge
-     * @param null|string $newGrossPriceAllowanceChargeReason __BT-X-36, From EXTENDED__ Reason for discount or charge (free text)
-     * @param null|string $newGrossPriceAllowanceChargeReasonCode __BT-X-313, From EXTENDED__ Reason code for discount or charge (free text)
+     * @param  null|float  $newGrossPriceAllowanceChargeAmount      __BT-147, From BASIC__ Discount amount or charge amount on the item price
+     * @param  null|bool   $newIsCharge                             __BT-147-02, From BASIC__ Switch for charge/discount
+     * @param  null|float  $newGrossPriceAllowanceChargePercent     __BT-X-34, From EXTENDED__ Discount or charge on the item price in percent
+     * @param  null|float  $newGrossPriceAllowanceChargeBasisAmount __BT-X-35, From EXTENDED__ Base amount of the discount or charge
+     * @param  null|string $newGrossPriceAllowanceChargeReason      __BT-X-36, From EXTENDED__ Reason for discount or charge (free text)
+     * @param  null|string $newGrossPriceAllowanceChargeReasonCode  __BT-X-313, From EXTENDED__ Reason code for discount or charge (free text)
      * @return self
      */
     public function addDocumentPositionGrossPriceAllowanceCharge(
@@ -10880,9 +10834,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the position's net price
      *
-     * @param null|float $newNetPrice __BT-146, From BASIC__ Unit price excluding sales tax after deduction of the discount on the item price
-     * @param null|float $newNetPriceBasisQuantity __BT-149, From BASIC__ Number of item units for which the price applies
-     * @param null|string $newNetPriceBasisQuantityUnit __BT-150, From BASIC__ Unit code of the number of item units for which the price applies
+     * @param  null|float  $newNetPrice                  __BT-146, From BASIC__ Unit price excluding sales tax after deduction of the discount on the item price
+     * @param  null|float  $newNetPriceBasisQuantity     __BT-149, From BASIC__ Number of item units for which the price applies
+     * @param  null|string $newNetPriceBasisQuantityUnit __BT-150, From BASIC__ Unit code of the number of item units for which the price applies
      * @return self
      */
     public function setDocumentPositionNetPrice(
@@ -10911,8 +10865,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         $netPrice->getChargeAmountWithCreate()->setValue($newNetPrice);
 
         if (
-            !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newNetPriceBasisQuantity]) &&
-            !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newNetPriceBasisQuantityUnit])
+            !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newNetPriceBasisQuantity])
+            && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newNetPriceBasisQuantityUnit])
         ) {
             $netPrice->getBasisQuantityWithCreate()->setValue($newNetPriceBasisQuantity)->setUnitCode($newNetPriceBasisQuantityUnit);
         }
@@ -10923,12 +10877,12 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the position's net price included tax
      *
-     * @param string|null $newTaxCategory __BT-X-40, From EXTENDED__ Coded description of the tax category
-     * @param string|null $newTaxType __BT-X-38, From EXTENDED__ Coded description of the tax type
-     * @param float|null $newTaxAmount __BT-X-37, From EXTENDED__ Tax total amount
-     * @param float|null $newTaxPercent __BT-X-42, From EXTENDED__ Tax Rate (Percentage)
-     * @param string|null $newExemptionReason __BT-X-39, From EXTENDED__ Reason for tax exemption (free text)
-     * @param string|null $newExemptionReasonCode __BT-X-41, From EXTENDED__ Reason for tax exemption (Code)
+     * @param  null|string $newTaxCategory         __BT-X-40, From EXTENDED__ Coded description of the tax category
+     * @param  null|string $newTaxType             __BT-X-38, From EXTENDED__ Coded description of the tax type
+     * @param  null|float  $newTaxAmount           __BT-X-37, From EXTENDED__ Tax total amount
+     * @param  null|float  $newTaxPercent          __BT-X-42, From EXTENDED__ Tax Rate (Percentage)
+     * @param  null|string $newExemptionReason     __BT-X-39, From EXTENDED__ Reason for tax exemption (free text)
+     * @param  null|string $newExemptionReasonCode __BT-X-41, From EXTENDED__ Reason for tax exemption (Code)
      * @return self
      */
     public function setDocumentPositionNetPriceTax(
@@ -10953,8 +10907,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         $netPrice->unsetIncludedTradeTax();
 
         if (
-            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent, $newTaxAmount]) ||
-            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent, $newTaxAmount])
+            || InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])
         ) {
             return $this;
         }
@@ -10979,12 +10933,12 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the position's quantities
      *
-     * @param null|float $newQuantity __BT-129, From BASIC__ Invoiced quantity
-     * @param null|string $newQuantityUnit __BT-130, From BASIC__ Invoiced quantity unit
-     * @param null|float $newChargeFreeQuantity __BT-X-46, From EXTENDED__ Charge Free quantity
-     * @param null|string $newChargeFreeQuantityUnit __BT-X-46-0, From EXTENDED__ Charge Free quantity unit
-     * @param null|float $newPackageQuantity __BT-X-47, From EXTENDED__ Package quantity
-     * @param null|string $newPackageQuantityUnit __BT-X-47-0, From EXTENDED__ Package quantity unit
+     * @param  null|float  $newQuantity               __BT-129, From BASIC__ Invoiced quantity
+     * @param  null|string $newQuantityUnit           __BT-130, From BASIC__ Invoiced quantity unit
+     * @param  null|float  $newChargeFreeQuantity     __BT-X-46, From EXTENDED__ Charge Free quantity
+     * @param  null|string $newChargeFreeQuantityUnit __BT-X-46-0, From EXTENDED__ Charge Free quantity unit
+     * @param  null|float  $newPackageQuantity        __BT-X-47, From EXTENDED__ Package quantity
+     * @param  null|string $newPackageQuantityUnit    __BT-X-47-0, From EXTENDED__ Package quantity unit
      * @return self
      */
     public function setDocumentPositionQuantities(
@@ -11005,8 +10959,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ?->unsetPackageQuantity();
 
         if (
-            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newQuantity]) ||
-            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newQuantityUnit])
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newQuantity])
+            || InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newQuantityUnit])
         ) {
             return $this;
         }
@@ -11023,8 +10977,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ->setUnitCode($newQuantityUnit);
 
         if (
-            !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newChargeFreeQuantity]) ||
-            !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newChargeFreeQuantityUnit])
+            !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newChargeFreeQuantity])
+            || !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newChargeFreeQuantityUnit])
         ) {
             $latestPosition
                 ->getSpecifiedLineTradeDeliveryWithCreate()
@@ -11034,8 +10988,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         }
 
         if (
-            !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newPackageQuantity]) ||
-            !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPackageQuantityUnit])
+            !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newPackageQuantity])
+            || !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPackageQuantityUnit])
         ) {
             $latestPosition
                 ->getSpecifiedLineTradeDeliveryWithCreate()
@@ -11050,7 +11004,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the name of the Ship-To party
      *
-     * @param string|null $newName __BT-X-50, From EXTENDED__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-X-50, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
     public function setDocumentPositionShipToName(
@@ -11083,7 +11037,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a name of the Ship-To party
      *
-     * @param string|null $newName __BT-X-50, From EXTENDED__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-X-50, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
     public function addDocumentPositionShipToName(
@@ -11101,7 +11055,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the ID of the Ship-To party
      *
-     * @param string|null $newId __BT-X-48, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-X-48, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setDocumentPositionShipToId(
@@ -11127,7 +11081,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the Ship-To party
      *
-     * @param string|null $newId __BT-X-48, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-X-48, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addDocumentPositionShipToId(
@@ -11152,8 +11106,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Global ID of the Ship-To party
      *
-     * @param string|null $newGlobalId __BT-X-49, From EXTENDED__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-X-49-0, From EXTENDED__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-X-49, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-49-0, From EXTENDED__ Type of the global identifier of the party
      * @return self
      */
     public function setDocumentPositionShipToGlobalId(
@@ -11180,8 +11134,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the Ship-To party
      *
-     * @param string|null $newGlobalId __BT-X-49, From EXTENDED__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-X-49-0, From EXTENDED__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-X-49, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-49-0, From EXTENDED__ Type of the global identifier of the party
      * @return self
      */
     public function addDocumentPositionShipToGlobalId(
@@ -11208,8 +11162,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Tax Registration of the Ship-To party
      *
-     * @param string|null $newTaxRegistrationType __BT-X-66-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-X-66, From EXTENDED__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-X-66-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-X-66, From EXTENDED__ Tax identification number
      * @return self
      */
     public function setDocumentPositionShipToTaxRegistration(
@@ -11236,8 +11190,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an Tax Registration to the Ship-To party
      *
-     * @param string|null $newTaxRegistrationType __BT-X-66-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-X-66, From EXTENDED__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-X-66-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-X-66, From EXTENDED__ Tax identification number
      * @return self
      */
     public function addDocumentPositionShipToTaxRegistration(
@@ -11265,13 +11219,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the address of the Ship-To party
      *
-     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId Country in which the party's address is located.
-     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return self
      */
     public function setDocumentPositionShipToAddress(
@@ -11336,13 +11290,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an address to the Ship-To party
      *
-     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId Country in which the party's address is located.
-     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return self
      */
     public function addDocumentPositionShipToAddress(
@@ -11374,9 +11328,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the legal information of the Ship-To party
      *
-     * @param string|null $newType __BT-X-51-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-X-51, From EXTENDED__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-X-52, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-X-51-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-51, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-52, From EXTENDED__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function setDocumentPositionShipToLegalOrganisation(
@@ -11405,6 +11359,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             $shipToTradeParty->getSpecifiedLegalOrganizationWithCreate()->getIDWithCreate()->setValue($newId);
+
             if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
                 $shipToTradeParty->getSpecifiedLegalOrganization()->getID()->setSchemeID($newType);
             }
@@ -11420,9 +11375,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a legal information of the Ship-To party
      *
-     * @param string|null $newType __BT-X-51-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-X-51, From EXTENDED__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-X-52, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-X-51-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-51, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-52, From EXTENDED__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function addDocumentPositionShipToLegalOrganisation(
@@ -11442,11 +11397,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the contact information of the Ship-To party
      *
-     * @param string|null $newPersonName __BT-X-54, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-X-54-1, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-X-55, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-56, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-X-57, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-X-54, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-54-1, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-55, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-56, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-57, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function setDocumentPositionShipToContact(
@@ -11482,11 +11437,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add contact information of the Ship-To party
      *
-     * @param string|null $newPersonName __BT-X-54, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT-X-54-1, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT-X-55, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT-X-56, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT-X-57, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT-X-54, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-54-1, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-55, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-56, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-57, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function addDocumentPositionShipToContact(
@@ -11534,8 +11489,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add communication information of the Ship-To party
      *
-     * @param string|null $newType __BT-X-65-0, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-65, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-65-0, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-65, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function setDocumentPositionShipToCommunication(
@@ -11576,8 +11531,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a communication information of the Ship-To party
      *
-     * @param string|null $newType __BT-X-65-0, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-65, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-65-0, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-65, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function addDocumentPositionShipToCommunication(
@@ -11596,7 +11551,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the name of the ultimate Ship-To party
      *
-     * @param string|null $newName __BT-X-69, From EXTENDED__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-X-69, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
     public function setDocumentPositionUltimateShipToName(
@@ -11629,7 +11584,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a name of the ultimate Ship-To party
      *
-     * @param string|null $newName __BT-X-69, From EXTENDED__ The full formal name under which the party is registered.
+     * @param  null|string $newName __BT-X-69, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
     public function addDocumentPositionUltimateShipToName(
@@ -11647,7 +11602,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the ID of the ultimate Ship-To party
      *
-     * @param string|null $newId __BT-X-67, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-X-67, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setDocumentPositionUltimateShipToId(
@@ -11673,7 +11628,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the ultimate Ship-To party
      *
-     * @param string|null $newId __BT-X-67, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId __BT-X-67, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function addDocumentPositionUltimateShipToId(
@@ -11700,8 +11655,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Global ID of the ultimate Ship-To party
      *
-     * @param string|null $newGlobalId __BT-X-68, From EXTENDED__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-X-68-0, From EXTENDED__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-X-68, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-68-0, From EXTENDED__ Type of the global identifier of the party
      * @return self
      */
     public function setDocumentPositionUltimateShipToGlobalId(
@@ -11728,8 +11683,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an ID to the ultimate Ship-To party
      *
-     * @param string|null $newGlobalId __BT-X-68, From EXTENDED__ A global identifier of the party.
-     * @param string|null $newGlobalIdType __BT-X-68-0, From EXTENDED__ Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     __BT-X-68, From EXTENDED__ A global identifier of the party
+     * @param  null|string $newGlobalIdType __BT-X-68-0, From EXTENDED__ Type of the global identifier of the party
      * @return self
      */
     public function addDocumentPositionUltimateShipToGlobalId(
@@ -11756,8 +11711,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the Tax Registration of the ultimate Ship-To party
      *
-     * @param string|null $newTaxRegistrationType __BT-X-84-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-X-84, From EXTENDED__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-X-84-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-X-84, From EXTENDED__ Tax identification number
      * @return self
      */
     public function setDocumentPositionUltimateShipToTaxRegistration(
@@ -11784,8 +11739,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add an Tax Registration to the ultimate Ship-To party
      *
-     * @param string|null $newTaxRegistrationType __BT-X-84-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId __BT-X-84, From EXTENDED__ Tax identification number.
+     * @param  null|string $newTaxRegistrationType __BT-X-84-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-X-84, From EXTENDED__ Tax identification number
      * @return self
      */
     public function addDocumentPositionUltimateShipToTaxRegistration(
@@ -11813,13 +11768,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the address of the ultimate Ship-To party
      *
-     * @param string|null $newAddressLine1 __BT_X-77, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT_X-78, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT_X-79, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT_X-76, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT_X-80, From EXTENDED__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT_X-81, From EXTENDED__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT_X-82, From EXTENDED__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT_X-77, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT_X-78, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT_X-79, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT_X-76, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT_X-80, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT_X-81, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT_X-82, From EXTENDED__ Region or federal state in which the party's address is located
      * @return self
      */
     public function setDocumentPositionUltimateShipToAddress(
@@ -11884,13 +11839,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a address of the ultimate Ship-To party
      *
-     * @param string|null $newAddressLine1 __BT_X-77, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 __BT_X-78, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 __BT_X-79, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode __BT_X-76, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity __BT_X-80, From EXTENDED__ Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId __BT_X-81, From EXTENDED__ Country in which the party's address is located.
-     * @param string|null $newSubDivision __BT_X-82, From EXTENDED__ Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 __BT_X-77, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT_X-78, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT_X-79, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT_X-76, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT_X-80, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT_X-81, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT_X-82, From EXTENDED__ Region or federal state in which the party's address is located
      * @return self
      */
     public function addDocumentPositionUltimateShipToAddress(
@@ -11922,9 +11877,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the legal information of the ultimate Ship-To party
      *
-     * @param string|null $newType __BT-X-70-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-X-70, From EXTENDED__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-X-71, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-X-70-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-70, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-71, From EXTENDED__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function setDocumentPositionUltimateShipToLegalOrganisation(
@@ -11953,6 +11908,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             $ultimateShipToTradeParty->getSpecifiedLegalOrganizationWithCreate()->getIDWithCreate()->setValue($newId);
+
             if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
                 $ultimateShipToTradeParty->getSpecifiedLegalOrganization()->getID()->setSchemeID($newType);
             }
@@ -11968,9 +11924,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the legal information of the ultimate Ship-To party
      *
-     * @param string|null $newType __BT-X-70-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
-     * @param string|null $newId __BT-X-70, From EXTENDED__ Identification number of the legal registration of the party.
-     * @param string|null $newName __BT-X-71, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType __BT-X-70-0, From EXTENDED__ Type of the identification number of the legal registration of the party
+     * @param  null|string $newId   __BT-X-70, From EXTENDED__ Identification number of the legal registration of the party
+     * @param  null|string $newName __BT-X-71, From EXTENDED__ Name by which the party is known, if different from the party's name
      * @return self
      */
     public function addDocumentPositionUltimateShipToLegalOrganisation(
@@ -11994,11 +11950,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the contact information of the ultimate Ship-To party
      *
-     * @param string|null $newPersonName __BT_X-72, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT_X-72-1, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT_X-73, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT_X-74, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT_X-75, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT_X-72, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT_X-72-1, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT_X-73, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT_X-74, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT_X-75, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function setDocumentPositionUltimateShipToContact(
@@ -12034,11 +11990,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add contact information of the ultimate Ship-To party
      *
-     * @param string|null $newPersonName __BT_X-72, From EXTENDED__ Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName __BT_X-72-1, From EXTENDED__ Name of the department for the contact point.
-     * @param string|null $newPhoneNumber __BT_X-73, From EXTENDED__ Telephone number for the contact point.
-     * @param string|null $newFaxNumber __BT_X-74, From EXTENDED__ Fax number of the contact point.
-     * @param string|null $newEmailAddress __BT_X-75, From EXTENDED__ E-Mail address of the contact point.
+     * @param  null|string $newPersonName     __BT_X-72, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT_X-72-1, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT_X-73, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT_X-74, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT_X-75, From EXTENDED__ E-Mail address of the contact point
      * @return self
      */
     public function addDocumentPositionUltimateShipToContact(
@@ -12086,8 +12042,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add communication information of the ultimate Ship-To party
      *
-     * @param string|null $newType __BT-X-75-0, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-75, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-75-0, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-75, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function setDocumentPositionUltimateShipToCommunication(
@@ -12128,8 +12084,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add communication information of the ultimate Ship-To party
      *
-     * @param string|null $newType __BT-X-75-0, From EXTENDED__ The type for the party's electronic address.
-     * @param string|null $newUri __BT-X-75, From EXTENDED__ The party's electronic address.
+     * @param  null|string $newType __BT-X-75-0, From EXTENDED__ The type for the party's electronic address
+     * @param  null|string $newUri  __BT-X-75, From EXTENDED__ The party's electronic address
      * @return self
      */
     public function addDocumentPositionUltimateShipToCommunication(
@@ -12148,7 +12104,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the date of the delivery
      *
-     * @param DateTimeInterface|null $newDate __BT-X-85, From EXTENDED__
+     * @param  null|DateTimeInterface $newDate __BT-X-85, From EXTENDED__
      * @return self
      */
     public function setDocumentPositionSupplyChainEvent(
@@ -12173,8 +12129,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ->getActualDeliverySupplyChainEventWithCreate()
             ->getOccurrenceDateTimeWithCreate()
             ->getDateTimeStringWithCreate()
-            ->setValue($newDate->format("Ymd"))
-            ->setFormat("102");
+            ->setValue($newDate->format('Ymd'))
+            ->setFormat('102');
 
         return $this;
     }
@@ -12182,9 +12138,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the position's start and/or end date of the billing period
      *
-     * @param null|DateTimeInterface $newStartDate __BT-134, From BASIC__ Start of the billing period
-     * @param null|DateTimeInterface $newEndDate __BT-135, From BASIC__ End of the billing period
-     * @param null|string $newDescription __BT-X-264, From EXTENDED__ Further information of the billing period (Obsolete)
+     * @param  null|DateTimeInterface $newStartDate   __BT-134, From BASIC__ Start of the billing period
+     * @param  null|DateTimeInterface $newEndDate     __BT-135, From BASIC__ End of the billing period
+     * @param  null|string            $newDescription __BT-X-264, From EXTENDED__ Further information of the billing period (Obsolete)
      * @return self
      */
     public function setDocumentPositionBillingPeriod(
@@ -12213,14 +12169,14 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         $billingPeriod
             ->getStartDateTimeWithCreate()
             ->getDateTimeStringWithCreate()
-            ->setValue($newStartDate->format("Ymd"))
-            ->setFormat("102");
+            ->setValue($newStartDate->format('Ymd'))
+            ->setFormat('102');
 
         $billingPeriod
             ->getEndDateTimeWithCreate()
             ->getDateTimeStringWithCreate()
-            ->setValue($newEndDate->format("Ymd"))
-            ->setFormat("102");
+            ->setValue($newEndDate->format('Ymd'))
+            ->setFormat('102');
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
             $billingPeriod
@@ -12234,9 +12190,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a position's start and/or end date of the billing period
      *
-     * @param null|DateTimeInterface $newStartDate Start of the billing period
-     * @param null|DateTimeInterface $newEndDate End of the billing period
-     * @param null|string $newDescription Further information of the billing period (Obsolete)
+     * @param  null|DateTimeInterface $newStartDate   Start of the billing period
+     * @param  null|DateTimeInterface $newEndDate     End of the billing period
+     * @param  null|string            $newDescription Further information of the billing period (Obsolete)
      * @return self
      */
     public function addDocumentPositionBillingPeriod(
@@ -12256,12 +12212,12 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the position's tax information
      *
-     * @param string|null $newTaxCategory __BT-151, From BASIC__ Coded description of the tax category
-     * @param string|null $newTaxType __BT-151-0, From BASIC__ Coded description of the tax type
-     * @param float|null $newTaxAmount __BT-X-95, From EXTENDED__ Tax total amount
-     * @param float|null $newTaxPercent __BT-152, From BASIC__ Tax Rate (Percentage)
-     * @param string|null $newExemptionReason __BT-X-96, From EXTENDED__ Reason for tax exemption (free text)
-     * @param string|null $newExemptionReasonCode __BT-X-97, From EXTENDED__ Reason for tax exemption (Code)
+     * @param  null|string $newTaxCategory         __BT-151, From BASIC__ Coded description of the tax category
+     * @param  null|string $newTaxType             __BT-151-0, From BASIC__ Coded description of the tax type
+     * @param  null|float  $newTaxAmount           __BT-X-95, From EXTENDED__ Tax total amount
+     * @param  null|float  $newTaxPercent          __BT-152, From BASIC__ Tax Rate (Percentage)
+     * @param  null|string $newExemptionReason     __BT-X-96, From EXTENDED__ Reason for tax exemption (free text)
+     * @param  null|string $newExemptionReasonCode __BT-X-97, From EXTENDED__ Reason for tax exemption (Code)
      * @return self
      */
     public function setDocumentPositionTax(
@@ -12280,8 +12236,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ?->unsetApplicableTradeTax();
 
         if (
-            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent]) ||
-            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent])
+            || InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])
         ) {
             return $this;
         }
@@ -12301,12 +12257,12 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a position's tax information
      *
-     * @param string|null $newTaxCategory __BT-151, From BASIC__ Coded description of the tax category
-     * @param string|null $newTaxType __BT-151-0, From BASIC__ Coded description of the tax type
-     * @param float|null $newTaxAmount __BT-X-95, From EXTENDED__ Tax total amount
-     * @param float|null $newTaxPercent __BT-152, From BASIC__ Tax Rate (Percentage)
-     * @param string|null $newExemptionReason __BT-X-96, From EXTENDED__ Reason for tax exemption (free text)
-     * @param string|null $newExemptionReasonCode __BT-X-97, From EXTENDED__ Reason for tax exemption (Code)
+     * @param  null|string $newTaxCategory         __BT-151, From BASIC__ Coded description of the tax category
+     * @param  null|string $newTaxType             __BT-151-0, From BASIC__ Coded description of the tax type
+     * @param  null|float  $newTaxAmount           __BT-X-95, From EXTENDED__ Tax total amount
+     * @param  null|float  $newTaxPercent          __BT-152, From BASIC__ Tax Rate (Percentage)
+     * @param  null|string $newExemptionReason     __BT-X-96, From EXTENDED__ Reason for tax exemption (free text)
+     * @param  null|string $newExemptionReasonCode __BT-X-97, From EXTENDED__ Reason for tax exemption (Code)
      * @return self
      */
     public function addDocumentPositionTax(
@@ -12318,8 +12274,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         ?string $newExemptionReasonCode = null,
     ): self {
         if (
-            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent]) ||
-            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent])
+            || InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])
         ) {
             return $this;
         }
@@ -12353,12 +12309,12 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set Document position Allowance/Charge
      *
-     * @param boolean|null $newChargeIndicator __BT-27-1/BT-28-1, From BASIC__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
-     * @param float|null $newAllowanceChargeAmount __BT-136/BT-141, From BASIC__ Amount of the surcharge or discount
-     * @param float|null $newAllowanceChargeBaseAmount __BT-137, From EN 16931__ The base amount that may be used in conjunction with the percentage of the surcharge or discount
-     * @param string|null $newAllowanceChargeReason __BT-139/BT-144, From BASIC__ Reason given in text form for the surcharge or discount
-     * @param string|null $newAllowanceChargeReasonCode __BT-140/BT-145, From BASIC__ Reason given as a code for the surcharge or discount
-     * @param float|null $newAllowanceChargePercent __BT-138, From BASIC__ Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @param  null|bool   $newChargeIndicator           __BT-27-1/BT-28-1, From BASIC__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param  null|float  $newAllowanceChargeAmount     __BT-136/BT-141, From BASIC__ Amount of the surcharge or discount
+     * @param  null|float  $newAllowanceChargeBaseAmount __BT-137, From EN 16931__ The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param  null|string $newAllowanceChargeReason     __BT-139/BT-144, From BASIC__ Reason given in text form for the surcharge or discount
+     * @param  null|string $newAllowanceChargeReasonCode __BT-140/BT-145, From BASIC__ Reason given as a code for the surcharge or discount
+     * @param  null|float  $newAllowanceChargePercent    __BT-138, From BASIC__ Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
      * @return self
      */
     public function setDocumentPositionAllowanceCharge(
@@ -12395,12 +12351,12 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add Document position Allowance/Charge
      *
-     * @param boolean|null $newChargeIndicator __BT-27-1/BT-28-1, From BASIC__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
-     * @param float|null $newAllowanceChargeAmount __BT-136/BT-141, From BASIC__ Amount of the surcharge or discount
-     * @param float|null $newAllowanceChargeBaseAmount __BT-137, From EN 16931__ The base amount that may be used in conjunction with the percentage of the surcharge or discount
-     * @param string|null $newAllowanceChargeReason __BT-139/BT-144, From BASIC__ Reason given in text form for the surcharge or discount
-     * @param string|null $newAllowanceChargeReasonCode __BT-140/BT-145, From BASIC__ Reason given as a code for the surcharge or discount
-     * @param float|null $newAllowanceChargePercent __BT-138, From BASIC__ Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @param  null|bool   $newChargeIndicator           __BT-27-1/BT-28-1, From BASIC__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param  null|float  $newAllowanceChargeAmount     __BT-136/BT-141, From BASIC__ Amount of the surcharge or discount
+     * @param  null|float  $newAllowanceChargeBaseAmount __BT-137, From EN 16931__ The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param  null|string $newAllowanceChargeReason     __BT-139/BT-144, From BASIC__ Reason given in text form for the surcharge or discount
+     * @param  null|string $newAllowanceChargeReasonCode __BT-140/BT-145, From BASIC__ Reason given as a code for the surcharge or discount
+     * @param  null|float  $newAllowanceChargePercent    __BT-138, From BASIC__ Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
      * @return self
      */
     public function addDocumentPositionAllowanceCharge(
@@ -12447,11 +12403,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set the document position summation
      *
-     * @param float|null $newNetAmount __BT-131, From BASIC__ Net amount
-     * @param float|null $newChargeTotalAmount __BT-X-327, From EXTENDED__ Sum of the charges
-     * @param float|null $newDiscountTotalAmount __BT-X-328, From EXTENDED__ Sum of the discounts
-     * @param float|null $newTaxTotalAmount __BT-X-329, From EXTENDED__ Total amount of the line (in the invoice currency)
-     * @param float|null $newGrossAmount __BT-X-330, From EXTENDED__ Total invoice line amount including sales tax
+     * @param  null|float $newNetAmount           __BT-131, From BASIC__ Net amount
+     * @param  null|float $newChargeTotalAmount   __BT-X-327, From EXTENDED__ Sum of the charges
+     * @param  null|float $newDiscountTotalAmount __BT-X-328, From EXTENDED__ Sum of the discounts
+     * @param  null|float $newTaxTotalAmount      __BT-X-329, From EXTENDED__ Total amount of the line (in the invoice currency)
+     * @param  null|float $newGrossAmount         __BT-X-330, From EXTENDED__ Total invoice line amount including sales tax
      * @return self
      */
     public function setDocumentPositionSummation(
@@ -12503,8 +12459,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set a position's posting reference
      *
-     * @param string|null $newType __BT-X-99, From EXTENDED__ Type of the posting reference
-     * @param string|null $newAccountId __BT-133, From EN 16931__ Posting reference of the byuer
+     * @param  null|string $newType      __BT-X-99, From EXTENDED__ Type of the posting reference
+     * @param  null|string $newAccountId __BT-133, From EN 16931__ Posting reference of the byuer
      * @return self
      */
     public function setDocumentPositionPostingReference(?string $newType = null, ?string $newAccountId = null): self
@@ -12539,8 +12495,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Add a position's posting reference
      *
-     * @param string|null $newType __BT-X-99, From EXTENDED__ Type of the posting reference
-     * @param string|null $newAccountId __BT-133, From EN 16931__ Posting reference of the byuer
+     * @param  null|string $newType      __BT-X-99, From EXTENDED__ Type of the posting reference
+     * @param  null|string $newAccountId __BT-133, From EN 16931__ Posting reference of the byuer
      * @return self
      */
     public function addDocumentPositionPostingReference(?string $newType = null, ?string $newAccountId = null): self
@@ -12553,6 +12509,63 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             $newType,
             $newAccountId
         );
+
+        return $this;
+    }
+
+    /**
+     * Returns the root object as a CrossIndustryInvoiceType
+     *
+     * @return CrossIndustryInvoiceType
+     */
+    protected function getCrossIndustryRootObject(): CrossIndustryInvoiceType
+    {
+        return $this->getDocumentRootObject();
+    }
+
+    /**
+     * Internal helper method which updates currencies in several objects
+     *
+     * @return self
+     */
+    protected function updateCurrencies(): self
+    {
+        $invoiceCurrencyCode = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getInvoiceCurrencyCode()?->getValue();
+
+        $taxCurrencyCode = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getTaxCurrencyCode()?->getValue();
+
+        // Update summation
+
+        $summation = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getSpecifiedTradeSettlementHeaderMonetarySummation();
+
+        if (!is_null($summation)) {
+            $taxTotalAmounts = $summation->getTaxTotalAmount();
+
+            if (!is_null($taxTotalAmounts)) {
+                $taxTotalAmount1 = $taxTotalAmounts[0] ?? null;
+                $taxTotalAmount2 = $taxTotalAmounts[1] ?? null;
+
+                if (!is_null($taxTotalAmount1)) {
+                    $taxTotalAmount1->setCurrencyID($invoiceCurrencyCode);
+                }
+
+                if (!is_null($taxTotalAmount2)) {
+                    $taxTotalAmount2->setCurrencyID($taxCurrencyCode);
+                }
+            }
+        }
 
         return $this;
     }

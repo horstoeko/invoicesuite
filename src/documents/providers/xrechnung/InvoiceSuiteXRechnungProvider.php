@@ -11,16 +11,16 @@ namespace horstoeko\invoicesuite\documents\providers\xrechnung;
 
 use DOMDocument;
 use DOMXPath;
-use Throwable;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\documents\models\zffxcomfort\rsm\CrossIndustryInvoice;
 use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
+use Throwable;
 
 class InvoiceSuiteXRechnungProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getUniqueId(): string
     {
@@ -28,17 +28,17 @@ class InvoiceSuiteXRechnungProvider extends InvoiceSuiteAbstractDocumentFormatPr
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getDescription(): string
     {
-        return 'The reference profile is based on the CIUS XRechnung, which is maintained by KoSIT. It represents an ' .
-            'extension of EN 16931-1 with its own business rules, the national German laws and regulations. It is therefore more ' .
-            'specific than the EN 16931 (COMFORT) profile.';
+        return 'The reference profile is based on the CIUS XRechnung, which is maintained by KoSIT. It represents an '
+            .'extension of EN 16931-1 with its own business rules, the national German laws and regulations. It is therefore more '
+            .'specific than the EN 16931 (COMFORT) profile.';
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getParameters(): array
     {
@@ -58,7 +58,7 @@ class InvoiceSuiteXRechnungProvider extends InvoiceSuiteAbstractDocumentFormatPr
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getSerializerMetadataDirectories(): array
     {
@@ -66,17 +66,17 @@ class InvoiceSuiteXRechnungProvider extends InvoiceSuiteAbstractDocumentFormatPr
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getSerializerHandlers(): array
     {
         return [
-            InvoiceSuiteXRechnungSerializerHandler::class
+            InvoiceSuiteXRechnungSerializerHandler::class,
         ];
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getSerializerListeners(): array
     {
@@ -84,7 +84,7 @@ class InvoiceSuiteXRechnungProvider extends InvoiceSuiteAbstractDocumentFormatPr
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getSerializerSubscribers(): array
     {
@@ -92,15 +92,15 @@ class InvoiceSuiteXRechnungProvider extends InvoiceSuiteAbstractDocumentFormatPr
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getSerializerGroups(): array
     {
-        return ["zffx"];
+        return ['zffx'];
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function isSatisfiableBySerializedContent(string $serializedContent): bool
     {
@@ -146,7 +146,7 @@ class InvoiceSuiteXRechnungProvider extends InvoiceSuiteAbstractDocumentFormatPr
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getRootClassName(): string
     {
@@ -154,7 +154,7 @@ class InvoiceSuiteXRechnungProvider extends InvoiceSuiteAbstractDocumentFormatPr
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getReaderClassName(): string
     {
@@ -162,7 +162,7 @@ class InvoiceSuiteXRechnungProvider extends InvoiceSuiteAbstractDocumentFormatPr
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getBuilderClassName(): string
     {
@@ -172,7 +172,7 @@ class InvoiceSuiteXRechnungProvider extends InvoiceSuiteAbstractDocumentFormatPr
     /**
      * Returns true if PDF support is available
      *
-     * @return boolean
+     * @return bool
      */
     public function isPdfSupportAvailable(): bool
     {
@@ -196,7 +196,7 @@ class InvoiceSuiteXRechnungProvider extends InvoiceSuiteAbstractDocumentFormatPr
      */
     public function getDefaultPdfAttachmentFilename(): string
     {
-        return "xrechnung.xml";
+        return 'xrechnung.xml';
     }
 
     /**

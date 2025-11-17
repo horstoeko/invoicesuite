@@ -15,21 +15,20 @@ use Throwable;
  * Class representing an exception for non-readable a file
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteUnknownProviderParameterException extends InvoiceSuiteBaseException
 {
     /**
      * Constructor
      *
-     * @param string $parameterName
+     * @param string         $parameterName
      * @param null|Throwable $throwable
      */
     public function __construct(string $parameterName, ?Throwable $throwable = null)
     {
-        parent::__construct(sprintf("Unknown provider parameter %s", $parameterName), InvoiceSuiteExceptionCodes::UNKNOWN_PROVIDER_PARAMETER, $throwable);
+        parent::__construct(sprintf('Unknown provider parameter %s', $parameterName), InvoiceSuiteExceptionCodes::UNKNOWN_PROVIDER_PARAMETER, $throwable);
     }
 }

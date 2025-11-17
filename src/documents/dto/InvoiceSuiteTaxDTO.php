@@ -15,88 +15,87 @@ use DateTimeInterface;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteTaxDTO
 {
     /**
      * The coded description of the tax category
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $category = null;
 
     /**
      * The coded description of the tax type
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $type = null;
 
     /**
      * The tax base amount
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $basisAmount = null;
 
     /**
      * The tax total amount
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $amount = null;
 
     /**
      * The tax Rate (Percentage)
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $percent = null;
 
     /**
      * The reason for tax exemption (free text)
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $exemptionReason = null;
 
     /**
      * The reason for tax exemption (Code)
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $exemptionReasonCode = null;
 
     /**
      * The date on which tax is due
      *
-     * @var DateTimeInterface|null
+     * @var null|DateTimeInterface
      */
     protected ?DateTimeInterface $dueDate = null;
 
     /**
      * The code for the date on which tax is due
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $dueCode = null;
 
     /**
      * Constructor
      *
-     * @param string|null $category The coded description of the tax category
-     * @param string|null $type The coded description of the tax type
-     * @param float|null $basisAmount The tax base amount
-     * @param float|null $amount The tax total amount
-     * @param float|null $percent The tax Rate (Percentage)
-     * @param string|null $exemptionReason The reason for tax exemption (free text)
-     * @param string|null $exemptionReasonCode The reason for tax exemption (Code)
-     * @param DateTimeInterface|null $dueDate The date on which tax is due
-     * @param string|null $dueCode The code for the date on which tax is due
+     * @param null|string            $category            The coded description of the tax category
+     * @param null|string            $type                The coded description of the tax type
+     * @param null|float             $basisAmount         The tax base amount
+     * @param null|float             $amount              The tax total amount
+     * @param null|float             $percent             The tax Rate (Percentage)
+     * @param null|string            $exemptionReason     The reason for tax exemption (free text)
+     * @param null|string            $exemptionReasonCode The reason for tax exemption (Code)
+     * @param null|DateTimeInterface $dueDate             The date on which tax is due
+     * @param null|string            $dueCode             The code for the date on which tax is due
      */
     public function __construct(
         ?string $category = null,
@@ -123,7 +122,7 @@ class InvoiceSuiteTaxDTO
     /**
      * Returns the coded description of the tax category
      *
-     * @return string|null
+     * @return null|string
      */
     public function getCategory(): ?string
     {
@@ -133,7 +132,7 @@ class InvoiceSuiteTaxDTO
     /**
      * Sets the coded description of the tax category
      *
-     * @param string|null $category The coded description of the tax category
+     * @param  null|string $category The coded description of the tax category
      * @return self
      */
     public function setCategory(?string $category): self
@@ -146,7 +145,7 @@ class InvoiceSuiteTaxDTO
     /**
      * Returns the coded description of the tax type
      *
-     * @return string|null
+     * @return null|string
      */
     public function getType(): ?string
     {
@@ -156,7 +155,7 @@ class InvoiceSuiteTaxDTO
     /**
      * Sets the coded description of the tax type
      *
-     * @param string|null $type The coded description of the tax type
+     * @param  null|string $type The coded description of the tax type
      * @return self
      */
     public function setType(?string $type): self
@@ -169,7 +168,7 @@ class InvoiceSuiteTaxDTO
     /**
      * Returns the tax base amount
      *
-     * @return float|null
+     * @return null|float
      */
     public function getBasisAmount(): ?float
     {
@@ -179,7 +178,7 @@ class InvoiceSuiteTaxDTO
     /**
      * Sets the tax base amount
      *
-     * @param float|null $basisAmount The tax base amount
+     * @param  null|float $basisAmount The tax base amount
      * @return self
      */
     public function setBasisAmount(?float $basisAmount): self
@@ -192,7 +191,7 @@ class InvoiceSuiteTaxDTO
     /**
      * Returns the tax total amount
      *
-     * @return float|null
+     * @return null|float
      */
     public function getAmount(): ?float
     {
@@ -202,7 +201,7 @@ class InvoiceSuiteTaxDTO
     /**
      * Sets the tax total amount
      *
-     * @param float|null $amount The tax total amount
+     * @param  null|float $amount The tax total amount
      * @return self
      */
     public function setAmount(?float $amount): self
@@ -215,7 +214,7 @@ class InvoiceSuiteTaxDTO
     /**
      * Returns the tax Rate (Percentage)
      *
-     * @return float|null
+     * @return null|float
      */
     public function getPercent(): ?float
     {
@@ -225,7 +224,7 @@ class InvoiceSuiteTaxDTO
     /**
      * Sets the tax Rate (Percentage)
      *
-     * @param float|null $percent The tax Rate (Percentage)
+     * @param  null|float $percent The tax Rate (Percentage)
      * @return self
      */
     public function setPercent(?float $percent): self
@@ -238,7 +237,7 @@ class InvoiceSuiteTaxDTO
     /**
      * Returns the reason for tax exemption (free text)
      *
-     * @return string|null
+     * @return null|string
      */
     public function getExemptionReason(): ?string
     {
@@ -248,7 +247,7 @@ class InvoiceSuiteTaxDTO
     /**
      * Sets the reason for tax exemption (free text)
      *
-     * @param string|null $exemptionReason The reason for tax exemption (free text)
+     * @param  null|string $exemptionReason The reason for tax exemption (free text)
      * @return self
      */
     public function setExemptionReason(?string $exemptionReason): self
@@ -261,7 +260,7 @@ class InvoiceSuiteTaxDTO
     /**
      * Returns the reason for tax exemption (Code)
      *
-     * @return string|null
+     * @return null|string
      */
     public function getExemptionReasonCode(): ?string
     {
@@ -271,7 +270,7 @@ class InvoiceSuiteTaxDTO
     /**
      * Sets the reason for tax exemption (Code)
      *
-     * @param string|null $exemptionReasonCode The reason for tax exemption (Code)
+     * @param  null|string $exemptionReasonCode The reason for tax exemption (Code)
      * @return self
      */
     public function setExemptionReasonCode(?string $exemptionReasonCode): self
@@ -284,7 +283,7 @@ class InvoiceSuiteTaxDTO
     /**
      * Returns the date on which tax is due
      *
-     * @return DateTimeInterface|null
+     * @return null|DateTimeInterface
      */
     public function getDueDate(): ?DateTimeInterface
     {
@@ -294,7 +293,7 @@ class InvoiceSuiteTaxDTO
     /**
      * Sets the date on which tax is due
      *
-     * @param DateTimeInterface|null $dueDate The date on which tax is due
+     * @param  null|DateTimeInterface $dueDate The date on which tax is due
      * @return self
      */
     public function setDueDate(?DateTimeInterface $dueDate): self
@@ -307,7 +306,7 @@ class InvoiceSuiteTaxDTO
     /**
      * Returns the code for the date on which tax is due
      *
-     * @return string|null
+     * @return null|string
      */
     public function getDueCode(): ?string
     {
@@ -317,7 +316,7 @@ class InvoiceSuiteTaxDTO
     /**
      * Sets the code for the date on which tax is due
      *
-     * @param string|null $dueCode The code for the date on which tax is due
+     * @param  null|string $dueCode The code for the date on which tax is due
      * @return self
      */
     public function setDueCode(?string $dueCode): self

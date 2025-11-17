@@ -9,18 +9,17 @@ use DateTimeInterface;
  * class representing date/time utilities
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteDateTimeUtils
 {
     /**
      * Returns true if the given value is null otherwise false
      *
-     * @param DateTimeInterface|null $value
-     * @return boolean
+     * @param  null|DateTimeInterface $value
+     * @return bool
      */
     public static function datetimeIsNullOrEmpty(?DateTimeInterface $value = null): bool
     {
@@ -31,8 +30,8 @@ class InvoiceSuiteDateTimeUtils
      * Check if all elements are null or empty
      * Tests if any datetime in $values is not null and has a value != ""
      *
-     * @param array<DateTimeInterface|null> $values
-     * @return boolean
+     * @param  array<null|DateTimeInterface> $values
+     * @return bool
      */
     public static function allIsNullOrEmpty(array $values): bool
     {
@@ -48,8 +47,8 @@ class InvoiceSuiteDateTimeUtils
     /**
      * Returns true if at least on element in values is null or empty
      *
-     * @param array<DateTimeInterface|null> $values
-     * @return boolean
+     * @param  array<null|DateTimeInterface> $values
+     * @return bool
      */
     public static function oneIsNullOrEmpty(array $values): bool
     {
@@ -65,7 +64,7 @@ class InvoiceSuiteDateTimeUtils
     /**
      * Returns null if the given date/time is empty
      *
-     * @param null|DateTimeInterface $str
+     * @param  null|DateTimeInterface $str
      * @return null|DateTimeInterface
      */
     public static function asNullWhenEmpty(?DateTimeInterface $str): ?DateTimeInterface
@@ -76,8 +75,8 @@ class InvoiceSuiteDateTimeUtils
     /**
      * Converts a ZF/FX date string to a DateTime instance
      *
-     * @param null|string $dateTimeString
-     * @param null|string $format
+     * @param  null|string            $dateTimeString
+     * @param  null|string            $format
      * @return null|DateTimeInterface
      */
     public static function convertZfFxDateStringToDateTime(?string $dateTimeString, ?string $format): ?DateTimeInterface
@@ -88,32 +87,32 @@ class InvoiceSuiteDateTimeUtils
 
         $dateTimeString = trim((string) $dateTimeString);
 
-        if ($format == "102") {
-            return DateTime::createFromFormat("Ymd", $dateTimeString);
+        if ($format == '102') {
+            return DateTime::createFromFormat('Ymd', $dateTimeString);
         }
 
-        if ($format == "101") {
-            return DateTime::createFromFormat("ymd", $dateTimeString);
+        if ($format == '101') {
+            return DateTime::createFromFormat('ymd', $dateTimeString);
         }
 
-        if ($format == "201") {
-            return DateTime::createFromFormat("ymdHi", $dateTimeString);
+        if ($format == '201') {
+            return DateTime::createFromFormat('ymdHi', $dateTimeString);
         }
 
-        if ($format == "202") {
-            return DateTime::createFromFormat("ymdHis", $dateTimeString);
+        if ($format == '202') {
+            return DateTime::createFromFormat('ymdHis', $dateTimeString);
         }
 
-        if ($format == "203") {
-            return DateTime::createFromFormat("YmdHi", $dateTimeString);
+        if ($format == '203') {
+            return DateTime::createFromFormat('YmdHi', $dateTimeString);
         }
 
-        if ($format == "204") {
-            return DateTime::createFromFormat("YmdHis", $dateTimeString);
+        if ($format == '204') {
+            return DateTime::createFromFormat('YmdHis', $dateTimeString);
         }
 
-        if ($format == "610") {
-            return DateTime::createFromFormat("!Ym", $dateTimeString)->modify('first day of')->modify('midnight');
+        if ($format == '610') {
+            return DateTime::createFromFormat('!Ym', $dateTimeString)->modify('first day of')->modify('midnight');
         }
 
         return null;

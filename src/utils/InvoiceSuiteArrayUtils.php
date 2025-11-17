@@ -6,17 +6,16 @@ namespace horstoeko\invoicesuite\utils;
  * class representing array utilities
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteArrayUtils
 {
     /**
      * Ensure that $value is an array
      *
-     * @param mixed $value
+     * @param  mixed              $value
      * @return array<mixed,mixed>
      */
     public static function ensure($value): array
@@ -27,8 +26,8 @@ class InvoiceSuiteArrayUtils
     /**
      * Search an array of string for a value (case-insensitive)
      *
-     * @param array<string> $array
-     * @param string $search
+     * @param  array<string> $array
+     * @param  string        $search
      * @return bool
      */
     public static function inArrayNoCase(array $array, string $search): bool

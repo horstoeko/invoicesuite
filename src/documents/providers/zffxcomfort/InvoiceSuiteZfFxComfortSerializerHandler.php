@@ -30,25 +30,25 @@ class InvoiceSuiteZfFxComfortSerializerHandler implements SubscribingHandlerInte
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\zffxcomfort\udt\AmountType',
-                'method' => 'serializeAmountType'
+                'method' => 'serializeAmountType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\zffxcomfort\udt\QuantityType',
-                'method' => 'serializeQuantityType'
+                'method' => 'serializeQuantityType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\zffxcomfort\udt\PercentType',
-                'method' => 'serializePercentType'
+                'method' => 'serializePercentType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\zffxcomfort\udt\IndicatorType',
-                'method' => 'serializeIndicatorType'
+                'method' => 'serializeIndicatorType',
             ],
         ];
     }
@@ -72,7 +72,7 @@ class InvoiceSuiteZfFxComfortSerializerHandler implements SubscribingHandlerInte
         );
 
         if ($data->getCurrencyID() != null) {
-            $attr = $visitor->getDocument()->createAttribute("currencyID");
+            $attr = $visitor->getDocument()->createAttribute('currencyID');
             $attr->value = $data->getCurrencyID();
             $visitor->getCurrentNode()->appendChild($attr);
         }
@@ -99,7 +99,7 @@ class InvoiceSuiteZfFxComfortSerializerHandler implements SubscribingHandlerInte
         );
 
         if ($data->getUnitCode() != null) {
-            $attr = $visitor->getDocument()->createAttribute("unitCode");
+            $attr = $visitor->getDocument()->createAttribute('unitCode');
             $attr->value = $data->getUnitCode();
             $visitor->getCurrentNode()->appendChild($attr);
         }

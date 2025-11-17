@@ -6,33 +6,17 @@ namespace horstoeko\invoicesuite\tests\testcases\pdf;
 
 use ArrayAccess;
 use Countable;
-use IteratorAggregate;
-use LogicException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteExceptionCodes;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractor;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractorAttachment;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
+use IteratorAggregate;
+use LogicException;
 
 final class InvoiceSuitePdfExtractorTest extends TestCase
 {
-    private function getSamplePdfPath(): string
-    {
-        return InvoiceSuitePathUtils::combinePathWithFile(
-            InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..", "..", "assets"),
-            "pdf_with_multiple_attachments.pdf"
-        );
-    }
-
-    private function getNotExistingSamplePdfPath(): string
-    {
-        return InvoiceSuitePathUtils::combinePathWithFile(
-            InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..", "..", "assets"),
-            "notexisting.pdf"
-        );
-    }
-
     public function testAttachmentConstructorAndAccessors(): void
     {
         $initialContent = '<xml/>';
@@ -45,9 +29,9 @@ final class InvoiceSuitePdfExtractorTest extends TestCase
         $this->assertSame($initialFilename, $attachment->getAttachmentFilename());
         $this->assertSame($initialMimeType, $attachment->getAttachmentMimeType());
 
-        $newContent  = '<rsm:CrossIndustryInvoice/>';
+        $newContent = '<rsm:CrossIndustryInvoice/>';
         $newFilename = 'invoice_4711.xml';
-        $newMime     = 'text/xml';
+        $newMime = 'text/xml';
 
         $attachment->setAttachmentContent($newContent);
         $attachment->setAttachmentFilename($newFilename);
@@ -72,12 +56,10 @@ final class InvoiceSuitePdfExtractorTest extends TestCase
         $iterated = 0;
 
         foreach ($extractor as $index => $iterAttachment) {
-            /**
-             * @phpstan-ignore method.alreadyNarrowedType
-             */
+            // @phpstan-ignore method.alreadyNarrowedType
             $this->assertIsInt($index);
             $this->assertInstanceOf(InvoiceSuitePdfExtractorAttachment::class, $iterAttachment);
-            $iterated++;
+            ++$iterated;
         }
 
         $this->assertSame(3, $iterated, 'Iterator should traverse all attachments.');
@@ -90,7 +72,7 @@ final class InvoiceSuitePdfExtractorTest extends TestCase
         $this->assertInstanceOf(InvoiceSuitePdfExtractorAttachment::class, $extractor[1]);
         $this->assertInstanceOf(InvoiceSuitePdfExtractorAttachment::class, $extractor[2]);
 
-        $this->assertNotInstanceOf(InvoiceSuitePdfExtractorAttachment::class, $extractor["abc"]);
+        $this->assertNotInstanceOf(InvoiceSuitePdfExtractorAttachment::class, $extractor['abc']);
     }
 
     public function testExtractorArrayAccessSetThrows(): void
@@ -116,13 +98,9 @@ final class InvoiceSuitePdfExtractorTest extends TestCase
         $attachmentsArrayA = $extractor->toArray();
         $attachmentsArrayB = $extractor->toArray();
 
-        /**
-         * @phpstan-ignore method.alreadyNarrowedType
-         */
+        // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsArray($attachmentsArrayA);
-        /**
-         * @phpstan-ignore method.alreadyNarrowedType
-         */
+        // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsArray($attachmentsArrayB);
         $this->assertSame($attachmentsArrayA, $attachmentsArrayB, 'toArray should not return a copy.');
         $this->assertCount(3, $attachmentsArrayA);
@@ -148,5 +126,21 @@ final class InvoiceSuitePdfExtractorTest extends TestCase
         $this->expectExceptionMessage('notexisting.pdf was not found');
 
         InvoiceSuitePdfExtractor::fromFile($this->getNotExistingSamplePdfPath());
+    }
+
+    private function getSamplePdfPath(): string
+    {
+        return InvoiceSuitePathUtils::combinePathWithFile(
+            InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', 'assets'),
+            'pdf_with_multiple_attachments.pdf'
+        );
+    }
+
+    private function getNotExistingSamplePdfPath(): string
+    {
+        return InvoiceSuitePathUtils::combinePathWithFile(
+            InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', 'assets'),
+            'notexisting.pdf'
+        );
     }
 }

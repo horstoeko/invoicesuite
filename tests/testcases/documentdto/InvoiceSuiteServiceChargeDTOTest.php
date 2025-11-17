@@ -32,7 +32,7 @@ final class InvoiceSuiteServiceChargeDTOTest extends TestCase
     public function testDescriptionGetterAndSetter(): void
     {
         $invoiceSuiteServiceChargeDTO = new InvoiceSuiteServiceChargeDTO();
-        $descriptionValue = "Example Value";
+        $descriptionValue = 'Example Value';
         $invoiceSuiteServiceChargeDTO->setDescription($descriptionValue);
 
         $this->assertSame($descriptionValue, $invoiceSuiteServiceChargeDTO->getDescription());
@@ -41,7 +41,7 @@ final class InvoiceSuiteServiceChargeDTOTest extends TestCase
     public function testTaxCategoryGetterAndSetter(): void
     {
         $invoiceSuiteServiceChargeDTO = new InvoiceSuiteServiceChargeDTO();
-        $taxCategoryValue = "Example Value";
+        $taxCategoryValue = 'Example Value';
         $invoiceSuiteServiceChargeDTO->setTaxCategory($taxCategoryValue);
 
         $this->assertSame($taxCategoryValue, $invoiceSuiteServiceChargeDTO->getTaxCategory());
@@ -50,7 +50,7 @@ final class InvoiceSuiteServiceChargeDTOTest extends TestCase
     public function testTaxTypeGetterAndSetter(): void
     {
         $invoiceSuiteServiceChargeDTO = new InvoiceSuiteServiceChargeDTO();
-        $taxTypeValue = "Example Value";
+        $taxTypeValue = 'Example Value';
         $invoiceSuiteServiceChargeDTO->setTaxType($taxTypeValue);
 
         $this->assertSame($taxTypeValue, $invoiceSuiteServiceChargeDTO->getTaxType());

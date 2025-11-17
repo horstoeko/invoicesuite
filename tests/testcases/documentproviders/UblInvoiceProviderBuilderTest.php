@@ -56,9 +56,9 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/ns:Invoice/cbc:ID');
 
-        self::$document->setDocumentNo("2025/08-000001");
+        self::$document->setDocumentNo('2025/08-000001');
 
-        $this->assertXPathValue('/ns:Invoice/cbc:ID', "2025/08-000001");
+        $this->assertXPathValue('/ns:Invoice/cbc:ID', '2025/08-000001');
 
         self::$document->setDocumentNo(null);
 
@@ -110,7 +110,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetDocumentLanguage(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentLanguage('de-DE');
         });
     }
@@ -132,7 +132,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetDocumentCompleteDate(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentCompleteDate((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
         });
     }
@@ -143,7 +143,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/ns:Invoice/cbc:DocumentCurrencyCode');
 
-        self::$document->setDocumentCurrency("");
+        self::$document->setDocumentCurrency('');
 
         $this->assertXPathNotExists('/ns:Invoice/cbc:DocumentCurrencyCode');
 
@@ -166,7 +166,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/ns:Invoice/cbc:TaxCurrencyCode');
 
-        self::$document->setDocumentTaxCurrency("");
+        self::$document->setDocumentTaxCurrency('');
 
         $this->assertXPathNotExists('/ns:Invoice/cbc:TaxCurrencyCode');
 
@@ -185,14 +185,14 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetDocumentIsCopy(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentIsCopy(true);
         });
     }
 
     public function testSetDocumentIsTest(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentIsTest(true);
         });
     }
@@ -1038,7 +1038,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateCustomerOrderReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentUltimateCustomerOrderReference('UCOR-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
             self::$document->addDocumentUltimateCustomerOrderReference('UCOR-2', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
         });
@@ -1186,7 +1186,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentDeliveryNoteReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentDeliveryNoteReference('DEVNOTE-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
             self::$document->addDocumentDeliveryNoteReference('DEVNOTE-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
         });
@@ -3651,7 +3651,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentProductEndUserName(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentProductEndUserName('Product End User Name');
             self::$document->addDocumentProductEndUserName('Product End User Name 2');
         });
@@ -3659,7 +3659,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentProductEndUserId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentProductEndUserId('Product End User Id 1');
             self::$document->addDocumentProductEndUserId('Product End User Id 2');
         });
@@ -3667,7 +3667,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentProductEndUserGlobalId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentProductEndUserGlobalId('Product End User Global Id 1', '0088');
             self::$document->addDocumentProductEndUserGlobalId('Product End User Global Id 1', '0088');
         });
@@ -3675,7 +3675,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentProductEndUserTaxRegistration(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentProductEndUserTaxRegistration('VA', '123456789');
             self::$document->addDocumentProductEndUserTaxRegistration('VA', '999999999');
         });
@@ -3683,7 +3683,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentProductEndUserAddress(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentProductEndUserAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
             self::$document->addDocumentProductEndUserAddress('Adress-Line 1-1', 'Adress-Line 2-2', 'Adress-Line 3-3', '88888', 'Cityname', 'IR', 'Saxony');
         });
@@ -3691,7 +3691,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentProductEndUserLegalOrganisation(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentProductEndUserLegalOrganisation('8884', '123456789', 'Company Name');
             self::$document->addDocumentProductEndUserLegalOrganisation('8884', '123456789', 'Company Name 2');
         });
@@ -3699,7 +3699,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentProductEndUserContact(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentProductEndUserContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
             self::$document->addDocumentProductEndUserContact('Name 2', 'Departement Name 2', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
         });
@@ -3707,7 +3707,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentProductEndUserCommunication(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentProductEndUserCommunication('EM', 'user@somewhere.all');
             self::$document->addDocumentProductEndUserCommunication('EM', 'user2@somewhere.all');
         });
@@ -3928,7 +3928,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentShipToTaxRegistration(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipToTaxRegistration('VA', '123456789');
             self::$document->addDocumentShipToTaxRegistration('VA', '123456789');
         });
@@ -4039,7 +4039,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentShipToLegalOrganisation(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipToLegalOrganisation('8884', '123456789');
             self::$document->addDocumentShipToLegalOrganisation('8884', '123456789');
         });
@@ -4047,7 +4047,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentShipToContact(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipToContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
             self::$document->addDocumentShipToContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
         });
@@ -4055,7 +4055,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentShipToCommunication(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipToCommunication('EM', 'user@somewhere.all');
             self::$document->addDocumentShipToCommunication('EM', 'user@somewhere.all');
         });
@@ -4063,7 +4063,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateShipToName(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentUltimateShipToName('Ultimate Ship To Name');
             self::$document->addDocumentUltimateShipToName('Ultimate Ship To Name');
         });
@@ -4071,7 +4071,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateShipToId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentUltimateShipToId('Ultimate Ship To Id 1');
             self::$document->addDocumentUltimateShipToId('Ultimate Ship To Id 1');
         });
@@ -4079,7 +4079,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateShipToGlobalId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentUltimateShipToGlobalId('Ultimate Ship To Global Id 1', '0088');
             self::$document->addDocumentUltimateShipToGlobalId('Ultimate Ship To Global Id 1', '0088');
         });
@@ -4087,7 +4087,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateShipToTaxRegistration(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentUltimateShipToTaxRegistration('VA', '123456789');
             self::$document->addDocumentUltimateShipToTaxRegistration('VA', '123456789');
         });
@@ -4095,7 +4095,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateShipToAddress(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentUltimateShipToAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
             self::$document->addDocumentUltimateShipToAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
         });
@@ -4103,7 +4103,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateShipToLegalOrganisation(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentUltimateShipToLegalOrganisation('8884', '123456789', 'Company Name');
             self::$document->addDocumentUltimateShipToLegalOrganisation('8884', '123456789', 'Company Name');
         });
@@ -4111,7 +4111,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateShipToContact(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentUltimateShipToContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
             self::$document->addDocumentUltimateShipToContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
         });
@@ -4119,7 +4119,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateShipToCommunication(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentUltimateShipToCommunication('EM', 'user@somewhere.all');
             self::$document->addDocumentUltimateShipToCommunication('EM', 'user@somewhere.all');
         });
@@ -4127,7 +4127,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentShipFromName(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipFromName('Ship From Name');
             self::$document->addDocumentShipFromName('Ship From Name');
         });
@@ -4135,7 +4135,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentShipFromId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipFromId('Ship From Id 1');
             self::$document->addDocumentShipFromId('Ship From Id 1');
         });
@@ -4143,7 +4143,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentShipFromGlobalId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipFromGlobalId('Ship From Global Id 1', '0088');
             self::$document->addDocumentShipFromGlobalId('Ship From Global Id 1', '0088');
         });
@@ -4151,7 +4151,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentShipFromTaxRegistration(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipFromTaxRegistration('VA', '123456789');
             self::$document->addDocumentShipFromTaxRegistration('VA', '123456789');
         });
@@ -4159,7 +4159,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentShipFromAddress(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipFromAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
             self::$document->addDocumentShipFromAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
         });
@@ -4167,7 +4167,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentShipFromLegalOrganisation(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipFromLegalOrganisation('8884', '123456789', 'Company Name');
             self::$document->addDocumentShipFromLegalOrganisation('8884', '123456789', 'Company Name');
         });
@@ -4175,7 +4175,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentShipFromContact(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipFromContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
             self::$document->addDocumentShipFromContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
         });
@@ -4183,7 +4183,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentShipFromCommunication(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentShipFromCommunication('EM', 'user@somewhere.all');
             self::$document->addDocumentShipFromCommunication('EM', 'user@somewhere.all');
         });
@@ -4191,7 +4191,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoicerName(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoicerName('Invoicer Name');
             self::$document->addDocumentInvoicerName('Invoicer Name 2');
         });
@@ -4199,7 +4199,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoicerId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoicerId('Invoicer Id 1');
             self::$document->addDocumentInvoicerId('Invoicer Id 2');
         });
@@ -4207,7 +4207,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoicerGlobalId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoicerGlobalId('Invoicer Global Id 1', '0088');
             self::$document->addDocumentInvoicerGlobalId('Invoicer Global Id 2', '0088');
         });
@@ -4215,7 +4215,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoicerTaxRegistration(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoicerTaxRegistration('VA', '123456789');
             self::$document->addDocumentInvoicerTaxRegistration('VA', '123456789');
         });
@@ -4223,7 +4223,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoicerAddress(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoicerAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
             self::$document->addDocumentInvoicerAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
         });
@@ -4231,7 +4231,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoicerLegalOrganisation(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoicerLegalOrganisation('8884', '123456789', 'Company Name');
             self::$document->addDocumentInvoicerLegalOrganisation('8885', '987654321', 'Company Name 2');
         });
@@ -4239,7 +4239,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoicerContact(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoicerContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
             self::$document->addDocumentInvoicerContact('Name 2', 'Departement Name 2', '+49-222-123456789', '+49-222-987654321', 'user2@nowhere.all');
         });
@@ -4247,7 +4247,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoicerCommunication(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoicerCommunication('EM', 'user@somewhere.all');
             self::$document->addDocumentInvoicerCommunication('EM', 'user2@somewhere.all');
         });
@@ -4255,7 +4255,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoiceeName(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoiceeName('Invoicee Name');
             self::$document->addDocumentInvoiceeName('Invoicee Name 2');
         });
@@ -4263,7 +4263,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoiceeId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoiceeId('Invoicee Id 1');
             self::$document->addDocumentInvoiceeId('Invoicee Id 2');
         });
@@ -4271,7 +4271,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoiceeGlobalId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoiceeGlobalId('Invoicee Global Id 1', '0088');
             self::$document->addDocumentInvoiceeGlobalId('Invoicee Global Id 2', '0088');
         });
@@ -4279,7 +4279,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoiceeTaxRegistration(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoiceeTaxRegistration('VA', '123456789');
             self::$document->addDocumentInvoiceeTaxRegistration('VA', '123456789');
         });
@@ -4287,7 +4287,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoiceeAddress(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoiceeAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
             self::$document->addDocumentInvoiceeAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
         });
@@ -4295,7 +4295,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoiceeLegalOrganisation(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoiceeLegalOrganisation('8884', '123456789', 'Company Name');
             self::$document->addDocumentInvoiceeLegalOrganisation('8885', '987654321', 'Company Name 2');
         });
@@ -4303,7 +4303,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoiceeContact(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoiceeContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
             self::$document->addDocumentInvoiceeContact('Name 2', 'Departement Name 2', '+49-222-123456789', '+49-222-987654321', 'user2@nowhere.all');
         });
@@ -4311,7 +4311,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentInvoiceeCommunication(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentInvoiceeCommunication('EM', 'user@somewhere.all');
             self::$document->addDocumentInvoiceeCommunication('EM', 'user2@somewhere.all');
         });
@@ -5463,7 +5463,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPaymentDiscountTermsInLastPaymentTerm(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPaymentDiscountTermsInLastPaymentTerm(100.0, 10, 10, (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 2.0, 'DAY');
             self::$document->addDocumentPaymentDiscountTermsInLastPaymentTerm(100.0, 10, 10, (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 2.0, 'DAY');
         });
@@ -5471,7 +5471,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPaymentPenaltyTermsInLastPaymentTerm(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPaymentPenaltyTermsInLastPaymentTerm(100.0, 10, 10, (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 2.0, 'DAY');
             self::$document->addDocumentPaymentPenaltyTermsInLastPaymentTerm(100.0, 10, 10, (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 2.0, 'DAY');
         });
@@ -5800,7 +5800,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentLogisticServiceCharge(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentLogisticServiceCharge(10.0, 'description', 'S', 'VAT', 19.0);
             self::$document->addDocumentLogisticServiceCharge(10.0, 'description', 'S', 'VAT', 19.0);
         });
@@ -5808,7 +5808,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testPrepareDocumentSummation(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->prepareDocumentSummation();
         });
     }
@@ -6950,7 +6950,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionReferencedProduct(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionReferencedProduct(
                 'refproductid',
                 'refproductname',
@@ -6980,7 +6980,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionSellerOrderReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionSellerOrderReference('SO-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
             self::$document->addDocumentPositionSellerOrderReference('SO-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
         });
@@ -7090,7 +7090,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionQuotationReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionQuotationReference('QU-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
             self::$document->addDocumentPositionQuotationReference('QU-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
         });
@@ -7098,7 +7098,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionContractReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionContractReference('QU-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
             self::$document->addDocumentPositionContractReference('QU-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
         });
@@ -7106,7 +7106,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionAdditionalReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionAdditionalReference('ADD-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 'typecode', 'reftypecode', 'description');
             self::$document->addDocumentPositionAdditionalReference('ADD-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), 'typecode', 'reftypecode', 'description');
         });
@@ -7114,7 +7114,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionUltimateCustomerOrderReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionUltimateCustomerOrderReference('UCOR-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
             self::$document->addDocumentPositionUltimateCustomerOrderReference('UCOR-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
         });
@@ -7122,7 +7122,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionDespatchAdviceReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionDespatchAdviceReference('DESOADV-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
             self::$document->addDocumentPositionDespatchAdviceReference('DESOADV-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
         });
@@ -7130,7 +7130,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionReceivingAdviceReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionReceivingAdviceReference('RECADV-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
             self::$document->addDocumentPositionReceivingAdviceReference('RECADV-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
         });
@@ -7138,7 +7138,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionDeliveryNoteReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionDeliveryNoteReference('DEVNOTE-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
             self::$document->addDocumentPositionDeliveryNoteReference('DEVNOTE-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'));
         });
@@ -7146,7 +7146,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionInvoiceReference(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionInvoiceReference('INVREF-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 'typecode');
             self::$document->addDocumentPositionInvoiceReference('INVREF-2', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), 'typecode');
         });
@@ -7154,7 +7154,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionGrossPrice(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionGrossPrice(1.00, 2.00, 'C62');
             self::$document->setDocumentPositionGrossPriceAllowanceCharge(1.0, false, 2.0, 3.0, 'reason', 'reasoncode');
             self::$document->addDocumentPositionGrossPriceAllowanceCharge(10.0, true, 20.0, 30.0, 'reason2', 'reasoncode2');
@@ -7183,7 +7183,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity', 1);
 
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionNetPriceTax('S', 'VAT', 1.0, 19.0, 'reason', 'reasoncode');
         });
 
@@ -7198,7 +7198,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity', 1);
 
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionNetPriceTax('S', 'VAT', 1.0, 19.0, 'reason', 'reasoncode');
         });
 
@@ -7213,7 +7213,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:PriceAmount', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Price/cbc:BaseQuantity', 1);
 
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionNetPriceTax('S', 'VAT', 1.0, 19.0, 'reason', 'reasoncode');
         });
 
@@ -7274,7 +7274,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionShipToName(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionShipToName('Ship To Name');
             self::$document->addDocumentPositionShipToName('Ship To Name 2');
         });
@@ -7282,7 +7282,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionShipToId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionShipToId('Ship To Id 1');
             self::$document->addDocumentPositionShipToId('Ship To Id 2');
         });
@@ -7290,7 +7290,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionShipToGlobalId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionShipToGlobalId('Ship To Global Id 1', '0088');
             self::$document->addDocumentPositionShipToGlobalId('Ship To Global Id 2', '0088');
         });
@@ -7298,7 +7298,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionShipToTaxRegistration(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionShipToTaxRegistration('VA', '123456789');
             self::$document->addDocumentPositionShipToTaxRegistration('VA', '123456789');
         });
@@ -7306,7 +7306,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionShipToAddress(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionShipToAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
             self::$document->addDocumentPositionShipToAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
         });
@@ -7314,7 +7314,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionShipToLegalOrganisation(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionShipToLegalOrganisation('8884', '123456789', 'Company Name');
             self::$document->addDocumentPositionShipToLegalOrganisation('8885', '987654321', 'Company Name 2');
         });
@@ -7322,7 +7322,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionShipToContact(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionShipToContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
             self::$document->addDocumentPositionShipToContact('Name 2', 'Departement Name 2', '+49-222-123456789', '+49-222-987654321', 'user2@nowhere.all');
         });
@@ -7330,7 +7330,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionShipToCommunication(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionShipToCommunication('EM', 'user@somewhere.all');
             self::$document->addDocumentPositionShipToCommunication('EM', 'user2@somewhere.all');
         });
@@ -7338,7 +7338,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionUltimateShipToName(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionUltimateShipToName('Ship To Name');
             self::$document->addDocumentPositionUltimateShipToName('Ship To Name 2');
         });
@@ -7346,7 +7346,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionUltimateShipToId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionUltimateShipToId('Ship To Id 1');
             self::$document->addDocumentPositionUltimateShipToId('Ship To Id 2');
         });
@@ -7354,7 +7354,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionUltimateShipToGlobalId(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionUltimateShipToGlobalId('Ship To Global Id 1', '0088');
             self::$document->addDocumentPositionUltimateShipToGlobalId('Ship To Global Id 2', '0088');
         });
@@ -7362,7 +7362,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionUltimateShipToTaxRegistration(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionUltimateShipToTaxRegistration('VA', '123456789');
             self::$document->addDocumentPositionUltimateShipToTaxRegistration('VA', '123456789');
         });
@@ -7370,7 +7370,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionUltimateShipToAddress(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionUltimateShipToAddress('Line 1', 'Line 2', 'Line 3', '99999', 'City', 'DE', 'Bavaria');
             self::$document->addDocumentPositionUltimateShipToAddress('Adress-Line 1', 'Adress-Line 2', 'Adress-Line 3', '88888', 'Cityname', 'IR', 'Waterford');
         });
@@ -7378,7 +7378,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionUltimateShipToLegalOrganisation(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionUltimateShipToLegalOrganisation('8884', '123456789', 'Company Name');
             self::$document->addDocumentPositionUltimateShipToLegalOrganisation('8885', '987654321', 'Company Name 2');
         });
@@ -7386,7 +7386,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionUltimateShipToContact(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionUltimateShipToContact('Name', 'Departement Name', '+49-111-123456789', '+49-111-987654321', 'user@nowhere.all');
             self::$document->addDocumentPositionUltimateShipToContact('Name 2', 'Departement Name 2', '+49-222-123456789', '+49-222-987654321', 'user2@nowhere.all');
         });
@@ -7394,7 +7394,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentPositionUltimateShipToCommunication(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionUltimateShipToCommunication('EM', 'user@somewhere.all');
             self::$document->addDocumentPositionUltimateShipToCommunication('EM', 'user2@somewhere.all');
         });
@@ -7402,7 +7402,7 @@ final class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetDocumentPositionSupplyChainEvent(): void
     {
-        $this->assertXmlWasNotChanged(function (): void {
+        $this->assertXmlWasNotChanged(static function (): void {
             self::$document->setDocumentPositionSupplyChainEvent((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
         });
     }

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 
-use DateTimeInterface;
 use DateTimeImmutable;
+use DateTimeInterface;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineDTO;
 use horstoeko\invoicesuite\tests\TestCase;
 
@@ -23,7 +23,7 @@ final class InvoiceSuiteReferenceDocumentLineDTOTest extends TestCase
     public function testReferenceNumberGetterAndSetter(): void
     {
         $invoiceSuiteReferenceDocumentLineDTO = new InvoiceSuiteReferenceDocumentLineDTO();
-        $referenceNumberValue = "Example Value";
+        $referenceNumberValue = 'Example Value';
         $invoiceSuiteReferenceDocumentLineDTO->setReferenceNumber($referenceNumberValue);
 
         $this->assertSame($referenceNumberValue, $invoiceSuiteReferenceDocumentLineDTO->getReferenceNumber());
@@ -32,7 +32,7 @@ final class InvoiceSuiteReferenceDocumentLineDTOTest extends TestCase
     public function testReferenceLineNumberGetterAndSetter(): void
     {
         $invoiceSuiteReferenceDocumentLineDTO = new InvoiceSuiteReferenceDocumentLineDTO();
-        $referenceLineNumberValue = "Example Value";
+        $referenceLineNumberValue = 'Example Value';
         $invoiceSuiteReferenceDocumentLineDTO->setReferenceLineNumber($referenceLineNumberValue);
 
         $this->assertSame($referenceLineNumberValue, $invoiceSuiteReferenceDocumentLineDTO->getReferenceLineNumber());
@@ -41,7 +41,7 @@ final class InvoiceSuiteReferenceDocumentLineDTOTest extends TestCase
     public function testReferenceDateGetterAndSetter(): void
     {
         $invoiceSuiteReferenceDocumentLineDTO = new InvoiceSuiteReferenceDocumentLineDTO();
-        $referenceDateValue = new DateTimeImmutable("2025-01-02");
+        $referenceDateValue = new DateTimeImmutable('2025-01-02');
         $invoiceSuiteReferenceDocumentLineDTO->setReferenceDate($referenceDateValue);
 
         $this->assertSame($referenceDateValue, $invoiceSuiteReferenceDocumentLineDTO->getReferenceDate());

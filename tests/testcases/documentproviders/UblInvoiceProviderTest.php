@@ -13,7 +13,6 @@ use horstoeko\invoicesuite\tests\TestCase;
 
 final class UblInvoiceProviderTest extends TestCase
 {
-
     public function testGetUniqueId(): void
     {
         $provider = new InvoiceSuiteUblInvoiceProvider();
@@ -57,8 +56,8 @@ final class UblInvoiceProviderTest extends TestCase
 
         $this->assertFalse($provider->isPdfSupportAvailable());
         $this->assertEmpty($provider->getAllowedPdfAttachmentFilenames());
-        $this->assertSame("", $provider->getDefaultPdfAttachmentFilename());
-        $this->assertSame("", $provider->getPdfConstructorClassName());
+        $this->assertSame('', $provider->getDefaultPdfAttachmentFilename());
+        $this->assertSame('', $provider->getPdfConstructorClassName());
     }
 
     public function testGetSerializerMetadataDirectories(): void
@@ -102,7 +101,7 @@ final class UblInvoiceProviderTest extends TestCase
     {
         $provider = new InvoiceSuiteUblInvoiceProvider();
 
-        $xml = <<<XML
+        $xml = <<<'XML'
     <?xml version="1.0" encoding="UTF-8"?>
     <Invoice xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">
         <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
@@ -119,7 +118,7 @@ final class UblInvoiceProviderTest extends TestCase
 
         $this->assertTrue($provider->isSatisfiableBySerializedContent($xml));
 
-        $xml = <<<XML
+        $xml = <<<'XML'
     <?xml version="1.0" encoding="UTF-8"?>
     <rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <rsm:ExchangedDocumentContext>
@@ -138,7 +137,7 @@ final class UblInvoiceProviderTest extends TestCase
 
         $this->assertFalse($provider->isSatisfiableBySerializedContent($xml));
 
-        $xml = <<<XML
+        $xml = <<<'XML'
     Dummy
     XML;
 

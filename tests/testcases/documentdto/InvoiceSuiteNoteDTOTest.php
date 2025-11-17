@@ -21,7 +21,7 @@ final class InvoiceSuiteNoteDTOTest extends TestCase
     public function testContentGetterAndSetter(): void
     {
         $invoiceSuiteNoteDTO = new InvoiceSuiteNoteDTO();
-        $contentValue = "Example Value";
+        $contentValue = 'Example Value';
         $invoiceSuiteNoteDTO->setContent($contentValue);
 
         $this->assertSame($contentValue, $invoiceSuiteNoteDTO->getContent());
@@ -30,7 +30,7 @@ final class InvoiceSuiteNoteDTOTest extends TestCase
     public function testContentCodeGetterAndSetter(): void
     {
         $invoiceSuiteNoteDTO = new InvoiceSuiteNoteDTO();
-        $contentCodeValue = "Example Value";
+        $contentCodeValue = 'Example Value';
         $invoiceSuiteNoteDTO->setContentCode($contentCodeValue);
 
         $this->assertSame($contentCodeValue, $invoiceSuiteNoteDTO->getContentCode());
@@ -39,7 +39,7 @@ final class InvoiceSuiteNoteDTOTest extends TestCase
     public function testSubjectCodeGetterAndSetter(): void
     {
         $invoiceSuiteNoteDTO = new InvoiceSuiteNoteDTO();
-        $subjectCodeValue = "Example Value";
+        $subjectCodeValue = 'Example Value';
         $invoiceSuiteNoteDTO->setSubjectCode($subjectCodeValue);
 
         $this->assertSame($subjectCodeValue, $invoiceSuiteNoteDTO->getSubjectCode());

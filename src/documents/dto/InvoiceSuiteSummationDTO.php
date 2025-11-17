@@ -13,96 +13,95 @@ namespace horstoeko\invoicesuite\documents\dto;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteSummationDTO
 {
     /**
      * The sum of the net amounts of all invoice lines
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $netAmount = null;
 
     /**
      * The sum of the charges
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $chargeTotalAmount = null;
 
     /**
      * The sum of the discounts
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $discountTotalAmount = null;
 
     /**
      * The total invoice amount excluding sales tax
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $taxBasisAmount = null;
 
     /**
      * The total amount of the invoice sales tax (in the invoice currency)
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $taxTotalAmount = null;
 
     /**
      * The total amount of the invoice sales tax (in the tax currency)
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $taxTotalAmount2 = null;
 
     /**
      * The total invoice amount including sales tax
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $grossAmount = null;
 
     /**
      * The payment amount due
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $dueAmount = null;
 
     /**
      * The prepayment amount
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $prepaidAmount = null;
 
     /**
      * The rounding amount
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $roungingAmount = null;
 
     /**
      * Constructor
      *
-     * @param float|null $netAmount The sum of the net amounts of all invoice lines
-     * @param float|null $chargeTotalAmount The sum of the charges
-     * @param float|null $discountTotalAmount The sum of the discounts
-     * @param float|null $taxBasisAmount The total invoice amount excluding sales tax
-     * @param float|null $taxTotalAmount The total amount of the invoice sales tax (in the invoice currency)
-     * @param float|null $taxTotalAmount2 The total amount of the invoice sales tax (in the tax currency)
-     * @param float|null $grossAmount The total invoice amount including sales tax
-     * @param float|null $dueAmount The payment amount due
-     * @param float|null $prepaidAmount The prepayment amount
-     * @param float|null $roungingAmount The rounding amount
+     * @param null|float $netAmount           The sum of the net amounts of all invoice lines
+     * @param null|float $chargeTotalAmount   The sum of the charges
+     * @param null|float $discountTotalAmount The sum of the discounts
+     * @param null|float $taxBasisAmount      The total invoice amount excluding sales tax
+     * @param null|float $taxTotalAmount      The total amount of the invoice sales tax (in the invoice currency)
+     * @param null|float $taxTotalAmount2     The total amount of the invoice sales tax (in the tax currency)
+     * @param null|float $grossAmount         The total invoice amount including sales tax
+     * @param null|float $dueAmount           The payment amount due
+     * @param null|float $prepaidAmount       The prepayment amount
+     * @param null|float $roungingAmount      The rounding amount
      */
     public function __construct(
         ?float $netAmount = null,
@@ -131,7 +130,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Returns the sum of the net amounts of all invoice lines
      *
-     * @return float|null
+     * @return null|float
      */
     public function getNetAmount(): ?float
     {
@@ -141,7 +140,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Sets the sum of the net amounts of all invoice lines
      *
-     * @param float|null $netAmount The sum of the net amounts of all invoice lines
+     * @param  null|float $netAmount The sum of the net amounts of all invoice lines
      * @return self
      */
     public function setNetAmount(?float $netAmount): self
@@ -154,7 +153,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Returns the sum of the charges
      *
-     * @return float|null
+     * @return null|float
      */
     public function getChargeTotalAmount(): ?float
     {
@@ -164,7 +163,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Sets the sum of the charges
      *
-     * @param float|null $chargeTotalAmount The sum of the charges
+     * @param  null|float $chargeTotalAmount The sum of the charges
      * @return self
      */
     public function setChargeTotalAmount(?float $chargeTotalAmount): self
@@ -177,7 +176,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Returns the sum of the discounts
      *
-     * @return float|null
+     * @return null|float
      */
     public function getDiscountTotalAmount(): ?float
     {
@@ -187,7 +186,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Sets the sum of the discounts
      *
-     * @param float|null $discountTotalAmount The sum of the discounts
+     * @param  null|float $discountTotalAmount The sum of the discounts
      * @return self
      */
     public function setDiscountTotalAmount(?float $discountTotalAmount): self
@@ -200,7 +199,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Returns the total invoice amount excluding sales tax
      *
-     * @return float|null
+     * @return null|float
      */
     public function getTaxBasisAmount(): ?float
     {
@@ -210,7 +209,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Sets the total invoice amount excluding sales tax
      *
-     * @param float|null $taxBasisAmount The total invoice amount excluding sales tax
+     * @param  null|float $taxBasisAmount The total invoice amount excluding sales tax
      * @return self
      */
     public function setTaxBasisAmount(?float $taxBasisAmount): self
@@ -223,7 +222,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Returns the total amount of the invoice sales tax (in the invoice currency)
      *
-     * @return float|null
+     * @return null|float
      */
     public function getTaxTotalAmount(): ?float
     {
@@ -233,7 +232,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Sets the total amount of the invoice sales tax (in the invoice currency)
      *
-     * @param float|null $taxTotalAmount The total amount of the invoice sales tax (in the invoice currency)
+     * @param  null|float $taxTotalAmount The total amount of the invoice sales tax (in the invoice currency)
      * @return self
      */
     public function setTaxTotalAmount(?float $taxTotalAmount): self
@@ -246,7 +245,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Returns the total amount of the invoice sales tax (in the tax currency)
      *
-     * @return float|null
+     * @return null|float
      */
     public function getTaxTotalAmount2(): ?float
     {
@@ -256,7 +255,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Sets the total amount of the invoice sales tax (in the tax currency)
      *
-     * @param float|null $taxTotalAmount2 The total amount of the invoice sales tax (in the tax currency)
+     * @param  null|float $taxTotalAmount2 The total amount of the invoice sales tax (in the tax currency)
      * @return self
      */
     public function setTaxTotalAmount2(?float $taxTotalAmount2): self
@@ -269,7 +268,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Returns the total invoice amount including sales tax
      *
-     * @return float|null
+     * @return null|float
      */
     public function getGrossAmount(): ?float
     {
@@ -279,7 +278,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Sets the total invoice amount including sales tax
      *
-     * @param float|null $grossAmount The total invoice amount including sales tax
+     * @param  null|float $grossAmount The total invoice amount including sales tax
      * @return self
      */
     public function setGrossAmount(?float $grossAmount): self
@@ -292,7 +291,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Returns the payment amount due
      *
-     * @return float|null
+     * @return null|float
      */
     public function getDueAmount(): ?float
     {
@@ -302,7 +301,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Sets the payment amount due
      *
-     * @param float|null $dueAmount The payment amount due
+     * @param  null|float $dueAmount The payment amount due
      * @return self
      */
     public function setDueAmount(?float $dueAmount): self
@@ -315,7 +314,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Returns the prepayment amount
      *
-     * @return float|null
+     * @return null|float
      */
     public function getPrepaidAmount(): ?float
     {
@@ -325,7 +324,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Sets the prepayment amount
      *
-     * @param float|null $prepaidAmount The prepayment amount
+     * @param  null|float $prepaidAmount The prepayment amount
      * @return self
      */
     public function setPrepaidAmount(?float $prepaidAmount): self
@@ -338,7 +337,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Returns the rounding amount
      *
-     * @return float|null
+     * @return null|float
      */
     public function getRoungingAmount(): ?float
     {
@@ -348,7 +347,7 @@ class InvoiceSuiteSummationDTO
     /**
      * Sets the rounding amount
      *
-     * @param float|null $roungingAmount The rounding amount
+     * @param  null|float $roungingAmount The rounding amount
      * @return self
      */
     public function setRoungingAmount(?float $roungingAmount): self

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 
-use DateTimeInterface;
 use DateTimeImmutable;
+use DateTimeInterface;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
 use horstoeko\invoicesuite\tests\TestCase;
 
@@ -29,7 +29,7 @@ final class InvoiceSuiteTaxDTOTest extends TestCase
     public function testCategoryGetterAndSetter(): void
     {
         $invoiceSuiteTaxDTO = new InvoiceSuiteTaxDTO();
-        $categoryValue = "Example Value";
+        $categoryValue = 'Example Value';
         $invoiceSuiteTaxDTO->setCategory($categoryValue);
 
         $this->assertSame($categoryValue, $invoiceSuiteTaxDTO->getCategory());
@@ -38,7 +38,7 @@ final class InvoiceSuiteTaxDTOTest extends TestCase
     public function testTypeGetterAndSetter(): void
     {
         $invoiceSuiteTaxDTO = new InvoiceSuiteTaxDTO();
-        $typeValue = "Example Value";
+        $typeValue = 'Example Value';
         $invoiceSuiteTaxDTO->setType($typeValue);
 
         $this->assertSame($typeValue, $invoiceSuiteTaxDTO->getType());
@@ -74,7 +74,7 @@ final class InvoiceSuiteTaxDTOTest extends TestCase
     public function testExemptionReasonGetterAndSetter(): void
     {
         $invoiceSuiteTaxDTO = new InvoiceSuiteTaxDTO();
-        $exemptionReasonValue = "Example Value";
+        $exemptionReasonValue = 'Example Value';
         $invoiceSuiteTaxDTO->setExemptionReason($exemptionReasonValue);
 
         $this->assertSame($exemptionReasonValue, $invoiceSuiteTaxDTO->getExemptionReason());
@@ -83,7 +83,7 @@ final class InvoiceSuiteTaxDTOTest extends TestCase
     public function testExemptionReasonCodeGetterAndSetter(): void
     {
         $invoiceSuiteTaxDTO = new InvoiceSuiteTaxDTO();
-        $exemptionReasonCodeValue = "Example Value";
+        $exemptionReasonCodeValue = 'Example Value';
         $invoiceSuiteTaxDTO->setExemptionReasonCode($exemptionReasonCodeValue);
 
         $this->assertSame($exemptionReasonCodeValue, $invoiceSuiteTaxDTO->getExemptionReasonCode());
@@ -92,7 +92,7 @@ final class InvoiceSuiteTaxDTOTest extends TestCase
     public function testDueDateGetterAndSetter(): void
     {
         $invoiceSuiteTaxDTO = new InvoiceSuiteTaxDTO();
-        $dueDateValue = new DateTimeImmutable("2025-01-02");
+        $dueDateValue = new DateTimeImmutable('2025-01-02');
         $invoiceSuiteTaxDTO->setDueDate($dueDateValue);
 
         $this->assertSame($dueDateValue, $invoiceSuiteTaxDTO->getDueDate());
@@ -101,7 +101,7 @@ final class InvoiceSuiteTaxDTOTest extends TestCase
     public function testDueCodeGetterAndSetter(): void
     {
         $invoiceSuiteTaxDTO = new InvoiceSuiteTaxDTO();
-        $dueCodeValue = "Example Value";
+        $dueCodeValue = 'Example Value';
         $invoiceSuiteTaxDTO->setDueCode($dueCodeValue);
 
         $this->assertSame($dueCodeValue, $invoiceSuiteTaxDTO->getDueCode());

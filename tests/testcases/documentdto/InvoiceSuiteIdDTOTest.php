@@ -22,7 +22,7 @@ final class InvoiceSuiteIdDTOTest extends TestCase
     public function testIdGetterAndSetter(): void
     {
         $invoiceSuiteIdDTO = new InvoiceSuiteIdDTO();
-        $idValue = "Example Value";
+        $idValue = 'Example Value';
         $invoiceSuiteIdDTO->setId($idValue);
 
         $this->assertSame($idValue, $invoiceSuiteIdDTO->getId());
@@ -33,17 +33,17 @@ final class InvoiceSuiteIdDTOTest extends TestCase
         $invoiceSuiteIdDTO = new InvoiceSuiteIdDTO();
         $this->assertFalse($invoiceSuiteIdDTO->hasId());
 
-        $invoiceSuiteIdDTO->setId("");
+        $invoiceSuiteIdDTO->setId('');
         $this->assertFalse($invoiceSuiteIdDTO->hasId());
 
-        $invoiceSuiteIdDTO->setId("Non-empty");
+        $invoiceSuiteIdDTO->setId('Non-empty');
         $this->assertTrue($invoiceSuiteIdDTO->hasId());
     }
 
     public function testIdTypeGetterAndSetter(): void
     {
         $invoiceSuiteIdDTO = new InvoiceSuiteIdDTO();
-        $idTypeValue = "Example Value";
+        $idTypeValue = 'Example Value';
         $invoiceSuiteIdDTO->setIdType($idTypeValue);
 
         $this->assertSame($idTypeValue, $invoiceSuiteIdDTO->getIdType());
@@ -54,10 +54,10 @@ final class InvoiceSuiteIdDTOTest extends TestCase
         $invoiceSuiteIdDTO = new InvoiceSuiteIdDTO();
         $this->assertFalse($invoiceSuiteIdDTO->hasIdType());
 
-        $invoiceSuiteIdDTO->setIdType("");
+        $invoiceSuiteIdDTO->setIdType('');
         $this->assertFalse($invoiceSuiteIdDTO->hasIdType());
 
-        $invoiceSuiteIdDTO->setIdType("Non-empty");
+        $invoiceSuiteIdDTO->setIdType('Non-empty');
         $this->assertTrue($invoiceSuiteIdDTO->hasIdType());
     }
 }

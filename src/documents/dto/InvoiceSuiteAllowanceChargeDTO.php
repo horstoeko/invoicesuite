@@ -13,88 +13,87 @@ namespace horstoeko\invoicesuite\documents\dto;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteAllowanceChargeDTO
 {
     /**
      * The switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
      *
-     * @var bool|null
+     * @var null|bool
      */
     protected ?bool $chargeIndicator = null;
 
     /**
      * The amount of the surcharge or discount
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $amount = null;
 
     /**
      * The base amount that may be used in conjunction with the percentage of the surcharge or discount
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $baseAmount = null;
 
     /**
      * The Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $percent = null;
 
     /**
      * The coded description of the tax category
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $taxCategory = null;
 
     /**
      * The coded description of the tax type
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $taxType = null;
 
     /**
      * The tax Rate (Percentage)
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $taxPercent = null;
 
     /**
      * The reason given in text form for the surcharge or discount
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $reason = null;
 
     /**
      * The Reason given as a code for the surcharge or discount
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $reasonCode = null;
 
     /**
      * Constructor
      *
-     * @param bool|null $chargeIndicator The switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
-     * @param float|null $amount The amount of the surcharge or discount
-     * @param float|null $baseAmount The base amount that may be used in conjunction with the percentage of the surcharge or discount
-     * @param float|null $percent The Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
-     * @param string|null $taxCategory The coded description of the tax category
-     * @param string|null $taxType The coded description of the tax type
-     * @param float|null $taxPercent The tax Rate (Percentage)
-     * @param string|null $reason The reason given in text form for the surcharge or discount
-     * @param string|null $reasonCode The Reason given as a code for the surcharge or discount
+     * @param null|bool   $chargeIndicator The switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param null|float  $amount          The amount of the surcharge or discount
+     * @param null|float  $baseAmount      The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param null|float  $percent         The Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @param null|string $taxCategory     The coded description of the tax category
+     * @param null|string $taxType         The coded description of the tax type
+     * @param null|float  $taxPercent      The tax Rate (Percentage)
+     * @param null|string $reason          The reason given in text form for the surcharge or discount
+     * @param null|string $reasonCode      The Reason given as a code for the surcharge or discount
      */
     public function __construct(
         ?bool $chargeIndicator = null,
@@ -121,7 +120,7 @@ class InvoiceSuiteAllowanceChargeDTO
     /**
      * Returns the switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
      *
-     * @return bool|null
+     * @return null|bool
      */
     public function getChargeIndicator(): ?bool
     {
@@ -131,7 +130,7 @@ class InvoiceSuiteAllowanceChargeDTO
     /**
      * Sets the switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
      *
-     * @param bool|null $chargeIndicator The switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param  null|bool $chargeIndicator The switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
      * @return self
      */
     public function setChargeIndicator(?bool $chargeIndicator): self
@@ -144,7 +143,7 @@ class InvoiceSuiteAllowanceChargeDTO
     /**
      * Returns the amount of the surcharge or discount
      *
-     * @return float|null
+     * @return null|float
      */
     public function getAmount(): ?float
     {
@@ -154,7 +153,7 @@ class InvoiceSuiteAllowanceChargeDTO
     /**
      * Sets the amount of the surcharge or discount
      *
-     * @param float|null $amount The amount of the surcharge or discount
+     * @param  null|float $amount The amount of the surcharge or discount
      * @return self
      */
     public function setAmount(?float $amount): self
@@ -167,7 +166,7 @@ class InvoiceSuiteAllowanceChargeDTO
     /**
      * Returns the base amount that may be used in conjunction with the percentage of the surcharge or discount
      *
-     * @return float|null
+     * @return null|float
      */
     public function getBaseAmount(): ?float
     {
@@ -177,7 +176,7 @@ class InvoiceSuiteAllowanceChargeDTO
     /**
      * Sets the base amount that may be used in conjunction with the percentage of the surcharge or discount
      *
-     * @param float|null $baseAmount The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param  null|float $baseAmount The base amount that may be used in conjunction with the percentage of the surcharge or discount
      * @return self
      */
     public function setBaseAmount(?float $baseAmount): self
@@ -190,7 +189,7 @@ class InvoiceSuiteAllowanceChargeDTO
     /**
      * Returns the Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
      *
-     * @return float|null
+     * @return null|float
      */
     public function getPercent(): ?float
     {
@@ -200,7 +199,7 @@ class InvoiceSuiteAllowanceChargeDTO
     /**
      * Sets the Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
      *
-     * @param float|null $percent The Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @param  null|float $percent The Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
      * @return self
      */
     public function setPercent(?float $percent): self
@@ -213,7 +212,7 @@ class InvoiceSuiteAllowanceChargeDTO
     /**
      * Returns the coded description of the tax category
      *
-     * @return string|null
+     * @return null|string
      */
     public function getTaxCategory(): ?string
     {
@@ -223,7 +222,7 @@ class InvoiceSuiteAllowanceChargeDTO
     /**
      * Sets the coded description of the tax category
      *
-     * @param string|null $taxCategory The coded description of the tax category
+     * @param  null|string $taxCategory The coded description of the tax category
      * @return self
      */
     public function setTaxCategory(?string $taxCategory): self
@@ -236,7 +235,7 @@ class InvoiceSuiteAllowanceChargeDTO
     /**
      * Returns the coded description of the tax type
      *
-     * @return string|null
+     * @return null|string
      */
     public function getTaxType(): ?string
     {
@@ -246,7 +245,7 @@ class InvoiceSuiteAllowanceChargeDTO
     /**
      * Sets the coded description of the tax type
      *
-     * @param string|null $taxType The coded description of the tax type
+     * @param  null|string $taxType The coded description of the tax type
      * @return self
      */
     public function setTaxType(?string $taxType): self
@@ -259,7 +258,7 @@ class InvoiceSuiteAllowanceChargeDTO
     /**
      * Returns the tax Rate (Percentage)
      *
-     * @return float|null
+     * @return null|float
      */
     public function getTaxPercent(): ?float
     {
@@ -269,7 +268,7 @@ class InvoiceSuiteAllowanceChargeDTO
     /**
      * Sets the tax Rate (Percentage)
      *
-     * @param float|null $taxPercent The tax Rate (Percentage)
+     * @param  null|float $taxPercent The tax Rate (Percentage)
      * @return self
      */
     public function setTaxPercent(?float $taxPercent): self
@@ -282,7 +281,7 @@ class InvoiceSuiteAllowanceChargeDTO
     /**
      * Returns the reason given in text form for the surcharge or discount
      *
-     * @return string|null
+     * @return null|string
      */
     public function getReason(): ?string
     {
@@ -292,7 +291,7 @@ class InvoiceSuiteAllowanceChargeDTO
     /**
      * Sets the reason given in text form for the surcharge or discount
      *
-     * @param string|null $reason The reason given in text form for the surcharge or discount
+     * @param  null|string $reason The reason given in text form for the surcharge or discount
      * @return self
      */
     public function setReason(?string $reason): self
@@ -305,7 +304,7 @@ class InvoiceSuiteAllowanceChargeDTO
     /**
      * Returns the Reason given as a code for the surcharge or discount
      *
-     * @return string|null
+     * @return null|string
      */
     public function getReasonCode(): ?string
     {
@@ -315,7 +314,7 @@ class InvoiceSuiteAllowanceChargeDTO
     /**
      * Sets the Reason given as a code for the surcharge or discount
      *
-     * @param string|null $reasonCode The Reason given as a code for the surcharge or discount
+     * @param  null|string $reasonCode The Reason given as a code for the surcharge or discount
      * @return self
      */
     public function setReasonCode(?string $reasonCode): self

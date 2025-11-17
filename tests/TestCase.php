@@ -2,10 +2,12 @@
 
 namespace horstoeko\invoicesuite\tests;
 
+use Closure;
+use ErrorException;
+use PHPUnit\Framework\TestCase as PhpUnitTestCase;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionProperty;
-use PHPUnit\Framework\TestCase as PhpUnitTestCase;
 
 abstract class TestCase extends PhpUnitTestCase
 {
@@ -24,7 +26,7 @@ abstract class TestCase extends PhpUnitTestCase
     protected $registeredTestFiles = [];
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public static function setUpBeforeClass(): void
     {
@@ -32,7 +34,7 @@ abstract class TestCase extends PhpUnitTestCase
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public static function tearDownAfterClass(): void
     {
@@ -46,7 +48,7 @@ abstract class TestCase extends PhpUnitTestCase
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function setUp(): void
     {
@@ -56,7 +58,7 @@ abstract class TestCase extends PhpUnitTestCase
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function tearDown(): void
     {
@@ -111,8 +113,8 @@ abstract class TestCase extends PhpUnitTestCase
     /**
      * Access to private properties
      *
-     * @param  string $className
-     * @param  string $propertyName
+     * @param  string             $className
+     * @param  string             $propertyName
      * @return ReflectionProperty
      */
     public function getPrivatePropertyFromClassname(string $className, string $propertyName): ReflectionProperty
@@ -120,14 +122,15 @@ abstract class TestCase extends PhpUnitTestCase
         $reflector = new ReflectionClass($className);
         $property = $reflector->getProperty($propertyName);
         $property->setAccessible(true);
+
         return $property;
     }
 
     /**
      * Access to private properties
      *
-     * @param  object $object
-     * @param  string $propertyName
+     * @param  object             $object
+     * @param  string             $propertyName
      * @return ReflectionProperty
      */
     public function getPrivatePropertyFromObject(object $object, string $propertyName): ReflectionProperty
@@ -135,14 +138,15 @@ abstract class TestCase extends PhpUnitTestCase
         $reflector = new ReflectionClass($object);
         $property = $reflector->getProperty($propertyName);
         $property->setAccessible(true);
+
         return $property;
     }
 
     /**
      * Access to private method
      *
-     * @param  string $className
-     * @param  string $methodName
+     * @param  string           $className
+     * @param  string           $methodName
      * @return ReflectionMethod
      */
     public function getPrivateMethodFromClassname(string $className, string $methodName): ReflectionMethod
@@ -150,14 +154,15 @@ abstract class TestCase extends PhpUnitTestCase
         $reflector = new ReflectionClass($className);
         $method = $reflector->getMethod($methodName);
         $method->setAccessible(true);
+
         return $method;
     }
 
     /**
      * Access to private method
      *
-     * @param  object $object
-     * @param  string $methodName
+     * @param  object           $object
+     * @param  string           $methodName
      * @return ReflectionMethod
      */
     public function getPrivateMethodFromObject(object $object, string $methodName): ReflectionMethod
@@ -165,17 +170,18 @@ abstract class TestCase extends PhpUnitTestCase
         $reflector = new ReflectionClass($object);
         $method = $reflector->getMethod($methodName);
         $method->setAccessible(true);
+
         return $method;
     }
 
     /**
      * Test for Notices/Warnings
      *
-     * @param \Closure $run
-     * @param string $expectMessageRegEx
+     * @param  Closure $run
+     * @param  string  $expectMessageRegEx
      * @return void
      */
-    public function expectNoticeOrWarningExt(\Closure $run, string $expectMessageRegEx = ""): void
+    public function expectNoticeOrWarningExt(Closure $run, string $expectMessageRegEx = ''): void
     {
         $mask = E_WARNING | E_NOTICE;
         $prevLevel = error_reporting();
@@ -184,13 +190,14 @@ abstract class TestCase extends PhpUnitTestCase
 
         set_error_handler(
             static function (int $errno, string $errstr, ?string $file = null, ?int $line = null): bool {
-                throw new \ErrorException($errstr, $errno, $errno, $file ?? '', $line ?? 0);
+                throw new ErrorException($errstr, $errno, $errno, $file ?? '', $line ?? 0);
             },
             $mask
         );
 
         try {
-            $this->expectException(\ErrorException::class);
+            $this->expectException(ErrorException::class);
+
             if ($expectMessageRegEx) {
                 $this->expectExceptionMessageMatches($expectMessageRegEx);
             }

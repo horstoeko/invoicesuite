@@ -15,10 +15,9 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * Class representing a DTO for a party organisation identification
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteOrganisationDTO extends InvoiceSuiteIdDTO
 {
@@ -30,9 +29,9 @@ class InvoiceSuiteOrganisationDTO extends InvoiceSuiteIdDTO
     /**
      * Constructor
      *
-     * @param string|null $id
-     * @param string|null $idType
-     * @param string|null $name
+     * @param null|string $id
+     * @param null|string $idType
+     * @param null|string $name
      */
     public function __construct(
         ?string $id = null,
@@ -47,7 +46,7 @@ class InvoiceSuiteOrganisationDTO extends InvoiceSuiteIdDTO
     /**
      * Get the organisation name
      *
-     * @return string|null
+     * @return null|string
      */
     public function getName(): ?string
     {
@@ -57,7 +56,7 @@ class InvoiceSuiteOrganisationDTO extends InvoiceSuiteIdDTO
     /**
      * Set the organisation name
      *
-     * @param string|null $newName
+     * @param  null|string $newName
      * @return self
      */
     public function setName(?string $newName): self

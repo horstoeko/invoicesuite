@@ -15,10 +15,9 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * Class representing a DTO for a party address
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteAddressDTO
 {
@@ -60,13 +59,13 @@ class InvoiceSuiteAddressDTO
     /**
      * Constructor
      *
-     * @param string|null $addressLine1
-     * @param string|null $addressLine2
-     * @param string|null $addressLine3
-     * @param string|null $postcode
-     * @param string|null $city
-     * @param string|null $country
-     * @param string|null $subDivision
+     * @param null|string $addressLine1
+     * @param null|string $addressLine2
+     * @param null|string $addressLine3
+     * @param null|string $postcode
+     * @param null|string $city
+     * @param null|string $country
+     * @param null|string $subDivision
      */
     public function __construct(
         ?string $addressLine1 = null,
@@ -90,7 +89,7 @@ class InvoiceSuiteAddressDTO
     /**
      * Get address line 1
      *
-     * @return string|null
+     * @return null|string
      */
     public function getAddressLine1(): ?string
     {
@@ -100,7 +99,7 @@ class InvoiceSuiteAddressDTO
     /**
      * Set address line 1
      *
-     * @param string|null $newAddressLine1
+     * @param  null|string $newAddressLine1
      * @return self
      */
     public function setAddressLine1(?string $newAddressLine1): self
@@ -123,7 +122,7 @@ class InvoiceSuiteAddressDTO
     /**
      * Get address line 2
      *
-     * @return string|null
+     * @return null|string
      */
     public function getAddressLine2(): ?string
     {
@@ -133,7 +132,7 @@ class InvoiceSuiteAddressDTO
     /**
      * Set address line 2
      *
-     * @param string|null $newAddressLine2
+     * @param  null|string $newAddressLine2
      * @return self
      */
     public function setAddressLine2(?string $newAddressLine2): self
@@ -156,7 +155,7 @@ class InvoiceSuiteAddressDTO
     /**
      * Get address line 3
      *
-     * @return string|null
+     * @return null|string
      */
     public function getAddressLine3(): ?string
     {
@@ -166,7 +165,7 @@ class InvoiceSuiteAddressDTO
     /**
      * Set address line 3
      *
-     * @param string|null $newAddressLine3
+     * @param  null|string $newAddressLine3
      * @return self
      */
     public function setAddressLine3(?string $newAddressLine3): self
@@ -189,7 +188,7 @@ class InvoiceSuiteAddressDTO
     /**
      * Get postcode
      *
-     * @return string|null
+     * @return null|string
      */
     public function getPostcode(): ?string
     {
@@ -199,7 +198,7 @@ class InvoiceSuiteAddressDTO
     /**
      * Set postcode
      *
-     * @param string|null $newPostcode
+     * @param  null|string $newPostcode
      * @return self
      */
     public function setPostcode(?string $newPostcode): self
@@ -222,7 +221,7 @@ class InvoiceSuiteAddressDTO
     /**
      * Get city
      *
-     * @return string|null
+     * @return null|string
      */
     public function getCity(): ?string
     {
@@ -232,7 +231,7 @@ class InvoiceSuiteAddressDTO
     /**
      * Set city
      *
-     * @param string|null $newCity
+     * @param  null|string $newCity
      * @return self
      */
     public function setCity(?string $newCity): self
@@ -255,7 +254,7 @@ class InvoiceSuiteAddressDTO
     /**
      * Get country ID
      *
-     * @return string|null
+     * @return null|string
      */
     public function getCountry(): ?string
     {
@@ -265,7 +264,7 @@ class InvoiceSuiteAddressDTO
     /**
      * Set country ID
      *
-     * @param string|null $newCountry
+     * @param  null|string $newCountry
      * @return self
      */
     public function setCountry(?string $newCountry): self
@@ -288,7 +287,7 @@ class InvoiceSuiteAddressDTO
     /**
      * Get subdivision
      *
-     * @return string|null
+     * @return null|string
      */
     public function getSubDivision(): ?string
     {
@@ -298,7 +297,7 @@ class InvoiceSuiteAddressDTO
     /**
      * Set subdivision
      *
-     * @param string|null $newSubDivision
+     * @param  null|string $newSubDivision
      * @return self
      */
     public function setSubDivision(?string $newSubDivision): self

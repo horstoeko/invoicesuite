@@ -29,8 +29,8 @@ class InvoiceSuiteZfFxMinimumSerializerHandler implements SubscribingHandlerInte
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\zffxminimum\udt\AmountType',
-                'method' => 'serializeAmountType'
-            ]
+                'method' => 'serializeAmountType',
+            ],
         ];
     }
 
@@ -53,7 +53,7 @@ class InvoiceSuiteZfFxMinimumSerializerHandler implements SubscribingHandlerInte
         );
 
         if ($data->getCurrencyID() != null) {
-            $attr = $visitor->getDocument()->createAttribute("currencyID");
+            $attr = $visitor->getDocument()->createAttribute('currencyID');
             $attr->value = $data->getCurrencyID();
             $visitor->getCurrentNode()->appendChild($attr);
         }

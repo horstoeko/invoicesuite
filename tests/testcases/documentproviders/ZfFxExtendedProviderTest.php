@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 
-use horstoeko\invoicesuite\tests\TestCase;
-use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\documents\models\zffxextended\rsm\CrossIndustryInvoice;
 use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedProvider;
-use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedProviderReader;
 use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedProviderBuilder;
+use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedProviderReader;
 use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedSerializerHandler;
+use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
+use horstoeko\invoicesuite\tests\TestCase;
 
 final class ZfFxExtendedProviderTest extends TestCase
 {
@@ -56,11 +56,11 @@ final class ZfFxExtendedProviderTest extends TestCase
 
         $this->assertTrue($provider->isPdfSupportAvailable());
         $this->assertCount(4, $provider->getAllowedPdfAttachmentFilenames());
-        $this->assertContains("ZUGFeRD-invoice.xml", $provider->getAllowedPdfAttachmentFilenames());
-        $this->assertContains("zugferd-invoice.xml", $provider->getAllowedPdfAttachmentFilenames());
-        $this->assertContains("factur-x.xml", $provider->getAllowedPdfAttachmentFilenames());
-        $this->assertContains("xrechnung.xml", $provider->getAllowedPdfAttachmentFilenames());
-        $this->assertSame("factur-x.xml", $provider->getDefaultPdfAttachmentFilename());
+        $this->assertContains('ZUGFeRD-invoice.xml', $provider->getAllowedPdfAttachmentFilenames());
+        $this->assertContains('zugferd-invoice.xml', $provider->getAllowedPdfAttachmentFilenames());
+        $this->assertContains('factur-x.xml', $provider->getAllowedPdfAttachmentFilenames());
+        $this->assertContains('xrechnung.xml', $provider->getAllowedPdfAttachmentFilenames());
+        $this->assertSame('factur-x.xml', $provider->getDefaultPdfAttachmentFilename());
         $this->assertSame(InvoiceSuiteZffxPdfConstructor::class, $provider->getPdfConstructorClassName());
     }
 
@@ -105,7 +105,7 @@ final class ZfFxExtendedProviderTest extends TestCase
     {
         $provider = new InvoiceSuiteZfFxExtendedProvider();
 
-        $xml = <<<XML
+        $xml = <<<'XML'
     <?xml version="1.0" encoding="UTF-8"?>
     <rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <rsm:ExchangedDocumentContext>
@@ -124,7 +124,7 @@ final class ZfFxExtendedProviderTest extends TestCase
 
         $this->assertTrue($provider->isSatisfiableBySerializedContent($xml));
 
-        $xml = <<<XML
+        $xml = <<<'XML'
     <?xml version="1.0" encoding="UTF-8"?>
     <rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <rsm:ExchangedDocumentContext>
@@ -143,7 +143,7 @@ final class ZfFxExtendedProviderTest extends TestCase
 
         $this->assertTrue($provider->isSatisfiableBySerializedContent($xml));
 
-        $xml = <<<XML
+        $xml = <<<'XML'
     <?xml version="1.0" encoding="UTF-8"?>
     <rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <rsm:ExchangedDocumentContext>

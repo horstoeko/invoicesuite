@@ -30,19 +30,19 @@ class InvoiceSuiteZfFxBasicWlSerializerHandler implements SubscribingHandlerInte
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\zffxbasicwl\udt\AmountType',
-                'method' => 'serializeAmountType'
+                'method' => 'serializeAmountType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\zffxbasicwl\udt\PercentType',
-                'method' => 'serializePercentType'
+                'method' => 'serializePercentType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\zffxbasicwl\udt\IndicatorType',
-                'method' => 'serializeIndicatorType'
+                'method' => 'serializeIndicatorType',
             ],
         ];
     }
@@ -66,7 +66,7 @@ class InvoiceSuiteZfFxBasicWlSerializerHandler implements SubscribingHandlerInte
         );
 
         if ($data->getCurrencyID() != null) {
-            $attr = $visitor->getDocument()->createAttribute("currencyID");
+            $attr = $visitor->getDocument()->createAttribute('currencyID');
             $attr->value = $data->getCurrencyID();
             $visitor->getCurrentNode()->appendChild($attr);
         }

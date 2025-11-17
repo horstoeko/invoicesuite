@@ -24,10 +24,9 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
  * Class representing the document reader
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteDocumentReader
 {
@@ -35,49 +34,13 @@ class InvoiceSuiteDocumentReader
     use HandlesCurrentDocumentFormatProvider;
     use HandlesDocumentFormatProviders;
 
-    #region Reader
-
-    /**
-     * Create reader by file
-     *
-     * @param  string $fromFile
-     * @return InvoiceSuiteDocumentReader
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     */
-    public static function createFromFile(string $fromFile): self
-    {
-        if (!file_exists($fromFile)) {
-            throw new InvoiceSuiteFileNotFoundException($fromFile);
-        }
-
-        $fromContent = file_get_contents($fromFile);
-
-        if ($fromContent === false) {
-            throw new InvoiceSuiteFileNotReadableException($fromFile);
-        }
-
-        return static::createFromContent($fromContent);
-    }
-
-    /**
-     * Create reader by content
-     *
-     * @param  string $fromContent
-     * @return InvoiceSuiteDocumentReader
-     */
-    public static function createFromContent(string $fromContent): self
-    {
-        return new static($fromContent);
-    }
-
     /**
      * Constructor (hidden)
      *
-     * @param string $fromContent
-     * @return void
+     * @param  string                                      $fromContent
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
+     * @return void
      */
     final protected function __construct(string $fromContent)
     {
@@ -85,11 +48,11 @@ class InvoiceSuiteDocumentReader
 
         $formatProviders = array_filter(
             $this->getRegisteredDocumentFormatProviders(),
-            fn($formatProvider) => $formatProvider->isSatisfiableBySerializedContent($fromContent)
+            static fn ($formatProvider) => $formatProvider->isSatisfiableBySerializedContent($fromContent)
         );
 
         if ($formatProviders === []) {
-            throw new InvoiceSuiteFormatProviderNotFoundException("unknown");
+            throw new InvoiceSuiteFormatProviderNotFoundException('unknown');
         }
 
         $formatProvider = reset($formatProviders);
@@ -110,6 +73,42 @@ class InvoiceSuiteDocumentReader
         return $this->forwardCallWithCheckTo($this->getCurrentDocumentFormatProvider()->getReader(), $method, $parameters);
     }
 
+    // region Reader
+
+    /**
+     * Create reader by file
+     *
+     * @param  string                               $fromFile
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @return InvoiceSuiteDocumentReader
+     */
+    public static function createFromFile(string $fromFile): self
+    {
+        if (!file_exists($fromFile)) {
+            throw new InvoiceSuiteFileNotFoundException($fromFile);
+        }
+
+        $fromContent = file_get_contents($fromFile);
+
+        if ($fromContent === false) {
+            throw new InvoiceSuiteFileNotReadableException($fromFile);
+        }
+
+        return static::createFromContent($fromContent);
+    }
+
+    /**
+     * Create reader by content
+     *
+     * @param  string                     $fromContent
+     * @return InvoiceSuiteDocumentReader
+     */
+    public static function createFromContent(string $fromContent): self
+    {
+        return new static($fromContent);
+    }
+
     /**
      * Copy Reader to a Builder instance
      *
@@ -119,19 +118,19 @@ class InvoiceSuiteDocumentReader
     {
         $this->convertToDTO($dto);
 
-        return (InvoiceSuiteDocumentBuilder::createByProviderUniqueId(
+        return InvoiceSuiteDocumentBuilder::createByProviderUniqueId(
             $this->getCurrentDocumentFormatProvider()->getUniqueId()
-        ))->createFromDTO($dto);
+        )->createFromDTO($dto);
     }
 
-    #endregion
+    // endregion
 
-    #region Document DTO
+    // region Document DTO
 
     /**
      * Create a DTO from this document
      *
-     * @param InvoiceSuiteDocumentHeaderDTO|null $newDocumentDTO Data-Transfer-Object
+     * @param  null|InvoiceSuiteDocumentHeaderDTO $newDocumentDTO Data-Transfer-Object
      * @return self
      */
     public function convertToDTO(
@@ -142,14 +141,14 @@ class InvoiceSuiteDocumentReader
         return $this;
     }
 
-    #endregion
+    // endregion
 
-    #region Document Generals
+    // region Document Generals
 
     /**
      * Gets the document number (e.g. invoice number)
      *
-     * @param string|null $newDocumentNo The document no issued by the seller
+     * @param  null|string $newDocumentNo The document no issued by the seller
      * @return static
      */
     public function getDocumentNo(
@@ -163,7 +162,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Gets the document type code
      *
-     * @param string|null $newDocumentType The type of the document
+     * @param  null|string $newDocumentType The type of the document
      * @return static
      */
     public function getDocumentType(
@@ -177,7 +176,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Gets the document description
      *
-     * @param string|null $newDocumentDescription The documenttype as free text
+     * @param  null|string $newDocumentDescription The documenttype as free text
      * @return self
      */
     public function getDocumentDescription(
@@ -191,7 +190,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Gets the document language
      *
-     * @param string|null $newDocumentLanguage Language indicator. The language code in which the document was written
+     * @param  null|string $newDocumentLanguage Language indicator. The language code in which the document was written
      * @return self
      */
     public function getDocumentLanguage(
@@ -205,7 +204,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Gets the document date (e.g. invoice date)
      *
-     * @param DateTimeInterface|null $newDocumentDate Date of the document. The date when the document was issued by the seller
+     * @param  null|DateTimeInterface $newDocumentDate Date of the document. The date when the document was issued by the seller
      * @return self
      */
     public function getDocumentDate(
@@ -219,7 +218,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Gets the document period
      *
-     * @param DateTimeInterface|null $newCompleteDate Contractual due date of the document
+     * @param  null|DateTimeInterface $newCompleteDate Contractual due date of the document
      * @return self
      */
     public function getDocumentCompleteDate(
@@ -233,7 +232,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Gets the document currency
      *
-     * @param string|null $newDocumentCurrency Code for the invoice currency
+     * @param  null|string $newDocumentCurrency Code for the invoice currency
      * @return self
      */
     public function getDocumentCurrency(
@@ -247,7 +246,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Gets the document tax currency
      *
-     * @param string|null $newDocumentTaxCurrency Code for the tax currency
+     * @param  null|string $newDocumentTaxCurrency Code for the tax currency
      * @return self
      */
     public function getDocumentTaxCurrency(
@@ -261,7 +260,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Gets the status of the copy indicator
      *
-     * @param boolean|null $newDocumentIsCopy Indicates that the document is a copy
+     * @param  null|bool $newDocumentIsCopy Indicates that the document is a copy
      * @return self
      */
     public function getDocumentIsCopy(
@@ -275,7 +274,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Gets the status of the test indicator
      *
-     * @param boolean|null $newDocumentIsTest Indicates that the document is a test
+     * @param  null|bool $newDocumentIsTest Indicates that the document is a test
      * @return self
      */
     public function getDocumentIsTest(
@@ -309,9 +308,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get a note to the document.
      *
-     * @param string|null $newContent Free text containing unstructured information that is relevant to the invoice as a whole
-     * @param string|null $newContentCode Code to classify the content of the free text of the invoice
-     * @param string|null $newSubjectCode Qualification of the free text for the invoice
+     * @param  null|string $newContent     Free text containing unstructured information that is relevant to the invoice as a whole
+     * @param  null|string $newContentCode Code to classify the content of the free text of the invoice
+     * @param  null|string $newSubjectCode Qualification of the free text for the invoice
      * @return self
      */
     public function getDocumentNote(
@@ -327,7 +326,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first billing period
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentBillingPeriod(): bool
     {
@@ -337,7 +336,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next billing period
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentBillingPeriod(): bool
     {
@@ -347,9 +346,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the start and/or end date of the billing period
      *
-     * @param null|DateTimeInterface $newStartDate Start of the billing period
-     * @param null|DateTimeInterface $newEndDate End of the billing period
-     * @param null|string $newDescription Further information of the billing period (Obsolete)
+     * @param  null|DateTimeInterface $newStartDate   Start of the billing period
+     * @param  null|DateTimeInterface $newEndDate     End of the billing period
+     * @param  null|string            $newDescription Further information of the billing period (Obsolete)
      * @return self
      */
     public function getDocumentBillingPeriod(
@@ -365,7 +364,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first posting reference
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPostingReference(): bool
     {
@@ -375,7 +374,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next posting reference
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPostingReference(): bool
     {
@@ -385,8 +384,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get a posting reference
      *
-     * @param string|null $newType Type of the posting reference
-     * @param string|null $newAccountId Posting reference of the byuer
+     * @param  null|string $newType      Type of the posting reference
+     * @param  null|string $newAccountId Posting reference of the byuer
      * @return self
      */
     public function getDocumentPostingReference(
@@ -398,14 +397,14 @@ class InvoiceSuiteDocumentReader
         return $this;
     }
 
-    #endregion
+    // endregion
 
-    #region Document References
+    // region Document References
 
     /**
      * Go to the first associated seller's order confirmation
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentSellerOrderReference(): bool
     {
@@ -415,7 +414,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next associated seller's order confirmation
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentSellerOrderReference(): bool
     {
@@ -425,8 +424,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the associated seller's order confirmation.
      *
-     * @param string|null $newReferenceNumber Seller's order confirmation number
-     * @param DateTimeInterface|null $newReferenceDate Seller's order confirmation date
+     * @param  null|string            $newReferenceNumber Seller's order confirmation number
+     * @param  null|DateTimeInterface $newReferenceDate   Seller's order confirmation date
      * @return self
      */
     public function getDocumentSellerOrderReference(
@@ -441,7 +440,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first associated buyer's order confirmation
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentBuyerOrderReference(): bool
     {
@@ -451,7 +450,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next associated buyer's order confirmation
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentBuyerOrderReference(): bool
     {
@@ -461,8 +460,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the associated buyer's order confirmation.
      *
-     * @param string|null $newReferenceNumber Buyer's order number
-     * @param DateTimeInterface|null $newReferenceDate Buyer's order date
+     * @param  null|string            $newReferenceNumber Buyer's order number
+     * @param  null|DateTimeInterface $newReferenceDate   Buyer's order date
      * @return self
      */
     public function getDocumentBuyerOrderReference(
@@ -477,7 +476,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first associated quotation
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentQuotationReference(): bool
     {
@@ -487,7 +486,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next associated quotation
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentQuotationReference(): bool
     {
@@ -497,8 +496,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the associated quotation
      *
-     * @param string|null $newReferenceNumber Quotation number
-     * @param DateTimeInterface|null $newReferenceDate Quotation date
+     * @param  null|string            $newReferenceNumber Quotation number
+     * @param  null|DateTimeInterface $newReferenceDate   Quotation date
      * @return self
      */
     public function getDocumentQuotationReference(
@@ -513,7 +512,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first associated contract
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentContractReference(): bool
     {
@@ -523,7 +522,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next associated contract
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentContractReference(): bool
     {
@@ -533,8 +532,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the associated contract
      *
-     * @param string|null $newReferenceNumber Contract number
-     * @param DateTimeInterface|null $newReferenceDate Contract date
+     * @param  null|string            $newReferenceNumber Contract number
+     * @param  null|DateTimeInterface $newReferenceDate   Contract date
      * @return self
      */
     public function getDocumentContractReference(
@@ -549,7 +548,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first additional associated document
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentAdditionalReference(): bool
     {
@@ -559,7 +558,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next additional associated document
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentAdditionalReference(): bool
     {
@@ -569,12 +568,12 @@ class InvoiceSuiteDocumentReader
     /**
      * Get an additional associated document
      *
-     * @param string|null $newReferenceNumber Additional document number
-     * @param DateTimeInterface|null $newReferenceDate Additional document date
-     * @param string|null $newTypeCode Additional document type code
-     * @param string|null $newReferenceTypeCode Additional document reference-type code
-     * @param string|null $newDescription Additional document description
-     * @param InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment Additional document attachment
+     * @param  null|string                 $newReferenceNumber        Additional document number
+     * @param  null|DateTimeInterface      $newReferenceDate          Additional document date
+     * @param  null|string                 $newTypeCode               Additional document type code
+     * @param  null|string                 $newReferenceTypeCode      Additional document reference-type code
+     * @param  null|string                 $newDescription            Additional document description
+     * @param  null|InvoiceSuiteAttachment $newInvoiceSuiteAttachment Additional document attachment
      * @return self
      */
     public function getDocumentAdditionalReference(
@@ -600,7 +599,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first additional invoice document (reference to preceding invoice)
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentInvoiceReference(): bool
     {
@@ -610,7 +609,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next additional invoice document (reference to preceding invoice)
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentInvoiceReference(): bool
     {
@@ -620,9 +619,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get an additional invoice document (reference to preceding invoice)
      *
-     * @param string|null $newReferenceNumber Identification of an invoice previously sent
-     * @param DateTimeInterface|null $newReferenceDate Date of the previous invoice
-     * @param string|null $newTypeCode Type code of previous invoice
+     * @param  null|string            $newReferenceNumber Identification of an invoice previously sent
+     * @param  null|DateTimeInterface $newReferenceDate   Date of the previous invoice
+     * @param  null|string            $newTypeCode        Type code of previous invoice
      * @return self
      */
     public function getDocumentInvoiceReference(
@@ -638,7 +637,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first additional project reference
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentProjectReference(): bool
     {
@@ -648,7 +647,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next additional project reference
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentProjectReference(): bool
     {
@@ -658,8 +657,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get an additional project reference
      *
-     * @param string|null $newReferenceNumber Project number
-     * @param string|null $newName Project name
+     * @param  null|string $newReferenceNumber Project number
+     * @param  null|string $newName            Project name
      * @return self
      */
     public function getDocumentProjectReference(
@@ -674,7 +673,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first additional ultimate customer order reference
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentUltimateCustomerOrderReference(): bool
     {
@@ -684,7 +683,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next additional ultimate customer order reference
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentUltimateCustomerOrderReference(): bool
     {
@@ -694,8 +693,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get an additional ultimate customer order reference
      *
-     * @param string|null $newReferenceNumber Ultimate customer order number
-     * @param DateTimeInterface|null $newReferenceDate Ultimate customer order date
+     * @param  null|string            $newReferenceNumber Ultimate customer order number
+     * @param  null|DateTimeInterface $newReferenceDate   Ultimate customer order date
      * @return self
      */
     public function getDocumentUltimateCustomerOrderReference(
@@ -710,7 +709,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first additional despatch advice reference
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentDespatchAdviceReference(): bool
     {
@@ -720,7 +719,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next additional despatch advice reference
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentDespatchAdviceReference(): bool
     {
@@ -730,8 +729,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get an additional despatch advice reference
      *
-     * @param string|null $newReferenceNumber Shipping notification number
-     * @param DateTimeInterface|null $newReferenceDate Shipping notification date
+     * @param  null|string            $newReferenceNumber Shipping notification number
+     * @param  null|DateTimeInterface $newReferenceDate   Shipping notification date
      * @return self
      */
     public function getDocumentDespatchAdviceReference(
@@ -746,7 +745,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first additional receiving advice reference
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentReceivingAdviceReference(): bool
     {
@@ -756,7 +755,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next additional receiving advice reference
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentReceivingAdviceReference(): bool
     {
@@ -766,8 +765,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get an additional receiving advice reference
      *
-     * @param string|null $newReferenceNumber Receipt notification number
-     * @param DateTimeInterface|null $newReferenceDate Receipt notification date
+     * @param  null|string            $newReferenceNumber Receipt notification number
+     * @param  null|DateTimeInterface $newReferenceDate   Receipt notification date
      * @return self
      */
     public function getDocumentReceivingAdviceReference(
@@ -782,7 +781,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first additional delivery note reference
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentDeliveryNoteReference(): bool
     {
@@ -792,7 +791,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next additional delivery note reference
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentDeliveryNoteReference(): bool
     {
@@ -802,8 +801,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get an additional delivery note reference
      *
-     * @param string|null $newReferenceNumber Delivery slip number
-     * @param DateTimeInterface|null $newReferenceDate Delivery slip date
+     * @param  null|string            $newReferenceNumber Delivery slip number
+     * @param  null|DateTimeInterface $newReferenceDate   Delivery slip date
      * @return self
      */
     public function getDocumentDeliveryNoteReference(
@@ -818,7 +817,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the date of the delivery
      *
-     * @param DateTimeInterface|null $newDate Actual delivery date
+     * @param  null|DateTimeInterface $newDate Actual delivery date
      * @return self
      */
     public function getDocumentSupplyChainEvent(
@@ -832,7 +831,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the identifier assigned by the buyer and used for internal routing
      *
-     * @param string|null $newBuyerReference An identifier assigned by the buyer and used for internal routing
+     * @param  null|string $newBuyerReference An identifier assigned by the buyer and used for internal routing
      * @return self
      */
     public function getDocumentBuyerReference(
@@ -843,14 +842,14 @@ class InvoiceSuiteDocumentReader
         return $this;
     }
 
-    #endregion
+    // endregion
 
-    #region Document Seller/Supplier
+    // region Document Seller/Supplier
 
     /**
      * Get the name of the buyer/customer party
      *
-     * @param string|null $newName The full formal name under which the party is registered.
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return self
      */
     public function getDocumentSellerName(
@@ -864,7 +863,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first ID of the seller/supplier party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentSellerId(): bool
     {
@@ -874,7 +873,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next ID of the seller/supplier party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentSellerId(): bool
     {
@@ -884,7 +883,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the ID of the seller/supplier party
      *
-     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function getDocumentSellerId(
@@ -898,7 +897,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first global ID of the seller/supplier party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentSellerGlobalId(): bool
     {
@@ -908,7 +907,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next global ID of the seller/supplier party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentSellerGlobalId(): bool
     {
@@ -918,8 +917,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Global ID of the seller/supplier party
      *
-     * @param string|null $newGlobalId A global identifier of the party.
-     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return self
      */
     public function getDocumentSellerGlobalId(
@@ -934,7 +933,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first Tax Registration of the seller/supplier party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentSellerTaxRegistration(): bool
     {
@@ -944,7 +943,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next Tax Registration of the seller/supplier party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentSellerTaxRegistration(): bool
     {
@@ -954,8 +953,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Tax Registration of the seller/supplier party
      *
-     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
      * @return self
      */
     public function getDocumentSellerTaxRegistration(
@@ -970,7 +969,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first address of the seller/supplier party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentSellerAddress(): bool
     {
@@ -980,7 +979,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next address of the seller/supplier party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentSellerAddress(): bool
     {
@@ -990,13 +989,13 @@ class InvoiceSuiteDocumentReader
     /**
      * Set the address of the seller/supplier party
      *
-     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId Country in which the party's address is located.
-     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return self
      */
     public function getDocumentSellerAddress(
@@ -1024,7 +1023,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first the legal information of the seller/supplier party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentSellerLegalOrganisation(): bool
     {
@@ -1034,7 +1033,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next the legal information of the seller/supplier party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentSellerLegalOrganisation(): bool
     {
@@ -1044,9 +1043,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the legal information of the seller/supplier party
      *
-     * @param string|null $newType Type of the identification number of the legal registration of the party.
-     * @param string|null $newId Identification number of the legal registration of the party.
-     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return self
      */
     public function getDocumentSellerLegalOrganisation(
@@ -1062,7 +1061,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first contact information of the seller/supplier party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentSellerContact(): bool
     {
@@ -1072,7 +1071,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next contact information of the seller/supplier party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentSellerContact(): bool
     {
@@ -1082,11 +1081,11 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the contact information of the seller/supplier party
      *
-     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName Name of the department for the contact point.
-     * @param string|null $newPhoneNumber Telephone number for the contact point.
-     * @param string|null $newFaxNumber Fax number of the contact point.
-     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return self
      */
     public function getDocumentSellerContact(
@@ -1110,7 +1109,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first communication information of the seller/supplier party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentSellerCommunication(): bool
     {
@@ -1120,7 +1119,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next communication information of the seller/supplier party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentSellerCommunication(): bool
     {
@@ -1130,8 +1129,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get communication information of the seller/supplier party
      *
-     * @param string|null $newType The type for the party's electronic address.
-     * @param string|null $newUri The party's electronic address.
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
      * @return self
      */
     public function getDocumentSellerCommunication(
@@ -1143,14 +1142,14 @@ class InvoiceSuiteDocumentReader
         return $this;
     }
 
-    #endregion
+    // endregion
 
-    #region Document Buyer/Customer
+    // region Document Buyer/Customer
 
     /**
      * Get the name of the buyer/customer party
      *
-     * @param string|null $newName The full formal name under which the party is registered.
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return self
      */
     public function getDocumentBuyerName(
@@ -1164,7 +1163,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first ID of the buyer/customer party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentBuyerId(): bool
     {
@@ -1174,7 +1173,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next ID of the buyer/customer party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentBuyerId(): bool
     {
@@ -1184,7 +1183,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the ID of the buyer/customer party
      *
-     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function getDocumentBuyerId(
@@ -1198,7 +1197,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first global ID of the buyer/customer party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentBuyerGlobalId(): bool
     {
@@ -1208,7 +1207,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next global ID of the buyer/customer party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentBuyerGlobalId(): bool
     {
@@ -1218,8 +1217,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Global ID of the buyer/customer party
      *
-     * @param string|null $newGlobalId A global identifier of the party.
-     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return self
      */
     public function getDocumentBuyerGlobalId(
@@ -1234,7 +1233,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first Tax Registration of the buyer/customer party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentBuyerTaxRegistration(): bool
     {
@@ -1244,7 +1243,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next Tax Registration of the buyer/customer party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentBuyerTaxRegistration(): bool
     {
@@ -1254,8 +1253,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Tax Registration of the buyer/customer party
      *
-     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
      * @return self
      */
     public function getDocumentBuyerTaxRegistration(
@@ -1270,7 +1269,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first address of the buyer/customer party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentBuyerAddress(): bool
     {
@@ -1280,7 +1279,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next address of the buyer/customer party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentBuyerAddress(): bool
     {
@@ -1290,13 +1289,13 @@ class InvoiceSuiteDocumentReader
     /**
      * Set the address of the buyer/customer party
      *
-     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId Country in which the party's address is located.
-     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return self
      */
     public function getDocumentBuyerAddress(
@@ -1324,7 +1323,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first the legal information of the buyer/customer party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentBuyerLegalOrganisation(): bool
     {
@@ -1334,7 +1333,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next the legal information of the buyer/customer party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentBuyerLegalOrganisation(): bool
     {
@@ -1344,9 +1343,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the legal information of the buyer/customer party
      *
-     * @param string|null $newType Type of the identification number of the legal registration of the party.
-     * @param string|null $newId Identification number of the legal registration of the party.
-     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return self
      */
     public function getDocumentBuyerLegalOrganisation(
@@ -1362,7 +1361,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first contact information of the buyer/customer party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentBuyerContact(): bool
     {
@@ -1372,7 +1371,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next contact information of the buyer/customer party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentBuyerContact(): bool
     {
@@ -1382,11 +1381,11 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the contact information of the buyer/customer party
      *
-     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName Name of the department for the contact point.
-     * @param string|null $newPhoneNumber Telephone number for the contact point.
-     * @param string|null $newFaxNumber Fax number of the contact point.
-     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return self
      */
     public function getDocumentBuyerContact(
@@ -1410,7 +1409,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first communication information of the buyer/customer party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentBuyerCommunication(): bool
     {
@@ -1420,7 +1419,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next communication information of the buyer/customer party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentBuyerCommunication(): bool
     {
@@ -1430,8 +1429,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get communication information of the buyer/customer party
      *
-     * @param string|null $newType The type for the party's electronic address.
-     * @param string|null $newUri The party's electronic address.
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
      * @return self
      */
     public function getDocumentBuyerCommunication(
@@ -1443,14 +1442,14 @@ class InvoiceSuiteDocumentReader
         return $this;
     }
 
-    #endregion
+    // endregion
 
-    #region Document Tax Representativ party
+    // region Document Tax Representativ party
 
     /**
      * Get the name of the tax representative party
      *
-     * @param string|null $newName The full formal name under which the party is registered.
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return self
      */
     public function getDocumentTaxRepresentativeName(
@@ -1464,7 +1463,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first ID of the tax representative party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentTaxRepresentativeId(): bool
     {
@@ -1474,7 +1473,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next ID of the tax representative party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentTaxRepresentativeId(): bool
     {
@@ -1484,7 +1483,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the ID of the tax representative party
      *
-     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function getDocumentTaxRepresentativeId(
@@ -1498,7 +1497,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first global ID of the tax representative party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentTaxRepresentativeGlobalId(): bool
     {
@@ -1508,7 +1507,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next global ID of the tax representative party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentTaxRepresentativeGlobalId(): bool
     {
@@ -1518,8 +1517,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Global ID of the tax representative party
      *
-     * @param string|null $newGlobalId A global identifier of the party.
-     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return self
      */
     public function getDocumentTaxRepresentativeGlobalId(
@@ -1534,7 +1533,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first Tax Registration of the tax representative party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentTaxRepresentativeTaxRegistration(): bool
     {
@@ -1544,7 +1543,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next Tax Registration of the tax representative party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentTaxRepresentativeTaxRegistration(): bool
     {
@@ -1554,8 +1553,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Tax Registration of the tax representative party
      *
-     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
      * @return self
      */
     public function getDocumentTaxRepresentativeTaxRegistration(
@@ -1570,7 +1569,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first address of the tax representative party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentTaxRepresentativeAddress(): bool
     {
@@ -1580,7 +1579,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next address of the tax representative party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentTaxRepresentativeAddress(): bool
     {
@@ -1590,13 +1589,13 @@ class InvoiceSuiteDocumentReader
     /**
      * Set the address of the tax representative party
      *
-     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId Country in which the party's address is located.
-     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return self
      */
     public function getDocumentTaxRepresentativeAddress(
@@ -1624,7 +1623,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first the legal information of the tax representative party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentTaxRepresentativeLegalOrganisation(): bool
     {
@@ -1634,7 +1633,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next the legal information of the tax representative party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentTaxRepresentativeLegalOrganisation(): bool
     {
@@ -1644,9 +1643,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the legal information of the tax representative party
      *
-     * @param string|null $newType Type of the identification number of the legal registration of the party.
-     * @param string|null $newId Identification number of the legal registration of the party.
-     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return self
      */
     public function getDocumentTaxRepresentativeLegalOrganisation(
@@ -1662,7 +1661,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first contact information of the tax representative party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentTaxRepresentativeContact(): bool
     {
@@ -1672,7 +1671,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next contact information of the tax representative party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentTaxRepresentativeContact(): bool
     {
@@ -1682,11 +1681,11 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the contact information of the tax representative party
      *
-     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName Name of the department for the contact point.
-     * @param string|null $newPhoneNumber Telephone number for the contact point.
-     * @param string|null $newFaxNumber Fax number of the contact point.
-     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return self
      */
     public function getDocumentTaxRepresentativeContact(
@@ -1710,7 +1709,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first communication information of the tax representative party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentTaxRepresentativeCommunication(): bool
     {
@@ -1720,7 +1719,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next communication information of the tax representative party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentTaxRepresentativeCommunication(): bool
     {
@@ -1730,8 +1729,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get communication information of the tax representative party
      *
-     * @param string|null $newType The type for the party's electronic address.
-     * @param string|null $newUri The party's electronic address.
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
      * @return self
      */
     public function getDocumentTaxRepresentativeCommunication(
@@ -1743,14 +1742,14 @@ class InvoiceSuiteDocumentReader
         return $this;
     }
 
-    #endregion
+    // endregion
 
-    #region Document Product Enduser
+    // region Document Product Enduser
 
     /**
      * Get the name of the product end-user party
      *
-     * @param string|null $newName The full formal name under which the party is registered.
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return self
      */
     public function getDocumentProductEndUserName(
@@ -1764,7 +1763,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first ID of the product end-user party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentProductEndUserId(): bool
     {
@@ -1774,7 +1773,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next ID of the product end-user party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentProductEndUserId(): bool
     {
@@ -1784,7 +1783,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the ID of the product end-user party
      *
-     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function getDocumentProductEndUserId(
@@ -1798,7 +1797,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first global ID of the product end-user party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentProductEndUserGlobalId(): bool
     {
@@ -1808,7 +1807,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next global ID of the product end-user party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentProductEndUserGlobalId(): bool
     {
@@ -1818,8 +1817,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Global ID of the product end-user party
      *
-     * @param string|null $newGlobalId A global identifier of the party.
-     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return self
      */
     public function getDocumentProductEndUserGlobalId(
@@ -1834,7 +1833,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first Tax Registration of the product end-user party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentProductEndUserTaxRegistration(): bool
     {
@@ -1844,7 +1843,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next Tax Registration of the product end-user party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentProductEndUserTaxRegistration(): bool
     {
@@ -1854,8 +1853,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Tax Registration of the product end-user party
      *
-     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
      * @return self
      */
     public function getDocumentProductEndUserTaxRegistration(
@@ -1870,7 +1869,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first address of the product end-user party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentProductEndUserAddress(): bool
     {
@@ -1880,7 +1879,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next address of the product end-user party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentProductEndUserAddress(): bool
     {
@@ -1890,13 +1889,13 @@ class InvoiceSuiteDocumentReader
     /**
      * Set the address of the product end-user party
      *
-     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId Country in which the party's address is located.
-     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return self
      */
     public function getDocumentProductEndUserAddress(
@@ -1924,7 +1923,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first the legal information of the product end-user party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentProductEndUserLegalOrganisation(): bool
     {
@@ -1934,7 +1933,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next the legal information of the product end-user party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentProductEndUserLegalOrganisation(): bool
     {
@@ -1944,9 +1943,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the legal information of the product end-user party
      *
-     * @param string|null $newType Type of the identification number of the legal registration of the party.
-     * @param string|null $newId Identification number of the legal registration of the party.
-     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return self
      */
     public function getDocumentProductEndUserLegalOrganisation(
@@ -1962,7 +1961,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first contact information of the product end-user party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentProductEndUserContact(): bool
     {
@@ -1972,7 +1971,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next contact information of the product end-user party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentProductEndUserContact(): bool
     {
@@ -1982,11 +1981,11 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the contact information of the product end-user party
      *
-     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName Name of the department for the contact point.
-     * @param string|null $newPhoneNumber Telephone number for the contact point.
-     * @param string|null $newFaxNumber Fax number of the contact point.
-     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return self
      */
     public function getDocumentProductEndUserContact(
@@ -2010,7 +2009,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first communication information of the product end-user party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentProductEndUserCommunication(): bool
     {
@@ -2020,7 +2019,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next communication information of the product end-user party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentProductEndUserCommunication(): bool
     {
@@ -2030,8 +2029,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get communication information of the product end-user party
      *
-     * @param string|null $newType The type for the party's electronic address.
-     * @param string|null $newUri The party's electronic address.
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
      * @return self
      */
     public function getDocumentProductEndUserCommunication(
@@ -2043,14 +2042,14 @@ class InvoiceSuiteDocumentReader
         return $this;
     }
 
-    #endregion
+    // endregion
 
-    #region Document Ship-To
+    // region Document Ship-To
 
     /**
      * Get the name of the Ship-To party
      *
-     * @param string|null $newName The full formal name under which the party is registered.
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return self
      */
     public function getDocumentShipToName(
@@ -2064,7 +2063,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first ID of the Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentShipToId(): bool
     {
@@ -2074,7 +2073,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next ID of the Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentShipToId(): bool
     {
@@ -2084,7 +2083,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the ID of the Ship-To party
      *
-     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function getDocumentShipToId(
@@ -2098,7 +2097,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first global ID of the Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentShipToGlobalId(): bool
     {
@@ -2108,7 +2107,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next global ID of the Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentShipToGlobalId(): bool
     {
@@ -2118,8 +2117,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Global ID of the Ship-To party
      *
-     * @param string|null $newGlobalId A global identifier of the party.
-     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return self
      */
     public function getDocumentShipToGlobalId(
@@ -2134,7 +2133,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first Tax Registration of the Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentShipToTaxRegistration(): bool
     {
@@ -2144,7 +2143,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next Tax Registration of the Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentShipToTaxRegistration(): bool
     {
@@ -2154,8 +2153,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Tax Registration of the Ship-To party
      *
-     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
      * @return self
      */
     public function getDocumentShipToTaxRegistration(
@@ -2170,7 +2169,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first address of the Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentShipToAddress(): bool
     {
@@ -2180,7 +2179,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next address of the Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentShipToAddress(): bool
     {
@@ -2190,13 +2189,13 @@ class InvoiceSuiteDocumentReader
     /**
      * Set the address of the Ship-To party
      *
-     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId Country in which the party's address is located.
-     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return self
      */
     public function getDocumentShipToAddress(
@@ -2224,7 +2223,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first the legal information of the Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentShipToLegalOrganisation(): bool
     {
@@ -2234,7 +2233,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next the legal information of the Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentShipToLegalOrganisation(): bool
     {
@@ -2244,9 +2243,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the legal information of the Ship-To party
      *
-     * @param string|null $newType Type of the identification number of the legal registration of the party.
-     * @param string|null $newId Identification number of the legal registration of the party.
-     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return self
      */
     public function getDocumentShipToLegalOrganisation(
@@ -2262,7 +2261,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first contact information of the Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentShipToContact(): bool
     {
@@ -2272,7 +2271,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next contact information of the Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentShipToContact(): bool
     {
@@ -2282,11 +2281,11 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the contact information of the Ship-To party
      *
-     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName Name of the department for the contact point.
-     * @param string|null $newPhoneNumber Telephone number for the contact point.
-     * @param string|null $newFaxNumber Fax number of the contact point.
-     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return self
      */
     public function getDocumentShipToContact(
@@ -2310,7 +2309,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first communication information of the Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentShipToCommunication(): bool
     {
@@ -2320,7 +2319,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next communication information of the Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentShipToCommunication(): bool
     {
@@ -2330,8 +2329,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get communication information of the Ship-To party
      *
-     * @param string|null $newType The type for the party's electronic address.
-     * @param string|null $newUri The party's electronic address.
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
      * @return self
      */
     public function getDocumentShipToCommunication(
@@ -2343,14 +2342,14 @@ class InvoiceSuiteDocumentReader
         return $this;
     }
 
-    #endregion
+    // endregion
 
-    #region Document Ultimate Ship-To
+    // region Document Ultimate Ship-To
 
     /**
      * Get the name of the ultimate Ship-To party
      *
-     * @param string|null $newName The full formal name under which the party is registered.
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return self
      */
     public function getDocumentUltimateShipToName(
@@ -2364,7 +2363,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first ID of the ultimate Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentUltimateShipToId(): bool
     {
@@ -2374,7 +2373,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next ID of the ultimate Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentUltimateShipToId(): bool
     {
@@ -2384,7 +2383,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the ID of the ultimate Ship-To party
      *
-     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function getDocumentUltimateShipToId(
@@ -2398,7 +2397,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first global ID of the ultimate Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentUltimateShipToGlobalId(): bool
     {
@@ -2408,7 +2407,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next global ID of the ultimate Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentUltimateShipToGlobalId(): bool
     {
@@ -2418,8 +2417,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Global ID of the ultimate Ship-To party
      *
-     * @param string|null $newGlobalId A global identifier of the party.
-     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return self
      */
     public function getDocumentUltimateShipToGlobalId(
@@ -2434,7 +2433,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first Tax Registration of the ultimate Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentUltimateShipToTaxRegistration(): bool
     {
@@ -2444,7 +2443,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next Tax Registration of the ultimate Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentUltimateShipToTaxRegistration(): bool
     {
@@ -2454,8 +2453,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Tax Registration of the ultimate Ship-To party
      *
-     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
      * @return self
      */
     public function getDocumentUltimateShipToTaxRegistration(
@@ -2470,7 +2469,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first address of the ultimate Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentUltimateShipToAddress(): bool
     {
@@ -2480,7 +2479,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next address of the ultimate Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentUltimateShipToAddress(): bool
     {
@@ -2490,13 +2489,13 @@ class InvoiceSuiteDocumentReader
     /**
      * Set the address of the ultimate Ship-To party
      *
-     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId Country in which the party's address is located.
-     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return self
      */
     public function getDocumentUltimateShipToAddress(
@@ -2524,7 +2523,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first the legal information of the ultimate Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentUltimateShipToLegalOrganisation(): bool
     {
@@ -2534,7 +2533,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next the legal information of the ultimate Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentUltimateShipToLegalOrganisation(): bool
     {
@@ -2544,9 +2543,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the legal information of the ultimate Ship-To party
      *
-     * @param string|null $newType Type of the identification number of the legal registration of the party.
-     * @param string|null $newId Identification number of the legal registration of the party.
-     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return self
      */
     public function getDocumentUltimateShipToLegalOrganisation(
@@ -2562,7 +2561,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first contact information of the ultimate Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentUltimateShipToContact(): bool
     {
@@ -2572,7 +2571,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next contact information of the ultimate Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentUltimateShipToContact(): bool
     {
@@ -2582,11 +2581,11 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the contact information of the ultimate Ship-To party
      *
-     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName Name of the department for the contact point.
-     * @param string|null $newPhoneNumber Telephone number for the contact point.
-     * @param string|null $newFaxNumber Fax number of the contact point.
-     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return self
      */
     public function getDocumentUltimateShipToContact(
@@ -2610,7 +2609,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first communication information of the ultimate Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentUltimateShipToCommunication(): bool
     {
@@ -2620,7 +2619,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next communication information of the ultimate Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentUltimateShipToCommunication(): bool
     {
@@ -2630,8 +2629,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get communication information of the ultimate Ship-To party
      *
-     * @param string|null $newType The type for the party's electronic address.
-     * @param string|null $newUri The party's electronic address.
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
      * @return self
      */
     public function getDocumentUltimateShipToCommunication(
@@ -2643,14 +2642,14 @@ class InvoiceSuiteDocumentReader
         return $this;
     }
 
-    #endregion
+    // endregion
 
-    #region Document Ship-From
+    // region Document Ship-From
 
     /**
      * Get the name of the Ship-From party
      *
-     * @param string|null $newName The full formal name under which the party is registered.
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return self
      */
     public function getDocumentShipFromName(
@@ -2664,7 +2663,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first ID of the Ship-From party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentShipFromId(): bool
     {
@@ -2674,7 +2673,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next ID of the Ship-From party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentShipFromId(): bool
     {
@@ -2684,7 +2683,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the ID of the Ship-From party
      *
-     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function getDocumentShipFromId(
@@ -2698,7 +2697,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first global ID of the Ship-From party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentShipFromGlobalId(): bool
     {
@@ -2708,7 +2707,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next global ID of the Ship-From party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentShipFromGlobalId(): bool
     {
@@ -2718,8 +2717,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Global ID of the Ship-From party
      *
-     * @param string|null $newGlobalId A global identifier of the party.
-     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return self
      */
     public function getDocumentShipFromGlobalId(
@@ -2734,7 +2733,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first Tax Registration of the Ship-From party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentShipFromTaxRegistration(): bool
     {
@@ -2744,7 +2743,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next Tax Registration of the Ship-From party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentShipFromTaxRegistration(): bool
     {
@@ -2754,8 +2753,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Tax Registration of the Ship-From party
      *
-     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
      * @return self
      */
     public function getDocumentShipFromTaxRegistration(
@@ -2770,7 +2769,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first address of the Ship-From party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentShipFromAddress(): bool
     {
@@ -2780,7 +2779,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next address of the Ship-From party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentShipFromAddress(): bool
     {
@@ -2790,13 +2789,13 @@ class InvoiceSuiteDocumentReader
     /**
      * Set the address of the Ship-From party
      *
-     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId Country in which the party's address is located.
-     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return self
      */
     public function getDocumentShipFromAddress(
@@ -2824,7 +2823,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first the legal information of the Ship-From party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentShipFromLegalOrganisation(): bool
     {
@@ -2834,7 +2833,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next the legal information of the Ship-From party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentShipFromLegalOrganisation(): bool
     {
@@ -2844,9 +2843,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the legal information of the Ship-From party
      *
-     * @param string|null $newType Type of the identification number of the legal registration of the party.
-     * @param string|null $newId Identification number of the legal registration of the party.
-     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return self
      */
     public function getDocumentShipFromLegalOrganisation(
@@ -2862,7 +2861,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first contact information of the Ship-From party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentShipFromContact(): bool
     {
@@ -2872,7 +2871,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next contact information of the Ship-From party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentShipFromContact(): bool
     {
@@ -2882,11 +2881,11 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the contact information of the Ship-From party
      *
-     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName Name of the department for the contact point.
-     * @param string|null $newPhoneNumber Telephone number for the contact point.
-     * @param string|null $newFaxNumber Fax number of the contact point.
-     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return self
      */
     public function getDocumentShipFromContact(
@@ -2910,7 +2909,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first communication information of the Ship-From party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentShipFromCommunication(): bool
     {
@@ -2920,7 +2919,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next communication information of the Ship-From party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentShipFromCommunication(): bool
     {
@@ -2930,8 +2929,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get communication information of the Ship-From party
      *
-     * @param string|null $newType The type for the party's electronic address.
-     * @param string|null $newUri The party's electronic address.
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
      * @return self
      */
     public function getDocumentShipFromCommunication(
@@ -2943,14 +2942,14 @@ class InvoiceSuiteDocumentReader
         return $this;
     }
 
-    #endregion
+    // endregion
 
-    #region Document Invoicer
+    // region Document Invoicer
 
     /**
      * Get the name of the Invoicer party
      *
-     * @param string|null $newName The full formal name under which the party is registered.
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return self
      */
     public function getDocumentInvoicerName(
@@ -2964,7 +2963,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first ID of the Invoicer party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentInvoicerId(): bool
     {
@@ -2974,7 +2973,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next ID of the Invoicer party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentInvoicerId(): bool
     {
@@ -2984,7 +2983,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the ID of the Invoicer party
      *
-     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function getDocumentInvoicerId(
@@ -2998,7 +2997,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first global ID of the Invoicer party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentInvoicerGlobalId(): bool
     {
@@ -3008,7 +3007,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next global ID of the Invoicer party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentInvoicerGlobalId(): bool
     {
@@ -3018,8 +3017,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Global ID of the Invoicer party
      *
-     * @param string|null $newGlobalId A global identifier of the party.
-     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return self
      */
     public function getDocumentInvoicerGlobalId(
@@ -3034,7 +3033,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first Tax Registration of the Invoicer party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentInvoicerTaxRegistration(): bool
     {
@@ -3044,7 +3043,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next Tax Registration of the Invoicer party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentInvoicerTaxRegistration(): bool
     {
@@ -3054,8 +3053,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Tax Registration of the Invoicer party
      *
-     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
      * @return self
      */
     public function getDocumentInvoicerTaxRegistration(
@@ -3070,7 +3069,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first address of the Invoicer party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentInvoicerAddress(): bool
     {
@@ -3080,7 +3079,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next address of the Invoicer party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentInvoicerAddress(): bool
     {
@@ -3090,13 +3089,13 @@ class InvoiceSuiteDocumentReader
     /**
      * Set the address of the Invoicer party
      *
-     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId Country in which the party's address is located.
-     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return self
      */
     public function getDocumentInvoicerAddress(
@@ -3124,7 +3123,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first the legal information of the Invoicer party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentInvoicerLegalOrganisation(): bool
     {
@@ -3134,7 +3133,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next the legal information of the Invoicer party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentInvoicerLegalOrganisation(): bool
     {
@@ -3144,9 +3143,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the legal information of the Invoicer party
      *
-     * @param string|null $newType Type of the identification number of the legal registration of the party.
-     * @param string|null $newId Identification number of the legal registration of the party.
-     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return self
      */
     public function getDocumentInvoicerLegalOrganisation(
@@ -3162,7 +3161,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first contact information of the Invoicer party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentInvoicerContact(): bool
     {
@@ -3172,7 +3171,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next contact information of the Invoicer party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentInvoicerContact(): bool
     {
@@ -3182,11 +3181,11 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the contact information of the Invoicer party
      *
-     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName Name of the department for the contact point.
-     * @param string|null $newPhoneNumber Telephone number for the contact point.
-     * @param string|null $newFaxNumber Fax number of the contact point.
-     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return self
      */
     public function getDocumentInvoicerContact(
@@ -3210,7 +3209,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first communication information of the Invoicer party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentInvoicerCommunication(): bool
     {
@@ -3220,7 +3219,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next communication information of the Invoicer party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentInvoicerCommunication(): bool
     {
@@ -3230,8 +3229,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get communication information of the Invoicer party
      *
-     * @param string|null $newType The type for the party's electronic address.
-     * @param string|null $newUri The party's electronic address.
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
      * @return self
      */
     public function getDocumentInvoicerCommunication(
@@ -3243,14 +3242,14 @@ class InvoiceSuiteDocumentReader
         return $this;
     }
 
-    #endregion
+    // endregion
 
-    #region Document Invoicee
+    // region Document Invoicee
 
     /**
      * Get the name of the Invoicee party
      *
-     * @param string|null $newName The full formal name under which the party is registered.
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return self
      */
     public function getDocumentInvoiceeName(
@@ -3264,7 +3263,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first ID of the Invoicee party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentInvoiceeId(): bool
     {
@@ -3274,7 +3273,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next ID of the Invoicee party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentInvoiceeId(): bool
     {
@@ -3284,7 +3283,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the ID of the Invoicee party
      *
-     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function getDocumentInvoiceeId(
@@ -3298,7 +3297,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first global ID of the Invoicee party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentInvoiceeGlobalId(): bool
     {
@@ -3308,7 +3307,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next global ID of the Invoicee party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentInvoiceeGlobalId(): bool
     {
@@ -3318,8 +3317,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Global ID of the Invoicee party
      *
-     * @param string|null $newGlobalId A global identifier of the party.
-     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return self
      */
     public function getDocumentInvoiceeGlobalId(
@@ -3334,7 +3333,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first Tax Registration of the Invoicee party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentInvoiceeTaxRegistration(): bool
     {
@@ -3344,7 +3343,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next Tax Registration of the Invoicee party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentInvoiceeTaxRegistration(): bool
     {
@@ -3354,8 +3353,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Tax Registration of the Invoicee party
      *
-     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
      * @return self
      */
     public function getDocumentInvoiceeTaxRegistration(
@@ -3370,7 +3369,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first address of the Invoicee party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentInvoiceeAddress(): bool
     {
@@ -3380,7 +3379,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next address of the Invoicee party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentInvoiceeAddress(): bool
     {
@@ -3390,13 +3389,13 @@ class InvoiceSuiteDocumentReader
     /**
      * Set the address of the Invoicee party
      *
-     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId Country in which the party's address is located.
-     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return self
      */
     public function getDocumentInvoiceeAddress(
@@ -3424,7 +3423,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first the legal information of the Invoicee party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentInvoiceeLegalOrganisation(): bool
     {
@@ -3434,7 +3433,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next the legal information of the Invoicee party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentInvoiceeLegalOrganisation(): bool
     {
@@ -3444,9 +3443,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the legal information of the Invoicee party
      *
-     * @param string|null $newType Type of the identification number of the legal registration of the party.
-     * @param string|null $newId Identification number of the legal registration of the party.
-     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return self
      */
     public function getDocumentInvoiceeLegalOrganisation(
@@ -3462,7 +3461,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first contact information of the Invoicee party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentInvoiceeContact(): bool
     {
@@ -3472,7 +3471,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next contact information of the Invoicee party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentInvoiceeContact(): bool
     {
@@ -3482,11 +3481,11 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the contact information of the Invoicee party
      *
-     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName Name of the department for the contact point.
-     * @param string|null $newPhoneNumber Telephone number for the contact point.
-     * @param string|null $newFaxNumber Fax number of the contact point.
-     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return self
      */
     public function getDocumentInvoiceeContact(
@@ -3510,7 +3509,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first communication information of the Invoicee party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentInvoiceeCommunication(): bool
     {
@@ -3520,7 +3519,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next communication information of the Invoicee party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentInvoiceeCommunication(): bool
     {
@@ -3530,8 +3529,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get communication information of the Invoicee party
      *
-     * @param string|null $newType The type for the party's electronic address.
-     * @param string|null $newUri The party's electronic address.
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
      * @return self
      */
     public function getDocumentInvoiceeCommunication(
@@ -3543,14 +3542,14 @@ class InvoiceSuiteDocumentReader
         return $this;
     }
 
-    #endregion
+    // endregion
 
-    #region Document Payee
+    // region Document Payee
 
     /**
      * Get the name of the Payee party
      *
-     * @param string|null $newName The full formal name under which the party is registered.
+     * @param  null|string $newName the full formal name under which the party is registered
      * @return self
      */
     public function getDocumentPayeeName(
@@ -3564,7 +3563,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first ID of the Payee party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPayeeId(): bool
     {
@@ -3574,7 +3573,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next ID of the Payee party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPayeeId(): bool
     {
@@ -3584,7 +3583,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the ID of the Payee party
      *
-     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function getDocumentPayeeId(
@@ -3598,7 +3597,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first global ID of the Payee party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPayeeGlobalId(): bool
     {
@@ -3608,7 +3607,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next global ID of the Payee party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPayeeGlobalId(): bool
     {
@@ -3618,8 +3617,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Global ID of the Payee party
      *
-     * @param string|null $newGlobalId A global identifier of the party.
-     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return self
      */
     public function getDocumentPayeeGlobalId(
@@ -3634,7 +3633,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first Tax Registration of the Payee party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPayeeTaxRegistration(): bool
     {
@@ -3644,7 +3643,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next Tax Registration of the Payee party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPayeeTaxRegistration(): bool
     {
@@ -3654,8 +3653,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Tax Registration of the Payee party
      *
-     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
      * @return self
      */
     public function getDocumentPayeeTaxRegistration(
@@ -3670,7 +3669,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first address of the Payee party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPayeeAddress(): bool
     {
@@ -3680,7 +3679,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next address of the Payee party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPayeeAddress(): bool
     {
@@ -3690,13 +3689,13 @@ class InvoiceSuiteDocumentReader
     /**
      * Set the address of the Payee party
      *
-     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId Country in which the party's address is located.
-     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return self
      */
     public function getDocumentPayeeAddress(
@@ -3724,7 +3723,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first the legal information of the Payee party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPayeeLegalOrganisation(): bool
     {
@@ -3734,7 +3733,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next the legal information of the Payee party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPayeeLegalOrganisation(): bool
     {
@@ -3744,9 +3743,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the legal information of the Payee party
      *
-     * @param string|null $newType Type of the identification number of the legal registration of the party.
-     * @param string|null $newId Identification number of the legal registration of the party.
-     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return self
      */
     public function getDocumentPayeeLegalOrganisation(
@@ -3762,7 +3761,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first contact information of the Payee party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPayeeContact(): bool
     {
@@ -3772,7 +3771,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next contact information of the Payee party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPayeeContact(): bool
     {
@@ -3782,11 +3781,11 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the contact information of the Payee party
      *
-     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName Name of the department for the contact point.
-     * @param string|null $newPhoneNumber Telephone number for the contact point.
-     * @param string|null $newFaxNumber Fax number of the contact point.
-     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return self
      */
     public function getDocumentPayeeContact(
@@ -3810,7 +3809,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first communication information of the Payee party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPayeeCommunication(): bool
     {
@@ -3820,7 +3819,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next communication information of the Payee party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPayeeCommunication(): bool
     {
@@ -3830,8 +3829,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get communication information of the Payee party
      *
-     * @param string|null $newType The type for the party's electronic address.
-     * @param string|null $newUri The party's electronic address.
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
      * @return self
      */
     public function getDocumentPayeeCommunication(
@@ -3843,14 +3842,14 @@ class InvoiceSuiteDocumentReader
         return $this;
     }
 
-    #endregion
+    // endregion
 
-    #region Document Payment
+    // region Document Payment
 
     /**
      * Go to the first Payment mean
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPaymentMean(): bool
     {
@@ -3860,7 +3859,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next Payment mean
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPaymentMean(): bool
     {
@@ -3870,17 +3869,17 @@ class InvoiceSuiteDocumentReader
     /**
      * Get Payment mean
      *
-     * @param string|null $newTypeCode Expected or used means of payment expressed as a code
-     * @param string|null $newName Expected or used means of payment expressed in text form
-     * @param string|null $newFinancialCardId Primary account number (PAN) of the payment card
-     * @param string|null $newFinancialCardHolder Name of the payment card holder
-     * @param string|null $newBuyerIban Identifier of the account to be debited
-     * @param string|null $newPayeeIban Payment account identifier
-     * @param string|null $newPayeeAccountName Name of the payment account
-     * @param string|null $newPayeeProprietaryId National account number (not for SEPA)
-     * @param string|null $newPayeeBic Identifier of the payment service provider
-     * @param string|null $newPaymentReference Text value used to link the payment to the invoice issued by the seller
-     * @param string|null $newMandate Identification of the mandate reference
+     * @param  null|string $newTypeCode            Expected or used means of payment expressed as a code
+     * @param  null|string $newName                Expected or used means of payment expressed in text form
+     * @param  null|string $newFinancialCardId     Primary account number (PAN) of the payment card
+     * @param  null|string $newFinancialCardHolder Name of the payment card holder
+     * @param  null|string $newBuyerIban           Identifier of the account to be debited
+     * @param  null|string $newPayeeIban           Payment account identifier
+     * @param  null|string $newPayeeAccountName    Name of the payment account
+     * @param  null|string $newPayeeProprietaryId  National account number (not for SEPA)
+     * @param  null|string $newPayeeBic            Identifier of the payment service provider
+     * @param  null|string $newPaymentReference    Text value used to link the payment to the invoice issued by the seller
+     * @param  null|string $newMandate             Identification of the mandate reference
      * @return self
      */
     public function getDocumentPaymentMean(
@@ -3916,7 +3915,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first Unique bank details of the payee or the seller
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPaymentCreditorReferenceID(): bool
     {
@@ -3926,7 +3925,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next Unique bank details of the payee or the seller
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPaymentCreditorReferenceID(): bool
     {
@@ -3936,7 +3935,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Get Unique bank details of the payee or the seller
      *
-     * @param string|null $newId Creditor identifier
+     * @param  null|string $newId Creditor identifier
      * @return self
      */
     public function getDocumentPaymentCreditorReferenceID(
@@ -3950,7 +3949,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first payment term
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPaymentTerm(): bool
     {
@@ -3960,7 +3959,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next payment term
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPaymentTerm(): bool
     {
@@ -3970,8 +3969,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get payment term
      *
-     * @param string|null $newDescription Text description of the payment terms
-     * @param DateTimeInterface|null $newDueDate Date by which payment is due
+     * @param  null|string            $newDescription Text description of the payment terms
+     * @param  null|DateTimeInterface $newDueDate     Date by which payment is due
      * @return self
      */
     public function getDocumentPaymentTerm(
@@ -3987,7 +3986,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first payment discount term in latest resolved payment term
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPaymentDiscountTermsInLastPaymentTerm(): bool
     {
@@ -3997,7 +3996,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the last payment discount term in latest resolved payment term
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPaymentDiscountTermsInLastPaymentTerm(): bool
     {
@@ -4007,12 +4006,12 @@ class InvoiceSuiteDocumentReader
     /**
      * Get payment discount terms in latest resolved payment terms
      *
-     * @param float|null $newBaseAmount Base amount of the payment discount
-     * @param float|null $newDiscountAmount Amount of the payment discount
-     * @param float|null $newDiscountPercent Percentage of the payment discount
-     * @param DateTimeInterface|null $newBaseDate Due date reference date
-     * @param float|null $newBasePeriod Maturity period (basis)
-     * @param string|null $newBasePeriodUnit Maturity period (unit)
+     * @param  null|float             $newBaseAmount      Base amount of the payment discount
+     * @param  null|float             $newDiscountAmount  Amount of the payment discount
+     * @param  null|float             $newDiscountPercent Percentage of the payment discount
+     * @param  null|DateTimeInterface $newBaseDate        Due date reference date
+     * @param  null|float             $newBasePeriod      Maturity period (basis)
+     * @param  null|string            $newBasePeriodUnit  Maturity period (unit)
      * @return self
      */
     public function getDocumentPaymentDiscountTermsInLastPaymentTerm(
@@ -4038,7 +4037,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first payment penalty term in latest resolved payment term
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPaymentPenaltyTermsInLastPaymentTerm(): bool
     {
@@ -4048,7 +4047,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the last payment penalty term in latest resolved payment term
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPaymentPenaltyTermsInLastPaymentTerm(): bool
     {
@@ -4058,12 +4057,12 @@ class InvoiceSuiteDocumentReader
     /**
      * Get payment penalty terms in latest resolved payment terms
      *
-     * @param float|null $newBaseAmount Base amount of the payment penalty
-     * @param float|null $newPenaltyAmount Amount of the payment penalty
-     * @param float|null $newPenaltyPercent Percentage of the payment penalty
-     * @param DateTimeInterface|null $newBaseDate Due date reference date
-     * @param float|null $newBasePeriod Maturity period (basis)
-     * @param string|null $newBasePeriodUnit Maturity period (unit)
+     * @param  null|float             $newBaseAmount     Base amount of the payment penalty
+     * @param  null|float             $newPenaltyAmount  Amount of the payment penalty
+     * @param  null|float             $newPenaltyPercent Percentage of the payment penalty
+     * @param  null|DateTimeInterface $newBaseDate       Due date reference date
+     * @param  null|float             $newBasePeriod     Maturity period (basis)
+     * @param  null|string            $newBasePeriodUnit Maturity period (unit)
      * @return self
      */
     public function getDocumentPaymentPenaltyTermsInLastPaymentTerm(
@@ -4086,14 +4085,14 @@ class InvoiceSuiteDocumentReader
         return $this;
     }
 
-    #endregion
+    // endregion
 
-    #region Document Tax
+    // region Document Tax
 
     /**
      * Go to the first Document Tax Breakdown
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentTax(): bool
     {
@@ -4103,7 +4102,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next Document Tax Breakdown
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentTax(): bool
     {
@@ -4113,15 +4112,15 @@ class InvoiceSuiteDocumentReader
     /**
      * Get Document Tax Breakdown
      *
-     * @param string|null $newTaxCategory Coded description of the tax category
-     * @param string|null $newTaxType Coded description of the tax type
-     * @param float|null $newBasisAmount Tax base amount
-     * @param float|null $newTaxAmount Tax total amount
-     * @param float|null $newTaxPercent Tax Rate (Percentage)
-     * @param string|null $newExemptionReason Reason for tax exemption (free text)
-     * @param string|null $newExemptionReasonCode Reason for tax exemption (Code)
-     * @param DateTimeInterface|null $newTaxDueDate Date on which tax is due
-     * @param string|null $newTaxDueCode Code for the date on which tax is due
+     * @param  null|string            $newTaxCategory         Coded description of the tax category
+     * @param  null|string            $newTaxType             Coded description of the tax type
+     * @param  null|float             $newBasisAmount         Tax base amount
+     * @param  null|float             $newTaxAmount           Tax total amount
+     * @param  null|float             $newTaxPercent          Tax Rate (Percentage)
+     * @param  null|string            $newExemptionReason     Reason for tax exemption (free text)
+     * @param  null|string            $newExemptionReasonCode Reason for tax exemption (Code)
+     * @param  null|DateTimeInterface $newTaxDueDate          Date on which tax is due
+     * @param  null|string            $newTaxDueCode          Code for the date on which tax is due
      * @return self
      */
     public function getDocumentTax(
@@ -4150,14 +4149,14 @@ class InvoiceSuiteDocumentReader
         return $this;
     }
 
-    #endregion
+    // endregion
 
-    #region Document Allowances/Charges
+    // region Document Allowances/Charges
 
     /**
      * Go to the first Document Allowance/Charge
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentAllowanceCharge(): bool
     {
@@ -4167,7 +4166,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next Document Allowance/Charge
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentAllowanceCharge(): bool
     {
@@ -4177,15 +4176,15 @@ class InvoiceSuiteDocumentReader
     /**
      * Get Document Allowance/Charge
      *
-     * @param boolean|null $newChargeIndicator Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
-     * @param float|null $newAllowanceChargeAmount Amount of the surcharge or discount
-     * @param float|null $newAllowanceChargeBaseAmount The base amount that may be used in conjunction with the percentage of the surcharge or discount
-     * @param string|null $newTaxCategory Coded description of the tax category
-     * @param string|null $newTaxType Coded description of the tax type
-     * @param float|null $newTaxPercent Tax Rate (Percentage)
-     * @param string|null $newAllowanceChargeReason Reason given in text form for the surcharge or discount
-     * @param string|null $newAllowanceChargeReasonCode Reason given as a code for the surcharge or discount
-     * @param float|null $newAllowanceChargePercent Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @param  null|bool   $newChargeIndicator           Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param  null|float  $newAllowanceChargeAmount     Amount of the surcharge or discount
+     * @param  null|float  $newAllowanceChargeBaseAmount The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param  null|string $newTaxCategory               Coded description of the tax category
+     * @param  null|string $newTaxType                   Coded description of the tax type
+     * @param  null|float  $newTaxPercent                Tax Rate (Percentage)
+     * @param  null|string $newAllowanceChargeReason     Reason given in text form for the surcharge or discount
+     * @param  null|string $newAllowanceChargeReasonCode Reason given as a code for the surcharge or discount
+     * @param  null|float  $newAllowanceChargePercent    Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
      * @return self
      */
     public function getDocumentAllowanceCharge(
@@ -4217,7 +4216,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first Document Logistic Service Charge
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentLogisticServiceCharge(): bool
     {
@@ -4227,7 +4226,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next Document Logistic Service Charge
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentLogisticServiceCharge(): bool
     {
@@ -4237,11 +4236,11 @@ class InvoiceSuiteDocumentReader
     /**
      * Get Document Logistic Service Charge
      *
-     * @param float|null $newChargeAmount Amount of the service fee
-     * @param string|null $newDescription Identification of the service fee
-     * @param string|null $newTaxCategory Coded description of the tax category
-     * @param string|null $newTaxType Coded description of the tax type
-     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param  null|float  $newChargeAmount Amount of the service fee
+     * @param  null|string $newDescription  Identification of the service fee
+     * @param  null|string $newTaxCategory  Coded description of the tax category
+     * @param  null|string $newTaxType      Coded description of the tax type
+     * @param  null|float  $newTaxPercent   Tax Rate (Percentage)
      * @return self
      */
     public function getDocumentLogisticServiceCharge(
@@ -4262,22 +4261,22 @@ class InvoiceSuiteDocumentReader
         return $this;
     }
 
-    #endregion
+    // endregion
 
-    #region Document Amounts
+    // region Document Amounts
 
     /**
      * Get the document summation
      *
-     * @param float|null $newNetAmount Sum of the net amounts of all invoice lines
-     * @param float|null $newChargeTotalAmount Sum of the charges
-     * @param float|null $newDiscountTotalAmount Sum of the discounts
-     * @param float|null $newTaxBasisAmount Total invoice amount excluding sales tax
-     * @param float|null $newTaxTotalAmount Total amount of the invoice sales tax (in the invoice currency)
-     * @param float|null $newGrossAmount Total invoice amount including sales tax
-     * @param float|null $newDueAmount Payment amount due
-     * @param float|null $newPrepaidAmount Prepayment amount
-     * @param float|null $newRoungingAmount Rounding amount
+     * @param  null|float $newNetAmount           Sum of the net amounts of all invoice lines
+     * @param  null|float $newChargeTotalAmount   Sum of the charges
+     * @param  null|float $newDiscountTotalAmount Sum of the discounts
+     * @param  null|float $newTaxBasisAmount      Total invoice amount excluding sales tax
+     * @param  null|float $newTaxTotalAmount      Total amount of the invoice sales tax (in the invoice currency)
+     * @param  null|float $newGrossAmount         Total invoice amount including sales tax
+     * @param  null|float $newDueAmount           Payment amount due
+     * @param  null|float $newPrepaidAmount       Prepayment amount
+     * @param  null|float $newRoungingAmount      Rounding amount
      * @return self
      */
     public function getDocumentSummation(
@@ -4308,14 +4307,14 @@ class InvoiceSuiteDocumentReader
         return $this;
     }
 
-    #endregion
+    // endregion
 
-    #region Document Positions
+    // region Document Positions
 
     /**
      * Go to the first document position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPosition(): bool
     {
@@ -4325,7 +4324,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next document position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPosition(): bool
     {
@@ -4335,10 +4334,10 @@ class InvoiceSuiteDocumentReader
     /**
      * Get position general information
      *
-     * @param string|null $newPositionId Identification of the position
-     * @param string|null $newParentPositionId Identification of the parent position
-     * @param string|null $newLineStatusCode Indicates whether the invoice item contains prices that must be taken into account when calculating the invoice amount or whether only information is included
-     * @param string|null $newLineStatusReasonCode Type to specify whether the invoice line is
+     * @param  null|string $newPositionId           Identification of the position
+     * @param  null|string $newParentPositionId     Identification of the parent position
+     * @param  null|string $newLineStatusCode       Indicates whether the invoice item contains prices that must be taken into account when calculating the invoice amount or whether only information is included
+     * @param  null|string $newLineStatusReasonCode Type to specify whether the invoice line is
      * @return self
      */
     public function getDocumentPosition(
@@ -4360,7 +4359,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first text information of the latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionNote(): bool
     {
@@ -4370,7 +4369,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next text information of the latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionNote(): bool
     {
@@ -4380,9 +4379,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get text information from latest position
      *
-     * @param string|null $newContent Text that contains unstructured information that is relevant to the invoice item
-     * @param string|null $newContentCode Code to classify the content of the free text of the invoice
-     * @param string|null $newSubjectCode Code for qualifying the free text for the invoice item
+     * @param  null|string $newContent     Text that contains unstructured information that is relevant to the invoice item
+     * @param  null|string $newContentCode Code to classify the content of the free text of the invoice
+     * @param  null|string $newSubjectCode Code for qualifying the free text for the invoice item
      * @return self
      */
     public function getDocumentPositionNote(
@@ -4398,19 +4397,19 @@ class InvoiceSuiteDocumentReader
     /**
      * Get product details from latest position
      *
-     * @param string|null $newProductId ID of the product (product id, Order-X interoperable)
-     * @param string|null $newProductName Name of the product (product name)
-     * @param string|null $newProductDescription Product description of the item, the item description makes it possible to describe the item
-     * @param string|null $newProductSellerId Identifier assigned to the product by the seller
-     * @param string|null $newProductBuyerId Identifier assigned to the product by the buyer
-     * @param string|null $newProductGlobalId Product global id
-     * @param string|null $newProductGlobalIdType Type of the product global id
-     * @param string|null $newProductIndustryId Id assigned by the industry
-     * @param string|null $newProductModelId Unique model identifier of the product
-     * @param string|null $newProductBatchId Batch (lot) identifier of the product
-     * @param string|null $newProductBrandName Brand name of the product
-     * @param string|null $newProductModelName Model name of the product
-     * @param string|null $newProductOriginTradeCountry Code indicating the country the goods came from
+     * @param  null|string $newProductId                 ID of the product (product id, Order-X interoperable)
+     * @param  null|string $newProductName               Name of the product (product name)
+     * @param  null|string $newProductDescription        Product description of the item, the item description makes it possible to describe the item
+     * @param  null|string $newProductSellerId           Identifier assigned to the product by the seller
+     * @param  null|string $newProductBuyerId            Identifier assigned to the product by the buyer
+     * @param  null|string $newProductGlobalId           Product global id
+     * @param  null|string $newProductGlobalIdType       Type of the product global id
+     * @param  null|string $newProductIndustryId         Id assigned by the industry
+     * @param  null|string $newProductModelId            Unique model identifier of the product
+     * @param  null|string $newProductBatchId            Batch (lot) identifier of the product
+     * @param  null|string $newProductBrandName          Brand name of the product
+     * @param  null|string $newProductModelName          Model name of the product
+     * @param  null|string $newProductOriginTradeCountry Code indicating the country the goods came from
      * @return self
      */
     public function getDocumentPositionProductDetails(
@@ -4450,7 +4449,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first product characteristics from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionProductCharacteristic(): bool
     {
@@ -4460,7 +4459,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next product characteristics from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionProductCharacteristic(): bool
     {
@@ -4470,11 +4469,11 @@ class InvoiceSuiteDocumentReader
     /**
      * Get product characteristics from latest position
      *
-     * @param string|null $newProductCharacteristicDescription Name of the attribute or characteristic ("Colour")
-     * @param string|null $newProductCharacteristicValue Value of the attribute or characteristic ("Red")
-     * @param string|null $newProductCharacteristicType Type (Code) of product characteristic
-     * @param float|null $newProductCharacteristicMeasureValue Value of the characteristic (numerical measured)
-     * @param string|null $newProductCharacteristicMeasureUnit Unit of value of the characteristic
+     * @param  null|string $newProductCharacteristicDescription  Name of the attribute or characteristic ("Colour")
+     * @param  null|string $newProductCharacteristicValue        Value of the attribute or characteristic ("Red")
+     * @param  null|string $newProductCharacteristicType         Type (Code) of product characteristic
+     * @param  null|float  $newProductCharacteristicMeasureValue Value of the characteristic (numerical measured)
+     * @param  null|string $newProductCharacteristicMeasureUnit  Unit of value of the characteristic
      * @return self
      */
     public function getDocumentPositionProductCharacteristic(
@@ -4498,7 +4497,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first product classification from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionProductClassification(): bool
     {
@@ -4508,7 +4507,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next product classification from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionProductClassification(): bool
     {
@@ -4518,10 +4517,10 @@ class InvoiceSuiteDocumentReader
     /**
      * Get product classification from latest position
      *
-     * @param string|null $newProductClassificationCode Classification identifier
-     * @param string|null $newProductClassificationListId Identifier for the identification scheme of the item classification
-     * @param string|null $newProductClassificationListVersionId Version of the identification scheme
-     * @param string|null $newProductClassificationCodeClassname Name with which an article can be classified according to type or quality
+     * @param  null|string $newProductClassificationCode          Classification identifier
+     * @param  null|string $newProductClassificationListId        Identifier for the identification scheme of the item classification
+     * @param  null|string $newProductClassificationListVersionId Version of the identification scheme
+     * @param  null|string $newProductClassificationCodeClassname Name with which an article can be classified according to type or quality
      * @return self
      */
     public function getDocumentPositionProductClassification(
@@ -4543,7 +4542,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first referenced product in latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionReferencedProduct(): bool
     {
@@ -4553,7 +4552,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next referenced product in latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionReferencedProduct(): bool
     {
@@ -4563,16 +4562,16 @@ class InvoiceSuiteDocumentReader
     /**
      * Get referenced product from latest position
      *
-     * @param string|null $newProductId ID of the product (product id, Order-X interoperable)
-     * @param string|null $newProductName Name of the product (product name)
-     * @param string|null $newProductDescription Product description of the item, the item description makes it possible to describe the item
-     * @param string|null $newProductSellerId Identifier assigned to the product by the seller
-     * @param string|null $newProductBuyerId Identifier assigned to the product by the buyer
-     * @param string|null $newProductGlobalId Product global id
-     * @param string|null $newProductGlobalIdType Type of the product global id
-     * @param string|null $newProductIndustryId Id assigned by the industry
-     * @param float|null $newProductUnitQuantity Quantity Quantity of the referenced product contained
-     * @param string|null $newProductUnitQuantityUnit Unit code of the quantity of the referenced product contained
+     * @param  null|string $newProductId               ID of the product (product id, Order-X interoperable)
+     * @param  null|string $newProductName             Name of the product (product name)
+     * @param  null|string $newProductDescription      Product description of the item, the item description makes it possible to describe the item
+     * @param  null|string $newProductSellerId         Identifier assigned to the product by the seller
+     * @param  null|string $newProductBuyerId          Identifier assigned to the product by the buyer
+     * @param  null|string $newProductGlobalId         Product global id
+     * @param  null|string $newProductGlobalIdType     Type of the product global id
+     * @param  null|string $newProductIndustryId       Id assigned by the industry
+     * @param  null|float  $newProductUnitQuantity     Quantity Quantity of the referenced product contained
+     * @param  null|string $newProductUnitQuantityUnit Unit code of the quantity of the referenced product contained
      * @return self
      */
     public function getDocumentPositionReferencedProduct(
@@ -4606,7 +4605,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first associated seller's order confirmation (line reference) from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionSellerOrderReference(): bool
     {
@@ -4616,7 +4615,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next associated seller's order confirmation (line reference) from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionSellerOrderReference(): bool
     {
@@ -4626,9 +4625,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the associated seller's order confirmation (line reference) from latest position
      *
-     * @param string|null $newReferenceNumber Seller's order confirmation number
-     * @param string|null $newReferenceLineNumber Seller's order confirmation line number
-     * @param DateTimeInterface|null $newReferenceDate Seller's order confirmation date
+     * @param  null|string            $newReferenceNumber     Seller's order confirmation number
+     * @param  null|string            $newReferenceLineNumber Seller's order confirmation line number
+     * @param  null|DateTimeInterface $newReferenceDate       Seller's order confirmation date
      * @return self
      */
     public function getDocumentPositionSellerOrderReference(
@@ -4648,7 +4647,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first associated buyer's order confirmation (line reference) from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionBuyerOrderReference(): bool
     {
@@ -4658,7 +4657,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next associated buyer's order confirmation (line reference) from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionBuyerOrderReference(): bool
     {
@@ -4668,9 +4667,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the associated buyer's order confirmation (line reference).
      *
-     * @param string|null $newReferenceNumber Buyer's order confirmation number
-     * @param string|null $newReferenceLineNumber Buyer's order confirmation line number
-     * @param DateTimeInterface|null $newReferenceDate Buyer's order confirmation date
+     * @param  null|string            $newReferenceNumber     Buyer's order confirmation number
+     * @param  null|string            $newReferenceLineNumber Buyer's order confirmation line number
+     * @param  null|DateTimeInterface $newReferenceDate       Buyer's order confirmation date
      * @return self
      */
     public function getDocumentPositionBuyerOrderReference(
@@ -4690,7 +4689,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first associated quotation (line reference)
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionQuotationReference(): bool
     {
@@ -4700,7 +4699,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next associated quotation (line reference)
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionQuotationReference(): bool
     {
@@ -4710,9 +4709,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Set the associated quotation (line reference).
      *
-     * @param string|null $newReferenceNumber Buyer's order confirmation number
-     * @param string|null $newReferenceLineNumber Buyer's order confirmation line number
-     * @param DateTimeInterface|null $newReferenceDate Buyer's order confirmation date
+     * @param  null|string            $newReferenceNumber     Buyer's order confirmation number
+     * @param  null|string            $newReferenceLineNumber Buyer's order confirmation line number
+     * @param  null|DateTimeInterface $newReferenceDate       Buyer's order confirmation date
      * @return self
      */
     public function getDocumentPositionQuotationReference(
@@ -4732,7 +4731,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first associated contract (line reference) from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionContractReference(): bool
     {
@@ -4742,7 +4741,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next associated contract (line reference) from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionContractReference(): bool
     {
@@ -4752,9 +4751,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the associated contract (line reference) from latest position
      *
-     * @param string|null $newReferenceNumber Buyer's order confirmation number
-     * @param string|null $newReferenceLineNumber Buyer's order confirmation line number
-     * @param DateTimeInterface|null $newReferenceDate Buyer's order confirmation date
+     * @param  null|string            $newReferenceNumber     Buyer's order confirmation number
+     * @param  null|string            $newReferenceLineNumber Buyer's order confirmation line number
+     * @param  null|DateTimeInterface $newReferenceDate       Buyer's order confirmation date
      * @return self
      */
     public function getDocumentPositionContractReference(
@@ -4774,7 +4773,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to first additional associated document (line reference) from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionAdditionalReference(): bool
     {
@@ -4784,7 +4783,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to next additional associated document (line reference) from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionAdditionalReference(): bool
     {
@@ -4794,13 +4793,13 @@ class InvoiceSuiteDocumentReader
     /**
      * Get an additional associated document (line reference) from latest position
      *
-     * @param string|null $newReferenceNumber Additional document number
-     * @param string|null $newReferenceLineNumber Additional document line number
-     * @param DateTimeInterface|null $newReferenceDate Additional document date
-     * @param string|null $newTypeCode Additional document type code
-     * @param string|null $newReferenceTypeCode Additional document reference-type code
-     * @param string|null $newDescription Additional document description
-     * @param InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment Additional document attachment
+     * @param  null|string                 $newReferenceNumber        Additional document number
+     * @param  null|string                 $newReferenceLineNumber    Additional document line number
+     * @param  null|DateTimeInterface      $newReferenceDate          Additional document date
+     * @param  null|string                 $newTypeCode               Additional document type code
+     * @param  null|string                 $newReferenceTypeCode      Additional document reference-type code
+     * @param  null|string                 $newDescription            Additional document description
+     * @param  null|InvoiceSuiteAttachment $newInvoiceSuiteAttachment Additional document attachment
      * @return self
      */
     public function getDocumentPositionAdditionalReference(
@@ -4828,7 +4827,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first an additional ultimate customer order reference (line reference) from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionUltimateCustomerOrderReference(): bool
     {
@@ -4838,7 +4837,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next an additional ultimate customer order reference (line reference) from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionUltimateCustomerOrderReference(): bool
     {
@@ -4848,9 +4847,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get an additional ultimate customer order reference (line reference) from latest position
      *
-     * @param string|null $newReferenceNumber Ultimate customer order number
-     * @param string|null $newReferenceLineNumber Ultimate customer order line number
-     * @param DateTimeInterface|null $newReferenceDate Ultimate customer order date
+     * @param  null|string            $newReferenceNumber     Ultimate customer order number
+     * @param  null|string            $newReferenceLineNumber Ultimate customer order line number
+     * @param  null|DateTimeInterface $newReferenceDate       Ultimate customer order date
      * @return self
      */
     public function getDocumentPositionUltimateCustomerOrderReference(
@@ -4870,7 +4869,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first additional despatch advice reference (line reference) from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionDespatchAdviceReference(): bool
     {
@@ -4880,7 +4879,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next additional despatch advice reference (line reference) from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionDespatchAdviceReference(): bool
     {
@@ -4890,9 +4889,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get an additional despatch advice reference (line reference) from latest position
      *
-     * @param string|null $newReferenceNumber Shipping notification number
-     * @param string|null $newReferenceLineNumber Shipping notification line number
-     * @param DateTimeInterface|null $newReferenceDate Shipping notification date
+     * @param  null|string            $newReferenceNumber     Shipping notification number
+     * @param  null|string            $newReferenceLineNumber Shipping notification line number
+     * @param  null|DateTimeInterface $newReferenceDate       Shipping notification date
      * @return self
      */
     public function getDocumentPositionDespatchAdviceReference(
@@ -4912,7 +4911,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first additional receiving advice reference (line reference) from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionReceivingAdviceReference(): bool
     {
@@ -4922,7 +4921,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next additional receiving advice reference (line reference) from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionReceivingAdviceReference(): bool
     {
@@ -4932,9 +4931,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get an additional receiving advice reference (line reference) from latest position
      *
-     * @param string|null $newReferenceNumber Receipt notification number
-     * @param string|null $newReferenceLineNumber Receipt notification line number
-     * @param DateTimeInterface|null $newReferenceDate Receipt notification date
+     * @param  null|string            $newReferenceNumber     Receipt notification number
+     * @param  null|string            $newReferenceLineNumber Receipt notification line number
+     * @param  null|DateTimeInterface $newReferenceDate       Receipt notification date
      * @return self
      */
     public function getDocumentPositionReceivingAdviceReference(
@@ -4954,7 +4953,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first additional delivery note reference (line reference) from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionDeliveryNoteReference(): bool
     {
@@ -4964,7 +4963,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next additional delivery note reference (line reference) from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionDeliveryNoteReference(): bool
     {
@@ -4974,9 +4973,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get an additional delivery note reference (line reference) from latest position
      *
-     * @param string|null $newReferenceNumber Delivery slip number
-     * @param string|null $newReferenceLineNumber Delivery slip line number
-     * @param DateTimeInterface|null $newReferenceDate Delivery slip date
+     * @param  null|string            $newReferenceNumber     Delivery slip number
+     * @param  null|string            $newReferenceLineNumber Delivery slip line number
+     * @param  null|DateTimeInterface $newReferenceDate       Delivery slip date
      * @return self
      */
     public function getDocumentPositionDeliveryNoteReference(
@@ -4996,7 +4995,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first additional invoice document (reference to preceding invoice) (line reference) from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionInvoiceReference(): bool
     {
@@ -5006,7 +5005,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next additional invoice document (reference to preceding invoice) (line reference) from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionInvoiceReference(): bool
     {
@@ -5016,10 +5015,10 @@ class InvoiceSuiteDocumentReader
     /**
      * Get an additional invoice document (reference to preceding invoice) (line reference) from latest position
      *
-     * @param string|null $newReferenceNumber Identification of an invoice previously sent
-     * @param string|null $newReferenceLineNumber Identification of an invoice line previously sent
-     * @param DateTimeInterface|null $newReferenceDate Date of the previous invoice
-     * @param string|null $newTypeCode Type code of previous invoice
+     * @param  null|string            $newReferenceNumber     Identification of an invoice previously sent
+     * @param  null|string            $newReferenceLineNumber Identification of an invoice line previously sent
+     * @param  null|DateTimeInterface $newReferenceDate       Date of the previous invoice
+     * @param  null|string            $newTypeCode            Type code of previous invoice
      * @return self
      */
     public function getDocumentPositionInvoiceReference(
@@ -5041,7 +5040,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Returns true if a gross price was specified
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDcumentPositionGrossPrice(): bool
     {
@@ -5051,9 +5050,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the position's gross price from latest position
      *
-     * @param null|float $newGrossPrice Unit price excluding sales tax before deduction of the discount on the item price
-     * @param null|float $newGrossPriceBasisQuantity Number of item units for which the price applies
-     * @param null|string $newGrossPriceBasisQuantityUnit Unit code of the number of item units for which the price applies
+     * @param  null|float  $newGrossPrice                  Unit price excluding sales tax before deduction of the discount on the item price
+     * @param  null|float  $newGrossPriceBasisQuantity     Number of item units for which the price applies
+     * @param  null|string $newGrossPriceBasisQuantityUnit Unit code of the number of item units for which the price applies
      * @return self
      */
     public function getDocumentPositionGrossPrice(
@@ -5073,7 +5072,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first discount or charge from the gross price from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionGrossPriceAllowanceCharge(): bool
     {
@@ -5083,7 +5082,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next discount or charge from the gross price from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionGrossPriceAllowanceCharge(): bool
     {
@@ -5093,12 +5092,12 @@ class InvoiceSuiteDocumentReader
     /**
      * Get discount or charge from the gross price from latest position
      *
-     * @param null|float $newGrossPriceAllowanceChargeAmount Discount amount or charge amount on the item price
-     * @param null|bool $newIsCharge Switch for charge/discount
-     * @param null|float $newGrossPriceAllowanceChargePercent Discount or charge on the item price in percent
-     * @param null|float $newGrossPriceAllowanceChargeBasisAmount Base amount of the discount or charge
-     * @param null|string $newGrossPriceAllowanceChargeReason Reason for discount or charge (free text)
-     * @param null|string $newGrossPriceAllowanceChargeReasonCode Reason code for discount or charge (free text)
+     * @param  null|float  $newGrossPriceAllowanceChargeAmount      Discount amount or charge amount on the item price
+     * @param  null|bool   $newIsCharge                             Switch for charge/discount
+     * @param  null|float  $newGrossPriceAllowanceChargePercent     Discount or charge on the item price in percent
+     * @param  null|float  $newGrossPriceAllowanceChargeBasisAmount Base amount of the discount or charge
+     * @param  null|string $newGrossPriceAllowanceChargeReason      Reason for discount or charge (free text)
+     * @param  null|string $newGrossPriceAllowanceChargeReasonCode  Reason code for discount or charge (free text)
      * @return self
      */
     public function getDocumentPositionGrossPriceAllowanceCharge(
@@ -5124,7 +5123,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Returns true if a net price was specified
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionNetPrice(): bool
     {
@@ -5134,9 +5133,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the position's net price from latest position
      *
-     * @param null|float $newNetPrice Unit price excluding sales tax after deduction of the discount on the item price
-     * @param null|float $newNetPriceBasisQuantity Number of item units for which the price applies
-     * @param null|string $newNetPriceBasisQuantityUnit Unit code of the number of item units for which the price applies
+     * @param  null|float  $newNetPrice                  Unit price excluding sales tax after deduction of the discount on the item price
+     * @param  null|float  $newNetPriceBasisQuantity     Number of item units for which the price applies
+     * @param  null|string $newNetPriceBasisQuantityUnit Unit code of the number of item units for which the price applies
      * @return self
      */
     public function getDocumentPositionNetPrice(
@@ -5156,12 +5155,12 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the position's net price included tax from latest position
      *
-     * @param string|null $newTaxCategory Coded description of the tax category
-     * @param string|null $newTaxType Coded description of the tax type
-     * @param float|null $newTaxAmount Tax total amount
-     * @param float|null $newTaxPercent Tax Rate (Percentage)
-     * @param string|null $newExemptionReason Reason for tax exemption (free text)
-     * @param string|null $newExemptionReasonCode Reason for tax exemption (Code)
+     * @param  null|string $newTaxCategory         Coded description of the tax category
+     * @param  null|string $newTaxType             Coded description of the tax type
+     * @param  null|float  $newTaxAmount           Tax total amount
+     * @param  null|float  $newTaxPercent          Tax Rate (Percentage)
+     * @param  null|string $newExemptionReason     Reason for tax exemption (free text)
+     * @param  null|string $newExemptionReasonCode Reason for tax exemption (Code)
      * @return self
      */
     public function getDocumentPositionNetPriceTax(
@@ -5187,12 +5186,12 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the position's quantities from latest position
      *
-     * @param null|float $newQuantity Invoiced quantity
-     * @param null|string $newQuantityUnit Invoiced quantity unit
-     * @param null|float $newChargeFreeQuantity Charge Free quantity
-     * @param null|string $newChargeFreeQuantityUnit Charge Free quantity unit
-     * @param null|float $newPackageQuantity Package quantity
-     * @param null|string $newPackageQuantityUnit Package quantity unit
+     * @param  null|float  $newQuantity               Invoiced quantity
+     * @param  null|string $newQuantityUnit           Invoiced quantity unit
+     * @param  null|float  $newChargeFreeQuantity     Charge Free quantity
+     * @param  null|string $newChargeFreeQuantityUnit Charge Free quantity unit
+     * @param  null|float  $newPackageQuantity        Package quantity
+     * @param  null|string $newPackageQuantityUnit    Package quantity unit
      * @return self
      */
     public function getDocumentPositionQuantities(
@@ -5218,7 +5217,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the name of the Ship-To party from latest position
      *
-     * @param string $newName The full formal name under which the party is registered.
+     * @param  string $newName the full formal name under which the party is registered
      * @return self
      */
     public function getDocumentPositionShipToName(
@@ -5232,7 +5231,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first ID of the Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionShipToId(): bool
     {
@@ -5242,7 +5241,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next ID of the Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionShipToId(): bool
     {
@@ -5252,7 +5251,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the ID of the Ship-To party
      *
-     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function getDocumentPositionShipToId(
@@ -5266,7 +5265,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first ID of the Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionShipToGlobalId(): bool
     {
@@ -5276,7 +5275,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next ID of the Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionShipToGlobalId(): bool
     {
@@ -5286,8 +5285,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Global ID of the Ship-To party from latest position
      *
-     * @param string|null $newGlobalId A global identifier of the party.
-     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return self
      */
     public function getDocumentPositionShipToGlobalId(
@@ -5302,7 +5301,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first Tax Registration of the Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionShipToTaxRegistration(): bool
     {
@@ -5312,7 +5311,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next Tax Registration of the Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionShipToTaxRegistration(): bool
     {
@@ -5322,8 +5321,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Tax Registration of the Ship-To party
      *
-     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
      * @return self
      */
     public function getDocumentPositionShipToTaxRegistration(
@@ -5341,7 +5340,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first address of the Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionShipToAddress(): bool
     {
@@ -5351,7 +5350,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first address of the Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionShipToAddress(): bool
     {
@@ -5361,13 +5360,13 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the address of the Ship-To party from latest position
      *
-     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId Country in which the party's address is located.
-     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return self
      */
     public function getDocumentPositionShipToAddress(
@@ -5395,7 +5394,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first the legal information of the Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionShipToLegalOrganisation(): bool
     {
@@ -5405,7 +5404,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next the legal information of the Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionShipToLegalOrganisation(): bool
     {
@@ -5415,9 +5414,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the legal information of the Ship-To party from latest position
      *
-     * @param string|null $newType Type of the identification number of the legal registration of the party.
-     * @param string|null $newId Identification number of the legal registration of the party.
-     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return self
      */
     public function getDocumentPositionShipToLegalOrganisation(
@@ -5437,7 +5436,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first contact information of the Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionShipToContact(): bool
     {
@@ -5447,7 +5446,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next contact information of the Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionShipToContact(): bool
     {
@@ -5457,11 +5456,11 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the contact information of the Ship-To party from latest position
      *
-     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName Name of the department for the contact point.
-     * @param string|null $newPhoneNumber Telephone number for the contact point.
-     * @param string|null $newFaxNumber Fax number of the contact point.
-     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return self
      */
     public function getDocumentPositionShipToContact(
@@ -5485,7 +5484,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first communication information of the Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionShipToCommunication(): bool
     {
@@ -5495,7 +5494,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next communication information of the Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionShipToCommunication(): bool
     {
@@ -5505,8 +5504,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the communication information of the Ship-To party from latest position
      *
-     * @param string|null $newType The type for the party's electronic address.
-     * @param string|null $newUri The party's electronic address.
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
      * @return self
      */
     public function getDocumentPositionShipToCommunication(
@@ -5524,7 +5523,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the name of the ultimate Ship-To party from latest position
      *
-     * @param string $newName The full formal name under which the party is registered.
+     * @param  string $newName the full formal name under which the party is registered
      * @return self
      */
     public function getDocumentPositionUltimateShipToName(
@@ -5538,7 +5537,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first ID of the ultimate Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionUltimateShipToId(): bool
     {
@@ -5548,7 +5547,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next ID of the ultimate Ship-To party
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionUltimateShipToId(): bool
     {
@@ -5558,7 +5557,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the ID of the ultimate Ship-To party
      *
-     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function getDocumentPositionUltimateShipToId(
@@ -5572,7 +5571,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first ID of the ultimate Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionUltimateShipToGlobalId(): bool
     {
@@ -5582,7 +5581,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next ID of the ultimate Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionUltimateShipToGlobalId(): bool
     {
@@ -5592,8 +5591,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Global ID of the ultimate Ship-To party from latest position
      *
-     * @param string|null $newGlobalId A global identifier of the party.
-     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @param  null|string $newGlobalId     a global identifier of the party
+     * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return self
      */
     public function getDocumentPositionUltimateShipToGlobalId(
@@ -5608,7 +5607,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first Tax Registration of the ultimate Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionUltimateShipToTaxRegistration(): bool
     {
@@ -5618,7 +5617,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next Tax Registration of the ultimate Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionUltimateShipToTaxRegistration(): bool
     {
@@ -5628,8 +5627,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the Tax Registration of the ultimate Ship-To party
      *
-     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   tax identification number
      * @return self
      */
     public function getDocumentPositionUltimateShipToTaxRegistration(
@@ -5647,7 +5646,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first address of the ultimate Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionUltimateShipToAddress(): bool
     {
@@ -5657,7 +5656,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first address of the ultimate Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionUltimateShipToAddress(): bool
     {
@@ -5667,13 +5666,13 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the address of the ultimate Ship-To party from latest position
      *
-     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
-     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
-     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
-     * @param string|null $newCountryId Country in which the party's address is located.
-     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    country in which the party's address is located
+     * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return self
      */
     public function getDocumentPositionUltimateShipToAddress(
@@ -5701,7 +5700,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first the legal information of the ultimate Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionUltimateShipToLegalOrganisation(): bool
     {
@@ -5711,7 +5710,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next the legal information of the ultimate Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionUltimateShipToLegalOrganisation(): bool
     {
@@ -5721,9 +5720,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the legal information of the ultimate Ship-To party from latest position
      *
-     * @param string|null $newType Type of the identification number of the legal registration of the party.
-     * @param string|null $newId Identification number of the legal registration of the party.
-     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @param  null|string $newType type of the identification number of the legal registration of the party
+     * @param  null|string $newId   identification number of the legal registration of the party
+     * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return self
      */
     public function getDocumentPositionUltimateShipToLegalOrganisation(
@@ -5743,7 +5742,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first contact information of the ultimate Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionUltimateShipToContact(): bool
     {
@@ -5753,7 +5752,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next contact information of the ultimate Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionUltimateShipToContact(): bool
     {
@@ -5763,11 +5762,11 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the contact information of the ultimate Ship-To party from latest position
      *
-     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
-     * @param string|null $newDepartmentName Name of the department for the contact point.
-     * @param string|null $newPhoneNumber Telephone number for the contact point.
-     * @param string|null $newFaxNumber Fax number of the contact point.
-     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @param  null|string $newPersonName     name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName name of the department for the contact point
+     * @param  null|string $newPhoneNumber    telephone number for the contact point
+     * @param  null|string $newFaxNumber      fax number of the contact point
+     * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return self
      */
     public function getDocumentPositionUltimateShipToContact(
@@ -5791,7 +5790,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first communication information of the ultimate Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionUltimateShipToCommunication(): bool
     {
@@ -5801,7 +5800,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next communication information of the ultimate Ship-To party from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionUltimateShipToCommunication(): bool
     {
@@ -5811,8 +5810,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the communication information of the ultimate Ship-To party from latest position
      *
-     * @param string|null $newType The type for the party's electronic address.
-     * @param string|null $newUri The party's electronic address.
+     * @param  null|string $newType the type for the party's electronic address
+     * @param  null|string $newUri  the party's electronic address
      * @return self
      */
     public function getDocumentPositionUltimateShipToCommunication(
@@ -5830,7 +5829,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the date of the delivery from latest position
      *
-     * @param DateTimeInterface|null $newDate
+     * @param  null|DateTimeInterface $newDate
      * @return self
      */
     public function getDocumentPositionSupplyChainEvent(
@@ -5844,7 +5843,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first billing period
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionBillingPeriod(): bool
     {
@@ -5854,7 +5853,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next billing period
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionBillingPeriod(): bool
     {
@@ -5864,9 +5863,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the start and/or end date of the billing period from latest position
      *
-     * @param null|DateTimeInterface $newStartDate Start of the billing period
-     * @param null|DateTimeInterface $newEndDate End of the billing period
-     * @param null|string $newDescription Further information of the billing period (Obsolete)
+     * @param  null|DateTimeInterface $newStartDate   Start of the billing period
+     * @param  null|DateTimeInterface $newEndDate     End of the billing period
+     * @param  null|string            $newDescription Further information of the billing period (Obsolete)
      * @return self
      */
     public function getDocumentPositionBillingPeriod(
@@ -5886,7 +5885,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first position's tax information from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionTax(): bool
     {
@@ -5896,7 +5895,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next position's tax information from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionTax(): bool
     {
@@ -5906,12 +5905,12 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the position's tax information from latest position
      *
-     * @param string|null $newTaxCategory Coded description of the tax category
-     * @param string|null $newTaxType Coded description of the tax type
-     * @param float|null $newTaxAmount Tax total amount
-     * @param float|null $newTaxPercent Tax Rate (Percentage)
-     * @param string|null $newExemptionReason Reason for tax exemption (free text)
-     * @param string|null $newExemptionReasonCode Reason for tax exemption (Code)
+     * @param  null|string $newTaxCategory         Coded description of the tax category
+     * @param  null|string $newTaxType             Coded description of the tax type
+     * @param  null|float  $newTaxAmount           Tax total amount
+     * @param  null|float  $newTaxPercent          Tax Rate (Percentage)
+     * @param  null|string $newExemptionReason     Reason for tax exemption (free text)
+     * @param  null|string $newExemptionReasonCode Reason for tax exemption (Code)
      * @return self
      */
     public function getDocumentPositionTax(
@@ -5937,7 +5936,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first Document position Allowance/Charge from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionAllowanceCharge(): bool
     {
@@ -5947,7 +5946,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next Document position Allowance/Charge from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionAllowanceCharge(): bool
     {
@@ -5957,12 +5956,12 @@ class InvoiceSuiteDocumentReader
     /**
      * Get Document position Allowance/Charge from latest position
      *
-     * @param boolean|null $newChargeIndicator Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
-     * @param float|null $newAllowanceChargeAmount Amount of the surcharge or discount
-     * @param float|null $newAllowanceChargeBaseAmount The base amount that may be used in conjunction with the percentage of the surcharge or discount
-     * @param string|null $newAllowanceChargeReason Reason given in text form for the surcharge or discount
-     * @param string|null $newAllowanceChargeReasonCode Reason given as a code for the surcharge or discount
-     * @param float|null $newAllowanceChargePercent Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @param  null|bool   $newChargeIndicator           Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param  null|float  $newAllowanceChargeAmount     Amount of the surcharge or discount
+     * @param  null|float  $newAllowanceChargeBaseAmount The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param  null|string $newAllowanceChargeReason     Reason given in text form for the surcharge or discount
+     * @param  null|string $newAllowanceChargeReasonCode Reason given as a code for the surcharge or discount
+     * @param  null|float  $newAllowanceChargePercent    Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
      * @return self
      */
     public function getDocumentPositionAllowanceCharge(
@@ -5988,7 +5987,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Returns true if a position summation exists
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionSummation(): bool
     {
@@ -5998,11 +5997,11 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the document position summation from latest position
      *
-     * @param float|null $newNetAmount Net amount
-     * @param float|null $newChargeTotalAmount Sum of the charges
-     * @param float|null $newDiscountTotalAmount Sum of the discounts
-     * @param float|null $newTaxTotalAmount Total amount of the line (in the invoice currency)
-     * @param float|null $newGrossAmount Total invoice line amount including sales tax
+     * @param  null|float $newNetAmount           Net amount
+     * @param  null|float $newChargeTotalAmount   Sum of the charges
+     * @param  null|float $newDiscountTotalAmount Sum of the discounts
+     * @param  null|float $newTaxTotalAmount      Total amount of the line (in the invoice currency)
+     * @param  null|float $newGrossAmount         Total invoice line amount including sales tax
      * @return self
      */
     public function getDocumentPositionSummation(
@@ -6026,7 +6025,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the first posting reference from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionPostingReference(): bool
     {
@@ -6036,7 +6035,7 @@ class InvoiceSuiteDocumentReader
     /**
      * Go to the next posting reference from latest position
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionPostingReference(): bool
     {
@@ -6046,8 +6045,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Get a position's posting reference from latest position
      *
-     * @param string|null $newType Type of the posting reference
-     * @param string|null $newAccountId Posting reference of the byuer
+     * @param  null|string $newType      Type of the posting reference
+     * @param  null|string $newAccountId Posting reference of the byuer
      * @return self
      */
     public function getDocumentPositionPostingReference(
@@ -6062,5 +6061,5 @@ class InvoiceSuiteDocumentReader
         return $this;
     }
 
-    #endregion
+    // endregion
 }

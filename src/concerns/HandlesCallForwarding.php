@@ -9,18 +9,17 @@
 
 namespace horstoeko\invoicesuite\concerns;
 
-use Error;
 use BadMethodCallException;
+use Error;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteBadMethodCallException;
 
 /**
  * Trait representing methods for forwarding calls
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  *
  * @codeCoverageIgnore
  */
@@ -29,18 +28,18 @@ trait HandlesCallForwarding
     /**
      * Forward a method call to the given object.
      *
-     * @param  mixed        $object
-     * @param  string       $method
-     * @param  array<mixed> $parameters
-     * @return mixed
+     * @param mixed        $object
+     * @param string       $method
+     * @param array<mixed> $parameters
      *
      * @throws BadMethodCallException
+     * @return mixed
      */
     protected function forwardCallTo($object, $method, $parameters)
     {
         try {
             return $object->{$method}(...$parameters);
-        } catch (Error | BadMethodCallException $e) {
+        } catch (BadMethodCallException|Error $e) {
             $pattern = '~^Call to undefined method (?P<class>[^:]+)::(?P<method>[^\(]+)\(\)$~';
 
             if (in_array(preg_match($pattern, $e->getMessage(), $matches), [0, false], true)) {
@@ -48,8 +47,8 @@ trait HandlesCallForwarding
             }
 
             if (
-                $matches['class'] != $object::class ||
-                $matches['method'] != $method
+                $matches['class'] != $object::class
+                || $matches['method'] != $method
             ) {
                 throw $e;
             }
@@ -61,12 +60,12 @@ trait HandlesCallForwarding
     /**
      * Forward a method call to the given object. The existance of the method is checked
      *
-     * @param  mixed        $object
-     * @param  string       $method
-     * @param  array<mixed> $parameters
-     * @return mixed
+     * @param mixed        $object
+     * @param string       $method
+     * @param array<mixed> $parameters
      *
      * @throws BadMethodCallException
+     * @return mixed
      */
     protected function forwardCallWithCheckTo($object, $method, $parameters)
     {

@@ -20,7 +20,7 @@ final class InvoiceSuiteProjectDTOTest extends TestCase
     public function testProjectNumberGetterAndSetter(): void
     {
         $invoiceSuiteProjectDTO = new InvoiceSuiteProjectDTO();
-        $projectNumberValue = "Example Value";
+        $projectNumberValue = 'Example Value';
         $invoiceSuiteProjectDTO->setProjectNumber($projectNumberValue);
 
         $this->assertSame($projectNumberValue, $invoiceSuiteProjectDTO->getProjectNumber());
@@ -29,7 +29,7 @@ final class InvoiceSuiteProjectDTOTest extends TestCase
     public function testProjectNameGetterAndSetter(): void
     {
         $invoiceSuiteProjectDTO = new InvoiceSuiteProjectDTO();
-        $projectNameValue = "Example Value";
+        $projectNameValue = 'Example Value';
         $invoiceSuiteProjectDTO->setProjectName($projectNameValue);
 
         $this->assertSame($projectNameValue, $invoiceSuiteProjectDTO->getProjectName());

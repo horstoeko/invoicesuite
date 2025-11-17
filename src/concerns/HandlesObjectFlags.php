@@ -8,10 +8,9 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * Trait representing object flag handling
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 trait HandlesObjectFlags
 {
@@ -25,7 +24,7 @@ trait HandlesObjectFlags
     /**
      * Add a Flag identified by $flag
      *
-     * @param string $flag
+     * @param  string $flag
      * @return self
      */
     public function addToObjectFlags(string $flag): self
@@ -46,7 +45,7 @@ trait HandlesObjectFlags
     /**
      * Remove a Flag identified by $flag
      *
-     * @param string $flag
+     * @param  string $flag
      * @return self
      */
     public function removeFromObjectFlags(string $flag): self
@@ -61,7 +60,7 @@ trait HandlesObjectFlags
 
         $this->objectFlags = array_filter(
             $this->objectFlags,
-            fn($currentFlag) => strcasecmp((string) $currentFlag, $flag) !== 0
+            static fn ($currentFlag) => strcasecmp((string) $currentFlag, $flag) !== 0
         );
 
         return $this;
@@ -70,14 +69,14 @@ trait HandlesObjectFlags
     /**
      * Checks if the flag $flag is assigned
      *
-     * @param string $flag
-     * @return boolean
+     * @param  string $flag
+     * @return bool
      */
     public function hasObjectFlag(string $flag): bool
     {
         return array_filter(
             $this->objectFlags,
-            fn($currentFlag) => strcasecmp((string) $currentFlag, $flag) === 0
+            static fn ($currentFlag) => strcasecmp((string) $currentFlag, $flag) === 0
         ) !== [];
     }
 }

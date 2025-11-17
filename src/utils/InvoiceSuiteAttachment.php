@@ -3,43 +3,21 @@
 namespace horstoeko\invoicesuite\utils;
 
 use finfo;
-use horstoeko\mimedb\MimeDb;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
+use horstoeko\mimedb\MimeDb;
 
 /**
  * class representing a definition for a binary object
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteAttachment
 {
-    /**
-     * The content type
-     *
-     * @var int
-     */
-    protected $internalType = -1;
-
-    /**
-     * The content
-     *
-     * @var string
-     */
-    protected $internalContent = "";
-
-    /**
-     * The filename
-     *
-     * @var string
-     */
-    protected $internalFilename = "";
-
     /**
      * Indicator that attachment comes from a real file
      */
@@ -59,16 +37,51 @@ class InvoiceSuiteAttachment
      * Indicator that attachment comes from a URL
      */
     protected const IS_FROM_URL = 4;
+    /**
+     * The content type
+     *
+     * @var int
+     */
+    protected $internalType = -1;
+
+    /**
+     * The content
+     *
+     * @var string
+     */
+    protected $internalContent = '';
+
+    /**
+     * The filename
+     *
+     * @var string
+     */
+    protected $internalFilename = '';
+
+    /**
+     * Constructor (hidden)
+     *
+     * @param  string $internalContent
+     * @param  string $internalFilename
+     * @param  int    $internalType
+     * @return void
+     */
+    final protected function __construct(string $internalContent, string $internalFilename, int $internalType)
+    {
+        $this->internalType = $internalType;
+        $this->internalContent = $internalContent;
+        $this->internalFilename = InvoiceSuiteFileUtils::getFilenameWithoutExtension($internalFilename);
+    }
 
     /**
      * Create a binary object definition by file contents
      *
-     * @param string $filename
-     * @return InvoiceSuiteAttachment
+     * @param  string                               $filename
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
+     * @return InvoiceSuiteAttachment
      */
-    public static function fromFile(string $filename): InvoiceSuiteAttachment
+    public static function fromFile(string $filename): self
     {
         if (!file_exists($filename)) {
             throw new InvoiceSuiteFileNotFoundException($filename);
@@ -86,11 +99,11 @@ class InvoiceSuiteAttachment
     /**
      * Create a binary object definition by a string containing binary data
      *
-     * @param string $content
-     * @param string $filename
+     * @param  string                 $content
+     * @param  string                 $filename
      * @return InvoiceSuiteAttachment
      */
-    public static function fromBinaryString(string $content, string $filename): InvoiceSuiteAttachment
+    public static function fromBinaryString(string $content, string $filename): self
     {
         return new static($content, $filename, static::IS_FROM_BINARY_STRING);
     }
@@ -98,17 +111,17 @@ class InvoiceSuiteAttachment
     /**
      * Create a binary object definition by a string containing BASE64 data
      *
-     * @param string $content
-     * @param string $filename
-     * @return InvoiceSuiteAttachment
+     * @param  string                               $content
+     * @param  string                               $filename
      * @throws InvoiceSuiteInvalidArgumentException
+     * @return InvoiceSuiteAttachment
      */
-    public static function fromBase64String(string $content, string $filename): InvoiceSuiteAttachment
+    public static function fromBase64String(string $content, string $filename): self
     {
         $content = base64_decode($content, true);
 
         if ($content === false) {
-            throw new InvoiceSuiteInvalidArgumentException("Not a BASE64 string");
+            throw new InvoiceSuiteInvalidArgumentException('Not a BASE64 string');
         }
 
         return new static($content, $filename, static::IS_FROM_BASE64_STRING);
@@ -117,11 +130,11 @@ class InvoiceSuiteAttachment
     /**
      * Create a binary object definition by a string containing an URL
      *
-     * @param string $url
-     * @return InvoiceSuiteAttachment
+     * @param  string                               $url
      * @throws InvoiceSuiteInvalidArgumentException
+     * @return InvoiceSuiteAttachment
      */
-    public static function fromUrl(string $url): InvoiceSuiteAttachment
+    public static function fromUrl(string $url): self
     {
         if (filter_var($url, FILTER_VALIDATE_URL) === false) {
             throw new InvoiceSuiteInvalidArgumentException(sprintf('Not a valid URL: %s', $url));
@@ -131,24 +144,9 @@ class InvoiceSuiteAttachment
     }
 
     /**
-     * Constructor (hidden)
-     *
-     * @param string $internalContent
-     * @param string $internalFilename
-     * @param int $internalType
-     * @return void
-     */
-    final protected function __construct(string $internalContent, string $internalFilename, int $internalType)
-    {
-        $this->internalType = $internalType;
-        $this->internalContent = $internalContent;
-        $this->internalFilename = InvoiceSuiteFileUtils::getFilenameWithoutExtension($internalFilename);
-    }
-
-    /**
      * Returns true if the attachment contains data from a file
      *
-     * @return boolean
+     * @return bool
      */
     public function isFileAttachment(): bool
     {
@@ -158,7 +156,7 @@ class InvoiceSuiteAttachment
     /**
      * Returns true if the attachment contains BASE64-Data
      *
-     * @return boolean
+     * @return bool
      */
     public function isBase64StringAttachment(): bool
     {
@@ -168,7 +166,7 @@ class InvoiceSuiteAttachment
     /**
      * Returns true if the attachment contains binary data
      *
-     * @return boolean
+     * @return bool
      */
     public function isBinaryStringAttachment(): bool
     {
@@ -178,7 +176,7 @@ class InvoiceSuiteAttachment
     /**
      * Returns true if the attachment is URL based
      *
-     * @return boolean
+     * @return bool
      */
     public function isUrlAttachment(): bool
     {
@@ -188,7 +186,7 @@ class InvoiceSuiteAttachment
     /**
      * Returns true if the attachment contains binary data
      *
-     * @return boolean
+     * @return bool
      */
     public function isBinaryAttachment(): bool
     {
@@ -250,7 +248,7 @@ class InvoiceSuiteAttachment
             return false;
         }
 
-        $tempFileExtension = (MimeDb::singleton())->findFirstFileExtensionByMimeType($this->getContentMimeType());
+        $tempFileExtension = MimeDb::singleton()->findFirstFileExtensionByMimeType($this->getContentMimeType());
 
         return InvoiceSuiteFileUtils::combineFilenameWithFileextension($this->internalFilename, $tempFileExtension);
     }

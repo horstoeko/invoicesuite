@@ -15,18 +15,17 @@ use Throwable;
  * Class representing the base exception
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteInvalidArgumentException extends InvoiceSuiteBaseException
 {
     /**
      * Constructor
      *
-     * @param string $message
-     * @param null|Throwable $throwable
+     * @param  string         $message
+     * @param  null|Throwable $throwable
      * @return void
      */
     public function __construct(string $message, ?Throwable $throwable = null)

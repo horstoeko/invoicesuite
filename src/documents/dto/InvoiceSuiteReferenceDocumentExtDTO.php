@@ -16,50 +16,49 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteReferenceDocumentExtDTO extends InvoiceSuiteReferenceDocumentDTO
 {
     /**
      * The additional document type code
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $typeCode = null;
 
     /**
      * The additional document reference-type code
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $referenceTypeCode = null;
 
     /**
      * The additional document description
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $description = null;
 
     /**
      * The additional document description
      *
-     * @var InvoiceSuiteAttachment|null
+     * @var null|InvoiceSuiteAttachment
      */
     protected ?InvoiceSuiteAttachment $attachment = null;
 
     /**
      * Constructor
      *
-     * @param string|null $referenceNumber Reference number
-     * @param DateTimeInterface|null $referenceDate Issue date of the reference
-     * @param string|null $typeCode The additional document type code
-     * @param string|null $referenceTypeCode The additional document reference-type code
-     * @param string|null $description The additional document description
-     * @param InvoiceSuiteAttachment|null $attachment The additional document description
+     * @param null|string                 $referenceNumber   Reference number
+     * @param null|DateTimeInterface      $referenceDate     Issue date of the reference
+     * @param null|string                 $typeCode          The additional document type code
+     * @param null|string                 $referenceTypeCode The additional document reference-type code
+     * @param null|string                 $description       The additional document description
+     * @param null|InvoiceSuiteAttachment $attachment        The additional document description
      */
     public function __construct(
         ?string $referenceNumber = null,
@@ -80,7 +79,7 @@ class InvoiceSuiteReferenceDocumentExtDTO extends InvoiceSuiteReferenceDocumentD
     /**
      * Returns the additional document type code
      *
-     * @return string|null
+     * @return null|string
      */
     public function getTypeCode(): ?string
     {
@@ -90,7 +89,7 @@ class InvoiceSuiteReferenceDocumentExtDTO extends InvoiceSuiteReferenceDocumentD
     /**
      * Sets the additional document type code
      *
-     * @param string|null $typeCode The additional document type code
+     * @param  null|string $typeCode The additional document type code
      * @return self
      */
     public function setTypeCode(?string $typeCode): self
@@ -103,7 +102,7 @@ class InvoiceSuiteReferenceDocumentExtDTO extends InvoiceSuiteReferenceDocumentD
     /**
      * Returns the additional document reference-type code
      *
-     * @return string|null
+     * @return null|string
      */
     public function getReferenceTypeCode(): ?string
     {
@@ -113,7 +112,7 @@ class InvoiceSuiteReferenceDocumentExtDTO extends InvoiceSuiteReferenceDocumentD
     /**
      * Sets the additional document reference-type code
      *
-     * @param string|null $referenceTypeCode The additional document reference-type code
+     * @param  null|string $referenceTypeCode The additional document reference-type code
      * @return self
      */
     public function setReferenceTypeCode(?string $referenceTypeCode): self
@@ -126,7 +125,7 @@ class InvoiceSuiteReferenceDocumentExtDTO extends InvoiceSuiteReferenceDocumentD
     /**
      * Returns the additional document description
      *
-     * @return string|null
+     * @return null|string
      */
     public function getDescription(): ?string
     {
@@ -136,7 +135,7 @@ class InvoiceSuiteReferenceDocumentExtDTO extends InvoiceSuiteReferenceDocumentD
     /**
      * Sets the additional document description
      *
-     * @param string|null $description The additional document description
+     * @param  null|string $description The additional document description
      * @return self
      */
     public function setDescription(?string $description): self
@@ -149,7 +148,7 @@ class InvoiceSuiteReferenceDocumentExtDTO extends InvoiceSuiteReferenceDocumentD
     /**
      * Returns the additional document description
      *
-     * @return InvoiceSuiteAttachment|null
+     * @return null|InvoiceSuiteAttachment
      */
     public function getAttachment(): ?InvoiceSuiteAttachment
     {
@@ -159,7 +158,7 @@ class InvoiceSuiteReferenceDocumentExtDTO extends InvoiceSuiteReferenceDocumentD
     /**
      * Sets the additional document description
      *
-     * @param InvoiceSuiteAttachment|null $attachment The additional document description
+     * @param  null|InvoiceSuiteAttachment $attachment The additional document description
      * @return self
      */
     public function setAttachment(?InvoiceSuiteAttachment $attachment): self

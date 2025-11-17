@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\tests\testcases\documentreadbuild;
 
 use DateTime;
-use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatBuilder;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistCurrencyCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
+use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatBuilder;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAllowanceChargeDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteCommunicationDTO;
@@ -91,9 +91,9 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:ID');
 
-        self::$document->setDocumentNo("2025/08-000001");
+        self::$document->setDocumentNo('2025/08-000001');
 
-        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:ID', "2025/08-000001");
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:ID', '2025/08-000001');
 
         self::$document->setDocumentNo(null);
 
@@ -156,7 +156,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:LanguageID');
 
-        self::$document->setDocumentLanguage("");
+        self::$document->setDocumentLanguage('');
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:LanguageID');
 
@@ -209,7 +209,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceCurrencyCode');
 
-        self::$document->setDocumentCurrency("");
+        self::$document->setDocumentCurrency('');
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceCurrencyCode');
 
@@ -232,7 +232,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:TaxCurrencyCode');
 
-        self::$document->setDocumentTaxCurrency("");
+        self::$document->setDocumentTaxCurrency('');
 
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:TaxCurrencyCode');
 
@@ -402,8 +402,8 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', 0, '19700101', "format", "102");
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString', 0, '19700131', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', 0, '19700101', 'format', '102');
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString', 0, '19700131', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:Description', 0);
 
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', 1);
@@ -418,8 +418,8 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', 0, '19700101', "format", "102");
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString', 0, '19700131', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', 0, '19700101', 'format', '102');
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString', 0, '19700131', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:Description', 0);
 
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', 1);
@@ -434,8 +434,8 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', 0, '19700101', "format", "102");
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString', 0, '19700131', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', 0, '19700101', 'format', '102');
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString', 0, '19700131', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:Description', 0);
 
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', 1);
@@ -450,8 +450,8 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', 0, '19700101', "format", "102");
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString', 0, '19700131', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', 0, '19700101', 'format', '102');
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString', 0, '19700131', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:Description', 0);
 
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', 1);
@@ -659,7 +659,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:IssuerAssignedID', 0, 'BO-1');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:IssuerAssignedID', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
 
@@ -695,7 +695,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:IssuerAssignedID', 0, 'BO-2');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700102', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700102', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:IssuerAssignedID', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
 
@@ -704,7 +704,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:IssuerAssignedID', 0, 'BO-3');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700103', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700103', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:IssuerAssignedID', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
     }
@@ -797,7 +797,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:IssuerAssignedID', 0, 'CON-1');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:IssuerAssignedID', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
 
@@ -833,7 +833,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:IssuerAssignedID', 0, 'CON-2');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700102', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700102', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:IssuerAssignedID', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
 
@@ -842,7 +842,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:IssuerAssignedID', 0, 'CON-3');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700103', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700103', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:IssuerAssignedID', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
     }
@@ -1050,7 +1050,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:IssuerAssignedID', 0, 'INVREF-1');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:TypeCode', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:IssuerAssignedID', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
@@ -1061,7 +1061,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:IssuerAssignedID', 0, 'INVREF-1');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:TypeCode', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:IssuerAssignedID', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
@@ -1072,7 +1072,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:IssuerAssignedID', 0, 'INVREF-1');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:TypeCode', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:IssuerAssignedID', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
@@ -1083,7 +1083,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:IssuerAssignedID', 0, 'INVREF-1');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:TypeCode', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:IssuerAssignedID', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
@@ -1094,10 +1094,10 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:IssuerAssignedID', 0, 'INVREF-1');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:TypeCode', 0);
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:IssuerAssignedID', 1, 'INVREF-2');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1, '19700102', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1, '19700102', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:TypeCode', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:IssuerAssignedID', 2);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 2);
@@ -1108,7 +1108,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:IssuerAssignedID', 0, 'INVREF-3');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700103', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700103', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:TypeCode', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:IssuerAssignedID', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
@@ -1261,7 +1261,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:IssuerAssignedID', 0, 'DESPADV-1');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:IssuerAssignedID', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
 
@@ -1270,7 +1270,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:IssuerAssignedID', 0, 'DESPADV-1');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:IssuerAssignedID', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
 
@@ -1288,7 +1288,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:IssuerAssignedID', 0, 'DESPADV-2');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700102', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700102', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:IssuerAssignedID', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
 
@@ -1297,7 +1297,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:IssuerAssignedID', 0, 'DESPADV-3');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700103', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700103', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:IssuerAssignedID', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
     }
@@ -1454,7 +1454,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ActualDeliverySupplyChainEvent/ram:OccurrenceDateTime/udt:DateTimeString', 0, '19700101', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ActualDeliverySupplyChainEvent/ram:OccurrenceDateTime/udt:DateTimeString', 0, '19700101', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ActualDeliverySupplyChainEvent/ram:OccurrenceDateTime/udt:DateTimeString', 1);
 
         self::$document->setDocumentSupplyChainEvent(null);
@@ -9884,7 +9884,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:Information', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayeePartyCreditorFinancialAccount/ram:IBANID', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayeePartyCreditorFinancialAccount/ram:AccountName', 0);
-        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayeePartyCreditorFinancialAccount/ram:ProprietaryID', 0,);
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayeePartyCreditorFinancialAccount/ram:ProprietaryID', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayeeSpecifiedCreditorFinancialInstitution/ram:BICID', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayerPartyDebtorFinancialAccount/ram:IBANID', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:ApplicableTradeSettlementFinancialCard/ram:ID', 0);
@@ -10405,7 +10405,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID', 2);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DueDateDateTime/udt:DateTimeString', 2);
 
-        self::$document->addDocumentPaymentTerm('Term4', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), "MANDATE-4");
+        self::$document->addDocumentPaymentTerm('Term4', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 'MANDATE-4');
 
         $this->disableRenderXmlContent();
 
@@ -16571,7 +16571,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
 
     public function testSaveAsXmlFile(): void
     {
-        $xmlFilename = InvoiceSuitePathUtils::combinePathWithFile(__DIR__, "invoice.xml");
+        $xmlFilename = InvoiceSuitePathUtils::combinePathWithFile(__DIR__, 'invoice.xml');
 
         $this->registerFileForTestCaseTeardown($xmlFilename);
 
@@ -16582,9 +16582,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $xmlFileContent = file_get_contents($xmlFilename);
 
         $this->assertNotFalse($xmlFileContent);
-        /**
-         * @phpstan-ignore method.alreadyNarrowedType
-         */
+        // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsString($xmlFileContent);
 
         $resolvedContentType = InvoiceSuiteContentTypeResolver::resolveContentType($xmlFileContent);
@@ -16594,7 +16592,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
 
     public function testSaveAsJsonFile(): void
     {
-        $jsonFilename = InvoiceSuitePathUtils::combinePathWithFile(__DIR__, "invoice.json");
+        $jsonFilename = InvoiceSuitePathUtils::combinePathWithFile(__DIR__, 'invoice.json');
 
         $this->registerFileForTestCaseTeardown($jsonFilename);
 
@@ -16605,9 +16603,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $jsonFileContent = file_get_contents($jsonFilename);
 
         $this->assertNotFalse($jsonFileContent);
-        /**
-         * @phpstan-ignore method.alreadyNarrowedType
-         */
+        // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsString($jsonFileContent);
 
         $resolvedContentType = InvoiceSuiteContentTypeResolver::resolveContentType($jsonFileContent);
@@ -16630,22 +16626,22 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
 
         $documentDTO = new InvoiceSuiteDocumentHeaderDTO();
         $documentDTO
-            ->setNumber("2025-04-000001")
+            ->setNumber('2025-04-000001')
             ->setType(InvoiceSuiteCodelistDocumentTypes::COMMERCIAL_INVOICE->value)
-            ->setDescription("Some document description")
-            ->setLanguage("de-DE")
+            ->setDescription('Some document description')
+            ->setLanguage('de-DE')
             ->setDate((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'))
             ->setCompleteDate((new DateTime())->createFromFormat('d.m.Y', '02.01.1970'))
             ->setCurrency(InvoiceSuiteCodelistCurrencyCodes::EURO->value)
             ->setTaxCurrency(InvoiceSuiteCodelistCurrencyCodes::POUND_STERLING->value)
             ->setIsCopy(true)
             ->setIsTest(true)
-            ->addNote(new InvoiceSuiteNoteDTO("Some content", "CC00", "SC00"))
-            ->addNote(new InvoiceSuiteNoteDTO("Some other content", "CC99", "SC99"))
-            ->addBillingPeriod(new InvoiceSuiteDateRangeDTO((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), (new DateTime())->createFromFormat('d.m.Y', '31.01.1970'), "Some Description"))
-            ->addBillingPeriod(new InvoiceSuiteDateRangeDTO((new DateTime())->createFromFormat('d.m.Y', '01.03.1970'), (new DateTime())->createFromFormat('d.m.Y', '31.03.1970'), "Some Description"))
-            ->addPostingReference(new InvoiceSuiteIdDTO("PREF-1", "PREF-1-TYPE"))
-            ->addPostingReference(new InvoiceSuiteIdDTO("PREF-2", "PREF-2-TYPE"))
+            ->addNote(new InvoiceSuiteNoteDTO('Some content', 'CC00', 'SC00'))
+            ->addNote(new InvoiceSuiteNoteDTO('Some other content', 'CC99', 'SC99'))
+            ->addBillingPeriod(new InvoiceSuiteDateRangeDTO((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), (new DateTime())->createFromFormat('d.m.Y', '31.01.1970'), 'Some Description'))
+            ->addBillingPeriod(new InvoiceSuiteDateRangeDTO((new DateTime())->createFromFormat('d.m.Y', '01.03.1970'), (new DateTime())->createFromFormat('d.m.Y', '31.03.1970'), 'Some Description'))
+            ->addPostingReference(new InvoiceSuiteIdDTO('PREF-1', 'PREF-1-TYPE'))
+            ->addPostingReference(new InvoiceSuiteIdDTO('PREF-2', 'PREF-2-TYPE'))
             ->addSellerOrderReference(new InvoiceSuiteReferenceDocumentDTO('SO-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
             ->addSellerOrderReference(new InvoiceSuiteReferenceDocumentDTO('SO-2', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
             ->addBuyerOrderReference(new InvoiceSuiteReferenceDocumentDTO('BO-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
@@ -16654,12 +16650,12 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
             ->addQuotationReference(new InvoiceSuiteReferenceDocumentDTO('QU-2', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
             ->addContractReference(new InvoiceSuiteReferenceDocumentDTO('CON-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
             ->addContractReference(new InvoiceSuiteReferenceDocumentDTO('CON-2', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
-            ->addAdditionalReference(new InvoiceSuiteReferenceDocumentExtDTO('ADD-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), "typecode", "reftypecode", "description"))
-            ->addAdditionalReference(new InvoiceSuiteReferenceDocumentExtDTO('ADD-2', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), "typecode2", "reftypecode2", "description2"))
-            ->addInvoiceReference(new InvoiceSuiteReferenceDocumentExtDTO('INVREF-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), "typecode", "reftypecode", "description"))
-            ->addInvoiceReference(new InvoiceSuiteReferenceDocumentExtDTO('INVREF-2', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), "typecode2", "reftypecode2", "description2"))
-            ->addProjectReference(new InvoiceSuiteProjectDTO("PROJECT-1", "Project 1"))
-            ->addProjectReference(new InvoiceSuiteProjectDTO("PROJECT-2", "Project 2"))
+            ->addAdditionalReference(new InvoiceSuiteReferenceDocumentExtDTO('ADD-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 'typecode', 'reftypecode', 'description'))
+            ->addAdditionalReference(new InvoiceSuiteReferenceDocumentExtDTO('ADD-2', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), 'typecode2', 'reftypecode2', 'description2'))
+            ->addInvoiceReference(new InvoiceSuiteReferenceDocumentExtDTO('INVREF-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 'typecode', 'reftypecode', 'description'))
+            ->addInvoiceReference(new InvoiceSuiteReferenceDocumentExtDTO('INVREF-2', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), 'typecode2', 'reftypecode2', 'description2'))
+            ->addProjectReference(new InvoiceSuiteProjectDTO('PROJECT-1', 'Project 1'))
+            ->addProjectReference(new InvoiceSuiteProjectDTO('PROJECT-2', 'Project 2'))
             ->addUltimateCustomerOrderReference(new InvoiceSuiteReferenceDocumentDTO('UCOR-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
             ->addUltimateCustomerOrderReference(new InvoiceSuiteReferenceDocumentDTO('UCOR-2', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
             ->addDespatchAdviceReference(new InvoiceSuiteReferenceDocumentDTO('DESPADV-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
@@ -16673,153 +16669,153 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
             ->addBuyerReference(new InvoiceSuiteIdDTO('LEITWEGID'))
             ->setSellerParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Lieferant GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Lieferant AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@lieferant.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@lieferant.de", "EM"))
+                    ->addName('Lieferant GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Lieferant AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@lieferant.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@lieferant.de', 'EM'))
             )
             ->setBuyerParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Kunde GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Kunde AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@kunde.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@kunde.de", "EM"))
+                    ->addName('Kunde GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Kunde AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@kunde.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@kunde.de', 'EM'))
             )
             ->setTaxRepresentativeParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Tax GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Tax AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@tax.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@tax.de", "EM"))
+                    ->addName('Tax GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Tax AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@tax.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@tax.de', 'EM'))
             )
             ->setProductEndUserParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Product End User GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Product End User AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@productenduser.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@productenduser.de", "EM"))
+                    ->addName('Product End User GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Product End User AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@productenduser.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@productenduser.de', 'EM'))
             )
             ->setShipToParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Ship To GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Ship To AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@shipto.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@shipto.de", "EM"))
+                    ->addName('Ship To GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Ship To AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@shipto.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@shipto.de', 'EM'))
             )
             ->setUltimateShipToParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Ultimate Ship To GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Ultimate Ship To AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@ultimateshipto.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@ultimateshipto.de", "EM"))
+                    ->addName('Ultimate Ship To GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Ultimate Ship To AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@ultimateshipto.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@ultimateshipto.de', 'EM'))
             )
             ->setShipFromParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Ship From GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Ship From AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@shipfrom.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@shipfrom.de", "EM"))
+                    ->addName('Ship From GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Ship From AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@shipfrom.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@shipfrom.de', 'EM'))
             )
             ->setInvoicerParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Invoicer GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Invoicer AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@invoicer.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@invoicer.de", "EM"))
+                    ->addName('Invoicer GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Invoicer AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@invoicer.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@invoicer.de', 'EM'))
             )
             ->setInvoiceeParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Invoicee GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Invoicee AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@invoicee.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@invoicee.de", "EM"))
+                    ->addName('Invoicee GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Invoicee AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@invoicee.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@invoicee.de', 'EM'))
             )
             ->setPayeeParty(
                 (new InvoiceSuitePartyDTO())
-                    ->addName("Payee GmbH")
-                    ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                    ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                    ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                    ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                    ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Payee AG"))
-                    ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@payee.de"))
-                    ->addCommunication(new InvoiceSuiteCommunicationDTO("info@payee.de", "EM"))
+                    ->addName('Payee GmbH')
+                    ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                    ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                    ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                    ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                    ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                    ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Payee AG'))
+                    ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@payee.de'))
+                    ->addCommunication(new InvoiceSuiteCommunicationDTO('info@payee.de', 'EM'))
             )
             ->addPaymentMean(
                 (new InvoiceSuitePaymentMeanDTO())
@@ -16851,7 +16847,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
             )
             ->addPaymentTerm(
                 (new InvoiceSuitePaymentTermDTO())
-                    ->setDescription("Payment Term Description 1")
+                    ->setDescription('Payment Term Description 1')
                     ->setDueDate((new DateTime())->createFromFormat('d.m.Y', '31.01.1970'))
                     ->setMandate('MANDATE-1')
                     ->addDiscountTerm(new InvoiceSuitePaymentTermDiscountDTO(200.00, 10, 2.00, (new DateTime())->createFromFormat('d.m.Y', '24.02.1970'), new InvoiceSuitePeriodDTO(1.0, 'DAY')))
@@ -16861,7 +16857,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
             )
             ->addPaymentTerm(
                 (new InvoiceSuitePaymentTermDTO())
-                    ->setDescription("Payment Term Description 2")
+                    ->setDescription('Payment Term Description 2')
                     ->setDueDate((new DateTime())->createFromFormat('d.m.Y', '31.03.1970'))
             )
             ->addCreditorReference(new InvoiceSuiteIdDTO('CREDREF-1'))
@@ -16944,157 +16940,157 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
                     ->setRoungingAmount(10.0)
             )
             ->addPosition((new InvoiceSuiteDocumentPositionDTO())
-                    ->setLineId('1.1')
-                    ->setParentLineId('1')
-                    ->setLineStatus('LINESTATUS')
-                    ->setLineStatusReason('LINESTATUSREASON')
-                    ->addNote(new InvoiceSuiteNoteDTO('CONTENT-1', 'CONTENTCODE-1', 'SUBJECTCODE-1'))
-                    ->addNote(new InvoiceSuiteNoteDTO('CONTENT-2', 'CONTENTCODE-2', 'SUBJECTCODE-2'))
-                    ->setProduct((new InvoiceSuiteProductDTO())
-                        ->setId('PRODUCTID-1')
-                        ->setGlobalId(new InvoiceSuiteIdDTO('PRODUCTGLOBALID-1', 'PRODUCTGLOBALIDTYPE-1'))
-                        ->setSellerId('PRODUCTSELLERID-1')
-                        ->setBuyerId('PRODUCTBUYER-1')
-                        ->setIndustryId('PRODUCTIND-1')
-                        ->setModelId('PRODUCTMODELID-1')
-                        ->setName('PRODUCTNAME-1')
-                        ->setDescription('PRODUCTDESC-1')
-                        ->setBatchId('PRODUCTBATCH-1')
-                        ->setBrandName('PRODUCTBRAND-1')
-                        ->setModelName('PRODUCTMODEL-1')
-                        ->setOriginTradeCountry('PRODUCTCOUNTRY-1')
-                        ->addCharacteristic((new InvoiceSuiteProductCharacteristicDTO())
-                            ->setType('PRODUCTCHARACTERISTICTYPE-1')
-                            ->setDescription('PRODUCTCHARACTERISTICDESC-1')
-                            ->setValueMeasure(new InvoiceSuiteMeasureDTO(1.0, 'C62'))
-                            ->setValue("PRODUCTCHARACTERISTICVALUE-1"))
-                        ->addClassification((new InvoiceSuiteProductClassificationDTO())
-                            ->setCode('PRODUCTCLASSCODE-1')
-                            ->setName('PRODUCTCLASSNAME-1')
-                            ->setListId('PRODUCTLISTID-1')
-                            ->setListVersionId('PRODUCTLISTVERSIONID-1'))
-                        ->addReferenceProduct((new InvoiceSuiteReferenceProductDTO())
-                            ->setId('PRODUCTREFID-1')
-                            ->setGlobalId(new InvoiceSuiteIdDTO('PRODUCTREFGLOBALID-1', 'PRODUCTREFGLOBALIDTYPE-1'))
-                            ->setSellerId('PRODUCTREFSELLERID-1')
-                            ->setBuyerId('PRODUCTREFBUYERID-1')
-                            ->setIndustryId('PRODUCTREFINDID-1')
-                            ->setName('PRODUCTREFNAME-1')
-                            ->setDescription('PRODUCTREFDESC-1')
-                            ->setUnitQuantity(new InvoiceSuiteQuantityDTO(1.0, 'C62'))))
-                    ->addSellerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('SO-1', '1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
-                    ->addSellerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('SO-1', '2', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
-                    ->addBuyerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('BO-1', '10', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
-                    ->addBuyerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('BO-1', '20', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
-                    ->addQuotationReference(new InvoiceSuiteReferenceDocumentLineDTO('QU-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
-                    ->addQuotationReference(new InvoiceSuiteReferenceDocumentLineDTO('QU-1', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
-                    ->addContractReference(new InvoiceSuiteReferenceDocumentLineDTO('CON-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
-                    ->addContractReference(new InvoiceSuiteReferenceDocumentLineDTO('CON-1', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
-                    ->addAdditionalReference(new InvoiceSuiteReferenceDocumentLineExtDTO('ADD-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 'TYPECODE-1', 'REFTYPECODE-1', 'DESC-1'))
-                    ->addAdditionalReference(new InvoiceSuiteReferenceDocumentLineExtDTO('ADD-1', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), 'TYPECODE-2', 'REFTYPECODE-2', 'DESC-2'))
-                    ->addUltimateCustomerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('UCOR-1', '10', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
-                    ->addUltimateCustomerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('UCOR-1', '20', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
-                    ->addDespatchAdviceReference(new InvoiceSuiteReferenceDocumentLineDTO('DESPADV-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
-                    ->addDespatchAdviceReference(new InvoiceSuiteReferenceDocumentLineDTO('DESPADV-1', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
-                    ->addReceivingAdviceReference(new InvoiceSuiteReferenceDocumentLineDTO('RECADV-1', '10', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
-                    ->addReceivingAdviceReference(new InvoiceSuiteReferenceDocumentLineDTO('RECADV-1', '20', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
-                    ->addDeliveryNoteReference(new InvoiceSuiteReferenceDocumentLineDTO('DEVNOTE-1', '10', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
-                    ->addDeliveryNoteReference(new InvoiceSuiteReferenceDocumentLineDTO('DEVNOTE-1', '20', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
-                    ->addInvoiceReference(new InvoiceSuiteReferenceDocumentLineExtDTO('INVREF-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 'TYPECODE-1', 'REFTYPECODE-1', 'DESC-1'))
-                    ->addInvoiceReference(new InvoiceSuiteReferenceDocumentLineExtDTO('INVREF-1', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), 'TYPECODE-2', 'REFTYPECODE-2', 'DESC-2'))
-                    ->setGrossPrice(new InvoiceSuitePriceGrossDTO(100.0, new InvoiceSuiteQuantityDTO(1.0, 'C62'), [new InvoiceSuiteAllowanceChargeDTO(false, 1.0, 2.0, 3.0, "S", "VAT", 19.0, 'REASON-1', 'REASONCODE-1')]))
-                    ->setNetPrice(new InvoiceSuitePriceNetDTO(1.0, new InvoiceSuiteQuantityDTO(2.0, 'C62')))
-                    ->setQuantityBilled(new InvoiceSuiteQuantityDTO(1.0, "C62"))
-                    ->setQuantityChargeFree(new InvoiceSuiteQuantityDTO(2.0, "C62"))
-                    ->setQuantityPackage(new InvoiceSuiteQuantityDTO(3.0, "C62"))
-                    ->setShipToParty(
-                        (new InvoiceSuitePartyDTO())
-                            ->addName("Ship To GmbH")
-                            ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                            ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                            ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                            ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                            ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                            ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                            ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                            ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                            ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Ship To AG"))
-                            ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@shipto.de"))
-                        ->addCommunication(new InvoiceSuiteCommunicationDTO("info@shipto.de", "EM"))
-                    )
-                    ->setUltimateShipToParty(
-                        (new InvoiceSuitePartyDTO())
-                            ->addName("Ultimate Ship To GmbH")
-                            ->addId(new InvoiceSuiteIdDTO("0815-4711"))
-                            ->addId(new InvoiceSuiteIdDTO("0815-4712"))
-                            ->addGlobalId(new InvoiceSuiteIdDTO("11111", "0088"))
-                            ->addGlobalId(new InvoiceSuiteIdDTO("22222", "0088"))
-                            ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987", "VA"))
-                            ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-X", "FC"))
-                            ->addTaxRegistration(new InvoiceSuiteIdDTO("893489787987-AA", "VA"))
-                            ->addAddress(new InvoiceSuiteAddressDTO("Line 1", "Line 2", "Line 3", "06108", "City", "DE", "Bavaria"))
-                            ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("3874837489237", "8884", "Ultimate Ship To AG"))
-                            ->addContact(new InvoiceSuiteContactDTO("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@ultimateshipto.de"))
-                        ->addCommunication(new InvoiceSuiteCommunicationDTO("info@ultimateshipto.de", "EM"))
-                    )
-                    ->addSupplyChainEvent((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'))
-                    ->addSupplyChainEvent((new DateTime())->createFromFormat('d.m.Y', '02.01.1970'))
-                    ->addBillingPeriod(new InvoiceSuiteDateRangeDTO((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), (new DateTime())->createFromFormat('d.m.Y', '31.01.1970'), "Some Description"))
-                    ->addBillingPeriod(new InvoiceSuiteDateRangeDTO((new DateTime())->createFromFormat('d.m.Y', '01.03.1970'), (new DateTime())->createFromFormat('d.m.Y', '31.03.1970'), "Some Description 2"))
-                    ->addPostingReference(new InvoiceSuiteIdDTO("PREF-1", "PREF-1-TYPE"))
-                    ->addPostingReference(new InvoiceSuiteIdDTO("PREF-2", "PREF-2-TYPE"))
-                    ->addTax((new InvoiceSuiteTaxDTO())
-                        ->setCategory('S')
-                        ->setType('VAT')
-                        ->setBasisAmount(100.0)
-                        ->setAmount(7.0)
-                        ->setPercent(7.0)
-                        ->setExemptionReason('Reason')
-                        ->setExemptionReasonCode('ReasonCode')
-                        ->setDueDate((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'))
-                        ->setDueCode('DUECODE2'))
-                    ->addTax((new InvoiceSuiteTaxDTO())
-                        ->setCategory('S')
-                        ->setType('VAT')
-                        ->setBasisAmount(100.0)
-                        ->setAmount(7.0)
-                        ->setPercent(7.0)
-                        ->setExemptionReason('Reason2')
-                        ->setExemptionReasonCode('ReasonCode2')
-                        ->setDueDate((new DateTime())->createFromFormat('d.m.Y', '02.01.1970'))
-                        ->setDueCode('DUECODE2'))
-                    ->addAllowanceCharge((new InvoiceSuiteAllowanceChargeDTO())
-                        ->setChargeIndicator(true)
-                        ->setAmount(10.0)
-                        ->setBaseAmount(100.0)
-                        ->setPercent(10.0)
-                        ->setTaxCategory('S')
-                        ->setTaxType('VAT')
-                        ->setTaxPercent(19.0)
-                        ->setReason('Reason')
-                        ->setReasonCode('ReasonCode'))
-                    ->addAllowanceCharge((new InvoiceSuiteAllowanceChargeDTO())
-                        ->setChargeIndicator(false)
-                        ->setAmount(1.0)
-                        ->setBaseAmount(10.0)
-                        ->setPercent(1.0)
-                        ->setTaxCategory('S')
-                        ->setTaxType('VAT')
-                        ->setTaxPercent(19.0)
-                        ->setReason('Reason2')
-                        ->setReasonCode('ReasonCode2'))
-                    ->setSummation((new InvoiceSuitesummationLineDTO())
-                        ->setNetAmount(100.0)
-                        ->setChargeTotalAmount(1.0)
-                        ->setDiscountTotalAmount(2.0)
-                        ->setTaxTotalAmount(3.0)
-                        ->setGrossAmount(4.0)));
+                ->setLineId('1.1')
+                ->setParentLineId('1')
+                ->setLineStatus('LINESTATUS')
+                ->setLineStatusReason('LINESTATUSREASON')
+                ->addNote(new InvoiceSuiteNoteDTO('CONTENT-1', 'CONTENTCODE-1', 'SUBJECTCODE-1'))
+                ->addNote(new InvoiceSuiteNoteDTO('CONTENT-2', 'CONTENTCODE-2', 'SUBJECTCODE-2'))
+                ->setProduct((new InvoiceSuiteProductDTO())
+                    ->setId('PRODUCTID-1')
+                    ->setGlobalId(new InvoiceSuiteIdDTO('PRODUCTGLOBALID-1', 'PRODUCTGLOBALIDTYPE-1'))
+                    ->setSellerId('PRODUCTSELLERID-1')
+                    ->setBuyerId('PRODUCTBUYER-1')
+                    ->setIndustryId('PRODUCTIND-1')
+                    ->setModelId('PRODUCTMODELID-1')
+                    ->setName('PRODUCTNAME-1')
+                    ->setDescription('PRODUCTDESC-1')
+                    ->setBatchId('PRODUCTBATCH-1')
+                    ->setBrandName('PRODUCTBRAND-1')
+                    ->setModelName('PRODUCTMODEL-1')
+                    ->setOriginTradeCountry('PRODUCTCOUNTRY-1')
+                    ->addCharacteristic((new InvoiceSuiteProductCharacteristicDTO())
+                        ->setType('PRODUCTCHARACTERISTICTYPE-1')
+                        ->setDescription('PRODUCTCHARACTERISTICDESC-1')
+                        ->setValueMeasure(new InvoiceSuiteMeasureDTO(1.0, 'C62'))
+                        ->setValue('PRODUCTCHARACTERISTICVALUE-1'))
+                    ->addClassification((new InvoiceSuiteProductClassificationDTO())
+                        ->setCode('PRODUCTCLASSCODE-1')
+                        ->setName('PRODUCTCLASSNAME-1')
+                        ->setListId('PRODUCTLISTID-1')
+                        ->setListVersionId('PRODUCTLISTVERSIONID-1'))
+                    ->addReferenceProduct((new InvoiceSuiteReferenceProductDTO())
+                        ->setId('PRODUCTREFID-1')
+                        ->setGlobalId(new InvoiceSuiteIdDTO('PRODUCTREFGLOBALID-1', 'PRODUCTREFGLOBALIDTYPE-1'))
+                        ->setSellerId('PRODUCTREFSELLERID-1')
+                        ->setBuyerId('PRODUCTREFBUYERID-1')
+                        ->setIndustryId('PRODUCTREFINDID-1')
+                        ->setName('PRODUCTREFNAME-1')
+                        ->setDescription('PRODUCTREFDESC-1')
+                        ->setUnitQuantity(new InvoiceSuiteQuantityDTO(1.0, 'C62'))))
+                ->addSellerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('SO-1', '1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
+                ->addSellerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('SO-1', '2', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
+                ->addBuyerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('BO-1', '10', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
+                ->addBuyerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('BO-1', '20', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
+                ->addQuotationReference(new InvoiceSuiteReferenceDocumentLineDTO('QU-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
+                ->addQuotationReference(new InvoiceSuiteReferenceDocumentLineDTO('QU-1', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
+                ->addContractReference(new InvoiceSuiteReferenceDocumentLineDTO('CON-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
+                ->addContractReference(new InvoiceSuiteReferenceDocumentLineDTO('CON-1', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
+                ->addAdditionalReference(new InvoiceSuiteReferenceDocumentLineExtDTO('ADD-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 'TYPECODE-1', 'REFTYPECODE-1', 'DESC-1'))
+                ->addAdditionalReference(new InvoiceSuiteReferenceDocumentLineExtDTO('ADD-1', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), 'TYPECODE-2', 'REFTYPECODE-2', 'DESC-2'))
+                ->addUltimateCustomerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('UCOR-1', '10', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
+                ->addUltimateCustomerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('UCOR-1', '20', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
+                ->addDespatchAdviceReference(new InvoiceSuiteReferenceDocumentLineDTO('DESPADV-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
+                ->addDespatchAdviceReference(new InvoiceSuiteReferenceDocumentLineDTO('DESPADV-1', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
+                ->addReceivingAdviceReference(new InvoiceSuiteReferenceDocumentLineDTO('RECADV-1', '10', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
+                ->addReceivingAdviceReference(new InvoiceSuiteReferenceDocumentLineDTO('RECADV-1', '20', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
+                ->addDeliveryNoteReference(new InvoiceSuiteReferenceDocumentLineDTO('DEVNOTE-1', '10', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970')))
+                ->addDeliveryNoteReference(new InvoiceSuiteReferenceDocumentLineDTO('DEVNOTE-1', '20', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970')))
+                ->addInvoiceReference(new InvoiceSuiteReferenceDocumentLineExtDTO('INVREF-1', '100', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 'TYPECODE-1', 'REFTYPECODE-1', 'DESC-1'))
+                ->addInvoiceReference(new InvoiceSuiteReferenceDocumentLineExtDTO('INVREF-1', '200', (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'), 'TYPECODE-2', 'REFTYPECODE-2', 'DESC-2'))
+                ->setGrossPrice(new InvoiceSuitePriceGrossDTO(100.0, new InvoiceSuiteQuantityDTO(1.0, 'C62'), [new InvoiceSuiteAllowanceChargeDTO(false, 1.0, 2.0, 3.0, 'S', 'VAT', 19.0, 'REASON-1', 'REASONCODE-1')]))
+                ->setNetPrice(new InvoiceSuitePriceNetDTO(1.0, new InvoiceSuiteQuantityDTO(2.0, 'C62')))
+                ->setQuantityBilled(new InvoiceSuiteQuantityDTO(1.0, 'C62'))
+                ->setQuantityChargeFree(new InvoiceSuiteQuantityDTO(2.0, 'C62'))
+                ->setQuantityPackage(new InvoiceSuiteQuantityDTO(3.0, 'C62'))
+                ->setShipToParty(
+                    (new InvoiceSuitePartyDTO())
+                        ->addName('Ship To GmbH')
+                        ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                        ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                        ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                        ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                        ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                        ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                        ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                        ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                        ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Ship To AG'))
+                        ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@shipto.de'))
+                        ->addCommunication(new InvoiceSuiteCommunicationDTO('info@shipto.de', 'EM'))
+                )
+                ->setUltimateShipToParty(
+                    (new InvoiceSuitePartyDTO())
+                        ->addName('Ultimate Ship To GmbH')
+                        ->addId(new InvoiceSuiteIdDTO('0815-4711'))
+                        ->addId(new InvoiceSuiteIdDTO('0815-4712'))
+                        ->addGlobalId(new InvoiceSuiteIdDTO('11111', '0088'))
+                        ->addGlobalId(new InvoiceSuiteIdDTO('22222', '0088'))
+                        ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987', 'VA'))
+                        ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-X', 'FC'))
+                        ->addTaxRegistration(new InvoiceSuiteIdDTO('893489787987-AA', 'VA'))
+                        ->addAddress(new InvoiceSuiteAddressDTO('Line 1', 'Line 2', 'Line 3', '06108', 'City', 'DE', 'Bavaria'))
+                        ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('3874837489237', '8884', 'Ultimate Ship To AG'))
+                        ->addContact(new InvoiceSuiteContactDTO('Horst Meier', 'Buchhaltung', '0815-4711', '0815-4712', 'horst.meier@ultimateshipto.de'))
+                        ->addCommunication(new InvoiceSuiteCommunicationDTO('info@ultimateshipto.de', 'EM'))
+                )
+                ->addSupplyChainEvent((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'))
+                ->addSupplyChainEvent((new DateTime())->createFromFormat('d.m.Y', '02.01.1970'))
+                ->addBillingPeriod(new InvoiceSuiteDateRangeDTO((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), (new DateTime())->createFromFormat('d.m.Y', '31.01.1970'), 'Some Description'))
+                ->addBillingPeriod(new InvoiceSuiteDateRangeDTO((new DateTime())->createFromFormat('d.m.Y', '01.03.1970'), (new DateTime())->createFromFormat('d.m.Y', '31.03.1970'), 'Some Description 2'))
+                ->addPostingReference(new InvoiceSuiteIdDTO('PREF-1', 'PREF-1-TYPE'))
+                ->addPostingReference(new InvoiceSuiteIdDTO('PREF-2', 'PREF-2-TYPE'))
+                ->addTax((new InvoiceSuiteTaxDTO())
+                    ->setCategory('S')
+                    ->setType('VAT')
+                    ->setBasisAmount(100.0)
+                    ->setAmount(7.0)
+                    ->setPercent(7.0)
+                    ->setExemptionReason('Reason')
+                    ->setExemptionReasonCode('ReasonCode')
+                    ->setDueDate((new DateTime())->createFromFormat('d.m.Y', '01.01.1970'))
+                    ->setDueCode('DUECODE2'))
+                ->addTax((new InvoiceSuiteTaxDTO())
+                    ->setCategory('S')
+                    ->setType('VAT')
+                    ->setBasisAmount(100.0)
+                    ->setAmount(7.0)
+                    ->setPercent(7.0)
+                    ->setExemptionReason('Reason2')
+                    ->setExemptionReasonCode('ReasonCode2')
+                    ->setDueDate((new DateTime())->createFromFormat('d.m.Y', '02.01.1970'))
+                    ->setDueCode('DUECODE2'))
+                ->addAllowanceCharge((new InvoiceSuiteAllowanceChargeDTO())
+                    ->setChargeIndicator(true)
+                    ->setAmount(10.0)
+                    ->setBaseAmount(100.0)
+                    ->setPercent(10.0)
+                    ->setTaxCategory('S')
+                    ->setTaxType('VAT')
+                    ->setTaxPercent(19.0)
+                    ->setReason('Reason')
+                    ->setReasonCode('ReasonCode'))
+                ->addAllowanceCharge((new InvoiceSuiteAllowanceChargeDTO())
+                    ->setChargeIndicator(false)
+                    ->setAmount(1.0)
+                    ->setBaseAmount(10.0)
+                    ->setPercent(1.0)
+                    ->setTaxCategory('S')
+                    ->setTaxType('VAT')
+                    ->setTaxPercent(19.0)
+                    ->setReason('Reason2')
+                    ->setReasonCode('ReasonCode2'))
+                ->setSummation((new InvoiceSuitesummationLineDTO())
+                    ->setNetAmount(100.0)
+                    ->setChargeTotalAmount(1.0)
+                    ->setDiscountTotalAmount(2.0)
+                    ->setTaxTotalAmount(3.0)
+                    ->setGrossAmount(4.0)));
 
         self::$document->createFromDTO($documentDTO);
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:ID', "2025-04-000001");
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:ID', '2025-04-000001');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:TypeCode', InvoiceSuiteCodelistDocumentTypes::COMMERCIAL_INVOICE->value);
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:Name');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:LanguageID');
@@ -17115,8 +17111,8 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:Content', 2);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:SubjectCode', 2);
 
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', 0, '19700101', "format", "102");
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString', 0, '19700131', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', 0, '19700101', 'format', '102');
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString', 0, '19700131', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:Description', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString', 1);
@@ -17133,7 +17129,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerOrderReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:IssuerAssignedID', 0, 'BO-1');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:IssuerAssignedID', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
 
@@ -17143,7 +17139,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:QuotationReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:IssuerAssignedID', 0, 'CON-1');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:IssuerAssignedID', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
 
@@ -17164,12 +17160,12 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:Name', 2);
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:IssuerAssignedID', 0, 'INVREF-1');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:TypeCode', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:InvoiceReferencedDocument/ram:ReferenceTypeCode', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:InvoiceReferencedDocument/ram:Name', 0);
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:IssuerAssignedID', 1, 'INVREF-2');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1, '19700102', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1, '19700102', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:TypeCode', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:InvoiceReferencedDocument/ram:ReferenceTypeCode', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:InvoiceReferencedDocument/ram:Name', 1);
@@ -17192,7 +17188,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:UltimateCustomerOrderReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 2);
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:IssuerAssignedID', 0, 'DESPADV-1');
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 0, '19700101', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:IssuerAssignedID', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
 
@@ -17206,7 +17202,7 @@ final class ZfFxBasicWlDocumentBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DeliveryNoteReferencedDocument/ram:IssuerAssignedID', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DeliveryNoteReferencedDocument/ram:FormattedIssueDateTime/qdt:DateTimeString', 1);
 
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ActualDeliverySupplyChainEvent/ram:OccurrenceDateTime/udt:DateTimeString', 0, '19700101', "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ActualDeliverySupplyChainEvent/ram:OccurrenceDateTime/udt:DateTimeString', 0, '19700101', 'format', '102');
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ActualDeliverySupplyChainEvent/ram:OccurrenceDateTime/udt:DateTimeString', 1);
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerReference', 0, 'LEITWEGID');

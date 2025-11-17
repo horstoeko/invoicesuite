@@ -6,18 +6,17 @@ namespace horstoeko\invoicesuite\utils;
  * class representing float utilities
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteFloatUtils
 {
     /**
      * Returns true if the given value is null otherwise false
      *
-     * @param float|null $value
-     * @return boolean
+     * @param  null|float $value
+     * @return bool
      */
     public static function floatIsNullOrEmpty(?float $value = null): bool
     {
@@ -28,8 +27,8 @@ class InvoiceSuiteFloatUtils
      * Check if all elements are null or empty
      * Tests if any float in $values is not null and has a value != ""
      *
-     * @param array<float|null> $values
-     * @return boolean
+     * @param  array<null|float> $values
+     * @return bool
      */
     public static function allIsNullOrEmpty(array $values): bool
     {
@@ -45,8 +44,8 @@ class InvoiceSuiteFloatUtils
     /**
      * Returns true if at least on element in values is null or empty
      *
-     * @param array<float|null> $values
-     * @return boolean
+     * @param  array<null|float> $values
+     * @return bool
      */
     public static function oneIsNullOrEmpty(array $values): bool
     {
@@ -62,7 +61,7 @@ class InvoiceSuiteFloatUtils
     /**
      * Returns null if the given float is empty
      *
-     * @param null|float $str
+     * @param  null|float $str
      * @return null|float
      */
     public static function asNullWhenEmpty(?float $str): ?float

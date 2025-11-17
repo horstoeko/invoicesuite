@@ -15,10 +15,9 @@ use Throwable;
  * Class representing an exception for non-readable a file
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteFileNotReadableException extends InvoiceSuiteBaseException
 {
@@ -26,10 +25,10 @@ class InvoiceSuiteFileNotReadableException extends InvoiceSuiteBaseException
      * Constructor
      *
      * @param string         $filename
-     * @param Throwable|null $throwable
+     * @param null|Throwable $throwable
      */
     public function __construct(string $filename, ?Throwable $throwable = null)
     {
-        parent::__construct(sprintf("The file %s is not readable", $filename), InvoiceSuiteExceptionCodes::FILENOTREADABLE, $throwable);
+        parent::__construct(sprintf('The file %s is not readable', $filename), InvoiceSuiteExceptionCodes::FILENOTREADABLE, $throwable);
     }
 }

@@ -13,40 +13,39 @@ namespace horstoeko\invoicesuite\documents\dto;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteNoteDTO
 {
     /**
      * Free text containing unstructured information that is relevant to the invoice as a whole
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $content = null;
 
     /**
      * Code to classify the content of the free text of the invoice
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $contentCode = null;
 
     /**
      * Qualification of the free text for the invoice
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $subjectCode = null;
 
     /**
      * Constructor
      *
-     * @param string|null $content Free text containing unstructured information that is relevant to the invoice as a whole
-     * @param string|null $contentCode Code to classify the content of the free text of the invoice
-     * @param string|null $subjectCode Qualification of the free text for the invoice
+     * @param null|string $content     Free text containing unstructured information that is relevant to the invoice as a whole
+     * @param null|string $contentCode Code to classify the content of the free text of the invoice
+     * @param null|string $subjectCode Qualification of the free text for the invoice
      */
     public function __construct(?string $content = null, ?string $contentCode = null, ?string $subjectCode = null)
     {
@@ -58,7 +57,7 @@ class InvoiceSuiteNoteDTO
     /**
      * Returns free text containing unstructured information that is relevant to the invoice as a whole
      *
-     * @return string|null
+     * @return null|string
      */
     public function getContent(): ?string
     {
@@ -68,7 +67,7 @@ class InvoiceSuiteNoteDTO
     /**
      * Sets free text containing unstructured information that is relevant to the invoice as a whole
      *
-     * @param string|null $content Free text containing unstructured information that is relevant to the invoice as a whole
+     * @param  null|string $content Free text containing unstructured information that is relevant to the invoice as a whole
      * @return self
      */
     public function setContent(?string $content): self
@@ -81,7 +80,7 @@ class InvoiceSuiteNoteDTO
     /**
      * Returns code to classify the content of the free text of the invoice
      *
-     * @return string|null
+     * @return null|string
      */
     public function getContentCode(): ?string
     {
@@ -91,7 +90,7 @@ class InvoiceSuiteNoteDTO
     /**
      * Sets code to classify the content of the free text of the invoice
      *
-     * @param string|null $contentCode Code to classify the content of the free text of the invoice
+     * @param  null|string $contentCode Code to classify the content of the free text of the invoice
      * @return self
      */
     public function setContentCode(?string $contentCode): self
@@ -104,7 +103,7 @@ class InvoiceSuiteNoteDTO
     /**
      * Returns qualification of the free text for the invoice
      *
-     * @return string|null
+     * @return null|string
      */
     public function getSubjectCode(): ?string
     {
@@ -114,7 +113,7 @@ class InvoiceSuiteNoteDTO
     /**
      * Sets qualification of the free text for the invoice
      *
-     * @param string|null $subjectCode Qualification of the free text for the invoice
+     * @param  null|string $subjectCode Qualification of the free text for the invoice
      * @return self
      */
     public function setSubjectCode(?string $subjectCode): self

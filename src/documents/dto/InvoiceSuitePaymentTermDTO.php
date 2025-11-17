@@ -15,24 +15,23 @@ use DateTimeInterface;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuitePaymentTermDTO
 {
     /**
      * The text description of the payment terms
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $description = null;
 
     /**
      * The date by which payment is due
      *
-     * @var DateTimeInterface|null
+     * @var null|DateTimeInterface
      */
     protected ?DateTimeInterface $dueDate = null;
 
@@ -53,18 +52,18 @@ class InvoiceSuitePaymentTermDTO
     /**
      * The mandate reference
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $mandate = null;
 
     /**
      * Constructor
      *
-     * @param string|null $description The text description of the payment terms
-     * @param DateTimeInterface|null $dueDate The date by which payment is due
+     * @param null|string                               $description   The text description of the payment terms
+     * @param null|DateTimeInterface                    $dueDate       The date by which payment is due
      * @param array<InvoiceSuitePaymentTermDiscountDTO> $discountTerms The payment discounts
-     * @param array<InvoiceSuitePaymentTermPenaltyDTO> $penaltyTerms The payment penalties
-     * @param string|null $description The mandate reference
+     * @param array<InvoiceSuitePaymentTermPenaltyDTO>  $penaltyTerms  The payment penalties
+     * @param null|string                               $description   The mandate reference
      */
     public function __construct(
         ?string $description = null,
@@ -83,7 +82,7 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Returns the text description of the payment terms
      *
-     * @return string|null
+     * @return null|string
      */
     public function getDescription(): ?string
     {
@@ -93,7 +92,7 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Sets the text description of the payment terms
      *
-     * @param string|null $description The text description of the payment terms
+     * @param  null|string $description The text description of the payment terms
      * @return self
      */
     public function setDescription(?string $description): self
@@ -106,7 +105,7 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Returns the mandate reference
      *
-     * @return string|null
+     * @return null|string
      */
     public function getMandate(): ?string
     {
@@ -116,7 +115,7 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Sets the mandate reference
      *
-     * @param string|null $mandate The mandate reference
+     * @param  null|string $mandate The mandate reference
      * @return self
      */
     public function setMandate(?string $mandate): self
@@ -129,7 +128,7 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Returns the date by which payment is due
      *
-     * @return DateTimeInterface|null
+     * @return null|DateTimeInterface
      */
     public function getDueDate(): ?DateTimeInterface
     {
@@ -139,7 +138,7 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Sets the date by which payment is due
      *
-     * @param DateTimeInterface|null $dueDate The date by which payment is due
+     * @param  null|DateTimeInterface $dueDate The date by which payment is due
      * @return self
      */
     public function setDueDate(?DateTimeInterface $dueDate): self
@@ -162,7 +161,7 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Sets the payment discounts
      *
-     * @param array<InvoiceSuitePaymentTermDiscountDTO> $discountTerms The payment discounts
+     * @param  array<InvoiceSuitePaymentTermDiscountDTO> $discountTerms The payment discounts
      * @return self
      */
     public function setDiscountTerms(array $discountTerms): self
@@ -175,7 +174,7 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Add single The payment discounts
      *
-     * @param InvoiceSuitePaymentTermDiscountDTO $discountTerms The payment discounts
+     * @param  InvoiceSuitePaymentTermDiscountDTO $discountTerms The payment discounts
      * @return self
      */
     public function addDiscountTerm(InvoiceSuitePaymentTermDiscountDTO $discountTerms): self
@@ -188,8 +187,8 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Get first The payment discounts
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstDiscountTerm(callable $callback, ?callable $callbackElse = null): self
@@ -206,8 +205,8 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Get next The payment discounts
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextDiscountTerm(callable $callback, ?callable $callbackElse = null): self
@@ -224,8 +223,8 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Get previous The payment discounts
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousDiscountTerm(callable $callback, ?callable $callbackElse = null): self
@@ -242,8 +241,8 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Get last The payment discounts
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastDiscountTerms(callable $callback, ?callable $callbackElse = null): self
@@ -260,9 +259,9 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Loop over The payment discounts and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachDiscountTerm(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
@@ -274,7 +273,7 @@ class InvoiceSuitePaymentTermDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($discountTerms);
         }
@@ -299,7 +298,7 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Sets the payment penalties
      *
-     * @param array<InvoiceSuitePaymentTermPenaltyDTO> $penaltyTerms The payment penalties
+     * @param  array<InvoiceSuitePaymentTermPenaltyDTO> $penaltyTerms The payment penalties
      * @return self
      */
     public function setPenaltyTerms(array $penaltyTerms): self
@@ -312,7 +311,7 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Add single The payment penalties
      *
-     * @param InvoiceSuitePaymentTermPenaltyDTO $penaltyTerms The payment penalties
+     * @param  InvoiceSuitePaymentTermPenaltyDTO $penaltyTerms The payment penalties
      * @return self
      */
     public function addPenaltyTerm(InvoiceSuitePaymentTermPenaltyDTO $penaltyTerms): self
@@ -325,8 +324,8 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Get first The payment penalties
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstPenaltyTerm(callable $callback, ?callable $callbackElse = null): self
@@ -343,8 +342,8 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Get next The payment penalties
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextPenaltyTerm(callable $callback, ?callable $callbackElse = null): self
@@ -361,8 +360,8 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Get previous The payment penalties
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousPenaltyTerm(callable $callback, ?callable $callbackElse = null): self
@@ -379,8 +378,8 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Get last The payment penalties
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastPenaltyTerm(callable $callback, ?callable $callbackElse = null): self
@@ -397,9 +396,9 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Loop over The payment penalties and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachPenaltyTerm(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
@@ -411,7 +410,7 @@ class InvoiceSuitePaymentTermDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($penaltyTerms);
         }

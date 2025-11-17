@@ -15,10 +15,9 @@ use Throwable;
  * Class representing the base exception
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteBadMethodCallException extends InvoiceSuiteBaseException
 {
@@ -26,7 +25,7 @@ class InvoiceSuiteBadMethodCallException extends InvoiceSuiteBaseException
      * Constructor
      *
      * @param string         $method
-     * @param Throwable|null $throwable
+     * @param null|Throwable $throwable
      */
     public function __construct(string $method, ?Throwable $throwable = null)
     {

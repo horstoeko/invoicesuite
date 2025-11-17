@@ -15,52 +15,51 @@ use DateTimeInterface;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteDocumentHeaderDTO
 {
     /**
      * The document number issued by the seller
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $number = null;
 
     /**
      * The type of the document expressed as a code
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $type = null;
 
     /**
      * The document type as free text
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $description = null;
 
     /**
      * The language code in which the document was written
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $language = null;
 
     /**
      * Date of the document. The date when the document was issued by the seller
      *
-     * @var DateTimeInterface|null
+     * @var null|DateTimeInterface
      */
     protected ?DateTimeInterface $date = null;
 
     /**
      * The contractual due date of the document
      *
-     * @var DateTimeInterface|null
+     * @var null|DateTimeInterface
      */
     protected ?DateTimeInterface $completeDate = null;
 
@@ -74,28 +73,28 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * The code for the invoice currency
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $currency = null;
 
     /**
      * The code for the tax currency
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $taxCurrency = null;
 
     /**
      * The flag that indicated that this document is a copy
      *
-     * @var bool|null
+     * @var null|bool
      */
     protected ?bool $isCopy = null;
 
     /**
      * The flag that indicated that this document is a test
      *
-     * @var bool|null
+     * @var null|bool
      */
     protected ?bool $isTest = null;
 
@@ -200,70 +199,70 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * The Seller/Supplier Party
      *
-     * @var InvoiceSuitePartyDTO|null
+     * @var null|InvoiceSuitePartyDTO
      */
     protected ?InvoiceSuitePartyDTO $sellerParty = null;
 
     /**
      * The Buyer/Customer Party
      *
-     * @var InvoiceSuitePartyDTO|null
+     * @var null|InvoiceSuitePartyDTO
      */
     protected ?InvoiceSuitePartyDTO $buyerParty = null;
 
     /**
      * The Tax Representativ Party
      *
-     * @var InvoiceSuitePartyDTO|null
+     * @var null|InvoiceSuitePartyDTO
      */
     protected ?InvoiceSuitePartyDTO $taxRepresentativeParty = null;
 
     /**
      * The Product Enduser Party
      *
-     * @var InvoiceSuitePartyDTO|null
+     * @var null|InvoiceSuitePartyDTO
      */
     protected ?InvoiceSuitePartyDTO $productEndUserParty = null;
 
     /**
      * The Ship-To Party
      *
-     * @var InvoiceSuitePartyDTO|null
+     * @var null|InvoiceSuitePartyDTO
      */
     protected ?InvoiceSuitePartyDTO $shipToParty = null;
 
     /**
      * The Ultimate Ship-To Party
      *
-     * @var InvoiceSuitePartyDTO|null
+     * @var null|InvoiceSuitePartyDTO
      */
     protected ?InvoiceSuitePartyDTO $ultimateShipToParty = null;
 
     /**
      * The Ship-From Party
      *
-     * @var InvoiceSuitePartyDTO|null
+     * @var null|InvoiceSuitePartyDTO
      */
     protected ?InvoiceSuitePartyDTO $shipFromParty = null;
 
     /**
      * The Invoicer Party
      *
-     * @var InvoiceSuitePartyDTO|null
+     * @var null|InvoiceSuitePartyDTO
      */
     protected ?InvoiceSuitePartyDTO $invoicerParty = null;
 
     /**
      * The Invoicee Party
      *
-     * @var InvoiceSuitePartyDTO|null
+     * @var null|InvoiceSuitePartyDTO
      */
     protected ?InvoiceSuitePartyDTO $invoiceeParty = null;
 
     /**
      * The Payee Party
      *
-     * @var InvoiceSuitePartyDTO|null
+     * @var null|InvoiceSuitePartyDTO
      */
     protected ?InvoiceSuitePartyDTO $payeeParty = null;
 
@@ -333,50 +332,50 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Constructor
      *
-     * @param string|null $number The document number issued by the seller
-     * @param string|null $type The type of the document expressed as a code
-     * @param string|null $description The document type as free text
-     * @param string|null $language The language code in which the document was written
-     * @param DateTimeInterface|null $date Date of the document. The date when the document was issued by the seller
-     * @param DateTimeInterface|null $completeDate The contractual due date of the document
-     * @param array<DateTimeInterface> $supplyChainEvents The date of the delivery
-     * @param string|null $currency The code for the invoice currency
-     * @param string|null $taxCurrency The code for the tax currency
-     * @param bool|null $isCopy The flag that indicated that this document is a copy
-     * @param bool|null $isTest The flag that indicated that this document is a test
-     * @param array<InvoiceSuiteNoteDTO> $notes The notes for this document
-     * @param array<InvoiceSuiteDateRangeDTO> $billingPeriods The start and/or end date of the billing period
-     * @param array<InvoiceSuiteIdDTO> $postingReferences The posting reference
-     * @param array<InvoiceSuiteReferenceDocumentDTO> $sellerOrderReferences The associated seller's order confirmation
-     * @param array<InvoiceSuiteReferenceDocumentDTO> $buyerOrderReferences The associated buyer's order
-     * @param array<InvoiceSuiteReferenceDocumentDTO> $quotationReferences The associated quotation
-     * @param array<InvoiceSuiteReferenceDocumentDTO> $contractReferences The associated contract
-     * @param array<InvoiceSuiteReferenceDocumentExtDTO> $additionalReferences The additional associated document
-     * @param array<InvoiceSuiteReferenceDocumentExtDTO> $invoiceReferences The additional invoice document
-     * @param array<InvoiceSuiteProjectDTO> $projectReferences The project reference
-     * @param array<InvoiceSuiteReferenceDocumentDTO> $ultimateCustomerOrderReferences The ultimate customer order reference
-     * @param array<InvoiceSuiteReferenceDocumentDTO> $despatchAdviceReferences The despatch advice reference
-     * @param array<InvoiceSuiteReferenceDocumentDTO> $receivingAdviceReferences The receiving advice reference
-     * @param array<InvoiceSuiteReferenceDocumentDTO> $deliveryNoteReferences The delivery note reference
-     * @param InvoiceSuitePartyDTO|null $sellerParty The Seller/Supplier Party
-     * @param InvoiceSuitePartyDTO|null $buyerParty The Buyer/Customer Party
-     * @param InvoiceSuitePartyDTO|null $taxRepresentativeParty The Tax Representativ Party
-     * @param InvoiceSuitePartyDTO|null $productEndUserParty The Product Enduser Party
-     * @param InvoiceSuitePartyDTO|null $shipToParty The Ship-To Party
-     * @param InvoiceSuitePartyDTO|null $ultimateShipToParty The Ultimate Ship-To Party
-     * @param InvoiceSuitePartyDTO|null $shipFromParty The Ship-From Party
-     * @param InvoiceSuitePartyDTO|null $invoicerParty The Invoicer Party
-     * @param InvoiceSuitePartyDTO|null $invoiceeParty The Invoicee Party
-     * @param InvoiceSuitePartyDTO|null $payeeParty The Payee Party
-     * @param array<InvoiceSuitePaymentMeanDTO> $paymentMeans The payment means
-     * @param array<InvoiceSuitePaymentTermDTO> $paymentTerms The payment terms
-     * @param array<InvoiceSuiteIdDTO> $creditorReferences The creditor identifier
-     * @param array<InvoiceSuiteIdDTO> $buyerReferences The ID for internal routing (Leitweg ID)
-     * @param array<InvoiceSuiteTaxDTO> $taxes The VAT breakdown
-     * @param array<InvoiceSuiteAllowanceChargeDTO> $allowanceCharges The allowances/charges
-     * @param array<InvoiceSuiteServiceChargeDTO> $serviceCharges The allowances/charges
-     * @param array<InvoiceSuiteSummationDTO> $summations The summation
-     * @param array<InvoiceSuiteDocumentPositionDTO> $positions The Document positions
+     * @param null|string                                $number                          The document number issued by the seller
+     * @param null|string                                $type                            The type of the document expressed as a code
+     * @param null|string                                $description                     The document type as free text
+     * @param null|string                                $language                        The language code in which the document was written
+     * @param null|DateTimeInterface                     $date                            Date of the document. The date when the document was issued by the seller
+     * @param null|DateTimeInterface                     $completeDate                    The contractual due date of the document
+     * @param array<DateTimeInterface>                   $supplyChainEvents               The date of the delivery
+     * @param null|string                                $currency                        The code for the invoice currency
+     * @param null|string                                $taxCurrency                     The code for the tax currency
+     * @param null|bool                                  $isCopy                          The flag that indicated that this document is a copy
+     * @param null|bool                                  $isTest                          The flag that indicated that this document is a test
+     * @param array<InvoiceSuiteNoteDTO>                 $notes                           The notes for this document
+     * @param array<InvoiceSuiteDateRangeDTO>            $billingPeriods                  The start and/or end date of the billing period
+     * @param array<InvoiceSuiteIdDTO>                   $postingReferences               The posting reference
+     * @param array<InvoiceSuiteReferenceDocumentDTO>    $sellerOrderReferences           The associated seller's order confirmation
+     * @param array<InvoiceSuiteReferenceDocumentDTO>    $buyerOrderReferences            The associated buyer's order
+     * @param array<InvoiceSuiteReferenceDocumentDTO>    $quotationReferences             The associated quotation
+     * @param array<InvoiceSuiteReferenceDocumentDTO>    $contractReferences              The associated contract
+     * @param array<InvoiceSuiteReferenceDocumentExtDTO> $additionalReferences            The additional associated document
+     * @param array<InvoiceSuiteReferenceDocumentExtDTO> $invoiceReferences               The additional invoice document
+     * @param array<InvoiceSuiteProjectDTO>              $projectReferences               The project reference
+     * @param array<InvoiceSuiteReferenceDocumentDTO>    $ultimateCustomerOrderReferences The ultimate customer order reference
+     * @param array<InvoiceSuiteReferenceDocumentDTO>    $despatchAdviceReferences        The despatch advice reference
+     * @param array<InvoiceSuiteReferenceDocumentDTO>    $receivingAdviceReferences       The receiving advice reference
+     * @param array<InvoiceSuiteReferenceDocumentDTO>    $deliveryNoteReferences          The delivery note reference
+     * @param null|InvoiceSuitePartyDTO                  $sellerParty                     The Seller/Supplier Party
+     * @param null|InvoiceSuitePartyDTO                  $buyerParty                      The Buyer/Customer Party
+     * @param null|InvoiceSuitePartyDTO                  $taxRepresentativeParty          The Tax Representativ Party
+     * @param null|InvoiceSuitePartyDTO                  $productEndUserParty             The Product Enduser Party
+     * @param null|InvoiceSuitePartyDTO                  $shipToParty                     The Ship-To Party
+     * @param null|InvoiceSuitePartyDTO                  $ultimateShipToParty             The Ultimate Ship-To Party
+     * @param null|InvoiceSuitePartyDTO                  $shipFromParty                   The Ship-From Party
+     * @param null|InvoiceSuitePartyDTO                  $invoicerParty                   The Invoicer Party
+     * @param null|InvoiceSuitePartyDTO                  $invoiceeParty                   The Invoicee Party
+     * @param null|InvoiceSuitePartyDTO                  $payeeParty                      The Payee Party
+     * @param array<InvoiceSuitePaymentMeanDTO>          $paymentMeans                    The payment means
+     * @param array<InvoiceSuitePaymentTermDTO>          $paymentTerms                    The payment terms
+     * @param array<InvoiceSuiteIdDTO>                   $creditorReferences              The creditor identifier
+     * @param array<InvoiceSuiteIdDTO>                   $buyerReferences                 The ID for internal routing (Leitweg ID)
+     * @param array<InvoiceSuiteTaxDTO>                  $taxes                           The VAT breakdown
+     * @param array<InvoiceSuiteAllowanceChargeDTO>      $allowanceCharges                The allowances/charges
+     * @param array<InvoiceSuiteServiceChargeDTO>        $serviceCharges                  The allowances/charges
+     * @param array<InvoiceSuiteSummationDTO>            $summations                      The summation
+     * @param array<InvoiceSuiteDocumentPositionDTO>     $positions                       The Document positions
      */
     public function __construct(
         ?string $number = null,
@@ -473,7 +472,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the document number issued by the seller
      *
-     * @return string|null
+     * @return null|string
      */
     public function getNumber(): ?string
     {
@@ -483,7 +482,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the document number issued by the seller
      *
-     * @param string|null $number The document number issued by the seller
+     * @param  null|string $number The document number issued by the seller
      * @return self
      */
     public function setNumber(?string $number): self
@@ -496,7 +495,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the type of the document expressed as a code
      *
-     * @return string|null
+     * @return null|string
      */
     public function getType(): ?string
     {
@@ -506,7 +505,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the type of the document expressed as a code
      *
-     * @param string|null $type The type of the document expressed as a code
+     * @param  null|string $type The type of the document expressed as a code
      * @return self
      */
     public function setType(?string $type): self
@@ -519,7 +518,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the document type as free text
      *
-     * @return string|null
+     * @return null|string
      */
     public function getDescription(): ?string
     {
@@ -529,7 +528,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the document type as free text
      *
-     * @param string|null $description The document type as free text
+     * @param  null|string $description The document type as free text
      * @return self
      */
     public function setDescription(?string $description): self
@@ -542,7 +541,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the language code in which the document was written
      *
-     * @return string|null
+     * @return null|string
      */
     public function getLanguage(): ?string
     {
@@ -552,7 +551,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the language code in which the document was written
      *
-     * @param string|null $language The language code in which the document was written
+     * @param  null|string $language The language code in which the document was written
      * @return self
      */
     public function setLanguage(?string $language): self
@@ -565,7 +564,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns date of the document. The date when the document was issued by the seller
      *
-     * @return DateTimeInterface|null
+     * @return null|DateTimeInterface
      */
     public function getDate(): ?DateTimeInterface
     {
@@ -575,7 +574,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets date of the document. The date when the document was issued by the seller
      *
-     * @param DateTimeInterface|null $date Date of the document. The date when the document was issued by the seller
+     * @param  null|DateTimeInterface $date Date of the document. The date when the document was issued by the seller
      * @return self
      */
     public function setDate(?DateTimeInterface $date): self
@@ -588,7 +587,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the contractual due date of the document
      *
-     * @return DateTimeInterface|null
+     * @return null|DateTimeInterface
      */
     public function getCompleteDate(): ?DateTimeInterface
     {
@@ -598,7 +597,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the contractual due date of the document
      *
-     * @param DateTimeInterface|null $completeDate The contractual due date of the document
+     * @param  null|DateTimeInterface $completeDate The contractual due date of the document
      * @return self
      */
     public function setCompleteDate(?DateTimeInterface $completeDate): self
@@ -621,7 +620,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the date of the delivery
      *
-     * @param array<DateTimeInterface> $supplyChainEvents The date of the delivery
+     * @param  array<DateTimeInterface> $supplyChainEvents The date of the delivery
      * @return self
      */
     public function setSupplyChainEvents(array $supplyChainEvents): self
@@ -634,7 +633,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The date of the delivery
      *
-     * @param DateTimeInterface $supplyChainEvent The date of the delivery
+     * @param  DateTimeInterface $supplyChainEvent The date of the delivery
      * @return self
      */
     public function addSupplyChainEvent(?DateTimeInterface $supplyChainEvent): self
@@ -651,8 +650,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The date of the delivery
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstSupplyChainEvent(callable $callback, ?callable $callbackElse = null): self
@@ -669,8 +668,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The date of the delivery
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextSupplyChainEvent(callable $callback, ?callable $callbackElse = null): self
@@ -687,8 +686,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The date of the delivery
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousSupplyChainEvent(callable $callback, ?callable $callbackElse = null): self
@@ -705,8 +704,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The date of the delivery
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastSupplyChainEvent(callable $callback, ?callable $callbackElse = null): self
@@ -723,9 +722,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The date of the delivery and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachSupplyChainEvent(
@@ -740,7 +739,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($supplyChainEvent);
         }
@@ -755,7 +754,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the code for the invoice currency
      *
-     * @return string|null
+     * @return null|string
      */
     public function getCurrency(): ?string
     {
@@ -765,7 +764,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the code for the invoice currency
      *
-     * @param string|null $currency The code for the invoice currency
+     * @param  null|string $currency The code for the invoice currency
      * @return self
      */
     public function setCurrency(?string $currency): self
@@ -778,7 +777,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the code for the tax currency
      *
-     * @return string|null
+     * @return null|string
      */
     public function getTaxCurrency(): ?string
     {
@@ -788,7 +787,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the code for the tax currency
      *
-     * @param string|null $taxCurrency The code for the tax currency
+     * @param  null|string $taxCurrency The code for the tax currency
      * @return self
      */
     public function setTaxCurrency(?string $taxCurrency): self
@@ -801,7 +800,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the flag that indicated that this document is a copy
      *
-     * @return bool|null
+     * @return null|bool
      */
     public function getIsCopy(): ?bool
     {
@@ -811,7 +810,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the flag that indicated that this document is a copy
      *
-     * @param bool|null $isCopy The flag that indicated that this document is a copy
+     * @param  null|bool $isCopy The flag that indicated that this document is a copy
      * @return self
      */
     public function setIsCopy(?bool $isCopy): self
@@ -824,7 +823,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the flag that indicated that this document is a test
      *
-     * @return bool|null
+     * @return null|bool
      */
     public function getIsTest(): ?bool
     {
@@ -834,7 +833,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the flag that indicated that this document is a test
      *
-     * @param bool|null $isTest The flag that indicated that this document is a test
+     * @param  null|bool $isTest The flag that indicated that this document is a test
      * @return self
      */
     public function setIsTest(?bool $isTest): self
@@ -857,7 +856,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the notes for this document
      *
-     * @param array<InvoiceSuiteNoteDTO> $notes The notes for this document
+     * @param  array<InvoiceSuiteNoteDTO> $notes The notes for this document
      * @return self
      */
     public function setNotes(array $notes): self
@@ -870,7 +869,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The notes for this document
      *
-     * @param InvoiceSuiteNoteDTO $note The notes for this document
+     * @param  InvoiceSuiteNoteDTO $note The notes for this document
      * @return self
      */
     public function addNote(InvoiceSuiteNoteDTO $note): self
@@ -883,8 +882,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The notes for this document
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstNote(callable $callback, ?callable $callbackElse = null): self
@@ -901,8 +900,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The notes for this document
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextNote(callable $callback, ?callable $callbackElse = null): self
@@ -919,8 +918,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The notes for this document
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousNote(callable $callback, ?callable $callbackElse = null): self
@@ -937,8 +936,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The notes for this document
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastNote(callable $callback, ?callable $callbackElse = null): self
@@ -955,9 +954,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The notes for this document and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachNote(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
@@ -969,7 +968,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($note);
         }
@@ -994,7 +993,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the start and/or end date of the billing period
      *
-     * @param array<InvoiceSuiteDateRangeDTO> $billingPeriods The start and/or end date of the billing period
+     * @param  array<InvoiceSuiteDateRangeDTO> $billingPeriods The start and/or end date of the billing period
      * @return self
      */
     public function setBillingPeriods(array $billingPeriods): self
@@ -1007,7 +1006,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The start and/or end date of the billing period
      *
-     * @param InvoiceSuiteDateRangeDTO $billingPeriod The start and/or end date of the billing period
+     * @param  InvoiceSuiteDateRangeDTO $billingPeriod The start and/or end date of the billing period
      * @return self
      */
     public function addBillingPeriod(InvoiceSuiteDateRangeDTO $billingPeriod): self
@@ -1020,8 +1019,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The start and/or end date of the billing period
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstBillingPeriod(callable $callback, ?callable $callbackElse = null): self
@@ -1038,8 +1037,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The start and/or end date of the billing period
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextBillingPeriod(callable $callback, ?callable $callbackElse = null): self
@@ -1056,8 +1055,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The start and/or end date of the billing period
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousBillingPeriod(callable $callback, ?callable $callbackElse = null): self
@@ -1074,8 +1073,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The start and/or end date of the billing period
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastBillingPeriod(callable $callback, ?callable $callbackElse = null): self
@@ -1092,9 +1091,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The start and/or end date of the billing period and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachBillingPeriod(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
@@ -1106,7 +1105,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($billingPeriod);
         }
@@ -1131,7 +1130,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the posting reference
      *
-     * @param array<InvoiceSuiteIdDTO> $postingReferences The posting reference
+     * @param  array<InvoiceSuiteIdDTO> $postingReferences The posting reference
      * @return self
      */
     public function setPostingReferences(array $postingReferences): self
@@ -1144,7 +1143,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The posting reference
      *
-     * @param InvoiceSuiteIdDTO $postingReference The posting reference
+     * @param  InvoiceSuiteIdDTO $postingReference The posting reference
      * @return self
      */
     public function addPostingReference(InvoiceSuiteIdDTO $postingReference): self
@@ -1157,8 +1156,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The posting reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstPostingReference(callable $callback, ?callable $callbackElse = null): self
@@ -1175,8 +1174,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The posting reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextPostingReference(callable $callback, ?callable $callbackElse = null): self
@@ -1193,8 +1192,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The posting reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousPostingReference(callable $callback, ?callable $callbackElse = null): self
@@ -1211,8 +1210,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The posting reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastPostingReference(callable $callback, ?callable $callbackElse = null): self
@@ -1229,9 +1228,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The posting reference and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachPostingReference(
@@ -1246,7 +1245,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($postingReference);
         }
@@ -1271,7 +1270,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the associated seller's order confirmation
      *
-     * @param array<InvoiceSuiteReferenceDocumentDTO> $sellerOrderReferences The associated seller's order confirmation
+     * @param  array<InvoiceSuiteReferenceDocumentDTO> $sellerOrderReferences The associated seller's order confirmation
      * @return self
      */
     public function setSellerOrderReferences(array $sellerOrderReferences): self
@@ -1284,7 +1283,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The associated seller's order confirmation
      *
-     * @param InvoiceSuiteReferenceDocumentDTO $sellerOrderReference The associated seller's order confirmation
+     * @param  InvoiceSuiteReferenceDocumentDTO $sellerOrderReference The associated seller's order confirmation
      * @return self
      */
     public function addSellerOrderReference(InvoiceSuiteReferenceDocumentDTO $sellerOrderReference): self
@@ -1297,8 +1296,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The associated seller's order confirmation
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstSellerOrderReference(callable $callback, ?callable $callbackElse = null): self
@@ -1315,8 +1314,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The associated seller's order confirmation
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextSellerOrderReference(callable $callback, ?callable $callbackElse = null): self
@@ -1333,8 +1332,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The associated seller's order confirmation
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousSellerOrderReference(callable $callback, ?callable $callbackElse = null): self
@@ -1351,8 +1350,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The associated seller's order confirmation
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastSellerOrderReference(callable $callback, ?callable $callbackElse = null): self
@@ -1369,9 +1368,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The associated seller's order confirmation and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachSellerOrderReference(
@@ -1386,7 +1385,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($sellerOrderReference);
         }
@@ -1411,7 +1410,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the associated buyer's order
      *
-     * @param array<InvoiceSuiteReferenceDocumentDTO> $buyerOrderReferences The associated buyer's order
+     * @param  array<InvoiceSuiteReferenceDocumentDTO> $buyerOrderReferences The associated buyer's order
      * @return self
      */
     public function setBuyerOrderReferences(array $buyerOrderReferences): self
@@ -1424,7 +1423,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The associated buyer's order
      *
-     * @param InvoiceSuiteReferenceDocumentDTO $buyerOrderReference The associated buyer's order
+     * @param  InvoiceSuiteReferenceDocumentDTO $buyerOrderReference The associated buyer's order
      * @return self
      */
     public function addBuyerOrderReference(InvoiceSuiteReferenceDocumentDTO $buyerOrderReference): self
@@ -1437,8 +1436,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The associated buyer's order
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstBuyerOrderReference(callable $callback, ?callable $callbackElse = null): self
@@ -1455,8 +1454,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The associated buyer's order
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextBuyerOrderReference(callable $callback, ?callable $callbackElse = null): self
@@ -1473,8 +1472,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The associated buyer's order
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousBuyerOrderReference(callable $callback, ?callable $callbackElse = null): self
@@ -1491,8 +1490,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The associated buyer's order
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastBuyerOrderReference(callable $callback, ?callable $callbackElse = null): self
@@ -1509,9 +1508,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The associated buyer's order and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachBuyerOrderReference(
@@ -1526,7 +1525,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($buyerOrderReference);
         }
@@ -1551,7 +1550,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the associated quotation
      *
-     * @param array<InvoiceSuiteReferenceDocumentDTO> $quotationReferences The associated quotation
+     * @param  array<InvoiceSuiteReferenceDocumentDTO> $quotationReferences The associated quotation
      * @return self
      */
     public function setQuotationReferences(array $quotationReferences): self
@@ -1564,7 +1563,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The associated quotation
      *
-     * @param InvoiceSuiteReferenceDocumentDTO $quotationReference The associated quotation
+     * @param  InvoiceSuiteReferenceDocumentDTO $quotationReference The associated quotation
      * @return self
      */
     public function addQuotationReference(InvoiceSuiteReferenceDocumentDTO $quotationReference): self
@@ -1577,8 +1576,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The associated quotation
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstQuotationReference(callable $callback, ?callable $callbackElse = null): self
@@ -1595,8 +1594,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The associated quotation
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextQuotationReference(callable $callback, ?callable $callbackElse = null): self
@@ -1613,8 +1612,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The associated quotation
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousQuotationReference(callable $callback, ?callable $callbackElse = null): self
@@ -1631,8 +1630,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The associated quotation
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastQuotationReference(callable $callback, ?callable $callbackElse = null): self
@@ -1649,9 +1648,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The associated quotation and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachQuotationReference(
@@ -1666,7 +1665,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($quotationReference);
         }
@@ -1691,7 +1690,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the associated contract
      *
-     * @param array<InvoiceSuiteReferenceDocumentDTO> $contractReferences The associated contract
+     * @param  array<InvoiceSuiteReferenceDocumentDTO> $contractReferences The associated contract
      * @return self
      */
     public function setContractReferences(array $contractReferences): self
@@ -1704,7 +1703,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The associated contract
      *
-     * @param InvoiceSuiteReferenceDocumentDTO $contractReference The associated contract
+     * @param  InvoiceSuiteReferenceDocumentDTO $contractReference The associated contract
      * @return self
      */
     public function addContractReference(InvoiceSuiteReferenceDocumentDTO $contractReference): self
@@ -1717,8 +1716,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The associated contract
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstContractReference(callable $callback, ?callable $callbackElse = null): self
@@ -1735,8 +1734,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The associated contract
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextContractReference(callable $callback, ?callable $callbackElse = null): self
@@ -1753,8 +1752,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The associated contract
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousContractReference(callable $callback, ?callable $callbackElse = null): self
@@ -1771,8 +1770,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The associated contract
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastContractReference(callable $callback, ?callable $callbackElse = null): self
@@ -1789,9 +1788,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The associated contract and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachContractReference(
@@ -1806,7 +1805,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($contractReference);
         }
@@ -1831,7 +1830,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the additional associated document
      *
-     * @param array<InvoiceSuiteReferenceDocumentExtDTO> $additionalReferences The additional associated document
+     * @param  array<InvoiceSuiteReferenceDocumentExtDTO> $additionalReferences The additional associated document
      * @return self
      */
     public function setAdditionalReferences(array $additionalReferences): self
@@ -1844,7 +1843,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The additional associated document
      *
-     * @param InvoiceSuiteReferenceDocumentExtDTO $additionalReference The additional associated document
+     * @param  InvoiceSuiteReferenceDocumentExtDTO $additionalReference The additional associated document
      * @return self
      */
     public function addAdditionalReference(InvoiceSuiteReferenceDocumentExtDTO $additionalReference): self
@@ -1857,8 +1856,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The additional associated document
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstAdditionalReference(callable $callback, ?callable $callbackElse = null): self
@@ -1875,8 +1874,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The additional associated document
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextAdditionalReference(callable $callback, ?callable $callbackElse = null): self
@@ -1893,8 +1892,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The additional associated document
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousAdditionalReference(callable $callback, ?callable $callbackElse = null): self
@@ -1911,8 +1910,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The additional associated document
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastAdditionalReference(callable $callback, ?callable $callbackElse = null): self
@@ -1929,9 +1928,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The additional associated document and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachAdditionalReference(
@@ -1946,7 +1945,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($additionalReference);
         }
@@ -1971,7 +1970,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the additional invoice document
      *
-     * @param array<InvoiceSuiteReferenceDocumentExtDTO> $invoiceReferences The additional invoice document
+     * @param  array<InvoiceSuiteReferenceDocumentExtDTO> $invoiceReferences The additional invoice document
      * @return self
      */
     public function setInvoiceReferences(array $invoiceReferences): self
@@ -1984,7 +1983,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The additional invoice document
      *
-     * @param InvoiceSuiteReferenceDocumentExtDTO $invoiceReference The additional invoice document
+     * @param  InvoiceSuiteReferenceDocumentExtDTO $invoiceReference The additional invoice document
      * @return self
      */
     public function addInvoiceReference(InvoiceSuiteReferenceDocumentExtDTO $invoiceReference): self
@@ -1997,8 +1996,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The additional invoice document
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstInvoiceReference(callable $callback, ?callable $callbackElse = null): self
@@ -2015,8 +2014,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The additional invoice document
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextInvoiceReference(callable $callback, ?callable $callbackElse = null): self
@@ -2033,8 +2032,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The additional invoice document
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousInvoiceReference(callable $callback, ?callable $callbackElse = null): self
@@ -2051,8 +2050,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The additional invoice document
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastInvoiceReference(callable $callback, ?callable $callbackElse = null): self
@@ -2069,9 +2068,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The additional invoice document and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachInvoiceReference(
@@ -2086,7 +2085,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($invoiceReference);
         }
@@ -2111,7 +2110,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the project reference
      *
-     * @param array<InvoiceSuiteProjectDTO> $projectReferences The project reference
+     * @param  array<InvoiceSuiteProjectDTO> $projectReferences The project reference
      * @return self
      */
     public function setProjectReferences(array $projectReferences): self
@@ -2124,7 +2123,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The project reference
      *
-     * @param InvoiceSuiteProjectDTO $projectReference The project reference
+     * @param  InvoiceSuiteProjectDTO $projectReference The project reference
      * @return self
      */
     public function addProjectReference(InvoiceSuiteProjectDTO $projectReference): self
@@ -2137,8 +2136,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The project reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstProjectReference(callable $callback, ?callable $callbackElse = null): self
@@ -2155,8 +2154,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The project reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextProjectReference(callable $callback, ?callable $callbackElse = null): self
@@ -2173,8 +2172,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The project reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousProjectReference(callable $callback, ?callable $callbackElse = null): self
@@ -2191,8 +2190,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The project reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastProjectReference(callable $callback, ?callable $callbackElse = null): self
@@ -2209,9 +2208,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The project reference and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachProjectReference(
@@ -2226,7 +2225,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($projectReference);
         }
@@ -2251,7 +2250,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the ultimate customer order reference
      *
-     * @param array<InvoiceSuiteReferenceDocumentDTO> $ultimateCustomerOrderReferences The ultimate customer order reference
+     * @param  array<InvoiceSuiteReferenceDocumentDTO> $ultimateCustomerOrderReferences The ultimate customer order reference
      * @return self
      */
     public function setUltimateCustomerOrderReferences(array $ultimateCustomerOrderReferences): self
@@ -2264,7 +2263,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The ultimate customer order reference
      *
-     * @param InvoiceSuiteReferenceDocumentDTO $ultimateCustomerOrderReference The ultimate customer order reference
+     * @param  InvoiceSuiteReferenceDocumentDTO $ultimateCustomerOrderReference The ultimate customer order reference
      * @return self
      */
     public function addUltimateCustomerOrderReference(
@@ -2278,8 +2277,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The ultimate customer order reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstUltimateCustomerOrderReference(callable $callback, ?callable $callbackElse = null): self
@@ -2296,8 +2295,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The ultimate customer order reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextUltimateCustomerOrderReference(callable $callback, ?callable $callbackElse = null): self
@@ -2314,8 +2313,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The ultimate customer order reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousUltimateCustomerOrderReference(callable $callback, ?callable $callbackElse = null): self
@@ -2332,8 +2331,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The ultimate customer order reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastUltimateCustomerOrderReference(callable $callback, ?callable $callbackElse = null): self
@@ -2350,9 +2349,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The ultimate customer order reference and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachUltimateCustomerOrderReference(
@@ -2367,7 +2366,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($ultimateCustomerOrderReference);
         }
@@ -2392,7 +2391,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the despatch advice reference
      *
-     * @param array<InvoiceSuiteReferenceDocumentDTO> $despatchAdviceReferences The despatch advice reference
+     * @param  array<InvoiceSuiteReferenceDocumentDTO> $despatchAdviceReferences The despatch advice reference
      * @return self
      */
     public function setDespatchAdviceReferences(array $despatchAdviceReferences): self
@@ -2405,7 +2404,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The despatch advice reference
      *
-     * @param InvoiceSuiteReferenceDocumentDTO $despatchAdviceReference The despatch advice reference
+     * @param  InvoiceSuiteReferenceDocumentDTO $despatchAdviceReference The despatch advice reference
      * @return self
      */
     public function addDespatchAdviceReference(InvoiceSuiteReferenceDocumentDTO $despatchAdviceReference): self
@@ -2418,8 +2417,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The despatch advice reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstDespatchAdviceReference(callable $callback, ?callable $callbackElse = null): self
@@ -2436,8 +2435,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The despatch advice reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextDespatchAdviceReference(callable $callback, ?callable $callbackElse = null): self
@@ -2454,8 +2453,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The despatch advice reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousDespatchAdviceReference(callable $callback, ?callable $callbackElse = null): self
@@ -2472,8 +2471,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The despatch advice reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastDespatchAdviceReference(callable $callback, ?callable $callbackElse = null): self
@@ -2490,9 +2489,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The despatch advice reference and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachDespatchAdviceReference(
@@ -2507,7 +2506,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($despatchAdviceReference);
         }
@@ -2532,7 +2531,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the receiving advice reference
      *
-     * @param array<InvoiceSuiteReferenceDocumentDTO> $receivingAdviceReferences The receiving advice reference
+     * @param  array<InvoiceSuiteReferenceDocumentDTO> $receivingAdviceReferences The receiving advice reference
      * @return self
      */
     public function setReceivingAdviceReferences(array $receivingAdviceReferences): self
@@ -2545,7 +2544,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The receiving advice reference
      *
-     * @param InvoiceSuiteReferenceDocumentDTO $receivingAdviceReference The receiving advice reference
+     * @param  InvoiceSuiteReferenceDocumentDTO $receivingAdviceReference The receiving advice reference
      * @return self
      */
     public function addReceivingAdviceReference(InvoiceSuiteReferenceDocumentDTO $receivingAdviceReference): self
@@ -2558,8 +2557,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The receiving advice reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstReceivingAdviceReference(callable $callback, ?callable $callbackElse = null): self
@@ -2576,8 +2575,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The receiving advice reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextReceivingAdviceReference(callable $callback, ?callable $callbackElse = null): self
@@ -2594,8 +2593,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The receiving advice reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousReceivingAdviceReference(callable $callback, ?callable $callbackElse = null): self
@@ -2612,8 +2611,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The receiving advice reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastReceivingAdviceReference(callable $callback, ?callable $callbackElse = null): self
@@ -2630,9 +2629,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The receiving advice reference and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachReceivingAdviceReference(
@@ -2647,7 +2646,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($receivingAdviceReference);
         }
@@ -2672,7 +2671,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the delivery note reference
      *
-     * @param array<InvoiceSuiteReferenceDocumentDTO> $deliveryNoteReferences The delivery note reference
+     * @param  array<InvoiceSuiteReferenceDocumentDTO> $deliveryNoteReferences The delivery note reference
      * @return self
      */
     public function setDeliveryNoteReferences(array $deliveryNoteReferences): self
@@ -2685,7 +2684,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The delivery note reference
      *
-     * @param InvoiceSuiteReferenceDocumentDTO $deliveryNoteReference The delivery note reference
+     * @param  InvoiceSuiteReferenceDocumentDTO $deliveryNoteReference The delivery note reference
      * @return self
      */
     public function addDeliveryNoteReference(InvoiceSuiteReferenceDocumentDTO $deliveryNoteReference): self
@@ -2698,8 +2697,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The delivery note reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstDeliveryNoteReference(callable $callback, ?callable $callbackElse = null): self
@@ -2716,8 +2715,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The delivery note reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextDeliveryNoteReference(callable $callback, ?callable $callbackElse = null): self
@@ -2734,8 +2733,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The delivery note reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousDeliveryNoteReference(callable $callback, ?callable $callbackElse = null): self
@@ -2752,8 +2751,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The delivery note reference
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastDeliveryNoteReference(callable $callback, ?callable $callbackElse = null): self
@@ -2770,9 +2769,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The delivery note reference and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachDeliveryNoteReference(
@@ -2787,7 +2786,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($deliveryNoteReference);
         }
@@ -2802,7 +2801,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the Seller/Supplier Party
      *
-     * @return InvoiceSuitePartyDTO|null
+     * @return null|InvoiceSuitePartyDTO
      */
     public function getSellerParty(): ?InvoiceSuitePartyDTO
     {
@@ -2812,7 +2811,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the Seller/Supplier Party
      *
-     * @param InvoiceSuitePartyDTO|null $sellerParty The Seller/Supplier Party
+     * @param  null|InvoiceSuitePartyDTO $sellerParty The Seller/Supplier Party
      * @return self
      */
     public function setSellerParty(?InvoiceSuitePartyDTO $sellerParty): self
@@ -2825,7 +2824,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the Buyer/Customer Party
      *
-     * @return InvoiceSuitePartyDTO|null
+     * @return null|InvoiceSuitePartyDTO
      */
     public function getBuyerParty(): ?InvoiceSuitePartyDTO
     {
@@ -2835,7 +2834,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the Buyer/Customer Party
      *
-     * @param InvoiceSuitePartyDTO|null $buyerParty The Buyer/Customer Party
+     * @param  null|InvoiceSuitePartyDTO $buyerParty The Buyer/Customer Party
      * @return self
      */
     public function setBuyerParty(?InvoiceSuitePartyDTO $buyerParty): self
@@ -2848,7 +2847,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the Tax Representativ Party
      *
-     * @return InvoiceSuitePartyDTO|null
+     * @return null|InvoiceSuitePartyDTO
      */
     public function getTaxRepresentativeParty(): ?InvoiceSuitePartyDTO
     {
@@ -2858,7 +2857,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the Tax Representativ Party
      *
-     * @param InvoiceSuitePartyDTO|null $taxRepresentativeParty The Tax Representativ Party
+     * @param  null|InvoiceSuitePartyDTO $taxRepresentativeParty The Tax Representativ Party
      * @return self
      */
     public function setTaxRepresentativeParty(?InvoiceSuitePartyDTO $taxRepresentativeParty): self
@@ -2871,7 +2870,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the Product Enduser Party
      *
-     * @return InvoiceSuitePartyDTO|null
+     * @return null|InvoiceSuitePartyDTO
      */
     public function getProductEndUserParty(): ?InvoiceSuitePartyDTO
     {
@@ -2881,7 +2880,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the Product Enduser Party
      *
-     * @param InvoiceSuitePartyDTO|null $productEndUserParty The Product Enduser Party
+     * @param  null|InvoiceSuitePartyDTO $productEndUserParty The Product Enduser Party
      * @return self
      */
     public function setProductEndUserParty(?InvoiceSuitePartyDTO $productEndUserParty): self
@@ -2894,7 +2893,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the Ship-To Party
      *
-     * @return InvoiceSuitePartyDTO|null
+     * @return null|InvoiceSuitePartyDTO
      */
     public function getShipToParty(): ?InvoiceSuitePartyDTO
     {
@@ -2904,7 +2903,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the Ship-To Party
      *
-     * @param InvoiceSuitePartyDTO|null $shipToParty The Ship-To Party
+     * @param  null|InvoiceSuitePartyDTO $shipToParty The Ship-To Party
      * @return self
      */
     public function setShipToParty(?InvoiceSuitePartyDTO $shipToParty): self
@@ -2917,7 +2916,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the Ultimate Ship-To Party
      *
-     * @return InvoiceSuitePartyDTO|null
+     * @return null|InvoiceSuitePartyDTO
      */
     public function getUltimateShipToParty(): ?InvoiceSuitePartyDTO
     {
@@ -2927,7 +2926,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the Ultimate Ship-To Party
      *
-     * @param InvoiceSuitePartyDTO|null $ultimateShipToParty The Ultimate Ship-To Party
+     * @param  null|InvoiceSuitePartyDTO $ultimateShipToParty The Ultimate Ship-To Party
      * @return self
      */
     public function setUltimateShipToParty(?InvoiceSuitePartyDTO $ultimateShipToParty): self
@@ -2940,7 +2939,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the Ship-From Party
      *
-     * @return InvoiceSuitePartyDTO|null
+     * @return null|InvoiceSuitePartyDTO
      */
     public function getShipFromParty(): ?InvoiceSuitePartyDTO
     {
@@ -2950,7 +2949,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the Ship-From Party
      *
-     * @param InvoiceSuitePartyDTO|null $shipFromParty The Ship-From Party
+     * @param  null|InvoiceSuitePartyDTO $shipFromParty The Ship-From Party
      * @return self
      */
     public function setShipFromParty(?InvoiceSuitePartyDTO $shipFromParty): self
@@ -2963,7 +2962,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the Invoicer Party
      *
-     * @return InvoiceSuitePartyDTO|null
+     * @return null|InvoiceSuitePartyDTO
      */
     public function getInvoicerParty(): ?InvoiceSuitePartyDTO
     {
@@ -2973,7 +2972,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the Invoicer Party
      *
-     * @param InvoiceSuitePartyDTO|null $invoicerParty The Invoicer Party
+     * @param  null|InvoiceSuitePartyDTO $invoicerParty The Invoicer Party
      * @return self
      */
     public function setInvoicerParty(?InvoiceSuitePartyDTO $invoicerParty): self
@@ -2986,7 +2985,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the Invoicee Party
      *
-     * @return InvoiceSuitePartyDTO|null
+     * @return null|InvoiceSuitePartyDTO
      */
     public function getInvoiceeParty(): ?InvoiceSuitePartyDTO
     {
@@ -2996,7 +2995,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the Invoicee Party
      *
-     * @param InvoiceSuitePartyDTO|null $invoiceeParty The Invoicee Party
+     * @param  null|InvoiceSuitePartyDTO $invoiceeParty The Invoicee Party
      * @return self
      */
     public function setInvoiceeParty(?InvoiceSuitePartyDTO $invoiceeParty): self
@@ -3009,7 +3008,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the Payee Party
      *
-     * @return InvoiceSuitePartyDTO|null
+     * @return null|InvoiceSuitePartyDTO
      */
     public function getPayeeParty(): ?InvoiceSuitePartyDTO
     {
@@ -3019,7 +3018,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the Payee Party
      *
-     * @param InvoiceSuitePartyDTO|null $payeeParty The Payee Party
+     * @param  null|InvoiceSuitePartyDTO $payeeParty The Payee Party
      * @return self
      */
     public function setPayeeParty(?InvoiceSuitePartyDTO $payeeParty): self
@@ -3042,7 +3041,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the payment means
      *
-     * @param array<InvoiceSuitePaymentMeanDTO> $paymentMeans The payment means
+     * @param  array<InvoiceSuitePaymentMeanDTO> $paymentMeans The payment means
      * @return self
      */
     public function setPaymentMeans(array $paymentMeans): self
@@ -3055,7 +3054,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The payment means
      *
-     * @param InvoiceSuitePaymentMeanDTO $paymentMean The payment means
+     * @param  InvoiceSuitePaymentMeanDTO $paymentMean The payment means
      * @return self
      */
     public function addPaymentMean(InvoiceSuitePaymentMeanDTO $paymentMean): self
@@ -3068,8 +3067,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The payment means
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstPaymentMean(callable $callback, ?callable $callbackElse = null): self
@@ -3086,8 +3085,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The payment means
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextPaymentMean(callable $callback, ?callable $callbackElse = null): self
@@ -3104,8 +3103,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The payment means
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousPaymentMean(callable $callback, ?callable $callbackElse = null): self
@@ -3122,8 +3121,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The payment means
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastPaymentMean(callable $callback, ?callable $callbackElse = null): self
@@ -3140,9 +3139,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The payment means and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachPaymentMean(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
@@ -3154,7 +3153,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($paymentMean);
         }
@@ -3179,7 +3178,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the payment terms
      *
-     * @param array<InvoiceSuitePaymentTermDTO> $paymentTerms The payment terms
+     * @param  array<InvoiceSuitePaymentTermDTO> $paymentTerms The payment terms
      * @return self
      */
     public function setPaymentTerms(array $paymentTerms): self
@@ -3192,7 +3191,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The payment terms
      *
-     * @param InvoiceSuitePaymentTermDTO $paymentTerm The payment terms
+     * @param  InvoiceSuitePaymentTermDTO $paymentTerm The payment terms
      * @return self
      */
     public function addPaymentTerm(InvoiceSuitePaymentTermDTO $paymentTerm): self
@@ -3205,8 +3204,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The payment terms
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstPaymentTerm(callable $callback, ?callable $callbackElse = null): self
@@ -3223,8 +3222,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The payment terms
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextPaymentTerm(callable $callback, ?callable $callbackElse = null): self
@@ -3241,8 +3240,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The payment terms
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousPaymentTerm(callable $callback, ?callable $callbackElse = null): self
@@ -3259,8 +3258,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The payment terms
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastPaymentTerm(callable $callback, ?callable $callbackElse = null): self
@@ -3277,9 +3276,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The payment terms and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachPaymentTerm(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
@@ -3291,7 +3290,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($paymentTerm);
         }
@@ -3316,7 +3315,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the creditor identifier
      *
-     * @param array<InvoiceSuiteIdDTO> $creditorReferences The creditor identifier
+     * @param  array<InvoiceSuiteIdDTO> $creditorReferences The creditor identifier
      * @return self
      */
     public function setCreditorReferences(array $creditorReferences): self
@@ -3329,7 +3328,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The creditor identifier
      *
-     * @param InvoiceSuiteIdDTO $creditorReference The creditor identifier
+     * @param  InvoiceSuiteIdDTO $creditorReference The creditor identifier
      * @return self
      */
     public function addCreditorReference(InvoiceSuiteIdDTO $creditorReference): self
@@ -3342,8 +3341,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The creditor identifier
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstCreditorReference(callable $callback, ?callable $callbackElse = null): self
@@ -3360,8 +3359,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The creditor identifier
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextCreditorReference(callable $callback, ?callable $callbackElse = null): self
@@ -3378,8 +3377,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The creditor identifier
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousCreditorReference(callable $callback, ?callable $callbackElse = null): self
@@ -3396,8 +3395,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The creditor identifier
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastCreditorReference(callable $callback, ?callable $callbackElse = null): self
@@ -3414,9 +3413,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The creditor identifier and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachCreditorReference(
@@ -3431,7 +3430,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($creditorReference);
         }
@@ -3456,7 +3455,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the ID for internal routing (Leitweg ID)
      *
-     * @param array<InvoiceSuiteIdDTO> $buyerReferences The ID for internal routing (Leitweg ID)
+     * @param  array<InvoiceSuiteIdDTO> $buyerReferences The ID for internal routing (Leitweg ID)
      * @return self
      */
     public function setBuyerReferences(array $buyerReferences): self
@@ -3469,7 +3468,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The ID for internal routing (Leitweg ID)
      *
-     * @param InvoiceSuiteIdDTO $buyerReference The ID for internal routing (Leitweg ID)
+     * @param  InvoiceSuiteIdDTO $buyerReference The ID for internal routing (Leitweg ID)
      * @return self
      */
     public function addBuyerReference(InvoiceSuiteIdDTO $buyerReference): self
@@ -3482,8 +3481,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The ID for internal routing (Leitweg ID)
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstBuyerReference(callable $callback, ?callable $callbackElse = null): self
@@ -3500,8 +3499,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The ID for internal routing (Leitweg ID)
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextBuyerReference(callable $callback, ?callable $callbackElse = null): self
@@ -3518,8 +3517,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The ID for internal routing (Leitweg ID)
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousBuyerReference(callable $callback, ?callable $callbackElse = null): self
@@ -3536,8 +3535,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The ID for internal routing (Leitweg ID)
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastBuyerReference(callable $callback, ?callable $callbackElse = null): self
@@ -3554,9 +3553,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The ID for internal routing (Leitweg ID) and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachBuyerReference(
@@ -3571,7 +3570,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($buyerReference);
         }
@@ -3596,7 +3595,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the VAT breakdown
      *
-     * @param array<InvoiceSuiteTaxDTO> $taxes The VAT breakdown
+     * @param  array<InvoiceSuiteTaxDTO> $taxes The VAT breakdown
      * @return self
      */
     public function setTaxes(array $taxes): self
@@ -3609,7 +3608,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The VAT breakdown
      *
-     * @param InvoiceSuiteTaxDTO $tax The VAT breakdown
+     * @param  InvoiceSuiteTaxDTO $tax The VAT breakdown
      * @return self
      */
     public function addTax(InvoiceSuiteTaxDTO $tax): self
@@ -3622,8 +3621,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The VAT breakdown
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstTax(callable $callback, ?callable $callbackElse = null): self
@@ -3640,8 +3639,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The VAT breakdown
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextTax(callable $callback, ?callable $callbackElse = null): self
@@ -3658,8 +3657,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The VAT breakdown
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousTax(callable $callback, ?callable $callbackElse = null): self
@@ -3676,8 +3675,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The VAT breakdown
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastTax(callable $callback, ?callable $callbackElse = null): self
@@ -3694,9 +3693,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The VAT breakdown and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachTax(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
@@ -3708,7 +3707,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($tax);
         }
@@ -3733,7 +3732,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the allowances/charges
      *
-     * @param array<InvoiceSuiteAllowanceChargeDTO> $allowanceCharges The allowances/charges
+     * @param  array<InvoiceSuiteAllowanceChargeDTO> $allowanceCharges The allowances/charges
      * @return self
      */
     public function setAllowanceCharges(array $allowanceCharges): self
@@ -3746,7 +3745,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The allowances/charges
      *
-     * @param InvoiceSuiteAllowanceChargeDTO $allowanceCharge The allowances/charges
+     * @param  InvoiceSuiteAllowanceChargeDTO $allowanceCharge The allowances/charges
      * @return self
      */
     public function addAllowanceCharge(InvoiceSuiteAllowanceChargeDTO $allowanceCharge): self
@@ -3759,8 +3758,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The allowances/charges
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstAllowanceCharge(callable $callback, ?callable $callbackElse = null): self
@@ -3777,8 +3776,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The allowances/charges
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextAllowanceCharge(callable $callback, ?callable $callbackElse = null): self
@@ -3795,8 +3794,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The allowances/charges
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousAllowanceCharge(callable $callback, ?callable $callbackElse = null): self
@@ -3813,8 +3812,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The allowances/charges
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastAllowanceCharge(callable $callback, ?callable $callbackElse = null): self
@@ -3831,9 +3830,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The allowances/charges and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachAllowanceCharge(
@@ -3848,7 +3847,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($allowanceCharge);
         }
@@ -3873,7 +3872,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the allowances/charges
      *
-     * @param array<InvoiceSuiteServiceChargeDTO> $serviceCharges The allowances/charges
+     * @param  array<InvoiceSuiteServiceChargeDTO> $serviceCharges The allowances/charges
      * @return self
      */
     public function setServiceCharges(array $serviceCharges): self
@@ -3886,7 +3885,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The allowances/charges
      *
-     * @param InvoiceSuiteServiceChargeDTO $serviceCharge The allowances/charges
+     * @param  InvoiceSuiteServiceChargeDTO $serviceCharge The allowances/charges
      * @return self
      */
     public function addServiceCharge(InvoiceSuiteServiceChargeDTO $serviceCharge): self
@@ -3899,8 +3898,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The allowances/charges
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstServiceCharge(callable $callback, ?callable $callbackElse = null): self
@@ -3917,8 +3916,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The allowances/charges
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextServiceCharge(callable $callback, ?callable $callbackElse = null): self
@@ -3935,8 +3934,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The allowances/charges
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousServiceCharge(callable $callback, ?callable $callbackElse = null): self
@@ -3953,8 +3952,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The allowances/charges
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastServiceCharge(callable $callback, ?callable $callbackElse = null): self
@@ -3971,9 +3970,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The allowances/charges and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachServiceCharge(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
@@ -3985,7 +3984,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($serviceCharge);
         }
@@ -4010,7 +4009,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the summation
      *
-     * @param array<InvoiceSuiteSummationDTO> $summations The summation
+     * @param  array<InvoiceSuiteSummationDTO> $summations The summation
      * @return self
      */
     public function setSummations(array $summations): self
@@ -4023,7 +4022,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The summation
      *
-     * @param InvoiceSuiteSummationDTO $summation The summation
+     * @param  InvoiceSuiteSummationDTO $summation The summation
      * @return self
      */
     public function addSummation(InvoiceSuiteSummationDTO $summation): self
@@ -4036,8 +4035,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The summation
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstSummation(callable $callback, ?callable $callbackElse = null): self
@@ -4054,8 +4053,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The summation
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextSummation(callable $callback, ?callable $callbackElse = null): self
@@ -4072,8 +4071,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The summation
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousSummation(callable $callback, ?callable $callbackElse = null): self
@@ -4090,8 +4089,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The summation
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastSummation(callable $callback, ?callable $callbackElse = null): self
@@ -4108,9 +4107,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The summation and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachSummation(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
@@ -4122,7 +4121,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($summation);
         }
@@ -4147,7 +4146,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the Document positions
      *
-     * @param array<InvoiceSuiteDocumentPositionDTO> $positions The Document positions
+     * @param  array<InvoiceSuiteDocumentPositionDTO> $positions The Document positions
      * @return self
      */
     public function setPositions(array $positions): self
@@ -4160,7 +4159,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The Document positions
      *
-     * @param InvoiceSuiteDocumentPositionDTO $position The Document positions
+     * @param  InvoiceSuiteDocumentPositionDTO $position The Document positions
      * @return self
      */
     public function addPosition(InvoiceSuiteDocumentPositionDTO $position): self
@@ -4173,8 +4172,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get first The Document positions
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstPosition(callable $callback, ?callable $callbackElse = null): self
@@ -4191,8 +4190,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get next The Document positions
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextPosition(callable $callback, ?callable $callbackElse = null): self
@@ -4209,8 +4208,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get previous The Document positions
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousPosition(callable $callback, ?callable $callbackElse = null): self
@@ -4227,8 +4226,8 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Get last The Document positions
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastPosition(callable $callback, ?callable $callbackElse = null): self
@@ -4245,9 +4244,9 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Loop over The Document positions and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachPosition(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
@@ -4259,7 +4258,7 @@ class InvoiceSuiteDocumentHeaderDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($position);
         }

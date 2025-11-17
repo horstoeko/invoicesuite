@@ -17,10 +17,9 @@ use OutOfBoundsException;
  * of this package
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 final class InvoiceSuitePackageVersion
 {
@@ -37,11 +36,11 @@ final class InvoiceSuitePackageVersion
     /**
      * Get the installed version of a package defined by $packageName
      *
-     * @param string $packageName
-     * @param string $defaultPackageVersion
+     * @param  string $packageName
+     * @param  string $defaultPackageVersion
      * @return string
      */
-    public static function getInstalledVersionByName(string $packageName, string $defaultPackageVersion = "1.0.x"): string
+    public static function getInstalledVersionByName(string $packageName, string $defaultPackageVersion = '1.0.x'): string
     {
         try {
             return ComposerInstalledVersions::getVersion($packageName) ?? $defaultPackageVersion;

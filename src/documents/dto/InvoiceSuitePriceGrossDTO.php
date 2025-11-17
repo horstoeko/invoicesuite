@@ -13,10 +13,9 @@ namespace horstoeko\invoicesuite\documents\dto;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
 {
@@ -30,8 +29,8 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
     /**
      * Constructor
      *
-     * @param float|null $amount The price value
-     * @param InvoiceSuiteQuantityDTO|null $priceQuantity The number of item units for which the price applies
+     * @param null|float                            $amount           The price value
+     * @param null|InvoiceSuiteQuantityDTO          $priceQuantity    The number of item units for which the price applies
      * @param array<InvoiceSuiteAllowanceChargeDTO> $allowanceCharges The discounts or charges to the gross price
      */
     public function __construct(
@@ -57,7 +56,7 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
     /**
      * Sets the discounts or charges to the gross price
      *
-     * @param array<InvoiceSuiteAllowanceChargeDTO> $allowanceCharges The discounts or charges to the gross price
+     * @param  array<InvoiceSuiteAllowanceChargeDTO> $allowanceCharges The discounts or charges to the gross price
      * @return self
      */
     public function setAllowanceCharges(array $allowanceCharges): self
@@ -70,7 +69,7 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
     /**
      * Add single The discounts or charges to the gross price
      *
-     * @param InvoiceSuiteAllowanceChargeDTO $allowanceCharge The discounts or charges to the gross price
+     * @param  InvoiceSuiteAllowanceChargeDTO $allowanceCharge The discounts or charges to the gross price
      * @return self
      */
     public function addAllowanceCharge(InvoiceSuiteAllowanceChargeDTO $allowanceCharge): self
@@ -83,8 +82,8 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
     /**
      * Get first The discounts or charges to the gross price
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstAllowanceCharge(callable $callback, ?callable $callbackElse = null): self
@@ -101,8 +100,8 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
     /**
      * Get next The discounts or charges to the gross price
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextAllowanceCharge(callable $callback, ?callable $callbackElse = null): self
@@ -119,8 +118,8 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
     /**
      * Get previous The discounts or charges to the gross price
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousAllowanceCharge(callable $callback, ?callable $callbackElse = null): self
@@ -137,8 +136,8 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
     /**
      * Get last The discounts or charges to the gross price
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastAllowanceCharge(callable $callback, ?callable $callbackElse = null): self
@@ -155,9 +154,9 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
     /**
      * Loop over The discounts or charges to the gross price and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachAllowanceCharge(
@@ -172,7 +171,7 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($allowanceCharge);
         }

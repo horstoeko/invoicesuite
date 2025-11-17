@@ -15,104 +15,103 @@ use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuitePaymentMeanDTO
 {
     /**
      * The expected or used means of payment expressed as a code
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $typeCode = null;
 
     /**
      * The expected or used means of payment expressed in text form
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $name = null;
 
     /**
      * The primary account number (PAN) of the payment card
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $financialCardId = null;
 
     /**
      * The name of the payment card holder
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $financialCardHolder = null;
 
     /**
      * The identifier of the account to be debited
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $buyerIban = null;
 
     /**
      * The payment account identifier
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $payeeIban = null;
 
     /**
      * The name of the payment account
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $payeeAccountName = null;
 
     /**
      * The national account number (not for SEPA)
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $payeeProprietaryId = null;
 
     /**
      * The identifier of the payment service provider
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $payeeBic = null;
 
     /**
      * The Text value used to link the payment to the invoice issued by the seller
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $paymentReference = null;
 
     /**
      * The identification of the mandate reference
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $mandate = null;
 
     /**
      * Constructor
      *
-     * @param string|null $typeCode The expected or used means of payment expressed as a code
-     * @param string|null $name The expected or used means of payment expressed in text form
-     * @param string|null $financialCardId The primary account number (PAN) of the payment card
-     * @param string|null $financialCardHolder The name of the payment card holder
-     * @param string|null $buyerIban The identifier of the account to be debited
-     * @param string|null $payeeIban The payment account identifier
-     * @param string|null $payeeAccountName The name of the payment account
-     * @param string|null $payeeProprietaryId The national account number (not for SEPA)
-     * @param string|null $payeeBic The identifier of the payment service provider
-     * @param string|null $paymentReference The Text value used to link the payment to the invoice issued by the seller
-     * @param string|null $mandate The identification of the mandate reference
+     * @param null|string $typeCode            The expected or used means of payment expressed as a code
+     * @param null|string $name                The expected or used means of payment expressed in text form
+     * @param null|string $financialCardId     The primary account number (PAN) of the payment card
+     * @param null|string $financialCardHolder The name of the payment card holder
+     * @param null|string $buyerIban           The identifier of the account to be debited
+     * @param null|string $payeeIban           The payment account identifier
+     * @param null|string $payeeAccountName    The name of the payment account
+     * @param null|string $payeeProprietaryId  The national account number (not for SEPA)
+     * @param null|string $payeeBic            The identifier of the payment service provider
+     * @param null|string $paymentReference    The Text value used to link the payment to the invoice issued by the seller
+     * @param null|string $mandate             The identification of the mandate reference
      */
     public function __construct(
         ?string $typeCode = null,
@@ -143,7 +142,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Returns the expected or used means of payment expressed as a code
      *
-     * @return string|null
+     * @return null|string
      */
     public function getTypeCode(): ?string
     {
@@ -153,7 +152,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Sets the expected or used means of payment expressed as a code
      *
-     * @param string|null $typeCode The expected or used means of payment expressed as a code
+     * @param  null|string $typeCode The expected or used means of payment expressed as a code
      * @return self
      */
     public function setTypeCode(?string $typeCode): self
@@ -166,7 +165,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Returns the expected or used means of payment expressed in text form
      *
-     * @return string|null
+     * @return null|string
      */
     public function getName(): ?string
     {
@@ -176,7 +175,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Sets the expected or used means of payment expressed in text form
      *
-     * @param string|null $name The expected or used means of payment expressed in text form
+     * @param  null|string $name The expected or used means of payment expressed in text form
      * @return self
      */
     public function setName(?string $name): self
@@ -189,7 +188,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Returns the primary account number (PAN) of the payment card
      *
-     * @return string|null
+     * @return null|string
      */
     public function getFinancialCardId(): ?string
     {
@@ -199,7 +198,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Sets the primary account number (PAN) of the payment card
      *
-     * @param string|null $financialCardId The primary account number (PAN) of the payment card
+     * @param  null|string $financialCardId The primary account number (PAN) of the payment card
      * @return self
      */
     public function setFinancialCardId(?string $financialCardId): self
@@ -212,7 +211,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Returns the name of the payment card holder
      *
-     * @return string|null
+     * @return null|string
      */
     public function getFinancialCardHolder(): ?string
     {
@@ -222,7 +221,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Sets the name of the payment card holder
      *
-     * @param string|null $financialCardHolder The name of the payment card holder
+     * @param  null|string $financialCardHolder The name of the payment card holder
      * @return self
      */
     public function setFinancialCardHolder(?string $financialCardHolder): self
@@ -235,7 +234,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Returns the identifier of the account to be debited
      *
-     * @return string|null
+     * @return null|string
      */
     public function getBuyerIban(): ?string
     {
@@ -245,7 +244,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Sets the identifier of the account to be debited
      *
-     * @param string|null $buyerIban The identifier of the account to be debited
+     * @param  null|string $buyerIban The identifier of the account to be debited
      * @return self
      */
     public function setBuyerIban(?string $buyerIban): self
@@ -258,7 +257,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Returns the payment account identifier
      *
-     * @return string|null
+     * @return null|string
      */
     public function getPayeeIban(): ?string
     {
@@ -268,7 +267,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Sets the payment account identifier
      *
-     * @param string|null $payeeIban The payment account identifier
+     * @param  null|string $payeeIban The payment account identifier
      * @return self
      */
     public function setPayeeIban(?string $payeeIban): self
@@ -281,7 +280,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Returns the name of the payment account
      *
-     * @return string|null
+     * @return null|string
      */
     public function getPayeeAccountName(): ?string
     {
@@ -291,7 +290,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Sets the name of the payment account
      *
-     * @param string|null $payeeAccountName The name of the payment account
+     * @param  null|string $payeeAccountName The name of the payment account
      * @return self
      */
     public function setPayeeAccountName(?string $payeeAccountName): self
@@ -304,7 +303,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Returns the national account number (not for SEPA)
      *
-     * @return string|null
+     * @return null|string
      */
     public function getPayeeProprietaryId(): ?string
     {
@@ -314,7 +313,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Sets the national account number (not for SEPA)
      *
-     * @param string|null $payeeProprietaryId The national account number (not for SEPA)
+     * @param  null|string $payeeProprietaryId The national account number (not for SEPA)
      * @return self
      */
     public function setPayeeProprietaryId(?string $payeeProprietaryId): self
@@ -327,7 +326,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Returns the identifier of the payment service provider
      *
-     * @return string|null
+     * @return null|string
      */
     public function getPayeeBic(): ?string
     {
@@ -337,7 +336,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Sets the identifier of the payment service provider
      *
-     * @param string|null $payeeBic The identifier of the payment service provider
+     * @param  null|string $payeeBic The identifier of the payment service provider
      * @return self
      */
     public function setPayeeBic(?string $payeeBic): self
@@ -350,7 +349,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Returns the Text value used to link the payment to the invoice issued by the seller
      *
-     * @return string|null
+     * @return null|string
      */
     public function getPaymentReference(): ?string
     {
@@ -360,7 +359,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Sets the Text value used to link the payment to the invoice issued by the seller
      *
-     * @param string|null $paymentReference The Text value used to link the payment to the invoice issued by the seller
+     * @param  null|string $paymentReference The Text value used to link the payment to the invoice issued by the seller
      * @return self
      */
     public function setPaymentReference(?string $paymentReference): self
@@ -373,7 +372,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Returns the identification of the mandate reference
      *
-     * @return string|null
+     * @return null|string
      */
     public function getMandate(): ?string
     {
@@ -383,7 +382,7 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Sets the identification of the mandate reference
      *
-     * @param string|null $mandate The identification of the mandate reference
+     * @param  null|string $mandate The identification of the mandate reference
      * @return self
      */
     public function setMandate(?string $mandate): self
@@ -396,11 +395,11 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Create a payment mean for SEPA credit transfer, German: Überweisung
      *
-     * @param string|null $payeeIban Payment account identifier
-     * @param string|null $payeeAccountName Name of the payment account
-     * @param string|null $payeeProprietaryId National account number (not for SEPA)
-     * @param string|null $payeeBic Identifier of the payment service provider
-     * @param string|null $paymentReference Text value used to link the payment to the invoice issued by the seller
+     * @param  null|string $payeeIban          Payment account identifier
+     * @param  null|string $payeeAccountName   Name of the payment account
+     * @param  null|string $payeeProprietaryId National account number (not for SEPA)
+     * @param  null|string $payeeBic           Identifier of the payment service provider
+     * @param  null|string $paymentReference   Text value used to link the payment to the invoice issued by the seller
      * @return self
      */
     public static function createAsCreditTransferSepa(
@@ -410,7 +409,7 @@ class InvoiceSuitePaymentMeanDTO
         ?string $payeeBic = null,
         ?string $paymentReference = null,
     ): self {
-        return new InvoiceSuitePaymentMeanDTO(
+        return new self(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value,
             payeeIban: $payeeIban,
             payeeAccountName: $payeeAccountName,
@@ -423,11 +422,11 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Create a payment mean for non-SEPA credit transfer, German: Überweisung
      *
-     * @param string|null $payeeIban Payment account identifier
-     * @param string|null $payeeAccountName Name of the payment account
-     * @param string|null $payeeProprietaryId National account number (not for SEPA)
-     * @param string|null $payeeBic Identifier of the payment service provider
-     * @param string|null $paymentReference Text value used to link the payment to the invoice issued by the seller
+     * @param  null|string $payeeIban          Payment account identifier
+     * @param  null|string $payeeAccountName   Name of the payment account
+     * @param  null|string $payeeProprietaryId National account number (not for SEPA)
+     * @param  null|string $payeeBic           Identifier of the payment service provider
+     * @param  null|string $paymentReference   Text value used to link the payment to the invoice issued by the seller
      * @return self
      */
     public static function createAsCreditTransferNoSepa(
@@ -437,7 +436,7 @@ class InvoiceSuitePaymentMeanDTO
         ?string $payeeBic = null,
         ?string $paymentReference = null,
     ): self {
-        return new InvoiceSuitePaymentMeanDTO(
+        return new self(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value,
             payeeIban: $payeeIban,
             payeeAccountName: $payeeAccountName,
@@ -450,13 +449,13 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Create a payment mean for SEPA direct debit, German: Lastschrift
      *
-     * @param string|null $buyerIban Identifier of the account to be debited
-     * @param string|null $mandate Identification of the mandate reference
+     * @param  null|string $buyerIban Identifier of the account to be debited
+     * @param  null|string $mandate   Identification of the mandate reference
      * @return self
      */
     public static function createAsDirectDebitSepa(?string $buyerIban = null, ?string $mandate = null): self
     {
-        return new InvoiceSuitePaymentMeanDTO(
+        return new self(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
             buyerIban: $buyerIban,
             mandate: $mandate,
@@ -466,13 +465,13 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Create a payment mean for SEPA direct debit, German: Lastschrift
      *
-     * @param string|null $buyerIban Identifier of the account to be debited
-     * @param string|null $mandate Identification of the mandate reference
+     * @param  null|string $buyerIban Identifier of the account to be debited
+     * @param  null|string $mandate   Identification of the mandate reference
      * @return self
      */
     public static function createAsDirectDebitNoSepa(?string $buyerIban = null, ?string $mandate = null): self
     {
-        return new InvoiceSuitePaymentMeanDTO(
+        return new self(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
             buyerIban: $buyerIban,
             mandate: $mandate,
@@ -482,15 +481,15 @@ class InvoiceSuitePaymentMeanDTO
     /**
      * Create a payment mean for payment-card payment
      *
-     * @param string|null $financialCardId Primary account number (PAN) of the payment card
-     * @param string|null $financialCardHolder Name of the payment card holder
+     * @param  null|string $financialCardId     Primary account number (PAN) of the payment card
+     * @param  null|string $financialCardHolder Name of the payment card holder
      * @return self
      */
     public static function createAsPaymentCardPayment(
         ?string $financialCardId = null,
         ?string $financialCardHolder = null,
     ): self {
-        return new InvoiceSuitePaymentMeanDTO(
+        return new self(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,
             financialCardId: $financialCardId,
             financialCardHolder: $financialCardHolder,

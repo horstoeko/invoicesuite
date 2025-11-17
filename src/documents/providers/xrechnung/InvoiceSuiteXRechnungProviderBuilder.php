@@ -11,6 +11,4 @@ namespace horstoeko\invoicesuite\documents\providers\xrechnung;
 
 use horstoeko\invoicesuite\documents\providers\zffxcomfort\InvoiceSuiteZfFxComfortProviderBuilder;
 
-class InvoiceSuiteXRechnungProviderBuilder extends InvoiceSuiteZfFxComfortProviderBuilder
-{
-}
+class InvoiceSuiteXRechnungProviderBuilder extends InvoiceSuiteZfFxComfortProviderBuilder {}

@@ -15,56 +15,55 @@ use DateTimeInterface;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuitePaymentTermPenaltyDTO
 {
     /**
      * The base amount of the payment penalty
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $baseAmount = null;
 
     /**
      * The amount of the payment penalty
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $penaltyAmount = null;
 
     /**
      * The percentage of the payment penalty
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $penaltyPercent = null;
 
     /**
      * The due date reference date
      *
-     * @var DateTimeInterface|null
+     * @var null|DateTimeInterface
      */
     protected ?DateTimeInterface $baseDate = null;
 
     /**
      * The maturity period (basis)
      *
-     * @var InvoiceSuitePeriodDTO|null
+     * @var null|InvoiceSuitePeriodDTO
      */
     protected ?InvoiceSuitePeriodDTO $period = null;
 
     /**
      * Constructor
      *
-     * @param float|null $baseAmount The base amount of the payment penalty
-     * @param float|null $penaltyAmount The amount of the payment penalty
-     * @param float|null $penaltyPercent The percentage of the payment penalty
-     * @param DateTimeInterface|null $baseDate The due date reference date
-     * @param InvoiceSuitePeriodDTO|null $period The maturity period (basis)
+     * @param null|float                 $baseAmount     The base amount of the payment penalty
+     * @param null|float                 $penaltyAmount  The amount of the payment penalty
+     * @param null|float                 $penaltyPercent The percentage of the payment penalty
+     * @param null|DateTimeInterface     $baseDate       The due date reference date
+     * @param null|InvoiceSuitePeriodDTO $period         The maturity period (basis)
      */
     public function __construct(
         ?float $baseAmount = null,
@@ -83,7 +82,7 @@ class InvoiceSuitePaymentTermPenaltyDTO
     /**
      * Returns the base amount of the payment penalty
      *
-     * @return float|null
+     * @return null|float
      */
     public function getBaseAmount(): ?float
     {
@@ -93,7 +92,7 @@ class InvoiceSuitePaymentTermPenaltyDTO
     /**
      * Sets the base amount of the payment penalty
      *
-     * @param float|null $baseAmount The base amount of the payment penalty
+     * @param  null|float $baseAmount The base amount of the payment penalty
      * @return self
      */
     public function setBaseAmount(?float $baseAmount): self
@@ -106,7 +105,7 @@ class InvoiceSuitePaymentTermPenaltyDTO
     /**
      * Returns the amount of the payment penalty
      *
-     * @return float|null
+     * @return null|float
      */
     public function getPenaltyAmount(): ?float
     {
@@ -116,7 +115,7 @@ class InvoiceSuitePaymentTermPenaltyDTO
     /**
      * Sets the amount of the payment penalty
      *
-     * @param float|null $penaltyAmount The amount of the payment penalty
+     * @param  null|float $penaltyAmount The amount of the payment penalty
      * @return self
      */
     public function setPenaltyAmount(?float $penaltyAmount): self
@@ -129,7 +128,7 @@ class InvoiceSuitePaymentTermPenaltyDTO
     /**
      * Returns the percentage of the payment penalty
      *
-     * @return float|null
+     * @return null|float
      */
     public function getPenaltyPercent(): ?float
     {
@@ -139,7 +138,7 @@ class InvoiceSuitePaymentTermPenaltyDTO
     /**
      * Sets the percentage of the payment penalty
      *
-     * @param float|null $penaltyPercent The percentage of the payment penalty
+     * @param  null|float $penaltyPercent The percentage of the payment penalty
      * @return self
      */
     public function setPenaltyPercent(?float $penaltyPercent): self
@@ -152,7 +151,7 @@ class InvoiceSuitePaymentTermPenaltyDTO
     /**
      * Returns the due date reference date
      *
-     * @return DateTimeInterface|null
+     * @return null|DateTimeInterface
      */
     public function getBaseDate(): ?DateTimeInterface
     {
@@ -162,7 +161,7 @@ class InvoiceSuitePaymentTermPenaltyDTO
     /**
      * Sets the due date reference date
      *
-     * @param DateTimeInterface|null $baseDate The due date reference date
+     * @param  null|DateTimeInterface $baseDate The due date reference date
      * @return self
      */
     public function setBaseDate(?DateTimeInterface $baseDate): self
@@ -175,7 +174,7 @@ class InvoiceSuitePaymentTermPenaltyDTO
     /**
      * Returns the maturity period (basis)
      *
-     * @return InvoiceSuitePeriodDTO|null
+     * @return null|InvoiceSuitePeriodDTO
      */
     public function getPeriod(): ?InvoiceSuitePeriodDTO
     {
@@ -185,7 +184,7 @@ class InvoiceSuitePaymentTermPenaltyDTO
     /**
      * Sets the maturity period (basis)
      *
-     * @param InvoiceSuitePeriodDTO|null $period The maturity period (basis)
+     * @param  null|InvoiceSuitePeriodDTO $period The maturity period (basis)
      * @return self
      */
     public function setPeriod(?InvoiceSuitePeriodDTO $period): self

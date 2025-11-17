@@ -9,27 +9,26 @@ use Throwable;
  * class representing tools for getting the content type
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteContentTypeResolver
 {
     /**
      * Result type for JSON
      */
-    public const JSON = "json";
+    public const JSON = 'json';
 
     /**
      * Result type for XML
      */
-    public const XML = "xml";
+    public const XML = 'xml';
 
     /**
      * Get content type. Returns "xml" or "json" or null
      *
-     * @param string $fromContent
+     * @param  string      $fromContent
      * @return null|string
      */
     public static function resolveContentType(string $fromContent): ?string
@@ -47,7 +46,7 @@ class InvoiceSuiteContentTypeResolver
 
     /**
      * Test that $fromContent is a valid XML
-     * @param string $fromContent
+     * @param  string $fromContent
      * @return bool
      */
     protected static function isValidXml(string $fromContent): bool
@@ -61,6 +60,7 @@ class InvoiceSuiteContentTypeResolver
         try {
             libxml_clear_errors();
             $doc = new DOMDocument();
+
             return $doc->loadXML($fromContent, LIBXML_NOERROR | LIBXML_NOWARNING);
         } catch (Throwable) {
             return false;
@@ -73,7 +73,7 @@ class InvoiceSuiteContentTypeResolver
     /**
      * Test that $fromContent is a valid JSON
      *
-     * @param string $fromContent
+     * @param  string $fromContent
      * @return bool
      */
     protected static function isValidJson(string $fromContent): bool
@@ -84,6 +84,7 @@ class InvoiceSuiteContentTypeResolver
 
         try {
             $jsonDecoded = json_decode($fromContent, false, 512, JSON_THROW_ON_ERROR);
+
             return is_object($jsonDecoded) || is_array($jsonDecoded);
         } catch (Throwable) {
             return false;

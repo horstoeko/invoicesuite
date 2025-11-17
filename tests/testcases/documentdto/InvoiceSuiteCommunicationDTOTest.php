@@ -23,7 +23,7 @@ final class InvoiceSuiteCommunicationDTOTest extends TestCase
     public function testIdGetterAndSetter(): void
     {
         $invoiceSuiteCommunicationDTO = new InvoiceSuiteCommunicationDTO();
-        $idValue = "Example Value";
+        $idValue = 'Example Value';
         $invoiceSuiteCommunicationDTO->setId($idValue);
 
         $this->assertSame($idValue, $invoiceSuiteCommunicationDTO->getId());
@@ -34,17 +34,17 @@ final class InvoiceSuiteCommunicationDTOTest extends TestCase
         $invoiceSuiteCommunicationDTO = new InvoiceSuiteCommunicationDTO();
         $this->assertFalse($invoiceSuiteCommunicationDTO->hasId());
 
-        $invoiceSuiteCommunicationDTO->setId("");
+        $invoiceSuiteCommunicationDTO->setId('');
         $this->assertFalse($invoiceSuiteCommunicationDTO->hasId());
 
-        $invoiceSuiteCommunicationDTO->setId("Non-empty");
+        $invoiceSuiteCommunicationDTO->setId('Non-empty');
         $this->assertTrue($invoiceSuiteCommunicationDTO->hasId());
     }
 
     public function testIdTypeGetterAndSetter(): void
     {
         $invoiceSuiteCommunicationDTO = new InvoiceSuiteCommunicationDTO();
-        $idTypeValue = "Example Value";
+        $idTypeValue = 'Example Value';
         $invoiceSuiteCommunicationDTO->setIdType($idTypeValue);
 
         $this->assertSame($idTypeValue, $invoiceSuiteCommunicationDTO->getIdType());
@@ -55,10 +55,10 @@ final class InvoiceSuiteCommunicationDTOTest extends TestCase
         $invoiceSuiteCommunicationDTO = new InvoiceSuiteCommunicationDTO();
         $this->assertFalse($invoiceSuiteCommunicationDTO->hasIdType());
 
-        $invoiceSuiteCommunicationDTO->setIdType("");
+        $invoiceSuiteCommunicationDTO->setIdType('');
         $this->assertFalse($invoiceSuiteCommunicationDTO->hasIdType());
 
-        $invoiceSuiteCommunicationDTO->setIdType("Non-empty");
+        $invoiceSuiteCommunicationDTO->setIdType('Non-empty');
         $this->assertTrue($invoiceSuiteCommunicationDTO->hasIdType());
     }
 }

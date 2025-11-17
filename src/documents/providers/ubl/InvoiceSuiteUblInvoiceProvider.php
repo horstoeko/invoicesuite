@@ -11,14 +11,14 @@ namespace horstoeko\invoicesuite\documents\providers\ubl;
 
 use DOMDocument;
 use DOMXPath;
-use Throwable;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\documents\models\ubl\main\Invoice;
+use Throwable;
 
 class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getUniqueId(): string
     {
@@ -26,7 +26,7 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatP
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getDescription(): string
     {
@@ -34,7 +34,7 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatP
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getParameters(): array
     {
@@ -47,7 +47,7 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatP
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getSerializerMetadataDirectories(): array
     {
@@ -55,17 +55,17 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatP
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getSerializerHandlers(): array
     {
         return [
-            InvoiceSuiteUblInvoiceSerializerHandler::class
+            InvoiceSuiteUblInvoiceSerializerHandler::class,
         ];
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getSerializerListeners(): array
     {
@@ -73,7 +73,7 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatP
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getSerializerSubscribers(): array
     {
@@ -81,15 +81,15 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatP
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getSerializerGroups(): array
     {
-        return ["ubl"];
+        return ['ubl'];
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function isSatisfiableBySerializedContent(string $serializedContent): bool
     {
@@ -135,7 +135,7 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatP
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getRootClassName(): string
     {
@@ -143,7 +143,7 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatP
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getReaderClassName(): string
     {
@@ -151,7 +151,7 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatP
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getBuilderClassName(): string
     {
@@ -161,7 +161,7 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatP
     /**
      * Returns true if PDF support is available
      *
-     * @return boolean
+     * @return bool
      */
     public function isPdfSupportAvailable(): bool
     {
@@ -185,7 +185,7 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatP
      */
     public function getDefaultPdfAttachmentFilename(): string
     {
-        return "";
+        return '';
     }
 
     /**
@@ -195,6 +195,6 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatP
      */
     public function getPdfConstructorClassName(): string
     {
-        return "";
+        return '';
     }
 }

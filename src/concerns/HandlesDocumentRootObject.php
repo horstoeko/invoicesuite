@@ -6,10 +6,9 @@ namespace horstoeko\invoicesuite\concerns;
  * Trait representing root-object handling
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 trait HandlesDocumentRootObject
 {
@@ -45,7 +44,7 @@ trait HandlesDocumentRootObject
     /**
      * Set the rooot object
      *
-     * @param object $rootObject
+     * @param  object $rootObject
      * @return self
      */
     public function setDocumentRootObject(object $rootObject): self

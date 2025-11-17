@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 
-use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineExtDTO;
 use horstoeko\invoicesuite\tests\TestCase;
+use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 
 final class InvoiceSuiteReferenceDocumentLineExtDTOTest extends TestCase
 {
@@ -23,7 +23,7 @@ final class InvoiceSuiteReferenceDocumentLineExtDTOTest extends TestCase
     public function testTypeCodeGetterAndSetter(): void
     {
         $invoiceSuiteReferenceDocumentLineExtDTO = new InvoiceSuiteReferenceDocumentLineExtDTO();
-        $typeCodeValue = "Example Value";
+        $typeCodeValue = 'Example Value';
         $invoiceSuiteReferenceDocumentLineExtDTO->setTypeCode($typeCodeValue);
 
         $this->assertSame($typeCodeValue, $invoiceSuiteReferenceDocumentLineExtDTO->getTypeCode());
@@ -32,7 +32,7 @@ final class InvoiceSuiteReferenceDocumentLineExtDTOTest extends TestCase
     public function testReferenceTypeCodeGetterAndSetter(): void
     {
         $invoiceSuiteReferenceDocumentLineExtDTO = new InvoiceSuiteReferenceDocumentLineExtDTO();
-        $referenceTypeCodeValue = "Example Value";
+        $referenceTypeCodeValue = 'Example Value';
         $invoiceSuiteReferenceDocumentLineExtDTO->setReferenceTypeCode($referenceTypeCodeValue);
 
         $this->assertSame($referenceTypeCodeValue, $invoiceSuiteReferenceDocumentLineExtDTO->getReferenceTypeCode());
@@ -41,7 +41,7 @@ final class InvoiceSuiteReferenceDocumentLineExtDTOTest extends TestCase
     public function testDescriptionGetterAndSetter(): void
     {
         $invoiceSuiteReferenceDocumentLineExtDTO = new InvoiceSuiteReferenceDocumentLineExtDTO();
-        $descriptionValue = "Example Value";
+        $descriptionValue = 'Example Value';
         $invoiceSuiteReferenceDocumentLineExtDTO->setDescription($descriptionValue);
 
         $this->assertSame($descriptionValue, $invoiceSuiteReferenceDocumentLineExtDTO->getDescription());

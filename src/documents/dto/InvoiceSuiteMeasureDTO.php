@@ -13,32 +13,31 @@ namespace horstoeko\invoicesuite\documents\dto;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteMeasureDTO
 {
     /**
      * The value
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $value = null;
 
     /**
      * The value's unit
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $unit = null;
 
     /**
      * Constructor
      *
-     * @param float|null $value The value
-     * @param string|null $unit The value's unit
+     * @param null|float  $value The value
+     * @param null|string $unit  The value's unit
      */
     public function __construct(?float $value = null, ?string $unit = null)
     {
@@ -49,7 +48,7 @@ class InvoiceSuiteMeasureDTO
     /**
      * Returns the value
      *
-     * @return float|null
+     * @return null|float
      */
     public function getValue(): ?float
     {
@@ -59,7 +58,7 @@ class InvoiceSuiteMeasureDTO
     /**
      * Sets the value
      *
-     * @param float|null $value The value
+     * @param  null|float $value The value
      * @return self
      */
     public function setValue(?float $value): self
@@ -72,7 +71,7 @@ class InvoiceSuiteMeasureDTO
     /**
      * Returns the value's unit
      *
-     * @return string|null
+     * @return null|string
      */
     public function getUnit(): ?string
     {
@@ -82,7 +81,7 @@ class InvoiceSuiteMeasureDTO
     /**
      * Sets the value's unit
      *
-     * @param string|null $unit The value's unit
+     * @param  null|string $unit The value's unit
      * @return self
      */
     public function setUnit(?string $unit): self

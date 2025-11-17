@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\codelists;
 
-use ValueError;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistAllowanceChargeCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistCountryCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistCurrencyCodes;
@@ -18,12 +17,60 @@ use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistTextSubjectCodeQualifie
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistUnitCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistVatCategoryCodes;
 use horstoeko\invoicesuite\tests\TestCase;
-use SebastianBergmann\RecursionContext\InvalidArgumentException;
-use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\Exception;
+use PHPUnit\Framework\ExpectationFailedException;
+use SebastianBergmann\RecursionContext\InvalidArgumentException;
+use ValueError;
 
 final class AllCodelistsEnumsTest extends TestCase
 {
+    /**
+     * @throws InvalidArgumentException
+     * @throws ExpectationFailedException
+     * @throws Exception
+     * @return void
+     */
+    public function testCasesAreNotEmptyAndUnique(): void
+    {
+        $enumClasses = [
+            InvoiceSuiteCodelistAllowanceChargeCodes::class,
+            InvoiceSuiteCodelistCountryCodes::class,
+            InvoiceSuiteCodelistCurrencyCodes::class,
+            InvoiceSuiteCodelistDocumentTypes::class,
+            InvoiceSuiteCodelistDutyTaxFeeCategories::class,
+            InvoiceSuiteCodelistItemTypeIdentificationCodes::class,
+            InvoiceSuiteCodelistPaymentMeans::class,
+            InvoiceSuiteCodelistReferenceCodeQualifiers::class,
+            InvoiceSuiteCodelistSchemeIdentifiers::class,
+            InvoiceSuiteCodelistTextSubjectCodeQualifiers::class,
+            InvoiceSuiteCodelistUnitCodes::class,
+            InvoiceSuiteCodelistVatCategoryCodes::class,
+        ];
+
+        foreach ($enumClasses as $enumClass) {
+            $enumNames = array_map(static fn ($c) => $c->name, $enumClass::cases());
+            $enumValues = array_map(static fn ($c) => $c->value, $enumClass::cases());
+
+            $this->assertNotEmpty($enumClass::cases(), 'Enum must declare at least one case.');
+            $this->assertSameSize(array_unique($enumNames), $enumNames, 'Case names must be unique.');
+            $this->assertSameSize(array_unique($enumValues), $enumValues, 'Case values must be unique.');
+        }
+    }
+
+    /**
+     * @param  string $enumClass
+     * @param  int    $index
+     * @param  string $expectedName
+     * @param  mixed  $expectedValue
+     * @return void
+     * @dataProvider provideExpectedOrder
+     */
+    public function testOrderAndValuesAreStable(string $enumClass, int $index, string $expectedName, $expectedValue = null): void
+    {
+        $this->assertSame($expectedName, $enumClass::cases()[$index]->name);
+        $this->assertSame($expectedValue, $enumClass::cases()[$index]->value);
+    }
+
     /**
      * @return iterable<string, array{
      *     0: string,
@@ -5400,6 +5447,19 @@ final class AllCodelistsEnumsTest extends TestCase
     }
 
     /**
+     * @param  string $enumClass
+     * @param  mixed  $value
+     * @return void
+     * @dataProvider provideValidValues
+     */
+    public function testFromAndTryFromRoundtrip(string $enumClass, $value): void
+    {
+        $this->assertInstanceOf($enumClass, $enumClass::from($value));
+        $this->assertSame($value, $enumClass::from($value)->value);
+        $this->assertSame($enumClass::from($value), $enumClass::tryFrom($value));
+    }
+
+    /**
      * @return iterable<string, array{
      *     0: string,
      *     1: int|string
@@ -5408,52 +5468,67 @@ final class AllCodelistsEnumsTest extends TestCase
     public function provideValidValues(): iterable
     {
         foreach (InvoiceSuiteCodelistAllowanceChargeCodes::cases() as $c) {
-            yield 'InvoiceSuiteCodelistAllowanceChargeCodes:' . $c->name => [InvoiceSuiteCodelistAllowanceChargeCodes::class, $c->value];
+            yield 'InvoiceSuiteCodelistAllowanceChargeCodes:'.$c->name => [InvoiceSuiteCodelistAllowanceChargeCodes::class, $c->value];
         }
 
         foreach (InvoiceSuiteCodelistCountryCodes::cases() as $c) {
-            yield 'InvoiceSuiteCodelistCountryCodes:' . $c->name => [InvoiceSuiteCodelistCountryCodes::class, $c->value];
+            yield 'InvoiceSuiteCodelistCountryCodes:'.$c->name => [InvoiceSuiteCodelistCountryCodes::class, $c->value];
         }
 
         foreach (InvoiceSuiteCodelistCurrencyCodes::cases() as $c) {
-            yield 'InvoiceSuiteCodelistCurrencyCodes:' . $c->name => [InvoiceSuiteCodelistCurrencyCodes::class, $c->value];
+            yield 'InvoiceSuiteCodelistCurrencyCodes:'.$c->name => [InvoiceSuiteCodelistCurrencyCodes::class, $c->value];
         }
 
         foreach (InvoiceSuiteCodelistDocumentTypes::cases() as $c) {
-            yield 'InvoiceSuiteCodelistDocumentTypes:' . $c->name => [InvoiceSuiteCodelistDocumentTypes::class, $c->value];
+            yield 'InvoiceSuiteCodelistDocumentTypes:'.$c->name => [InvoiceSuiteCodelistDocumentTypes::class, $c->value];
         }
 
         foreach (InvoiceSuiteCodelistDutyTaxFeeCategories::cases() as $c) {
-            yield 'InvoiceSuiteCodelistDutyTaxFeeCategories:' . $c->name => [InvoiceSuiteCodelistDutyTaxFeeCategories::class, $c->value];
+            yield 'InvoiceSuiteCodelistDutyTaxFeeCategories:'.$c->name => [InvoiceSuiteCodelistDutyTaxFeeCategories::class, $c->value];
         }
 
         foreach (InvoiceSuiteCodelistItemTypeIdentificationCodes::cases() as $c) {
-            yield 'InvoiceSuiteCodelistItemTypeIdentificationCodes:' . $c->name => [InvoiceSuiteCodelistItemTypeIdentificationCodes::class, $c->value];
+            yield 'InvoiceSuiteCodelistItemTypeIdentificationCodes:'.$c->name => [InvoiceSuiteCodelistItemTypeIdentificationCodes::class, $c->value];
         }
 
         foreach (InvoiceSuiteCodelistPaymentMeans::cases() as $c) {
-            yield 'InvoiceSuiteCodelistPaymentMeans:' . $c->name => [InvoiceSuiteCodelistPaymentMeans::class, $c->value];
+            yield 'InvoiceSuiteCodelistPaymentMeans:'.$c->name => [InvoiceSuiteCodelistPaymentMeans::class, $c->value];
         }
 
         foreach (InvoiceSuiteCodelistReferenceCodeQualifiers::cases() as $c) {
-            yield 'InvoiceSuiteCodelistReferenceCodeQualifiers:' . $c->name => [InvoiceSuiteCodelistReferenceCodeQualifiers::class, $c->value];
+            yield 'InvoiceSuiteCodelistReferenceCodeQualifiers:'.$c->name => [InvoiceSuiteCodelistReferenceCodeQualifiers::class, $c->value];
         }
 
         foreach (InvoiceSuiteCodelistSchemeIdentifiers::cases() as $c) {
-            yield 'InvoiceSuiteCodelistSchemeIdentifiers:' . $c->name => [InvoiceSuiteCodelistSchemeIdentifiers::class, $c->value];
+            yield 'InvoiceSuiteCodelistSchemeIdentifiers:'.$c->name => [InvoiceSuiteCodelistSchemeIdentifiers::class, $c->value];
         }
 
         foreach (InvoiceSuiteCodelistTextSubjectCodeQualifiers::cases() as $c) {
-            yield 'InvoiceSuiteCodelistTextSubjectCodeQualifiers:' . $c->name => [InvoiceSuiteCodelistTextSubjectCodeQualifiers::class, $c->value];
+            yield 'InvoiceSuiteCodelistTextSubjectCodeQualifiers:'.$c->name => [InvoiceSuiteCodelistTextSubjectCodeQualifiers::class, $c->value];
         }
 
         foreach (InvoiceSuiteCodelistUnitCodes::cases() as $c) {
-            yield 'InvoiceSuiteCodelistUnitCodes:' . $c->name => [InvoiceSuiteCodelistUnitCodes::class, $c->value];
+            yield 'InvoiceSuiteCodelistUnitCodes:'.$c->name => [InvoiceSuiteCodelistUnitCodes::class, $c->value];
         }
 
         foreach (InvoiceSuiteCodelistVatCategoryCodes::cases() as $c) {
-            yield 'InvoiceSuiteCodelistVatCategoryCodes:' . $c->name => [InvoiceSuiteCodelistVatCategoryCodes::class, $c->value];
+            yield 'InvoiceSuiteCodelistVatCategoryCodes:'.$c->name => [InvoiceSuiteCodelistVatCategoryCodes::class, $c->value];
         }
+    }
+
+    /**
+     * @param  string $enumClass
+     * @param  mixed  $invalid
+     * @return void
+     * @dataProvider provideInvalidValues
+     */
+    public function testInvalidValues(string $enumClass, $invalid): void
+    {
+        $this->assertNull($enumClass::tryFrom($invalid));
+
+        $this->expectException(ValueError::class);
+
+        $enumClass::from($invalid);
     }
 
     /**
@@ -5476,80 +5551,5 @@ final class AllCodelistsEnumsTest extends TestCase
         yield 'InvoiceSuiteCodelistTextSubjectCodeQualifiers' => [InvoiceSuiteCodelistTextSubjectCodeQualifiers::class, '__INVALID__'];
         yield 'InvoiceSuiteCodelistUnitCodes' => [InvoiceSuiteCodelistUnitCodes::class, '__INVALID__'];
         yield 'InvoiceSuiteCodelistVatCategoryCodes' => [InvoiceSuiteCodelistVatCategoryCodes::class, '__INVALID__'];
-    }
-
-    /**
-     * @return void
-     * @throws InvalidArgumentException
-     * @throws ExpectationFailedException
-     * @throws Exception
-     */
-    public function testCasesAreNotEmptyAndUnique(): void
-    {
-        $enumClasses = [
-            InvoiceSuiteCodelistAllowanceChargeCodes::class,
-            InvoiceSuiteCodelistCountryCodes::class,
-            InvoiceSuiteCodelistCurrencyCodes::class,
-            InvoiceSuiteCodelistDocumentTypes::class,
-            InvoiceSuiteCodelistDutyTaxFeeCategories::class,
-            InvoiceSuiteCodelistItemTypeIdentificationCodes::class,
-            InvoiceSuiteCodelistPaymentMeans::class,
-            InvoiceSuiteCodelistReferenceCodeQualifiers::class,
-            InvoiceSuiteCodelistSchemeIdentifiers::class,
-            InvoiceSuiteCodelistTextSubjectCodeQualifiers::class,
-            InvoiceSuiteCodelistUnitCodes::class,
-            InvoiceSuiteCodelistVatCategoryCodes::class,
-        ];
-
-        foreach ($enumClasses as $enumClass) {
-            $enumNames = array_map(fn($c) => $c->name, $enumClass::cases());
-            $enumValues = array_map(fn($c) => $c->value, $enumClass::cases());
-
-            $this->assertNotEmpty($enumClass::cases(), 'Enum must declare at least one case.');
-            $this->assertSameSize(array_unique($enumNames), $enumNames, 'Case names must be unique.');
-            $this->assertSameSize(array_unique($enumValues), $enumValues, 'Case values must be unique.');
-        }
-    }
-
-    /**
-     * @param string $enumClass
-     * @param integer $index
-     * @param string $expectedName
-     * @param mixed $expectedValue
-     * @return void
-     * @dataProvider provideExpectedOrder
-     */
-    public function testOrderAndValuesAreStable(string $enumClass, int $index, string $expectedName, $expectedValue = null): void
-    {
-        $this->assertSame($expectedName, $enumClass::cases()[$index]->name);
-        $this->assertSame($expectedValue, $enumClass::cases()[$index]->value);
-    }
-
-    /**
-     * @param string $enumClass
-     * @param mixed $value
-     * @return void
-     * @dataProvider provideValidValues
-     */
-    public function testFromAndTryFromRoundtrip(string $enumClass, $value): void
-    {
-        $this->assertInstanceOf($enumClass, $enumClass::from($value));
-        $this->assertSame($value, $enumClass::from($value)->value);
-        $this->assertSame($enumClass::from($value), $enumClass::tryFrom($value));
-    }
-
-    /**
-     * @param string $enumClass
-     * @param mixed $invalid
-     * @return void
-     * @dataProvider provideInvalidValues
-     */
-    public function testInvalidValues(string $enumClass, $invalid): void
-    {
-        $this->assertNull($enumClass::tryFrom($invalid));
-
-        $this->expectException(ValueError::class);
-
-        $enumClass::from($invalid);
     }
 }

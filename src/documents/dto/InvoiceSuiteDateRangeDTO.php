@@ -15,40 +15,39 @@ use DateTimeInterface;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteDateRangeDTO
 {
     /**
      * Start of the period
      *
-     * @var DateTimeInterface|null
+     * @var null|DateTimeInterface
      */
     protected ?DateTimeInterface $startDate = null;
 
     /**
      * End of the period
      *
-     * @var DateTimeInterface|null
+     * @var null|DateTimeInterface
      */
     protected ?DateTimeInterface $endDate = null;
 
     /**
      * Further information of the period
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $description = null;
 
     /**
      * Constructor
      *
-     * @param DateTimeInterface|null $startDate Start of the period
-     * @param DateTimeInterface|null $endDate End of the period
-     * @param string|null $description Further information of the period
+     * @param null|DateTimeInterface $startDate   Start of the period
+     * @param null|DateTimeInterface $endDate     End of the period
+     * @param null|string            $description Further information of the period
      */
     public function __construct(
         ?DateTimeInterface $startDate = null,
@@ -63,7 +62,7 @@ class InvoiceSuiteDateRangeDTO
     /**
      * Returns start of the period
      *
-     * @return DateTimeInterface|null
+     * @return null|DateTimeInterface
      */
     public function getStartDate(): ?DateTimeInterface
     {
@@ -73,7 +72,7 @@ class InvoiceSuiteDateRangeDTO
     /**
      * Sets start of the period
      *
-     * @param DateTimeInterface|null $startDate Start of the period
+     * @param  null|DateTimeInterface $startDate Start of the period
      * @return self
      */
     public function setStartDate(?DateTimeInterface $startDate): self
@@ -86,7 +85,7 @@ class InvoiceSuiteDateRangeDTO
     /**
      * Returns end of the period
      *
-     * @return DateTimeInterface|null
+     * @return null|DateTimeInterface
      */
     public function getEndDate(): ?DateTimeInterface
     {
@@ -96,7 +95,7 @@ class InvoiceSuiteDateRangeDTO
     /**
      * Sets end of the period
      *
-     * @param DateTimeInterface|null $endDate End of the period
+     * @param  null|DateTimeInterface $endDate End of the period
      * @return self
      */
     public function setEndDate(?DateTimeInterface $endDate): self
@@ -109,7 +108,7 @@ class InvoiceSuiteDateRangeDTO
     /**
      * Returns further information of the period
      *
-     * @return string|null
+     * @return null|string
      */
     public function getDescription(): ?string
     {
@@ -119,7 +118,7 @@ class InvoiceSuiteDateRangeDTO
     /**
      * Sets further information of the period
      *
-     * @param string|null $description Further information of the period
+     * @param  null|string $description Further information of the period
      * @return self
      */
     public function setDescription(?string $description): self

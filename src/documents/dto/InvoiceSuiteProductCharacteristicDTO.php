@@ -13,48 +13,47 @@ namespace horstoeko\invoicesuite\documents\dto;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteProductCharacteristicDTO
 {
     /**
      * The name of the attribute or characteristic ("Colour")
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $description = null;
 
     /**
      * The value of the attribute or characteristic ("Red")
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $value = null;
 
     /**
      * The type (Code) of product characteristic
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $type = null;
 
     /**
      * The value of the product property (numerical measured variable)
      *
-     * @var InvoiceSuiteMeasureDTO|null
+     * @var null|InvoiceSuiteMeasureDTO
      */
     protected ?InvoiceSuiteMeasureDTO $valueMeasure = null;
 
     /**
      * Constructor
      *
-     * @param string|null $description The name of the attribute or characteristic ("Colour")
-     * @param string|null $value The value of the attribute or characteristic ("Red")
-     * @param string|null $type The type (Code) of product characteristic
-     * @param InvoiceSuiteMeasureDTO|null $valueMeasure The value of the product property (numerical measured variable)
+     * @param null|string                 $description  The name of the attribute or characteristic ("Colour")
+     * @param null|string                 $value        The value of the attribute or characteristic ("Red")
+     * @param null|string                 $type         The type (Code) of product characteristic
+     * @param null|InvoiceSuiteMeasureDTO $valueMeasure The value of the product property (numerical measured variable)
      */
     public function __construct(
         ?string $description = null,
@@ -71,7 +70,7 @@ class InvoiceSuiteProductCharacteristicDTO
     /**
      * Returns the name of the attribute or characteristic ("Colour")
      *
-     * @return string|null
+     * @return null|string
      */
     public function getDescription(): ?string
     {
@@ -81,7 +80,7 @@ class InvoiceSuiteProductCharacteristicDTO
     /**
      * Sets the name of the attribute or characteristic ("Colour")
      *
-     * @param string|null $description The name of the attribute or characteristic ("Colour")
+     * @param  null|string $description The name of the attribute or characteristic ("Colour")
      * @return self
      */
     public function setDescription(?string $description): self
@@ -94,7 +93,7 @@ class InvoiceSuiteProductCharacteristicDTO
     /**
      * Returns the value of the attribute or characteristic ("Red")
      *
-     * @return string|null
+     * @return null|string
      */
     public function getValue(): ?string
     {
@@ -104,7 +103,7 @@ class InvoiceSuiteProductCharacteristicDTO
     /**
      * Sets the value of the attribute or characteristic ("Red")
      *
-     * @param string|null $value The value of the attribute or characteristic ("Red")
+     * @param  null|string $value The value of the attribute or characteristic ("Red")
      * @return self
      */
     public function setValue(?string $value): self
@@ -117,7 +116,7 @@ class InvoiceSuiteProductCharacteristicDTO
     /**
      * Returns the type (Code) of product characteristic
      *
-     * @return string|null
+     * @return null|string
      */
     public function getType(): ?string
     {
@@ -127,7 +126,7 @@ class InvoiceSuiteProductCharacteristicDTO
     /**
      * Sets the type (Code) of product characteristic
      *
-     * @param string|null $type The type (Code) of product characteristic
+     * @param  null|string $type The type (Code) of product characteristic
      * @return self
      */
     public function setType(?string $type): self
@@ -140,7 +139,7 @@ class InvoiceSuiteProductCharacteristicDTO
     /**
      * Returns the value of the product property (numerical measured variable)
      *
-     * @return InvoiceSuiteMeasureDTO|null
+     * @return null|InvoiceSuiteMeasureDTO
      */
     public function getValueMeasure(): ?InvoiceSuiteMeasureDTO
     {
@@ -150,7 +149,7 @@ class InvoiceSuiteProductCharacteristicDTO
     /**
      * Sets the value of the product property (numerical measured variable)
      *
-     * @param InvoiceSuiteMeasureDTO|null $valueMeasure The value of the product property (numerical measured variable)
+     * @param  null|InvoiceSuiteMeasureDTO $valueMeasure The value of the product property (numerical measured variable)
      * @return self
      */
     public function setValueMeasure(?InvoiceSuiteMeasureDTO $valueMeasure): self

@@ -15,10 +15,9 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * Class representing a DTO for a contact
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteContactDTO
 {
@@ -50,11 +49,11 @@ class InvoiceSuiteContactDTO
     /**
      * Constructor
      *
-     * @param string|null $personName
-     * @param string|null $departmentName
-     * @param string|null $phoneNumber
-     * @param string|null $faxNumber
-     * @param string|null $emailAddress
+     * @param null|string $personName
+     * @param null|string $departmentName
+     * @param null|string $phoneNumber
+     * @param null|string $faxNumber
+     * @param null|string $emailAddress
      */
     public function __construct(
         ?string $personName = null,
@@ -74,7 +73,7 @@ class InvoiceSuiteContactDTO
     /**
      * Get contact name
      *
-     * @return string|null
+     * @return null|string
      */
     public function getPersonName(): ?string
     {
@@ -84,7 +83,7 @@ class InvoiceSuiteContactDTO
     /**
      * Set contact name
      *
-     * @param string|null $newPersonName
+     * @param  null|string $newPersonName
      * @return self
      */
     public function setPersonName(?string $newPersonName): self
@@ -107,7 +106,7 @@ class InvoiceSuiteContactDTO
     /**
      * Get department name
      *
-     * @return string|null
+     * @return null|string
      */
     public function getDepartmentName(): ?string
     {
@@ -117,7 +116,7 @@ class InvoiceSuiteContactDTO
     /**
      * Set department name
      *
-     * @param string|null $newDepartmentName
+     * @param  null|string $newDepartmentName
      * @return self
      */
     public function setDepartmentName(?string $newDepartmentName): self
@@ -140,7 +139,7 @@ class InvoiceSuiteContactDTO
     /**
      * Get phone number
      *
-     * @return string|null
+     * @return null|string
      */
     public function getPhoneNumber(): ?string
     {
@@ -150,7 +149,7 @@ class InvoiceSuiteContactDTO
     /**
      * Set phone number
      *
-     * @param string|null $newPhoneNumber
+     * @param  null|string $newPhoneNumber
      * @return self
      */
     public function setPhoneNumber(?string $newPhoneNumber): self
@@ -173,7 +172,7 @@ class InvoiceSuiteContactDTO
     /**
      * Get fax number
      *
-     * @return string|null
+     * @return null|string
      */
     public function getFaxNumber(): ?string
     {
@@ -183,7 +182,7 @@ class InvoiceSuiteContactDTO
     /**
      * Set fax number
      *
-     * @param string|null $newFaxNumber
+     * @param  null|string $newFaxNumber
      * @return self
      */
     public function setFaxNumber(?string $newFaxNumber): self
@@ -206,7 +205,7 @@ class InvoiceSuiteContactDTO
     /**
      * Get email address
      *
-     * @return string|null
+     * @return null|string
      */
     public function getEmailAddress(): ?string
     {
@@ -216,7 +215,7 @@ class InvoiceSuiteContactDTO
     /**
      * Set email address
      *
-     * @param string|null $newEmailAddress
+     * @param  null|string $newEmailAddress
      * @return self
      */
     public function setEmailAddress(?string $newEmailAddress): self

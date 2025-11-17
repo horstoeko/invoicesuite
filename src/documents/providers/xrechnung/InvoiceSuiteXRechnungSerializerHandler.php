@@ -11,6 +11,4 @@ namespace horstoeko\invoicesuite\documents\providers\xrechnung;
 
 use horstoeko\invoicesuite\documents\providers\zffxcomfort\InvoiceSuiteZfFxComfortSerializerHandler;
 
-class InvoiceSuiteXRechnungSerializerHandler extends InvoiceSuiteZfFxComfortSerializerHandler
-{
-}
+class InvoiceSuiteXRechnungSerializerHandler extends InvoiceSuiteZfFxComfortSerializerHandler {}

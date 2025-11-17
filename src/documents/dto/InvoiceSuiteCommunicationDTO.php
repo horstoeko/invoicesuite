@@ -13,11 +13,8 @@ namespace horstoeko\invoicesuite\documents\dto;
  * Class representing a DTO for a party communication information
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteCommunicationDTO extends InvoiceSuiteIdDTO
-{
-}
+class InvoiceSuiteCommunicationDTO extends InvoiceSuiteIdDTO {}

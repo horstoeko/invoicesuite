@@ -30,31 +30,31 @@ class InvoiceSuiteZfFxExtendedSerializerHandler implements SubscribingHandlerInt
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\zffxextended\udt\AmountType',
-                'method' => 'serializeAmountType'
+                'method' => 'serializeAmountType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\zffxextended\udt\QuantityType',
-                'method' => 'serializeQuantityType'
+                'method' => 'serializeQuantityType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\zffxextended\udt\PercentType',
-                'method' => 'serializePercentType'
+                'method' => 'serializePercentType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\zffxextended\udt\IndicatorType',
-                'method' => 'serializeIndicatorType'
+                'method' => 'serializeIndicatorType',
             ],
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\invoicesuite\documents\models\zffxextended\udt\MeasureType',
-                'method' => 'serializeMeasureType'
+                'method' => 'serializeMeasureType',
             ],
         ];
     }
@@ -78,7 +78,7 @@ class InvoiceSuiteZfFxExtendedSerializerHandler implements SubscribingHandlerInt
         );
 
         if ($data->getCurrencyID() != null) {
-            $attr = $visitor->getDocument()->createAttribute("currencyID");
+            $attr = $visitor->getDocument()->createAttribute('currencyID');
             $attr->value = $data->getCurrencyID();
             $visitor->getCurrentNode()->appendChild($attr);
         }
@@ -105,7 +105,7 @@ class InvoiceSuiteZfFxExtendedSerializerHandler implements SubscribingHandlerInt
         );
 
         if ($data->getUnitCode() != null) {
-            $attr = $visitor->getDocument()->createAttribute("unitCode");
+            $attr = $visitor->getDocument()->createAttribute('unitCode');
             $attr->value = $data->getUnitCode();
             $visitor->getCurrentNode()->appendChild($attr);
         }
@@ -151,7 +151,7 @@ class InvoiceSuiteZfFxExtendedSerializerHandler implements SubscribingHandlerInt
         );
 
         if ($data->getUnitCode() != null) {
-            $attr = $visitor->getDocument()->createAttribute("unitCode");
+            $attr = $visitor->getDocument()->createAttribute('unitCode');
             $attr->value = $data->getUnitCode();
             $visitor->getCurrentNode()->appendChild($attr);
         }

@@ -15,10 +15,9 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuitePartyDTO
 {
@@ -81,14 +80,14 @@ class InvoiceSuitePartyDTO
     /**
      * Constructor
      *
-     * @param array<string> $names Party names
-     * @param array<InvoiceSuiteIdDTO> $ids Party IDs
-     * @param array<InvoiceSuiteIdDTO> $globalIds Party global IDs
-     * @param array<InvoiceSuiteIdDTO> $taxRegistrations Party tax registrations
-     * @param array<InvoiceSuiteAddressDTO> $addresses Party addresses
-     * @param array<InvoiceSuiteOrganisationDTO> $legalOrganisations Party legal organisations
-     * @param array<InvoiceSuiteContactDTO> $contacts Party contacts
-     * @param array<InvoiceSuiteCommunicationDTO> $communications Party electronic communications
+     * @param array<string>                       $names              Party names
+     * @param array<InvoiceSuiteIdDTO>            $ids                Party IDs
+     * @param array<InvoiceSuiteIdDTO>            $globalIds          Party global IDs
+     * @param array<InvoiceSuiteIdDTO>            $taxRegistrations   Party tax registrations
+     * @param array<InvoiceSuiteAddressDTO>       $addresses          Party addresses
+     * @param array<InvoiceSuiteOrganisationDTO>  $legalOrganisations Party legal organisations
+     * @param array<InvoiceSuiteContactDTO>       $contacts           Party contacts
+     * @param array<InvoiceSuiteCommunicationDTO> $communications     Party electronic communications
      */
     public function __construct(
         array $names = [],
@@ -123,7 +122,7 @@ class InvoiceSuitePartyDTO
     /**
      * Sets party names
      *
-     * @param array<string> $names Party names
+     * @param  array<string> $names Party names
      * @return self
      */
     public function setNames(array $names): self
@@ -136,7 +135,7 @@ class InvoiceSuitePartyDTO
     /**
      * Add single Party names
      *
-     * @param string $name Party names
+     * @param  string $name Party names
      * @return self
      */
     public function addName(?string $name): self
@@ -153,8 +152,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get first Party names
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstName(callable $callback, ?callable $callbackElse = null): self
@@ -171,8 +170,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get next Party names
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextName(callable $callback, ?callable $callbackElse = null): self
@@ -189,8 +188,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get previous Party names
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousName(callable $callback, ?callable $callbackElse = null): self
@@ -207,8 +206,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get last Party names
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastName(callable $callback, ?callable $callbackElse = null): self
@@ -225,9 +224,9 @@ class InvoiceSuitePartyDTO
     /**
      * Loop over Party names and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachName(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
@@ -239,7 +238,7 @@ class InvoiceSuitePartyDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($name);
         }
@@ -264,7 +263,7 @@ class InvoiceSuitePartyDTO
     /**
      * Sets party IDs
      *
-     * @param array<InvoiceSuiteIdDTO> $ids Party IDs
+     * @param  array<InvoiceSuiteIdDTO> $ids Party IDs
      * @return self
      */
     public function setIds(array $ids): self
@@ -277,7 +276,7 @@ class InvoiceSuitePartyDTO
     /**
      * Add single Party IDs
      *
-     * @param InvoiceSuiteIdDTO $id Party IDs
+     * @param  InvoiceSuiteIdDTO $id Party IDs
      * @return self
      */
     public function addId(InvoiceSuiteIdDTO $id): self
@@ -290,8 +289,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get first Party IDs
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstId(callable $callback, ?callable $callbackElse = null): self
@@ -308,8 +307,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get next Party IDs
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextId(callable $callback, ?callable $callbackElse = null): self
@@ -326,8 +325,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get previous Party IDs
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousId(callable $callback, ?callable $callbackElse = null): self
@@ -344,8 +343,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get last Party IDs
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastId(callable $callback, ?callable $callbackElse = null): self
@@ -362,9 +361,9 @@ class InvoiceSuitePartyDTO
     /**
      * Loop over Party IDs and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachId(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
@@ -376,7 +375,7 @@ class InvoiceSuitePartyDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($id);
         }
@@ -401,7 +400,7 @@ class InvoiceSuitePartyDTO
     /**
      * Sets party global IDs
      *
-     * @param array<InvoiceSuiteIdDTO> $globalIds Party global IDs
+     * @param  array<InvoiceSuiteIdDTO> $globalIds Party global IDs
      * @return self
      */
     public function setGlobalIds(array $globalIds): self
@@ -414,7 +413,7 @@ class InvoiceSuitePartyDTO
     /**
      * Add single Party global IDs
      *
-     * @param InvoiceSuiteIdDTO $globalId Party global IDs
+     * @param  InvoiceSuiteIdDTO $globalId Party global IDs
      * @return self
      */
     public function addGlobalId(InvoiceSuiteIdDTO $globalId): self
@@ -427,8 +426,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get first Party global IDs
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstGlobalId(callable $callback, ?callable $callbackElse = null): self
@@ -445,8 +444,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get next Party global IDs
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextGlobalId(callable $callback, ?callable $callbackElse = null): self
@@ -463,8 +462,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get previous Party global IDs
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousGlobalId(callable $callback, ?callable $callbackElse = null): self
@@ -481,8 +480,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get last Party global IDs
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastGlobalId(callable $callback, ?callable $callbackElse = null): self
@@ -499,9 +498,9 @@ class InvoiceSuitePartyDTO
     /**
      * Loop over Party global IDs and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachGlobalId(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
@@ -513,7 +512,7 @@ class InvoiceSuitePartyDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($globalId);
         }
@@ -538,7 +537,7 @@ class InvoiceSuitePartyDTO
     /**
      * Sets party tax registrations
      *
-     * @param array<InvoiceSuiteIdDTO> $taxRegistrations Party tax registrations
+     * @param  array<InvoiceSuiteIdDTO> $taxRegistrations Party tax registrations
      * @return self
      */
     public function setTaxRegistrations(array $taxRegistrations): self
@@ -551,7 +550,7 @@ class InvoiceSuitePartyDTO
     /**
      * Add single Party tax registrations
      *
-     * @param InvoiceSuiteIdDTO $taxRegistration Party tax registrations
+     * @param  InvoiceSuiteIdDTO $taxRegistration Party tax registrations
      * @return self
      */
     public function addTaxRegistration(InvoiceSuiteIdDTO $taxRegistration): self
@@ -564,8 +563,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get first Party tax registrations
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstTaxRegistration(callable $callback, ?callable $callbackElse = null): self
@@ -582,8 +581,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get next Party tax registrations
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextTaxRegistration(callable $callback, ?callable $callbackElse = null): self
@@ -600,8 +599,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get previous Party tax registrations
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousTaxRegistration(callable $callback, ?callable $callbackElse = null): self
@@ -618,8 +617,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get last Party tax registrations
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastTaxRegistration(callable $callback, ?callable $callbackElse = null): self
@@ -636,9 +635,9 @@ class InvoiceSuitePartyDTO
     /**
      * Loop over Party tax registrations and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachTaxRegistration(
@@ -653,7 +652,7 @@ class InvoiceSuitePartyDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($taxRegistration);
         }
@@ -678,7 +677,7 @@ class InvoiceSuitePartyDTO
     /**
      * Sets party addresses
      *
-     * @param array<InvoiceSuiteAddressDTO> $addresses Party addresses
+     * @param  array<InvoiceSuiteAddressDTO> $addresses Party addresses
      * @return self
      */
     public function setAddresses(array $addresses): self
@@ -691,7 +690,7 @@ class InvoiceSuitePartyDTO
     /**
      * Add single Party addresses
      *
-     * @param InvoiceSuiteAddressDTO $address Party addresses
+     * @param  InvoiceSuiteAddressDTO $address Party addresses
      * @return self
      */
     public function addAddress(InvoiceSuiteAddressDTO $address): self
@@ -704,8 +703,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get first Party addresses
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstAddress(callable $callback, ?callable $callbackElse = null): self
@@ -722,8 +721,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get next Party addresses
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextAddress(callable $callback, ?callable $callbackElse = null): self
@@ -740,8 +739,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get previous Party addresses
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousAddress(callable $callback, ?callable $callbackElse = null): self
@@ -758,8 +757,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get last Party addresses
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastAddress(callable $callback, ?callable $callbackElse = null): self
@@ -776,9 +775,9 @@ class InvoiceSuitePartyDTO
     /**
      * Loop over Party addresses and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachAddress(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
@@ -790,7 +789,7 @@ class InvoiceSuitePartyDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($address);
         }
@@ -815,7 +814,7 @@ class InvoiceSuitePartyDTO
     /**
      * Sets party legal organisations
      *
-     * @param array<InvoiceSuiteOrganisationDTO> $legalOrganisations Party legal organisations
+     * @param  array<InvoiceSuiteOrganisationDTO> $legalOrganisations Party legal organisations
      * @return self
      */
     public function setLegalOrganisations(array $legalOrganisations): self
@@ -828,7 +827,7 @@ class InvoiceSuitePartyDTO
     /**
      * Add single Party legal organisations
      *
-     * @param InvoiceSuiteOrganisationDTO $legalOrganisation Party legal organisations
+     * @param  InvoiceSuiteOrganisationDTO $legalOrganisation Party legal organisations
      * @return self
      */
     public function addLegalOrganisation(InvoiceSuiteOrganisationDTO $legalOrganisation): self
@@ -841,8 +840,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get first Party legal organisations
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstLegalOrganisation(callable $callback, ?callable $callbackElse = null): self
@@ -859,8 +858,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get next Party legal organisations
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextLegalOrganisation(callable $callback, ?callable $callbackElse = null): self
@@ -877,8 +876,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get previous Party legal organisations
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousLegalOrganisation(callable $callback, ?callable $callbackElse = null): self
@@ -895,8 +894,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get last Party legal organisations
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastLegalOrganisation(callable $callback, ?callable $callbackElse = null): self
@@ -913,9 +912,9 @@ class InvoiceSuitePartyDTO
     /**
      * Loop over Party legal organisations and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachLegalOrganisation(
@@ -930,7 +929,7 @@ class InvoiceSuitePartyDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($legalOrganisation);
         }
@@ -955,7 +954,7 @@ class InvoiceSuitePartyDTO
     /**
      * Sets party contacts
      *
-     * @param array<InvoiceSuiteContactDTO> $contacts Party contacts
+     * @param  array<InvoiceSuiteContactDTO> $contacts Party contacts
      * @return self
      */
     public function setContacts(array $contacts): self
@@ -968,7 +967,7 @@ class InvoiceSuitePartyDTO
     /**
      * Add single Party contacts
      *
-     * @param InvoiceSuiteContactDTO $contact Party contacts
+     * @param  InvoiceSuiteContactDTO $contact Party contacts
      * @return self
      */
     public function addContact(InvoiceSuiteContactDTO $contact): self
@@ -981,8 +980,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get first Party contacts
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstContact(callable $callback, ?callable $callbackElse = null): self
@@ -999,8 +998,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get next Party contacts
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextContact(callable $callback, ?callable $callbackElse = null): self
@@ -1017,8 +1016,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get previous Party contacts
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousContact(callable $callback, ?callable $callbackElse = null): self
@@ -1035,8 +1034,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get last Party contacts
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastContact(callable $callback, ?callable $callbackElse = null): self
@@ -1053,9 +1052,9 @@ class InvoiceSuitePartyDTO
     /**
      * Loop over Party contacts and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachContact(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
@@ -1067,7 +1066,7 @@ class InvoiceSuitePartyDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($contact);
         }
@@ -1092,7 +1091,7 @@ class InvoiceSuitePartyDTO
     /**
      * Sets party electronic communications
      *
-     * @param array<InvoiceSuiteCommunicationDTO> $communications Party electronic communications
+     * @param  array<InvoiceSuiteCommunicationDTO> $communications Party electronic communications
      * @return self
      */
     public function setCommunications(array $communications): self
@@ -1105,7 +1104,7 @@ class InvoiceSuitePartyDTO
     /**
      * Add single Party electronic communications
      *
-     * @param InvoiceSuiteCommunicationDTO $communication Party electronic communications
+     * @param  InvoiceSuiteCommunicationDTO $communication Party electronic communications
      * @return self
      */
     public function addCommunication(InvoiceSuiteCommunicationDTO $communication): self
@@ -1118,8 +1117,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get first Party electronic communications
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstCommunication(callable $callback, ?callable $callbackElse = null): self
@@ -1136,8 +1135,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get next Party electronic communications
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function nextCommunication(callable $callback, ?callable $callbackElse = null): self
@@ -1154,8 +1153,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get previous Party electronic communications
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function previousCommunication(callable $callback, ?callable $callbackElse = null): self
@@ -1172,8 +1171,8 @@ class InvoiceSuitePartyDTO
     /**
      * Get last Party electronic communications
      *
-     * @param callable $callback Callback to execute if an item was found
-     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function lastCommunication(callable $callback, ?callable $callbackElse = null): self
@@ -1190,9 +1189,9 @@ class InvoiceSuitePartyDTO
     /**
      * Loop over Party electronic communications and execute callback
      *
-     * @param callable $callback Callback to execute for each item
-     * @param callable|null $callbackElse Callback to execute if no item was found
-     * @param int|null $limit Maximum number of loops
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
      * @return self
      */
     public function forEachCommunication(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
@@ -1204,7 +1203,7 @@ class InvoiceSuitePartyDTO
                 break;
             }
 
-            $count++;
+            ++$count;
 
             $callback($communication);
         }

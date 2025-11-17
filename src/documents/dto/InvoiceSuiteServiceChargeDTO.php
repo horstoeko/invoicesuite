@@ -13,56 +13,55 @@ namespace horstoeko\invoicesuite\documents\dto;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteServiceChargeDTO
 {
     /**
      * The amount of the service fee
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $amount = null;
 
     /**
      * The identification of the service fee
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $description = null;
 
     /**
      * The coded description of the tax category
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $taxCategory = null;
 
     /**
      * The coded description of the tax type
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $taxType = null;
 
     /**
      * The tax Rate (Percentage)
      *
-     * @var float|null
+     * @var null|float
      */
     protected ?float $taxPercent = null;
 
     /**
      * Constructor
      *
-     * @param float|null $amount The amount of the service fee
-     * @param string|null $description The identification of the service fee
-     * @param string|null $taxCategory The coded description of the tax category
-     * @param string|null $taxType The coded description of the tax type
-     * @param float|null $taxPercent The tax Rate (Percentage)
+     * @param null|float  $amount      The amount of the service fee
+     * @param null|string $description The identification of the service fee
+     * @param null|string $taxCategory The coded description of the tax category
+     * @param null|string $taxType     The coded description of the tax type
+     * @param null|float  $taxPercent  The tax Rate (Percentage)
      */
     public function __construct(
         ?float $amount = null,
@@ -81,7 +80,7 @@ class InvoiceSuiteServiceChargeDTO
     /**
      * Returns the amount of the service fee
      *
-     * @return float|null
+     * @return null|float
      */
     public function getAmount(): ?float
     {
@@ -91,7 +90,7 @@ class InvoiceSuiteServiceChargeDTO
     /**
      * Sets the amount of the service fee
      *
-     * @param float|null $amount The amount of the service fee
+     * @param  null|float $amount The amount of the service fee
      * @return self
      */
     public function setAmount(?float $amount): self
@@ -104,7 +103,7 @@ class InvoiceSuiteServiceChargeDTO
     /**
      * Returns the identification of the service fee
      *
-     * @return string|null
+     * @return null|string
      */
     public function getDescription(): ?string
     {
@@ -114,7 +113,7 @@ class InvoiceSuiteServiceChargeDTO
     /**
      * Sets the identification of the service fee
      *
-     * @param string|null $description The identification of the service fee
+     * @param  null|string $description The identification of the service fee
      * @return self
      */
     public function setDescription(?string $description): self
@@ -127,7 +126,7 @@ class InvoiceSuiteServiceChargeDTO
     /**
      * Returns the coded description of the tax category
      *
-     * @return string|null
+     * @return null|string
      */
     public function getTaxCategory(): ?string
     {
@@ -137,7 +136,7 @@ class InvoiceSuiteServiceChargeDTO
     /**
      * Sets the coded description of the tax category
      *
-     * @param string|null $taxCategory The coded description of the tax category
+     * @param  null|string $taxCategory The coded description of the tax category
      * @return self
      */
     public function setTaxCategory(?string $taxCategory): self
@@ -150,7 +149,7 @@ class InvoiceSuiteServiceChargeDTO
     /**
      * Returns the coded description of the tax type
      *
-     * @return string|null
+     * @return null|string
      */
     public function getTaxType(): ?string
     {
@@ -160,7 +159,7 @@ class InvoiceSuiteServiceChargeDTO
     /**
      * Sets the coded description of the tax type
      *
-     * @param string|null $taxType The coded description of the tax type
+     * @param  null|string $taxType The coded description of the tax type
      * @return self
      */
     public function setTaxType(?string $taxType): self
@@ -173,7 +172,7 @@ class InvoiceSuiteServiceChargeDTO
     /**
      * Returns the tax Rate (Percentage)
      *
-     * @return float|null
+     * @return null|float
      */
     public function getTaxPercent(): ?float
     {
@@ -183,7 +182,7 @@ class InvoiceSuiteServiceChargeDTO
     /**
      * Sets the tax Rate (Percentage)
      *
-     * @param float|null $taxPercent The tax Rate (Percentage)
+     * @param  null|float $taxPercent The tax Rate (Percentage)
      * @return self
      */
     public function setTaxPercent(?float $taxPercent): self

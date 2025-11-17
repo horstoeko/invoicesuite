@@ -28,7 +28,7 @@ final class InvoiceSuiteReferenceProductDTOTest extends TestCase
     public function testIdGetterAndSetter(): void
     {
         $invoiceSuiteReferenceProductDTO = new InvoiceSuiteReferenceProductDTO();
-        $idValue = "Example Value";
+        $idValue = 'Example Value';
         $invoiceSuiteReferenceProductDTO->setId($idValue);
 
         $this->assertSame($idValue, $invoiceSuiteReferenceProductDTO->getId());
@@ -37,7 +37,7 @@ final class InvoiceSuiteReferenceProductDTOTest extends TestCase
     public function testNameGetterAndSetter(): void
     {
         $invoiceSuiteReferenceProductDTO = new InvoiceSuiteReferenceProductDTO();
-        $nameValue = "Example Value";
+        $nameValue = 'Example Value';
         $invoiceSuiteReferenceProductDTO->setName($nameValue);
 
         $this->assertSame($nameValue, $invoiceSuiteReferenceProductDTO->getName());
@@ -46,7 +46,7 @@ final class InvoiceSuiteReferenceProductDTOTest extends TestCase
     public function testDescriptionGetterAndSetter(): void
     {
         $invoiceSuiteReferenceProductDTO = new InvoiceSuiteReferenceProductDTO();
-        $descriptionValue = "Example Value";
+        $descriptionValue = 'Example Value';
         $invoiceSuiteReferenceProductDTO->setDescription($descriptionValue);
 
         $this->assertSame($descriptionValue, $invoiceSuiteReferenceProductDTO->getDescription());
@@ -55,7 +55,7 @@ final class InvoiceSuiteReferenceProductDTOTest extends TestCase
     public function testSellerIdGetterAndSetter(): void
     {
         $invoiceSuiteReferenceProductDTO = new InvoiceSuiteReferenceProductDTO();
-        $sellerIdValue = "Example Value";
+        $sellerIdValue = 'Example Value';
         $invoiceSuiteReferenceProductDTO->setSellerId($sellerIdValue);
 
         $this->assertSame($sellerIdValue, $invoiceSuiteReferenceProductDTO->getSellerId());
@@ -64,7 +64,7 @@ final class InvoiceSuiteReferenceProductDTOTest extends TestCase
     public function testBuyerIdGetterAndSetter(): void
     {
         $invoiceSuiteReferenceProductDTO = new InvoiceSuiteReferenceProductDTO();
-        $buyerIdValue = "Example Value";
+        $buyerIdValue = 'Example Value';
         $invoiceSuiteReferenceProductDTO->setBuyerId($buyerIdValue);
 
         $this->assertSame($buyerIdValue, $invoiceSuiteReferenceProductDTO->getBuyerId());
@@ -82,7 +82,7 @@ final class InvoiceSuiteReferenceProductDTOTest extends TestCase
     public function testIndustryIdGetterAndSetter(): void
     {
         $invoiceSuiteReferenceProductDTO = new InvoiceSuiteReferenceProductDTO();
-        $industryIdValue = "Example Value";
+        $industryIdValue = 'Example Value';
         $invoiceSuiteReferenceProductDTO->setIndustryId($industryIdValue);
 
         $this->assertSame($industryIdValue, $invoiceSuiteReferenceProductDTO->getIndustryId());

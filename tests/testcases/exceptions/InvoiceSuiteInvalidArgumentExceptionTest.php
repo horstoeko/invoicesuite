@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\exceptions;
 
-use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteExceptionCodes;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
+use horstoeko\invoicesuite\tests\TestCase;
 
 final class InvoiceSuiteInvalidArgumentExceptionTest extends TestCase
 {

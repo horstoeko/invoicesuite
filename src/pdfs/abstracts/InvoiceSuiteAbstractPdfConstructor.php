@@ -9,9 +9,9 @@
 
 namespace horstoeko\invoicesuite\pdfs\abstracts;
 
-use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesPdfConstructorRawContents;
+use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
@@ -25,10 +25,9 @@ use horstoeko\mimedb\MimeDb;
  * Class representing the basics for a PDF document constructor
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 abstract class InvoiceSuiteAbstractPdfConstructor
 {
@@ -38,41 +37,41 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Constant for Relationship types "Data"
      */
-    public const AF_RELATIONSHIP_DATA = "Data";
+    public const AF_RELATIONSHIP_DATA = 'Data';
 
     /**
      * Constant for Relationship types "Alternative"
      */
-    public const AF_RELATIONSHIP_ALTERNATIVE = "Alternative";
+    public const AF_RELATIONSHIP_ALTERNATIVE = 'Alternative';
 
     /**
      * Constant for Relationship types "Source"
      */
-    public const AF_RELATIONSHIP_SOURCE = "Source";
+    public const AF_RELATIONSHIP_SOURCE = 'Source';
 
     /**
      * Constant for Relationship types "Supplement"
      */
-    public const AF_RELATIONSHIP_SUPPLEMENT = "Supplement";
+    public const AF_RELATIONSHIP_SUPPLEMENT = 'Supplement';
 
     /**
      * Constant for Relationship types "Unspecified"
      */
-    public const AF_RELATIONSHIP_UNSPECIFIED = "Unspecified";
+    public const AF_RELATIONSHIP_UNSPECIFIED = 'Unspecified';
 
     /**
      * The additional creator tool
      *
      * @var string
      */
-    private $additionalCreatorTool = "";
+    private $additionalCreatorTool = '';
 
     /**
      * The relationship type of the attached invoice document
      *
      * @var string
      */
-    private $documentRelationshipType = "Data";
+    private $documentRelationshipType = 'Data';
 
     /**
      * List which holds the additional attachments
@@ -84,7 +83,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Status of deterministic mode
      *
-     * @var boolean
+     * @var bool
      */
     private $deterministicMode = false;
 
@@ -93,49 +92,49 @@ abstract class InvoiceSuiteAbstractPdfConstructor
      *
      * @var string
      */
-    private $metaInformationAuthorTemplate = "";
+    private $metaInformationAuthorTemplate = '';
 
     /**
      * User-defined template for the keyword-metainformation
      *
      * @var string
      */
-    private $metaInformationKeywordTemplate = "";
+    private $metaInformationKeywordTemplate = '';
 
     /**
      * User-defined template for the title-metainformation
      *
      * @var string
      */
-    private $metaInformationTitleTemplate = "";
+    private $metaInformationTitleTemplate = '';
 
     /**
      * User-defined template for the subject-metainformation
      *
      * @var string
      */
-    private $metaInformationSubjectTemplate = "";
+    private $metaInformationSubjectTemplate = '';
 
     /**
      * User-defined callback function for all meta information
      *
-     * @var callable|null
+     * @var null|callable
      */
     private $metaInformationCallback;
 
     /**
      * Flag which indicates, that attachment pane should be opened or is closed
      *
-     * @var boolean
+     * @var bool
      */
     private $attachmentPaneVisibility = true;
 
     /**
      * Constructor
      *
-     * @param InvoiceSuiteAbstractDocumentFormatProvider $newProvider
-     * @param string $newRawDocumentContent
-     * @param string $newRawPdfContent
+     * @param  InvoiceSuiteAbstractDocumentFormatProvider $newProvider
+     * @param  string                                     $newRawDocumentContent
+     * @param  string                                     $newRawPdfContent
      * @return self
      */
     public function __construct(
@@ -161,7 +160,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Generate the final PDF and save it to a file
      *
-     * @param string $toFilename
+     * @param  string                             $toFilename
      * @return InvoiceSuiteAbstractPdfConstructor
      */
     public function generatePdfDocumentAndSaveToFile(string $toFilename): self
@@ -182,7 +181,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Set the additional creator tool (e.g. the ERP software that called the PHP library)
      *
-     * @param string $newAdditionalCreatorTool
+     * @param  string                             $newAdditionalCreatorTool
      * @return InvoiceSuiteAbstractPdfConstructor
      */
     public function setAdditionalCreatorTool(string $newAdditionalCreatorTool): self
@@ -202,7 +201,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
         $creatorToolName = sprintf('InvoiceSuite PHP library v%s by HorstOeko', InvoiceSuitePackageVersion::getInstalledVersion());
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->getAdditionalCreatorTool())) {
-            return sprintf("%s / %s", $this->getAdditionalCreatorTool(), $creatorToolName);
+            return sprintf('%s / %s', $this->getAdditionalCreatorTool(), $creatorToolName);
         }
 
         return $creatorToolName;
@@ -221,7 +220,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Set the relationship type of the attached invoice document
      *
-     * @param string $newDocumentRelationshipType
+     * @param  string                             $newDocumentRelationshipType
      * @return InvoiceSuiteAbstractPdfConstructor
      */
     public function setDocumentRelationshipType(string $newDocumentRelationshipType): self
@@ -278,19 +277,19 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Add an additional document to attach by an existing file
      *
-     * @param string $newFullFilename
-     * @param string $newDisplayName
-     * @param string $newRelationshipType
-     * @return InvoiceSuiteAbstractPdfConstructor
+     * @param  string                               $newFullFilename
+     * @param  string                               $newDisplayName
+     * @param  string                               $newRelationshipType
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteUnknownContentException
+     * @return InvoiceSuiteAbstractPdfConstructor
      */
-    public function addAdditionalDocumentByRealFile(string $newFullFilename, string $newDisplayName = "", string $newRelationshipType = ""): self
+    public function addAdditionalDocumentByRealFile(string $newFullFilename, string $newDisplayName = '', string $newRelationshipType = ''): self
     {
         if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newFullFilename)) {
-            throw new InvoiceSuiteInvalidArgumentException("You must specify a filename for the content to attach");
+            throw new InvoiceSuiteInvalidArgumentException('You must specify a filename for the content to attach');
         }
 
         if (!file_exists($newFullFilename)) {
@@ -314,22 +313,22 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Add an additional document to attach by a content string
      *
-     * @param string $newContent
-     * @param string $newFilename
-     * @param string $newDisplayName
-     * @param string $newRelationshipType
-     * @return InvoiceSuiteAbstractPdfConstructor
+     * @param  string                               $newContent
+     * @param  string                               $newFilename
+     * @param  string                               $newDisplayName
+     * @param  string                               $newRelationshipType
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws InvoiceSuiteUnknownContentException
+     * @return InvoiceSuiteAbstractPdfConstructor
      */
-    public function addAdditionalDocumentByContent(string $newContent, string $newFilename, string $newDisplayName = "", string $newRelationshipType = ""): self
+    public function addAdditionalDocumentByContent(string $newContent, string $newFilename, string $newDisplayName = '', string $newRelationshipType = ''): self
     {
         if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newContent)) {
-            throw new InvoiceSuiteInvalidArgumentException("You must specify a content to attach");
+            throw new InvoiceSuiteInvalidArgumentException('You must specify a content to attach');
         }
 
         if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newFilename)) {
-            throw new InvoiceSuiteInvalidArgumentException("You must specify a filename for the content to attach");
+            throw new InvoiceSuiteInvalidArgumentException('You must specify a filename for the content to attach');
         }
 
         $mimeType = (new MimeDb())->findFirstMimeTypeByExtension(InvoiceSuiteFileUtils::getFileExtension($newFilename));
@@ -351,11 +350,11 @@ abstract class InvoiceSuiteAbstractPdfConstructor
         }
 
         $this->additionalDocumentsToAttach[] = [
-            "content" => $newContent,
-            "filename" => InvoiceSuiteFileUtils::getFilenameWithExtension($newFilename),
-            "displayname" => $newDisplayName,
-            "relationship" => $newRelationshipType,
-            "mimetype" => $mimeType
+            'content' => $newContent,
+            'filename' => InvoiceSuiteFileUtils::getFilenameWithExtension($newFilename),
+            'displayname' => $newDisplayName,
+            'relationship' => $newRelationshipType,
+            'mimetype' => $mimeType,
         ];
 
         return $this;
@@ -364,7 +363,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Get the status of deterministic mode
      *
-     * @return boolean
+     * @return bool
      */
     public function getDeterministicMode(): bool
     {
@@ -374,7 +373,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Set the status of deterministic mode
      *
-     * @param bool $newDeterministicMode
+     * @param  bool                               $newDeterministicMode
      * @return InvoiceSuiteAbstractPdfConstructor
      */
     public function setDeterministicMode(bool $newDeterministicMode): self
@@ -417,7 +416,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Set the template for author-metainformation
      *
-     * @param string $newMetaInformationAuthorTemplate
+     * @param  string                             $newMetaInformationAuthorTemplate
      * @return InvoiceSuiteAbstractPdfConstructor
      */
     public function setMetaInformationAuthorTemplate(string $newMetaInformationAuthorTemplate): self
@@ -440,7 +439,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Set the template for keyword-metainformation
      *
-     * @param string $newMetaInformationKeywordTemplate
+     * @param  string                             $newMetaInformationKeywordTemplate
      * @return InvoiceSuiteAbstractPdfConstructor
      */
     public function setMetaInformationKeywordTemplate(string $newMetaInformationKeywordTemplate): self
@@ -463,7 +462,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Set the template for title-metainformation
      *
-     * @param string $newMetaInformationTitleTemplate
+     * @param  string                             $newMetaInformationTitleTemplate
      * @return InvoiceSuiteAbstractPdfConstructor
      */
     public function setMetaInformationTitleTemplate(string $newMetaInformationTitleTemplate): self
@@ -486,7 +485,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Set the template for subject-metainformation
      *
-     * @param string $newMetaInformationSubjectTemplate
+     * @param  string                             $newMetaInformationSubjectTemplate
      * @return InvoiceSuiteAbstractPdfConstructor
      */
     public function setMetaInformationSubjectTemplate(string $newMetaInformationSubjectTemplate): self
@@ -499,7 +498,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Get the callback for metainformation
      *
-     * @return null|callable(string $whichTemplate,string $xmlContent,array{invoiceId: string, docTypeName: string, seller: string, date: string} $invoiceInformation,string $defaultValue): string|null
+     * @return null|null|callable(string $whichTemplate,string $xmlContent,array{invoiceId: string, docTypeName: string, seller: string, date: string} $invoiceInformation,string $defaultValue): string
      */
     public function getMetaInformationCallback(): ?callable
     {
@@ -509,7 +508,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Set the callback for metainformation
      *
-     * @param null|callable(string $whichTemplate,string $xmlContent,array{invoiceId: string, docTypeName: string, seller: string, date: string} $invoiceInformation,string $defaultValue): string|null $newMetaInformationCallback
+     * @param  null|null|callable(string $whichTemplate,string $xmlContent,array{invoiceId: string, docTypeName: string, seller: string, date: string} $invoiceInformation,string $defaultValue): string $newMetaInformationCallback
      * @return InvoiceSuiteAbstractPdfConstructor
      */
     public function setMetaInformationCallback(?callable $newMetaInformationCallback): self
@@ -532,7 +531,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Set the attachment pane visibility
      *
-     * @param boolean $newAttachmentPaneVisibility
+     * @param  bool                               $newAttachmentPaneVisibility
      * @return InvoiceSuiteAbstractPdfConstructor
      */
     public function setAttachmentPaneVisibility(bool $newAttachmentPaneVisibility): self
@@ -559,7 +558,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Save the content of the generated PDF to a file
      *
-     * @param string $toFilename
+     * @param  string                             $toFilename
      * @return InvoiceSuiteAbstractPdfConstructor
      */
     abstract protected function saveGeneratedPdfDocumentToFile(string $toFilename): self;

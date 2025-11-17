@@ -13,32 +13,31 @@ namespace horstoeko\invoicesuite\documents\dto;
  * Class representing a DTO for...
  *
  * @category InvoiceSuite
- * @package  InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/invoicesuite
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class InvoiceSuiteProjectDTO
 {
     /**
      * The project number
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $projectNumber = null;
 
     /**
      * The project name
      *
-     * @var string|null
+     * @var null|string
      */
     protected ?string $projectName = null;
 
     /**
      * Constructor
      *
-     * @param string|null $projectNumber The project number
-     * @param string|null $projectName The project name
+     * @param null|string $projectNumber The project number
+     * @param null|string $projectName   The project name
      */
     public function __construct(?string $projectNumber = null, ?string $projectName = null)
     {
@@ -49,7 +48,7 @@ class InvoiceSuiteProjectDTO
     /**
      * Returns the project number
      *
-     * @return string|null
+     * @return null|string
      */
     public function getProjectNumber(): ?string
     {
@@ -59,7 +58,7 @@ class InvoiceSuiteProjectDTO
     /**
      * Sets the project number
      *
-     * @param string|null $projectNumber The project number
+     * @param  null|string $projectNumber The project number
      * @return self
      */
     public function setProjectNumber(?string $projectNumber): self
@@ -72,7 +71,7 @@ class InvoiceSuiteProjectDTO
     /**
      * Returns the project name
      *
-     * @return string|null
+     * @return null|string
      */
     public function getProjectName(): ?string
     {
@@ -82,7 +81,7 @@ class InvoiceSuiteProjectDTO
     /**
      * Sets the project name
      *
-     * @param string|null $projectName The project name
+     * @param  null|string $projectName The project name
      * @return self
      */
     public function setProjectName(?string $projectName): self
