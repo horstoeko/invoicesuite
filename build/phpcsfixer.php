@@ -120,5 +120,7 @@ return (new Config())
             'multiline_whitespace_before_semicolons' => [
                 'strategy' => 'no_multi_line',
             ],
+            'php_unit_test_class_requires_covers' => false,
+            'php_unit_internal_class' => false,
         ]
     );
