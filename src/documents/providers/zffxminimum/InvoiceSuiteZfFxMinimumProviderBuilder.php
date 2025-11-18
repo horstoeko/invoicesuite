@@ -1733,8 +1733,8 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractDocumen
      * Set an additional invoice document (reference to preceding invoice)
      *
      * @param  null|string            $newReferenceNumber __BT-25, From BASIC WL__ Identification of an invoice previously sent
-     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-555, From EXTENDED__ Date of the previous invoice
-     * @param  null|string            $newTypeCode        __BT-26, From BASIC WL__ Type code of previous invoice
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-26, From BASIC WL__Date of the previous invoice
+     * @param  null|string            $newTypeCode        __BT-X-555, From EXTENDED__ Type code of previous invoice
      * @return self
      */
     public function setDocumentInvoiceReference(
@@ -1751,8 +1751,8 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractDocumen
      * Add an additional invoice document (reference to preceding invoice)
      *
      * @param  null|string            $newReferenceNumber __BT-25, From BASIC WL__ Identification of an invoice previously sent
-     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-555, From EXTENDED__ Date of the previous invoice
-     * @param  null|string            $newTypeCode        __BT-26, From BASIC WL__ Type code of previous invoice
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-26, From BASIC WL__Date of the previous invoice
+     * @param  null|string            $newTypeCode        __BT-X-555, From EXTENDED__ Type code of previous invoice
      * @return self
      */
     public function addDocumentInvoiceReference(
@@ -7012,9 +7012,9 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractDocumen
     /**
      * Add a position's start and/or end date of the billing period
      *
-     * @param  null|DateTimeInterface $newStartDate   Start of the billing period
-     * @param  null|DateTimeInterface $newEndDate     End of the billing period
-     * @param  null|string            $newDescription Further information of the billing period (Obsolete)
+     * @param  null|DateTimeInterface $newStartDate   __BT-134, From BASIC__ Start of the billing period
+     * @param  null|DateTimeInterface $newEndDate     __BT-135, From BASIC__ End of the billing period
+     * @param  null|string            $newDescription __BT-X-264, From EXTENDED__ Further information of the billing period (Obsolete)
      * @return self
      */
     public function addDocumentPositionBillingPeriod(
