@@ -2047,8 +2047,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
      * Set an additional invoice document (reference to preceding invoice)
      *
      * @param  null|string            $newReferenceNumber __BT-25, From BASIC WL__ Identification of an invoice previously sent
-     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-555, From EXTENDED__ Date of the previous invoice
-     * @param  null|string            $newTypeCode        __BT-26, From BASIC WL__ Type code of previous invoice
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-26, From BASIC WL__Date of the previous invoice
+     * @param  null|string            $newTypeCode        __BT-X-555, From EXTENDED__ Type code of previous invoice
      * @return self
      */
     public function setDocumentInvoiceReference(
@@ -2062,7 +2062,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ?->getApplicableHeaderTradeSettlement()
             ?->unsetInvoiceReferencedDocument();
 
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newTypeCode])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
         }
 
@@ -2079,8 +2079,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
      * Add an additional invoice document (reference to preceding invoice)
      *
      * @param  null|string            $newReferenceNumber __BT-25, From BASIC WL__ Identification of an invoice previously sent
-     * @param  null|DateTimeInterface $newReferenceDate   __BT-X-555, From EXTENDED__ Date of the previous invoice
-     * @param  null|string            $newTypeCode        __BT-26, From BASIC WL__ Type code of previous invoice
+     * @param  null|DateTimeInterface $newReferenceDate   __BT-26, From BASIC WL__Date of the previous invoice
+     * @param  null|string            $newTypeCode        __BT-X-555, From EXTENDED__ Type code of previous invoice
      * @return self
      */
     public function addDocumentInvoiceReference(
@@ -2088,7 +2088,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         ?DateTimeInterface $newReferenceDate = null,
         ?string $newTypeCode = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newTypeCode])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
             return $this;
         }
 
@@ -2102,9 +2102,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ->getIssuerAssignedIDWithCreate()
             ->setValue($newReferenceNumber);
 
-        $invoiceReference
-            ->getTypeCodeWithCreate()
-            ->setValue($newTypeCode);
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTypeCode)) {
+            $invoiceReference
+                ->getTypeCodeWithCreate()
+                ->setValue($newTypeCode);
+        }
 
         if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
             $invoiceReference
