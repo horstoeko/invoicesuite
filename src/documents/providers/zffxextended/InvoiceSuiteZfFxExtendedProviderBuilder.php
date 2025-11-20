@@ -2302,7 +2302,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set an additional receiving advice reference
      *
-     * @param  null|string            $newReferenceNumber __BT-15, From BASIC WL__ Receipt notification number
+     * @param  null|string            $newReferenceNumber __BT-15, From EN 16931__ Receipt notification number
      * @param  null|DateTimeInterface $newReferenceDate   __BT-X-201, From EXTENDED__ Receipt notification date
      * @return self
      */
@@ -2344,7 +2344,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     /**
      * Set an additional receiving advice reference
      *
-     * @param  null|string            $newReferenceNumber __BT-15, From BASIC WL__ Receipt notification number
+     * @param  null|string            $newReferenceNumber __BT-15, From EN 16931__ Receipt notification number
      * @param  null|DateTimeInterface $newReferenceDate   __BT-X-201, From EXTENDED__ Receipt notification date
      * @return self
      */
