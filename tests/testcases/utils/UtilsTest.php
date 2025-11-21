@@ -330,7 +330,7 @@ final class UtilsTest extends TestCase
 
     public function testInvoiceSuiteStringUtilsCreateGuid(): void
     {
-        $guid_regex = '/^(?:\\{{0,1}(?:[0-9a-fA-F]){8}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){12}\\}{0,1})$/';
+        $guid_regex = '/^(?:\{{0,1}(?:[0-9a-fA-F]){8}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){12}\}{0,1})$/';
 
         $this->assertMatchesRegularExpression($guid_regex, InvoiceSuiteStringUtils::createGuid());
         $this->assertMatchesRegularExpression($guid_regex, InvoiceSuiteStringUtils::createGuid(false));

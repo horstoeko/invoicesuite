@@ -11900,9 +11900,6 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
             $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getIncludedSupplyChainTradeLineItem() ?? []
         );
 
-        /**
-         * @var SupplyChainTradeLineItemType
-         */
         return $documentPositions[InvoiceSuitePointerUtils::getValue('documentposition')];
     }
 

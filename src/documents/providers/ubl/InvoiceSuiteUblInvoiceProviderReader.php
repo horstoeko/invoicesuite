@@ -10424,9 +10424,6 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractDocumentF
          */
         $documentPositions = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getInvoiceLine() ?? []);
 
-        /**
-         * @var InvoiceLine
-         */
         return $documentPositions[InvoiceSuitePointerUtils::getValue('documentposition')];
     }
 
