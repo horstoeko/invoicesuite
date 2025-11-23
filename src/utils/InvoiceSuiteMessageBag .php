@@ -93,7 +93,7 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
         ?InvoiceSuiteMessageSeverity $newMessageSeverity = null,
         ?DateTimeInterface $newMessageTimestamp = null
     ): self {
-            return $this->add(new InvoiceSuiteMessageBagItem($newMessageContent, $newMessageSeverity, $newMessageTimestamp));
+        return $this->add(new InvoiceSuiteMessageBagItem($newMessageContent, $newMessageSeverity, $newMessageTimestamp));
     }
 
     /**
