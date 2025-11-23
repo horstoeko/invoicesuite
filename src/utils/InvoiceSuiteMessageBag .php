@@ -110,20 +110,13 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
 
     /**
      * Check if the bag contains any messages of the given severity.
-     * Uses foreach to short-circuit on first match.
      *
      * @param  InvoiceSuiteMessageSeverity $severity the severity to check
      * @return bool                        true if at least one message of this severity exists, otherwise false
      */
     public function hasMessagesBySeverity(InvoiceSuiteMessageSeverity $severity): bool
     {
-        foreach ($this->messageBagItems as $messageBagItem) {
-            if ($messageBagItem->getMessageSeverity() === $severity) {
-                return true;
-            }
-        }
-
-        return false;
+        return count($this->filterMessagesBySeverity($severity)) > 0;
     }
 
     /**
