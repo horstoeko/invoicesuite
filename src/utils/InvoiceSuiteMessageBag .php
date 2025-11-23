@@ -46,8 +46,8 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
      * Internally uses add() to keep behaviour in one place.
      *
      * @param  array<int, InvoiceSuiteMessageBagItem> $messageBagItems the message items to add
-     * @throws InvoiceSuiteInvalidArgumentException   if any item is not an InvoiceSuiteMessageBagItem
      * @return self
+     * @throws InvoiceSuiteInvalidArgumentException   if any item is not an InvoiceSuiteMessageBagItem
      */
     public function addMessages(array $messageBagItems): self
     {
