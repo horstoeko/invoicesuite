@@ -96,7 +96,11 @@
             "Composer\\Config::disableProcessTimeout",
             "./vendor/bin/phpstan clear-result-cache"
         ],
-        "rector": [
+        "rector:dryeun": [
+            "Composer\\Config::disableProcessTimeout",
+            "vendor/bin/rector --config=./build/phprectorconfig.php --dry-run"
+        ],
+        "rector:run": [
             "Composer\\Config::disableProcessTimeout",
             "vendor/bin/rector --config=./build/phprectorconfig.php"
         ],
