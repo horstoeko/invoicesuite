@@ -233,7 +233,7 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $this->expectException(InvoiceSuiteInvalidArgumentException::class);
         $this->expectExceptionMessage('Offset must be an int.');
 
-        $this->assertTrue(isset($messageBag['key']));
+        $this->assertArrayHasKey('key', $messageBag);
     }
 
     public function testInvoiceSuiteMessageBagArrayAccessInvalid2(): void
@@ -247,7 +247,7 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $this->expectException(InvoiceSuiteInvalidArgumentException::class);
         $this->expectExceptionMessage('Offset must be an int.');
 
-        $this->assertNull($messageBag['key']);
+        $this->assertNotInstanceOf(InvoiceSuiteMessageBagItem::class, $messageBag['key']);
     }
 
     public function testInvoiceSuiteMessageBagArrayAccessInvalid3(): void
