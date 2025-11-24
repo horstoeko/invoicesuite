@@ -51,12 +51,12 @@ trait HandlesMessageBag
     /**
      * Add an existing message bag item to internal message bag.
      *
-     * @param  InvoiceSuiteMessageBagItem $messageBagItem the item to add
+     * @param  InvoiceSuiteMessageBagItem $newMessageBagItem the item to add
      * @return self
      */
-    public function addMessageItemToMessageBag(InvoiceSuiteMessageBagItem $messageBagItem): self
+    public function addMessageItemToMessageBag(InvoiceSuiteMessageBagItem $newMessageBagItem): self
     {
-        $this->getMessageBag()->add($messageBagItem);
+        $this->getMessageBag()->add($newMessageBagItem);
 
         return $this;
     }
@@ -67,17 +67,17 @@ trait HandlesMessageBag
      * If severity is not given, INFO is used.
      * If timestamp is not given, the current datetime is used.
      *
-     * @param  string                           $messageContent the message text
-     * @param  null|InvoiceSuiteMessageSeverity $severity       the message severity (default INFO)
-     * @param  null|DateTimeInterface           $timestamp      the timestamp (default now)
+     * @param  string                           $newMessageContent   the message text
+     * @param  null|InvoiceSuiteMessageSeverity $newMessageSeverity  the message severity (default INFO)
+     * @param  null|DateTimeInterface           $newMessageTimestamp the timestamp (default now)
      * @return self
      */
     public function addMessageToMessageBag(
-        string $messageContent,
-        ?InvoiceSuiteMessageSeverity $severity = null,
-        ?DateTimeInterface $timestamp = null
+        string $newMessageContent,
+        ?InvoiceSuiteMessageSeverity $newMessageSeverity = null,
+        ?DateTimeInterface $newMessageTimestamp = null
     ): self {
-        $this->getMessageBag()->addNewMessage($messageContent, $severity, $timestamp);
+        $this->getMessageBag()->addNewMessage($newMessageContent, $newMessageSeverity, $newMessageTimestamp);
 
         return $this;
     }
@@ -95,12 +95,12 @@ trait HandlesMessageBag
     /**
      * Check if any messages with the given severity exist in internal message bag.
      *
-     * @param  InvoiceSuiteMessageSeverity $severity
+     * @param  InvoiceSuiteMessageSeverity $filterSeverity
      * @return bool
      */
-    public function hasMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity $severity): bool
+    public function hasMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity $filterSeverity): bool
     {
-        return $this->getMessageBag()->hasMessagesBySeverity($severity);
+        return $this->getMessageBag()->hasMessagesBySeverity($filterSeverity);
     }
 
     /**
@@ -136,12 +136,12 @@ trait HandlesMessageBag
     /**
      * Count messages by severity in internal message bag.
      *
-     * @param  InvoiceSuiteMessageSeverity $severity
+     * @param  InvoiceSuiteMessageSeverity $filterSeverity
      * @return int
      */
-    public function countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity $severity): int
+    public function countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity $filterSeverity): int
     {
-        return $this->getMessageBag()->countBySeverity($severity);
+        return $this->getMessageBag()->countBySeverity($filterSeverity);
     }
 
     /**
@@ -177,12 +177,12 @@ trait HandlesMessageBag
     /**
      * Get messages by severity from internal message bag.
      *
-     * @param  InvoiceSuiteMessageSeverity            $severity
+     * @param  InvoiceSuiteMessageSeverity            $filterSeverity
      * @return array<int, InvoiceSuiteMessageBagItem>
      */
-    public function getMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity $severity): array
+    public function getMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity $filterSeverity): array
     {
-        return $this->getMessageBag()->getMessagesBySeverity($severity);
+        return $this->getMessageBag()->getMessagesBySeverity($filterSeverity);
     }
 
     /**

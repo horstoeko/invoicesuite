@@ -43,25 +43,25 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
      * Constructor.
      * Keys from input are ignored and normalized to consecutive int keys (0..n-1).
      *
-     * @param  array<int, InvoiceSuiteMessageBagItem> $messageBagItems initial message items
+     * @param  array<int, InvoiceSuiteMessageBagItem> $newMessageBagItems initial message items
      * @throws InvoiceSuiteInvalidArgumentException   if any message is not an InvoiceSuiteMessageBagItem
      */
-    public function __construct(array $messageBagItems = [])
+    public function __construct(array $newMessageBagItems = [])
     {
-        $this->addMessages($messageBagItems);
+        $this->addMessages($newMessageBagItems);
     }
 
     /**
      * Add multiple message items to the bag (append).
      * Internally uses add() to keep behaviour in one place.
      *
-     * @param  array<int, InvoiceSuiteMessageBagItem> $messageBagItems The message items to add
+     * @param  array<int, InvoiceSuiteMessageBagItem> $newMessageBagItems The message items to add
      * @throws InvoiceSuiteInvalidArgumentException   If any message is not an InvoiceSuiteMessageBagItem
      * @return self
      */
-    public function addMessages(array $messageBagItems): self
+    public function addMessages(array $newMessageBagItems): self
     {
-        foreach ($messageBagItems as $messageBagItem) {
+        foreach ($newMessageBagItems as $messageBagItem) {
             if (!$messageBagItem instanceof InvoiceSuiteMessageBagItem) {
                 throw new InvoiceSuiteInvalidArgumentException(
                     'InvoiceSuiteMessageBag only accepts instances of InvoiceSuiteMessageBagItem.'
@@ -77,12 +77,12 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
     /**
      * Add a message to the bag.
      *
-     * @param  InvoiceSuiteMessageBagItem $messageBagItem the message to add
+     * @param  InvoiceSuiteMessageBagItem $newMessageBagItem the message to add
      * @return self
      */
-    public function add(InvoiceSuiteMessageBagItem $messageBagItem): self
+    public function add(InvoiceSuiteMessageBagItem $newMessageBagItem): self
     {
-        $this->messageBagItems[] = $messageBagItem;
+        $this->messageBagItems[] = $newMessageBagItem;
 
         return $this;
     }
@@ -121,12 +121,12 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
     /**
      * Check if the bag contains any messages of the given severity.
      *
-     * @param  InvoiceSuiteMessageSeverity $severity the severity to check
+     * @param  InvoiceSuiteMessageSeverity $filterSeverity the severity to check
      * @return bool                        true if at least one message of this severity exists, otherwise false
      */
-    public function hasMessagesBySeverity(InvoiceSuiteMessageSeverity $severity): bool
+    public function hasMessagesBySeverity(InvoiceSuiteMessageSeverity $filterSeverity): bool
     {
-        return count($this->filterMessagesBySeverity($severity)) > 0;
+        return count($this->filterMessagesBySeverity($filterSeverity)) > 0;
     }
 
     /**
@@ -162,12 +162,12 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
     /**
      * Count messages by severity.
      *
-     * @param  InvoiceSuiteMessageSeverity $severity the severity to count
+     * @param  InvoiceSuiteMessageSeverity $filterSeverity the severity to count
      * @return int                         number of messages with the given severity
      */
-    public function countBySeverity(InvoiceSuiteMessageSeverity $severity): int
+    public function countBySeverity(InvoiceSuiteMessageSeverity $filterSeverity): int
     {
-        return count($this->filterMessagesBySeverity($severity));
+        return count($this->filterMessagesBySeverity($filterSeverity));
     }
 
     /**
@@ -203,12 +203,12 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
     /**
      * Get messages by severity.
      *
-     * @param  InvoiceSuiteMessageSeverity            $severity the severity to filter by
+     * @param  InvoiceSuiteMessageSeverity            $filterSeverity the severity to filter by
      * @return array<int, InvoiceSuiteMessageBagItem> list of messages with the given severity
      */
-    public function getMessagesBySeverity(InvoiceSuiteMessageSeverity $severity): array
+    public function getMessagesBySeverity(InvoiceSuiteMessageSeverity $filterSeverity): array
     {
-        return $this->filterMessagesBySeverity($severity);
+        return $this->filterMessagesBySeverity($filterSeverity);
     }
 
     /**
