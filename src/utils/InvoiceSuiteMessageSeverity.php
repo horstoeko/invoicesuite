@@ -9,6 +9,8 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+namespace horstoeko\invoicesuite\utils;
+
 /**
  * Enum representing a message severity
  *
