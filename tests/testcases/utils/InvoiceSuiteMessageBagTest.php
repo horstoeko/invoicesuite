@@ -281,4 +281,36 @@ final class InvoiceSuiteMessageBagTest extends TestCase
 
         unset($messageBag[0]);
     }
+
+    public function testInvoiceSuiteMessageSeverityEnum(): void
+    {
+        $cases = InvoiceSuiteMessageSeverity::cases();
+
+        // @phpstan-ignore method.alreadyNarrowedType
+        $this->assertIsArray($cases);
+        $this->assertCount(3, $cases);
+
+        $this->assertSame(InvoiceSuiteMessageSeverity::INFO, $cases[0]);
+        $this->assertSame(InvoiceSuiteMessageSeverity::WARNING, $cases[1]);
+        $this->assertSame(InvoiceSuiteMessageSeverity::ERROR, $cases[2]);
+
+        $this->assertSame('info', InvoiceSuiteMessageSeverity::INFO->value);
+        $this->assertSame('warning', InvoiceSuiteMessageSeverity::WARNING->value);
+        $this->assertSame('error', InvoiceSuiteMessageSeverity::ERROR->value);
+
+        $this->assertSame(InvoiceSuiteMessageSeverity::INFO, InvoiceSuiteMessageSeverity::from('info'));
+        $this->assertSame(InvoiceSuiteMessageSeverity::WARNING, InvoiceSuiteMessageSeverity::from('warning'));
+        $this->assertSame(InvoiceSuiteMessageSeverity::ERROR, InvoiceSuiteMessageSeverity::from('error'));
+
+        $this->assertNull(InvoiceSuiteMessageSeverity::tryFrom('invalid-severity'));
+
+        $values = array_map(static fn (InvoiceSuiteMessageSeverity $severity): string => $severity->value, $cases);
+
+        $this->assertSame($values, array_values(array_unique($values)));
+
+        foreach ($cases as $case) {
+            $this->assertInstanceOf(InvoiceSuiteMessageSeverity::class, $case);
+            $this->assertIsString($case->value);
+        }
+    }
 }
