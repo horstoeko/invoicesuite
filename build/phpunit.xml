@@ -108,6 +108,7 @@
         </testsuite>
         <testsuite name="documentcase">
             <file>../tests/testcases/documentcases/InvoiceSuiteBuilderComfortSimpleTest.php</file>
+            <file>../tests/testcases/documentcases/InvoiceSuiteBuilderComfortSimpleDTOTest.php</file>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">

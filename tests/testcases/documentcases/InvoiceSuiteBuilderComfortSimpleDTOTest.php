@@ -328,7 +328,7 @@ final class InvoiceSuiteBuilderComfortSimpleDTOTest extends TestCase
     {
         return InvoiceSuitePathUtils::combinePathWithFile(
             InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', 'assets'),
-            '00_case_comfort_simple.xml'
+            '00_case_comfort_simple_dto.xml'
         );
     }
 }
