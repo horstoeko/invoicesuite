@@ -84,10 +84,16 @@ _backup*
 /composer.lock
 
 lint.ps1
+
 /examples/00_SimpleInvoice.xml
 /examples/01_SimpleInvoice.xml
 /examples/01_SimpleInvoice_UBL.xml
 /examples/01_SimpleInvoice_copy.xml
+/examples/04_Invoice.pdf
+/examples/05_pdf.pdf
+/examples/05_xml.xml
+/examples/05_pdf_1.pdf
+
 addusetoclasses.php
 addusetoclasses2.php
 convert_string_params.php
@@ -95,9 +101,5 @@ transfer_docblocks*.php
 gendto.php
 gencodelists.php
 myfile_dbg.xml
-/examples/04_Invoice.pdf
-/examples/05_pdf.pdf
-/examples/05_xml.xml
-/examples/05_pdf_1.pdf
 
 /tests/assets/00_case*.*
