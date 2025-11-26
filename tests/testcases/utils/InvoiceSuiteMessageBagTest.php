@@ -313,4 +313,43 @@ final class InvoiceSuiteMessageBagTest extends TestCase
             $this->assertIsString($case->value);
         }
     }
+
+    public function testInvoiceSuiteMessageBagClear(): void
+    {
+        $messageBag = new InvoiceSuiteMessageBag([
+            new InvoiceSuiteMessageBagItem('message-1'),
+            new InvoiceSuiteMessageBagItem('message-2', InvoiceSuiteMessageSeverity::WARNING, DateTime::createFromFormat('Ynd', '19700101')),
+            new InvoiceSuiteMessageBagItem('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700102')),
+        ]);
+
+        $this->assertTrue($messageBag->hasMessages());
+        $this->assertTrue($messageBag->hasInfoMessages());
+        $this->assertTrue($messageBag->hasWarningMessages());
+        $this->assertTrue($messageBag->hasErrorMessages());
+        $this->assertSame(1, $messageBag->countInfoMessages());
+        $this->assertSame(1, $messageBag->countWarningMessages());
+        $this->assertSame(1, $messageBag->countErrorMessages());
+        $this->assertArrayHasKey(0, $messageBag->getInfoMessages());
+        $this->assertArrayNotHasKey(1, $messageBag->getInfoMessages());
+        $this->assertArrayHasKey(0, $messageBag->getWarningMessages());
+        $this->assertArrayNotHasKey(1, $messageBag->getWarningMessages());
+        $this->assertArrayHasKey(0, $messageBag->getErrorMessages());
+        $this->assertArrayNotHasKey(1, $messageBag->getErrorMessages());
+
+        $messageBag->clear();
+
+        $this->assertFalse($messageBag->hasMessages());
+        $this->assertFalse($messageBag->hasInfoMessages());
+        $this->assertFalse($messageBag->hasWarningMessages());
+        $this->assertFalse($messageBag->hasErrorMessages());
+        $this->assertSame(0, $messageBag->countInfoMessages());
+        $this->assertSame(0, $messageBag->countWarningMessages());
+        $this->assertSame(0, $messageBag->countErrorMessages());
+        $this->assertArrayNotHasKey(0, $messageBag->getInfoMessages());
+        $this->assertArrayNotHasKey(1, $messageBag->getInfoMessages());
+        $this->assertArrayNotHasKey(0, $messageBag->getWarningMessages());
+        $this->assertArrayNotHasKey(1, $messageBag->getWarningMessages());
+        $this->assertArrayNotHasKey(0, $messageBag->getErrorMessages());
+        $this->assertArrayNotHasKey(1, $messageBag->getErrorMessages());
+    }
 }

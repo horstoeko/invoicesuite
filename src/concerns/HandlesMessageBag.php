@@ -51,6 +51,18 @@ trait HandlesMessageBag
     }
 
     /**
+     * Clears the internal message container
+     *
+     * @return InvoiceSuiteMessageBag
+     */
+    public function clearMessageBag(): self
+    {
+        $this->getMessageBag()->clear();
+
+        return $this;
+    }
+
+    /**
      * Add an existing message bag item to internal message bag.
      *
      * @param  InvoiceSuiteMessageBagItem $newMessageBagItem the item to add

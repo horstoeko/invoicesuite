@@ -53,6 +53,18 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
     }
 
     /**
+     * Clears the internal message container
+     *
+     * @return InvoiceSuiteMessageBag
+     */
+    public function clear(): self
+    {
+        $this->messageBagItems = [];
+
+        return $this;
+    }
+
+    /**
      * Add multiple message items to the bag (append).
      * Internally uses add() to keep behaviour in one place.
      *
