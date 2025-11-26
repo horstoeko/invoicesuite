@@ -97,6 +97,60 @@ trait HandlesMessageBag
     }
 
     /**
+     * Add a new INFO message (creates a new InvoiceSuiteMessageBagItem) to internal message bag.
+     *
+     * If timestamp is not given, the current datetime is used.
+     *
+     * @param  string                 $newMessageContent
+     * @param  null|DateTimeInterface $newMessageTimestamp
+     * @return HandlesMessageBag
+     */
+    public function addInfoMessageToMessageBag(
+        string $newMessageContent,
+        ?DateTimeInterface $newMessageTimestamp = null
+    ): self {
+        $this->getMessageBag()->addNewMessage($newMessageContent, InvoiceSuiteMessageSeverity::INFO, $newMessageTimestamp);
+
+        return $this;
+    }
+
+    /**
+     * Add a new WARNING message (creates a new InvoiceSuiteMessageBagItem) to internal message bag.
+     *
+     * If timestamp is not given, the current datetime is used.
+     *
+     * @param  string                 $newMessageContent
+     * @param  null|DateTimeInterface $newMessageTimestamp
+     * @return HandlesMessageBag
+     */
+    public function addWarningMessageToMessageBag(
+        string $newMessageContent,
+        ?DateTimeInterface $newMessageTimestamp = null
+    ): self {
+        $this->getMessageBag()->addNewMessage($newMessageContent, InvoiceSuiteMessageSeverity::WARNING, $newMessageTimestamp);
+
+        return $this;
+    }
+
+    /**
+     * Add a new ERROR message (creates a new InvoiceSuiteMessageBagItem) to internal message bag.
+     *
+     * If timestamp is not given, the current datetime is used.
+     *
+     * @param  string                 $newMessageContent
+     * @param  null|DateTimeInterface $newMessageTimestamp
+     * @return HandlesMessageBag
+     */
+    public function addErrorMessageToMessageBag(
+        string $newMessageContent,
+        ?DateTimeInterface $newMessageTimestamp = null
+    ): self {
+        $this->getMessageBag()->addNewMessage($newMessageContent, InvoiceSuiteMessageSeverity::ERROR, $newMessageTimestamp);
+
+        return $this;
+    }
+
+    /**
      * Check if any messages exist in the internal message bag.
      *
      * @return bool

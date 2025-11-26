@@ -40,6 +40,8 @@
         "jms/serializer": "^3",
         "setasign/fpdf": "^1",
         "setasign/fpdi": "^2",
+        "symfony/finder": "^5|^6|^7",
+        "symfony/process": "^5|^6|^7",
         "prinsfrank/pdfparser": "^2"
     },
     "require-dev": {
