@@ -165,8 +165,8 @@ final class InvoiceSuiteBuilderComfortSimpleDTOTest extends TestCase
         $dtoDocumentHeader->addPosition($dtoDocumentPositionOne);
         $dtoDocumentHeader->addPosition($dtoDocumentPositionTwo);
 
-        self::$document = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxcomfort');
-        self::$document->createFromDTO($dtoDocumentHeader);
+        static::$document = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxcomfort');
+        static::$document->createFromDTO($dtoDocumentHeader);
     }
 
     public static function tearDownAfterClass(): void
@@ -312,14 +312,14 @@ final class InvoiceSuiteBuilderComfortSimpleDTOTest extends TestCase
 
     public function testContentType(): void
     {
-        $contentType = InvoiceSuiteContentTypeResolver::resolveContentType(self::$document->getContentAsXml());
+        $contentType = InvoiceSuiteContentTypeResolver::resolveContentType(static::$document->getContentAsXml());
 
         $this->assertSame(InvoiceSuiteContentTypeResolver::XML, $contentType);
     }
 
     public function testWriteFile(): void
     {
-        self::$document->saveAsXmlFile($this->getStoreFilename());
+        static::$document->saveAsXmlFile($this->getStoreFilename());
 
         $this->assertFileExists($this->getStoreFilename());
     }

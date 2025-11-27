@@ -24,9 +24,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$document = new InvoiceSuiteZfFxExtendedProviderReader(new InvoiceSuiteZfFxExtendedProvider());
+        static::$document = new InvoiceSuiteZfFxExtendedProviderReader(new InvoiceSuiteZfFxExtendedProvider());
 
-        self::$document->deserializeFromContent(
+        static::$document->deserializeFromContent(
             file_get_contents(
                 InvoiceSuitePathUtils::combinePathWithFile(
                     InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', 'assets'),
@@ -38,35 +38,35 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
     public function testGetDocumentNo(): void
     {
-        self::$document->getDocumentNo($newDocumentNo);
+        static::$document->getDocumentNo($newDocumentNo);
 
         $this->assertSame('2025-04-000001', $newDocumentNo);
     }
 
     public function testGetDocumentType(): void
     {
-        self::$document->getDocumentType($newDocumentType);
+        static::$document->getDocumentType($newDocumentType);
 
         $this->assertSame('380', $newDocumentType);
     }
 
     public function testGetDocumentDescription(): void
     {
-        self::$document->getDocumentDescription($newDocumentDescription);
+        static::$document->getDocumentDescription($newDocumentDescription);
 
         $this->assertSame('Some document description', $newDocumentDescription);
     }
 
     public function testGetDocumentLanguage(): void
     {
-        self::$document->getDocumentLanguage($newDocumentLanguage);
+        static::$document->getDocumentLanguage($newDocumentLanguage);
 
         $this->assertSame('de-DE', $newDocumentLanguage);
     }
 
     public function testGetDocumentDate(): void
     {
-        self::$document->getDocumentDate($newDocumentDate);
+        static::$document->getDocumentDate($newDocumentDate);
 
         $this->assertInstanceOf(DateTimeInterface::class, $newDocumentDate);
         $this->assertSame('19700101', $newDocumentDate->format('Ymd'));
@@ -74,7 +74,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
     public function testGetDocumentCompleteDate(): void
     {
-        self::$document->getDocumentCompleteDate($newCompleteDate);
+        static::$document->getDocumentCompleteDate($newCompleteDate);
 
         $this->assertInstanceOf(DateTimeInterface::class, $newCompleteDate);
         $this->assertSame('19700102', $newCompleteDate->format('Ymd'));
@@ -82,166 +82,166 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
     public function testGetDocumentCurrency(): void
     {
-        self::$document->getDocumentCurrency($newDocumentCurrency);
+        static::$document->getDocumentCurrency($newDocumentCurrency);
 
         $this->assertSame('EUR', $newDocumentCurrency);
     }
 
     public function testGetDocumentTaxCurrency(): void
     {
-        self::$document->getDocumentTaxCurrency($newDocumentTaxCurrency);
+        static::$document->getDocumentTaxCurrency($newDocumentTaxCurrency);
 
         $this->assertSame('GBP', $newDocumentTaxCurrency);
     }
 
     public function testGetDocumentIsCopy(): void
     {
-        self::$document->getDocumentIsCopy($newDocumentIsCopy);
+        static::$document->getDocumentIsCopy($newDocumentIsCopy);
 
         $this->assertTrue($newDocumentIsCopy);
     }
 
     public function testGetDocumentIsTest(): void
     {
-        self::$document->getDocumentIsTest($newDocumentIsTest);
+        static::$document->getDocumentIsTest($newDocumentIsTest);
 
         $this->assertTrue($newDocumentIsTest);
     }
 
     public function testFirstNextGetDocumentNote(): void
     {
-        $this->assertTrue(self::$document->firstDocumentNote());
+        $this->assertTrue(static::$document->firstDocumentNote());
 
-        self::$document->getDocumentNote($newContent, $newContentCode, $newSubjectCode);
+        static::$document->getDocumentNote($newContent, $newContentCode, $newSubjectCode);
 
         $this->assertSame('Some content', $newContent);
         $this->assertSame('CC00', $newContentCode);
         $this->assertSame('SC00', $newSubjectCode);
 
-        $this->assertTrue(self::$document->nextDocumentNote());
+        $this->assertTrue(static::$document->nextDocumentNote());
 
-        self::$document->getDocumentNote($newContent, $newContentCode, $newSubjectCode);
+        static::$document->getDocumentNote($newContent, $newContentCode, $newSubjectCode);
 
         $this->assertSame('Some other content', $newContent);
         $this->assertSame('CC99', $newContentCode);
         $this->assertSame('SC99', $newSubjectCode);
 
-        $this->assertFalse(self::$document->nextDocumentNote());
+        $this->assertFalse(static::$document->nextDocumentNote());
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentNote($newContent, $newContentCode, $newSubjectCode);
+            static::$document->getDocumentNote($newContent, $newContentCode, $newSubjectCode);
         }, '/Undefined (array key|index)/');
     }
 
     public function testFirstNextGetDocumentBillingPeriod(): void
     {
-        $this->assertTrue(self::$document->firstDocumentBillingPeriod());
+        $this->assertTrue(static::$document->firstDocumentBillingPeriod());
 
-        self::$document->getDocumentBillingPeriod($newStartDate, $newEndDate, $newDescription);
+        static::$document->getDocumentBillingPeriod($newStartDate, $newEndDate, $newDescription);
 
         $this->assertSame('19700101', $newStartDate->format('Ymd'));
         $this->assertSame('19700131', $newEndDate->format('Ymd'));
         $this->assertSame('Some Description', $newDescription);
 
-        $this->assertFalse(self::$document->nextDocumentBillingPeriod());
+        $this->assertFalse(static::$document->nextDocumentBillingPeriod());
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentBillingPeriod($newStartDate, $newEndDate, $newDescription);
+            static::$document->getDocumentBillingPeriod($newStartDate, $newEndDate, $newDescription);
         }, '/Undefined (array key|index)/');
     }
 
     public function testFirstNextGetDocumentPostingReference(): void
     {
-        $this->assertTrue(self::$document->firstDocumentPostingReference());
+        $this->assertTrue(static::$document->firstDocumentPostingReference());
 
-        self::$document->getDocumentPostingReference($newType, $newAccountId);
+        static::$document->getDocumentPostingReference($newType, $newAccountId);
 
         $this->assertSame('PREF-1-TYPE', $newType);
         $this->assertSame('PREF-1', $newAccountId);
 
-        $this->assertTrue(self::$document->nextDocumentPostingReference());
+        $this->assertTrue(static::$document->nextDocumentPostingReference());
 
-        self::$document->getDocumentPostingReference($newType, $newAccountId);
+        static::$document->getDocumentPostingReference($newType, $newAccountId);
 
         $this->assertSame('PREF-2-TYPE', $newType);
         $this->assertSame('PREF-2', $newAccountId);
 
-        $this->assertFalse(self::$document->nextDocumentPostingReference());
+        $this->assertFalse(static::$document->nextDocumentPostingReference());
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentPostingReference($newType, $newAccountId);
+            static::$document->getDocumentPostingReference($newType, $newAccountId);
         }, '/Undefined (array key|index)/');
     }
 
     public function testFirstNextGetDocumentSellerOrderReference(): void
     {
-        $this->assertTrue(self::$document->firstDocumentSellerOrderReference());
+        $this->assertTrue(static::$document->firstDocumentSellerOrderReference());
 
-        self::$document->getDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
+        static::$document->getDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
 
         $this->assertSame('SO-1', $newReferenceNumber);
         $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
 
-        $this->assertFalse(self::$document->nextDocumentSellerOrderReference());
+        $this->assertFalse(static::$document->nextDocumentSellerOrderReference());
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
+            static::$document->getDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
         }, '/Undefined (array key|index)/');
     }
 
     public function testFirstNextGetDocumentBuyerOrderReference(): void
     {
-        $this->assertTrue(self::$document->firstDocumentBuyerOrderReference());
+        $this->assertTrue(static::$document->firstDocumentBuyerOrderReference());
 
-        self::$document->getDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
+        static::$document->getDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
 
         $this->assertSame('BO-1', $newReferenceNumber);
         $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
 
-        $this->assertFalse(self::$document->nextDocumentBuyerOrderReference());
+        $this->assertFalse(static::$document->nextDocumentBuyerOrderReference());
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
+            static::$document->getDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
         }, '/Undefined (array key|index)/');
     }
 
     public function testFirstNextGetDocumentQuotationReference(): void
     {
-        $this->assertTrue(self::$document->firstDocumentQuotationReference());
+        $this->assertTrue(static::$document->firstDocumentQuotationReference());
 
-        self::$document->getDocumentQuotationReference($newReferenceNumber, $newReferenceDate);
+        static::$document->getDocumentQuotationReference($newReferenceNumber, $newReferenceDate);
 
         $this->assertSame('QU-1', $newReferenceNumber);
         $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
 
-        $this->assertFalse(self::$document->nextDocumentQuotationReference());
+        $this->assertFalse(static::$document->nextDocumentQuotationReference());
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentQuotationReference($newReferenceNumber, $newReferenceDate);
+            static::$document->getDocumentQuotationReference($newReferenceNumber, $newReferenceDate);
         }, '/Undefined (array key|index)/');
     }
 
     public function testFirstNextGetDocumentContractReference(): void
     {
-        $this->assertTrue(self::$document->firstDocumentContractReference());
+        $this->assertTrue(static::$document->firstDocumentContractReference());
 
-        self::$document->getDocumentContractReference($newReferenceNumber, $newReferenceDate);
+        static::$document->getDocumentContractReference($newReferenceNumber, $newReferenceDate);
 
         $this->assertSame('CON-1', $newReferenceNumber);
         $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
 
-        $this->assertFalse(self::$document->nextDocumentContractReference());
+        $this->assertFalse(static::$document->nextDocumentContractReference());
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentContractReference($newReferenceNumber, $newReferenceDate);
+            static::$document->getDocumentContractReference($newReferenceNumber, $newReferenceDate);
         }, '/Undefined (array key|index)/');
     }
 
     public function testFirstNextGetDocumentAdditionalReference(): void
     {
-        $this->assertTrue(self::$document->firstDocumentAdditionalReference());
+        $this->assertTrue(static::$document->firstDocumentAdditionalReference());
 
-        self::$document->getDocumentAdditionalReference(
+        static::$document->getDocumentAdditionalReference(
             $newReferenceNumber,
             $newReferenceDate,
             $newTypeCode,
@@ -257,9 +257,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('description', $newDescription);
         $this->assertNotInstanceOf(InvoiceSuiteAttachment::class, $newInvoiceSuiteAttachment);
 
-        $this->assertTrue(self::$document->nextDocumentAdditionalReference());
+        $this->assertTrue(static::$document->nextDocumentAdditionalReference());
 
-        self::$document->getDocumentAdditionalReference(
+        static::$document->getDocumentAdditionalReference(
             $newReferenceNumber,
             $newReferenceDate,
             $newTypeCode,
@@ -275,10 +275,10 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('description2', $newDescription);
         $this->assertNotInstanceOf(InvoiceSuiteAttachment::class, $newInvoiceSuiteAttachment);
 
-        $this->assertFalse(self::$document->nextDocumentAdditionalReference());
+        $this->assertFalse(static::$document->nextDocumentAdditionalReference());
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentAdditionalReference(
+            static::$document->getDocumentAdditionalReference(
                 $newReferenceNumber,
                 $newReferenceDate,
                 $newTypeCode,
@@ -291,126 +291,126 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
     public function testFirstNextGetDocumentInvoiceReference(): void
     {
-        $this->assertTrue(self::$document->firstDocumentInvoiceReference());
+        $this->assertTrue(static::$document->firstDocumentInvoiceReference());
 
-        self::$document->getDocumentInvoiceReference($newReferenceNumber, $newReferenceDate, $newTypeCode);
+        static::$document->getDocumentInvoiceReference($newReferenceNumber, $newReferenceDate, $newTypeCode);
 
         $this->assertSame('INVREF-1', $newReferenceNumber);
         $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
         $this->assertSame('typecode', $newTypeCode);
 
-        $this->assertTrue(self::$document->nextDocumentInvoiceReference());
+        $this->assertTrue(static::$document->nextDocumentInvoiceReference());
 
-        self::$document->getDocumentInvoiceReference($newReferenceNumber, $newReferenceDate, $newTypeCode);
+        static::$document->getDocumentInvoiceReference($newReferenceNumber, $newReferenceDate, $newTypeCode);
 
         $this->assertSame('INVREF-2', $newReferenceNumber);
         $this->assertSame('19700102', $newReferenceDate->format('Ymd'));
         $this->assertSame('typecode2', $newTypeCode);
 
-        $this->assertFalse(self::$document->nextDocumentInvoiceReference());
+        $this->assertFalse(static::$document->nextDocumentInvoiceReference());
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentInvoiceReference($newReferenceNumber, $newReferenceDate, $newTypeCode);
+            static::$document->getDocumentInvoiceReference($newReferenceNumber, $newReferenceDate, $newTypeCode);
         }, '/Undefined (array key|index)/');
     }
 
     public function testFirstNextGetDocumentProjectReference(): void
     {
-        $this->assertTrue(self::$document->firstDocumentProjectReference());
+        $this->assertTrue(static::$document->firstDocumentProjectReference());
 
-        self::$document->getDocumentProjectReference($newReferenceNumber, $newName);
+        static::$document->getDocumentProjectReference($newReferenceNumber, $newName);
 
         $this->assertSame('PROJECT-1', $newReferenceNumber);
         $this->assertSame('Project 1', $newName);
 
-        $this->assertFalse(self::$document->nextDocumentProjectReference());
+        $this->assertFalse(static::$document->nextDocumentProjectReference());
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentProjectReference($newReferenceNumber, $newName);
+            static::$document->getDocumentProjectReference($newReferenceNumber, $newName);
         }, '/Undefined (array key|index)/');
     }
 
     public function testFirstNextGetDocumentUltimateCustomerOrderReference(): void
     {
-        $this->assertTrue(self::$document->firstDocumentUltimateCustomerOrderReference());
+        $this->assertTrue(static::$document->firstDocumentUltimateCustomerOrderReference());
 
-        self::$document->getDocumentUltimateCustomerOrderReference($newReferenceNumber, $newReferenceDate);
+        static::$document->getDocumentUltimateCustomerOrderReference($newReferenceNumber, $newReferenceDate);
 
         $this->assertSame('UCOR-1', $newReferenceNumber);
         $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
 
-        $this->assertTrue(self::$document->nextDocumentUltimateCustomerOrderReference());
+        $this->assertTrue(static::$document->nextDocumentUltimateCustomerOrderReference());
 
-        self::$document->getDocumentUltimateCustomerOrderReference($newReferenceNumber, $newReferenceDate);
+        static::$document->getDocumentUltimateCustomerOrderReference($newReferenceNumber, $newReferenceDate);
 
         $this->assertSame('UCOR-2', $newReferenceNumber);
         $this->assertSame('19700102', $newReferenceDate->format('Ymd'));
 
-        $this->assertFalse(self::$document->nextDocumentUltimateCustomerOrderReference());
+        $this->assertFalse(static::$document->nextDocumentUltimateCustomerOrderReference());
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentUltimateCustomerOrderReference($newReferenceNumber, $newReferenceDate);
+            static::$document->getDocumentUltimateCustomerOrderReference($newReferenceNumber, $newReferenceDate);
         }, '/Undefined (array key|index)/');
     }
 
     public function testFirstNextGetDocumentDespatchAdviceReference(): void
     {
-        $this->assertTrue(self::$document->firstDocumentDespatchAdviceReference());
+        $this->assertTrue(static::$document->firstDocumentDespatchAdviceReference());
 
-        self::$document->getDocumentDespatchAdviceReference($newReferenceNumber, $newReferenceDate);
+        static::$document->getDocumentDespatchAdviceReference($newReferenceNumber, $newReferenceDate);
 
         $this->assertSame('DESPADV-1', $newReferenceNumber);
         $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
 
-        $this->assertFalse(self::$document->nextDocumentDespatchAdviceReference());
+        $this->assertFalse(static::$document->nextDocumentDespatchAdviceReference());
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentDespatchAdviceReference($newReferenceNumber, $newReferenceDate);
+            static::$document->getDocumentDespatchAdviceReference($newReferenceNumber, $newReferenceDate);
         }, '/Undefined (array key|index)/');
     }
 
     public function testFirstNextGetDocumentReceivingAdviceReference(): void
     {
-        $this->assertTrue(self::$document->firstDocumentReceivingAdviceReference());
+        $this->assertTrue(static::$document->firstDocumentReceivingAdviceReference());
 
-        self::$document->getDocumentReceivingAdviceReference($newReferenceNumber, $newReferenceDate);
+        static::$document->getDocumentReceivingAdviceReference($newReferenceNumber, $newReferenceDate);
 
         $this->assertSame('RECADV-1', $newReferenceNumber);
         $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
 
-        $this->assertFalse(self::$document->nextDocumentReceivingAdviceReference());
+        $this->assertFalse(static::$document->nextDocumentReceivingAdviceReference());
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentReceivingAdviceReference($newReferenceNumber, $newReferenceDate);
+            static::$document->getDocumentReceivingAdviceReference($newReferenceNumber, $newReferenceDate);
         }, '/Undefined (array key|index)/');
     }
 
     public function testFirstNextGetDocumentDeliveryNoteReference(): void
     {
-        $this->assertTrue(self::$document->firstDocumentDeliveryNoteReference());
+        $this->assertTrue(static::$document->firstDocumentDeliveryNoteReference());
 
-        self::$document->getDocumentDeliveryNoteReference($newReferenceNumber, $newReferenceDate);
+        static::$document->getDocumentDeliveryNoteReference($newReferenceNumber, $newReferenceDate);
 
         $this->assertSame('DEVNOTE-1', $newReferenceNumber);
         $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
 
-        $this->assertFalse(self::$document->nextDocumentDeliveryNoteReference());
+        $this->assertFalse(static::$document->nextDocumentDeliveryNoteReference());
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentDeliveryNoteReference($newReferenceNumber, $newReferenceDate);
+            static::$document->getDocumentDeliveryNoteReference($newReferenceNumber, $newReferenceDate);
         }, '/Undefined (array key|index)/');
     }
 
     public function testGetDocumentSupplyChainEvent(): void
     {
-        self::$document->getDocumentSupplyChainEvent($newDate);
+        static::$document->getDocumentSupplyChainEvent($newDate);
 
         $this->assertSame('19700101', $newDate->format('Ymd'));
     }
 
     public function testGetDocumentBuyerReference(): void
     {
-        self::$document->getDocumentBuyerReference($newBuyerReference);
+        static::$document->getDocumentBuyerReference($newBuyerReference);
 
         $this->assertSame('LEITWEGID', $newBuyerReference);
     }
@@ -419,74 +419,74 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
     {
         // Name
 
-        self::$document->getDocumentSellerName($newName);
+        static::$document->getDocumentSellerName($newName);
 
         $this->assertSame('Lieferant GmbH', $newName);
 
         // ID
 
-        $this->assertTrue(self::$document->firstDocumentSellerId());
+        $this->assertTrue(static::$document->firstDocumentSellerId());
 
-        self::$document->getDocumentSellerId($newId);
+        static::$document->getDocumentSellerId($newId);
 
         $this->assertSame('0815-4711', $newId);
 
-        $this->assertTrue(self::$document->nextDocumentSellerId());
+        $this->assertTrue(static::$document->nextDocumentSellerId());
 
-        self::$document->getDocumentSellerId($newId);
+        static::$document->getDocumentSellerId($newId);
 
         $this->assertSame('0815-4712', $newId);
 
-        $this->assertFalse(self::$document->nextDocumentSellerId());
+        $this->assertFalse(static::$document->nextDocumentSellerId());
 
         // Global ID
 
-        $this->assertTrue(self::$document->firstDocumentSellerGlobalId());
+        $this->assertTrue(static::$document->firstDocumentSellerGlobalId());
 
-        self::$document->getDocumentSellerGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentSellerGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('11111', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertTrue(self::$document->nextDocumentSellerGlobalId());
+        $this->assertTrue(static::$document->nextDocumentSellerGlobalId());
 
-        self::$document->getDocumentSellerGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentSellerGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('22222', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertFalse(self::$document->nextDocumentSellerGlobalId());
+        $this->assertFalse(static::$document->nextDocumentSellerGlobalId());
 
         // Tax Registration
 
-        $this->assertTrue(self::$document->firstDocumentSellerTaxRegistration());
+        $this->assertTrue(static::$document->firstDocumentSellerTaxRegistration());
 
-        self::$document->getDocumentSellerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        static::$document->getDocumentSellerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         $this->assertSame('893489787987', $newTaxRegistrationId);
         $this->assertSame('VA', $newTaxRegistrationType);
 
-        $this->assertTrue(self::$document->nextDocumentSellerTaxRegistration());
+        $this->assertTrue(static::$document->nextDocumentSellerTaxRegistration());
 
-        self::$document->getDocumentSellerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        static::$document->getDocumentSellerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         $this->assertSame('893489787987-X', $newTaxRegistrationId);
         $this->assertSame('FC', $newTaxRegistrationType);
 
-        $this->assertTrue(self::$document->nextDocumentSellerTaxRegistration());
+        $this->assertTrue(static::$document->nextDocumentSellerTaxRegistration());
 
-        self::$document->getDocumentSellerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        static::$document->getDocumentSellerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         $this->assertSame('893489787987-AA', $newTaxRegistrationId);
         $this->assertSame('VA', $newTaxRegistrationType);
 
-        $this->assertFalse(self::$document->nextDocumentSellerTaxRegistration());
+        $this->assertFalse(static::$document->nextDocumentSellerTaxRegistration());
 
         // Address
 
-        $this->assertTrue(self::$document->firstDocumentSellerAddress());
+        $this->assertTrue(static::$document->firstDocumentSellerAddress());
 
-        self::$document->getDocumentSellerAddress(
+        static::$document->getDocumentSellerAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -504,25 +504,25 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('DE', $newCountryId);
         $this->assertSame('Bavaria', $newSubDivision);
 
-        $this->assertFalse(self::$document->nextDocumentSellerAddress());
+        $this->assertFalse(static::$document->nextDocumentSellerAddress());
 
         // Legal Organisation
 
-        $this->assertTrue(self::$document->firstDocumentSellerLegalOrganisation());
+        $this->assertTrue(static::$document->firstDocumentSellerLegalOrganisation());
 
-        self::$document->getDocumentSellerLegalOrganisation($newType, $newId, $newName);
+        static::$document->getDocumentSellerLegalOrganisation($newType, $newId, $newName);
 
         $this->assertSame('8884', $newType);
         $this->assertSame('3874837489237', $newId);
         $this->assertSame('Lieferant AG', $newName);
 
-        $this->assertFalse(self::$document->nextDocumentSellerLegalOrganisation());
+        $this->assertFalse(static::$document->nextDocumentSellerLegalOrganisation());
 
         // Contact
 
-        $this->assertTrue(self::$document->firstDocumentSellerContact());
+        $this->assertTrue(static::$document->firstDocumentSellerContact());
 
-        self::$document->getDocumentSellerContact(
+        static::$document->getDocumentSellerContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -536,35 +536,35 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('0815-4712', $newFaxNumber);
         $this->assertSame('horst.meier@lieferant.de', $newEmailAddress);
 
-        $this->assertFalse(self::$document->nextDocumentSellerContact());
+        $this->assertFalse(static::$document->nextDocumentSellerContact());
 
         // Communication
 
-        $this->assertTrue(self::$document->firstDocumentSellerCommunication());
+        $this->assertTrue(static::$document->firstDocumentSellerCommunication());
 
-        self::$document->getDocumentSellerCommunication($newType, $newUri);
+        static::$document->getDocumentSellerCommunication($newType, $newUri);
 
         $this->assertSame('EM', $newType);
         $this->assertSame('info@lieferant.de', $newUri);
 
-        $this->assertFalse(self::$document->nextDocumentSellerCommunication());
+        $this->assertFalse(static::$document->nextDocumentSellerCommunication());
 
         // Finals
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentSellerId($newId);
+            static::$document->getDocumentSellerId($newId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentSellerGlobalId($newGlobalId, $newGlobalIdType);
+            static::$document->getDocumentSellerGlobalId($newGlobalId, $newGlobalIdType);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentSellerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+            static::$document->getDocumentSellerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentSellerAddress(
+            static::$document->getDocumentSellerAddress(
                 $newAddressLine1,
                 $newAddressLine2,
                 $newAddressLine3,
@@ -576,11 +576,11 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentSellerLegalOrganisation($newType, $newId, $newName);
+            static::$document->getDocumentSellerLegalOrganisation($newType, $newId, $newName);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentSellerContact(
+            static::$document->getDocumentSellerContact(
                 $newPersonName,
                 $newDepartmentName,
                 $newPhoneNumber,
@@ -590,7 +590,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentSellerCommunication($newType, $newUri);
+            static::$document->getDocumentSellerCommunication($newType, $newUri);
         }, '/Undefined (array key|index)/');
     }
 
@@ -598,54 +598,54 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
     {
         // Name
 
-        self::$document->getDocumentBuyerName($newName);
+        static::$document->getDocumentBuyerName($newName);
 
         $this->assertSame('Kunde GmbH', $newName);
 
         // ID
 
-        $this->assertTrue(self::$document->firstDocumentBuyerId());
+        $this->assertTrue(static::$document->firstDocumentBuyerId());
 
-        self::$document->getDocumentBuyerId($newId);
+        static::$document->getDocumentBuyerId($newId);
 
         $this->assertSame('0815-4711', $newId);
 
-        $this->assertFalse(self::$document->nextDocumentBuyerId());
+        $this->assertFalse(static::$document->nextDocumentBuyerId());
 
         // Global ID
 
-        $this->assertTrue(self::$document->firstDocumentBuyerGlobalId());
+        $this->assertTrue(static::$document->firstDocumentBuyerGlobalId());
 
-        self::$document->getDocumentBuyerGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentBuyerGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('11111', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertTrue(self::$document->nextDocumentBuyerGlobalId());
+        $this->assertTrue(static::$document->nextDocumentBuyerGlobalId());
 
-        self::$document->getDocumentBuyerGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentBuyerGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('22222', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertFalse(self::$document->nextDocumentBuyerGlobalId());
+        $this->assertFalse(static::$document->nextDocumentBuyerGlobalId());
 
         // Tax Registration
 
-        $this->assertTrue(self::$document->firstDocumentBuyerTaxRegistration());
+        $this->assertTrue(static::$document->firstDocumentBuyerTaxRegistration());
 
-        self::$document->getDocumentBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        static::$document->getDocumentBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         $this->assertSame('893489787987', $newTaxRegistrationId);
         $this->assertSame('VA', $newTaxRegistrationType);
 
-        $this->assertFalse(self::$document->nextDocumentBuyerTaxRegistration());
+        $this->assertFalse(static::$document->nextDocumentBuyerTaxRegistration());
 
         // Address
 
-        $this->assertTrue(self::$document->firstDocumentBuyerAddress());
+        $this->assertTrue(static::$document->firstDocumentBuyerAddress());
 
-        self::$document->getDocumentBuyerAddress(
+        static::$document->getDocumentBuyerAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -663,25 +663,25 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('DE', $newCountryId);
         $this->assertSame('Bavaria', $newSubDivision);
 
-        $this->assertFalse(self::$document->nextDocumentBuyerAddress());
+        $this->assertFalse(static::$document->nextDocumentBuyerAddress());
 
         // Legal Organisation
 
-        $this->assertTrue(self::$document->firstDocumentBuyerLegalOrganisation());
+        $this->assertTrue(static::$document->firstDocumentBuyerLegalOrganisation());
 
-        self::$document->getDocumentBuyerLegalOrganisation($newType, $newId, $newName);
+        static::$document->getDocumentBuyerLegalOrganisation($newType, $newId, $newName);
 
         $this->assertSame('8884', $newType);
         $this->assertSame('3874837489237', $newId);
         $this->assertSame('Kunde AG', $newName);
 
-        $this->assertFalse(self::$document->nextDocumentBuyerLegalOrganisation());
+        $this->assertFalse(static::$document->nextDocumentBuyerLegalOrganisation());
 
         // Contact
 
-        $this->assertTrue(self::$document->firstDocumentBuyerContact());
+        $this->assertTrue(static::$document->firstDocumentBuyerContact());
 
-        self::$document->getDocumentBuyerContact(
+        static::$document->getDocumentBuyerContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -695,35 +695,35 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('0815-4712', $newFaxNumber);
         $this->assertSame('horst.meier@kunde.de', $newEmailAddress);
 
-        $this->assertFalse(self::$document->nextDocumentBuyerContact());
+        $this->assertFalse(static::$document->nextDocumentBuyerContact());
 
         // Communication
 
-        $this->assertTrue(self::$document->firstDocumentBuyerCommunication());
+        $this->assertTrue(static::$document->firstDocumentBuyerCommunication());
 
-        self::$document->getDocumentBuyerCommunication($newType, $newUri);
+        static::$document->getDocumentBuyerCommunication($newType, $newUri);
 
         $this->assertSame('EM', $newType);
         $this->assertSame('info@kunde.de', $newUri);
 
-        $this->assertFalse(self::$document->nextDocumentBuyerCommunication());
+        $this->assertFalse(static::$document->nextDocumentBuyerCommunication());
 
         // Finals
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentBuyerId($newId);
+            static::$document->getDocumentBuyerId($newId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentBuyerGlobalId($newGlobalId, $newGlobalIdType);
+            static::$document->getDocumentBuyerGlobalId($newGlobalId, $newGlobalIdType);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+            static::$document->getDocumentBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentBuyerAddress(
+            static::$document->getDocumentBuyerAddress(
                 $newAddressLine1,
                 $newAddressLine2,
                 $newAddressLine3,
@@ -735,11 +735,11 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentBuyerLegalOrganisation($newType, $newId, $newName);
+            static::$document->getDocumentBuyerLegalOrganisation($newType, $newId, $newName);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentBuyerContact(
+            static::$document->getDocumentBuyerContact(
                 $newPersonName,
                 $newDepartmentName,
                 $newPhoneNumber,
@@ -749,7 +749,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentBuyerCommunication($newType, $newUri);
+            static::$document->getDocumentBuyerCommunication($newType, $newUri);
         }, '/Undefined (array key|index)/');
     }
 
@@ -757,54 +757,54 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
     {
         // Name
 
-        self::$document->getDocumentTaxRepresentativeName($newName);
+        static::$document->getDocumentTaxRepresentativeName($newName);
 
         $this->assertSame('Tax GmbH', $newName);
 
         // ID
 
-        $this->assertTrue(self::$document->firstDocumentTaxRepresentativeId());
+        $this->assertTrue(static::$document->firstDocumentTaxRepresentativeId());
 
-        self::$document->getDocumentTaxRepresentativeId($newId);
+        static::$document->getDocumentTaxRepresentativeId($newId);
 
         $this->assertSame('0815-1147', $newId);
 
-        $this->assertFalse(self::$document->nextDocumentTaxRepresentativeId());
+        $this->assertFalse(static::$document->nextDocumentTaxRepresentativeId());
 
         // Global ID
 
-        $this->assertTrue(self::$document->firstDocumentTaxRepresentativeGlobalId());
+        $this->assertTrue(static::$document->firstDocumentTaxRepresentativeGlobalId());
 
-        self::$document->getDocumentTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('11111-TR', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertTrue(self::$document->nextDocumentTaxRepresentativeGlobalId());
+        $this->assertTrue(static::$document->nextDocumentTaxRepresentativeGlobalId());
 
-        self::$document->getDocumentTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('22222-TR', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertFalse(self::$document->nextDocumentTaxRepresentativeGlobalId());
+        $this->assertFalse(static::$document->nextDocumentTaxRepresentativeGlobalId());
 
         // Tax Registration
 
-        $this->assertTrue(self::$document->firstDocumentTaxRepresentativeTaxRegistration());
+        $this->assertTrue(static::$document->firstDocumentTaxRepresentativeTaxRegistration());
 
-        self::$document->getDocumentTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        static::$document->getDocumentTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         $this->assertSame('893489787987', $newTaxRegistrationId);
         $this->assertSame('VA', $newTaxRegistrationType);
 
-        $this->assertFalse(self::$document->nextDocumentTaxRepresentativeTaxRegistration());
+        $this->assertFalse(static::$document->nextDocumentTaxRepresentativeTaxRegistration());
 
         // Address
 
-        $this->assertTrue(self::$document->firstDocumentTaxRepresentativeAddress());
+        $this->assertTrue(static::$document->firstDocumentTaxRepresentativeAddress());
 
-        self::$document->getDocumentTaxRepresentativeAddress(
+        static::$document->getDocumentTaxRepresentativeAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -822,25 +822,25 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('DE', $newCountryId);
         $this->assertSame('Bavaria', $newSubDivision);
 
-        $this->assertFalse(self::$document->nextDocumentTaxRepresentativeAddress());
+        $this->assertFalse(static::$document->nextDocumentTaxRepresentativeAddress());
 
         // Legal Organisation
 
-        $this->assertTrue(self::$document->firstDocumentTaxRepresentativeLegalOrganisation());
+        $this->assertTrue(static::$document->firstDocumentTaxRepresentativeLegalOrganisation());
 
-        self::$document->getDocumentTaxRepresentativeLegalOrganisation($newType, $newId, $newName);
+        static::$document->getDocumentTaxRepresentativeLegalOrganisation($newType, $newId, $newName);
 
         $this->assertSame('8884', $newType);
         $this->assertSame('19283746555', $newId);
         $this->assertSame('Tax AG', $newName);
 
-        $this->assertFalse(self::$document->nextDocumentTaxRepresentativeLegalOrganisation());
+        $this->assertFalse(static::$document->nextDocumentTaxRepresentativeLegalOrganisation());
 
         // Contact
 
-        $this->assertTrue(self::$document->firstDocumentTaxRepresentativeContact());
+        $this->assertTrue(static::$document->firstDocumentTaxRepresentativeContact());
 
-        self::$document->getDocumentTaxRepresentativeContact(
+        static::$document->getDocumentTaxRepresentativeContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -854,35 +854,35 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('0815-4711-99', $newFaxNumber);
         $this->assertSame('horst.meier@tax.de', $newEmailAddress);
 
-        $this->assertFalse(self::$document->nextDocumentTaxRepresentativeContact());
+        $this->assertFalse(static::$document->nextDocumentTaxRepresentativeContact());
 
         // Communication
 
-        $this->assertTrue(self::$document->firstDocumentTaxRepresentativeCommunication());
+        $this->assertTrue(static::$document->firstDocumentTaxRepresentativeCommunication());
 
-        self::$document->getDocumentTaxRepresentativeCommunication($newType, $newUri);
+        static::$document->getDocumentTaxRepresentativeCommunication($newType, $newUri);
 
         $this->assertSame('EM', $newType);
         $this->assertSame('info@tax.de', $newUri);
 
-        $this->assertFalse(self::$document->nextDocumentTaxRepresentativeCommunication());
+        $this->assertFalse(static::$document->nextDocumentTaxRepresentativeCommunication());
 
         // Finals
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentTaxRepresentativeId($newId);
+            static::$document->getDocumentTaxRepresentativeId($newId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
+            static::$document->getDocumentTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+            static::$document->getDocumentTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentTaxRepresentativeAddress(
+            static::$document->getDocumentTaxRepresentativeAddress(
                 $newAddressLine1,
                 $newAddressLine2,
                 $newAddressLine3,
@@ -894,11 +894,11 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentTaxRepresentativeLegalOrganisation($newType, $newId, $newName);
+            static::$document->getDocumentTaxRepresentativeLegalOrganisation($newType, $newId, $newName);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentTaxRepresentativeContact(
+            static::$document->getDocumentTaxRepresentativeContact(
                 $newPersonName,
                 $newDepartmentName,
                 $newPhoneNumber,
@@ -908,7 +908,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentTaxRepresentativeCommunication($newType, $newUri);
+            static::$document->getDocumentTaxRepresentativeCommunication($newType, $newUri);
         }, '/Undefined (array key|index)/');
     }
 
@@ -916,54 +916,54 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
     {
         // Name
 
-        self::$document->getDocumentProductEndUserName($newName);
+        static::$document->getDocumentProductEndUserName($newName);
 
         $this->assertSame('Product End User GmbH', $newName);
 
         // ID
 
-        $this->assertTrue(self::$document->firstDocumentProductEndUserId());
+        $this->assertTrue(static::$document->firstDocumentProductEndUserId());
 
-        self::$document->getDocumentProductEndUserId($newId);
+        static::$document->getDocumentProductEndUserId($newId);
 
         $this->assertSame('0815-9999-PEU', $newId);
 
-        $this->assertFalse(self::$document->nextDocumentProductEndUserId());
+        $this->assertFalse(static::$document->nextDocumentProductEndUserId());
 
         // Global ID
 
-        $this->assertTrue(self::$document->firstDocumentProductEndUserGlobalId());
+        $this->assertTrue(static::$document->firstDocumentProductEndUserGlobalId());
 
-        self::$document->getDocumentProductEndUserGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentProductEndUserGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('11111-PEU', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertTrue(self::$document->nextDocumentProductEndUserGlobalId());
+        $this->assertTrue(static::$document->nextDocumentProductEndUserGlobalId());
 
-        self::$document->getDocumentProductEndUserGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentProductEndUserGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('22222-PEU', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertFalse(self::$document->nextDocumentProductEndUserGlobalId());
+        $this->assertFalse(static::$document->nextDocumentProductEndUserGlobalId());
 
         // Tax Registration
 
-        $this->assertTrue(self::$document->firstDocumentProductEndUserTaxRegistration());
+        $this->assertTrue(static::$document->firstDocumentProductEndUserTaxRegistration());
 
-        self::$document->getDocumentProductEndUserTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        static::$document->getDocumentProductEndUserTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         $this->assertSame('893489787987', $newTaxRegistrationId);
         $this->assertSame('VA', $newTaxRegistrationType);
 
-        $this->assertFalse(self::$document->nextDocumentProductEndUserTaxRegistration());
+        $this->assertFalse(static::$document->nextDocumentProductEndUserTaxRegistration());
 
         // Address
 
-        $this->assertTrue(self::$document->firstDocumentProductEndUserAddress());
+        $this->assertTrue(static::$document->firstDocumentProductEndUserAddress());
 
-        self::$document->getDocumentProductEndUserAddress(
+        static::$document->getDocumentProductEndUserAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -981,25 +981,25 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('DE', $newCountryId);
         $this->assertSame('Bavaria', $newSubDivision);
 
-        $this->assertFalse(self::$document->nextDocumentProductEndUserAddress());
+        $this->assertFalse(static::$document->nextDocumentProductEndUserAddress());
 
         // Legal Organisation
 
-        $this->assertTrue(self::$document->firstDocumentProductEndUserLegalOrganisation());
+        $this->assertTrue(static::$document->firstDocumentProductEndUserLegalOrganisation());
 
-        self::$document->getDocumentProductEndUserLegalOrganisation($newType, $newId, $newName);
+        static::$document->getDocumentProductEndUserLegalOrganisation($newType, $newId, $newName);
 
         $this->assertSame('8884', $newType);
         $this->assertSame('3874837489237', $newId);
         $this->assertSame('Product End User AG', $newName);
 
-        $this->assertFalse(self::$document->nextDocumentProductEndUserLegalOrganisation());
+        $this->assertFalse(static::$document->nextDocumentProductEndUserLegalOrganisation());
 
         // Contact
 
-        $this->assertTrue(self::$document->firstDocumentProductEndUserContact());
+        $this->assertTrue(static::$document->firstDocumentProductEndUserContact());
 
-        self::$document->getDocumentProductEndUserContact(
+        static::$document->getDocumentProductEndUserContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -1013,35 +1013,35 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('0816-471222', $newFaxNumber);
         $this->assertSame('horst.schulze@productenduser.de', $newEmailAddress);
 
-        $this->assertFalse(self::$document->nextDocumentProductEndUserContact());
+        $this->assertFalse(static::$document->nextDocumentProductEndUserContact());
 
         // Communication
 
-        $this->assertTrue(self::$document->firstDocumentProductEndUserCommunication());
+        $this->assertTrue(static::$document->firstDocumentProductEndUserCommunication());
 
-        self::$document->getDocumentProductEndUserCommunication($newType, $newUri);
+        static::$document->getDocumentProductEndUserCommunication($newType, $newUri);
 
         $this->assertSame('EM', $newType);
         $this->assertSame('info@productenduser.de', $newUri);
 
-        $this->assertFalse(self::$document->nextDocumentProductEndUserCommunication());
+        $this->assertFalse(static::$document->nextDocumentProductEndUserCommunication());
 
         // Finals
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentProductEndUserId($newId);
+            static::$document->getDocumentProductEndUserId($newId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentProductEndUserGlobalId($newGlobalId, $newGlobalIdType);
+            static::$document->getDocumentProductEndUserGlobalId($newGlobalId, $newGlobalIdType);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentProductEndUserTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+            static::$document->getDocumentProductEndUserTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentProductEndUserAddress(
+            static::$document->getDocumentProductEndUserAddress(
                 $newAddressLine1,
                 $newAddressLine2,
                 $newAddressLine3,
@@ -1053,11 +1053,11 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentProductEndUserLegalOrganisation($newType, $newId, $newName);
+            static::$document->getDocumentProductEndUserLegalOrganisation($newType, $newId, $newName);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentProductEndUserContact(
+            static::$document->getDocumentProductEndUserContact(
                 $newPersonName,
                 $newDepartmentName,
                 $newPhoneNumber,
@@ -1067,7 +1067,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentProductEndUserCommunication($newType, $newUri);
+            static::$document->getDocumentProductEndUserCommunication($newType, $newUri);
         }, '/Undefined (array key|index)/');
     }
 
@@ -1075,54 +1075,54 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
     {
         // Name
 
-        self::$document->getDocumentShipToName($newName);
+        static::$document->getDocumentShipToName($newName);
 
         $this->assertSame('Ship To GmbH', $newName);
 
         // ID
 
-        $this->assertTrue(self::$document->firstDocumentShipToId());
+        $this->assertTrue(static::$document->firstDocumentShipToId());
 
-        self::$document->getDocumentShipToId($newId);
+        static::$document->getDocumentShipToId($newId);
 
         $this->assertSame('0815-4711-SH', $newId);
 
-        $this->assertFalse(self::$document->nextDocumentShipToId());
+        $this->assertFalse(static::$document->nextDocumentShipToId());
 
         // Global ID
 
-        $this->assertTrue(self::$document->firstDocumentShipToGlobalId());
+        $this->assertTrue(static::$document->firstDocumentShipToGlobalId());
 
-        self::$document->getDocumentShipToGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentShipToGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('11111-SH', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertTrue(self::$document->nextDocumentShipToGlobalId());
+        $this->assertTrue(static::$document->nextDocumentShipToGlobalId());
 
-        self::$document->getDocumentShipToGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentShipToGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('22222-SH', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertFalse(self::$document->nextDocumentShipToGlobalId());
+        $this->assertFalse(static::$document->nextDocumentShipToGlobalId());
 
         // Tax Registration
 
-        $this->assertTrue(self::$document->firstDocumentShipToTaxRegistration());
+        $this->assertTrue(static::$document->firstDocumentShipToTaxRegistration());
 
-        self::$document->getDocumentShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        static::$document->getDocumentShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         $this->assertSame('7368366239786-SH', $newTaxRegistrationId);
         $this->assertSame('VA', $newTaxRegistrationType);
 
-        $this->assertFalse(self::$document->nextDocumentShipToTaxRegistration());
+        $this->assertFalse(static::$document->nextDocumentShipToTaxRegistration());
 
         // Address
 
-        $this->assertTrue(self::$document->firstDocumentShipToAddress());
+        $this->assertTrue(static::$document->firstDocumentShipToAddress());
 
-        self::$document->getDocumentShipToAddress(
+        static::$document->getDocumentShipToAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -1140,25 +1140,25 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('DE', $newCountryId);
         $this->assertSame('Saxony', $newSubDivision);
 
-        $this->assertFalse(self::$document->nextDocumentShipToAddress());
+        $this->assertFalse(static::$document->nextDocumentShipToAddress());
 
         // Legal Organisation
 
-        $this->assertTrue(self::$document->firstDocumentShipToLegalOrganisation());
+        $this->assertTrue(static::$document->firstDocumentShipToLegalOrganisation());
 
-        self::$document->getDocumentShipToLegalOrganisation($newType, $newId, $newName);
+        static::$document->getDocumentShipToLegalOrganisation($newType, $newId, $newName);
 
         $this->assertSame('8884', $newType);
         $this->assertSame('3874837489237', $newId);
         $this->assertSame('Ship To AG', $newName);
 
-        $this->assertFalse(self::$document->nextDocumentShipToLegalOrganisation());
+        $this->assertFalse(static::$document->nextDocumentShipToLegalOrganisation());
 
         // Contact
 
-        $this->assertTrue(self::$document->firstDocumentShipToContact());
+        $this->assertTrue(static::$document->firstDocumentShipToContact());
 
-        self::$document->getDocumentShipToContact(
+        static::$document->getDocumentShipToContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -1172,35 +1172,35 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('0815-4712', $newFaxNumber);
         $this->assertSame('horst.meier@shipto.de', $newEmailAddress);
 
-        $this->assertFalse(self::$document->nextDocumentShipToContact());
+        $this->assertFalse(static::$document->nextDocumentShipToContact());
 
         // Communication
 
-        $this->assertTrue(self::$document->firstDocumentShipToCommunication());
+        $this->assertTrue(static::$document->firstDocumentShipToCommunication());
 
-        self::$document->getDocumentShipToCommunication($newType, $newUri);
+        static::$document->getDocumentShipToCommunication($newType, $newUri);
 
         $this->assertSame('EM', $newType);
         $this->assertSame('info@shipto.de', $newUri);
 
-        $this->assertFalse(self::$document->nextDocumentShipToCommunication());
+        $this->assertFalse(static::$document->nextDocumentShipToCommunication());
 
         // Finals
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentShipToId($newId);
+            static::$document->getDocumentShipToId($newId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentShipToGlobalId($newGlobalId, $newGlobalIdType);
+            static::$document->getDocumentShipToGlobalId($newGlobalId, $newGlobalIdType);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+            static::$document->getDocumentShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentShipToAddress(
+            static::$document->getDocumentShipToAddress(
                 $newAddressLine1,
                 $newAddressLine2,
                 $newAddressLine3,
@@ -1212,11 +1212,11 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentShipToLegalOrganisation($newType, $newId, $newName);
+            static::$document->getDocumentShipToLegalOrganisation($newType, $newId, $newName);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentShipToContact(
+            static::$document->getDocumentShipToContact(
                 $newPersonName,
                 $newDepartmentName,
                 $newPhoneNumber,
@@ -1226,7 +1226,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentShipToCommunication($newType, $newUri);
+            static::$document->getDocumentShipToCommunication($newType, $newUri);
         }, '/Undefined (array key|index)/');
     }
 
@@ -1234,54 +1234,54 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
     {
         // Name
 
-        self::$document->getDocumentUltimateShipToName($newName);
+        static::$document->getDocumentUltimateShipToName($newName);
 
         $this->assertSame('Ultimate Ship To GmbH', $newName);
 
         // ID
 
-        $this->assertTrue(self::$document->firstDocumentUltimateShipToId());
+        $this->assertTrue(static::$document->firstDocumentUltimateShipToId());
 
-        self::$document->getDocumentUltimateShipToId($newId);
+        static::$document->getDocumentUltimateShipToId($newId);
 
         $this->assertSame('0815-4711', $newId);
 
-        $this->assertFalse(self::$document->nextDocumentUltimateShipToId());
+        $this->assertFalse(static::$document->nextDocumentUltimateShipToId());
 
         // Global ID
 
-        $this->assertTrue(self::$document->firstDocumentUltimateShipToGlobalId());
+        $this->assertTrue(static::$document->firstDocumentUltimateShipToGlobalId());
 
-        self::$document->getDocumentUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('11111', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertTrue(self::$document->nextDocumentUltimateShipToGlobalId());
+        $this->assertTrue(static::$document->nextDocumentUltimateShipToGlobalId());
 
-        self::$document->getDocumentUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('22222', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertFalse(self::$document->nextDocumentUltimateShipToGlobalId());
+        $this->assertFalse(static::$document->nextDocumentUltimateShipToGlobalId());
 
         // Tax Registration
 
-        $this->assertTrue(self::$document->firstDocumentUltimateShipToTaxRegistration());
+        $this->assertTrue(static::$document->firstDocumentUltimateShipToTaxRegistration());
 
-        self::$document->getDocumentUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        static::$document->getDocumentUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         $this->assertSame('893489787987', $newTaxRegistrationId);
         $this->assertSame('VA', $newTaxRegistrationType);
 
-        $this->assertFalse(self::$document->nextDocumentUltimateShipToTaxRegistration());
+        $this->assertFalse(static::$document->nextDocumentUltimateShipToTaxRegistration());
 
         // Address
 
-        $this->assertTrue(self::$document->firstDocumentUltimateShipToAddress());
+        $this->assertTrue(static::$document->firstDocumentUltimateShipToAddress());
 
-        self::$document->getDocumentUltimateShipToAddress(
+        static::$document->getDocumentUltimateShipToAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -1299,25 +1299,25 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('DE', $newCountryId);
         $this->assertSame('Bavaria', $newSubDivision);
 
-        $this->assertFalse(self::$document->nextDocumentUltimateShipToAddress());
+        $this->assertFalse(static::$document->nextDocumentUltimateShipToAddress());
 
         // Legal Organisation
 
-        $this->assertTrue(self::$document->firstDocumentUltimateShipToLegalOrganisation());
+        $this->assertTrue(static::$document->firstDocumentUltimateShipToLegalOrganisation());
 
-        self::$document->getDocumentUltimateShipToLegalOrganisation($newType, $newId, $newName);
+        static::$document->getDocumentUltimateShipToLegalOrganisation($newType, $newId, $newName);
 
         $this->assertSame('8884', $newType);
         $this->assertSame('3874837489237', $newId);
         $this->assertSame('Ultimate Ship To AG', $newName);
 
-        $this->assertFalse(self::$document->nextDocumentUltimateShipToLegalOrganisation());
+        $this->assertFalse(static::$document->nextDocumentUltimateShipToLegalOrganisation());
 
         // Contact
 
-        $this->assertTrue(self::$document->firstDocumentUltimateShipToContact());
+        $this->assertTrue(static::$document->firstDocumentUltimateShipToContact());
 
-        self::$document->getDocumentUltimateShipToContact(
+        static::$document->getDocumentUltimateShipToContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -1331,35 +1331,35 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('0815-7777-1', $newFaxNumber);
         $this->assertSame('horst.meier@ultimateshipto.de', $newEmailAddress);
 
-        $this->assertFalse(self::$document->nextDocumentUltimateShipToContact());
+        $this->assertFalse(static::$document->nextDocumentUltimateShipToContact());
 
         // Communication
 
-        $this->assertTrue(self::$document->firstDocumentUltimateShipToCommunication());
+        $this->assertTrue(static::$document->firstDocumentUltimateShipToCommunication());
 
-        self::$document->getDocumentUltimateShipToCommunication($newType, $newUri);
+        static::$document->getDocumentUltimateShipToCommunication($newType, $newUri);
 
         $this->assertSame('EM', $newType);
         $this->assertSame('info@ultimateshipto.de', $newUri);
 
-        $this->assertFalse(self::$document->nextDocumentUltimateShipToCommunication());
+        $this->assertFalse(static::$document->nextDocumentUltimateShipToCommunication());
 
         // Finals
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentUltimateShipToId($newId);
+            static::$document->getDocumentUltimateShipToId($newId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
+            static::$document->getDocumentUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+            static::$document->getDocumentUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentUltimateShipToAddress(
+            static::$document->getDocumentUltimateShipToAddress(
                 $newAddressLine1,
                 $newAddressLine2,
                 $newAddressLine3,
@@ -1371,11 +1371,11 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentUltimateShipToLegalOrganisation($newType, $newId, $newName);
+            static::$document->getDocumentUltimateShipToLegalOrganisation($newType, $newId, $newName);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentUltimateShipToContact(
+            static::$document->getDocumentUltimateShipToContact(
                 $newPersonName,
                 $newDepartmentName,
                 $newPhoneNumber,
@@ -1385,7 +1385,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentUltimateShipToCommunication($newType, $newUri);
+            static::$document->getDocumentUltimateShipToCommunication($newType, $newUri);
         }, '/Undefined (array key|index)/');
     }
 
@@ -1393,54 +1393,54 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
     {
         // Name
 
-        self::$document->getDocumentShipFromName($newName);
+        static::$document->getDocumentShipFromName($newName);
 
         $this->assertSame('Ship From GmbH', $newName);
 
         // ID
 
-        $this->assertTrue(self::$document->firstDocumentShipFromId());
+        $this->assertTrue(static::$document->firstDocumentShipFromId());
 
-        self::$document->getDocumentShipFromId($newId);
+        static::$document->getDocumentShipFromId($newId);
 
         $this->assertSame('0815-4711-SF', $newId);
 
-        $this->assertFalse(self::$document->nextDocumentShipFromId());
+        $this->assertFalse(static::$document->nextDocumentShipFromId());
 
         // Global ID
 
-        $this->assertTrue(self::$document->firstDocumentShipFromGlobalId());
+        $this->assertTrue(static::$document->firstDocumentShipFromGlobalId());
 
-        self::$document->getDocumentShipFromGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentShipFromGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('11111-SF', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertTrue(self::$document->nextDocumentShipFromGlobalId());
+        $this->assertTrue(static::$document->nextDocumentShipFromGlobalId());
 
-        self::$document->getDocumentShipFromGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentShipFromGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('22222-SF', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertFalse(self::$document->nextDocumentShipFromGlobalId());
+        $this->assertFalse(static::$document->nextDocumentShipFromGlobalId());
 
         // Tax Registration
 
-        $this->assertTrue(self::$document->firstDocumentShipFromTaxRegistration());
+        $this->assertTrue(static::$document->firstDocumentShipFromTaxRegistration());
 
-        self::$document->getDocumentShipFromTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        static::$document->getDocumentShipFromTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         $this->assertSame('1234567890-SF', $newTaxRegistrationId);
         $this->assertSame('VA', $newTaxRegistrationType);
 
-        $this->assertFalse(self::$document->nextDocumentShipFromTaxRegistration());
+        $this->assertFalse(static::$document->nextDocumentShipFromTaxRegistration());
 
         // Address
 
-        $this->assertTrue(self::$document->firstDocumentShipFromAddress());
+        $this->assertTrue(static::$document->firstDocumentShipFromAddress());
 
-        self::$document->getDocumentShipFromAddress(
+        static::$document->getDocumentShipFromAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -1458,25 +1458,25 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('DE', $newCountryId);
         $this->assertSame('Thüringen', $newSubDivision);
 
-        $this->assertFalse(self::$document->nextDocumentShipFromAddress());
+        $this->assertFalse(static::$document->nextDocumentShipFromAddress());
 
         // Legal Organisation
 
-        $this->assertTrue(self::$document->firstDocumentShipFromLegalOrganisation());
+        $this->assertTrue(static::$document->firstDocumentShipFromLegalOrganisation());
 
-        self::$document->getDocumentShipFromLegalOrganisation($newType, $newId, $newName);
+        static::$document->getDocumentShipFromLegalOrganisation($newType, $newId, $newName);
 
         $this->assertSame('8884', $newType);
         $this->assertSame('3874837489237', $newId);
         $this->assertSame('Ship From AG', $newName);
 
-        $this->assertFalse(self::$document->nextDocumentShipFromLegalOrganisation());
+        $this->assertFalse(static::$document->nextDocumentShipFromLegalOrganisation());
 
         // Contact
 
-        $this->assertTrue(self::$document->firstDocumentShipFromContact());
+        $this->assertTrue(static::$document->firstDocumentShipFromContact());
 
-        self::$document->getDocumentShipFromContact(
+        static::$document->getDocumentShipFromContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -1490,35 +1490,35 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('0815-4712', $newFaxNumber);
         $this->assertSame('horst.meier@shipfrom.de', $newEmailAddress);
 
-        $this->assertFalse(self::$document->nextDocumentShipFromContact());
+        $this->assertFalse(static::$document->nextDocumentShipFromContact());
 
         // Communication
 
-        $this->assertTrue(self::$document->firstDocumentShipFromCommunication());
+        $this->assertTrue(static::$document->firstDocumentShipFromCommunication());
 
-        self::$document->getDocumentShipFromCommunication($newType, $newUri);
+        static::$document->getDocumentShipFromCommunication($newType, $newUri);
 
         $this->assertSame('EM', $newType);
         $this->assertSame('info@shipfrom.de', $newUri);
 
-        $this->assertFalse(self::$document->nextDocumentShipFromCommunication());
+        $this->assertFalse(static::$document->nextDocumentShipFromCommunication());
 
         // Finals
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentShipFromId($newId);
+            static::$document->getDocumentShipFromId($newId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentShipFromGlobalId($newGlobalId, $newGlobalIdType);
+            static::$document->getDocumentShipFromGlobalId($newGlobalId, $newGlobalIdType);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentShipFromTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+            static::$document->getDocumentShipFromTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentShipFromAddress(
+            static::$document->getDocumentShipFromAddress(
                 $newAddressLine1,
                 $newAddressLine2,
                 $newAddressLine3,
@@ -1530,11 +1530,11 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentShipFromLegalOrganisation($newType, $newId, $newName);
+            static::$document->getDocumentShipFromLegalOrganisation($newType, $newId, $newName);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentShipFromContact(
+            static::$document->getDocumentShipFromContact(
                 $newPersonName,
                 $newDepartmentName,
                 $newPhoneNumber,
@@ -1544,7 +1544,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentShipFromCommunication($newType, $newUri);
+            static::$document->getDocumentShipFromCommunication($newType, $newUri);
         }, '/Undefined (array key|index)/');
     }
 
@@ -1552,54 +1552,54 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
     {
         // Name
 
-        self::$document->getDocumentInvoicerName($newName);
+        static::$document->getDocumentInvoicerName($newName);
 
         $this->assertSame('Invoicer GmbH', $newName);
 
         // ID
 
-        $this->assertTrue(self::$document->firstDocumentInvoicerId());
+        $this->assertTrue(static::$document->firstDocumentInvoicerId());
 
-        self::$document->getDocumentInvoicerId($newId);
+        static::$document->getDocumentInvoicerId($newId);
 
         $this->assertSame('0815-4711-INVR', $newId);
 
-        $this->assertFalse(self::$document->nextDocumentInvoicerId());
+        $this->assertFalse(static::$document->nextDocumentInvoicerId());
 
         // Global ID
 
-        $this->assertTrue(self::$document->firstDocumentInvoicerGlobalId());
+        $this->assertTrue(static::$document->firstDocumentInvoicerGlobalId());
 
-        self::$document->getDocumentInvoicerGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentInvoicerGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('11111-INVR', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertTrue(self::$document->nextDocumentInvoicerGlobalId());
+        $this->assertTrue(static::$document->nextDocumentInvoicerGlobalId());
 
-        self::$document->getDocumentInvoicerGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentInvoicerGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('22222-INVR', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertFalse(self::$document->nextDocumentInvoicerGlobalId());
+        $this->assertFalse(static::$document->nextDocumentInvoicerGlobalId());
 
         // Tax Registration
 
-        $this->assertTrue(self::$document->firstDocumentInvoicerTaxRegistration());
+        $this->assertTrue(static::$document->firstDocumentInvoicerTaxRegistration());
 
-        self::$document->getDocumentInvoicerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        static::$document->getDocumentInvoicerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         $this->assertSame('9080706050403020-INVR', $newTaxRegistrationId);
         $this->assertSame('VA', $newTaxRegistrationType);
 
-        $this->assertFalse(self::$document->nextDocumentInvoicerTaxRegistration());
+        $this->assertFalse(static::$document->nextDocumentInvoicerTaxRegistration());
 
         // Address
 
-        $this->assertTrue(self::$document->firstDocumentInvoicerAddress());
+        $this->assertTrue(static::$document->firstDocumentInvoicerAddress());
 
-        self::$document->getDocumentInvoicerAddress(
+        static::$document->getDocumentInvoicerAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -1617,25 +1617,25 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('DE', $newCountryId);
         $this->assertSame('Bavaria', $newSubDivision);
 
-        $this->assertFalse(self::$document->nextDocumentInvoicerAddress());
+        $this->assertFalse(static::$document->nextDocumentInvoicerAddress());
 
         // Legal Organisation
 
-        $this->assertTrue(self::$document->firstDocumentInvoicerLegalOrganisation());
+        $this->assertTrue(static::$document->firstDocumentInvoicerLegalOrganisation());
 
-        self::$document->getDocumentInvoicerLegalOrganisation($newType, $newId, $newName);
+        static::$document->getDocumentInvoicerLegalOrganisation($newType, $newId, $newName);
 
         $this->assertSame('8884', $newType);
         $this->assertSame('3874837489237', $newId);
         $this->assertSame('Invoicer AG', $newName);
 
-        $this->assertFalse(self::$document->nextDocumentInvoicerLegalOrganisation());
+        $this->assertFalse(static::$document->nextDocumentInvoicerLegalOrganisation());
 
         // Contact
 
-        $this->assertTrue(self::$document->firstDocumentInvoicerContact());
+        $this->assertTrue(static::$document->firstDocumentInvoicerContact());
 
-        self::$document->getDocumentInvoicerContact(
+        static::$document->getDocumentInvoicerContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -1649,35 +1649,35 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('0815-4712', $newFaxNumber);
         $this->assertSame('horst.meier@invoicer.de', $newEmailAddress);
 
-        $this->assertFalse(self::$document->nextDocumentInvoicerContact());
+        $this->assertFalse(static::$document->nextDocumentInvoicerContact());
 
         // Communication
 
-        $this->assertTrue(self::$document->firstDocumentInvoicerCommunication());
+        $this->assertTrue(static::$document->firstDocumentInvoicerCommunication());
 
-        self::$document->getDocumentInvoicerCommunication($newType, $newUri);
+        static::$document->getDocumentInvoicerCommunication($newType, $newUri);
 
         $this->assertSame('EM', $newType);
         $this->assertSame('info@invoicer.de', $newUri);
 
-        $this->assertFalse(self::$document->nextDocumentInvoicerCommunication());
+        $this->assertFalse(static::$document->nextDocumentInvoicerCommunication());
 
         // Finals
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentInvoicerId($newId);
+            static::$document->getDocumentInvoicerId($newId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentInvoicerGlobalId($newGlobalId, $newGlobalIdType);
+            static::$document->getDocumentInvoicerGlobalId($newGlobalId, $newGlobalIdType);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentInvoicerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+            static::$document->getDocumentInvoicerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentInvoicerAddress(
+            static::$document->getDocumentInvoicerAddress(
                 $newAddressLine1,
                 $newAddressLine2,
                 $newAddressLine3,
@@ -1689,11 +1689,11 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentInvoicerLegalOrganisation($newType, $newId, $newName);
+            static::$document->getDocumentInvoicerLegalOrganisation($newType, $newId, $newName);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentInvoicerContact(
+            static::$document->getDocumentInvoicerContact(
                 $newPersonName,
                 $newDepartmentName,
                 $newPhoneNumber,
@@ -1703,7 +1703,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentInvoicerCommunication($newType, $newUri);
+            static::$document->getDocumentInvoicerCommunication($newType, $newUri);
         }, '/Undefined (array key|index)/');
     }
 
@@ -1711,54 +1711,54 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
     {
         // Name
 
-        self::$document->getDocumentInvoiceeName($newName);
+        static::$document->getDocumentInvoiceeName($newName);
 
         $this->assertSame('Invoicee GmbH', $newName);
 
         // ID
 
-        $this->assertTrue(self::$document->firstDocumentInvoiceeId());
+        $this->assertTrue(static::$document->firstDocumentInvoiceeId());
 
-        self::$document->getDocumentInvoiceeId($newId);
+        static::$document->getDocumentInvoiceeId($newId);
 
         $this->assertSame('0815-4711', $newId);
 
-        $this->assertFalse(self::$document->nextDocumentInvoiceeId());
+        $this->assertFalse(static::$document->nextDocumentInvoiceeId());
 
         // Global ID
 
-        $this->assertTrue(self::$document->firstDocumentInvoiceeGlobalId());
+        $this->assertTrue(static::$document->firstDocumentInvoiceeGlobalId());
 
-        self::$document->getDocumentInvoiceeGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentInvoiceeGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('11111', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertTrue(self::$document->nextDocumentInvoiceeGlobalId());
+        $this->assertTrue(static::$document->nextDocumentInvoiceeGlobalId());
 
-        self::$document->getDocumentInvoiceeGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentInvoiceeGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('22222', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertFalse(self::$document->nextDocumentInvoiceeGlobalId());
+        $this->assertFalse(static::$document->nextDocumentInvoiceeGlobalId());
 
         // Tax Registration
 
-        $this->assertTrue(self::$document->firstDocumentInvoiceeTaxRegistration());
+        $this->assertTrue(static::$document->firstDocumentInvoiceeTaxRegistration());
 
-        self::$document->getDocumentInvoiceeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        static::$document->getDocumentInvoiceeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         $this->assertSame('893489787987', $newTaxRegistrationId);
         $this->assertSame('VA', $newTaxRegistrationType);
 
-        $this->assertFalse(self::$document->nextDocumentInvoiceeTaxRegistration());
+        $this->assertFalse(static::$document->nextDocumentInvoiceeTaxRegistration());
 
         // Address
 
-        $this->assertTrue(self::$document->firstDocumentInvoiceeAddress());
+        $this->assertTrue(static::$document->firstDocumentInvoiceeAddress());
 
-        self::$document->getDocumentInvoiceeAddress(
+        static::$document->getDocumentInvoiceeAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -1776,25 +1776,25 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('DE', $newCountryId);
         $this->assertSame('Bavaria', $newSubDivision);
 
-        $this->assertFalse(self::$document->nextDocumentInvoiceeAddress());
+        $this->assertFalse(static::$document->nextDocumentInvoiceeAddress());
 
         // Legal Organisation
 
-        $this->assertTrue(self::$document->firstDocumentInvoiceeLegalOrganisation());
+        $this->assertTrue(static::$document->firstDocumentInvoiceeLegalOrganisation());
 
-        self::$document->getDocumentInvoiceeLegalOrganisation($newType, $newId, $newName);
+        static::$document->getDocumentInvoiceeLegalOrganisation($newType, $newId, $newName);
 
         $this->assertSame('8884', $newType);
         $this->assertSame('3874837489237', $newId);
         $this->assertSame('Invoicee AG', $newName);
 
-        $this->assertFalse(self::$document->nextDocumentInvoiceeLegalOrganisation());
+        $this->assertFalse(static::$document->nextDocumentInvoiceeLegalOrganisation());
 
         // Contact
 
-        $this->assertTrue(self::$document->firstDocumentInvoiceeContact());
+        $this->assertTrue(static::$document->firstDocumentInvoiceeContact());
 
-        self::$document->getDocumentInvoiceeContact(
+        static::$document->getDocumentInvoiceeContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -1808,35 +1808,35 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('0815-4712', $newFaxNumber);
         $this->assertSame('horst.meier@invoicee.de', $newEmailAddress);
 
-        $this->assertFalse(self::$document->nextDocumentInvoiceeContact());
+        $this->assertFalse(static::$document->nextDocumentInvoiceeContact());
 
         // Communication
 
-        $this->assertTrue(self::$document->firstDocumentInvoiceeCommunication());
+        $this->assertTrue(static::$document->firstDocumentInvoiceeCommunication());
 
-        self::$document->getDocumentInvoiceeCommunication($newType, $newUri);
+        static::$document->getDocumentInvoiceeCommunication($newType, $newUri);
 
         $this->assertSame('EM', $newType);
         $this->assertSame('info@invoicee.de', $newUri);
 
-        $this->assertFalse(self::$document->nextDocumentInvoiceeCommunication());
+        $this->assertFalse(static::$document->nextDocumentInvoiceeCommunication());
 
         // Finals
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentInvoiceeId($newId);
+            static::$document->getDocumentInvoiceeId($newId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentInvoiceeGlobalId($newGlobalId, $newGlobalIdType);
+            static::$document->getDocumentInvoiceeGlobalId($newGlobalId, $newGlobalIdType);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentInvoiceeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+            static::$document->getDocumentInvoiceeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentInvoiceeAddress(
+            static::$document->getDocumentInvoiceeAddress(
                 $newAddressLine1,
                 $newAddressLine2,
                 $newAddressLine3,
@@ -1848,11 +1848,11 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentInvoiceeLegalOrganisation($newType, $newId, $newName);
+            static::$document->getDocumentInvoiceeLegalOrganisation($newType, $newId, $newName);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentInvoiceeContact(
+            static::$document->getDocumentInvoiceeContact(
                 $newPersonName,
                 $newDepartmentName,
                 $newPhoneNumber,
@@ -1862,7 +1862,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentInvoiceeCommunication($newType, $newUri);
+            static::$document->getDocumentInvoiceeCommunication($newType, $newUri);
         }, '/Undefined (array key|index)/');
     }
 
@@ -1870,54 +1870,54 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
     {
         // Name
 
-        self::$document->getDocumentPayeeName($newName);
+        static::$document->getDocumentPayeeName($newName);
 
         $this->assertSame('Payee GmbH', $newName);
 
         // ID
 
-        $this->assertTrue(self::$document->firstDocumentPayeeId());
+        $this->assertTrue(static::$document->firstDocumentPayeeId());
 
-        self::$document->getDocumentPayeeId($newId);
+        static::$document->getDocumentPayeeId($newId);
 
         $this->assertSame('0815-4711-PEE', $newId);
 
-        $this->assertFalse(self::$document->nextDocumentPayeeId());
+        $this->assertFalse(static::$document->nextDocumentPayeeId());
 
         // Global ID
 
-        $this->assertTrue(self::$document->firstDocumentPayeeGlobalId());
+        $this->assertTrue(static::$document->firstDocumentPayeeGlobalId());
 
-        self::$document->getDocumentPayeeGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentPayeeGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('11111-PEE', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertTrue(self::$document->nextDocumentPayeeGlobalId());
+        $this->assertTrue(static::$document->nextDocumentPayeeGlobalId());
 
-        self::$document->getDocumentPayeeGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentPayeeGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('22222-PEE', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertFalse(self::$document->nextDocumentPayeeGlobalId());
+        $this->assertFalse(static::$document->nextDocumentPayeeGlobalId());
 
         // Tax Registration
 
-        $this->assertTrue(self::$document->firstDocumentPayeeTaxRegistration());
+        $this->assertTrue(static::$document->firstDocumentPayeeTaxRegistration());
 
-        self::$document->getDocumentPayeeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        static::$document->getDocumentPayeeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         $this->assertSame('893489787987', $newTaxRegistrationId);
         $this->assertSame('VA', $newTaxRegistrationType);
 
-        $this->assertFalse(self::$document->nextDocumentPayeeTaxRegistration());
+        $this->assertFalse(static::$document->nextDocumentPayeeTaxRegistration());
 
         // Address
 
-        $this->assertTrue(self::$document->firstDocumentPayeeAddress());
+        $this->assertTrue(static::$document->firstDocumentPayeeAddress());
 
-        self::$document->getDocumentPayeeAddress(
+        static::$document->getDocumentPayeeAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -1935,25 +1935,25 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('DE', $newCountryId);
         $this->assertSame('Bavaria', $newSubDivision);
 
-        $this->assertFalse(self::$document->nextDocumentPayeeAddress());
+        $this->assertFalse(static::$document->nextDocumentPayeeAddress());
 
         // Legal Organisation
 
-        $this->assertTrue(self::$document->firstDocumentPayeeLegalOrganisation());
+        $this->assertTrue(static::$document->firstDocumentPayeeLegalOrganisation());
 
-        self::$document->getDocumentPayeeLegalOrganisation($newType, $newId, $newName);
+        static::$document->getDocumentPayeeLegalOrganisation($newType, $newId, $newName);
 
         $this->assertSame('8884', $newType);
         $this->assertSame('3874837489237', $newId);
         $this->assertSame('Payee AG', $newName);
 
-        $this->assertFalse(self::$document->nextDocumentPayeeLegalOrganisation());
+        $this->assertFalse(static::$document->nextDocumentPayeeLegalOrganisation());
 
         // Contact
 
-        $this->assertTrue(self::$document->firstDocumentPayeeContact());
+        $this->assertTrue(static::$document->firstDocumentPayeeContact());
 
-        self::$document->getDocumentPayeeContact(
+        static::$document->getDocumentPayeeContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -1967,35 +1967,35 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('0711-4712', $newFaxNumber);
         $this->assertSame('horst.mayer@payee.de', $newEmailAddress);
 
-        $this->assertFalse(self::$document->nextDocumentPayeeContact());
+        $this->assertFalse(static::$document->nextDocumentPayeeContact());
 
         // Communication
 
-        $this->assertTrue(self::$document->firstDocumentPayeeCommunication());
+        $this->assertTrue(static::$document->firstDocumentPayeeCommunication());
 
-        self::$document->getDocumentPayeeCommunication($newType, $newUri);
+        static::$document->getDocumentPayeeCommunication($newType, $newUri);
 
         $this->assertSame('EM', $newType);
         $this->assertSame('info@payee.de', $newUri);
 
-        $this->assertFalse(self::$document->nextDocumentPayeeCommunication());
+        $this->assertFalse(static::$document->nextDocumentPayeeCommunication());
 
         // Finals
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentPayeeId($newId);
+            static::$document->getDocumentPayeeId($newId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentPayeeGlobalId($newGlobalId, $newGlobalIdType);
+            static::$document->getDocumentPayeeGlobalId($newGlobalId, $newGlobalIdType);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentPayeeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+            static::$document->getDocumentPayeeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentPayeeAddress(
+            static::$document->getDocumentPayeeAddress(
                 $newAddressLine1,
                 $newAddressLine2,
                 $newAddressLine3,
@@ -2007,11 +2007,11 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentPayeeLegalOrganisation($newType, $newId, $newName);
+            static::$document->getDocumentPayeeLegalOrganisation($newType, $newId, $newName);
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentPayeeContact(
+            static::$document->getDocumentPayeeContact(
                 $newPersonName,
                 $newDepartmentName,
                 $newPhoneNumber,
@@ -2021,15 +2021,15 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentPayeeCommunication($newType, $newUri);
+            static::$document->getDocumentPayeeCommunication($newType, $newUri);
         }, '/Undefined (array key|index)/');
     }
 
     public function testFirstNextGetDocumentPaymentMean(): void
     {
-        $this->assertTrue(self::$document->firstDocumentPaymentMean());
+        $this->assertTrue(static::$document->firstDocumentPaymentMean());
 
-        self::$document->getDocumentPaymentMean(
+        static::$document->getDocumentPaymentMean(
             $newTypeCode,
             $newName,
             $newFinancialCardId,
@@ -2053,9 +2053,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('payeeProprietaryId', $newPayeeProprietaryId);
         $this->assertSame('payeeBic', $newPayeeBic);
 
-        $this->assertTrue(self::$document->nextDocumentPaymentMean());
+        $this->assertTrue(static::$document->nextDocumentPaymentMean());
 
-        self::$document->getDocumentPaymentMean(
+        static::$document->getDocumentPaymentMean(
             $newTypeCode,
             $newName,
             $newFinancialCardId,
@@ -2079,21 +2079,21 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('payeeProprietaryId2', $newPayeeProprietaryId);
         $this->assertSame('payeeBic2', $newPayeeBic);
 
-        $this->assertFalse(self::$document->nextDocumentPaymentMean());
+        $this->assertFalse(static::$document->nextDocumentPaymentMean());
     }
 
     public function testFirstNextGetDocumentPaymentCreditorReferenceID(): void
     {
-        $this->assertTrue(self::$document->firstDocumentPaymentCreditorReferenceID());
+        $this->assertTrue(static::$document->firstDocumentPaymentCreditorReferenceID());
 
-        self::$document->getDocumentPaymentCreditorReferenceID($newId);
+        static::$document->getDocumentPaymentCreditorReferenceID($newId);
 
         $this->assertSame('CREDREF-1', $newId);
 
-        $this->assertFalse(self::$document->nextDocumentPaymentCreditorReferenceID());
+        $this->assertFalse(static::$document->nextDocumentPaymentCreditorReferenceID());
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentPaymentCreditorReferenceID($newId);
+            static::$document->getDocumentPaymentCreditorReferenceID($newId);
         }, '/Undefined (array key|index)/');
     }
 
@@ -2101,26 +2101,26 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
     {
         // First Payment Term
 
-        $this->assertTrue(self::$document->firstDocumentPaymentTerm());
+        $this->assertTrue(static::$document->firstDocumentPaymentTerm());
 
-        self::$document->getDocumentPaymentTerm($newDescription, $newDueDate, $newMandate);
+        static::$document->getDocumentPaymentTerm($newDescription, $newDueDate, $newMandate);
 
         $this->assertSame('Direct Debit', $newDescription);
         $this->assertSame('mandate2', $newMandate);
 
         // Second Payment Term
 
-        $this->assertTrue(self::$document->nextDocumentPaymentTerm());
+        $this->assertTrue(static::$document->nextDocumentPaymentTerm());
 
-        self::$document->getDocumentPaymentTerm($newDescription, $newDueDate, $newMandate);
+        static::$document->getDocumentPaymentTerm($newDescription, $newDueDate, $newMandate);
 
         $this->assertSame('Payment Term Description 1', $newDescription);
         $this->assertSame('19700131', $newDueDate->format('Ymd'));
         $this->assertSame('', $newMandate);
 
-        $this->assertTrue(self::$document->firstDocumentPaymentPenaltyTermsInLastPaymentTerm());
+        $this->assertTrue(static::$document->firstDocumentPaymentPenaltyTermsInLastPaymentTerm());
 
-        self::$document->getDocumentPaymentPenaltyTermsInLastPaymentTerm(
+        static::$document->getDocumentPaymentPenaltyTermsInLastPaymentTerm(
             $newBaseAmount,
             $newDiscountAmount,
             $newDiscountPercent,
@@ -2136,11 +2136,11 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('DAY', $newBasePeriodUnit);
         $this->assertSame('19700224', $newBaseDate->format('Ymd'));
 
-        $this->assertFalse(self::$document->nextDocumentPaymentPenaltyTermsInLastPaymentTerm());
+        $this->assertFalse(static::$document->nextDocumentPaymentPenaltyTermsInLastPaymentTerm());
 
-        $this->assertTrue(self::$document->firstDocumentPaymentDiscountTermsInLastPaymentTerm());
+        $this->assertTrue(static::$document->firstDocumentPaymentDiscountTermsInLastPaymentTerm());
 
-        self::$document->getDocumentPaymentDiscountTermsInLastPaymentTerm(
+        static::$document->getDocumentPaymentDiscountTermsInLastPaymentTerm(
             $newBaseAmount,
             $newDiscountAmount,
             $newDiscountPercent,
@@ -2156,30 +2156,30 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('DAY', $newBasePeriodUnit);
         $this->assertSame('19700224', $newBaseDate->format('Ymd'));
 
-        $this->assertFalse(self::$document->nextDocumentPaymentDiscountTermsInLastPaymentTerm());
+        $this->assertFalse(static::$document->nextDocumentPaymentDiscountTermsInLastPaymentTerm());
 
         // Third Payment Term
 
-        $this->assertTrue(self::$document->nextDocumentPaymentTerm());
+        $this->assertTrue(static::$document->nextDocumentPaymentTerm());
 
-        self::$document->getDocumentPaymentTerm($newDescription, $newDueDate, $newMandate);
+        static::$document->getDocumentPaymentTerm($newDescription, $newDueDate, $newMandate);
 
         $this->assertSame('Payment Term Description 2', $newDescription);
         $this->assertSame('19700331', $newDueDate->format('Ymd'));
         $this->assertSame('', $newMandate);
 
-        $this->assertFalse(self::$document->firstDocumentPaymentPenaltyTermsInLastPaymentTerm());
-        $this->assertFalse(self::$document->nextDocumentPaymentPenaltyTermsInLastPaymentTerm());
+        $this->assertFalse(static::$document->firstDocumentPaymentPenaltyTermsInLastPaymentTerm());
+        $this->assertFalse(static::$document->nextDocumentPaymentPenaltyTermsInLastPaymentTerm());
 
-        $this->assertFalse(self::$document->firstDocumentPaymentDiscountTermsInLastPaymentTerm());
-        $this->assertFalse(self::$document->nextDocumentPaymentDiscountTermsInLastPaymentTerm());
+        $this->assertFalse(static::$document->firstDocumentPaymentDiscountTermsInLastPaymentTerm());
+        $this->assertFalse(static::$document->nextDocumentPaymentDiscountTermsInLastPaymentTerm());
     }
 
     public function testFirstNextGetDocumentTax(): void
     {
-        $this->assertTrue(self::$document->firstDocumentTax());
+        $this->assertTrue(static::$document->firstDocumentTax());
 
-        self::$document->getDocumentTax(
+        static::$document->getDocumentTax(
             $newTaxCategory,
             $newTaxType,
             $newBasisAmount,
@@ -2201,9 +2201,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('19700101', $newTaxDueDate->format('Ymd'));
         $this->assertSame('DUECODE', $newTaxDueCode);
 
-        $this->assertTrue(self::$document->nextDocumentTax());
+        $this->assertTrue(static::$document->nextDocumentTax());
 
-        self::$document->getDocumentTax(
+        static::$document->getDocumentTax(
             $newTaxCategory,
             $newTaxType,
             $newBasisAmount,
@@ -2225,10 +2225,10 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('19700102', $newTaxDueDate->format('Ymd'));
         $this->assertSame('DUECODE2', $newTaxDueCode);
 
-        $this->assertFalse(self::$document->nextDocumentTax());
+        $this->assertFalse(static::$document->nextDocumentTax());
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentTax(
+            static::$document->getDocumentTax(
                 $newTaxCategory,
                 $newTaxType,
                 $newBasisAmount,
@@ -2244,9 +2244,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
     public function testFirstNextGetDocumentAllowanceCharge(): void
     {
-        $this->assertTrue(self::$document->firstDocumentAllowanceCharge());
+        $this->assertTrue(static::$document->firstDocumentAllowanceCharge());
 
-        self::$document->getDocumentAllowanceCharge(
+        static::$document->getDocumentAllowanceCharge(
             $newChargeIndicator,
             $newAllowanceChargeAmount,
             $newAllowanceChargeBaseAmount,
@@ -2268,9 +2268,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('ReasonCode', $newAllowanceChargeReasonCode);
         $this->assertEqualsWithDelta(10.0, $newAllowanceChargePercent, PHP_FLOAT_EPSILON);
 
-        $this->assertTrue(self::$document->nextDocumentAllowanceCharge());
+        $this->assertTrue(static::$document->nextDocumentAllowanceCharge());
 
-        self::$document->getDocumentAllowanceCharge(
+        static::$document->getDocumentAllowanceCharge(
             $newChargeIndicator,
             $newAllowanceChargeAmount,
             $newAllowanceChargeBaseAmount,
@@ -2292,10 +2292,10 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('ReasonCode2', $newAllowanceChargeReasonCode);
         $this->assertEqualsWithDelta(1.00, $newAllowanceChargePercent, PHP_FLOAT_EPSILON);
 
-        $this->assertFalse(self::$document->nextDocumentAllowanceCharge());
+        $this->assertFalse(static::$document->nextDocumentAllowanceCharge());
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentAllowanceCharge(
+            static::$document->getDocumentAllowanceCharge(
                 $newChargeIndicator,
                 $newAllowanceChargeAmount,
                 $newAllowanceChargeBaseAmount,
@@ -2311,9 +2311,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
     public function testFirstNextGetDocumentLogisticServiceCharge(): void
     {
-        $this->assertTrue(self::$document->firstDocumentLogisticServiceCharge());
+        $this->assertTrue(static::$document->firstDocumentLogisticServiceCharge());
 
-        self::$document->getDocumentLogisticServiceCharge(
+        static::$document->getDocumentLogisticServiceCharge(
             $newChargeAmount,
             $newDescription,
             $newTaxCategory,
@@ -2327,9 +2327,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('VAT', $newTaxType);
         $this->assertEqualsWithDelta(19.0, $newTaxPercent, PHP_FLOAT_EPSILON);
 
-        $this->assertTrue(self::$document->nextDocumentLogisticServiceCharge());
+        $this->assertTrue(static::$document->nextDocumentLogisticServiceCharge());
 
-        self::$document->getDocumentLogisticServiceCharge(
+        static::$document->getDocumentLogisticServiceCharge(
             $newChargeAmount,
             $newDescription,
             $newTaxCategory,
@@ -2343,10 +2343,10 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('VAT', $newTaxType);
         $this->assertEqualsWithDelta(19.0, $newTaxPercent, PHP_FLOAT_EPSILON);
 
-        $this->assertFalse(self::$document->nextDocumentLogisticServiceCharge());
+        $this->assertFalse(static::$document->nextDocumentLogisticServiceCharge());
 
         $this->expectNoticeOrWarningExt(static function (): void {
-            self::$document->getDocumentLogisticServiceCharge(
+            static::$document->getDocumentLogisticServiceCharge(
                 $newChargeAmount,
                 $newDescription,
                 $newTaxCategory,
@@ -2358,7 +2358,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
     public function testGetDocumentSummation(): void
     {
-        self::$document->getDocumentSummation(
+        static::$document->getDocumentSummation(
             $newNetAmount,
             $newChargeTotalAmount,
             $newDiscountTotalAmount,
@@ -2387,9 +2387,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        self::$document->getDocumentPosition(
+        static::$document->getDocumentPosition(
             $newPositionId,
             $newParentPositionId,
             $newLineStatusCode,
@@ -2401,9 +2401,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('LINESTATUS', $newLineStatusCode);
         $this->assertSame('LINESTATUSREASON', $newLineStatusReasonCode);
 
-        $this->assertTrue(self::$document->firstDocumentPositionNote());
+        $this->assertTrue(static::$document->firstDocumentPositionNote());
 
-        self::$document->getDocumentPositionNote(
+        static::$document->getDocumentPositionNote(
             $newContent,
             $newContentCode,
             $newSubjectCode
@@ -2413,9 +2413,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('CONTENTCODE-1', $newContentCode);
         $this->assertSame('SUBJECTCODE-1', $newSubjectCode);
 
-        $this->assertTrue(self::$document->nextDocumentPositionNote());
+        $this->assertTrue(static::$document->nextDocumentPositionNote());
 
-        self::$document->getDocumentPositionNote(
+        static::$document->getDocumentPositionNote(
             $newContent,
             $newContentCode,
             $newSubjectCode
@@ -2425,20 +2425,20 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('CONTENTCODE-2', $newContentCode);
         $this->assertSame('SUBJECTCODE-2', $newSubjectCode);
 
-        $this->assertFalse(self::$document->nextDocumentPositionNote());
+        $this->assertFalse(static::$document->nextDocumentPositionNote());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testGetDocumentPositionProductDetails(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        self::$document->getDocumentPositionProductDetails(
+        static::$document->getDocumentPositionProductDetails(
             $newProductId,
             $newProductName,
             $newProductDescription,
@@ -2470,18 +2470,18 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstNextGetDocumentPositionProductCharacteristic(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDocumentPositionProductCharacteristic());
+        $this->assertTrue(static::$document->firstDocumentPositionProductCharacteristic());
 
-        self::$document->getDocumentPositionProductCharacteristic(
+        static::$document->getDocumentPositionProductCharacteristic(
             $newProductCharacteristicDescription,
             $newProductCharacteristicValue,
             $newProductCharacteristicType,
@@ -2495,9 +2495,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertEqualsWithDelta(1.0, $newProductCharacteristicMeasureValue, PHP_FLOAT_EPSILON);
         $this->assertSame('C62', $newProductCharacteristicMeasureUnit);
 
-        $this->assertTrue(self::$document->nextDocumentPositionProductCharacteristic());
+        $this->assertTrue(static::$document->nextDocumentPositionProductCharacteristic());
 
-        self::$document->getDocumentPositionProductCharacteristic(
+        static::$document->getDocumentPositionProductCharacteristic(
             $newProductCharacteristicDescription,
             $newProductCharacteristicValue,
             $newProductCharacteristicType,
@@ -2511,22 +2511,22 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertEqualsWithDelta(2.0, $newProductCharacteristicMeasureValue, PHP_FLOAT_EPSILON);
         $this->assertSame('H87', $newProductCharacteristicMeasureUnit);
 
-        $this->assertFalse(self::$document->nextDocumentPositionProductCharacteristic());
+        $this->assertFalse(static::$document->nextDocumentPositionProductCharacteristic());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstNextGetDocumentPositionProductClassification(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDocumentPositionProductClassification());
+        $this->assertTrue(static::$document->firstDocumentPositionProductClassification());
 
-        self::$document->getDocumentPositionProductClassification(
+        static::$document->getDocumentPositionProductClassification(
             $newProductClassificationCode,
             $newProductClassificationListId,
             $newProductClassificationListVersionId,
@@ -2538,9 +2538,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('PRODUCTLISTVERSIONID-1', $newProductClassificationListVersionId);
         $this->assertSame('PRODUCTCLASSNAME-1', $newProductClassificationCodeClassname);
 
-        $this->assertTrue(self::$document->nextDocumentPositionProductClassification());
+        $this->assertTrue(static::$document->nextDocumentPositionProductClassification());
 
-        self::$document->getDocumentPositionProductClassification(
+        static::$document->getDocumentPositionProductClassification(
             $newProductClassificationCode,
             $newProductClassificationListId,
             $newProductClassificationListVersionId,
@@ -2552,22 +2552,22 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('', $newProductClassificationListVersionId);
         $this->assertSame('PRODUCTCLASSNAME-2', $newProductClassificationCodeClassname);
 
-        $this->assertFalse(self::$document->nextDocumentPositionProductClassification());
+        $this->assertFalse(static::$document->nextDocumentPositionProductClassification());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstNextGetPositionReferencedProduct(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDocumentPositionReferencedProduct());
+        $this->assertTrue(static::$document->firstDocumentPositionReferencedProduct());
 
-        self::$document->getDocumentPositionReferencedProduct(
+        static::$document->getDocumentPositionReferencedProduct(
             $newProductId,
             $newProductName,
             $newProductDescription,
@@ -2591,9 +2591,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertEqualsWithDelta(1.0, $newProductUnitQuantity, PHP_FLOAT_EPSILON);
         $this->assertSame('C62', $newProductUnitQuantityUnit);
 
-        $this->assertTrue(self::$document->nextDocumentPositionReferencedProduct());
+        $this->assertTrue(static::$document->nextDocumentPositionReferencedProduct());
 
-        self::$document->getDocumentPositionReferencedProduct(
+        static::$document->getDocumentPositionReferencedProduct(
             $newProductId,
             $newProductName,
             $newProductDescription,
@@ -2617,22 +2617,22 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertEqualsWithDelta(2.0, $newProductUnitQuantity, PHP_FLOAT_EPSILON);
         $this->assertSame('H87', $newProductUnitQuantityUnit);
 
-        $this->assertFalse(self::$document->nextDocumentPositionReferencedProduct());
+        $this->assertFalse(static::$document->nextDocumentPositionReferencedProduct());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstNextGetDocumentPositionSellerOrderReference(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDocumentPositionSellerOrderReference());
+        $this->assertTrue(static::$document->firstDocumentPositionSellerOrderReference());
 
-        self::$document->getDocumentPositionSellerOrderReference(
+        static::$document->getDocumentPositionSellerOrderReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate
@@ -2642,22 +2642,22 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('1', $newReferenceLineNumber);
         $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
 
-        $this->assertFalse(self::$document->nextDocumentPositionSellerOrderReference());
+        $this->assertFalse(static::$document->nextDocumentPositionSellerOrderReference());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstNextGetDocumentPositionBuyerOrderReference(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDocumentPositionBuyerOrderReference());
+        $this->assertTrue(static::$document->firstDocumentPositionBuyerOrderReference());
 
-        self::$document->getDocumentPositionBuyerOrderReference(
+        static::$document->getDocumentPositionBuyerOrderReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate
@@ -2667,22 +2667,22 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('10', $newReferenceLineNumber);
         $this->assertSame('19700102', $newReferenceDate->format('Ymd'));
 
-        $this->assertFalse(self::$document->nextDocumentPositionBuyerOrderReference());
+        $this->assertFalse(static::$document->nextDocumentPositionBuyerOrderReference());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstNextGetDocumentPositionQuotationReference(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDocumentPositionQuotationReference());
+        $this->assertTrue(static::$document->firstDocumentPositionQuotationReference());
 
-        self::$document->getDocumentPositionQuotationReference(
+        static::$document->getDocumentPositionQuotationReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate
@@ -2692,22 +2692,22 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('100', $newReferenceLineNumber);
         $this->assertSame('19700103', $newReferenceDate->format('Ymd'));
 
-        $this->assertFalse(self::$document->nextDocumentPositionQuotationReference());
+        $this->assertFalse(static::$document->nextDocumentPositionQuotationReference());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstNextGetDocumentPositionContractReference(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDocumentPositionContractReference());
+        $this->assertTrue(static::$document->firstDocumentPositionContractReference());
 
-        self::$document->getDocumentPositionContractReference(
+        static::$document->getDocumentPositionContractReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate
@@ -2717,22 +2717,22 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('100', $newReferenceLineNumber);
         $this->assertSame('19700104', $newReferenceDate->format('Ymd'));
 
-        $this->assertFalse(self::$document->nextDocumentPositionContractReference());
+        $this->assertFalse(static::$document->nextDocumentPositionContractReference());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstNextGetDocumentPositionAdditionalReference(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDocumentPositionAdditionalReference());
+        $this->assertTrue(static::$document->firstDocumentPositionAdditionalReference());
 
-        self::$document->getDocumentPositionAdditionalReference(
+        static::$document->getDocumentPositionAdditionalReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate,
@@ -2750,9 +2750,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('DESC-1', $newDescription);
         $this->assertNotInstanceOf(InvoiceSuiteAttachment::class, $newInvoiceSuiteAttachment);
 
-        $this->assertTrue(self::$document->nextDocumentPositionAdditionalReference());
+        $this->assertTrue(static::$document->nextDocumentPositionAdditionalReference());
 
-        self::$document->getDocumentPositionAdditionalReference(
+        static::$document->getDocumentPositionAdditionalReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate,
@@ -2770,22 +2770,22 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('DESC-2', $newDescription);
         $this->assertNotInstanceOf(InvoiceSuiteAttachment::class, $newInvoiceSuiteAttachment);
 
-        $this->assertFalse(self::$document->nextDocumentPositionAdditionalReference());
+        $this->assertFalse(static::$document->nextDocumentPositionAdditionalReference());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstNextGetDocumentPositionUltimateCustomerOrderReference(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDocumentPositionUltimateCustomerOrderReference());
+        $this->assertTrue(static::$document->firstDocumentPositionUltimateCustomerOrderReference());
 
-        self::$document->getDocumentPositionUltimateCustomerOrderReference(
+        static::$document->getDocumentPositionUltimateCustomerOrderReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate
@@ -2795,9 +2795,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('10', $newReferenceLineNumber);
         $this->assertSame('19700110', $newReferenceDate->format('Ymd'));
 
-        $this->assertTrue(self::$document->nextDocumentPositionUltimateCustomerOrderReference());
+        $this->assertTrue(static::$document->nextDocumentPositionUltimateCustomerOrderReference());
 
-        self::$document->getDocumentPositionUltimateCustomerOrderReference(
+        static::$document->getDocumentPositionUltimateCustomerOrderReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate
@@ -2807,22 +2807,22 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('20', $newReferenceLineNumber);
         $this->assertSame('19700111', $newReferenceDate->format('Ymd'));
 
-        $this->assertFalse(self::$document->nextDocumentPositionUltimateCustomerOrderReference());
+        $this->assertFalse(static::$document->nextDocumentPositionUltimateCustomerOrderReference());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstNextGetDocumentPositionDespatchAdviceReference(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDocumentPositionDespatchAdviceReference());
+        $this->assertTrue(static::$document->firstDocumentPositionDespatchAdviceReference());
 
-        self::$document->getDocumentPositionDespatchAdviceReference(
+        static::$document->getDocumentPositionDespatchAdviceReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate
@@ -2832,22 +2832,22 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('100', $newReferenceLineNumber);
         $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
 
-        $this->assertFalse(self::$document->nextDocumentPositionDespatchAdviceReference());
+        $this->assertFalse(static::$document->nextDocumentPositionDespatchAdviceReference());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstNextGetDocumentPositionReceivingAdviceReference(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDocumentPositionReceivingAdviceReference());
+        $this->assertTrue(static::$document->firstDocumentPositionReceivingAdviceReference());
 
-        self::$document->getDocumentPositionReceivingAdviceReference(
+        static::$document->getDocumentPositionReceivingAdviceReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate
@@ -2857,22 +2857,22 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('10', $newReferenceLineNumber);
         $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
 
-        $this->assertFalse(self::$document->nextDocumentPositionReceivingAdviceReference());
+        $this->assertFalse(static::$document->nextDocumentPositionReceivingAdviceReference());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstNextGetDocumentPositionDeliveryNoteReference(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDocumentPositionDeliveryNoteReference());
+        $this->assertTrue(static::$document->firstDocumentPositionDeliveryNoteReference());
 
-        self::$document->getDocumentPositionDeliveryNoteReference(
+        static::$document->getDocumentPositionDeliveryNoteReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate
@@ -2882,22 +2882,22 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('10', $newReferenceLineNumber);
         $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
 
-        $this->assertFalse(self::$document->nextDocumentPositionDeliveryNoteReference());
+        $this->assertFalse(static::$document->nextDocumentPositionDeliveryNoteReference());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstNextGetDocumentPositionInvoiceReference(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDocumentPositionInvoiceReference());
+        $this->assertTrue(static::$document->firstDocumentPositionInvoiceReference());
 
-        self::$document->getDocumentPositionInvoiceReference(
+        static::$document->getDocumentPositionInvoiceReference(
             $newReferenceNumber,
             $newReferenceLineNumber,
             $newReferenceDate,
@@ -2909,22 +2909,22 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
         $this->assertSame('TYPECODE-1', $newTypeCode);
 
-        $this->assertFalse(self::$document->nextDocumentPositionInvoiceReference());
+        $this->assertFalse(static::$document->nextDocumentPositionInvoiceReference());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstGetDcumentPositionGrossPrice(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDcumentPositionGrossPrice());
+        $this->assertTrue(static::$document->firstDcumentPositionGrossPrice());
 
-        self::$document->getDocumentPositionGrossPrice(
+        static::$document->getDocumentPositionGrossPrice(
             $newGrossPrice,
             $newGrossPriceBasisQuantity,
             $newGrossPriceBasisQuantityUnit
@@ -2934,9 +2934,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertEqualsWithDelta(1.0, $newGrossPriceBasisQuantity, PHP_FLOAT_EPSILON);
         $this->assertSame('C62', $newGrossPriceBasisQuantityUnit);
 
-        $this->assertTrue(self::$document->firstDocumentPositionGrossPriceAllowanceCharge());
+        $this->assertTrue(static::$document->firstDocumentPositionGrossPriceAllowanceCharge());
 
-        self::$document->getDocumentPositionGrossPriceAllowanceCharge(
+        static::$document->getDocumentPositionGrossPriceAllowanceCharge(
             $newGrossPriceAllowanceChargeAmount,
             $newIsCharge,
             $newGrossPriceAllowanceChargePercent,
@@ -2952,9 +2952,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('REASON-1', $newGrossPriceAllowanceChargeReason);
         $this->assertSame('REASONCODE-1', $newGrossPriceAllowanceChargeReasonCode);
 
-        $this->assertTrue(self::$document->nextDocumentPositionGrossPriceAllowanceCharge());
+        $this->assertTrue(static::$document->nextDocumentPositionGrossPriceAllowanceCharge());
 
-        self::$document->getDocumentPositionGrossPriceAllowanceCharge(
+        static::$document->getDocumentPositionGrossPriceAllowanceCharge(
             $newGrossPriceAllowanceChargeAmount,
             $newIsCharge,
             $newGrossPriceAllowanceChargePercent,
@@ -2970,22 +2970,22 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('REASON-2', $newGrossPriceAllowanceChargeReason);
         $this->assertSame('REASONCODE-2', $newGrossPriceAllowanceChargeReasonCode);
 
-        $this->assertFalse(self::$document->nextDocumentPositionGrossPriceAllowanceCharge());
+        $this->assertFalse(static::$document->nextDocumentPositionGrossPriceAllowanceCharge());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstGetDocumentPositionNetPrice(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDocumentPositionNetPrice());
+        $this->assertTrue(static::$document->firstDocumentPositionNetPrice());
 
-        self::$document->getDocumentPositionNetPrice(
+        static::$document->getDocumentPositionNetPrice(
             $newNetPrice,
             $newNetPriceBasisQuantity,
             $newNetPriceBasisQuantityUnit
@@ -2995,7 +2995,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertEqualsWithDelta(2.0, $newNetPriceBasisQuantity, PHP_FLOAT_EPSILON);
         $this->assertSame('C62', $newNetPriceBasisQuantityUnit);
 
-        self::$document->getDocumentPositionNetPriceTax(
+        static::$document->getDocumentPositionNetPriceTax(
             $newTaxCategory,
             $newTaxType,
             $newTaxAmount,
@@ -3013,16 +3013,16 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testGetDocumentPositionQuantities(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        self::$document->getDocumentPositionQuantities(
+        static::$document->getDocumentPositionQuantities(
             $newQuantity,
             $newQuantityUnit,
             $newChargeFreeQuantity,
@@ -3040,65 +3040,65 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testGetDocumentPositionShipTo(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
         // Name
 
-        self::$document->getDocumentPositionShipToName($newName);
+        static::$document->getDocumentPositionShipToName($newName);
 
         $this->assertSame('Ship To GmbH', $newName);
 
         // ID
 
-        $this->assertTrue(self::$document->firstDocumentPositionShipToId());
+        $this->assertTrue(static::$document->firstDocumentPositionShipToId());
 
-        self::$document->getDocumentPositionShipToId($newId);
+        static::$document->getDocumentPositionShipToId($newId);
 
         $this->assertSame('0815-4711', $newId);
 
-        $this->assertFalse(self::$document->nextDocumentPositionShipToId());
+        $this->assertFalse(static::$document->nextDocumentPositionShipToId());
 
         // Global ID
 
-        $this->assertTrue(self::$document->firstDocumentPositionShipToGlobalId());
+        $this->assertTrue(static::$document->firstDocumentPositionShipToGlobalId());
 
-        self::$document->getDocumentPositionShipToGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentPositionShipToGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('11111', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertTrue(self::$document->nextDocumentPositionShipToGlobalId());
+        $this->assertTrue(static::$document->nextDocumentPositionShipToGlobalId());
 
-        self::$document->getDocumentPositionShipToGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentPositionShipToGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('22222', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertFalse(self::$document->nextDocumentPositionShipToGlobalId());
+        $this->assertFalse(static::$document->nextDocumentPositionShipToGlobalId());
 
         // Tax Registration
 
-        $this->assertTrue(self::$document->firstDocumentPositionShipToTaxRegistration());
+        $this->assertTrue(static::$document->firstDocumentPositionShipToTaxRegistration());
 
-        self::$document->getDocumentPositionShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        static::$document->getDocumentPositionShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         $this->assertSame('893489787987', $newTaxRegistrationId);
         $this->assertSame('VA', $newTaxRegistrationType);
 
-        $this->assertFalse(self::$document->nextDocumentPositionShipToTaxRegistration());
+        $this->assertFalse(static::$document->nextDocumentPositionShipToTaxRegistration());
 
         // Address
 
-        $this->assertTrue(self::$document->firstDocumentPositionShipToAddress());
+        $this->assertTrue(static::$document->firstDocumentPositionShipToAddress());
 
-        self::$document->getDocumentPositionShipToAddress(
+        static::$document->getDocumentPositionShipToAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -3116,25 +3116,25 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('DE', $newCountryId);
         $this->assertSame('Bavaria', $newSubDivision);
 
-        $this->assertFalse(self::$document->nextDocumentPositionShipToAddress());
+        $this->assertFalse(static::$document->nextDocumentPositionShipToAddress());
 
         // Legal Organisation
 
-        $this->assertTrue(self::$document->firstDocumentPositionShipToLegalOrganisation());
+        $this->assertTrue(static::$document->firstDocumentPositionShipToLegalOrganisation());
 
-        self::$document->getDocumentPositionShipToLegalOrganisation($newType, $newId, $newName);
+        static::$document->getDocumentPositionShipToLegalOrganisation($newType, $newId, $newName);
 
         $this->assertSame('8884', $newType);
         $this->assertSame('3874837489237', $newId);
         $this->assertSame('Ship To AG', $newName);
 
-        $this->assertFalse(self::$document->nextDocumentPositionShipToLegalOrganisation());
+        $this->assertFalse(static::$document->nextDocumentPositionShipToLegalOrganisation());
 
         // Contact
 
-        $this->assertTrue(self::$document->firstDocumentPositionShipToContact());
+        $this->assertTrue(static::$document->firstDocumentPositionShipToContact());
 
-        self::$document->getDocumentPositionShipToContact(
+        static::$document->getDocumentPositionShipToContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -3148,80 +3148,80 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('0815-4712', $newFaxNumber);
         $this->assertSame('horst.meier@shipto.de', $newEmailAddress);
 
-        $this->assertFalse(self::$document->nextDocumentPositionShipToContact());
+        $this->assertFalse(static::$document->nextDocumentPositionShipToContact());
 
         // Communication
 
-        $this->assertTrue(self::$document->firstDocumentPositionShipToCommunication());
+        $this->assertTrue(static::$document->firstDocumentPositionShipToCommunication());
 
-        self::$document->getDocumentPositionShipToCommunication($newType, $newUri);
+        static::$document->getDocumentPositionShipToCommunication($newType, $newUri);
 
         $this->assertSame('EM', $newType);
         $this->assertSame('info@shipto.de', $newUri);
 
-        $this->assertFalse(self::$document->nextDocumentPositionShipToCommunication());
+        $this->assertFalse(static::$document->nextDocumentPositionShipToCommunication());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testGetDocumentPositionUltimateShipTo(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
         // Name
 
-        self::$document->getDocumentPositionUltimateShipToName($newName);
+        static::$document->getDocumentPositionUltimateShipToName($newName);
 
         $this->assertSame('Ultimate Ship To GmbH', $newName);
 
         // ID
 
-        $this->assertTrue(self::$document->firstDocumentPositionUltimateShipToId());
+        $this->assertTrue(static::$document->firstDocumentPositionUltimateShipToId());
 
-        self::$document->getDocumentPositionUltimateShipToId($newId);
+        static::$document->getDocumentPositionUltimateShipToId($newId);
 
         $this->assertSame('0815-4711', $newId);
 
-        $this->assertFalse(self::$document->nextDocumentPositionUltimateShipToId());
+        $this->assertFalse(static::$document->nextDocumentPositionUltimateShipToId());
 
         // Global ID
 
-        $this->assertTrue(self::$document->firstDocumentPositionUltimateShipToGlobalId());
+        $this->assertTrue(static::$document->firstDocumentPositionUltimateShipToGlobalId());
 
-        self::$document->getDocumentPositionUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentPositionUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('11111', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertTrue(self::$document->nextDocumentPositionUltimateShipToGlobalId());
+        $this->assertTrue(static::$document->nextDocumentPositionUltimateShipToGlobalId());
 
-        self::$document->getDocumentPositionUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
+        static::$document->getDocumentPositionUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
 
         $this->assertSame('22222', $newGlobalId);
         $this->assertSame('0088', $newGlobalIdType);
 
-        $this->assertFalse(self::$document->nextDocumentPositionUltimateShipToGlobalId());
+        $this->assertFalse(static::$document->nextDocumentPositionUltimateShipToGlobalId());
 
         // Tax Registration
 
-        $this->assertTrue(self::$document->firstDocumentPositionUltimateShipToTaxRegistration());
+        $this->assertTrue(static::$document->firstDocumentPositionUltimateShipToTaxRegistration());
 
-        self::$document->getDocumentPositionUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        static::$document->getDocumentPositionUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         $this->assertSame('893489787987', $newTaxRegistrationId);
         $this->assertSame('VA', $newTaxRegistrationType);
 
-        $this->assertFalse(self::$document->nextDocumentPositionUltimateShipToTaxRegistration());
+        $this->assertFalse(static::$document->nextDocumentPositionUltimateShipToTaxRegistration());
 
         // Address
 
-        $this->assertTrue(self::$document->firstDocumentPositionUltimateShipToAddress());
+        $this->assertTrue(static::$document->firstDocumentPositionUltimateShipToAddress());
 
-        self::$document->getDocumentPositionUltimateShipToAddress(
+        static::$document->getDocumentPositionUltimateShipToAddress(
             $newAddressLine1,
             $newAddressLine2,
             $newAddressLine3,
@@ -3239,25 +3239,25 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('DE', $newCountryId);
         $this->assertSame('Bavaria', $newSubDivision);
 
-        $this->assertFalse(self::$document->nextDocumentPositionUltimateShipToAddress());
+        $this->assertFalse(static::$document->nextDocumentPositionUltimateShipToAddress());
 
         // Legal Organisation
 
-        $this->assertTrue(self::$document->firstDocumentPositionUltimateShipToLegalOrganisation());
+        $this->assertTrue(static::$document->firstDocumentPositionUltimateShipToLegalOrganisation());
 
-        self::$document->getDocumentPositionUltimateShipToLegalOrganisation($newType, $newId, $newName);
+        static::$document->getDocumentPositionUltimateShipToLegalOrganisation($newType, $newId, $newName);
 
         $this->assertSame('8884', $newType);
         $this->assertSame('3874837489237', $newId);
         $this->assertSame('Ultimate Ship To AG', $newName);
 
-        $this->assertFalse(self::$document->nextDocumentPositionUltimateShipToLegalOrganisation());
+        $this->assertFalse(static::$document->nextDocumentPositionUltimateShipToLegalOrganisation());
 
         // Contact
 
-        $this->assertTrue(self::$document->firstDocumentPositionUltimateShipToContact());
+        $this->assertTrue(static::$document->firstDocumentPositionUltimateShipToContact());
 
-        self::$document->getDocumentPositionUltimateShipToContact(
+        static::$document->getDocumentPositionUltimateShipToContact(
             $newPersonName,
             $newDepartmentName,
             $newPhoneNumber,
@@ -3271,48 +3271,48 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('0815-4712', $newFaxNumber);
         $this->assertSame('horst.meier@ultimateshipto.de', $newEmailAddress);
 
-        $this->assertFalse(self::$document->nextDocumentPositionUltimateShipToContact());
+        $this->assertFalse(static::$document->nextDocumentPositionUltimateShipToContact());
 
         // Communication
 
-        $this->assertTrue(self::$document->firstDocumentPositionUltimateShipToCommunication());
+        $this->assertTrue(static::$document->firstDocumentPositionUltimateShipToCommunication());
 
-        self::$document->getDocumentPositionUltimateShipToCommunication($newType, $newUri);
+        static::$document->getDocumentPositionUltimateShipToCommunication($newType, $newUri);
 
         $this->assertSame('EM', $newType);
         $this->assertSame('info@ultimateshipto.de', $newUri);
 
-        $this->assertFalse(self::$document->nextDocumentPositionUltimateShipToCommunication());
+        $this->assertFalse(static::$document->nextDocumentPositionUltimateShipToCommunication());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testGetDocumentPositionSupplyChainEvent(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        self::$document->getDocumentPositionSupplyChainEvent($newDate);
+        static::$document->getDocumentPositionSupplyChainEvent($newDate);
 
         $this->assertSame('19700101', $newDate->format('Ymd'));
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstNextGetDocumentPositionBillingPeriod(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDocumentPositionBillingPeriod());
+        $this->assertTrue(static::$document->firstDocumentPositionBillingPeriod());
 
-        self::$document->getDocumentPositionBillingPeriod(
+        static::$document->getDocumentPositionBillingPeriod(
             $newStartDate,
             $newEndDate,
             $newDescription
@@ -3322,22 +3322,22 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('19700131', $newEndDate->format('Ymd'));
         $this->assertSame('Some Description', $newDescription);
 
-        $this->assertFalse(self::$document->nextDocumentPositionBillingPeriod());
+        $this->assertFalse(static::$document->nextDocumentPositionBillingPeriod());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstNextGetDocumentPositionTax(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDocumentPositionTax());
+        $this->assertTrue(static::$document->firstDocumentPositionTax());
 
-        self::$document->getDocumentPositionTax(
+        static::$document->getDocumentPositionTax(
             $newTaxCategory,
             $newTaxType,
             $newTaxAmount,
@@ -3353,9 +3353,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('Reason', $newExemptionReason);
         $this->assertSame('ReasonCode', $newExemptionReasonCode);
 
-        $this->assertTrue(self::$document->nextDocumentPositionTax());
+        $this->assertTrue(static::$document->nextDocumentPositionTax());
 
-        self::$document->getDocumentPositionTax(
+        static::$document->getDocumentPositionTax(
             $newTaxCategory,
             $newTaxType,
             $newTaxAmount,
@@ -3371,22 +3371,22 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('Reason2', $newExemptionReason);
         $this->assertSame('ReasonCode2', $newExemptionReasonCode);
 
-        $this->assertFalse(self::$document->nextDocumentPositionTax());
+        $this->assertFalse(static::$document->nextDocumentPositionTax());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstNextGetDocumentPositionAllowanceCharge(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDocumentPositionAllowanceCharge());
+        $this->assertTrue(static::$document->firstDocumentPositionAllowanceCharge());
 
-        self::$document->getDocumentPositionAllowanceCharge(
+        static::$document->getDocumentPositionAllowanceCharge(
             $newChargeIndicator,
             $newAllowanceChargeAmount,
             $newAllowanceChargeBaseAmount,
@@ -3402,9 +3402,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('ReasonCode', $newAllowanceChargeReasonCode);
         $this->assertEqualsWithDelta(10.00, $newAllowanceChargePercent, PHP_FLOAT_EPSILON);
 
-        $this->assertTrue(self::$document->nextDocumentPositionAllowanceCharge());
+        $this->assertTrue(static::$document->nextDocumentPositionAllowanceCharge());
 
-        self::$document->getDocumentPositionAllowanceCharge(
+        static::$document->getDocumentPositionAllowanceCharge(
             $newChargeIndicator,
             $newAllowanceChargeAmount,
             $newAllowanceChargeBaseAmount,
@@ -3420,22 +3420,22 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('ReasonCode2', $newAllowanceChargeReasonCode);
         $this->assertEqualsWithDelta(1.00, $newAllowanceChargePercent, PHP_FLOAT_EPSILON);
 
-        $this->assertFalse(self::$document->nextDocumentPositionAllowanceCharge());
+        $this->assertFalse(static::$document->nextDocumentPositionAllowanceCharge());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstGetDocumentPositionSummation(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDocumentPositionSummation());
+        $this->assertTrue(static::$document->firstDocumentPositionSummation());
 
-        self::$document->getDocumentPositionSummation(
+        static::$document->getDocumentPositionSummation(
             $newNetAmount,
             $newChargeTotalAmount,
             $newDiscountTotalAmount,
@@ -3451,32 +3451,32 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testFirstNextGetDocumentPositionPostingReference(): void
     {
         // First position
 
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(self::$document->firstDocumentPositionPostingReference());
+        $this->assertTrue(static::$document->firstDocumentPositionPostingReference());
 
-        self::$document->getDocumentPositionPostingReference($newType, $newAccountId);
+        static::$document->getDocumentPositionPostingReference($newType, $newAccountId);
 
         $this->assertSame('PREF-1-TYPE', $newType);
         $this->assertSame('PREF-1', $newAccountId);
 
-        $this->assertFalse(self::$document->nextDocumentPositionPostingReference());
+        $this->assertFalse(static::$document->nextDocumentPositionPostingReference());
 
         // Second position
 
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        $this->assertFalse(static::$document->nextDocumentPosition());
     }
 
     public function testConvertToDTO(): void
     {
-        self::$document->convertToDTO($newDocmentDTO);
+        static::$document->convertToDTO($newDocmentDTO);
 
         $this->assertInstanceOf(InvoiceSuiteDocumentHeaderDTO::class, $newDocmentDTO);
 

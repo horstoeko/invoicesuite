@@ -23,79 +23,79 @@ final class InvoiceSuiteBuilderComfortSimpleTest extends TestCase
         InvoiceSuiteSettings::setQuantityDecimals(4);
         InvoiceSuiteSettings::setUnitAmountDecimals(4);
 
-        self::$document = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxcomfort');
-        self::$document->setDocumentNo('471102');
-        self::$document->setDocumentType(InvoiceSuiteCodelistDocumentTypes::COMMERCIAL_INVOICE->value);
-        self::$document->setDocumentDate(DateTime::createFromFormat('Ymd', '20241115'));
-        self::$document->addDocumentNote('Rechnung gemäß Bestellung vom 01.11.2024.');
-        self::$document->addDocumentNote("Lieferant GmbH\nLieferantenstraße 20\n80333 München\nDeutschland\nGeschäftsführer: Hans Muster\nHandelsregisternummer: H A 123\n", newSubjectCode: 'REG');
-        self::$document->setDocumentCurrency(InvoiceSuiteCodelistCurrencyCodes::EURO->value);
+        static::$document = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxcomfort');
+        static::$document->setDocumentNo('471102');
+        static::$document->setDocumentType(InvoiceSuiteCodelistDocumentTypes::COMMERCIAL_INVOICE->value);
+        static::$document->setDocumentDate(DateTime::createFromFormat('Ymd', '20241115'));
+        static::$document->addDocumentNote('Rechnung gemäß Bestellung vom 01.11.2024.');
+        static::$document->addDocumentNote("Lieferant GmbH\nLieferantenstraße 20\n80333 München\nDeutschland\nGeschäftsführer: Hans Muster\nHandelsregisternummer: H A 123\n", newSubjectCode: 'REG');
+        static::$document->setDocumentCurrency(InvoiceSuiteCodelistCurrencyCodes::EURO->value);
 
-        self::$document->addDocumentPosition('1');
-        self::$document->setDocumentPositionProductDetails(
+        static::$document->addDocumentPosition('1');
+        static::$document->setDocumentPositionProductDetails(
             newProductGlobalId: '4012345001235',
             newProductGlobalIdType: '0160',
             newProductSellerId: 'TB100A4',
             newProductName: 'Trennblätter A4'
         );
-        self::$document->setDocumentPositionGrossPrice(9.9000);
-        self::$document->setDocumentPositionNetPrice(9.9000);
-        self::$document->setDocumentPositionQuantities(20.0000, 'H87');
-        self::$document->setDocumentPositionTax(
+        static::$document->setDocumentPositionGrossPrice(9.9000);
+        static::$document->setDocumentPositionNetPrice(9.9000);
+        static::$document->setDocumentPositionQuantities(20.0000, 'H87');
+        static::$document->setDocumentPositionTax(
             newTaxCategory: 'S',
             newTaxType: 'VAT',
             newTaxPercent: 19.0
         );
-        self::$document->setDocumentPositionSummation(198.00);
+        static::$document->setDocumentPositionSummation(198.00);
 
-        self::$document->addDocumentPosition('2');
-        self::$document->setDocumentPositionProductDetails(
+        static::$document->addDocumentPosition('2');
+        static::$document->setDocumentPositionProductDetails(
             newProductGlobalId: '4000050986428',
             newProductGlobalIdType: '0160',
             newProductSellerId: 'ARNR2',
             newProductName: 'Joghurt Banane'
         );
-        self::$document->setDocumentPositionGrossPrice(5.5000);
-        self::$document->setDocumentPositionNetPrice(5.5000);
-        self::$document->setDocumentPositionQuantities(50.0000, 'H87');
-        self::$document->setDocumentPositionTax(
+        static::$document->setDocumentPositionGrossPrice(5.5000);
+        static::$document->setDocumentPositionNetPrice(5.5000);
+        static::$document->setDocumentPositionQuantities(50.0000, 'H87');
+        static::$document->setDocumentPositionTax(
             newTaxCategory: 'S',
             newTaxType: 'VAT',
             newTaxPercent: 7.0
         );
-        self::$document->setDocumentPositionSummation(275.00);
+        static::$document->setDocumentPositionSummation(275.00);
 
-        self::$document->setDocumentSellerId('549910');
-        self::$document->setDocumentSellerGlobalId('4000001123452', '0088');
-        self::$document->setDocumentSellerName('Lieferant GmbH');
-        self::$document->setDocumentSellerAddress(
+        static::$document->setDocumentSellerId('549910');
+        static::$document->setDocumentSellerGlobalId('4000001123452', '0088');
+        static::$document->setDocumentSellerName('Lieferant GmbH');
+        static::$document->setDocumentSellerAddress(
             newPostcode: '80333',
             newAddressLine1: 'Lieferantenstraße 20',
             newCity: 'München',
             newCountryId: 'DE'
         );
-        self::$document->addDocumentSellerTaxRegistration('FC', '201/113/40209');
-        self::$document->addDocumentSellerTaxRegistration('VA', 'DE123456789');
+        static::$document->addDocumentSellerTaxRegistration('FC', '201/113/40209');
+        static::$document->addDocumentSellerTaxRegistration('VA', 'DE123456789');
 
-        self::$document->setDocumentBuyerId('GE2020211');
-        self::$document->setDocumentBuyerName('Kunden AG Mitte');
-        self::$document->setDocumentBuyerAddress(
+        static::$document->setDocumentBuyerId('GE2020211');
+        static::$document->setDocumentBuyerName('Kunden AG Mitte');
+        static::$document->setDocumentBuyerAddress(
             newPostcode: '69876',
             newAddressLine1: 'Kundenstraße 15',
             newCity: 'Frankfurt',
             newCountryId: 'DE'
         );
 
-        self::$document->setDocumentSupplyChainEvent(DateTime::createFromFormat('Ymd', '20241114'));
+        static::$document->setDocumentSupplyChainEvent(DateTime::createFromFormat('Ymd', '20241114'));
 
-        self::$document->addDocumentTax(
+        static::$document->addDocumentTax(
             newTaxAmount: 19.25,
             newTaxType: 'VAT',
             newBasisAmount: 275.00,
             newTaxCategory: 'S',
             newTaxPercent: 7.00
         );
-        self::$document->addDocumentTax(
+        static::$document->addDocumentTax(
             newTaxAmount: 37.62,
             newTaxType: 'VAT',
             newBasisAmount: 198.00,
@@ -103,9 +103,9 @@ final class InvoiceSuiteBuilderComfortSimpleTest extends TestCase
             newTaxPercent: 19.00
         );
 
-        self::$document->addDocumentPaymentTerm('Zahlbar innerhalb 30 Tagen netto bis 15.12.2024, 3% Skonto innerhalb 10 Tagen bis 25.11.2024');
+        static::$document->addDocumentPaymentTerm('Zahlbar innerhalb 30 Tagen netto bis 15.12.2024, 3% Skonto innerhalb 10 Tagen bis 25.11.2024');
 
-        self::$document->setDocumentSummation(
+        static::$document->setDocumentSummation(
             newNetAmount: 473.00,
             newChargeTotalAmount: 0.00,
             newDiscountTotalAmount: 0.00,
@@ -260,14 +260,14 @@ final class InvoiceSuiteBuilderComfortSimpleTest extends TestCase
 
     public function testContentType(): void
     {
-        $contentType = InvoiceSuiteContentTypeResolver::resolveContentType(self::$document->getContentAsXml());
+        $contentType = InvoiceSuiteContentTypeResolver::resolveContentType(static::$document->getContentAsXml());
 
         $this->assertSame(InvoiceSuiteContentTypeResolver::XML, $contentType);
     }
 
     public function testWriteFile(): void
     {
-        self::$document->saveAsXmlFile($this->getStoreFilename());
+        static::$document->saveAsXmlFile($this->getStoreFilename());
 
         $this->assertFileExists($this->getStoreFilename());
     }

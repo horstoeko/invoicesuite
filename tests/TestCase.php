@@ -30,7 +30,7 @@ abstract class TestCase extends PhpUnitTestCase
      */
     public static function setUpBeforeClass(): void
     {
-        self::$registeredTestCaseFiles = [];
+        static::$registeredTestCaseFiles = [];
     }
 
     /**
@@ -38,13 +38,13 @@ abstract class TestCase extends PhpUnitTestCase
      */
     public static function tearDownAfterClass(): void
     {
-        foreach (self::$registeredTestCaseFiles as $registeredTestCaseFile) {
+        foreach (static::$registeredTestCaseFiles as $registeredTestCaseFile) {
             if (file_exists($registeredTestCaseFile) && is_writeable($registeredTestCaseFile)) {
                 @unlink($registeredTestCaseFile);
             }
         }
 
-        self::$registeredTestCaseFiles = [];
+        static::$registeredTestCaseFiles = [];
     }
 
     /**
@@ -81,7 +81,7 @@ abstract class TestCase extends PhpUnitTestCase
      */
     public function registerFileForTestCaseTeardown(string $filename): void
     {
-        self::$registeredTestCaseFiles[] = $filename;
+        static::$registeredTestCaseFiles[] = $filename;
     }
 
     /**
