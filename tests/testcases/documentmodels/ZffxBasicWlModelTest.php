@@ -497,6 +497,7 @@ final class ZffxBasicWlModelTest extends TestCase
         $itemsAfterOnce = $model->getIncludedNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForIncludedNoteOnceItem = $model->addOnceToIncludedNoteWithCreate();
 
@@ -793,6 +794,7 @@ final class ZffxBasicWlModelTest extends TestCase
         $itemsAfterOnce = $model->getSpecifiedTradeSettlementPaymentMeans();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSpecifiedTradeSettlementPaymentMeansOnceItem = $model->addOnceToSpecifiedTradeSettlementPaymentMeansWithCreate();
 
@@ -835,6 +837,7 @@ final class ZffxBasicWlModelTest extends TestCase
         $itemsAfterOnce = $model->getApplicableTradeTax();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForApplicableTradeTaxOnceItem = $model->addOnceToApplicableTradeTaxWithCreate();
 
@@ -893,6 +896,7 @@ final class ZffxBasicWlModelTest extends TestCase
         $itemsAfterOnce = $model->getSpecifiedTradeAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSpecifiedTradeAllowanceChargeOnceItem = $model->addOnceToSpecifiedTradeAllowanceChargeWithCreate();
 
@@ -967,6 +971,7 @@ final class ZffxBasicWlModelTest extends TestCase
         $itemsAfterOnce = $model->getInvoiceReferencedDocument();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForInvoiceReferencedDocumentOnceItem = $model->addOnceToInvoiceReferencedDocumentWithCreate();
 
@@ -1583,6 +1588,7 @@ final class ZffxBasicWlModelTest extends TestCase
         $itemsAfterOnce = $model->getID();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForIDOnceItem = $model->addOnceToIDWithCreate();
 
@@ -1625,6 +1631,7 @@ final class ZffxBasicWlModelTest extends TestCase
         $itemsAfterOnce = $model->getGlobalID();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForGlobalIDOnceItem = $model->addOnceToGlobalIDWithCreate();
 
@@ -1731,6 +1738,7 @@ final class ZffxBasicWlModelTest extends TestCase
         $itemsAfterOnce = $model->getSpecifiedTaxRegistration();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSpecifiedTaxRegistrationOnceItem = $model->addOnceToSpecifiedTaxRegistrationWithCreate();
 
@@ -1905,6 +1913,7 @@ final class ZffxBasicWlModelTest extends TestCase
         $itemsAfterOnce = $model->getTaxTotalAmount();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTaxTotalAmountOnceItem = $model->addOnceToTaxTotalAmountWithCreate();
 

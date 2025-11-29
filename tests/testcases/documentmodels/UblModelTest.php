@@ -2919,6 +2919,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSalesItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSalesItemOnceItem = $model->addOnceToSalesItemWithCreate();
 
@@ -3651,6 +3652,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAddressLine();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAddressLineOnceItem = $model->addOnceToAddressLineWithCreate();
 
@@ -3717,6 +3719,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getLocationCoordinate();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForLocationCoordinateOnceItem = $model->addOnceToLocationCoordinateWithCreate();
 
@@ -3879,6 +3882,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAllowanceChargeReason();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAllowanceChargeReasonOnceItem = $model->addOnceToAllowanceChargeReasonWithCreate();
 
@@ -4052,6 +4056,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTaxCategory();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTaxCategoryOnceItem = $model->addOnceToTaxCategoryWithCreate();
 
@@ -4118,6 +4123,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPaymentMeans();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPaymentMeansOnceItem = $model->addOnceToPaymentMeansWithCreate();
 
@@ -4266,6 +4272,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -4553,6 +4560,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getJustificationDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForJustificationDescriptionOnceItem = $model->addOnceToJustificationDescriptionWithCreate();
 
@@ -4603,6 +4611,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -4653,6 +4662,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getProcessDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForProcessDescriptionOnceItem = $model->addOnceToProcessDescriptionWithCreate();
 
@@ -4703,6 +4713,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getConditionsDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForConditionsDescriptionOnceItem = $model->addOnceToConditionsDescriptionWithCreate();
 
@@ -4753,6 +4764,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getElectronicDeviceDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForElectronicDeviceDescriptionOnceItem = $model->addOnceToElectronicDeviceDescriptionWithCreate();
 
@@ -4905,6 +4917,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAwardingCriterionDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAwardingCriterionDescriptionOnceItem = $model->addOnceToAwardingCriterionDescriptionWithCreate();
 
@@ -4955,6 +4968,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -5037,6 +5051,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSubordinateAwardingCriterionResponse();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSubordinateAwardingCriterionResponseOnceItem = $model->addOnceToSubordinateAwardingCriterionResponseWithCreate();
 
@@ -5129,6 +5144,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -5195,6 +5211,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getWeight();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForWeightOnceItem = $model->addOnceToWeightWithCreate();
 
@@ -5245,6 +5262,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getCalculationExpression();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForCalculationExpressionOnceItem = $model->addOnceToCalculationExpressionWithCreate();
 
@@ -5375,6 +5393,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getMinimumImprovementBid();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForMinimumImprovementBidOnceItem = $model->addOnceToMinimumImprovementBidWithCreate();
 
@@ -5425,6 +5444,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSubordinateAwardingCriterion();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSubordinateAwardingCriterionOnceItem = $model->addOnceToSubordinateAwardingCriterionWithCreate();
 
@@ -5512,6 +5532,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -5562,6 +5583,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTechnicalCommitteeDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTechnicalCommitteeDescriptionOnceItem = $model->addOnceToTechnicalCommitteeDescriptionWithCreate();
 
@@ -5612,6 +5634,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getLowTendersDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForLowTendersDescriptionOnceItem = $model->addOnceToLowTendersDescriptionWithCreate();
 
@@ -5673,6 +5696,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPrizeDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPrizeDescriptionOnceItem = $model->addOnceToPrizeDescriptionWithCreate();
 
@@ -5723,6 +5747,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPaymentDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPaymentDescriptionOnceItem = $model->addOnceToPaymentDescriptionWithCreate();
 
@@ -5795,6 +5820,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAwardingCriterion();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAwardingCriterionOnceItem = $model->addOnceToAwardingCriterionWithCreate();
 
@@ -5845,6 +5871,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTechnicalCommitteePerson();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTechnicalCommitteePersonOnceItem = $model->addOnceToTechnicalCommitteePersonWithCreate();
 
@@ -5970,6 +5997,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAllowanceChargeOnceItem = $model->addOnceToAllowanceChargeWithCreate();
 
@@ -6142,6 +6170,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getBillingReferenceLine();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForBillingReferenceLineOnceItem = $model->addOnceToBillingReferenceLineWithCreate();
 
@@ -6374,6 +6403,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getBudgetAccount();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForBudgetAccountOnceItem = $model->addOnceToBudgetAccountWithCreate();
 
@@ -6607,6 +6637,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -6689,6 +6720,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getEvidenceSupplied();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForEvidenceSuppliedOnceItem = $model->addOnceToEvidenceSuppliedWithCreate();
 
@@ -7156,6 +7188,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -7297,6 +7330,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getWarrantyInformation();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForWarrantyInformationOnceItem = $model->addOnceToWarrantyInformationWithCreate();
 
@@ -7443,6 +7477,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getItemComparison();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForItemComparisonOnceItem = $model->addOnceToItemComparisonWithCreate();
 
@@ -7493,6 +7528,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getComponentRelatedItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForComponentRelatedItemOnceItem = $model->addOnceToComponentRelatedItemWithCreate();
 
@@ -7543,6 +7579,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAccessoryRelatedItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAccessoryRelatedItemOnceItem = $model->addOnceToAccessoryRelatedItemWithCreate();
 
@@ -7593,6 +7630,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRequiredRelatedItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRequiredRelatedItemOnceItem = $model->addOnceToRequiredRelatedItemWithCreate();
 
@@ -7643,6 +7681,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getReplacementRelatedItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForReplacementRelatedItemOnceItem = $model->addOnceToReplacementRelatedItemWithCreate();
 
@@ -7693,6 +7732,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getComplementaryRelatedItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForComplementaryRelatedItemOnceItem = $model->addOnceToComplementaryRelatedItemWithCreate();
 
@@ -7743,6 +7783,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getReplacedRelatedItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForReplacedRelatedItemOnceItem = $model->addOnceToReplacedRelatedItemWithCreate();
 
@@ -7793,6 +7834,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRequiredItemLocationQuantity();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRequiredItemLocationQuantityOnceItem = $model->addOnceToRequiredItemLocationQuantityWithCreate();
 
@@ -7843,6 +7885,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentReferenceOnceItem = $model->addOnceToDocumentReferenceWithCreate();
 
@@ -7909,6 +7952,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getKeywordItemProperty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForKeywordItemPropertyOnceItem = $model->addOnceToKeywordItemPropertyWithCreate();
 
@@ -8060,6 +8104,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRequiredItemLocationQuantity();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRequiredItemLocationQuantityOnceItem = $model->addOnceToRequiredItemLocationQuantityWithCreate();
 
@@ -8207,6 +8252,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -8257,6 +8303,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -8392,6 +8439,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -8458,6 +8506,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRequiredItemLocationQuantity();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRequiredItemLocationQuantityOnceItem = $model->addOnceToRequiredItemLocationQuantityWithCreate();
 
@@ -8647,6 +8696,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRemarks();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRemarksOnceItem = $model->addOnceToRemarksWithCreate();
 
@@ -8713,6 +8763,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getEndorserParty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForEndorserPartyOnceItem = $model->addOnceToEndorserPartyWithCreate();
 
@@ -8843,6 +8894,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentDistribution();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentDistributionOnceItem = $model->addOnceToDocumentDistributionWithCreate();
 
@@ -8893,6 +8945,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSupportingDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSupportingDocumentReferenceOnceItem = $model->addOnceToSupportingDocumentReferenceWithCreate();
 
@@ -8943,6 +8996,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSignature();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSignatureOnceItem = $model->addOnceToSignatureWithCreate();
 
@@ -9051,6 +9105,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRemarks();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRemarksOnceItem = $model->addOnceToRemarksWithCreate();
 
@@ -9117,6 +9172,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentReferenceOnceItem = $model->addOnceToDocumentReferenceWithCreate();
 
@@ -9167,6 +9223,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSignature();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSignatureOnceItem = $model->addOnceToSignatureWithCreate();
 
@@ -9281,6 +9338,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -9331,6 +9389,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getCategorizesClassificationCategory();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForCategorizesClassificationCategoryOnceItem = $model->addOnceToCategorizesClassificationCategoryWithCreate();
 
@@ -9456,6 +9515,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -9522,6 +9582,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -9668,6 +9729,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getClassificationCategory();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForClassificationCategoryOnceItem = $model->addOnceToClassificationCategoryWithCreate();
 
@@ -9766,6 +9828,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getContent();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForContentOnceItem = $model->addOnceToContentWithCreate();
 
@@ -10083,6 +10146,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -10133,6 +10197,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getEvidenceSupplied();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForEvidenceSuppliedOnceItem = $model->addOnceToEvidenceSuppliedWithCreate();
 
@@ -10279,6 +10344,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -10521,6 +10587,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSummaryDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSummaryDescriptionOnceItem = $model->addOnceToSummaryDescriptionWithCreate();
 
@@ -10603,6 +10670,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTariffDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTariffDescriptionOnceItem = $model->addOnceToTariffDescriptionWithCreate();
 
@@ -10797,6 +10865,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRemarks();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRemarksOnceItem = $model->addOnceToRemarksWithCreate();
 
@@ -10946,6 +11015,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getCarrierServiceInstructions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForCarrierServiceInstructionsOnceItem = $model->addOnceToCarrierServiceInstructionsWithCreate();
 
@@ -10996,6 +11066,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getCustomsClearanceServiceInstructions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForCustomsClearanceServiceInstructionsOnceItem = $model->addOnceToCustomsClearanceServiceInstructionsWithCreate();
 
@@ -11046,6 +11117,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getForwarderServiceInstructions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForForwarderServiceInstructionsOnceItem = $model->addOnceToForwarderServiceInstructionsWithCreate();
 
@@ -11096,6 +11168,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSpecialServiceInstructions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSpecialServiceInstructionsOnceItem = $model->addOnceToSpecialServiceInstructionsWithCreate();
 
@@ -11194,6 +11267,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getHandlingInstructions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForHandlingInstructionsOnceItem = $model->addOnceToHandlingInstructionsWithCreate();
 
@@ -11244,6 +11318,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getInformation();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForInformationOnceItem = $model->addOnceToInformationWithCreate();
 
@@ -11390,6 +11465,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSpecialInstructions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSpecialInstructionsOnceItem = $model->addOnceToSpecialInstructionsWithCreate();
 
@@ -11451,6 +11527,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDeliveryInstructions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDeliveryInstructionsOnceItem = $model->addOnceToDeliveryInstructionsWithCreate();
 
@@ -11528,6 +11605,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getHaulageInstructions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForHaulageInstructionsOnceItem = $model->addOnceToHaulageInstructionsWithCreate();
 
@@ -11626,6 +11704,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getConsolidatedShipment();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForConsolidatedShipmentOnceItem = $model->addOnceToConsolidatedShipmentWithCreate();
 
@@ -11676,6 +11755,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getCustomsDeclaration();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForCustomsDeclarationOnceItem = $model->addOnceToCustomsDeclarationWithCreate();
 
@@ -11790,6 +11870,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getStatus();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForStatusOnceItem = $model->addOnceToStatusWithCreate();
 
@@ -11840,6 +11921,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getChildConsignment();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForChildConsignmentOnceItem = $model->addOnceToChildConsignmentWithCreate();
 
@@ -12194,6 +12276,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTransitCountry();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTransitCountryOnceItem = $model->addOnceToTransitCountryWithCreate();
 
@@ -12260,6 +12343,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTransportEvent();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTransportEventOnceItem = $model->addOnceToTransportEventWithCreate();
 
@@ -12422,6 +12506,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getFreightAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForFreightAllowanceChargeOnceItem = $model->addOnceToFreightAllowanceChargeWithCreate();
 
@@ -12472,6 +12557,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getExtraAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForExtraAllowanceChargeOnceItem = $model->addOnceToExtraAllowanceChargeWithCreate();
 
@@ -12522,6 +12608,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getMainCarriageShipmentStage();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForMainCarriageShipmentStageOnceItem = $model->addOnceToMainCarriageShipmentStageWithCreate();
 
@@ -12572,6 +12659,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPreCarriageShipmentStage();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPreCarriageShipmentStageOnceItem = $model->addOnceToPreCarriageShipmentStageWithCreate();
 
@@ -12622,6 +12710,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getOnCarriageShipmentStage();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForOnCarriageShipmentStageOnceItem = $model->addOnceToOnCarriageShipmentStageWithCreate();
 
@@ -12672,6 +12761,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTransportHandlingUnit();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTransportHandlingUnitOnceItem = $model->addOnceToTransportHandlingUnitWithCreate();
 
@@ -12835,6 +12925,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -13018,6 +13109,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -13233,6 +13325,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -13400,6 +13493,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDelivery();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDeliveryOnceItem = $model->addOnceToDeliveryWithCreate();
 
@@ -13450,6 +13544,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAllowanceChargeOnceItem = $model->addOnceToAllowanceChargeWithCreate();
 
@@ -13500,6 +13595,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTaxTotal();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTaxTotalOnceItem = $model->addOnceToTaxTotalWithCreate();
 
@@ -13635,6 +13731,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -13781,6 +13878,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getUtilityMeter();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForUtilityMeterOnceItem = $model->addOnceToUtilityMeterWithCreate();
 
@@ -14001,6 +14099,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -14243,6 +14342,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getConsumptionReportReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForConsumptionReportReferenceOnceItem = $model->addOnceToConsumptionReportReferenceWithCreate();
 
@@ -14293,6 +14393,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getConsumptionHistory();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForConsumptionHistoryOnceItem = $model->addOnceToConsumptionHistoryWithCreate();
 
@@ -14385,6 +14486,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAllowanceChargeOnceItem = $model->addOnceToAllowanceChargeWithCreate();
 
@@ -14435,6 +14537,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTaxTotal();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTaxTotalOnceItem = $model->addOnceToTaxTotalWithCreate();
 
@@ -14645,6 +14748,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -14695,6 +14799,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getOtherCommunication();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForOtherCommunicationOnceItem = $model->addOnceToOtherCommunicationWithCreate();
 
@@ -14854,6 +14959,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getName();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNameOnceItem = $model->addOnceToNameWithCreate();
 
@@ -14920,6 +15026,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -14991,6 +15098,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getOptionsDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForOptionsDescriptionOnceItem = $model->addOnceToOptionsDescriptionWithCreate();
 
@@ -15089,6 +15197,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRenewal();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRenewalOnceItem = $model->addOnceToRenewalWithCreate();
 
@@ -15240,6 +15349,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getContractingPartyType();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForContractingPartyTypeOnceItem = $model->addOnceToContractingPartyTypeWithCreate();
 
@@ -15290,6 +15400,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getContractingActivity();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForContractingActivityOnceItem = $model->addOnceToContractingActivityWithCreate();
 
@@ -15522,6 +15633,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -15588,6 +15700,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -15654,6 +15767,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getContractDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForContractDocumentReferenceOnceItem = $model->addOnceToContractDocumentReferenceWithCreate();
 
@@ -15827,6 +15941,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getJurisdictionRegionAddress();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForJurisdictionRegionAddressOnceItem = $model->addOnceToJurisdictionRegionAddressWithCreate();
 
@@ -16031,6 +16146,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -16183,6 +16299,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getInvoicePeriod();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForInvoicePeriodOnceItem = $model->addOnceToInvoicePeriodWithCreate();
 
@@ -16233,6 +16350,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getOrderLineReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForOrderLineReferenceOnceItem = $model->addOnceToOrderLineReferenceWithCreate();
 
@@ -16283,6 +16401,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDiscrepancyResponse();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDiscrepancyResponseOnceItem = $model->addOnceToDiscrepancyResponseWithCreate();
 
@@ -16333,6 +16452,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDespatchLineReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDespatchLineReferenceOnceItem = $model->addOnceToDespatchLineReferenceWithCreate();
 
@@ -16383,6 +16503,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getReceiptLineReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForReceiptLineReferenceOnceItem = $model->addOnceToReceiptLineReferenceWithCreate();
 
@@ -16433,6 +16554,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getBillingReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForBillingReferenceOnceItem = $model->addOnceToBillingReferenceWithCreate();
 
@@ -16483,6 +16605,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentReferenceOnceItem = $model->addOnceToDocumentReferenceWithCreate();
 
@@ -16565,6 +16688,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDelivery();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDeliveryOnceItem = $model->addOnceToDeliveryWithCreate();
 
@@ -16615,6 +16739,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPaymentTerms();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPaymentTermsOnceItem = $model->addOnceToPaymentTermsWithCreate();
 
@@ -16665,6 +16790,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTaxTotal();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTaxTotalOnceItem = $model->addOnceToTaxTotalWithCreate();
 
@@ -16715,6 +16841,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAllowanceChargeOnceItem = $model->addOnceToAllowanceChargeWithCreate();
 
@@ -16797,6 +16924,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDeliveryTerms();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDeliveryTermsOnceItem = $model->addOnceToDeliveryTermsWithCreate();
 
@@ -16847,6 +16975,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSubCreditNoteLine();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSubCreditNoteLineOnceItem = $model->addOnceToSubCreditNoteLineWithCreate();
 
@@ -16988,6 +17117,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAdditionalAccountID();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAdditionalAccountIDOnceItem = $model->addOnceToAdditionalAccountIDWithCreate();
 
@@ -17230,6 +17360,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -17371,6 +17502,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDiscrepancyResponse();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDiscrepancyResponseOnceItem = $model->addOnceToDiscrepancyResponseWithCreate();
 
@@ -17421,6 +17553,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDespatchLineReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDespatchLineReferenceOnceItem = $model->addOnceToDespatchLineReferenceWithCreate();
 
@@ -17471,6 +17604,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getReceiptLineReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForReceiptLineReferenceOnceItem = $model->addOnceToReceiptLineReferenceWithCreate();
 
@@ -17521,6 +17655,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getBillingReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForBillingReferenceOnceItem = $model->addOnceToBillingReferenceWithCreate();
 
@@ -17571,6 +17706,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentReferenceOnceItem = $model->addOnceToDocumentReferenceWithCreate();
 
@@ -17637,6 +17773,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDelivery();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDeliveryOnceItem = $model->addOnceToDeliveryWithCreate();
 
@@ -17687,6 +17824,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTaxTotal();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTaxTotalOnceItem = $model->addOnceToTaxTotalWithCreate();
 
@@ -17737,6 +17875,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAllowanceChargeOnceItem = $model->addOnceToAllowanceChargeWithCreate();
 
@@ -17819,6 +17958,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSubDebitNoteLine();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSubDebitNoteLineOnceItem = $model->addOnceToSubDebitNoteLineWithCreate();
 
@@ -17890,6 +18030,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getName();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNameOnceItem = $model->addOnceToNameWithCreate();
 
@@ -17956,6 +18097,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -18006,6 +18148,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getEvidenceSupplied();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForEvidenceSuppliedOnceItem = $model->addOnceToEvidenceSuppliedWithCreate();
 
@@ -18192,6 +18335,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSpecialTerms();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSpecialTermsOnceItem = $model->addOnceToSpecialTermsWithCreate();
 
@@ -18258,6 +18402,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getLossRisk();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForLossRiskOnceItem = $model->addOnceToLossRiskWithCreate();
 
@@ -18649,6 +18794,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNotifyParty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNotifyPartyOnceItem = $model->addOnceToNotifyPartyWithCreate();
 
@@ -18715,6 +18861,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDeliveryTerms();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDeliveryTermsOnceItem = $model->addOnceToDeliveryTermsWithCreate();
 
@@ -19065,6 +19212,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -19163,6 +19311,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getBackorderReason();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForBackorderReasonOnceItem = $model->addOnceToBackorderReasonWithCreate();
 
@@ -19229,6 +19378,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getOutstandingReason();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForOutstandingReasonOnceItem = $model->addOnceToOutstandingReasonWithCreate();
 
@@ -19295,6 +19445,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getOrderLineReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForOrderLineReferenceOnceItem = $model->addOnceToOrderLineReferenceWithCreate();
 
@@ -19345,6 +19496,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentReferenceOnceItem = $model->addOnceToDocumentReferenceWithCreate();
 
@@ -19411,6 +19563,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getShipment();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForShipmentOnceItem = $model->addOnceToShipmentWithCreate();
 
@@ -19624,6 +19777,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getInstructions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForInstructionsOnceItem = $model->addOnceToInstructionsWithCreate();
 
@@ -19738,6 +19892,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNotifyParty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNotifyPartyOnceItem = $model->addOnceToNotifyPartyWithCreate();
 
@@ -19922,6 +20077,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -20246,6 +20402,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getXPath();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForXPathOnceItem = $model->addOnceToXPathWithCreate();
 
@@ -20360,6 +20517,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentDescriptionOnceItem = $model->addOnceToDocumentDescriptionWithCreate();
 
@@ -20511,6 +20669,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentReferenceOnceItem = $model->addOnceToDocumentReferenceWithCreate();
 
@@ -20593,6 +20752,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getLineResponse();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForLineResponseOnceItem = $model->addOnceToLineResponseWithCreate();
 
@@ -20809,6 +20969,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRoleDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRoleDescriptionOnceItem = $model->addOnceToRoleDescriptionWithCreate();
 
@@ -20880,6 +21041,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getLimitationDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForLimitationDescriptionOnceItem = $model->addOnceToLimitationDescriptionWithCreate();
 
@@ -20978,6 +21140,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPreSelectedParty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPreSelectedPartyOnceItem = $model->addOnceToPreSelectedPartyWithCreate();
 
@@ -21210,6 +21373,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRemarks();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRemarksOnceItem = $model->addOnceToRemarksWithCreate();
 
@@ -21276,6 +21440,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSignature();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSignatureOnceItem = $model->addOnceToSignatureWithCreate();
 
@@ -21528,6 +21693,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getConsumptionReport();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForConsumptionReportOnceItem = $model->addOnceToConsumptionReportWithCreate();
 
@@ -21578,6 +21744,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getEnergyTaxReport();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForEnergyTaxReportOnceItem = $model->addOnceToEnergyTaxReportWithCreate();
 
@@ -21628,6 +21795,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getConsumptionAverage();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForConsumptionAverageOnceItem = $model->addOnceToConsumptionAverageWithCreate();
 
@@ -21678,6 +21846,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getEnergyWaterConsumptionCorrection();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForEnergyWaterConsumptionCorrectionOnceItem = $model->addOnceToEnergyWaterConsumptionCorrectionWithCreate();
 
@@ -21781,6 +21950,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -21831,6 +22001,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getEmissionCalculationMethod();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForEmissionCalculationMethodOnceItem = $model->addOnceToEmissionCalculationMethodWithCreate();
 
@@ -21995,6 +22166,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -22093,6 +22265,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getExpression();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForExpressionOnceItem = $model->addOnceToExpressionWithCreate();
 
@@ -22159,6 +22332,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSuggestedEvidence();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSuggestedEvidenceOnceItem = $model->addOnceToSuggestedEvidenceWithCreate();
 
@@ -22332,6 +22506,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRetailPlannedImpact();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRetailPlannedImpactOnceItem = $model->addOnceToRetailPlannedImpactWithCreate();
 
@@ -22632,6 +22807,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -22693,6 +22869,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getCurrentStatus();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForCurrentStatusOnceItem = $model->addOnceToCurrentStatusWithCreate();
 
@@ -22743,6 +22920,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getContact();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForContactOnceItem = $model->addOnceToContactWithCreate();
 
@@ -22921,6 +23099,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -22971,6 +23150,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getCandidateStatement();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForCandidateStatementOnceItem = $model->addOnceToCandidateStatementWithCreate();
 
@@ -23117,6 +23297,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -23295,6 +23476,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSupplyItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSupplyItemOnceItem = $model->addOnceToSupplyItemWithCreate();
 
@@ -23398,6 +23580,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -23448,6 +23631,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -23642,6 +23826,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentReferenceOnceItem = $model->addOnceToDocumentReferenceWithCreate();
 
@@ -24099,6 +24284,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -24321,6 +24507,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPaymentNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPaymentNoteOnceItem = $model->addOnceToPaymentNoteWithCreate();
 
@@ -24462,6 +24649,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -24973,6 +25161,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -25130,6 +25319,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -25180,6 +25370,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -25380,6 +25571,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getJustification();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForJustificationOnceItem = $model->addOnceToJustificationWithCreate();
 
@@ -25430,6 +25622,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getFrequency();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForFrequencyOnceItem = $model->addOnceToFrequencyWithCreate();
 
@@ -25496,6 +25689,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSubsequentProcessTenderRequirement();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSubsequentProcessTenderRequirementOnceItem = $model->addOnceToSubsequentProcessTenderRequirementWithCreate();
 
@@ -25665,6 +25859,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTransportEquipment();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTransportEquipmentOnceItem = $model->addOnceToTransportEquipmentWithCreate();
 
@@ -25757,6 +25952,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -26149,6 +26345,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForItemOnceItem = $model->addOnceToItemWithCreate();
 
@@ -26199,6 +26396,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getGoodsItemContainer();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForGoodsItemContainerOnceItem = $model->addOnceToGoodsItemContainerWithCreate();
 
@@ -26249,6 +26447,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getFreightAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForFreightAllowanceChargeOnceItem = $model->addOnceToFreightAllowanceChargeWithCreate();
 
@@ -26299,6 +26498,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getInvoiceLine();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForInvoiceLineOnceItem = $model->addOnceToInvoiceLineWithCreate();
 
@@ -26349,6 +26549,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTemperature();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTemperatureOnceItem = $model->addOnceToTemperatureWithCreate();
 
@@ -26399,6 +26600,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getContainedGoodsItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForContainedGoodsItemOnceItem = $model->addOnceToContainedGoodsItemWithCreate();
 
@@ -26513,6 +26715,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getMeasurementDimension();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForMeasurementDimensionOnceItem = $model->addOnceToMeasurementDimensionWithCreate();
 
@@ -26563,6 +26766,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getContainingPackage();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForContainingPackageOnceItem = $model->addOnceToContainingPackageWithCreate();
 
@@ -26940,6 +27144,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAdditionalInformation();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAdditionalInformationOnceItem = $model->addOnceToAdditionalInformationWithCreate();
 
@@ -27214,6 +27419,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSecondaryHazard();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSecondaryHazardOnceItem = $model->addOnceToSecondaryHazardWithCreate();
 
@@ -27264,6 +27470,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getHazardousGoodsTransit();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForHazardousGoodsTransitOnceItem = $model->addOnceToHazardousGoodsTransitWithCreate();
 
@@ -27346,6 +27553,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAdditionalTemperature();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAdditionalTemperatureOnceItem = $model->addOnceToAdditionalTemperatureWithCreate();
 
@@ -27605,6 +27813,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -27817,6 +28026,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -28033,6 +28243,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -28185,6 +28396,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getInvoicePeriod();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForInvoicePeriodOnceItem = $model->addOnceToInvoicePeriodWithCreate();
 
@@ -28235,6 +28447,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getOrderLineReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForOrderLineReferenceOnceItem = $model->addOnceToOrderLineReferenceWithCreate();
 
@@ -28285,6 +28498,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDespatchLineReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDespatchLineReferenceOnceItem = $model->addOnceToDespatchLineReferenceWithCreate();
 
@@ -28335,6 +28549,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getReceiptLineReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForReceiptLineReferenceOnceItem = $model->addOnceToReceiptLineReferenceWithCreate();
 
@@ -28385,6 +28600,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getBillingReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForBillingReferenceOnceItem = $model->addOnceToBillingReferenceWithCreate();
 
@@ -28435,6 +28651,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentReferenceOnceItem = $model->addOnceToDocumentReferenceWithCreate();
 
@@ -28517,6 +28734,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDelivery();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDeliveryOnceItem = $model->addOnceToDeliveryWithCreate();
 
@@ -28567,6 +28785,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPaymentTerms();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPaymentTermsOnceItem = $model->addOnceToPaymentTermsWithCreate();
 
@@ -28617,6 +28836,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAllowanceChargeOnceItem = $model->addOnceToAllowanceChargeWithCreate();
 
@@ -28667,6 +28887,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTaxTotal();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTaxTotalOnceItem = $model->addOnceToTaxTotalWithCreate();
 
@@ -28717,6 +28938,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getWithholdingTaxTotal();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForWithholdingTaxTotalOnceItem = $model->addOnceToWithholdingTaxTotalWithCreate();
 
@@ -28815,6 +29037,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSubInvoiceLine();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSubInvoiceLineOnceItem = $model->addOnceToSubInvoiceLineWithCreate();
 
@@ -29058,6 +29281,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPhysicalAttribute();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPhysicalAttributeOnceItem = $model->addOnceToPhysicalAttributeWithCreate();
 
@@ -29108,6 +29332,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getMeasurementDimension();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForMeasurementDimensionOnceItem = $model->addOnceToMeasurementDimensionWithCreate();
 
@@ -29259,6 +29484,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPeriod();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPeriodOnceItem = $model->addOnceToPeriodWithCreate();
 
@@ -29309,6 +29535,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSalesItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSalesItemOnceItem = $model->addOnceToSalesItemWithCreate();
 
@@ -29461,6 +29688,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAdditionalItemProperty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAdditionalItemPropertyOnceItem = $model->addOnceToAdditionalItemPropertyWithCreate();
 
@@ -29607,6 +29835,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTradingRestrictions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTradingRestrictionsOnceItem = $model->addOnceToTradingRestrictionsWithCreate();
 
@@ -29657,6 +29886,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getApplicableTerritoryAddress();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForApplicableTerritoryAddressOnceItem = $model->addOnceToApplicableTerritoryAddressWithCreate();
 
@@ -29723,6 +29953,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDeliveryUnit();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDeliveryUnitOnceItem = $model->addOnceToDeliveryUnitWithCreate();
 
@@ -29773,6 +30004,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getApplicableTaxCategory();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForApplicableTaxCategoryOnceItem = $model->addOnceToApplicableTaxCategoryWithCreate();
 
@@ -29839,6 +30071,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAllowanceChargeOnceItem = $model->addOnceToAllowanceChargeWithCreate();
 
@@ -29990,6 +30223,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getReplenishmentOwnerDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForReplenishmentOwnerDescriptionOnceItem = $model->addOnceToReplenishmentOwnerDescriptionWithCreate();
 
@@ -30370,6 +30604,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getValueQualifier();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForValueQualifierOnceItem = $model->addOnceToValueQualifierWithCreate();
 
@@ -30436,6 +30671,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getListValue();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForListValueOnceItem = $model->addOnceToListValueWithCreate();
 
@@ -30502,6 +30738,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getItemPropertyGroup();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForItemPropertyGroupOnceItem = $model->addOnceToItemPropertyGroupWithCreate();
 
@@ -30605,6 +30842,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -30725,6 +30963,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAdditionalInformation();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAdditionalInformationOnceItem = $model->addOnceToAdditionalInformationWithCreate();
 
@@ -30775,6 +31014,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getKeyword();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForKeywordOnceItem = $model->addOnceToKeywordWithCreate();
 
@@ -30825,6 +31065,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getBrandName();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForBrandNameOnceItem = $model->addOnceToBrandNameWithCreate();
 
@@ -30875,6 +31116,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getModelName();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForModelNameOnceItem = $model->addOnceToModelNameWithCreate();
 
@@ -30957,6 +31199,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getManufacturersItemIdentification();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForManufacturersItemIdentificationOnceItem = $model->addOnceToManufacturersItemIdentificationWithCreate();
 
@@ -31039,6 +31282,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAdditionalItemIdentification();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAdditionalItemIdentificationOnceItem = $model->addOnceToAdditionalItemIdentificationWithCreate();
 
@@ -31105,6 +31349,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getItemSpecificationDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForItemSpecificationDocumentReferenceOnceItem = $model->addOnceToItemSpecificationDocumentReferenceWithCreate();
 
@@ -31171,6 +31416,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getCommodityClassification();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForCommodityClassificationOnceItem = $model->addOnceToCommodityClassificationWithCreate();
 
@@ -31221,6 +31467,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTransactionConditions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTransactionConditionsOnceItem = $model->addOnceToTransactionConditionsWithCreate();
 
@@ -31271,6 +31518,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getHazardousItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForHazardousItemOnceItem = $model->addOnceToHazardousItemWithCreate();
 
@@ -31321,6 +31569,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getClassifiedTaxCategory();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForClassifiedTaxCategoryOnceItem = $model->addOnceToClassifiedTaxCategoryWithCreate();
 
@@ -31371,6 +31620,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAdditionalItemProperty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAdditionalItemPropertyOnceItem = $model->addOnceToAdditionalItemPropertyWithCreate();
 
@@ -31421,6 +31671,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getManufacturerParty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForManufacturerPartyOnceItem = $model->addOnceToManufacturerPartyWithCreate();
 
@@ -31487,6 +31738,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getOriginAddress();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForOriginAddressOnceItem = $model->addOnceToOriginAddressWithCreate();
 
@@ -31537,6 +31789,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getItemInstance();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForItemInstanceOnceItem = $model->addOnceToItemInstanceWithCreate();
 
@@ -31587,6 +31840,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getCertificate();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForCertificateOnceItem = $model->addOnceToCertificateWithCreate();
 
@@ -31637,6 +31891,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDimension();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDimensionOnceItem = $model->addOnceToDimensionWithCreate();
 
@@ -31880,6 +32135,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -32128,6 +32384,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getWarrantyInformation();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForWarrantyInformationOnceItem = $model->addOnceToWarrantyInformationWithCreate();
 
@@ -32178,6 +32435,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDelivery();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDeliveryOnceItem = $model->addOnceToDeliveryWithCreate();
 
@@ -32260,6 +32518,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getOrderedShipment();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForOrderedShipmentOnceItem = $model->addOnceToOrderedShipmentWithCreate();
 
@@ -32326,6 +32585,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAllowanceChargeOnceItem = $model->addOnceToAllowanceChargeWithCreate();
 
@@ -32408,6 +32668,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSubLineItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSubLineItemOnceItem = $model->addOnceToSubLineItemWithCreate();
 
@@ -32490,6 +32751,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTaxTotal();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTaxTotalOnceItem = $model->addOnceToTaxTotalWithCreate();
 
@@ -32556,6 +32818,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getLineReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForLineReferenceOnceItem = $model->addOnceToLineReferenceWithCreate();
 
@@ -32728,6 +32991,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getResponse();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForResponseOnceItem = $model->addOnceToResponseWithCreate();
 
@@ -33030,6 +33294,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -33080,6 +33345,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getConditions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForConditionsOnceItem = $model->addOnceToConditionsWithCreate();
 
@@ -33210,6 +33476,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getValidityPeriod();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForValidityPeriodOnceItem = $model->addOnceToValidityPeriodWithCreate();
 
@@ -33276,6 +33543,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSubsidiaryLocation();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSubsidiaryLocationOnceItem = $model->addOnceToSubsidiaryLocationWithCreate();
 
@@ -33326,6 +33594,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getLocationCoordinate();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForLocationCoordinateOnceItem = $model->addOnceToLocationCoordinateWithCreate();
 
@@ -33435,6 +33704,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAdditionalItemProperty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAdditionalItemPropertyOnceItem = $model->addOnceToAdditionalItemPropertyWithCreate();
 
@@ -33653,6 +33923,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getShipsRequirements();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForShipsRequirementsOnceItem = $model->addOnceToShipsRequirementsWithCreate();
 
@@ -33940,6 +34211,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getValueQualifier();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForValueQualifierOnceItem = $model->addOnceToValueQualifierWithCreate();
 
@@ -34191,6 +34463,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getMeterReadingComments();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForMeterReadingCommentsOnceItem = $model->addOnceToMeterReadingCommentsWithCreate();
 
@@ -34347,6 +34620,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getMeterReading();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForMeterReadingOnceItem = $model->addOnceToMeterReadingWithCreate();
 
@@ -34397,6 +34671,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getMeterProperty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForMeterPropertyOnceItem = $model->addOnceToMeterPropertyWithCreate();
 
@@ -34517,6 +34792,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getEventLineItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForEventLineItemOnceItem = $model->addOnceToEventLineItemWithCreate();
 
@@ -34867,6 +35143,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNotifyParty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNotifyPartyOnceItem = $model->addOnceToNotifyPartyWithCreate();
 
@@ -34917,6 +35194,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNotificationPeriod();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNotificationPeriodOnceItem = $model->addOnceToNotificationPeriodWithCreate();
 
@@ -34967,6 +35245,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNotificationLocation();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNotificationLocationOnceItem = $model->addOnceToNotificationLocationWithCreate();
 
@@ -35087,6 +35366,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -35137,6 +35417,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPaymentTerms();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPaymentTermsOnceItem = $model->addOnceToPaymentTermsWithCreate();
 
@@ -35290,6 +35571,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPackage();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPackageOnceItem = $model->addOnceToPackageWithCreate();
 
@@ -35478,6 +35760,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -35544,6 +35827,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSellerProposedSubstituteLineItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSellerProposedSubstituteLineItemOnceItem = $model->addOnceToSellerProposedSubstituteLineItemWithCreate();
 
@@ -35594,6 +35878,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSellerSubstitutedLineItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSellerSubstitutedLineItemOnceItem = $model->addOnceToSellerSubstitutedLineItemWithCreate();
 
@@ -35644,6 +35929,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getBuyerProposedSubstituteLineItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForBuyerProposedSubstituteLineItemOnceItem = $model->addOnceToBuyerProposedSubstituteLineItemWithCreate();
 
@@ -35726,6 +36012,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getOrderLineReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForOrderLineReferenceOnceItem = $model->addOnceToOrderLineReferenceWithCreate();
 
@@ -35776,6 +36063,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentReferenceOnceItem = $model->addOnceToDocumentReferenceWithCreate();
 
@@ -36215,6 +36503,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPackingMaterial();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPackingMaterialOnceItem = $model->addOnceToPackingMaterialWithCreate();
 
@@ -36281,6 +36570,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getContainedPackage();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForContainedPackageOnceItem = $model->addOnceToContainedPackageWithCreate();
 
@@ -36347,6 +36637,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getGoodsItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForGoodsItemOnceItem = $model->addOnceToGoodsItemWithCreate();
 
@@ -36397,6 +36688,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getMeasurementDimension();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForMeasurementDimensionOnceItem = $model->addOnceToMeasurementDimensionWithCreate();
 
@@ -36447,6 +36739,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDeliveryUnit();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDeliveryUnitOnceItem = $model->addOnceToDeliveryUnitWithCreate();
 
@@ -36857,6 +37150,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getShareholderParty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForShareholderPartyOnceItem = $model->addOnceToShareholderPartyWithCreate();
 
@@ -37029,6 +37323,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getExemptionReason();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForExemptionReasonOnceItem = $model->addOnceToExemptionReasonWithCreate();
 
@@ -37207,6 +37502,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPartyIdentification();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPartyIdentificationOnceItem = $model->addOnceToPartyIdentificationWithCreate();
 
@@ -37257,6 +37553,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPartyName();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPartyNameOnceItem = $model->addOnceToPartyNameWithCreate();
 
@@ -37355,6 +37652,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPartyTaxScheme();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPartyTaxSchemeOnceItem = $model->addOnceToPartyTaxSchemeWithCreate();
 
@@ -37405,6 +37703,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPartyLegalEntity();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPartyLegalEntityOnceItem = $model->addOnceToPartyLegalEntityWithCreate();
 
@@ -37471,6 +37770,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPerson();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPersonOnceItem = $model->addOnceToPersonWithCreate();
 
@@ -37537,6 +37837,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getServiceProviderParty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForServiceProviderPartyOnceItem = $model->addOnceToServiceProviderPartyWithCreate();
 
@@ -37587,6 +37888,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPowerOfAttorney();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPowerOfAttorneyOnceItem = $model->addOnceToPowerOfAttorneyWithCreate();
 
@@ -37906,6 +38208,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getClause();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForClauseOnceItem = $model->addOnceToClauseWithCreate();
 
@@ -38052,6 +38355,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getInstructionNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForInstructionNoteOnceItem = $model->addOnceToInstructionNoteWithCreate();
 
@@ -38102,6 +38406,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPaymentID();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPaymentIDOnceItem = $model->addOnceToPaymentIDWithCreate();
 
@@ -38296,6 +38601,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPaymentMeansID();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPaymentMeansIDOnceItem = $model->addOnceToPaymentMeansIDWithCreate();
 
@@ -38362,6 +38668,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -38803,6 +39110,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -39009,6 +39317,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescriptionCode();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionCodeOnceItem = $model->addOnceToDescriptionCodeWithCreate();
 
@@ -39059,6 +39368,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -39365,6 +39675,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getIdentityDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForIdentityDocumentReferenceOnceItem = $model->addOnceToIdentityDocumentReferenceWithCreate();
 
@@ -39500,6 +39811,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -39880,6 +40192,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -39962,6 +40275,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getWitnessParty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForWitnessPartyOnceItem = $model->addOnceToWitnessPartyWithCreate();
 
@@ -40012,6 +40326,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getMandateDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForMandateDocumentReferenceOnceItem = $model->addOnceToMandateDocumentReferenceWithCreate();
 
@@ -40198,6 +40513,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTaxTotal();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTaxTotalOnceItem = $model->addOnceToTaxTotalWithCreate();
 
@@ -40301,6 +40617,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getValidityPeriod();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForValidityPeriodOnceItem = $model->addOnceToValidityPeriodWithCreate();
 
@@ -40409,6 +40726,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPriceChangeReason();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPriceChangeReasonOnceItem = $model->addOnceToPriceChangeReasonWithCreate();
 
@@ -40507,6 +40825,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getValidityPeriod();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForValidityPeriodOnceItem = $model->addOnceToValidityPeriodWithCreate();
 
@@ -40573,6 +40892,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAllowanceChargeOnceItem = $model->addOnceToAllowanceChargeWithCreate();
 
@@ -40687,6 +41007,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAlternativeConditionPrice();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAlternativeConditionPriceOnceItem = $model->addOnceToAlternativeConditionPriceWithCreate();
 
@@ -40790,6 +41111,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getProcessReason();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForProcessReasonOnceItem = $model->addOnceToProcessReasonWithCreate();
 
@@ -40840,6 +41162,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -41007,6 +41330,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getName();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNameOnceItem = $model->addOnceToNameWithCreate();
 
@@ -41057,6 +41381,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -41171,6 +41496,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getFeeDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForFeeDescriptionOnceItem = $model->addOnceToFeeDescriptionWithCreate();
 
@@ -41248,6 +41574,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -41330,6 +41657,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAdditionalCommodityClassification();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAdditionalCommodityClassificationOnceItem = $model->addOnceToAdditionalCommodityClassificationWithCreate();
 
@@ -41380,6 +41708,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRealizedLocation();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRealizedLocationOnceItem = $model->addOnceToRealizedLocationWithCreate();
 
@@ -41462,6 +41791,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRequestForTenderLine();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRequestForTenderLineOnceItem = $model->addOnceToRequestForTenderLineWithCreate();
 
@@ -41576,6 +41906,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getWorkPhaseReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForWorkPhaseReferenceOnceItem = $model->addOnceToWorkPhaseReferenceWithCreate();
 
@@ -41762,6 +42093,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPromotionalSpecification();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPromotionalSpecificationOnceItem = $model->addOnceToPromotionalSpecificationWithCreate();
 
@@ -41849,6 +42181,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPromotionalEventLineItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPromotionalEventLineItemOnceItem = $model->addOnceToPromotionalEventLineItemWithCreate();
 
@@ -41899,6 +42232,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getEventTactic();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForEventTacticOnceItem = $model->addOnceToEventTacticWithCreate();
 
@@ -41997,6 +42331,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getExclusionReason();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForExclusionReasonOnceItem = $model->addOnceToExclusionReasonWithCreate();
 
@@ -42047,6 +42382,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getResolution();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForResolutionOnceItem = $model->addOnceToResolutionWithCreate();
 
@@ -42172,6 +42508,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPersonalSituation();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPersonalSituationOnceItem = $model->addOnceToPersonalSituationWithCreate();
 
@@ -42318,6 +42655,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTechnicalCapability();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTechnicalCapabilityOnceItem = $model->addOnceToTechnicalCapabilityWithCreate();
 
@@ -42368,6 +42706,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getFinancialCapability();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForFinancialCapabilityOnceItem = $model->addOnceToFinancialCapabilityWithCreate();
 
@@ -42418,6 +42757,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getCompletedTask();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForCompletedTaskOnceItem = $model->addOnceToCompletedTaskWithCreate();
 
@@ -42468,6 +42808,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDeclaration();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDeclarationOnceItem = $model->addOnceToDeclarationWithCreate();
 
@@ -42620,6 +42961,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -42734,6 +43076,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentReferenceOnceItem = $model->addOnceToDocumentReferenceWithCreate();
 
@@ -42800,6 +43143,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSellerProposedSubstituteLineItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSellerProposedSubstituteLineItemOnceItem = $model->addOnceToSellerProposedSubstituteLineItemWithCreate();
 
@@ -42850,6 +43194,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAlternativeLineItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAlternativeLineItemOnceItem = $model->addOnceToAlternativeLineItemWithCreate();
 
@@ -43077,6 +43422,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -43207,6 +43553,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRejectReason();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRejectReasonOnceItem = $model->addOnceToRejectReasonWithCreate();
 
@@ -43364,6 +43711,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDespatchLineReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDespatchLineReferenceOnceItem = $model->addOnceToDespatchLineReferenceWithCreate();
 
@@ -43414,6 +43762,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentReferenceOnceItem = $model->addOnceToDocumentReferenceWithCreate();
 
@@ -43464,6 +43813,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForItemOnceItem = $model->addOnceToItemWithCreate();
 
@@ -43514,6 +43864,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getShipment();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForShipmentOnceItem = $model->addOnceToShipmentWithCreate();
 
@@ -43851,6 +44202,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -43949,6 +44301,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -44138,6 +44491,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getReminderPeriod();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForReminderPeriodOnceItem = $model->addOnceToReminderPeriodWithCreate();
 
@@ -44188,6 +44542,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getBillingReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForBillingReferenceOnceItem = $model->addOnceToBillingReferenceWithCreate();
 
@@ -44302,6 +44657,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -44544,6 +44900,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getInvoicePeriod();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForInvoicePeriodOnceItem = $model->addOnceToInvoicePeriodWithCreate();
 
@@ -44594,6 +44951,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getBillingReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForBillingReferenceOnceItem = $model->addOnceToBillingReferenceWithCreate();
 
@@ -44644,6 +45002,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentReferenceOnceItem = $model->addOnceToDocumentReferenceWithCreate();
 
@@ -45057,6 +45416,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getMonetaryScope();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForMonetaryScopeOnceItem = $model->addOnceToMonetaryScopeWithCreate();
 
@@ -45123,6 +45483,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getApplicableTaxCategory();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForApplicableTaxCategoryOnceItem = $model->addOnceToApplicableTaxCategoryWithCreate();
 
@@ -45259,6 +45620,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -45352,6 +45714,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentReferenceOnceItem = $model->addOnceToDocumentReferenceWithCreate();
 
@@ -45471,6 +45834,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -45628,6 +45992,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentReferenceOnceItem = $model->addOnceToDocumentReferenceWithCreate();
 
@@ -45678,6 +46043,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDeliveryPeriod();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDeliveryPeriodOnceItem = $model->addOnceToDeliveryPeriodWithCreate();
 
@@ -45728,6 +46094,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRequiredItemLocationQuantity();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRequiredItemLocationQuantityOnceItem = $model->addOnceToRequiredItemLocationQuantityWithCreate();
 
@@ -45810,6 +46177,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSubRequestForTenderLine();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSubRequestForTenderLineOnceItem = $model->addOnceToSubRequestForTenderLineWithCreate();
 
@@ -46001,6 +46369,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -46073,6 +46442,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getStatus();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForStatusOnceItem = $model->addOnceToStatusWithCreate();
 
@@ -46454,6 +46824,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getActivityProperty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForActivityPropertyOnceItem = $model->addOnceToActivityPropertyWithCreate();
 
@@ -46504,6 +46875,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTaxExclusivePrice();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTaxExclusivePriceOnceItem = $model->addOnceToTaxExclusivePriceWithCreate();
 
@@ -46554,6 +46926,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTaxInclusivePrice();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTaxInclusivePriceOnceItem = $model->addOnceToTaxInclusivePriceWithCreate();
 
@@ -46716,6 +47089,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getExtension();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForExtensionOnceItem = $model->addOnceToExtensionWithCreate();
 
@@ -46988,6 +47362,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getServiceType();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForServiceTypeOnceItem = $model->addOnceToServiceTypeWithCreate();
 
@@ -47350,6 +47725,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getInstructions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForInstructionsOnceItem = $model->addOnceToInstructionsWithCreate();
 
@@ -47400,6 +47776,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDemurrageInstructions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDemurrageInstructionsOnceItem = $model->addOnceToDemurrageInstructionsWithCreate();
 
@@ -47498,6 +47875,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getCarrierParty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForCarrierPartyOnceItem = $model->addOnceToCarrierPartyWithCreate();
 
@@ -47884,6 +48262,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getFreightAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForFreightAllowanceChargeOnceItem = $model->addOnceToFreightAllowanceChargeWithCreate();
 
@@ -47950,6 +48329,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDetentionTransportEvent();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDetentionTransportEventOnceItem = $model->addOnceToDetentionTransportEventWithCreate();
 
@@ -48032,6 +48412,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRequestedWaypointTransportEvent();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRequestedWaypointTransportEventOnceItem = $model->addOnceToRequestedWaypointTransportEventWithCreate();
 
@@ -48114,6 +48495,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPlannedWaypointTransportEvent();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPlannedWaypointTransportEventOnceItem = $model->addOnceToPlannedWaypointTransportEventWithCreate();
 
@@ -48212,6 +48594,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTransportEvent();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTransportEventOnceItem = $model->addOnceToTransportEventWithCreate();
 
@@ -48294,6 +48677,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPassengerPerson();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPassengerPersonOnceItem = $model->addOnceToPassengerPersonWithCreate();
 
@@ -48344,6 +48728,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDriverPerson();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDriverPersonOnceItem = $model->addOnceToDriverPersonWithCreate();
 
@@ -48410,6 +48795,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getCrewMemberPerson();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForCrewMemberPersonOnceItem = $model->addOnceToCrewMemberPersonWithCreate();
 
@@ -48566,6 +48952,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getHandlingInstructions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForHandlingInstructionsOnceItem = $model->addOnceToHandlingInstructionsWithCreate();
 
@@ -48616,6 +49003,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getInformation();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForInformationOnceItem = $model->addOnceToInformationWithCreate();
 
@@ -48858,6 +49246,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSpecialInstructions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSpecialInstructionsOnceItem = $model->addOnceToSpecialInstructionsWithCreate();
 
@@ -48908,6 +49297,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDeliveryInstructions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDeliveryInstructionsOnceItem = $model->addOnceToDeliveryInstructionsWithCreate();
 
@@ -48985,6 +49375,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getConsignment();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForConsignmentOnceItem = $model->addOnceToConsignmentWithCreate();
 
@@ -49035,6 +49426,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getGoodsItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForGoodsItemOnceItem = $model->addOnceToGoodsItemWithCreate();
 
@@ -49085,6 +49477,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getShipmentStage();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForShipmentStageOnceItem = $model->addOnceToShipmentStageWithCreate();
 
@@ -49151,6 +49544,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTransportHandlingUnit();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTransportHandlingUnitOnceItem = $model->addOnceToTransportHandlingUnitWithCreate();
 
@@ -49281,6 +49675,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getFreightAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForFreightAllowanceChargeOnceItem = $model->addOnceToFreightAllowanceChargeWithCreate();
 
@@ -49401,6 +49796,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -49661,6 +50057,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -49818,6 +50215,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPaymentTerms();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPaymentTermsOnceItem = $model->addOnceToPaymentTermsWithCreate();
 
@@ -49964,6 +50362,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getInvoicePeriod();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForInvoicePeriodOnceItem = $model->addOnceToInvoicePeriodWithCreate();
 
@@ -50014,6 +50413,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getBillingReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForBillingReferenceOnceItem = $model->addOnceToBillingReferenceWithCreate();
 
@@ -50064,6 +50464,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentReferenceOnceItem = $model->addOnceToDocumentReferenceWithCreate();
 
@@ -50130,6 +50531,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAllowanceChargeOnceItem = $model->addOnceToAllowanceChargeWithCreate();
 
@@ -50180,6 +50582,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getCollectedPayment();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForCollectedPaymentOnceItem = $model->addOnceToCollectedPaymentWithCreate();
 
@@ -50322,6 +50725,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -50388,6 +50792,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getStatusReason();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForStatusReasonOnceItem = $model->addOnceToStatusReasonWithCreate();
 
@@ -50454,6 +50859,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getText();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTextOnceItem = $model->addOnceToTextWithCreate();
 
@@ -50547,6 +50953,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getCondition();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForConditionOnceItem = $model->addOnceToConditionWithCreate();
 
@@ -50634,6 +51041,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -50818,6 +51226,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getLocation();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForLocationOnceItem = $model->addOnceToLocationWithCreate();
 
@@ -50868,6 +51277,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getMeasurementDimension();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForMeasurementDimensionOnceItem = $model->addOnceToMeasurementDimensionWithCreate();
 
@@ -50977,6 +51387,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -51221,6 +51632,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -51319,6 +51731,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getOnAccountPayment();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForOnAccountPaymentOnceItem = $model->addOnceToOnAccountPaymentWithCreate();
 
@@ -51385,6 +51798,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSupplierConsumption();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSupplierConsumptionOnceItem = $model->addOnceToSupplierConsumptionWithCreate();
 
@@ -51522,6 +51936,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -51636,6 +52051,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getConsumptionLine();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForConsumptionLineOnceItem = $model->addOnceToConsumptionLineWithCreate();
 
@@ -51723,6 +52139,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAdditionalAccountID();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAdditionalAccountIDOnceItem = $model->addOnceToAdditionalAccountIDWithCreate();
 
@@ -52036,6 +52453,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTaxExemptionReason();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTaxExemptionReasonOnceItem = $model->addOnceToTaxExemptionReasonWithCreate();
 
@@ -52263,6 +52681,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getJurisdictionRegionAddress();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForJurisdictionRegionAddressOnceItem = $model->addOnceToJurisdictionRegionAddressWithCreate();
 
@@ -52569,6 +52988,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTaxSubtotal();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTaxSubtotalOnceItem = $model->addOnceToTaxSubtotalWithCreate();
 
@@ -52930,6 +53350,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getExchangeRate();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForExchangeRateOnceItem = $model->addOnceToExchangeRateWithCreate();
 
@@ -52980,6 +53401,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAllowanceChargeOnceItem = $model->addOnceToAllowanceChargeWithCreate();
 
@@ -53030,6 +53452,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTaxTotal();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTaxTotalOnceItem = $model->addOnceToTaxTotalWithCreate();
 
@@ -53080,6 +53503,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getCallDuty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForCallDutyOnceItem = $model->addOnceToCallDutyWithCreate();
 
@@ -53130,6 +53554,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTimeDuty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTimeDutyOnceItem = $model->addOnceToTimeDutyWithCreate();
 
@@ -53244,6 +53669,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -53310,6 +53736,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getExchangeRate();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForExchangeRateOnceItem = $model->addOnceToExchangeRateWithCreate();
 
@@ -53360,6 +53787,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAllowanceChargeOnceItem = $model->addOnceToAllowanceChargeWithCreate();
 
@@ -53410,6 +53838,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTaxTotal();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTaxTotalOnceItem = $model->addOnceToTaxTotalWithCreate();
 
@@ -53460,6 +53889,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTelecommunicationsService();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTelecommunicationsServiceOnceItem = $model->addOnceToTelecommunicationsServiceWithCreate();
 
@@ -53568,6 +53998,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -53634,6 +54065,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTelecommunicationsSupplyLine();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTelecommunicationsSupplyLineOnceItem = $model->addOnceToTelecommunicationsSupplyLineWithCreate();
 
@@ -53737,6 +54169,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -53862,6 +54295,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getFeeDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForFeeDescriptionOnceItem = $model->addOnceToFeeDescriptionWithCreate();
 
@@ -53960,6 +54394,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getEvidenceDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForEvidenceDocumentReferenceOnceItem = $model->addOnceToEvidenceDocumentReferenceWithCreate();
 
@@ -54010,6 +54445,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTaxTotal();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTaxTotalOnceItem = $model->addOnceToTaxTotalWithCreate();
 
@@ -54076,6 +54512,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTenderLine();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTenderLineOnceItem = $model->addOnceToTenderLineWithCreate();
 
@@ -54126,6 +54563,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAwardingCriterionResponse();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAwardingCriterionResponseOnceItem = $model->addOnceToAwardingCriterionResponseWithCreate();
 
@@ -54208,6 +54646,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getInterestedProcurementProjectLot();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForInterestedProcurementProjectLotOnceItem = $model->addOnceToInterestedProcurementProjectLotWithCreate();
 
@@ -54274,6 +54713,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAdditionalQualifyingParty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAdditionalQualifyingPartyOnceItem = $model->addOnceToAdditionalQualifyingPartyWithCreate();
 
@@ -54388,6 +54828,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPersonalSituation();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPersonalSituationOnceItem = $model->addOnceToPersonalSituationWithCreate();
 
@@ -54470,6 +54911,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -54520,6 +54962,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRequiredBusinessClassificationScheme();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRequiredBusinessClassificationSchemeOnceItem = $model->addOnceToRequiredBusinessClassificationSchemeWithCreate();
 
@@ -54570,6 +55013,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTechnicalEvaluationCriterion();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTechnicalEvaluationCriterionOnceItem = $model->addOnceToTechnicalEvaluationCriterionWithCreate();
 
@@ -54620,6 +55064,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getFinancialEvaluationCriterion();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForFinancialEvaluationCriterionOnceItem = $model->addOnceToFinancialEvaluationCriterionWithCreate();
 
@@ -54670,6 +55115,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSpecificTendererRequirement();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSpecificTendererRequirementOnceItem = $model->addOnceToSpecificTendererRequirementWithCreate();
 
@@ -54720,6 +55166,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getEconomicOperatorRole();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForEconomicOperatorRoleOnceItem = $model->addOnceToEconomicOperatorRoleWithCreate();
 
@@ -54791,6 +55238,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getName();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNameOnceItem = $model->addOnceToNameWithCreate();
 
@@ -54857,6 +55305,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -54923,6 +55372,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSuggestedEvidence();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSuggestedEvidenceOnceItem = $model->addOnceToSuggestedEvidenceWithCreate();
 
@@ -55037,6 +55487,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -55087,6 +55538,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNegotiationDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNegotiationDescriptionOnceItem = $model->addOnceToNegotiationDescriptionWithCreate();
 
@@ -55319,6 +55771,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNoticeDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoticeDocumentReferenceOnceItem = $model->addOnceToNoticeDocumentReferenceWithCreate();
 
@@ -55369,6 +55822,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAdditionalDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAdditionalDocumentReferenceOnceItem = $model->addOnceToAdditionalDocumentReferenceWithCreate();
 
@@ -55419,6 +55873,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getProcessJustification();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForProcessJustificationOnceItem = $model->addOnceToProcessJustificationWithCreate();
 
@@ -55485,6 +55940,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getOpenTenderEvent();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForOpenTenderEventOnceItem = $model->addOnceToOpenTenderEventWithCreate();
 
@@ -55647,6 +56103,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAcceptedVariantsDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAcceptedVariantsDescriptionOnceItem = $model->addOnceToAcceptedVariantsDescriptionWithCreate();
 
@@ -55697,6 +56154,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPriceRevisionFormulaDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPriceRevisionFormulaDescriptionOnceItem = $model->addOnceToPriceRevisionFormulaDescriptionWithCreate();
 
@@ -55763,6 +56221,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getFundingProgram();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForFundingProgramOnceItem = $model->addOnceToFundingProgramWithCreate();
 
@@ -55829,6 +56288,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -55933,6 +56393,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAdditionalConditions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAdditionalConditionsOnceItem = $model->addOnceToAdditionalConditionsWithCreate();
 
@@ -56012,6 +56473,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPenaltyClause();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPenaltyClauseOnceItem = $model->addOnceToPenaltyClauseWithCreate();
 
@@ -56062,6 +56524,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRequiredFinancialGuarantee();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRequiredFinancialGuaranteeOnceItem = $model->addOnceToRequiredFinancialGuaranteeWithCreate();
 
@@ -56176,6 +56639,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getContractualDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForContractualDocumentReferenceOnceItem = $model->addOnceToContractualDocumentReferenceWithCreate();
 
@@ -56258,6 +56722,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPaymentTerms();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPaymentTermsOnceItem = $model->addOnceToPaymentTermsWithCreate();
 
@@ -56308,6 +56773,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTendererQualificationRequest();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTendererQualificationRequestOnceItem = $model->addOnceToTendererQualificationRequestWithCreate();
 
@@ -56358,6 +56824,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAllowedSubcontractTerms();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAllowedSubcontractTermsOnceItem = $model->addOnceToAllowedSubcontractTermsWithCreate();
 
@@ -56408,6 +56875,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTenderPreparation();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTenderPreparationOnceItem = $model->addOnceToTenderPreparationWithCreate();
 
@@ -56458,6 +56926,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getContractExecutionRequirement();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForContractExecutionRequirementOnceItem = $model->addOnceToContractExecutionRequirementWithCreate();
 
@@ -56588,6 +57057,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTenderEvaluationParty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTenderEvaluationPartyOnceItem = $model->addOnceToTenderEvaluationPartyWithCreate();
 
@@ -56686,6 +57156,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getLanguage();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForLanguageOnceItem = $model->addOnceToLanguageWithCreate();
 
@@ -56736,6 +57207,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getBudgetAccountLine();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForBudgetAccountLineOnceItem = $model->addOnceToBudgetAccountLineWithCreate();
 
@@ -56839,6 +57311,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -57017,6 +57490,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getWarrantyInformation();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForWarrantyInformationOnceItem = $model->addOnceToWarrantyInformationWithCreate();
 
@@ -57083,6 +57557,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentReferenceOnceItem = $model->addOnceToDocumentReferenceWithCreate();
 
@@ -57149,6 +57624,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getOfferedItemLocationQuantity();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForOfferedItemLocationQuantityOnceItem = $model->addOnceToOfferedItemLocationQuantityWithCreate();
 
@@ -57199,6 +57675,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getReplacementRelatedItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForReplacementRelatedItemOnceItem = $model->addOnceToReplacementRelatedItemWithCreate();
 
@@ -57281,6 +57758,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSubTenderLine();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSubTenderLineOnceItem = $model->addOnceToSubTenderLineWithCreate();
 
@@ -57416,6 +57894,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -57482,6 +57961,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getProcurementProjectLot();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForProcurementProjectLotOnceItem = $model->addOnceToProcurementProjectLotWithCreate();
 
@@ -57532,6 +58012,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentTenderRequirement();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentTenderRequirementOnceItem = $model->addOnceToDocumentTenderRequirementWithCreate();
 
@@ -57630,6 +58111,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -57733,6 +58215,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -57960,6 +58443,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSubcontractTerms();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSubcontractTermsOnceItem = $model->addOnceToSubcontractTermsWithCreate();
 
@@ -58010,6 +58494,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getWinningParty();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForWinningPartyOnceItem = $model->addOnceToWinningPartyWithCreate();
 
@@ -58195,6 +58680,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentReferenceOnceItem = $model->addOnceToDocumentReferenceWithCreate();
 
@@ -58277,6 +58763,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getClause();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForClauseOnceItem = $model->addOnceToClauseWithCreate();
 
@@ -58348,6 +58835,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getInformation();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForInformationOnceItem = $model->addOnceToInformationWithCreate();
 
@@ -58483,6 +58971,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -58533,6 +59022,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDocumentReferenceOnceItem = $model->addOnceToDocumentReferenceWithCreate();
 
@@ -58717,6 +59207,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getShipmentStage();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForShipmentStageOnceItem = $model->addOnceToShipmentStageWithCreate();
 
@@ -58852,6 +59343,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTransportationServiceDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTransportationServiceDescriptionOnceItem = $model->addOnceToTransportationServiceDescriptionWithCreate();
 
@@ -58972,6 +59464,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTransportEquipment();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTransportEquipmentOnceItem = $model->addOnceToTransportEquipmentWithCreate();
 
@@ -59022,6 +59515,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSupportedTransportEquipment();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSupportedTransportEquipmentOnceItem = $model->addOnceToSupportedTransportEquipmentWithCreate();
 
@@ -59072,6 +59566,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getUnsupportedTransportEquipment();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForUnsupportedTransportEquipmentOnceItem = $model->addOnceToUnsupportedTransportEquipmentWithCreate();
 
@@ -59122,6 +59617,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getCommodityClassification();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForCommodityClassificationOnceItem = $model->addOnceToCommodityClassificationWithCreate();
 
@@ -59172,6 +59668,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSupportedCommodityClassification();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSupportedCommodityClassificationOnceItem = $model->addOnceToSupportedCommodityClassificationWithCreate();
 
@@ -59222,6 +59719,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getUnsupportedCommodityClassification();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForUnsupportedCommodityClassificationOnceItem = $model->addOnceToUnsupportedCommodityClassificationWithCreate();
 
@@ -59288,6 +59786,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getShipmentStage();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForShipmentStageOnceItem = $model->addOnceToShipmentStageWithCreate();
 
@@ -59338,6 +59837,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTransportEvent();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTransportEventOnceItem = $model->addOnceToTransportEventWithCreate();
 
@@ -59404,6 +59904,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getEnvironmentalEmission();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForEnvironmentalEmissionOnceItem = $model->addOnceToEnvironmentalEmissionWithCreate();
 
@@ -59470,6 +59971,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getScheduledServiceFrequency();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForScheduledServiceFrequencyOnceItem = $model->addOnceToScheduledServiceFrequencyWithCreate();
 
@@ -59680,6 +60182,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getReferencedConsignmentID();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForReferencedConsignmentIDOnceItem = $model->addOnceToReferencedConsignmentIDWithCreate();
 
@@ -59837,6 +60340,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getInformation();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForInformationOnceItem = $model->addOnceToInformationWithCreate();
 
@@ -60001,6 +60505,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDamageRemarks();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDamageRemarksOnceItem = $model->addOnceToDamageRemarksWithCreate();
 
@@ -60051,6 +60556,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -60101,6 +60607,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSpecialTransportRequirements();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSpecialTransportRequirementsOnceItem = $model->addOnceToSpecialTransportRequirementsWithCreate();
 
@@ -60242,6 +60749,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getMeasurementDimension();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForMeasurementDimensionOnceItem = $model->addOnceToMeasurementDimensionWithCreate();
 
@@ -60292,6 +60800,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTransportEquipmentSeal();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTransportEquipmentSealOnceItem = $model->addOnceToTransportEquipmentSealWithCreate();
 
@@ -60502,6 +61011,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPositioningTransportEvent();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPositioningTransportEventOnceItem = $model->addOnceToPositioningTransportEventWithCreate();
 
@@ -60552,6 +61062,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getQuarantineTransportEvent();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForQuarantineTransportEventOnceItem = $model->addOnceToQuarantineTransportEventWithCreate();
 
@@ -60602,6 +61113,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDeliveryTransportEvent();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDeliveryTransportEventOnceItem = $model->addOnceToDeliveryTransportEventWithCreate();
 
@@ -60652,6 +61164,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPickupTransportEvent();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPickupTransportEventOnceItem = $model->addOnceToPickupTransportEventWithCreate();
 
@@ -60702,6 +61215,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getHandlingTransportEvent();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForHandlingTransportEventOnceItem = $model->addOnceToHandlingTransportEventWithCreate();
 
@@ -60752,6 +61266,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getLoadingTransportEvent();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForLoadingTransportEventOnceItem = $model->addOnceToLoadingTransportEventWithCreate();
 
@@ -60802,6 +61317,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTransportEvent();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTransportEventOnceItem = $model->addOnceToTransportEventWithCreate();
 
@@ -60868,6 +61384,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getHaulageTradingTerms();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForHaulageTradingTermsOnceItem = $model->addOnceToHaulageTradingTermsWithCreate();
 
@@ -60918,6 +61435,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getHazardousGoodsTransit();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForHazardousGoodsTransitOnceItem = $model->addOnceToHazardousGoodsTransitWithCreate();
 
@@ -60968,6 +61486,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPackagedTransportHandlingUnit();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPackagedTransportHandlingUnitOnceItem = $model->addOnceToPackagedTransportHandlingUnitWithCreate();
 
@@ -61018,6 +61537,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getServiceAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForServiceAllowanceChargeOnceItem = $model->addOnceToServiceAllowanceChargeWithCreate();
 
@@ -61068,6 +61588,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getFreightAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForFreightAllowanceChargeOnceItem = $model->addOnceToFreightAllowanceChargeWithCreate();
 
@@ -61118,6 +61639,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAttachedTransportEquipment();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAttachedTransportEquipmentOnceItem = $model->addOnceToAttachedTransportEquipmentWithCreate();
 
@@ -61216,6 +61738,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getShipmentDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForShipmentDocumentReferenceOnceItem = $model->addOnceToShipmentDocumentReferenceWithCreate();
 
@@ -61266,6 +61789,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getContainedInTransportEquipment();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForContainedInTransportEquipmentOnceItem = $model->addOnceToContainedInTransportEquipmentWithCreate();
 
@@ -61316,6 +61840,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPackage();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPackageOnceItem = $model->addOnceToPackageWithCreate();
 
@@ -61366,6 +61891,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getGoodsItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForGoodsItemOnceItem = $model->addOnceToGoodsItemWithCreate();
 
@@ -61491,6 +62017,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -61568,6 +62095,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getCurrentStatus();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForCurrentStatusOnceItem = $model->addOnceToCurrentStatusWithCreate();
 
@@ -61618,6 +62146,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getContact();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForContactOnceItem = $model->addOnceToContactWithCreate();
 
@@ -61700,6 +62229,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPeriod();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPeriodOnceItem = $model->addOnceToPeriodWithCreate();
 
@@ -61793,6 +62323,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTransportUserSpecialTerms();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTransportUserSpecialTermsOnceItem = $model->addOnceToTransportUserSpecialTermsWithCreate();
 
@@ -61843,6 +62374,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTransportServiceProviderSpecialTerms();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTransportServiceProviderSpecialTermsOnceItem = $model->addOnceToTransportServiceProviderSpecialTermsWithCreate();
 
@@ -61893,6 +62425,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getChangeConditions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForChangeConditionsOnceItem = $model->addOnceToChangeConditionsWithCreate();
 
@@ -61943,6 +62476,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPaymentTerms();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPaymentTermsOnceItem = $model->addOnceToPaymentTermsWithCreate();
 
@@ -61993,6 +62527,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDeliveryTerms();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDeliveryTermsOnceItem = $model->addOnceToDeliveryTermsWithCreate();
 
@@ -62091,6 +62626,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getEnvironmentalEmission();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForEnvironmentalEmissionOnceItem = $model->addOnceToEnvironmentalEmissionWithCreate();
 
@@ -62141,6 +62677,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNotificationRequirement();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNotificationRequirementOnceItem = $model->addOnceToNotificationRequirementWithCreate();
 
@@ -62276,6 +62813,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getHandlingInstructions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForHandlingInstructionsOnceItem = $model->addOnceToHandlingInstructionsWithCreate();
 
@@ -62369,6 +62907,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDamageRemarks();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDamageRemarksOnceItem = $model->addOnceToDamageRemarksWithCreate();
 
@@ -62419,6 +62958,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getShippingMarks();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForShippingMarksOnceItem = $model->addOnceToShippingMarksWithCreate();
 
@@ -62485,6 +63025,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getHandlingUnitDespatchLine();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForHandlingUnitDespatchLineOnceItem = $model->addOnceToHandlingUnitDespatchLineWithCreate();
 
@@ -62535,6 +63076,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getActualPackage();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForActualPackageOnceItem = $model->addOnceToActualPackageWithCreate();
 
@@ -62585,6 +63127,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getReceivedHandlingUnitReceiptLine();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForReceivedHandlingUnitReceiptLineOnceItem = $model->addOnceToReceivedHandlingUnitReceiptLineWithCreate();
 
@@ -62635,6 +63178,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTransportEquipment();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTransportEquipmentOnceItem = $model->addOnceToTransportEquipmentWithCreate();
 
@@ -62685,6 +63229,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTransportMeans();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTransportMeansOnceItem = $model->addOnceToTransportMeansWithCreate();
 
@@ -62735,6 +63280,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getHazardousGoodsTransit();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForHazardousGoodsTransitOnceItem = $model->addOnceToHazardousGoodsTransitWithCreate();
 
@@ -62785,6 +63331,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getMeasurementDimension();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForMeasurementDimensionOnceItem = $model->addOnceToMeasurementDimensionWithCreate();
 
@@ -62867,6 +63414,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getGoodsItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForGoodsItemOnceItem = $model->addOnceToGoodsItemWithCreate();
 
@@ -62949,6 +63497,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getShipmentDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForShipmentDocumentReferenceOnceItem = $model->addOnceToShipmentDocumentReferenceWithCreate();
 
@@ -62999,6 +63548,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getStatus();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForStatusOnceItem = $model->addOnceToStatusWithCreate();
 
@@ -63049,6 +63599,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getCustomsDeclaration();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForCustomsDeclarationOnceItem = $model->addOnceToCustomsDeclarationWithCreate();
 
@@ -63099,6 +63650,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getReferencedShipment();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForReferencedShipmentOnceItem = $model->addOnceToReferencedShipmentWithCreate();
 
@@ -63149,6 +63701,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPackage();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPackageOnceItem = $model->addOnceToPackageWithCreate();
 
@@ -63252,6 +63805,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRegistrationNationality();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRegistrationNationalityOnceItem = $model->addOnceToRegistrationNationalityWithCreate();
 
@@ -63446,6 +64000,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getMeasurementDimension();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForMeasurementDimensionOnceItem = $model->addOnceToMeasurementDimensionWithCreate();
 
@@ -63582,6 +64137,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getRemarks();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForRemarksOnceItem = $model->addOnceToRemarksWithCreate();
 
@@ -64069,6 +64625,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDescription();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDescriptionOnceItem = $model->addOnceToDescriptionWithCreate();
 
@@ -64553,6 +65110,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getWorkPhase();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForWorkPhaseOnceItem = $model->addOnceToWorkPhaseWithCreate();
 
@@ -64641,6 +65199,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getWorkOrderDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForWorkOrderDocumentReferenceOnceItem = $model->addOnceToWorkOrderDocumentReferenceWithCreate();
 
@@ -87599,6 +88158,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getUBLExtension();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForUBLExtensionOnceItem = $model->addOnceToUBLExtensionWithCreate();
 
@@ -87840,6 +88400,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getUBLExtensions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForUBLExtensionsOnceItem = $model->addOnceToUBLExtensionsWithCreate();
 
@@ -88046,6 +88607,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -88240,6 +88802,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getInvoicePeriod();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForInvoicePeriodOnceItem = $model->addOnceToInvoicePeriodWithCreate();
 
@@ -88290,6 +88853,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDiscrepancyResponse();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDiscrepancyResponseOnceItem = $model->addOnceToDiscrepancyResponseWithCreate();
 
@@ -88356,6 +88920,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getBillingReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForBillingReferenceOnceItem = $model->addOnceToBillingReferenceWithCreate();
 
@@ -88406,6 +88971,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDespatchDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDespatchDocumentReferenceOnceItem = $model->addOnceToDespatchDocumentReferenceWithCreate();
 
@@ -88456,6 +89022,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getReceiptDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForReceiptDocumentReferenceOnceItem = $model->addOnceToReceiptDocumentReferenceWithCreate();
 
@@ -88506,6 +89073,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getContractDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForContractDocumentReferenceOnceItem = $model->addOnceToContractDocumentReferenceWithCreate();
 
@@ -88556,6 +89124,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAdditionalDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAdditionalDocumentReferenceOnceItem = $model->addOnceToAdditionalDocumentReferenceWithCreate();
 
@@ -88606,6 +89175,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getStatementDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForStatementDocumentReferenceOnceItem = $model->addOnceToStatementDocumentReferenceWithCreate();
 
@@ -88656,6 +89226,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getOriginatorDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForOriginatorDocumentReferenceOnceItem = $model->addOnceToOriginatorDocumentReferenceWithCreate();
 
@@ -88706,6 +89277,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSignature();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSignatureOnceItem = $model->addOnceToSignatureWithCreate();
 
@@ -88852,6 +89424,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDelivery();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDeliveryOnceItem = $model->addOnceToDeliveryWithCreate();
 
@@ -88902,6 +89475,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDeliveryTerms();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDeliveryTermsOnceItem = $model->addOnceToDeliveryTermsWithCreate();
 
@@ -88952,6 +89526,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPaymentMeans();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPaymentMeansOnceItem = $model->addOnceToPaymentMeansWithCreate();
 
@@ -89002,6 +89577,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPaymentTerms();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPaymentTermsOnceItem = $model->addOnceToPaymentTermsWithCreate();
 
@@ -89116,6 +89692,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAllowanceChargeOnceItem = $model->addOnceToAllowanceChargeWithCreate();
 
@@ -89166,6 +89743,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTaxTotal();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTaxTotalOnceItem = $model->addOnceToTaxTotalWithCreate();
 
@@ -89232,6 +89810,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getCreditNoteLine();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForCreditNoteLineOnceItem = $model->addOnceToCreditNoteLineWithCreate();
 
@@ -89303,6 +89882,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getUBLExtensions();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForUBLExtensionsOnceItem = $model->addOnceToUBLExtensionsWithCreate();
 
@@ -89509,6 +90089,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForNoteOnceItem = $model->addOnceToNoteWithCreate();
 
@@ -89714,6 +90295,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getInvoicePeriod();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForInvoicePeriodOnceItem = $model->addOnceToInvoicePeriodWithCreate();
 
@@ -89780,6 +90362,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getBillingReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForBillingReferenceOnceItem = $model->addOnceToBillingReferenceWithCreate();
 
@@ -89830,6 +90413,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDespatchDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDespatchDocumentReferenceOnceItem = $model->addOnceToDespatchDocumentReferenceWithCreate();
 
@@ -89880,6 +90464,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getReceiptDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForReceiptDocumentReferenceOnceItem = $model->addOnceToReceiptDocumentReferenceWithCreate();
 
@@ -89930,6 +90515,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getStatementDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForStatementDocumentReferenceOnceItem = $model->addOnceToStatementDocumentReferenceWithCreate();
 
@@ -89980,6 +90566,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getOriginatorDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForOriginatorDocumentReferenceOnceItem = $model->addOnceToOriginatorDocumentReferenceWithCreate();
 
@@ -90030,6 +90617,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getContractDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForContractDocumentReferenceOnceItem = $model->addOnceToContractDocumentReferenceWithCreate();
 
@@ -90080,6 +90668,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAdditionalDocumentReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAdditionalDocumentReferenceOnceItem = $model->addOnceToAdditionalDocumentReferenceWithCreate();
 
@@ -90130,6 +90719,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getProjectReference();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForProjectReferenceOnceItem = $model->addOnceToProjectReferenceWithCreate();
 
@@ -90180,6 +90770,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getSignature();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSignatureOnceItem = $model->addOnceToSignatureWithCreate();
 
@@ -90326,6 +90917,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getDelivery();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDeliveryOnceItem = $model->addOnceToDeliveryWithCreate();
 
@@ -90392,6 +90984,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPaymentMeans();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPaymentMeansOnceItem = $model->addOnceToPaymentMeansWithCreate();
 
@@ -90442,6 +91035,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPaymentTerms();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPaymentTermsOnceItem = $model->addOnceToPaymentTermsWithCreate();
 
@@ -90492,6 +91086,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getPrepaidPayment();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForPrepaidPaymentOnceItem = $model->addOnceToPrepaidPaymentWithCreate();
 
@@ -90542,6 +91137,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAllowanceChargeOnceItem = $model->addOnceToAllowanceChargeWithCreate();
 
@@ -90656,6 +91252,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getTaxTotal();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTaxTotalOnceItem = $model->addOnceToTaxTotalWithCreate();
 
@@ -90708,6 +91305,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getWithholdingTaxTotal();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForWithholdingTaxTotalOnceItem = $model->addOnceToWithholdingTaxTotalWithCreate();
 
@@ -90774,6 +91372,7 @@ final class UblModelTest extends TestCase
         $itemsAfterOnce = $model->getInvoiceLine();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForInvoiceLineOnceItem = $model->addOnceToInvoiceLineWithCreate();
 

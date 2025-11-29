@@ -622,6 +622,7 @@ final class ZffxComfortModelTest extends TestCase
         $itemsAfterOnce = $model->getIncludedNote();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForIncludedNoteOnceItem = $model->addOnceToIncludedNoteWithCreate();
 
@@ -786,6 +787,7 @@ final class ZffxComfortModelTest extends TestCase
         $itemsAfterOnce = $model->getAdditionalReferencedDocument();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForAdditionalReferencedDocumentOnceItem = $model->addOnceToAdditionalReferencedDocumentWithCreate();
 
@@ -1008,6 +1010,7 @@ final class ZffxComfortModelTest extends TestCase
         $itemsAfterOnce = $model->getSpecifiedTradeSettlementPaymentMeans();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSpecifiedTradeSettlementPaymentMeansOnceItem = $model->addOnceToSpecifiedTradeSettlementPaymentMeansWithCreate();
 
@@ -1050,6 +1053,7 @@ final class ZffxComfortModelTest extends TestCase
         $itemsAfterOnce = $model->getApplicableTradeTax();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForApplicableTradeTaxOnceItem = $model->addOnceToApplicableTradeTaxWithCreate();
 
@@ -1108,6 +1112,7 @@ final class ZffxComfortModelTest extends TestCase
         $itemsAfterOnce = $model->getSpecifiedTradeAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSpecifiedTradeAllowanceChargeOnceItem = $model->addOnceToSpecifiedTradeAllowanceChargeWithCreate();
 
@@ -1182,6 +1187,7 @@ final class ZffxComfortModelTest extends TestCase
         $itemsAfterOnce = $model->getInvoiceReferencedDocument();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForInvoiceReferencedDocumentOnceItem = $model->addOnceToInvoiceReferencedDocumentWithCreate();
 
@@ -1408,6 +1414,7 @@ final class ZffxComfortModelTest extends TestCase
         $itemsAfterOnce = $model->getSpecifiedTradeAllowanceCharge();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSpecifiedTradeAllowanceChargeOnceItem = $model->addOnceToSpecifiedTradeAllowanceChargeWithCreate();
 
@@ -1956,6 +1963,7 @@ final class ZffxComfortModelTest extends TestCase
         $itemsAfterOnce = $model->getIncludedSupplyChainTradeLineItem();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForIncludedSupplyChainTradeLineItemOnceItem = $model->addOnceToIncludedSupplyChainTradeLineItemWithCreate();
 
@@ -2470,6 +2478,7 @@ final class ZffxComfortModelTest extends TestCase
         $itemsAfterOnce = $model->getID();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForIDOnceItem = $model->addOnceToIDWithCreate();
 
@@ -2512,6 +2521,7 @@ final class ZffxComfortModelTest extends TestCase
         $itemsAfterOnce = $model->getGlobalID();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForGlobalIDOnceItem = $model->addOnceToGlobalIDWithCreate();
 
@@ -2650,6 +2660,7 @@ final class ZffxComfortModelTest extends TestCase
         $itemsAfterOnce = $model->getSpecifiedTaxRegistration();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForSpecifiedTaxRegistrationOnceItem = $model->addOnceToSpecifiedTaxRegistrationWithCreate();
 
@@ -2898,6 +2909,7 @@ final class ZffxComfortModelTest extends TestCase
         $itemsAfterOnce = $model->getApplicableProductCharacteristic();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForApplicableProductCharacteristicOnceItem = $model->addOnceToApplicableProductCharacteristicWithCreate();
 
@@ -2940,6 +2952,7 @@ final class ZffxComfortModelTest extends TestCase
         $itemsAfterOnce = $model->getDesignatedProductClassification();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForDesignatedProductClassificationOnceItem = $model->addOnceToDesignatedProductClassificationWithCreate();
 
@@ -3114,6 +3127,7 @@ final class ZffxComfortModelTest extends TestCase
         $itemsAfterOnce = $model->getTaxTotalAmount();
 
         $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
 
         $testValueForTaxTotalAmountOnceItem = $model->addOnceToTaxTotalAmountWithCreate();
 
