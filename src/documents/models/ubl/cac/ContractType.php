@@ -382,7 +382,7 @@ class ContractType
      */
     public function getContractTypeWithCreate(): ContractType1
     {
-        $this->contractType = is_null($this->contractType) ? new self() : $this->contractType;
+        $this->contractType = is_null($this->contractType) ? new ContractType1() : $this->contractType;
 
         return $this->contractType;
     }

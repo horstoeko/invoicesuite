@@ -381,7 +381,7 @@ class PriceType
      */
     public function getPriceTypeWithCreate(): PriceType1
     {
-        $this->priceType = is_null($this->priceType) ? new self() : $this->priceType;
+        $this->priceType = is_null($this->priceType) ? new PriceType1() : $this->priceType;
 
         return $this->priceType;
     }

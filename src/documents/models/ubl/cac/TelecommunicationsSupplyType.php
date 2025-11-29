@@ -97,7 +97,7 @@ class TelecommunicationsSupplyType
      */
     public function getTelecommunicationsSupplyTypeWithCreate(): TelecommunicationsSupplyType1
     {
-        $this->telecommunicationsSupplyType = is_null($this->telecommunicationsSupplyType) ? new self() : $this->telecommunicationsSupplyType;
+        $this->telecommunicationsSupplyType = is_null($this->telecommunicationsSupplyType) ? new TelecommunicationsSupplyType1() : $this->telecommunicationsSupplyType;
 
         return $this->telecommunicationsSupplyType;
     }

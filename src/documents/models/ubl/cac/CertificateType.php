@@ -186,7 +186,7 @@ class CertificateType
      */
     public function getCertificateTypeWithCreate(): CertificateType1
     {
-        $this->certificateType = is_null($this->certificateType) ? new self() : $this->certificateType;
+        $this->certificateType = is_null($this->certificateType) ? new CertificateType1() : $this->certificateType;
 
         return $this->certificateType;
     }

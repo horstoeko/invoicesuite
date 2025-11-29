@@ -219,7 +219,7 @@ class MeterReadingType
      */
     public function getMeterReadingTypeWithCreate(): MeterReadingType1
     {
-        $this->meterReadingType = is_null($this->meterReadingType) ? new self() : $this->meterReadingType;
+        $this->meterReadingType = is_null($this->meterReadingType) ? new MeterReadingType1() : $this->meterReadingType;
 
         return $this->meterReadingType;
     }
