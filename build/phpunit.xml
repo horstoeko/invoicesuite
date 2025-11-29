@@ -62,6 +62,14 @@
             <file>../tests/testcases/documentdto/InvoiceSuiteSummationDTOTest.php</file>
             <file>../tests/testcases/documentdto/InvoiceSuitesummationLineDTOTest.php</file>
         </testsuite>
+        <testsuite name="models">
+            <file>../tests/testcases/documentmodels/UblModelTest.php</file>
+            <file>../tests/testcases/documentmodels/ZffxExtendedModelTest.php</file>
+            <file>../tests/testcases/documentmodels/ZffxComfortModelTest.php</file>
+            <file>../tests/testcases/documentmodels/ZffxBasicModelTest.php</file>
+            <file>../tests/testcases/documentmodels/ZffxBasicWlModelTest.php</file>
+            <file>../tests/testcases/documentmodels/ZffxMinimumModelTest.php</file>
+        </testsuite>
         <testsuite name="providers">
             <file>../tests/testcases/documentproviders/ZfFxExtendedProviderTest.php</file>
             <file>../tests/testcases/documentproviders/ZfFxExtendedProviderBuilderTest.php</file>
