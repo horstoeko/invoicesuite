@@ -1468,6 +1468,15 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     ): static {
         $this
             ->getCrossIndustryRootObject()
+            ->getExchangedDocument()
+            ?->unsetCopyIndicator();
+
+        if (is_null($newDocumentIsCopy)) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
             ->getExchangedDocumentWithCreate()
             ->getCopyIndicatorWithCreate()
             ->setIndicator($newDocumentIsCopy);
@@ -1484,6 +1493,15 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     public function setDocumentIsTest(
         ?bool $newDocumentIsTest = null
     ): static {
+        $this
+            ->getCrossIndustryRootObject()
+            ->getExchangedDocumentContext()
+            ?->unsetTestIndicator();
+
+        if (is_null($newDocumentIsTest)) {
+            return $this;
+        }
+
         $this
             ->getCrossIndustryRootObject()
             ->getExchangedDocumentContextWithCreate()
