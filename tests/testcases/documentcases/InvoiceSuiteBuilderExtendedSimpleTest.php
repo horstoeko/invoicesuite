@@ -389,7 +389,7 @@ final class InvoiceSuiteBuilderExtendedSimpleTest extends TestCase
         $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:ContentCode', 0, 'ST3');
         $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:SubjectCode', 0, 'AAK');
 
-        $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:Content', 1, "Der Verkäufer bleibt Eigentümer der Waren bis zu vollständigen Erfüllung der Kaufpreisforderung.");
+        $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:Content', 1, 'Der Verkäufer bleibt Eigentümer der Waren bis zu vollständigen Erfüllung der Kaufpreisforderung.');
         $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:ContentCode', 1, 'EEV');
         $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:SubjectCode', 1, 'AAJ');
 
@@ -397,11 +397,11 @@ final class InvoiceSuiteBuilderExtendedSimpleTest extends TestCase
         $this->assertXPathNotExistsWithIndex('//rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:ContentCode', 2);
         $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:SubjectCode', 2, 'REG');
 
-        $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:Content', 3, "Leergutwert: 46,50");
+        $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:Content', 3, 'Leergutwert: 46,50');
         $this->assertXPathNotExistsWithIndex('//rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:ContentCode', 3);
         $this->assertXPathNotExistsWithIndex('//rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:SubjectCode', 3);
 
-        $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:Content', 4, "Wichtige Information: Bei Bestellungen bis zum 19.12. ist die Auslieferung bis spätestens 23.12. garantiert.");
+        $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:Content', 4, 'Wichtige Information: Bei Bestellungen bis zum 19.12. ist die Auslieferung bis spätestens 23.12. garantiert.');
         $this->assertXPathNotExistsWithIndex('//rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:ContentCode', 4);
         $this->assertXPathNotExistsWithIndex('//rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:SubjectCode', 4);
 
