@@ -92,11 +92,6 @@
             <file>../tests/testcases/documentproviders/UblInvoiceProviderTest.php</file>
             <file>../tests/testcases/documentproviders/UblInvoiceProviderBuilderTest.php</file>
         </testsuite>
-        <testsuite name="pdf">
-            <file>../tests/testcases/pdf/InvoiceSuitePdfExtractorTest.php</file>
-            <file>../tests/testcases/pdf/InvoiceSuitePdfDocumentReaderTest.php</file>
-            <file>../tests/testcases/pdf/InvoiceSuitePdfDocumentBuilderTest.php</file>
-        </testsuite>
         <testsuite name="documentreadbuild">
             <!-- Builder -->
             <file>../tests/testcases/documentreadbuild/ZfFxExtendedDocumentBuilderTest.php</file>
@@ -119,6 +114,12 @@
             <file>../tests/testcases/documentcases/InvoiceSuiteBuilderComfortSimpleDTOTest.php</file>
             <file>../tests/testcases/documentcases/InvoiceSuiteBuilderExtendedSimpleTest.php</file>
             <file>../tests/testcases/documentcases/InvoiceSuiteBuilderExtendedSimpleDTOTest.php</file>
+        </testsuite>
+        <testsuite name="pdf">
+            <file>../tests/testcases/pdf/InvoiceSuitePdfExtractorTest.php</file>
+            <file>../tests/testcases/pdf/InvoiceSuitePdfDocumentReaderTest.php</file>
+            <file>../tests/testcases/pdf/InvoiceSuitePdfDocumentBuilderTest.php</file>
+            <file>../tests/testcases/pdf/InvoiceSuitePdfMergerTest.php</file>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
