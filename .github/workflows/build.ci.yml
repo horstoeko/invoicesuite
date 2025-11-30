@@ -87,12 +87,7 @@ jobs:
 
       - name: Run Lint
         run: |
-          for afile in $(find . -type f -name '*.php' -path './src*/*' -print); do
-             php -l $afile
-          done
-          for afile in $(find . -type f -name '*.php' -path './tests*/*' -print); do
-             php -l $afile
-          done
+          vendor/bin/parallel-lint src tests
 
       - name: Run PHP-CS-Fixer (dry-run)
         run: |

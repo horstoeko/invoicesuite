@@ -100,21 +100,7 @@ jobs:
       - name: Run Lint
         shell: pwsh
         run: |
-          Write-Host "Lint src/"
-          if (Test-Path "src") {
-            Get-ChildItem -Path "src" -Recurse -Include *.php |
-              ForEach-Object {
-                php -l $_.FullName
-              }
-          }
-
-          Write-Host "Lint tests/"
-          if (Test-Path "tests") {
-            Get-ChildItem -Path "tests" -Recurse -Include *.php |
-              ForEach-Object {
-                php -l $_.FullName
-              }
-          }
+          php vendor/bin/parallel-lint src tests
 
       - name: Run PHP-CS-Fixer (dry-run)
         shell: pwsh
