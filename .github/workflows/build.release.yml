@@ -147,7 +147,6 @@ jobs:
           rm -f $VERAPDFPATH/$VERAPDFZIPFILENAME
 
       - name: Run Tests (VeraPDF)
-        continue-on-error: true
         run: |
           set -e
           echo "Creating veraPDF install config"

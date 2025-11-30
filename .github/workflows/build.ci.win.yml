@@ -201,7 +201,6 @@ jobs:
           Remove-Item $zipFile -Force
 
       - name: Run Tests (VeraPDF)
-        continue-on-error: true
         shell: pwsh
         run: |
           Set-StrictMode -Version Latest
