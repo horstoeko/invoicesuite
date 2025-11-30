@@ -42,6 +42,9 @@ jobs:
     steps:
       - name: Checkout Sources
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          fetch-tags: true
 
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
@@ -190,10 +193,9 @@ jobs:
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
-        if: github.event_name != 'pull_request'
         with:
           files: "build/logs/junit.xml"
-          comment_mode: ${{ ((github.event.workflow_run && github.event.workflow_run.event == 'pull_request') || github.event_name == 'pull_request') && 'failures' || 'always' }}
+          comment_mode: ${{ github.event_name == 'pull_request' && 'failures' || 'always' }}
 
       - name: Publish Build Logs
         uses: actions/upload-artifact@v5
