@@ -35,6 +35,7 @@ final class InvoiceSuiteBuilderExtendedSimpleTest extends TestCase
         static::$document->addDocumentNote('Leergutwert: 46,50');
         static::$document->addDocumentNote('Wichtige Information: Bei Bestellungen bis zum 19.12. ist die Auslieferung bis spätestens 23.12. garantiert.');
         static::$document->setDocumentCurrency(InvoiceSuiteCodelistCurrencyCodes::EURO->value);
+        static::$document->setDocumentBuyerReference('SomeRef');
         static::$document->setDocumentIsTest(true);
 
         static::$document->addDocumentPosition('1');
@@ -561,6 +562,8 @@ final class InvoiceSuiteBuilderExtendedSimpleTest extends TestCase
         $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeSettlementLineMonetarySummation/ram:LineTotalAmount', 5, '58.20');
 
         // Header
+
+        $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerReference', 0, 'SomeRef');
 
         $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:ID', 0, '549910');
         $this->assertXPathNotExistsWithIndex('//rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:ID', 1);

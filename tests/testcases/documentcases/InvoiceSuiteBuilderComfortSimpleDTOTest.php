@@ -44,6 +44,8 @@ final class InvoiceSuiteBuilderComfortSimpleDTOTest extends TestCase
             ->addNote(new InvoiceSuiteNoteDTO('Rechnung gemäß Bestellung vom 01.11.2024.'))
             ->addNote(new InvoiceSuiteNoteDTO("Lieferant GmbH\nLieferantenstraße 20\n80333 München\nDeutschland\nGeschäftsführer: Hans Muster\nHandelsregisternummer: H A 123\n", subjectCode: 'REG'))
             ->setCurrency(InvoiceSuiteCodelistCurrencyCodes::EURO->value)
+            ->addBuyerReference((new InvoiceSuiteIdDTO())
+                ->setId('SomeRef'))
             ->setSellerParty((new InvoiceSuitePartyDTO())
                 ->addId((new InvoiceSuiteIdDTO())
                     ->setId('549910'))
@@ -210,6 +212,8 @@ final class InvoiceSuiteBuilderComfortSimpleDTOTest extends TestCase
         $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeSettlementLineMonetarySummation/ram:LineTotalAmount', 1, '275.00');
 
         // Header
+
+        $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerReference', 0, 'SomeRef');
 
         $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:ID', 0, '549910');
         $this->assertXPathNotExistsWithIndex('//rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:ID', 1);

@@ -58,6 +58,8 @@ final class InvoiceSuiteBuilderExtendedSimpleDTOTest extends TestCase
             ->addNote(new InvoiceSuiteNoteDTO('Leergutwert: 46,50'))
             ->addNote(new InvoiceSuiteNoteDTO('Wichtige Information: Bei Bestellungen bis zum 19.12. ist die Auslieferung bis spätestens 23.12. garantiert.'))
             ->setCurrency(InvoiceSuiteCodelistCurrencyCodes::EURO->value)
+            ->addBuyerReference((new InvoiceSuiteIdDTO())
+                ->setId('SomeRef'))
             ->setIsTest(true)
             ->setSellerParty((new InvoiceSuitePartyDTO())
                 ->addId((new InvoiceSuiteIdDTO())
@@ -606,6 +608,8 @@ final class InvoiceSuiteBuilderExtendedSimpleDTOTest extends TestCase
         $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeSettlementLineMonetarySummation/ram:LineTotalAmount', 5, '58.20');
 
         // Header
+
+        $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerReference', 0, 'SomeRef');
 
         $this->assertXPathValueWithIndex('//rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:ID', 0, '549910');
         $this->assertXPathNotExistsWithIndex('//rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:ID', 1);
