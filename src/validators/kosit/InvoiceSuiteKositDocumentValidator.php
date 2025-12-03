@@ -461,7 +461,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
     private function checkRequirementsGeneral(): bool
     {
         if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->getRawDocumentContent())) {
-            $this->addErrorMessageToMessageBag('You must specify an instance of the ZugferdDocument class');
+            $this->addErrorMessageToMessageBag('You must specify the content to validate');
 
             return false;
         }
