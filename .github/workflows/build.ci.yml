@@ -148,6 +148,7 @@ jobs:
           key: ${{ runner.os }}-${{ matrix.phpversion }}-verapdf-${{ steps.hash-verapdf.outputs.hash }}
 
       - name: Download Application (VeraPDF)
+        if: steps.cache-verapdf.outputs.cache-hit != 'true'
         run: |
           rm -rf $VERAPDFPATH
           mkdir -p $VERAPDFPATH
