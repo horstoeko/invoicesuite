@@ -11,17 +11,17 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\validators\kosit;
 
-use DOMXPath;
-use Throwable;
-use ZipArchive;
 use DOMDocument;
-use Symfony\Component\Process\Process;
-use Symfony\Component\Process\ExecutableFinder;
+use DOMXPath;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteMessageSeverity;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
-use horstoeko\invoicesuite\utils\InvoiceSuiteMessageSeverity;
 use horstoeko\invoicesuite\validators\abstracts\InvoiceSuiteAbstractDocumentValidator;
+use Symfony\Component\Process\ExecutableFinder;
+use Symfony\Component\Process\Process;
+use Throwable;
+use ZipArchive;
 
 /**
  * Class representing the implementation for a KosIT Validator
