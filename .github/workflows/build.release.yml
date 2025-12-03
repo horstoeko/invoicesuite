@@ -125,20 +125,7 @@ jobs:
           java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME tests/assets/00_case_comfort_simple.xml
           java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME tests/assets/00_case_comfort_simple_dto.xml
 
-      - name: Cache Key (VeraPDF)
-        id: hash-verapdf
-        run: |
-          echo "hash=$(echo '${{ env.VERAPDFURL }}' | sha256sum | cut -c1-16)" >> $GITHUB_OUTPUT
-
-      - name: Cache Application (VeraPDF)
-        id: cache-verapdf
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.VERAPDFPATH }}
-          key: ${{ runner.os }}-8.4-verapdf-${{ steps.hash-verapdf.outputs.hash }}
-
       - name: Download Application (VeraPDF)
-        if: steps.cache-verapdf.outputs.cache-hit != 'true'
         run: |
           rm -rf $VERAPDFPATH
           mkdir -p $VERAPDFPATH

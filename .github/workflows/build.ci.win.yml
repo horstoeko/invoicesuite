@@ -168,27 +168,7 @@ jobs:
           java -jar $jar -r $env:VALIDATORPATH -s $scenario tests/assets/00_case_comfort_simple.xml
           java -jar $jar -r $env:VALIDATORPATH -s $scenario tests/assets/00_case_comfort_simple_dto.xml
 
-      - name: Cache Key (VeraPDF)
-        id: hash-verapdf
-        shell: pwsh
-        run: |
-          $text = "$($env:VERAPDFURL)"
-          $bytes = [System.Text.Encoding]::UTF8.GetBytes($text)
-          $sha = [System.Security.Cryptography.SHA256]::Create()
-          $hashBytes = $sha.ComputeHash($bytes)
-          $hashHex = -join ($hashBytes | ForEach-Object { $_.ToString("x2") })
-          $hash = $hashHex.Substring(0,16)
-          "hash=$hash" >> $env:GITHUB_OUTPUT
-
-      - name: Cache Application (VeraPDF)
-        id: cache-verapdf
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.VERAPDFPATH }}
-          key: ${{ runner.os }}-${{ matrix.phpversion }}-verapdf-${{ steps.hash-verapdf.outputs.hash }}
-
       - name: Download Application (VeraPDF)
-        if: steps.cache-verapdf.outputs.cache-hit != 'true'
         shell: pwsh
         run: |
           if (Test-Path $env:VERAPDFPATH) {
