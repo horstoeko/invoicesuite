@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\concerns;
 
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+
 /**
  * Trait representing PDF builder content handling
  *
@@ -59,6 +61,16 @@ trait HandlesRawContents
     }
 
     /**
+     * Returns true if a non-empty document content is given
+     *
+     * @return bool
+     */
+    protected function hasRawDocumentContent(): bool
+    {
+        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->rawDocumentContent);
+    }
+
+    /**
      * Set the PDF content
      *
      * @param  string $fromPdfContent
@@ -79,5 +91,15 @@ trait HandlesRawContents
     protected function getRawPdfContent(): string
     {
         return $this->rawPdfContent;
+    }
+
+    /**
+     * Returns true if a non-empty PDF content is given
+     *
+     * @return bool
+     */
+    protected function hasRawPdfContent(): bool
+    {
+        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->rawPdfContent);
     }
 }
