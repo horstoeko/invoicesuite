@@ -15,6 +15,7 @@ use horstoeko\invoicesuite\concerns\HandlesMessageBag;
 use horstoeko\invoicesuite\concerns\HandlesRawContents;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 
 /**
@@ -97,11 +98,26 @@ abstract class InvoiceSuiteAbstractDocumentValidator
     }
 
     /**
-     * The validation entry point
+     * Main validation method. Checks for non-empty content
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @return static
+     */
+    public function validate(): static
+    {
+        if (!$this->hasRawDocumentContent()) {
+            throw new InvoiceSuiteInvalidArgumentException('You did not present any content to validate');
+        }
+
+        return $this->doValidate();
+    }
+
+    /**
+     * The validator-specifc validation entry point
      *
      * @return static
      */
-    abstract public function validate(): static;
+    abstract protected function doValidate(): static;
 
     /**
      * Some initialization after constructing an instance

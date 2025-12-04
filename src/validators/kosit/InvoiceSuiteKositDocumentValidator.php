@@ -314,7 +314,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      *
      * @return static
      */
-    public function validate(): static
+    protected function doValidate(): static
     {
         $this->clearMessageBag();
 
