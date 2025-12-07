@@ -3464,8 +3464,6 @@ class ZugferdDocumentBuilder implements Stringable
     public function setDocumentPositionProductOriginTradeCountry(
         string $country
     ): static {
-        // TODO: Make that available
-
         return $this;
     }
 
