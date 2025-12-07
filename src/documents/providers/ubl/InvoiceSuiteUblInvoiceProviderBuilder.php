@@ -477,6 +477,12 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
             fn (InvoiceSuiteIdDTO $item) => $this->setDocumentPaymentCreditorReferenceID($item->getId())
         );
 
+        // Document-Level Payment Reference
+
+        $newDocumentDTO->firstPaymentReference(
+            fn (InvoiceSuiteIdDTO $item) => $this->setDocumentPaymentReference($item->getId())
+        );
+
         // Document-Level Taxes
 
         $newDocumentDTO->forEachTax(

@@ -290,6 +290,13 @@ class InvoiceSuiteDocumentHeaderDTO
     protected array $creditorReferences = [];
 
     /**
+     * The payment reference
+     *
+     * @var array<InvoiceSuiteIdDTO>
+     */
+    protected array $paymentReferences = [];
+
+    /**
      * The ID for internal routing (Leitweg ID)
      *
      * @var array<InvoiceSuiteIdDTO>
@@ -372,6 +379,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuitePaymentMeanDTO>          $paymentMeans                    The payment means
      * @param array<InvoiceSuitePaymentTermDTO>          $paymentTerms                    The payment terms
      * @param array<InvoiceSuiteIdDTO>                   $creditorReferences              The creditor identifier
+     * @param array<InvoiceSuiteIdDTO>                   $paymentReferences               The payment reference
      * @param array<InvoiceSuiteIdDTO>                   $buyerReferences                 The ID for internal routing (Leitweg ID)
      * @param array<InvoiceSuiteTaxDTO>                  $taxes                           The VAT breakdown
      * @param array<InvoiceSuiteAllowanceChargeDTO>      $allowanceCharges                The allowances/charges
@@ -418,6 +426,7 @@ class InvoiceSuiteDocumentHeaderDTO
         array $paymentMeans = [],
         array $paymentTerms = [],
         array $creditorReferences = [],
+        array $paymentReferences = [],
         array $buyerReferences = [],
         array $taxes = [],
         array $allowanceCharges = [],
@@ -463,6 +472,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $this->setPaymentMeans($paymentMeans);
         $this->setPaymentTerms($paymentTerms);
         $this->setCreditorReferences($creditorReferences);
+        $this->setPaymentReferences($paymentReferences);
         $this->setBuyerReferences($buyerReferences);
         $this->setTaxes($taxes);
         $this->setAllowanceCharges($allowanceCharges);
@@ -3435,6 +3445,146 @@ class InvoiceSuiteDocumentHeaderDTO
             ++$count;
 
             $callback($creditorReference);
+        }
+
+        if ($count === 0 && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Returns the payment reference
+     *
+     * @return array<InvoiceSuiteIdDTO>
+     */
+    public function getPaymentReferences(): array
+    {
+        return $this->paymentReferences;
+    }
+
+    /**
+     * Sets the payment reference
+     *
+     * @param  array<InvoiceSuiteIdDTO> $paymentReferences The payment reference
+     * @return static
+     */
+    public function setPaymentReferences(array $paymentReferences): static
+    {
+        $this->paymentReferences = $paymentReferences;
+
+        return $this;
+    }
+
+    /**
+     * Add single The payment reference
+     *
+     * @param  InvoiceSuiteIdDTO $paymentReference The payment reference
+     * @return static
+     */
+    public function addPaymentReference(InvoiceSuiteIdDTO $paymentReference): static
+    {
+        $this->paymentReferences[] = $paymentReference;
+
+        return $this;
+    }
+
+    /**
+     * Get first The payment reference
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function firstPaymentReference(callable $callback, ?callable $callbackElse = null): static
+    {
+        if (($paymentReference = reset($this->paymentReferences)) !== false) {
+            $callback($paymentReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get next The payment reference
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function nextPaymentReference(callable $callback, ?callable $callbackElse = null): static
+    {
+        if (($paymentReference = next($this->paymentReferences)) !== false) {
+            $callback($paymentReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get previous The payment reference
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function previousPaymentReference(callable $callback, ?callable $callbackElse = null): static
+    {
+        if (($paymentReference = prev($this->paymentReferences)) !== false) {
+            $callback($paymentReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last The payment reference
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function lastPaymentReference(callable $callback, ?callable $callbackElse = null): static
+    {
+        if (($paymentReference = end($this->paymentReferences)) !== false) {
+            $callback($paymentReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The payment reference and execute callback
+     *
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
+     * @return static
+     */
+    public function forEachPaymentReference(
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        $count = 0;
+
+        foreach ($this->paymentReferences as $paymentReference) {
+            if ($limit !== null && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($paymentReference);
         }
 
         if ($count === 0 && !is_null($callbackElse)) {
