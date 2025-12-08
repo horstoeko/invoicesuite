@@ -304,6 +304,13 @@ class InvoiceSuiteDocumentHeaderDTO
     protected array $buyerReferences = [];
 
     /**
+     * The delivery terms
+     *
+     * @var array<InvoiceSuiteIdDTO>
+     */
+    protected array $deliveryTerms = [];
+
+    /**
      * The VAT breakdown
      *
      * @var array<InvoiceSuiteTaxDTO>
@@ -386,6 +393,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuiteServiceChargeDTO>        $serviceCharges                  The allowances/charges
      * @param array<InvoiceSuiteSummationDTO>            $summations                      The summation
      * @param array<InvoiceSuiteDocumentPositionDTO>     $positions                       The Document positions
+     * @param array<InvoiceSuiteIdDTO>                   $deliveryTerms                   The delivery terms
      */
     public function __construct(
         ?string $number = null,
@@ -433,6 +441,7 @@ class InvoiceSuiteDocumentHeaderDTO
         array $serviceCharges = [],
         array $summations = [],
         array $positions = [],
+        array $deliveryTerms = []
     ) {
         $this->setNumber($number);
         $this->setType($type);
@@ -479,6 +488,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $this->setServiceCharges($serviceCharges);
         $this->setSummations($summations);
         $this->setPositions($positions);
+        $this->setDeliveryTerms($deliveryTerms);
     }
 
     /**
@@ -3725,6 +3735,146 @@ class InvoiceSuiteDocumentHeaderDTO
             ++$count;
 
             $callback($buyerReference);
+        }
+
+        if ($count === 0 && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Returns the delivery terms
+     *
+     * @return array<InvoiceSuiteIdDTO>
+     */
+    public function getDeliveryTerms(): array
+    {
+        return $this->deliveryTerms;
+    }
+
+    /**
+     * Sets delivery terms
+     *
+     * @param  array<InvoiceSuiteIdDTO> $deliveryTerms The ID for internal routing (Leitweg ID)
+     * @return static
+     */
+    public function setDeliveryTerms(array $deliveryTerms): static
+    {
+        $this->deliveryTerms = $deliveryTerms;
+
+        return $this;
+    }
+
+    /**
+     * Add single delivery term
+     *
+     * @param  InvoiceSuiteIdDTO $deliveryTerm The ID for internal routing (Leitweg ID)
+     * @return static
+     */
+    public function addDeliveryTerm(InvoiceSuiteIdDTO $deliveryTerm): static
+    {
+        $this->deliveryTerms[] = $deliveryTerm;
+
+        return $this;
+    }
+
+    /**
+     * Get the first delivery term
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function firstDeliveryTerm(callable $callback, ?callable $callbackElse = null): static
+    {
+        if (($deliveryTerm = reset($this->deliveryTerms)) !== false) {
+            $callback($deliveryTerm);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the next delivery term
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function nextDeliveryTerm(callable $callback, ?callable $callbackElse = null): static
+    {
+        if (($deliveryTerm = next($this->deliveryTerms)) !== false) {
+            $callback($deliveryTerm);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the previous delivery term
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function previousDeliveryTerm(callable $callback, ?callable $callbackElse = null): static
+    {
+        if (($deliveryTerm = prev($this->deliveryTerms)) !== false) {
+            $callback($deliveryTerm);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the last delivery term
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function lastDeliveryTerm(callable $callback, ?callable $callbackElse = null): static
+    {
+        if (($deliveryTerm = end($this->deliveryTerms)) !== false) {
+            $callback($deliveryTerm);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over delivery terms
+     *
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
+     * @return static
+     */
+    public function forEachDeliveryTerm(
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        $count = 0;
+
+        foreach ($this->deliveryTerms as $deliveryTerm) {
+            if ($limit !== null && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($deliveryTerm);
         }
 
         if ($count === 0 && !is_null($callbackElse)) {

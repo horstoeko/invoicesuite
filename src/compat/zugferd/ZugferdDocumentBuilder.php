@@ -2252,8 +2252,7 @@ class ZugferdDocumentBuilder implements Stringable
      */
     public function setDocumentDeliveryTerms(?string $code): static
     {
-        // Currently not supported
-        // TODO: Add support for setDocumentDeliveryTerms
+        $this->documentBuilder->setDocumentDeliveryTerms($code);
 
         return $this;
     }

@@ -806,6 +806,20 @@ class InvoiceSuiteDocumentBuilder
     }
 
     /**
+     * Set information on the delivery conditions
+     *
+     * @param  null|string $code The code indicating the type of delivery for these commercial delivery terms. To be selected from the entries in the list UNTDID 4053 + INCOTERMS
+     * @return static
+     */
+    public function setDocumentDeliveryTerms(
+        ?string $newCode = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentDeliveryTerms($newCode);
+
+        return $this;
+    }
+
+    /**
      * Set the name of the seller/supplier party
      *
      * @param  null|string $newName the full formal name under which the party is registered

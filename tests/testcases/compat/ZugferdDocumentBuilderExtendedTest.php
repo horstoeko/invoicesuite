@@ -1286,8 +1286,6 @@ class ZugferdDocumentBuilderExtendedTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:DefinedTradeContact/ram:EmailURIUniversalCommunication/ram:URIID', 2);
     }
 
-    /*
-    // TODO: Add support for setDocumentDeliveryTerms
     public function testSetDocumentDeliveryTerms(): void
     {
         self::$document->setDocumentDeliveryTerms('term');
@@ -1295,7 +1293,6 @@ class ZugferdDocumentBuilderExtendedTest extends TestCase
         $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ApplicableTradeDeliveryTerms/ram:DeliveryTypeCode', 'term');
     }
-    */
 
     public function testSetDocumentSellerOrderReferencedDocument(): void
     {

@@ -370,6 +370,12 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
 
         $newDocumentDTO->addBuyerReference(new InvoiceSuiteIdDTO($newDocumentBuyerReference));
 
+        // Document-Level Delivery Terms
+
+        $this->getDocumentDeliveryTerms($newDocumentDeliveryTerms);
+
+        $newDocumentDTO->addDeliveryTerm(new InvoiceSuiteIdDTO($newDocumentDeliveryTerms));
+
         // Document-Level Seller/Supplier Party
 
         $newDocumentDTO->setSellerParty(new InvoiceSuitePartyDTO());
@@ -3490,6 +3496,22 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         ?string &$newBuyerReference
     ): static {
         $newBuyerReference = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerReference()?->getValue() ?? '';
+
+        return $this;
+    }
+
+    /**
+     * Get information on the delivery conditions
+     *
+     * @param  null|string $newCode __BT-X-145, From EXTENDED__ The code indicating the type of delivery for these commercial delivery terms. To be selected from the entries in the list UNTDID 4053 + INCOTERMS
+     * @return static
+     *
+     * @phpstan-param-out string $newCode
+     */
+    public function getDocumentDeliveryTerms(
+        ?string &$newCode = null
+    ): static {
+        $newCode = '';
 
         return $this;
     }

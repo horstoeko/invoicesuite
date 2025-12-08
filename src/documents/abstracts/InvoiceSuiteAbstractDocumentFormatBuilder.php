@@ -596,6 +596,16 @@ abstract class InvoiceSuiteAbstractDocumentFormatBuilder
         ?string $newBuyerReference = null
     ): static;
 
+    /**
+     * Set information on the delivery conditions
+     *
+     * @param  null|string $code The code indicating the type of delivery for these commercial delivery terms. To be selected from the entries in the list UNTDID 4053 + INCOTERMS
+     * @return static
+     */
+    abstract public function setDocumentDeliveryTerms(
+        ?string $newCode = null
+    ): static;
+
     // endregion
 
     // region Document Seller/Supplier

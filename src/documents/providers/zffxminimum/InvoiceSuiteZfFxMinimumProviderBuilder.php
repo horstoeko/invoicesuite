@@ -256,6 +256,12 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractDocumen
             fn (InvoiceSuiteIdDTO $item) => $this->setDocumentBuyerReference($item->getId())
         );
 
+        // Document-Level Delivery Terms
+
+        $newDocumentDTO->firstDeliveryTerm(
+            fn (InvoiceSuiteIdDTO $item) => $this->setDocumentDeliveryTerms($item->getId())
+        );
+
         // Document-Level Seller/Supplier Party
 
         $newDocumentDTO
@@ -1968,6 +1974,20 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractDocumen
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getBuyerReferenceWithCreate()
             ->setValue($newBuyerReference);
+
+        return $this;
+    }
+
+    /**
+     * Set information on the delivery conditions
+     *
+     * @param  null|string $newCode __BT-X-145, From EXTENDED__ The code indicating the type of delivery for these commercial delivery terms. To be selected from the entries in the list UNTDID 4053 + INCOTERMS
+     * @return static
+     */
+    public function setDocumentDeliveryTerms(
+        ?string $newCode = null
+    ): static {
+        // Nothing here...
 
         return $this;
     }

@@ -69,6 +69,7 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $this->assertSame([], $invoiceSuiteDocumentHeaderDTO->getCreditorReferences());
         $this->assertSame([], $invoiceSuiteDocumentHeaderDTO->getPaymentReferences());
         $this->assertSame([], $invoiceSuiteDocumentHeaderDTO->getBuyerReferences());
+        $this->assertSame([], $invoiceSuiteDocumentHeaderDTO->getDeliveryTerms());
         $this->assertSame([], $invoiceSuiteDocumentHeaderDTO->getTaxes());
         $this->assertSame([], $invoiceSuiteDocumentHeaderDTO->getAllowanceCharges());
         $this->assertSame([], $invoiceSuiteDocumentHeaderDTO->getServiceCharges());
@@ -434,6 +435,15 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $invoiceSuiteDocumentHeaderDTO->setBuyerReferences($buyerReferencesValue);
 
         $this->assertSame($buyerReferencesValue, $invoiceSuiteDocumentHeaderDTO->getBuyerReferences());
+    }
+
+    public function testDeliveryTermsGetterAndSetter(): void
+    {
+        $invoiceSuiteDocumentHeaderDTO = new InvoiceSuiteDocumentHeaderDTO();
+        $deliveryTermsValue = [];
+        $invoiceSuiteDocumentHeaderDTO->setDeliveryTerms($deliveryTermsValue);
+
+        $this->assertSame($deliveryTermsValue, $invoiceSuiteDocumentHeaderDTO->getDeliveryTerms());
     }
 
     public function testTaxesGetterAndSetter(): void
@@ -1657,6 +1667,65 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $invoiceSuiteDocumentHeaderDTO->previousBuyerReference($cb, $cbElse);
         $invoiceSuiteDocumentHeaderDTO->lastBuyerReference($cb, $cbElse);
         $invoiceSuiteDocumentHeaderDTO->forEachBuyerReference($cb, $cbElse);
+
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionDeliveryTermIteratorsWithCallbacks(): void
+    {
+        $invoiceSuiteDocumentHeaderDTO = new InvoiceSuiteDocumentHeaderDTO();
+        $invoiceSuiteDocumentHeaderDTO->addDeliveryTerm(new InvoiceSuiteIdDTO());
+        $invoiceSuiteDocumentHeaderDTO->addDeliveryTerm(new InvoiceSuiteIdDTO());
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
+        };
+
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
+        };
+
+        $invoiceSuiteDocumentHeaderDTO->firstDeliveryTerm($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->nextDeliveryTerm($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->nextDeliveryTerm($cb, $cbElse);
+
+        $invoiceSuiteDocumentHeaderDTO->firstDeliveryTerm($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->nextDeliveryTerm($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->previousDeliveryTerm($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->previousDeliveryTerm($cb, $cbElse);
+
+        $invoiceSuiteDocumentHeaderDTO->lastDeliveryTerm($cb, $cbElse);
+
+        $invoiceSuiteDocumentHeaderDTO->forEachDeliveryTerm($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->forEachDeliveryTerm($cb, $cbElse, 1);
+
+        $this->assertSame(9, $hitCount);
+        $this->assertSame(2, $elseCount);
+
+        $invoiceSuiteDocumentHeaderDTO = new InvoiceSuiteDocumentHeaderDTO();
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
+        };
+
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
+        };
+
+        $invoiceSuiteDocumentHeaderDTO->firstDeliveryTerm($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->nextDeliveryTerm($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->nextDeliveryTerm($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->previousDeliveryTerm($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->previousDeliveryTerm($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->lastDeliveryTerm($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->forEachDeliveryTerm($cb, $cbElse);
 
         $this->assertSame(0, $hitCount);
         $this->assertSame(7, $elseCount);
