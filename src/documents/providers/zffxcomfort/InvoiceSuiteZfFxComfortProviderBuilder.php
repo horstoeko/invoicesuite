@@ -7862,6 +7862,73 @@ class InvoiceSuiteZfFxComfortProviderBuilder extends InvoiceSuiteAbstractDocumen
     }
 
     /**
+     * Set an additional object reference
+     *
+     * @param  null|string $newReferenceNumber   __BT-128, From EN 16931__ Object identification at the level on position-level
+     * @param  null|string $newTypeCode          __BT-128-0, From EN 16931__ Labelling of the object identifier
+     * @param  null|string $newReferenceTypeCode __BT-128-1, From EN 16931__Schema identifier, Type of identifier for an item on which the invoice item is based
+     * @return static
+     */
+    public function setDocumentPositionAdditionalObjectReference(
+        ?string $newReferenceNumber = null,
+        ?string $newTypeCode = null,
+        ?string $newReferenceTypeCode = null
+    ): static {
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getLatestIncludedSupplyChainTradeLineItem()
+            ?->getSpecifiedLineTradeSettlement()
+            ?->unsetAdditionalReferencedDocument();
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newTypeCode])) {
+            return $this;
+        }
+
+        $additionalObjectReference = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
+            ->getSpecifiedLineTradeSettlement()
+            ->getAdditionalReferencedDocumentWithCreate();
+
+        $additionalObjectReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
+        $additionalObjectReference->getTypeCodeWithCreate()->setValue($newTypeCode);
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newReferenceTypeCode)) {
+            $additionalObjectReference->getReferenceTypeCodeWithCreate()->setValue($newReferenceTypeCode);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add an additional object reference
+     *
+     * @param  null|string $newReferenceNumber   __BT-128, From EN 16931__ Object identification at the level on position-level
+     * @param  null|string $newTypeCode          __BT-128-0, From EN 16931__ Labelling of the object identifier
+     * @param  null|string $newReferenceTypeCode __BT-128-1, From EN 16931__Schema identifier, Type of identifier for an item on which the invoice item is based
+     * @return static
+     */
+    public function addDocumentPositionAdditionalObjectReference(
+        ?string $newReferenceNumber = null,
+        ?string $newTypeCode = null,
+        ?string $newReferenceTypeCode = null
+    ): static {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newTypeCode])) {
+            return $this;
+        }
+
+        $this->setDocumentPositionAdditionalObjectReference(
+            $newReferenceNumber,
+            $newTypeCode,
+            $newReferenceTypeCode
+        );
+
+        return $this;
+    }
+
+    /**
      * Set the position's gross price
      *
      * @param  null|float  $newGrossPrice                  __BT-148, From BASIC__ Unit price excluding sales tax before deduction of the discount on the item price

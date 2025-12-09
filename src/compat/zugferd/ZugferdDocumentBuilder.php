@@ -4342,9 +4342,8 @@ class ZugferdDocumentBuilder implements Stringable
         ?string $typeCode = null,
         ?string $refTypeCode = null
     ): static {
-        $this->documentBuilder->addDocumentPositionAdditionalReference(
+        $this->documentBuilder->addDocumentPositionAdditionalObjectReference(
             newReferenceNumber: $issuerAssignedId,
-            newReferenceLineNumber: '0',
             newTypeCode: $typeCode,
             newReferenceTypeCode: $refTypeCode
         );

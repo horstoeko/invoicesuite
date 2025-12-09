@@ -10353,6 +10353,66 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
     }
 
     /**
+     * Go to the first additional object reference
+     *
+     * @return bool
+     */
+    public function firstDocumentAdditionalObjectReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getAdditionalReferencedDocument() ?? []),
+            'documentpositionadditionalobjectreference'
+        );
+    }
+
+    /**
+     * Go to the next additional object reference
+     *
+     * @return bool
+     */
+    public function nextDocumentAdditionalObjectReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getAdditionalReferencedDocument() ?? []),
+            'documentpositionadditionalobjectreference'
+        );
+    }
+
+    /**
+     * Get an additional object reference
+     *
+     * @param  null|string $newReferenceNumber   __BT-128, From EN 16931__ Object identification at the level on position-level
+     * @param  null|string $newTypeCode          __BT-128-0, From EN 16931__ Labelling of the object identifier
+     * @param  null|string $newReferenceTypeCode __BT-128-1, From EN 16931__Schema identifier, Type of identifier for an item on which the invoice item is based
+     * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newTypeCode
+     * @phpstan-param-out string $newReferenceTypeCode
+     */
+    public function getDocumentPositionAdditionalObjectReference(
+        ?string &$newReferenceNumber = null,
+        ?string &$newTypeCode = null,
+        ?string &$newReferenceTypeCode = null
+    ): static {
+        /**
+         * @var array<ReferencedDocumentType>
+         */
+        $documentPositionAdditionalObjectReferences = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getAdditionalReferencedDocument() ?? []);
+
+        /**
+         * @var ReferencedDocumentType
+         */
+        $documentPositionAdditionalObjectReference = $documentPositionAdditionalObjectReferences[InvoiceSuitePointerUtils::getValue('documentpositionadditionalobjectreference')];
+
+        $newReferenceNumber = $documentPositionAdditionalObjectReference->getIssuerAssignedID()?->getValue() ?? '';
+        $newTypeCode = $documentPositionAdditionalObjectReference->getTypeCode()?->getValue() ?? '';
+        $newReferenceTypeCode = $documentPositionAdditionalObjectReference->getReferenceTypeCode()?->getValue() ?? '';
+
+        return $this;
+    }
+
+    /**
      * Returns true if a gross price was specified
      *
      * @return bool
@@ -12012,6 +12072,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
         InvoiceSuitePointerUtils::resetSingle('documentpositionreceivingadvicereference');
         InvoiceSuitePointerUtils::resetSingle('documentpositiondeliverynotereference');
         InvoiceSuitePointerUtils::resetSingle('documentpositioninvoicereference');
+        InvoiceSuitePointerUtils::resetSingle('documentpositionadditionalobjectreference');
         InvoiceSuitePointerUtils::resetSingle('documentpositiongrosspriceallowancecharge');
         InvoiceSuitePointerUtils::resetSingle('documentpositionshiptoid');
         InvoiceSuitePointerUtils::resetSingle('documentpositionshiptoglobalid');

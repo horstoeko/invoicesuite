@@ -3554,6 +3554,34 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
     ): static;
 
     /**
+     * Go to the first additional object reference
+     *
+     * @return bool
+     */
+    abstract public function firstDocumentAdditionalObjectReference(): bool;
+
+    /**
+     * Go to the next additional object reference
+     *
+     * @return bool
+     */
+    abstract public function nextDocumentAdditionalObjectReference(): bool;
+
+    /**
+     * Get an additional object reference
+     *
+     * @param  null|string $newReferenceNumber   Object identification at the level on position-level
+     * @param  null|string $newTypeCode          Labelling of the object identifier
+     * @param  null|string $newReferenceTypeCode Schema identifier, Type of identifier for an item on which the invoice item is based
+     * @return static
+     */
+    abstract public function getDocumentPositionAdditionalObjectReference(
+        ?string &$newReferenceNumber = null,
+        ?string &$newTypeCode = null,
+        ?string &$newReferenceTypeCode = null
+    ): static;
+
+    /**
      * Returns true if a gross price was specified
      *
      * @return bool

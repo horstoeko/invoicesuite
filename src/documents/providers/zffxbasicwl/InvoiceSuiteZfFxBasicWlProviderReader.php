@@ -8935,6 +8935,50 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
     }
 
     /**
+     * Go to the first additional object reference
+     *
+     * @return bool
+     */
+    public function firstDocumentAdditionalObjectReference(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next additional object reference
+     *
+     * @return bool
+     */
+    public function nextDocumentAdditionalObjectReference(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get an additional object reference
+     *
+     * @param  null|string $newReferenceNumber   __BT-128, From EN 16931__ Object identification at the level on position-level
+     * @param  null|string $newTypeCode          __BT-128-0, From EN 16931__ Labelling of the object identifier
+     * @param  null|string $newReferenceTypeCode __BT-128-1, From EN 16931__Schema identifier, Type of identifier for an item on which the invoice item is based
+     * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newTypeCode
+     * @phpstan-param-out string $newReferenceTypeCode
+     */
+    public function getDocumentPositionAdditionalObjectReference(
+        ?string &$newReferenceNumber = null,
+        ?string &$newTypeCode = null,
+        ?string &$newReferenceTypeCode = null
+    ): static {
+        $newReferenceNumber = '';
+        $newTypeCode = '';
+        $newReferenceTypeCode = '';
+
+        return $this;
+    }
+
+    /**
      * Returns true if a gross price was specified
      *
      * @return bool
@@ -10180,6 +10224,7 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
         InvoiceSuitePointerUtils::resetSingle('documentpositionreceivingadvicereference');
         InvoiceSuitePointerUtils::resetSingle('documentpositiondeliverynotereference');
         InvoiceSuitePointerUtils::resetSingle('documentpositioninvoicereference');
+        InvoiceSuitePointerUtils::resetSingle('documentpositionadditionalobjectreference');
         InvoiceSuitePointerUtils::resetSingle('documentpositiongrosspriceallowancecharge');
         InvoiceSuitePointerUtils::resetSingle('documentpositionshiptoid');
         InvoiceSuitePointerUtils::resetSingle('documentpositionshiptoglobalid');
