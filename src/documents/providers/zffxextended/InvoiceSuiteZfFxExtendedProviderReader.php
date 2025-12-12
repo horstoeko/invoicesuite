@@ -8701,6 +8701,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @return static
      *
      * @phpstan-param-out string $newDescription
+     * @phpstan-param-out null|DateTimeInterface $newDueDate
      * @phpstan-param-out string $newMandate
      */
     public function getDocumentPaymentTerm(

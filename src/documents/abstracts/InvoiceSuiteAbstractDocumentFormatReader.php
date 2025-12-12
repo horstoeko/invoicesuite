@@ -94,6 +94,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newDocumentNo The document no issued by the seller
      * @return static
+     *
+     * @phpstan-param-out string $newDocumentNo
      */
     abstract public function getDocumentNo(
         ?string &$newDocumentNo
@@ -104,6 +106,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newDocumentType The type of the document
      * @return static
+     *
+     * @phpstan-param-out string $newDocumentType
      */
     abstract public function getDocumentType(
         ?string &$newDocumentType
@@ -114,6 +118,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newDocumentDescription The documenttype as free text
      * @return static
+     *
+     * @phpstan-param-out string $newDocumentDescription
      */
     abstract public function getDocumentDescription(
         ?string &$newDocumentDescription
@@ -124,6 +130,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newDocumentLanguage Language indicator. The language code in which the document was written
      * @return static
+     *
+     * @phpstan-param-out string $newDocumentLanguage
      */
     abstract public function getDocumentLanguage(
         ?string &$newDocumentLanguage
@@ -134,6 +142,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|DateTimeInterface $newDocumentDate Date of the document. The date when the document was issued by the seller
      * @return static
+     *
+     * @phpstan-param-out DateTimeInterface|null $newDocumentDate
      */
     abstract public function getDocumentDate(
         ?DateTimeInterface &$newDocumentDate
@@ -144,6 +154,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|DateTimeInterface $newCompleteDate Contractual due date of the document
      * @return static
+     *
+     * @phpstan-param-out DateTimeInterface|null $newCompleteDate
      */
     abstract public function getDocumentCompleteDate(
         ?DateTimeInterface &$newCompleteDate
@@ -154,6 +166,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newDocumentCurrency Code for the invoice currency
      * @return static
+     *
+     * @phpstan-param-out string $newDocumentCurrency
      */
     abstract public function getDocumentCurrency(
         ?string &$newDocumentCurrency
@@ -164,6 +178,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newDocumentTaxCurrency Code for the tax currency
      * @return static
+     *
+     * @phpstan-param-out string $newDocumentTaxCurrency
      */
     abstract public function getDocumentTaxCurrency(
         ?string &$newDocumentTaxCurrency
@@ -174,6 +190,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|bool $newDocumentIsCopy Indicates that the document is a copy
      * @return static
+     *
+     * @phpstan-param-out boolean $newDocumentIsCopy
      */
     abstract public function getDocumentIsCopy(
         ?bool &$newDocumentIsCopy
@@ -184,6 +202,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|bool $newDocumentIsTest Indicates that the document is a test
      * @return static
+     *
+     * @phpstan-param-out boolean $newDocumentIsTest
      */
     abstract public function getDocumentIsTest(
         ?bool &$newDocumentIsTest
@@ -210,6 +230,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newContentCode Code to classify the content of the free text of the invoice
      * @param  null|string $newSubjectCode Qualification of the free text for the invoice
      * @return static
+     *
+     * @phpstan-param-out string $newContent
+     * @phpstan-param-out string $newContentCode
+     * @phpstan-param-out string $newSubjectCode
      */
     abstract public function getDocumentNote(
         ?string &$newContent,
@@ -238,6 +262,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|DateTimeInterface $newEndDate     End of the billing period
      * @param  null|string            $newDescription Further information of the billing period (Obsolete)
      * @return static
+     *
+     * @phpstan-param-out DateTimeInterface|null $newStartDate
+     * @phpstan-param-out DateTimeInterface|null $newEndDate
+     * @phpstan-param-out string $newDescription
      */
     abstract public function getDocumentBillingPeriod(
         ?DateTimeInterface &$newStartDate,
@@ -265,6 +293,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newType      Type of the posting reference
      * @param  null|string $newAccountId Posting reference of the byuer
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newAccountId
      */
     abstract public function getDocumentPostingReference(
         ?string &$newType,
@@ -295,6 +326,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string            $newReferenceNumber Seller's order confirmation number
      * @param  null|DateTimeInterface $newReferenceDate   Seller's order confirmation date
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
     abstract public function getDocumentSellerOrderReference(
         ?string &$newReferenceNumber,
@@ -321,6 +355,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string            $newReferenceNumber Buyer's order number
      * @param  null|DateTimeInterface $newReferenceDate   Buyer's order date
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
     abstract public function getDocumentBuyerOrderReference(
         ?string &$newReferenceNumber,
@@ -347,6 +384,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string            $newReferenceNumber Quotation number
      * @param  null|DateTimeInterface $newReferenceDate   Quotation date
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
     abstract public function getDocumentQuotationReference(
         ?string &$newReferenceNumber,
@@ -373,6 +413,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string            $newReferenceNumber Contract number
      * @param  null|DateTimeInterface $newReferenceDate   Contract date
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
     abstract public function getDocumentContractReference(
         ?string &$newReferenceNumber,
@@ -403,6 +446,13 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string                 $newDescription            Additional document description
      * @param  null|InvoiceSuiteAttachment $newInvoiceSuiteAttachment Additional document attachment
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     * @phpstan-param-out string $newTypeCode
+     * @phpstan-param-out string $newReferenceTypeCode
+     * @phpstan-param-out string $newDescription
+     * @phpstan-param-out InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment
      */
     abstract public function getDocumentAdditionalReference(
         ?string &$newReferenceNumber,
@@ -434,6 +484,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|DateTimeInterface $newReferenceDate   Date of the previous invoice
      * @param  null|string            $newTypeCode        Type code of previous invoice
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     * @phpstan-param-out string $newTypeCode
      */
     abstract public function getDocumentInvoiceReference(
         ?string &$newReferenceNumber,
@@ -461,6 +515,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newReferenceNumber Project number
      * @param  null|string $newName            Project name
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentProjectReference(
         ?string &$newReferenceNumber,
@@ -487,6 +544,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string            $newReferenceNumber Ultimate customer order number
      * @param  null|DateTimeInterface $newReferenceDate   Ultimate customer order date
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
     abstract public function getDocumentUltimateCustomerOrderReference(
         ?string &$newReferenceNumber,
@@ -513,6 +573,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string            $newReferenceNumber Shipping notification number
      * @param  null|DateTimeInterface $newReferenceDate   Shipping notification date
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
     abstract public function getDocumentDespatchAdviceReference(
         ?string &$newReferenceNumber,
@@ -539,6 +602,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string            $newReferenceNumber Receipt notification number
      * @param  null|DateTimeInterface $newReferenceDate   Receipt notification date
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
     abstract public function getDocumentReceivingAdviceReference(
         ?string &$newReferenceNumber,
@@ -565,6 +631,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string            $newReferenceNumber Delivery slip number
      * @param  null|DateTimeInterface $newReferenceDate   Delivery slip date
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
     abstract public function getDocumentDeliveryNoteReference(
         ?string &$newReferenceNumber,
@@ -576,6 +645,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|DateTimeInterface $newDate Actual delivery date
      * @return static
+     *
+     * @phpstan-param-out DateTimeInterface|null $newDate
      */
     abstract public function getDocumentSupplyChainEvent(
         ?DateTimeInterface &$newDate
@@ -586,6 +657,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newBuyerReference An identifier assigned by the buyer and used for internal routing
      * @return static
+     *
+     * @phpstan-param-out string $newBuyerReference
      */
     abstract public function getDocumentBuyerReference(
         ?string &$newBuyerReference
@@ -596,6 +669,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newCode The code indicating the type of delivery for these commercial delivery terms. To be selected from the entries in the list UNTDID 4053 + INCOTERMS
      * @return static
+     *
+     * @phpstan-param-out string $newCode
      */
     abstract public function getDocumentDeliveryTerms(
         ?string &$newCode = null
@@ -610,6 +685,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
+     *
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentSellerName(
         ?string &$newName
@@ -634,6 +711,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
+     *
+     * @phpstan-param-out string $newId
      */
     abstract public function getDocumentSellerId(
         ?string &$newId
@@ -659,6 +738,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newGlobalId     a global identifier of the party
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
      */
     abstract public function getDocumentSellerGlobalId(
         ?string &$newGlobalId,
@@ -685,6 +767,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
      */
     abstract public function getDocumentSellerTaxRegistration(
         ?string &$newTaxRegistrationType,
@@ -716,6 +801,14 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newCountryId    country in which the party's address is located
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
      */
     abstract public function getDocumentSellerAddress(
         ?string &$newAddressLine1,
@@ -748,6 +841,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newId   identification number of the legal registration of the party
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentSellerLegalOrganisation(
         ?string &$newType,
@@ -778,6 +875,12 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newFaxNumber      fax number of the contact point
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
      */
     abstract public function getDocumentSellerContact(
         ?string &$newPersonName,
@@ -807,6 +910,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newType the type for the party's electronic address
      * @param  null|string $newUri  the party's electronic address
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
      */
     abstract public function getDocumentSellerCommunication(
         ?string &$newType,
@@ -822,6 +928,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
+     *
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentBuyerName(
         ?string &$newName
@@ -846,6 +954,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
+     *
+     * @phpstan-param-out string $newId
      */
     abstract public function getDocumentBuyerId(
         ?string &$newId
@@ -871,6 +981,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newGlobalId     a global identifier of the party
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
      */
     abstract public function getDocumentBuyerGlobalId(
         ?string &$newGlobalId,
@@ -897,6 +1010,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
      */
     abstract public function getDocumentBuyerTaxRegistration(
         ?string &$newTaxRegistrationType,
@@ -928,6 +1044,14 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newCountryId    country in which the party's address is located
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
      */
     abstract public function getDocumentBuyerAddress(
         ?string &$newAddressLine1,
@@ -960,6 +1084,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newId   identification number of the legal registration of the party
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentBuyerLegalOrganisation(
         ?string &$newType,
@@ -990,6 +1118,12 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newFaxNumber      fax number of the contact point
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
      */
     abstract public function getDocumentBuyerContact(
         ?string &$newPersonName,
@@ -1019,6 +1153,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newType the type for the party's electronic address
      * @param  null|string $newUri  the party's electronic address
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
      */
     abstract public function getDocumentBuyerCommunication(
         ?string &$newType,
@@ -1034,6 +1171,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
+     *
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentTaxRepresentativeName(
         ?string &$newName
@@ -1058,6 +1197,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
+     *
+     * @phpstan-param-out string $newId
      */
     abstract public function getDocumentTaxRepresentativeId(
         ?string &$newId
@@ -1083,6 +1224,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newGlobalId     a global identifier of the party
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
      */
     abstract public function getDocumentTaxRepresentativeGlobalId(
         ?string &$newGlobalId,
@@ -1109,6 +1253,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
      */
     abstract public function getDocumentTaxRepresentativeTaxRegistration(
         ?string &$newTaxRegistrationType,
@@ -1140,6 +1287,14 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newCountryId    country in which the party's address is located
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
      */
     abstract public function getDocumentTaxRepresentativeAddress(
         ?string &$newAddressLine1,
@@ -1172,6 +1327,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newId   identification number of the legal registration of the party
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentTaxRepresentativeLegalOrganisation(
         ?string &$newType,
@@ -1202,6 +1361,12 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newFaxNumber      fax number of the contact point
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
      */
     abstract public function getDocumentTaxRepresentativeContact(
         ?string &$newPersonName,
@@ -1231,6 +1396,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newType the type for the party's electronic address
      * @param  null|string $newUri  the party's electronic address
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
      */
     abstract public function getDocumentTaxRepresentativeCommunication(
         ?string &$newType,
@@ -1246,6 +1414,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
+     *
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentProductEndUserName(
         ?string &$newName
@@ -1270,6 +1440,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
+     *
+     * @phpstan-param-out string $newId
      */
     abstract public function getDocumentProductEndUserId(
         ?string &$newId
@@ -1295,6 +1467,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newGlobalId     a global identifier of the party
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
      */
     abstract public function getDocumentProductEndUserGlobalId(
         ?string &$newGlobalId,
@@ -1321,6 +1496,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
      */
     abstract public function getDocumentProductEndUserTaxRegistration(
         ?string &$newTaxRegistrationType,
@@ -1352,6 +1530,14 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newCountryId    country in which the party's address is located
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
      */
     abstract public function getDocumentProductEndUserAddress(
         ?string &$newAddressLine1,
@@ -1384,6 +1570,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newId   identification number of the legal registration of the party
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentProductEndUserLegalOrganisation(
         ?string &$newType,
@@ -1414,6 +1604,12 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newFaxNumber      fax number of the contact point
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
      */
     abstract public function getDocumentProductEndUserContact(
         ?string &$newPersonName,
@@ -1443,6 +1639,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newType the type for the party's electronic address
      * @param  null|string $newUri  the party's electronic address
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
      */
     abstract public function getDocumentProductEndUserCommunication(
         ?string &$newType,
@@ -1458,6 +1657,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
+     *
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentShipToName(
         ?string &$newName
@@ -1482,6 +1683,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
+     *
+     * @phpstan-param-out string $newId
      */
     abstract public function getDocumentShipToId(
         ?string &$newId
@@ -1507,6 +1710,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newGlobalId     a global identifier of the party
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
      */
     abstract public function getDocumentShipToGlobalId(
         ?string &$newGlobalId,
@@ -1533,6 +1739,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
      */
     abstract public function getDocumentShipToTaxRegistration(
         ?string &$newTaxRegistrationType,
@@ -1564,6 +1773,14 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newCountryId    country in which the party's address is located
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
      */
     abstract public function getDocumentShipToAddress(
         ?string &$newAddressLine1,
@@ -1596,6 +1813,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newId   identification number of the legal registration of the party
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentShipToLegalOrganisation(
         ?string &$newType,
@@ -1626,6 +1847,12 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newFaxNumber      fax number of the contact point
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
      */
     abstract public function getDocumentShipToContact(
         ?string &$newPersonName,
@@ -1655,6 +1882,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newType the type for the party's electronic address
      * @param  null|string $newUri  the party's electronic address
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
      */
     abstract public function getDocumentShipToCommunication(
         ?string &$newType,
@@ -1670,6 +1900,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
+     *
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentUltimateShipToName(
         ?string &$newName
@@ -1694,6 +1926,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
+     *
+     * @phpstan-param-out string $newId
      */
     abstract public function getDocumentUltimateShipToId(
         ?string &$newId
@@ -1719,6 +1953,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newGlobalId     a global identifier of the party
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
      */
     abstract public function getDocumentUltimateShipToGlobalId(
         ?string &$newGlobalId,
@@ -1745,6 +1982,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
      */
     abstract public function getDocumentUltimateShipToTaxRegistration(
         ?string &$newTaxRegistrationType,
@@ -1776,6 +2016,14 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newCountryId    country in which the party's address is located
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
      */
     abstract public function getDocumentUltimateShipToAddress(
         ?string &$newAddressLine1,
@@ -1808,6 +2056,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newId   identification number of the legal registration of the party
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentUltimateShipToLegalOrganisation(
         ?string &$newType,
@@ -1838,6 +2090,12 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newFaxNumber      fax number of the contact point
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
      */
     abstract public function getDocumentUltimateShipToContact(
         ?string &$newPersonName,
@@ -1867,6 +2125,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newType the type for the party's electronic address
      * @param  null|string $newUri  the party's electronic address
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
      */
     abstract public function getDocumentUltimateShipToCommunication(
         ?string &$newType,
@@ -1882,6 +2143,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
+     *
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentShipFromName(
         ?string &$newName
@@ -1906,6 +2169,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
+     *
+     * @phpstan-param-out string $newId
      */
     abstract public function getDocumentShipFromId(
         ?string &$newId
@@ -1931,6 +2196,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newGlobalId     a global identifier of the party
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
      */
     abstract public function getDocumentShipFromGlobalId(
         ?string &$newGlobalId,
@@ -1957,6 +2225,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
      */
     abstract public function getDocumentShipFromTaxRegistration(
         ?string &$newTaxRegistrationType,
@@ -1988,6 +2259,14 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newCountryId    country in which the party's address is located
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
      */
     abstract public function getDocumentShipFromAddress(
         ?string &$newAddressLine1,
@@ -2020,6 +2299,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newId   identification number of the legal registration of the party
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentShipFromLegalOrganisation(
         ?string &$newType,
@@ -2050,6 +2333,12 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newFaxNumber      fax number of the contact point
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
      */
     abstract public function getDocumentShipFromContact(
         ?string &$newPersonName,
@@ -2079,6 +2368,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newType the type for the party's electronic address
      * @param  null|string $newUri  the party's electronic address
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
      */
     abstract public function getDocumentShipFromCommunication(
         ?string &$newType,
@@ -2094,6 +2386,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
+     *
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentInvoicerName(
         ?string &$newName
@@ -2118,6 +2412,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
+     *
+     * @phpstan-param-out string $newId
      */
     abstract public function getDocumentInvoicerId(
         ?string &$newId
@@ -2143,6 +2439,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newGlobalId     a global identifier of the party
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
      */
     abstract public function getDocumentInvoicerGlobalId(
         ?string &$newGlobalId,
@@ -2169,6 +2468,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
      */
     abstract public function getDocumentInvoicerTaxRegistration(
         ?string &$newTaxRegistrationType,
@@ -2200,6 +2502,14 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newCountryId    country in which the party's address is located
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
      */
     abstract public function getDocumentInvoicerAddress(
         ?string &$newAddressLine1,
@@ -2232,6 +2542,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newId   identification number of the legal registration of the party
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentInvoicerLegalOrganisation(
         ?string &$newType,
@@ -2262,6 +2576,12 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newFaxNumber      fax number of the contact point
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
      */
     abstract public function getDocumentInvoicerContact(
         ?string &$newPersonName,
@@ -2291,6 +2611,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newType the type for the party's electronic address
      * @param  null|string $newUri  the party's electronic address
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
      */
     abstract public function getDocumentInvoicerCommunication(
         ?string &$newType,
@@ -2306,6 +2629,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
+     *
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentInvoiceeName(
         ?string &$newName
@@ -2330,6 +2655,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
+     *
+     * @phpstan-param-out string $newId
      */
     abstract public function getDocumentInvoiceeId(
         ?string &$newId
@@ -2355,6 +2682,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newGlobalId     a global identifier of the party
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
      */
     abstract public function getDocumentInvoiceeGlobalId(
         ?string &$newGlobalId,
@@ -2381,6 +2711,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
      */
     abstract public function getDocumentInvoiceeTaxRegistration(
         ?string &$newTaxRegistrationType,
@@ -2412,6 +2745,14 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newCountryId    country in which the party's address is located
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
      */
     abstract public function getDocumentInvoiceeAddress(
         ?string &$newAddressLine1,
@@ -2444,6 +2785,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newId   identification number of the legal registration of the party
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentInvoiceeLegalOrganisation(
         ?string &$newType,
@@ -2474,6 +2819,12 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newFaxNumber      fax number of the contact point
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
      */
     abstract public function getDocumentInvoiceeContact(
         ?string &$newPersonName,
@@ -2503,6 +2854,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newType the type for the party's electronic address
      * @param  null|string $newUri  the party's electronic address
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
      */
     abstract public function getDocumentInvoiceeCommunication(
         ?string &$newType,
@@ -2518,6 +2872,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
+     *
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentPayeeName(
         ?string &$newName
@@ -2542,6 +2898,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
+     *
+     * @phpstan-param-out string $newId
      */
     abstract public function getDocumentPayeeId(
         ?string &$newId
@@ -2567,6 +2925,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newGlobalId     a global identifier of the party
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
      */
     abstract public function getDocumentPayeeGlobalId(
         ?string &$newGlobalId,
@@ -2593,6 +2954,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
      */
     abstract public function getDocumentPayeeTaxRegistration(
         ?string &$newTaxRegistrationType,
@@ -2624,6 +2988,14 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newCountryId    country in which the party's address is located
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
      */
     abstract public function getDocumentPayeeAddress(
         ?string &$newAddressLine1,
@@ -2656,6 +3028,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newId   identification number of the legal registration of the party
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentPayeeLegalOrganisation(
         ?string &$newType,
@@ -2686,6 +3062,12 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newFaxNumber      fax number of the contact point
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
      */
     abstract public function getDocumentPayeeContact(
         ?string &$newPersonName,
@@ -2715,6 +3097,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newType the type for the party's electronic address
      * @param  null|string $newUri  the party's electronic address
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
      */
     abstract public function getDocumentPayeeCommunication(
         ?string &$newType,
@@ -2754,6 +3139,18 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newPaymentReference    Text value used to link the payment to the invoice issued by the seller
      * @param  null|string $newMandate             Identification of the mandate reference
      * @return static
+     *
+     * @phpstan-param-out string $newTypeCode
+     * @phpstan-param-out string $newName
+     * @phpstan-param-out string $newFinancialCardId
+     * @phpstan-param-out string $newFinancialCardHolder
+     * @phpstan-param-out string $newBuyerIban
+     * @phpstan-param-out string $newPayeeIban
+     * @phpstan-param-out string $newPayeeAccountName
+     * @phpstan-param-out string $newPayeeProprietaryId
+     * @phpstan-param-out string $newPayeeBic
+     * @phpstan-param-out string $newPaymentReference
+     * @phpstan-param-out string $newMandate
      */
     abstract public function getDocumentPaymentMean(
         ?string &$newTypeCode,
@@ -2788,6 +3185,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newId Creditor identifier
      * @return static
+     *
+     * @phpstan-param-out string $newId
      */
     abstract public function getDocumentPaymentCreditorReferenceID(
         ?string &$newId
@@ -2812,6 +3211,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newId Creditor identifier
      * @return static
+     *
+     * @phpstan-param-out string $newId
      */
     abstract public function getDocumentPaymentReference(
         ?string &$newId
@@ -2837,6 +3238,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string            $newDescription Text description of the payment terms
      * @param  null|DateTimeInterface $newDueDate     Date by which payment is due
      * @return static
+     *
+     * @phpstan-param-out string $newDescription
+     * @phpstan-param-out null|DateTimeInterface $newDueDate
+     * @phpstan-param-out string $newMandate
      */
     abstract public function getDocumentPaymentTerm(
         ?string &$newDescription,
@@ -2868,6 +3273,12 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|float             $newBasePeriod      Maturity period (basis)
      * @param  null|string            $newBasePeriodUnit  Maturity period (unit)
      * @return static
+     *
+     * @phpstan-param-out float $newBaseAmount
+     * @phpstan-param-out float $newDiscountAmount
+     * @phpstan-param-out float $newDiscountPercent
+     * @phpstan-param-out float $newBasePeriod
+     * @phpstan-param-out string $newBasePeriodUnit
      */
     abstract public function getDocumentPaymentDiscountTermsInLastPaymentTerm(
         ?float &$newBaseAmount,
@@ -2902,6 +3313,12 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|float             $newBasePeriod     Maturity period (basis)
      * @param  null|string            $newBasePeriodUnit Maturity period (unit)
      * @return static
+     *
+     * @phpstan-param-out float $newBaseAmount
+     * @phpstan-param-out float $newPenaltyAmount
+     * @phpstan-param-out float $newPenaltyPercent
+     * @phpstan-param-out float $newBasePeriod
+     * @phpstan-param-out string $newBasePeriodUnit
      */
     abstract public function getDocumentPaymentPenaltyTermsInLastPaymentTerm(
         ?float &$newBaseAmount,
@@ -2943,6 +3360,16 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|DateTimeInterface $newTaxDueDate          Date on which tax is due
      * @param  null|string            $newTaxDueCode          Code for the date on which tax is due
      * @return static
+     *
+     * @phpstan-param-out string $newTaxCategory
+     * @phpstan-param-out string $newTaxType
+     * @phpstan-param-out float $newBasisAmount
+     * @phpstan-param-out float $newTaxAmount
+     * @phpstan-param-out float $newTaxPercent
+     * @phpstan-param-out string $newExemptionReason
+     * @phpstan-param-out string $newExemptionReasonCode
+     * @phpstan-param-out DateTimeInterface|null $newTaxDueDate
+     * @phpstan-param-out string $newTaxDueCode
      */
     abstract public function getDocumentTax(
         ?string &$newTaxCategory,
@@ -2987,6 +3414,16 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newAllowanceChargeReasonCode Reason given as a code for the surcharge or discount
      * @param  null|float  $newAllowanceChargePercent    Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
      * @return static
+     *
+     * @phpstan-param-out bool $newChargeIndicator
+     * @phpstan-param-out float $newAllowanceChargeAmount
+     * @phpstan-param-out float $newAllowanceChargeBaseAmount
+     * @phpstan-param-out string $newTaxCategory
+     * @phpstan-param-out string $newTaxType
+     * @phpstan-param-out float $newTaxPercent
+     * @phpstan-param-out string $newAllowanceChargeReason
+     * @phpstan-param-out string $newAllowanceChargeReasonCode
+     * @phpstan-param-out float $newAllowanceChargePercent
      */
     abstract public function getDocumentAllowanceCharge(
         ?bool &$newChargeIndicator,
@@ -3023,6 +3460,12 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newTaxType      Coded description of the tax type
      * @param  null|float  $newTaxPercent   Tax Rate (Percentage)
      * @return static
+     *
+     * @phpstan-param-out float $newChargeAmount
+     * @phpstan-param-out string $newDescription
+     * @phpstan-param-out string $newTaxCategory
+     * @phpstan-param-out string $newTaxType
+     * @phpstan-param-out float $newTaxPercent
      */
     abstract public function getDocumentLogisticServiceCharge(
         ?float &$newChargeAmount,
@@ -3049,6 +3492,17 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|float $newPrepaidAmount       Prepayment amount
      * @param  null|float $newRoungingAmount      Rounding amount
      * @return static
+     *
+     * @phpstan-param-out float $newNetAmount
+     * @phpstan-param-out float $newChargeTotalAmount
+     * @phpstan-param-out float $newDiscountTotalAmount
+     * @phpstan-param-out float $newTaxBasisAmount
+     * @phpstan-param-out float $newTaxTotalAmount
+     * @phpstan-param-out float $newTaxTotalAmount2
+     * @phpstan-param-out float $newGrossAmount
+     * @phpstan-param-out float $newDueAmount
+     * @phpstan-param-out float $newPrepaidAmount
+     * @phpstan-param-out float $newRoungingAmount
      */
     abstract public function getDocumentSummation(
         ?float &$newNetAmount,
@@ -3089,6 +3543,11 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newLineStatusCode       Indicates whether the invoice item contains prices that must be taken into account when calculating the invoice amount or whether only information is included
      * @param  null|string $newLineStatusReasonCode Type to specify whether the invoice line is
      * @return static
+     *
+     * @phpstan-param-out string $newPositionId
+     * @phpstan-param-out string $newParentPositionId
+     * @phpstan-param-out string $newLineStatusCode
+     * @phpstan-param-out string $newLineStatusReasonCode
      */
     abstract public function getDocumentPosition(
         ?string &$newPositionId,
@@ -3118,6 +3577,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newContentCode Code to classify the content of the free text of the invoice
      * @param  null|string $newSubjectCode Code for qualifying the free text for the invoice item
      * @return static
+     *
+     * @phpstan-param-out string $newContent
+     * @phpstan-param-out string $newContentCode
+     * @phpstan-param-out string $newSubjectCode
      */
     abstract public function getDocumentPositionNote(
         ?string &$newContent,
@@ -3142,6 +3605,20 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newProductModelName          Model name of the product
      * @param  null|string $newProductOriginTradeCountry Code indicating the country the goods came from
      * @return static
+     *
+     * @phpstan-param-out string $newProductId
+     * @phpstan-param-out string $newProductName
+     * @phpstan-param-out string $newProductDescription
+     * @phpstan-param-out string $newProductSellerId
+     * @phpstan-param-out string $newProductBuyerId
+     * @phpstan-param-out string $newProductGlobalId
+     * @phpstan-param-out string $newProductGlobalIdType
+     * @phpstan-param-out string $newProductIndustryId
+     * @phpstan-param-out string $newProductModelId
+     * @phpstan-param-out string $newProductBatchId
+     * @phpstan-param-out string $newProductBrandName
+     * @phpstan-param-out string $newProductModelName
+     * @phpstan-param-out string $newProductOriginTradeCountry
      */
     abstract public function getDocumentPositionProductDetails(
         ?string &$newProductId,
@@ -3182,6 +3659,12 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|float  $newProductCharacteristicMeasureValue Value of the characteristic (numerical measured)
      * @param  null|string $newProductCharacteristicMeasureUnit  Unit of value of the characteristic
      * @return static
+     *
+     * @phpstan-param-out string $newProductCharacteristicDescription
+     * @phpstan-param-out string $newProductCharacteristicValue
+     * @phpstan-param-out string $newProductCharacteristicType
+     * @phpstan-param-out float $newProductCharacteristicMeasureValue
+     * @phpstan-param-out string $newProductCharacteristicMeasureUnit
      */
     abstract public function getDocumentPositionProductCharacteristic(
         ?string &$newProductCharacteristicDescription,
@@ -3213,6 +3696,11 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newProductClassificationListVersionId Version of the identification scheme
      * @param  null|string $newProductClassificationCodeClassname Name with which an article can be classified according to type or quality
      * @return static
+     *
+     * @phpstan-param-out string $newProductClassificationCode
+     * @phpstan-param-out string $newProductClassificationListId
+     * @phpstan-param-out string $newProductClassificationListVersionId
+     * @phpstan-param-out string $newProductClassificationCodeClassname
      */
     abstract public function getDocumentPositionProductClassification(
         ?string &$newProductClassificationCode,
@@ -3249,6 +3737,17 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|float  $newProductUnitQuantity     Quantity Quantity of the referenced product contained
      * @param  null|string $newProductUnitQuantityUnit Unit code of the quantity of the referenced product contained
      * @return static
+     *
+     * @phpstan-param-out string $newProductId
+     * @phpstan-param-out string $newProductName
+     * @phpstan-param-out string $newProductDescription
+     * @phpstan-param-out string $newProductSellerId
+     * @phpstan-param-out string $newProductBuyerId
+     * @phpstan-param-out string $newProductGlobalId
+     * @phpstan-param-out string $newProductGlobalIdType
+     * @phpstan-param-out string $newProductIndustryId
+     * @phpstan-param-out float $newProductUnitQuantity
+     * @phpstan-param-out string $newProductUnitQuantityUnit
      */
     abstract public function getDocumentPositionReferencedProduct(
         ?string &$newProductId,
@@ -3284,6 +3783,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string            $newReferenceLineNumber Seller's order confirmation line number
      * @param  null|DateTimeInterface $newReferenceDate       Seller's order confirmation date
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
     abstract public function getDocumentPositionSellerOrderReference(
         ?string &$newReferenceNumber,
@@ -3312,6 +3815,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string            $newReferenceLineNumber Buyer's order confirmation line number
      * @param  null|DateTimeInterface $newReferenceDate       Buyer's order confirmation date
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
     abstract public function getDocumentPositionBuyerOrderReference(
         ?string &$newReferenceNumber = null,
@@ -3340,6 +3847,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string            $newReferenceLineNumber Buyer's order confirmation line number
      * @param  null|DateTimeInterface $newReferenceDate       Buyer's order confirmation date
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
     abstract public function getDocumentPositionQuotationReference(
         ?string &$newReferenceNumber,
@@ -3368,6 +3879,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string            $newReferenceLineNumber Buyer's order confirmation line number
      * @param  null|DateTimeInterface $newReferenceDate       Buyer's order confirmation date
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
     abstract public function getDocumentPositionContractReference(
         ?string &$newReferenceNumber,
@@ -3400,6 +3915,14 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string                 $newDescription             Additional document description
      * @param  null|InvoiceSuiteAttachment &$newInvoiceSuiteAttachment Additional document attachment
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     * @phpstan-param-out string $newTypeCode
+     * @phpstan-param-out string $newReferenceTypeCode
+     * @phpstan-param-out string $newDescription
+     * @phpstan-param-out InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment
      */
     abstract public function getDocumentPositionAdditionalReference(
         ?string &$newReferenceNumber,
@@ -3432,6 +3955,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string            $newReferenceLineNumber Ultimate customer order line number
      * @param  null|DateTimeInterface $newReferenceDate       Ultimate customer order date
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
     abstract public function getDocumentPositionUltimateCustomerOrderReference(
         ?string &$newReferenceNumber,
@@ -3460,6 +3987,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string            $newReferenceLineNumber Shipping notification line number
      * @param  null|DateTimeInterface $newReferenceDate       Shipping notification date
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
     abstract public function getDocumentPositionDespatchAdviceReference(
         ?string &$newReferenceNumber,
@@ -3488,6 +4019,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string            $newReferenceLineNumber Receipt notification line number
      * @param  null|DateTimeInterface $newReferenceDate       Receipt notification date
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
     abstract public function getDocumentPositionReceivingAdviceReference(
         ?string &$newReferenceNumber,
@@ -3516,6 +4051,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string            $newReferenceLineNumber Delivery slip line number
      * @param  null|DateTimeInterface $newReferenceDate       Delivery slip date
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
     abstract public function getDocumentPositionDeliveryNoteReference(
         ?string &$newReferenceNumber,
@@ -3545,6 +4084,11 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|DateTimeInterface $newReferenceDate       Date of the previous invoice
      * @param  null|string            $newTypeCode            Type code of previous invoice
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     * @phpstan-param-out string $newTypeCode
      */
     abstract public function getDocumentPositionInvoiceReference(
         ?string &$newReferenceNumber,
@@ -3574,6 +4118,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newTypeCode          Labelling of the object identifier
      * @param  null|string $newReferenceTypeCode Schema identifier, Type of identifier for an item on which the invoice item is based
      * @return static
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newTypeCode
+     * @phpstan-param-out string $newReferenceTypeCode
      */
     abstract public function getDocumentPositionAdditionalObjectReference(
         ?string &$newReferenceNumber = null,
@@ -3595,6 +4143,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|float  $newGrossPriceBasisQuantity     Number of item units for which the price applies
      * @param  null|string $newGrossPriceBasisQuantityUnit Unit code of the number of item units for which the price applies
      * @return static
+     *
+     * @phpstan-param-out float $newGrossPrice
+     * @phpstan-param-out float $newGrossPriceBasisQuantity
+     * @phpstan-param-out string $newGrossPriceBasisQuantityUnit
      */
     abstract public function getDocumentPositionGrossPrice(
         ?float &$newGrossPrice,
@@ -3626,6 +4178,13 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newGrossPriceAllowanceChargeReason      Reason for discount or charge (free text)
      * @param  null|string $newGrossPriceAllowanceChargeReasonCode  Reason code for discount or charge (free text)
      * @return static
+     *
+     * @phpstan-param-out float $newGrossPriceAllowanceChargeAmount
+     * @phpstan-param-out bool $newIsCharge
+     * @phpstan-param-out float $newGrossPriceAllowanceChargePercent
+     * @phpstan-param-out float $newGrossPriceAllowanceChargeBasisAmount
+     * @phpstan-param-out string $newGrossPriceAllowanceChargeReason
+     * @phpstan-param-out string $newGrossPriceAllowanceChargeReasonCode
      */
     abstract public function getDocumentPositionGrossPriceAllowanceCharge(
         ?float &$newGrossPriceAllowanceChargeAmount,
@@ -3650,6 +4209,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|float  $newNetPriceBasisQuantity     Number of item units for which the price applies
      * @param  null|string $newNetPriceBasisQuantityUnit Unit code of the number of item units for which the price applies
      * @return static
+     *
+     * @phpstan-param-out float $newNetPrice
+     * @phpstan-param-out float $newNetPriceBasisQuantity
+     * @phpstan-param-out string $newNetPriceBasisQuantityUnit
      */
     abstract public function getDocumentPositionNetPrice(
         ?float &$newNetPrice,
@@ -3667,6 +4230,13 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newExemptionReason     Reason for tax exemption (free text)
      * @param  null|string $newExemptionReasonCode Reason for tax exemption (Code)
      * @return static
+     *
+     * @phpstan-param-out string $newTaxCategory
+     * @phpstan-param-out string $newTaxType
+     * @phpstan-param-out float $newTaxAmount
+     * @phpstan-param-out float $newTaxPercent
+     * @phpstan-param-out string $newExemptionReason
+     * @phpstan-param-out string $newExemptionReasonCode
      */
     abstract public function getDocumentPositionNetPriceTax(
         ?string &$newTaxCategory,
@@ -3687,6 +4257,13 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|float  $newPackageQuantity        Package quantity
      * @param  null|string $newPackageQuantityUnit    Package quantity unit
      * @return static
+     *
+     * @phpstan-param-out float $newQuantity
+     * @phpstan-param-out string $newQuantityUnit
+     * @phpstan-param-out float $newChargeFreeQuantity
+     * @phpstan-param-out string $newChargeFreeQuantityUnit
+     * @phpstan-param-out float $newPackageQuantity
+     * @phpstan-param-out string $newPackageQuantityUnit
      */
     abstract public function getDocumentPositionQuantities(
         ?float &$newQuantity,
@@ -3702,6 +4279,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  string $newName the full formal name under which the party is registered
      * @return static
+     *
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentPositionShipToName(
         ?string &$newName
@@ -3726,6 +4305,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
+     *
+     * @phpstan-param-out string $newId
      */
     abstract public function getDocumentPositionShipToId(
         ?string &$newId
@@ -3751,6 +4332,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newGlobalId     a global identifier of the party
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
      */
     abstract public function getDocumentPositionShipToGlobalId(
         ?string &$newGlobalId,
@@ -3777,6 +4361,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
      */
     abstract public function getDocumentPositionShipToTaxRegistration(
         ?string &$newTaxRegistrationType,
@@ -3808,6 +4395,14 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newCountryId    country in which the party's address is located
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
      */
     abstract public function getDocumentPositionShipToAddress(
         ?string &$newAddressLine1,
@@ -3840,6 +4435,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newId   identification number of the legal registration of the party
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentPositionShipToLegalOrganisation(
         ?string &$newType,
@@ -3870,6 +4469,12 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newFaxNumber      fax number of the contact point
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
      */
     abstract public function getDocumentPositionShipToContact(
         ?string &$newPersonName,
@@ -3899,6 +4504,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newType the type for the party's electronic address
      * @param  null|string $newUri  the party's electronic address
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
      */
     abstract public function getDocumentPositionShipToCommunication(
         ?string &$newType,
@@ -3910,6 +4518,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  string $newName the full formal name under which the party is registered
      * @return static
+     *
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentPositionUltimateShipToName(
         ?string &$newName
@@ -3934,6 +4544,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
+     *
+     * @phpstan-param-out string $newId
      */
     abstract public function getDocumentPositionUltimateShipToId(
         ?string &$newId
@@ -3959,6 +4571,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newGlobalId     a global identifier of the party
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
      */
     abstract public function getDocumentPositionUltimateShipToGlobalId(
         ?string &$newGlobalId,
@@ -3985,6 +4600,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
      */
     abstract public function getDocumentPositionUltimateShipToTaxRegistration(
         ?string &$newTaxRegistrationType,
@@ -4016,6 +4634,14 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newCountryId    country in which the party's address is located
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
      */
     abstract public function getDocumentPositionUltimateShipToAddress(
         ?string &$newAddressLine1,
@@ -4048,6 +4674,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newId   identification number of the legal registration of the party
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
      */
     abstract public function getDocumentPositionUltimateShipToLegalOrganisation(
         ?string &$newType,
@@ -4078,6 +4708,12 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newFaxNumber      fax number of the contact point
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
      */
     abstract public function getDocumentPositionUltimateShipToContact(
         ?string &$newPersonName,
@@ -4107,6 +4743,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newType the type for the party's electronic address
      * @param  null|string $newUri  the party's electronic address
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
      */
     abstract public function getDocumentPositionUltimateShipToCommunication(
         ?string &$newType,
@@ -4118,6 +4757,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|DateTimeInterface $newDate
      * @return static
+     *
+     * @phpstan-param-out DateTimeInterface|null $newDate
      */
     abstract public function getDocumentPositionSupplyChainEvent(
         ?DateTimeInterface &$newDate
@@ -4144,6 +4785,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|DateTimeInterface $newEndDate     End of the billing period
      * @param  null|string            $newDescription Further information of the billing period (Obsolete)
      * @return static
+     *
+     * @phpstan-param-out DateTimeInterface|null $newStartDate
+     * @phpstan-param-out DateTimeInterface|null $newEndDate
+     * @phpstan-param-out string $newDescription
      */
     abstract public function getDocumentPositionBillingPeriod(
         ?DateTimeInterface &$newStartDate,
@@ -4175,6 +4820,13 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newExemptionReason     Reason for tax exemption (free text)
      * @param  null|string $newExemptionReasonCode Reason for tax exemption (Code)
      * @return static
+     *
+     * @phpstan-param-out string $newTaxCategory
+     * @phpstan-param-out string $newTaxType
+     * @phpstan-param-out float $newTaxAmount
+     * @phpstan-param-out float $newTaxPercent
+     * @phpstan-param-out string $newExemptionReason
+     * @phpstan-param-out string $newExemptionReasonCode
      */
     abstract public function getDocumentPositionTax(
         ?string &$newTaxCategory,
@@ -4209,6 +4861,13 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newAllowanceChargeReasonCode Reason given as a code for the surcharge or discount
      * @param  null|float  $newAllowanceChargePercent    Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
      * @return static
+     *
+     * @phpstan-param-out bool $newChargeIndicator
+     * @phpstan-param-out float $newAllowanceChargeAmount
+     * @phpstan-param-out float $newAllowanceChargeBaseAmount
+     * @phpstan-param-out string $newAllowanceChargeReason
+     * @phpstan-param-out string $newAllowanceChargeReasonCode
+     * @phpstan-param-out float $newAllowanceChargePercent
      */
     abstract public function getDocumentPositionAllowanceCharge(
         ?bool &$newChargeIndicator,
@@ -4235,6 +4894,12 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|float $newTaxTotalAmount      Total amount of the line (in the invoice currency)
      * @param  null|float $newGrossAmount         Total invoice line amount including sales tax
      * @return static
+     *
+     * @phpstan-param-out float $newNetAmount
+     * @phpstan-param-out float $newChargeTotalAmount
+     * @phpstan-param-out float $newDiscountTotalAmount
+     * @phpstan-param-out float $newTaxTotalAmount
+     * @phpstan-param-out float $newGrossAmount
      */
     abstract public function getDocumentPositionSummation(
         ?float &$newNetAmount,
@@ -4264,6 +4929,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      * @param  null|string $newType      Type of the posting reference
      * @param  null|string $newAccountId Posting reference of the byuer
      * @return static
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newAccountId
      */
     abstract public function getDocumentPositionPostingReference(
         ?string &$newType,
