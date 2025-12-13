@@ -4045,7 +4045,7 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractDocument
         $newDepartmentName = $documentSellerContact->getDepartmentName()?->getValue() ?? '';
         $newPhoneNumber = $documentSellerContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
         $newFaxNumber = '';
-        $newEmailAddress = $documentSellerContact->getEmailURIUniversalCommunication()->getURIID()?->getValue() ?? '';
+        $newEmailAddress = $documentSellerContact->getEmailURIUniversalCommunication()?->getURIID()?->getValue() ?? '';
 
         return $this;
     }
@@ -4517,7 +4517,7 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractDocument
         $newDepartmentName = $documentBuyerContact->getDepartmentName()?->getValue() ?? '';
         $newPhoneNumber = $documentBuyerContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
         $newFaxNumber = '';
-        $newEmailAddress = $documentBuyerContact->getEmailURIUniversalCommunication()->getURIID()?->getValue() ?? '';
+        $newEmailAddress = $documentBuyerContact->getEmailURIUniversalCommunication()?->getURIID()?->getValue() ?? '';
 
         return $this;
     }
@@ -4989,7 +4989,7 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractDocument
         $newDepartmentName = $documentTaxRepresentativeContact->getDepartmentName()?->getValue() ?? '';
         $newPhoneNumber = $documentTaxRepresentativeContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
         $newFaxNumber = '';
-        $newEmailAddress = $documentTaxRepresentativeContact->getEmailURIUniversalCommunication()->getURIID()?->getValue() ?? '';
+        $newEmailAddress = $documentTaxRepresentativeContact->getEmailURIUniversalCommunication()?->getURIID()?->getValue() ?? '';
 
         return $this;
     }
@@ -5793,7 +5793,7 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractDocument
         $newDepartmentName = $documentShipToContact->getDepartmentName()?->getValue() ?? '';
         $newPhoneNumber = $documentShipToContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
         $newFaxNumber = '';
-        $newEmailAddress = $documentShipToContact->getEmailURIUniversalCommunication()->getURIID()?->getValue() ?? '';
+        $newEmailAddress = $documentShipToContact->getEmailURIUniversalCommunication()?->getURIID()?->getValue() ?? '';
 
         return $this;
     }
@@ -7593,7 +7593,7 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractDocument
         $newDepartmentName = $documentPayeeContact->getDepartmentName()?->getValue() ?? '';
         $newPhoneNumber = $documentPayeeContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
         $newFaxNumber = '';
-        $newEmailAddress = $documentPayeeContact->getEmailURIUniversalCommunication()->getURIID()?->getValue() ?? '';
+        $newEmailAddress = $documentPayeeContact->getEmailURIUniversalCommunication()?->getURIID()?->getValue() ?? '';
 
         return $this;
     }

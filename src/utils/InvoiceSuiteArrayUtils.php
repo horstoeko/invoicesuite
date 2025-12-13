@@ -36,4 +36,55 @@ class InvoiceSuiteArrayUtils
     {
         return in_array(strtolower($search), array_map(strtolower(...), $array));
     }
+
+    /**
+     * Push a nullable string to an int-indexed array. The string ($value) is only pushed when it is not null or an empty one
+     *
+     * @param  array<int,string> $array
+     * @param  null|string       $value
+     * @return void
+     *
+     * @phpstan-param-out array<int,string> $array
+     */
+    public static function pushStringToIntIndexedArray(array &$array, ?string $value): void
+    {
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($value)) {
+            $array[] = (string) $value;
+        }
+    }
+
+    /**
+     * Push a nullable string to an string-indexed ($key) array. The string ($value) is only pushed when it is not null or an empty one
+     *
+     * @param  array<string,string> $array
+     * @param  null|string          $key
+     * @param  null|string          $value
+     * @return void
+     *
+     * @phpstan-param-out array<string,string> $array
+     */
+    public static function pushStringToStringIndexedArray(array &$array, ?string $key, ?string $value): void
+    {
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$key, $value])) {
+            $array[(string) $key] = (string) $value;
+        }
+    }
+
+    /**
+     * Push a nullable array to an int-indexed array. The string ($value) is only pushed when it is not null or an empty one
+     *
+     * @template T of array<array-key, mixed>
+     * @param array<int, T> $array
+     * @param T             $value
+     * @phpstan-param-out array<int, T> $array
+     * @return void
+     */
+    public static function pushArrayToIntIndexedArray(array &$array, array $value): void
+    {
+        // @phpstan-ignore paramOut.type
+        if ($value !== []) {
+            // @phpstan-ignore paramOut.type
+            $array[] = $value;
+        }
+    }
 }

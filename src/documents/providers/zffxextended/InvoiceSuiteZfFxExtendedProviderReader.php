@@ -4125,7 +4125,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
         $newDepartmentName = $documentSellerContact->getDepartmentName()?->getValue() ?? '';
         $newPhoneNumber = $documentSellerContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
         $newFaxNumber = $documentSellerContact->getFaxUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
-        $newEmailAddress = $documentSellerContact->getEmailURIUniversalCommunication()->getURIID()?->getValue() ?? '';
+        $newEmailAddress = $documentSellerContact->getEmailURIUniversalCommunication()?->getURIID()?->getValue() ?? '';
 
         return $this;
     }
@@ -4597,7 +4597,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
         $newDepartmentName = $documentBuyerContact->getDepartmentName()?->getValue() ?? '';
         $newPhoneNumber = $documentBuyerContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
         $newFaxNumber = $documentBuyerContact->getFaxUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
-        $newEmailAddress = $documentBuyerContact->getEmailURIUniversalCommunication()->getURIID()?->getValue() ?? '';
+        $newEmailAddress = $documentBuyerContact->getEmailURIUniversalCommunication()?->getURIID()?->getValue() ?? '';
 
         return $this;
     }
@@ -5069,7 +5069,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
         $newDepartmentName = $documentTaxRepresentativeContact->getDepartmentName()?->getValue() ?? '';
         $newPhoneNumber = $documentTaxRepresentativeContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
         $newFaxNumber = $documentTaxRepresentativeContact->getFaxUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
-        $newEmailAddress = $documentTaxRepresentativeContact->getEmailURIUniversalCommunication()->getURIID()?->getValue() ?? '';
+        $newEmailAddress = $documentTaxRepresentativeContact->getEmailURIUniversalCommunication()?->getURIID()?->getValue() ?? '';
 
         return $this;
     }
@@ -5541,7 +5541,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
         $newDepartmentName = $documentProductEndUserContact->getDepartmentName()?->getValue() ?? '';
         $newPhoneNumber = $documentProductEndUserContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
         $newFaxNumber = $documentProductEndUserContact->getFaxUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
-        $newEmailAddress = $documentProductEndUserContact->getEmailURIUniversalCommunication()->getURIID()?->getValue() ?? '';
+        $newEmailAddress = $documentProductEndUserContact->getEmailURIUniversalCommunication()?->getURIID()?->getValue() ?? '';
 
         return $this;
     }
@@ -6013,7 +6013,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
         $newDepartmentName = $documentShipToContact->getDepartmentName()?->getValue() ?? '';
         $newPhoneNumber = $documentShipToContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
         $newFaxNumber = $documentShipToContact->getFaxUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
-        $newEmailAddress = $documentShipToContact->getEmailURIUniversalCommunication()->getURIID()?->getValue() ?? '';
+        $newEmailAddress = $documentShipToContact->getEmailURIUniversalCommunication()?->getURIID()?->getValue() ?? '';
 
         return $this;
     }
@@ -6485,7 +6485,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
         $newDepartmentName = $documentUltimateShipToContact->getDepartmentName()?->getValue() ?? '';
         $newPhoneNumber = $documentUltimateShipToContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
         $newFaxNumber = $documentUltimateShipToContact->getFaxUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
-        $newEmailAddress = $documentUltimateShipToContact->getEmailURIUniversalCommunication()->getURIID()?->getValue() ?? '';
+        $newEmailAddress = $documentUltimateShipToContact->getEmailURIUniversalCommunication()?->getURIID()?->getValue() ?? '';
 
         return $this;
     }
@@ -6957,7 +6957,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
         $newDepartmentName = $documentShipFromContact->getDepartmentName()?->getValue() ?? '';
         $newPhoneNumber = $documentShipFromContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
         $newFaxNumber = $documentShipFromContact->getFaxUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
-        $newEmailAddress = $documentShipFromContact->getEmailURIUniversalCommunication()->getURIID()?->getValue() ?? '';
+        $newEmailAddress = $documentShipFromContact->getEmailURIUniversalCommunication()?->getURIID()?->getValue() ?? '';
 
         return $this;
     }
@@ -7429,7 +7429,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
         $newDepartmentName = $documentInvoicerContact->getDepartmentName()?->getValue() ?? '';
         $newPhoneNumber = $documentInvoicerContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
         $newFaxNumber = $documentInvoicerContact->getFaxUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
-        $newEmailAddress = $documentInvoicerContact->getEmailURIUniversalCommunication()->getURIID()?->getValue() ?? '';
+        $newEmailAddress = $documentInvoicerContact->getEmailURIUniversalCommunication()?->getURIID()?->getValue() ?? '';
 
         return $this;
     }
@@ -7901,7 +7901,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
         $newDepartmentName = $documentInvoiceeContact->getDepartmentName()?->getValue() ?? '';
         $newPhoneNumber = $documentInvoiceeContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
         $newFaxNumber = $documentInvoiceeContact->getFaxUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
-        $newEmailAddress = $documentInvoiceeContact->getEmailURIUniversalCommunication()->getURIID()?->getValue() ?? '';
+        $newEmailAddress = $documentInvoiceeContact->getEmailURIUniversalCommunication()?->getURIID()?->getValue() ?? '';
 
         return $this;
     }
@@ -8373,7 +8373,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
         $newDepartmentName = $documentPayeeContact->getDepartmentName()?->getValue() ?? '';
         $newPhoneNumber = $documentPayeeContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
         $newFaxNumber = $documentPayeeContact->getFaxUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
-        $newEmailAddress = $documentPayeeContact->getEmailURIUniversalCommunication()->getURIID()?->getValue() ?? '';
+        $newEmailAddress = $documentPayeeContact->getEmailURIUniversalCommunication()?->getURIID()?->getValue() ?? '';
 
         return $this;
     }
@@ -11052,7 +11052,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
         $newDepartmentName = $positionShipToContact->getDepartmentName()?->getValue() ?? '';
         $newPhoneNumber = $positionShipToContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
         $newFaxNumber = $positionShipToContact->getFaxUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
-        $newEmailAddress = $positionShipToContact->getEmailURIUniversalCommunication()->getURIID()?->getValue() ?? '';
+        $newEmailAddress = $positionShipToContact->getEmailURIUniversalCommunication()?->getURIID()?->getValue() ?? '';
 
         return $this;
     }
@@ -11522,7 +11522,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
         $newDepartmentName = $positionShipToContact->getDepartmentName()?->getValue() ?? '';
         $newPhoneNumber = $positionShipToContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
         $newFaxNumber = $positionShipToContact->getFaxUniversalCommunication()?->getCompleteNumber()?->getValue() ?? '';
-        $newEmailAddress = $positionShipToContact->getEmailURIUniversalCommunication()->getURIID()?->getValue() ?? '';
+        $newEmailAddress = $positionShipToContact->getEmailURIUniversalCommunication()?->getURIID()?->getValue() ?? '';
 
         return $this;
     }
