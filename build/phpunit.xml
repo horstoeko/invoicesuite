@@ -123,6 +123,7 @@
         </testsuite>
         <testsuite name="compat">
             <file>../tests/testcases/compat/ZugferdDocumentBuilderExtendedTest.php</file>
+            <file>../tests/testcases/compat/ZugferdDocumentReaderExtendedTest.php</file>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
