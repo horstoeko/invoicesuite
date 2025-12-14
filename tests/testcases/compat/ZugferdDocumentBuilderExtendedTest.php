@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\invoicesuite\tests\testcases\concerns;
 
 use DateTime;
@@ -10,7 +12,7 @@ use horstoeko\invoicesuite\tests\traits\HandlesCompatXmlTests;
 use horstoeko\zugferd\ZugferdDocumentBuilder;
 use horstoeko\zugferd\ZugferdProfiles;
 
-class ZugferdDocumentBuilderExtendedTest extends TestCase
+final class ZugferdDocumentBuilderExtendedTest extends TestCase
 {
     use HandlesCompatXmlTests;
 

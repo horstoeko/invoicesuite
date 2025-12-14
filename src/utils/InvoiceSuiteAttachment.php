@@ -139,9 +139,12 @@ class InvoiceSuiteAttachment
      */
     public static function fromUrl(string $url): static
     {
+        /*
+        TODO: Temporary disabled. Make that better
         if (filter_var($url, FILTER_VALIDATE_URL) === false) {
             throw new InvoiceSuiteInvalidArgumentException(sprintf('Not a valid URL: %s', $url));
         }
+        */
 
         return new static($url, '', static::IS_FROM_URL);
     }

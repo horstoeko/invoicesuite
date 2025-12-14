@@ -1,18 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\zugferd\tests\testcases;
 
+use DateTimeInterface;
 use DateTime;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\zugferd\ZugferdDocumentReader;
 use horstoeko\zugferd\ZugferdProfiles;
 
-class ZugferdDocumentReaderExtendedTest extends TestCase
+final class ZugferdDocumentReaderExtendedTest extends TestCase
 {
     /**
      * @var ZugferdDocumentReader
      */
-    protected static $document;
+    private static $document;
 
     public static function setUpBeforeClass(): void
     {
@@ -65,14 +68,14 @@ class ZugferdDocumentReaderExtendedTest extends TestCase
         $this->assertArrayHasKey('content', $notes[2]);
         $this->assertArrayHasKey('subjectcode', $notes[2]);
         $this->assertArrayHasKey('contentcode', $notes[2]);
-        $this->assertEquals('ST3', $notes[0]['contentcode']);
-        $this->assertEquals('AAK', $notes[0]['subjectcode']);
-        $this->assertEquals('Es bestehen Rabatt- oder Bonusvereinbarungen.', $notes[0]['content']);
-        $this->assertEquals('EEV', $notes[1]['contentcode']);
-        $this->assertEquals('AAJ', $notes[1]['subjectcode']);
-        $this->assertEquals('Der Verkäufer bleibt Eigentümer der Waren bis zur vollständigen Erfüllung der Kaufpreisforderung.', $notes[1]['content']);
-        $this->assertEquals('', $notes[2]['contentcode']);
-        $this->assertEquals('REG', $notes[2]['subjectcode']);
+        $this->assertSame('ST3', $notes[0]['contentcode']);
+        $this->assertSame('AAK', $notes[0]['subjectcode']);
+        $this->assertSame('Es bestehen Rabatt- oder Bonusvereinbarungen.', $notes[0]['content']);
+        $this->assertSame('EEV', $notes[1]['contentcode']);
+        $this->assertSame('AAJ', $notes[1]['subjectcode']);
+        $this->assertSame('Der Verkäufer bleibt Eigentümer der Waren bis zur vollständigen Erfüllung der Kaufpreisforderung.', $notes[1]['content']);
+        $this->assertSame('', $notes[2]['contentcode']);
+        $this->assertSame('REG', $notes[2]['subjectcode']);
         $this->assertStringContainsString('MUSTERLIEFERANT GMBH', $notes[2]['content']);
         $this->assertStringContainsString('BAHNHOFSTRASSE 99', $notes[2]['content']);
         $this->assertStringContainsString('99199 MUSTERHAUSEN', $notes[2]['content']);
@@ -139,7 +142,7 @@ class ZugferdDocumentReaderExtendedTest extends TestCase
         $this->assertArrayNotHasKey(0, $sellertaxreg);
         $this->assertArrayNotHasKey(1, $sellertaxreg);
         $this->assertArrayNotHasKey('ZZ', $sellertaxreg);
-        $this->assertEquals('201/113/40209', $sellertaxreg['FC']);
+        $this->assertSame('201/113/40209', $sellertaxreg['FC']);
     }
 
     public function testDocumentSellerAddress(): void
@@ -234,7 +237,7 @@ class ZugferdDocumentReaderExtendedTest extends TestCase
         $this->assertFalse(self::$document->firstDocumentBuyerContact());
         $this->assertFalse(self::$document->nextDocumentBuyerContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentBuyerContact($buyercontactpersonname, $buyercontactdepartmentname, $buyercontactphoneno, $buyercontactfaxno, $buyercontactemailaddr);
             }
         );
@@ -296,7 +299,7 @@ class ZugferdDocumentReaderExtendedTest extends TestCase
         $this->assertFalse(self::$document->firstDocumentSellerTaxRepresentativeContact());
         $this->assertFalse(self::$document->nextDocumentSellerTaxRepresentativeContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentSellerTaxRepresentativeContact($sellertaxreprcontactpersonname, $sellertaxreprcontactdepartmentname, $sellertaxreprcontactphoneno, $sellertaxreprcontactfaxno, $sellertaxreprcontactemailaddr);
             }
         );
@@ -355,7 +358,7 @@ class ZugferdDocumentReaderExtendedTest extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentProductEndUserContactContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentProductEndUserContact($producendusercontactpersonname, $producendusercontactdepartmentname, $producendusercontactphoneno, $producendusercontactfaxno, $producendusercontactemailaddr);
             }
         );
@@ -467,13 +470,13 @@ class ZugferdDocumentReaderExtendedTest extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentUltimateShipToContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentUltimateShipToContact($ultimateshiptocontactpersonname, $ultimateshiptocontactdepartmentname, $ultimateshiptocontactphoneno, $ultimateshiptocontactfaxno, $ultimateshiptocontactemailaddr);
             }
         );
         $this->assertFalse(self::$document->nextDocumentUltimateShipToContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentUltimateShipToContact($ultimateshiptocontactpersonname, $ultimateshiptocontactdepartmentname, $ultimateshiptocontactphoneno, $ultimateshiptocontactfaxno, $ultimateshiptocontactemailaddr);
             }
         );
@@ -527,13 +530,13 @@ class ZugferdDocumentReaderExtendedTest extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentShipFromContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentShipFromContact($shipfromcontactpersonname, $shipfromcontactdepartmentname, $shipfromcontactphoneno, $shipfromcontactfaxno, $shipfromcontactemailaddr);
             }
         );
         $this->assertFalse(self::$document->nextDocumentShipFromContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentShipFromContact($shipfromcontactpersonname, $shipfromcontactdepartmentname, $shipfromcontactphoneno, $shipfromcontactfaxno, $shipfromcontactemailaddr);
             }
         );
@@ -587,13 +590,13 @@ class ZugferdDocumentReaderExtendedTest extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentInvoicerContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentInvoicerContact($invoicercontactpersonname, $invoicercontactdepartmentname, $invoicercontactphoneno, $invoicercontactfaxno, $invoicercontactemailaddr);
             }
         );
         $this->assertFalse(self::$document->nextDocumentInvoicerContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentInvoicerContact($invoicercontactpersonname, $invoicercontactdepartmentname, $invoicercontactphoneno, $invoicercontactfaxno, $invoicercontactemailaddr);
             }
         );
@@ -650,13 +653,13 @@ class ZugferdDocumentReaderExtendedTest extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentInvoiceeContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentInvoiceeContact($invoiceecontactpersonname, $invoiceecontactdepartmentname, $invoiceecontactphoneno, $invoiceecontactfaxno, $invoiceecontactemailaddr);
             }
         );
         $this->assertFalse(self::$document->nextDocumentInvoiceeContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentInvoiceeContact($invoiceecontactpersonname, $invoiceecontactdepartmentname, $invoiceecontactphoneno, $invoiceecontactfaxno, $invoiceecontactemailaddr);
             }
         );
@@ -710,13 +713,13 @@ class ZugferdDocumentReaderExtendedTest extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentPayeeContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentPayeeContact($payeecontactpersonname, $payeecontactdepartmentname, $payeecontactphoneno, $payeecontactfaxno, $payeecontactemailaddr);
             }
         );
         $this->assertFalse(self::$document->nextDocumentPayeeContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentPayeeContact($payeecontactpersonname, $payeecontactdepartmentname, $payeecontactphoneno, $payeecontactfaxno, $payeecontactemailaddr);
             }
         );
@@ -785,7 +788,7 @@ class ZugferdDocumentReaderExtendedTest extends TestCase
         $this->assertIsArray($additionalrefdocs[0]);
         $this->assertArrayHasKey('IssuerAssignedID', $additionalrefdocs[0]);
         $this->assertArrayHasKey('TypeCode', $additionalrefdocs[0]);
-        $this->assertEquals('A777123', $additionalrefdocs[0]['IssuerAssignedID']);
+        $this->assertSame('A777123', $additionalrefdocs[0]['IssuerAssignedID']);
         $this->assertEquals('130', $additionalrefdocs[0]['TypeCode']);
     }
 
@@ -819,14 +822,14 @@ class ZugferdDocumentReaderExtendedTest extends TestCase
         $this->assertArrayHasKey('IssuerAssignedID', $invoicerefdocs[0]);
         $this->assertArrayHasKey('TypeCode', $invoicerefdocs[0]);
         $this->assertArrayHasKey('FormattedIssueDateTime', $invoicerefdocs[0]);
-        $this->assertEquals('S-INV1', $invoicerefdocs[0]['IssuerAssignedID']);
+        $this->assertSame('S-INV1', $invoicerefdocs[0]['IssuerAssignedID']);
         $this->assertEquals('83', $invoicerefdocs[0]['TypeCode']);
         $this->assertArrayHasKey(1, $invoicerefdocs);
         $this->assertIsArray($invoicerefdocs[1]);
         $this->assertArrayHasKey('IssuerAssignedID', $invoicerefdocs[1]);
         $this->assertArrayHasKey('TypeCode', $invoicerefdocs[1]);
         $this->assertArrayHasKey('FormattedIssueDateTime', $invoicerefdocs[1]);
-        $this->assertEquals('S-INV2', $invoicerefdocs[1]['IssuerAssignedID']);
+        $this->assertSame('S-INV2', $invoicerefdocs[1]['IssuerAssignedID']);
         $this->assertEquals('84', $invoicerefdocs[1]['TypeCode']);
     }
 
@@ -840,13 +843,13 @@ class ZugferdDocumentReaderExtendedTest extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentUltimateCustomerOrderReferencedDocument());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentUltimateCustomerOrderReferencedDocument($issuerassignedid, $issueddate);
             }
         );
         $this->assertFalse(self::$document->nextDocumentUltimateCustomerOrderReferencedDocument());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentUltimateCustomerOrderReferencedDocument($issuerassignedid, $issueddate);
             }
         );
@@ -983,11 +986,11 @@ class ZugferdDocumentReaderExtendedTest extends TestCase
         $this->assertIsArray($taxTypeCodes);
         $this->assertCount(1, $taxTypeCodes);
         $this->assertArrayHasKey(0, $taxTypeCodes);
-        $this->assertEquals('VAT', $taxTypeCodes[0]);
+        $this->assertSame('VAT', $taxTypeCodes[0]);
         $this->assertIsArray($taxCategoryCodes);
         $this->assertCount(1, $taxCategoryCodes);
         $this->assertArrayHasKey(0, $taxCategoryCodes);
-        $this->assertEquals('S', $taxCategoryCodes[0]);
+        $this->assertSame('S', $taxCategoryCodes[0]);
         $this->assertIsArray($rateApplicablePercents);
         $this->assertCount(1, $rateApplicablePercents);
         $this->assertArrayHasKey(0, $rateApplicablePercents);
@@ -1011,10 +1014,10 @@ class ZugferdDocumentReaderExtendedTest extends TestCase
         $this->assertArrayHasKey('duedate', $docpaymentterms[0]);
         $this->assertArrayHasKey('directdebitmandateid', $docpaymentterms[0]);
         $this->assertArrayHasKey('partialpaymentamount', $docpaymentterms[0]);
-        $this->assertEquals('Skontovereinbarung: 2% bei Zahlung innerhalb 10 Tagen nach Rechnungsdatum', $docpaymentterms[0]['description']);
-        $this->assertNull($docpaymentterms[0]['duedate']);
+        $this->assertSame('Skontovereinbarung: 2% bei Zahlung innerhalb 10 Tagen nach Rechnungsdatum', $docpaymentterms[0]['description']);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $docpaymentterms[0]['duedate']);
         $this->assertNotInstanceOf('DateTime', $docpaymentterms[0]['duedate']);
-        $this->assertEquals('', $docpaymentterms[0]['directdebitmandateid']);
+        $this->assertSame('', $docpaymentterms[0]['directdebitmandateid']);
         $this->assertEqualsWithDelta(0.0, $docpaymentterms[0]['partialpaymentamount'], PHP_FLOAT_EPSILON);
     }
 

@@ -86,6 +86,10 @@
             "@testsreal",
             "composer remove --dev smalot/pdfparser --no-interaction --quiet"
         ],
+        "testsreal:compat": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite compat --no-coverage"
+        ],
         "phpcs": "@phpcs12",
         "phpcs12": [
             "Composer\\Config::disableProcessTimeout",
