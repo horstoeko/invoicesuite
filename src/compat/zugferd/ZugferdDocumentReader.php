@@ -112,7 +112,7 @@ class ZugferdDocumentReader
     /**
      * Returns the profile definition
      *
-     * @return array
+     * @return array<string, null|list<string>|string>
      */
     public function getProfileDefinition(): array
     {
@@ -130,8 +130,7 @@ class ZugferdDocumentReader
     /**
      * Get a parameter from profile definition
      *
-     * @param  string                                  $parameterName
-     * @throws ZugferdUnknownProfileParameterException
+     * @param  string $parameterName
      * @return mixed
      */
     public function getProfileDefinitionParameter(string $parameterName)
@@ -4097,21 +4096,21 @@ class ZugferdDocumentReader
     /**
      * Get detailed information on included products. This information relates to the product that has just been added.
      *
-     * @param  null|string            $name               __BT-X-18, From EXTENDED__ Name of the referenced product contained
-     * @param  null|string            $description        __BT-X-19, From EXTENDED__ Description of the included referenced product
-     * @param  null|string            $sellerAssignedID   __BT-X-16, From EXTENDED__ ID assigned by the seller of the contained referenced product
-     * @param  null|string            $buyerAssignedID    __BT-X-17, From EXTENDED__ ID of the referenced product assigned by the buyer
-     * @param  null|array<int,string> $globalID           __BT-X-15, From EXTENDED__ Array of global ids of the referenced product indexed by the identification scheme
-     * @param  null|float             $unitQuantity       __BT-X-20, From EXTENDED__ Quantity of the referenced product contained
-     * @param  null|string            $unitCode           __BT-X-20-1, From EXTENDED__ Unit code of Quantity of the referenced product contained
-     * @param  null|string            $industryAssignedID __BT-X-309, From EXTENDED__ ID of the referenced product contained assigned by the industry
+     * @param  null|string               $name               __BT-X-18, From EXTENDED__ Name of the referenced product contained
+     * @param  null|string               $description        __BT-X-19, From EXTENDED__ Description of the included referenced product
+     * @param  null|string               $sellerAssignedID   __BT-X-16, From EXTENDED__ ID assigned by the seller of the contained referenced product
+     * @param  null|string               $buyerAssignedID    __BT-X-17, From EXTENDED__ ID of the referenced product assigned by the buyer
+     * @param  null|array<string,string> $globalID           __BT-X-15, From EXTENDED__ Array of global ids of the referenced product indexed by the identification scheme
+     * @param  null|float                $unitQuantity       __BT-X-20, From EXTENDED__ Quantity of the referenced product contained
+     * @param  null|string               $unitCode           __BT-X-20-1, From EXTENDED__ Unit code of Quantity of the referenced product contained
+     * @param  null|string               $industryAssignedID __BT-X-309, From EXTENDED__ ID of the referenced product contained assigned by the industry
      * @return static
      *
      * @phpstan-param-out string $name
      * @phpstan-param-out string $description
      * @phpstan-param-out string $sellerAssignedID
      * @phpstan-param-out string $buyerAssignedID
-     * @phpstan-param-out array<int,string> $globalID
+     * @phpstan-param-out array<string,string> $globalID
      * @phpstan-param-out float $unitQuantity
      * @phpstan-param-out string $unitCode
      * @phpstan-param-out string $industryAssignedID
@@ -4141,9 +4140,11 @@ class ZugferdDocumentReader
             $unitCode
         );
 
-        InvoiceSuiteArrayUtils::pushArrayToIntIndexedArray($globalID, [
-            $newProductGlobalIdType => $newProductGlobalId,
-        ]);
+        InvoiceSuiteArrayUtils::pushStringToStringIndexedArray(
+            $globalID,
+            $newProductGlobalIdType,
+            $newProductGlobalId
+        );
 
         return $this;
     }
@@ -4188,7 +4189,7 @@ class ZugferdDocumentReader
      *
      * @phpstan-param-out string $issuerAssignedId
      * @phpstan-param-out string $lineId
-     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     * @phpstan-param-out DateTimeInterface|null $issueDate
      */
     public function getDocumentPositionSellerOrderReferencedDocument(
         ?string &$issuerAssignedId,
@@ -4220,7 +4221,7 @@ class ZugferdDocumentReader
      *
      * @phpstan-param-out string $issuerAssignedId
      * @phpstan-param-out string $lineId
-     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     * @phpstan-param-out DateTimeInterface|null $issueDate
      */
     public function getDocumentPositionBuyerOrderReferencedDocument(
         ?string &$issuerAssignedId,
@@ -4252,7 +4253,7 @@ class ZugferdDocumentReader
      *
      * @phpstan-param-out string $issuerAssignedId
      * @phpstan-param-out string $lineId
-     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     * @phpstan-param-out DateTimeInterface|null $issueDate
      */
     public function getDocumentPositionQuotationReferencedDocument(
         ?string &$issuerAssignedId,
@@ -4284,7 +4285,7 @@ class ZugferdDocumentReader
      *
      * @phpstan-param-out string $issuerAssignedId
      * @phpstan-param-out string $lineId
-     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     * @phpstan-param-out DateTimeInterface|null $issueDate
      */
     public function getDocumentPositionContractReferencedDocument(
         ?string &$issuerAssignedId,
@@ -4335,7 +4336,7 @@ class ZugferdDocumentReader
      * @param  null|string            $typeCode           __BT-X-30, From EXTENDED__ Type of referenced document (See codelist UNTDID 1001)
      * @param  null|string            $uriId              __BT-X-28, From EXTENDED__ The Uniform Resource Locator (URL) at which the external document is available. A means of finding the resource including the primary access method intended for it, e.g. http: // or ftp: //. The location of the external document must be used if the buyer needs additional information to support the amounts billed. External documents are not part of the invoice. Access to external documents can involve certain risks.
      * @param  null|string            $lineId             __BT-X-29, From EXTENDED__ The referenced position identifier in the additional document
-     * @param  null|array             $name               __BT-X-299, From EXTENDED__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  null|array<int,string> $name               __BT-X-299, From EXTENDED__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
      * @param  null|string            $refTypeCode        __BT-X-32, From EXTENDED__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
      * @param  null|DateTimeInterface $issueDate          __BT-X-33, From EXTENDED__ Document date
      * @param  null|string            $binaryDataFilename __BT-X-31, From EXTENDED__ Contains a file name of an attachment document embedded as a binary object
@@ -5123,6 +5124,9 @@ class ZugferdDocumentReader
      * @param  null|string $uriId
      * @param  null|string $binaryDataFilename
      * @return static
+     *
+     * @phpstan-param-out string $uriId
+     * @phpstan-param-out string $binaryDataFilename
      */
     private function internalHandleInvoiceSuiteAttachment(
         ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment,
@@ -5136,7 +5140,8 @@ class ZugferdDocumentReader
             return $this;
         }
 
-        if ($newInvoiceSuiteAttachment?->isBinaryAttachment()) {
+        if ($newInvoiceSuiteAttachment->isBinaryAttachment() !== false) {
+            // @phpstan-ignore paramOut.type
             $binaryDataFilename = $newInvoiceSuiteAttachment->getFilename();
             $binarydata = $newInvoiceSuiteAttachment->getRawContent();
 
@@ -5150,7 +5155,7 @@ class ZugferdDocumentReader
             }
         }
 
-        if ($newInvoiceSuiteAttachment?->isUrlAttachment()) {
+        if ($newInvoiceSuiteAttachment->isUrlAttachment() !== false) {
             $uriId = $newInvoiceSuiteAttachment->getRawContent();
         }
 

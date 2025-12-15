@@ -125,8 +125,7 @@ class ZugferdDocumentBuilder implements Stringable
     /**
      * Get a parameter from profile definition
      *
-     * @param  string                                  $parameterName
-     * @throws ZugferdUnknownProfileParameterException
+     * @param  string $parameterName
      * @return mixed
      */
     public function getProfileDefinitionParameter(string $parameterName)
