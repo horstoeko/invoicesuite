@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\utils;
 
-use Throwable;
-use horstoeko\stringmanagement\FileUtils;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
+use horstoeko\stringmanagement\FileUtils;
+use Throwable;
 
 /**
  * Class representing some string utilities for files
