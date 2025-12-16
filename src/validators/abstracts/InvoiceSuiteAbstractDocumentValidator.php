@@ -47,9 +47,9 @@ abstract class InvoiceSuiteAbstractDocumentValidator
      * Create a validator instance by a file which contains the document to validate
      *
      * @param  string                               $fromFilename
+     * @return static
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
-     * @return static
      */
     public static function createFromFile(string $fromFilename): static
     {
@@ -70,8 +70,8 @@ abstract class InvoiceSuiteAbstractDocumentValidator
      * Create a validator instance by the XML content of a given InvoiceSuiteDocumentBuilder
      *
      * @param  InvoiceSuiteDocumentBuilder $fromDocumentBuilder
-     * @throws RuntimeException
      * @return static
+     * @throws RuntimeException
      */
     public static function createFromDocumentBuilderAsXml(InvoiceSuiteDocumentBuilder $fromDocumentBuilder): static
     {
@@ -82,8 +82,8 @@ abstract class InvoiceSuiteAbstractDocumentValidator
      * Create a validator instance by the JSON content of a given InvoiceSuiteDocumentBuilder
      *
      * @param  InvoiceSuiteDocumentBuilder $fromDocumentBuilder
-     * @throws RuntimeException
      * @return static
+     * @throws RuntimeException
      */
     public static function createFromDocumentBuilderAsJson(InvoiceSuiteDocumentBuilder $fromDocumentBuilder): static
     {
@@ -105,8 +105,8 @@ abstract class InvoiceSuiteAbstractDocumentValidator
     /**
      * Main validation method. Checks for non-empty content
      *
-     * @throws InvoiceSuiteInvalidArgumentException
      * @return static
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     public function validate(): static
     {

@@ -108,10 +108,10 @@ return (new Config())
             'phpdoc_no_empty_return' => false,
             'phpdoc_separation' => [
                 'groups' => [
-                    ['category', 'package', 'author', 'license', 'subpackage', 'copyright'],
-                    ['param', 'return'],
-                    ['throws'],
-                    ['deprecated', 'link', 'see', 'since'],
+                    ['category', 'package', 'author', 'license', 'subpackage', 'copyright', 'link', 'see'],
+                    ['param', 'return', 'throws'],
+                    ['deprecated', 'since'],
+                    ['var', 'JMS\\*']
                 ],
                 'skip_unlisted_annotations' => false,
             ],

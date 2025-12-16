@@ -70,10 +70,10 @@ class ZugferdDocumentReader
      *
      * @param  string                             $method
      * @param  array<mixed>                       $parameters
+     * @return mixed
      * @throws BadMethodCallException
      * @throws Error
      * @throws InvoiceSuiteBadMethodCallException
-     * @return mixed
      */
     public function __call($method, $parameters)
     {
@@ -84,12 +84,12 @@ class ZugferdDocumentReader
      * Guess the profile type of a xml file.
      *
      * @param  string                                      $xmlFilename
+     * @return static
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
      * @throws RuntimeException
-     * @return static
      */
     public static function readAndGuessFromFile(string $xmlFilename): static
     {
@@ -100,10 +100,10 @@ class ZugferdDocumentReader
      * Guess the profile type of the readden xml document.
      *
      * @param  string                                      $xmlContent
+     * @return static
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
      * @throws RuntimeException
-     * @return static
      */
     public static function readAndGuessFromContent(string $xmlContent): static
     {
@@ -150,8 +150,8 @@ class ZugferdDocumentReader
      * Get a parameter from profile definition
      *
      * @param  string                               $parameterName
-     * @throws InvoiceSuiteInvalidArgumentException
      * @return mixed
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     public function getProfileDefinitionParameter(string $parameterName)
     {
@@ -167,8 +167,8 @@ class ZugferdDocumentReader
     /**
      * Returns the internal InvoiceSuiteDocumentReader instance
      *
-     * @throws RuntimeException
      * @return InvoiceSuiteDocumentReader
+     * @throws RuntimeException
      */
     public function getDocumentReaderInstance(): InvoiceSuiteDocumentReader
     {
@@ -205,13 +205,17 @@ class ZugferdDocumentReader
      *
      * @phpstan-param-out string $documentNo
      * @phpstan-param-out string $documentTypeCode
+     *
      * @param-out null|DateTimeInterface $documentDate
+     *
      * @phpstan-param-out null|DateTimeInterface $documentDate
      * @phpstan-param-out string $invoiceCurrency
      * @phpstan-param-out string $taxCurrency
      * @phpstan-param-out string $documentName
      * @phpstan-param-out string $documentLanguage
+     *
      * @param-out null|DateTimeInterface $effectiveSpecifiedPeriod
+     *
      * @phpstan-param-out null|DateTimeInterface $effectiveSpecifiedPeriod
      */
     public function getDocumentInformation(

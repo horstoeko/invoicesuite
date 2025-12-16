@@ -34,8 +34,8 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
      *
      * @param  ZugferdDocumentBuilder                      $documentBuilder The instance of the document builder. Needed to get the XML data
      * @param  string                                      $pdfContent      The full filename or a string containing the binary pdf data. This is the original PDF (e.g. created by a ERP system)
-     * @throws RuntimeException
      * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws RuntimeException
      */
     public function __construct(ZugferdDocumentBuilder $documentBuilder, string $pdfContent)
     {
@@ -50,11 +50,11 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
      *
      * @param  ZugferdDocumentBuilder                      $documentBuilder
      * @param  string                                      $pdfFileName
+     * @return static
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws RuntimeException
-     * @return static
      */
     public static function fromPdfFile(ZugferdDocumentBuilder $documentBuilder, string $pdfFileName): static
     {
@@ -77,9 +77,9 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
      *
      * @param  ZugferdDocumentBuilder                      $documentBuilder
      * @param  string                                      $pdfContent
+     * @return static
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws RuntimeException
-     * @return static
      */
     public static function fromPdfString(ZugferdDocumentBuilder $documentBuilder, string $pdfContent): static
     {

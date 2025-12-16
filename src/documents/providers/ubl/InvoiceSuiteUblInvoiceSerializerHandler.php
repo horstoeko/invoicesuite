@@ -333,8 +333,8 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      *
      * @param  JsonDeserializationVisitor   $visitor
      * @param  null|string                  $data
-     * @throws DateMalformedStringException
      * @return null|DateTime
+     * @throws DateMalformedStringException
      */
     public function deserializeJsonDate(JsonDeserializationVisitor $visitor, $data): ?DateTime
     {
@@ -359,8 +359,8 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      *
      * @param  JsonDeserializationVisitor   $visitor
      * @param  null|string                  $data
-     * @throws DateMalformedStringException
      * @return null|DateTime
+     * @throws DateMalformedStringException
      */
     public function deserializeJsonDateTime(JsonDeserializationVisitor $visitor, $data): ?DateTime
     {
@@ -385,8 +385,8 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      *
      * @param  JsonDeserializationVisitor   $visitor
      * @param  null|string                  $data
-     * @throws DateMalformedStringException
      * @return null|DateTime
+     * @throws DateMalformedStringException
      */
     public function deserializeJsonTime(JsonDeserializationVisitor $visitor, $data): ?DateTime
     {

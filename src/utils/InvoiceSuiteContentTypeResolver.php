@@ -48,6 +48,7 @@ class InvoiceSuiteContentTypeResolver
 
     /**
      * Test that $fromContent is a valid XML
+     *
      * @param  string $fromContent
      * @return bool
      */

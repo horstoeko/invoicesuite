@@ -62,10 +62,10 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
     /**
      * Generate the final PDF
      *
+     * @return static
      * @throws PdfParserException
      * @throws PdfReaderException
      * @throws RandomException
-     * @return static
      */
     protected function generatePdfDocument(): static
     {

@@ -107,9 +107,12 @@ class InvoiceSuiteArrayUtils
      * Push a nullable array to an int-indexed array. The string ($value) is only pushed when it is not null or an empty one
      *
      * @template T of array<array-key, mixed>
+     *
      * @param array<int, T> $array
      * @param T             $value
+     *
      * @phpstan-param-out array<int, T> $array
+     *
      * @return void
      */
     public static function pushArrayToIntIndexedArray(array &$array, array $value): void

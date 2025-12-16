@@ -44,10 +44,10 @@ class InvoiceSuiteDocumentReader
      * Constructor (hidden)
      *
      * @param  string                                      $fromContent
+     * @return void
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
      * @throws RuntimeException
-     * @return void
      */
     final protected function __construct(string $fromContent)
     {
@@ -73,10 +73,10 @@ class InvoiceSuiteDocumentReader
      *
      * @param  string                             $method
      * @param  array<mixed>                       $parameters
+     * @return mixed
      * @throws BadMethodCallException
      * @throws Error
      * @throws InvoiceSuiteBadMethodCallException
-     * @return mixed
      */
     public function __call($method, $parameters)
     {
@@ -89,12 +89,12 @@ class InvoiceSuiteDocumentReader
      * Create reader by file
      *
      * @param  string                                      $fromFile
+     * @return static
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
      * @throws RuntimeException
-     * @return static
      */
     public static function createFromFile(string $fromFile): static
     {
@@ -115,10 +115,10 @@ class InvoiceSuiteDocumentReader
      * Create reader by content
      *
      * @param  string                                      $fromContent
+     * @return static
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
      * @throws RuntimeException
-     * @return static
      */
     public static function createFromContent(string $fromContent): static
     {
@@ -128,8 +128,8 @@ class InvoiceSuiteDocumentReader
     /**
      * Copy Reader to a Builder instance
      *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
      * @return InvoiceSuiteDocumentBuilder
+     * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public function copyToBuilder(): InvoiceSuiteDocumentBuilder
     {
@@ -151,6 +151,7 @@ class InvoiceSuiteDocumentReader
      * @return static
      *
      * @param-out InvoiceSuiteDocumentHeaderDTO $newDocumentDTO
+     *
      * @phpstan-param-out InvoiceSuiteDocumentHeaderDTO $newDocumentDTO
      */
     public function convertToDTO(

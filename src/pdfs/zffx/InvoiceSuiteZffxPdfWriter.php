@@ -96,8 +96,8 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
      *
      * @param  string          $version     contains the PDF version number
      * @param  bool            $binary_data This is true for binary data
-     * @throws RandomException
      * @return void
+     * @throws RandomException
      */
     public function setPdfVersion($version = '1.3', $binary_data = false): void
     {
@@ -358,6 +358,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
      * Put resources including files and metadata descriptions.
      *
      * @return void
+     *
      * @codingStandardsIgnoreStart
      */
     protected function _putresources(): void
@@ -379,6 +380,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
      * Put output intent with ICC profile.
      *
      * @return void
+     *
      * @codingStandardsIgnoreStart
      */
     protected function _putoutputintent(): void
@@ -412,6 +414,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
      * Put catalog node, including associated files.
      *
      * @return void
+     *
      * @codingStandardsIgnoreStart
      */
     protected function _putcatalog(): void
@@ -459,6 +462,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
      * Put trailer including ID.
      *
      * @return void
+     *
      * @codingStandardsIgnoreStart
      */
     protected function _puttrailer(): void
@@ -491,6 +495,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
      * @param  null|string $dateType
      *                               The type of the metadata date
      * @return string
+     *
      * @codingStandardsIgnoreStart
      */
     protected function generateMetadataString(?string $dateType = null)

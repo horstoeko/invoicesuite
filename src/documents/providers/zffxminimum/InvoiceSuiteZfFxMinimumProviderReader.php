@@ -65,8 +65,8 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractDocument
      * Create a DTO from this document
      *
      * @param  null|InvoiceSuiteDocumentHeaderDTO $newDocumentDTO Data-Transfer-Object
-     * @throws ValueError
      * @return static
+     * @throws ValueError
      *
      * @phpstan-param-out InvoiceSuiteDocumentHeaderDTO $newDocumentDTO
      */
@@ -2623,8 +2623,8 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractDocument
      * Gets the document date (e.g. invoice date)
      *
      * @param  null|DateTimeInterface $newDocumentDate __BT-2, From MINIMUM__ Date of the document. The date when the document was issued by the seller
-     * @throws ValueError
      * @return static
+     * @throws ValueError
      *
      * @phpstan-param-out DateTimeInterface|null $newDocumentDate
      */

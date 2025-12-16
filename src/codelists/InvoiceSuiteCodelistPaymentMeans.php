@@ -684,6 +684,7 @@ enum InvoiceSuiteCodelistPaymentMeans: string
      * Returns the caption of the code
      *
      * @return string
+     *
      * @codeCoverageIgnore
      */
     final public function getCaption(): string
@@ -779,6 +780,7 @@ enum InvoiceSuiteCodelistPaymentMeans: string
      * Returns the description of the code
      *
      * @return string
+     *
      * @codeCoverageIgnore
      */
     final public function getDescription(): string
@@ -874,6 +876,7 @@ enum InvoiceSuiteCodelistPaymentMeans: string
      * Returns the URLs where the data are hosted
      *
      * @return array<int,string>
+     *
      * @codeCoverageIgnore
      */
     final public static function getHomepageUrls(): array
@@ -887,6 +890,7 @@ enum InvoiceSuiteCodelistPaymentMeans: string
      * Returns the URLs from where the data was downloaded
      *
      * @return array<int,string>
+     *
      * @codeCoverageIgnore
      */
     final public static function getDownloadUrls(): array
@@ -900,6 +904,7 @@ enum InvoiceSuiteCodelistPaymentMeans: string
      * Returns the ISO formatted date on which this enum was generated
      *
      * @return string
+     *
      * @codeCoverageIgnore
      */
     final public static function getCreatedAt(): string

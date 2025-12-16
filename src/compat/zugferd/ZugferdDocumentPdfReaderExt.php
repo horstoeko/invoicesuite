@@ -51,13 +51,13 @@ class ZugferdDocumentPdfReaderExt
      * Load a PDF file
      *
      * @param  string                                      $pdfFilename Contains a full-qualified filename which must exist and must be readable
+     * @return static
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      * @throws PdfParserException
-     * @return static
+     * @throws RuntimeException
      */
     public static function fromFile(string $pdfFilename): static
     {
@@ -68,11 +68,11 @@ class ZugferdDocumentPdfReaderExt
      * Load a PDF content string
      *
      * @param  string                                      $pdfContent Contains the raw data of a PDF
+     * @return static
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      * @throws PdfParserException
-     * @return static
+     * @throws RuntimeException
      */
     public static function fromContent(string $pdfContent): static
     {

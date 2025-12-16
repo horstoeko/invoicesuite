@@ -25,10 +25,10 @@ use ValueError;
 final class AllCodelistsEnumsTest extends TestCase
 {
     /**
-     * @throws InvalidArgumentException
-     * @throws ExpectationFailedException
-     * @throws Exception
      * @return void
+     * @throws Exception
+     * @throws ExpectationFailedException
+     * @throws InvalidArgumentException
      */
     public function testCasesAreNotEmptyAndUnique(): void
     {
@@ -63,6 +63,7 @@ final class AllCodelistsEnumsTest extends TestCase
      * @param  string $expectedName
      * @param  mixed  $expectedValue
      * @return void
+     *
      * @dataProvider provideExpectedOrder
      */
     public function testOrderAndValuesAreStable(string $enumClass, int $index, string $expectedName, $expectedValue = null): void
@@ -5450,6 +5451,7 @@ final class AllCodelistsEnumsTest extends TestCase
      * @param  string $enumClass
      * @param  mixed  $value
      * @return void
+     *
      * @dataProvider provideValidValues
      */
     public function testFromAndTryFromRoundtrip(string $enumClass, $value): void
@@ -5520,6 +5522,7 @@ final class AllCodelistsEnumsTest extends TestCase
      * @param  string $enumClass
      * @param  mixed  $invalid
      * @return void
+     *
      * @dataProvider provideInvalidValues
      */
     public function testInvalidValues(string $enumClass, $invalid): void

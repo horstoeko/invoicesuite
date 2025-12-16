@@ -69,8 +69,8 @@ class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countabl
      * Internally uses add() to keep behaviour in one place.
      *
      * @param  array<int, InvoiceSuiteMessageBagItem> $newMessageBagItems The message items to add
-     * @throws InvoiceSuiteInvalidArgumentException
      * @return static
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     public function addMessages(array $newMessageBagItems): static
     {
@@ -278,8 +278,8 @@ class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countabl
      * Whether a message index exists.
      *
      * @param  mixed                                $offset the index to check
-     * @throws InvoiceSuiteInvalidArgumentException
      * @return bool                                 true if the index exists, otherwise false
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     public function offsetExists(mixed $offset): bool
     {
@@ -294,8 +294,8 @@ class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countabl
      * Get message at offset.
      *
      * @param  mixed                                $offset the index to read
-     * @throws InvoiceSuiteInvalidArgumentException
      * @return null|InvoiceSuiteMessageBagItem      the stored message or null if not found
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     public function offsetGet(mixed $offset): ?InvoiceSuiteMessageBagItem
     {
@@ -311,8 +311,8 @@ class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countabl
      *
      * @param  mixed          $offset The index to write (ignored)
      * @param  mixed          $value  The value to set (ignored)
-     * @throws LogicException
      * @return void
+     * @throws LogicException
      */
     public function offsetSet(mixed $offset, mixed $value): void
     {
@@ -323,8 +323,8 @@ class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countabl
      * Unset a message at offset. Disallow external modification
      *
      * @param  mixed          $offset The index to remove (ignored)
-     * @throws LogicException
      * @return void
+     * @throws LogicException
      */
     public function offsetUnset(mixed $offset): void
     {

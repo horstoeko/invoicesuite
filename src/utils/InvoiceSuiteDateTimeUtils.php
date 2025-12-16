@@ -80,8 +80,8 @@ class InvoiceSuiteDateTimeUtils
      *
      * @param  null|string            $dateTimeString
      * @param  null|string            $format
-     * @throws ValueError
      * @return null|DateTimeInterface
+     * @throws ValueError
      */
     public static function convertZfFxDateStringToDateTime(?string $dateTimeString, ?string $format): ?DateTimeInterface
     {

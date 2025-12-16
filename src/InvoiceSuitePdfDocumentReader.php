@@ -56,11 +56,11 @@ class InvoiceSuitePdfDocumentReader
      * Constructor (hidden)
      *
      * @param  string                                      $fromContent
+     * @return void
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      * @throws PdfParserException
-     * @return void
+     * @throws RuntimeException
      */
     final protected function __construct(string $fromContent)
     {
@@ -103,13 +103,13 @@ class InvoiceSuitePdfDocumentReader
      * Create PDF reader by file
      *
      * @param  string                                      $fromFile
+     * @return static
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      * @throws PdfParserException
-     * @return static
+     * @throws RuntimeException
      */
     public static function createFromFile(string $fromFile): static
     {
@@ -130,11 +130,11 @@ class InvoiceSuitePdfDocumentReader
      * Create PDF reader by content
      *
      * @param  string                                      $fromContent
+     * @return static
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      * @throws PdfParserException
-     * @return static
+     * @throws RuntimeException
      */
     public static function createFromContent(string $fromContent): static
     {

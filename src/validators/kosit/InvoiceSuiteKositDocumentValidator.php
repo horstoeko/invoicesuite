@@ -315,10 +315,10 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
     /**
      * The validation entry point
      *
+     * @return static
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws TypeError
      * @throws ValueError
-     * @return static
      */
     protected function doValidate(): static
     {
@@ -444,8 +444,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
     /**
      * Check Requirements
      *
-     * @throws InvoiceSuiteInvalidArgumentException
      * @return bool
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function checkRequirements(): bool
     {
@@ -463,8 +463,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
     /**
      * Check general requirements (common for local and remote validation)
      *
-     * @throws InvoiceSuiteInvalidArgumentException
      * @return bool
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function checkRequirementsGeneral(): bool
     {
@@ -480,8 +480,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
     /**
      * Check requirements for usage on a local installation
      *
-     * @throws InvoiceSuiteInvalidArgumentException
      * @return bool
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function checkRequirementsLocal(): bool
     {
@@ -510,8 +510,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Check requirements for usage on a remote host which is running the application
      * in daemon mode
      *
-     * @throws InvoiceSuiteInvalidArgumentException
      * @return bool
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function checkRequirementsRemote(): bool
     {
@@ -577,8 +577,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
     /**
      * Download required files
      *
-     * @throws InvoiceSuiteInvalidArgumentException
      * @return bool
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function downloadRequiredFiles(): bool
     {
@@ -604,8 +604,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
     /**
      * Unpack required files
      *
-     * @throws InvoiceSuiteInvalidArgumentException
      * @return bool
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function unpackRequiredFiles(): bool
     {
@@ -635,8 +635,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Unpack single required file
      *
      * @param  string                               $filename
-     * @throws InvoiceSuiteInvalidArgumentException
      * @return bool
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function unpackRequiredFile(string $filename): bool
     {
@@ -682,10 +682,10 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
     /**
      * Runs the validator java application
      *
+     * @return bool
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws TypeError
      * @throws ValueError
-     * @return bool
      */
     private function performValidation(): bool
     {
@@ -699,10 +699,10 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
     /**
      * Runs the validator java application locally
      *
+     * @return bool
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws TypeError
      * @throws ValueError
-     * @return bool
      */
     private function performValidationLocal(): bool
     {
@@ -741,8 +741,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
     /**
      * Runs the validator java application on the remote host
      *
-     * @throws InvoiceSuiteInvalidArgumentException
      * @return bool
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function performValidationRemote(): bool
     {
@@ -795,10 +795,10 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Parses the XML report from the validation app (JAVA application) and put errors
      * to messagebag
      *
+     * @return void
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws TypeError
      * @throws ValueError
-     * @return void
      */
     private function parseValidatorXmlReportByFile(): void
     {
@@ -823,10 +823,10 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * to messagebag
      *
      * @param  string                               $xmlContent
+     * @return void
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws TypeError
      * @throws ValueError
-     * @return void
      */
     private function parseValidatorXmlReportByContent(string $xmlContent): void
     {
@@ -845,10 +845,10 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * to messagebag
      *
      * @param  DOMDocument                          $domDocument
+     * @return void
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws TypeError
      * @throws ValueError
-     * @return void
      */
     private function parseValidatorXmlReportByDomDocument(DOMDocument $domDocument): void
     {
@@ -939,8 +939,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      *
      * @param  array<int,string>                    $command
      * @param  string                               $workingdirectory
-     * @throws InvoiceSuiteInvalidArgumentException
      * @return bool
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function runValidationApplication(array $command, string $workingdirectory): bool
     {
@@ -986,8 +986,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * @param  string                               $url
      * @param  string                               $toFilePath
      * @param  bool                                 $forceOverwrite
-     * @throws InvoiceSuiteInvalidArgumentException
      * @return bool
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function runFileDownload(string $url, string $toFilePath, bool $forceOverwrite = false): bool
     {

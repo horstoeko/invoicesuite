@@ -183,11 +183,11 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * @param  string                               $fullFilename
      * @param  string                               $displayName
      * @param  string                               $relationshipType
+     * @return static
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws InvoiceSuiteUnknownContentException
-     * @return static
      */
     public function attachAdditionalFileByRealFile(
         string $fullFilename,
@@ -210,9 +210,9 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * @param  string                               $filename
      * @param  string                               $displayName
      * @param  string                               $relationshipType
+     * @return static
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws InvoiceSuiteUnknownContentException
-     * @return static
      */
     public function attachAdditionalFileByContent(
         string $content,

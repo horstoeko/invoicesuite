@@ -34,8 +34,8 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
      *
      * @param  string                                      $xmlDataOrFilename The XML data as a string or the full qualified path to an XML-File containing the XML-data
      * @param  string                                      $pdfData           The full filename or a string containing the binary pdf data. This is the original PDF (e.g. created by a ERP system)
-     * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public function __construct(string $xmlDataOrFilename, string $pdfData)
     {
