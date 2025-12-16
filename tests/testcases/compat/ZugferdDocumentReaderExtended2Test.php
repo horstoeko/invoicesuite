@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace horstoeko\zugferd\tests\testcases;
+namespace horstoeko\invoicesuite\tests\testcases\compat;
 
 use DateTime;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;

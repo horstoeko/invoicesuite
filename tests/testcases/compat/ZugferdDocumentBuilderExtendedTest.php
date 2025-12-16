@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace horstoeko\invoicesuite\tests\testcases\concerns;
+namespace horstoeko\invoicesuite\tests\testcases\compat;
 
 use DateTime;
 use DOMDocument;
