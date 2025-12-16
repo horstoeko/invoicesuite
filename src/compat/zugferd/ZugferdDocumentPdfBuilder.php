@@ -14,6 +14,8 @@ namespace horstoeko\zugferd;
 use horstoeko\invoicesuite\concerns\HandlesRawContents;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
+use JMS\Serializer\Exception\RuntimeException;
 
 /**
  * Legacy-class representing the ZUGFeRD PDF document builder for outgoing documents
@@ -30,8 +32,10 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
     /**
      * Constructor
      *
-     * @param ZugferdDocumentBuilder $documentBuilder The instance of the document builder. Needed to get the XML data
-     * @param string                 $pdfContent      The full filename or a string containing the binary pdf data. This is the original PDF (e.g. created by a ERP system)
+     * @param  ZugferdDocumentBuilder                      $documentBuilder The instance of the document builder. Needed to get the XML data
+     * @param  string                                      $pdfContent      The full filename or a string containing the binary pdf data. This is the original PDF (e.g. created by a ERP system)
+     * @throws RuntimeException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public function __construct(ZugferdDocumentBuilder $documentBuilder, string $pdfContent)
     {
@@ -44,8 +48,12 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
     /**
      * Generate PDF document by ZugferdDocumentBuilder and PDF-File
      *
-     * @param  ZugferdDocumentBuilder $documentBuilder
-     * @param  string                 $pdfFileName
+     * @param  ZugferdDocumentBuilder                      $documentBuilder
+     * @param  string                                      $pdfFileName
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws RuntimeException
      * @return static
      */
     public static function fromPdfFile(ZugferdDocumentBuilder $documentBuilder, string $pdfFileName): static
@@ -67,8 +75,10 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
     /**
      * Generate PDF document by ZugferdDocumentBuilder and PDF-content
      *
-     * @param  ZugferdDocumentBuilder $documentBuilder
-     * @param  string                 $pdfContent
+     * @param  ZugferdDocumentBuilder                      $documentBuilder
+     * @param  string                                      $pdfContent
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws RuntimeException
      * @return static
      */
     public static function fromPdfString(ZugferdDocumentBuilder $documentBuilder, string $pdfContent): static

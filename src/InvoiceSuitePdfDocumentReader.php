@@ -18,8 +18,11 @@ use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentForma
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractor;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractorAttachment;
+use JMS\Serializer\Exception\RuntimeException;
+use PrinsFrank\PdfParser\Exception\PdfParserException;
 
 /**
  * Class representing the PDF document reader
@@ -52,7 +55,11 @@ class InvoiceSuitePdfDocumentReader
     /**
      * Constructor (hidden)
      *
-     * @param  string $fromContent
+     * @param  string                                      $fromContent
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws RuntimeException
+     * @throws PdfParserException
      * @return void
      */
     final protected function __construct(string $fromContent)
@@ -95,7 +102,13 @@ class InvoiceSuitePdfDocumentReader
     /**
      * Create PDF reader by file
      *
-     * @param  string $fromFile
+     * @param  string                                      $fromFile
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws RuntimeException
+     * @throws PdfParserException
      * @return static
      */
     public static function createFromFile(string $fromFile): static
@@ -116,7 +129,11 @@ class InvoiceSuitePdfDocumentReader
     /**
      * Create PDF reader by content
      *
-     * @param  string $fromContent
+     * @param  string                                      $fromContent
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws RuntimeException
+     * @throws PdfParserException
      * @return static
      */
     public static function createFromContent(string $fromContent): static

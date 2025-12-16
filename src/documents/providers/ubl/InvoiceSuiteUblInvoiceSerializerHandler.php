@@ -11,9 +11,12 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\documents\providers\ubl;
 
+use DateInvalidTimeZoneException;
+use DateMalformedStringException;
 use DateTime;
 use DateTimeZone;
 use DOMElement;
+use DOMException;
 use DOMText;
 use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
@@ -30,6 +33,12 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      */
     protected $defaultTimezone;
 
+    /**
+     * Constructor
+     *
+     * @param  string                       $defaultTimezone
+     * @throws DateInvalidTimeZoneException
+     */
     public function __construct(string $defaultTimezone = 'UTC')
     {
         $this->defaultTimezone = new DateTimeZone($defaultTimezone);
@@ -206,8 +215,9 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      * Serialize Anount type
      * The amounts will be serialized (by default) with a precission of 2 digits
      *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed                   $data
+     * @param  XmlSerializationVisitor $visitor
+     * @param  mixed                   $data
+     * @throws DOMException
      */
     public function serializeAmountType(XmlSerializationVisitor $visitor, $data): DOMText
     {
@@ -233,8 +243,9 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      * Serialize quantity type
      * The quantity will be serialized (by default) with a precission of 2 digits
      *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed                   $data
+     * @param  XmlSerializationVisitor $visitor
+     * @param  mixed                   $data
+     * @throws DOMException
      */
     public function serializeQuantityType(XmlSerializationVisitor $visitor, $data): DOMText
     {
@@ -279,8 +290,9 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      * Serialize a meassure value
      * The value will be serialized (by default) with a precission of 2 digits
      *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed                   $data
+     * @param  XmlSerializationVisitor $visitor
+     * @param  mixed                   $data
+     * @throws DOMException
      */
     public function serializeMeasureType(XmlSerializationVisitor $visitor, $data): DOMText
     {
@@ -307,8 +319,9 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      * False and true values will be serialized correctly (false won't be serialized
      * in the default implementation)
      *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed                   $data
+     * @param  XmlSerializationVisitor $visitor
+     * @param  mixed                   $data
+     * @throws DOMException
      */
     public function serializeIndicatorType(XmlSerializationVisitor $visitor, $data): DOMElement
     {
@@ -318,8 +331,9 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
     /**
      * Deserialize JSON date
      *
-     * @param  JsonDeserializationVisitor $visitor
-     * @param  null|string                $data
+     * @param  JsonDeserializationVisitor   $visitor
+     * @param  null|string                  $data
+     * @throws DateMalformedStringException
      * @return null|DateTime
      */
     public function deserializeJsonDate(JsonDeserializationVisitor $visitor, $data): ?DateTime
@@ -343,8 +357,9 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
     /**
      * Deserialze JSON Date/Time
      *
-     * @param  JsonDeserializationVisitor $visitor
-     * @param  null|string                $data
+     * @param  JsonDeserializationVisitor   $visitor
+     * @param  null|string                  $data
+     * @throws DateMalformedStringException
      * @return null|DateTime
      */
     public function deserializeJsonDateTime(JsonDeserializationVisitor $visitor, $data): ?DateTime
@@ -368,8 +383,9 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
     /**
      * Deserialize JSON time
      *
-     * @param  JsonDeserializationVisitor $visitor
-     * @param  null|string                $data
+     * @param  JsonDeserializationVisitor   $visitor
+     * @param  null|string                  $data
+     * @throws DateMalformedStringException
      * @return null|DateTime
      */
     public function deserializeJsonTime(JsonDeserializationVisitor $visitor, $data): ?DateTime

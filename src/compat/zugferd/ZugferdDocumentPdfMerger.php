@@ -12,6 +12,8 @@ declare(strict_types=1);
 namespace horstoeko\zugferd;
 
 use horstoeko\invoicesuite\concerns\HandlesRawContents;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 
 /**
@@ -30,8 +32,10 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
     /**
      * Constructor
      *
-     * @param string $xmlDataOrFilename The XML data as a string or the full qualified path to an XML-File containing the XML-data
-     * @param string $pdfData           The full filename or a string containing the binary pdf data. This is the original PDF (e.g. created by a ERP system)
+     * @param  string                                      $xmlDataOrFilename The XML data as a string or the full qualified path to an XML-File containing the XML-data
+     * @param  string                                      $pdfData           The full filename or a string containing the binary pdf data. This is the original PDF (e.g. created by a ERP system)
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
      */
     public function __construct(string $xmlDataOrFilename, string $pdfData)
     {

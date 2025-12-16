@@ -30,10 +30,12 @@ trait HandlesCallForwarding
     /**
      * Forward a method call to the given object.
      *
-     * @param mixed        $object
-     * @param string       $method
-     * @param array<mixed> $parameters
-     *
+     * @param  mixed                              $object
+     * @param  string                             $method
+     * @param  array<mixed>                       $parameters
+     * @throws BadMethodCallException
+     * @throws Error
+     * @throws InvoiceSuiteBadMethodCallException
      * @return mixed
      */
     protected function forwardCallTo($object, $method, $parameters)
@@ -61,9 +63,12 @@ trait HandlesCallForwarding
     /**
      * Forward a method call to the given object. The existance of the method is checked
      *
-     * @param  mixed        $object
-     * @param  string       $method
-     * @param  array<mixed> $parameters
+     * @param  mixed                              $object
+     * @param  string                             $method
+     * @param  array<mixed>                       $parameters
+     * @throws BadMethodCallException
+     * @throws Error
+     * @throws InvoiceSuiteBadMethodCallException
      * @return mixed
      */
     protected function forwardCallWithCheckTo($object, $method, $parameters)

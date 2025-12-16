@@ -79,7 +79,9 @@ class InvoiceSuiteAttachment
     /**
      * Create a binary object definition by file contents
      *
-     * @param  string $filename
+     * @param  string                               $filename
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
      * @return static
      */
     public static function fromFile(string $filename): static
@@ -112,8 +114,9 @@ class InvoiceSuiteAttachment
     /**
      * Create a binary object definition by a string containing BASE64 data
      *
-     * @param  string $content
-     * @param  string $filename
+     * @param  string                               $content
+     * @param  string                               $filename
+     * @throws InvoiceSuiteInvalidArgumentException
      * @return static
      */
     public static function fromBase64String(string $content, string $filename): static

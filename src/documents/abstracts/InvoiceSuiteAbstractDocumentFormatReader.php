@@ -20,6 +20,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
 use JMS\Serializer\DeserializationContext;
+use JMS\Serializer\Exception\RuntimeException;
 
 /**
  * Class representing methods for a reader
@@ -51,7 +52,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
     /**
      * Deserialize from content (will guess)
      *
-     * @param  string $fromContent
+     * @param  string                              $fromContent
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws RuntimeException
      * @return static
      */
     public function deserializeFromContent(string $fromContent): static
@@ -4939,7 +4942,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
     /**
      * Read from XML content
      *
-     * @param  string $fromContent
+     * @param  string           $fromContent
+     * @throws RuntimeException
      * @return static
      */
     protected function deserializeFromXmlContent(string $fromContent): static
@@ -4952,7 +4956,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
     /**
      * Read from JSON content
      *
-     * @param  string $fromContent
+     * @param  string           $fromContent
+     * @throws RuntimeException
      * @return static
      */
     protected function deserializeFromJsonContent(string $fromContent): static
@@ -4965,8 +4970,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
     /**
      * Read from content by type
      *
-     * @param  string $fromContent
-     * @param  string $contentType
+     * @param  string           $fromContent
+     * @param  string           $contentType
+     * @throws RuntimeException
      * @return static
      */
     protected function deserializeFromContentByContentType(string $fromContent, string $contentType): static

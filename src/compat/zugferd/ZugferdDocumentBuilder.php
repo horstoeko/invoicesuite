@@ -11,18 +11,25 @@ declare(strict_types=1);
 
 namespace horstoeko\zugferd;
 
+use BadMethodCallException;
 use DateTimeInterface;
 use DOMDocument;
 use DOMXpath;
+use Error;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistReferenceCodeQualifiers;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesSafeInvoking;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteBadMethodCallException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JMS\Serializer\Exception\RuntimeException;
 use Stringable;
 
 /**
@@ -48,7 +55,9 @@ class ZugferdDocumentBuilder implements Stringable
     /**
      * Constructor
      *
-     * @param  int  $profile The ID of the profile of the document
+     * @param  int                                         $profile The ID of the profile of the document
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
      * @return void
      */
     final protected function __construct(
@@ -66,8 +75,11 @@ class ZugferdDocumentBuilder implements Stringable
     /**
      * Dynamically pass missing methods to the internal builder
      *
-     * @param  string       $method
-     * @param  array<mixed> $parameters
+     * @param  string                             $method
+     * @param  array<mixed>                       $parameters
+     * @throws BadMethodCallException
+     * @throws Error
+     * @throws InvoiceSuiteBadMethodCallException
      * @return mixed
      */
     public function __call($method, $parameters)
@@ -78,6 +90,7 @@ class ZugferdDocumentBuilder implements Stringable
     /**
      * Receive the content as XML string
      *
+     * @throws RuntimeException
      * @return string
      */
     public function __toString()
@@ -124,7 +137,8 @@ class ZugferdDocumentBuilder implements Stringable
     /**
      * Get a parameter from profile definition
      *
-     * @param  string $parameterName
+     * @param  string                               $parameterName
+     * @throws InvoiceSuiteInvalidArgumentException
      * @return mixed
      */
     public function getProfileDefinitionParameter(string $parameterName)
@@ -151,7 +165,9 @@ class ZugferdDocumentBuilder implements Stringable
     /**
      * Creates a new builder instance with profile $profile
      *
-     * @param  int    $profileId
+     * @param  int                                         $profileId
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
      * @return static
      */
     public static function createNew(
@@ -175,6 +191,7 @@ class ZugferdDocumentBuilder implements Stringable
     /**
      * Write the content of a CrossIndustryInvoice object to a string
      *
+     * @throws RuntimeException
      * @return string
      */
     public function getContent(): string
@@ -187,6 +204,7 @@ class ZugferdDocumentBuilder implements Stringable
     /**
      * Write the content of a invoice object to a DOMDocument instance
      *
+     * @throws RuntimeException
      * @return DOMDocument
      */
     public function getContentAsDomDocument(): DOMDocument
@@ -200,6 +218,7 @@ class ZugferdDocumentBuilder implements Stringable
     /**
      * Write the content of a invoice object to a DOMXpath instance
      *
+     * @throws RuntimeException
      * @return DOMXpath
      */
     public function getContentAsDomXPath(): DOMXpath
@@ -210,7 +229,8 @@ class ZugferdDocumentBuilder implements Stringable
     /**
      * Write the content of a CrossIndustryInvoice object to a file
      *
-     * @param  string $xmlfilename
+     * @param  string           $xmlfilename
+     * @throws RuntimeException
      * @return static
      */
     public function writeFile(
@@ -2398,18 +2418,20 @@ class ZugferdDocumentBuilder implements Stringable
     /**
      * Set information about billing documents that provide evidence of claims made in the bill
      *
-     * @param  string                        $issuerAssignedId   __BT-122, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based
-     * @param  string                        $typeCode           __BT-122-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
-     *                                                           - Code 916 "reference paper" is used to reference the identification of the
-     *                                                           document on which the invoice is based - Code 50 "Price / sales catalog response"
-     *                                                           is used to reference the tender or the lot - Code 130 "invoice data sheet" is used
-     *                                                           to reference an identifier for an object specified by the seller
-     * @param  null|string                   $uriId              __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
-     *                                                           supporting documents for the invoiced amounts. External documents are not part of the invoice. Invoice processing should be possible without access to external documents. Access to external documents can entail certain risks.
-     * @param  null|array<int,string>|string $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
-     * @param  null|string                   $refTypeCode        __BT-18-1, From ENN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
-     * @param  null|DateTimeInterface        $issueDate          __BT-X-149, From EXTENDED__ Document date
-     * @param  null|string                   $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
+     * @param  string                               $issuerAssignedId   __BT-122, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based
+     * @param  string                               $typeCode           __BT-122-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
+     *                                                                  - Code 916 "reference paper" is used to reference the identification of the
+     *                                                                  document on which the invoice is based - Code 50 "Price / sales catalog response"
+     *                                                                  is used to reference the tender or the lot - Code 130 "invoice data sheet" is used
+     *                                                                  to reference an identifier for an object specified by the seller
+     * @param  null|string                          $uriId              __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
+     *                                                                  supporting documents for the invoiced amounts. External documents are not part of the invoice. Invoice processing should be possible without access to external documents. Access to external documents can entail certain risks.
+     * @param  null|array<int,string>|string        $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  null|string                          $refTypeCode        __BT-18-1, From ENN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @param  null|DateTimeInterface               $issueDate          __BT-X-149, From EXTENDED__ Document date
+     * @param  null|string                          $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
      * @return static
      */
     public function addDocumentAdditionalReferencedDocument(
@@ -2453,9 +2475,11 @@ class ZugferdDocumentBuilder implements Stringable
      * The option of linking to an external document is required, for example, when large attachments and/or sensitive information, e.g. for personal services, are involved,
      * which must be separated from the invoice.
      *
-     * @param  string                        $issuerAssignedId __BT-122, From EN 16931__ Identification of the document supporting the invoice
-     * @param  string                        $uriId            __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
-     * @param  null|array<int,string>|string $name             __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  string                               $issuerAssignedId __BT-122, From EN 16931__ Identification of the document supporting the invoice
+     * @param  string                               $uriId            __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
+     * @param  null|array<int,string>|string        $name             __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
      * @return static
      */
     public function addDocumentInvoiceSupportingDocumentWithUri(
@@ -2475,9 +2499,11 @@ class ZugferdDocumentBuilder implements Stringable
      * Add an invoice supporting additional document reference with an URL which specifies the location where the information can be found
      * The invoice supporting documents can be used to reference both a document number, which should be known to the recipient, and an embedded file (such as a timesheet as a PDF file).
      *
-     * @param  string                        $issuerAssignedId   __BT-122, From EN 16931__ Identification of the document supporting the invoice
-     * @param  string                        $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
-     * @param  null|array<int,string>|string $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  string                               $issuerAssignedId   __BT-122, From EN 16931__ Identification of the document supporting the invoice
+     * @param  string                               $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
+     * @param  null|array<int,string>|string        $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
      * @return static
      */
     public function addDocumentInvoiceSupportingDocumentWithFile(
@@ -2496,7 +2522,9 @@ class ZugferdDocumentBuilder implements Stringable
     /**
      * Add a tender or lot document reference
      *
-     * @param  string $issuerAssignedId __BT-122, From EN 16931__ Tender or lot reference
+     * @param  string                               $issuerAssignedId __BT-122, From EN 16931__ Tender or lot reference
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
      * @return static
      */
     public function addDocumentTenderOrLotReferenceDocument(
@@ -2511,8 +2539,10 @@ class ZugferdDocumentBuilder implements Stringable
     /**
      * Add details of the calculated object
      *
-     * @param  string $issuerAssignedId __BT-122, From EN 16931__ Depending on the application, this can be a subscription number, a telephone number, a meter reading, a vehicle, a person, etc
-     * @param  string $refTypeCode      __BT-18-1, From ENN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @param  string                               $issuerAssignedId __BT-122, From EN 16931__ Depending on the application, this can be a subscription number, a telephone number, a meter reading, a vehicle, a person, etc
+     * @param  string                               $refTypeCode      __BT-18-1, From ENN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
      * @return static
      */
     public function addDocumentInvoicedObjectReferenceDocument(
@@ -3571,14 +3601,16 @@ class ZugferdDocumentBuilder implements Stringable
     /**
      * Add an additional Document reference on a position.
      *
-     * @param  string                 $issuerAssignedId   __BT-X-27, From EXTENDED__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based
-     * @param  string                 $typeCode           __BT-X-30, From EXTENDED__ Type of referenced document (See codelist UNTDID 1001)
-     * @param  null|string            $uriId              __BT-X-28, From EXTENDED__ The Uniform Resource Locator (URL) at which the external document is available. A means of finding the resource including the primary access method intended for it, e.g. http: // or ftp: //. The location of the external document must be used if the buyer needs additional information to support the amounts billed. External documents are not part of the invoice. Access to external documents can involve certain risks.
-     * @param  null|string            $lineId             __BT-X-29, From EXTENDED__ The referenced position identifier in the additional document
-     * @param  null|string            $name               __BT-X-299, From EXTENDED__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
-     * @param  null|string            $refTypeCode        __BT-X-32, From EXTENDED__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
-     * @param  null|DateTimeInterface $issueDate          __BT-X-33, From EXTENDED__ Document date
-     * @param  null|string            $binaryDataFilename __BT-X-31, From EXTENDED__ Contains a file name of an attachment document embedded as a binary object
+     * @param  string                               $issuerAssignedId   __BT-X-27, From EXTENDED__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based
+     * @param  string                               $typeCode           __BT-X-30, From EXTENDED__ Type of referenced document (See codelist UNTDID 1001)
+     * @param  null|string                          $uriId              __BT-X-28, From EXTENDED__ The Uniform Resource Locator (URL) at which the external document is available. A means of finding the resource including the primary access method intended for it, e.g. http: // or ftp: //. The location of the external document must be used if the buyer needs additional information to support the amounts billed. External documents are not part of the invoice. Access to external documents can involve certain risks.
+     * @param  null|string                          $lineId             __BT-X-29, From EXTENDED__ The referenced position identifier in the additional document
+     * @param  null|string                          $name               __BT-X-299, From EXTENDED__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  null|string                          $refTypeCode        __BT-X-32, From EXTENDED__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @param  null|DateTimeInterface               $issueDate          __BT-X-33, From EXTENDED__ Document date
+     * @param  null|string                          $binaryDataFilename __BT-X-31, From EXTENDED__ Contains a file name of an attachment document embedded as a binary object
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
      * @return static
      */
     public function addDocumentPositionAdditionalReferencedDocument(

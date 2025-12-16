@@ -279,9 +279,13 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Add an additional document to attach by an existing file
      *
-     * @param  string $newFullFilename
-     * @param  string $newDisplayName
-     * @param  string $newRelationshipType
+     * @param  string                               $newFullFilename
+     * @param  string                               $newDisplayName
+     * @param  string                               $newRelationshipType
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteUnknownContentException
      * @return static
      */
     public function addAdditionalDocumentByRealFile(string $newFullFilename, string $newDisplayName = '', string $newRelationshipType = ''): static
@@ -311,10 +315,12 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     /**
      * Add an additional document to attach by a content string
      *
-     * @param  string $newContent
-     * @param  string $newFilename
-     * @param  string $newDisplayName
-     * @param  string $newRelationshipType
+     * @param  string                               $newContent
+     * @param  string                               $newFilename
+     * @param  string                               $newDisplayName
+     * @param  string                               $newRelationshipType
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteUnknownContentException
      * @return static
      */
     public function addAdditionalDocumentByContent(string $newContent, string $newFilename, string $newDisplayName = '', string $newRelationshipType = ''): static

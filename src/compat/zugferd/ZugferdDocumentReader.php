@@ -11,15 +11,23 @@ declare(strict_types=1);
 
 namespace horstoeko\zugferd;
 
+use BadMethodCallException;
 use DateTimeInterface;
+use Error;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesSafeInvoking;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteBadMethodCallException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JMS\Serializer\Exception\RuntimeException;
 
 /**
  * Legacy-class representing the ZUGFeRD document reader for incoming documents
@@ -60,8 +68,11 @@ class ZugferdDocumentReader
     /**
      * Dynamically pass missing methods to the internal reader
      *
-     * @param  string       $method
-     * @param  array<mixed> $parameters
+     * @param  string                             $method
+     * @param  array<mixed>                       $parameters
+     * @throws BadMethodCallException
+     * @throws Error
+     * @throws InvoiceSuiteBadMethodCallException
      * @return mixed
      */
     public function __call($method, $parameters)
@@ -72,7 +83,12 @@ class ZugferdDocumentReader
     /**
      * Guess the profile type of a xml file.
      *
-     * @param  string $xmlFilename
+     * @param  string                                      $xmlFilename
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws RuntimeException
      * @return static
      */
     public static function readAndGuessFromFile(string $xmlFilename): static
@@ -83,7 +99,10 @@ class ZugferdDocumentReader
     /**
      * Guess the profile type of the readden xml document.
      *
-     * @param  string $xmlContent
+     * @param  string                                      $xmlContent
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws RuntimeException
      * @return static
      */
     public static function readAndGuessFromContent(string $xmlContent): static
@@ -130,7 +149,8 @@ class ZugferdDocumentReader
     /**
      * Get a parameter from profile definition
      *
-     * @param  string $parameterName
+     * @param  string                               $parameterName
+     * @throws InvoiceSuiteInvalidArgumentException
      * @return mixed
      */
     public function getProfileDefinitionParameter(string $parameterName)
@@ -147,6 +167,7 @@ class ZugferdDocumentReader
     /**
      * Returns the internal InvoiceSuiteDocumentReader instance
      *
+     * @throws RuntimeException
      * @return InvoiceSuiteDocumentReader
      */
     public function getDocumentReaderInstance(): InvoiceSuiteDocumentReader

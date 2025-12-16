@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\pdfs\zffx;
 
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
+use Random\RandomException;
 use setasign\Fpdi\Fpdi as PdfFpdi;
 use setasign\Fpdi\PdfParser\StreamReader;
 
@@ -93,8 +94,9 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
     /**
      * Set the PDF version.
      *
-     * @param  string $version     contains the PDF version number
-     * @param  bool   $binary_data This is true for binary data
+     * @param  string          $version     contains the PDF version number
+     * @param  bool            $binary_data This is true for binary data
+     * @throws RandomException
      * @return void
      */
     public function setPdfVersion($version = '1.3', $binary_data = false): void

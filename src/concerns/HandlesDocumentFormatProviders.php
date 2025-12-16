@@ -90,6 +90,7 @@ trait HandlesDocumentFormatProviders
      * Find a format provider by it's id. When no provider for the given unique id was found an exception is raised
      *
      * @param  string                                          $formatProviderUniqueId
+     * @throws InvoiceSuiteFormatProviderNotFoundException
      * @return null|InvoiceSuiteAbstractDocumentFormatProvider
      */
     public function findDocumentFormatProviderByUniqueIdOrFail(string $formatProviderUniqueId)

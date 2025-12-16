@@ -11,12 +11,18 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite;
 
+use BadMethodCallException;
 use DateTimeInterface;
+use Error;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteBadMethodCallException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
+use JMS\Serializer\Exception\RuntimeException;
 
 /**
  * Class representing the document builder
@@ -35,7 +41,8 @@ class InvoiceSuiteDocumentBuilder
     /**
      * Constructor (hidden)
      *
-     * @param  string                      $formatProviderUniqueId
+     * @param  string                                      $formatProviderUniqueId
+     * @throws InvoiceSuiteFormatProviderNotFoundException
      * @return InvoiceSuiteDocumentBuilder
      */
     final protected function __construct(
@@ -49,8 +56,11 @@ class InvoiceSuiteDocumentBuilder
     /**
      * Dynamically pass missing methods to the builder provided by format provider
      *
-     * @param  string       $method
-     * @param  array<mixed> $parameters
+     * @param  string                             $method
+     * @param  array<mixed>                       $parameters
+     * @throws BadMethodCallException
+     * @throws Error
+     * @throws InvoiceSuiteBadMethodCallException
      * @return mixed
      */
     public function __call($method, $parameters)
@@ -61,7 +71,8 @@ class InvoiceSuiteDocumentBuilder
     /**
      * Create a new InvoiceDocumentBuilder instance for the given format provider
      *
-     * @param  string $formatProviderUniqueId
+     * @param  string                                      $formatProviderUniqueId
+     * @throws InvoiceSuiteFormatProviderNotFoundException
      * @return static
      */
     public static function createByProviderUniqueId(
@@ -73,6 +84,7 @@ class InvoiceSuiteDocumentBuilder
     /**
      * Get the content as XML string
      *
+     * @throws RuntimeException
      * @return string
      */
     public function getContentAsXml(): string
@@ -83,6 +95,7 @@ class InvoiceSuiteDocumentBuilder
     /**
      * Get the content as JSON string
      *
+     * @throws RuntimeException
      * @return string
      */
     public function getContentAsJson(): string
@@ -93,7 +106,8 @@ class InvoiceSuiteDocumentBuilder
     /**
      * Save the XML content to a file
      *
-     * @param  string $tofile
+     * @param  string           $tofile
+     * @throws RuntimeException
      * @return void
      */
     public function saveAsXmlFile(
@@ -105,7 +119,8 @@ class InvoiceSuiteDocumentBuilder
     /**
      * Save the JSON content to a file
      *
-     * @param  string $tofile
+     * @param  string           $tofile
+     * @throws RuntimeException
      * @return void
      */
     public function saveAsJsonFile(
@@ -117,6 +132,9 @@ class InvoiceSuiteDocumentBuilder
     /**
      * Copy Builder to a Reader instance
      *
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws RuntimeException
      * @return InvoiceSuiteDocumentReader
      */
     public function copyToReader(): InvoiceSuiteDocumentReader

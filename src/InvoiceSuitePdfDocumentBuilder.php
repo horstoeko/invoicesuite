@@ -19,7 +19,9 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\pdfs\abstracts\InvoiceSuiteAbstractPdfConstructor;
+use JMS\Serializer\Exception\RuntimeException;
 
 /**
  * Class representing the PDF document builder
@@ -53,8 +55,12 @@ class InvoiceSuitePdfDocumentBuilder
     /**
      * Create the PDF builder from a document builder and a PDF file
      *
-     * @param  InvoiceSuiteDocumentBuilder $fromDocumentBuilder
-     * @param  string                      $fromPdfFilename
+     * @param  InvoiceSuiteDocumentBuilder          $fromDocumentBuilder
+     * @param  string                               $fromPdfFilename
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws RuntimeException
      * @return static
      */
     public static function createFromDocumentBuilderAndPdfFile(InvoiceSuiteDocumentBuilder $fromDocumentBuilder, string $fromPdfFilename): static
@@ -75,8 +81,10 @@ class InvoiceSuitePdfDocumentBuilder
     /**
      * Create the PDF builder from a document builder and a PDF content
      *
-     * @param  InvoiceSuiteDocumentBuilder $fromDocumentBuilder
-     * @param  string                      $fromPdfContent
+     * @param  InvoiceSuiteDocumentBuilder          $fromDocumentBuilder
+     * @param  string                               $fromPdfContent
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws RuntimeException
      * @return static
      */
     public static function createFromDocumentBuilderAndPdfContent(InvoiceSuiteDocumentBuilder $fromDocumentBuilder, string $fromPdfContent): static
@@ -87,8 +95,11 @@ class InvoiceSuitePdfDocumentBuilder
     /**
      * Create the PDF builder from a document content and a PDF file
      *
-     * @param  string $fromDocumentContent
-     * @param  string $fromPdfFilename
+     * @param  string                                      $fromDocumentContent
+     * @param  string                                      $fromPdfFilename
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
      * @return static
      */
     public static function createFromDocumentContentAndPdfFile(string $fromDocumentContent, string $fromPdfFilename): static
@@ -109,8 +120,9 @@ class InvoiceSuitePdfDocumentBuilder
     /**
      * Create the PDF builder from a document content and a PDF content
      *
-     * @param  string $fromDocumentContent
-     * @param  string $fromPdfContent
+     * @param  string                                      $fromDocumentContent
+     * @param  string                                      $fromPdfContent
+     * @throws InvoiceSuiteFormatProviderNotFoundException
      * @return static
      */
     public static function createFromDocumentContentAndPdfContent(string $fromDocumentContent, string $fromPdfContent): static
@@ -236,9 +248,13 @@ class InvoiceSuitePdfDocumentBuilder
     /**
      * Add an additional document to attach by an existing file
      *
-     * @param  string $newFullFilename
-     * @param  string $newDisplayName
-     * @param  string $newRelationshipType
+     * @param  string                               $newFullFilename
+     * @param  string                               $newDisplayName
+     * @param  string                               $newRelationshipType
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteUnknownContentException
      * @return static
      */
     public function addAdditionalDocumentByRealFile(string $newFullFilename, string $newDisplayName = '', string $newRelationshipType = ''): static
@@ -251,10 +267,12 @@ class InvoiceSuitePdfDocumentBuilder
     /**
      * Add an additional document to attach by a content string
      *
-     * @param  string $newContent
-     * @param  string $newFilename
-     * @param  string $newDisplayName
-     * @param  string $newRelationshipType
+     * @param  string                               $newContent
+     * @param  string                               $newFilename
+     * @param  string                               $newDisplayName
+     * @param  string                               $newRelationshipType
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteUnknownContentException
      * @return static
      */
     public function addAdditionalDocumentByContent(string $newContent, string $newFilename, string $newDisplayName = '', string $newRelationshipType = ''): static
@@ -453,7 +471,9 @@ class InvoiceSuitePdfDocumentBuilder
      * Internal method to set a document builder from which to get the content from. This will check
      * if the given provider has an enabled PDF support
      *
-     * @param  InvoiceSuiteDocumentBuilder $fromDocumentBuilder
+     * @param  InvoiceSuiteDocumentBuilder          $fromDocumentBuilder
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws RuntimeException
      * @return static
      */
     protected function setDocumentBuilder(InvoiceSuiteDocumentBuilder $fromDocumentBuilder): static
@@ -476,7 +496,8 @@ class InvoiceSuitePdfDocumentBuilder
      * Internal method to set the document content directly. This will look for a provider and check if
      * PDF support is enabled
      *
-     * @param  string $fromDocumentContent
+     * @param  string                                      $fromDocumentContent
+     * @throws InvoiceSuiteFormatProviderNotFoundException
      * @return static
      */
     protected function setDocumentContent(string $fromDocumentContent): static
