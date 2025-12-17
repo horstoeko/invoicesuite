@@ -125,6 +125,8 @@
             <file>../tests/testcases/compat/ZugferdDocumentBuilderExtendedTest.php</file>
             <file>../tests/testcases/compat/ZugferdDocumentReaderExtendedTest.php</file>
             <file>../tests/testcases/compat/ZugferdDocumentReaderExtended2Test.php</file>
+            <file>../tests/testcases/compat/ZugferdPdfDocumentReaderExtendedTest.php</file>
+            <file>../tests/testcases/compat/ZugferdPdfDocumentReaderExtended2Test.php</file>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
