@@ -124,6 +124,7 @@
         <testsuite name="compat">
             <!-- Document General -->
             <file>../tests/testcases/compat/ZugferdProfileResolverTest.php</file>
+            <file>../tests/testcases/compat/ZugferdProfileConverterTest.php</file>
             <!-- Document Builder -->
             <file>../tests/testcases/compat/ZugferdDocumentBuilderExtendedTest.php</file>
             <!-- Document Reader -->
