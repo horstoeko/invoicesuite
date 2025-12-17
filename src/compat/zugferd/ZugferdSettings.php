@@ -311,7 +311,7 @@ class ZugferdSettings
      */
     public static function getSourceDirectory(): string
     {
-        return InvoiceSuitePathUtils::combineAllPaths(static::getRootDirectory(), 'src');
+        return InvoiceSuitePathUtils::combineAllPaths(static::getRootDirectory(), 'src', 'compat', 'zugferd');
     }
 
     /**

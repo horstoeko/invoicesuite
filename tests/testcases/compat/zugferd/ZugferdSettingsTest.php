@@ -88,49 +88,73 @@ class ZugferdSettingsTest extends TestCase
 
     public function testGetRootDirectory(): void
     {
-        $this->assertEquals(
-            realpath(__DIR__.'/../../../../'),
-            realpath(ZugferdSettings::getRootDirectory())
+        $expected = realpath(__DIR__.'/../../../../');
+        $actual = realpath(ZugferdSettings::getRootDirectory());
+
+        $this->assertNotFalse($expected);
+        $this->assertNotFalse($actual);
+        $this->assertSame(
+            $expected,
+            $actual
         );
     }
 
     public function testGetSourceDirectory(): void
     {
-        $this->assertEquals(
-            realpath(__DIR__.'/../../../../src/'),
-            realpath(ZugferdSettings::getSourceDirectory())
+        $expected = realpath(__DIR__.'/../../../../src/compat/zugferd');
+        $actual = realpath(ZugferdSettings::getSourceDirectory());
+
+        $this->assertNotFalse($expected);
+        $this->assertNotFalse($actual);
+        $this->assertSame(
+            $expected,
+            $actual
         );
     }
 
     public function testGetAssetDirectory(): void
     {
-        var_dump(ZugferdSettings::getAssetDirectory());
-        $this->assertEquals(
-            realpath(__DIR__.'/../../src/assets/'),
-            realpath(ZugferdSettings::getAssetDirectory())
+        $expected = realpath(__DIR__.'/../../../../src/compat/zugferd/assets/');
+        $actual = realpath(ZugferdSettings::getAssetDirectory());
+
+        $this->assertNotFalse($expected);
+        $this->assertNotFalse($actual);
+        $this->assertSame(
+            $expected,
+            $actual
         );
     }
 
     public function testGetYamlDirectory(): void
     {
-        $this->assertEquals(
-            realpath(__DIR__.'/../../src/yaml/'),
-            realpath(ZugferdSettings::getYamlDirectory())
+        $expected = realpath(__DIR__.'/../../../../src/compat/zugferd/yaml/');
+        $actual = realpath(ZugferdSettings::getYamlDirectory());
+
+        $this->assertNotFalse($expected);
+        $this->assertNotFalse($actual);
+        $this->assertSame(
+            $expected,
+            $actual
         );
     }
 
     public function testGetValidationDirectory(): void
     {
-        $this->assertEquals(
-            realpath(__DIR__.'/../../src/validation/'),
-            realpath(ZugferdSettings::getValidationDirectory())
+        $expected = realpath(__DIR__.'/../../../../src/compat/zugferd/validation/');
+        $actual = realpath(ZugferdSettings::getValidationDirectory());
+
+        $this->assertNotFalse($expected);
+        $this->assertNotFalse($actual);
+        $this->assertSame(
+            $expected,
+            $actual
         );
     }
 
     public function testGetFullIccProfileFilename(): void
     {
         $expected = InvoiceSuitePathUtils::combinePathWithFile(
-            realpath(__DIR__.'/../../src/assets/'),
+            realpath(__DIR__.'/../../../../src/compat/zugferd/assets/'),
             'sRGB_v5_ICC.icc'
         );
         $actual = InvoiceSuitePathUtils::combinePathWithFile(
