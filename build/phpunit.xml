@@ -127,6 +127,7 @@
             <file>../tests/testcases/compat/ZugferdDocumentReaderExtended2Test.php</file>
             <file>../tests/testcases/compat/ZugferdPdfDocumentReaderGeneralTest.php</file>
             <file>../tests/testcases/compat/ZugferdPdfDocumentReaderGeneral2Test.php</file>
+            <file>../tests/testcases/compat/ZugferdPdfDocumentReaderMinimumTest.php</file>
             <file>../tests/testcases/compat/ZugferdPdfDocumentReaderComfortTest.php</file>
             <file>../tests/testcases/compat/ZugferdPdfDocumentReaderExtendedTest.php</file>
             <file>../tests/testcases/compat/ZugferdPdfDocumentReaderExtended2Test.php</file>
