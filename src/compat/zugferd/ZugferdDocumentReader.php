@@ -169,18 +169,6 @@ class ZugferdDocumentReader
     }
 
     /**
-     * Returns the internal InvoiceSuiteDocumentReader instance
-     *
-     * @return InvoiceSuiteDocumentReader
-     *
-     * @throws RuntimeException
-     */
-    public function getDocumentReaderInstance(): InvoiceSuiteDocumentReader
-    {
-        return $this->documentReader;
-    }
-
-    /**
      * Set the directory where the attached binary data from additional referenced documents are temporary stored.
      *
      * @param  string                $binaryDataDirectory
