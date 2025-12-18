@@ -576,7 +576,7 @@ final class UtilsTest extends TestCase
 
         // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsArray($classNames);
-        $this->assertCount(7, $classNames);
+        $this->assertCount(8, $classNames);
 
         // Three
 
@@ -605,21 +605,21 @@ final class UtilsTest extends TestCase
 
         // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsArray($classNames);
-        $this->assertCount(7, $classNames);
+        $this->assertCount(8, $classNames);
         $this->assertFileDoesNotExist($cacheFullFilename);
 
         $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, false);
 
         // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsArray($classNames);
-        $this->assertCount(7, $classNames);
+        $this->assertCount(8, $classNames);
         $this->assertFileExists($cacheFullFilename);
 
         $classNames = $classFinder->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class, false);
 
         // @phpstan-ignore method.alreadyNarrowedType
         $this->assertIsArray($classNames);
-        $this->assertCount(7, $classNames);
+        $this->assertCount(8, $classNames);
         $this->assertFileExists($cacheFullFilename);
 
         $this->assertFileExists(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', '..', 'src', 'cache'), 'fb2c9c3d46a7d2650a8813477106ebca.cache'));
