@@ -9,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\documents\providers\ubl;
+namespace horstoeko\invoicesuite\documents\providers\peppol30;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
@@ -41,7 +41,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
-class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocumentFormatBuilder
+class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDocumentFormatBuilder
 {
     /**
      * {@inheritDoc}

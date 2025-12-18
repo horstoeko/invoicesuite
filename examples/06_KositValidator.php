@@ -9,13 +9,14 @@ require __DIR__ . "/../vendor/autoload.php";
 
 // Build document
 
-$documentBuilder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxcomfort');
+$documentBuilder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
 $documentBuilder->setDocumentNo('471102');
 $documentBuilder->setDocumentType(InvoiceSuiteCodelistDocumentTypes::COMMERCIAL_INVOICE->value);
 $documentBuilder->setDocumentDate(DateTime::createFromFormat('Ymd', '20241115'));
 $documentBuilder->addDocumentNote('Rechnung gemäß Bestellung vom 01.11.2024.');
 $documentBuilder->addDocumentNote("Lieferant GmbH\nLieferantenstraße 20\n80333 München\nDeutschland\nGeschäftsführer: Hans Muster\nHandelsregisternummer: H A 123\n", newSubjectCode: 'REG');
 $documentBuilder->setDocumentCurrency(InvoiceSuiteCodelistCurrencyCodes::EURO->value);
+$documentBuilder->setDocumentTaxCurrency(InvoiceSuiteCodelistCurrencyCodes::POUND_STERLING->value);
 
 $documentBuilder->addDocumentPosition('1');
 $documentBuilder->setDocumentPositionProductDetails(
@@ -97,15 +98,18 @@ $documentBuilder->setDocumentSummation(
     newDiscountTotalAmount: 0.00,
     newTaxBasisAmount: 473.00,
     newTaxTotalAmount: 56.87,
+    newTaxTotalAmount2: 49.00,
     newGrossAmount: 529.87,
     newPrepaidAmount: 0.00,
     newDueAmount: 529.87
 );
 
+$documentBuilder->saveAsXmlFile(__DIR__ . "/01_SimpleInvoice_UBL.xml");
+
 // Create (Remote-) Validator
 
 $validator = InvoiceSuiteKositDocumentValidator::createFromDocumentBuilderAsXml($documentBuilder);
-$validator->disableRemoteMode();
+$validator->enableRemoteMode();
 $validator->setRemoteModeHost('192.168.1.83');
 $validator->setRemoteModePort(8081);
 $validator->validate();
