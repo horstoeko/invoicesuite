@@ -5445,7 +5445,7 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 0, 'Term3');
-        $this->assertXPathValueWithIndex('/ns:Invoice/cbc:DueDate', 0, "1970-01-01");
+        $this->assertXPathValueWithIndex('/ns:Invoice/cbc:DueDate', 0, '1970-01-01');
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 2);
