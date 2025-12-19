@@ -43,8 +43,8 @@ use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
 use horstoeko\invoicesuite\documents\models\ubl\main\Invoice;
-use horstoeko\invoicesuite\documents\providers\ubl\InvoiceSuiteUblInvoiceProviderBuilder;
-use horstoeko\invoicesuite\documents\providers\ubl\InvoiceSuiteUblInvoiceProviderReader;
+use horstoeko\invoicesuite\documents\providers\xrechnungubl\InvoiceSuiteXRechnungUBLProviderBuilder;
+use horstoeko\invoicesuite\documents\providers\xrechnungubl\InvoiceSuiteXRechnungUBLProviderReader;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\tests\TestCase;
@@ -53,21 +53,21 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 
-final class UblInvoiceDocumentBuilderTest extends TestCase
+final class XRechnungUBLBuilderTest extends TestCase
 {
     use HandlesXmlTests;
 
     public static function setUpBeforeClass(): void
     {
-        static::$document = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
+        static::$document = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('xrechnungubl');
     }
 
     public function testHasCurrentDocumentProvider(): void
     {
         $this->assertTrue(static::$document->hasCurrentDocumentFormatProvider());
-        $this->assertSame('ublinvoice', static::$document->getCurrentDocumentFormatProvider()->getUniqueId());
+        $this->assertSame('xrechnungubl', static::$document->getCurrentDocumentFormatProvider()->getUniqueId());
         $this->assertNotNull(static::$document->getCurrentDocumentFormatProvider()->getBuilder());
-        $this->assertInstanceOf(InvoiceSuiteUblInvoiceProviderBuilder::class, static::$document->getCurrentDocumentFormatProvider()->getBuilder());
+        $this->assertInstanceOf(InvoiceSuiteXRechnungUBLProviderBuilder::class, static::$document->getCurrentDocumentFormatProvider()->getBuilder());
         $this->assertInstanceOf(InvoiceSuiteAbstractDocumentFormatBuilder::class, static::$document->getCurrentDocumentFormatProvider()->getBuilder());
         $this->assertNotNull(static::$document->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject());
         $this->assertInstanceOf(Invoice::class, static::$document->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject());
@@ -7852,13 +7852,13 @@ final class UblInvoiceDocumentBuilderTest extends TestCase
         $documentReader = static::$document->copyToReader();
 
         $this->assertInstanceOf(InvoiceSuiteDocumentReader::class, $documentReader);
-        $this->assertSame('ublinvoice', $documentReader->getCurrentDocumentFormatProvider()->getUniqueId());
-        $this->assertInstanceOf(InvoiceSuiteUblInvoiceProviderReader::class, $documentReader->getCurrentDocumentFormatProvider()->getReader());
+        $this->assertSame('xrechnungubl', $documentReader->getCurrentDocumentFormatProvider()->getUniqueId());
+        $this->assertInstanceOf(InvoiceSuiteXRechnungUBLProviderReader::class, $documentReader->getCurrentDocumentFormatProvider()->getReader());
     }
 
     public function testCreateFromDTO(): void
     {
-        static::$document = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
+        static::$document = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('xrechnungubl');
 
         $documentDTO = new InvoiceSuiteDocumentHeaderDTO();
         $documentDTO

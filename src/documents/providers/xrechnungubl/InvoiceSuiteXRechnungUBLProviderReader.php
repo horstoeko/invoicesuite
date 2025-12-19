@@ -9,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\documents\providers\ubl;
+namespace horstoeko\invoicesuite\documents\providers\xrechnungubl;
 
 use DateTime;
 use DateTimeInterface;
@@ -86,7 +86,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
-class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractDocumentFormatReader
+class InvoiceSuiteXRechnungUBLProviderReader extends InvoiceSuiteAbstractDocumentFormatReader
 {
     /**
      * Create a DTO from this document

@@ -42,7 +42,7 @@ require __DIR__ . "/../vendor/autoload.php";
 $creationMode = 7; // 0 = UBL, 1 ZF/FX Extended, 2 = ZF/FX Comfort, 3 = ZF/FX BasicWL, 4 = ZF/FX Basic, 5 = ZF/FX Minimum, 6 = XRechnung, 7 = Peppol 3.0
 
 if ($creationMode === 0) {
-    $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
+    $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('xrechnungubl');
 }
 if ($creationMode === 1) {
     $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');

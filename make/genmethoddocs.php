@@ -2,8 +2,8 @@
 
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
-use horstoeko\invoicesuite\documents\providers\ubl\InvoiceSuiteUblInvoiceProviderBuilder;
-use horstoeko\invoicesuite\documents\providers\ubl\InvoiceSuiteUblInvoiceProviderReader;
+use horstoeko\invoicesuite\documents\providers\xrechnungubl\InvoiceSuiteXRechnungUBLProviderBuilder;
+use horstoeko\invoicesuite\documents\providers\xrechnungubl\InvoiceSuiteXRechnungUBLProviderReader;
 use horstoeko\invoicesuite\documents\providers\zffxbasic\InvoiceSuiteZfFxBasicProviderBuilder;
 use horstoeko\invoicesuite\documents\providers\zffxbasic\InvoiceSuiteZfFxBasicProviderReader;
 use horstoeko\invoicesuite\documents\providers\zffxbasicwl\InvoiceSuiteZfFxBasicWlProviderBuilder;
@@ -694,8 +694,8 @@ BatchMarkDownGenerator::generate([
     InvoiceSuiteZfFxBasicWlProviderReader::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteZfFxBasicWlProviderReader.md',
     InvoiceSuiteZfFxMinimumProviderBuilder::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteZfFxMinimumProviderBuilder.md',
     InvoiceSuiteZfFxMinimumProviderReader::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteZfFxMinimumProviderReader.md',
-    InvoiceSuiteUblInvoiceProviderBuilder::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteUblInvoiceProviderBuilder.md',
-    InvoiceSuiteUblInvoiceProviderReader::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteUblInvoiceProviderReader.md',
+    InvoiceSuiteXRechnungUBLProviderBuilder::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteUblInvoiceProviderBuilder.md',
+    InvoiceSuiteXRechnungUBLProviderReader::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteUblInvoiceProviderReader.md',
 ], [
     //'horstoeko\\invoicesuite\\MyClass::myMethodName',
 ]);

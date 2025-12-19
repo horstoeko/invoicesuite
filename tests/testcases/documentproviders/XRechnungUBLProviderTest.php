@@ -5,29 +5,29 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 
 use horstoeko\invoicesuite\documents\models\ubl\main\Invoice;
-use horstoeko\invoicesuite\documents\providers\ubl\InvoiceSuiteUblInvoiceProvider;
-use horstoeko\invoicesuite\documents\providers\ubl\InvoiceSuiteUblInvoiceProviderBuilder;
-use horstoeko\invoicesuite\documents\providers\ubl\InvoiceSuiteUblInvoiceProviderReader;
-use horstoeko\invoicesuite\documents\providers\ubl\InvoiceSuiteUblInvoiceSerializerHandler;
+use horstoeko\invoicesuite\documents\providers\xrechnungubl\InvoiceSuiteXRechnungUBLProvider;
+use horstoeko\invoicesuite\documents\providers\xrechnungubl\InvoiceSuiteXRechnungUBLProviderBuilder;
+use horstoeko\invoicesuite\documents\providers\xrechnungubl\InvoiceSuiteXRechnungUBLProviderReader;
+use horstoeko\invoicesuite\documents\providers\xrechnungubl\InvoiceSuiteXRechnungUBLSerializerHandler;
 use horstoeko\invoicesuite\tests\TestCase;
 
-final class UblInvoiceProviderTest extends TestCase
+final class XRechnungUBLProviderTest extends TestCase
 {
     public function testGetUniqueId(): void
     {
-        $provider = new InvoiceSuiteUblInvoiceProvider();
-        $this->assertSame('ublinvoice', $provider->getUniqueId());
+        $provider = new InvoiceSuiteXRechnungUBLProvider();
+        $this->assertSame('xrechnungubl', $provider->getUniqueId());
     }
 
     public function testGetDescription(): void
     {
-        $provider = new InvoiceSuiteUblInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLProvider();
         $this->assertNotEmpty($provider->getDescription());
     }
 
     public function testGetParameters(): void
     {
-        $provider = new InvoiceSuiteUblInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLProvider();
 
         $this->assertArrayNotHasKey('ContextParameter', $provider->getParameters());
         $this->assertArrayNotHasKey('AlternativeContextParameters', $provider->getParameters());
@@ -52,7 +52,7 @@ final class UblInvoiceProviderTest extends TestCase
 
     public function testPdfParameters(): void
     {
-        $provider = new InvoiceSuiteUblInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLProvider();
 
         $this->assertFalse($provider->isPdfSupportAvailable());
         $this->assertEmpty($provider->getAllowedPdfAttachmentFilenames());
@@ -62,36 +62,36 @@ final class UblInvoiceProviderTest extends TestCase
 
     public function testGetSerializerMetadataDirectories(): void
     {
-        $provider = new InvoiceSuiteUblInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLProvider();
 
         $this->assertEmpty($provider->getSerializerMetadataDirectories());
     }
 
     public function testGetSerializerHandlers(): void
     {
-        $provider = new InvoiceSuiteUblInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLProvider();
 
         $this->assertCount(1, $provider->getSerializerHandlers());
-        $this->assertContains(InvoiceSuiteUblInvoiceSerializerHandler::class, $provider->getSerializerHandlers());
+        $this->assertContains(InvoiceSuiteXRechnungUBLSerializerHandler::class, $provider->getSerializerHandlers());
     }
 
     public function testGetSerializerListeners(): void
     {
-        $provider = new InvoiceSuiteUblInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLProvider();
 
         $this->assertEmpty($provider->getSerializerListeners());
     }
 
     public function testGetSerializerSubscribers(): void
     {
-        $provider = new InvoiceSuiteUblInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLProvider();
 
         $this->assertEmpty($provider->getSerializerSubscribers());
     }
 
     public function testGetSerializerGroups(): void
     {
-        $provider = new InvoiceSuiteUblInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLProvider();
 
         $this->assertCount(1, $provider->getSerializerGroups());
         $this->assertContains('ubl', $provider->getSerializerGroups());
@@ -99,7 +99,7 @@ final class UblInvoiceProviderTest extends TestCase
 
     public function testIsSatisfiableBy(): void
     {
-        $provider = new InvoiceSuiteUblInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLProvider();
 
         $xml = <<<'XML'
     <?xml version="1.0" encoding="UTF-8"?>
@@ -146,22 +146,22 @@ final class UblInvoiceProviderTest extends TestCase
 
     public function testGetRootClassName(): void
     {
-        $provider = new InvoiceSuiteUblInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLProvider();
 
         $this->assertsame(Invoice::class, $provider->getRootClassName());
     }
 
     public function testGetReaderClassName(): void
     {
-        $provider = new InvoiceSuiteUblInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLProvider();
 
-        $this->assertsame(InvoiceSuiteUblInvoiceProviderReader::class, $provider->getReaderClassName());
+        $this->assertsame(InvoiceSuiteXRechnungUBLProviderReader::class, $provider->getReaderClassName());
     }
 
     public function testGetBuilderClassName(): void
     {
-        $provider = new InvoiceSuiteUblInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLProvider();
 
-        $this->assertsame(InvoiceSuiteUblInvoiceProviderBuilder::class, $provider->getBuilderClassName());
+        $this->assertsame(InvoiceSuiteXRechnungUBLProviderBuilder::class, $provider->getBuilderClassName());
     }
 }

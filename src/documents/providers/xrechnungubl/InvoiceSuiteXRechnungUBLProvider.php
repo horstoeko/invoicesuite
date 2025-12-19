@@ -9,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\documents\providers\ubl;
+namespace horstoeko\invoicesuite\documents\providers\xrechnungubl;
 
 use DOMDocument;
 use DOMXPath;
@@ -17,14 +17,14 @@ use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentForma
 use horstoeko\invoicesuite\documents\models\ubl\main\Invoice;
 use Throwable;
 
-class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatProvider
+class InvoiceSuiteXRechnungUBLProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
     /**
      * {@inheritDoc}
      */
     public function getUniqueId(): string
     {
-        return 'ublinvoice';
+        return 'xrechnungubl';
     }
 
     /**
@@ -43,7 +43,7 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatP
         return [
             'QuotationDocTypeCode' => '325',
             'QuotationDocDescription' => 'Quotation',
-            'CustomizationId' => 'urn:cen.eu:en16931:2017',
+            'CustomizationId' => 'urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0',
             'ProfileId' => 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0',
         ];
     }
@@ -62,7 +62,7 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatP
     public function getSerializerHandlers(): array
     {
         return [
-            InvoiceSuiteUblInvoiceSerializerHandler::class,
+            InvoiceSuiteXRechnungUBLSerializerHandler::class,
         ];
     }
 
@@ -149,7 +149,7 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatP
      */
     public function getReaderClassName(): string
     {
-        return InvoiceSuiteUblInvoiceProviderReader::class;
+        return InvoiceSuiteXRechnungUBLProviderReader::class;
     }
 
     /**
@@ -157,7 +157,7 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatP
      */
     public function getBuilderClassName(): string
     {
-        return InvoiceSuiteUblInvoiceProviderBuilder::class;
+        return InvoiceSuiteXRechnungUBLProviderBuilder::class;
     }
 
     /**

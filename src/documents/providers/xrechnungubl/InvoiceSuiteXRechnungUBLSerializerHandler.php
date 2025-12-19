@@ -9,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\documents\providers\ubl;
+namespace horstoeko\invoicesuite\documents\providers\xrechnungubl;
 
 use DateInvalidTimeZoneException;
 use DateMalformedStringException;
@@ -26,7 +26,7 @@ use JMS\Serializer\JsonDeserializationVisitor;
 use JMS\Serializer\JsonSerializationVisitor;
 use JMS\Serializer\XmlSerializationVisitor;
 
-class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInterface
+class InvoiceSuiteXRechnungUBLSerializerHandler implements SubscribingHandlerInterface
 {
     /**
      * @var DateTimeZone

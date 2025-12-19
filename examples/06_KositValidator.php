@@ -9,7 +9,7 @@ require __DIR__ . "/../vendor/autoload.php";
 
 // Build document
 
-$documentBuilder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
+$documentBuilder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('xrechnungubl');
 $documentBuilder->setDocumentNo('471102');
 $documentBuilder->setDocumentType(InvoiceSuiteCodelistDocumentTypes::COMMERCIAL_INVOICE->value);
 $documentBuilder->setDocumentDate(DateTime::createFromFormat('Ymd', '20241115'));
