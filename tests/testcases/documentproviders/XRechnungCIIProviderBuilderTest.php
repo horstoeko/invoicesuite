@@ -9,8 +9,8 @@ use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistCurrencyCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\documents\models\zffxcomfort\rsm\CrossIndustryInvoice;
-use horstoeko\invoicesuite\documents\providers\xrechnungcii\InvoiceSuiteXRechnungCIIProvider;
-use horstoeko\invoicesuite\documents\providers\xrechnungcii\InvoiceSuiteXRechnungCIIProviderBuilder;
+use horstoeko\invoicesuite\documents\providers\xrechnungciiinvoice\InvoiceSuiteXRechnungCIIInvoiceProvider;
+use horstoeko\invoicesuite\documents\providers\xrechnungciiinvoice\InvoiceSuiteXRechnungCIIInvoiceProviderBuilder;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\tests\traits\HandlesXmlTests;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
@@ -21,14 +21,14 @@ final class XRechnungCIIProviderBuilderTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        static::$document = new InvoiceSuiteXRechnungCIIProviderBuilder(new InvoiceSuiteXRechnungCIIProvider());
+        static::$document = new InvoiceSuiteXRechnungCIIInvoiceProviderBuilder(new InvoiceSuiteXRechnungCIIInvoiceProvider());
     }
 
     public function testHasCurrentDocumentProvider(): void
     {
         $this->assertTrue(static::$document->hasCurrentDocumentFormatProvider());
         $this->assertFalse(static::$document->hasNotCurrentDocumentFormatProvider());
-        $this->assertInstanceOf(InvoiceSuiteXRechnungCIIProvider::class, static::$document->getCurrentDocumentFormatProvider());
+        $this->assertInstanceOf(InvoiceSuiteXRechnungCIIInvoiceProvider::class, static::$document->getCurrentDocumentFormatProvider());
     }
 
     public function testInitDocumentRootObject(): void

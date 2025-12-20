@@ -9,22 +9,24 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\documents\providers\xrechnungubl;
+namespace horstoeko\invoicesuite\documents\providers\xrechnungciiinvoice;
 
 use DOMDocument;
 use DOMXPath;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
-use horstoeko\invoicesuite\documents\models\ubl\main\Invoice;
+use horstoeko\invoicesuite\documents\models\zffxcomfort\rsm\CrossIndustryInvoice;
+use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use Throwable;
 
-class InvoiceSuiteXRechnungUBLProvider extends InvoiceSuiteAbstractDocumentFormatProvider
+class InvoiceSuiteXRechnungCIIInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
     /**
      * {@inheritDoc}
      */
     public function getUniqueId(): string
     {
-        return 'xrechnungubl';
+        return 'xrechnungcii';
     }
 
     /**
@@ -33,8 +35,8 @@ class InvoiceSuiteXRechnungUBLProvider extends InvoiceSuiteAbstractDocumentForma
     public function getDescription(): string
     {
         return 'The reference profile is based on the CIUS XRechnung, which is maintained by KoSIT. It represents an '
-            .'extension of EN 16931-1 with its own business rules, the national German laws and regulations. This provider '
-            .'used the UBL Syntax.';
+            .'extension of EN 16931-1 with its own business rules, the national German laws and regulations. It is therefore more '
+            .'specific than the EN 16931 (COMFORT) profile. This provider uses the CII syntax.';
     }
 
     /**
@@ -43,10 +45,17 @@ class InvoiceSuiteXRechnungUBLProvider extends InvoiceSuiteAbstractDocumentForma
     public function getParameters(): array
     {
         return [
-            'QuotationDocTypeCode' => '325',
-            'QuotationDocDescription' => 'Quotation',
-            'CustomizationId' => 'urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0',
-            'ProfileId' => 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0',
+            'ContextParameter' => 'urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0',
+            'BusinessProcess' => 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0',
+            'AlternativeContextParameters' => [
+                'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2',
+                'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0',
+                'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.1',
+                'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.2',
+                'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3',
+            ],
+            'PdfXmpName' => 'XRECHNUNG',
+            'PdfXmpVersion' => '3.0',
         ];
     }
 
@@ -64,7 +73,7 @@ class InvoiceSuiteXRechnungUBLProvider extends InvoiceSuiteAbstractDocumentForma
     public function getSerializerHandlers(): array
     {
         return [
-            InvoiceSuiteXRechnungUBLSerializerHandler::class,
+            InvoiceSuiteXRechnungCIIInvoiceSerializerHandler::class,
         ];
     }
 
@@ -89,7 +98,7 @@ class InvoiceSuiteXRechnungUBLProvider extends InvoiceSuiteAbstractDocumentForma
      */
     public function getSerializerGroups(): array
     {
-        return ['ubl'];
+        return ['zffx'];
     }
 
     /**
@@ -104,30 +113,30 @@ class InvoiceSuiteXRechnungUBLProvider extends InvoiceSuiteAbstractDocumentForma
             $contentDomDocument = new DOMDocument();
             $contentDomDocument->loadXML($serializedContent);
             $contentDomXPath = new DOMXPath($contentDomDocument);
-            $contentDomXPath->registerNamespace('inv', 'urn:oasis:names:specification:ubl:schema:xsd:Invoice-2');
-            $contentDomXPath->registerNamespace('cbc', 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2');
+            $contentDomXPath->registerNamespace('rsm', 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100');
+            $contentDomXPath->registerNamespace('ram', 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100');
 
-            $contentQuery = sprintf("//inv:Invoice/cbc:CustomizationID[text()='%s']", $this->getFormatProviderParameterValue('CustomizationId', ''));
+            $contextParameters = array_merge(
+                InvoiceSuiteArrayUtils::ensure($this->getFormatProviderParameterValue('ContextParameter', '')),
+                InvoiceSuiteArrayUtils::ensure($this->getFormatProviderParameterValue('AlternativeContextParameters', ''))
+            );
 
-            $contentEntries = $contentDomXPath->query($contentQuery);
+            foreach ($contextParameters as $contextParameter) {
+                $contentQuery = sprintf(
+                    "//rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID[text()='%s']",
+                    $contextParameter
+                );
 
-            if ($contentEntries === false) {
-                return false;
+                $contentEntries = $contentDomXPath->query($contentQuery);
+
+                if ($contentEntries === false) {
+                    continue;
+                }
+
+                if ($contentEntries->length === 1) {
+                    return true;
+                }
             }
-
-            if ($contentEntries->length !== 1) {
-                return false;
-            }
-
-            $contentQuery = sprintf("//inv:Invoice/cbc:ProfileID[text()='%s']", $this->getFormatProviderParameterValue('ProfileId', ''));
-
-            $contentEntries = $contentDomXPath->query($contentQuery);
-
-            if ($contentEntries === false) {
-                return false;
-            }
-
-            return $contentEntries->length === 1;
         } catch (Throwable) {
             // Do nothing
         } finally {
@@ -143,7 +152,7 @@ class InvoiceSuiteXRechnungUBLProvider extends InvoiceSuiteAbstractDocumentForma
      */
     public function getRootClassName(): string
     {
-        return Invoice::class;
+        return CrossIndustryInvoice::class;
     }
 
     /**
@@ -151,7 +160,7 @@ class InvoiceSuiteXRechnungUBLProvider extends InvoiceSuiteAbstractDocumentForma
      */
     public function getReaderClassName(): string
     {
-        return InvoiceSuiteXRechnungUBLProviderReader::class;
+        return InvoiceSuiteXRechnungCIIInvoiceProviderReader::class;
     }
 
     /**
@@ -159,7 +168,7 @@ class InvoiceSuiteXRechnungUBLProvider extends InvoiceSuiteAbstractDocumentForma
      */
     public function getBuilderClassName(): string
     {
-        return InvoiceSuiteXRechnungUBLProviderBuilder::class;
+        return InvoiceSuiteXRechnungCIIInvoiceProviderBuilder::class;
     }
 
     /**
@@ -169,7 +178,7 @@ class InvoiceSuiteXRechnungUBLProvider extends InvoiceSuiteAbstractDocumentForma
      */
     public function isPdfSupportAvailable(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -179,7 +188,7 @@ class InvoiceSuiteXRechnungUBLProvider extends InvoiceSuiteAbstractDocumentForma
      */
     public function getAllowedPdfAttachmentFilenames(): array
     {
-        return [];
+        return ['xrechnung.xml'];
     }
 
     /**
@@ -189,7 +198,7 @@ class InvoiceSuiteXRechnungUBLProvider extends InvoiceSuiteAbstractDocumentForma
      */
     public function getDefaultPdfAttachmentFilename(): string
     {
-        return '';
+        return 'xrechnung.xml';
     }
 
     /**
@@ -199,6 +208,6 @@ class InvoiceSuiteXRechnungUBLProvider extends InvoiceSuiteAbstractDocumentForma
      */
     public function getPdfConstructorClassName(): string
     {
-        return '';
+        return InvoiceSuiteZffxPdfConstructor::class;
     }
 }

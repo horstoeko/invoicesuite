@@ -9,8 +9,8 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\documents\providers\xrechnungcii;
+namespace horstoeko\invoicesuite\documents\providers\xrechnungciiinvoice;
 
 use horstoeko\invoicesuite\documents\providers\zffxcomfort\InvoiceSuiteZfFxComfortProviderReader;
 
-class InvoiceSuiteXRechnungCIIProviderReader extends InvoiceSuiteZfFxComfortProviderReader {}
+class InvoiceSuiteXRechnungCIIInvoiceProviderReader extends InvoiceSuiteZfFxComfortProviderReader {}

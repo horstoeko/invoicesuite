@@ -9,8 +9,8 @@ use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistCurrencyCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\documents\models\ubl\main\Invoice;
-use horstoeko\invoicesuite\documents\providers\xrechnungubl\InvoiceSuiteXRechnungUBLProvider;
-use horstoeko\invoicesuite\documents\providers\xrechnungubl\InvoiceSuiteXRechnungUBLProviderBuilder;
+use horstoeko\invoicesuite\documents\providers\xrechnungublinvoice\InvoiceSuiteXRechnungUBLInvoiceProvider;
+use horstoeko\invoicesuite\documents\providers\xrechnungublinvoice\InvoiceSuiteXRechnungUBLInvoiceProviderBuilder;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\tests\traits\HandlesXmlTests;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
@@ -21,14 +21,14 @@ final class XRechnungUBLProviderBuilderTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        static::$document = new InvoiceSuiteXRechnungUBLProviderBuilder(new InvoiceSuiteXRechnungUBLProvider());
+        static::$document = new InvoiceSuiteXRechnungUBLInvoiceProviderBuilder(new InvoiceSuiteXRechnungUBLInvoiceProvider());
     }
 
     public function testHasCurrentDocumentProvider(): void
     {
         $this->assertTrue(static::$document->hasCurrentDocumentFormatProvider());
         $this->assertFalse(static::$document->hasNotCurrentDocumentFormatProvider());
-        $this->assertInstanceOf(InvoiceSuiteXRechnungUBLProvider::class, static::$document->getCurrentDocumentFormatProvider());
+        $this->assertInstanceOf(InvoiceSuiteXRechnungUBLInvoiceProvider::class, static::$document->getCurrentDocumentFormatProvider());
     }
 
     public function testInitDocumentRootObject(): void

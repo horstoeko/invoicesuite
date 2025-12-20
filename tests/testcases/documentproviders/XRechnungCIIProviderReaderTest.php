@@ -7,8 +7,8 @@ namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 use DateTimeInterface;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatReader;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
-use horstoeko\invoicesuite\documents\providers\xrechnungcii\InvoiceSuiteXRechnungCIIProvider;
-use horstoeko\invoicesuite\documents\providers\xrechnungcii\InvoiceSuiteXRechnungCIIProviderReader;
+use horstoeko\invoicesuite\documents\providers\xrechnungciiinvoice\InvoiceSuiteXRechnungCIIInvoiceProvider;
+use horstoeko\invoicesuite\documents\providers\xrechnungciiinvoice\InvoiceSuiteXRechnungCIIInvoiceProviderReader;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
@@ -24,7 +24,7 @@ final class XRechnungCIIProviderReaderTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        static::$document = new InvoiceSuiteXRechnungCIIProviderReader(new InvoiceSuiteXRechnungCIIProvider());
+        static::$document = new InvoiceSuiteXRechnungCIIInvoiceProviderReader(new InvoiceSuiteXRechnungCIIInvoiceProvider());
 
         static::$document->deserializeFromContent(
             file_get_contents(

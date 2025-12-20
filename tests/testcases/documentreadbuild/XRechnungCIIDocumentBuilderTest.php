@@ -43,8 +43,8 @@ use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
 use horstoeko\invoicesuite\documents\models\zffxcomfort\rsm\CrossIndustryInvoice;
-use horstoeko\invoicesuite\documents\providers\xrechnungcii\InvoiceSuiteXRechnungCIIProviderBuilder;
-use horstoeko\invoicesuite\documents\providers\xrechnungcii\InvoiceSuiteXRechnungCIIProviderReader;
+use horstoeko\invoicesuite\documents\providers\xrechnungciiinvoice\InvoiceSuiteXRechnungCIIInvoiceProviderBuilder;
+use horstoeko\invoicesuite\documents\providers\xrechnungciiinvoice\InvoiceSuiteXRechnungCIIInvoiceProviderReader;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\tests\TestCase;
@@ -67,7 +67,7 @@ final class XRechnungCIIDocumentBuilderTest extends TestCase
         $this->assertTrue(static::$document->hasCurrentDocumentFormatProvider());
         $this->assertSame('xrechnungcii', static::$document->getCurrentDocumentFormatProvider()->getUniqueId());
         $this->assertNotNull(static::$document->getCurrentDocumentFormatProvider()->getBuilder());
-        $this->assertInstanceOf(InvoiceSuiteXRechnungCIIProviderBuilder::class, static::$document->getCurrentDocumentFormatProvider()->getBuilder());
+        $this->assertInstanceOf(InvoiceSuiteXRechnungCIIInvoiceProviderBuilder::class, static::$document->getCurrentDocumentFormatProvider()->getBuilder());
         $this->assertInstanceOf(InvoiceSuiteAbstractDocumentFormatBuilder::class, static::$document->getCurrentDocumentFormatProvider()->getBuilder());
         $this->assertNotNull(static::$document->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject());
         $this->assertInstanceOf(CrossIndustryInvoice::class, static::$document->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject());
@@ -16862,7 +16862,7 @@ final class XRechnungCIIDocumentBuilderTest extends TestCase
 
         $this->assertInstanceOf(InvoiceSuiteDocumentReader::class, $documentReader);
         $this->assertSame('xrechnungcii', $documentReader->getCurrentDocumentFormatProvider()->getUniqueId());
-        $this->assertInstanceOf(InvoiceSuiteXRechnungCIIProviderReader::class, $documentReader->getCurrentDocumentFormatProvider()->getReader());
+        $this->assertInstanceOf(InvoiceSuiteXRechnungCIIInvoiceProviderReader::class, $documentReader->getCurrentDocumentFormatProvider()->getReader());
     }
 
     public function testCreateFromDTO(): void

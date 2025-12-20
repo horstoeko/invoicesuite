@@ -9,8 +9,8 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\documents\providers\xrechnungcii;
+namespace horstoeko\invoicesuite\documents\providers\xrechnungciiinvoice;
 
 use horstoeko\invoicesuite\documents\providers\zffxcomfort\InvoiceSuiteZfFxComfortSerializerHandler;
 
-class InvoiceSuiteXRechnungCIISerializerHandler extends InvoiceSuiteZfFxComfortSerializerHandler {}
+class InvoiceSuiteXRechnungCIIInvoiceSerializerHandler extends InvoiceSuiteZfFxComfortSerializerHandler {}

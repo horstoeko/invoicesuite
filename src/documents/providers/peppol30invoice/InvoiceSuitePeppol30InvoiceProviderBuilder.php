@@ -9,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\documents\providers\peppol30;
+namespace horstoeko\invoicesuite\documents\providers\peppol30invoice;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
