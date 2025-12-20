@@ -51,7 +51,6 @@ class ZugferdDocumentPdfReaderExt
      */
     public const ATTACHMENT_KEY_MIMETYPE = 'mimetype';
 
-
     /**
      * Identifier for an additional document
      */

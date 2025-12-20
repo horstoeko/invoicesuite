@@ -116,18 +116,12 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
     /**
      * Attach file to PDF.
      *
-     * @param  mixed  $file
-     *                              Data to embed to the pdf
-     * @param  string $name
-     *                              The visible attachment filename
-     * @param  string $desc
-     *                              The description for the attached file
-     * @param  string $relationship
-     *                              The type of the relationship of the attached file
-     * @param  string $mimetype
-     *                              The url-encoded mimetype of the attached file
-     * @param  bool   $isUTF8
-     *                              Set to true, if the attached file is UTF-8 encoded
+     * @param  mixed  $file         Data to embed to the pdf
+     * @param  string $name         The visible attachment filename
+     * @param  string $desc         The description for the attached file
+     * @param  string $relationship The type of the relationship of the attached file
+     * @param  string $mimetype     The url-encoded mimetype of the attached file
+     * @param  bool   $isUTF8       Set to true, if the attached file is UTF-8 encoded
      * @return void
      */
     public function attach($file, $name = '', $desc = '', $relationship = 'Unspecified', $mimetype = '', $isUTF8 = false): void
@@ -171,8 +165,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
     /**
      * Add metadata description node.
      *
-     * @param  string $description
-     *                             The description of the metadata
+     * @param  string $description The description of the metadata
      * @return void
      */
     public function addMetadataDescriptionNode($description): void
@@ -493,8 +486,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
     /**
      * Generate metadata string.
      *
-     * @param  null|string $dateType
-     *                               The type of the metadata date
+     * @param  null|string $dateType The type of the metadata date
      * @return string
      *
      * @codingStandardsIgnoreStart
