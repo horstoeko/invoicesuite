@@ -13,78 +13,79 @@ namespace horstoeko\invoicesuite\documents\providers\peppol30invoice;
 
 use DateTime;
 use DateTimeInterface;
-use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatReader;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAddressDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAllowanceChargeDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteCommunicationDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteContactDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDateRangeDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentPositionDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteIdDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteMeasureDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteNoteDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteOrganisationDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitePartyDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentMeanDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentTermDiscountDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentTermDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentTermPenaltyDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitePeriodDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitePriceGrossDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitePriceNetDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProductCharacteristicDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProductClassificationDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProductDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProjectDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteQuantityDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentExtDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineExtDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceProductDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteServiceChargeDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
-use horstoeko\invoicesuite\documents\models\ubl\cac\AdditionalDocumentReference;
-use horstoeko\invoicesuite\documents\models\ubl\cac\AdditionalItemProperty;
-use horstoeko\invoicesuite\documents\models\ubl\cac\AllowanceCharge;
-use horstoeko\invoicesuite\documents\models\ubl\cac\BillingReference;
-use horstoeko\invoicesuite\documents\models\ubl\cac\ClassifiedTaxCategory;
-use horstoeko\invoicesuite\documents\models\ubl\cac\CommodityClassification;
-use horstoeko\invoicesuite\documents\models\ubl\cac\Contact;
-use horstoeko\invoicesuite\documents\models\ubl\cac\ContractDocumentReference;
-use horstoeko\invoicesuite\documents\models\ubl\cac\Delivery;
-use horstoeko\invoicesuite\documents\models\ubl\cac\DespatchDocumentReference;
-use horstoeko\invoicesuite\documents\models\ubl\cac\InvoiceLine;
-use horstoeko\invoicesuite\documents\models\ubl\cac\InvoicePeriod;
-use horstoeko\invoicesuite\documents\models\ubl\cac\Item;
-use horstoeko\invoicesuite\documents\models\ubl\cac\OrderLineReference;
-use horstoeko\invoicesuite\documents\models\ubl\cac\OrderReference;
-use horstoeko\invoicesuite\documents\models\ubl\cac\PartyIdentification;
-use horstoeko\invoicesuite\documents\models\ubl\cac\PartyIdentificationType;
-use horstoeko\invoicesuite\documents\models\ubl\cac\PartyLegalEntity;
-use horstoeko\invoicesuite\documents\models\ubl\cac\PartyTaxScheme;
-use horstoeko\invoicesuite\documents\models\ubl\cac\PaymentMeans;
-use horstoeko\invoicesuite\documents\models\ubl\cac\PaymentTerms;
-use horstoeko\invoicesuite\documents\models\ubl\cac\PostalAddress;
-use horstoeko\invoicesuite\documents\models\ubl\cac\ProjectReference;
-use horstoeko\invoicesuite\documents\models\ubl\cac\ReceiptDocumentReference;
-use horstoeko\invoicesuite\documents\models\ubl\cac\TaxSubtotal;
-use horstoeko\invoicesuite\documents\models\ubl\cac\TaxTotal;
-use horstoeko\invoicesuite\documents\models\ubl\cbc\AccountingCost;
-use horstoeko\invoicesuite\documents\models\ubl\cbc\AccountingCostCode;
-use horstoeko\invoicesuite\documents\models\ubl\cbc\Description;
-use horstoeko\invoicesuite\documents\models\ubl\cbc\EndpointID;
 use horstoeko\invoicesuite\documents\models\ubl\cbc\ID;
-use horstoeko\invoicesuite\documents\models\ubl\cbc\Note;
-use horstoeko\invoicesuite\documents\models\ubl\cbc\SalesOrderID;
-use horstoeko\invoicesuite\documents\models\ubl\main\Invoice;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
-use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
+use horstoeko\invoicesuite\documents\models\ubl\cac\Item;
+use horstoeko\invoicesuite\documents\models\ubl\cbc\Note;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteIdDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
+use horstoeko\invoicesuite\documents\models\ubl\cac\Contact;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteNoteDTO;
+use horstoeko\invoicesuite\documents\models\ubl\cac\Delivery;
+use horstoeko\invoicesuite\documents\models\ubl\cac\TaxTotal;
+use horstoeko\invoicesuite\documents\models\ubl\main\Invoice;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePartyDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePeriodDTO;
+use horstoeko\invoicesuite\documents\models\ubl\cbc\EndpointID;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAddressDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteContactDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteMeasureDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProductDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProjectDTO;
+use horstoeko\invoicesuite\documents\models\ubl\cac\InvoiceLine;
+use horstoeko\invoicesuite\documents\models\ubl\cac\TaxSubtotal;
+use horstoeko\invoicesuite\documents\models\ubl\cbc\Description;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePriceNetDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteQuantityDTO;
+use horstoeko\invoicesuite\documents\models\ubl\cac\PaymentMeans;
+use horstoeko\invoicesuite\documents\models\ubl\cac\PaymentTerms;
+use horstoeko\invoicesuite\documents\models\ubl\cbc\SalesOrderID;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDateRangeDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
+use horstoeko\invoicesuite\documents\models\ubl\cac\InvoicePeriod;
+use horstoeko\invoicesuite\documents\models\ubl\cac\PostalAddress;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePriceGrossDTO;
+use horstoeko\invoicesuite\documents\models\ubl\cac\OrderReference;
+use horstoeko\invoicesuite\documents\models\ubl\cac\PartyTaxScheme;
+use horstoeko\invoicesuite\documents\models\ubl\cbc\AccountingCost;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentMeanDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentTermDTO;
+use horstoeko\invoicesuite\documents\models\ubl\cac\AllowanceCharge;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteOrganisationDTO;
+use horstoeko\invoicesuite\documents\models\ubl\cac\BillingReference;
+use horstoeko\invoicesuite\documents\models\ubl\cac\PartyLegalEntity;
+use horstoeko\invoicesuite\documents\models\ubl\cac\ProjectReference;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteCommunicationDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteServiceChargeDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO;
+use horstoeko\invoicesuite\documents\models\ubl\cac\DocumentReference;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
+use horstoeko\invoicesuite\documents\models\ubl\cac\OrderLineReference;
+use horstoeko\invoicesuite\documents\models\ubl\cbc\AccountingCostCode;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAllowanceChargeDTO;
+use horstoeko\invoicesuite\documents\models\ubl\cac\PartyIdentification;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentPositionDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceProductDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentDTO;
+use horstoeko\invoicesuite\documents\models\ubl\cac\ClassifiedTaxCategory;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentTermPenaltyDTO;
+use horstoeko\invoicesuite\documents\models\ubl\cac\AdditionalItemProperty;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentTermDiscountDTO;
+use horstoeko\invoicesuite\documents\models\ubl\cac\CommodityClassification;
+use horstoeko\invoicesuite\documents\models\ubl\cac\PartyIdentificationType;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentExtDTO;
+use horstoeko\invoicesuite\documents\models\ubl\cac\ReceiptDocumentReference;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProductCharacteristicDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProductClassificationDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineDTO;
+use horstoeko\invoicesuite\documents\models\ubl\cac\ContractDocumentReference;
+use horstoeko\invoicesuite\documents\models\ubl\cac\DespatchDocumentReference;
+use horstoeko\invoicesuite\documents\models\ubl\cac\AdditionalDocumentReference;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineExtDTO;
+use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatReader;
 
 class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocumentFormatReader
 {
@@ -9127,7 +9128,10 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
      */
     public function firstDocumentPositionAdditionalObjectReference(): bool
     {
-        return false;
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getDocumentReference() ?? []),
+            'documentpositionadditionalobjectreference'
+        );
     }
 
     /**
@@ -9137,7 +9141,10 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
      */
     public function nextDocumentPositionAdditionalObjectReference(): bool
     {
-        return false;
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getDocumentReference() ?? []),
+            'documentpositionadditionalobjectreference'
+        );
     }
 
     /**
@@ -9157,8 +9164,18 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         ?string &$newTypeCode = null,
         ?string &$newReferenceTypeCode = null
     ): static {
-        $newReferenceNumber = '';
-        $newTypeCode = '';
+        /**
+         * @var array<DocumentReference>
+         */
+        $documentPositionAdditionalObjectReferences = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getDocumentReference() ?? []);
+
+        /**
+         * @var DocumentReference
+         */
+        $documentPositionAdditionalObjectReferences = $documentPositionAdditionalObjectReferences[InvoiceSuitePointerUtils::getValue('documentpositionadditionalobjectreference')];
+
+        $newReferenceNumber = $documentPositionAdditionalObjectReferences->getID()?->getValue() ?? "";
+        $newTypeCode = $documentPositionAdditionalObjectReferences->getDocumentTypeCode()?->getValue() ?? "";
         $newReferenceTypeCode = '';
 
         return $this;
