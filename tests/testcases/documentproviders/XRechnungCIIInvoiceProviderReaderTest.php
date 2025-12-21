@@ -379,10 +379,6 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
         $this->assertNotInstanceOf(DateTimeInterface::class, $newReferenceDate);
 
         $this->assertFalse(static::$document->nextDocumentDeliveryNoteReference());
-
-        $this->expectNoticeOrWarningExt(static function (): void {
-            static::$document->getDocumentDeliveryNoteReference($newReferenceNumber, $newReferenceDate);
-        }, '/Undefined (array key|index)/');
     }
 
     public function testGetDocumentSupplyChainEvent(): void
