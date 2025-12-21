@@ -820,7 +820,7 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this->getUblRootObject()->addOnceToNoteWithCreate()->setValue($newContent);
+        $this->addDocumentNote($newContent, $newContentCode, $newSubjectCode);
 
         return $this;
     }
@@ -842,7 +842,7 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this->setDocumentNote($newContent, $newContentCode, $newSubjectCode);
+        $this->getUblRootObject()->addToNoteWithCreate()->setValue($newContent);
 
         return $this;
     }
@@ -866,17 +866,11 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $invoicePeriod = $this
-            ->getUblRootObject()
-            ->addToInvoicePeriodWithCreate();
-
-        if (!is_null($newStartDate)) {
-            $invoicePeriod->setStartDate($newStartDate);
-        }
-
-        if (!is_null($newEndDate)) {
-            $invoicePeriod->setEndDate($newEndDate);
-        }
+        $this->addDocumentBillingPeriod(
+            $newStartDate,
+            $newEndDate,
+            $newDescription
+        );
 
         return $this;
     }
@@ -898,11 +892,21 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this->setDocumentBillingPeriod(
-            $newStartDate,
-            $newEndDate,
-            $newDescription
-        );
+        $invoicePeriod = $this
+            ->getUblRootObject()
+            ->addToInvoicePeriodWithCreate();
+
+        if (!is_null($newStartDate)) {
+            $invoicePeriod->setStartDate($newStartDate);
+        }
+
+        if (!is_null($newEndDate)) {
+            $invoicePeriod->setEndDate($newEndDate);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            $invoicePeriod->clearDescription()->addToDescriptionWithCreate()->setValue($newDescription);
+        }
 
         return $this;
     }
@@ -1020,11 +1024,12 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this
+        $orderReference = $this
             ->getUblRootObject()
-            ->getOrderReferenceWithCreate()
-            ->getIDWithCreate()
-            ->setValue($newReferenceNumber);
+            ->getOrderReferenceWithCreate();
+
+        $orderReference->getIDWithCreate()->setValue($newReferenceNumber);
+        $orderReference->setIssueDate($newReferenceDate);
 
         return $this;
     }
@@ -1100,11 +1105,7 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this
-            ->getUblRootObject()
-            ->addToContractDocumentReferenceWithCreate()
-            ->getIDWithCreate()
-            ->setValue($newReferenceNumber);
+        $this->addDocumentContractReference($newReferenceNumber, $newReferenceDate);
 
         return $this;
     }
@@ -1124,7 +1125,12 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this->setDocumentContractReference($newReferenceNumber, $newReferenceDate);
+        $contractReference = $this
+            ->getUblRootObject()
+            ->addToContractDocumentReferenceWithCreate();
+
+        $contractReference->getIDWithCreate()->setValue($newReferenceNumber);
+        $contractReference->setIssueDate($newReferenceDate);
 
         return $this;
     }
@@ -1196,6 +1202,7 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             ->addToAdditionalDocumentReferenceWithCreate();
 
         $additionalReference->getIDWithCreate()->setValue($newReferenceNumber);
+        $additionalReference->setIssueDate($newReferenceDate);
 
         if ($newTypeCode === '130') {
             $additionalReference->getDocumentTypeCodeWithCreate()->setValue($newTypeCode);
@@ -1251,13 +1258,11 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $invoiceReference = $this
-            ->getUblRootObject()
-            ->addToBillingReferenceWithCreate()
-            ->getInvoiceDocumentReferenceWithCreate();
-
-        $invoiceReference->getIDWithCreate()->setValue($newReferenceNumber);
-        $invoiceReference->setIssueDate($newReferenceDate);
+        $this->addDocumentInvoiceReference(
+            $newReferenceNumber,
+            $newReferenceDate,
+            $newTypeCode
+        );
 
         return $this;
     }
@@ -1279,11 +1284,13 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this->setDocumentInvoiceReference(
-            $newReferenceNumber,
-            $newReferenceDate,
-            $newTypeCode
-        );
+        $invoiceReference = $this
+            ->getUblRootObject()
+            ->addToBillingReferenceWithCreate()
+            ->getInvoiceDocumentReferenceWithCreate();
+
+        $invoiceReference->getIDWithCreate()->setValue($newReferenceNumber);
+        $invoiceReference->setIssueDate($newReferenceDate);
 
         return $this;
     }
@@ -1305,11 +1312,7 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this
-            ->getUblRootObject()
-            ->addOnceToProjectReferenceWithCreate()
-            ->getIDWithCreate()
-            ->setValue($newReferenceNumber);
+        $this->addDocumentProjectReference($newReferenceNumber, $newName);
 
         return $this;
     }
@@ -1327,7 +1330,11 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this->setDocumentProjectReference($newReferenceNumber, $newName);
+        $this
+            ->getUblRootObject()
+            ->addToProjectReferenceWithCreate()
+            ->getIDWithCreate()
+            ->setValue($newReferenceNumber);
 
         return $this;
     }
@@ -1383,11 +1390,7 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this
-            ->getUblRootObject()
-            ->addToDespatchDocumentReferenceWithCreate()
-            ->getIDWithCreate()
-            ->setValue($newReferenceNumber);
+        $this->addDocumentDespatchAdviceReference($newReferenceNumber, $newReferenceDate);
 
         return $this;
     }
@@ -1407,7 +1410,12 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this->setDocumentDespatchAdviceReference($newReferenceNumber, $newReferenceDate);
+        $despatchAdviceReference = $this
+            ->getUblRootObject()
+            ->addToDespatchDocumentReferenceWithCreate();
+
+        $despatchAdviceReference->getIDWithCreate()->setValue($newReferenceNumber);
+        $despatchAdviceReference->setIssueDate($newReferenceDate);
 
         return $this;
     }
@@ -1431,11 +1439,7 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this
-            ->getUblRootObject()
-            ->addOnceToReceiptDocumentReferenceWithCreate()
-            ->getIDWithCreate()
-            ->setValue($newReferenceNumber);
+        $this->addDocumentReceivingAdviceReference($newReferenceNumber, $newReferenceDate);
 
         return $this;
     }
@@ -1455,7 +1459,12 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this->setDocumentReceivingAdviceReference($newReferenceNumber, $newReferenceDate);
+        $receivingAdviceReference = $this
+            ->getUblRootObject()
+            ->addToReceiptDocumentReferenceWithCreate();
+
+        $receivingAdviceReference->getIDWithCreate()->setValue($newReferenceNumber);
+        $receivingAdviceReference->setIssueDate($newReferenceDate);
 
         return $this;
     }
@@ -2005,8 +2014,16 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             $contact->getNameWithCreate()->setValue($newPersonName);
         }
 
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDepartmentName)) {
+            // Nothing here
+        }
+
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPhoneNumber)) {
             $contact->getTelephoneWithCreate()->setValue($newPhoneNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newFaxNumber)) {
+            $contact->getTelefaxWithCreate()->setValue($newFaxNumber);
         }
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newEmailAddress)) {
@@ -2154,23 +2171,26 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     public function setDocumentBuyerId(
         ?string $newId = null
     ): static {
+        $ids = array_filter(
+            $this
+                ->getUblRootObject()
+                ->getAccountingCustomerParty()
+                ?->getParty()
+                ?->getPartyIdentification() ?? [],
+            static fn (PartyIdentification $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
+        );
+
         $this
             ->getUblRootObject()
             ->getAccountingCustomerParty()
             ?->getParty()
-            ?->unsetPartyIdentification();
+            ?->setPartyIdentification($ids);
 
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
         }
 
-        $this
-            ->getUblRootObject()
-            ->getAccountingCustomerPartyWithCreate()
-            ->getPartyWithCreate()
-            ->addOnceToPartyIdentificationWithCreate()
-            ->getIDWithCreate()
-            ->setValue($newId);
+        $this->addDocumentBuyerId($newId);
 
         return $this;
     }
@@ -2188,7 +2208,14 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this->setDocumentBuyerId($newId);
+        $this
+            ->getUblRootObject()
+            ->getAccountingCustomerPartyWithCreate()
+            ->getPartyWithCreate()
+            ->addToPartyIdentificationWithCreate()
+            ->addToObjectFlags('id')
+            ->getIDWithCreate()
+            ->setValue($newId);
 
         return $this;
     }
@@ -2202,24 +2229,26 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
      */
     public function setDocumentBuyerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): static
     {
+        $ids = array_filter(
+            $this
+                ->getUblRootObject()
+                ->getAccountingCustomerParty()
+                ?->getParty()
+                ?->getPartyIdentification() ?? [],
+            static fn (PartyIdentification $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
+        );
+
         $this
             ->getUblRootObject()
             ->getAccountingCustomerParty()
             ?->getParty()
-            ?->unsetPartyIdentification();
+            ?->setPartyIdentification($ids);
 
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
 
-        $this
-            ->getUblRootObject()
-            ->getAccountingCustomerPartyWithCreate()
-            ->getPartyWithCreate()
-            ->addOnceToPartyIdentificationWithCreate()
-            ->getIDWithCreate()
-            ->setValue($newGlobalId)
-            ->setSchemeID($newGlobalIdType);
+        $this->addDocumentBuyerGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -2237,7 +2266,15 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this->setDocumentBuyerGlobalId($newGlobalId, $newGlobalIdType);
+        $this
+            ->getUblRootObject()
+            ->getAccountingCustomerPartyWithCreate()
+            ->getPartyWithCreate()
+            ->addToPartyIdentificationWithCreate()
+            ->addToObjectFlags('globalid')
+            ->getIDWithCreate()
+            ->setValue($newGlobalId)
+            ->setSchemeID($newGlobalIdType);
 
         return $this;
     }
@@ -2263,20 +2300,7 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $partyTaxScheme = $this
-            ->getUblRootObject()
-            ->getAccountingCustomerPartyWithCreate()
-            ->getPartyWithCreate()
-            ->addToPartyTaxSchemeWithCreate();
-
-        $partyTaxScheme
-            ->getCompanyIDWithCreate()
-            ->setValue($newTaxRegistrationId);
-
-        $partyTaxScheme
-            ->getTaxSchemeWithCreate()
-            ->getIDWithCreate()
-            ->setValue($this->convertTaxRegistrationType($newTaxRegistrationType));
+        $this->addDocumentBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -2296,7 +2320,20 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this->setDocumentBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $partyTaxScheme = $this
+            ->getUblRootObject()
+            ->getAccountingCustomerPartyWithCreate()
+            ->getPartyWithCreate()
+            ->addToPartyTaxSchemeWithCreate();
+
+        $partyTaxScheme
+            ->getCompanyIDWithCreate()
+            ->setValue($newTaxRegistrationId);
+
+        $partyTaxScheme
+            ->getTaxSchemeWithCreate()
+            ->getIDWithCreate()
+            ->setValue($newTaxRegistrationType);
 
         return $this;
     }
@@ -2507,7 +2544,9 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
                 $newPersonName,
+                $newDepartmentName,
                 $newPhoneNumber,
+                $newFaxNumber,
                 $newEmailAddress,
             ])
         ) {
@@ -2524,8 +2563,16 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             $contact->getNameWithCreate()->setValue($newPersonName);
         }
 
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDepartmentName)) {
+            // Nothing here
+        }
+
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPhoneNumber)) {
             $contact->getTelephoneWithCreate()->setValue($newPhoneNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newFaxNumber)) {
+            $contact->getTelefaxWithCreate()->setValue($newFaxNumber);
         }
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newEmailAddress)) {
@@ -2670,7 +2717,24 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     public function setDocumentTaxRepresentativeId(
         ?string $newId = null
     ): static {
-        // Nothing here...
+        $ids = array_filter(
+            $this
+                ->getUblRootObject()
+                ->getTaxRepresentativeParty()
+                ?->getPartyIdentification() ?? [],
+            static fn (PartyIdentification $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
+        );
+
+        $this
+            ->getUblRootObject()
+            ->getTaxRepresentativeParty()
+            ?->setPartyIdentification($ids);
+
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $this->addDocumentTaxRepresentativeId($newId);
 
         return $this;
     }
@@ -2684,7 +2748,17 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     public function addDocumentTaxRepresentativeId(
         ?string $newId = null
     ): static {
-        // Nothing here...
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $this
+            ->getUblRootObject()
+            ->getTaxRepresentativePartyWithCreate()
+            ->addToPartyIdentificationWithCreate()
+            ->addToObjectFlags('id')
+            ->getIDWithCreate()
+            ->setValue($newId);
 
         return $this;
     }
@@ -2700,7 +2774,24 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null,
     ): static {
-        // Nothing here...
+        $ids = array_filter(
+            $this
+                ->getUblRootObject()
+                ->getTaxRepresentativeParty()
+                ?->getPartyIdentification() ?? [],
+            static fn (PartyIdentification $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
+        );
+
+        $this
+            ->getUblRootObject()
+            ->getTaxRepresentativeParty()
+            ?->setPartyIdentification($ids);
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+            return $this;
+        }
+
+        $this->addDocumentTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -2716,7 +2807,18 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null,
     ): static {
-        // Nothing here...
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+            return $this;
+        }
+
+        $this
+            ->getUblRootObject()
+            ->getTaxRepresentativePartyWithCreate()
+            ->addToPartyIdentificationWithCreate()
+            ->addToObjectFlags('globalid')
+            ->getIDWithCreate()
+            ->setValue($newGlobalId)
+            ->setSchemeID($newGlobalIdType);
 
         return $this;
     }
@@ -2741,19 +2843,7 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $partyTaxScheme = $this
-            ->getUblRootObject()
-            ->getTaxRepresentativePartyWithCreate()
-            ->addOnceToPartyTaxSchemeWithCreate();
-
-        $partyTaxScheme
-            ->getCompanyIDWithCreate()
-            ->setValue($newTaxRegistrationId);
-
-        $partyTaxScheme
-            ->getTaxSchemeWithCreate()
-            ->getIDWithCreate()
-            ->setValue($this->convertTaxRegistrationType($newTaxRegistrationType));
+        $this->addDocumentTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -2773,10 +2863,19 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this->setDocumentTaxRepresentativeTaxRegistration(
-            $newTaxRegistrationType,
-            $newTaxRegistrationId
-        );
+        $partyTaxScheme = $this
+            ->getUblRootObject()
+            ->getTaxRepresentativePartyWithCreate()
+            ->addToPartyTaxSchemeWithCreate();
+
+        $partyTaxScheme
+            ->getCompanyIDWithCreate()
+            ->setValue($newTaxRegistrationId);
+
+        $partyTaxScheme
+            ->getTaxSchemeWithCreate()
+            ->getIDWithCreate()
+            ->setValue($newTaxRegistrationType);
 
         return $this;
     }
@@ -2896,7 +2995,34 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         ?string $newId = null,
         ?string $newName = null,
     ): static {
-        // Nothing here...
+        $this
+            ->getUblRootObject()
+            ->getTaxRepresentativeParty()
+            ?->firstPartyLegalEntity()
+            ?->unsetCompanyID()
+            ?->unsetRegistrationName();
+
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+            return $this;
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newId)) {
+            $this
+                ->getUblRootObject()
+                ->getTaxRepresentativePartyWithCreate()
+                ->addOnceToPartyLegalEntityWithCreate()
+                ->getCompanyIDWithCreate()
+                ->setValue($newId);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)) {
+            $this
+                ->getUblRootObject()
+                ->getTaxRepresentativePartyWithCreate()
+                ->addOnceToPartyLegalEntityWithCreate()
+                ->getRegistrationNameWithCreate()
+                ->setValue($newName);
+        }
 
         return $this;
     }
@@ -2914,7 +3040,11 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         ?string $newId = null,
         ?string $newName = null,
     ): static {
-        // Nothing here...
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+            return $this;
+        }
+
+        $this->setDocumentTaxRepresentativeLegalOrganisation($newType, $newId, $newName);
 
         return $this;
     }
@@ -2936,7 +3066,47 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): static {
-        // Nothing here...
+        $this
+            ->getUblRootObject()
+            ->getTaxRepresentativeParty()
+            ?->unsetContact();
+
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress,
+            ])
+        ) {
+            return $this;
+        }
+
+        $contact = $this
+            ->getUblRootObject()
+            ->getTaxRepresentativePartyWithCreate()
+            ->getContactWithCreate();
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPersonName)) {
+            $contact->getNameWithCreate()->setValue($newPersonName);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDepartmentName)) {
+            // Nothing here
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPhoneNumber)) {
+            $contact->getTelephoneWithCreate()->setValue($newPhoneNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newFaxNumber)) {
+            $contact->getTelefaxWithCreate()->setValue($newFaxNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newEmailAddress)) {
+            $contact->getElectronicMailWithCreate()->setValue($newEmailAddress);
+        }
 
         return $this;
     }
@@ -2958,7 +3128,19 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): static {
-        // Nothing here...
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress,
+            ])
+        ) {
+            return $this;
+        }
+
+        $this->setDocumentTaxRepresentativeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
 
         return $this;
     }
@@ -2970,11 +3152,23 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function setDocumentTaxRepresentativeCommunication(
-        ?string $newType = null,
-        ?string $newUri = null
-    ): static {
-        // Nothing here...
+    public function setDocumentTaxRepresentativeCommunication(?string $newType = null, ?string $newUri = null): static
+    {
+        $this
+            ->getUblRootObject()
+            ->getTaxRepresentativeParty()
+            ?->unsetEndpointID();
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
+            return $this;
+        }
+
+        $this
+            ->getUblRootObject()
+            ->getTaxRepresentativePartyWithCreate()
+            ->getEndpointIDWithCreate()
+            ->setSchemeID($newType)
+            ->setValue($newUri);
 
         return $this;
     }
@@ -2986,11 +3180,13 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function addDocumentTaxRepresentativeCommunication(
-        ?string $newType = null,
-        ?string $newUri = null
-    ): static {
-        // Nothing here...
+    public function addDocumentTaxRepresentativeCommunication(?string $newType = null, ?string $newUri = null): static
+    {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
+            return $this;
+        }
+
+        $this->setDocumentTaxRepresentativeCommunication($newType, $newUri);
 
         return $this;
     }
@@ -3268,10 +3464,8 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function addDocumentProductEndUserCommunication(
-        ?string $newType = null,
-        ?string $newUri = null
-    ): static {
+    public function addDocumentProductEndUserCommunication(?string $newType = null, ?string $newUri = null): static
+    {
         // Nothing here...
 
         return $this;
@@ -3286,7 +3480,23 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     public function setDocumentShipToName(
         ?string $newName = null
     ): static {
-        // Nothing here...
+        $this
+            ->getUblRootObject()
+            ->firstDelivery()
+            ?->getDeliveryParty()
+            ?->unsetPartyName();
+
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            return $this;
+        }
+
+        $this
+            ->getUblRootObject()
+            ->addOnceToDeliveryWithCreate()
+            ->getDeliveryPartyWithCreate()
+            ->addOnceToPartyNameWithCreate()
+            ->getNameWithCreate()
+            ->setValue($newName);
 
         return $this;
     }
@@ -3300,7 +3510,11 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     public function addDocumentShipToName(
         ?string $newName = null
     ): static {
-        // Nothing here...
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            return $this;
+        }
+
+        $this->setDocumentShipToName($newName);
 
         return $this;
     }
@@ -4818,21 +5032,24 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     public function setDocumentPayeeId(
         ?string $newId = null
     ): static {
+        $ids = array_filter(
+            $this
+                ->getUblRootObject()
+                ->getPayeeParty()
+                ?->getPartyIdentification() ?? [],
+            static fn (PartyIdentification $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
+        );
+
         $this
             ->getUblRootObject()
             ->getPayeeParty()
-            ?->unsetPartyIdentification();
+            ?->setPartyIdentification($ids);
 
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
         }
 
-        $this
-            ->getUblRootObject()
-            ->getPayeePartyWithCreate()
-            ->addOnceToPartyIdentificationWithCreate()
-            ->getIDWithCreate()
-            ->setValue($newId);
+        $this->addDocumentPayeeId($newId);
 
         return $this;
     }
@@ -4850,7 +5067,13 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this->setDocumentPayeeId($newId);
+        $this
+            ->getUblRootObject()
+            ->getPayeePartyWithCreate()
+            ->addToPartyIdentificationWithCreate()
+            ->addToObjectFlags('id')
+            ->getIDWithCreate()
+            ->setValue($newId);
 
         return $this;
     }
@@ -4864,22 +5087,24 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
      */
     public function setDocumentPayeeGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): static
     {
+        $ids = array_filter(
+            $this
+                ->getUblRootObject()
+                ->getPayeeParty()
+                ?->getPartyIdentification() ?? [],
+            static fn (PartyIdentification $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
+        );
+
         $this
             ->getUblRootObject()
             ->getPayeeParty()
-            ?->unsetPartyIdentification();
+            ?->setPartyIdentification($ids);
 
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
 
-        $this
-            ->getUblRootObject()
-            ->getPayeePartyWithCreate()
-            ->addOnceToPartyIdentificationWithCreate()
-            ->getIDWithCreate()
-            ->setValue($newGlobalId)
-            ->setSchemeID($newGlobalIdType);
+        $this->addDocumentPayeeGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -4897,7 +5122,14 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this->setDocumentPayeeGlobalId($newGlobalId, $newGlobalIdType);
+        $this
+            ->getUblRootObject()
+            ->getPayeePartyWithCreate()
+            ->addToPartyIdentificationWithCreate()
+            ->addToObjectFlags('globalid')
+            ->getIDWithCreate()
+            ->setValue($newGlobalId)
+            ->setSchemeID($newGlobalIdType);
 
         return $this;
     }
@@ -4913,7 +5145,16 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): static {
-        // Nothing here...
+        $this
+            ->getUblRootObject()
+            ->getPayeeParty()
+            ?->unsetPartyTaxScheme();
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
+            return $this;
+        }
+
+        $this->addDocumentPayeeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -4929,7 +5170,23 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): static {
-        // Nothing here...
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
+            return $this;
+        }
+
+        $partyTaxScheme = $this
+            ->getUblRootObject()
+            ->getPayeePartyWithCreate()
+            ->addToPartyTaxSchemeWithCreate();
+
+        $partyTaxScheme
+            ->getCompanyIDWithCreate()
+            ->setValue($newTaxRegistrationId);
+
+        $partyTaxScheme
+            ->getTaxSchemeWithCreate()
+            ->getIDWithCreate()
+            ->setValue($newTaxRegistrationType);
 
         return $this;
     }
@@ -4955,7 +5212,43 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         ?string $newCountryId = null,
         ?string $newSubDivision = null,
     ): static {
-        // Nothing here...
+        $this
+            ->getUblRootObject()
+            ->getPayeeParty()
+            ?->unsetPostalAddress();
+
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            return $this;
+        }
+
+        $postalAddress = $this
+            ->getUblRootObject()
+            ->getPayeePartyWithCreate()
+            ->getPostalAddressWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
+            $postalAddress->getStreetNameWithCreate()->setValue($newAddressLine1);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine2])) {
+            $postalAddress->getAdditionalStreetNameWithCreate()->setValue($newAddressLine2);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPostcode])) {
+            $postalAddress->getPostalZoneWithCreate()->setValue($newPostcode);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
+            $postalAddress->getCityNameWithCreate()->setValue($newCity);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $postalAddress->getCountryWithCreate()->getIdentificationCodeWithCreate()->setValue($newCountryId);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
+            $postalAddress->getCountrySubentityWithCreate()->setValue($newSubDivision);
+        }
 
         return $this;
     }
@@ -4981,7 +5274,29 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         ?string $newCountryId = null,
         ?string $newSubDivision = null,
     ): static {
-        // Nothing here...
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newAddressLine1,
+                $newAddressLine2,
+                $newAddressLine3,
+                $newPostcode,
+                $newCity,
+                $newCountryId,
+                $newSubDivision,
+            ])
+        ) {
+            return $this;
+        }
+
+        $this->setDocumentPayeeAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
 
         return $this;
     }
@@ -5071,7 +5386,47 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): static {
-        // Nothing here...
+        $this
+            ->getUblRootObject()
+            ->getPayeeParty()
+            ?->unsetContact();
+
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress,
+            ])
+        ) {
+            return $this;
+        }
+
+        $contact = $this
+            ->getUblRootObject()
+            ->getPayeePartyWithCreate()
+            ->getContactWithCreate();
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPersonName)) {
+            $contact->getNameWithCreate()->setValue($newPersonName);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDepartmentName)) {
+            // Nothing here
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPhoneNumber)) {
+            $contact->getTelephoneWithCreate()->setValue($newPhoneNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newFaxNumber)) {
+            $contact->getTelefaxWithCreate()->setValue($newFaxNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newEmailAddress)) {
+            $contact->getElectronicMailWithCreate()->setValue($newEmailAddress);
+        }
 
         return $this;
     }
@@ -5093,7 +5448,19 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): static {
-        // Nothing here...
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress,
+            ])
+        ) {
+            return $this;
+        }
+
+        $this->setDocumentPayeeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
 
         return $this;
     }
@@ -5105,11 +5472,23 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function setDocumentPayeeCommunication(
-        ?string $newType = null,
-        ?string $newUri = null
-    ): static {
-        // Nothing here...
+    public function setDocumentPayeeCommunication(?string $newType = null, ?string $newUri = null): static
+    {
+        $this
+            ->getUblRootObject()
+            ->getPayeeParty()
+            ?->unsetEndpointID();
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
+            return $this;
+        }
+
+        $this
+            ->getUblRootObject()
+            ->getPayeePartyWithCreate()
+            ->getEndpointIDWithCreate()
+            ->setSchemeID($newType)
+            ->setValue($newUri);
 
         return $this;
     }
@@ -5121,11 +5500,13 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function addDocumentPayeeCommunication(
-        ?string $newType = null,
-        ?string $newUri = null
-    ): static {
-        // Nothing here...
+    public function addDocumentPayeeCommunication(?string $newType = null, ?string $newUri = null): static
+    {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
+            return $this;
+        }
+
+        $this->setDocumentPayeeCommunication($newType, $newUri);
 
         return $this;
     }
@@ -5629,15 +6010,11 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this
-            ->getUblRootObject()
-            ->addOnceToPaymentTermsWithCreate()
-            ->addToNoteWithCreate()
-            ->setValue($newDescription);
-
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)) {
-            $this->getUblRootObject()->setDueDate($newDueDate);
-        }
+        $this->addDocumentPaymentTerm(
+            $newDescription,
+            $newDueDate,
+            $newMandate
+        );
 
         return $this;
     }
@@ -5659,11 +6036,15 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this->setDocumentPaymentTerm(
-            $newDescription,
-            $newDueDate,
-            $newMandate
-        );
+        $this
+            ->getUblRootObject()
+            ->addToPaymentTermsWithCreate()
+            ->addToNoteWithCreate()
+            ->setValue($newDescription);
+
+        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)) {
+            $this->getUblRootObject()->setDueDate($newDueDate);
+        }
 
         return $this;
     }
@@ -6201,11 +6582,11 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this
-            ->getUblRootObject()
-            ->getLatestInvoiceLineWithCreate()
-            ->addToNoteWithCreate()
-            ->setValue($newContent);
+        $this->addDocumentPositionNote(
+            $newContent,
+            $newContentCode,
+            $newSubjectCode
+        );
 
         return $this;
     }
@@ -6227,11 +6608,11 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this->setDocumentPositionNote(
-            $newContent,
-            $newContentCode,
-            $newSubjectCode
-        );
+        $this
+            ->getUblRootObject()
+            ->getLatestInvoiceLineWithCreate()
+            ->addToNoteWithCreate()
+            ->setValue($newContent);
 
         return $this;
     }
@@ -6384,6 +6765,16 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         $positionProductCharacteristic = $positionProduct->addToAdditionalItemPropertyWithCreate();
         $positionProductCharacteristic->getNameWithCreate()->setValue($newProductCharacteristicDescription);
         $positionProductCharacteristic->getValueWithCreate()->setValue($newProductCharacteristicValue);
+
+        if (
+            !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicMeasureUnit])
+            && !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newProductCharacteristicMeasureValue])
+        ) {
+            $positionProductCharacteristic
+                ->getValueQuantityWithCreate()
+                ->setValue($newProductCharacteristicMeasureValue)
+                ->setUnitCode($newProductCharacteristicMeasureUnit);
+        }
 
         return $this;
     }
@@ -6592,12 +6983,11 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this
-            ->getUblRootObject()
-            ->getLatestInvoiceLineWithCreate()
-            ->addToOrderLineReferenceWithCreate()
-            ->getLineIDWithCreate()
-            ->setValue($newReferenceLineNumber);
+        $this->addDocumentPositionBuyerOrderReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
 
         return $this;
     }
@@ -6619,11 +7009,12 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this->setDocumentPositionBuyerOrderReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
+        $this
+            ->getUblRootObject()
+            ->getLatestInvoiceLineWithCreate()
+            ->addToOrderLineReferenceWithCreate()
+            ->getLineIDWithCreate()
+            ->setValue($newReferenceLineNumber);
 
         return $this;
     }
@@ -7091,8 +7482,7 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             ->getLatestInvoiceLineWithCreate()
             ->getPriceWithCreate();
 
-        $netPrice->getPriceAmountWithCreate()
-            ->setValue($newNetPrice);
+        $netPrice->getPriceAmountWithCreate()->setValue($newNetPrice);
 
         if (
             !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newNetPriceBasisQuantity])
@@ -7778,12 +8168,7 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this
-            ->getUblRootObject()
-            ->getLatestInvoiceLineWithCreate()
-            ->addOnceToInvoicePeriodWithCreate()
-            ->setStartDate($newStartDate)
-            ->setEndDate($newEndDate);
+        $this->addDocumentPositionBillingPeriod($newStartDate, $newEndDate, $newDescription);
 
         return $this;
     }
@@ -7805,7 +8190,17 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this->setDocumentPositionBillingPeriod($newStartDate, $newEndDate, $newDescription);
+        $invoicePeriod = $this
+            ->getUblRootObject()
+            ->getLatestInvoiceLineWithCreate()
+            ->addToInvoicePeriodWithCreate();
+
+        $invoicePeriod->setStartDate($newStartDate);
+        $invoicePeriod->setEndDate($newEndDate);
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            $invoicePeriod->clearDescription()->addToDescriptionWithCreate()->setValue($newDescription);
+        }
 
         return $this;
     }
@@ -7839,18 +8234,14 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $tradeTax = $this
-            ->getUblRootObject()
-            ->getLatestInvoiceLineWithCreate()
-            ->getItemWithCreate()
-            ->addToClassifiedTaxCategoryWithCreate();
-
-        $tradeTax->getIDWithCreate()->setValue($newTaxCategory);
-        $tradeTax->getTaxSchemeWithCreate()->getIDWithCreate()->setValue($newTaxType);
-
-        if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent])) {
-            $tradeTax->getPercentWithCreate()->setValue($newTaxPercent);
-        }
+        $this->addDocumentPositionTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode
+        );
 
         return $this;
     }
@@ -7878,14 +8269,23 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return $this;
         }
 
-        $this->setDocumentPositionTax(
-            $newTaxCategory,
-            $newTaxType,
-            $newTaxAmount,
-            $newTaxPercent,
-            $newExemptionReason,
-            $newExemptionReasonCode
-        );
+        $tradeTax = $this
+            ->getUblRootObject()
+            ->getLatestInvoiceLineWithCreate()
+            ->getItemWithCreate()
+            ->addToClassifiedTaxCategoryWithCreate();
+
+        $tradeTax->getIDWithCreate()->setValue($newTaxCategory);
+        $tradeTax->getTaxSchemeWithCreate()->getIDWithCreate()->setValue($newTaxType);
+        $tradeTax->getPercentWithCreate()->setValue($newTaxPercent);
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newExemptionReason])) {
+            $tradeTax->addOnceToTaxExemptionReasonWithCreate()->setValue($newExemptionReason);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newExemptionReasonCode])) {
+            $tradeTax->getTaxExemptionReasonCodeWithCreate()->setValue($newExemptionReasonCode);
+        }
 
         return $this;
     }
