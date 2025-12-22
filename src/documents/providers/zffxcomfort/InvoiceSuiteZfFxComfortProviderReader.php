@@ -3155,12 +3155,12 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractDocument
         ?DateTimeInterface &$newReferenceDate
     ): static {
         /**
-         * @var array<\horstoeko\invoicesuite\documents\models\zffxextended\ram\ReferencedDocumentType>
+         * @var array<ReferencedDocumentType>
          */
         $documentContractReferences = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getContractReferencedDocument() ?? []);
 
         /**
-         * @var \horstoeko\invoicesuite\documents\models\zffxextended\ram\ReferencedDocumentType
+         * @var ReferencedDocumentType
          */
         $documentContractReference = $documentContractReferences[InvoiceSuitePointerUtils::getValue('documentcontractreference')];
 
