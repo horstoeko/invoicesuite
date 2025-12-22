@@ -8382,7 +8382,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
 
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoicePeriod/cbc:StartDate', 0, '1970-01-01');
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoicePeriod/cbc:EndDate', 0, '1970-01-31');
-        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoicePeriod/cbc:Description', 0, 'Some Description');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoicePeriod/cbc:Description', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoicePeriod/cbc:StartDate', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoicePeriod/cbc:EndDate', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoicePeriod/cbc:Description', 1);
@@ -8394,21 +8394,21 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:OrderReference/cbc:SalesOrderID', 1);
 
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:OrderReference/cbc:ID', 0, 'BO-1');
-        $this->assertXPathValueWithIndex('/ns:Invoice/cac:OrderReference/cbc:IssueDate', 0, '1970-01-01');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:OrderReference/cbc:IssueDate', 0);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:OrderReference/cbc:ID', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:OrderReference/cbc:IssueDate', 1);
 
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:ContractDocumentReference/cbc:ID', 0, 'CON-1');
-        $this->assertXPathValueWithIndex('/ns:Invoice/cac:ContractDocumentReference/cbc:IssueDate', 0, '1970-01-01');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:ContractDocumentReference/cbc:IssueDate', 0);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:ContractDocumentReference/cbc:ID', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:ContractDocumentReference/cbc:IssueDate', 1);
 
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:AdditionalDocumentReference/cbc:ID', 0, 'ADD-1');
-        $this->assertXPathValueWithIndex('/ns:Invoice/cac:AdditionalDocumentReference/cbc:IssueDate', 0, '1970-01-01');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:AdditionalDocumentReference/cbc:IssueDate', 0);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:AdditionalDocumentReference/cbc:DocumentTypeCode', 0);
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:AdditionalDocumentReference/cbc:DocumentDescription', 0, 'description');
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:AdditionalDocumentReference/cbc:ID', 1, 'ADD-2');
-        $this->assertXPathValueWithIndex('/ns:Invoice/cac:AdditionalDocumentReference/cbc:IssueDate', 1, '1970-01-02');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:AdditionalDocumentReference/cbc:IssueDate', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:AdditionalDocumentReference/cbc:DocumentTypeCode', 1);
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:AdditionalDocumentReference/cbc:DocumentDescription', 1, 'description2');
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:AdditionalDocumentReference/cbc:ID', 2);
@@ -8427,12 +8427,12 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:ProjectReference/cbc:ID', 1);
 
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:DespatchDocumentReference/cbc:ID', 0, 'DESPADV-1');
-        $this->assertXPathValueWithIndex('/ns:Invoice/cac:DespatchDocumentReference/cbc:IssueDate', 0, '1970-01-01');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:DespatchDocumentReference/cbc:IssueDate', 0);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:DespatchDocumentReference/cbc:ID', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:DespatchDocumentReference/cbc:IssueDate', 1);
 
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:ReceiptDocumentReference/cbc:ID', 0, 'RECADV-1');
-        $this->assertXPathValueWithIndex('/ns:Invoice/cac:ReceiptDocumentReference/cbc:IssueDate', 0, '1970-01-01');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:ReceiptDocumentReference/cbc:IssueDate', 0);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:ReceiptDocumentReference/cbc:ID', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:ReceiptDocumentReference/cbc:IssueDate', 1);
 
@@ -8481,7 +8481,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
 
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Name', 0, 'Horst Meier');
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Telephone', 0, '0815-4711');
-        $this->assertXPathValueWithIndex('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Telefax', 0, '0815-4712');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Telefax', 0);
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:ElectronicMail', 0, 'horst.meier@lieferant.de');
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Name', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Telephone', 1);
@@ -8524,7 +8524,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
 
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:Name', 0, 'Horst Meier');
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:Telephone', 0, '0815-4711');
-        $this->assertXPathValueWithIndex('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:Telefax', 0, '0815-4712');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:Telefax', 0);
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:ElectronicMail', 0, 'horst.meier@kunde.de');
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:Name', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:Telephone', 1);
@@ -8807,7 +8807,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:AdditionalItemProperty', 0);
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:AdditionalItemProperty/cbc:Name', 0, 'PRODUCTCHARACTERISTICDESC-1');
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:AdditionalItemProperty/cbc:Value', 0, 'PRODUCTCHARACTERISTICVALUE-1');
-        $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:AdditionalItemProperty/cbc:ValueQuantity', 0, '1.00', 'unitCode', 'C62');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:AdditionalItemProperty/cbc:ValueQuantity', 0);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:AdditionalItemProperty', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:AdditionalItemProperty/cbc:Name', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:AdditionalItemProperty/cbc:Value', 1);
@@ -8875,7 +8875,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod', 0);
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate', 0, '1970-01-01');
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate', 0, '1970-01-31');
-        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:Description', 0, 'Some Description');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:Description', 0);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate', 1);
@@ -8891,8 +8891,8 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         $this->assertXPathExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory', 0);
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID', 0, 'S');
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent', 0, '7.00');
-        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode', 0, 'ReasonCode');
-        $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReason', 0, 'Reason');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReason', 0);
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID', 0, 'VAT');
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID', 1);

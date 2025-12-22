@@ -103970,7 +103970,7 @@ final class UblModelTest extends TestCase
 
         // (6) Property InvoiceLine - Latest added instance
 
-        $latestInvoiceLine = $model->getLatestInvoiceLine();
+        $latestInvoiceLine = $model->getLatestDocumentLine();
 
         $this->assertInstanceOf(InvoiceLine::class, $latestInvoiceLine);
 
@@ -103985,10 +103985,10 @@ final class UblModelTest extends TestCase
 
         // Property LatestInvoiceLine
 
-        $testValueForLatestInvoiceLine = $model->getLatestInvoiceLineWithCreate();
+        $testValueForLatestInvoiceLine = $model->getLatestDocumentLineWithCreate();
 
         $this->assertInstanceOf(InvoiceLine::class, $testValueForLatestInvoiceLine);
-        $this->assertSame($testValueForLatestInvoiceLine, $model->getLatestInvoiceLine());
+        $this->assertSame($testValueForLatestInvoiceLine, $model->getLatestDocumentLine());
 
         // Property InvoiceLineWithCreate
     }

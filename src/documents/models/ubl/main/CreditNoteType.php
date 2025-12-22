@@ -4211,7 +4211,7 @@ class CreditNoteType
     /**
      * @return null|CreditNoteLine
      */
-    public function getLatestCreditNoteLine(): ?CreditNoteLine
+    public function getLatestDocumentLine(): ?CreditNoteLine
     {
         $creditNoteLines = $this->getCreditNoteLine() ?? [];
         $creditNoteLine = end($creditNoteLines);
@@ -4226,9 +4226,9 @@ class CreditNoteType
     /**
      * @return null|CreditNoteLine
      */
-    public function getLatestCreditNoteLineWithCreate(): ?CreditNoteLine
+    public function getLatestDocumentLineWithCreate(): ?CreditNoteLine
     {
-        if (is_null($creditNoteLine = $this->getLatestCreditNoteLine())) {
+        if (is_null($creditNoteLine = $this->getLatestDocumentLine())) {
             $creditNoteLine = $this->addToCreditNoteLineWithCreate();
         }
 
