@@ -176,7 +176,7 @@ final class XRechnungUBLInvoiceDocumentBuilderDTOTest extends TestCase
         $this->assertXPathValueWithIndex('//ubl:Invoice/cbc:InvoiceTypeCode', 0, '380');
         $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cbc:InvoiceTypeCode', 1);
 
-        $this->assertXPathValueWithIndex('//ubl:Invoice/cbc:Note', 0, "Rechnung gemäß Bestellung vom 01.11.2024.");
+        $this->assertXPathValueWithIndex('//ubl:Invoice/cbc:Note', 0, 'Rechnung gemäß Bestellung vom 01.11.2024.');
         $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cbc:Note', 1);
 
         $this->assertXPathValueWithIndex('//ubl:Invoice/cbc:DocumentCurrencyCode', 0, 'EUR');
