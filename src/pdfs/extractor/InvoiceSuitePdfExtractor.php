@@ -221,6 +221,8 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
                 );
             }
 
+            $this->sortAttachmentListByName();
+
             return $this;
         }
 
@@ -240,6 +242,28 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
                 ltrim($fileSpec->getEmbeddedFile()->getSubType() ?? '', '/')
             );
         }
+
+        $this->sortAttachmentListByName();
+
+        return $this;
+    }
+
+    /**
+     * Sorts the internal attachment list by filename
+     *
+     * @return static
+     */
+    protected function sortAttachmentListByName(): static
+    {
+        usort(
+            $this->attachmentList,
+            static function (
+                InvoiceSuitePdfExtractorAttachment $a,
+                InvoiceSuitePdfExtractorAttachment $b
+            ): int {
+                return strcasecmp($a->getAttachmentFilename(), $b->getAttachmentFilename());
+            }
+        );
 
         return $this;
     }
