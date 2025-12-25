@@ -11,23 +11,15 @@ declare(strict_types=1);
 
 namespace horstoeko\zugferd;
 
-use BadMethodCallException;
 use DateTimeInterface;
-use Error;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesSafeInvoking;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteBadMethodCallException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
-use JMS\Serializer\Exception\RuntimeException;
 
 /**
  * Legacy-class representing the ZUGFeRD document reader for incoming documents
@@ -66,10 +58,6 @@ class ZugferdDocumentReader
      * @param  string       $method
      * @param  array<mixed> $parameters
      * @return mixed
-     *
-     * @throws BadMethodCallException
-     * @throws Error
-     * @throws InvoiceSuiteBadMethodCallException
      */
     public function __call($method, $parameters)
     {
@@ -81,12 +69,6 @@ class ZugferdDocumentReader
      *
      * @param  string $xmlFilename
      * @return static
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      */
     public static function readAndGuessFromFile(string $xmlFilename): static
     {
@@ -98,10 +80,6 @@ class ZugferdDocumentReader
      *
      * @param  string $xmlContent
      * @return static
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      */
     public static function readAndGuessFromContent(string $xmlContent): static
     {
@@ -149,8 +127,6 @@ class ZugferdDocumentReader
      *
      * @param  string $parameterName
      * @return mixed
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
      */
     public function getProfileDefinitionParameter(string $parameterName)
     {

@@ -90,9 +90,6 @@ class ExtractClass
      * Magic method __toString, String converstion
      *
      * @return string
-     * @throws InvalidArgumentException
-     * @throws PcreException
-     * @throws LogicException
      */
     public function __toString()
     {
@@ -103,9 +100,6 @@ class ExtractClass
      * Returns the result as array
      *
      * @return array
-     * @throws InvalidArgumentException
-     * @throws PcreException
-     * @throws LogicException
      */
     public function getArray(): array
     {
@@ -230,9 +224,6 @@ class ExtractClass
      * Returns the result as JSON string
      *
      * @return string
-     * @throws InvalidArgumentException
-     * @throws PcreException
-     * @throws LogicException
      */
     public function getJson(): string
     {
@@ -244,7 +235,6 @@ class ExtractClass
      *
      * @param string $filename
      * @return void
-     * @throws InvalidArgumentException
      */
     public function saveJson(string $filename): void
     {
@@ -665,9 +655,6 @@ class BatchMarkDownGenerator
      *
      * @param array $classes
      * @return void
-     * @throws InvalidArgumentException
-     * @throws PcreException
-     * @throws LogicException
      */
     public static function generate(array $classes, array $ignoreInheritance = [])
     {

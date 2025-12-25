@@ -17,7 +17,6 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
-use JMS\Serializer\Exception\RuntimeException;
 
 /**
  * Class representing methods base functionallity for a document validator
@@ -48,9 +47,6 @@ abstract class InvoiceSuiteAbstractDocumentValidator
      *
      * @param  string $fromFilename
      * @return static
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
      */
     public static function createFromFile(string $fromFilename): static
     {
@@ -72,8 +68,6 @@ abstract class InvoiceSuiteAbstractDocumentValidator
      *
      * @param  InvoiceSuiteDocumentBuilder $fromDocumentBuilder
      * @return static
-     *
-     * @throws RuntimeException
      */
     public static function createFromDocumentBuilderAsXml(InvoiceSuiteDocumentBuilder $fromDocumentBuilder): static
     {
@@ -85,8 +79,6 @@ abstract class InvoiceSuiteAbstractDocumentValidator
      *
      * @param  InvoiceSuiteDocumentBuilder $fromDocumentBuilder
      * @return static
-     *
-     * @throws RuntimeException
      */
     public static function createFromDocumentBuilderAsJson(InvoiceSuiteDocumentBuilder $fromDocumentBuilder): static
     {
@@ -109,8 +101,6 @@ abstract class InvoiceSuiteAbstractDocumentValidator
      * Main validation method. Checks for non-empty content
      *
      * @return static
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
      */
     public function validate(): static
     {

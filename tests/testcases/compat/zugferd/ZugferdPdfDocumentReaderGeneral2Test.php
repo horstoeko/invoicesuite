@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\compat\zugferd;
 
-use Smalot\PdfParser\Parser;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteExceptionCodes;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\zugferd\ZugferdDocumentPdfReaderExt;
 use horstoeko\zugferd\ZugferdDocumentReader;
+use Smalot\PdfParser\Parser;
 
 final class ZugferdPdfDocumentReaderGeneral2Test extends TestCase
 {

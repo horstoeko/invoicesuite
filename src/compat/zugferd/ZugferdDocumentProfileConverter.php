@@ -13,11 +13,8 @@ namespace horstoeko\zugferd;
 
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
-use JMS\Serializer\Exception\RuntimeException;
 
 /**
  * Class representing a converter to change a document's profile to another profile
@@ -72,12 +69,6 @@ class ZugferdDocumentProfileConverter
      * @param  string $toFile
      * @param  int    $newProfileId
      * @return void
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      */
     public static function convertFromFileToFile(string $fromFilename, string $toFile, int $newProfileId): void
     {
@@ -90,12 +81,6 @@ class ZugferdDocumentProfileConverter
      * @param  string $fromFilename
      * @param  int    $newProfileId
      * @return string
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      */
     public static function convertFromFileToString(string $fromFilename, int $newProfileId): string
     {
@@ -109,10 +94,6 @@ class ZugferdDocumentProfileConverter
      * @param  string $toFile
      * @param  int    $newProfileId
      * @return void
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      */
     public static function convertFromContentToFile(string $fromContent, string $toFile, int $newProfileId): void
     {
@@ -125,10 +106,6 @@ class ZugferdDocumentProfileConverter
      * @param  string $fromContent
      * @param  int    $newProfileId
      * @return string
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      */
     public static function convertFromContentToString(string $fromContent, int $newProfileId): string
     {
@@ -141,12 +118,6 @@ class ZugferdDocumentProfileConverter
      * @param  string $fromFilename
      * @param  int    $newProfileId
      * @return static
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      */
     protected static function convertFromFile(string $fromFilename, int $newProfileId): static
     {
@@ -169,10 +140,6 @@ class ZugferdDocumentProfileConverter
      * @param  string $fromContent
      * @param  int    $newProfileId
      * @return static
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      */
     protected static function convertFromContent(string $fromContent, int $newProfileId): static
     {
@@ -217,10 +184,6 @@ class ZugferdDocumentProfileConverter
      *
      * @param  string $toFile
      * @return static
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      */
     protected function convertToFile(string $toFile): static
     {
@@ -233,10 +196,6 @@ class ZugferdDocumentProfileConverter
      * Convert and get xml content as string
      *
      * @return string
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      */
     protected function convertToString(): string
     {
@@ -247,10 +206,6 @@ class ZugferdDocumentProfileConverter
      * Internal conversion method
      *
      * @return static
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      */
     protected function performConversion(): static
     {

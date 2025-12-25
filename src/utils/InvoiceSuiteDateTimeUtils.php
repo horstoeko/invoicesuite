@@ -6,7 +6,6 @@ namespace horstoeko\invoicesuite\utils;
 
 use DateTime;
 use DateTimeInterface;
-use ValueError;
 
 /**
  * class representing date/time utilities
@@ -81,8 +80,6 @@ class InvoiceSuiteDateTimeUtils
      * @param  null|string            $dateTimeString
      * @param  null|string            $format
      * @return null|DateTimeInterface
-     *
-     * @throws ValueError
      */
     public static function convertZfFxDateStringToDateTime(?string $dateTimeString, ?string $format): ?DateTimeInterface
     {

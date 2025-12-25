@@ -46,8 +46,6 @@ class InvoiceSuiteFileUtils extends FileUtils
      *
      * @param  string $filenameOrContent
      * @return string
-     *
-     * @throws InvoiceSuiteFileNotReadableException
      */
     public static function getContentFromFileOrString(string $filenameOrContent): string
     {

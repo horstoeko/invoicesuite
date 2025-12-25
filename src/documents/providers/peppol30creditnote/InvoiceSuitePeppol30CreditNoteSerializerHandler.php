@@ -11,12 +11,9 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\documents\providers\peppol30creditnote;
 
-use DateInvalidTimeZoneException;
-use DateMalformedStringException;
 use DateTime;
 use DateTimeZone;
 use DOMElement;
-use DOMException;
 use DOMText;
 use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
@@ -37,8 +34,6 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
      * Constructor
      *
      * @param string $defaultTimezone
-     *
-     * @throws DateInvalidTimeZoneException
      */
     public function __construct(string $defaultTimezone = 'UTC')
     {
@@ -218,8 +213,6 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
      *
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
-     *
-     * @throws DOMException
      */
     public function serializeAmountType(XmlSerializationVisitor $visitor, $data): DOMText
     {
@@ -247,8 +240,6 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
      *
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
-     *
-     * @throws DOMException
      */
     public function serializeQuantityType(XmlSerializationVisitor $visitor, $data): DOMText
     {
@@ -295,8 +286,6 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
      *
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
-     *
-     * @throws DOMException
      */
     public function serializeMeasureType(XmlSerializationVisitor $visitor, $data): DOMText
     {
@@ -325,8 +314,6 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
      *
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
-     *
-     * @throws DOMException
      */
     public function serializeIndicatorType(XmlSerializationVisitor $visitor, $data): DOMElement
     {
@@ -339,8 +326,6 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
      * @param  JsonDeserializationVisitor $visitor
      * @param  null|string                $data
      * @return null|DateTime
-     *
-     * @throws DateMalformedStringException
      */
     public function deserializeJsonDate(JsonDeserializationVisitor $visitor, $data): ?DateTime
     {
@@ -366,8 +351,6 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
      * @param  JsonDeserializationVisitor $visitor
      * @param  null|string                $data
      * @return null|DateTime
-     *
-     * @throws DateMalformedStringException
      */
     public function deserializeJsonDateTime(JsonDeserializationVisitor $visitor, $data): ?DateTime
     {
@@ -393,8 +376,6 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
      * @param  JsonDeserializationVisitor $visitor
      * @param  null|string                $data
      * @return null|DateTime
-     *
-     * @throws DateMalformedStringException
      */
     public function deserializeJsonTime(JsonDeserializationVisitor $visitor, $data): ?DateTime
     {

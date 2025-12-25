@@ -17,19 +17,12 @@ use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistTextSubjectCodeQualifie
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistUnitCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistVatCategoryCodes;
 use horstoeko\invoicesuite\tests\TestCase;
-use PHPUnit\Framework\Exception;
-use PHPUnit\Framework\ExpectationFailedException;
-use SebastianBergmann\RecursionContext\InvalidArgumentException;
 use ValueError;
 
 final class AllCodelistsEnumsTest extends TestCase
 {
     /**
      * @return void
-     *
-     * @throws Exception
-     * @throws ExpectationFailedException
-     * @throws InvalidArgumentException
      */
     public function testCasesAreNotEmptyAndUnique(): void
     {

@@ -11,13 +11,6 @@ declare(strict_types=1);
 
 namespace horstoeko\zugferd;
 
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
-use JMS\Serializer\Exception\RuntimeException;
-use PrinsFrank\PdfParser\Exception\PdfParserException;
-
 /**
  * Class representing the document reader for incoming PDF/A-Documents with
  * attached XML data in BASIC-, EN16931- and EXTENDED profile
@@ -34,13 +27,6 @@ class ZugferdDocumentPdfReader
      *
      * @param  string                $pdfFilename
      * @return ZugferdDocumentReader
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws PdfParserException
-     * @throws RuntimeException
      */
     public static function readAndGuessFromFile(string $pdfFilename): ZugferdDocumentReader
     {
@@ -52,13 +38,6 @@ class ZugferdDocumentPdfReader
      *
      * @param  string                $pdfContent
      * @return ZugferdDocumentReader
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws PdfParserException
-     * @throws RuntimeException
      */
     public static function readAndGuessFromContent(string $pdfContent): ZugferdDocumentReader
     {
@@ -70,13 +49,6 @@ class ZugferdDocumentPdfReader
      *
      * @param  string $pdfFilename
      * @return string
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws PdfParserException
-     * @throws RuntimeException
      */
     public static function getXmlFromFile(string $pdfFilename): string
     {
@@ -88,11 +60,6 @@ class ZugferdDocumentPdfReader
      *
      * @param  string $pdfContent
      * @return string
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws PdfParserException
-     * @throws RuntimeException
      */
     public static function getXmlFromContent(string $pdfContent): string
     {

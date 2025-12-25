@@ -11,20 +11,15 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite;
 
-use BadMethodCallException;
 use DateTimeInterface;
-use Error;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteBadMethodCallException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
-use JMS\Serializer\Exception\RuntimeException;
 
 /**
  * Class representing the document reader
@@ -45,10 +40,6 @@ class InvoiceSuiteDocumentReader
      *
      * @param  string $fromContent
      * @return void
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      */
     final protected function __construct(string $fromContent)
     {
@@ -75,10 +66,6 @@ class InvoiceSuiteDocumentReader
      * @param  string       $method
      * @param  array<mixed> $parameters
      * @return mixed
-     *
-     * @throws BadMethodCallException
-     * @throws Error
-     * @throws InvoiceSuiteBadMethodCallException
      */
     public function __call($method, $parameters)
     {
@@ -90,12 +77,6 @@ class InvoiceSuiteDocumentReader
      *
      * @param  string $fromFile
      * @return static
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      */
     public static function createFromFile(string $fromFile): static
     {
@@ -117,10 +98,6 @@ class InvoiceSuiteDocumentReader
      *
      * @param  string $fromContent
      * @return static
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      */
     public static function createFromContent(string $fromContent): static
     {
@@ -131,8 +108,6 @@ class InvoiceSuiteDocumentReader
      * Copy Reader to a Builder instance
      *
      * @return InvoiceSuiteDocumentBuilder
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public function copyToBuilder(): InvoiceSuiteDocumentBuilder
     {

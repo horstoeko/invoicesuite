@@ -11,18 +11,12 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite;
 
-use BadMethodCallException;
 use DateTimeInterface;
-use Error;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteBadMethodCallException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
-use JMS\Serializer\Exception\RuntimeException;
 
 /**
  * Class representing the document builder
@@ -43,8 +37,6 @@ class InvoiceSuiteDocumentBuilder
      *
      * @param  string                      $formatProviderUniqueId
      * @return InvoiceSuiteDocumentBuilder
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     final protected function __construct(
         string $formatProviderUniqueId
@@ -60,10 +52,6 @@ class InvoiceSuiteDocumentBuilder
      * @param  string       $method
      * @param  array<mixed> $parameters
      * @return mixed
-     *
-     * @throws BadMethodCallException
-     * @throws Error
-     * @throws InvoiceSuiteBadMethodCallException
      */
     public function __call($method, $parameters)
     {
@@ -75,8 +63,6 @@ class InvoiceSuiteDocumentBuilder
      *
      * @param  string $formatProviderUniqueId
      * @return static
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public static function createByProviderUniqueId(
         string $formatProviderUniqueId
@@ -88,8 +74,6 @@ class InvoiceSuiteDocumentBuilder
      * Get the content as XML string
      *
      * @return string
-     *
-     * @throws RuntimeException
      */
     public function getContentAsXml(): string
     {
@@ -100,8 +84,6 @@ class InvoiceSuiteDocumentBuilder
      * Get the content as JSON string
      *
      * @return string
-     *
-     * @throws RuntimeException
      */
     public function getContentAsJson(): string
     {
@@ -113,8 +95,6 @@ class InvoiceSuiteDocumentBuilder
      *
      * @param  string $tofile
      * @return void
-     *
-     * @throws RuntimeException
      */
     public function saveAsXmlFile(
         string $tofile
@@ -127,8 +107,6 @@ class InvoiceSuiteDocumentBuilder
      *
      * @param  string $tofile
      * @return void
-     *
-     * @throws RuntimeException
      */
     public function saveAsJsonFile(
         string $tofile
@@ -140,10 +118,6 @@ class InvoiceSuiteDocumentBuilder
      * Copy Builder to a Reader instance
      *
      * @return InvoiceSuiteDocumentReader
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      */
     public function copyToReader(): InvoiceSuiteDocumentReader
     {

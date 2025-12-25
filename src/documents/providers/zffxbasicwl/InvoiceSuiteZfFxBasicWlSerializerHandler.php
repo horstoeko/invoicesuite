@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\zffxbasicwl;
 
 use DOMElement;
-use DOMException;
 use DOMText;
 use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use JMS\Serializer\GraphNavigator;
@@ -56,8 +55,6 @@ class InvoiceSuiteZfFxBasicWlSerializerHandler implements SubscribingHandlerInte
      *
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
-     *
-     * @throws DOMException
      */
     public function serializeAmountType(XmlSerializationVisitor $visitor, $data): DOMText
     {
@@ -105,8 +102,6 @@ class InvoiceSuiteZfFxBasicWlSerializerHandler implements SubscribingHandlerInte
      *
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
-     *
-     * @throws DOMException
      */
     public function serializeIndicatorType(XmlSerializationVisitor $visitor, $data): DOMElement
     {

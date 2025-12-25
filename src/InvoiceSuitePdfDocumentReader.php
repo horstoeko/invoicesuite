@@ -18,11 +18,8 @@ use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentForma
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractor;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractorAttachment;
-use JMS\Serializer\Exception\RuntimeException;
-use PrinsFrank\PdfParser\Exception\PdfParserException;
 
 /**
  * Class representing the PDF document reader
@@ -57,11 +54,6 @@ class InvoiceSuitePdfDocumentReader
      *
      * @param  string $fromContent
      * @return void
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws PdfParserException
-     * @throws RuntimeException
      */
     final protected function __construct(string $fromContent)
     {
@@ -105,13 +97,6 @@ class InvoiceSuitePdfDocumentReader
      *
      * @param  string $fromFile
      * @return static
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws PdfParserException
-     * @throws RuntimeException
      */
     public static function createFromFile(string $fromFile): static
     {
@@ -133,11 +118,6 @@ class InvoiceSuitePdfDocumentReader
      *
      * @param  string $fromContent
      * @return static
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws PdfParserException
-     * @throws RuntimeException
      */
     public static function createFromContent(string $fromContent): static
     {

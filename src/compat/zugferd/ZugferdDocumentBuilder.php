@@ -11,25 +11,18 @@ declare(strict_types=1);
 
 namespace horstoeko\zugferd;
 
-use BadMethodCallException;
 use DateTimeInterface;
 use DOMDocument;
 use DOMXpath;
-use Error;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistReferenceCodeQualifiers;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesSafeInvoking;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteBadMethodCallException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
-use JMS\Serializer\Exception\RuntimeException;
 use Stringable;
 
 /**
@@ -57,9 +50,6 @@ class ZugferdDocumentBuilder implements Stringable
      *
      * @param  int  $profile The ID of the profile of the document
      * @return void
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteInvalidArgumentException
      */
     final protected function __construct(
         int $profile
@@ -79,10 +69,6 @@ class ZugferdDocumentBuilder implements Stringable
      * @param  string       $method
      * @param  array<mixed> $parameters
      * @return mixed
-     *
-     * @throws BadMethodCallException
-     * @throws Error
-     * @throws InvoiceSuiteBadMethodCallException
      */
     public function __call($method, $parameters)
     {
@@ -93,8 +79,6 @@ class ZugferdDocumentBuilder implements Stringable
      * Receive the content as XML string
      *
      * @return string
-     *
-     * @throws RuntimeException
      */
     public function __toString(): string
     {
@@ -142,8 +126,6 @@ class ZugferdDocumentBuilder implements Stringable
      *
      * @param  string $parameterName
      * @return mixed
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
      */
     public function getProfileDefinitionParameter(string $parameterName)
     {
@@ -171,9 +153,6 @@ class ZugferdDocumentBuilder implements Stringable
      *
      * @param  int    $profileId
      * @return static
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteInvalidArgumentException
      */
     public static function createNew(
         int $profileId
@@ -197,8 +176,6 @@ class ZugferdDocumentBuilder implements Stringable
      * Write the content of a CrossIndustryInvoice object to a string
      *
      * @return string
-     *
-     * @throws RuntimeException
      */
     public function getContent(): string
     {
@@ -211,8 +188,6 @@ class ZugferdDocumentBuilder implements Stringable
      * Write the content of a invoice object to a DOMDocument instance
      *
      * @return DOMDocument
-     *
-     * @throws RuntimeException
      */
     public function getContentAsDomDocument(): DOMDocument
     {
@@ -226,8 +201,6 @@ class ZugferdDocumentBuilder implements Stringable
      * Write the content of a invoice object to a DOMXpath instance
      *
      * @return DOMXpath
-     *
-     * @throws RuntimeException
      */
     public function getContentAsDomXPath(): DOMXpath
     {
@@ -239,8 +212,6 @@ class ZugferdDocumentBuilder implements Stringable
      *
      * @param  string $xmlfilename
      * @return static
-     *
-     * @throws RuntimeException
      */
     public function writeFile(
         string $xmlfilename
@@ -2440,9 +2411,6 @@ class ZugferdDocumentBuilder implements Stringable
      * @param  null|DateTimeInterface        $issueDate          __BT-X-149, From EXTENDED__ Document date
      * @param  null|string                   $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
      * @return static
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
      */
     public function addDocumentAdditionalReferencedDocument(
         string $issuerAssignedId,
@@ -2489,9 +2457,6 @@ class ZugferdDocumentBuilder implements Stringable
      * @param  string                        $uriId            __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
      * @param  null|array<int,string>|string $name             __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
      * @return static
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
      */
     public function addDocumentInvoiceSupportingDocumentWithUri(
         string $issuerAssignedId,
@@ -2514,9 +2479,6 @@ class ZugferdDocumentBuilder implements Stringable
      * @param  string                        $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
      * @param  null|array<int,string>|string $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
      * @return static
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
      */
     public function addDocumentInvoiceSupportingDocumentWithFile(
         string $issuerAssignedId,
@@ -2536,9 +2498,6 @@ class ZugferdDocumentBuilder implements Stringable
      *
      * @param  string $issuerAssignedId __BT-122, From EN 16931__ Tender or lot reference
      * @return static
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
      */
     public function addDocumentTenderOrLotReferenceDocument(
         string $issuerAssignedId
@@ -2555,9 +2514,6 @@ class ZugferdDocumentBuilder implements Stringable
      * @param  string $issuerAssignedId __BT-122, From EN 16931__ Depending on the application, this can be a subscription number, a telephone number, a meter reading, a vehicle, a person, etc
      * @param  string $refTypeCode      __BT-18-1, From ENN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
      * @return static
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
      */
     public function addDocumentInvoicedObjectReferenceDocument(
         string $issuerAssignedId,
@@ -3623,9 +3579,6 @@ class ZugferdDocumentBuilder implements Stringable
      * @param  null|DateTimeInterface $issueDate          __BT-X-33, From EXTENDED__ Document date
      * @param  null|string            $binaryDataFilename __BT-X-31, From EXTENDED__ Contains a file name of an attachment document embedded as a binary object
      * @return static
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
      */
     public function addDocumentPositionAdditionalReferencedDocument(
         string $issuerAssignedId,

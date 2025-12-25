@@ -12,9 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\zugferd;
 
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
-use JMS\Serializer\Exception\RuntimeException;
 
 /**
  * Class representing the profile resolver
@@ -47,10 +45,6 @@ class ZugferdProfileResolver
      *
      * @param  string                     $xmlContent
      * @return array{0:int, 1:ProfileDef}
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      */
     public static function resolve(string $xmlContent): array
     {
@@ -70,10 +64,6 @@ class ZugferdProfileResolver
      *
      * @param  string $xmlContent
      * @return int
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      */
     public static function resolveProfileId(string $xmlContent): int
     {
@@ -85,10 +75,6 @@ class ZugferdProfileResolver
      *
      * @param  string     $xmlContent
      * @return ProfileDef
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
      */
     public static function resolveProfileDef(string $xmlContent): array
     {
@@ -100,8 +86,6 @@ class ZugferdProfileResolver
      *
      * @param  int                        $profileId
      * @return array{0:int, 1:ProfileDef}
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public static function resolveById(int $profileId): array
     {
@@ -117,8 +101,6 @@ class ZugferdProfileResolver
      *
      * @param  int        $profileId
      * @return ProfileDef
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public static function resolveProfileDefById(int $profileId): array
     {

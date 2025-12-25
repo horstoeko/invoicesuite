@@ -11,11 +11,6 @@ declare(strict_types=1);
 
 namespace horstoeko\zugferd;
 
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuitePdfDocumentBuilder;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 
@@ -54,8 +49,6 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * Constructor
      *
      * @param string $pdfContent The full filename or a string containing the binary pdf data. This is the original PDF (e.g. created by a ERP system)
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public function __construct(string $pdfContent)
     {
@@ -211,11 +204,6 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * @param  string $displayName
      * @param  string $relationshipType
      * @return static
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     * @throws InvoiceSuiteInvalidArgumentException
-     * @throws InvoiceSuiteUnknownContentException
      */
     public function attachAdditionalFileByRealFile(
         string $fullFilename,
@@ -239,9 +227,6 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * @param  string $displayName
      * @param  string $relationshipType
      * @return static
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     * @throws InvoiceSuiteUnknownContentException
      */
     public function attachAdditionalFileByContent(
         string $content,
