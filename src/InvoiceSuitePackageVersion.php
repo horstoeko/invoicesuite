@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite;
 
 use Composer\InstalledVersions as ComposerInstalledVersions;
+use Throwable;
 
 /**
  * Class representing some tools for getting the package version
@@ -43,6 +44,11 @@ final class InvoiceSuitePackageVersion
      */
     public static function getInstalledVersionByName(string $packageName, string $defaultPackageVersion = '1.0.x'): string
     {
-        return ComposerInstalledVersions::getVersion($packageName) ?? $defaultPackageVersion;
+        try {
+            return ComposerInstalledVersions::getVersion($packageName) ?? $defaultPackageVersion;
+            // @phpstan-ignore catch.neverThrown
+        } catch (Throwable) {
+            return $defaultPackageVersion;
+        }
     }
 }

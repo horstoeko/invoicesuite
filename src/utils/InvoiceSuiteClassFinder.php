@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\utils;
 
 use Composer\Autoload\ClassLoader;
+use Throwable;
 
 /**
  * class representing tools for classes finding
@@ -119,6 +120,9 @@ class InvoiceSuiteClassFinder
                 if (is_subclass_of($className, $isSubClassOf)) {
                     $classes[] = $className;
                 }
+                // @phpstan-ignore catch.neverThrown
+            } catch (Throwable $e) {
+                // Nothing here
             } finally {
                 error_reporting($previousErrorReportingState);
             }
