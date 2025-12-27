@@ -19,6 +19,4 @@ namespace horstoeko\invoicesuite\documents\dto;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteCommunicationDTO extends InvoiceSuiteIdDTO
-{
-}
+class InvoiceSuiteCommunicationDTO extends InvoiceSuiteIdDTO {}
