@@ -97,40 +97,41 @@ class InvoiceSuiteClassFinder
             $cacheFilepath = InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', 'cache');
             $cacheFilenameFq = InvoiceSuitePathUtils::combinePathWithFile($cacheFilepath, $cacheFilename);
 
-            if (file_exists($cacheFilenameFq)) {
-                $cacheFilenameContent = file_get_contents($cacheFilenameFq);
+            if (is_file($cacheFilenameFq)) {
+                $cached = @require_once $cacheFilenameFq;
 
-                if ($cacheFilenameContent !== false) {
-                    $cacheFilenameContentUnserialized = unserialize($cacheFilenameContent);
-
-                    if (is_array($cacheFilenameContentUnserialized)) {
-                        return $cacheFilenameContentUnserialized;
-                    }
+                if (is_array($cached)) {
+                    return $cached;
                 }
             }
         }
 
         $classes = [];
 
-        foreach ($this->classNames as $className) {
-            $previousErrorReportingState = error_reporting();
-            error_reporting(E_ALL & ~E_DEPRECATED);
+        $previousErrorReportingState = error_reporting();
+        error_reporting(E_ALL & ~E_DEPRECATED);
 
-            try {
-                if (is_subclass_of($className, $isSubClassOf)) {
-                    $classes[] = $className;
+        try {
+            foreach ($this->classNames as $className) {
+                try {
+                    if (is_subclass_of($className, $isSubClassOf)) {
+                        $classes[] = $className;
+                    }
+                    // @phpstan-ignore catch.neverThrown
+                } catch (Throwable $e) {
                 }
-                // @phpstan-ignore catch.neverThrown
-            } catch (Throwable $e) {
-                // Nothing here
-            } finally {
-                error_reporting($previousErrorReportingState);
             }
+        } finally {
+            error_reporting($previousErrorReportingState);
         }
 
         if (!$disableCache) {
             @mkdir(directory: $cacheFilepath, recursive: true);
-            file_put_contents($cacheFilenameFq, serialize($classes));
+
+            // @phpstan-ignore arrayValues.list
+            $cacheFilePhpCode = "<?php\ndeclare(strict_types=1);\nreturn ".var_export(array_values($classes), true).";\n";
+
+            file_put_contents($cacheFilenameFq, $cacheFilePhpCode, LOCK_EX);
         }
 
         return $classes;
