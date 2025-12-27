@@ -258,7 +258,7 @@ class TradePartyType
             $this->specifiedTaxRegistration = [];
         }
 
-        if ($this->specifiedTaxRegistration === []) {
+        if ([] === $this->specifiedTaxRegistration) {
             $this->addOnceTospecifiedTaxRegistration(new TaxRegistrationType());
         }
 

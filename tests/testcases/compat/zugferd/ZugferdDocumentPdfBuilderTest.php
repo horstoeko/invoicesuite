@@ -749,15 +749,15 @@ final class ZugferdDocumentPdfBuilderTest extends TestCase
                 $this->assertIsString($which);
                 $this->assertContains($which, ['author', 'keywords', 'title', 'subject']);
 
-                if ($which === 'title') {
+                if ('title' === $which) {
                     return 'DummyTitle';
                 }
 
-                if ($which === 'author') {
+                if ('author' === $which) {
                     return 'DummyAuthor';
                 }
 
-                if ($which === 'subject') {
+                if ('subject' === $which) {
                     return 'DummySubject';
                 }
             }
@@ -817,15 +817,15 @@ final class ZugferdDocumentPdfBuilderTest extends TestCase
         $pdfBuilder = new ZugferdDocumentPdfBuilder(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->setMetaInformationCallback(
             static function ($which) {
-                if ($which === 'title') {
+                if ('title' === $which) {
                     return '';
                 }
 
-                if ($which === 'author') {
+                if ('author' === $which) {
                     return '';
                 }
 
-                if ($which === 'subject') {
+                if ('subject' === $which) {
                     return '';
                 }
             }

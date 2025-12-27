@@ -224,7 +224,7 @@ class CorporateRegistrationSchemeType
         $jurisdictionRegionAddress = $this->jurisdictionRegionAddress ?? [];
         $jurisdictionRegionAddress = reset($jurisdictionRegionAddress);
 
-        if ($jurisdictionRegionAddress === false) {
+        if (false === $jurisdictionRegionAddress) {
             return null;
         }
 
@@ -239,7 +239,7 @@ class CorporateRegistrationSchemeType
         $jurisdictionRegionAddress = $this->jurisdictionRegionAddress ?? [];
         $jurisdictionRegionAddress = end($jurisdictionRegionAddress);
 
-        if ($jurisdictionRegionAddress === false) {
+        if (false === $jurisdictionRegionAddress) {
             return null;
         }
 
@@ -291,7 +291,7 @@ class CorporateRegistrationSchemeType
             $this->jurisdictionRegionAddress = [];
         }
 
-        if ($this->jurisdictionRegionAddress === []) {
+        if ([] === $this->jurisdictionRegionAddress) {
             $this->addOnceTojurisdictionRegionAddress(new JurisdictionRegionAddress());
         }
 

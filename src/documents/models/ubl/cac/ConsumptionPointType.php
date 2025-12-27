@@ -204,7 +204,7 @@ class ConsumptionPointType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -219,7 +219,7 @@ class ConsumptionPointType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -271,7 +271,7 @@ class ConsumptionPointType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -559,7 +559,7 @@ class ConsumptionPointType
         $utilityMeter = $this->utilityMeter ?? [];
         $utilityMeter = reset($utilityMeter);
 
-        if ($utilityMeter === false) {
+        if (false === $utilityMeter) {
             return null;
         }
 
@@ -574,7 +574,7 @@ class ConsumptionPointType
         $utilityMeter = $this->utilityMeter ?? [];
         $utilityMeter = end($utilityMeter);
 
-        if ($utilityMeter === false) {
+        if (false === $utilityMeter) {
             return null;
         }
 
@@ -626,7 +626,7 @@ class ConsumptionPointType
             $this->utilityMeter = [];
         }
 
-        if ($this->utilityMeter === []) {
+        if ([] === $this->utilityMeter) {
             $this->addOnceToutilityMeter(new UtilityMeter());
         }
 

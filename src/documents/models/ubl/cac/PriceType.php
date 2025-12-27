@@ -255,7 +255,7 @@ class PriceType
         $priceChangeReason = $this->priceChangeReason ?? [];
         $priceChangeReason = reset($priceChangeReason);
 
-        if ($priceChangeReason === false) {
+        if (false === $priceChangeReason) {
             return null;
         }
 
@@ -270,7 +270,7 @@ class PriceType
         $priceChangeReason = $this->priceChangeReason ?? [];
         $priceChangeReason = end($priceChangeReason);
 
-        if ($priceChangeReason === false) {
+        if (false === $priceChangeReason) {
             return null;
         }
 
@@ -322,7 +322,7 @@ class PriceType
             $this->priceChangeReason = [];
         }
 
-        if ($this->priceChangeReason === []) {
+        if ([] === $this->priceChangeReason) {
             $this->addOnceTopriceChangeReason(new PriceChangeReason());
         }
 
@@ -493,7 +493,7 @@ class PriceType
         $validityPeriod = $this->validityPeriod ?? [];
         $validityPeriod = reset($validityPeriod);
 
-        if ($validityPeriod === false) {
+        if (false === $validityPeriod) {
             return null;
         }
 
@@ -508,7 +508,7 @@ class PriceType
         $validityPeriod = $this->validityPeriod ?? [];
         $validityPeriod = end($validityPeriod);
 
-        if ($validityPeriod === false) {
+        if (false === $validityPeriod) {
             return null;
         }
 
@@ -560,7 +560,7 @@ class PriceType
             $this->validityPeriod = [];
         }
 
-        if ($this->validityPeriod === []) {
+        if ([] === $this->validityPeriod) {
             $this->addOnceTovalidityPeriod(new ValidityPeriod());
         }
 
@@ -653,7 +653,7 @@ class PriceType
         $allowanceCharge = $this->allowanceCharge ?? [];
         $allowanceCharge = reset($allowanceCharge);
 
-        if ($allowanceCharge === false) {
+        if (false === $allowanceCharge) {
             return null;
         }
 
@@ -668,7 +668,7 @@ class PriceType
         $allowanceCharge = $this->allowanceCharge ?? [];
         $allowanceCharge = end($allowanceCharge);
 
-        if ($allowanceCharge === false) {
+        if (false === $allowanceCharge) {
             return null;
         }
 
@@ -720,7 +720,7 @@ class PriceType
             $this->allowanceCharge = [];
         }
 
-        if ($this->allowanceCharge === []) {
+        if ([] === $this->allowanceCharge) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }
 

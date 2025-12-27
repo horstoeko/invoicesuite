@@ -608,7 +608,7 @@ class GoodsItemType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -623,7 +623,7 @@ class GoodsItemType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -675,7 +675,7 @@ class GoodsItemType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -1570,7 +1570,7 @@ class GoodsItemType
         $item = $this->item ?? [];
         $item = reset($item);
 
-        if ($item === false) {
+        if (false === $item) {
             return null;
         }
 
@@ -1585,7 +1585,7 @@ class GoodsItemType
         $item = $this->item ?? [];
         $item = end($item);
 
-        if ($item === false) {
+        if (false === $item) {
             return null;
         }
 
@@ -1637,7 +1637,7 @@ class GoodsItemType
             $this->item = [];
         }
 
-        if ($this->item === []) {
+        if ([] === $this->item) {
             $this->addOnceToitem(new Item());
         }
 
@@ -1691,7 +1691,7 @@ class GoodsItemType
         $goodsItemContainer = $this->goodsItemContainer ?? [];
         $goodsItemContainer = reset($goodsItemContainer);
 
-        if ($goodsItemContainer === false) {
+        if (false === $goodsItemContainer) {
             return null;
         }
 
@@ -1706,7 +1706,7 @@ class GoodsItemType
         $goodsItemContainer = $this->goodsItemContainer ?? [];
         $goodsItemContainer = end($goodsItemContainer);
 
-        if ($goodsItemContainer === false) {
+        if (false === $goodsItemContainer) {
             return null;
         }
 
@@ -1758,7 +1758,7 @@ class GoodsItemType
             $this->goodsItemContainer = [];
         }
 
-        if ($this->goodsItemContainer === []) {
+        if ([] === $this->goodsItemContainer) {
             $this->addOnceTogoodsItemContainer(new GoodsItemContainer());
         }
 
@@ -1812,7 +1812,7 @@ class GoodsItemType
         $freightAllowanceCharge = $this->freightAllowanceCharge ?? [];
         $freightAllowanceCharge = reset($freightAllowanceCharge);
 
-        if ($freightAllowanceCharge === false) {
+        if (false === $freightAllowanceCharge) {
             return null;
         }
 
@@ -1827,7 +1827,7 @@ class GoodsItemType
         $freightAllowanceCharge = $this->freightAllowanceCharge ?? [];
         $freightAllowanceCharge = end($freightAllowanceCharge);
 
-        if ($freightAllowanceCharge === false) {
+        if (false === $freightAllowanceCharge) {
             return null;
         }
 
@@ -1879,7 +1879,7 @@ class GoodsItemType
             $this->freightAllowanceCharge = [];
         }
 
-        if ($this->freightAllowanceCharge === []) {
+        if ([] === $this->freightAllowanceCharge) {
             $this->addOnceTofreightAllowanceCharge(new FreightAllowanceCharge());
         }
 
@@ -1933,7 +1933,7 @@ class GoodsItemType
         $invoiceLine = $this->invoiceLine ?? [];
         $invoiceLine = reset($invoiceLine);
 
-        if ($invoiceLine === false) {
+        if (false === $invoiceLine) {
             return null;
         }
 
@@ -1948,7 +1948,7 @@ class GoodsItemType
         $invoiceLine = $this->invoiceLine ?? [];
         $invoiceLine = end($invoiceLine);
 
-        if ($invoiceLine === false) {
+        if (false === $invoiceLine) {
             return null;
         }
 
@@ -2000,7 +2000,7 @@ class GoodsItemType
             $this->invoiceLine = [];
         }
 
-        if ($this->invoiceLine === []) {
+        if ([] === $this->invoiceLine) {
             $this->addOnceToinvoiceLine(new InvoiceLine());
         }
 
@@ -2054,7 +2054,7 @@ class GoodsItemType
         $temperature = $this->temperature ?? [];
         $temperature = reset($temperature);
 
-        if ($temperature === false) {
+        if (false === $temperature) {
             return null;
         }
 
@@ -2069,7 +2069,7 @@ class GoodsItemType
         $temperature = $this->temperature ?? [];
         $temperature = end($temperature);
 
-        if ($temperature === false) {
+        if (false === $temperature) {
             return null;
         }
 
@@ -2121,7 +2121,7 @@ class GoodsItemType
             $this->temperature = [];
         }
 
-        if ($this->temperature === []) {
+        if ([] === $this->temperature) {
             $this->addOnceTotemperature(new Temperature());
         }
 
@@ -2175,7 +2175,7 @@ class GoodsItemType
         $containedGoodsItem = $this->containedGoodsItem ?? [];
         $containedGoodsItem = reset($containedGoodsItem);
 
-        if ($containedGoodsItem === false) {
+        if (false === $containedGoodsItem) {
             return null;
         }
 
@@ -2190,7 +2190,7 @@ class GoodsItemType
         $containedGoodsItem = $this->containedGoodsItem ?? [];
         $containedGoodsItem = end($containedGoodsItem);
 
-        if ($containedGoodsItem === false) {
+        if (false === $containedGoodsItem) {
             return null;
         }
 
@@ -2242,7 +2242,7 @@ class GoodsItemType
             $this->containedGoodsItem = [];
         }
 
-        if ($this->containedGoodsItem === []) {
+        if ([] === $this->containedGoodsItem) {
             $this->addOnceTocontainedGoodsItem(new ContainedGoodsItem());
         }
 
@@ -2452,7 +2452,7 @@ class GoodsItemType
         $measurementDimension = $this->measurementDimension ?? [];
         $measurementDimension = reset($measurementDimension);
 
-        if ($measurementDimension === false) {
+        if (false === $measurementDimension) {
             return null;
         }
 
@@ -2467,7 +2467,7 @@ class GoodsItemType
         $measurementDimension = $this->measurementDimension ?? [];
         $measurementDimension = end($measurementDimension);
 
-        if ($measurementDimension === false) {
+        if (false === $measurementDimension) {
             return null;
         }
 
@@ -2519,7 +2519,7 @@ class GoodsItemType
             $this->measurementDimension = [];
         }
 
-        if ($this->measurementDimension === []) {
+        if ([] === $this->measurementDimension) {
             $this->addOnceTomeasurementDimension(new MeasurementDimension());
         }
 
@@ -2573,7 +2573,7 @@ class GoodsItemType
         $containingPackage = $this->containingPackage ?? [];
         $containingPackage = reset($containingPackage);
 
-        if ($containingPackage === false) {
+        if (false === $containingPackage) {
             return null;
         }
 
@@ -2588,7 +2588,7 @@ class GoodsItemType
         $containingPackage = $this->containingPackage ?? [];
         $containingPackage = end($containingPackage);
 
-        if ($containingPackage === false) {
+        if (false === $containingPackage) {
             return null;
         }
 
@@ -2640,7 +2640,7 @@ class GoodsItemType
             $this->containingPackage = [];
         }
 
-        if ($this->containingPackage === []) {
+        if ([] === $this->containingPackage) {
             $this->addOnceTocontainingPackage(new ContainingPackage());
         }
 

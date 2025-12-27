@@ -834,7 +834,7 @@ class PersonType
         $identityDocumentReference = $this->identityDocumentReference ?? [];
         $identityDocumentReference = reset($identityDocumentReference);
 
-        if ($identityDocumentReference === false) {
+        if (false === $identityDocumentReference) {
             return null;
         }
 
@@ -849,7 +849,7 @@ class PersonType
         $identityDocumentReference = $this->identityDocumentReference ?? [];
         $identityDocumentReference = end($identityDocumentReference);
 
-        if ($identityDocumentReference === false) {
+        if (false === $identityDocumentReference) {
             return null;
         }
 
@@ -901,7 +901,7 @@ class PersonType
             $this->identityDocumentReference = [];
         }
 
-        if ($this->identityDocumentReference === []) {
+        if ([] === $this->identityDocumentReference) {
             $this->addOnceToidentityDocumentReference(new IdentityDocumentReference());
         }
 

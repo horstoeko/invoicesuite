@@ -338,7 +338,7 @@ class ContactType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -353,7 +353,7 @@ class ContactType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -405,7 +405,7 @@ class ContactType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -459,7 +459,7 @@ class ContactType
         $otherCommunication = $this->otherCommunication ?? [];
         $otherCommunication = reset($otherCommunication);
 
-        if ($otherCommunication === false) {
+        if (false === $otherCommunication) {
             return null;
         }
 
@@ -474,7 +474,7 @@ class ContactType
         $otherCommunication = $this->otherCommunication ?? [];
         $otherCommunication = end($otherCommunication);
 
-        if ($otherCommunication === false) {
+        if (false === $otherCommunication) {
             return null;
         }
 
@@ -526,7 +526,7 @@ class ContactType
             $this->otherCommunication = [];
         }
 
-        if ($this->otherCommunication === []) {
+        if ([] === $this->otherCommunication) {
             $this->addOnceTootherCommunication(new OtherCommunication());
         }
 

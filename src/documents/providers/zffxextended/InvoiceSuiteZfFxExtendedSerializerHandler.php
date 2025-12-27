@@ -82,7 +82,7 @@ class InvoiceSuiteZfFxExtendedSerializerHandler implements SubscribingHandlerInt
             )
         );
 
-        if ($data->getCurrencyID() != null) {
+        if (null != $data->getCurrencyID()) {
             $attr = $visitor->getDocument()->createAttribute('currencyID');
             $attr->value = $data->getCurrencyID();
             $visitor->getCurrentNode()->appendChild($attr);
@@ -111,7 +111,7 @@ class InvoiceSuiteZfFxExtendedSerializerHandler implements SubscribingHandlerInt
             )
         );
 
-        if ($data->getUnitCode() != null) {
+        if (null != $data->getUnitCode()) {
             $attr = $visitor->getDocument()->createAttribute('unitCode');
             $attr->value = $data->getUnitCode();
             $visitor->getCurrentNode()->appendChild($attr);
@@ -159,7 +159,7 @@ class InvoiceSuiteZfFxExtendedSerializerHandler implements SubscribingHandlerInt
             )
         );
 
-        if ($data->getUnitCode() != null) {
+        if (null != $data->getUnitCode()) {
             $attr = $visitor->getDocument()->createAttribute('unitCode');
             $attr->value = $data->getUnitCode();
             $visitor->getCurrentNode()->appendChild($attr);
@@ -180,6 +180,6 @@ class InvoiceSuiteZfFxExtendedSerializerHandler implements SubscribingHandlerInt
      */
     public function serializeIndicatorType(XmlSerializationVisitor $visitor, $data): DOMElement
     {
-        return $visitor->getDocument()->createElement('udt:Indicator', $data->getIndicator() == false ? 'false' : 'true');
+        return $visitor->getDocument()->createElement('udt:Indicator', false == $data->getIndicator() ? 'false' : 'true');
     }
 }

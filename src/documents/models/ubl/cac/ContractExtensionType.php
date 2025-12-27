@@ -118,7 +118,7 @@ class ContractExtensionType
         $optionsDescription = $this->optionsDescription ?? [];
         $optionsDescription = reset($optionsDescription);
 
-        if ($optionsDescription === false) {
+        if (false === $optionsDescription) {
             return null;
         }
 
@@ -133,7 +133,7 @@ class ContractExtensionType
         $optionsDescription = $this->optionsDescription ?? [];
         $optionsDescription = end($optionsDescription);
 
-        if ($optionsDescription === false) {
+        if (false === $optionsDescription) {
             return null;
         }
 
@@ -185,7 +185,7 @@ class ContractExtensionType
             $this->optionsDescription = [];
         }
 
-        if ($this->optionsDescription === []) {
+        if ([] === $this->optionsDescription) {
             $this->addOnceTooptionsDescription(new OptionsDescription());
         }
 
@@ -356,7 +356,7 @@ class ContractExtensionType
         $renewal = $this->renewal ?? [];
         $renewal = reset($renewal);
 
-        if ($renewal === false) {
+        if (false === $renewal) {
             return null;
         }
 
@@ -371,7 +371,7 @@ class ContractExtensionType
         $renewal = $this->renewal ?? [];
         $renewal = end($renewal);
 
-        if ($renewal === false) {
+        if (false === $renewal) {
             return null;
         }
 
@@ -423,7 +423,7 @@ class ContractExtensionType
             $this->renewal = [];
         }
 
-        if ($this->renewal === []) {
+        if ([] === $this->renewal) {
             $this->addOnceTorenewal(new Renewal());
         }
 

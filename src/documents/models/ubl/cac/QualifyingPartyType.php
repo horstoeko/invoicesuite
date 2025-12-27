@@ -263,7 +263,7 @@ class QualifyingPartyType
         $personalSituation = $this->personalSituation ?? [];
         $personalSituation = reset($personalSituation);
 
-        if ($personalSituation === false) {
+        if (false === $personalSituation) {
             return null;
         }
 
@@ -278,7 +278,7 @@ class QualifyingPartyType
         $personalSituation = $this->personalSituation ?? [];
         $personalSituation = end($personalSituation);
 
-        if ($personalSituation === false) {
+        if (false === $personalSituation) {
             return null;
         }
 
@@ -330,7 +330,7 @@ class QualifyingPartyType
             $this->personalSituation = [];
         }
 
-        if ($this->personalSituation === []) {
+        if ([] === $this->personalSituation) {
             $this->addOnceTopersonalSituation(new PersonalSituation());
         }
 
@@ -621,7 +621,7 @@ class QualifyingPartyType
         $technicalCapability = $this->technicalCapability ?? [];
         $technicalCapability = reset($technicalCapability);
 
-        if ($technicalCapability === false) {
+        if (false === $technicalCapability) {
             return null;
         }
 
@@ -636,7 +636,7 @@ class QualifyingPartyType
         $technicalCapability = $this->technicalCapability ?? [];
         $technicalCapability = end($technicalCapability);
 
-        if ($technicalCapability === false) {
+        if (false === $technicalCapability) {
             return null;
         }
 
@@ -688,7 +688,7 @@ class QualifyingPartyType
             $this->technicalCapability = [];
         }
 
-        if ($this->technicalCapability === []) {
+        if ([] === $this->technicalCapability) {
             $this->addOnceTotechnicalCapability(new TechnicalCapability());
         }
 
@@ -742,7 +742,7 @@ class QualifyingPartyType
         $financialCapability = $this->financialCapability ?? [];
         $financialCapability = reset($financialCapability);
 
-        if ($financialCapability === false) {
+        if (false === $financialCapability) {
             return null;
         }
 
@@ -757,7 +757,7 @@ class QualifyingPartyType
         $financialCapability = $this->financialCapability ?? [];
         $financialCapability = end($financialCapability);
 
-        if ($financialCapability === false) {
+        if (false === $financialCapability) {
             return null;
         }
 
@@ -809,7 +809,7 @@ class QualifyingPartyType
             $this->financialCapability = [];
         }
 
-        if ($this->financialCapability === []) {
+        if ([] === $this->financialCapability) {
             $this->addOnceTofinancialCapability(new FinancialCapability());
         }
 
@@ -863,7 +863,7 @@ class QualifyingPartyType
         $completedTask = $this->completedTask ?? [];
         $completedTask = reset($completedTask);
 
-        if ($completedTask === false) {
+        if (false === $completedTask) {
             return null;
         }
 
@@ -878,7 +878,7 @@ class QualifyingPartyType
         $completedTask = $this->completedTask ?? [];
         $completedTask = end($completedTask);
 
-        if ($completedTask === false) {
+        if (false === $completedTask) {
             return null;
         }
 
@@ -930,7 +930,7 @@ class QualifyingPartyType
             $this->completedTask = [];
         }
 
-        if ($this->completedTask === []) {
+        if ([] === $this->completedTask) {
             $this->addOnceTocompletedTask(new CompletedTask());
         }
 
@@ -984,7 +984,7 @@ class QualifyingPartyType
         $declaration = $this->declaration ?? [];
         $declaration = reset($declaration);
 
-        if ($declaration === false) {
+        if (false === $declaration) {
             return null;
         }
 
@@ -999,7 +999,7 @@ class QualifyingPartyType
         $declaration = $this->declaration ?? [];
         $declaration = end($declaration);
 
-        if ($declaration === false) {
+        if (false === $declaration) {
             return null;
         }
 
@@ -1051,7 +1051,7 @@ class QualifyingPartyType
             $this->declaration = [];
         }
 
-        if ($this->declaration === []) {
+        if ([] === $this->declaration) {
             $this->addOnceTodeclaration(new Declaration());
         }
 

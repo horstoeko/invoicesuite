@@ -275,7 +275,7 @@ class SecondaryHazardType
         $extension = $this->extension ?? [];
         $extension = reset($extension);
 
-        if ($extension === false) {
+        if (false === $extension) {
             return null;
         }
 
@@ -290,7 +290,7 @@ class SecondaryHazardType
         $extension = $this->extension ?? [];
         $extension = end($extension);
 
-        if ($extension === false) {
+        if (false === $extension) {
             return null;
         }
 
@@ -342,7 +342,7 @@ class SecondaryHazardType
             $this->extension = [];
         }
 
-        if ($this->extension === []) {
+        if ([] === $this->extension) {
             $this->addOnceToextension(new Extension());
         }
 

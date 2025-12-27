@@ -215,7 +215,7 @@ class OrderLineType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -230,7 +230,7 @@ class OrderLineType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -282,7 +282,7 @@ class OrderLineType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -375,7 +375,7 @@ class OrderLineType
         $sellerProposedSubstituteLineItem = $this->sellerProposedSubstituteLineItem ?? [];
         $sellerProposedSubstituteLineItem = reset($sellerProposedSubstituteLineItem);
 
-        if ($sellerProposedSubstituteLineItem === false) {
+        if (false === $sellerProposedSubstituteLineItem) {
             return null;
         }
 
@@ -390,7 +390,7 @@ class OrderLineType
         $sellerProposedSubstituteLineItem = $this->sellerProposedSubstituteLineItem ?? [];
         $sellerProposedSubstituteLineItem = end($sellerProposedSubstituteLineItem);
 
-        if ($sellerProposedSubstituteLineItem === false) {
+        if (false === $sellerProposedSubstituteLineItem) {
             return null;
         }
 
@@ -444,7 +444,7 @@ class OrderLineType
             $this->sellerProposedSubstituteLineItem = [];
         }
 
-        if ($this->sellerProposedSubstituteLineItem === []) {
+        if ([] === $this->sellerProposedSubstituteLineItem) {
             $this->addOnceTosellerProposedSubstituteLineItem(new SellerProposedSubstituteLineItem());
         }
 
@@ -498,7 +498,7 @@ class OrderLineType
         $sellerSubstitutedLineItem = $this->sellerSubstitutedLineItem ?? [];
         $sellerSubstitutedLineItem = reset($sellerSubstitutedLineItem);
 
-        if ($sellerSubstitutedLineItem === false) {
+        if (false === $sellerSubstitutedLineItem) {
             return null;
         }
 
@@ -513,7 +513,7 @@ class OrderLineType
         $sellerSubstitutedLineItem = $this->sellerSubstitutedLineItem ?? [];
         $sellerSubstitutedLineItem = end($sellerSubstitutedLineItem);
 
-        if ($sellerSubstitutedLineItem === false) {
+        if (false === $sellerSubstitutedLineItem) {
             return null;
         }
 
@@ -565,7 +565,7 @@ class OrderLineType
             $this->sellerSubstitutedLineItem = [];
         }
 
-        if ($this->sellerSubstitutedLineItem === []) {
+        if ([] === $this->sellerSubstitutedLineItem) {
             $this->addOnceTosellerSubstitutedLineItem(new SellerSubstitutedLineItem());
         }
 
@@ -619,7 +619,7 @@ class OrderLineType
         $buyerProposedSubstituteLineItem = $this->buyerProposedSubstituteLineItem ?? [];
         $buyerProposedSubstituteLineItem = reset($buyerProposedSubstituteLineItem);
 
-        if ($buyerProposedSubstituteLineItem === false) {
+        if (false === $buyerProposedSubstituteLineItem) {
             return null;
         }
 
@@ -634,7 +634,7 @@ class OrderLineType
         $buyerProposedSubstituteLineItem = $this->buyerProposedSubstituteLineItem ?? [];
         $buyerProposedSubstituteLineItem = end($buyerProposedSubstituteLineItem);
 
-        if ($buyerProposedSubstituteLineItem === false) {
+        if (false === $buyerProposedSubstituteLineItem) {
             return null;
         }
 
@@ -688,7 +688,7 @@ class OrderLineType
             $this->buyerProposedSubstituteLineItem = [];
         }
 
-        if ($this->buyerProposedSubstituteLineItem === []) {
+        if ([] === $this->buyerProposedSubstituteLineItem) {
             $this->addOnceTobuyerProposedSubstituteLineItem(new BuyerProposedSubstituteLineItem());
         }
 
@@ -820,7 +820,7 @@ class OrderLineType
         $orderLineReference = $this->orderLineReference ?? [];
         $orderLineReference = reset($orderLineReference);
 
-        if ($orderLineReference === false) {
+        if (false === $orderLineReference) {
             return null;
         }
 
@@ -835,7 +835,7 @@ class OrderLineType
         $orderLineReference = $this->orderLineReference ?? [];
         $orderLineReference = end($orderLineReference);
 
-        if ($orderLineReference === false) {
+        if (false === $orderLineReference) {
             return null;
         }
 
@@ -887,7 +887,7 @@ class OrderLineType
             $this->orderLineReference = [];
         }
 
-        if ($this->orderLineReference === []) {
+        if ([] === $this->orderLineReference) {
             $this->addOnceToorderLineReference(new OrderLineReference());
         }
 
@@ -941,7 +941,7 @@ class OrderLineType
         $documentReference = $this->documentReference ?? [];
         $documentReference = reset($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -956,7 +956,7 @@ class OrderLineType
         $documentReference = $this->documentReference ?? [];
         $documentReference = end($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -1008,7 +1008,7 @@ class OrderLineType
             $this->documentReference = [];
         }
 
-        if ($this->documentReference === []) {
+        if ([] === $this->documentReference) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
 

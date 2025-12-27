@@ -307,7 +307,7 @@ class RemittanceAdviceLineType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -322,7 +322,7 @@ class RemittanceAdviceLineType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -374,7 +374,7 @@ class RemittanceAdviceLineType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -896,7 +896,7 @@ class RemittanceAdviceLineType
         $invoicePeriod = $this->invoicePeriod ?? [];
         $invoicePeriod = reset($invoicePeriod);
 
-        if ($invoicePeriod === false) {
+        if (false === $invoicePeriod) {
             return null;
         }
 
@@ -911,7 +911,7 @@ class RemittanceAdviceLineType
         $invoicePeriod = $this->invoicePeriod ?? [];
         $invoicePeriod = end($invoicePeriod);
 
-        if ($invoicePeriod === false) {
+        if (false === $invoicePeriod) {
             return null;
         }
 
@@ -963,7 +963,7 @@ class RemittanceAdviceLineType
             $this->invoicePeriod = [];
         }
 
-        if ($this->invoicePeriod === []) {
+        if ([] === $this->invoicePeriod) {
             $this->addOnceToinvoicePeriod(new InvoicePeriod());
         }
 
@@ -1017,7 +1017,7 @@ class RemittanceAdviceLineType
         $billingReference = $this->billingReference ?? [];
         $billingReference = reset($billingReference);
 
-        if ($billingReference === false) {
+        if (false === $billingReference) {
             return null;
         }
 
@@ -1032,7 +1032,7 @@ class RemittanceAdviceLineType
         $billingReference = $this->billingReference ?? [];
         $billingReference = end($billingReference);
 
-        if ($billingReference === false) {
+        if (false === $billingReference) {
             return null;
         }
 
@@ -1084,7 +1084,7 @@ class RemittanceAdviceLineType
             $this->billingReference = [];
         }
 
-        if ($this->billingReference === []) {
+        if ([] === $this->billingReference) {
             $this->addOnceTobillingReference(new BillingReference());
         }
 
@@ -1138,7 +1138,7 @@ class RemittanceAdviceLineType
         $documentReference = $this->documentReference ?? [];
         $documentReference = reset($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -1153,7 +1153,7 @@ class RemittanceAdviceLineType
         $documentReference = $this->documentReference ?? [];
         $documentReference = end($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -1205,7 +1205,7 @@ class RemittanceAdviceLineType
             $this->documentReference = [];
         }
 
-        if ($this->documentReference === []) {
+        if ([] === $this->documentReference) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
 

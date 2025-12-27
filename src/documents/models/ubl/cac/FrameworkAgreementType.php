@@ -209,7 +209,7 @@ class FrameworkAgreementType
         $justification = $this->justification ?? [];
         $justification = reset($justification);
 
-        if ($justification === false) {
+        if (false === $justification) {
             return null;
         }
 
@@ -224,7 +224,7 @@ class FrameworkAgreementType
         $justification = $this->justification ?? [];
         $justification = end($justification);
 
-        if ($justification === false) {
+        if (false === $justification) {
             return null;
         }
 
@@ -276,7 +276,7 @@ class FrameworkAgreementType
             $this->justification = [];
         }
 
-        if ($this->justification === []) {
+        if ([] === $this->justification) {
             $this->addOnceTojustification(new Justification());
         }
 
@@ -330,7 +330,7 @@ class FrameworkAgreementType
         $frequency = $this->frequency ?? [];
         $frequency = reset($frequency);
 
-        if ($frequency === false) {
+        if (false === $frequency) {
             return null;
         }
 
@@ -345,7 +345,7 @@ class FrameworkAgreementType
         $frequency = $this->frequency ?? [];
         $frequency = end($frequency);
 
-        if ($frequency === false) {
+        if (false === $frequency) {
             return null;
         }
 
@@ -397,7 +397,7 @@ class FrameworkAgreementType
             $this->frequency = [];
         }
 
-        if ($this->frequency === []) {
+        if ([] === $this->frequency) {
             $this->addOnceTofrequency(new Frequency());
         }
 
@@ -490,7 +490,7 @@ class FrameworkAgreementType
         $subsequentProcessTenderRequirement = $this->subsequentProcessTenderRequirement ?? [];
         $subsequentProcessTenderRequirement = reset($subsequentProcessTenderRequirement);
 
-        if ($subsequentProcessTenderRequirement === false) {
+        if (false === $subsequentProcessTenderRequirement) {
             return null;
         }
 
@@ -505,7 +505,7 @@ class FrameworkAgreementType
         $subsequentProcessTenderRequirement = $this->subsequentProcessTenderRequirement ?? [];
         $subsequentProcessTenderRequirement = end($subsequentProcessTenderRequirement);
 
-        if ($subsequentProcessTenderRequirement === false) {
+        if (false === $subsequentProcessTenderRequirement) {
             return null;
         }
 
@@ -559,7 +559,7 @@ class FrameworkAgreementType
             $this->subsequentProcessTenderRequirement = [];
         }
 
-        if ($this->subsequentProcessTenderRequirement === []) {
+        if ([] === $this->subsequentProcessTenderRequirement) {
             $this->addOnceTosubsequentProcessTenderRequirement(new SubsequentProcessTenderRequirement());
         }
 

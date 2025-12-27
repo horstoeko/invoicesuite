@@ -122,7 +122,7 @@ class ClauseType
         $content = $this->content ?? [];
         $content = reset($content);
 
-        if ($content === false) {
+        if (false === $content) {
             return null;
         }
 
@@ -137,7 +137,7 @@ class ClauseType
         $content = $this->content ?? [];
         $content = end($content);
 
-        if ($content === false) {
+        if (false === $content) {
             return null;
         }
 
@@ -189,7 +189,7 @@ class ClauseType
             $this->content = [];
         }
 
-        if ($this->content === []) {
+        if ([] === $this->content) {
             $this->addOnceTocontent(new Content());
         }
 

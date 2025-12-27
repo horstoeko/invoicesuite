@@ -399,7 +399,7 @@ class FinancialAccountType
         $paymentNote = $this->paymentNote ?? [];
         $paymentNote = reset($paymentNote);
 
-        if ($paymentNote === false) {
+        if (false === $paymentNote) {
             return null;
         }
 
@@ -414,7 +414,7 @@ class FinancialAccountType
         $paymentNote = $this->paymentNote ?? [];
         $paymentNote = end($paymentNote);
 
-        if ($paymentNote === false) {
+        if (false === $paymentNote) {
             return null;
         }
 
@@ -466,7 +466,7 @@ class FinancialAccountType
             $this->paymentNote = [];
         }
 
-        if ($this->paymentNote === []) {
+        if ([] === $this->paymentNote) {
             $this->addOnceTopaymentNote(new PaymentNote());
         }
 

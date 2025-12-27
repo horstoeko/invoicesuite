@@ -220,7 +220,7 @@ class TradePriceType
             $this->appliedTradeAllowanceCharge = [];
         }
 
-        if ($this->appliedTradeAllowanceCharge === []) {
+        if ([] === $this->appliedTradeAllowanceCharge) {
             $this->addOnceToappliedTradeAllowanceCharge(new TradeAllowanceChargeType());
         }
 

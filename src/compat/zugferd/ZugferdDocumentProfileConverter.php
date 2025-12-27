@@ -156,7 +156,7 @@ class ZugferdDocumentProfileConverter
 
         $fromContent = file_get_contents($fromFilename);
 
-        if ($fromContent === false) {
+        if (false === $fromContent) {
             throw new InvoiceSuiteFileNotReadableException($fromFilename);
         }
 

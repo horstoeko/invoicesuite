@@ -556,7 +556,7 @@ class ShipmentType
         $handlingInstructions = $this->handlingInstructions ?? [];
         $handlingInstructions = reset($handlingInstructions);
 
-        if ($handlingInstructions === false) {
+        if (false === $handlingInstructions) {
             return null;
         }
 
@@ -571,7 +571,7 @@ class ShipmentType
         $handlingInstructions = $this->handlingInstructions ?? [];
         $handlingInstructions = end($handlingInstructions);
 
-        if ($handlingInstructions === false) {
+        if (false === $handlingInstructions) {
             return null;
         }
 
@@ -623,7 +623,7 @@ class ShipmentType
             $this->handlingInstructions = [];
         }
 
-        if ($this->handlingInstructions === []) {
+        if ([] === $this->handlingInstructions) {
             $this->addOnceTohandlingInstructions(new HandlingInstructions());
         }
 
@@ -677,7 +677,7 @@ class ShipmentType
         $information = $this->information ?? [];
         $information = reset($information);
 
-        if ($information === false) {
+        if (false === $information) {
             return null;
         }
 
@@ -692,7 +692,7 @@ class ShipmentType
         $information = $this->information ?? [];
         $information = end($information);
 
-        if ($information === false) {
+        if (false === $information) {
             return null;
         }
 
@@ -744,7 +744,7 @@ class ShipmentType
             $this->information = [];
         }
 
-        if ($this->information === []) {
+        if ([] === $this->information) {
             $this->addOnceToinformation(new Information());
         }
 
@@ -1270,7 +1270,7 @@ class ShipmentType
         $specialInstructions = $this->specialInstructions ?? [];
         $specialInstructions = reset($specialInstructions);
 
-        if ($specialInstructions === false) {
+        if (false === $specialInstructions) {
             return null;
         }
 
@@ -1285,7 +1285,7 @@ class ShipmentType
         $specialInstructions = $this->specialInstructions ?? [];
         $specialInstructions = end($specialInstructions);
 
-        if ($specialInstructions === false) {
+        if (false === $specialInstructions) {
             return null;
         }
 
@@ -1337,7 +1337,7 @@ class ShipmentType
             $this->specialInstructions = [];
         }
 
-        if ($this->specialInstructions === []) {
+        if ([] === $this->specialInstructions) {
             $this->addOnceTospecialInstructions(new SpecialInstructions());
         }
 
@@ -1391,7 +1391,7 @@ class ShipmentType
         $deliveryInstructions = $this->deliveryInstructions ?? [];
         $deliveryInstructions = reset($deliveryInstructions);
 
-        if ($deliveryInstructions === false) {
+        if (false === $deliveryInstructions) {
             return null;
         }
 
@@ -1406,7 +1406,7 @@ class ShipmentType
         $deliveryInstructions = $this->deliveryInstructions ?? [];
         $deliveryInstructions = end($deliveryInstructions);
 
-        if ($deliveryInstructions === false) {
+        if (false === $deliveryInstructions) {
             return null;
         }
 
@@ -1458,7 +1458,7 @@ class ShipmentType
             $this->deliveryInstructions = [];
         }
 
-        if ($this->deliveryInstructions === []) {
+        if ([] === $this->deliveryInstructions) {
             $this->addOnceTodeliveryInstructions(new DeliveryInstructions());
         }
 
@@ -1580,7 +1580,7 @@ class ShipmentType
         $consignment = $this->consignment ?? [];
         $consignment = reset($consignment);
 
-        if ($consignment === false) {
+        if (false === $consignment) {
             return null;
         }
 
@@ -1595,7 +1595,7 @@ class ShipmentType
         $consignment = $this->consignment ?? [];
         $consignment = end($consignment);
 
-        if ($consignment === false) {
+        if (false === $consignment) {
             return null;
         }
 
@@ -1647,7 +1647,7 @@ class ShipmentType
             $this->consignment = [];
         }
 
-        if ($this->consignment === []) {
+        if ([] === $this->consignment) {
             $this->addOnceToconsignment(new Consignment());
         }
 
@@ -1701,7 +1701,7 @@ class ShipmentType
         $goodsItem = $this->goodsItem ?? [];
         $goodsItem = reset($goodsItem);
 
-        if ($goodsItem === false) {
+        if (false === $goodsItem) {
             return null;
         }
 
@@ -1716,7 +1716,7 @@ class ShipmentType
         $goodsItem = $this->goodsItem ?? [];
         $goodsItem = end($goodsItem);
 
-        if ($goodsItem === false) {
+        if (false === $goodsItem) {
             return null;
         }
 
@@ -1768,7 +1768,7 @@ class ShipmentType
             $this->goodsItem = [];
         }
 
-        if ($this->goodsItem === []) {
+        if ([] === $this->goodsItem) {
             $this->addOnceTogoodsItem(new GoodsItem());
         }
 
@@ -1822,7 +1822,7 @@ class ShipmentType
         $shipmentStage = $this->shipmentStage ?? [];
         $shipmentStage = reset($shipmentStage);
 
-        if ($shipmentStage === false) {
+        if (false === $shipmentStage) {
             return null;
         }
 
@@ -1837,7 +1837,7 @@ class ShipmentType
         $shipmentStage = $this->shipmentStage ?? [];
         $shipmentStage = end($shipmentStage);
 
-        if ($shipmentStage === false) {
+        if (false === $shipmentStage) {
             return null;
         }
 
@@ -1889,7 +1889,7 @@ class ShipmentType
             $this->shipmentStage = [];
         }
 
-        if ($this->shipmentStage === []) {
+        if ([] === $this->shipmentStage) {
             $this->addOnceToshipmentStage(new ShipmentStage());
         }
 
@@ -1982,7 +1982,7 @@ class ShipmentType
         $transportHandlingUnit = $this->transportHandlingUnit ?? [];
         $transportHandlingUnit = reset($transportHandlingUnit);
 
-        if ($transportHandlingUnit === false) {
+        if (false === $transportHandlingUnit) {
             return null;
         }
 
@@ -1997,7 +1997,7 @@ class ShipmentType
         $transportHandlingUnit = $this->transportHandlingUnit ?? [];
         $transportHandlingUnit = end($transportHandlingUnit);
 
-        if ($transportHandlingUnit === false) {
+        if (false === $transportHandlingUnit) {
             return null;
         }
 
@@ -2049,7 +2049,7 @@ class ShipmentType
             $this->transportHandlingUnit = [];
         }
 
-        if ($this->transportHandlingUnit === []) {
+        if ([] === $this->transportHandlingUnit) {
             $this->addOnceTotransportHandlingUnit(new TransportHandlingUnit());
         }
 
@@ -2298,7 +2298,7 @@ class ShipmentType
         $freightAllowanceCharge = $this->freightAllowanceCharge ?? [];
         $freightAllowanceCharge = reset($freightAllowanceCharge);
 
-        if ($freightAllowanceCharge === false) {
+        if (false === $freightAllowanceCharge) {
             return null;
         }
 
@@ -2313,7 +2313,7 @@ class ShipmentType
         $freightAllowanceCharge = $this->freightAllowanceCharge ?? [];
         $freightAllowanceCharge = end($freightAllowanceCharge);
 
-        if ($freightAllowanceCharge === false) {
+        if (false === $freightAllowanceCharge) {
             return null;
         }
 
@@ -2365,7 +2365,7 @@ class ShipmentType
             $this->freightAllowanceCharge = [];
         }
 
-        if ($this->freightAllowanceCharge === []) {
+        if ([] === $this->freightAllowanceCharge) {
             $this->addOnceTofreightAllowanceCharge(new FreightAllowanceCharge());
         }
 

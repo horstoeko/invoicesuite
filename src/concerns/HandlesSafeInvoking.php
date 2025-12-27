@@ -35,7 +35,7 @@ trait HandlesSafeInvoking
             return $this;
         }
 
-        if ($method === '') {
+        if ('' === $method) {
             return $this;
         }
 
@@ -60,7 +60,7 @@ trait HandlesSafeInvoking
             return null;
         }
 
-        if ($method === '') {
+        if ('' === $method) {
             return null;
         }
 
@@ -101,7 +101,7 @@ trait HandlesSafeInvoking
      */
     private function safeInvokeMethodExists($instance, $method): bool
     {
-        if ($instance == null) {
+        if (null == $instance) {
             return false;
         }
 

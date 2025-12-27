@@ -501,7 +501,7 @@ class DocumentReferenceType
         $xPath = $this->xPath ?? [];
         $xPath = reset($xPath);
 
-        if ($xPath === false) {
+        if (false === $xPath) {
             return null;
         }
 
@@ -516,7 +516,7 @@ class DocumentReferenceType
         $xPath = $this->xPath ?? [];
         $xPath = end($xPath);
 
-        if ($xPath === false) {
+        if (false === $xPath) {
             return null;
         }
 
@@ -568,7 +568,7 @@ class DocumentReferenceType
             $this->xPath = [];
         }
 
-        if ($this->xPath === []) {
+        if ([] === $this->xPath) {
             $this->addOnceToxPath(new XPath());
         }
 
@@ -778,7 +778,7 @@ class DocumentReferenceType
         $documentDescription = $this->documentDescription ?? [];
         $documentDescription = reset($documentDescription);
 
-        if ($documentDescription === false) {
+        if (false === $documentDescription) {
             return null;
         }
 
@@ -793,7 +793,7 @@ class DocumentReferenceType
         $documentDescription = $this->documentDescription ?? [];
         $documentDescription = end($documentDescription);
 
-        if ($documentDescription === false) {
+        if (false === $documentDescription) {
             return null;
         }
 
@@ -845,7 +845,7 @@ class DocumentReferenceType
             $this->documentDescription = [];
         }
 
-        if ($this->documentDescription === []) {
+        if ([] === $this->documentDescription) {
             $this->addOnceTodocumentDescription(new DocumentDescription());
         }
 

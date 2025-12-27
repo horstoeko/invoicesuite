@@ -175,7 +175,7 @@ class AuctionTermsType
         $justificationDescription = $this->justificationDescription ?? [];
         $justificationDescription = reset($justificationDescription);
 
-        if ($justificationDescription === false) {
+        if (false === $justificationDescription) {
             return null;
         }
 
@@ -190,7 +190,7 @@ class AuctionTermsType
         $justificationDescription = $this->justificationDescription ?? [];
         $justificationDescription = end($justificationDescription);
 
-        if ($justificationDescription === false) {
+        if (false === $justificationDescription) {
             return null;
         }
 
@@ -242,7 +242,7 @@ class AuctionTermsType
             $this->justificationDescription = [];
         }
 
-        if ($this->justificationDescription === []) {
+        if ([] === $this->justificationDescription) {
             $this->addOnceTojustificationDescription(new JustificationDescription());
         }
 
@@ -296,7 +296,7 @@ class AuctionTermsType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -311,7 +311,7 @@ class AuctionTermsType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -363,7 +363,7 @@ class AuctionTermsType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -417,7 +417,7 @@ class AuctionTermsType
         $processDescription = $this->processDescription ?? [];
         $processDescription = reset($processDescription);
 
-        if ($processDescription === false) {
+        if (false === $processDescription) {
             return null;
         }
 
@@ -432,7 +432,7 @@ class AuctionTermsType
         $processDescription = $this->processDescription ?? [];
         $processDescription = end($processDescription);
 
-        if ($processDescription === false) {
+        if (false === $processDescription) {
             return null;
         }
 
@@ -484,7 +484,7 @@ class AuctionTermsType
             $this->processDescription = [];
         }
 
-        if ($this->processDescription === []) {
+        if ([] === $this->processDescription) {
             $this->addOnceToprocessDescription(new ProcessDescription());
         }
 
@@ -538,7 +538,7 @@ class AuctionTermsType
         $conditionsDescription = $this->conditionsDescription ?? [];
         $conditionsDescription = reset($conditionsDescription);
 
-        if ($conditionsDescription === false) {
+        if (false === $conditionsDescription) {
             return null;
         }
 
@@ -553,7 +553,7 @@ class AuctionTermsType
         $conditionsDescription = $this->conditionsDescription ?? [];
         $conditionsDescription = end($conditionsDescription);
 
-        if ($conditionsDescription === false) {
+        if (false === $conditionsDescription) {
             return null;
         }
 
@@ -605,7 +605,7 @@ class AuctionTermsType
             $this->conditionsDescription = [];
         }
 
-        if ($this->conditionsDescription === []) {
+        if ([] === $this->conditionsDescription) {
             $this->addOnceToconditionsDescription(new ConditionsDescription());
         }
 
@@ -659,7 +659,7 @@ class AuctionTermsType
         $electronicDeviceDescription = $this->electronicDeviceDescription ?? [];
         $electronicDeviceDescription = reset($electronicDeviceDescription);
 
-        if ($electronicDeviceDescription === false) {
+        if (false === $electronicDeviceDescription) {
             return null;
         }
 
@@ -674,7 +674,7 @@ class AuctionTermsType
         $electronicDeviceDescription = $this->electronicDeviceDescription ?? [];
         $electronicDeviceDescription = end($electronicDeviceDescription);
 
-        if ($electronicDeviceDescription === false) {
+        if (false === $electronicDeviceDescription) {
             return null;
         }
 
@@ -727,7 +727,7 @@ class AuctionTermsType
             $this->electronicDeviceDescription = [];
         }
 
-        if ($this->electronicDeviceDescription === []) {
+        if ([] === $this->electronicDeviceDescription) {
             $this->addOnceToelectronicDeviceDescription(new ElectronicDeviceDescription());
         }
 

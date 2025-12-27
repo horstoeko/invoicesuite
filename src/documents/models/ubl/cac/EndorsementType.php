@@ -196,7 +196,7 @@ class EndorsementType
         $remarks = $this->remarks ?? [];
         $remarks = reset($remarks);
 
-        if ($remarks === false) {
+        if (false === $remarks) {
             return null;
         }
 
@@ -211,7 +211,7 @@ class EndorsementType
         $remarks = $this->remarks ?? [];
         $remarks = end($remarks);
 
-        if ($remarks === false) {
+        if (false === $remarks) {
             return null;
         }
 
@@ -263,7 +263,7 @@ class EndorsementType
             $this->remarks = [];
         }
 
-        if ($this->remarks === []) {
+        if ([] === $this->remarks) {
             $this->addOnceToremarks(new Remarks());
         }
 
@@ -356,7 +356,7 @@ class EndorsementType
         $signature = $this->signature ?? [];
         $signature = reset($signature);
 
-        if ($signature === false) {
+        if (false === $signature) {
             return null;
         }
 
@@ -371,7 +371,7 @@ class EndorsementType
         $signature = $this->signature ?? [];
         $signature = end($signature);
 
-        if ($signature === false) {
+        if (false === $signature) {
             return null;
         }
 
@@ -423,7 +423,7 @@ class EndorsementType
             $this->signature = [];
         }
 
-        if ($this->signature === []) {
+        if ([] === $this->signature) {
             $this->addOnceTosignature(new Signature());
         }
 

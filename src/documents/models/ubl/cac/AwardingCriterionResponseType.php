@@ -222,7 +222,7 @@ class AwardingCriterionResponseType
         $awardingCriterionDescription = $this->awardingCriterionDescription ?? [];
         $awardingCriterionDescription = reset($awardingCriterionDescription);
 
-        if ($awardingCriterionDescription === false) {
+        if (false === $awardingCriterionDescription) {
             return null;
         }
 
@@ -237,7 +237,7 @@ class AwardingCriterionResponseType
         $awardingCriterionDescription = $this->awardingCriterionDescription ?? [];
         $awardingCriterionDescription = end($awardingCriterionDescription);
 
-        if ($awardingCriterionDescription === false) {
+        if (false === $awardingCriterionDescription) {
             return null;
         }
 
@@ -291,7 +291,7 @@ class AwardingCriterionResponseType
             $this->awardingCriterionDescription = [];
         }
 
-        if ($this->awardingCriterionDescription === []) {
+        if ([] === $this->awardingCriterionDescription) {
             $this->addOnceToawardingCriterionDescription(new AwardingCriterionDescription());
         }
 
@@ -345,7 +345,7 @@ class AwardingCriterionResponseType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -360,7 +360,7 @@ class AwardingCriterionResponseType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -412,7 +412,7 @@ class AwardingCriterionResponseType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -544,7 +544,7 @@ class AwardingCriterionResponseType
         $subordinateAwardingCriterionResponse = $this->subordinateAwardingCriterionResponse ?? [];
         $subordinateAwardingCriterionResponse = reset($subordinateAwardingCriterionResponse);
 
-        if ($subordinateAwardingCriterionResponse === false) {
+        if (false === $subordinateAwardingCriterionResponse) {
             return null;
         }
 
@@ -559,7 +559,7 @@ class AwardingCriterionResponseType
         $subordinateAwardingCriterionResponse = $this->subordinateAwardingCriterionResponse ?? [];
         $subordinateAwardingCriterionResponse = end($subordinateAwardingCriterionResponse);
 
-        if ($subordinateAwardingCriterionResponse === false) {
+        if (false === $subordinateAwardingCriterionResponse) {
             return null;
         }
 
@@ -613,7 +613,7 @@ class AwardingCriterionResponseType
             $this->subordinateAwardingCriterionResponse = [];
         }
 
-        if ($this->subordinateAwardingCriterionResponse === []) {
+        if ([] === $this->subordinateAwardingCriterionResponse) {
             $this->addOnceTosubordinateAwardingCriterionResponse(new SubordinateAwardingCriterionResponse());
         }
 

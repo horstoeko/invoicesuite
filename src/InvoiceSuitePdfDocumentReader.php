@@ -82,7 +82,7 @@ class InvoiceSuitePdfDocumentReader
                     && $formatProvider->isSatisfiableBySerializedContent($pdfExtractorAttachment->getAttachmentContent())
             );
 
-            if ($formatProviders === []) {
+            if ([] === $formatProviders) {
                 $this->addAdditionalDocumentAttachments($pdfExtractorAttachment);
                 continue;
             }
@@ -121,7 +121,7 @@ class InvoiceSuitePdfDocumentReader
 
         $fromContent = file_get_contents($fromFile);
 
-        if ($fromContent === false) {
+        if (false === $fromContent) {
             throw new InvoiceSuiteFileNotReadableException($fromFile);
         }
 

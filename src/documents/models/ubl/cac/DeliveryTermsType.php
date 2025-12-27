@@ -181,7 +181,7 @@ class DeliveryTermsType
         $specialTerms = $this->specialTerms ?? [];
         $specialTerms = reset($specialTerms);
 
-        if ($specialTerms === false) {
+        if (false === $specialTerms) {
             return null;
         }
 
@@ -196,7 +196,7 @@ class DeliveryTermsType
         $specialTerms = $this->specialTerms ?? [];
         $specialTerms = end($specialTerms);
 
-        if ($specialTerms === false) {
+        if (false === $specialTerms) {
             return null;
         }
 
@@ -248,7 +248,7 @@ class DeliveryTermsType
             $this->specialTerms = [];
         }
 
-        if ($this->specialTerms === []) {
+        if ([] === $this->specialTerms) {
             $this->addOnceTospecialTerms(new SpecialTerms());
         }
 
@@ -342,7 +342,7 @@ class DeliveryTermsType
         $lossRisk = $this->lossRisk ?? [];
         $lossRisk = reset($lossRisk);
 
-        if ($lossRisk === false) {
+        if (false === $lossRisk) {
             return null;
         }
 
@@ -357,7 +357,7 @@ class DeliveryTermsType
         $lossRisk = $this->lossRisk ?? [];
         $lossRisk = end($lossRisk);
 
-        if ($lossRisk === false) {
+        if (false === $lossRisk) {
             return null;
         }
 
@@ -409,7 +409,7 @@ class DeliveryTermsType
             $this->lossRisk = [];
         }
 
-        if ($this->lossRisk === []) {
+        if ([] === $this->lossRisk) {
             $this->addOnceTolossRisk(new LossRisk());
         }
 

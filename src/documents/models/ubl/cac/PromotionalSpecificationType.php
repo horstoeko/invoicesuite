@@ -133,7 +133,7 @@ class PromotionalSpecificationType
         $promotionalEventLineItem = $this->promotionalEventLineItem ?? [];
         $promotionalEventLineItem = reset($promotionalEventLineItem);
 
-        if ($promotionalEventLineItem === false) {
+        if (false === $promotionalEventLineItem) {
             return null;
         }
 
@@ -148,7 +148,7 @@ class PromotionalSpecificationType
         $promotionalEventLineItem = $this->promotionalEventLineItem ?? [];
         $promotionalEventLineItem = end($promotionalEventLineItem);
 
-        if ($promotionalEventLineItem === false) {
+        if (false === $promotionalEventLineItem) {
             return null;
         }
 
@@ -200,7 +200,7 @@ class PromotionalSpecificationType
             $this->promotionalEventLineItem = [];
         }
 
-        if ($this->promotionalEventLineItem === []) {
+        if ([] === $this->promotionalEventLineItem) {
             $this->addOnceTopromotionalEventLineItem(new PromotionalEventLineItem());
         }
 
@@ -254,7 +254,7 @@ class PromotionalSpecificationType
         $eventTactic = $this->eventTactic ?? [];
         $eventTactic = reset($eventTactic);
 
-        if ($eventTactic === false) {
+        if (false === $eventTactic) {
             return null;
         }
 
@@ -269,7 +269,7 @@ class PromotionalSpecificationType
         $eventTactic = $this->eventTactic ?? [];
         $eventTactic = end($eventTactic);
 
-        if ($eventTactic === false) {
+        if (false === $eventTactic) {
             return null;
         }
 
@@ -321,7 +321,7 @@ class PromotionalSpecificationType
             $this->eventTactic = [];
         }
 
-        if ($this->eventTactic === []) {
+        if ([] === $this->eventTactic) {
             $this->addOnceToeventTactic(new EventTactic());
         }
 

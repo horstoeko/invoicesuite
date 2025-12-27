@@ -101,7 +101,7 @@ class InvoiceSuiteXRechnungUBLCreditNoteProvider extends InvoiceSuiteAbstractDoc
         try {
             $contentDomDocument = new DOMDocument();
 
-            if ($contentDomDocument->loadXML($serializedContent) !== true) {
+            if (true !== $contentDomDocument->loadXML($serializedContent)) {
                 return false;
             }
 
@@ -121,11 +121,11 @@ class InvoiceSuiteXRechnungUBLCreditNoteProvider extends InvoiceSuiteAbstractDoc
 
                 $contentEntries = $contentDomXPath->query($contentQuery);
 
-                if ($contentEntries === false) {
+                if (false === $contentEntries) {
                     continue;
                 }
 
-                if ($contentEntries->length !== 1) {
+                if (1 !== $contentEntries->length) {
                     continue;
                 }
 
@@ -134,7 +134,7 @@ class InvoiceSuiteXRechnungUBLCreditNoteProvider extends InvoiceSuiteAbstractDoc
                 break;
             }
 
-            if ($contextParameterFound === false) {
+            if (false === $contextParameterFound) {
                 return false;
             }
 
@@ -142,11 +142,11 @@ class InvoiceSuiteXRechnungUBLCreditNoteProvider extends InvoiceSuiteAbstractDoc
 
             $contentEntries = $contentDomXPath->query($contentQuery);
 
-            if ($contentEntries === false) {
+            if (false === $contentEntries) {
                 return false;
             }
 
-            return $contentEntries->length === 1;
+            return 1 === $contentEntries->length;
         } finally {
             libxml_clear_errors();
             libxml_use_internal_errors($prevUseInternalErrors);

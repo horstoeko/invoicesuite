@@ -583,7 +583,7 @@ class DespatchType
         $instructions = $this->instructions ?? [];
         $instructions = reset($instructions);
 
-        if ($instructions === false) {
+        if (false === $instructions) {
             return null;
         }
 
@@ -598,7 +598,7 @@ class DespatchType
         $instructions = $this->instructions ?? [];
         $instructions = end($instructions);
 
-        if ($instructions === false) {
+        if (false === $instructions) {
             return null;
         }
 
@@ -650,7 +650,7 @@ class DespatchType
             $this->instructions = [];
         }
 
-        if ($this->instructions === []) {
+        if ([] === $this->instructions) {
             $this->addOnceToinstructions(new Instructions());
         }
 
@@ -860,7 +860,7 @@ class DespatchType
         $notifyParty = $this->notifyParty ?? [];
         $notifyParty = reset($notifyParty);
 
-        if ($notifyParty === false) {
+        if (false === $notifyParty) {
             return null;
         }
 
@@ -875,7 +875,7 @@ class DespatchType
         $notifyParty = $this->notifyParty ?? [];
         $notifyParty = end($notifyParty);
 
-        if ($notifyParty === false) {
+        if (false === $notifyParty) {
             return null;
         }
 
@@ -927,7 +927,7 @@ class DespatchType
             $this->notifyParty = [];
         }
 
-        if ($this->notifyParty === []) {
+        if ([] === $this->notifyParty) {
             $this->addOnceTonotifyParty(new NotifyParty());
         }
 

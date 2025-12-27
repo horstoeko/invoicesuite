@@ -93,7 +93,7 @@ class InvoiceSuiteAttachment
 
         $content = file_get_contents($filename);
 
-        if ($content === false) {
+        if (false === $content) {
             throw new InvoiceSuiteFileNotReadableException($filename);
         }
 
@@ -125,7 +125,7 @@ class InvoiceSuiteAttachment
     {
         $content = base64_decode($content, true);
 
-        if ($content === false) {
+        if (false === $content) {
             throw new InvoiceSuiteInvalidArgumentException('Not a BASE64 string');
         }
 

@@ -326,7 +326,7 @@ class RequestForTenderLineType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -341,7 +341,7 @@ class RequestForTenderLineType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -393,7 +393,7 @@ class RequestForTenderLineType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -710,7 +710,7 @@ class RequestForTenderLineType
         $documentReference = $this->documentReference ?? [];
         $documentReference = reset($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -725,7 +725,7 @@ class RequestForTenderLineType
         $documentReference = $this->documentReference ?? [];
         $documentReference = end($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -777,7 +777,7 @@ class RequestForTenderLineType
             $this->documentReference = [];
         }
 
-        if ($this->documentReference === []) {
+        if ([] === $this->documentReference) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
 
@@ -831,7 +831,7 @@ class RequestForTenderLineType
         $deliveryPeriod = $this->deliveryPeriod ?? [];
         $deliveryPeriod = reset($deliveryPeriod);
 
-        if ($deliveryPeriod === false) {
+        if (false === $deliveryPeriod) {
             return null;
         }
 
@@ -846,7 +846,7 @@ class RequestForTenderLineType
         $deliveryPeriod = $this->deliveryPeriod ?? [];
         $deliveryPeriod = end($deliveryPeriod);
 
-        if ($deliveryPeriod === false) {
+        if (false === $deliveryPeriod) {
             return null;
         }
 
@@ -898,7 +898,7 @@ class RequestForTenderLineType
             $this->deliveryPeriod = [];
         }
 
-        if ($this->deliveryPeriod === []) {
+        if ([] === $this->deliveryPeriod) {
             $this->addOnceTodeliveryPeriod(new DeliveryPeriod());
         }
 
@@ -952,7 +952,7 @@ class RequestForTenderLineType
         $requiredItemLocationQuantity = $this->requiredItemLocationQuantity ?? [];
         $requiredItemLocationQuantity = reset($requiredItemLocationQuantity);
 
-        if ($requiredItemLocationQuantity === false) {
+        if (false === $requiredItemLocationQuantity) {
             return null;
         }
 
@@ -967,7 +967,7 @@ class RequestForTenderLineType
         $requiredItemLocationQuantity = $this->requiredItemLocationQuantity ?? [];
         $requiredItemLocationQuantity = end($requiredItemLocationQuantity);
 
-        if ($requiredItemLocationQuantity === false) {
+        if (false === $requiredItemLocationQuantity) {
             return null;
         }
 
@@ -1021,7 +1021,7 @@ class RequestForTenderLineType
             $this->requiredItemLocationQuantity = [];
         }
 
-        if ($this->requiredItemLocationQuantity === []) {
+        if ([] === $this->requiredItemLocationQuantity) {
             $this->addOnceTorequiredItemLocationQuantity(new RequiredItemLocationQuantity());
         }
 
@@ -1153,7 +1153,7 @@ class RequestForTenderLineType
         $subRequestForTenderLine = $this->subRequestForTenderLine ?? [];
         $subRequestForTenderLine = reset($subRequestForTenderLine);
 
-        if ($subRequestForTenderLine === false) {
+        if (false === $subRequestForTenderLine) {
             return null;
         }
 
@@ -1168,7 +1168,7 @@ class RequestForTenderLineType
         $subRequestForTenderLine = $this->subRequestForTenderLine ?? [];
         $subRequestForTenderLine = end($subRequestForTenderLine);
 
-        if ($subRequestForTenderLine === false) {
+        if (false === $subRequestForTenderLine) {
             return null;
         }
 
@@ -1220,7 +1220,7 @@ class RequestForTenderLineType
             $this->subRequestForTenderLine = [];
         }
 
-        if ($this->subRequestForTenderLine === []) {
+        if ([] === $this->subRequestForTenderLine) {
             $this->addOnceTosubRequestForTenderLine(new SubRequestForTenderLine());
         }
 

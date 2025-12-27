@@ -93,7 +93,7 @@ class TendererPartyQualificationType
         $interestedProcurementProjectLot = $this->interestedProcurementProjectLot ?? [];
         $interestedProcurementProjectLot = reset($interestedProcurementProjectLot);
 
-        if ($interestedProcurementProjectLot === false) {
+        if (false === $interestedProcurementProjectLot) {
             return null;
         }
 
@@ -108,7 +108,7 @@ class TendererPartyQualificationType
         $interestedProcurementProjectLot = $this->interestedProcurementProjectLot ?? [];
         $interestedProcurementProjectLot = end($interestedProcurementProjectLot);
 
-        if ($interestedProcurementProjectLot === false) {
+        if (false === $interestedProcurementProjectLot) {
             return null;
         }
 
@@ -162,7 +162,7 @@ class TendererPartyQualificationType
             $this->interestedProcurementProjectLot = [];
         }
 
-        if ($this->interestedProcurementProjectLot === []) {
+        if ([] === $this->interestedProcurementProjectLot) {
             $this->addOnceTointerestedProcurementProjectLot(new InterestedProcurementProjectLot());
         }
 
@@ -255,7 +255,7 @@ class TendererPartyQualificationType
         $additionalQualifyingParty = $this->additionalQualifyingParty ?? [];
         $additionalQualifyingParty = reset($additionalQualifyingParty);
 
-        if ($additionalQualifyingParty === false) {
+        if (false === $additionalQualifyingParty) {
             return null;
         }
 
@@ -270,7 +270,7 @@ class TendererPartyQualificationType
         $additionalQualifyingParty = $this->additionalQualifyingParty ?? [];
         $additionalQualifyingParty = end($additionalQualifyingParty);
 
-        if ($additionalQualifyingParty === false) {
+        if (false === $additionalQualifyingParty) {
             return null;
         }
 
@@ -322,7 +322,7 @@ class TendererPartyQualificationType
             $this->additionalQualifyingParty = [];
         }
 
-        if ($this->additionalQualifyingParty === []) {
+        if ([] === $this->additionalQualifyingParty) {
             $this->addOnceToadditionalQualifyingParty(new AdditionalQualifyingParty());
         }
 

@@ -301,7 +301,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
 
         $content = file_get_contents($newFullFilename);
 
-        if ($content === false) {
+        if (false === $content) {
             throw new InvoiceSuiteFileNotReadableException($newFullFilename);
         }
 
@@ -341,7 +341,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
             throw new InvoiceSuiteUnknownContentException();
         }
 
-        if ($newRelationshipType === '') {
+        if ('' === $newRelationshipType) {
             $newRelationshipType = static::AF_RELATIONSHIP_SUPPLEMENT;
         }
 
@@ -349,7 +349,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
             $newRelationshipType = static::AF_RELATIONSHIP_SUPPLEMENT;
         }
 
-        if ($newDisplayName === '') {
+        if ('' === $newDisplayName) {
             $newDisplayName = InvoiceSuiteFileUtils::getFilenameWithExtension($newFilename);
         }
 

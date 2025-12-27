@@ -249,7 +249,7 @@ class PowerOfAttorneyType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -264,7 +264,7 @@ class PowerOfAttorneyType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -316,7 +316,7 @@ class PowerOfAttorneyType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -448,7 +448,7 @@ class PowerOfAttorneyType
         $witnessParty = $this->witnessParty ?? [];
         $witnessParty = reset($witnessParty);
 
-        if ($witnessParty === false) {
+        if (false === $witnessParty) {
             return null;
         }
 
@@ -463,7 +463,7 @@ class PowerOfAttorneyType
         $witnessParty = $this->witnessParty ?? [];
         $witnessParty = end($witnessParty);
 
-        if ($witnessParty === false) {
+        if (false === $witnessParty) {
             return null;
         }
 
@@ -515,7 +515,7 @@ class PowerOfAttorneyType
             $this->witnessParty = [];
         }
 
-        if ($this->witnessParty === []) {
+        if ([] === $this->witnessParty) {
             $this->addOnceTowitnessParty(new WitnessParty());
         }
 
@@ -569,7 +569,7 @@ class PowerOfAttorneyType
         $mandateDocumentReference = $this->mandateDocumentReference ?? [];
         $mandateDocumentReference = reset($mandateDocumentReference);
 
-        if ($mandateDocumentReference === false) {
+        if (false === $mandateDocumentReference) {
             return null;
         }
 
@@ -584,7 +584,7 @@ class PowerOfAttorneyType
         $mandateDocumentReference = $this->mandateDocumentReference ?? [];
         $mandateDocumentReference = end($mandateDocumentReference);
 
-        if ($mandateDocumentReference === false) {
+        if (false === $mandateDocumentReference) {
             return null;
         }
 
@@ -636,7 +636,7 @@ class PowerOfAttorneyType
             $this->mandateDocumentReference = [];
         }
 
-        if ($this->mandateDocumentReference === []) {
+        if ([] === $this->mandateDocumentReference) {
             $this->addOnceTomandateDocumentReference(new MandateDocumentReference());
         }
 

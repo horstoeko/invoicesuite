@@ -256,7 +256,7 @@ class TradeFinancingType
         $documentReference = $this->documentReference ?? [];
         $documentReference = reset($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -271,7 +271,7 @@ class TradeFinancingType
         $documentReference = $this->documentReference ?? [];
         $documentReference = end($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -323,7 +323,7 @@ class TradeFinancingType
             $this->documentReference = [];
         }
 
-        if ($this->documentReference === []) {
+        if ([] === $this->documentReference) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
 
@@ -455,7 +455,7 @@ class TradeFinancingType
         $clause = $this->clause ?? [];
         $clause = reset($clause);
 
-        if ($clause === false) {
+        if (false === $clause) {
             return null;
         }
 
@@ -470,7 +470,7 @@ class TradeFinancingType
         $clause = $this->clause ?? [];
         $clause = end($clause);
 
-        if ($clause === false) {
+        if (false === $clause) {
             return null;
         }
 
@@ -522,7 +522,7 @@ class TradeFinancingType
             $this->clause = [];
         }
 
-        if ($this->clause === []) {
+        if ([] === $this->clause) {
             $this->addOnceToclause(new Clause());
         }
 

@@ -154,7 +154,7 @@ class DocumentResponseType
         $documentReference = $this->documentReference ?? [];
         $documentReference = reset($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -169,7 +169,7 @@ class DocumentResponseType
         $documentReference = $this->documentReference ?? [];
         $documentReference = end($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -221,7 +221,7 @@ class DocumentResponseType
             $this->documentReference = [];
         }
 
-        if ($this->documentReference === []) {
+        if ([] === $this->documentReference) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
 
@@ -353,7 +353,7 @@ class DocumentResponseType
         $lineResponse = $this->lineResponse ?? [];
         $lineResponse = reset($lineResponse);
 
-        if ($lineResponse === false) {
+        if (false === $lineResponse) {
             return null;
         }
 
@@ -368,7 +368,7 @@ class DocumentResponseType
         $lineResponse = $this->lineResponse ?? [];
         $lineResponse = end($lineResponse);
 
-        if ($lineResponse === false) {
+        if (false === $lineResponse) {
             return null;
         }
 
@@ -420,7 +420,7 @@ class DocumentResponseType
             $this->lineResponse = [];
         }
 
-        if ($this->lineResponse === []) {
+        if ([] === $this->lineResponse) {
             $this->addOnceTolineResponse(new LineResponse());
         }
 

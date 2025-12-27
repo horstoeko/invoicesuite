@@ -355,7 +355,7 @@ class ItemInstanceType
         $additionalItemProperty = $this->additionalItemProperty ?? [];
         $additionalItemProperty = reset($additionalItemProperty);
 
-        if ($additionalItemProperty === false) {
+        if (false === $additionalItemProperty) {
             return null;
         }
 
@@ -370,7 +370,7 @@ class ItemInstanceType
         $additionalItemProperty = $this->additionalItemProperty ?? [];
         $additionalItemProperty = end($additionalItemProperty);
 
-        if ($additionalItemProperty === false) {
+        if (false === $additionalItemProperty) {
             return null;
         }
 
@@ -422,7 +422,7 @@ class ItemInstanceType
             $this->additionalItemProperty = [];
         }
 
-        if ($this->additionalItemProperty === []) {
+        if ([] === $this->additionalItemProperty) {
             $this->addOnceToadditionalItemProperty(new AdditionalItemProperty());
         }
 

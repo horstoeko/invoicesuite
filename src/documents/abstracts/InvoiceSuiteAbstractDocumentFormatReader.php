@@ -58,11 +58,11 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      */
     public function deserializeFromContent(string $fromContent): static
     {
-        if (InvoiceSuiteContentTypeResolver::resolveContentType($fromContent) === InvoiceSuiteContentTypeResolver::JSON) {
+        if (InvoiceSuiteContentTypeResolver::JSON === InvoiceSuiteContentTypeResolver::resolveContentType($fromContent)) {
             return $this->deserializeFromJsonContent($fromContent);
         }
 
-        if (InvoiceSuiteContentTypeResolver::resolveContentType($fromContent) === InvoiceSuiteContentTypeResolver::XML) {
+        if (InvoiceSuiteContentTypeResolver::XML === InvoiceSuiteContentTypeResolver::resolveContentType($fromContent)) {
             return $this->deserializeFromXmlContent($fromContent);
         }
 

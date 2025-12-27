@@ -127,7 +127,7 @@ class SupplierConsumptionType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -142,7 +142,7 @@ class SupplierConsumptionType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -194,7 +194,7 @@ class SupplierConsumptionType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -404,7 +404,7 @@ class SupplierConsumptionType
         $consumptionLine = $this->consumptionLine ?? [];
         $consumptionLine = reset($consumptionLine);
 
-        if ($consumptionLine === false) {
+        if (false === $consumptionLine) {
             return null;
         }
 
@@ -419,7 +419,7 @@ class SupplierConsumptionType
         $consumptionLine = $this->consumptionLine ?? [];
         $consumptionLine = end($consumptionLine);
 
-        if ($consumptionLine === false) {
+        if (false === $consumptionLine) {
             return null;
         }
 
@@ -471,7 +471,7 @@ class SupplierConsumptionType
             $this->consumptionLine = [];
         }
 
-        if ($this->consumptionLine === []) {
+        if ([] === $this->consumptionLine) {
             $this->addOnceToconsumptionLine(new ConsumptionLine());
         }
 

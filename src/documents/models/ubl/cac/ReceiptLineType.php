@@ -377,7 +377,7 @@ class ReceiptLineType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -392,7 +392,7 @@ class ReceiptLineType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -444,7 +444,7 @@ class ReceiptLineType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -693,7 +693,7 @@ class ReceiptLineType
         $rejectReason = $this->rejectReason ?? [];
         $rejectReason = reset($rejectReason);
 
-        if ($rejectReason === false) {
+        if (false === $rejectReason) {
             return null;
         }
 
@@ -708,7 +708,7 @@ class ReceiptLineType
         $rejectReason = $this->rejectReason ?? [];
         $rejectReason = end($rejectReason);
 
-        if ($rejectReason === false) {
+        if (false === $rejectReason) {
             return null;
         }
 
@@ -760,7 +760,7 @@ class ReceiptLineType
             $this->rejectReason = [];
         }
 
-        if ($this->rejectReason === []) {
+        if ([] === $this->rejectReason) {
             $this->addOnceTorejectReason(new RejectReason());
         }
 
@@ -1077,7 +1077,7 @@ class ReceiptLineType
         $despatchLineReference = $this->despatchLineReference ?? [];
         $despatchLineReference = reset($despatchLineReference);
 
-        if ($despatchLineReference === false) {
+        if (false === $despatchLineReference) {
             return null;
         }
 
@@ -1092,7 +1092,7 @@ class ReceiptLineType
         $despatchLineReference = $this->despatchLineReference ?? [];
         $despatchLineReference = end($despatchLineReference);
 
-        if ($despatchLineReference === false) {
+        if (false === $despatchLineReference) {
             return null;
         }
 
@@ -1144,7 +1144,7 @@ class ReceiptLineType
             $this->despatchLineReference = [];
         }
 
-        if ($this->despatchLineReference === []) {
+        if ([] === $this->despatchLineReference) {
             $this->addOnceTodespatchLineReference(new DespatchLineReference());
         }
 
@@ -1198,7 +1198,7 @@ class ReceiptLineType
         $documentReference = $this->documentReference ?? [];
         $documentReference = reset($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -1213,7 +1213,7 @@ class ReceiptLineType
         $documentReference = $this->documentReference ?? [];
         $documentReference = end($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -1265,7 +1265,7 @@ class ReceiptLineType
             $this->documentReference = [];
         }
 
-        if ($this->documentReference === []) {
+        if ([] === $this->documentReference) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
 
@@ -1319,7 +1319,7 @@ class ReceiptLineType
         $item = $this->item ?? [];
         $item = reset($item);
 
-        if ($item === false) {
+        if (false === $item) {
             return null;
         }
 
@@ -1334,7 +1334,7 @@ class ReceiptLineType
         $item = $this->item ?? [];
         $item = end($item);
 
-        if ($item === false) {
+        if (false === $item) {
             return null;
         }
 
@@ -1386,7 +1386,7 @@ class ReceiptLineType
             $this->item = [];
         }
 
-        if ($this->item === []) {
+        if ([] === $this->item) {
             $this->addOnceToitem(new Item());
         }
 
@@ -1440,7 +1440,7 @@ class ReceiptLineType
         $shipment = $this->shipment ?? [];
         $shipment = reset($shipment);
 
-        if ($shipment === false) {
+        if (false === $shipment) {
             return null;
         }
 
@@ -1455,7 +1455,7 @@ class ReceiptLineType
         $shipment = $this->shipment ?? [];
         $shipment = end($shipment);
 
-        if ($shipment === false) {
+        if (false === $shipment) {
             return null;
         }
 
@@ -1507,7 +1507,7 @@ class ReceiptLineType
             $this->shipment = [];
         }
 
-        if ($this->shipment === []) {
+        if ([] === $this->shipment) {
             $this->addOnceToshipment(new Shipment());
         }
 

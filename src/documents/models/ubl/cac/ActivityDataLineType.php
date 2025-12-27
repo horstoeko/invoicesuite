@@ -423,7 +423,7 @@ class ActivityDataLineType
         $salesItem = $this->salesItem ?? [];
         $salesItem = reset($salesItem);
 
-        if ($salesItem === false) {
+        if (false === $salesItem) {
             return null;
         }
 
@@ -438,7 +438,7 @@ class ActivityDataLineType
         $salesItem = $this->salesItem ?? [];
         $salesItem = end($salesItem);
 
-        if ($salesItem === false) {
+        if (false === $salesItem) {
             return null;
         }
 
@@ -490,7 +490,7 @@ class ActivityDataLineType
             $this->salesItem = [];
         }
 
-        if ($this->salesItem === []) {
+        if ([] === $this->salesItem) {
             $this->addOnceTosalesItem(new SalesItem());
         }
 

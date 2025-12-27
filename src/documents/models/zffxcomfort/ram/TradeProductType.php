@@ -384,7 +384,7 @@ class TradeProductType
             $this->applicableProductCharacteristic = [];
         }
 
-        if ($this->applicableProductCharacteristic === []) {
+        if ([] === $this->applicableProductCharacteristic) {
             $this->addOnceToapplicableProductCharacteristic(new ProductCharacteristicType());
         }
 
@@ -477,7 +477,7 @@ class TradeProductType
             $this->designatedProductClassification = [];
         }
 
-        if ($this->designatedProductClassification === []) {
+        if ([] === $this->designatedProductClassification) {
             $this->addOnceTodesignatedProductClassification(new ProductClassificationType());
         }
 

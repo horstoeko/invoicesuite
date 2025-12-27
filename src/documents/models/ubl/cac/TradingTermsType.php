@@ -94,7 +94,7 @@ class TradingTermsType
         $information = $this->information ?? [];
         $information = reset($information);
 
-        if ($information === false) {
+        if (false === $information) {
             return null;
         }
 
@@ -109,7 +109,7 @@ class TradingTermsType
         $information = $this->information ?? [];
         $information = end($information);
 
-        if ($information === false) {
+        if (false === $information) {
             return null;
         }
 
@@ -161,7 +161,7 @@ class TradingTermsType
             $this->information = [];
         }
 
-        if ($this->information === []) {
+        if ([] === $this->information) {
             $this->addOnceToinformation(new Information());
         }
 

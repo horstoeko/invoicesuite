@@ -275,7 +275,7 @@ class MeterPropertyType
         $valueQualifier = $this->valueQualifier ?? [];
         $valueQualifier = reset($valueQualifier);
 
-        if ($valueQualifier === false) {
+        if (false === $valueQualifier) {
             return null;
         }
 
@@ -290,7 +290,7 @@ class MeterPropertyType
         $valueQualifier = $this->valueQualifier ?? [];
         $valueQualifier = end($valueQualifier);
 
-        if ($valueQualifier === false) {
+        if (false === $valueQualifier) {
             return null;
         }
 
@@ -342,7 +342,7 @@ class MeterPropertyType
             $this->valueQualifier = [];
         }
 
-        if ($this->valueQualifier === []) {
+        if ([] === $this->valueQualifier) {
             $this->addOnceTovalueQualifier(new ValueQualifier());
         }
 

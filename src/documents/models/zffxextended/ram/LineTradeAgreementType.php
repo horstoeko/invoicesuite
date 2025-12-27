@@ -343,7 +343,7 @@ class LineTradeAgreementType
             $this->additionalReferencedDocument = [];
         }
 
-        if ($this->additionalReferencedDocument === []) {
+        if ([] === $this->additionalReferencedDocument) {
             $this->addOnceToadditionalReferencedDocument(new ReferencedDocumentType());
         }
 
@@ -515,7 +515,7 @@ class LineTradeAgreementType
             $this->ultimateCustomerOrderReferencedDocument = [];
         }
 
-        if ($this->ultimateCustomerOrderReferencedDocument === []) {
+        if ([] === $this->ultimateCustomerOrderReferencedDocument) {
             $this->addOnceToultimateCustomerOrderReferencedDocument(new ReferencedDocumentType());
         }
 

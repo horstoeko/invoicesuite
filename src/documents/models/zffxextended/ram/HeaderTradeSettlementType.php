@@ -719,7 +719,7 @@ class HeaderTradeSettlementType
             $this->specifiedTradeSettlementPaymentMeans = [];
         }
 
-        if ($this->specifiedTradeSettlementPaymentMeans === []) {
+        if ([] === $this->specifiedTradeSettlementPaymentMeans) {
             $this->addOnceTospecifiedTradeSettlementPaymentMeans(new TradeSettlementPaymentMeansType());
         }
 
@@ -810,7 +810,7 @@ class HeaderTradeSettlementType
             $this->applicableTradeTax = [];
         }
 
-        if ($this->applicableTradeTax === []) {
+        if ([] === $this->applicableTradeTax) {
             $this->addOnceToapplicableTradeTax(new TradeTaxType());
         }
 
@@ -941,7 +941,7 @@ class HeaderTradeSettlementType
             $this->specifiedTradeAllowanceCharge = [];
         }
 
-        if ($this->specifiedTradeAllowanceCharge === []) {
+        if ([] === $this->specifiedTradeAllowanceCharge) {
             $this->addOnceTospecifiedTradeAllowanceCharge(new TradeAllowanceChargeType());
         }
 
@@ -1034,7 +1034,7 @@ class HeaderTradeSettlementType
             $this->specifiedLogisticsServiceCharge = [];
         }
 
-        if ($this->specifiedLogisticsServiceCharge === []) {
+        if ([] === $this->specifiedLogisticsServiceCharge) {
             $this->addOnceTospecifiedLogisticsServiceCharge(new LogisticsServiceChargeType());
         }
 
@@ -1125,7 +1125,7 @@ class HeaderTradeSettlementType
             $this->specifiedTradePaymentTerms = [];
         }
 
-        if ($this->specifiedTradePaymentTerms === []) {
+        if ([] === $this->specifiedTradePaymentTerms) {
             $this->addOnceTospecifiedTradePaymentTerms(new TradePaymentTermsType());
         }
 
@@ -1256,7 +1256,7 @@ class HeaderTradeSettlementType
             $this->invoiceReferencedDocument = [];
         }
 
-        if ($this->invoiceReferencedDocument === []) {
+        if ([] === $this->invoiceReferencedDocument) {
             $this->addOnceToinvoiceReferencedDocument(new ReferencedDocumentType());
         }
 
@@ -1350,7 +1350,7 @@ class HeaderTradeSettlementType
             $this->receivableSpecifiedTradeAccountingAccount = [];
         }
 
-        if ($this->receivableSpecifiedTradeAccountingAccount === []) {
+        if ([] === $this->receivableSpecifiedTradeAccountingAccount) {
             $this->addOnceToreceivableSpecifiedTradeAccountingAccount(new TradeAccountingAccountType());
         }
 
@@ -1441,7 +1441,7 @@ class HeaderTradeSettlementType
             $this->specifiedAdvancePayment = [];
         }
 
-        if ($this->specifiedAdvancePayment === []) {
+        if ([] === $this->specifiedAdvancePayment) {
             $this->addOnceTospecifiedAdvancePayment(new AdvancePaymentType());
         }
 

@@ -406,7 +406,7 @@ class TenderingProcessType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -421,7 +421,7 @@ class TenderingProcessType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -473,7 +473,7 @@ class TenderingProcessType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -527,7 +527,7 @@ class TenderingProcessType
         $negotiationDescription = $this->negotiationDescription ?? [];
         $negotiationDescription = reset($negotiationDescription);
 
-        if ($negotiationDescription === false) {
+        if (false === $negotiationDescription) {
             return null;
         }
 
@@ -542,7 +542,7 @@ class TenderingProcessType
         $negotiationDescription = $this->negotiationDescription ?? [];
         $negotiationDescription = end($negotiationDescription);
 
-        if ($negotiationDescription === false) {
+        if (false === $negotiationDescription) {
             return null;
         }
 
@@ -594,7 +594,7 @@ class TenderingProcessType
             $this->negotiationDescription = [];
         }
 
-        if ($this->negotiationDescription === []) {
+        if ([] === $this->negotiationDescription) {
             $this->addOnceTonegotiationDescription(new NegotiationDescription());
         }
 
@@ -1102,7 +1102,7 @@ class TenderingProcessType
         $noticeDocumentReference = $this->noticeDocumentReference ?? [];
         $noticeDocumentReference = reset($noticeDocumentReference);
 
-        if ($noticeDocumentReference === false) {
+        if (false === $noticeDocumentReference) {
             return null;
         }
 
@@ -1117,7 +1117,7 @@ class TenderingProcessType
         $noticeDocumentReference = $this->noticeDocumentReference ?? [];
         $noticeDocumentReference = end($noticeDocumentReference);
 
-        if ($noticeDocumentReference === false) {
+        if (false === $noticeDocumentReference) {
             return null;
         }
 
@@ -1169,7 +1169,7 @@ class TenderingProcessType
             $this->noticeDocumentReference = [];
         }
 
-        if ($this->noticeDocumentReference === []) {
+        if ([] === $this->noticeDocumentReference) {
             $this->addOnceTonoticeDocumentReference(new NoticeDocumentReference());
         }
 
@@ -1223,7 +1223,7 @@ class TenderingProcessType
         $additionalDocumentReference = $this->additionalDocumentReference ?? [];
         $additionalDocumentReference = reset($additionalDocumentReference);
 
-        if ($additionalDocumentReference === false) {
+        if (false === $additionalDocumentReference) {
             return null;
         }
 
@@ -1238,7 +1238,7 @@ class TenderingProcessType
         $additionalDocumentReference = $this->additionalDocumentReference ?? [];
         $additionalDocumentReference = end($additionalDocumentReference);
 
-        if ($additionalDocumentReference === false) {
+        if (false === $additionalDocumentReference) {
             return null;
         }
 
@@ -1291,7 +1291,7 @@ class TenderingProcessType
             $this->additionalDocumentReference = [];
         }
 
-        if ($this->additionalDocumentReference === []) {
+        if ([] === $this->additionalDocumentReference) {
             $this->addOnceToadditionalDocumentReference(new AdditionalDocumentReference());
         }
 
@@ -1345,7 +1345,7 @@ class TenderingProcessType
         $processJustification = $this->processJustification ?? [];
         $processJustification = reset($processJustification);
 
-        if ($processJustification === false) {
+        if (false === $processJustification) {
             return null;
         }
 
@@ -1360,7 +1360,7 @@ class TenderingProcessType
         $processJustification = $this->processJustification ?? [];
         $processJustification = end($processJustification);
 
-        if ($processJustification === false) {
+        if (false === $processJustification) {
             return null;
         }
 
@@ -1412,7 +1412,7 @@ class TenderingProcessType
             $this->processJustification = [];
         }
 
-        if ($this->processJustification === []) {
+        if ([] === $this->processJustification) {
             $this->addOnceToprocessJustification(new ProcessJustification());
         }
 
@@ -1505,7 +1505,7 @@ class TenderingProcessType
         $openTenderEvent = $this->openTenderEvent ?? [];
         $openTenderEvent = reset($openTenderEvent);
 
-        if ($openTenderEvent === false) {
+        if (false === $openTenderEvent) {
             return null;
         }
 
@@ -1520,7 +1520,7 @@ class TenderingProcessType
         $openTenderEvent = $this->openTenderEvent ?? [];
         $openTenderEvent = end($openTenderEvent);
 
-        if ($openTenderEvent === false) {
+        if (false === $openTenderEvent) {
             return null;
         }
 
@@ -1572,7 +1572,7 @@ class TenderingProcessType
             $this->openTenderEvent = [];
         }
 
-        if ($this->openTenderEvent === []) {
+        if ([] === $this->openTenderEvent) {
             $this->addOnceToopenTenderEvent(new OpenTenderEvent());
         }
 

@@ -185,7 +185,7 @@ class ClassificationCategoryType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -200,7 +200,7 @@ class ClassificationCategoryType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -252,7 +252,7 @@ class ClassificationCategoryType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -306,7 +306,7 @@ class ClassificationCategoryType
         $categorizesClassificationCategory = $this->categorizesClassificationCategory ?? [];
         $categorizesClassificationCategory = reset($categorizesClassificationCategory);
 
-        if ($categorizesClassificationCategory === false) {
+        if (false === $categorizesClassificationCategory) {
             return null;
         }
 
@@ -321,7 +321,7 @@ class ClassificationCategoryType
         $categorizesClassificationCategory = $this->categorizesClassificationCategory ?? [];
         $categorizesClassificationCategory = end($categorizesClassificationCategory);
 
-        if ($categorizesClassificationCategory === false) {
+        if (false === $categorizesClassificationCategory) {
             return null;
         }
 
@@ -375,7 +375,7 @@ class ClassificationCategoryType
             $this->categorizesClassificationCategory = [];
         }
 
-        if ($this->categorizesClassificationCategory === []) {
+        if ([] === $this->categorizesClassificationCategory) {
             $this->addOnceTocategorizesClassificationCategory(new CategorizesClassificationCategory());
         }
 

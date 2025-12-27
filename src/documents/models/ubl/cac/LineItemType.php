@@ -551,7 +551,7 @@ class LineItemType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -566,7 +566,7 @@ class LineItemType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -618,7 +618,7 @@ class LineItemType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -1159,7 +1159,7 @@ class LineItemType
         $warrantyInformation = $this->warrantyInformation ?? [];
         $warrantyInformation = reset($warrantyInformation);
 
-        if ($warrantyInformation === false) {
+        if (false === $warrantyInformation) {
             return null;
         }
 
@@ -1174,7 +1174,7 @@ class LineItemType
         $warrantyInformation = $this->warrantyInformation ?? [];
         $warrantyInformation = end($warrantyInformation);
 
-        if ($warrantyInformation === false) {
+        if (false === $warrantyInformation) {
             return null;
         }
 
@@ -1226,7 +1226,7 @@ class LineItemType
             $this->warrantyInformation = [];
         }
 
-        if ($this->warrantyInformation === []) {
+        if ([] === $this->warrantyInformation) {
             $this->addOnceTowarrantyInformation(new WarrantyInformation());
         }
 
@@ -1280,7 +1280,7 @@ class LineItemType
         $delivery = $this->delivery ?? [];
         $delivery = reset($delivery);
 
-        if ($delivery === false) {
+        if (false === $delivery) {
             return null;
         }
 
@@ -1295,7 +1295,7 @@ class LineItemType
         $delivery = $this->delivery ?? [];
         $delivery = end($delivery);
 
-        if ($delivery === false) {
+        if (false === $delivery) {
             return null;
         }
 
@@ -1347,7 +1347,7 @@ class LineItemType
             $this->delivery = [];
         }
 
-        if ($this->delivery === []) {
+        if ([] === $this->delivery) {
             $this->addOnceTodelivery(new Delivery());
         }
 
@@ -1479,7 +1479,7 @@ class LineItemType
         $orderedShipment = $this->orderedShipment ?? [];
         $orderedShipment = reset($orderedShipment);
 
-        if ($orderedShipment === false) {
+        if (false === $orderedShipment) {
             return null;
         }
 
@@ -1494,7 +1494,7 @@ class LineItemType
         $orderedShipment = $this->orderedShipment ?? [];
         $orderedShipment = end($orderedShipment);
 
-        if ($orderedShipment === false) {
+        if (false === $orderedShipment) {
             return null;
         }
 
@@ -1546,7 +1546,7 @@ class LineItemType
             $this->orderedShipment = [];
         }
 
-        if ($this->orderedShipment === []) {
+        if ([] === $this->orderedShipment) {
             $this->addOnceToorderedShipment(new OrderedShipment());
         }
 
@@ -1639,7 +1639,7 @@ class LineItemType
         $allowanceCharge = $this->allowanceCharge ?? [];
         $allowanceCharge = reset($allowanceCharge);
 
-        if ($allowanceCharge === false) {
+        if (false === $allowanceCharge) {
             return null;
         }
 
@@ -1654,7 +1654,7 @@ class LineItemType
         $allowanceCharge = $this->allowanceCharge ?? [];
         $allowanceCharge = end($allowanceCharge);
 
-        if ($allowanceCharge === false) {
+        if (false === $allowanceCharge) {
             return null;
         }
 
@@ -1706,7 +1706,7 @@ class LineItemType
             $this->allowanceCharge = [];
         }
 
-        if ($this->allowanceCharge === []) {
+        if ([] === $this->allowanceCharge) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }
 
@@ -1838,7 +1838,7 @@ class LineItemType
         $subLineItem = $this->subLineItem ?? [];
         $subLineItem = reset($subLineItem);
 
-        if ($subLineItem === false) {
+        if (false === $subLineItem) {
             return null;
         }
 
@@ -1853,7 +1853,7 @@ class LineItemType
         $subLineItem = $this->subLineItem ?? [];
         $subLineItem = end($subLineItem);
 
-        if ($subLineItem === false) {
+        if (false === $subLineItem) {
             return null;
         }
 
@@ -1905,7 +1905,7 @@ class LineItemType
             $this->subLineItem = [];
         }
 
-        if ($this->subLineItem === []) {
+        if ([] === $this->subLineItem) {
             $this->addOnceTosubLineItem(new SubLineItem());
         }
 
@@ -2037,7 +2037,7 @@ class LineItemType
         $taxTotal = $this->taxTotal ?? [];
         $taxTotal = reset($taxTotal);
 
-        if ($taxTotal === false) {
+        if (false === $taxTotal) {
             return null;
         }
 
@@ -2052,7 +2052,7 @@ class LineItemType
         $taxTotal = $this->taxTotal ?? [];
         $taxTotal = end($taxTotal);
 
-        if ($taxTotal === false) {
+        if (false === $taxTotal) {
             return null;
         }
 
@@ -2104,7 +2104,7 @@ class LineItemType
             $this->taxTotal = [];
         }
 
-        if ($this->taxTotal === []) {
+        if ([] === $this->taxTotal) {
             $this->addOnceTotaxTotal(new TaxTotal());
         }
 
@@ -2197,7 +2197,7 @@ class LineItemType
         $lineReference = $this->lineReference ?? [];
         $lineReference = reset($lineReference);
 
-        if ($lineReference === false) {
+        if (false === $lineReference) {
             return null;
         }
 
@@ -2212,7 +2212,7 @@ class LineItemType
         $lineReference = $this->lineReference ?? [];
         $lineReference = end($lineReference);
 
-        if ($lineReference === false) {
+        if (false === $lineReference) {
             return null;
         }
 
@@ -2264,7 +2264,7 @@ class LineItemType
             $this->lineReference = [];
         }
 
-        if ($this->lineReference === []) {
+        if ([] === $this->lineReference) {
             $this->addOnceTolineReference(new LineReference());
         }
 

@@ -747,7 +747,7 @@ class HeaderTradeAgreementType
             $this->additionalReferencedDocument = [];
         }
 
-        if ($this->additionalReferencedDocument === []) {
+        if ([] === $this->additionalReferencedDocument) {
             $this->addOnceToadditionalReferencedDocument(new ReferencedDocumentType());
         }
 
@@ -919,7 +919,7 @@ class HeaderTradeAgreementType
             $this->ultimateCustomerOrderReferencedDocument = [];
         }
 
-        if ($this->ultimateCustomerOrderReferencedDocument === []) {
+        if ([] === $this->ultimateCustomerOrderReferencedDocument) {
             $this->addOnceToultimateCustomerOrderReferencedDocument(new ReferencedDocumentType());
         }
 

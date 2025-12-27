@@ -487,7 +487,7 @@ class TransportationServiceType
         $transportationServiceDescription = $this->transportationServiceDescription ?? [];
         $transportationServiceDescription = reset($transportationServiceDescription);
 
-        if ($transportationServiceDescription === false) {
+        if (false === $transportationServiceDescription) {
             return null;
         }
 
@@ -502,7 +502,7 @@ class TransportationServiceType
         $transportationServiceDescription = $this->transportationServiceDescription ?? [];
         $transportationServiceDescription = end($transportationServiceDescription);
 
-        if ($transportationServiceDescription === false) {
+        if (false === $transportationServiceDescription) {
             return null;
         }
 
@@ -556,7 +556,7 @@ class TransportationServiceType
             $this->transportationServiceDescription = [];
         }
 
-        if ($this->transportationServiceDescription === []) {
+        if ([] === $this->transportationServiceDescription) {
             $this->addOnceTotransportationServiceDescription(new TransportationServiceDescription());
         }
 
@@ -786,7 +786,7 @@ class TransportationServiceType
         $transportEquipment = $this->transportEquipment ?? [];
         $transportEquipment = reset($transportEquipment);
 
-        if ($transportEquipment === false) {
+        if (false === $transportEquipment) {
             return null;
         }
 
@@ -801,7 +801,7 @@ class TransportationServiceType
         $transportEquipment = $this->transportEquipment ?? [];
         $transportEquipment = end($transportEquipment);
 
-        if ($transportEquipment === false) {
+        if (false === $transportEquipment) {
             return null;
         }
 
@@ -853,7 +853,7 @@ class TransportationServiceType
             $this->transportEquipment = [];
         }
 
-        if ($this->transportEquipment === []) {
+        if ([] === $this->transportEquipment) {
             $this->addOnceTotransportEquipment(new TransportEquipment());
         }
 
@@ -907,7 +907,7 @@ class TransportationServiceType
         $supportedTransportEquipment = $this->supportedTransportEquipment ?? [];
         $supportedTransportEquipment = reset($supportedTransportEquipment);
 
-        if ($supportedTransportEquipment === false) {
+        if (false === $supportedTransportEquipment) {
             return null;
         }
 
@@ -922,7 +922,7 @@ class TransportationServiceType
         $supportedTransportEquipment = $this->supportedTransportEquipment ?? [];
         $supportedTransportEquipment = end($supportedTransportEquipment);
 
-        if ($supportedTransportEquipment === false) {
+        if (false === $supportedTransportEquipment) {
             return null;
         }
 
@@ -975,7 +975,7 @@ class TransportationServiceType
             $this->supportedTransportEquipment = [];
         }
 
-        if ($this->supportedTransportEquipment === []) {
+        if ([] === $this->supportedTransportEquipment) {
             $this->addOnceTosupportedTransportEquipment(new SupportedTransportEquipment());
         }
 
@@ -1029,7 +1029,7 @@ class TransportationServiceType
         $unsupportedTransportEquipment = $this->unsupportedTransportEquipment ?? [];
         $unsupportedTransportEquipment = reset($unsupportedTransportEquipment);
 
-        if ($unsupportedTransportEquipment === false) {
+        if (false === $unsupportedTransportEquipment) {
             return null;
         }
 
@@ -1044,7 +1044,7 @@ class TransportationServiceType
         $unsupportedTransportEquipment = $this->unsupportedTransportEquipment ?? [];
         $unsupportedTransportEquipment = end($unsupportedTransportEquipment);
 
-        if ($unsupportedTransportEquipment === false) {
+        if (false === $unsupportedTransportEquipment) {
             return null;
         }
 
@@ -1098,7 +1098,7 @@ class TransportationServiceType
             $this->unsupportedTransportEquipment = [];
         }
 
-        if ($this->unsupportedTransportEquipment === []) {
+        if ([] === $this->unsupportedTransportEquipment) {
             $this->addOnceTounsupportedTransportEquipment(new UnsupportedTransportEquipment());
         }
 
@@ -1152,7 +1152,7 @@ class TransportationServiceType
         $commodityClassification = $this->commodityClassification ?? [];
         $commodityClassification = reset($commodityClassification);
 
-        if ($commodityClassification === false) {
+        if (false === $commodityClassification) {
             return null;
         }
 
@@ -1167,7 +1167,7 @@ class TransportationServiceType
         $commodityClassification = $this->commodityClassification ?? [];
         $commodityClassification = end($commodityClassification);
 
-        if ($commodityClassification === false) {
+        if (false === $commodityClassification) {
             return null;
         }
 
@@ -1219,7 +1219,7 @@ class TransportationServiceType
             $this->commodityClassification = [];
         }
 
-        if ($this->commodityClassification === []) {
+        if ([] === $this->commodityClassification) {
             $this->addOnceTocommodityClassification(new CommodityClassification());
         }
 
@@ -1273,7 +1273,7 @@ class TransportationServiceType
         $supportedCommodityClassification = $this->supportedCommodityClassification ?? [];
         $supportedCommodityClassification = reset($supportedCommodityClassification);
 
-        if ($supportedCommodityClassification === false) {
+        if (false === $supportedCommodityClassification) {
             return null;
         }
 
@@ -1288,7 +1288,7 @@ class TransportationServiceType
         $supportedCommodityClassification = $this->supportedCommodityClassification ?? [];
         $supportedCommodityClassification = end($supportedCommodityClassification);
 
-        if ($supportedCommodityClassification === false) {
+        if (false === $supportedCommodityClassification) {
             return null;
         }
 
@@ -1342,7 +1342,7 @@ class TransportationServiceType
             $this->supportedCommodityClassification = [];
         }
 
-        if ($this->supportedCommodityClassification === []) {
+        if ([] === $this->supportedCommodityClassification) {
             $this->addOnceTosupportedCommodityClassification(new SupportedCommodityClassification());
         }
 
@@ -1396,7 +1396,7 @@ class TransportationServiceType
         $unsupportedCommodityClassification = $this->unsupportedCommodityClassification ?? [];
         $unsupportedCommodityClassification = reset($unsupportedCommodityClassification);
 
-        if ($unsupportedCommodityClassification === false) {
+        if (false === $unsupportedCommodityClassification) {
             return null;
         }
 
@@ -1411,7 +1411,7 @@ class TransportationServiceType
         $unsupportedCommodityClassification = $this->unsupportedCommodityClassification ?? [];
         $unsupportedCommodityClassification = end($unsupportedCommodityClassification);
 
-        if ($unsupportedCommodityClassification === false) {
+        if (false === $unsupportedCommodityClassification) {
             return null;
         }
 
@@ -1465,7 +1465,7 @@ class TransportationServiceType
             $this->unsupportedCommodityClassification = [];
         }
 
-        if ($this->unsupportedCommodityClassification === []) {
+        if ([] === $this->unsupportedCommodityClassification) {
             $this->addOnceTounsupportedCommodityClassification(new UnsupportedCommodityClassification());
         }
 
@@ -1558,7 +1558,7 @@ class TransportationServiceType
         $shipmentStage = $this->shipmentStage ?? [];
         $shipmentStage = reset($shipmentStage);
 
-        if ($shipmentStage === false) {
+        if (false === $shipmentStage) {
             return null;
         }
 
@@ -1573,7 +1573,7 @@ class TransportationServiceType
         $shipmentStage = $this->shipmentStage ?? [];
         $shipmentStage = end($shipmentStage);
 
-        if ($shipmentStage === false) {
+        if (false === $shipmentStage) {
             return null;
         }
 
@@ -1625,7 +1625,7 @@ class TransportationServiceType
             $this->shipmentStage = [];
         }
 
-        if ($this->shipmentStage === []) {
+        if ([] === $this->shipmentStage) {
             $this->addOnceToshipmentStage(new ShipmentStage());
         }
 
@@ -1679,7 +1679,7 @@ class TransportationServiceType
         $transportEvent = $this->transportEvent ?? [];
         $transportEvent = reset($transportEvent);
 
-        if ($transportEvent === false) {
+        if (false === $transportEvent) {
             return null;
         }
 
@@ -1694,7 +1694,7 @@ class TransportationServiceType
         $transportEvent = $this->transportEvent ?? [];
         $transportEvent = end($transportEvent);
 
-        if ($transportEvent === false) {
+        if (false === $transportEvent) {
             return null;
         }
 
@@ -1746,7 +1746,7 @@ class TransportationServiceType
             $this->transportEvent = [];
         }
 
-        if ($this->transportEvent === []) {
+        if ([] === $this->transportEvent) {
             $this->addOnceTotransportEvent(new TransportEvent());
         }
 
@@ -1840,7 +1840,7 @@ class TransportationServiceType
         $environmentalEmission = $this->environmentalEmission ?? [];
         $environmentalEmission = reset($environmentalEmission);
 
-        if ($environmentalEmission === false) {
+        if (false === $environmentalEmission) {
             return null;
         }
 
@@ -1855,7 +1855,7 @@ class TransportationServiceType
         $environmentalEmission = $this->environmentalEmission ?? [];
         $environmentalEmission = end($environmentalEmission);
 
-        if ($environmentalEmission === false) {
+        if (false === $environmentalEmission) {
             return null;
         }
 
@@ -1907,7 +1907,7 @@ class TransportationServiceType
             $this->environmentalEmission = [];
         }
 
-        if ($this->environmentalEmission === []) {
+        if ([] === $this->environmentalEmission) {
             $this->addOnceToenvironmentalEmission(new EnvironmentalEmission());
         }
 
@@ -2000,7 +2000,7 @@ class TransportationServiceType
         $scheduledServiceFrequency = $this->scheduledServiceFrequency ?? [];
         $scheduledServiceFrequency = reset($scheduledServiceFrequency);
 
-        if ($scheduledServiceFrequency === false) {
+        if (false === $scheduledServiceFrequency) {
             return null;
         }
 
@@ -2015,7 +2015,7 @@ class TransportationServiceType
         $scheduledServiceFrequency = $this->scheduledServiceFrequency ?? [];
         $scheduledServiceFrequency = end($scheduledServiceFrequency);
 
-        if ($scheduledServiceFrequency === false) {
+        if (false === $scheduledServiceFrequency) {
             return null;
         }
 
@@ -2067,7 +2067,7 @@ class TransportationServiceType
             $this->scheduledServiceFrequency = [];
         }
 
-        if ($this->scheduledServiceFrequency === []) {
+        if ([] === $this->scheduledServiceFrequency) {
             $this->addOnceToscheduledServiceFrequency(new ScheduledServiceFrequency());
         }
 

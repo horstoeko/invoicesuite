@@ -256,7 +256,7 @@ class InvoiceSuitePaymentTermDTO
         $count = 0;
 
         foreach ($this->discountTerms as $discountTerm) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -265,7 +265,7 @@ class InvoiceSuitePaymentTermDTO
             $callback($discountTerm);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -397,7 +397,7 @@ class InvoiceSuitePaymentTermDTO
         $count = 0;
 
         foreach ($this->penaltyTerms as $penaltyTerm) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -406,7 +406,7 @@ class InvoiceSuitePaymentTermDTO
             $callback($penaltyTerm);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 

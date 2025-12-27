@@ -173,7 +173,7 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
         $count = 0;
 
         foreach ($this->allowanceCharges as $allowanceCharge) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -182,7 +182,7 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
             $callback($allowanceCharge);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 

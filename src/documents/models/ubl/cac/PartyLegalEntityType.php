@@ -689,7 +689,7 @@ class PartyLegalEntityType
         $shareholderParty = $this->shareholderParty ?? [];
         $shareholderParty = reset($shareholderParty);
 
-        if ($shareholderParty === false) {
+        if (false === $shareholderParty) {
             return null;
         }
 
@@ -704,7 +704,7 @@ class PartyLegalEntityType
         $shareholderParty = $this->shareholderParty ?? [];
         $shareholderParty = end($shareholderParty);
 
-        if ($shareholderParty === false) {
+        if (false === $shareholderParty) {
             return null;
         }
 
@@ -756,7 +756,7 @@ class PartyLegalEntityType
             $this->shareholderParty = [];
         }
 
-        if ($this->shareholderParty === []) {
+        if ([] === $this->shareholderParty) {
             $this->addOnceToshareholderParty(new ShareholderParty());
         }
 

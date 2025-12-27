@@ -118,7 +118,7 @@ class InvoiceSuiteArrayUtils
     public static function pushArrayToIntIndexedArray(array &$array, array $value): void
     {
         // @phpstan-ignore paramOut.type
-        if ($value !== []) {
+        if ([] !== $value) {
             // @phpstan-ignore paramOut.type
             $array[] = $value;
         }

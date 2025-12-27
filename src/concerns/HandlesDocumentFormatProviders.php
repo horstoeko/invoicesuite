@@ -77,9 +77,9 @@ trait HandlesDocumentFormatProviders
      */
     public function findDocumentFormatProviderByUniqueId(string $formatProviderUniqueId)
     {
-        $formatProvider = array_filter($this->registeredDocumentFormatProviders, static fn ($formatProvider) => strcasecmp($formatProvider->getUniqueId(), $formatProviderUniqueId) === 0);
+        $formatProvider = array_filter($this->registeredDocumentFormatProviders, static fn ($formatProvider) => 0 === strcasecmp($formatProvider->getUniqueId(), $formatProviderUniqueId));
 
-        if ($formatProvider === []) {
+        if ([] === $formatProvider) {
             return null;
         }
 

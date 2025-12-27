@@ -1159,7 +1159,7 @@ class ShipmentStageType
         $instructions = $this->instructions ?? [];
         $instructions = reset($instructions);
 
-        if ($instructions === false) {
+        if (false === $instructions) {
             return null;
         }
 
@@ -1174,7 +1174,7 @@ class ShipmentStageType
         $instructions = $this->instructions ?? [];
         $instructions = end($instructions);
 
-        if ($instructions === false) {
+        if (false === $instructions) {
             return null;
         }
 
@@ -1226,7 +1226,7 @@ class ShipmentStageType
             $this->instructions = [];
         }
 
-        if ($this->instructions === []) {
+        if ([] === $this->instructions) {
             $this->addOnceToinstructions(new Instructions());
         }
 
@@ -1280,7 +1280,7 @@ class ShipmentStageType
         $demurrageInstructions = $this->demurrageInstructions ?? [];
         $demurrageInstructions = reset($demurrageInstructions);
 
-        if ($demurrageInstructions === false) {
+        if (false === $demurrageInstructions) {
             return null;
         }
 
@@ -1295,7 +1295,7 @@ class ShipmentStageType
         $demurrageInstructions = $this->demurrageInstructions ?? [];
         $demurrageInstructions = end($demurrageInstructions);
 
-        if ($demurrageInstructions === false) {
+        if (false === $demurrageInstructions) {
             return null;
         }
 
@@ -1347,7 +1347,7 @@ class ShipmentStageType
             $this->demurrageInstructions = [];
         }
 
-        if ($this->demurrageInstructions === []) {
+        if ([] === $this->demurrageInstructions) {
             $this->addOnceTodemurrageInstructions(new DemurrageInstructions());
         }
 
@@ -1518,7 +1518,7 @@ class ShipmentStageType
         $carrierParty = $this->carrierParty ?? [];
         $carrierParty = reset($carrierParty);
 
-        if ($carrierParty === false) {
+        if (false === $carrierParty) {
             return null;
         }
 
@@ -1533,7 +1533,7 @@ class ShipmentStageType
         $carrierParty = $this->carrierParty ?? [];
         $carrierParty = end($carrierParty);
 
-        if ($carrierParty === false) {
+        if (false === $carrierParty) {
             return null;
         }
 
@@ -1585,7 +1585,7 @@ class ShipmentStageType
             $this->carrierParty = [];
         }
 
-        if ($this->carrierParty === []) {
+        if ([] === $this->carrierParty) {
             $this->addOnceTocarrierParty(new CarrierParty());
         }
 
@@ -2461,7 +2461,7 @@ class ShipmentStageType
         $freightAllowanceCharge = $this->freightAllowanceCharge ?? [];
         $freightAllowanceCharge = reset($freightAllowanceCharge);
 
-        if ($freightAllowanceCharge === false) {
+        if (false === $freightAllowanceCharge) {
             return null;
         }
 
@@ -2476,7 +2476,7 @@ class ShipmentStageType
         $freightAllowanceCharge = $this->freightAllowanceCharge ?? [];
         $freightAllowanceCharge = end($freightAllowanceCharge);
 
-        if ($freightAllowanceCharge === false) {
+        if (false === $freightAllowanceCharge) {
             return null;
         }
 
@@ -2528,7 +2528,7 @@ class ShipmentStageType
             $this->freightAllowanceCharge = [];
         }
 
-        if ($this->freightAllowanceCharge === []) {
+        if ([] === $this->freightAllowanceCharge) {
             $this->addOnceTofreightAllowanceCharge(new FreightAllowanceCharge());
         }
 
@@ -2621,7 +2621,7 @@ class ShipmentStageType
         $detentionTransportEvent = $this->detentionTransportEvent ?? [];
         $detentionTransportEvent = reset($detentionTransportEvent);
 
-        if ($detentionTransportEvent === false) {
+        if (false === $detentionTransportEvent) {
             return null;
         }
 
@@ -2636,7 +2636,7 @@ class ShipmentStageType
         $detentionTransportEvent = $this->detentionTransportEvent ?? [];
         $detentionTransportEvent = end($detentionTransportEvent);
 
-        if ($detentionTransportEvent === false) {
+        if (false === $detentionTransportEvent) {
             return null;
         }
 
@@ -2688,7 +2688,7 @@ class ShipmentStageType
             $this->detentionTransportEvent = [];
         }
 
-        if ($this->detentionTransportEvent === []) {
+        if ([] === $this->detentionTransportEvent) {
             $this->addOnceTodetentionTransportEvent(new DetentionTransportEvent());
         }
 
@@ -2822,7 +2822,7 @@ class ShipmentStageType
         $requestedWaypointTransportEvent = $this->requestedWaypointTransportEvent ?? [];
         $requestedWaypointTransportEvent = reset($requestedWaypointTransportEvent);
 
-        if ($requestedWaypointTransportEvent === false) {
+        if (false === $requestedWaypointTransportEvent) {
             return null;
         }
 
@@ -2837,7 +2837,7 @@ class ShipmentStageType
         $requestedWaypointTransportEvent = $this->requestedWaypointTransportEvent ?? [];
         $requestedWaypointTransportEvent = end($requestedWaypointTransportEvent);
 
-        if ($requestedWaypointTransportEvent === false) {
+        if (false === $requestedWaypointTransportEvent) {
             return null;
         }
 
@@ -2891,7 +2891,7 @@ class ShipmentStageType
             $this->requestedWaypointTransportEvent = [];
         }
 
-        if ($this->requestedWaypointTransportEvent === []) {
+        if ([] === $this->requestedWaypointTransportEvent) {
             $this->addOnceTorequestedWaypointTransportEvent(new RequestedWaypointTransportEvent());
         }
 
@@ -3025,7 +3025,7 @@ class ShipmentStageType
         $plannedWaypointTransportEvent = $this->plannedWaypointTransportEvent ?? [];
         $plannedWaypointTransportEvent = reset($plannedWaypointTransportEvent);
 
-        if ($plannedWaypointTransportEvent === false) {
+        if (false === $plannedWaypointTransportEvent) {
             return null;
         }
 
@@ -3040,7 +3040,7 @@ class ShipmentStageType
         $plannedWaypointTransportEvent = $this->plannedWaypointTransportEvent ?? [];
         $plannedWaypointTransportEvent = end($plannedWaypointTransportEvent);
 
-        if ($plannedWaypointTransportEvent === false) {
+        if (false === $plannedWaypointTransportEvent) {
             return null;
         }
 
@@ -3094,7 +3094,7 @@ class ShipmentStageType
             $this->plannedWaypointTransportEvent = [];
         }
 
-        if ($this->plannedWaypointTransportEvent === []) {
+        if ([] === $this->plannedWaypointTransportEvent) {
             $this->addOnceToplannedWaypointTransportEvent(new PlannedWaypointTransportEvent());
         }
 
@@ -3268,7 +3268,7 @@ class ShipmentStageType
         $transportEvent = $this->transportEvent ?? [];
         $transportEvent = reset($transportEvent);
 
-        if ($transportEvent === false) {
+        if (false === $transportEvent) {
             return null;
         }
 
@@ -3283,7 +3283,7 @@ class ShipmentStageType
         $transportEvent = $this->transportEvent ?? [];
         $transportEvent = end($transportEvent);
 
-        if ($transportEvent === false) {
+        if (false === $transportEvent) {
             return null;
         }
 
@@ -3335,7 +3335,7 @@ class ShipmentStageType
             $this->transportEvent = [];
         }
 
-        if ($this->transportEvent === []) {
+        if ([] === $this->transportEvent) {
             $this->addOnceTotransportEvent(new TransportEvent());
         }
 
@@ -3469,7 +3469,7 @@ class ShipmentStageType
         $passengerPerson = $this->passengerPerson ?? [];
         $passengerPerson = reset($passengerPerson);
 
-        if ($passengerPerson === false) {
+        if (false === $passengerPerson) {
             return null;
         }
 
@@ -3484,7 +3484,7 @@ class ShipmentStageType
         $passengerPerson = $this->passengerPerson ?? [];
         $passengerPerson = end($passengerPerson);
 
-        if ($passengerPerson === false) {
+        if (false === $passengerPerson) {
             return null;
         }
 
@@ -3536,7 +3536,7 @@ class ShipmentStageType
             $this->passengerPerson = [];
         }
 
-        if ($this->passengerPerson === []) {
+        if ([] === $this->passengerPerson) {
             $this->addOnceTopassengerPerson(new PassengerPerson());
         }
 
@@ -3590,7 +3590,7 @@ class ShipmentStageType
         $driverPerson = $this->driverPerson ?? [];
         $driverPerson = reset($driverPerson);
 
-        if ($driverPerson === false) {
+        if (false === $driverPerson) {
             return null;
         }
 
@@ -3605,7 +3605,7 @@ class ShipmentStageType
         $driverPerson = $this->driverPerson ?? [];
         $driverPerson = end($driverPerson);
 
-        if ($driverPerson === false) {
+        if (false === $driverPerson) {
             return null;
         }
 
@@ -3657,7 +3657,7 @@ class ShipmentStageType
             $this->driverPerson = [];
         }
 
-        if ($this->driverPerson === []) {
+        if ([] === $this->driverPerson) {
             $this->addOnceTodriverPerson(new DriverPerson());
         }
 
@@ -3750,7 +3750,7 @@ class ShipmentStageType
         $crewMemberPerson = $this->crewMemberPerson ?? [];
         $crewMemberPerson = reset($crewMemberPerson);
 
-        if ($crewMemberPerson === false) {
+        if (false === $crewMemberPerson) {
             return null;
         }
 
@@ -3765,7 +3765,7 @@ class ShipmentStageType
         $crewMemberPerson = $this->crewMemberPerson ?? [];
         $crewMemberPerson = end($crewMemberPerson);
 
-        if ($crewMemberPerson === false) {
+        if (false === $crewMemberPerson) {
             return null;
         }
 
@@ -3817,7 +3817,7 @@ class ShipmentStageType
             $this->crewMemberPerson = [];
         }
 
-        if ($this->crewMemberPerson === []) {
+        if ([] === $this->crewMemberPerson) {
             $this->addOnceTocrewMemberPerson(new CrewMemberPerson());
         }
 

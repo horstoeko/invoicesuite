@@ -219,7 +219,7 @@ class LineTradeSettlementType
             $this->specifiedTradeAllowanceCharge = [];
         }
 
-        if ($this->specifiedTradeAllowanceCharge === []) {
+        if ([] === $this->specifiedTradeAllowanceCharge) {
             $this->addOnceTospecifiedTradeAllowanceCharge(new TradeAllowanceChargeType());
         }
 

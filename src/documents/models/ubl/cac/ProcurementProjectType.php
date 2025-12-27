@@ -313,7 +313,7 @@ class ProcurementProjectType
         $name = $this->name ?? [];
         $name = reset($name);
 
-        if ($name === false) {
+        if (false === $name) {
             return null;
         }
 
@@ -328,7 +328,7 @@ class ProcurementProjectType
         $name = $this->name ?? [];
         $name = end($name);
 
-        if ($name === false) {
+        if (false === $name) {
             return null;
         }
 
@@ -380,7 +380,7 @@ class ProcurementProjectType
             $this->name = [];
         }
 
-        if ($this->name === []) {
+        if ([] === $this->name) {
             $this->addOnceToname(new Name());
         }
 
@@ -434,7 +434,7 @@ class ProcurementProjectType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -449,7 +449,7 @@ class ProcurementProjectType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -501,7 +501,7 @@ class ProcurementProjectType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -711,7 +711,7 @@ class ProcurementProjectType
         $feeDescription = $this->feeDescription ?? [];
         $feeDescription = reset($feeDescription);
 
-        if ($feeDescription === false) {
+        if (false === $feeDescription) {
             return null;
         }
 
@@ -726,7 +726,7 @@ class ProcurementProjectType
         $feeDescription = $this->feeDescription ?? [];
         $feeDescription = end($feeDescription);
 
-        if ($feeDescription === false) {
+        if (false === $feeDescription) {
             return null;
         }
 
@@ -778,7 +778,7 @@ class ProcurementProjectType
             $this->feeDescription = [];
         }
 
-        if ($this->feeDescription === []) {
+        if ([] === $this->feeDescription) {
             $this->addOnceTofeeDescription(new FeeDescription());
         }
 
@@ -901,7 +901,7 @@ class ProcurementProjectType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -916,7 +916,7 @@ class ProcurementProjectType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -968,7 +968,7 @@ class ProcurementProjectType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -1101,7 +1101,7 @@ class ProcurementProjectType
         $additionalCommodityClassification = $this->additionalCommodityClassification ?? [];
         $additionalCommodityClassification = reset($additionalCommodityClassification);
 
-        if ($additionalCommodityClassification === false) {
+        if (false === $additionalCommodityClassification) {
             return null;
         }
 
@@ -1116,7 +1116,7 @@ class ProcurementProjectType
         $additionalCommodityClassification = $this->additionalCommodityClassification ?? [];
         $additionalCommodityClassification = end($additionalCommodityClassification);
 
-        if ($additionalCommodityClassification === false) {
+        if (false === $additionalCommodityClassification) {
             return null;
         }
 
@@ -1170,7 +1170,7 @@ class ProcurementProjectType
             $this->additionalCommodityClassification = [];
         }
 
-        if ($this->additionalCommodityClassification === []) {
+        if ([] === $this->additionalCommodityClassification) {
             $this->addOnceToadditionalCommodityClassification(new AdditionalCommodityClassification());
         }
 
@@ -1224,7 +1224,7 @@ class ProcurementProjectType
         $realizedLocation = $this->realizedLocation ?? [];
         $realizedLocation = reset($realizedLocation);
 
-        if ($realizedLocation === false) {
+        if (false === $realizedLocation) {
             return null;
         }
 
@@ -1239,7 +1239,7 @@ class ProcurementProjectType
         $realizedLocation = $this->realizedLocation ?? [];
         $realizedLocation = end($realizedLocation);
 
-        if ($realizedLocation === false) {
+        if (false === $realizedLocation) {
             return null;
         }
 
@@ -1291,7 +1291,7 @@ class ProcurementProjectType
             $this->realizedLocation = [];
         }
 
-        if ($this->realizedLocation === []) {
+        if ([] === $this->realizedLocation) {
             $this->addOnceTorealizedLocation(new RealizedLocation());
         }
 
@@ -1423,7 +1423,7 @@ class ProcurementProjectType
         $requestForTenderLine = $this->requestForTenderLine ?? [];
         $requestForTenderLine = reset($requestForTenderLine);
 
-        if ($requestForTenderLine === false) {
+        if (false === $requestForTenderLine) {
             return null;
         }
 
@@ -1438,7 +1438,7 @@ class ProcurementProjectType
         $requestForTenderLine = $this->requestForTenderLine ?? [];
         $requestForTenderLine = end($requestForTenderLine);
 
-        if ($requestForTenderLine === false) {
+        if (false === $requestForTenderLine) {
             return null;
         }
 
@@ -1490,7 +1490,7 @@ class ProcurementProjectType
             $this->requestForTenderLine = [];
         }
 
-        if ($this->requestForTenderLine === []) {
+        if ([] === $this->requestForTenderLine) {
             $this->addOnceTorequestForTenderLine(new RequestForTenderLine());
         }
 

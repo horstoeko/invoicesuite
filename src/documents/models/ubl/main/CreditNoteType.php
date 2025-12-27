@@ -691,7 +691,7 @@ class CreditNoteType
         $uBLExtensions = $this->uBLExtensions ?? [];
         $uBLExtensions = reset($uBLExtensions);
 
-        if ($uBLExtensions === false) {
+        if (false === $uBLExtensions) {
             return null;
         }
 
@@ -706,7 +706,7 @@ class CreditNoteType
         $uBLExtensions = $this->uBLExtensions ?? [];
         $uBLExtensions = end($uBLExtensions);
 
-        if ($uBLExtensions === false) {
+        if (false === $uBLExtensions) {
             return null;
         }
 
@@ -758,7 +758,7 @@ class CreditNoteType
             $this->uBLExtensions = [];
         }
 
-        if ($this->uBLExtensions === []) {
+        if ([] === $this->uBLExtensions) {
             $this->addOnceTouBLExtensions(new UBLExtension());
         }
 
@@ -1201,7 +1201,7 @@ class CreditNoteType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -1216,7 +1216,7 @@ class CreditNoteType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -1268,7 +1268,7 @@ class CreditNoteType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -1674,7 +1674,7 @@ class CreditNoteType
         $invoicePeriod = $this->invoicePeriod ?? [];
         $invoicePeriod = reset($invoicePeriod);
 
-        if ($invoicePeriod === false) {
+        if (false === $invoicePeriod) {
             return null;
         }
 
@@ -1689,7 +1689,7 @@ class CreditNoteType
         $invoicePeriod = $this->invoicePeriod ?? [];
         $invoicePeriod = end($invoicePeriod);
 
-        if ($invoicePeriod === false) {
+        if (false === $invoicePeriod) {
             return null;
         }
 
@@ -1741,7 +1741,7 @@ class CreditNoteType
             $this->invoicePeriod = [];
         }
 
-        if ($this->invoicePeriod === []) {
+        if ([] === $this->invoicePeriod) {
             $this->addOnceToinvoicePeriod(new InvoicePeriod());
         }
 
@@ -1795,7 +1795,7 @@ class CreditNoteType
         $discrepancyResponse = $this->discrepancyResponse ?? [];
         $discrepancyResponse = reset($discrepancyResponse);
 
-        if ($discrepancyResponse === false) {
+        if (false === $discrepancyResponse) {
             return null;
         }
 
@@ -1810,7 +1810,7 @@ class CreditNoteType
         $discrepancyResponse = $this->discrepancyResponse ?? [];
         $discrepancyResponse = end($discrepancyResponse);
 
-        if ($discrepancyResponse === false) {
+        if (false === $discrepancyResponse) {
             return null;
         }
 
@@ -1862,7 +1862,7 @@ class CreditNoteType
             $this->discrepancyResponse = [];
         }
 
-        if ($this->discrepancyResponse === []) {
+        if ([] === $this->discrepancyResponse) {
             $this->addOnceTodiscrepancyResponse(new DiscrepancyResponse());
         }
 
@@ -1955,7 +1955,7 @@ class CreditNoteType
         $billingReference = $this->billingReference ?? [];
         $billingReference = reset($billingReference);
 
-        if ($billingReference === false) {
+        if (false === $billingReference) {
             return null;
         }
 
@@ -1970,7 +1970,7 @@ class CreditNoteType
         $billingReference = $this->billingReference ?? [];
         $billingReference = end($billingReference);
 
-        if ($billingReference === false) {
+        if (false === $billingReference) {
             return null;
         }
 
@@ -2022,7 +2022,7 @@ class CreditNoteType
             $this->billingReference = [];
         }
 
-        if ($this->billingReference === []) {
+        if ([] === $this->billingReference) {
             $this->addOnceTobillingReference(new BillingReference());
         }
 
@@ -2076,7 +2076,7 @@ class CreditNoteType
         $despatchDocumentReference = $this->despatchDocumentReference ?? [];
         $despatchDocumentReference = reset($despatchDocumentReference);
 
-        if ($despatchDocumentReference === false) {
+        if (false === $despatchDocumentReference) {
             return null;
         }
 
@@ -2091,7 +2091,7 @@ class CreditNoteType
         $despatchDocumentReference = $this->despatchDocumentReference ?? [];
         $despatchDocumentReference = end($despatchDocumentReference);
 
-        if ($despatchDocumentReference === false) {
+        if (false === $despatchDocumentReference) {
             return null;
         }
 
@@ -2143,7 +2143,7 @@ class CreditNoteType
             $this->despatchDocumentReference = [];
         }
 
-        if ($this->despatchDocumentReference === []) {
+        if ([] === $this->despatchDocumentReference) {
             $this->addOnceTodespatchDocumentReference(new DespatchDocumentReference());
         }
 
@@ -2197,7 +2197,7 @@ class CreditNoteType
         $receiptDocumentReference = $this->receiptDocumentReference ?? [];
         $receiptDocumentReference = reset($receiptDocumentReference);
 
-        if ($receiptDocumentReference === false) {
+        if (false === $receiptDocumentReference) {
             return null;
         }
 
@@ -2212,7 +2212,7 @@ class CreditNoteType
         $receiptDocumentReference = $this->receiptDocumentReference ?? [];
         $receiptDocumentReference = end($receiptDocumentReference);
 
-        if ($receiptDocumentReference === false) {
+        if (false === $receiptDocumentReference) {
             return null;
         }
 
@@ -2264,7 +2264,7 @@ class CreditNoteType
             $this->receiptDocumentReference = [];
         }
 
-        if ($this->receiptDocumentReference === []) {
+        if ([] === $this->receiptDocumentReference) {
             $this->addOnceToreceiptDocumentReference(new ReceiptDocumentReference());
         }
 
@@ -2318,7 +2318,7 @@ class CreditNoteType
         $contractDocumentReference = $this->contractDocumentReference ?? [];
         $contractDocumentReference = reset($contractDocumentReference);
 
-        if ($contractDocumentReference === false) {
+        if (false === $contractDocumentReference) {
             return null;
         }
 
@@ -2333,7 +2333,7 @@ class CreditNoteType
         $contractDocumentReference = $this->contractDocumentReference ?? [];
         $contractDocumentReference = end($contractDocumentReference);
 
-        if ($contractDocumentReference === false) {
+        if (false === $contractDocumentReference) {
             return null;
         }
 
@@ -2385,7 +2385,7 @@ class CreditNoteType
             $this->contractDocumentReference = [];
         }
 
-        if ($this->contractDocumentReference === []) {
+        if ([] === $this->contractDocumentReference) {
             $this->addOnceTocontractDocumentReference(new ContractDocumentReference());
         }
 
@@ -2439,7 +2439,7 @@ class CreditNoteType
         $additionalDocumentReference = $this->additionalDocumentReference ?? [];
         $additionalDocumentReference = reset($additionalDocumentReference);
 
-        if ($additionalDocumentReference === false) {
+        if (false === $additionalDocumentReference) {
             return null;
         }
 
@@ -2454,7 +2454,7 @@ class CreditNoteType
         $additionalDocumentReference = $this->additionalDocumentReference ?? [];
         $additionalDocumentReference = end($additionalDocumentReference);
 
-        if ($additionalDocumentReference === false) {
+        if (false === $additionalDocumentReference) {
             return null;
         }
 
@@ -2507,7 +2507,7 @@ class CreditNoteType
             $this->additionalDocumentReference = [];
         }
 
-        if ($this->additionalDocumentReference === []) {
+        if ([] === $this->additionalDocumentReference) {
             $this->addOnceToadditionalDocumentReference(new AdditionalDocumentReference());
         }
 
@@ -2561,7 +2561,7 @@ class CreditNoteType
         $statementDocumentReference = $this->statementDocumentReference ?? [];
         $statementDocumentReference = reset($statementDocumentReference);
 
-        if ($statementDocumentReference === false) {
+        if (false === $statementDocumentReference) {
             return null;
         }
 
@@ -2576,7 +2576,7 @@ class CreditNoteType
         $statementDocumentReference = $this->statementDocumentReference ?? [];
         $statementDocumentReference = end($statementDocumentReference);
 
-        if ($statementDocumentReference === false) {
+        if (false === $statementDocumentReference) {
             return null;
         }
 
@@ -2628,7 +2628,7 @@ class CreditNoteType
             $this->statementDocumentReference = [];
         }
 
-        if ($this->statementDocumentReference === []) {
+        if ([] === $this->statementDocumentReference) {
             $this->addOnceTostatementDocumentReference(new StatementDocumentReference());
         }
 
@@ -2682,7 +2682,7 @@ class CreditNoteType
         $originatorDocumentReference = $this->originatorDocumentReference ?? [];
         $originatorDocumentReference = reset($originatorDocumentReference);
 
-        if ($originatorDocumentReference === false) {
+        if (false === $originatorDocumentReference) {
             return null;
         }
 
@@ -2697,7 +2697,7 @@ class CreditNoteType
         $originatorDocumentReference = $this->originatorDocumentReference ?? [];
         $originatorDocumentReference = end($originatorDocumentReference);
 
-        if ($originatorDocumentReference === false) {
+        if (false === $originatorDocumentReference) {
             return null;
         }
 
@@ -2750,7 +2750,7 @@ class CreditNoteType
             $this->originatorDocumentReference = [];
         }
 
-        if ($this->originatorDocumentReference === []) {
+        if ([] === $this->originatorDocumentReference) {
             $this->addOnceTooriginatorDocumentReference(new OriginatorDocumentReference());
         }
 
@@ -2804,7 +2804,7 @@ class CreditNoteType
         $signature = $this->signature ?? [];
         $signature = reset($signature);
 
-        if ($signature === false) {
+        if (false === $signature) {
             return null;
         }
 
@@ -2819,7 +2819,7 @@ class CreditNoteType
         $signature = $this->signature ?? [];
         $signature = end($signature);
 
-        if ($signature === false) {
+        if (false === $signature) {
             return null;
         }
 
@@ -2871,7 +2871,7 @@ class CreditNoteType
             $this->signature = [];
         }
 
-        if ($this->signature === []) {
+        if ([] === $this->signature) {
             $this->addOnceTosignature(new Signature());
         }
 
@@ -3159,7 +3159,7 @@ class CreditNoteType
         $delivery = $this->delivery ?? [];
         $delivery = reset($delivery);
 
-        if ($delivery === false) {
+        if (false === $delivery) {
             return null;
         }
 
@@ -3174,7 +3174,7 @@ class CreditNoteType
         $delivery = $this->delivery ?? [];
         $delivery = end($delivery);
 
-        if ($delivery === false) {
+        if (false === $delivery) {
             return null;
         }
 
@@ -3226,7 +3226,7 @@ class CreditNoteType
             $this->delivery = [];
         }
 
-        if ($this->delivery === []) {
+        if ([] === $this->delivery) {
             $this->addOnceTodelivery(new Delivery());
         }
 
@@ -3280,7 +3280,7 @@ class CreditNoteType
         $deliveryTerms = $this->deliveryTerms ?? [];
         $deliveryTerms = reset($deliveryTerms);
 
-        if ($deliveryTerms === false) {
+        if (false === $deliveryTerms) {
             return null;
         }
 
@@ -3295,7 +3295,7 @@ class CreditNoteType
         $deliveryTerms = $this->deliveryTerms ?? [];
         $deliveryTerms = end($deliveryTerms);
 
-        if ($deliveryTerms === false) {
+        if (false === $deliveryTerms) {
             return null;
         }
 
@@ -3347,7 +3347,7 @@ class CreditNoteType
             $this->deliveryTerms = [];
         }
 
-        if ($this->deliveryTerms === []) {
+        if ([] === $this->deliveryTerms) {
             $this->addOnceTodeliveryTerms(new DeliveryTerms());
         }
 
@@ -3401,7 +3401,7 @@ class CreditNoteType
         $paymentMeans = $this->paymentMeans ?? [];
         $paymentMeans = reset($paymentMeans);
 
-        if ($paymentMeans === false) {
+        if (false === $paymentMeans) {
             return null;
         }
 
@@ -3416,7 +3416,7 @@ class CreditNoteType
         $paymentMeans = $this->paymentMeans ?? [];
         $paymentMeans = end($paymentMeans);
 
-        if ($paymentMeans === false) {
+        if (false === $paymentMeans) {
             return null;
         }
 
@@ -3468,7 +3468,7 @@ class CreditNoteType
             $this->paymentMeans = [];
         }
 
-        if ($this->paymentMeans === []) {
+        if ([] === $this->paymentMeans) {
             $this->addOnceTopaymentMeans(new PaymentMeans());
         }
 
@@ -3522,7 +3522,7 @@ class CreditNoteType
         $paymentTerms = $this->paymentTerms ?? [];
         $paymentTerms = reset($paymentTerms);
 
-        if ($paymentTerms === false) {
+        if (false === $paymentTerms) {
             return null;
         }
 
@@ -3537,7 +3537,7 @@ class CreditNoteType
         $paymentTerms = $this->paymentTerms ?? [];
         $paymentTerms = end($paymentTerms);
 
-        if ($paymentTerms === false) {
+        if (false === $paymentTerms) {
             return null;
         }
 
@@ -3589,7 +3589,7 @@ class CreditNoteType
             $this->paymentTerms = [];
         }
 
-        if ($this->paymentTerms === []) {
+        if ([] === $this->paymentTerms) {
             $this->addOnceTopaymentTerms(new PaymentTerms());
         }
 
@@ -3800,7 +3800,7 @@ class CreditNoteType
         $allowanceCharge = $this->allowanceCharge ?? [];
         $allowanceCharge = reset($allowanceCharge);
 
-        if ($allowanceCharge === false) {
+        if (false === $allowanceCharge) {
             return null;
         }
 
@@ -3815,7 +3815,7 @@ class CreditNoteType
         $allowanceCharge = $this->allowanceCharge ?? [];
         $allowanceCharge = end($allowanceCharge);
 
-        if ($allowanceCharge === false) {
+        if (false === $allowanceCharge) {
             return null;
         }
 
@@ -3867,7 +3867,7 @@ class CreditNoteType
             $this->allowanceCharge = [];
         }
 
-        if ($this->allowanceCharge === []) {
+        if ([] === $this->allowanceCharge) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }
 
@@ -3938,7 +3938,7 @@ class CreditNoteType
         $taxTotal = $this->taxTotal ?? [];
         $taxTotal = reset($taxTotal);
 
-        if ($taxTotal === false) {
+        if (false === $taxTotal) {
             return null;
         }
 
@@ -3953,7 +3953,7 @@ class CreditNoteType
         $taxTotal = $this->taxTotal ?? [];
         $taxTotal = end($taxTotal);
 
-        if ($taxTotal === false) {
+        if (false === $taxTotal) {
             return null;
         }
 
@@ -4041,7 +4041,7 @@ class CreditNoteType
             $this->taxTotal = [];
         }
 
-        if ($this->taxTotal === []) {
+        if ([] === $this->taxTotal) {
             $this->addOnceTotaxTotal(new TaxTotal());
         }
 
@@ -4134,7 +4134,7 @@ class CreditNoteType
         $creditNoteLine = $this->creditNoteLine ?? [];
         $creditNoteLine = reset($creditNoteLine);
 
-        if ($creditNoteLine === false) {
+        if (false === $creditNoteLine) {
             return null;
         }
 
@@ -4149,7 +4149,7 @@ class CreditNoteType
         $creditNoteLine = $this->creditNoteLine ?? [];
         $creditNoteLine = end($creditNoteLine);
 
-        if ($creditNoteLine === false) {
+        if (false === $creditNoteLine) {
             return null;
         }
 
@@ -4201,7 +4201,7 @@ class CreditNoteType
             $this->creditNoteLine = [];
         }
 
-        if ($this->creditNoteLine === []) {
+        if ([] === $this->creditNoteLine) {
             $this->addOnceTocreditNoteLine(new CreditNoteLine());
         }
 
@@ -4216,7 +4216,7 @@ class CreditNoteType
         $creditNoteLines = $this->getCreditNoteLine() ?? [];
         $creditNoteLine = end($creditNoteLines);
 
-        if ($creditNoteLine === false) {
+        if (false === $creditNoteLine) {
             return null;
         }
 

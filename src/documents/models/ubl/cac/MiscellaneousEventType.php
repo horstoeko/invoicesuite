@@ -122,7 +122,7 @@ class MiscellaneousEventType
         $eventLineItem = $this->eventLineItem ?? [];
         $eventLineItem = reset($eventLineItem);
 
-        if ($eventLineItem === false) {
+        if (false === $eventLineItem) {
             return null;
         }
 
@@ -137,7 +137,7 @@ class MiscellaneousEventType
         $eventLineItem = $this->eventLineItem ?? [];
         $eventLineItem = end($eventLineItem);
 
-        if ($eventLineItem === false) {
+        if (false === $eventLineItem) {
             return null;
         }
 
@@ -189,7 +189,7 @@ class MiscellaneousEventType
             $this->eventLineItem = [];
         }
 
-        if ($this->eventLineItem === []) {
+        if ([] === $this->eventLineItem) {
             $this->addOnceToeventLineItem(new EventLineItem());
         }
 

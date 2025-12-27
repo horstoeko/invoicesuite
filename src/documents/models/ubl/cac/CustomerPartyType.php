@@ -217,7 +217,7 @@ class CustomerPartyType
         $additionalAccountID = $this->additionalAccountID ?? [];
         $additionalAccountID = reset($additionalAccountID);
 
-        if ($additionalAccountID === false) {
+        if (false === $additionalAccountID) {
             return null;
         }
 
@@ -232,7 +232,7 @@ class CustomerPartyType
         $additionalAccountID = $this->additionalAccountID ?? [];
         $additionalAccountID = end($additionalAccountID);
 
-        if ($additionalAccountID === false) {
+        if (false === $additionalAccountID) {
             return null;
         }
 
@@ -284,7 +284,7 @@ class CustomerPartyType
             $this->additionalAccountID = [];
         }
 
-        if ($this->additionalAccountID === []) {
+        if ([] === $this->additionalAccountID) {
             $this->addOnceToadditionalAccountID(new AdditionalAccountID());
         }
 

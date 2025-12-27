@@ -96,7 +96,7 @@ class ContractExecutionRequirementType
         $name = $this->name ?? [];
         $name = reset($name);
 
-        if ($name === false) {
+        if (false === $name) {
             return null;
         }
 
@@ -111,7 +111,7 @@ class ContractExecutionRequirementType
         $name = $this->name ?? [];
         $name = end($name);
 
-        if ($name === false) {
+        if (false === $name) {
             return null;
         }
 
@@ -163,7 +163,7 @@ class ContractExecutionRequirementType
             $this->name = [];
         }
 
-        if ($this->name === []) {
+        if ([] === $this->name) {
             $this->addOnceToname(new Name());
         }
 
@@ -256,7 +256,7 @@ class ContractExecutionRequirementType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -271,7 +271,7 @@ class ContractExecutionRequirementType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -323,7 +323,7 @@ class ContractExecutionRequirementType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 

@@ -106,7 +106,7 @@ class EnergyWaterSupplyType
         $consumptionReport = $this->consumptionReport ?? [];
         $consumptionReport = reset($consumptionReport);
 
-        if ($consumptionReport === false) {
+        if (false === $consumptionReport) {
             return null;
         }
 
@@ -121,7 +121,7 @@ class EnergyWaterSupplyType
         $consumptionReport = $this->consumptionReport ?? [];
         $consumptionReport = end($consumptionReport);
 
-        if ($consumptionReport === false) {
+        if (false === $consumptionReport) {
             return null;
         }
 
@@ -173,7 +173,7 @@ class EnergyWaterSupplyType
             $this->consumptionReport = [];
         }
 
-        if ($this->consumptionReport === []) {
+        if ([] === $this->consumptionReport) {
             $this->addOnceToconsumptionReport(new ConsumptionReport());
         }
 
@@ -227,7 +227,7 @@ class EnergyWaterSupplyType
         $energyTaxReport = $this->energyTaxReport ?? [];
         $energyTaxReport = reset($energyTaxReport);
 
-        if ($energyTaxReport === false) {
+        if (false === $energyTaxReport) {
             return null;
         }
 
@@ -242,7 +242,7 @@ class EnergyWaterSupplyType
         $energyTaxReport = $this->energyTaxReport ?? [];
         $energyTaxReport = end($energyTaxReport);
 
-        if ($energyTaxReport === false) {
+        if (false === $energyTaxReport) {
             return null;
         }
 
@@ -294,7 +294,7 @@ class EnergyWaterSupplyType
             $this->energyTaxReport = [];
         }
 
-        if ($this->energyTaxReport === []) {
+        if ([] === $this->energyTaxReport) {
             $this->addOnceToenergyTaxReport(new EnergyTaxReport());
         }
 
@@ -348,7 +348,7 @@ class EnergyWaterSupplyType
         $consumptionAverage = $this->consumptionAverage ?? [];
         $consumptionAverage = reset($consumptionAverage);
 
-        if ($consumptionAverage === false) {
+        if (false === $consumptionAverage) {
             return null;
         }
 
@@ -363,7 +363,7 @@ class EnergyWaterSupplyType
         $consumptionAverage = $this->consumptionAverage ?? [];
         $consumptionAverage = end($consumptionAverage);
 
-        if ($consumptionAverage === false) {
+        if (false === $consumptionAverage) {
             return null;
         }
 
@@ -415,7 +415,7 @@ class EnergyWaterSupplyType
             $this->consumptionAverage = [];
         }
 
-        if ($this->consumptionAverage === []) {
+        if ([] === $this->consumptionAverage) {
             $this->addOnceToconsumptionAverage(new ConsumptionAverage());
         }
 
@@ -469,7 +469,7 @@ class EnergyWaterSupplyType
         $energyWaterConsumptionCorrection = $this->energyWaterConsumptionCorrection ?? [];
         $energyWaterConsumptionCorrection = reset($energyWaterConsumptionCorrection);
 
-        if ($energyWaterConsumptionCorrection === false) {
+        if (false === $energyWaterConsumptionCorrection) {
             return null;
         }
 
@@ -484,7 +484,7 @@ class EnergyWaterSupplyType
         $energyWaterConsumptionCorrection = $this->energyWaterConsumptionCorrection ?? [];
         $energyWaterConsumptionCorrection = end($energyWaterConsumptionCorrection);
 
-        if ($energyWaterConsumptionCorrection === false) {
+        if (false === $energyWaterConsumptionCorrection) {
             return null;
         }
 
@@ -538,7 +538,7 @@ class EnergyWaterSupplyType
             $this->energyWaterConsumptionCorrection = [];
         }
 
-        if ($this->energyWaterConsumptionCorrection === []) {
+        if ([] === $this->energyWaterConsumptionCorrection) {
             $this->addOnceToenergyWaterConsumptionCorrection(new EnergyWaterConsumptionCorrection());
         }
 

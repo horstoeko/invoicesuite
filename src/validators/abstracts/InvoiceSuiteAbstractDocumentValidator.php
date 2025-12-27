@@ -60,7 +60,7 @@ abstract class InvoiceSuiteAbstractDocumentValidator
 
         $rawDocumentContent = file_get_contents($fromFilename);
 
-        if ($rawDocumentContent === false) {
+        if (false === $rawDocumentContent) {
             throw new InvoiceSuiteFileNotReadableException($fromFilename);
         }
 

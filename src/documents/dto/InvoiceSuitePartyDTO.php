@@ -234,7 +234,7 @@ class InvoiceSuitePartyDTO
         $count = 0;
 
         foreach ($this->names as $name) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -243,7 +243,7 @@ class InvoiceSuitePartyDTO
             $callback($name);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -375,7 +375,7 @@ class InvoiceSuitePartyDTO
         $count = 0;
 
         foreach ($this->ids as $id) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -384,7 +384,7 @@ class InvoiceSuitePartyDTO
             $callback($id);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -516,7 +516,7 @@ class InvoiceSuitePartyDTO
         $count = 0;
 
         foreach ($this->globalIds as $globalId) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -525,7 +525,7 @@ class InvoiceSuitePartyDTO
             $callback($globalId);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -660,7 +660,7 @@ class InvoiceSuitePartyDTO
         $count = 0;
 
         foreach ($this->taxRegistrations as $taxRegistration) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -669,7 +669,7 @@ class InvoiceSuitePartyDTO
             $callback($taxRegistration);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -801,7 +801,7 @@ class InvoiceSuitePartyDTO
         $count = 0;
 
         foreach ($this->addresses as $address) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -810,7 +810,7 @@ class InvoiceSuitePartyDTO
             $callback($address);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -945,7 +945,7 @@ class InvoiceSuitePartyDTO
         $count = 0;
 
         foreach ($this->legalOrganisations as $legalOrganisation) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -954,7 +954,7 @@ class InvoiceSuitePartyDTO
             $callback($legalOrganisation);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -1086,7 +1086,7 @@ class InvoiceSuitePartyDTO
         $count = 0;
 
         foreach ($this->contacts as $contact) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -1095,7 +1095,7 @@ class InvoiceSuitePartyDTO
             $callback($contact);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -1230,7 +1230,7 @@ class InvoiceSuitePartyDTO
         $count = 0;
 
         foreach ($this->communications as $communication) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -1239,7 +1239,7 @@ class InvoiceSuitePartyDTO
             $callback($communication);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 

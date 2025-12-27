@@ -120,7 +120,7 @@ class OrderedShipmentType
         $package = $this->package ?? [];
         $package = reset($package);
 
-        if ($package === false) {
+        if (false === $package) {
             return null;
         }
 
@@ -135,7 +135,7 @@ class OrderedShipmentType
         $package = $this->package ?? [];
         $package = end($package);
 
-        if ($package === false) {
+        if (false === $package) {
             return null;
         }
 
@@ -187,7 +187,7 @@ class OrderedShipmentType
             $this->package = [];
         }
 
-        if ($this->package === []) {
+        if ([] === $this->package) {
             $this->addOnceTopackage(new Package());
         }
 

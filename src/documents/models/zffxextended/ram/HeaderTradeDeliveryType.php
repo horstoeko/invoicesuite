@@ -186,7 +186,7 @@ class HeaderTradeDeliveryType
             $this->relatedSupplyChainConsignment = [];
         }
 
-        if ($this->relatedSupplyChainConsignment === []) {
+        if ([] === $this->relatedSupplyChainConsignment) {
             $this->addOnceTorelatedSupplyChainConsignment(new LogisticsTransportMovementType());
         }
 

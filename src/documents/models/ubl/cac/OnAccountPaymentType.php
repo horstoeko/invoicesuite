@@ -134,7 +134,7 @@ class OnAccountPaymentType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -149,7 +149,7 @@ class OnAccountPaymentType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -201,7 +201,7 @@ class OnAccountPaymentType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -255,7 +255,7 @@ class OnAccountPaymentType
         $paymentTerms = $this->paymentTerms ?? [];
         $paymentTerms = reset($paymentTerms);
 
-        if ($paymentTerms === false) {
+        if (false === $paymentTerms) {
             return null;
         }
 
@@ -270,7 +270,7 @@ class OnAccountPaymentType
         $paymentTerms = $this->paymentTerms ?? [];
         $paymentTerms = end($paymentTerms);
 
-        if ($paymentTerms === false) {
+        if (false === $paymentTerms) {
             return null;
         }
 
@@ -322,7 +322,7 @@ class OnAccountPaymentType
             $this->paymentTerms = [];
         }
 
-        if ($this->paymentTerms === []) {
+        if ([] === $this->paymentTerms) {
             $this->addOnceTopaymentTerms(new PaymentTerms());
         }
 

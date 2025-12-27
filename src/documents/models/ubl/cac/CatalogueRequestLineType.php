@@ -207,7 +207,7 @@ class CatalogueRequestLineType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -222,7 +222,7 @@ class CatalogueRequestLineType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -274,7 +274,7 @@ class CatalogueRequestLineType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -367,7 +367,7 @@ class CatalogueRequestLineType
         $requiredItemLocationQuantity = $this->requiredItemLocationQuantity ?? [];
         $requiredItemLocationQuantity = reset($requiredItemLocationQuantity);
 
-        if ($requiredItemLocationQuantity === false) {
+        if (false === $requiredItemLocationQuantity) {
             return null;
         }
 
@@ -382,7 +382,7 @@ class CatalogueRequestLineType
         $requiredItemLocationQuantity = $this->requiredItemLocationQuantity ?? [];
         $requiredItemLocationQuantity = end($requiredItemLocationQuantity);
 
-        if ($requiredItemLocationQuantity === false) {
+        if (false === $requiredItemLocationQuantity) {
             return null;
         }
 
@@ -436,7 +436,7 @@ class CatalogueRequestLineType
             $this->requiredItemLocationQuantity = [];
         }
 
-        if ($this->requiredItemLocationQuantity === []) {
+        if ([] === $this->requiredItemLocationQuantity) {
             $this->addOnceTorequiredItemLocationQuantity(new RequiredItemLocationQuantity());
         }
 

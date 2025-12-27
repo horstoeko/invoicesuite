@@ -92,31 +92,31 @@ class InvoiceSuiteDateTimeUtils
 
         $dateTimeString = trim((string) $dateTimeString);
 
-        if ($format == '102') {
+        if ('102' == $format) {
             return DateTime::createFromFormat('Ymd', $dateTimeString);
         }
 
-        if ($format == '101') {
+        if ('101' == $format) {
             return DateTime::createFromFormat('ymd', $dateTimeString);
         }
 
-        if ($format == '201') {
+        if ('201' == $format) {
             return DateTime::createFromFormat('ymdHi', $dateTimeString);
         }
 
-        if ($format == '202') {
+        if ('202' == $format) {
             return DateTime::createFromFormat('ymdHis', $dateTimeString);
         }
 
-        if ($format == '203') {
+        if ('203' == $format) {
             return DateTime::createFromFormat('YmdHi', $dateTimeString);
         }
 
-        if ($format == '204') {
+        if ('204' == $format) {
             return DateTime::createFromFormat('YmdHis', $dateTimeString);
         }
 
-        if ($format == '610') {
+        if ('610' == $format) {
             return DateTime::createFromFormat('!Ym', $dateTimeString)->modify('first day of')->modify('midnight');
         }
 

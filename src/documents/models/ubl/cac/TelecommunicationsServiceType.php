@@ -915,7 +915,7 @@ class TelecommunicationsServiceType
         $exchangeRate = $this->exchangeRate ?? [];
         $exchangeRate = reset($exchangeRate);
 
-        if ($exchangeRate === false) {
+        if (false === $exchangeRate) {
             return null;
         }
 
@@ -930,7 +930,7 @@ class TelecommunicationsServiceType
         $exchangeRate = $this->exchangeRate ?? [];
         $exchangeRate = end($exchangeRate);
 
-        if ($exchangeRate === false) {
+        if (false === $exchangeRate) {
             return null;
         }
 
@@ -982,7 +982,7 @@ class TelecommunicationsServiceType
             $this->exchangeRate = [];
         }
 
-        if ($this->exchangeRate === []) {
+        if ([] === $this->exchangeRate) {
             $this->addOnceToexchangeRate(new ExchangeRate());
         }
 
@@ -1036,7 +1036,7 @@ class TelecommunicationsServiceType
         $allowanceCharge = $this->allowanceCharge ?? [];
         $allowanceCharge = reset($allowanceCharge);
 
-        if ($allowanceCharge === false) {
+        if (false === $allowanceCharge) {
             return null;
         }
 
@@ -1051,7 +1051,7 @@ class TelecommunicationsServiceType
         $allowanceCharge = $this->allowanceCharge ?? [];
         $allowanceCharge = end($allowanceCharge);
 
-        if ($allowanceCharge === false) {
+        if (false === $allowanceCharge) {
             return null;
         }
 
@@ -1103,7 +1103,7 @@ class TelecommunicationsServiceType
             $this->allowanceCharge = [];
         }
 
-        if ($this->allowanceCharge === []) {
+        if ([] === $this->allowanceCharge) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }
 
@@ -1157,7 +1157,7 @@ class TelecommunicationsServiceType
         $taxTotal = $this->taxTotal ?? [];
         $taxTotal = reset($taxTotal);
 
-        if ($taxTotal === false) {
+        if (false === $taxTotal) {
             return null;
         }
 
@@ -1172,7 +1172,7 @@ class TelecommunicationsServiceType
         $taxTotal = $this->taxTotal ?? [];
         $taxTotal = end($taxTotal);
 
-        if ($taxTotal === false) {
+        if (false === $taxTotal) {
             return null;
         }
 
@@ -1224,7 +1224,7 @@ class TelecommunicationsServiceType
             $this->taxTotal = [];
         }
 
-        if ($this->taxTotal === []) {
+        if ([] === $this->taxTotal) {
             $this->addOnceTotaxTotal(new TaxTotal());
         }
 
@@ -1278,7 +1278,7 @@ class TelecommunicationsServiceType
         $callDuty = $this->callDuty ?? [];
         $callDuty = reset($callDuty);
 
-        if ($callDuty === false) {
+        if (false === $callDuty) {
             return null;
         }
 
@@ -1293,7 +1293,7 @@ class TelecommunicationsServiceType
         $callDuty = $this->callDuty ?? [];
         $callDuty = end($callDuty);
 
-        if ($callDuty === false) {
+        if (false === $callDuty) {
             return null;
         }
 
@@ -1345,7 +1345,7 @@ class TelecommunicationsServiceType
             $this->callDuty = [];
         }
 
-        if ($this->callDuty === []) {
+        if ([] === $this->callDuty) {
             $this->addOnceTocallDuty(new CallDuty());
         }
 
@@ -1399,7 +1399,7 @@ class TelecommunicationsServiceType
         $timeDuty = $this->timeDuty ?? [];
         $timeDuty = reset($timeDuty);
 
-        if ($timeDuty === false) {
+        if (false === $timeDuty) {
             return null;
         }
 
@@ -1414,7 +1414,7 @@ class TelecommunicationsServiceType
         $timeDuty = $this->timeDuty ?? [];
         $timeDuty = end($timeDuty);
 
-        if ($timeDuty === false) {
+        if (false === $timeDuty) {
             return null;
         }
 
@@ -1466,7 +1466,7 @@ class TelecommunicationsServiceType
             $this->timeDuty = [];
         }
 
-        if ($this->timeDuty === []) {
+        if ([] === $this->timeDuty) {
             $this->addOnceTotimeDuty(new TimeDuty());
         }
 

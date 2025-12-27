@@ -296,7 +296,7 @@ class AwardingCriterionType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -311,7 +311,7 @@ class AwardingCriterionType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -363,7 +363,7 @@ class AwardingCriterionType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -456,7 +456,7 @@ class AwardingCriterionType
         $weight = $this->weight ?? [];
         $weight = reset($weight);
 
-        if ($weight === false) {
+        if (false === $weight) {
             return null;
         }
 
@@ -471,7 +471,7 @@ class AwardingCriterionType
         $weight = $this->weight ?? [];
         $weight = end($weight);
 
-        if ($weight === false) {
+        if (false === $weight) {
             return null;
         }
 
@@ -523,7 +523,7 @@ class AwardingCriterionType
             $this->weight = [];
         }
 
-        if ($this->weight === []) {
+        if ([] === $this->weight) {
             $this->addOnceToweight(new Weight());
         }
 
@@ -577,7 +577,7 @@ class AwardingCriterionType
         $calculationExpression = $this->calculationExpression ?? [];
         $calculationExpression = reset($calculationExpression);
 
-        if ($calculationExpression === false) {
+        if (false === $calculationExpression) {
             return null;
         }
 
@@ -592,7 +592,7 @@ class AwardingCriterionType
         $calculationExpression = $this->calculationExpression ?? [];
         $calculationExpression = end($calculationExpression);
 
-        if ($calculationExpression === false) {
+        if (false === $calculationExpression) {
             return null;
         }
 
@@ -644,7 +644,7 @@ class AwardingCriterionType
             $this->calculationExpression = [];
         }
 
-        if ($this->calculationExpression === []) {
+        if ([] === $this->calculationExpression) {
             $this->addOnceTocalculationExpression(new CalculationExpression());
         }
 
@@ -893,7 +893,7 @@ class AwardingCriterionType
         $minimumImprovementBid = $this->minimumImprovementBid ?? [];
         $minimumImprovementBid = reset($minimumImprovementBid);
 
-        if ($minimumImprovementBid === false) {
+        if (false === $minimumImprovementBid) {
             return null;
         }
 
@@ -908,7 +908,7 @@ class AwardingCriterionType
         $minimumImprovementBid = $this->minimumImprovementBid ?? [];
         $minimumImprovementBid = end($minimumImprovementBid);
 
-        if ($minimumImprovementBid === false) {
+        if (false === $minimumImprovementBid) {
             return null;
         }
 
@@ -960,7 +960,7 @@ class AwardingCriterionType
             $this->minimumImprovementBid = [];
         }
 
-        if ($this->minimumImprovementBid === []) {
+        if ([] === $this->minimumImprovementBid) {
             $this->addOnceTominimumImprovementBid(new MinimumImprovementBid());
         }
 
@@ -1014,7 +1014,7 @@ class AwardingCriterionType
         $subordinateAwardingCriterion = $this->subordinateAwardingCriterion ?? [];
         $subordinateAwardingCriterion = reset($subordinateAwardingCriterion);
 
-        if ($subordinateAwardingCriterion === false) {
+        if (false === $subordinateAwardingCriterion) {
             return null;
         }
 
@@ -1029,7 +1029,7 @@ class AwardingCriterionType
         $subordinateAwardingCriterion = $this->subordinateAwardingCriterion ?? [];
         $subordinateAwardingCriterion = end($subordinateAwardingCriterion);
 
-        if ($subordinateAwardingCriterion === false) {
+        if (false === $subordinateAwardingCriterion) {
             return null;
         }
 
@@ -1083,7 +1083,7 @@ class AwardingCriterionType
             $this->subordinateAwardingCriterion = [];
         }
 
-        if ($this->subordinateAwardingCriterion === []) {
+        if ([] === $this->subordinateAwardingCriterion) {
             $this->addOnceTosubordinateAwardingCriterion(new SubordinateAwardingCriterion());
         }
 

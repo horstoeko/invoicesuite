@@ -25,7 +25,7 @@ class InvoiceSuiteFileUtils extends FileUtils
      */
     public static function isReadableFilePath(string $filenameOrContent): bool
     {
-        if ($filenameOrContent === '' || str_contains($filenameOrContent, "\0")) {
+        if ('' === $filenameOrContent || str_contains($filenameOrContent, "\0")) {
             return false;
         }
 
@@ -52,7 +52,7 @@ class InvoiceSuiteFileUtils extends FileUtils
 
         $fileContent = file_get_contents($filenameOrContent);
 
-        if ($fileContent === false) {
+        if (false === $fileContent) {
             throw new InvoiceSuiteFileNotReadableException($filenameOrContent);
         }
 

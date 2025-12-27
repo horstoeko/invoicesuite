@@ -246,7 +246,7 @@ class ItemIdentificationType
         $physicalAttribute = $this->physicalAttribute ?? [];
         $physicalAttribute = reset($physicalAttribute);
 
-        if ($physicalAttribute === false) {
+        if (false === $physicalAttribute) {
             return null;
         }
 
@@ -261,7 +261,7 @@ class ItemIdentificationType
         $physicalAttribute = $this->physicalAttribute ?? [];
         $physicalAttribute = end($physicalAttribute);
 
-        if ($physicalAttribute === false) {
+        if (false === $physicalAttribute) {
             return null;
         }
 
@@ -313,7 +313,7 @@ class ItemIdentificationType
             $this->physicalAttribute = [];
         }
 
-        if ($this->physicalAttribute === []) {
+        if ([] === $this->physicalAttribute) {
             $this->addOnceTophysicalAttribute(new PhysicalAttribute());
         }
 
@@ -367,7 +367,7 @@ class ItemIdentificationType
         $measurementDimension = $this->measurementDimension ?? [];
         $measurementDimension = reset($measurementDimension);
 
-        if ($measurementDimension === false) {
+        if (false === $measurementDimension) {
             return null;
         }
 
@@ -382,7 +382,7 @@ class ItemIdentificationType
         $measurementDimension = $this->measurementDimension ?? [];
         $measurementDimension = end($measurementDimension);
 
-        if ($measurementDimension === false) {
+        if (false === $measurementDimension) {
             return null;
         }
 
@@ -434,7 +434,7 @@ class ItemIdentificationType
             $this->measurementDimension = [];
         }
 
-        if ($this->measurementDimension === []) {
+        if ([] === $this->measurementDimension) {
             $this->addOnceTomeasurementDimension(new MeasurementDimension());
         }
 

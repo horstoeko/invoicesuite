@@ -242,7 +242,7 @@ class LocationType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -257,7 +257,7 @@ class LocationType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -309,7 +309,7 @@ class LocationType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -363,7 +363,7 @@ class LocationType
         $conditions = $this->conditions ?? [];
         $conditions = reset($conditions);
 
-        if ($conditions === false) {
+        if (false === $conditions) {
             return null;
         }
 
@@ -378,7 +378,7 @@ class LocationType
         $conditions = $this->conditions ?? [];
         $conditions = end($conditions);
 
-        if ($conditions === false) {
+        if (false === $conditions) {
             return null;
         }
 
@@ -430,7 +430,7 @@ class LocationType
             $this->conditions = [];
         }
 
-        if ($this->conditions === []) {
+        if ([] === $this->conditions) {
             $this->addOnceToconditions(new Conditions());
         }
 
@@ -679,7 +679,7 @@ class LocationType
         $validityPeriod = $this->validityPeriod ?? [];
         $validityPeriod = reset($validityPeriod);
 
-        if ($validityPeriod === false) {
+        if (false === $validityPeriod) {
             return null;
         }
 
@@ -694,7 +694,7 @@ class LocationType
         $validityPeriod = $this->validityPeriod ?? [];
         $validityPeriod = end($validityPeriod);
 
-        if ($validityPeriod === false) {
+        if (false === $validityPeriod) {
             return null;
         }
 
@@ -746,7 +746,7 @@ class LocationType
             $this->validityPeriod = [];
         }
 
-        if ($this->validityPeriod === []) {
+        if ([] === $this->validityPeriod) {
             $this->addOnceTovalidityPeriod(new ValidityPeriod());
         }
 
@@ -839,7 +839,7 @@ class LocationType
         $subsidiaryLocation = $this->subsidiaryLocation ?? [];
         $subsidiaryLocation = reset($subsidiaryLocation);
 
-        if ($subsidiaryLocation === false) {
+        if (false === $subsidiaryLocation) {
             return null;
         }
 
@@ -854,7 +854,7 @@ class LocationType
         $subsidiaryLocation = $this->subsidiaryLocation ?? [];
         $subsidiaryLocation = end($subsidiaryLocation);
 
-        if ($subsidiaryLocation === false) {
+        if (false === $subsidiaryLocation) {
             return null;
         }
 
@@ -906,7 +906,7 @@ class LocationType
             $this->subsidiaryLocation = [];
         }
 
-        if ($this->subsidiaryLocation === []) {
+        if ([] === $this->subsidiaryLocation) {
             $this->addOnceTosubsidiaryLocation(new SubsidiaryLocation());
         }
 
@@ -960,7 +960,7 @@ class LocationType
         $locationCoordinate = $this->locationCoordinate ?? [];
         $locationCoordinate = reset($locationCoordinate);
 
-        if ($locationCoordinate === false) {
+        if (false === $locationCoordinate) {
             return null;
         }
 
@@ -975,7 +975,7 @@ class LocationType
         $locationCoordinate = $this->locationCoordinate ?? [];
         $locationCoordinate = end($locationCoordinate);
 
-        if ($locationCoordinate === false) {
+        if (false === $locationCoordinate) {
             return null;
         }
 
@@ -1027,7 +1027,7 @@ class LocationType
             $this->locationCoordinate = [];
         }
 
-        if ($this->locationCoordinate === []) {
+        if ([] === $this->locationCoordinate) {
             $this->addOnceTolocationCoordinate(new LocationCoordinate());
         }
 

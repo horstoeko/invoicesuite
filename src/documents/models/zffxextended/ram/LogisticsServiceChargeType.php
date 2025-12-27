@@ -209,7 +209,7 @@ class LogisticsServiceChargeType
             $this->appliedTradeTax = [];
         }
 
-        if ($this->appliedTradeTax === []) {
+        if ([] === $this->appliedTradeTax) {
             $this->addOnceToappliedTradeTax(new TradeTaxType());
         }
 

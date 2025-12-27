@@ -306,7 +306,7 @@ class DespatchLineType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -321,7 +321,7 @@ class DespatchLineType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -373,7 +373,7 @@ class DespatchLineType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -544,7 +544,7 @@ class DespatchLineType
         $backorderReason = $this->backorderReason ?? [];
         $backorderReason = reset($backorderReason);
 
-        if ($backorderReason === false) {
+        if (false === $backorderReason) {
             return null;
         }
 
@@ -559,7 +559,7 @@ class DespatchLineType
         $backorderReason = $this->backorderReason ?? [];
         $backorderReason = end($backorderReason);
 
-        if ($backorderReason === false) {
+        if (false === $backorderReason) {
             return null;
         }
 
@@ -611,7 +611,7 @@ class DespatchLineType
             $this->backorderReason = [];
         }
 
-        if ($this->backorderReason === []) {
+        if ([] === $this->backorderReason) {
             $this->addOnceTobackorderReason(new BackorderReason());
         }
 
@@ -704,7 +704,7 @@ class DespatchLineType
         $outstandingReason = $this->outstandingReason ?? [];
         $outstandingReason = reset($outstandingReason);
 
-        if ($outstandingReason === false) {
+        if (false === $outstandingReason) {
             return null;
         }
 
@@ -719,7 +719,7 @@ class DespatchLineType
         $outstandingReason = $this->outstandingReason ?? [];
         $outstandingReason = end($outstandingReason);
 
-        if ($outstandingReason === false) {
+        if (false === $outstandingReason) {
             return null;
         }
 
@@ -771,7 +771,7 @@ class DespatchLineType
             $this->outstandingReason = [];
         }
 
-        if ($this->outstandingReason === []) {
+        if ([] === $this->outstandingReason) {
             $this->addOnceTooutstandingReason(new OutstandingReason());
         }
 
@@ -864,7 +864,7 @@ class DespatchLineType
         $orderLineReference = $this->orderLineReference ?? [];
         $orderLineReference = reset($orderLineReference);
 
-        if ($orderLineReference === false) {
+        if (false === $orderLineReference) {
             return null;
         }
 
@@ -879,7 +879,7 @@ class DespatchLineType
         $orderLineReference = $this->orderLineReference ?? [];
         $orderLineReference = end($orderLineReference);
 
-        if ($orderLineReference === false) {
+        if (false === $orderLineReference) {
             return null;
         }
 
@@ -931,7 +931,7 @@ class DespatchLineType
             $this->orderLineReference = [];
         }
 
-        if ($this->orderLineReference === []) {
+        if ([] === $this->orderLineReference) {
             $this->addOnceToorderLineReference(new OrderLineReference());
         }
 
@@ -985,7 +985,7 @@ class DespatchLineType
         $documentReference = $this->documentReference ?? [];
         $documentReference = reset($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -1000,7 +1000,7 @@ class DespatchLineType
         $documentReference = $this->documentReference ?? [];
         $documentReference = end($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -1052,7 +1052,7 @@ class DespatchLineType
             $this->documentReference = [];
         }
 
-        if ($this->documentReference === []) {
+        if ([] === $this->documentReference) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
 
@@ -1145,7 +1145,7 @@ class DespatchLineType
         $shipment = $this->shipment ?? [];
         $shipment = reset($shipment);
 
-        if ($shipment === false) {
+        if (false === $shipment) {
             return null;
         }
 
@@ -1160,7 +1160,7 @@ class DespatchLineType
         $shipment = $this->shipment ?? [];
         $shipment = end($shipment);
 
-        if ($shipment === false) {
+        if (false === $shipment) {
             return null;
         }
 
@@ -1212,7 +1212,7 @@ class DespatchLineType
             $this->shipment = [];
         }
 
-        if ($this->shipment === []) {
+        if ([] === $this->shipment) {
             $this->addOnceToshipment(new Shipment());
         }
 

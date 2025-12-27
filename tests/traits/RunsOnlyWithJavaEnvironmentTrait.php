@@ -42,7 +42,7 @@ trait RunsOnlyWithJavaEnvironmentTrait
      */
     private function markAsSkippedIfJavaIsNotAvailable(): void
     {
-        if ($this->isJavaAvailable() === false) {
+        if (false === $this->isJavaAvailable()) {
             $this->markTestSkipped('Java environment not available. Test is skipped.');
         }
     }

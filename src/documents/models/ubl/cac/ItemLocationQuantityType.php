@@ -345,7 +345,7 @@ class ItemLocationQuantityType
         $tradingRestrictions = $this->tradingRestrictions ?? [];
         $tradingRestrictions = reset($tradingRestrictions);
 
-        if ($tradingRestrictions === false) {
+        if (false === $tradingRestrictions) {
             return null;
         }
 
@@ -360,7 +360,7 @@ class ItemLocationQuantityType
         $tradingRestrictions = $this->tradingRestrictions ?? [];
         $tradingRestrictions = end($tradingRestrictions);
 
-        if ($tradingRestrictions === false) {
+        if (false === $tradingRestrictions) {
             return null;
         }
 
@@ -412,7 +412,7 @@ class ItemLocationQuantityType
             $this->tradingRestrictions = [];
         }
 
-        if ($this->tradingRestrictions === []) {
+        if ([] === $this->tradingRestrictions) {
             $this->addOnceTotradingRestrictions(new TradingRestrictions());
         }
 
@@ -466,7 +466,7 @@ class ItemLocationQuantityType
         $applicableTerritoryAddress = $this->applicableTerritoryAddress ?? [];
         $applicableTerritoryAddress = reset($applicableTerritoryAddress);
 
-        if ($applicableTerritoryAddress === false) {
+        if (false === $applicableTerritoryAddress) {
             return null;
         }
 
@@ -481,7 +481,7 @@ class ItemLocationQuantityType
         $applicableTerritoryAddress = $this->applicableTerritoryAddress ?? [];
         $applicableTerritoryAddress = end($applicableTerritoryAddress);
 
-        if ($applicableTerritoryAddress === false) {
+        if (false === $applicableTerritoryAddress) {
             return null;
         }
 
@@ -533,7 +533,7 @@ class ItemLocationQuantityType
             $this->applicableTerritoryAddress = [];
         }
 
-        if ($this->applicableTerritoryAddress === []) {
+        if ([] === $this->applicableTerritoryAddress) {
             $this->addOnceToapplicableTerritoryAddress(new ApplicableTerritoryAddress());
         }
 
@@ -626,7 +626,7 @@ class ItemLocationQuantityType
         $deliveryUnit = $this->deliveryUnit ?? [];
         $deliveryUnit = reset($deliveryUnit);
 
-        if ($deliveryUnit === false) {
+        if (false === $deliveryUnit) {
             return null;
         }
 
@@ -641,7 +641,7 @@ class ItemLocationQuantityType
         $deliveryUnit = $this->deliveryUnit ?? [];
         $deliveryUnit = end($deliveryUnit);
 
-        if ($deliveryUnit === false) {
+        if (false === $deliveryUnit) {
             return null;
         }
 
@@ -693,7 +693,7 @@ class ItemLocationQuantityType
             $this->deliveryUnit = [];
         }
 
-        if ($this->deliveryUnit === []) {
+        if ([] === $this->deliveryUnit) {
             $this->addOnceTodeliveryUnit(new DeliveryUnit());
         }
 
@@ -747,7 +747,7 @@ class ItemLocationQuantityType
         $applicableTaxCategory = $this->applicableTaxCategory ?? [];
         $applicableTaxCategory = reset($applicableTaxCategory);
 
-        if ($applicableTaxCategory === false) {
+        if (false === $applicableTaxCategory) {
             return null;
         }
 
@@ -762,7 +762,7 @@ class ItemLocationQuantityType
         $applicableTaxCategory = $this->applicableTaxCategory ?? [];
         $applicableTaxCategory = end($applicableTaxCategory);
 
-        if ($applicableTaxCategory === false) {
+        if (false === $applicableTaxCategory) {
             return null;
         }
 
@@ -814,7 +814,7 @@ class ItemLocationQuantityType
             $this->applicableTaxCategory = [];
         }
 
-        if ($this->applicableTaxCategory === []) {
+        if ([] === $this->applicableTaxCategory) {
             $this->addOnceToapplicableTaxCategory(new ApplicableTaxCategory());
         }
 
@@ -907,7 +907,7 @@ class ItemLocationQuantityType
         $allowanceCharge = $this->allowanceCharge ?? [];
         $allowanceCharge = reset($allowanceCharge);
 
-        if ($allowanceCharge === false) {
+        if (false === $allowanceCharge) {
             return null;
         }
 
@@ -922,7 +922,7 @@ class ItemLocationQuantityType
         $allowanceCharge = $this->allowanceCharge ?? [];
         $allowanceCharge = end($allowanceCharge);
 
-        if ($allowanceCharge === false) {
+        if (false === $allowanceCharge) {
             return null;
         }
 
@@ -974,7 +974,7 @@ class ItemLocationQuantityType
             $this->allowanceCharge = [];
         }
 
-        if ($this->allowanceCharge === []) {
+        if ([] === $this->allowanceCharge) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }
 

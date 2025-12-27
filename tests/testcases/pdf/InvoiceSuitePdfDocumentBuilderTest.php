@@ -29,7 +29,7 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
     public function testZfFxPdfBuilder(string $expectedProfile, string $expectedXmlContains, $expectedUseOfXmlFile, bool $expectusePdfContent, string $expectXmpName, string $expectXmpVersion, int $expectOutputType): void
     {
         if (!$expectusePdfContent) {
-            if ($expectedUseOfXmlFile !== false) {
+            if (false !== $expectedUseOfXmlFile) {
                 $xmlFilename = InvoiceSuitePathUtils::combinePathWithFile($this->getAssetPath(), $expectedUseOfXmlFile);
                 $xmlContent = file_get_contents($xmlFilename);
                 $pdfDOcumentBuilder = InvoiceSuitePdfDocumentBuilder::createFromDocumentContentAndPdfFile(
@@ -51,7 +51,7 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         } else {
             $pdfContent = file_get_contents($this->getSamplePlainPdfFile());
 
-            if ($expectedUseOfXmlFile !== false) {
+            if (false !== $expectedUseOfXmlFile) {
                 $xmlFilename = InvoiceSuitePathUtils::combinePathWithFile($this->getAssetPath(), $expectedUseOfXmlFile);
                 $xmlContent = file_get_contents($xmlFilename);
                 $pdfDOcumentBuilder = InvoiceSuitePdfDocumentBuilder::createFromDocumentContentAndPdfContent(
@@ -311,19 +311,19 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $this->assertSame('Invoice 2025-04-000001', $methodValue['subject']);
 
         $pdfDOcumentBuilder->setMetaInformationCallback(static function ($whichTemplate, $xmlContent, $invoiceInformation, $defaultValue) {
-            if ($whichTemplate == 'author') {
+            if ('author' == $whichTemplate) {
                 return $invoiceInformation['seller'];
             }
 
-            if ($whichTemplate == 'keyword') {
+            if ('keyword' == $whichTemplate) {
                 return sprintf('%s %s, %s', $invoiceInformation['docTypeName'], $invoiceInformation['invoiceId'], $invoiceInformation['date']);
             }
 
-            if ($whichTemplate == 'title') {
+            if ('title' == $whichTemplate) {
                 return sprintf('%s %s issued by %s', $invoiceInformation['docTypeName'], $invoiceInformation['invoiceId'], $invoiceInformation['seller']);
             }
 
-            if ($whichTemplate == 'subject') {
+            if ('subject' == $whichTemplate) {
                 return sprintf('%s %s', $invoiceInformation['docTypeName'], $invoiceInformation['invoiceId']);
             }
         });
@@ -394,11 +394,11 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
 
         $pdfContent = '';
 
-        if ($expectOutputType === 1) {
+        if (1 === $expectOutputType) {
             $pdfContent = $pdfDOcumentBuilder->generatePdfDocumentAndGetContent();
         }
 
-        if ($expectOutputType === 2) {
+        if (2 === $expectOutputType) {
             $saveToFilename = InvoiceSuitePathUtils::combinePathWithFile(sys_get_temp_dir(), 'output.pdf');
             $pdfDOcumentBuilder->generatePdfDocumentAndSaveToFile($saveToFilename);
             $this->assertFileExists($saveToFilename);

@@ -170,7 +170,7 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
         $count = 0;
 
         foreach ($this->taxes as $tax) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -179,7 +179,7 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
             $callback($tax);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 

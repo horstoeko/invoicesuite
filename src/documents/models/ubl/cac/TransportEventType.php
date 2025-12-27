@@ -334,7 +334,7 @@ class TransportEventType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -349,7 +349,7 @@ class TransportEventType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -401,7 +401,7 @@ class TransportEventType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -523,7 +523,7 @@ class TransportEventType
         $currentStatus = $this->currentStatus ?? [];
         $currentStatus = reset($currentStatus);
 
-        if ($currentStatus === false) {
+        if (false === $currentStatus) {
             return null;
         }
 
@@ -538,7 +538,7 @@ class TransportEventType
         $currentStatus = $this->currentStatus ?? [];
         $currentStatus = end($currentStatus);
 
-        if ($currentStatus === false) {
+        if (false === $currentStatus) {
             return null;
         }
 
@@ -590,7 +590,7 @@ class TransportEventType
             $this->currentStatus = [];
         }
 
-        if ($this->currentStatus === []) {
+        if ([] === $this->currentStatus) {
             $this->addOnceTocurrentStatus(new CurrentStatus());
         }
 
@@ -644,7 +644,7 @@ class TransportEventType
         $contact = $this->contact ?? [];
         $contact = reset($contact);
 
-        if ($contact === false) {
+        if (false === $contact) {
             return null;
         }
 
@@ -659,7 +659,7 @@ class TransportEventType
         $contact = $this->contact ?? [];
         $contact = end($contact);
 
-        if ($contact === false) {
+        if (false === $contact) {
             return null;
         }
 
@@ -711,7 +711,7 @@ class TransportEventType
             $this->contact = [];
         }
 
-        if ($this->contact === []) {
+        if ([] === $this->contact) {
             $this->addOnceTocontact(new Contact());
         }
 
@@ -843,7 +843,7 @@ class TransportEventType
         $period = $this->period ?? [];
         $period = reset($period);
 
-        if ($period === false) {
+        if (false === $period) {
             return null;
         }
 
@@ -858,7 +858,7 @@ class TransportEventType
         $period = $this->period ?? [];
         $period = end($period);
 
-        if ($period === false) {
+        if (false === $period) {
             return null;
         }
 
@@ -910,7 +910,7 @@ class TransportEventType
             $this->period = [];
         }
 
-        if ($this->period === []) {
+        if ([] === $this->period) {
             $this->addOnceToperiod(new Period());
         }
 

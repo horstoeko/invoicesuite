@@ -287,7 +287,7 @@ class TransportMeansType
         $registrationNationality = $this->registrationNationality ?? [];
         $registrationNationality = reset($registrationNationality);
 
-        if ($registrationNationality === false) {
+        if (false === $registrationNationality) {
             return null;
         }
 
@@ -302,7 +302,7 @@ class TransportMeansType
         $registrationNationality = $this->registrationNationality ?? [];
         $registrationNationality = end($registrationNationality);
 
-        if ($registrationNationality === false) {
+        if (false === $registrationNationality) {
             return null;
         }
 
@@ -354,7 +354,7 @@ class TransportMeansType
             $this->registrationNationality = [];
         }
 
-        if ($this->registrationNationality === []) {
+        if ([] === $this->registrationNationality) {
             $this->addOnceToregistrationNationality(new RegistrationNationality());
         }
 
@@ -759,7 +759,7 @@ class TransportMeansType
         $measurementDimension = $this->measurementDimension ?? [];
         $measurementDimension = reset($measurementDimension);
 
-        if ($measurementDimension === false) {
+        if (false === $measurementDimension) {
             return null;
         }
 
@@ -774,7 +774,7 @@ class TransportMeansType
         $measurementDimension = $this->measurementDimension ?? [];
         $measurementDimension = end($measurementDimension);
 
-        if ($measurementDimension === false) {
+        if (false === $measurementDimension) {
             return null;
         }
 
@@ -826,7 +826,7 @@ class TransportMeansType
             $this->measurementDimension = [];
         }
 
-        if ($this->measurementDimension === []) {
+        if ([] === $this->measurementDimension) {
             $this->addOnceTomeasurementDimension(new MeasurementDimension());
         }
 

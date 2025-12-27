@@ -145,7 +145,7 @@ class ContractingPartyType extends ContractingPartyTypeType
         $contractingPartyType = $this->contractingPartyType ?? [];
         $contractingPartyType = reset($contractingPartyType);
 
-        if ($contractingPartyType === false) {
+        if (false === $contractingPartyType) {
             return null;
         }
 
@@ -160,7 +160,7 @@ class ContractingPartyType extends ContractingPartyTypeType
         $contractingPartyType = $this->contractingPartyType ?? [];
         $contractingPartyType = end($contractingPartyType);
 
-        if ($contractingPartyType === false) {
+        if (false === $contractingPartyType) {
             return null;
         }
 
@@ -212,7 +212,7 @@ class ContractingPartyType extends ContractingPartyTypeType
             $this->contractingPartyType = [];
         }
 
-        if ($this->contractingPartyType === []) {
+        if ([] === $this->contractingPartyType) {
             $this->addOnceTocontractingPartyType(new ContractingPartyType1());
         }
 
@@ -266,7 +266,7 @@ class ContractingPartyType extends ContractingPartyTypeType
         $contractingActivity = $this->contractingActivity ?? [];
         $contractingActivity = reset($contractingActivity);
 
-        if ($contractingActivity === false) {
+        if (false === $contractingActivity) {
             return null;
         }
 
@@ -281,7 +281,7 @@ class ContractingPartyType extends ContractingPartyTypeType
         $contractingActivity = $this->contractingActivity ?? [];
         $contractingActivity = end($contractingActivity);
 
-        if ($contractingActivity === false) {
+        if (false === $contractingActivity) {
             return null;
         }
 
@@ -333,7 +333,7 @@ class ContractingPartyType extends ContractingPartyTypeType
             $this->contractingActivity = [];
         }
 
-        if ($this->contractingActivity === []) {
+        if ([] === $this->contractingActivity) {
             $this->addOnceTocontractingActivity(new ContractingActivity());
         }
 

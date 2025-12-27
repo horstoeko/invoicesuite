@@ -293,7 +293,7 @@ class ZugferdSettings
      */
     public static function hasSerializerCacheDirectory(): bool
     {
-        return InvoiceSuiteStringUtils::stringIsNullOrEmpty(static::getSerializerCacheDirectory()) === false;
+        return false === InvoiceSuiteStringUtils::stringIsNullOrEmpty(static::getSerializerCacheDirectory());
     }
 
     /**

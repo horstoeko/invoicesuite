@@ -353,7 +353,7 @@ class StatementLineType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -368,7 +368,7 @@ class StatementLineType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -420,7 +420,7 @@ class StatementLineType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -737,7 +737,7 @@ class StatementLineType
         $paymentTerms = $this->paymentTerms ?? [];
         $paymentTerms = reset($paymentTerms);
 
-        if ($paymentTerms === false) {
+        if (false === $paymentTerms) {
             return null;
         }
 
@@ -752,7 +752,7 @@ class StatementLineType
         $paymentTerms = $this->paymentTerms ?? [];
         $paymentTerms = end($paymentTerms);
 
-        if ($paymentTerms === false) {
+        if (false === $paymentTerms) {
             return null;
         }
 
@@ -804,7 +804,7 @@ class StatementLineType
             $this->paymentTerms = [];
         }
 
-        if ($this->paymentTerms === []) {
+        if ([] === $this->paymentTerms) {
             $this->addOnceTopaymentTerms(new PaymentTerms());
         }
 
@@ -1092,7 +1092,7 @@ class StatementLineType
         $invoicePeriod = $this->invoicePeriod ?? [];
         $invoicePeriod = reset($invoicePeriod);
 
-        if ($invoicePeriod === false) {
+        if (false === $invoicePeriod) {
             return null;
         }
 
@@ -1107,7 +1107,7 @@ class StatementLineType
         $invoicePeriod = $this->invoicePeriod ?? [];
         $invoicePeriod = end($invoicePeriod);
 
-        if ($invoicePeriod === false) {
+        if (false === $invoicePeriod) {
             return null;
         }
 
@@ -1159,7 +1159,7 @@ class StatementLineType
             $this->invoicePeriod = [];
         }
 
-        if ($this->invoicePeriod === []) {
+        if ([] === $this->invoicePeriod) {
             $this->addOnceToinvoicePeriod(new InvoicePeriod());
         }
 
@@ -1213,7 +1213,7 @@ class StatementLineType
         $billingReference = $this->billingReference ?? [];
         $billingReference = reset($billingReference);
 
-        if ($billingReference === false) {
+        if (false === $billingReference) {
             return null;
         }
 
@@ -1228,7 +1228,7 @@ class StatementLineType
         $billingReference = $this->billingReference ?? [];
         $billingReference = end($billingReference);
 
-        if ($billingReference === false) {
+        if (false === $billingReference) {
             return null;
         }
 
@@ -1280,7 +1280,7 @@ class StatementLineType
             $this->billingReference = [];
         }
 
-        if ($this->billingReference === []) {
+        if ([] === $this->billingReference) {
             $this->addOnceTobillingReference(new BillingReference());
         }
 
@@ -1334,7 +1334,7 @@ class StatementLineType
         $documentReference = $this->documentReference ?? [];
         $documentReference = reset($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -1349,7 +1349,7 @@ class StatementLineType
         $documentReference = $this->documentReference ?? [];
         $documentReference = end($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -1401,7 +1401,7 @@ class StatementLineType
             $this->documentReference = [];
         }
 
-        if ($this->documentReference === []) {
+        if ([] === $this->documentReference) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
 
@@ -1494,7 +1494,7 @@ class StatementLineType
         $allowanceCharge = $this->allowanceCharge ?? [];
         $allowanceCharge = reset($allowanceCharge);
 
-        if ($allowanceCharge === false) {
+        if (false === $allowanceCharge) {
             return null;
         }
 
@@ -1509,7 +1509,7 @@ class StatementLineType
         $allowanceCharge = $this->allowanceCharge ?? [];
         $allowanceCharge = end($allowanceCharge);
 
-        if ($allowanceCharge === false) {
+        if (false === $allowanceCharge) {
             return null;
         }
 
@@ -1561,7 +1561,7 @@ class StatementLineType
             $this->allowanceCharge = [];
         }
 
-        if ($this->allowanceCharge === []) {
+        if ([] === $this->allowanceCharge) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }
 
@@ -1615,7 +1615,7 @@ class StatementLineType
         $collectedPayment = $this->collectedPayment ?? [];
         $collectedPayment = reset($collectedPayment);
 
-        if ($collectedPayment === false) {
+        if (false === $collectedPayment) {
             return null;
         }
 
@@ -1630,7 +1630,7 @@ class StatementLineType
         $collectedPayment = $this->collectedPayment ?? [];
         $collectedPayment = end($collectedPayment);
 
-        if ($collectedPayment === false) {
+        if (false === $collectedPayment) {
             return null;
         }
 
@@ -1682,7 +1682,7 @@ class StatementLineType
             $this->collectedPayment = [];
         }
 
-        if ($this->collectedPayment === []) {
+        if ([] === $this->collectedPayment) {
             $this->addOnceTocollectedPayment(new CollectedPayment());
         }
 

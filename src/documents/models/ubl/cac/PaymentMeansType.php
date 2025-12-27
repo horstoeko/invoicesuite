@@ -395,7 +395,7 @@ class PaymentMeansType
         $instructionNote = $this->instructionNote ?? [];
         $instructionNote = reset($instructionNote);
 
-        if ($instructionNote === false) {
+        if (false === $instructionNote) {
             return null;
         }
 
@@ -410,7 +410,7 @@ class PaymentMeansType
         $instructionNote = $this->instructionNote ?? [];
         $instructionNote = end($instructionNote);
 
-        if ($instructionNote === false) {
+        if (false === $instructionNote) {
             return null;
         }
 
@@ -462,7 +462,7 @@ class PaymentMeansType
             $this->instructionNote = [];
         }
 
-        if ($this->instructionNote === []) {
+        if ([] === $this->instructionNote) {
             $this->addOnceToinstructionNote(new InstructionNote());
         }
 
@@ -516,7 +516,7 @@ class PaymentMeansType
         $paymentID = $this->paymentID ?? [];
         $paymentID = reset($paymentID);
 
-        if ($paymentID === false) {
+        if (false === $paymentID) {
             return null;
         }
 
@@ -531,7 +531,7 @@ class PaymentMeansType
         $paymentID = $this->paymentID ?? [];
         $paymentID = end($paymentID);
 
-        if ($paymentID === false) {
+        if (false === $paymentID) {
             return null;
         }
 
@@ -583,7 +583,7 @@ class PaymentMeansType
             $this->paymentID = [];
         }
 
-        if ($this->paymentID === []) {
+        if ([] === $this->paymentID) {
             $this->addOnceTopaymentID(new PaymentID());
         }
 

@@ -65,7 +65,7 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
 
         $pdfContent = file_get_contents($pdfFilename);
 
-        if ($pdfContent === false) {
+        if (false === $pdfContent) {
             throw new InvoiceSuiteFileNotReadableException($pdfFilename);
         }
 

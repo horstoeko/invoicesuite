@@ -812,7 +812,7 @@ class TransportEquipmentType
         $referencedConsignmentID = $this->referencedConsignmentID ?? [];
         $referencedConsignmentID = reset($referencedConsignmentID);
 
-        if ($referencedConsignmentID === false) {
+        if (false === $referencedConsignmentID) {
             return null;
         }
 
@@ -827,7 +827,7 @@ class TransportEquipmentType
         $referencedConsignmentID = $this->referencedConsignmentID ?? [];
         $referencedConsignmentID = end($referencedConsignmentID);
 
-        if ($referencedConsignmentID === false) {
+        if (false === $referencedConsignmentID) {
             return null;
         }
 
@@ -879,7 +879,7 @@ class TransportEquipmentType
             $this->referencedConsignmentID = [];
         }
 
-        if ($this->referencedConsignmentID === []) {
+        if ([] === $this->referencedConsignmentID) {
             $this->addOnceToreferencedConsignmentID(new ReferencedConsignmentID());
         }
 
@@ -1197,7 +1197,7 @@ class TransportEquipmentType
         $information = $this->information ?? [];
         $information = reset($information);
 
-        if ($information === false) {
+        if (false === $information) {
             return null;
         }
 
@@ -1212,7 +1212,7 @@ class TransportEquipmentType
         $information = $this->information ?? [];
         $information = end($information);
 
-        if ($information === false) {
+        if (false === $information) {
             return null;
         }
 
@@ -1264,7 +1264,7 @@ class TransportEquipmentType
             $this->information = [];
         }
 
-        if ($this->information === []) {
+        if ([] === $this->information) {
             $this->addOnceToinformation(new Information());
         }
 
@@ -1609,7 +1609,7 @@ class TransportEquipmentType
         $damageRemarks = $this->damageRemarks ?? [];
         $damageRemarks = reset($damageRemarks);
 
-        if ($damageRemarks === false) {
+        if (false === $damageRemarks) {
             return null;
         }
 
@@ -1624,7 +1624,7 @@ class TransportEquipmentType
         $damageRemarks = $this->damageRemarks ?? [];
         $damageRemarks = end($damageRemarks);
 
-        if ($damageRemarks === false) {
+        if (false === $damageRemarks) {
             return null;
         }
 
@@ -1676,7 +1676,7 @@ class TransportEquipmentType
             $this->damageRemarks = [];
         }
 
-        if ($this->damageRemarks === []) {
+        if ([] === $this->damageRemarks) {
             $this->addOnceTodamageRemarks(new DamageRemarks());
         }
 
@@ -1730,7 +1730,7 @@ class TransportEquipmentType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -1745,7 +1745,7 @@ class TransportEquipmentType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -1797,7 +1797,7 @@ class TransportEquipmentType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -1851,7 +1851,7 @@ class TransportEquipmentType
         $specialTransportRequirements = $this->specialTransportRequirements ?? [];
         $specialTransportRequirements = reset($specialTransportRequirements);
 
-        if ($specialTransportRequirements === false) {
+        if (false === $specialTransportRequirements) {
             return null;
         }
 
@@ -1866,7 +1866,7 @@ class TransportEquipmentType
         $specialTransportRequirements = $this->specialTransportRequirements ?? [];
         $specialTransportRequirements = end($specialTransportRequirements);
 
-        if ($specialTransportRequirements === false) {
+        if (false === $specialTransportRequirements) {
             return null;
         }
 
@@ -1920,7 +1920,7 @@ class TransportEquipmentType
             $this->specialTransportRequirements = [];
         }
 
-        if ($this->specialTransportRequirements === []) {
+        if ([] === $this->specialTransportRequirements) {
             $this->addOnceTospecialTransportRequirements(new SpecialTransportRequirements());
         }
 
@@ -2198,7 +2198,7 @@ class TransportEquipmentType
         $measurementDimension = $this->measurementDimension ?? [];
         $measurementDimension = reset($measurementDimension);
 
-        if ($measurementDimension === false) {
+        if (false === $measurementDimension) {
             return null;
         }
 
@@ -2213,7 +2213,7 @@ class TransportEquipmentType
         $measurementDimension = $this->measurementDimension ?? [];
         $measurementDimension = end($measurementDimension);
 
-        if ($measurementDimension === false) {
+        if (false === $measurementDimension) {
             return null;
         }
 
@@ -2265,7 +2265,7 @@ class TransportEquipmentType
             $this->measurementDimension = [];
         }
 
-        if ($this->measurementDimension === []) {
+        if ([] === $this->measurementDimension) {
             $this->addOnceTomeasurementDimension(new MeasurementDimension());
         }
 
@@ -2319,7 +2319,7 @@ class TransportEquipmentType
         $transportEquipmentSeal = $this->transportEquipmentSeal ?? [];
         $transportEquipmentSeal = reset($transportEquipmentSeal);
 
-        if ($transportEquipmentSeal === false) {
+        if (false === $transportEquipmentSeal) {
             return null;
         }
 
@@ -2334,7 +2334,7 @@ class TransportEquipmentType
         $transportEquipmentSeal = $this->transportEquipmentSeal ?? [];
         $transportEquipmentSeal = end($transportEquipmentSeal);
 
-        if ($transportEquipmentSeal === false) {
+        if (false === $transportEquipmentSeal) {
             return null;
         }
 
@@ -2386,7 +2386,7 @@ class TransportEquipmentType
             $this->transportEquipmentSeal = [];
         }
 
-        if ($this->transportEquipmentSeal === []) {
+        if ([] === $this->transportEquipmentSeal) {
             $this->addOnceTotransportEquipmentSeal(new TransportEquipmentSeal());
         }
 
@@ -2830,7 +2830,7 @@ class TransportEquipmentType
         $positioningTransportEvent = $this->positioningTransportEvent ?? [];
         $positioningTransportEvent = reset($positioningTransportEvent);
 
-        if ($positioningTransportEvent === false) {
+        if (false === $positioningTransportEvent) {
             return null;
         }
 
@@ -2845,7 +2845,7 @@ class TransportEquipmentType
         $positioningTransportEvent = $this->positioningTransportEvent ?? [];
         $positioningTransportEvent = end($positioningTransportEvent);
 
-        if ($positioningTransportEvent === false) {
+        if (false === $positioningTransportEvent) {
             return null;
         }
 
@@ -2897,7 +2897,7 @@ class TransportEquipmentType
             $this->positioningTransportEvent = [];
         }
 
-        if ($this->positioningTransportEvent === []) {
+        if ([] === $this->positioningTransportEvent) {
             $this->addOnceTopositioningTransportEvent(new PositioningTransportEvent());
         }
 
@@ -2951,7 +2951,7 @@ class TransportEquipmentType
         $quarantineTransportEvent = $this->quarantineTransportEvent ?? [];
         $quarantineTransportEvent = reset($quarantineTransportEvent);
 
-        if ($quarantineTransportEvent === false) {
+        if (false === $quarantineTransportEvent) {
             return null;
         }
 
@@ -2966,7 +2966,7 @@ class TransportEquipmentType
         $quarantineTransportEvent = $this->quarantineTransportEvent ?? [];
         $quarantineTransportEvent = end($quarantineTransportEvent);
 
-        if ($quarantineTransportEvent === false) {
+        if (false === $quarantineTransportEvent) {
             return null;
         }
 
@@ -3018,7 +3018,7 @@ class TransportEquipmentType
             $this->quarantineTransportEvent = [];
         }
 
-        if ($this->quarantineTransportEvent === []) {
+        if ([] === $this->quarantineTransportEvent) {
             $this->addOnceToquarantineTransportEvent(new QuarantineTransportEvent());
         }
 
@@ -3072,7 +3072,7 @@ class TransportEquipmentType
         $deliveryTransportEvent = $this->deliveryTransportEvent ?? [];
         $deliveryTransportEvent = reset($deliveryTransportEvent);
 
-        if ($deliveryTransportEvent === false) {
+        if (false === $deliveryTransportEvent) {
             return null;
         }
 
@@ -3087,7 +3087,7 @@ class TransportEquipmentType
         $deliveryTransportEvent = $this->deliveryTransportEvent ?? [];
         $deliveryTransportEvent = end($deliveryTransportEvent);
 
-        if ($deliveryTransportEvent === false) {
+        if (false === $deliveryTransportEvent) {
             return null;
         }
 
@@ -3139,7 +3139,7 @@ class TransportEquipmentType
             $this->deliveryTransportEvent = [];
         }
 
-        if ($this->deliveryTransportEvent === []) {
+        if ([] === $this->deliveryTransportEvent) {
             $this->addOnceTodeliveryTransportEvent(new DeliveryTransportEvent());
         }
 
@@ -3193,7 +3193,7 @@ class TransportEquipmentType
         $pickupTransportEvent = $this->pickupTransportEvent ?? [];
         $pickupTransportEvent = reset($pickupTransportEvent);
 
-        if ($pickupTransportEvent === false) {
+        if (false === $pickupTransportEvent) {
             return null;
         }
 
@@ -3208,7 +3208,7 @@ class TransportEquipmentType
         $pickupTransportEvent = $this->pickupTransportEvent ?? [];
         $pickupTransportEvent = end($pickupTransportEvent);
 
-        if ($pickupTransportEvent === false) {
+        if (false === $pickupTransportEvent) {
             return null;
         }
 
@@ -3260,7 +3260,7 @@ class TransportEquipmentType
             $this->pickupTransportEvent = [];
         }
 
-        if ($this->pickupTransportEvent === []) {
+        if ([] === $this->pickupTransportEvent) {
             $this->addOnceTopickupTransportEvent(new PickupTransportEvent());
         }
 
@@ -3314,7 +3314,7 @@ class TransportEquipmentType
         $handlingTransportEvent = $this->handlingTransportEvent ?? [];
         $handlingTransportEvent = reset($handlingTransportEvent);
 
-        if ($handlingTransportEvent === false) {
+        if (false === $handlingTransportEvent) {
             return null;
         }
 
@@ -3329,7 +3329,7 @@ class TransportEquipmentType
         $handlingTransportEvent = $this->handlingTransportEvent ?? [];
         $handlingTransportEvent = end($handlingTransportEvent);
 
-        if ($handlingTransportEvent === false) {
+        if (false === $handlingTransportEvent) {
             return null;
         }
 
@@ -3381,7 +3381,7 @@ class TransportEquipmentType
             $this->handlingTransportEvent = [];
         }
 
-        if ($this->handlingTransportEvent === []) {
+        if ([] === $this->handlingTransportEvent) {
             $this->addOnceTohandlingTransportEvent(new HandlingTransportEvent());
         }
 
@@ -3435,7 +3435,7 @@ class TransportEquipmentType
         $loadingTransportEvent = $this->loadingTransportEvent ?? [];
         $loadingTransportEvent = reset($loadingTransportEvent);
 
-        if ($loadingTransportEvent === false) {
+        if (false === $loadingTransportEvent) {
             return null;
         }
 
@@ -3450,7 +3450,7 @@ class TransportEquipmentType
         $loadingTransportEvent = $this->loadingTransportEvent ?? [];
         $loadingTransportEvent = end($loadingTransportEvent);
 
-        if ($loadingTransportEvent === false) {
+        if (false === $loadingTransportEvent) {
             return null;
         }
 
@@ -3502,7 +3502,7 @@ class TransportEquipmentType
             $this->loadingTransportEvent = [];
         }
 
-        if ($this->loadingTransportEvent === []) {
+        if ([] === $this->loadingTransportEvent) {
             $this->addOnceToloadingTransportEvent(new LoadingTransportEvent());
         }
 
@@ -3556,7 +3556,7 @@ class TransportEquipmentType
         $transportEvent = $this->transportEvent ?? [];
         $transportEvent = reset($transportEvent);
 
-        if ($transportEvent === false) {
+        if (false === $transportEvent) {
             return null;
         }
 
@@ -3571,7 +3571,7 @@ class TransportEquipmentType
         $transportEvent = $this->transportEvent ?? [];
         $transportEvent = end($transportEvent);
 
-        if ($transportEvent === false) {
+        if (false === $transportEvent) {
             return null;
         }
 
@@ -3623,7 +3623,7 @@ class TransportEquipmentType
             $this->transportEvent = [];
         }
 
-        if ($this->transportEvent === []) {
+        if ([] === $this->transportEvent) {
             $this->addOnceTotransportEvent(new TransportEvent());
         }
 
@@ -3716,7 +3716,7 @@ class TransportEquipmentType
         $haulageTradingTerms = $this->haulageTradingTerms ?? [];
         $haulageTradingTerms = reset($haulageTradingTerms);
 
-        if ($haulageTradingTerms === false) {
+        if (false === $haulageTradingTerms) {
             return null;
         }
 
@@ -3731,7 +3731,7 @@ class TransportEquipmentType
         $haulageTradingTerms = $this->haulageTradingTerms ?? [];
         $haulageTradingTerms = end($haulageTradingTerms);
 
-        if ($haulageTradingTerms === false) {
+        if (false === $haulageTradingTerms) {
             return null;
         }
 
@@ -3783,7 +3783,7 @@ class TransportEquipmentType
             $this->haulageTradingTerms = [];
         }
 
-        if ($this->haulageTradingTerms === []) {
+        if ([] === $this->haulageTradingTerms) {
             $this->addOnceTohaulageTradingTerms(new HaulageTradingTerms());
         }
 
@@ -3837,7 +3837,7 @@ class TransportEquipmentType
         $hazardousGoodsTransit = $this->hazardousGoodsTransit ?? [];
         $hazardousGoodsTransit = reset($hazardousGoodsTransit);
 
-        if ($hazardousGoodsTransit === false) {
+        if (false === $hazardousGoodsTransit) {
             return null;
         }
 
@@ -3852,7 +3852,7 @@ class TransportEquipmentType
         $hazardousGoodsTransit = $this->hazardousGoodsTransit ?? [];
         $hazardousGoodsTransit = end($hazardousGoodsTransit);
 
-        if ($hazardousGoodsTransit === false) {
+        if (false === $hazardousGoodsTransit) {
             return null;
         }
 
@@ -3904,7 +3904,7 @@ class TransportEquipmentType
             $this->hazardousGoodsTransit = [];
         }
 
-        if ($this->hazardousGoodsTransit === []) {
+        if ([] === $this->hazardousGoodsTransit) {
             $this->addOnceTohazardousGoodsTransit(new HazardousGoodsTransit());
         }
 
@@ -3958,7 +3958,7 @@ class TransportEquipmentType
         $packagedTransportHandlingUnit = $this->packagedTransportHandlingUnit ?? [];
         $packagedTransportHandlingUnit = reset($packagedTransportHandlingUnit);
 
-        if ($packagedTransportHandlingUnit === false) {
+        if (false === $packagedTransportHandlingUnit) {
             return null;
         }
 
@@ -3973,7 +3973,7 @@ class TransportEquipmentType
         $packagedTransportHandlingUnit = $this->packagedTransportHandlingUnit ?? [];
         $packagedTransportHandlingUnit = end($packagedTransportHandlingUnit);
 
-        if ($packagedTransportHandlingUnit === false) {
+        if (false === $packagedTransportHandlingUnit) {
             return null;
         }
 
@@ -4027,7 +4027,7 @@ class TransportEquipmentType
             $this->packagedTransportHandlingUnit = [];
         }
 
-        if ($this->packagedTransportHandlingUnit === []) {
+        if ([] === $this->packagedTransportHandlingUnit) {
             $this->addOnceTopackagedTransportHandlingUnit(new PackagedTransportHandlingUnit());
         }
 
@@ -4081,7 +4081,7 @@ class TransportEquipmentType
         $serviceAllowanceCharge = $this->serviceAllowanceCharge ?? [];
         $serviceAllowanceCharge = reset($serviceAllowanceCharge);
 
-        if ($serviceAllowanceCharge === false) {
+        if (false === $serviceAllowanceCharge) {
             return null;
         }
 
@@ -4096,7 +4096,7 @@ class TransportEquipmentType
         $serviceAllowanceCharge = $this->serviceAllowanceCharge ?? [];
         $serviceAllowanceCharge = end($serviceAllowanceCharge);
 
-        if ($serviceAllowanceCharge === false) {
+        if (false === $serviceAllowanceCharge) {
             return null;
         }
 
@@ -4148,7 +4148,7 @@ class TransportEquipmentType
             $this->serviceAllowanceCharge = [];
         }
 
-        if ($this->serviceAllowanceCharge === []) {
+        if ([] === $this->serviceAllowanceCharge) {
             $this->addOnceToserviceAllowanceCharge(new ServiceAllowanceCharge());
         }
 
@@ -4202,7 +4202,7 @@ class TransportEquipmentType
         $freightAllowanceCharge = $this->freightAllowanceCharge ?? [];
         $freightAllowanceCharge = reset($freightAllowanceCharge);
 
-        if ($freightAllowanceCharge === false) {
+        if (false === $freightAllowanceCharge) {
             return null;
         }
 
@@ -4217,7 +4217,7 @@ class TransportEquipmentType
         $freightAllowanceCharge = $this->freightAllowanceCharge ?? [];
         $freightAllowanceCharge = end($freightAllowanceCharge);
 
-        if ($freightAllowanceCharge === false) {
+        if (false === $freightAllowanceCharge) {
             return null;
         }
 
@@ -4269,7 +4269,7 @@ class TransportEquipmentType
             $this->freightAllowanceCharge = [];
         }
 
-        if ($this->freightAllowanceCharge === []) {
+        if ([] === $this->freightAllowanceCharge) {
             $this->addOnceTofreightAllowanceCharge(new FreightAllowanceCharge());
         }
 
@@ -4323,7 +4323,7 @@ class TransportEquipmentType
         $attachedTransportEquipment = $this->attachedTransportEquipment ?? [];
         $attachedTransportEquipment = reset($attachedTransportEquipment);
 
-        if ($attachedTransportEquipment === false) {
+        if (false === $attachedTransportEquipment) {
             return null;
         }
 
@@ -4338,7 +4338,7 @@ class TransportEquipmentType
         $attachedTransportEquipment = $this->attachedTransportEquipment ?? [];
         $attachedTransportEquipment = end($attachedTransportEquipment);
 
-        if ($attachedTransportEquipment === false) {
+        if (false === $attachedTransportEquipment) {
             return null;
         }
 
@@ -4390,7 +4390,7 @@ class TransportEquipmentType
             $this->attachedTransportEquipment = [];
         }
 
-        if ($this->attachedTransportEquipment === []) {
+        if ([] === $this->attachedTransportEquipment) {
             $this->addOnceToattachedTransportEquipment(new AttachedTransportEquipment());
         }
 
@@ -4561,7 +4561,7 @@ class TransportEquipmentType
         $shipmentDocumentReference = $this->shipmentDocumentReference ?? [];
         $shipmentDocumentReference = reset($shipmentDocumentReference);
 
-        if ($shipmentDocumentReference === false) {
+        if (false === $shipmentDocumentReference) {
             return null;
         }
 
@@ -4576,7 +4576,7 @@ class TransportEquipmentType
         $shipmentDocumentReference = $this->shipmentDocumentReference ?? [];
         $shipmentDocumentReference = end($shipmentDocumentReference);
 
-        if ($shipmentDocumentReference === false) {
+        if (false === $shipmentDocumentReference) {
             return null;
         }
 
@@ -4628,7 +4628,7 @@ class TransportEquipmentType
             $this->shipmentDocumentReference = [];
         }
 
-        if ($this->shipmentDocumentReference === []) {
+        if ([] === $this->shipmentDocumentReference) {
             $this->addOnceToshipmentDocumentReference(new ShipmentDocumentReference());
         }
 
@@ -4682,7 +4682,7 @@ class TransportEquipmentType
         $containedInTransportEquipment = $this->containedInTransportEquipment ?? [];
         $containedInTransportEquipment = reset($containedInTransportEquipment);
 
-        if ($containedInTransportEquipment === false) {
+        if (false === $containedInTransportEquipment) {
             return null;
         }
 
@@ -4697,7 +4697,7 @@ class TransportEquipmentType
         $containedInTransportEquipment = $this->containedInTransportEquipment ?? [];
         $containedInTransportEquipment = end($containedInTransportEquipment);
 
-        if ($containedInTransportEquipment === false) {
+        if (false === $containedInTransportEquipment) {
             return null;
         }
 
@@ -4751,7 +4751,7 @@ class TransportEquipmentType
             $this->containedInTransportEquipment = [];
         }
 
-        if ($this->containedInTransportEquipment === []) {
+        if ([] === $this->containedInTransportEquipment) {
             $this->addOnceTocontainedInTransportEquipment(new ContainedInTransportEquipment());
         }
 
@@ -4805,7 +4805,7 @@ class TransportEquipmentType
         $package = $this->package ?? [];
         $package = reset($package);
 
-        if ($package === false) {
+        if (false === $package) {
             return null;
         }
 
@@ -4820,7 +4820,7 @@ class TransportEquipmentType
         $package = $this->package ?? [];
         $package = end($package);
 
-        if ($package === false) {
+        if (false === $package) {
             return null;
         }
 
@@ -4872,7 +4872,7 @@ class TransportEquipmentType
             $this->package = [];
         }
 
-        if ($this->package === []) {
+        if ([] === $this->package) {
             $this->addOnceTopackage(new Package());
         }
 
@@ -4926,7 +4926,7 @@ class TransportEquipmentType
         $goodsItem = $this->goodsItem ?? [];
         $goodsItem = reset($goodsItem);
 
-        if ($goodsItem === false) {
+        if (false === $goodsItem) {
             return null;
         }
 
@@ -4941,7 +4941,7 @@ class TransportEquipmentType
         $goodsItem = $this->goodsItem ?? [];
         $goodsItem = end($goodsItem);
 
-        if ($goodsItem === false) {
+        if (false === $goodsItem) {
             return null;
         }
 
@@ -4993,7 +4993,7 @@ class TransportEquipmentType
             $this->goodsItem = [];
         }
 
-        if ($this->goodsItem === []) {
+        if ([] === $this->goodsItem) {
             $this->addOnceTogoodsItem(new GoodsItem());
         }
 

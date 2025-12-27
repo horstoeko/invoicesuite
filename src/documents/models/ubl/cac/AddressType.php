@@ -1317,7 +1317,7 @@ class AddressType
         $addressLine = $this->addressLine ?? [];
         $addressLine = reset($addressLine);
 
-        if ($addressLine === false) {
+        if (false === $addressLine) {
             return null;
         }
 
@@ -1332,7 +1332,7 @@ class AddressType
         $addressLine = $this->addressLine ?? [];
         $addressLine = end($addressLine);
 
-        if ($addressLine === false) {
+        if (false === $addressLine) {
             return null;
         }
 
@@ -1384,7 +1384,7 @@ class AddressType
             $this->addressLine = [];
         }
 
-        if ($this->addressLine === []) {
+        if ([] === $this->addressLine) {
             $this->addOnceToaddressLine(new AddressLine());
         }
 
@@ -1477,7 +1477,7 @@ class AddressType
         $locationCoordinate = $this->locationCoordinate ?? [];
         $locationCoordinate = reset($locationCoordinate);
 
-        if ($locationCoordinate === false) {
+        if (false === $locationCoordinate) {
             return null;
         }
 
@@ -1492,7 +1492,7 @@ class AddressType
         $locationCoordinate = $this->locationCoordinate ?? [];
         $locationCoordinate = end($locationCoordinate);
 
-        if ($locationCoordinate === false) {
+        if (false === $locationCoordinate) {
             return null;
         }
 
@@ -1544,7 +1544,7 @@ class AddressType
             $this->locationCoordinate = [];
         }
 
-        if ($this->locationCoordinate === []) {
+        if ([] === $this->locationCoordinate) {
             $this->addOnceTolocationCoordinate(new LocationCoordinate());
         }
 

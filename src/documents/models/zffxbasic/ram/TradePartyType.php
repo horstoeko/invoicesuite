@@ -177,7 +177,7 @@ class TradePartyType
             $this->iD = [];
         }
 
-        if ($this->iD === []) {
+        if ([] === $this->iD) {
             $this->addOnceToiD(new IDType());
         }
 
@@ -268,7 +268,7 @@ class TradePartyType
             $this->globalID = [];
         }
 
-        if ($this->globalID === []) {
+        if ([] === $this->globalID) {
             $this->addOnceToglobalID(new IDType());
         }
 
@@ -515,7 +515,7 @@ class TradePartyType
             $this->specifiedTaxRegistration = [];
         }
 
-        if ($this->specifiedTaxRegistration === []) {
+        if ([] === $this->specifiedTaxRegistration) {
             $this->addOnceTospecifiedTaxRegistration(new TaxRegistrationType());
         }
 

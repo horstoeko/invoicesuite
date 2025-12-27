@@ -443,7 +443,7 @@ class HeaderTradeSettlementType
             $this->specifiedTradeSettlementPaymentMeans = [];
         }
 
-        if ($this->specifiedTradeSettlementPaymentMeans === []) {
+        if ([] === $this->specifiedTradeSettlementPaymentMeans) {
             $this->addOnceTospecifiedTradeSettlementPaymentMeans(new TradeSettlementPaymentMeansType());
         }
 
@@ -534,7 +534,7 @@ class HeaderTradeSettlementType
             $this->applicableTradeTax = [];
         }
 
-        if ($this->applicableTradeTax === []) {
+        if ([] === $this->applicableTradeTax) {
             $this->addOnceToapplicableTradeTax(new TradeTaxType());
         }
 
@@ -665,7 +665,7 @@ class HeaderTradeSettlementType
             $this->specifiedTradeAllowanceCharge = [];
         }
 
-        if ($this->specifiedTradeAllowanceCharge === []) {
+        if ([] === $this->specifiedTradeAllowanceCharge) {
             $this->addOnceTospecifiedTradeAllowanceCharge(new TradeAllowanceChargeType());
         }
 
@@ -835,7 +835,7 @@ class HeaderTradeSettlementType
             $this->invoiceReferencedDocument = [];
         }
 
-        if ($this->invoiceReferencedDocument === []) {
+        if ([] === $this->invoiceReferencedDocument) {
             $this->addOnceToinvoiceReferencedDocument(new ReferencedDocumentType());
         }
 

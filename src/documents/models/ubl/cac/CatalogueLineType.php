@@ -579,7 +579,7 @@ class CatalogueLineType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -594,7 +594,7 @@ class CatalogueLineType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -646,7 +646,7 @@ class CatalogueLineType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -925,7 +925,7 @@ class CatalogueLineType
         $warrantyInformation = $this->warrantyInformation ?? [];
         $warrantyInformation = reset($warrantyInformation);
 
-        if ($warrantyInformation === false) {
+        if (false === $warrantyInformation) {
             return null;
         }
 
@@ -940,7 +940,7 @@ class CatalogueLineType
         $warrantyInformation = $this->warrantyInformation ?? [];
         $warrantyInformation = end($warrantyInformation);
 
-        if ($warrantyInformation === false) {
+        if (false === $warrantyInformation) {
             return null;
         }
 
@@ -992,7 +992,7 @@ class CatalogueLineType
             $this->warrantyInformation = [];
         }
 
-        if ($this->warrantyInformation === []) {
+        if ([] === $this->warrantyInformation) {
             $this->addOnceTowarrantyInformation(new WarrantyInformation());
         }
 
@@ -1280,7 +1280,7 @@ class CatalogueLineType
         $itemComparison = $this->itemComparison ?? [];
         $itemComparison = reset($itemComparison);
 
-        if ($itemComparison === false) {
+        if (false === $itemComparison) {
             return null;
         }
 
@@ -1295,7 +1295,7 @@ class CatalogueLineType
         $itemComparison = $this->itemComparison ?? [];
         $itemComparison = end($itemComparison);
 
-        if ($itemComparison === false) {
+        if (false === $itemComparison) {
             return null;
         }
 
@@ -1347,7 +1347,7 @@ class CatalogueLineType
             $this->itemComparison = [];
         }
 
-        if ($this->itemComparison === []) {
+        if ([] === $this->itemComparison) {
             $this->addOnceToitemComparison(new ItemComparison());
         }
 
@@ -1401,7 +1401,7 @@ class CatalogueLineType
         $componentRelatedItem = $this->componentRelatedItem ?? [];
         $componentRelatedItem = reset($componentRelatedItem);
 
-        if ($componentRelatedItem === false) {
+        if (false === $componentRelatedItem) {
             return null;
         }
 
@@ -1416,7 +1416,7 @@ class CatalogueLineType
         $componentRelatedItem = $this->componentRelatedItem ?? [];
         $componentRelatedItem = end($componentRelatedItem);
 
-        if ($componentRelatedItem === false) {
+        if (false === $componentRelatedItem) {
             return null;
         }
 
@@ -1468,7 +1468,7 @@ class CatalogueLineType
             $this->componentRelatedItem = [];
         }
 
-        if ($this->componentRelatedItem === []) {
+        if ([] === $this->componentRelatedItem) {
             $this->addOnceTocomponentRelatedItem(new ComponentRelatedItem());
         }
 
@@ -1522,7 +1522,7 @@ class CatalogueLineType
         $accessoryRelatedItem = $this->accessoryRelatedItem ?? [];
         $accessoryRelatedItem = reset($accessoryRelatedItem);
 
-        if ($accessoryRelatedItem === false) {
+        if (false === $accessoryRelatedItem) {
             return null;
         }
 
@@ -1537,7 +1537,7 @@ class CatalogueLineType
         $accessoryRelatedItem = $this->accessoryRelatedItem ?? [];
         $accessoryRelatedItem = end($accessoryRelatedItem);
 
-        if ($accessoryRelatedItem === false) {
+        if (false === $accessoryRelatedItem) {
             return null;
         }
 
@@ -1589,7 +1589,7 @@ class CatalogueLineType
             $this->accessoryRelatedItem = [];
         }
 
-        if ($this->accessoryRelatedItem === []) {
+        if ([] === $this->accessoryRelatedItem) {
             $this->addOnceToaccessoryRelatedItem(new AccessoryRelatedItem());
         }
 
@@ -1643,7 +1643,7 @@ class CatalogueLineType
         $requiredRelatedItem = $this->requiredRelatedItem ?? [];
         $requiredRelatedItem = reset($requiredRelatedItem);
 
-        if ($requiredRelatedItem === false) {
+        if (false === $requiredRelatedItem) {
             return null;
         }
 
@@ -1658,7 +1658,7 @@ class CatalogueLineType
         $requiredRelatedItem = $this->requiredRelatedItem ?? [];
         $requiredRelatedItem = end($requiredRelatedItem);
 
-        if ($requiredRelatedItem === false) {
+        if (false === $requiredRelatedItem) {
             return null;
         }
 
@@ -1710,7 +1710,7 @@ class CatalogueLineType
             $this->requiredRelatedItem = [];
         }
 
-        if ($this->requiredRelatedItem === []) {
+        if ([] === $this->requiredRelatedItem) {
             $this->addOnceTorequiredRelatedItem(new RequiredRelatedItem());
         }
 
@@ -1764,7 +1764,7 @@ class CatalogueLineType
         $replacementRelatedItem = $this->replacementRelatedItem ?? [];
         $replacementRelatedItem = reset($replacementRelatedItem);
 
-        if ($replacementRelatedItem === false) {
+        if (false === $replacementRelatedItem) {
             return null;
         }
 
@@ -1779,7 +1779,7 @@ class CatalogueLineType
         $replacementRelatedItem = $this->replacementRelatedItem ?? [];
         $replacementRelatedItem = end($replacementRelatedItem);
 
-        if ($replacementRelatedItem === false) {
+        if (false === $replacementRelatedItem) {
             return null;
         }
 
@@ -1831,7 +1831,7 @@ class CatalogueLineType
             $this->replacementRelatedItem = [];
         }
 
-        if ($this->replacementRelatedItem === []) {
+        if ([] === $this->replacementRelatedItem) {
             $this->addOnceToreplacementRelatedItem(new ReplacementRelatedItem());
         }
 
@@ -1885,7 +1885,7 @@ class CatalogueLineType
         $complementaryRelatedItem = $this->complementaryRelatedItem ?? [];
         $complementaryRelatedItem = reset($complementaryRelatedItem);
 
-        if ($complementaryRelatedItem === false) {
+        if (false === $complementaryRelatedItem) {
             return null;
         }
 
@@ -1900,7 +1900,7 @@ class CatalogueLineType
         $complementaryRelatedItem = $this->complementaryRelatedItem ?? [];
         $complementaryRelatedItem = end($complementaryRelatedItem);
 
-        if ($complementaryRelatedItem === false) {
+        if (false === $complementaryRelatedItem) {
             return null;
         }
 
@@ -1952,7 +1952,7 @@ class CatalogueLineType
             $this->complementaryRelatedItem = [];
         }
 
-        if ($this->complementaryRelatedItem === []) {
+        if ([] === $this->complementaryRelatedItem) {
             $this->addOnceTocomplementaryRelatedItem(new ComplementaryRelatedItem());
         }
 
@@ -2006,7 +2006,7 @@ class CatalogueLineType
         $replacedRelatedItem = $this->replacedRelatedItem ?? [];
         $replacedRelatedItem = reset($replacedRelatedItem);
 
-        if ($replacedRelatedItem === false) {
+        if (false === $replacedRelatedItem) {
             return null;
         }
 
@@ -2021,7 +2021,7 @@ class CatalogueLineType
         $replacedRelatedItem = $this->replacedRelatedItem ?? [];
         $replacedRelatedItem = end($replacedRelatedItem);
 
-        if ($replacedRelatedItem === false) {
+        if (false === $replacedRelatedItem) {
             return null;
         }
 
@@ -2073,7 +2073,7 @@ class CatalogueLineType
             $this->replacedRelatedItem = [];
         }
 
-        if ($this->replacedRelatedItem === []) {
+        if ([] === $this->replacedRelatedItem) {
             $this->addOnceToreplacedRelatedItem(new ReplacedRelatedItem());
         }
 
@@ -2127,7 +2127,7 @@ class CatalogueLineType
         $requiredItemLocationQuantity = $this->requiredItemLocationQuantity ?? [];
         $requiredItemLocationQuantity = reset($requiredItemLocationQuantity);
 
-        if ($requiredItemLocationQuantity === false) {
+        if (false === $requiredItemLocationQuantity) {
             return null;
         }
 
@@ -2142,7 +2142,7 @@ class CatalogueLineType
         $requiredItemLocationQuantity = $this->requiredItemLocationQuantity ?? [];
         $requiredItemLocationQuantity = end($requiredItemLocationQuantity);
 
-        if ($requiredItemLocationQuantity === false) {
+        if (false === $requiredItemLocationQuantity) {
             return null;
         }
 
@@ -2196,7 +2196,7 @@ class CatalogueLineType
             $this->requiredItemLocationQuantity = [];
         }
 
-        if ($this->requiredItemLocationQuantity === []) {
+        if ([] === $this->requiredItemLocationQuantity) {
             $this->addOnceTorequiredItemLocationQuantity(new RequiredItemLocationQuantity());
         }
 
@@ -2250,7 +2250,7 @@ class CatalogueLineType
         $documentReference = $this->documentReference ?? [];
         $documentReference = reset($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -2265,7 +2265,7 @@ class CatalogueLineType
         $documentReference = $this->documentReference ?? [];
         $documentReference = end($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -2317,7 +2317,7 @@ class CatalogueLineType
             $this->documentReference = [];
         }
 
-        if ($this->documentReference === []) {
+        if ([] === $this->documentReference) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
 
@@ -2410,7 +2410,7 @@ class CatalogueLineType
         $keywordItemProperty = $this->keywordItemProperty ?? [];
         $keywordItemProperty = reset($keywordItemProperty);
 
-        if ($keywordItemProperty === false) {
+        if (false === $keywordItemProperty) {
             return null;
         }
 
@@ -2425,7 +2425,7 @@ class CatalogueLineType
         $keywordItemProperty = $this->keywordItemProperty ?? [];
         $keywordItemProperty = end($keywordItemProperty);
 
-        if ($keywordItemProperty === false) {
+        if (false === $keywordItemProperty) {
             return null;
         }
 
@@ -2477,7 +2477,7 @@ class CatalogueLineType
             $this->keywordItemProperty = [];
         }
 
-        if ($this->keywordItemProperty === []) {
+        if ([] === $this->keywordItemProperty) {
             $this->addOnceTokeywordItemProperty(new KeywordItemProperty());
         }
 

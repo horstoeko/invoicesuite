@@ -447,7 +447,7 @@ class ItemPropertyType
         $valueQualifier = $this->valueQualifier ?? [];
         $valueQualifier = reset($valueQualifier);
 
-        if ($valueQualifier === false) {
+        if (false === $valueQualifier) {
             return null;
         }
 
@@ -462,7 +462,7 @@ class ItemPropertyType
         $valueQualifier = $this->valueQualifier ?? [];
         $valueQualifier = end($valueQualifier);
 
-        if ($valueQualifier === false) {
+        if (false === $valueQualifier) {
             return null;
         }
 
@@ -514,7 +514,7 @@ class ItemPropertyType
             $this->valueQualifier = [];
         }
 
-        if ($this->valueQualifier === []) {
+        if ([] === $this->valueQualifier) {
             $this->addOnceTovalueQualifier(new ValueQualifier());
         }
 
@@ -607,7 +607,7 @@ class ItemPropertyType
         $listValue = $this->listValue ?? [];
         $listValue = reset($listValue);
 
-        if ($listValue === false) {
+        if (false === $listValue) {
             return null;
         }
 
@@ -622,7 +622,7 @@ class ItemPropertyType
         $listValue = $this->listValue ?? [];
         $listValue = end($listValue);
 
-        if ($listValue === false) {
+        if (false === $listValue) {
             return null;
         }
 
@@ -674,7 +674,7 @@ class ItemPropertyType
             $this->listValue = [];
         }
 
-        if ($this->listValue === []) {
+        if ([] === $this->listValue) {
             $this->addOnceTolistValue(new ListValue());
         }
 
@@ -767,7 +767,7 @@ class ItemPropertyType
         $itemPropertyGroup = $this->itemPropertyGroup ?? [];
         $itemPropertyGroup = reset($itemPropertyGroup);
 
-        if ($itemPropertyGroup === false) {
+        if (false === $itemPropertyGroup) {
             return null;
         }
 
@@ -782,7 +782,7 @@ class ItemPropertyType
         $itemPropertyGroup = $this->itemPropertyGroup ?? [];
         $itemPropertyGroup = end($itemPropertyGroup);
 
-        if ($itemPropertyGroup === false) {
+        if (false === $itemPropertyGroup) {
             return null;
         }
 
@@ -834,7 +834,7 @@ class ItemPropertyType
             $this->itemPropertyGroup = [];
         }
 
-        if ($this->itemPropertyGroup === []) {
+        if ([] === $this->itemPropertyGroup) {
             $this->addOnceToitemPropertyGroup(new ItemPropertyGroup());
         }
 

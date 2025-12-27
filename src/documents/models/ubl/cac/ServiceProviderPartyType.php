@@ -195,7 +195,7 @@ class ServiceProviderPartyType
         $serviceType = $this->serviceType ?? [];
         $serviceType = reset($serviceType);
 
-        if ($serviceType === false) {
+        if (false === $serviceType) {
             return null;
         }
 
@@ -210,7 +210,7 @@ class ServiceProviderPartyType
         $serviceType = $this->serviceType ?? [];
         $serviceType = end($serviceType);
 
-        if ($serviceType === false) {
+        if (false === $serviceType) {
             return null;
         }
 
@@ -262,7 +262,7 @@ class ServiceProviderPartyType
             $this->serviceType = [];
         }
 
-        if ($this->serviceType === []) {
+        if ([] === $this->serviceType) {
             $this->addOnceToserviceType(new ServiceType());
         }
 

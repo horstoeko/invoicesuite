@@ -187,7 +187,7 @@ class ProcessJustificationType
         $processReason = $this->processReason ?? [];
         $processReason = reset($processReason);
 
-        if ($processReason === false) {
+        if (false === $processReason) {
             return null;
         }
 
@@ -202,7 +202,7 @@ class ProcessJustificationType
         $processReason = $this->processReason ?? [];
         $processReason = end($processReason);
 
-        if ($processReason === false) {
+        if (false === $processReason) {
             return null;
         }
 
@@ -254,7 +254,7 @@ class ProcessJustificationType
             $this->processReason = [];
         }
 
-        if ($this->processReason === []) {
+        if ([] === $this->processReason) {
             $this->addOnceToprocessReason(new ProcessReason());
         }
 
@@ -308,7 +308,7 @@ class ProcessJustificationType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -323,7 +323,7 @@ class ProcessJustificationType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -375,7 +375,7 @@ class ProcessJustificationType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 

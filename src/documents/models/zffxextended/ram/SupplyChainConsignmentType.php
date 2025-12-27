@@ -109,7 +109,7 @@ class SupplyChainConsignmentType
             $this->specifiedLogisticsTransportMovement = [];
         }
 
-        if ($this->specifiedLogisticsTransportMovement === []) {
+        if ([] === $this->specifiedLogisticsTransportMovement) {
             $this->addOnceTospecifiedLogisticsTransportMovement(new LogisticsTransportMovementType());
         }
 

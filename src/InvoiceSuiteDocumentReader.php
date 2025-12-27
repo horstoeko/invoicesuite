@@ -59,7 +59,7 @@ class InvoiceSuiteDocumentReader
             static fn ($formatProvider) => $formatProvider->isSatisfiableBySerializedContent($fromContent)
         );
 
-        if ($formatProviders === []) {
+        if ([] === $formatProviders) {
             throw new InvoiceSuiteFormatProviderNotFoundException('unknown');
         }
 
@@ -105,7 +105,7 @@ class InvoiceSuiteDocumentReader
 
         $fromContent = file_get_contents($fromFile);
 
-        if ($fromContent === false) {
+        if (false === $fromContent) {
             throw new InvoiceSuiteFileNotReadableException($fromFile);
         }
 

@@ -332,7 +332,7 @@ class ItemManagementProfileType
         $replenishmentOwnerDescription = $this->replenishmentOwnerDescription ?? [];
         $replenishmentOwnerDescription = reset($replenishmentOwnerDescription);
 
-        if ($replenishmentOwnerDescription === false) {
+        if (false === $replenishmentOwnerDescription) {
             return null;
         }
 
@@ -347,7 +347,7 @@ class ItemManagementProfileType
         $replenishmentOwnerDescription = $this->replenishmentOwnerDescription ?? [];
         $replenishmentOwnerDescription = end($replenishmentOwnerDescription);
 
-        if ($replenishmentOwnerDescription === false) {
+        if (false === $replenishmentOwnerDescription) {
             return null;
         }
 
@@ -401,7 +401,7 @@ class ItemManagementProfileType
             $this->replenishmentOwnerDescription = [];
         }
 
-        if ($this->replenishmentOwnerDescription === []) {
+        if ([] === $this->replenishmentOwnerDescription) {
             $this->addOnceToreplenishmentOwnerDescription(new ReplenishmentOwnerDescription());
         }
 

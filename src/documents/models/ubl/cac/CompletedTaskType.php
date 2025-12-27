@@ -258,7 +258,7 @@ class CompletedTaskType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -273,7 +273,7 @@ class CompletedTaskType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -325,7 +325,7 @@ class CompletedTaskType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -379,7 +379,7 @@ class CompletedTaskType
         $evidenceSupplied = $this->evidenceSupplied ?? [];
         $evidenceSupplied = reset($evidenceSupplied);
 
-        if ($evidenceSupplied === false) {
+        if (false === $evidenceSupplied) {
             return null;
         }
 
@@ -394,7 +394,7 @@ class CompletedTaskType
         $evidenceSupplied = $this->evidenceSupplied ?? [];
         $evidenceSupplied = end($evidenceSupplied);
 
-        if ($evidenceSupplied === false) {
+        if (false === $evidenceSupplied) {
             return null;
         }
 
@@ -446,7 +446,7 @@ class CompletedTaskType
             $this->evidenceSupplied = [];
         }
 
-        if ($this->evidenceSupplied === []) {
+        if ([] === $this->evidenceSupplied) {
             $this->addOnceToevidenceSupplied(new EvidenceSupplied());
         }
 

@@ -242,7 +242,7 @@ class PromotionalEventType
         $promotionalSpecification = $this->promotionalSpecification ?? [];
         $promotionalSpecification = reset($promotionalSpecification);
 
-        if ($promotionalSpecification === false) {
+        if (false === $promotionalSpecification) {
             return null;
         }
 
@@ -257,7 +257,7 @@ class PromotionalEventType
         $promotionalSpecification = $this->promotionalSpecification ?? [];
         $promotionalSpecification = end($promotionalSpecification);
 
-        if ($promotionalSpecification === false) {
+        if (false === $promotionalSpecification) {
             return null;
         }
 
@@ -309,7 +309,7 @@ class PromotionalEventType
             $this->promotionalSpecification = [];
         }
 
-        if ($this->promotionalSpecification === []) {
+        if ([] === $this->promotionalSpecification) {
             $this->addOnceTopromotionalSpecification(new PromotionalSpecification());
         }
 

@@ -324,7 +324,7 @@ class TransportationSegmentType
         $shipmentStage = $this->shipmentStage ?? [];
         $shipmentStage = reset($shipmentStage);
 
-        if ($shipmentStage === false) {
+        if (false === $shipmentStage) {
             return null;
         }
 
@@ -339,7 +339,7 @@ class TransportationSegmentType
         $shipmentStage = $this->shipmentStage ?? [];
         $shipmentStage = end($shipmentStage);
 
-        if ($shipmentStage === false) {
+        if (false === $shipmentStage) {
             return null;
         }
 
@@ -391,7 +391,7 @@ class TransportationSegmentType
             $this->shipmentStage = [];
         }
 
-        if ($this->shipmentStage === []) {
+        if ([] === $this->shipmentStage) {
             $this->addOnceToshipmentStage(new ShipmentStage());
         }
 

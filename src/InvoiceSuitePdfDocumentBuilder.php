@@ -72,7 +72,7 @@ class InvoiceSuitePdfDocumentBuilder
 
         $fromPdfContent = file_get_contents($fromPdfFilename);
 
-        if ($fromPdfContent === false) {
+        if (false === $fromPdfContent) {
             throw new InvoiceSuiteFileNotReadableException($fromPdfFilename);
         }
 
@@ -113,7 +113,7 @@ class InvoiceSuitePdfDocumentBuilder
 
         $fromPdfContent = file_get_contents($fromPdfFilename);
 
-        if ($fromPdfContent === false) {
+        if (false === $fromPdfContent) {
             throw new InvoiceSuiteFileNotReadableException($fromPdfFilename);
         }
 
@@ -531,7 +531,7 @@ class InvoiceSuitePdfDocumentBuilder
             )
         );
 
-        if ($formatProviders === []) {
+        if ([] === $formatProviders) {
             throw new InvoiceSuiteFormatProviderNotFoundException('unknown');
         }
 

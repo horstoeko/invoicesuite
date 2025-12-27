@@ -102,7 +102,7 @@ class InvoiceSuiteZfFxBasicProvider extends InvoiceSuiteAbstractDocumentFormatPr
         try {
             $contentDomDocument = new DOMDocument();
 
-            if ($contentDomDocument->loadXML($serializedContent) !== true) {
+            if (true !== $contentDomDocument->loadXML($serializedContent)) {
                 return false;
             }
 
@@ -123,11 +123,11 @@ class InvoiceSuiteZfFxBasicProvider extends InvoiceSuiteAbstractDocumentFormatPr
 
                 $contentEntries = $contentDomXPath->query($contentQuery);
 
-                if ($contentEntries === false) {
+                if (false === $contentEntries) {
                     continue;
                 }
 
-                if ($contentEntries->length === 1) {
+                if (1 === $contentEntries->length) {
                     return true;
                 }
             }

@@ -70,7 +70,7 @@ class UBLExtensionsType
         $uBLExtension = $this->uBLExtension ?? [];
         $uBLExtension = reset($uBLExtension);
 
-        if ($uBLExtension === false) {
+        if (false === $uBLExtension) {
             return null;
         }
 
@@ -85,7 +85,7 @@ class UBLExtensionsType
         $uBLExtension = $this->uBLExtension ?? [];
         $uBLExtension = end($uBLExtension);
 
-        if ($uBLExtension === false) {
+        if (false === $uBLExtension) {
             return null;
         }
 
@@ -137,7 +137,7 @@ class UBLExtensionsType
             $this->uBLExtension = [];
         }
 
-        if ($this->uBLExtension === []) {
+        if ([] === $this->uBLExtension) {
             $this->addOnceTouBLExtension(new UBLExtension());
         }
 

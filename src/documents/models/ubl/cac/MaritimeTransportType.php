@@ -270,7 +270,7 @@ class MaritimeTransportType
         $shipsRequirements = $this->shipsRequirements ?? [];
         $shipsRequirements = reset($shipsRequirements);
 
-        if ($shipsRequirements === false) {
+        if (false === $shipsRequirements) {
             return null;
         }
 
@@ -285,7 +285,7 @@ class MaritimeTransportType
         $shipsRequirements = $this->shipsRequirements ?? [];
         $shipsRequirements = end($shipsRequirements);
 
-        if ($shipsRequirements === false) {
+        if (false === $shipsRequirements) {
             return null;
         }
 
@@ -337,7 +337,7 @@ class MaritimeTransportType
             $this->shipsRequirements = [];
         }
 
-        if ($this->shipsRequirements === []) {
+        if ([] === $this->shipsRequirements) {
             $this->addOnceToshipsRequirements(new ShipsRequirements());
         }
 

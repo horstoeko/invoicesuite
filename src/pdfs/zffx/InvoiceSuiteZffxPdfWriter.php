@@ -105,7 +105,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
         $this->PDFVersion = sprintf('%.1F', $version);
 
         if (true == $binary_data) {
-            if ($this->deterministicModeEnabled === true) {
+            if (true === $this->deterministicModeEnabled) {
                 $this->PDFVersion .= "\n".'%'.chr(128).chr(129).chr(130).chr(131);
             } else {
                 $this->PDFVersion .= "\n".'%'.chr(random_int(128, 255)).chr(random_int(128, 255)).chr(random_int(128, 255)).chr(random_int(128, 255));
@@ -181,7 +181,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
      */
     public function setPdfMetadataInfos(array &$metaDataInfos): void
     {
-        if ($this->deterministicModeEnabled === true) {
+        if (true === $this->deterministicModeEnabled) {
             $metaDataInfos['createdDate'] = date('Y-m-d\TH:i:s', strtotime('2000-01-01 23:59:59'));
             $metaDataInfos['modifiedDate'] = date('Y-m-d\TH:i:s', strtotime('2000-01-01 23:59:59'));
         }
@@ -280,7 +280,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
             $this->Error('Cannot open file: ');
         }
 
-        if ($this->deterministicModeEnabled === true) {
+        if (true === $this->deterministicModeEnabled) {
             $md = @date('YmdHis', strtotime('2000-01-01 23:59:59'));
         } elseif (is_string($file_info['file'])) {
             $md = @date('YmdHis', filemtime($file_info['file']));
@@ -359,7 +359,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
     {
         parent::_putresources();
 
-        if ($this->files !== []) {
+        if ([] !== $this->files) {
             $this->_putfiles();
         }
 
@@ -415,7 +415,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
     {
         parent::_putcatalog();
 
-        if ($this->files !== []) {
+        if ([] !== $this->files) {
             if (is_array($this->files)) {
                 $files_ref_str = '';
                 foreach ($this->files as $file) {
@@ -436,7 +436,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
             $this->_put(sprintf('/Metadata %s 0 R', $this->descriptionIndex));
         }
 
-        if ($this->files !== []) {
+        if ([] !== $this->files) {
             $this->_put('/Names <<');
             $this->_put('/EmbeddedFiles ');
             $this->_put(sprintf('%s 0 R', $this->filesIndex));
@@ -476,7 +476,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
      */
     protected function _putinfo(): void
     {
-        if ($this->deterministicModeEnabled === true) {
+        if (true === $this->deterministicModeEnabled) {
             $this->CreationDate = strtotime('2000-01-01 23:59:59');
         }
 
@@ -504,11 +504,11 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
             $metaDataString .= $this->metaDataInfos['subject'];
         }
 
-        if ($dateType === 'modified' && isset($this->metaDataInfos['modifiedDate'])) {
+        if ('modified' === $dateType && isset($this->metaDataInfos['modifiedDate'])) {
             $metaDataString .= $this->metaDataInfos['modifiedDate'];
         }
 
-        if ($dateType === 'created' && isset($this->metaDataInfos['createdDate'])) {
+        if ('created' === $dateType && isset($this->metaDataInfos['createdDate'])) {
             $metaDataString .= $this->metaDataInfos['createdDate'];
         }
 

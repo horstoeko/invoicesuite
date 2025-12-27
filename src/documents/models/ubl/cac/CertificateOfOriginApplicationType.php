@@ -440,7 +440,7 @@ class CertificateOfOriginApplicationType
         $remarks = $this->remarks ?? [];
         $remarks = reset($remarks);
 
-        if ($remarks === false) {
+        if (false === $remarks) {
             return null;
         }
 
@@ -455,7 +455,7 @@ class CertificateOfOriginApplicationType
         $remarks = $this->remarks ?? [];
         $remarks = end($remarks);
 
-        if ($remarks === false) {
+        if (false === $remarks) {
             return null;
         }
 
@@ -507,7 +507,7 @@ class CertificateOfOriginApplicationType
             $this->remarks = [];
         }
 
-        if ($this->remarks === []) {
+        if ([] === $this->remarks) {
             $this->addOnceToremarks(new Remarks());
         }
 
@@ -600,7 +600,7 @@ class CertificateOfOriginApplicationType
         $endorserParty = $this->endorserParty ?? [];
         $endorserParty = reset($endorserParty);
 
-        if ($endorserParty === false) {
+        if (false === $endorserParty) {
             return null;
         }
 
@@ -615,7 +615,7 @@ class CertificateOfOriginApplicationType
         $endorserParty = $this->endorserParty ?? [];
         $endorserParty = end($endorserParty);
 
-        if ($endorserParty === false) {
+        if (false === $endorserParty) {
             return null;
         }
 
@@ -667,7 +667,7 @@ class CertificateOfOriginApplicationType
             $this->endorserParty = [];
         }
 
-        if ($this->endorserParty === []) {
+        if ([] === $this->endorserParty) {
             $this->addOnceToendorserParty(new EndorserParty());
         }
 
@@ -916,7 +916,7 @@ class CertificateOfOriginApplicationType
         $documentDistribution = $this->documentDistribution ?? [];
         $documentDistribution = reset($documentDistribution);
 
-        if ($documentDistribution === false) {
+        if (false === $documentDistribution) {
             return null;
         }
 
@@ -931,7 +931,7 @@ class CertificateOfOriginApplicationType
         $documentDistribution = $this->documentDistribution ?? [];
         $documentDistribution = end($documentDistribution);
 
-        if ($documentDistribution === false) {
+        if (false === $documentDistribution) {
             return null;
         }
 
@@ -983,7 +983,7 @@ class CertificateOfOriginApplicationType
             $this->documentDistribution = [];
         }
 
-        if ($this->documentDistribution === []) {
+        if ([] === $this->documentDistribution) {
             $this->addOnceTodocumentDistribution(new DocumentDistribution());
         }
 
@@ -1037,7 +1037,7 @@ class CertificateOfOriginApplicationType
         $supportingDocumentReference = $this->supportingDocumentReference ?? [];
         $supportingDocumentReference = reset($supportingDocumentReference);
 
-        if ($supportingDocumentReference === false) {
+        if (false === $supportingDocumentReference) {
             return null;
         }
 
@@ -1052,7 +1052,7 @@ class CertificateOfOriginApplicationType
         $supportingDocumentReference = $this->supportingDocumentReference ?? [];
         $supportingDocumentReference = end($supportingDocumentReference);
 
-        if ($supportingDocumentReference === false) {
+        if (false === $supportingDocumentReference) {
             return null;
         }
 
@@ -1105,7 +1105,7 @@ class CertificateOfOriginApplicationType
             $this->supportingDocumentReference = [];
         }
 
-        if ($this->supportingDocumentReference === []) {
+        if ([] === $this->supportingDocumentReference) {
             $this->addOnceTosupportingDocumentReference(new SupportingDocumentReference());
         }
 
@@ -1159,7 +1159,7 @@ class CertificateOfOriginApplicationType
         $signature = $this->signature ?? [];
         $signature = reset($signature);
 
-        if ($signature === false) {
+        if (false === $signature) {
             return null;
         }
 
@@ -1174,7 +1174,7 @@ class CertificateOfOriginApplicationType
         $signature = $this->signature ?? [];
         $signature = end($signature);
 
-        if ($signature === false) {
+        if (false === $signature) {
             return null;
         }
 
@@ -1226,7 +1226,7 @@ class CertificateOfOriginApplicationType
             $this->signature = [];
         }
 
-        if ($this->signature === []) {
+        if ([] === $this->signature) {
             $this->addOnceTosignature(new Signature());
         }
 

@@ -264,7 +264,7 @@ class ReminderLineType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -279,7 +279,7 @@ class ReminderLineType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -331,7 +331,7 @@ class ReminderLineType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -726,7 +726,7 @@ class ReminderLineType
         $reminderPeriod = $this->reminderPeriod ?? [];
         $reminderPeriod = reset($reminderPeriod);
 
-        if ($reminderPeriod === false) {
+        if (false === $reminderPeriod) {
             return null;
         }
 
@@ -741,7 +741,7 @@ class ReminderLineType
         $reminderPeriod = $this->reminderPeriod ?? [];
         $reminderPeriod = end($reminderPeriod);
 
-        if ($reminderPeriod === false) {
+        if (false === $reminderPeriod) {
             return null;
         }
 
@@ -793,7 +793,7 @@ class ReminderLineType
             $this->reminderPeriod = [];
         }
 
-        if ($this->reminderPeriod === []) {
+        if ([] === $this->reminderPeriod) {
             $this->addOnceToreminderPeriod(new ReminderPeriod());
         }
 
@@ -847,7 +847,7 @@ class ReminderLineType
         $billingReference = $this->billingReference ?? [];
         $billingReference = reset($billingReference);
 
-        if ($billingReference === false) {
+        if (false === $billingReference) {
             return null;
         }
 
@@ -862,7 +862,7 @@ class ReminderLineType
         $billingReference = $this->billingReference ?? [];
         $billingReference = end($billingReference);
 
-        if ($billingReference === false) {
+        if (false === $billingReference) {
             return null;
         }
 
@@ -914,7 +914,7 @@ class ReminderLineType
             $this->billingReference = [];
         }
 
-        if ($this->billingReference === []) {
+        if ([] === $this->billingReference) {
             $this->addOnceTobillingReference(new BillingReference());
         }
 

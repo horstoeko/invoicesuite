@@ -343,7 +343,7 @@ class AllowanceChargeType
         $allowanceChargeReason = $this->allowanceChargeReason ?? [];
         $allowanceChargeReason = reset($allowanceChargeReason);
 
-        if ($allowanceChargeReason === false) {
+        if (false === $allowanceChargeReason) {
             return null;
         }
 
@@ -358,7 +358,7 @@ class AllowanceChargeType
         $allowanceChargeReason = $this->allowanceChargeReason ?? [];
         $allowanceChargeReason = end($allowanceChargeReason);
 
-        if ($allowanceChargeReason === false) {
+        if (false === $allowanceChargeReason) {
             return null;
         }
 
@@ -410,7 +410,7 @@ class AllowanceChargeType
             $this->allowanceChargeReason = [];
         }
 
-        if ($this->allowanceChargeReason === []) {
+        if ([] === $this->allowanceChargeReason) {
             $this->addOnceToallowanceChargeReason(new AllowanceChargeReason());
         }
 
@@ -766,7 +766,7 @@ class AllowanceChargeType
         $taxCategory = $this->taxCategory ?? [];
         $taxCategory = reset($taxCategory);
 
-        if ($taxCategory === false) {
+        if (false === $taxCategory) {
             return null;
         }
 
@@ -781,7 +781,7 @@ class AllowanceChargeType
         $taxCategory = $this->taxCategory ?? [];
         $taxCategory = end($taxCategory);
 
-        if ($taxCategory === false) {
+        if (false === $taxCategory) {
             return null;
         }
 
@@ -833,7 +833,7 @@ class AllowanceChargeType
             $this->taxCategory = [];
         }
 
-        if ($this->taxCategory === []) {
+        if ([] === $this->taxCategory) {
             $this->addOnceTotaxCategory(new TaxCategory());
         }
 
@@ -926,7 +926,7 @@ class AllowanceChargeType
         $paymentMeans = $this->paymentMeans ?? [];
         $paymentMeans = reset($paymentMeans);
 
-        if ($paymentMeans === false) {
+        if (false === $paymentMeans) {
             return null;
         }
 
@@ -941,7 +941,7 @@ class AllowanceChargeType
         $paymentMeans = $this->paymentMeans ?? [];
         $paymentMeans = end($paymentMeans);
 
-        if ($paymentMeans === false) {
+        if (false === $paymentMeans) {
             return null;
         }
 
@@ -993,7 +993,7 @@ class AllowanceChargeType
             $this->paymentMeans = [];
         }
 
-        if ($this->paymentMeans === []) {
+        if ([] === $this->paymentMeans) {
             $this->addOnceTopaymentMeans(new PaymentMeans());
         }
 

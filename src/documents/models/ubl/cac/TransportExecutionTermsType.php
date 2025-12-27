@@ -189,7 +189,7 @@ class TransportExecutionTermsType
         $transportUserSpecialTerms = $this->transportUserSpecialTerms ?? [];
         $transportUserSpecialTerms = reset($transportUserSpecialTerms);
 
-        if ($transportUserSpecialTerms === false) {
+        if (false === $transportUserSpecialTerms) {
             return null;
         }
 
@@ -204,7 +204,7 @@ class TransportExecutionTermsType
         $transportUserSpecialTerms = $this->transportUserSpecialTerms ?? [];
         $transportUserSpecialTerms = end($transportUserSpecialTerms);
 
-        if ($transportUserSpecialTerms === false) {
+        if (false === $transportUserSpecialTerms) {
             return null;
         }
 
@@ -256,7 +256,7 @@ class TransportExecutionTermsType
             $this->transportUserSpecialTerms = [];
         }
 
-        if ($this->transportUserSpecialTerms === []) {
+        if ([] === $this->transportUserSpecialTerms) {
             $this->addOnceTotransportUserSpecialTerms(new TransportUserSpecialTerms());
         }
 
@@ -310,7 +310,7 @@ class TransportExecutionTermsType
         $transportServiceProviderSpecialTerms = $this->transportServiceProviderSpecialTerms ?? [];
         $transportServiceProviderSpecialTerms = reset($transportServiceProviderSpecialTerms);
 
-        if ($transportServiceProviderSpecialTerms === false) {
+        if (false === $transportServiceProviderSpecialTerms) {
             return null;
         }
 
@@ -325,7 +325,7 @@ class TransportExecutionTermsType
         $transportServiceProviderSpecialTerms = $this->transportServiceProviderSpecialTerms ?? [];
         $transportServiceProviderSpecialTerms = end($transportServiceProviderSpecialTerms);
 
-        if ($transportServiceProviderSpecialTerms === false) {
+        if (false === $transportServiceProviderSpecialTerms) {
             return null;
         }
 
@@ -379,7 +379,7 @@ class TransportExecutionTermsType
             $this->transportServiceProviderSpecialTerms = [];
         }
 
-        if ($this->transportServiceProviderSpecialTerms === []) {
+        if ([] === $this->transportServiceProviderSpecialTerms) {
             $this->addOnceTotransportServiceProviderSpecialTerms(new TransportServiceProviderSpecialTerms());
         }
 
@@ -433,7 +433,7 @@ class TransportExecutionTermsType
         $changeConditions = $this->changeConditions ?? [];
         $changeConditions = reset($changeConditions);
 
-        if ($changeConditions === false) {
+        if (false === $changeConditions) {
             return null;
         }
 
@@ -448,7 +448,7 @@ class TransportExecutionTermsType
         $changeConditions = $this->changeConditions ?? [];
         $changeConditions = end($changeConditions);
 
-        if ($changeConditions === false) {
+        if (false === $changeConditions) {
             return null;
         }
 
@@ -500,7 +500,7 @@ class TransportExecutionTermsType
             $this->changeConditions = [];
         }
 
-        if ($this->changeConditions === []) {
+        if ([] === $this->changeConditions) {
             $this->addOnceTochangeConditions(new ChangeConditions());
         }
 
@@ -554,7 +554,7 @@ class TransportExecutionTermsType
         $paymentTerms = $this->paymentTerms ?? [];
         $paymentTerms = reset($paymentTerms);
 
-        if ($paymentTerms === false) {
+        if (false === $paymentTerms) {
             return null;
         }
 
@@ -569,7 +569,7 @@ class TransportExecutionTermsType
         $paymentTerms = $this->paymentTerms ?? [];
         $paymentTerms = end($paymentTerms);
 
-        if ($paymentTerms === false) {
+        if (false === $paymentTerms) {
             return null;
         }
 
@@ -621,7 +621,7 @@ class TransportExecutionTermsType
             $this->paymentTerms = [];
         }
 
-        if ($this->paymentTerms === []) {
+        if ([] === $this->paymentTerms) {
             $this->addOnceTopaymentTerms(new PaymentTerms());
         }
 
@@ -675,7 +675,7 @@ class TransportExecutionTermsType
         $deliveryTerms = $this->deliveryTerms ?? [];
         $deliveryTerms = reset($deliveryTerms);
 
-        if ($deliveryTerms === false) {
+        if (false === $deliveryTerms) {
             return null;
         }
 
@@ -690,7 +690,7 @@ class TransportExecutionTermsType
         $deliveryTerms = $this->deliveryTerms ?? [];
         $deliveryTerms = end($deliveryTerms);
 
-        if ($deliveryTerms === false) {
+        if (false === $deliveryTerms) {
             return null;
         }
 
@@ -742,7 +742,7 @@ class TransportExecutionTermsType
             $this->deliveryTerms = [];
         }
 
-        if ($this->deliveryTerms === []) {
+        if ([] === $this->deliveryTerms) {
             $this->addOnceTodeliveryTerms(new DeliveryTerms());
         }
 
@@ -913,7 +913,7 @@ class TransportExecutionTermsType
         $environmentalEmission = $this->environmentalEmission ?? [];
         $environmentalEmission = reset($environmentalEmission);
 
-        if ($environmentalEmission === false) {
+        if (false === $environmentalEmission) {
             return null;
         }
 
@@ -928,7 +928,7 @@ class TransportExecutionTermsType
         $environmentalEmission = $this->environmentalEmission ?? [];
         $environmentalEmission = end($environmentalEmission);
 
-        if ($environmentalEmission === false) {
+        if (false === $environmentalEmission) {
             return null;
         }
 
@@ -980,7 +980,7 @@ class TransportExecutionTermsType
             $this->environmentalEmission = [];
         }
 
-        if ($this->environmentalEmission === []) {
+        if ([] === $this->environmentalEmission) {
             $this->addOnceToenvironmentalEmission(new EnvironmentalEmission());
         }
 
@@ -1034,7 +1034,7 @@ class TransportExecutionTermsType
         $notificationRequirement = $this->notificationRequirement ?? [];
         $notificationRequirement = reset($notificationRequirement);
 
-        if ($notificationRequirement === false) {
+        if (false === $notificationRequirement) {
             return null;
         }
 
@@ -1049,7 +1049,7 @@ class TransportExecutionTermsType
         $notificationRequirement = $this->notificationRequirement ?? [];
         $notificationRequirement = end($notificationRequirement);
 
-        if ($notificationRequirement === false) {
+        if (false === $notificationRequirement) {
             return null;
         }
 
@@ -1101,7 +1101,7 @@ class TransportExecutionTermsType
             $this->notificationRequirement = [];
         }
 
-        if ($this->notificationRequirement === []) {
+        if ([] === $this->notificationRequirement) {
             $this->addOnceTonotificationRequirement(new NotificationRequirement());
         }
 

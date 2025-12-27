@@ -322,7 +322,7 @@ class PaymentTermsType
         $paymentMeansID = $this->paymentMeansID ?? [];
         $paymentMeansID = reset($paymentMeansID);
 
-        if ($paymentMeansID === false) {
+        if (false === $paymentMeansID) {
             return null;
         }
 
@@ -337,7 +337,7 @@ class PaymentTermsType
         $paymentMeansID = $this->paymentMeansID ?? [];
         $paymentMeansID = end($paymentMeansID);
 
-        if ($paymentMeansID === false) {
+        if (false === $paymentMeansID) {
             return null;
         }
 
@@ -389,7 +389,7 @@ class PaymentTermsType
             $this->paymentMeansID = [];
         }
 
-        if ($this->paymentMeansID === []) {
+        if ([] === $this->paymentMeansID) {
             $this->addOnceTopaymentMeansID(new PaymentMeansID());
         }
 
@@ -482,7 +482,7 @@ class PaymentTermsType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -497,7 +497,7 @@ class PaymentTermsType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -549,7 +549,7 @@ class PaymentTermsType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 

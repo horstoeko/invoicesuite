@@ -287,7 +287,7 @@ class ItemInformationRequestLineType
         $period = $this->period ?? [];
         $period = reset($period);
 
-        if ($period === false) {
+        if (false === $period) {
             return null;
         }
 
@@ -302,7 +302,7 @@ class ItemInformationRequestLineType
         $period = $this->period ?? [];
         $period = end($period);
 
-        if ($period === false) {
+        if (false === $period) {
             return null;
         }
 
@@ -354,7 +354,7 @@ class ItemInformationRequestLineType
             $this->period = [];
         }
 
-        if ($this->period === []) {
+        if ([] === $this->period) {
             $this->addOnceToperiod(new Period());
         }
 
@@ -408,7 +408,7 @@ class ItemInformationRequestLineType
         $salesItem = $this->salesItem ?? [];
         $salesItem = reset($salesItem);
 
-        if ($salesItem === false) {
+        if (false === $salesItem) {
             return null;
         }
 
@@ -423,7 +423,7 @@ class ItemInformationRequestLineType
         $salesItem = $this->salesItem ?? [];
         $salesItem = end($salesItem);
 
-        if ($salesItem === false) {
+        if (false === $salesItem) {
             return null;
         }
 
@@ -475,7 +475,7 @@ class ItemInformationRequestLineType
             $this->salesItem = [];
         }
 
-        if ($this->salesItem === []) {
+        if ([] === $this->salesItem) {
             $this->addOnceTosalesItem(new SalesItem());
         }
 

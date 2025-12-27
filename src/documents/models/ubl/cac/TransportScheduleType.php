@@ -331,7 +331,7 @@ class TransportScheduleType
         $remarks = $this->remarks ?? [];
         $remarks = reset($remarks);
 
-        if ($remarks === false) {
+        if (false === $remarks) {
             return null;
         }
 
@@ -346,7 +346,7 @@ class TransportScheduleType
         $remarks = $this->remarks ?? [];
         $remarks = end($remarks);
 
-        if ($remarks === false) {
+        if (false === $remarks) {
             return null;
         }
 
@@ -398,7 +398,7 @@ class TransportScheduleType
             $this->remarks = [];
         }
 
-        if ($this->remarks === []) {
+        if ([] === $this->remarks) {
             $this->addOnceToremarks(new Remarks());
         }
 

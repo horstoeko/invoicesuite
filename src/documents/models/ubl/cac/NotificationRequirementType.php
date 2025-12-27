@@ -249,7 +249,7 @@ class NotificationRequirementType
         $notifyParty = $this->notifyParty ?? [];
         $notifyParty = reset($notifyParty);
 
-        if ($notifyParty === false) {
+        if (false === $notifyParty) {
             return null;
         }
 
@@ -264,7 +264,7 @@ class NotificationRequirementType
         $notifyParty = $this->notifyParty ?? [];
         $notifyParty = end($notifyParty);
 
-        if ($notifyParty === false) {
+        if (false === $notifyParty) {
             return null;
         }
 
@@ -316,7 +316,7 @@ class NotificationRequirementType
             $this->notifyParty = [];
         }
 
-        if ($this->notifyParty === []) {
+        if ([] === $this->notifyParty) {
             $this->addOnceTonotifyParty(new NotifyParty());
         }
 
@@ -370,7 +370,7 @@ class NotificationRequirementType
         $notificationPeriod = $this->notificationPeriod ?? [];
         $notificationPeriod = reset($notificationPeriod);
 
-        if ($notificationPeriod === false) {
+        if (false === $notificationPeriod) {
             return null;
         }
 
@@ -385,7 +385,7 @@ class NotificationRequirementType
         $notificationPeriod = $this->notificationPeriod ?? [];
         $notificationPeriod = end($notificationPeriod);
 
-        if ($notificationPeriod === false) {
+        if (false === $notificationPeriod) {
             return null;
         }
 
@@ -437,7 +437,7 @@ class NotificationRequirementType
             $this->notificationPeriod = [];
         }
 
-        if ($this->notificationPeriod === []) {
+        if ([] === $this->notificationPeriod) {
             $this->addOnceTonotificationPeriod(new NotificationPeriod());
         }
 
@@ -491,7 +491,7 @@ class NotificationRequirementType
         $notificationLocation = $this->notificationLocation ?? [];
         $notificationLocation = reset($notificationLocation);
 
-        if ($notificationLocation === false) {
+        if (false === $notificationLocation) {
             return null;
         }
 
@@ -506,7 +506,7 @@ class NotificationRequirementType
         $notificationLocation = $this->notificationLocation ?? [];
         $notificationLocation = end($notificationLocation);
 
-        if ($notificationLocation === false) {
+        if (false === $notificationLocation) {
             return null;
         }
 
@@ -558,7 +558,7 @@ class NotificationRequirementType
             $this->notificationLocation = [];
         }
 
-        if ($this->notificationLocation === []) {
+        if ([] === $this->notificationLocation) {
             $this->addOnceTonotificationLocation(new NotificationLocation());
         }
 

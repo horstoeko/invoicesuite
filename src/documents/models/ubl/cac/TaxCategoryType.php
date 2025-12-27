@@ -412,7 +412,7 @@ class TaxCategoryType
         $taxExemptionReason = $this->taxExemptionReason ?? [];
         $taxExemptionReason = reset($taxExemptionReason);
 
-        if ($taxExemptionReason === false) {
+        if (false === $taxExemptionReason) {
             return null;
         }
 
@@ -427,7 +427,7 @@ class TaxCategoryType
         $taxExemptionReason = $this->taxExemptionReason ?? [];
         $taxExemptionReason = end($taxExemptionReason);
 
-        if ($taxExemptionReason === false) {
+        if (false === $taxExemptionReason) {
             return null;
         }
 
@@ -479,7 +479,7 @@ class TaxCategoryType
             $this->taxExemptionReason = [];
         }
 
-        if ($this->taxExemptionReason === []) {
+        if ([] === $this->taxExemptionReason) {
             $this->addOnceTotaxExemptionReason(new TaxExemptionReason());
         }
 

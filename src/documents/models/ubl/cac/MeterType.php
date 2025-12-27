@@ -337,7 +337,7 @@ class MeterType
         $meterReading = $this->meterReading ?? [];
         $meterReading = reset($meterReading);
 
-        if ($meterReading === false) {
+        if (false === $meterReading) {
             return null;
         }
 
@@ -352,7 +352,7 @@ class MeterType
         $meterReading = $this->meterReading ?? [];
         $meterReading = end($meterReading);
 
-        if ($meterReading === false) {
+        if (false === $meterReading) {
             return null;
         }
 
@@ -404,7 +404,7 @@ class MeterType
             $this->meterReading = [];
         }
 
-        if ($this->meterReading === []) {
+        if ([] === $this->meterReading) {
             $this->addOnceTometerReading(new MeterReading());
         }
 
@@ -458,7 +458,7 @@ class MeterType
         $meterProperty = $this->meterProperty ?? [];
         $meterProperty = reset($meterProperty);
 
-        if ($meterProperty === false) {
+        if (false === $meterProperty) {
             return null;
         }
 
@@ -473,7 +473,7 @@ class MeterType
         $meterProperty = $this->meterProperty ?? [];
         $meterProperty = end($meterProperty);
 
-        if ($meterProperty === false) {
+        if (false === $meterProperty) {
             return null;
         }
 
@@ -525,7 +525,7 @@ class MeterType
             $this->meterProperty = [];
         }
 
-        if ($this->meterProperty === []) {
+        if ([] === $this->meterProperty) {
             $this->addOnceTometerProperty(new MeterProperty());
         }
 

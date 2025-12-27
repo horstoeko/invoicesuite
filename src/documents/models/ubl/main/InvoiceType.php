@@ -727,7 +727,7 @@ class InvoiceType
         $uBLExtensions = $this->uBLExtensions ?? [];
         $uBLExtensions = reset($uBLExtensions);
 
-        if ($uBLExtensions === false) {
+        if (false === $uBLExtensions) {
             return null;
         }
 
@@ -742,7 +742,7 @@ class InvoiceType
         $uBLExtensions = $this->uBLExtensions ?? [];
         $uBLExtensions = end($uBLExtensions);
 
-        if ($uBLExtensions === false) {
+        if (false === $uBLExtensions) {
             return null;
         }
 
@@ -794,7 +794,7 @@ class InvoiceType
             $this->uBLExtensions = [];
         }
 
-        if ($this->uBLExtensions === []) {
+        if ([] === $this->uBLExtensions) {
             $this->addOnceTouBLExtensions(new UBLExtension());
         }
 
@@ -1237,7 +1237,7 @@ class InvoiceType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -1252,7 +1252,7 @@ class InvoiceType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -1304,7 +1304,7 @@ class InvoiceType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -1739,7 +1739,7 @@ class InvoiceType
         $invoicePeriod = $this->invoicePeriod ?? [];
         $invoicePeriod = reset($invoicePeriod);
 
-        if ($invoicePeriod === false) {
+        if (false === $invoicePeriod) {
             return null;
         }
 
@@ -1754,7 +1754,7 @@ class InvoiceType
         $invoicePeriod = $this->invoicePeriod ?? [];
         $invoicePeriod = end($invoicePeriod);
 
-        if ($invoicePeriod === false) {
+        if (false === $invoicePeriod) {
             return null;
         }
 
@@ -1806,7 +1806,7 @@ class InvoiceType
             $this->invoicePeriod = [];
         }
 
-        if ($this->invoicePeriod === []) {
+        if ([] === $this->invoicePeriod) {
             $this->addOnceToinvoicePeriod(new InvoicePeriod());
         }
 
@@ -1899,7 +1899,7 @@ class InvoiceType
         $billingReference = $this->billingReference ?? [];
         $billingReference = reset($billingReference);
 
-        if ($billingReference === false) {
+        if (false === $billingReference) {
             return null;
         }
 
@@ -1914,7 +1914,7 @@ class InvoiceType
         $billingReference = $this->billingReference ?? [];
         $billingReference = end($billingReference);
 
-        if ($billingReference === false) {
+        if (false === $billingReference) {
             return null;
         }
 
@@ -1966,7 +1966,7 @@ class InvoiceType
             $this->billingReference = [];
         }
 
-        if ($this->billingReference === []) {
+        if ([] === $this->billingReference) {
             $this->addOnceTobillingReference(new BillingReference());
         }
 
@@ -2020,7 +2020,7 @@ class InvoiceType
         $despatchDocumentReference = $this->despatchDocumentReference ?? [];
         $despatchDocumentReference = reset($despatchDocumentReference);
 
-        if ($despatchDocumentReference === false) {
+        if (false === $despatchDocumentReference) {
             return null;
         }
 
@@ -2035,7 +2035,7 @@ class InvoiceType
         $despatchDocumentReference = $this->despatchDocumentReference ?? [];
         $despatchDocumentReference = end($despatchDocumentReference);
 
-        if ($despatchDocumentReference === false) {
+        if (false === $despatchDocumentReference) {
             return null;
         }
 
@@ -2087,7 +2087,7 @@ class InvoiceType
             $this->despatchDocumentReference = [];
         }
 
-        if ($this->despatchDocumentReference === []) {
+        if ([] === $this->despatchDocumentReference) {
             $this->addOnceTodespatchDocumentReference(new DespatchDocumentReference());
         }
 
@@ -2141,7 +2141,7 @@ class InvoiceType
         $receiptDocumentReference = $this->receiptDocumentReference ?? [];
         $receiptDocumentReference = reset($receiptDocumentReference);
 
-        if ($receiptDocumentReference === false) {
+        if (false === $receiptDocumentReference) {
             return null;
         }
 
@@ -2156,7 +2156,7 @@ class InvoiceType
         $receiptDocumentReference = $this->receiptDocumentReference ?? [];
         $receiptDocumentReference = end($receiptDocumentReference);
 
-        if ($receiptDocumentReference === false) {
+        if (false === $receiptDocumentReference) {
             return null;
         }
 
@@ -2208,7 +2208,7 @@ class InvoiceType
             $this->receiptDocumentReference = [];
         }
 
-        if ($this->receiptDocumentReference === []) {
+        if ([] === $this->receiptDocumentReference) {
             $this->addOnceToreceiptDocumentReference(new ReceiptDocumentReference());
         }
 
@@ -2262,7 +2262,7 @@ class InvoiceType
         $statementDocumentReference = $this->statementDocumentReference ?? [];
         $statementDocumentReference = reset($statementDocumentReference);
 
-        if ($statementDocumentReference === false) {
+        if (false === $statementDocumentReference) {
             return null;
         }
 
@@ -2277,7 +2277,7 @@ class InvoiceType
         $statementDocumentReference = $this->statementDocumentReference ?? [];
         $statementDocumentReference = end($statementDocumentReference);
 
-        if ($statementDocumentReference === false) {
+        if (false === $statementDocumentReference) {
             return null;
         }
 
@@ -2329,7 +2329,7 @@ class InvoiceType
             $this->statementDocumentReference = [];
         }
 
-        if ($this->statementDocumentReference === []) {
+        if ([] === $this->statementDocumentReference) {
             $this->addOnceTostatementDocumentReference(new StatementDocumentReference());
         }
 
@@ -2383,7 +2383,7 @@ class InvoiceType
         $originatorDocumentReference = $this->originatorDocumentReference ?? [];
         $originatorDocumentReference = reset($originatorDocumentReference);
 
-        if ($originatorDocumentReference === false) {
+        if (false === $originatorDocumentReference) {
             return null;
         }
 
@@ -2398,7 +2398,7 @@ class InvoiceType
         $originatorDocumentReference = $this->originatorDocumentReference ?? [];
         $originatorDocumentReference = end($originatorDocumentReference);
 
-        if ($originatorDocumentReference === false) {
+        if (false === $originatorDocumentReference) {
             return null;
         }
 
@@ -2451,7 +2451,7 @@ class InvoiceType
             $this->originatorDocumentReference = [];
         }
 
-        if ($this->originatorDocumentReference === []) {
+        if ([] === $this->originatorDocumentReference) {
             $this->addOnceTooriginatorDocumentReference(new OriginatorDocumentReference());
         }
 
@@ -2505,7 +2505,7 @@ class InvoiceType
         $contractDocumentReference = $this->contractDocumentReference ?? [];
         $contractDocumentReference = reset($contractDocumentReference);
 
-        if ($contractDocumentReference === false) {
+        if (false === $contractDocumentReference) {
             return null;
         }
 
@@ -2520,7 +2520,7 @@ class InvoiceType
         $contractDocumentReference = $this->contractDocumentReference ?? [];
         $contractDocumentReference = end($contractDocumentReference);
 
-        if ($contractDocumentReference === false) {
+        if (false === $contractDocumentReference) {
             return null;
         }
 
@@ -2572,7 +2572,7 @@ class InvoiceType
             $this->contractDocumentReference = [];
         }
 
-        if ($this->contractDocumentReference === []) {
+        if ([] === $this->contractDocumentReference) {
             $this->addOnceTocontractDocumentReference(new ContractDocumentReference());
         }
 
@@ -2626,7 +2626,7 @@ class InvoiceType
         $additionalDocumentReference = $this->additionalDocumentReference ?? [];
         $additionalDocumentReference = reset($additionalDocumentReference);
 
-        if ($additionalDocumentReference === false) {
+        if (false === $additionalDocumentReference) {
             return null;
         }
 
@@ -2641,7 +2641,7 @@ class InvoiceType
         $additionalDocumentReference = $this->additionalDocumentReference ?? [];
         $additionalDocumentReference = end($additionalDocumentReference);
 
-        if ($additionalDocumentReference === false) {
+        if (false === $additionalDocumentReference) {
             return null;
         }
 
@@ -2694,7 +2694,7 @@ class InvoiceType
             $this->additionalDocumentReference = [];
         }
 
-        if ($this->additionalDocumentReference === []) {
+        if ([] === $this->additionalDocumentReference) {
             $this->addOnceToadditionalDocumentReference(new AdditionalDocumentReference());
         }
 
@@ -2748,7 +2748,7 @@ class InvoiceType
         $projectReference = $this->projectReference ?? [];
         $projectReference = reset($projectReference);
 
-        if ($projectReference === false) {
+        if (false === $projectReference) {
             return null;
         }
 
@@ -2763,7 +2763,7 @@ class InvoiceType
         $projectReference = $this->projectReference ?? [];
         $projectReference = end($projectReference);
 
-        if ($projectReference === false) {
+        if (false === $projectReference) {
             return null;
         }
 
@@ -2815,7 +2815,7 @@ class InvoiceType
             $this->projectReference = [];
         }
 
-        if ($this->projectReference === []) {
+        if ([] === $this->projectReference) {
             $this->addOnceToprojectReference(new ProjectReference());
         }
 
@@ -2869,7 +2869,7 @@ class InvoiceType
         $signature = $this->signature ?? [];
         $signature = reset($signature);
 
-        if ($signature === false) {
+        if (false === $signature) {
             return null;
         }
 
@@ -2884,7 +2884,7 @@ class InvoiceType
         $signature = $this->signature ?? [];
         $signature = end($signature);
 
-        if ($signature === false) {
+        if (false === $signature) {
             return null;
         }
 
@@ -2936,7 +2936,7 @@ class InvoiceType
             $this->signature = [];
         }
 
-        if ($this->signature === []) {
+        if ([] === $this->signature) {
             $this->addOnceTosignature(new Signature());
         }
 
@@ -3224,7 +3224,7 @@ class InvoiceType
         $delivery = $this->delivery ?? [];
         $delivery = reset($delivery);
 
-        if ($delivery === false) {
+        if (false === $delivery) {
             return null;
         }
 
@@ -3239,7 +3239,7 @@ class InvoiceType
         $delivery = $this->delivery ?? [];
         $delivery = end($delivery);
 
-        if ($delivery === false) {
+        if (false === $delivery) {
             return null;
         }
 
@@ -3291,7 +3291,7 @@ class InvoiceType
             $this->delivery = [];
         }
 
-        if ($this->delivery === []) {
+        if ([] === $this->delivery) {
             $this->addOnceTodelivery(new Delivery());
         }
 
@@ -3384,7 +3384,7 @@ class InvoiceType
         $paymentMeans = $this->paymentMeans ?? [];
         $paymentMeans = reset($paymentMeans);
 
-        if ($paymentMeans === false) {
+        if (false === $paymentMeans) {
             return null;
         }
 
@@ -3399,7 +3399,7 @@ class InvoiceType
         $paymentMeans = $this->paymentMeans ?? [];
         $paymentMeans = end($paymentMeans);
 
-        if ($paymentMeans === false) {
+        if (false === $paymentMeans) {
             return null;
         }
 
@@ -3451,7 +3451,7 @@ class InvoiceType
             $this->paymentMeans = [];
         }
 
-        if ($this->paymentMeans === []) {
+        if ([] === $this->paymentMeans) {
             $this->addOnceTopaymentMeans(new PaymentMeans());
         }
 
@@ -3505,7 +3505,7 @@ class InvoiceType
         $paymentTerms = $this->paymentTerms ?? [];
         $paymentTerms = reset($paymentTerms);
 
-        if ($paymentTerms === false) {
+        if (false === $paymentTerms) {
             return null;
         }
 
@@ -3520,7 +3520,7 @@ class InvoiceType
         $paymentTerms = $this->paymentTerms ?? [];
         $paymentTerms = end($paymentTerms);
 
-        if ($paymentTerms === false) {
+        if (false === $paymentTerms) {
             return null;
         }
 
@@ -3572,7 +3572,7 @@ class InvoiceType
             $this->paymentTerms = [];
         }
 
-        if ($this->paymentTerms === []) {
+        if ([] === $this->paymentTerms) {
             $this->addOnceTopaymentTerms(new PaymentTerms());
         }
 
@@ -3626,7 +3626,7 @@ class InvoiceType
         $prepaidPayment = $this->prepaidPayment ?? [];
         $prepaidPayment = reset($prepaidPayment);
 
-        if ($prepaidPayment === false) {
+        if (false === $prepaidPayment) {
             return null;
         }
 
@@ -3641,7 +3641,7 @@ class InvoiceType
         $prepaidPayment = $this->prepaidPayment ?? [];
         $prepaidPayment = end($prepaidPayment);
 
-        if ($prepaidPayment === false) {
+        if (false === $prepaidPayment) {
             return null;
         }
 
@@ -3693,7 +3693,7 @@ class InvoiceType
             $this->prepaidPayment = [];
         }
 
-        if ($this->prepaidPayment === []) {
+        if ([] === $this->prepaidPayment) {
             $this->addOnceToprepaidPayment(new PrepaidPayment());
         }
 
@@ -3747,7 +3747,7 @@ class InvoiceType
         $allowanceCharge = $this->allowanceCharge ?? [];
         $allowanceCharge = reset($allowanceCharge);
 
-        if ($allowanceCharge === false) {
+        if (false === $allowanceCharge) {
             return null;
         }
 
@@ -3762,7 +3762,7 @@ class InvoiceType
         $allowanceCharge = $this->allowanceCharge ?? [];
         $allowanceCharge = end($allowanceCharge);
 
-        if ($allowanceCharge === false) {
+        if (false === $allowanceCharge) {
             return null;
         }
 
@@ -3814,7 +3814,7 @@ class InvoiceType
             $this->allowanceCharge = [];
         }
 
-        if ($this->allowanceCharge === []) {
+        if ([] === $this->allowanceCharge) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }
 
@@ -4042,7 +4042,7 @@ class InvoiceType
         $taxTotal = $this->taxTotal ?? [];
         $taxTotal = reset($taxTotal);
 
-        if ($taxTotal === false) {
+        if (false === $taxTotal) {
             return null;
         }
 
@@ -4057,7 +4057,7 @@ class InvoiceType
         $taxTotal = $this->taxTotal ?? [];
         $taxTotal = end($taxTotal);
 
-        if ($taxTotal === false) {
+        if (false === $taxTotal) {
             return null;
         }
 
@@ -4145,7 +4145,7 @@ class InvoiceType
             $this->taxTotal = [];
         }
 
-        if ($this->taxTotal === []) {
+        if ([] === $this->taxTotal) {
             $this->addOnceTotaxTotal(new TaxTotal());
         }
 
@@ -4199,7 +4199,7 @@ class InvoiceType
         $withholdingTaxTotal = $this->withholdingTaxTotal ?? [];
         $withholdingTaxTotal = reset($withholdingTaxTotal);
 
-        if ($withholdingTaxTotal === false) {
+        if (false === $withholdingTaxTotal) {
             return null;
         }
 
@@ -4214,7 +4214,7 @@ class InvoiceType
         $withholdingTaxTotal = $this->withholdingTaxTotal ?? [];
         $withholdingTaxTotal = end($withholdingTaxTotal);
 
-        if ($withholdingTaxTotal === false) {
+        if (false === $withholdingTaxTotal) {
             return null;
         }
 
@@ -4266,7 +4266,7 @@ class InvoiceType
             $this->withholdingTaxTotal = [];
         }
 
-        if ($this->withholdingTaxTotal === []) {
+        if ([] === $this->withholdingTaxTotal) {
             $this->addOnceTowithholdingTaxTotal(new WithholdingTaxTotal());
         }
 
@@ -4359,7 +4359,7 @@ class InvoiceType
         $invoiceLine = $this->invoiceLine ?? [];
         $invoiceLine = reset($invoiceLine);
 
-        if ($invoiceLine === false) {
+        if (false === $invoiceLine) {
             return null;
         }
 
@@ -4374,7 +4374,7 @@ class InvoiceType
         $invoiceLine = $this->invoiceLine ?? [];
         $invoiceLine = end($invoiceLine);
 
-        if ($invoiceLine === false) {
+        if (false === $invoiceLine) {
             return null;
         }
 
@@ -4426,7 +4426,7 @@ class InvoiceType
             $this->invoiceLine = [];
         }
 
-        if ($this->invoiceLine === []) {
+        if ([] === $this->invoiceLine) {
             $this->addOnceToinvoiceLine(new InvoiceLine());
         }
 
@@ -4441,7 +4441,7 @@ class InvoiceType
         $invoiceLines = $this->getInvoiceLine() ?? [];
         $invoiceLine = end($invoiceLines);
 
-        if ($invoiceLine === false) {
+        if (false === $invoiceLine) {
             return null;
         }
 

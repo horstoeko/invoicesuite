@@ -472,7 +472,7 @@ class HeaderTradeAgreementType
             $this->additionalReferencedDocument = [];
         }
 
-        if ($this->additionalReferencedDocument === []) {
+        if ([] === $this->additionalReferencedDocument) {
             $this->addOnceToadditionalReferencedDocument(new ReferencedDocumentType());
         }
 

@@ -260,7 +260,7 @@ class ExchangedDocumentType
             $this->includedNote = [];
         }
 
-        if ($this->includedNote === []) {
+        if ([] === $this->includedNote) {
             $this->addOnceToincludedNote(new NoteType());
         }
 

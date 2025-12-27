@@ -1196,7 +1196,7 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
 
         $additionalReference->getIDWithCreate()->setValue($newReferenceNumber);
 
-        if ($newTypeCode === '130') {
+        if ('130' === $newTypeCode) {
             $additionalReference->getDocumentTypeCodeWithCreate()->setValue($newTypeCode);
         }
 
@@ -6955,7 +6955,7 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
 
         $documentReference->getIDWithCreate()->setValue($newReferenceNumber);
 
-        if ($newTypeCode === '130') {
+        if ('130' === $newTypeCode) {
             $documentReference->getDocumentTypeCodeWithCreate()->setValue($newTypeCode);
         }
 
@@ -8155,7 +8155,7 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return '';
         }
 
-        if (strcasecmp((string) $newTaxRegistrationType, 'VA') === 0) {
+        if (0 === strcasecmp((string) $newTaxRegistrationType, 'VA')) {
             return 'VAT';
         }
 

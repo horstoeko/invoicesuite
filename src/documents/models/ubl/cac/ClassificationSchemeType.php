@@ -363,7 +363,7 @@ class ClassificationSchemeType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -378,7 +378,7 @@ class ClassificationSchemeType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -430,7 +430,7 @@ class ClassificationSchemeType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -523,7 +523,7 @@ class ClassificationSchemeType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -538,7 +538,7 @@ class ClassificationSchemeType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -590,7 +590,7 @@ class ClassificationSchemeType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -878,7 +878,7 @@ class ClassificationSchemeType
         $classificationCategory = $this->classificationCategory ?? [];
         $classificationCategory = reset($classificationCategory);
 
-        if ($classificationCategory === false) {
+        if (false === $classificationCategory) {
             return null;
         }
 
@@ -893,7 +893,7 @@ class ClassificationSchemeType
         $classificationCategory = $this->classificationCategory ?? [];
         $classificationCategory = end($classificationCategory);
 
-        if ($classificationCategory === false) {
+        if (false === $classificationCategory) {
             return null;
         }
 
@@ -945,7 +945,7 @@ class ClassificationSchemeType
             $this->classificationCategory = [];
         }
 
-        if ($this->classificationCategory === []) {
+        if ([] === $this->classificationCategory) {
             $this->addOnceToclassificationCategory(new ClassificationCategory());
         }
 

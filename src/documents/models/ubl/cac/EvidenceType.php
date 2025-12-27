@@ -219,7 +219,7 @@ class EvidenceType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -234,7 +234,7 @@ class EvidenceType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -286,7 +286,7 @@ class EvidenceType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -340,7 +340,7 @@ class EvidenceType
         $candidateStatement = $this->candidateStatement ?? [];
         $candidateStatement = reset($candidateStatement);
 
-        if ($candidateStatement === false) {
+        if (false === $candidateStatement) {
             return null;
         }
 
@@ -355,7 +355,7 @@ class EvidenceType
         $candidateStatement = $this->candidateStatement ?? [];
         $candidateStatement = end($candidateStatement);
 
-        if ($candidateStatement === false) {
+        if (false === $candidateStatement) {
             return null;
         }
 
@@ -407,7 +407,7 @@ class EvidenceType
             $this->candidateStatement = [];
         }
 
-        if ($this->candidateStatement === []) {
+        if ([] === $this->candidateStatement) {
             $this->addOnceTocandidateStatement(new CandidateStatement());
         }
 

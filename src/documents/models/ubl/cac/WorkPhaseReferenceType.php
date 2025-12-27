@@ -220,7 +220,7 @@ class WorkPhaseReferenceType
         $workPhase = $this->workPhase ?? [];
         $workPhase = reset($workPhase);
 
-        if ($workPhase === false) {
+        if (false === $workPhase) {
             return null;
         }
 
@@ -235,7 +235,7 @@ class WorkPhaseReferenceType
         $workPhase = $this->workPhase ?? [];
         $workPhase = end($workPhase);
 
-        if ($workPhase === false) {
+        if (false === $workPhase) {
             return null;
         }
 
@@ -287,7 +287,7 @@ class WorkPhaseReferenceType
             $this->workPhase = [];
         }
 
-        if ($this->workPhase === []) {
+        if ([] === $this->workPhase) {
             $this->addOnceToworkPhase(new WorkPhase());
         }
 
@@ -438,7 +438,7 @@ class WorkPhaseReferenceType
         $workOrderDocumentReference = $this->workOrderDocumentReference ?? [];
         $workOrderDocumentReference = reset($workOrderDocumentReference);
 
-        if ($workOrderDocumentReference === false) {
+        if (false === $workOrderDocumentReference) {
             return null;
         }
 
@@ -453,7 +453,7 @@ class WorkPhaseReferenceType
         $workOrderDocumentReference = $this->workOrderDocumentReference ?? [];
         $workOrderDocumentReference = end($workOrderDocumentReference);
 
-        if ($workOrderDocumentReference === false) {
+        if (false === $workOrderDocumentReference) {
             return null;
         }
 
@@ -505,7 +505,7 @@ class WorkPhaseReferenceType
             $this->workOrderDocumentReference = [];
         }
 
-        if ($this->workOrderDocumentReference === []) {
+        if ([] === $this->workOrderDocumentReference) {
             $this->addOnceToworkOrderDocumentReference(new WorkOrderDocumentReference());
         }
 

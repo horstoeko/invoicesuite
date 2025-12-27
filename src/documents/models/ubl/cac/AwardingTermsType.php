@@ -231,7 +231,7 @@ class AwardingTermsType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -246,7 +246,7 @@ class AwardingTermsType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -298,7 +298,7 @@ class AwardingTermsType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -352,7 +352,7 @@ class AwardingTermsType
         $technicalCommitteeDescription = $this->technicalCommitteeDescription ?? [];
         $technicalCommitteeDescription = reset($technicalCommitteeDescription);
 
-        if ($technicalCommitteeDescription === false) {
+        if (false === $technicalCommitteeDescription) {
             return null;
         }
 
@@ -367,7 +367,7 @@ class AwardingTermsType
         $technicalCommitteeDescription = $this->technicalCommitteeDescription ?? [];
         $technicalCommitteeDescription = end($technicalCommitteeDescription);
 
-        if ($technicalCommitteeDescription === false) {
+        if (false === $technicalCommitteeDescription) {
             return null;
         }
 
@@ -421,7 +421,7 @@ class AwardingTermsType
             $this->technicalCommitteeDescription = [];
         }
 
-        if ($this->technicalCommitteeDescription === []) {
+        if ([] === $this->technicalCommitteeDescription) {
             $this->addOnceTotechnicalCommitteeDescription(new TechnicalCommitteeDescription());
         }
 
@@ -475,7 +475,7 @@ class AwardingTermsType
         $lowTendersDescription = $this->lowTendersDescription ?? [];
         $lowTendersDescription = reset($lowTendersDescription);
 
-        if ($lowTendersDescription === false) {
+        if (false === $lowTendersDescription) {
             return null;
         }
 
@@ -490,7 +490,7 @@ class AwardingTermsType
         $lowTendersDescription = $this->lowTendersDescription ?? [];
         $lowTendersDescription = end($lowTendersDescription);
 
-        if ($lowTendersDescription === false) {
+        if (false === $lowTendersDescription) {
             return null;
         }
 
@@ -542,7 +542,7 @@ class AwardingTermsType
             $this->lowTendersDescription = [];
         }
 
-        if ($this->lowTendersDescription === []) {
+        if ([] === $this->lowTendersDescription) {
             $this->addOnceTolowTendersDescription(new LowTendersDescription());
         }
 
@@ -625,7 +625,7 @@ class AwardingTermsType
         $prizeDescription = $this->prizeDescription ?? [];
         $prizeDescription = reset($prizeDescription);
 
-        if ($prizeDescription === false) {
+        if (false === $prizeDescription) {
             return null;
         }
 
@@ -640,7 +640,7 @@ class AwardingTermsType
         $prizeDescription = $this->prizeDescription ?? [];
         $prizeDescription = end($prizeDescription);
 
-        if ($prizeDescription === false) {
+        if (false === $prizeDescription) {
             return null;
         }
 
@@ -692,7 +692,7 @@ class AwardingTermsType
             $this->prizeDescription = [];
         }
 
-        if ($this->prizeDescription === []) {
+        if ([] === $this->prizeDescription) {
             $this->addOnceToprizeDescription(new PrizeDescription());
         }
 
@@ -746,7 +746,7 @@ class AwardingTermsType
         $paymentDescription = $this->paymentDescription ?? [];
         $paymentDescription = reset($paymentDescription);
 
-        if ($paymentDescription === false) {
+        if (false === $paymentDescription) {
             return null;
         }
 
@@ -761,7 +761,7 @@ class AwardingTermsType
         $paymentDescription = $this->paymentDescription ?? [];
         $paymentDescription = end($paymentDescription);
 
-        if ($paymentDescription === false) {
+        if (false === $paymentDescription) {
             return null;
         }
 
@@ -813,7 +813,7 @@ class AwardingTermsType
             $this->paymentDescription = [];
         }
 
-        if ($this->paymentDescription === []) {
+        if ([] === $this->paymentDescription) {
             $this->addOnceTopaymentDescription(new PaymentDescription());
         }
 
@@ -925,7 +925,7 @@ class AwardingTermsType
         $awardingCriterion = $this->awardingCriterion ?? [];
         $awardingCriterion = reset($awardingCriterion);
 
-        if ($awardingCriterion === false) {
+        if (false === $awardingCriterion) {
             return null;
         }
 
@@ -940,7 +940,7 @@ class AwardingTermsType
         $awardingCriterion = $this->awardingCriterion ?? [];
         $awardingCriterion = end($awardingCriterion);
 
-        if ($awardingCriterion === false) {
+        if (false === $awardingCriterion) {
             return null;
         }
 
@@ -992,7 +992,7 @@ class AwardingTermsType
             $this->awardingCriterion = [];
         }
 
-        if ($this->awardingCriterion === []) {
+        if ([] === $this->awardingCriterion) {
             $this->addOnceToawardingCriterion(new AwardingCriterion());
         }
 
@@ -1046,7 +1046,7 @@ class AwardingTermsType
         $technicalCommitteePerson = $this->technicalCommitteePerson ?? [];
         $technicalCommitteePerson = reset($technicalCommitteePerson);
 
-        if ($technicalCommitteePerson === false) {
+        if (false === $technicalCommitteePerson) {
             return null;
         }
 
@@ -1061,7 +1061,7 @@ class AwardingTermsType
         $technicalCommitteePerson = $this->technicalCommitteePerson ?? [];
         $technicalCommitteePerson = end($technicalCommitteePerson);
 
-        if ($technicalCommitteePerson === false) {
+        if (false === $technicalCommitteePerson) {
             return null;
         }
 
@@ -1113,7 +1113,7 @@ class AwardingTermsType
             $this->technicalCommitteePerson = [];
         }
 
-        if ($this->technicalCommitteePerson === []) {
+        if ([] === $this->technicalCommitteePerson) {
             $this->addOnceTotechnicalCommitteePerson(new TechnicalCommitteePerson());
         }
 

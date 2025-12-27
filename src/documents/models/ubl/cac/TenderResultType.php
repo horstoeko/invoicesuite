@@ -285,7 +285,7 @@ class TenderResultType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -300,7 +300,7 @@ class TenderResultType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -352,7 +352,7 @@ class TenderResultType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -847,7 +847,7 @@ class TenderResultType
         $subcontractTerms = $this->subcontractTerms ?? [];
         $subcontractTerms = reset($subcontractTerms);
 
-        if ($subcontractTerms === false) {
+        if (false === $subcontractTerms) {
             return null;
         }
 
@@ -862,7 +862,7 @@ class TenderResultType
         $subcontractTerms = $this->subcontractTerms ?? [];
         $subcontractTerms = end($subcontractTerms);
 
-        if ($subcontractTerms === false) {
+        if (false === $subcontractTerms) {
             return null;
         }
 
@@ -914,7 +914,7 @@ class TenderResultType
             $this->subcontractTerms = [];
         }
 
-        if ($this->subcontractTerms === []) {
+        if ([] === $this->subcontractTerms) {
             $this->addOnceTosubcontractTerms(new SubcontractTerms());
         }
 
@@ -968,7 +968,7 @@ class TenderResultType
         $winningParty = $this->winningParty ?? [];
         $winningParty = reset($winningParty);
 
-        if ($winningParty === false) {
+        if (false === $winningParty) {
             return null;
         }
 
@@ -983,7 +983,7 @@ class TenderResultType
         $winningParty = $this->winningParty ?? [];
         $winningParty = end($winningParty);
 
-        if ($winningParty === false) {
+        if (false === $winningParty) {
             return null;
         }
 
@@ -1035,7 +1035,7 @@ class TenderResultType
             $this->winningParty = [];
         }
 
-        if ($this->winningParty === []) {
+        if ([] === $this->winningParty) {
             $this->addOnceTowinningParty(new WinningParty());
         }
 

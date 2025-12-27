@@ -213,7 +213,7 @@ class ProjectReferenceType
         $workPhaseReference = $this->workPhaseReference ?? [];
         $workPhaseReference = reset($workPhaseReference);
 
-        if ($workPhaseReference === false) {
+        if (false === $workPhaseReference) {
             return null;
         }
 
@@ -228,7 +228,7 @@ class ProjectReferenceType
         $workPhaseReference = $this->workPhaseReference ?? [];
         $workPhaseReference = end($workPhaseReference);
 
-        if ($workPhaseReference === false) {
+        if (false === $workPhaseReference) {
             return null;
         }
 
@@ -280,7 +280,7 @@ class ProjectReferenceType
             $this->workPhaseReference = [];
         }
 
-        if ($this->workPhaseReference === []) {
+        if ([] === $this->workPhaseReference) {
             $this->addOnceToworkPhaseReference(new WorkPhaseReference());
         }
 

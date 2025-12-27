@@ -172,7 +172,7 @@ class BudgetAccountLineType
         $budgetAccount = $this->budgetAccount ?? [];
         $budgetAccount = reset($budgetAccount);
 
-        if ($budgetAccount === false) {
+        if (false === $budgetAccount) {
             return null;
         }
 
@@ -187,7 +187,7 @@ class BudgetAccountLineType
         $budgetAccount = $this->budgetAccount ?? [];
         $budgetAccount = end($budgetAccount);
 
-        if ($budgetAccount === false) {
+        if (false === $budgetAccount) {
             return null;
         }
 
@@ -239,7 +239,7 @@ class BudgetAccountLineType
             $this->budgetAccount = [];
         }
 
-        if ($this->budgetAccount === []) {
+        if ([] === $this->budgetAccount) {
             $this->addOnceTobudgetAccount(new BudgetAccount());
         }
 

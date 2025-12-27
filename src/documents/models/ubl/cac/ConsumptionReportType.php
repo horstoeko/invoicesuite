@@ -389,7 +389,7 @@ class ConsumptionReportType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -404,7 +404,7 @@ class ConsumptionReportType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -456,7 +456,7 @@ class ConsumptionReportType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -978,7 +978,7 @@ class ConsumptionReportType
         $consumptionReportReference = $this->consumptionReportReference ?? [];
         $consumptionReportReference = reset($consumptionReportReference);
 
-        if ($consumptionReportReference === false) {
+        if (false === $consumptionReportReference) {
             return null;
         }
 
@@ -993,7 +993,7 @@ class ConsumptionReportType
         $consumptionReportReference = $this->consumptionReportReference ?? [];
         $consumptionReportReference = end($consumptionReportReference);
 
-        if ($consumptionReportReference === false) {
+        if (false === $consumptionReportReference) {
             return null;
         }
 
@@ -1045,7 +1045,7 @@ class ConsumptionReportType
             $this->consumptionReportReference = [];
         }
 
-        if ($this->consumptionReportReference === []) {
+        if ([] === $this->consumptionReportReference) {
             $this->addOnceToconsumptionReportReference(new ConsumptionReportReference());
         }
 
@@ -1099,7 +1099,7 @@ class ConsumptionReportType
         $consumptionHistory = $this->consumptionHistory ?? [];
         $consumptionHistory = reset($consumptionHistory);
 
-        if ($consumptionHistory === false) {
+        if (false === $consumptionHistory) {
             return null;
         }
 
@@ -1114,7 +1114,7 @@ class ConsumptionReportType
         $consumptionHistory = $this->consumptionHistory ?? [];
         $consumptionHistory = end($consumptionHistory);
 
-        if ($consumptionHistory === false) {
+        if (false === $consumptionHistory) {
             return null;
         }
 
@@ -1166,7 +1166,7 @@ class ConsumptionReportType
             $this->consumptionHistory = [];
         }
 
-        if ($this->consumptionHistory === []) {
+        if ([] === $this->consumptionHistory) {
             $this->addOnceToconsumptionHistory(new ConsumptionHistory());
         }
 

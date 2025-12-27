@@ -346,7 +346,7 @@ class TenderLineType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -361,7 +361,7 @@ class TenderLineType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -413,7 +413,7 @@ class TenderLineType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -780,7 +780,7 @@ class TenderLineType
         $warrantyInformation = $this->warrantyInformation ?? [];
         $warrantyInformation = reset($warrantyInformation);
 
-        if ($warrantyInformation === false) {
+        if (false === $warrantyInformation) {
             return null;
         }
 
@@ -795,7 +795,7 @@ class TenderLineType
         $warrantyInformation = $this->warrantyInformation ?? [];
         $warrantyInformation = end($warrantyInformation);
 
-        if ($warrantyInformation === false) {
+        if (false === $warrantyInformation) {
             return null;
         }
 
@@ -847,7 +847,7 @@ class TenderLineType
             $this->warrantyInformation = [];
         }
 
-        if ($this->warrantyInformation === []) {
+        if ([] === $this->warrantyInformation) {
             $this->addOnceTowarrantyInformation(new WarrantyInformation());
         }
 
@@ -940,7 +940,7 @@ class TenderLineType
         $documentReference = $this->documentReference ?? [];
         $documentReference = reset($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -955,7 +955,7 @@ class TenderLineType
         $documentReference = $this->documentReference ?? [];
         $documentReference = end($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -1007,7 +1007,7 @@ class TenderLineType
             $this->documentReference = [];
         }
 
-        if ($this->documentReference === []) {
+        if ([] === $this->documentReference) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
 
@@ -1100,7 +1100,7 @@ class TenderLineType
         $offeredItemLocationQuantity = $this->offeredItemLocationQuantity ?? [];
         $offeredItemLocationQuantity = reset($offeredItemLocationQuantity);
 
-        if ($offeredItemLocationQuantity === false) {
+        if (false === $offeredItemLocationQuantity) {
             return null;
         }
 
@@ -1115,7 +1115,7 @@ class TenderLineType
         $offeredItemLocationQuantity = $this->offeredItemLocationQuantity ?? [];
         $offeredItemLocationQuantity = end($offeredItemLocationQuantity);
 
-        if ($offeredItemLocationQuantity === false) {
+        if (false === $offeredItemLocationQuantity) {
             return null;
         }
 
@@ -1168,7 +1168,7 @@ class TenderLineType
             $this->offeredItemLocationQuantity = [];
         }
 
-        if ($this->offeredItemLocationQuantity === []) {
+        if ([] === $this->offeredItemLocationQuantity) {
             $this->addOnceToofferedItemLocationQuantity(new OfferedItemLocationQuantity());
         }
 
@@ -1222,7 +1222,7 @@ class TenderLineType
         $replacementRelatedItem = $this->replacementRelatedItem ?? [];
         $replacementRelatedItem = reset($replacementRelatedItem);
 
-        if ($replacementRelatedItem === false) {
+        if (false === $replacementRelatedItem) {
             return null;
         }
 
@@ -1237,7 +1237,7 @@ class TenderLineType
         $replacementRelatedItem = $this->replacementRelatedItem ?? [];
         $replacementRelatedItem = end($replacementRelatedItem);
 
-        if ($replacementRelatedItem === false) {
+        if (false === $replacementRelatedItem) {
             return null;
         }
 
@@ -1289,7 +1289,7 @@ class TenderLineType
             $this->replacementRelatedItem = [];
         }
 
-        if ($this->replacementRelatedItem === []) {
+        if ([] === $this->replacementRelatedItem) {
             $this->addOnceToreplacementRelatedItem(new ReplacementRelatedItem());
         }
 
@@ -1421,7 +1421,7 @@ class TenderLineType
         $subTenderLine = $this->subTenderLine ?? [];
         $subTenderLine = reset($subTenderLine);
 
-        if ($subTenderLine === false) {
+        if (false === $subTenderLine) {
             return null;
         }
 
@@ -1436,7 +1436,7 @@ class TenderLineType
         $subTenderLine = $this->subTenderLine ?? [];
         $subTenderLine = end($subTenderLine);
 
-        if ($subTenderLine === false) {
+        if (false === $subTenderLine) {
             return null;
         }
 
@@ -1488,7 +1488,7 @@ class TenderLineType
             $this->subTenderLine = [];
         }
 
-        if ($this->subTenderLine === []) {
+        if ([] === $this->subTenderLine) {
             $this->addOnceTosubTenderLine(new SubTenderLine());
         }
 

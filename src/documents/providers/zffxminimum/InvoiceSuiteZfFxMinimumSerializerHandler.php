@@ -57,7 +57,7 @@ class InvoiceSuiteZfFxMinimumSerializerHandler implements SubscribingHandlerInte
             )
         );
 
-        if ($data->getCurrencyID() != null) {
+        if (null != $data->getCurrencyID()) {
             $attr = $visitor->getDocument()->createAttribute('currencyID');
             $attr->value = $data->getCurrencyID();
             $visitor->getCurrentNode()->appendChild($attr);

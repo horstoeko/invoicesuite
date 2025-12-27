@@ -626,7 +626,7 @@ class MeterReadingType
         $meterReadingComments = $this->meterReadingComments ?? [];
         $meterReadingComments = reset($meterReadingComments);
 
-        if ($meterReadingComments === false) {
+        if (false === $meterReadingComments) {
             return null;
         }
 
@@ -641,7 +641,7 @@ class MeterReadingType
         $meterReadingComments = $this->meterReadingComments ?? [];
         $meterReadingComments = end($meterReadingComments);
 
-        if ($meterReadingComments === false) {
+        if (false === $meterReadingComments) {
             return null;
         }
 
@@ -693,7 +693,7 @@ class MeterReadingType
             $this->meterReadingComments = [];
         }
 
-        if ($this->meterReadingComments === []) {
+        if ([] === $this->meterReadingComments) {
             $this->addOnceTometerReadingComments(new MeterReadingComments());
         }
 

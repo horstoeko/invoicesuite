@@ -108,7 +108,7 @@ class DeclarationType
         $name = $this->name ?? [];
         $name = reset($name);
 
-        if ($name === false) {
+        if (false === $name) {
             return null;
         }
 
@@ -123,7 +123,7 @@ class DeclarationType
         $name = $this->name ?? [];
         $name = end($name);
 
-        if ($name === false) {
+        if (false === $name) {
             return null;
         }
 
@@ -175,7 +175,7 @@ class DeclarationType
             $this->name = [];
         }
 
-        if ($this->name === []) {
+        if ([] === $this->name) {
             $this->addOnceToname(new Name());
         }
 
@@ -268,7 +268,7 @@ class DeclarationType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -283,7 +283,7 @@ class DeclarationType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -335,7 +335,7 @@ class DeclarationType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -389,7 +389,7 @@ class DeclarationType
         $evidenceSupplied = $this->evidenceSupplied ?? [];
         $evidenceSupplied = reset($evidenceSupplied);
 
-        if ($evidenceSupplied === false) {
+        if (false === $evidenceSupplied) {
             return null;
         }
 
@@ -404,7 +404,7 @@ class DeclarationType
         $evidenceSupplied = $this->evidenceSupplied ?? [];
         $evidenceSupplied = end($evidenceSupplied);
 
-        if ($evidenceSupplied === false) {
+        if (false === $evidenceSupplied) {
             return null;
         }
 
@@ -456,7 +456,7 @@ class DeclarationType
             $this->evidenceSupplied = [];
         }
 
-        if ($this->evidenceSupplied === []) {
+        if ([] === $this->evidenceSupplied) {
             $this->addOnceToevidenceSupplied(new EvidenceSupplied());
         }
 

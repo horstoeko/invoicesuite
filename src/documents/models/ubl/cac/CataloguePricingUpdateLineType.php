@@ -221,7 +221,7 @@ class CataloguePricingUpdateLineType
         $requiredItemLocationQuantity = $this->requiredItemLocationQuantity ?? [];
         $requiredItemLocationQuantity = reset($requiredItemLocationQuantity);
 
-        if ($requiredItemLocationQuantity === false) {
+        if (false === $requiredItemLocationQuantity) {
             return null;
         }
 
@@ -236,7 +236,7 @@ class CataloguePricingUpdateLineType
         $requiredItemLocationQuantity = $this->requiredItemLocationQuantity ?? [];
         $requiredItemLocationQuantity = end($requiredItemLocationQuantity);
 
-        if ($requiredItemLocationQuantity === false) {
+        if (false === $requiredItemLocationQuantity) {
             return null;
         }
 
@@ -290,7 +290,7 @@ class CataloguePricingUpdateLineType
             $this->requiredItemLocationQuantity = [];
         }
 
-        if ($this->requiredItemLocationQuantity === []) {
+        if ([] === $this->requiredItemLocationQuantity) {
             $this->addOnceTorequiredItemLocationQuantity(new RequiredItemLocationQuantity());
         }
 

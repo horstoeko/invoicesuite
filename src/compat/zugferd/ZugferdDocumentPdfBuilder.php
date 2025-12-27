@@ -68,7 +68,7 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
 
         $pdfContent = file_get_contents($pdfFileName);
 
-        if ($pdfContent === false) {
+        if (false === $pdfContent) {
             throw new InvoiceSuiteFileNotReadableException($pdfFileName);
         }
 

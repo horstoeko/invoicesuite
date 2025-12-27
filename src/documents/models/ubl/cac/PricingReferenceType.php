@@ -121,7 +121,7 @@ class PricingReferenceType
         $alternativeConditionPrice = $this->alternativeConditionPrice ?? [];
         $alternativeConditionPrice = reset($alternativeConditionPrice);
 
-        if ($alternativeConditionPrice === false) {
+        if (false === $alternativeConditionPrice) {
             return null;
         }
 
@@ -136,7 +136,7 @@ class PricingReferenceType
         $alternativeConditionPrice = $this->alternativeConditionPrice ?? [];
         $alternativeConditionPrice = end($alternativeConditionPrice);
 
-        if ($alternativeConditionPrice === false) {
+        if (false === $alternativeConditionPrice) {
             return null;
         }
 
@@ -188,7 +188,7 @@ class PricingReferenceType
             $this->alternativeConditionPrice = [];
         }
 
-        if ($this->alternativeConditionPrice === []) {
+        if ([] === $this->alternativeConditionPrice) {
             $this->addOnceToalternativeConditionPrice(new AlternativeConditionPrice());
         }
 

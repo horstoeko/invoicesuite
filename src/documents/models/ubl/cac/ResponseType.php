@@ -208,7 +208,7 @@ class ResponseType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -223,7 +223,7 @@ class ResponseType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -275,7 +275,7 @@ class ResponseType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -387,7 +387,7 @@ class ResponseType
         $status = $this->status ?? [];
         $status = reset($status);
 
-        if ($status === false) {
+        if (false === $status) {
             return null;
         }
 
@@ -402,7 +402,7 @@ class ResponseType
         $status = $this->status ?? [];
         $status = end($status);
 
-        if ($status === false) {
+        if (false === $status) {
             return null;
         }
 
@@ -454,7 +454,7 @@ class ResponseType
             $this->status = [];
         }
 
-        if ($this->status === []) {
+        if ([] === $this->status) {
             $this->addOnceTostatus(new Status());
         }
 

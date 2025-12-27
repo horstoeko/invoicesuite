@@ -352,7 +352,7 @@ class TradeSettlementHeaderMonetarySummationType
             $this->taxTotalAmount = [];
         }
 
-        if ($this->taxTotalAmount === []) {
+        if ([] === $this->taxTotalAmount) {
             $this->addOnceTotaxTotalAmount(new AmountType());
         }
 

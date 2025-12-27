@@ -169,7 +169,7 @@ class CapabilityType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -184,7 +184,7 @@ class CapabilityType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -236,7 +236,7 @@ class CapabilityType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -368,7 +368,7 @@ class CapabilityType
         $evidenceSupplied = $this->evidenceSupplied ?? [];
         $evidenceSupplied = reset($evidenceSupplied);
 
-        if ($evidenceSupplied === false) {
+        if (false === $evidenceSupplied) {
             return null;
         }
 
@@ -383,7 +383,7 @@ class CapabilityType
         $evidenceSupplied = $this->evidenceSupplied ?? [];
         $evidenceSupplied = end($evidenceSupplied);
 
-        if ($evidenceSupplied === false) {
+        if (false === $evidenceSupplied) {
             return null;
         }
 
@@ -435,7 +435,7 @@ class CapabilityType
             $this->evidenceSupplied = [];
         }
 
-        if ($this->evidenceSupplied === []) {
+        if ([] === $this->evidenceSupplied) {
             $this->addOnceToevidenceSupplied(new EvidenceSupplied());
         }
 

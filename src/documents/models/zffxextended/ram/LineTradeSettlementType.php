@@ -175,7 +175,7 @@ class LineTradeSettlementType
             $this->applicableTradeTax = [];
         }
 
-        if ($this->applicableTradeTax === []) {
+        if ([] === $this->applicableTradeTax) {
             $this->addOnceToapplicableTradeTax(new TradeTaxType());
         }
 
@@ -306,7 +306,7 @@ class LineTradeSettlementType
             $this->specifiedTradeAllowanceCharge = [];
         }
 
-        if ($this->specifiedTradeAllowanceCharge === []) {
+        if ([] === $this->specifiedTradeAllowanceCharge) {
             $this->addOnceTospecifiedTradeAllowanceCharge(new TradeAllowanceChargeType());
         }
 
@@ -476,7 +476,7 @@ class LineTradeSettlementType
             $this->additionalReferencedDocument = [];
         }
 
-        if ($this->additionalReferencedDocument === []) {
+        if ([] === $this->additionalReferencedDocument) {
             $this->addOnceToadditionalReferencedDocument(new ReferencedDocumentType());
         }
 

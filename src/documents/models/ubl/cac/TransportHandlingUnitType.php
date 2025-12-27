@@ -498,7 +498,7 @@ class TransportHandlingUnitType
         $handlingInstructions = $this->handlingInstructions ?? [];
         $handlingInstructions = reset($handlingInstructions);
 
-        if ($handlingInstructions === false) {
+        if (false === $handlingInstructions) {
             return null;
         }
 
@@ -513,7 +513,7 @@ class TransportHandlingUnitType
         $handlingInstructions = $this->handlingInstructions ?? [];
         $handlingInstructions = end($handlingInstructions);
 
-        if ($handlingInstructions === false) {
+        if (false === $handlingInstructions) {
             return null;
         }
 
@@ -565,7 +565,7 @@ class TransportHandlingUnitType
             $this->handlingInstructions = [];
         }
 
-        if ($this->handlingInstructions === []) {
+        if ([] === $this->handlingInstructions) {
             $this->addOnceTohandlingInstructions(new HandlingInstructions());
         }
 
@@ -726,7 +726,7 @@ class TransportHandlingUnitType
         $damageRemarks = $this->damageRemarks ?? [];
         $damageRemarks = reset($damageRemarks);
 
-        if ($damageRemarks === false) {
+        if (false === $damageRemarks) {
             return null;
         }
 
@@ -741,7 +741,7 @@ class TransportHandlingUnitType
         $damageRemarks = $this->damageRemarks ?? [];
         $damageRemarks = end($damageRemarks);
 
-        if ($damageRemarks === false) {
+        if (false === $damageRemarks) {
             return null;
         }
 
@@ -793,7 +793,7 @@ class TransportHandlingUnitType
             $this->damageRemarks = [];
         }
 
-        if ($this->damageRemarks === []) {
+        if ([] === $this->damageRemarks) {
             $this->addOnceTodamageRemarks(new DamageRemarks());
         }
 
@@ -847,7 +847,7 @@ class TransportHandlingUnitType
         $shippingMarks = $this->shippingMarks ?? [];
         $shippingMarks = reset($shippingMarks);
 
-        if ($shippingMarks === false) {
+        if (false === $shippingMarks) {
             return null;
         }
 
@@ -862,7 +862,7 @@ class TransportHandlingUnitType
         $shippingMarks = $this->shippingMarks ?? [];
         $shippingMarks = end($shippingMarks);
 
-        if ($shippingMarks === false) {
+        if (false === $shippingMarks) {
             return null;
         }
 
@@ -914,7 +914,7 @@ class TransportHandlingUnitType
             $this->shippingMarks = [];
         }
 
-        if ($this->shippingMarks === []) {
+        if ([] === $this->shippingMarks) {
             $this->addOnceToshippingMarks(new ShippingMarks());
         }
 
@@ -1007,7 +1007,7 @@ class TransportHandlingUnitType
         $handlingUnitDespatchLine = $this->handlingUnitDespatchLine ?? [];
         $handlingUnitDespatchLine = reset($handlingUnitDespatchLine);
 
-        if ($handlingUnitDespatchLine === false) {
+        if (false === $handlingUnitDespatchLine) {
             return null;
         }
 
@@ -1022,7 +1022,7 @@ class TransportHandlingUnitType
         $handlingUnitDespatchLine = $this->handlingUnitDespatchLine ?? [];
         $handlingUnitDespatchLine = end($handlingUnitDespatchLine);
 
-        if ($handlingUnitDespatchLine === false) {
+        if (false === $handlingUnitDespatchLine) {
             return null;
         }
 
@@ -1074,7 +1074,7 @@ class TransportHandlingUnitType
             $this->handlingUnitDespatchLine = [];
         }
 
-        if ($this->handlingUnitDespatchLine === []) {
+        if ([] === $this->handlingUnitDespatchLine) {
             $this->addOnceTohandlingUnitDespatchLine(new HandlingUnitDespatchLine());
         }
 
@@ -1128,7 +1128,7 @@ class TransportHandlingUnitType
         $actualPackage = $this->actualPackage ?? [];
         $actualPackage = reset($actualPackage);
 
-        if ($actualPackage === false) {
+        if (false === $actualPackage) {
             return null;
         }
 
@@ -1143,7 +1143,7 @@ class TransportHandlingUnitType
         $actualPackage = $this->actualPackage ?? [];
         $actualPackage = end($actualPackage);
 
-        if ($actualPackage === false) {
+        if (false === $actualPackage) {
             return null;
         }
 
@@ -1195,7 +1195,7 @@ class TransportHandlingUnitType
             $this->actualPackage = [];
         }
 
-        if ($this->actualPackage === []) {
+        if ([] === $this->actualPackage) {
             $this->addOnceToactualPackage(new ActualPackage());
         }
 
@@ -1249,7 +1249,7 @@ class TransportHandlingUnitType
         $receivedHandlingUnitReceiptLine = $this->receivedHandlingUnitReceiptLine ?? [];
         $receivedHandlingUnitReceiptLine = reset($receivedHandlingUnitReceiptLine);
 
-        if ($receivedHandlingUnitReceiptLine === false) {
+        if (false === $receivedHandlingUnitReceiptLine) {
             return null;
         }
 
@@ -1264,7 +1264,7 @@ class TransportHandlingUnitType
         $receivedHandlingUnitReceiptLine = $this->receivedHandlingUnitReceiptLine ?? [];
         $receivedHandlingUnitReceiptLine = end($receivedHandlingUnitReceiptLine);
 
-        if ($receivedHandlingUnitReceiptLine === false) {
+        if (false === $receivedHandlingUnitReceiptLine) {
             return null;
         }
 
@@ -1318,7 +1318,7 @@ class TransportHandlingUnitType
             $this->receivedHandlingUnitReceiptLine = [];
         }
 
-        if ($this->receivedHandlingUnitReceiptLine === []) {
+        if ([] === $this->receivedHandlingUnitReceiptLine) {
             $this->addOnceToreceivedHandlingUnitReceiptLine(new ReceivedHandlingUnitReceiptLine());
         }
 
@@ -1372,7 +1372,7 @@ class TransportHandlingUnitType
         $transportEquipment = $this->transportEquipment ?? [];
         $transportEquipment = reset($transportEquipment);
 
-        if ($transportEquipment === false) {
+        if (false === $transportEquipment) {
             return null;
         }
 
@@ -1387,7 +1387,7 @@ class TransportHandlingUnitType
         $transportEquipment = $this->transportEquipment ?? [];
         $transportEquipment = end($transportEquipment);
 
-        if ($transportEquipment === false) {
+        if (false === $transportEquipment) {
             return null;
         }
 
@@ -1439,7 +1439,7 @@ class TransportHandlingUnitType
             $this->transportEquipment = [];
         }
 
-        if ($this->transportEquipment === []) {
+        if ([] === $this->transportEquipment) {
             $this->addOnceTotransportEquipment(new TransportEquipment());
         }
 
@@ -1493,7 +1493,7 @@ class TransportHandlingUnitType
         $transportMeans = $this->transportMeans ?? [];
         $transportMeans = reset($transportMeans);
 
-        if ($transportMeans === false) {
+        if (false === $transportMeans) {
             return null;
         }
 
@@ -1508,7 +1508,7 @@ class TransportHandlingUnitType
         $transportMeans = $this->transportMeans ?? [];
         $transportMeans = end($transportMeans);
 
-        if ($transportMeans === false) {
+        if (false === $transportMeans) {
             return null;
         }
 
@@ -1560,7 +1560,7 @@ class TransportHandlingUnitType
             $this->transportMeans = [];
         }
 
-        if ($this->transportMeans === []) {
+        if ([] === $this->transportMeans) {
             $this->addOnceTotransportMeans(new TransportMeans());
         }
 
@@ -1614,7 +1614,7 @@ class TransportHandlingUnitType
         $hazardousGoodsTransit = $this->hazardousGoodsTransit ?? [];
         $hazardousGoodsTransit = reset($hazardousGoodsTransit);
 
-        if ($hazardousGoodsTransit === false) {
+        if (false === $hazardousGoodsTransit) {
             return null;
         }
 
@@ -1629,7 +1629,7 @@ class TransportHandlingUnitType
         $hazardousGoodsTransit = $this->hazardousGoodsTransit ?? [];
         $hazardousGoodsTransit = end($hazardousGoodsTransit);
 
-        if ($hazardousGoodsTransit === false) {
+        if (false === $hazardousGoodsTransit) {
             return null;
         }
 
@@ -1681,7 +1681,7 @@ class TransportHandlingUnitType
             $this->hazardousGoodsTransit = [];
         }
 
-        if ($this->hazardousGoodsTransit === []) {
+        if ([] === $this->hazardousGoodsTransit) {
             $this->addOnceTohazardousGoodsTransit(new HazardousGoodsTransit());
         }
 
@@ -1735,7 +1735,7 @@ class TransportHandlingUnitType
         $measurementDimension = $this->measurementDimension ?? [];
         $measurementDimension = reset($measurementDimension);
 
-        if ($measurementDimension === false) {
+        if (false === $measurementDimension) {
             return null;
         }
 
@@ -1750,7 +1750,7 @@ class TransportHandlingUnitType
         $measurementDimension = $this->measurementDimension ?? [];
         $measurementDimension = end($measurementDimension);
 
-        if ($measurementDimension === false) {
+        if (false === $measurementDimension) {
             return null;
         }
 
@@ -1802,7 +1802,7 @@ class TransportHandlingUnitType
             $this->measurementDimension = [];
         }
 
-        if ($this->measurementDimension === []) {
+        if ([] === $this->measurementDimension) {
             $this->addOnceTomeasurementDimension(new MeasurementDimension());
         }
 
@@ -1934,7 +1934,7 @@ class TransportHandlingUnitType
         $goodsItem = $this->goodsItem ?? [];
         $goodsItem = reset($goodsItem);
 
-        if ($goodsItem === false) {
+        if (false === $goodsItem) {
             return null;
         }
 
@@ -1949,7 +1949,7 @@ class TransportHandlingUnitType
         $goodsItem = $this->goodsItem ?? [];
         $goodsItem = end($goodsItem);
 
-        if ($goodsItem === false) {
+        if (false === $goodsItem) {
             return null;
         }
 
@@ -2001,7 +2001,7 @@ class TransportHandlingUnitType
             $this->goodsItem = [];
         }
 
-        if ($this->goodsItem === []) {
+        if ([] === $this->goodsItem) {
             $this->addOnceTogoodsItem(new GoodsItem());
         }
 
@@ -2135,7 +2135,7 @@ class TransportHandlingUnitType
         $shipmentDocumentReference = $this->shipmentDocumentReference ?? [];
         $shipmentDocumentReference = reset($shipmentDocumentReference);
 
-        if ($shipmentDocumentReference === false) {
+        if (false === $shipmentDocumentReference) {
             return null;
         }
 
@@ -2150,7 +2150,7 @@ class TransportHandlingUnitType
         $shipmentDocumentReference = $this->shipmentDocumentReference ?? [];
         $shipmentDocumentReference = end($shipmentDocumentReference);
 
-        if ($shipmentDocumentReference === false) {
+        if (false === $shipmentDocumentReference) {
             return null;
         }
 
@@ -2202,7 +2202,7 @@ class TransportHandlingUnitType
             $this->shipmentDocumentReference = [];
         }
 
-        if ($this->shipmentDocumentReference === []) {
+        if ([] === $this->shipmentDocumentReference) {
             $this->addOnceToshipmentDocumentReference(new ShipmentDocumentReference());
         }
 
@@ -2256,7 +2256,7 @@ class TransportHandlingUnitType
         $status = $this->status ?? [];
         $status = reset($status);
 
-        if ($status === false) {
+        if (false === $status) {
             return null;
         }
 
@@ -2271,7 +2271,7 @@ class TransportHandlingUnitType
         $status = $this->status ?? [];
         $status = end($status);
 
-        if ($status === false) {
+        if (false === $status) {
             return null;
         }
 
@@ -2323,7 +2323,7 @@ class TransportHandlingUnitType
             $this->status = [];
         }
 
-        if ($this->status === []) {
+        if ([] === $this->status) {
             $this->addOnceTostatus(new Status());
         }
 
@@ -2377,7 +2377,7 @@ class TransportHandlingUnitType
         $customsDeclaration = $this->customsDeclaration ?? [];
         $customsDeclaration = reset($customsDeclaration);
 
-        if ($customsDeclaration === false) {
+        if (false === $customsDeclaration) {
             return null;
         }
 
@@ -2392,7 +2392,7 @@ class TransportHandlingUnitType
         $customsDeclaration = $this->customsDeclaration ?? [];
         $customsDeclaration = end($customsDeclaration);
 
-        if ($customsDeclaration === false) {
+        if (false === $customsDeclaration) {
             return null;
         }
 
@@ -2444,7 +2444,7 @@ class TransportHandlingUnitType
             $this->customsDeclaration = [];
         }
 
-        if ($this->customsDeclaration === []) {
+        if ([] === $this->customsDeclaration) {
             $this->addOnceTocustomsDeclaration(new CustomsDeclaration());
         }
 
@@ -2498,7 +2498,7 @@ class TransportHandlingUnitType
         $referencedShipment = $this->referencedShipment ?? [];
         $referencedShipment = reset($referencedShipment);
 
-        if ($referencedShipment === false) {
+        if (false === $referencedShipment) {
             return null;
         }
 
@@ -2513,7 +2513,7 @@ class TransportHandlingUnitType
         $referencedShipment = $this->referencedShipment ?? [];
         $referencedShipment = end($referencedShipment);
 
-        if ($referencedShipment === false) {
+        if (false === $referencedShipment) {
             return null;
         }
 
@@ -2565,7 +2565,7 @@ class TransportHandlingUnitType
             $this->referencedShipment = [];
         }
 
-        if ($this->referencedShipment === []) {
+        if ([] === $this->referencedShipment) {
             $this->addOnceToreferencedShipment(new ReferencedShipment());
         }
 
@@ -2619,7 +2619,7 @@ class TransportHandlingUnitType
         $package = $this->package ?? [];
         $package = reset($package);
 
-        if ($package === false) {
+        if (false === $package) {
             return null;
         }
 
@@ -2634,7 +2634,7 @@ class TransportHandlingUnitType
         $package = $this->package ?? [];
         $package = end($package);
 
-        if ($package === false) {
+        if (false === $package) {
             return null;
         }
 
@@ -2686,7 +2686,7 @@ class TransportHandlingUnitType
             $this->package = [];
         }
 
-        if ($this->package === []) {
+        if ([] === $this->package) {
             $this->addOnceTopackage(new Package());
         }
 

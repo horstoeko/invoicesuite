@@ -386,7 +386,7 @@ class DebitNoteLineType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -401,7 +401,7 @@ class DebitNoteLineType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -453,7 +453,7 @@ class DebitNoteLineType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -731,7 +731,7 @@ class DebitNoteLineType
         $discrepancyResponse = $this->discrepancyResponse ?? [];
         $discrepancyResponse = reset($discrepancyResponse);
 
-        if ($discrepancyResponse === false) {
+        if (false === $discrepancyResponse) {
             return null;
         }
 
@@ -746,7 +746,7 @@ class DebitNoteLineType
         $discrepancyResponse = $this->discrepancyResponse ?? [];
         $discrepancyResponse = end($discrepancyResponse);
 
-        if ($discrepancyResponse === false) {
+        if (false === $discrepancyResponse) {
             return null;
         }
 
@@ -798,7 +798,7 @@ class DebitNoteLineType
             $this->discrepancyResponse = [];
         }
 
-        if ($this->discrepancyResponse === []) {
+        if ([] === $this->discrepancyResponse) {
             $this->addOnceTodiscrepancyResponse(new DiscrepancyResponse());
         }
 
@@ -852,7 +852,7 @@ class DebitNoteLineType
         $despatchLineReference = $this->despatchLineReference ?? [];
         $despatchLineReference = reset($despatchLineReference);
 
-        if ($despatchLineReference === false) {
+        if (false === $despatchLineReference) {
             return null;
         }
 
@@ -867,7 +867,7 @@ class DebitNoteLineType
         $despatchLineReference = $this->despatchLineReference ?? [];
         $despatchLineReference = end($despatchLineReference);
 
-        if ($despatchLineReference === false) {
+        if (false === $despatchLineReference) {
             return null;
         }
 
@@ -919,7 +919,7 @@ class DebitNoteLineType
             $this->despatchLineReference = [];
         }
 
-        if ($this->despatchLineReference === []) {
+        if ([] === $this->despatchLineReference) {
             $this->addOnceTodespatchLineReference(new DespatchLineReference());
         }
 
@@ -973,7 +973,7 @@ class DebitNoteLineType
         $receiptLineReference = $this->receiptLineReference ?? [];
         $receiptLineReference = reset($receiptLineReference);
 
-        if ($receiptLineReference === false) {
+        if (false === $receiptLineReference) {
             return null;
         }
 
@@ -988,7 +988,7 @@ class DebitNoteLineType
         $receiptLineReference = $this->receiptLineReference ?? [];
         $receiptLineReference = end($receiptLineReference);
 
-        if ($receiptLineReference === false) {
+        if (false === $receiptLineReference) {
             return null;
         }
 
@@ -1040,7 +1040,7 @@ class DebitNoteLineType
             $this->receiptLineReference = [];
         }
 
-        if ($this->receiptLineReference === []) {
+        if ([] === $this->receiptLineReference) {
             $this->addOnceToreceiptLineReference(new ReceiptLineReference());
         }
 
@@ -1094,7 +1094,7 @@ class DebitNoteLineType
         $billingReference = $this->billingReference ?? [];
         $billingReference = reset($billingReference);
 
-        if ($billingReference === false) {
+        if (false === $billingReference) {
             return null;
         }
 
@@ -1109,7 +1109,7 @@ class DebitNoteLineType
         $billingReference = $this->billingReference ?? [];
         $billingReference = end($billingReference);
 
-        if ($billingReference === false) {
+        if (false === $billingReference) {
             return null;
         }
 
@@ -1161,7 +1161,7 @@ class DebitNoteLineType
             $this->billingReference = [];
         }
 
-        if ($this->billingReference === []) {
+        if ([] === $this->billingReference) {
             $this->addOnceTobillingReference(new BillingReference());
         }
 
@@ -1215,7 +1215,7 @@ class DebitNoteLineType
         $documentReference = $this->documentReference ?? [];
         $documentReference = reset($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -1230,7 +1230,7 @@ class DebitNoteLineType
         $documentReference = $this->documentReference ?? [];
         $documentReference = end($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -1282,7 +1282,7 @@ class DebitNoteLineType
             $this->documentReference = [];
         }
 
-        if ($this->documentReference === []) {
+        if ([] === $this->documentReference) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
 
@@ -1375,7 +1375,7 @@ class DebitNoteLineType
         $delivery = $this->delivery ?? [];
         $delivery = reset($delivery);
 
-        if ($delivery === false) {
+        if (false === $delivery) {
             return null;
         }
 
@@ -1390,7 +1390,7 @@ class DebitNoteLineType
         $delivery = $this->delivery ?? [];
         $delivery = end($delivery);
 
-        if ($delivery === false) {
+        if (false === $delivery) {
             return null;
         }
 
@@ -1442,7 +1442,7 @@ class DebitNoteLineType
             $this->delivery = [];
         }
 
-        if ($this->delivery === []) {
+        if ([] === $this->delivery) {
             $this->addOnceTodelivery(new Delivery());
         }
 
@@ -1496,7 +1496,7 @@ class DebitNoteLineType
         $taxTotal = $this->taxTotal ?? [];
         $taxTotal = reset($taxTotal);
 
-        if ($taxTotal === false) {
+        if (false === $taxTotal) {
             return null;
         }
 
@@ -1511,7 +1511,7 @@ class DebitNoteLineType
         $taxTotal = $this->taxTotal ?? [];
         $taxTotal = end($taxTotal);
 
-        if ($taxTotal === false) {
+        if (false === $taxTotal) {
             return null;
         }
 
@@ -1563,7 +1563,7 @@ class DebitNoteLineType
             $this->taxTotal = [];
         }
 
-        if ($this->taxTotal === []) {
+        if ([] === $this->taxTotal) {
             $this->addOnceTotaxTotal(new TaxTotal());
         }
 
@@ -1617,7 +1617,7 @@ class DebitNoteLineType
         $allowanceCharge = $this->allowanceCharge ?? [];
         $allowanceCharge = reset($allowanceCharge);
 
-        if ($allowanceCharge === false) {
+        if (false === $allowanceCharge) {
             return null;
         }
 
@@ -1632,7 +1632,7 @@ class DebitNoteLineType
         $allowanceCharge = $this->allowanceCharge ?? [];
         $allowanceCharge = end($allowanceCharge);
 
-        if ($allowanceCharge === false) {
+        if (false === $allowanceCharge) {
             return null;
         }
 
@@ -1684,7 +1684,7 @@ class DebitNoteLineType
             $this->allowanceCharge = [];
         }
 
-        if ($this->allowanceCharge === []) {
+        if ([] === $this->allowanceCharge) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }
 
@@ -1816,7 +1816,7 @@ class DebitNoteLineType
         $subDebitNoteLine = $this->subDebitNoteLine ?? [];
         $subDebitNoteLine = reset($subDebitNoteLine);
 
-        if ($subDebitNoteLine === false) {
+        if (false === $subDebitNoteLine) {
             return null;
         }
 
@@ -1831,7 +1831,7 @@ class DebitNoteLineType
         $subDebitNoteLine = $this->subDebitNoteLine ?? [];
         $subDebitNoteLine = end($subDebitNoteLine);
 
-        if ($subDebitNoteLine === false) {
+        if (false === $subDebitNoteLine) {
             return null;
         }
 
@@ -1883,7 +1883,7 @@ class DebitNoteLineType
             $this->subDebitNoteLine = [];
         }
 
-        if ($this->subDebitNoteLine === []) {
+        if ([] === $this->subDebitNoteLine) {
             $this->addOnceTosubDebitNoteLine(new SubDebitNoteLine());
         }
 

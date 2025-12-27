@@ -707,7 +707,7 @@ class TenderingTermsType
         $acceptedVariantsDescription = $this->acceptedVariantsDescription ?? [];
         $acceptedVariantsDescription = reset($acceptedVariantsDescription);
 
-        if ($acceptedVariantsDescription === false) {
+        if (false === $acceptedVariantsDescription) {
             return null;
         }
 
@@ -722,7 +722,7 @@ class TenderingTermsType
         $acceptedVariantsDescription = $this->acceptedVariantsDescription ?? [];
         $acceptedVariantsDescription = end($acceptedVariantsDescription);
 
-        if ($acceptedVariantsDescription === false) {
+        if (false === $acceptedVariantsDescription) {
             return null;
         }
 
@@ -775,7 +775,7 @@ class TenderingTermsType
             $this->acceptedVariantsDescription = [];
         }
 
-        if ($this->acceptedVariantsDescription === []) {
+        if ([] === $this->acceptedVariantsDescription) {
             $this->addOnceToacceptedVariantsDescription(new AcceptedVariantsDescription());
         }
 
@@ -829,7 +829,7 @@ class TenderingTermsType
         $priceRevisionFormulaDescription = $this->priceRevisionFormulaDescription ?? [];
         $priceRevisionFormulaDescription = reset($priceRevisionFormulaDescription);
 
-        if ($priceRevisionFormulaDescription === false) {
+        if (false === $priceRevisionFormulaDescription) {
             return null;
         }
 
@@ -844,7 +844,7 @@ class TenderingTermsType
         $priceRevisionFormulaDescription = $this->priceRevisionFormulaDescription ?? [];
         $priceRevisionFormulaDescription = end($priceRevisionFormulaDescription);
 
-        if ($priceRevisionFormulaDescription === false) {
+        if (false === $priceRevisionFormulaDescription) {
             return null;
         }
 
@@ -898,7 +898,7 @@ class TenderingTermsType
             $this->priceRevisionFormulaDescription = [];
         }
 
-        if ($this->priceRevisionFormulaDescription === []) {
+        if ([] === $this->priceRevisionFormulaDescription) {
             $this->addOnceTopriceRevisionFormulaDescription(new PriceRevisionFormulaDescription());
         }
 
@@ -991,7 +991,7 @@ class TenderingTermsType
         $fundingProgram = $this->fundingProgram ?? [];
         $fundingProgram = reset($fundingProgram);
 
-        if ($fundingProgram === false) {
+        if (false === $fundingProgram) {
             return null;
         }
 
@@ -1006,7 +1006,7 @@ class TenderingTermsType
         $fundingProgram = $this->fundingProgram ?? [];
         $fundingProgram = end($fundingProgram);
 
-        if ($fundingProgram === false) {
+        if (false === $fundingProgram) {
             return null;
         }
 
@@ -1058,7 +1058,7 @@ class TenderingTermsType
             $this->fundingProgram = [];
         }
 
-        if ($this->fundingProgram === []) {
+        if ([] === $this->fundingProgram) {
             $this->addOnceTofundingProgram(new FundingProgram());
         }
 
@@ -1152,7 +1152,7 @@ class TenderingTermsType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -1167,7 +1167,7 @@ class TenderingTermsType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -1219,7 +1219,7 @@ class TenderingTermsType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -1410,7 +1410,7 @@ class TenderingTermsType
         $additionalConditions = $this->additionalConditions ?? [];
         $additionalConditions = reset($additionalConditions);
 
-        if ($additionalConditions === false) {
+        if (false === $additionalConditions) {
             return null;
         }
 
@@ -1425,7 +1425,7 @@ class TenderingTermsType
         $additionalConditions = $this->additionalConditions ?? [];
         $additionalConditions = end($additionalConditions);
 
-        if ($additionalConditions === false) {
+        if (false === $additionalConditions) {
             return null;
         }
 
@@ -1477,7 +1477,7 @@ class TenderingTermsType
             $this->additionalConditions = [];
         }
 
-        if ($this->additionalConditions === []) {
+        if ([] === $this->additionalConditions) {
             $this->addOnceToadditionalConditions(new AdditionalConditions());
         }
 
@@ -1599,7 +1599,7 @@ class TenderingTermsType
         $penaltyClause = $this->penaltyClause ?? [];
         $penaltyClause = reset($penaltyClause);
 
-        if ($penaltyClause === false) {
+        if (false === $penaltyClause) {
             return null;
         }
 
@@ -1614,7 +1614,7 @@ class TenderingTermsType
         $penaltyClause = $this->penaltyClause ?? [];
         $penaltyClause = end($penaltyClause);
 
-        if ($penaltyClause === false) {
+        if (false === $penaltyClause) {
             return null;
         }
 
@@ -1666,7 +1666,7 @@ class TenderingTermsType
             $this->penaltyClause = [];
         }
 
-        if ($this->penaltyClause === []) {
+        if ([] === $this->penaltyClause) {
             $this->addOnceTopenaltyClause(new PenaltyClause());
         }
 
@@ -1720,7 +1720,7 @@ class TenderingTermsType
         $requiredFinancialGuarantee = $this->requiredFinancialGuarantee ?? [];
         $requiredFinancialGuarantee = reset($requiredFinancialGuarantee);
 
-        if ($requiredFinancialGuarantee === false) {
+        if (false === $requiredFinancialGuarantee) {
             return null;
         }
 
@@ -1735,7 +1735,7 @@ class TenderingTermsType
         $requiredFinancialGuarantee = $this->requiredFinancialGuarantee ?? [];
         $requiredFinancialGuarantee = end($requiredFinancialGuarantee);
 
-        if ($requiredFinancialGuarantee === false) {
+        if (false === $requiredFinancialGuarantee) {
             return null;
         }
 
@@ -1787,7 +1787,7 @@ class TenderingTermsType
             $this->requiredFinancialGuarantee = [];
         }
 
-        if ($this->requiredFinancialGuarantee === []) {
+        if ([] === $this->requiredFinancialGuarantee) {
             $this->addOnceTorequiredFinancialGuarantee(new RequiredFinancialGuarantee());
         }
 
@@ -2001,7 +2001,7 @@ class TenderingTermsType
         $contractualDocumentReference = $this->contractualDocumentReference ?? [];
         $contractualDocumentReference = reset($contractualDocumentReference);
 
-        if ($contractualDocumentReference === false) {
+        if (false === $contractualDocumentReference) {
             return null;
         }
 
@@ -2016,7 +2016,7 @@ class TenderingTermsType
         $contractualDocumentReference = $this->contractualDocumentReference ?? [];
         $contractualDocumentReference = end($contractualDocumentReference);
 
-        if ($contractualDocumentReference === false) {
+        if (false === $contractualDocumentReference) {
             return null;
         }
 
@@ -2070,7 +2070,7 @@ class TenderingTermsType
             $this->contractualDocumentReference = [];
         }
 
-        if ($this->contractualDocumentReference === []) {
+        if ([] === $this->contractualDocumentReference) {
             $this->addOnceTocontractualDocumentReference(new ContractualDocumentReference());
         }
 
@@ -2203,7 +2203,7 @@ class TenderingTermsType
         $paymentTerms = $this->paymentTerms ?? [];
         $paymentTerms = reset($paymentTerms);
 
-        if ($paymentTerms === false) {
+        if (false === $paymentTerms) {
             return null;
         }
 
@@ -2218,7 +2218,7 @@ class TenderingTermsType
         $paymentTerms = $this->paymentTerms ?? [];
         $paymentTerms = end($paymentTerms);
 
-        if ($paymentTerms === false) {
+        if (false === $paymentTerms) {
             return null;
         }
 
@@ -2270,7 +2270,7 @@ class TenderingTermsType
             $this->paymentTerms = [];
         }
 
-        if ($this->paymentTerms === []) {
+        if ([] === $this->paymentTerms) {
             $this->addOnceTopaymentTerms(new PaymentTerms());
         }
 
@@ -2324,7 +2324,7 @@ class TenderingTermsType
         $tendererQualificationRequest = $this->tendererQualificationRequest ?? [];
         $tendererQualificationRequest = reset($tendererQualificationRequest);
 
-        if ($tendererQualificationRequest === false) {
+        if (false === $tendererQualificationRequest) {
             return null;
         }
 
@@ -2339,7 +2339,7 @@ class TenderingTermsType
         $tendererQualificationRequest = $this->tendererQualificationRequest ?? [];
         $tendererQualificationRequest = end($tendererQualificationRequest);
 
-        if ($tendererQualificationRequest === false) {
+        if (false === $tendererQualificationRequest) {
             return null;
         }
 
@@ -2393,7 +2393,7 @@ class TenderingTermsType
             $this->tendererQualificationRequest = [];
         }
 
-        if ($this->tendererQualificationRequest === []) {
+        if ([] === $this->tendererQualificationRequest) {
             $this->addOnceTotendererQualificationRequest(new TendererQualificationRequest());
         }
 
@@ -2447,7 +2447,7 @@ class TenderingTermsType
         $allowedSubcontractTerms = $this->allowedSubcontractTerms ?? [];
         $allowedSubcontractTerms = reset($allowedSubcontractTerms);
 
-        if ($allowedSubcontractTerms === false) {
+        if (false === $allowedSubcontractTerms) {
             return null;
         }
 
@@ -2462,7 +2462,7 @@ class TenderingTermsType
         $allowedSubcontractTerms = $this->allowedSubcontractTerms ?? [];
         $allowedSubcontractTerms = end($allowedSubcontractTerms);
 
-        if ($allowedSubcontractTerms === false) {
+        if (false === $allowedSubcontractTerms) {
             return null;
         }
 
@@ -2514,7 +2514,7 @@ class TenderingTermsType
             $this->allowedSubcontractTerms = [];
         }
 
-        if ($this->allowedSubcontractTerms === []) {
+        if ([] === $this->allowedSubcontractTerms) {
             $this->addOnceToallowedSubcontractTerms(new AllowedSubcontractTerms());
         }
 
@@ -2568,7 +2568,7 @@ class TenderingTermsType
         $tenderPreparation = $this->tenderPreparation ?? [];
         $tenderPreparation = reset($tenderPreparation);
 
-        if ($tenderPreparation === false) {
+        if (false === $tenderPreparation) {
             return null;
         }
 
@@ -2583,7 +2583,7 @@ class TenderingTermsType
         $tenderPreparation = $this->tenderPreparation ?? [];
         $tenderPreparation = end($tenderPreparation);
 
-        if ($tenderPreparation === false) {
+        if (false === $tenderPreparation) {
             return null;
         }
 
@@ -2635,7 +2635,7 @@ class TenderingTermsType
             $this->tenderPreparation = [];
         }
 
-        if ($this->tenderPreparation === []) {
+        if ([] === $this->tenderPreparation) {
             $this->addOnceTotenderPreparation(new TenderPreparation());
         }
 
@@ -2689,7 +2689,7 @@ class TenderingTermsType
         $contractExecutionRequirement = $this->contractExecutionRequirement ?? [];
         $contractExecutionRequirement = reset($contractExecutionRequirement);
 
-        if ($contractExecutionRequirement === false) {
+        if (false === $contractExecutionRequirement) {
             return null;
         }
 
@@ -2704,7 +2704,7 @@ class TenderingTermsType
         $contractExecutionRequirement = $this->contractExecutionRequirement ?? [];
         $contractExecutionRequirement = end($contractExecutionRequirement);
 
-        if ($contractExecutionRequirement === false) {
+        if (false === $contractExecutionRequirement) {
             return null;
         }
 
@@ -2758,7 +2758,7 @@ class TenderingTermsType
             $this->contractExecutionRequirement = [];
         }
 
-        if ($this->contractExecutionRequirement === []) {
+        if ([] === $this->contractExecutionRequirement) {
             $this->addOnceTocontractExecutionRequirement(new ContractExecutionRequirement());
         }
 
@@ -3008,7 +3008,7 @@ class TenderingTermsType
         $tenderEvaluationParty = $this->tenderEvaluationParty ?? [];
         $tenderEvaluationParty = reset($tenderEvaluationParty);
 
-        if ($tenderEvaluationParty === false) {
+        if (false === $tenderEvaluationParty) {
             return null;
         }
 
@@ -3023,7 +3023,7 @@ class TenderingTermsType
         $tenderEvaluationParty = $this->tenderEvaluationParty ?? [];
         $tenderEvaluationParty = end($tenderEvaluationParty);
 
-        if ($tenderEvaluationParty === false) {
+        if (false === $tenderEvaluationParty) {
             return null;
         }
 
@@ -3075,7 +3075,7 @@ class TenderingTermsType
             $this->tenderEvaluationParty = [];
         }
 
-        if ($this->tenderEvaluationParty === []) {
+        if ([] === $this->tenderEvaluationParty) {
             $this->addOnceTotenderEvaluationParty(new TenderEvaluationParty());
         }
 
@@ -3246,7 +3246,7 @@ class TenderingTermsType
         $language = $this->language ?? [];
         $language = reset($language);
 
-        if ($language === false) {
+        if (false === $language) {
             return null;
         }
 
@@ -3261,7 +3261,7 @@ class TenderingTermsType
         $language = $this->language ?? [];
         $language = end($language);
 
-        if ($language === false) {
+        if (false === $language) {
             return null;
         }
 
@@ -3313,7 +3313,7 @@ class TenderingTermsType
             $this->language = [];
         }
 
-        if ($this->language === []) {
+        if ([] === $this->language) {
             $this->addOnceTolanguage(new Language());
         }
 
@@ -3367,7 +3367,7 @@ class TenderingTermsType
         $budgetAccountLine = $this->budgetAccountLine ?? [];
         $budgetAccountLine = reset($budgetAccountLine);
 
-        if ($budgetAccountLine === false) {
+        if (false === $budgetAccountLine) {
             return null;
         }
 
@@ -3382,7 +3382,7 @@ class TenderingTermsType
         $budgetAccountLine = $this->budgetAccountLine ?? [];
         $budgetAccountLine = end($budgetAccountLine);
 
-        if ($budgetAccountLine === false) {
+        if (false === $budgetAccountLine) {
             return null;
         }
 
@@ -3434,7 +3434,7 @@ class TenderingTermsType
             $this->budgetAccountLine = [];
         }
 
-        if ($this->budgetAccountLine === []) {
+        if ([] === $this->budgetAccountLine) {
             $this->addOnceTobudgetAccountLine(new BudgetAccountLine());
         }
 

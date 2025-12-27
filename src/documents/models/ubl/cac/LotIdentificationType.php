@@ -162,7 +162,7 @@ class LotIdentificationType
         $additionalItemProperty = $this->additionalItemProperty ?? [];
         $additionalItemProperty = reset($additionalItemProperty);
 
-        if ($additionalItemProperty === false) {
+        if (false === $additionalItemProperty) {
             return null;
         }
 
@@ -177,7 +177,7 @@ class LotIdentificationType
         $additionalItemProperty = $this->additionalItemProperty ?? [];
         $additionalItemProperty = end($additionalItemProperty);
 
-        if ($additionalItemProperty === false) {
+        if (false === $additionalItemProperty) {
             return null;
         }
 
@@ -229,7 +229,7 @@ class LotIdentificationType
             $this->additionalItemProperty = [];
         }
 
-        if ($this->additionalItemProperty === []) {
+        if ([] === $this->additionalItemProperty) {
             $this->addOnceToadditionalItemProperty(new AdditionalItemProperty());
         }
 

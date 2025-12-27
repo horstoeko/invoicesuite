@@ -296,7 +296,7 @@ class PeriodType
         $descriptionCode = $this->descriptionCode ?? [];
         $descriptionCode = reset($descriptionCode);
 
-        if ($descriptionCode === false) {
+        if (false === $descriptionCode) {
             return null;
         }
 
@@ -311,7 +311,7 @@ class PeriodType
         $descriptionCode = $this->descriptionCode ?? [];
         $descriptionCode = end($descriptionCode);
 
-        if ($descriptionCode === false) {
+        if (false === $descriptionCode) {
             return null;
         }
 
@@ -363,7 +363,7 @@ class PeriodType
             $this->descriptionCode = [];
         }
 
-        if ($this->descriptionCode === []) {
+        if ([] === $this->descriptionCode) {
             $this->addOnceTodescriptionCode(new DescriptionCode());
         }
 
@@ -417,7 +417,7 @@ class PeriodType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -432,7 +432,7 @@ class PeriodType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -484,7 +484,7 @@ class PeriodType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 

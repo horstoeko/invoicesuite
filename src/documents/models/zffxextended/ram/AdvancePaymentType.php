@@ -220,7 +220,7 @@ class AdvancePaymentType
             $this->includedTradeTax = [];
         }
 
-        if ($this->includedTradeTax === []) {
+        if ([] === $this->includedTradeTax) {
             $this->addOnceToincludedTradeTax(new TradeTaxType());
         }
 

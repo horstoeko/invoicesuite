@@ -455,7 +455,7 @@ class ContractType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -470,7 +470,7 @@ class ContractType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -522,7 +522,7 @@ class ContractType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -615,7 +615,7 @@ class ContractType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -630,7 +630,7 @@ class ContractType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -682,7 +682,7 @@ class ContractType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -775,7 +775,7 @@ class ContractType
         $contractDocumentReference = $this->contractDocumentReference ?? [];
         $contractDocumentReference = reset($contractDocumentReference);
 
-        if ($contractDocumentReference === false) {
+        if (false === $contractDocumentReference) {
             return null;
         }
 
@@ -790,7 +790,7 @@ class ContractType
         $contractDocumentReference = $this->contractDocumentReference ?? [];
         $contractDocumentReference = end($contractDocumentReference);
 
-        if ($contractDocumentReference === false) {
+        if (false === $contractDocumentReference) {
             return null;
         }
 
@@ -842,7 +842,7 @@ class ContractType
             $this->contractDocumentReference = [];
         }
 
-        if ($this->contractDocumentReference === []) {
+        if ([] === $this->contractDocumentReference) {
             $this->addOnceTocontractDocumentReference(new ContractDocumentReference());
         }
 

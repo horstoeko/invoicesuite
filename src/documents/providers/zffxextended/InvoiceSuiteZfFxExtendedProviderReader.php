@@ -8523,7 +8523,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
 
         $paymentTerm = reset($paymentTerms);
 
-        $newMandate = $paymentTerm !== false ? ($paymentTerm->getDirectDebitMandateID()?->getValue() ?? '') : '';
+        $newMandate = false !== $paymentTerm ? ($paymentTerm->getDirectDebitMandateID()?->getValue() ?? '') : '';
 
         return $this;
     }
@@ -9187,9 +9187,9 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
 
         $newChargeAmount = $documentLogisticServiceCharge->getAppliedAmount()?->getValue() ?? 0.0;
         $newDescription = $documentLogisticServiceCharge->getDescription()?->getValue() ?? '';
-        $newTaxCategory = $documentLogisticServiceChargeTax !== false ? ($documentLogisticServiceChargeTax->getCategoryCode()?->getValue() ?? '') : '';
-        $newTaxType = $documentLogisticServiceChargeTax !== false ? ($documentLogisticServiceChargeTax->getTypeCode()?->getValue() ?? '') : '';
-        $newTaxPercent = $documentLogisticServiceChargeTax !== false ? ($documentLogisticServiceChargeTax->getRateApplicablePercent()?->getValue() ?? 0.0) : 0.0;
+        $newTaxCategory = false !== $documentLogisticServiceChargeTax ? ($documentLogisticServiceChargeTax->getCategoryCode()?->getValue() ?? '') : '';
+        $newTaxType = false !== $documentLogisticServiceChargeTax ? ($documentLogisticServiceChargeTax->getTypeCode()?->getValue() ?? '') : '';
+        $newTaxPercent = false !== $documentLogisticServiceChargeTax ? ($documentLogisticServiceChargeTax->getRateApplicablePercent()?->getValue() ?? 0.0) : 0.0;
 
         return $this;
     }
@@ -9241,8 +9241,8 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
         $newChargeTotalAmount = $documentSummation?->getChargeTotalAmount()?->getValue() ?? 0.0;
         $newDiscountTotalAmount = $documentSummation?->getAllowanceTotalAmount()?->getValue() ?? 0.0;
         $newTaxBasisAmount = $documentSummation?->getTaxBasisTotalAmount()?->getValue() ?? 0.0;
-        $newTaxTotalAmount = $taxTotalAmount !== false ? ($taxTotalAmount->getValue() ?? 0.0) : 0.0;
-        $newTaxTotalAmount2 = $taxTotalAmount2 !== false ? ($taxTotalAmount2->getValue() ?? 0.0) : 0.0;
+        $newTaxTotalAmount = false !== $taxTotalAmount ? ($taxTotalAmount->getValue() ?? 0.0) : 0.0;
+        $newTaxTotalAmount2 = false !== $taxTotalAmount2 ? ($taxTotalAmount2->getValue() ?? 0.0) : 0.0;
         $newGrossAmount = $documentSummation?->getGrandTotalAmount()?->getValue() ?? 0.0;
         $newDueAmount = $documentSummation?->getDuePayableAmount()?->getValue() ?? 0.0;
         $newPrepaidAmount = $documentSummation?->getTotalPrepaidAmount()?->getValue() ?? 0.0;
@@ -9446,7 +9446,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
         $newProductGlobalIdType = $documentPositionProduct?->getGlobalID()?->getSchemeID() ?? '';
         $newProductIndustryId = $documentPositionProduct?->getIndustryAssignedID()?->getValue() ?? '';
         $newProductModelId = $documentPositionProduct?->getModelID()?->getValue() ?? '';
-        $newProductBatchId = $documentPositionProductBatchId !== false ? ($documentPositionProductBatchId->getValue() ?? '') : '';
+        $newProductBatchId = false !== $documentPositionProductBatchId ? ($documentPositionProductBatchId->getValue() ?? '') : '';
         $newProductBrandName = $documentPositionProduct?->getBrandName()?->getValue() ?? '';
         $newProductModelName = $documentPositionProduct?->getModelName()?->getValue() ?? '';
         $newProductOriginTradeCountry = $documentPositionProduct?->getOriginTradeCountry()?->getID()?->getValue() ?? '';
@@ -9675,8 +9675,8 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
         $newProductDescription = $documentPositionProductReferencedProduct->getDescription()?->getValue() ?? '';
         $newProductSellerId = $documentPositionProductReferencedProduct->getSellerAssignedID()?->getValue() ?? '';
         $newProductBuyerId = $documentPositionProductReferencedProduct->getBuyerAssignedID()?->getValue() ?? '';
-        $newProductGlobalId = $productGlobalId !== false ? ($productGlobalId->getValue() ?? '') : '';
-        $newProductGlobalIdType = $productGlobalId !== false ? ($productGlobalId->getSchemeID() ?? '') : '';
+        $newProductGlobalId = false !== $productGlobalId ? ($productGlobalId->getValue() ?? '') : '';
+        $newProductGlobalIdType = false !== $productGlobalId ? ($productGlobalId->getSchemeID() ?? '') : '';
         $newProductIndustryId = $documentPositionProductReferencedProduct->getIndustryAssignedID()?->getValue() ?? '';
         $newProductUnitQuantity = $documentPositionProductReferencedProduct->getUnitQuantity()?->getValue() ?? 0.0;
         $newProductUnitQuantityUnit = $documentPositionProductReferencedProduct->getUnitQuantity()?->getUnitCode() ?? '';

@@ -250,7 +250,7 @@ class TelecommunicationsSupplyType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -265,7 +265,7 @@ class TelecommunicationsSupplyType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -317,7 +317,7 @@ class TelecommunicationsSupplyType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -410,7 +410,7 @@ class TelecommunicationsSupplyType
         $telecommunicationsSupplyLine = $this->telecommunicationsSupplyLine ?? [];
         $telecommunicationsSupplyLine = reset($telecommunicationsSupplyLine);
 
-        if ($telecommunicationsSupplyLine === false) {
+        if (false === $telecommunicationsSupplyLine) {
             return null;
         }
 
@@ -425,7 +425,7 @@ class TelecommunicationsSupplyType
         $telecommunicationsSupplyLine = $this->telecommunicationsSupplyLine ?? [];
         $telecommunicationsSupplyLine = end($telecommunicationsSupplyLine);
 
-        if ($telecommunicationsSupplyLine === false) {
+        if (false === $telecommunicationsSupplyLine) {
             return null;
         }
 
@@ -479,7 +479,7 @@ class TelecommunicationsSupplyType
             $this->telecommunicationsSupplyLine = [];
         }
 
-        if ($this->telecommunicationsSupplyLine === []) {
+        if ([] === $this->telecommunicationsSupplyLine) {
             $this->addOnceTotelecommunicationsSupplyLine(new TelecommunicationsSupplyLine());
         }
 

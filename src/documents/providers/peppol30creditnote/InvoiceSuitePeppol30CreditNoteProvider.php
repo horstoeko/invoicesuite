@@ -98,7 +98,7 @@ class InvoiceSuitePeppol30CreditNoteProvider extends InvoiceSuiteAbstractDocumen
         try {
             $contentDomDocument = new DOMDocument();
 
-            if ($contentDomDocument->loadXML($serializedContent) !== true) {
+            if (true !== $contentDomDocument->loadXML($serializedContent)) {
                 return false;
             }
 
@@ -110,11 +110,11 @@ class InvoiceSuitePeppol30CreditNoteProvider extends InvoiceSuiteAbstractDocumen
 
             $contentEntries = $contentDomXPath->query($contentQuery);
 
-            if ($contentEntries === false) {
+            if (false === $contentEntries) {
                 return false;
             }
 
-            if ($contentEntries->length !== 1) {
+            if (1 !== $contentEntries->length) {
                 return false;
             }
 
@@ -122,11 +122,11 @@ class InvoiceSuitePeppol30CreditNoteProvider extends InvoiceSuiteAbstractDocumen
 
             $contentEntries = $contentDomXPath->query($contentQuery);
 
-            if ($contentEntries === false) {
+            if (false === $contentEntries) {
                 return false;
             }
 
-            return $contentEntries->length === 1;
+            return 1 === $contentEntries->length;
         } finally {
             libxml_clear_errors();
             libxml_use_internal_errors($prevUseInternalErrors);

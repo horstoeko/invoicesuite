@@ -242,7 +242,7 @@ class SubscriberConsumptionType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -257,7 +257,7 @@ class SubscriberConsumptionType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -309,7 +309,7 @@ class SubscriberConsumptionType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -480,7 +480,7 @@ class SubscriberConsumptionType
         $onAccountPayment = $this->onAccountPayment ?? [];
         $onAccountPayment = reset($onAccountPayment);
 
-        if ($onAccountPayment === false) {
+        if (false === $onAccountPayment) {
             return null;
         }
 
@@ -495,7 +495,7 @@ class SubscriberConsumptionType
         $onAccountPayment = $this->onAccountPayment ?? [];
         $onAccountPayment = end($onAccountPayment);
 
-        if ($onAccountPayment === false) {
+        if (false === $onAccountPayment) {
             return null;
         }
 
@@ -547,7 +547,7 @@ class SubscriberConsumptionType
             $this->onAccountPayment = [];
         }
 
-        if ($this->onAccountPayment === []) {
+        if ([] === $this->onAccountPayment) {
             $this->addOnceToonAccountPayment(new OnAccountPayment());
         }
 
@@ -640,7 +640,7 @@ class SubscriberConsumptionType
         $supplierConsumption = $this->supplierConsumption ?? [];
         $supplierConsumption = reset($supplierConsumption);
 
-        if ($supplierConsumption === false) {
+        if (false === $supplierConsumption) {
             return null;
         }
 
@@ -655,7 +655,7 @@ class SubscriberConsumptionType
         $supplierConsumption = $this->supplierConsumption ?? [];
         $supplierConsumption = end($supplierConsumption);
 
-        if ($supplierConsumption === false) {
+        if (false === $supplierConsumption) {
             return null;
         }
 
@@ -707,7 +707,7 @@ class SubscriberConsumptionType
             $this->supplierConsumption = [];
         }
 
-        if ($this->supplierConsumption === []) {
+        if ([] === $this->supplierConsumption) {
             $this->addOnceTosupplierConsumption(new SupplierConsumption());
         }
 

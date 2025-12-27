@@ -130,7 +130,7 @@ class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countabl
      */
     public function hasMessages(): bool
     {
-        return $this->messageBagItems !== [];
+        return [] !== $this->messageBagItems;
     }
 
     /**
@@ -141,7 +141,7 @@ class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countabl
      */
     public function hasMessagesBySeverity(InvoiceSuiteMessageSeverity $filterSeverity): bool
     {
-        return $this->filterMessagesBySeverity($filterSeverity) !== [];
+        return [] !== $this->filterMessagesBySeverity($filterSeverity);
     }
 
     /**

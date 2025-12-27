@@ -300,7 +300,7 @@ class StatusType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -315,7 +315,7 @@ class StatusType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -367,7 +367,7 @@ class StatusType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -460,7 +460,7 @@ class StatusType
         $statusReason = $this->statusReason ?? [];
         $statusReason = reset($statusReason);
 
-        if ($statusReason === false) {
+        if (false === $statusReason) {
             return null;
         }
 
@@ -475,7 +475,7 @@ class StatusType
         $statusReason = $this->statusReason ?? [];
         $statusReason = end($statusReason);
 
-        if ($statusReason === false) {
+        if (false === $statusReason) {
             return null;
         }
 
@@ -527,7 +527,7 @@ class StatusType
             $this->statusReason = [];
         }
 
-        if ($this->statusReason === []) {
+        if ([] === $this->statusReason) {
             $this->addOnceTostatusReason(new StatusReason());
         }
 
@@ -620,7 +620,7 @@ class StatusType
         $text = $this->text ?? [];
         $text = reset($text);
 
-        if ($text === false) {
+        if (false === $text) {
             return null;
         }
 
@@ -635,7 +635,7 @@ class StatusType
         $text = $this->text ?? [];
         $text = end($text);
 
-        if ($text === false) {
+        if (false === $text) {
             return null;
         }
 
@@ -687,7 +687,7 @@ class StatusType
             $this->text = [];
         }
 
-        if ($this->text === []) {
+        if ([] === $this->text) {
             $this->addOnceTotext(new Text());
         }
 
@@ -848,7 +848,7 @@ class StatusType
         $condition = $this->condition ?? [];
         $condition = reset($condition);
 
-        if ($condition === false) {
+        if (false === $condition) {
             return null;
         }
 
@@ -863,7 +863,7 @@ class StatusType
         $condition = $this->condition ?? [];
         $condition = end($condition);
 
-        if ($condition === false) {
+        if (false === $condition) {
             return null;
         }
 
@@ -915,7 +915,7 @@ class StatusType
             $this->condition = [];
         }
 
-        if ($this->condition === []) {
+        if ([] === $this->condition) {
             $this->addOnceTocondition(new Condition());
         }
 

@@ -226,7 +226,7 @@ class ReferencedProductType
             $this->globalID = [];
         }
 
-        if ($this->globalID === []) {
+        if ([] === $this->globalID) {
             $this->addOnceToglobalID(new IDType());
         }
 

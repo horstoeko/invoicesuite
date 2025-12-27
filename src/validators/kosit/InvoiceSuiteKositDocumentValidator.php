@@ -144,7 +144,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      */
     public function setValidatorDownloadUrl(string $newValidatorDownloadUrl): static
     {
-        if (filter_var($newValidatorDownloadUrl, FILTER_VALIDATE_URL) !== false) {
+        if (false !== filter_var($newValidatorDownloadUrl, FILTER_VALIDATE_URL)) {
             $this->validatorDownloadUrl = $newValidatorDownloadUrl;
         }
 
@@ -159,7 +159,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      */
     public function setValidatorScenarioDownloadUrl(string $newValidatorScenarioDownloadUrl): static
     {
-        if (filter_var($newValidatorScenarioDownloadUrl, FILTER_VALIDATE_URL) !== false) {
+        if (false !== filter_var($newValidatorScenarioDownloadUrl, FILTER_VALIDATE_URL)) {
             $this->validatorScenarioDownloadUrl = $newValidatorScenarioDownloadUrl;
         }
 
@@ -325,17 +325,17 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
     {
         $this->clearMessageBag();
 
-        if ($this->checkRequirements() === false) {
+        if (false === $this->checkRequirements()) {
             return $this;
         }
 
-        if ($this->downloadRequiredFiles() === false) {
+        if (false === $this->downloadRequiredFiles()) {
             $this->cleanupBaseDirectory();
 
             return $this;
         }
 
-        if ($this->unpackRequiredFiles() === false) {
+        if (false === $this->unpackRequiredFiles()) {
             $this->cleanupBaseDirectory();
 
             return $this;
@@ -451,11 +451,11 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      */
     private function checkRequirements(): bool
     {
-        if ($this->checkRequirementsGeneral() === false) {
+        if (false === $this->checkRequirementsGeneral()) {
             return false;
         }
 
-        if ($this->remoteModeEnabled === true) {
+        if (true === $this->remoteModeEnabled) {
             return $this->checkRequirementsRemote();
         }
 
@@ -489,7 +489,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      */
     private function checkRequirementsLocal(): bool
     {
-        if ($this->remoteModeEnabled === true) {
+        if (true === $this->remoteModeEnabled) {
             return true;
         }
 
@@ -520,7 +520,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      */
     private function checkRequirementsRemote(): bool
     {
-        if ($this->remoteModeEnabled !== true) {
+        if (true !== $this->remoteModeEnabled) {
             return true;
         }
 
@@ -555,7 +555,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
 
             $response = curl_exec($httpConnection);
 
-            if ($response === false) {
+            if (false === $response) {
                 $this->addErrorMessageToMessageBag('Failed to connect to the host where the Validator is running in daemon mode');
                 $this->addErrorMessageToMessageBag(curl_error($httpConnection));
 
@@ -588,7 +588,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      */
     private function downloadRequiredFiles(): bool
     {
-        if ($this->remoteModeEnabled === true) {
+        if (true === $this->remoteModeEnabled) {
             return true;
         }
 
@@ -616,7 +616,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      */
     private function unpackRequiredFiles(): bool
     {
-        if ($this->remoteModeEnabled === true) {
+        if (true === $this->remoteModeEnabled) {
             return true;
         }
 
@@ -648,13 +648,13 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      */
     private function unpackRequiredFile(string $filename): bool
     {
-        if ($this->remoteModeEnabled === true) {
+        if (true === $this->remoteModeEnabled) {
             return true;
         }
 
         $zipArchive = new ZipArchive();
 
-        if ($zipArchive->open($filename) !== true) {
+        if (true !== $zipArchive->open($filename)) {
             $this->addErrorMessageToMessageBag(sprintf('Failed to open ZIP archive %s', $filename));
 
             return false;
@@ -698,7 +698,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      */
     private function performValidation(): bool
     {
-        if ($this->remoteModeEnabled === true) {
+        if (true === $this->remoteModeEnabled) {
             return $this->performValidationRemote();
         }
 
@@ -716,13 +716,13 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      */
     private function performValidationLocal(): bool
     {
-        if ($this->remoteModeEnabled === true) {
+        if (true === $this->remoteModeEnabled) {
             return true;
         }
 
         $this->resetFileToValidateFilename();
 
-        if (file_put_contents($this->resolveFileToValidateFilename(), $this->getRawDocumentContent()) === false) {
+        if (false === file_put_contents($this->resolveFileToValidateFilename(), $this->getRawDocumentContent())) {
             $this->addErrorMessageToMessageBag('Cannot create temporary file which contains the XML to validate');
 
             return false;
@@ -757,7 +757,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      */
     private function performValidationRemote(): bool
     {
-        if ($this->remoteModeEnabled !== true) {
+        if (true !== $this->remoteModeEnabled) {
             return true;
         }
 
@@ -777,7 +777,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
 
             $response = curl_exec($httpConnection);
 
-            if ($response === false) {
+            if (false === $response) {
                 $this->addErrorMessageToMessageBag('Failed to connect to the host where the Validator is running in daemon mode');
                 $this->addErrorMessageToMessageBag(curl_error($httpConnection));
 
@@ -899,11 +899,11 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      */
     private function cleanupBaseDirectory(): void
     {
-        if ($this->remoteModeEnabled === true) {
+        if (true === $this->remoteModeEnabled) {
             return;
         }
 
-        if ($this->cleanupBaseDirectoryIsDisabled === true) {
+        if (true === $this->cleanupBaseDirectoryIsDisabled) {
             return;
         }
 
@@ -922,7 +922,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      */
     private function cleanupBaseDirectoryInternal(string $directoryToRemove): void
     {
-        if ($this->remoteModeEnabled === true) {
+        if (true === $this->remoteModeEnabled) {
             return;
         }
 
@@ -933,7 +933,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
         $objects = scandir($directoryToRemove);
 
         foreach ($objects as $object) {
-            if ($object !== '.' && $object !== '..') {
+            if ('.' !== $object && '..' !== $object) {
                 $fullFilename = InvoiceSuitePathUtils::combinePathWithFile($directoryToRemove, $object);
 
                 if (is_dir($fullFilename) && !is_link($fullFilename)) {
@@ -970,12 +970,12 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
             }
 
             if (!$process->isSuccessful()) {
-                if ($process->getExitCode() == -1) {
+                if (-1 == $process->getExitCode()) {
                     // Validation error
                     $this->addErrorMessageToMessageBag('Parsing error. The commandline arguments specified are incorrect');
                 }
 
-                if ($process->getExitCode() == -2) {
+                if (-2 == $process->getExitCode()) {
                     // Validation error
                     $this->addErrorMessageToMessageBag('Configuration error. There is an error loading the configuration and/or validation targets');
                 }
@@ -1013,13 +1013,13 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
 
         $downloadedContent = file_get_contents($url);
 
-        if ($downloadedContent === false) {
+        if (false === $downloadedContent) {
             $this->addErrorMessageToMessageBag(sprintf('Failed to download contents from %s', $url));
 
             return false;
         }
 
-        if (file_put_contents($toFilePath, $downloadedContent) === false) {
+        if (false === file_put_contents($toFilePath, $downloadedContent)) {
             $this->addErrorMessageToMessageBag('Failed to save downloaded content');
 
             return false;

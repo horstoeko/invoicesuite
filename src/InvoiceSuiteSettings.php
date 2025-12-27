@@ -298,7 +298,7 @@ class InvoiceSuiteSettings
      */
     public static function hasSerializerCacheDirectory(): bool
     {
-        return InvoiceSuiteStringUtils::stringIsNullOrEmpty(static::$serializerCacheDirectory) === false;
+        return false === InvoiceSuiteStringUtils::stringIsNullOrEmpty(static::$serializerCacheDirectory);
     }
 
     /**

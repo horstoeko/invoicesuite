@@ -141,5 +141,11 @@ return (new Config())
             'php_unit_test_class_requires_covers' => false,
             'php_unit_internal_class' => false,
             'self_static_accessor' => false,
+            'yoda_style' => [
+                'equal' => true,
+                'identical' => true,
+                'less_and_greater' => null,
+                'always_move_variable' => false,
+            ],
         ]
     );

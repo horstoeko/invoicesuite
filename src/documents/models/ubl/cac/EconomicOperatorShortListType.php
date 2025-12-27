@@ -119,7 +119,7 @@ class EconomicOperatorShortListType
         $limitationDescription = $this->limitationDescription ?? [];
         $limitationDescription = reset($limitationDescription);
 
-        if ($limitationDescription === false) {
+        if (false === $limitationDescription) {
             return null;
         }
 
@@ -134,7 +134,7 @@ class EconomicOperatorShortListType
         $limitationDescription = $this->limitationDescription ?? [];
         $limitationDescription = end($limitationDescription);
 
-        if ($limitationDescription === false) {
+        if (false === $limitationDescription) {
             return null;
         }
 
@@ -186,7 +186,7 @@ class EconomicOperatorShortListType
             $this->limitationDescription = [];
         }
 
-        if ($this->limitationDescription === []) {
+        if ([] === $this->limitationDescription) {
             $this->addOnceTolimitationDescription(new LimitationDescription());
         }
 
@@ -357,7 +357,7 @@ class EconomicOperatorShortListType
         $preSelectedParty = $this->preSelectedParty ?? [];
         $preSelectedParty = reset($preSelectedParty);
 
-        if ($preSelectedParty === false) {
+        if (false === $preSelectedParty) {
             return null;
         }
 
@@ -372,7 +372,7 @@ class EconomicOperatorShortListType
         $preSelectedParty = $this->preSelectedParty ?? [];
         $preSelectedParty = end($preSelectedParty);
 
-        if ($preSelectedParty === false) {
+        if (false === $preSelectedParty) {
             return null;
         }
 
@@ -424,7 +424,7 @@ class EconomicOperatorShortListType
             $this->preSelectedParty = [];
         }
 
-        if ($this->preSelectedParty === []) {
+        if ([] === $this->preSelectedParty) {
             $this->addOnceTopreSelectedParty(new PreSelectedParty());
         }
 

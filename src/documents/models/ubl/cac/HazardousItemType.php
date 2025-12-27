@@ -449,7 +449,7 @@ class HazardousItemType
         $additionalInformation = $this->additionalInformation ?? [];
         $additionalInformation = reset($additionalInformation);
 
-        if ($additionalInformation === false) {
+        if (false === $additionalInformation) {
             return null;
         }
 
@@ -464,7 +464,7 @@ class HazardousItemType
         $additionalInformation = $this->additionalInformation ?? [];
         $additionalInformation = end($additionalInformation);
 
-        if ($additionalInformation === false) {
+        if (false === $additionalInformation) {
             return null;
         }
 
@@ -516,7 +516,7 @@ class HazardousItemType
             $this->additionalInformation = [];
         }
 
-        if ($this->additionalInformation === []) {
+        if ([] === $this->additionalInformation) {
             $this->addOnceToadditionalInformation(new AdditionalInformation());
         }
 
@@ -1118,7 +1118,7 @@ class HazardousItemType
         $secondaryHazard = $this->secondaryHazard ?? [];
         $secondaryHazard = reset($secondaryHazard);
 
-        if ($secondaryHazard === false) {
+        if (false === $secondaryHazard) {
             return null;
         }
 
@@ -1133,7 +1133,7 @@ class HazardousItemType
         $secondaryHazard = $this->secondaryHazard ?? [];
         $secondaryHazard = end($secondaryHazard);
 
-        if ($secondaryHazard === false) {
+        if (false === $secondaryHazard) {
             return null;
         }
 
@@ -1185,7 +1185,7 @@ class HazardousItemType
             $this->secondaryHazard = [];
         }
 
-        if ($this->secondaryHazard === []) {
+        if ([] === $this->secondaryHazard) {
             $this->addOnceTosecondaryHazard(new SecondaryHazard());
         }
 
@@ -1239,7 +1239,7 @@ class HazardousItemType
         $hazardousGoodsTransit = $this->hazardousGoodsTransit ?? [];
         $hazardousGoodsTransit = reset($hazardousGoodsTransit);
 
-        if ($hazardousGoodsTransit === false) {
+        if (false === $hazardousGoodsTransit) {
             return null;
         }
 
@@ -1254,7 +1254,7 @@ class HazardousItemType
         $hazardousGoodsTransit = $this->hazardousGoodsTransit ?? [];
         $hazardousGoodsTransit = end($hazardousGoodsTransit);
 
-        if ($hazardousGoodsTransit === false) {
+        if (false === $hazardousGoodsTransit) {
             return null;
         }
 
@@ -1306,7 +1306,7 @@ class HazardousItemType
             $this->hazardousGoodsTransit = [];
         }
 
-        if ($this->hazardousGoodsTransit === []) {
+        if ([] === $this->hazardousGoodsTransit) {
             $this->addOnceTohazardousGoodsTransit(new HazardousGoodsTransit());
         }
 
@@ -1438,7 +1438,7 @@ class HazardousItemType
         $additionalTemperature = $this->additionalTemperature ?? [];
         $additionalTemperature = reset($additionalTemperature);
 
-        if ($additionalTemperature === false) {
+        if (false === $additionalTemperature) {
             return null;
         }
 
@@ -1453,7 +1453,7 @@ class HazardousItemType
         $additionalTemperature = $this->additionalTemperature ?? [];
         $additionalTemperature = end($additionalTemperature);
 
-        if ($additionalTemperature === false) {
+        if (false === $additionalTemperature) {
             return null;
         }
 
@@ -1505,7 +1505,7 @@ class HazardousItemType
             $this->additionalTemperature = [];
         }
 
-        if ($this->additionalTemperature === []) {
+        if ([] === $this->additionalTemperature) {
             $this->addOnceToadditionalTemperature(new AdditionalTemperature());
         }
 

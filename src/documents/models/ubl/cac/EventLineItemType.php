@@ -183,7 +183,7 @@ class EventLineItemType
         $retailPlannedImpact = $this->retailPlannedImpact ?? [];
         $retailPlannedImpact = reset($retailPlannedImpact);
 
-        if ($retailPlannedImpact === false) {
+        if (false === $retailPlannedImpact) {
             return null;
         }
 
@@ -198,7 +198,7 @@ class EventLineItemType
         $retailPlannedImpact = $this->retailPlannedImpact ?? [];
         $retailPlannedImpact = end($retailPlannedImpact);
 
-        if ($retailPlannedImpact === false) {
+        if (false === $retailPlannedImpact) {
             return null;
         }
 
@@ -250,7 +250,7 @@ class EventLineItemType
             $this->retailPlannedImpact = [];
         }
 
-        if ($this->retailPlannedImpact === []) {
+        if ([] === $this->retailPlannedImpact) {
             $this->addOnceToretailPlannedImpact(new RetailPlannedImpact());
         }
 

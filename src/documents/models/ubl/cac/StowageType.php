@@ -134,7 +134,7 @@ class StowageType
         $location = $this->location ?? [];
         $location = reset($location);
 
-        if ($location === false) {
+        if (false === $location) {
             return null;
         }
 
@@ -149,7 +149,7 @@ class StowageType
         $location = $this->location ?? [];
         $location = end($location);
 
-        if ($location === false) {
+        if (false === $location) {
             return null;
         }
 
@@ -201,7 +201,7 @@ class StowageType
             $this->location = [];
         }
 
-        if ($this->location === []) {
+        if ([] === $this->location) {
             $this->addOnceTolocation(new Location());
         }
 
@@ -255,7 +255,7 @@ class StowageType
         $measurementDimension = $this->measurementDimension ?? [];
         $measurementDimension = reset($measurementDimension);
 
-        if ($measurementDimension === false) {
+        if (false === $measurementDimension) {
             return null;
         }
 
@@ -270,7 +270,7 @@ class StowageType
         $measurementDimension = $this->measurementDimension ?? [];
         $measurementDimension = end($measurementDimension);
 
-        if ($measurementDimension === false) {
+        if (false === $measurementDimension) {
             return null;
         }
 
@@ -322,7 +322,7 @@ class StowageType
             $this->measurementDimension = [];
         }
 
-        if ($this->measurementDimension === []) {
+        if ([] === $this->measurementDimension) {
             $this->addOnceTomeasurementDimension(new MeasurementDimension());
         }
 

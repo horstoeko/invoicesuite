@@ -122,7 +122,7 @@ class EconomicOperatorRoleType
         $roleDescription = $this->roleDescription ?? [];
         $roleDescription = reset($roleDescription);
 
-        if ($roleDescription === false) {
+        if (false === $roleDescription) {
             return null;
         }
 
@@ -137,7 +137,7 @@ class EconomicOperatorRoleType
         $roleDescription = $this->roleDescription ?? [];
         $roleDescription = end($roleDescription);
 
-        if ($roleDescription === false) {
+        if (false === $roleDescription) {
             return null;
         }
 
@@ -189,7 +189,7 @@ class EconomicOperatorRoleType
             $this->roleDescription = [];
         }
 
-        if ($this->roleDescription === []) {
+        if ([] === $this->roleDescription) {
             $this->addOnceToroleDescription(new RoleDescription());
         }
 

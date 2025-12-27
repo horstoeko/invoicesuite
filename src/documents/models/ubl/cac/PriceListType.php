@@ -183,7 +183,7 @@ class PriceListType
         $validityPeriod = $this->validityPeriod ?? [];
         $validityPeriod = reset($validityPeriod);
 
-        if ($validityPeriod === false) {
+        if (false === $validityPeriod) {
             return null;
         }
 
@@ -198,7 +198,7 @@ class PriceListType
         $validityPeriod = $this->validityPeriod ?? [];
         $validityPeriod = end($validityPeriod);
 
-        if ($validityPeriod === false) {
+        if (false === $validityPeriod) {
             return null;
         }
 
@@ -250,7 +250,7 @@ class PriceListType
             $this->validityPeriod = [];
         }
 
-        if ($this->validityPeriod === []) {
+        if ([] === $this->validityPeriod) {
             $this->addOnceTovalidityPeriod(new ValidityPeriod());
         }
 

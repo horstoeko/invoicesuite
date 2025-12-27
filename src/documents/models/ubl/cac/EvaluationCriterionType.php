@@ -195,7 +195,7 @@ class EvaluationCriterionType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -210,7 +210,7 @@ class EvaluationCriterionType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -262,7 +262,7 @@ class EvaluationCriterionType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -433,7 +433,7 @@ class EvaluationCriterionType
         $expression = $this->expression ?? [];
         $expression = reset($expression);
 
-        if ($expression === false) {
+        if (false === $expression) {
             return null;
         }
 
@@ -448,7 +448,7 @@ class EvaluationCriterionType
         $expression = $this->expression ?? [];
         $expression = end($expression);
 
-        if ($expression === false) {
+        if (false === $expression) {
             return null;
         }
 
@@ -500,7 +500,7 @@ class EvaluationCriterionType
             $this->expression = [];
         }
 
-        if ($this->expression === []) {
+        if ([] === $this->expression) {
             $this->addOnceToexpression(new Expression());
         }
 
@@ -593,7 +593,7 @@ class EvaluationCriterionType
         $suggestedEvidence = $this->suggestedEvidence ?? [];
         $suggestedEvidence = reset($suggestedEvidence);
 
-        if ($suggestedEvidence === false) {
+        if (false === $suggestedEvidence) {
             return null;
         }
 
@@ -608,7 +608,7 @@ class EvaluationCriterionType
         $suggestedEvidence = $this->suggestedEvidence ?? [];
         $suggestedEvidence = end($suggestedEvidence);
 
-        if ($suggestedEvidence === false) {
+        if (false === $suggestedEvidence) {
             return null;
         }
 
@@ -660,7 +660,7 @@ class EvaluationCriterionType
             $this->suggestedEvidence = [];
         }
 
-        if ($this->suggestedEvidence === []) {
+        if ([] === $this->suggestedEvidence) {
             $this->addOnceTosuggestedEvidence(new SuggestedEvidence());
         }
 

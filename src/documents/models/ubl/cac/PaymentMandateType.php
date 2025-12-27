@@ -526,7 +526,7 @@ class PaymentMandateType
         $clause = $this->clause ?? [];
         $clause = reset($clause);
 
-        if ($clause === false) {
+        if (false === $clause) {
             return null;
         }
 
@@ -541,7 +541,7 @@ class PaymentMandateType
         $clause = $this->clause ?? [];
         $clause = end($clause);
 
-        if ($clause === false) {
+        if (false === $clause) {
             return null;
         }
 
@@ -593,7 +593,7 @@ class PaymentMandateType
             $this->clause = [];
         }
 
-        if ($this->clause === []) {
+        if ([] === $this->clause) {
             $this->addOnceToclause(new Clause());
         }
 

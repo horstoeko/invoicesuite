@@ -297,7 +297,7 @@ class PartyTaxSchemeType
         $exemptionReason = $this->exemptionReason ?? [];
         $exemptionReason = reset($exemptionReason);
 
-        if ($exemptionReason === false) {
+        if (false === $exemptionReason) {
             return null;
         }
 
@@ -312,7 +312,7 @@ class PartyTaxSchemeType
         $exemptionReason = $this->exemptionReason ?? [];
         $exemptionReason = end($exemptionReason);
 
-        if ($exemptionReason === false) {
+        if (false === $exemptionReason) {
             return null;
         }
 
@@ -364,7 +364,7 @@ class PartyTaxSchemeType
             $this->exemptionReason = [];
         }
 
-        if ($this->exemptionReason === []) {
+        if ([] === $this->exemptionReason) {
             $this->addOnceToexemptionReason(new ExemptionReason());
         }
 

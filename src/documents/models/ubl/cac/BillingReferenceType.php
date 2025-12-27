@@ -425,7 +425,7 @@ class BillingReferenceType
         $billingReferenceLine = $this->billingReferenceLine ?? [];
         $billingReferenceLine = reset($billingReferenceLine);
 
-        if ($billingReferenceLine === false) {
+        if (false === $billingReferenceLine) {
             return null;
         }
 
@@ -440,7 +440,7 @@ class BillingReferenceType
         $billingReferenceLine = $this->billingReferenceLine ?? [];
         $billingReferenceLine = end($billingReferenceLine);
 
-        if ($billingReferenceLine === false) {
+        if (false === $billingReferenceLine) {
             return null;
         }
 
@@ -492,7 +492,7 @@ class BillingReferenceType
             $this->billingReferenceLine = [];
         }
 
-        if ($this->billingReferenceLine === []) {
+        if ([] === $this->billingReferenceLine) {
             $this->addOnceTobillingReferenceLine(new BillingReferenceLine());
         }
 

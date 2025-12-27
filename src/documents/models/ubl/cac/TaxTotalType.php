@@ -252,7 +252,7 @@ class TaxTotalType
         $taxSubtotal = $this->taxSubtotal ?? [];
         $taxSubtotal = reset($taxSubtotal);
 
-        if ($taxSubtotal === false) {
+        if (false === $taxSubtotal) {
             return null;
         }
 
@@ -267,7 +267,7 @@ class TaxTotalType
         $taxSubtotal = $this->taxSubtotal ?? [];
         $taxSubtotal = end($taxSubtotal);
 
-        if ($taxSubtotal === false) {
+        if (false === $taxSubtotal) {
             return null;
         }
 
@@ -319,7 +319,7 @@ class TaxTotalType
             $this->taxSubtotal = [];
         }
 
-        if ($this->taxSubtotal === []) {
+        if ([] === $this->taxSubtotal) {
             $this->addOnceTotaxSubtotal(new TaxSubtotal());
         }
 

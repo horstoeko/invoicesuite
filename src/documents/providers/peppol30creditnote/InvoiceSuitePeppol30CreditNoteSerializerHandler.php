@@ -232,7 +232,7 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
             )
         );
 
-        if ($data->getCurrencyID() != null) {
+        if (null != $data->getCurrencyID()) {
             $attr = $visitor->getDocument()->createAttribute('currencyID');
             $attr->value = $data->getCurrencyID();
             $visitor->getCurrentNode()->appendChild($attr);
@@ -261,7 +261,7 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
             )
         );
 
-        if ($data->getUnitCode() != null) {
+        if (null != $data->getUnitCode()) {
             $attr = $visitor->getDocument()->createAttribute('unitCode');
             $attr->value = $data->getUnitCode();
             $visitor->getCurrentNode()->appendChild($attr);
@@ -309,7 +309,7 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
             )
         );
 
-        if ($data->getUnitCode() != null) {
+        if (null != $data->getUnitCode()) {
             $attr = $visitor->getDocument()->createAttribute('unitCode');
             $attr->value = $data->getUnitCode();
             $visitor->getCurrentNode()->appendChild($attr);
@@ -330,7 +330,7 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
      */
     public function serializeIndicatorType(XmlSerializationVisitor $visitor, $data): DOMElement
     {
-        return $visitor->getDocument()->createElement('udt:Indicator', $data->getIndicator() == false ? 'false' : 'true');
+        return $visitor->getDocument()->createElement('udt:Indicator', false == $data->getIndicator() ? 'false' : 'true');
     }
 
     /**
@@ -435,7 +435,7 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
 
         $decodedBase64 = base64_decode((string) $data, true);
 
-        if ($decodedBase64 === false) {
+        if (false === $decodedBase64) {
             return null;
         }
 

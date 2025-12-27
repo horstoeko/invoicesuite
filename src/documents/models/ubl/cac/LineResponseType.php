@@ -120,7 +120,7 @@ class LineResponseType
         $response = $this->response ?? [];
         $response = reset($response);
 
-        if ($response === false) {
+        if (false === $response) {
             return null;
         }
 
@@ -135,7 +135,7 @@ class LineResponseType
         $response = $this->response ?? [];
         $response = end($response);
 
-        if ($response === false) {
+        if (false === $response) {
             return null;
         }
 
@@ -187,7 +187,7 @@ class LineResponseType
             $this->response = [];
         }
 
-        if ($this->response === []) {
+        if ([] === $this->response) {
             $this->addOnceToresponse(new Response());
         }
 

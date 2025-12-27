@@ -259,7 +259,7 @@ class CertificateType
         $remarks = $this->remarks ?? [];
         $remarks = reset($remarks);
 
-        if ($remarks === false) {
+        if (false === $remarks) {
             return null;
         }
 
@@ -274,7 +274,7 @@ class CertificateType
         $remarks = $this->remarks ?? [];
         $remarks = end($remarks);
 
-        if ($remarks === false) {
+        if (false === $remarks) {
             return null;
         }
 
@@ -326,7 +326,7 @@ class CertificateType
             $this->remarks = [];
         }
 
-        if ($this->remarks === []) {
+        if ([] === $this->remarks) {
             $this->addOnceToremarks(new Remarks());
         }
 
@@ -419,7 +419,7 @@ class CertificateType
         $documentReference = $this->documentReference ?? [];
         $documentReference = reset($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -434,7 +434,7 @@ class CertificateType
         $documentReference = $this->documentReference ?? [];
         $documentReference = end($documentReference);
 
-        if ($documentReference === false) {
+        if (false === $documentReference) {
             return null;
         }
 
@@ -486,7 +486,7 @@ class CertificateType
             $this->documentReference = [];
         }
 
-        if ($this->documentReference === []) {
+        if ([] === $this->documentReference) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
 
@@ -540,7 +540,7 @@ class CertificateType
         $signature = $this->signature ?? [];
         $signature = reset($signature);
 
-        if ($signature === false) {
+        if (false === $signature) {
             return null;
         }
 
@@ -555,7 +555,7 @@ class CertificateType
         $signature = $this->signature ?? [];
         $signature = end($signature);
 
-        if ($signature === false) {
+        if (false === $signature) {
             return null;
         }
 
@@ -607,7 +607,7 @@ class CertificateType
             $this->signature = [];
         }
 
-        if ($this->signature === []) {
+        if ([] === $this->signature) {
             $this->addOnceTosignature(new Signature());
         }
 

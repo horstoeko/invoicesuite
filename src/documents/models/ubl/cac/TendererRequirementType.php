@@ -120,7 +120,7 @@ class TendererRequirementType
         $name = $this->name ?? [];
         $name = reset($name);
 
-        if ($name === false) {
+        if (false === $name) {
             return null;
         }
 
@@ -135,7 +135,7 @@ class TendererRequirementType
         $name = $this->name ?? [];
         $name = end($name);
 
-        if ($name === false) {
+        if (false === $name) {
             return null;
         }
 
@@ -187,7 +187,7 @@ class TendererRequirementType
             $this->name = [];
         }
 
-        if ($this->name === []) {
+        if ([] === $this->name) {
             $this->addOnceToname(new Name());
         }
 
@@ -281,7 +281,7 @@ class TendererRequirementType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -296,7 +296,7 @@ class TendererRequirementType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -348,7 +348,7 @@ class TendererRequirementType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -441,7 +441,7 @@ class TendererRequirementType
         $suggestedEvidence = $this->suggestedEvidence ?? [];
         $suggestedEvidence = reset($suggestedEvidence);
 
-        if ($suggestedEvidence === false) {
+        if (false === $suggestedEvidence) {
             return null;
         }
 
@@ -456,7 +456,7 @@ class TendererRequirementType
         $suggestedEvidence = $this->suggestedEvidence ?? [];
         $suggestedEvidence = end($suggestedEvidence);
 
-        if ($suggestedEvidence === false) {
+        if (false === $suggestedEvidence) {
             return null;
         }
 
@@ -508,7 +508,7 @@ class TendererRequirementType
             $this->suggestedEvidence = [];
         }
 
-        if ($this->suggestedEvidence === []) {
+        if ([] === $this->suggestedEvidence) {
             $this->addOnceTosuggestedEvidence(new SuggestedEvidence());
         }
 

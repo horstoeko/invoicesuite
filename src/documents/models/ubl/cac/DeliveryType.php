@@ -994,7 +994,7 @@ class DeliveryType
         $notifyParty = $this->notifyParty ?? [];
         $notifyParty = reset($notifyParty);
 
-        if ($notifyParty === false) {
+        if (false === $notifyParty) {
             return null;
         }
 
@@ -1009,7 +1009,7 @@ class DeliveryType
         $notifyParty = $this->notifyParty ?? [];
         $notifyParty = end($notifyParty);
 
-        if ($notifyParty === false) {
+        if (false === $notifyParty) {
             return null;
         }
 
@@ -1061,7 +1061,7 @@ class DeliveryType
             $this->notifyParty = [];
         }
 
-        if ($this->notifyParty === []) {
+        if ([] === $this->notifyParty) {
             $this->addOnceTonotifyParty(new NotifyParty());
         }
 
@@ -1154,7 +1154,7 @@ class DeliveryType
         $deliveryTerms = $this->deliveryTerms ?? [];
         $deliveryTerms = reset($deliveryTerms);
 
-        if ($deliveryTerms === false) {
+        if (false === $deliveryTerms) {
             return null;
         }
 
@@ -1169,7 +1169,7 @@ class DeliveryType
         $deliveryTerms = $this->deliveryTerms ?? [];
         $deliveryTerms = end($deliveryTerms);
 
-        if ($deliveryTerms === false) {
+        if (false === $deliveryTerms) {
             return null;
         }
 
@@ -1221,7 +1221,7 @@ class DeliveryType
             $this->deliveryTerms = [];
         }
 
-        if ($this->deliveryTerms === []) {
+        if ([] === $this->deliveryTerms) {
             $this->addOnceTodeliveryTerms(new DeliveryTerms());
         }
 

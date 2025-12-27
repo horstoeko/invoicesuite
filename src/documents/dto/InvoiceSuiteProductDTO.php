@@ -585,7 +585,7 @@ class InvoiceSuiteProductDTO
         $count = 0;
 
         foreach ($this->characteristics as $characteristic) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -594,7 +594,7 @@ class InvoiceSuiteProductDTO
             $callback($characteristic);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -729,7 +729,7 @@ class InvoiceSuiteProductDTO
         $count = 0;
 
         foreach ($this->classifications as $classification) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -738,7 +738,7 @@ class InvoiceSuiteProductDTO
             $callback($classification);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -873,7 +873,7 @@ class InvoiceSuiteProductDTO
         $count = 0;
 
         foreach ($this->referenceProducts as $referenceProduct) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -882,7 +882,7 @@ class InvoiceSuiteProductDTO
             $callback($referenceProduct);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 

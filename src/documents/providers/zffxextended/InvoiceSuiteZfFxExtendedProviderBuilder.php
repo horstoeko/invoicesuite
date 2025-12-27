@@ -8386,7 +8386,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                 ->getApplicableHeaderTradeSettlementWithCreate()
                 ->getSpecifiedTradePaymentTerms() ?? [];
 
-            $paymentTerms = array_filter($paymentTerms, static fn (TradePaymentTermsType $paymentTerm) => $paymentTerm->hasObjectFlag('frompaymentmean') === false);
+            $paymentTerms = array_filter($paymentTerms, static fn (TradePaymentTermsType $paymentTerm) => false === $paymentTerm->hasObjectFlag('frompaymentmean'));
 
             $this
                 ->getCrossIndustryRootObject()
@@ -8839,7 +8839,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         $lastPaymentTerm = end($paymentTerms);
 
-        if ($lastPaymentTerm === false) {
+        if (false === $lastPaymentTerm) {
             return $this;
         }
 
@@ -8947,7 +8947,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         $lastPaymentTerm = end($paymentTerms);
 
-        if ($lastPaymentTerm === false) {
+        if (false === $lastPaymentTerm) {
             return $this;
         }
 

@@ -142,7 +142,7 @@ class SupplyChainTradeTransactionType
             $this->includedSupplyChainTradeLineItem = [];
         }
 
-        if ($this->includedSupplyChainTradeLineItem === []) {
+        if ([] === $this->includedSupplyChainTradeLineItem) {
             $this->addOnceToincludedSupplyChainTradeLineItem(new SupplyChainTradeLineItemType());
         }
 
@@ -277,7 +277,7 @@ class SupplyChainTradeTransactionType
         $supplyChainTradeLineItems = $this->getIncludedSupplyChainTradeLineItem() ?? [];
         $supplyChainTradeLineItem = end($supplyChainTradeLineItems);
 
-        if ($supplyChainTradeLineItem === false) {
+        if (false === $supplyChainTradeLineItem) {
             return null;
         }
 
@@ -303,7 +303,7 @@ class SupplyChainTradeTransactionType
     {
         $supplyChainTradeLineItems = $this->getIncludedSupplyChainTradeLineItem() ?? [];
 
-        return $supplyChainTradeLineItems !== [];
+        return [] !== $supplyChainTradeLineItems;
     }
 
     /**
@@ -313,6 +313,6 @@ class SupplyChainTradeTransactionType
     {
         $supplyChainTradeLineItems = $this->getIncludedSupplyChainTradeLineItem() ?? [];
 
-        return $supplyChainTradeLineItems === [];
+        return [] === $supplyChainTradeLineItems;
     }
 }

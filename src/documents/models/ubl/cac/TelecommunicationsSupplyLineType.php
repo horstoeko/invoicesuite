@@ -233,7 +233,7 @@ class TelecommunicationsSupplyLineType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -248,7 +248,7 @@ class TelecommunicationsSupplyLineType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -300,7 +300,7 @@ class TelecommunicationsSupplyLineType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -393,7 +393,7 @@ class TelecommunicationsSupplyLineType
         $exchangeRate = $this->exchangeRate ?? [];
         $exchangeRate = reset($exchangeRate);
 
-        if ($exchangeRate === false) {
+        if (false === $exchangeRate) {
             return null;
         }
 
@@ -408,7 +408,7 @@ class TelecommunicationsSupplyLineType
         $exchangeRate = $this->exchangeRate ?? [];
         $exchangeRate = end($exchangeRate);
 
-        if ($exchangeRate === false) {
+        if (false === $exchangeRate) {
             return null;
         }
 
@@ -460,7 +460,7 @@ class TelecommunicationsSupplyLineType
             $this->exchangeRate = [];
         }
 
-        if ($this->exchangeRate === []) {
+        if ([] === $this->exchangeRate) {
             $this->addOnceToexchangeRate(new ExchangeRate());
         }
 
@@ -514,7 +514,7 @@ class TelecommunicationsSupplyLineType
         $allowanceCharge = $this->allowanceCharge ?? [];
         $allowanceCharge = reset($allowanceCharge);
 
-        if ($allowanceCharge === false) {
+        if (false === $allowanceCharge) {
             return null;
         }
 
@@ -529,7 +529,7 @@ class TelecommunicationsSupplyLineType
         $allowanceCharge = $this->allowanceCharge ?? [];
         $allowanceCharge = end($allowanceCharge);
 
-        if ($allowanceCharge === false) {
+        if (false === $allowanceCharge) {
             return null;
         }
 
@@ -581,7 +581,7 @@ class TelecommunicationsSupplyLineType
             $this->allowanceCharge = [];
         }
 
-        if ($this->allowanceCharge === []) {
+        if ([] === $this->allowanceCharge) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }
 
@@ -635,7 +635,7 @@ class TelecommunicationsSupplyLineType
         $taxTotal = $this->taxTotal ?? [];
         $taxTotal = reset($taxTotal);
 
-        if ($taxTotal === false) {
+        if (false === $taxTotal) {
             return null;
         }
 
@@ -650,7 +650,7 @@ class TelecommunicationsSupplyLineType
         $taxTotal = $this->taxTotal ?? [];
         $taxTotal = end($taxTotal);
 
-        if ($taxTotal === false) {
+        if (false === $taxTotal) {
             return null;
         }
 
@@ -702,7 +702,7 @@ class TelecommunicationsSupplyLineType
             $this->taxTotal = [];
         }
 
-        if ($this->taxTotal === []) {
+        if ([] === $this->taxTotal) {
             $this->addOnceTotaxTotal(new TaxTotal());
         }
 
@@ -756,7 +756,7 @@ class TelecommunicationsSupplyLineType
         $telecommunicationsService = $this->telecommunicationsService ?? [];
         $telecommunicationsService = reset($telecommunicationsService);
 
-        if ($telecommunicationsService === false) {
+        if (false === $telecommunicationsService) {
             return null;
         }
 
@@ -771,7 +771,7 @@ class TelecommunicationsSupplyLineType
         $telecommunicationsService = $this->telecommunicationsService ?? [];
         $telecommunicationsService = end($telecommunicationsService);
 
-        if ($telecommunicationsService === false) {
+        if (false === $telecommunicationsService) {
             return null;
         }
 
@@ -823,7 +823,7 @@ class TelecommunicationsSupplyLineType
             $this->telecommunicationsService = [];
         }
 
-        if ($this->telecommunicationsService === []) {
+        if ([] === $this->telecommunicationsService) {
             $this->addOnceTotelecommunicationsService(new TelecommunicationsService());
         }
 

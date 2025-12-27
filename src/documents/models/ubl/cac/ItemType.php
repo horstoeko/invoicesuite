@@ -414,7 +414,7 @@ class ItemType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -429,7 +429,7 @@ class ItemType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -481,7 +481,7 @@ class ItemType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -710,7 +710,7 @@ class ItemType
         $additionalInformation = $this->additionalInformation ?? [];
         $additionalInformation = reset($additionalInformation);
 
-        if ($additionalInformation === false) {
+        if (false === $additionalInformation) {
             return null;
         }
 
@@ -725,7 +725,7 @@ class ItemType
         $additionalInformation = $this->additionalInformation ?? [];
         $additionalInformation = end($additionalInformation);
 
-        if ($additionalInformation === false) {
+        if (false === $additionalInformation) {
             return null;
         }
 
@@ -777,7 +777,7 @@ class ItemType
             $this->additionalInformation = [];
         }
 
-        if ($this->additionalInformation === []) {
+        if ([] === $this->additionalInformation) {
             $this->addOnceToadditionalInformation(new AdditionalInformation());
         }
 
@@ -831,7 +831,7 @@ class ItemType
         $keyword = $this->keyword ?? [];
         $keyword = reset($keyword);
 
-        if ($keyword === false) {
+        if (false === $keyword) {
             return null;
         }
 
@@ -846,7 +846,7 @@ class ItemType
         $keyword = $this->keyword ?? [];
         $keyword = end($keyword);
 
-        if ($keyword === false) {
+        if (false === $keyword) {
             return null;
         }
 
@@ -898,7 +898,7 @@ class ItemType
             $this->keyword = [];
         }
 
-        if ($this->keyword === []) {
+        if ([] === $this->keyword) {
             $this->addOnceTokeyword(new Keyword());
         }
 
@@ -952,7 +952,7 @@ class ItemType
         $brandName = $this->brandName ?? [];
         $brandName = reset($brandName);
 
-        if ($brandName === false) {
+        if (false === $brandName) {
             return null;
         }
 
@@ -967,7 +967,7 @@ class ItemType
         $brandName = $this->brandName ?? [];
         $brandName = end($brandName);
 
-        if ($brandName === false) {
+        if (false === $brandName) {
             return null;
         }
 
@@ -1019,7 +1019,7 @@ class ItemType
             $this->brandName = [];
         }
 
-        if ($this->brandName === []) {
+        if ([] === $this->brandName) {
             $this->addOnceTobrandName(new BrandName());
         }
 
@@ -1073,7 +1073,7 @@ class ItemType
         $modelName = $this->modelName ?? [];
         $modelName = reset($modelName);
 
-        if ($modelName === false) {
+        if (false === $modelName) {
             return null;
         }
 
@@ -1088,7 +1088,7 @@ class ItemType
         $modelName = $this->modelName ?? [];
         $modelName = end($modelName);
 
-        if ($modelName === false) {
+        if (false === $modelName) {
             return null;
         }
 
@@ -1140,7 +1140,7 @@ class ItemType
             $this->modelName = [];
         }
 
-        if ($this->modelName === []) {
+        if ([] === $this->modelName) {
             $this->addOnceTomodelName(new ModelName());
         }
 
@@ -1272,7 +1272,7 @@ class ItemType
         $manufacturersItemIdentification = $this->manufacturersItemIdentification ?? [];
         $manufacturersItemIdentification = reset($manufacturersItemIdentification);
 
-        if ($manufacturersItemIdentification === false) {
+        if (false === $manufacturersItemIdentification) {
             return null;
         }
 
@@ -1287,7 +1287,7 @@ class ItemType
         $manufacturersItemIdentification = $this->manufacturersItemIdentification ?? [];
         $manufacturersItemIdentification = end($manufacturersItemIdentification);
 
-        if ($manufacturersItemIdentification === false) {
+        if (false === $manufacturersItemIdentification) {
             return null;
         }
 
@@ -1341,7 +1341,7 @@ class ItemType
             $this->manufacturersItemIdentification = [];
         }
 
-        if ($this->manufacturersItemIdentification === []) {
+        if ([] === $this->manufacturersItemIdentification) {
             $this->addOnceTomanufacturersItemIdentification(new ManufacturersItemIdentification());
         }
 
@@ -1475,7 +1475,7 @@ class ItemType
         $additionalItemIdentification = $this->additionalItemIdentification ?? [];
         $additionalItemIdentification = reset($additionalItemIdentification);
 
-        if ($additionalItemIdentification === false) {
+        if (false === $additionalItemIdentification) {
             return null;
         }
 
@@ -1490,7 +1490,7 @@ class ItemType
         $additionalItemIdentification = $this->additionalItemIdentification ?? [];
         $additionalItemIdentification = end($additionalItemIdentification);
 
-        if ($additionalItemIdentification === false) {
+        if (false === $additionalItemIdentification) {
             return null;
         }
 
@@ -1544,7 +1544,7 @@ class ItemType
             $this->additionalItemIdentification = [];
         }
 
-        if ($this->additionalItemIdentification === []) {
+        if ([] === $this->additionalItemIdentification) {
             $this->addOnceToadditionalItemIdentification(new AdditionalItemIdentification());
         }
 
@@ -1638,7 +1638,7 @@ class ItemType
         $itemSpecificationDocumentReference = $this->itemSpecificationDocumentReference ?? [];
         $itemSpecificationDocumentReference = reset($itemSpecificationDocumentReference);
 
-        if ($itemSpecificationDocumentReference === false) {
+        if (false === $itemSpecificationDocumentReference) {
             return null;
         }
 
@@ -1653,7 +1653,7 @@ class ItemType
         $itemSpecificationDocumentReference = $this->itemSpecificationDocumentReference ?? [];
         $itemSpecificationDocumentReference = end($itemSpecificationDocumentReference);
 
-        if ($itemSpecificationDocumentReference === false) {
+        if (false === $itemSpecificationDocumentReference) {
             return null;
         }
 
@@ -1707,7 +1707,7 @@ class ItemType
             $this->itemSpecificationDocumentReference = [];
         }
 
-        if ($this->itemSpecificationDocumentReference === []) {
+        if ([] === $this->itemSpecificationDocumentReference) {
             $this->addOnceToitemSpecificationDocumentReference(new ItemSpecificationDocumentReference());
         }
 
@@ -1800,7 +1800,7 @@ class ItemType
         $commodityClassification = $this->commodityClassification ?? [];
         $commodityClassification = reset($commodityClassification);
 
-        if ($commodityClassification === false) {
+        if (false === $commodityClassification) {
             return null;
         }
 
@@ -1815,7 +1815,7 @@ class ItemType
         $commodityClassification = $this->commodityClassification ?? [];
         $commodityClassification = end($commodityClassification);
 
-        if ($commodityClassification === false) {
+        if (false === $commodityClassification) {
             return null;
         }
 
@@ -1867,7 +1867,7 @@ class ItemType
             $this->commodityClassification = [];
         }
 
-        if ($this->commodityClassification === []) {
+        if ([] === $this->commodityClassification) {
             $this->addOnceTocommodityClassification(new CommodityClassification());
         }
 
@@ -1921,7 +1921,7 @@ class ItemType
         $transactionConditions = $this->transactionConditions ?? [];
         $transactionConditions = reset($transactionConditions);
 
-        if ($transactionConditions === false) {
+        if (false === $transactionConditions) {
             return null;
         }
 
@@ -1936,7 +1936,7 @@ class ItemType
         $transactionConditions = $this->transactionConditions ?? [];
         $transactionConditions = end($transactionConditions);
 
-        if ($transactionConditions === false) {
+        if (false === $transactionConditions) {
             return null;
         }
 
@@ -1988,7 +1988,7 @@ class ItemType
             $this->transactionConditions = [];
         }
 
-        if ($this->transactionConditions === []) {
+        if ([] === $this->transactionConditions) {
             $this->addOnceTotransactionConditions(new TransactionConditions());
         }
 
@@ -2042,7 +2042,7 @@ class ItemType
         $hazardousItem = $this->hazardousItem ?? [];
         $hazardousItem = reset($hazardousItem);
 
-        if ($hazardousItem === false) {
+        if (false === $hazardousItem) {
             return null;
         }
 
@@ -2057,7 +2057,7 @@ class ItemType
         $hazardousItem = $this->hazardousItem ?? [];
         $hazardousItem = end($hazardousItem);
 
-        if ($hazardousItem === false) {
+        if (false === $hazardousItem) {
             return null;
         }
 
@@ -2109,7 +2109,7 @@ class ItemType
             $this->hazardousItem = [];
         }
 
-        if ($this->hazardousItem === []) {
+        if ([] === $this->hazardousItem) {
             $this->addOnceTohazardousItem(new HazardousItem());
         }
 
@@ -2163,7 +2163,7 @@ class ItemType
         $classifiedTaxCategory = $this->classifiedTaxCategory ?? [];
         $classifiedTaxCategory = reset($classifiedTaxCategory);
 
-        if ($classifiedTaxCategory === false) {
+        if (false === $classifiedTaxCategory) {
             return null;
         }
 
@@ -2178,7 +2178,7 @@ class ItemType
         $classifiedTaxCategory = $this->classifiedTaxCategory ?? [];
         $classifiedTaxCategory = end($classifiedTaxCategory);
 
-        if ($classifiedTaxCategory === false) {
+        if (false === $classifiedTaxCategory) {
             return null;
         }
 
@@ -2230,7 +2230,7 @@ class ItemType
             $this->classifiedTaxCategory = [];
         }
 
-        if ($this->classifiedTaxCategory === []) {
+        if ([] === $this->classifiedTaxCategory) {
             $this->addOnceToclassifiedTaxCategory(new ClassifiedTaxCategory());
         }
 
@@ -2284,7 +2284,7 @@ class ItemType
         $additionalItemProperty = $this->additionalItemProperty ?? [];
         $additionalItemProperty = reset($additionalItemProperty);
 
-        if ($additionalItemProperty === false) {
+        if (false === $additionalItemProperty) {
             return null;
         }
 
@@ -2299,7 +2299,7 @@ class ItemType
         $additionalItemProperty = $this->additionalItemProperty ?? [];
         $additionalItemProperty = end($additionalItemProperty);
 
-        if ($additionalItemProperty === false) {
+        if (false === $additionalItemProperty) {
             return null;
         }
 
@@ -2351,7 +2351,7 @@ class ItemType
             $this->additionalItemProperty = [];
         }
 
-        if ($this->additionalItemProperty === []) {
+        if ([] === $this->additionalItemProperty) {
             $this->addOnceToadditionalItemProperty(new AdditionalItemProperty());
         }
 
@@ -2405,7 +2405,7 @@ class ItemType
         $manufacturerParty = $this->manufacturerParty ?? [];
         $manufacturerParty = reset($manufacturerParty);
 
-        if ($manufacturerParty === false) {
+        if (false === $manufacturerParty) {
             return null;
         }
 
@@ -2420,7 +2420,7 @@ class ItemType
         $manufacturerParty = $this->manufacturerParty ?? [];
         $manufacturerParty = end($manufacturerParty);
 
-        if ($manufacturerParty === false) {
+        if (false === $manufacturerParty) {
             return null;
         }
 
@@ -2472,7 +2472,7 @@ class ItemType
             $this->manufacturerParty = [];
         }
 
-        if ($this->manufacturerParty === []) {
+        if ([] === $this->manufacturerParty) {
             $this->addOnceTomanufacturerParty(new ManufacturerParty());
         }
 
@@ -2566,7 +2566,7 @@ class ItemType
         $originAddress = $this->originAddress ?? [];
         $originAddress = reset($originAddress);
 
-        if ($originAddress === false) {
+        if (false === $originAddress) {
             return null;
         }
 
@@ -2581,7 +2581,7 @@ class ItemType
         $originAddress = $this->originAddress ?? [];
         $originAddress = end($originAddress);
 
-        if ($originAddress === false) {
+        if (false === $originAddress) {
             return null;
         }
 
@@ -2633,7 +2633,7 @@ class ItemType
             $this->originAddress = [];
         }
 
-        if ($this->originAddress === []) {
+        if ([] === $this->originAddress) {
             $this->addOnceTooriginAddress(new OriginAddress());
         }
 
@@ -2687,7 +2687,7 @@ class ItemType
         $itemInstance = $this->itemInstance ?? [];
         $itemInstance = reset($itemInstance);
 
-        if ($itemInstance === false) {
+        if (false === $itemInstance) {
             return null;
         }
 
@@ -2702,7 +2702,7 @@ class ItemType
         $itemInstance = $this->itemInstance ?? [];
         $itemInstance = end($itemInstance);
 
-        if ($itemInstance === false) {
+        if (false === $itemInstance) {
             return null;
         }
 
@@ -2754,7 +2754,7 @@ class ItemType
             $this->itemInstance = [];
         }
 
-        if ($this->itemInstance === []) {
+        if ([] === $this->itemInstance) {
             $this->addOnceToitemInstance(new ItemInstance());
         }
 
@@ -2808,7 +2808,7 @@ class ItemType
         $certificate = $this->certificate ?? [];
         $certificate = reset($certificate);
 
-        if ($certificate === false) {
+        if (false === $certificate) {
             return null;
         }
 
@@ -2823,7 +2823,7 @@ class ItemType
         $certificate = $this->certificate ?? [];
         $certificate = end($certificate);
 
-        if ($certificate === false) {
+        if (false === $certificate) {
             return null;
         }
 
@@ -2875,7 +2875,7 @@ class ItemType
             $this->certificate = [];
         }
 
-        if ($this->certificate === []) {
+        if ([] === $this->certificate) {
             $this->addOnceTocertificate(new Certificate());
         }
 
@@ -2929,7 +2929,7 @@ class ItemType
         $dimension = $this->dimension ?? [];
         $dimension = reset($dimension);
 
-        if ($dimension === false) {
+        if (false === $dimension) {
             return null;
         }
 
@@ -2944,7 +2944,7 @@ class ItemType
         $dimension = $this->dimension ?? [];
         $dimension = end($dimension);
 
-        if ($dimension === false) {
+        if (false === $dimension) {
             return null;
         }
 
@@ -2996,7 +2996,7 @@ class ItemType
             $this->dimension = [];
         }
 
-        if ($this->dimension === []) {
+        if ([] === $this->dimension) {
             $this->addOnceTodimension(new Dimension());
         }
 

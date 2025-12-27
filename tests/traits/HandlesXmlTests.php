@@ -63,7 +63,7 @@ trait HandlesXmlTests
      */
     protected function getXml(): SimpleXMLElement
     {
-        if ($this->renderingOfXmlDisabled === false || $this->latestXml === null) {
+        if (false === $this->renderingOfXmlDisabled || null === $this->latestXml) {
             $this->latestXml = new SimpleXMLElement(static::$document->getContentAsXml());
             $this->registerAllNamespaces($this->latestXml);
         }
@@ -282,7 +282,7 @@ trait HandlesXmlTests
     {
         $ns = $xml->getDocNamespaces(true);
         foreach ($ns as $prefix => $uri) {
-            $xml->registerXPathNamespace($prefix !== '' ? $prefix : 'ns', $uri);
+            $xml->registerXPathNamespace('' !== $prefix ? $prefix : 'ns', $uri);
         }
         foreach ($this->customXmlNamespaces as $prefix => $uri) {
             $xml->registerXPathNamespace($prefix, $uri);

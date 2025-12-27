@@ -172,7 +172,7 @@ class GoodsItemContainerType
         $transportEquipment = $this->transportEquipment ?? [];
         $transportEquipment = reset($transportEquipment);
 
-        if ($transportEquipment === false) {
+        if (false === $transportEquipment) {
             return null;
         }
 
@@ -187,7 +187,7 @@ class GoodsItemContainerType
         $transportEquipment = $this->transportEquipment ?? [];
         $transportEquipment = end($transportEquipment);
 
-        if ($transportEquipment === false) {
+        if (false === $transportEquipment) {
             return null;
         }
 
@@ -239,7 +239,7 @@ class GoodsItemContainerType
             $this->transportEquipment = [];
         }
 
-        if ($this->transportEquipment === []) {
+        if ([] === $this->transportEquipment) {
             $this->addOnceTotransportEquipment(new TransportEquipment());
         }
 

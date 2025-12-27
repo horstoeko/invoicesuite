@@ -7446,7 +7446,7 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractDocument
 
         $paymentTerm = reset($paymentTerms);
 
-        $newMandate = $paymentTerm !== false ? ($paymentTerm->getDirectDebitMandateID()?->getValue() ?? '') : '';
+        $newMandate = false !== $paymentTerm ? ($paymentTerm->getDirectDebitMandateID()?->getValue() ?? '') : '';
 
         return $this;
     }
@@ -8032,8 +8032,8 @@ class InvoiceSuiteZfFxComfortProviderReader extends InvoiceSuiteAbstractDocument
         $newChargeTotalAmount = $documentSummation?->getChargeTotalAmount()?->getValue() ?? 0.0;
         $newDiscountTotalAmount = $documentSummation?->getAllowanceTotalAmount()?->getValue() ?? 0.0;
         $newTaxBasisAmount = $documentSummation?->getTaxBasisTotalAmount()?->getValue() ?? 0.0;
-        $newTaxTotalAmount = $taxTotalAmount !== false ? ($taxTotalAmount->getValue() ?? 0.0) : 0.0;
-        $newTaxTotalAmount2 = $taxTotalAmount2 !== false ? ($taxTotalAmount2->getValue() ?? 0.0) : 0.0;
+        $newTaxTotalAmount = false !== $taxTotalAmount ? ($taxTotalAmount->getValue() ?? 0.0) : 0.0;
+        $newTaxTotalAmount2 = false !== $taxTotalAmount2 ? ($taxTotalAmount2->getValue() ?? 0.0) : 0.0;
         $newGrossAmount = $documentSummation?->getGrandTotalAmount()?->getValue() ?? 0.0;
         $newDueAmount = $documentSummation?->getDuePayableAmount()?->getValue() ?? 0.0;
         $newPrepaidAmount = $documentSummation?->getTotalPrepaidAmount()?->getValue() ?? 0.0;

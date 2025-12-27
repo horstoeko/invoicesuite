@@ -10416,7 +10416,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
             ?->getPartyIdentification();
 
         return array_values(
-            array_filter($partyIdentifications ?? [], static fn (PartyIdentification $id) => strcasecmp($id->getID()?->getSchemeID() ?? '', 'SEPA') === 0)
+            array_filter($partyIdentifications ?? [], static fn (PartyIdentification $id) => 0 === strcasecmp($id->getID()?->getSchemeID() ?? '', 'SEPA'))
         );
     }
 }

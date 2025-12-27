@@ -758,7 +758,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->supplyChainEvents as $supplyChainEvent) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -767,7 +767,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($supplyChainEvent);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -991,7 +991,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->notes as $note) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -1000,7 +1000,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($note);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -1135,7 +1135,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->billingPeriods as $billingPeriod) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -1144,7 +1144,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($billingPeriod);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -1279,7 +1279,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->postingReferences as $postingReference) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -1288,7 +1288,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($postingReference);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -1423,7 +1423,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->sellerOrderReferences as $sellerOrderReference) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -1432,7 +1432,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($sellerOrderReference);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -1567,7 +1567,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->buyerOrderReferences as $buyerOrderReference) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -1576,7 +1576,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($buyerOrderReference);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -1711,7 +1711,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->quotationReferences as $quotationReference) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -1720,7 +1720,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($quotationReference);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -1855,7 +1855,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->contractReferences as $contractReference) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -1864,7 +1864,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($contractReference);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -1999,7 +1999,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->additionalReferences as $additionalReference) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -2008,7 +2008,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($additionalReference);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -2143,7 +2143,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->invoiceReferences as $invoiceReference) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -2152,7 +2152,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($invoiceReference);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -2287,7 +2287,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->projectReferences as $projectReference) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -2296,7 +2296,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($projectReference);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -2432,7 +2432,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->ultimateCustomerOrderReferences as $ultimateCustomerOrderReference) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -2441,7 +2441,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($ultimateCustomerOrderReference);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -2576,7 +2576,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->despatchAdviceReferences as $despatchAdviceReference) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -2585,7 +2585,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($despatchAdviceReference);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -2720,7 +2720,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->receivingAdviceReferences as $receivingAdviceReference) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -2729,7 +2729,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($receivingAdviceReference);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -2864,7 +2864,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->deliveryNoteReferences as $deliveryNoteReference) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -2873,7 +2873,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($deliveryNoteReference);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -3235,7 +3235,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->paymentMeans as $paymentMean) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -3244,7 +3244,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($paymentMean);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -3376,7 +3376,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->paymentTerms as $paymentTerm) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -3385,7 +3385,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($paymentTerm);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -3520,7 +3520,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->creditorReferences as $creditorReference) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -3529,7 +3529,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($creditorReference);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -3664,7 +3664,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->paymentReferences as $paymentReference) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -3673,7 +3673,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($paymentReference);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -3808,7 +3808,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->buyerReferences as $buyerReference) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -3817,7 +3817,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($buyerReference);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -3949,7 +3949,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->positions as $position) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -3958,7 +3958,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($position);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -4093,7 +4093,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->deliveryTerms as $deliveryTerm) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -4102,7 +4102,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($deliveryTerm);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -4234,7 +4234,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->taxes as $tax) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -4243,7 +4243,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($tax);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -4378,7 +4378,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->allowanceCharges as $allowanceCharge) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -4387,7 +4387,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($allowanceCharge);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -4522,7 +4522,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->serviceCharges as $serviceCharge) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -4531,7 +4531,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($serviceCharge);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 
@@ -4663,7 +4663,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $count = 0;
 
         foreach ($this->summations as $summation) {
-            if ($limit !== null && $count >= $limit) {
+            if (null !== $limit && $count >= $limit) {
                 break;
             }
 
@@ -4672,7 +4672,7 @@ class InvoiceSuiteDocumentHeaderDTO
             $callback($summation);
         }
 
-        if ($count === 0 && !is_null($callbackElse)) {
+        if (0 === $count && !is_null($callbackElse)) {
             $callbackElse();
         }
 

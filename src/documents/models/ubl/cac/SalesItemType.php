@@ -156,7 +156,7 @@ class SalesItemType
         $activityProperty = $this->activityProperty ?? [];
         $activityProperty = reset($activityProperty);
 
-        if ($activityProperty === false) {
+        if (false === $activityProperty) {
             return null;
         }
 
@@ -171,7 +171,7 @@ class SalesItemType
         $activityProperty = $this->activityProperty ?? [];
         $activityProperty = end($activityProperty);
 
-        if ($activityProperty === false) {
+        if (false === $activityProperty) {
             return null;
         }
 
@@ -223,7 +223,7 @@ class SalesItemType
             $this->activityProperty = [];
         }
 
-        if ($this->activityProperty === []) {
+        if ([] === $this->activityProperty) {
             $this->addOnceToactivityProperty(new ActivityProperty());
         }
 
@@ -277,7 +277,7 @@ class SalesItemType
         $taxExclusivePrice = $this->taxExclusivePrice ?? [];
         $taxExclusivePrice = reset($taxExclusivePrice);
 
-        if ($taxExclusivePrice === false) {
+        if (false === $taxExclusivePrice) {
             return null;
         }
 
@@ -292,7 +292,7 @@ class SalesItemType
         $taxExclusivePrice = $this->taxExclusivePrice ?? [];
         $taxExclusivePrice = end($taxExclusivePrice);
 
-        if ($taxExclusivePrice === false) {
+        if (false === $taxExclusivePrice) {
             return null;
         }
 
@@ -344,7 +344,7 @@ class SalesItemType
             $this->taxExclusivePrice = [];
         }
 
-        if ($this->taxExclusivePrice === []) {
+        if ([] === $this->taxExclusivePrice) {
             $this->addOnceTotaxExclusivePrice(new TaxExclusivePrice());
         }
 
@@ -398,7 +398,7 @@ class SalesItemType
         $taxInclusivePrice = $this->taxInclusivePrice ?? [];
         $taxInclusivePrice = reset($taxInclusivePrice);
 
-        if ($taxInclusivePrice === false) {
+        if (false === $taxInclusivePrice) {
             return null;
         }
 
@@ -413,7 +413,7 @@ class SalesItemType
         $taxInclusivePrice = $this->taxInclusivePrice ?? [];
         $taxInclusivePrice = end($taxInclusivePrice);
 
-        if ($taxInclusivePrice === false) {
+        if (false === $taxInclusivePrice) {
             return null;
         }
 
@@ -465,7 +465,7 @@ class SalesItemType
             $this->taxInclusivePrice = [];
         }
 
-        if ($this->taxInclusivePrice === []) {
+        if ([] === $this->taxInclusivePrice) {
             $this->addOnceTotaxInclusivePrice(new TaxInclusivePrice());
         }
 

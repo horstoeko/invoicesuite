@@ -419,7 +419,7 @@ class PackageType
         $packingMaterial = $this->packingMaterial ?? [];
         $packingMaterial = reset($packingMaterial);
 
-        if ($packingMaterial === false) {
+        if (false === $packingMaterial) {
             return null;
         }
 
@@ -434,7 +434,7 @@ class PackageType
         $packingMaterial = $this->packingMaterial ?? [];
         $packingMaterial = end($packingMaterial);
 
-        if ($packingMaterial === false) {
+        if (false === $packingMaterial) {
             return null;
         }
 
@@ -486,7 +486,7 @@ class PackageType
             $this->packingMaterial = [];
         }
 
-        if ($this->packingMaterial === []) {
+        if ([] === $this->packingMaterial) {
             $this->addOnceTopackingMaterial(new PackingMaterial());
         }
 
@@ -579,7 +579,7 @@ class PackageType
         $containedPackage = $this->containedPackage ?? [];
         $containedPackage = reset($containedPackage);
 
-        if ($containedPackage === false) {
+        if (false === $containedPackage) {
             return null;
         }
 
@@ -594,7 +594,7 @@ class PackageType
         $containedPackage = $this->containedPackage ?? [];
         $containedPackage = end($containedPackage);
 
-        if ($containedPackage === false) {
+        if (false === $containedPackage) {
             return null;
         }
 
@@ -646,7 +646,7 @@ class PackageType
             $this->containedPackage = [];
         }
 
-        if ($this->containedPackage === []) {
+        if ([] === $this->containedPackage) {
             $this->addOnceTocontainedPackage(new ContainedPackage());
         }
 
@@ -740,7 +740,7 @@ class PackageType
         $goodsItem = $this->goodsItem ?? [];
         $goodsItem = reset($goodsItem);
 
-        if ($goodsItem === false) {
+        if (false === $goodsItem) {
             return null;
         }
 
@@ -755,7 +755,7 @@ class PackageType
         $goodsItem = $this->goodsItem ?? [];
         $goodsItem = end($goodsItem);
 
-        if ($goodsItem === false) {
+        if (false === $goodsItem) {
             return null;
         }
 
@@ -807,7 +807,7 @@ class PackageType
             $this->goodsItem = [];
         }
 
-        if ($this->goodsItem === []) {
+        if ([] === $this->goodsItem) {
             $this->addOnceTogoodsItem(new GoodsItem());
         }
 
@@ -861,7 +861,7 @@ class PackageType
         $measurementDimension = $this->measurementDimension ?? [];
         $measurementDimension = reset($measurementDimension);
 
-        if ($measurementDimension === false) {
+        if (false === $measurementDimension) {
             return null;
         }
 
@@ -876,7 +876,7 @@ class PackageType
         $measurementDimension = $this->measurementDimension ?? [];
         $measurementDimension = end($measurementDimension);
 
-        if ($measurementDimension === false) {
+        if (false === $measurementDimension) {
             return null;
         }
 
@@ -928,7 +928,7 @@ class PackageType
             $this->measurementDimension = [];
         }
 
-        if ($this->measurementDimension === []) {
+        if ([] === $this->measurementDimension) {
             $this->addOnceTomeasurementDimension(new MeasurementDimension());
         }
 
@@ -982,7 +982,7 @@ class PackageType
         $deliveryUnit = $this->deliveryUnit ?? [];
         $deliveryUnit = reset($deliveryUnit);
 
-        if ($deliveryUnit === false) {
+        if (false === $deliveryUnit) {
             return null;
         }
 
@@ -997,7 +997,7 @@ class PackageType
         $deliveryUnit = $this->deliveryUnit ?? [];
         $deliveryUnit = end($deliveryUnit);
 
-        if ($deliveryUnit === false) {
+        if (false === $deliveryUnit) {
             return null;
         }
 
@@ -1049,7 +1049,7 @@ class PackageType
             $this->deliveryUnit = [];
         }
 
-        if ($this->deliveryUnit === []) {
+        if ([] === $this->deliveryUnit) {
             $this->addOnceTodeliveryUnit(new DeliveryUnit());
         }
 

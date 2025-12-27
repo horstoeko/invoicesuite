@@ -267,7 +267,7 @@ class TenderedProjectType
         $feeDescription = $this->feeDescription ?? [];
         $feeDescription = reset($feeDescription);
 
-        if ($feeDescription === false) {
+        if (false === $feeDescription) {
             return null;
         }
 
@@ -282,7 +282,7 @@ class TenderedProjectType
         $feeDescription = $this->feeDescription ?? [];
         $feeDescription = end($feeDescription);
 
-        if ($feeDescription === false) {
+        if (false === $feeDescription) {
             return null;
         }
 
@@ -334,7 +334,7 @@ class TenderedProjectType
             $this->feeDescription = [];
         }
 
-        if ($this->feeDescription === []) {
+        if ([] === $this->feeDescription) {
             $this->addOnceTofeeDescription(new FeeDescription());
         }
 
@@ -505,7 +505,7 @@ class TenderedProjectType
         $evidenceDocumentReference = $this->evidenceDocumentReference ?? [];
         $evidenceDocumentReference = reset($evidenceDocumentReference);
 
-        if ($evidenceDocumentReference === false) {
+        if (false === $evidenceDocumentReference) {
             return null;
         }
 
@@ -520,7 +520,7 @@ class TenderedProjectType
         $evidenceDocumentReference = $this->evidenceDocumentReference ?? [];
         $evidenceDocumentReference = end($evidenceDocumentReference);
 
-        if ($evidenceDocumentReference === false) {
+        if (false === $evidenceDocumentReference) {
             return null;
         }
 
@@ -572,7 +572,7 @@ class TenderedProjectType
             $this->evidenceDocumentReference = [];
         }
 
-        if ($this->evidenceDocumentReference === []) {
+        if ([] === $this->evidenceDocumentReference) {
             $this->addOnceToevidenceDocumentReference(new EvidenceDocumentReference());
         }
 
@@ -626,7 +626,7 @@ class TenderedProjectType
         $taxTotal = $this->taxTotal ?? [];
         $taxTotal = reset($taxTotal);
 
-        if ($taxTotal === false) {
+        if (false === $taxTotal) {
             return null;
         }
 
@@ -641,7 +641,7 @@ class TenderedProjectType
         $taxTotal = $this->taxTotal ?? [];
         $taxTotal = end($taxTotal);
 
-        if ($taxTotal === false) {
+        if (false === $taxTotal) {
             return null;
         }
 
@@ -693,7 +693,7 @@ class TenderedProjectType
             $this->taxTotal = [];
         }
 
-        if ($this->taxTotal === []) {
+        if ([] === $this->taxTotal) {
             $this->addOnceTotaxTotal(new TaxTotal());
         }
 
@@ -786,7 +786,7 @@ class TenderedProjectType
         $tenderLine = $this->tenderLine ?? [];
         $tenderLine = reset($tenderLine);
 
-        if ($tenderLine === false) {
+        if (false === $tenderLine) {
             return null;
         }
 
@@ -801,7 +801,7 @@ class TenderedProjectType
         $tenderLine = $this->tenderLine ?? [];
         $tenderLine = end($tenderLine);
 
-        if ($tenderLine === false) {
+        if (false === $tenderLine) {
             return null;
         }
 
@@ -853,7 +853,7 @@ class TenderedProjectType
             $this->tenderLine = [];
         }
 
-        if ($this->tenderLine === []) {
+        if ([] === $this->tenderLine) {
             $this->addOnceTotenderLine(new TenderLine());
         }
 
@@ -907,7 +907,7 @@ class TenderedProjectType
         $awardingCriterionResponse = $this->awardingCriterionResponse ?? [];
         $awardingCriterionResponse = reset($awardingCriterionResponse);
 
-        if ($awardingCriterionResponse === false) {
+        if (false === $awardingCriterionResponse) {
             return null;
         }
 
@@ -922,7 +922,7 @@ class TenderedProjectType
         $awardingCriterionResponse = $this->awardingCriterionResponse ?? [];
         $awardingCriterionResponse = end($awardingCriterionResponse);
 
-        if ($awardingCriterionResponse === false) {
+        if (false === $awardingCriterionResponse) {
             return null;
         }
 
@@ -974,7 +974,7 @@ class TenderedProjectType
             $this->awardingCriterionResponse = [];
         }
 
-        if ($this->awardingCriterionResponse === []) {
+        if ([] === $this->awardingCriterionResponse) {
             $this->addOnceToawardingCriterionResponse(new AwardingCriterionResponse());
         }
 

@@ -240,7 +240,7 @@ class ExceptionCriteriaLineType
         $note = $this->note ?? [];
         $note = reset($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -255,7 +255,7 @@ class ExceptionCriteriaLineType
         $note = $this->note ?? [];
         $note = end($note);
 
-        if ($note === false) {
+        if (false === $note) {
             return null;
         }
 
@@ -307,7 +307,7 @@ class ExceptionCriteriaLineType
             $this->note = [];
         }
 
-        if ($this->note === []) {
+        if ([] === $this->note) {
             $this->addOnceTonote(new Note());
         }
 
@@ -675,7 +675,7 @@ class ExceptionCriteriaLineType
         $supplyItem = $this->supplyItem ?? [];
         $supplyItem = reset($supplyItem);
 
-        if ($supplyItem === false) {
+        if (false === $supplyItem) {
             return null;
         }
 
@@ -690,7 +690,7 @@ class ExceptionCriteriaLineType
         $supplyItem = $this->supplyItem ?? [];
         $supplyItem = end($supplyItem);
 
-        if ($supplyItem === false) {
+        if (false === $supplyItem) {
             return null;
         }
 
@@ -742,7 +742,7 @@ class ExceptionCriteriaLineType
             $this->supplyItem = [];
         }
 
-        if ($this->supplyItem === []) {
+        if ([] === $this->supplyItem) {
             $this->addOnceTosupplyItem(new SupplyItem());
         }
 

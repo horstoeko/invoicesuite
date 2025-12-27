@@ -186,7 +186,7 @@ class EnvironmentalEmissionType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -201,7 +201,7 @@ class EnvironmentalEmissionType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -253,7 +253,7 @@ class EnvironmentalEmissionType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -307,7 +307,7 @@ class EnvironmentalEmissionType
         $emissionCalculationMethod = $this->emissionCalculationMethod ?? [];
         $emissionCalculationMethod = reset($emissionCalculationMethod);
 
-        if ($emissionCalculationMethod === false) {
+        if (false === $emissionCalculationMethod) {
             return null;
         }
 
@@ -322,7 +322,7 @@ class EnvironmentalEmissionType
         $emissionCalculationMethod = $this->emissionCalculationMethod ?? [];
         $emissionCalculationMethod = end($emissionCalculationMethod);
 
-        if ($emissionCalculationMethod === false) {
+        if (false === $emissionCalculationMethod) {
             return null;
         }
 
@@ -374,7 +374,7 @@ class EnvironmentalEmissionType
             $this->emissionCalculationMethod = [];
         }
 
-        if ($this->emissionCalculationMethod === []) {
+        if ([] === $this->emissionCalculationMethod) {
             $this->addOnceToemissionCalculationMethod(new EmissionCalculationMethod());
         }
 

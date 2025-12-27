@@ -300,7 +300,7 @@ class EventType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -315,7 +315,7 @@ class EventType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -367,7 +367,7 @@ class EventType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -450,7 +450,7 @@ class EventType
         $currentStatus = $this->currentStatus ?? [];
         $currentStatus = reset($currentStatus);
 
-        if ($currentStatus === false) {
+        if (false === $currentStatus) {
             return null;
         }
 
@@ -465,7 +465,7 @@ class EventType
         $currentStatus = $this->currentStatus ?? [];
         $currentStatus = end($currentStatus);
 
-        if ($currentStatus === false) {
+        if (false === $currentStatus) {
             return null;
         }
 
@@ -517,7 +517,7 @@ class EventType
             $this->currentStatus = [];
         }
 
-        if ($this->currentStatus === []) {
+        if ([] === $this->currentStatus) {
             $this->addOnceTocurrentStatus(new CurrentStatus());
         }
 
@@ -571,7 +571,7 @@ class EventType
         $contact = $this->contact ?? [];
         $contact = reset($contact);
 
-        if ($contact === false) {
+        if (false === $contact) {
             return null;
         }
 
@@ -586,7 +586,7 @@ class EventType
         $contact = $this->contact ?? [];
         $contact = end($contact);
 
-        if ($contact === false) {
+        if (false === $contact) {
             return null;
         }
 
@@ -638,7 +638,7 @@ class EventType
             $this->contact = [];
         }
 
-        if ($this->contact === []) {
+        if ([] === $this->contact) {
             $this->addOnceTocontact(new Contact());
         }
 

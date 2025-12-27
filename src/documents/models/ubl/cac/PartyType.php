@@ -493,7 +493,7 @@ class PartyType
         $partyIdentification = $this->partyIdentification ?? [];
         $partyIdentification = reset($partyIdentification);
 
-        if ($partyIdentification === false) {
+        if (false === $partyIdentification) {
             return null;
         }
 
@@ -508,7 +508,7 @@ class PartyType
         $partyIdentification = $this->partyIdentification ?? [];
         $partyIdentification = end($partyIdentification);
 
-        if ($partyIdentification === false) {
+        if (false === $partyIdentification) {
             return null;
         }
 
@@ -560,7 +560,7 @@ class PartyType
             $this->partyIdentification = [];
         }
 
-        if ($this->partyIdentification === []) {
+        if ([] === $this->partyIdentification) {
             $this->addOnceTopartyIdentification(new PartyIdentification());
         }
 
@@ -614,7 +614,7 @@ class PartyType
         $partyName = $this->partyName ?? [];
         $partyName = reset($partyName);
 
-        if ($partyName === false) {
+        if (false === $partyName) {
             return null;
         }
 
@@ -629,7 +629,7 @@ class PartyType
         $partyName = $this->partyName ?? [];
         $partyName = end($partyName);
 
-        if ($partyName === false) {
+        if (false === $partyName) {
             return null;
         }
 
@@ -681,7 +681,7 @@ class PartyType
             $this->partyName = [];
         }
 
-        if ($this->partyName === []) {
+        if ([] === $this->partyName) {
             $this->addOnceTopartyName(new PartyName());
         }
 
@@ -852,7 +852,7 @@ class PartyType
         $partyTaxScheme = $this->partyTaxScheme ?? [];
         $partyTaxScheme = reset($partyTaxScheme);
 
-        if ($partyTaxScheme === false) {
+        if (false === $partyTaxScheme) {
             return null;
         }
 
@@ -867,7 +867,7 @@ class PartyType
         $partyTaxScheme = $this->partyTaxScheme ?? [];
         $partyTaxScheme = end($partyTaxScheme);
 
-        if ($partyTaxScheme === false) {
+        if (false === $partyTaxScheme) {
             return null;
         }
 
@@ -919,7 +919,7 @@ class PartyType
             $this->partyTaxScheme = [];
         }
 
-        if ($this->partyTaxScheme === []) {
+        if ([] === $this->partyTaxScheme) {
             $this->addOnceTopartyTaxScheme(new PartyTaxScheme());
         }
 
@@ -973,7 +973,7 @@ class PartyType
         $partyLegalEntity = $this->partyLegalEntity ?? [];
         $partyLegalEntity = reset($partyLegalEntity);
 
-        if ($partyLegalEntity === false) {
+        if (false === $partyLegalEntity) {
             return null;
         }
 
@@ -988,7 +988,7 @@ class PartyType
         $partyLegalEntity = $this->partyLegalEntity ?? [];
         $partyLegalEntity = end($partyLegalEntity);
 
-        if ($partyLegalEntity === false) {
+        if (false === $partyLegalEntity) {
             return null;
         }
 
@@ -1040,7 +1040,7 @@ class PartyType
             $this->partyLegalEntity = [];
         }
 
-        if ($this->partyLegalEntity === []) {
+        if ([] === $this->partyLegalEntity) {
             $this->addOnceTopartyLegalEntity(new PartyLegalEntity());
         }
 
@@ -1133,7 +1133,7 @@ class PartyType
         $person = $this->person ?? [];
         $person = reset($person);
 
-        if ($person === false) {
+        if (false === $person) {
             return null;
         }
 
@@ -1148,7 +1148,7 @@ class PartyType
         $person = $this->person ?? [];
         $person = end($person);
 
-        if ($person === false) {
+        if (false === $person) {
             return null;
         }
 
@@ -1200,7 +1200,7 @@ class PartyType
             $this->person = [];
         }
 
-        if ($this->person === []) {
+        if ([] === $this->person) {
             $this->addOnceToperson(new Person());
         }
 
@@ -1293,7 +1293,7 @@ class PartyType
         $serviceProviderParty = $this->serviceProviderParty ?? [];
         $serviceProviderParty = reset($serviceProviderParty);
 
-        if ($serviceProviderParty === false) {
+        if (false === $serviceProviderParty) {
             return null;
         }
 
@@ -1308,7 +1308,7 @@ class PartyType
         $serviceProviderParty = $this->serviceProviderParty ?? [];
         $serviceProviderParty = end($serviceProviderParty);
 
-        if ($serviceProviderParty === false) {
+        if (false === $serviceProviderParty) {
             return null;
         }
 
@@ -1360,7 +1360,7 @@ class PartyType
             $this->serviceProviderParty = [];
         }
 
-        if ($this->serviceProviderParty === []) {
+        if ([] === $this->serviceProviderParty) {
             $this->addOnceToserviceProviderParty(new ServiceProviderParty());
         }
 
@@ -1414,7 +1414,7 @@ class PartyType
         $powerOfAttorney = $this->powerOfAttorney ?? [];
         $powerOfAttorney = reset($powerOfAttorney);
 
-        if ($powerOfAttorney === false) {
+        if (false === $powerOfAttorney) {
             return null;
         }
 
@@ -1429,7 +1429,7 @@ class PartyType
         $powerOfAttorney = $this->powerOfAttorney ?? [];
         $powerOfAttorney = end($powerOfAttorney);
 
-        if ($powerOfAttorney === false) {
+        if (false === $powerOfAttorney) {
             return null;
         }
 
@@ -1481,7 +1481,7 @@ class PartyType
             $this->powerOfAttorney = [];
         }
 
-        if ($this->powerOfAttorney === []) {
+        if ([] === $this->powerOfAttorney) {
             $this->addOnceTopowerOfAttorney(new PowerOfAttorney());
         }
 

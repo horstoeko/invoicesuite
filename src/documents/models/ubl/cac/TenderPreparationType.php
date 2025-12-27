@@ -209,7 +209,7 @@ class TenderPreparationType
         $description = $this->description ?? [];
         $description = reset($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -224,7 +224,7 @@ class TenderPreparationType
         $description = $this->description ?? [];
         $description = end($description);
 
-        if ($description === false) {
+        if (false === $description) {
             return null;
         }
 
@@ -276,7 +276,7 @@ class TenderPreparationType
             $this->description = [];
         }
 
-        if ($this->description === []) {
+        if ([] === $this->description) {
             $this->addOnceTodescription(new Description());
         }
 
@@ -369,7 +369,7 @@ class TenderPreparationType
         $procurementProjectLot = $this->procurementProjectLot ?? [];
         $procurementProjectLot = reset($procurementProjectLot);
 
-        if ($procurementProjectLot === false) {
+        if (false === $procurementProjectLot) {
             return null;
         }
 
@@ -384,7 +384,7 @@ class TenderPreparationType
         $procurementProjectLot = $this->procurementProjectLot ?? [];
         $procurementProjectLot = end($procurementProjectLot);
 
-        if ($procurementProjectLot === false) {
+        if (false === $procurementProjectLot) {
             return null;
         }
 
@@ -436,7 +436,7 @@ class TenderPreparationType
             $this->procurementProjectLot = [];
         }
 
-        if ($this->procurementProjectLot === []) {
+        if ([] === $this->procurementProjectLot) {
             $this->addOnceToprocurementProjectLot(new ProcurementProjectLot());
         }
 
@@ -490,7 +490,7 @@ class TenderPreparationType
         $documentTenderRequirement = $this->documentTenderRequirement ?? [];
         $documentTenderRequirement = reset($documentTenderRequirement);
 
-        if ($documentTenderRequirement === false) {
+        if (false === $documentTenderRequirement) {
             return null;
         }
 
@@ -505,7 +505,7 @@ class TenderPreparationType
         $documentTenderRequirement = $this->documentTenderRequirement ?? [];
         $documentTenderRequirement = end($documentTenderRequirement);
 
-        if ($documentTenderRequirement === false) {
+        if (false === $documentTenderRequirement) {
             return null;
         }
 
@@ -557,7 +557,7 @@ class TenderPreparationType
             $this->documentTenderRequirement = [];
         }
 
-        if ($this->documentTenderRequirement === []) {
+        if ([] === $this->documentTenderRequirement) {
             $this->addOnceTodocumentTenderRequirement(new DocumentTenderRequirement());
         }
 

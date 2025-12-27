@@ -3210,7 +3210,7 @@ class ZugferdDocumentBuilder implements Stringable
             ARRAY_FILTER_USE_KEY
         );
 
-        if ($paymentDiscountDays === []) {
+        if ([] === $paymentDiscountDays) {
             return $this->addDocumentPaymentTerm(trim($description), $dueDate, $directDebitMandateID);
         }
 
