@@ -74,10 +74,10 @@ class InvoiceSuiteClassFinder
      */
     public function init(): static
     {
-        $classMaps = array_values(ClassLoader::getRegisteredLoaders())[0]->getClassMap();
+        $this->classNames = [];
 
-        foreach (array_keys($classMaps) as $className) {
-            $this->classNames[] = $className;
+        foreach (ClassLoader::getRegisteredLoaders() as $loader) {
+            $this->classNames = array_merge($this->classNames, array_keys($loader->getClassMap()));
         }
 
         return $this;
@@ -117,8 +117,9 @@ class InvoiceSuiteClassFinder
                     if (is_subclass_of($className, $isSubClassOf)) {
                         $classes[] = $className;
                     }
+
                     // @phpstan-ignore catch.neverThrown
-                } catch (Throwable $e) {
+                } catch (Throwable) {
                 }
             }
         } finally {
