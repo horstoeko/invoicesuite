@@ -932,7 +932,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
 
         $objects = scandir($directoryToRemove);
 
-        if ($objects === false) {
+        if (false === $objects) {
             return;
         }
 
