@@ -208,6 +208,7 @@
         <ram:BilledQuantity unitCode="C62">1.00</ram:BilledQuantity>
         <ram:ChargeFreeQuantity unitCode="H87">2.00</ram:ChargeFreeQuantity>
         <ram:PackageQuantity unitCode="XPP">3.00</ram:PackageQuantity>
+        <ram:PerPackageUnitQuantity unitCode="XPP">4.00</ram:PerPackageUnitQuantity>
         <ram:ShipToTradeParty>
           <ram:ID>0815-4711</ram:ID>
           <ram:GlobalID schemeID="0088">11111</ram:GlobalID>

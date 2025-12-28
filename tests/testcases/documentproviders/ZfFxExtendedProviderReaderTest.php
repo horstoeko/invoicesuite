@@ -3087,7 +3087,9 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
             $newChargeFreeQuantity,
             $newChargeFreeQuantityUnit,
             $newPackageQuantity,
-            $newPackageQuantityUnit
+            $newPackageQuantityUnit,
+            $newPerPackageUnitQuantity,
+            $newPerPackageUnitQuantityUnit
         );
 
         $this->assertEqualsWithDelta(1.0, $newQuantity, PHP_FLOAT_EPSILON);
@@ -3096,6 +3098,8 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame('H87', $newChargeFreeQuantityUnit);
         $this->assertEqualsWithDelta(3.0, $newPackageQuantity, PHP_FLOAT_EPSILON);
         $this->assertSame('XPP', $newPackageQuantityUnit);
+        $this->assertEqualsWithDelta(4.0, $newPerPackageUnitQuantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('XPP', $newPerPackageUnitQuantityUnit);
 
         // Second position
 

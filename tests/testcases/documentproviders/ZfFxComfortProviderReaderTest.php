@@ -2594,7 +2594,9 @@ final class ZfFxComfortProviderReaderTest extends TestCase
             $newChargeFreeQuantity,
             $newChargeFreeQuantityUnit,
             $newPackageQuantity,
-            $newPackageQuantityUnit
+            $newPackageQuantityUnit,
+            $newPerPackageUnitQuantity,
+            $newPerPackageUnitQuantityUnit
         );
 
         $this->assertEqualsWithDelta(1.0, $newQuantity, PHP_FLOAT_EPSILON);
@@ -2603,6 +2605,8 @@ final class ZfFxComfortProviderReaderTest extends TestCase
         $this->assertSame('', $newChargeFreeQuantityUnit);
         $this->assertEqualsWithDelta(0.0, $newPackageQuantity, PHP_FLOAT_EPSILON);
         $this->assertSame('', $newPackageQuantityUnit);
+        $this->assertEqualsWithDelta(0.0, $newPerPackageUnitQuantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $newPerPackageUnitQuantityUnit);
 
         // Second position
 

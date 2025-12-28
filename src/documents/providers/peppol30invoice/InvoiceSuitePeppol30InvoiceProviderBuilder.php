@@ -493,7 +493,9 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
                     $item->getQuantityChargeFree()?->getQuantity(),
                     $item->getQuantityChargeFree()?->getQuantityUnit(),
                     $item->getQuantityPackage()?->getQuantity(),
-                    $item->getQuantityPackage()?->getQuantityUnit()
+                    $item->getQuantityPackage()?->getQuantityUnit(),
+                    $item->getQuantityPerPackage()?->getQuantity(),
+                    $item->getQuantityPerPackage()?->getQuantityUnit()
                 );
 
                 // Position summation
@@ -7126,12 +7128,14 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     /**
      * Set the position's quantities
      *
-     * @param  null|float  $newQuantity               Invoiced quantity
-     * @param  null|string $newQuantityUnit           Invoiced quantity unit
-     * @param  null|float  $newChargeFreeQuantity     Charge Free quantity
-     * @param  null|string $newChargeFreeQuantityUnit Charge Free quantity unit
-     * @param  null|float  $newPackageQuantity        Package quantity
-     * @param  null|string $newPackageQuantityUnit    Package quantity unit
+     * @param  null|float  $newQuantity                   Invoiced quantity
+     * @param  null|string $newQuantityUnit               Invoiced quantity unit
+     * @param  null|float  $newChargeFreeQuantity         Charge Free quantity
+     * @param  null|string $newChargeFreeQuantityUnit     Charge Free quantity unit
+     * @param  null|float  $newPackageQuantity            Package quantity
+     * @param  null|string $newPackageQuantityUnit        Package quantity unit
+     * @param  null|float  $newPerPackageUnitQuantity     Per Package unit quantity
+     * @param  null|string $newPerPackageUnitQuantityUnit Per Package unit quantity unit
      * @return static
      */
     public function setDocumentPositionQuantities(
@@ -7141,6 +7145,8 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
         ?string $newChargeFreeQuantityUnit = null,
         ?float $newPackageQuantity = null,
         ?string $newPackageQuantityUnit = null,
+        ?float $newPerPackageUnitQuantity = null,
+        ?string $newPerPackageUnitQuantityUnit = null,
     ): static {
         $this
             ->getUblRootObject()

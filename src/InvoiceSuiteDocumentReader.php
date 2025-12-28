@@ -5799,12 +5799,14 @@ class InvoiceSuiteDocumentReader
     /**
      * Get the position's quantities from latest position
      *
-     * @param  null|float  $newQuantity               Invoiced quantity
-     * @param  null|string $newQuantityUnit           Invoiced quantity unit
-     * @param  null|float  $newChargeFreeQuantity     Charge Free quantity
-     * @param  null|string $newChargeFreeQuantityUnit Charge Free quantity unit
-     * @param  null|float  $newPackageQuantity        Package quantity
-     * @param  null|string $newPackageQuantityUnit    Package quantity unit
+     * @param  null|float  $newQuantity                   Invoiced quantity
+     * @param  null|string $newQuantityUnit               Invoiced quantity unit
+     * @param  null|float  $newChargeFreeQuantity         Charge Free quantity
+     * @param  null|string $newChargeFreeQuantityUnit     Charge Free quantity unit
+     * @param  null|float  $newPackageQuantity            Package quantity
+     * @param  null|string $newPackageQuantityUnit        Package quantity unit
+     * @param  null|float  $newPerPackageUnitQuantity     Per Package unit quantity
+     * @param  null|string $newPerPackageUnitQuantityUnit Per Package unit quantity unit
      * @return static
      *
      * @phpstan-param-out float $newQuantity
@@ -5813,6 +5815,8 @@ class InvoiceSuiteDocumentReader
      * @phpstan-param-out string $newChargeFreeQuantityUnit
      * @phpstan-param-out float $newPackageQuantity
      * @phpstan-param-out string $newPackageQuantityUnit
+     * @phpstan-param-out float $newPerPackageUnitQuantity
+     * @phpstan-param-out string $newPerPackageUnitQuantityUnit
      */
     public function getDocumentPositionQuantities(
         ?float &$newQuantity,
@@ -5820,7 +5824,9 @@ class InvoiceSuiteDocumentReader
         ?float &$newChargeFreeQuantity,
         ?string &$newChargeFreeQuantityUnit,
         ?float &$newPackageQuantity,
-        ?string &$newPackageQuantityUnit
+        ?string &$newPackageQuantityUnit,
+        ?float &$newPerPackageUnitQuantity,
+        ?string &$newPerPackageUnitQuantityUnit,
     ): static {
         $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionQuantities(
             $newQuantity,
@@ -5828,7 +5834,9 @@ class InvoiceSuiteDocumentReader
             $newChargeFreeQuantity,
             $newChargeFreeQuantityUnit,
             $newPackageQuantity,
-            $newPackageQuantityUnit
+            $newPackageQuantityUnit,
+            $newPerPackageUnitQuantity,
+            $newPerPackageUnitQuantityUnit
         );
 
         return $this;

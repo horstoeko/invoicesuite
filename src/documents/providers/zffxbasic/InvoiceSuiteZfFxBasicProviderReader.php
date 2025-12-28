@@ -2196,12 +2196,15 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractDocumentFo
                 $newDocumentPositionChargeFreeQuantity,
                 $newDocumentPositionChargeFreeQuantityUnit,
                 $newDocumentPositionPackageQuantity,
-                $newDocumentPositionPackageQuantityUnit
+                $newDocumentPositionPackageQuantityUnit,
+                $newDocumentPositionPerPackageQuantity,
+                $newDocumentPositionPerPackageQuantityUnit
             );
 
             $newDocumentPositionDTO->setQuantityBilled(new InvoiceSuiteQuantityDTO($newDocumentPositionQuantity, $newDocumentPositionQuantityUnit));
             $newDocumentPositionDTO->setQuantityChargeFree(new InvoiceSuiteQuantityDTO($newDocumentPositionChargeFreeQuantity, $newDocumentPositionChargeFreeQuantityUnit));
             $newDocumentPositionDTO->setQuantityPackage(new InvoiceSuiteQuantityDTO($newDocumentPositionPackageQuantity, $newDocumentPositionPackageQuantityUnit));
+            $newDocumentPositionDTO->setQuantityPerPackage(new InvoiceSuiteQuantityDTO($newDocumentPositionPerPackageQuantity, $newDocumentPositionPerPackageQuantityUnit));
 
             // Position Ship-To
 
@@ -8969,7 +8972,9 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractDocumentFo
         ?float &$newChargeFreeQuantity,
         ?string &$newChargeFreeQuantityUnit,
         ?float &$newPackageQuantity,
-        ?string &$newPackageQuantityUnit
+        ?string &$newPackageQuantityUnit,
+        ?float &$newPerPackageUnitQuantity,
+        ?string &$newPerPackageUnitQuantityUnit,
     ): static {
         $documentPosition = $this->resolveCurrentDocumentPosition();
 
@@ -8979,6 +8984,8 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractDocumentFo
         $newChargeFreeQuantityUnit = '';
         $newPackageQuantity = 0.0;
         $newPackageQuantityUnit = '';
+        $newPerPackageUnitQuantity = 0.0;
+        $newPerPackageUnitQuantityUnit = '';
 
         return $this;
     }

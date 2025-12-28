@@ -7235,7 +7235,7 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 0, '1.00', 'unitCode', 'C62');
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 1);
 
-        static::$document->setDocumentPositionQuantities(1.0, 'C62', 2.0, 'MTR', 3.0, 'KTR');
+        static::$document->setDocumentPositionQuantities(1.0, 'C62', 2.0, 'MTR', 3.0, 'KTR', 4.0, 'XPP');
 
         $this->disableRenderXmlContent();
 

@@ -1103,7 +1103,9 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractDocumen
                     $item->getQuantityChargeFree()?->getQuantity(),
                     $item->getQuantityChargeFree()?->getQuantityUnit(),
                     $item->getQuantityPackage()?->getQuantity(),
-                    $item->getQuantityPackage()?->getQuantityUnit()
+                    $item->getQuantityPackage()?->getQuantityUnit(),
+                    $item->getQuantityPerPackage()?->getQuantity(),
+                    $item->getQuantityPerPackage()?->getQuantityUnit()
                 );
 
                 // Position Ship-To
@@ -6486,12 +6488,14 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractDocumen
     /**
      * Set the position's quantities
      *
-     * @param  null|float  $newQuantity               __BT-129, From BASIC__ Invoiced quantity
-     * @param  null|string $newQuantityUnit           __BT-130, From BASIC__ Invoiced quantity unit
-     * @param  null|float  $newChargeFreeQuantity     __BT-X-46, From EXTENDED__ Charge Free quantity
-     * @param  null|string $newChargeFreeQuantityUnit __BT-X-46-0, From EXTENDED__ Charge Free quantity unit
-     * @param  null|float  $newPackageQuantity        __BT-X-47, From EXTENDED__ Package quantity
-     * @param  null|string $newPackageQuantityUnit    __BT-X-47-0, From EXTENDED__ Package quantity unit
+     * @param  null|float  $newQuantity                   __BT-129, From BASIC__ Invoiced quantity
+     * @param  null|string $newQuantityUnit               __BT-130, From BASIC__ Invoiced quantity unit
+     * @param  null|float  $newChargeFreeQuantity         __BT-X-46, From EXTENDED__ Charge Free quantity
+     * @param  null|string $newChargeFreeQuantityUnit     __BT-X-46-0, From EXTENDED__ Charge Free quantity unit
+     * @param  null|float  $newPackageQuantity            __BT-X-47, From EXTENDED__ Package quantity
+     * @param  null|string $newPackageQuantityUnit        __BT-X-47-0, From EXTENDED__ Package quantity unit
+     * @param  null|float  $newPerPackageUnitQuantity     __BT-X-561, From EXTENDED__ Per Package unit quantity
+     * @param  null|string $newPerPackageUnitQuantityUnit __BT-X-561-0, From EXTENDED__ Per Package unit quantity unit
      * @return static
      */
     public function setDocumentPositionQuantities(
@@ -6501,6 +6505,8 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractDocumen
         ?string $newChargeFreeQuantityUnit = null,
         ?float $newPackageQuantity = null,
         ?string $newPackageQuantityUnit = null,
+        ?float $newPerPackageUnitQuantity = null,
+        ?string $newPerPackageUnitQuantityUnit = null,
     ): static {
         // Nothing here...
 

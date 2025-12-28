@@ -7271,7 +7271,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
         $this->assertXPathValueWithIndexAndAttribute('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 0, '1.00', 'unitCode', 'C62');
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 1);
 
-        static::$document->setDocumentPositionQuantities(1.0, 'C62', 2.0, 'MTR', 3.0, 'KTR');
+        static::$document->setDocumentPositionQuantities(1.0, 'C62', 2.0, 'MTR', 3.0, 'KTR', 4.0, 'XPP');
 
         $this->disableRenderXmlContent();
 
@@ -8269,6 +8269,7 @@ final class XRechnungUBLInvoiceBuilderTest extends TestCase
                 ->setQuantityBilled(new InvoiceSuiteQuantityDTO(1.0, 'C62'))
                 ->setQuantityChargeFree(new InvoiceSuiteQuantityDTO(2.0, 'C62'))
                 ->setQuantityPackage(new InvoiceSuiteQuantityDTO(3.0, 'C62'))
+                ->setQuantityPerPackage(new InvoiceSuiteQuantityDTO(4.0, 'XPP'))
                 ->setShipToParty(
                     (new InvoiceSuitePartyDTO())
                         ->addName('Ship To GmbH')

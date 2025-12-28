@@ -2208,12 +2208,15 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
                 $newDocumentPositionChargeFreeQuantity,
                 $newDocumentPositionChargeFreeQuantityUnit,
                 $newDocumentPositionPackageQuantity,
-                $newDocumentPositionPackageQuantityUnit
+                $newDocumentPositionPackageQuantityUnit,
+                $newDocumentPositionPerPackageQuantity,
+                $newDocumentPositionPerPackageQuantityUnit
             );
 
             $newDocumentPositionDTO->setQuantityBilled(new InvoiceSuiteQuantityDTO($newDocumentPositionQuantity, $newDocumentPositionQuantityUnit));
             $newDocumentPositionDTO->setQuantityChargeFree(new InvoiceSuiteQuantityDTO($newDocumentPositionChargeFreeQuantity, $newDocumentPositionChargeFreeQuantityUnit));
             $newDocumentPositionDTO->setQuantityPackage(new InvoiceSuiteQuantityDTO($newDocumentPositionPackageQuantity, $newDocumentPositionPackageQuantityUnit));
+            $newDocumentPositionDTO->setQuantityPerPackage(new InvoiceSuiteQuantityDTO($newDocumentPositionPerPackageQuantity, $newDocumentPositionPerPackageQuantityUnit));
 
             // Position Ship-To
 
@@ -9040,12 +9043,14 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
     /**
      * Get the position's quantities from latest position
      *
-     * @param  null|float  $newQuantity               Invoiced quantity
-     * @param  null|string $newQuantityUnit           Invoiced quantity unit
-     * @param  null|float  $newChargeFreeQuantity     Charge Free quantity
-     * @param  null|string $newChargeFreeQuantityUnit Charge Free quantity unit
-     * @param  null|float  $newPackageQuantity        Package quantity
-     * @param  null|string $newPackageQuantityUnit    Package quantity unit
+     * @param  null|float  $newQuantity                   Invoiced quantity
+     * @param  null|string $newQuantityUnit               Invoiced quantity unit
+     * @param  null|float  $newChargeFreeQuantity         Charge Free quantity
+     * @param  null|string $newChargeFreeQuantityUnit     Charge Free quantity unit
+     * @param  null|float  $newPackageQuantity            Package quantity
+     * @param  null|string $newPackageQuantityUnit        Package quantity unit
+     * @param  null|float  $newPerPackageUnitQuantity     Per Package unit quantity
+     * @param  null|string $newPerPackageUnitQuantityUnit Per Package unit quantity unit
      * @return static
      *
      * @phpstan-param-out float $newQuantity
@@ -9054,6 +9059,8 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
      * @phpstan-param-out string $newChargeFreeQuantityUnit
      * @phpstan-param-out float $newPackageQuantity
      * @phpstan-param-out string $newPackageQuantityUnit
+     * @phpstan-param-out float $newPerPackageUnitQuantity
+     * @phpstan-param-out string $newPerPackageUnitQuantityUnit
      */
     public function getDocumentPositionQuantities(
         ?float &$newQuantity,
@@ -9061,7 +9068,9 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         ?float &$newChargeFreeQuantity,
         ?string &$newChargeFreeQuantityUnit,
         ?float &$newPackageQuantity,
-        ?string &$newPackageQuantityUnit
+        ?string &$newPackageQuantityUnit,
+        ?float &$newPerPackageUnitQuantity,
+        ?string &$newPerPackageUnitQuantityUnit,
     ): static {
         $documentPosition = $this->resolveCurrentDocumentPosition();
 
@@ -9071,6 +9080,8 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
         $newChargeFreeQuantityUnit = '';
         $newPackageQuantity = 0.0;
         $newPackageQuantityUnit = '';
+        $newPerPackageUnitQuantity = 0.0;
+        $newPerPackageUnitQuantityUnit = '';
 
         return $this;
     }

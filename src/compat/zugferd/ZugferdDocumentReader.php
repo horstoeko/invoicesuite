@@ -4604,7 +4604,9 @@ class ZugferdDocumentReader
             $chargeFreeQuantity,
             $chargeFreeQuantityUnitCpde,
             $packageQuantity,
-            $packageQuantityUnitCode
+            $packageQuantityUnitCode,
+            $newPerPackageUnitQuantity,
+            $newPerPackageUnitQuantityUnit
         );
 
         return $this;

@@ -2715,6 +2715,22 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(QuantityType::class, $testValueForPackageQuantity);
         $this->assertSame($testValueForPackageQuantity, $model->getPackageQuantity());
 
+        // Property PerPackageUnitQuantity
+
+        $testValue = new QuantityType();
+        $model->setPerPackageUnitQuantity($testValue);
+
+        $this->assertEquals($testValue, $model->getPerPackageUnitQuantity());
+
+        $model->unsetPerPackageUnitQuantity();
+
+        $this->assertNotInstanceOf(QuantityType::class, $model->getPerPackageUnitQuantity());
+
+        $testValueForPerPackageUnitQuantity = $model->getPerPackageUnitQuantityWithCreate();
+
+        $this->assertInstanceOf(QuantityType::class, $testValueForPerPackageUnitQuantity);
+        $this->assertSame($testValueForPerPackageUnitQuantity, $model->getPerPackageUnitQuantity());
+
         // Property ShipToTradeParty
 
         $testValue = new TradePartyType();

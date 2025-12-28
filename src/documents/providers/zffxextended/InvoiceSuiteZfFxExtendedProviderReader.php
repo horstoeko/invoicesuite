@@ -2206,12 +2206,15 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
                 $newDocumentPositionChargeFreeQuantity,
                 $newDocumentPositionChargeFreeQuantityUnit,
                 $newDocumentPositionPackageQuantity,
-                $newDocumentPositionPackageQuantityUnit
+                $newDocumentPositionPackageQuantityUnit,
+                $newDocumentPositionPerPackageQuantity,
+                $newDocumentPositionPerPackageQuantityUnit
             );
 
             $newDocumentPositionDTO->setQuantityBilled(new InvoiceSuiteQuantityDTO($newDocumentPositionQuantity, $newDocumentPositionQuantityUnit));
             $newDocumentPositionDTO->setQuantityChargeFree(new InvoiceSuiteQuantityDTO($newDocumentPositionChargeFreeQuantity, $newDocumentPositionChargeFreeQuantityUnit));
             $newDocumentPositionDTO->setQuantityPackage(new InvoiceSuiteQuantityDTO($newDocumentPositionPackageQuantity, $newDocumentPositionPackageQuantityUnit));
+            $newDocumentPositionDTO->setQuantityPerPackage(new InvoiceSuiteQuantityDTO($newDocumentPositionPerPackageQuantity, $newDocumentPositionPerPackageQuantityUnit));
 
             // Position Ship-To
 
@@ -10609,12 +10612,14 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
     /**
      * Get the position's quantities from latest position
      *
-     * @param  null|float  $newQuantity               __BT-129, From BASIC__ Invoiced quantity
-     * @param  null|string $newQuantityUnit           __BT-130, From BASIC__ Invoiced quantity unit
-     * @param  null|float  $newChargeFreeQuantity     __BT-X-46, From EXTENDED__ Charge Free quantity
-     * @param  null|string $newChargeFreeQuantityUnit __BT-X-46-0, From EXTENDED__ Charge Free quantity unit
-     * @param  null|float  $newPackageQuantity        __BT-X-47, From EXTENDED__ Package quantity
-     * @param  null|string $newPackageQuantityUnit    __BT-X-47-0, From EXTENDED__ Package quantity unit
+     * @param  null|float  $newQuantity                   __BT-129, From BASIC__ Invoiced quantity
+     * @param  null|string $newQuantityUnit               __BT-130, From BASIC__ Invoiced quantity unit
+     * @param  null|float  $newChargeFreeQuantity         __BT-X-46, From EXTENDED__ Charge Free quantity
+     * @param  null|string $newChargeFreeQuantityUnit     __BT-X-46-0, From EXTENDED__ Charge Free quantity unit
+     * @param  null|float  $newPackageQuantity            __BT-X-47, From EXTENDED__ Package quantity
+     * @param  null|string $newPackageQuantityUnit        __BT-X-47-0, From EXTENDED__ Package quantity unit
+     * @param  null|float  $newPerPackageUnitQuantity     __BT-X-561, From EXTENDED__ Per Package unit quantity
+     * @param  null|string $newPerPackageUnitQuantityUnit __BT-X-561-0, From EXTENDED__ Per Package unit quantity unit
      * @return static
      *
      * @phpstan-param-out float $newQuantity
@@ -10623,6 +10628,8 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @phpstan-param-out string $newChargeFreeQuantityUnit
      * @phpstan-param-out float $newPackageQuantity
      * @phpstan-param-out string $newPackageQuantityUnit
+     * @phpstan-param-out float $newPerPackageUnitQuantity
+     * @phpstan-param-out string $newPerPackageUnitQuantityUnit
      */
     public function getDocumentPositionQuantities(
         ?float &$newQuantity,
@@ -10630,7 +10637,9 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
         ?float &$newChargeFreeQuantity,
         ?string &$newChargeFreeQuantityUnit,
         ?float &$newPackageQuantity,
-        ?string &$newPackageQuantityUnit
+        ?string &$newPackageQuantityUnit,
+        ?float &$newPerPackageUnitQuantity,
+        ?string &$newPerPackageUnitQuantityUnit,
     ): static {
         $documentPosition = $this->resolveCurrentDocumentPosition();
 
@@ -10640,6 +10649,8 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
         $newChargeFreeQuantityUnit = $documentPosition->getSpecifiedLineTradeDelivery()?->getChargeFreeQuantity()?->getUnitCode() ?? '';
         $newPackageQuantity = $documentPosition->getSpecifiedLineTradeDelivery()?->getPackageQuantity()?->getValue() ?? 0.0;
         $newPackageQuantityUnit = $documentPosition->getSpecifiedLineTradeDelivery()?->getPackageQuantity()?->getUnitCode() ?? '';
+        $newPerPackageUnitQuantity = $documentPosition->getSpecifiedLineTradeDelivery()?->getPerPackageUnitQuantity()?->getValue() ?? 0.0;
+        $newPerPackageUnitQuantityUnit = $documentPosition->getSpecifiedLineTradeDelivery()?->getPerPackageUnitQuantity()?->getUnitCode() ?? '';
 
         return $this;
     }
