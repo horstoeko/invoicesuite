@@ -930,20 +930,20 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
             return;
         }
 
-        $objects = scandir($directoryToRemove);
+        $filenames = scandir($directoryToRemove);
 
-        if (false === $objects) {
+        if (false === $filenames) {
             return;
         }
 
-        foreach ($objects as $object) {
-            if ('.' !== $object && '..' !== $object) {
-                $fullFilename = InvoiceSuitePathUtils::combinePathWithFile($directoryToRemove, $object);
+        foreach ($filenames as $filename) {
+            if ('.' !== $filename && '..' !== $filename) {
+                $filenameWithPath = InvoiceSuitePathUtils::combinePathWithFile($directoryToRemove, $filename);
 
-                if (is_dir($fullFilename) && !is_link($fullFilename)) {
-                    $this->cleanupBaseDirectoryInternal($fullFilename);
+                if (is_dir($filenameWithPath) && !is_link($filenameWithPath)) {
+                    $this->cleanupBaseDirectoryInternal($filenameWithPath);
                 } else {
-                    unlink($fullFilename);
+                    unlink($filenameWithPath);
                 }
             }
         }
@@ -975,12 +975,10 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
 
             if (!$process->isSuccessful()) {
                 if (-1 == $process->getExitCode()) {
-                    // Validation error
                     $this->addErrorMessageToMessageBag('Parsing error. The commandline arguments specified are incorrect');
                 }
 
                 if (-2 == $process->getExitCode()) {
-                    // Validation error
                     $this->addErrorMessageToMessageBag('Configuration error. There is an error loading the configuration and/or validation targets');
                 }
 
