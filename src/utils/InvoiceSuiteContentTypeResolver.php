@@ -20,17 +20,17 @@ class InvoiceSuiteContentTypeResolver
     /**
      * Get content type of a given content
      *
-     * @param  string                                   $fromContent
-     * @return null|InvoiceSuiteContentTypeResolverType
+     * @param  string                       $fromContent
+     * @return null|InvoiceSuiteContentType
      */
-    public static function resolveContentType(string $fromContent): ?InvoiceSuiteContentTypeResolverType
+    public static function resolveContentType(string $fromContent): ?InvoiceSuiteContentType
     {
         if (static::isValidJson($fromContent)) {
-            return InvoiceSuiteContentTypeResolverType::JSON;
+            return InvoiceSuiteContentType::JSON;
         }
 
         if (static::isValidXml($fromContent)) {
-            return InvoiceSuiteContentTypeResolverType::XML;
+            return InvoiceSuiteContentType::XML;
         }
 
         return null;

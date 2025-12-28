@@ -16,7 +16,7 @@ use DOMXPath;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\documents\models\ubl\main\CreditNote;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
-use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolverType;
+use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 
 class InvoiceSuiteXRechnungUBLCreditNoteProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
@@ -31,9 +31,9 @@ class InvoiceSuiteXRechnungUBLCreditNoteProvider extends InvoiceSuiteAbstractDoc
     /**
      * {@inheritDoc}
      */
-    public function getContentType(): InvoiceSuiteContentTypeResolverType
+    public function getContentType(): InvoiceSuiteContentType
     {
-        return InvoiceSuiteContentTypeResolverType::XML;
+        return InvoiceSuiteContentType::XML;
     }
 
     /**

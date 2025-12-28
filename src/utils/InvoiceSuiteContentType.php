@@ -19,7 +19,7 @@ namespace horstoeko\invoicesuite\utils;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-enum InvoiceSuiteContentTypeResolverType: string
+enum InvoiceSuiteContentType: string
 {
     /**
      * XML format

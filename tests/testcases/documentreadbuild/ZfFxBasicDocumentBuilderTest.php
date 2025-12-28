@@ -50,8 +50,8 @@ use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\tests\traits\HandlesXmlTests;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
+use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
-use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolverType;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 
 final class ZfFxBasicDocumentBuilderTest extends TestCase
@@ -16796,7 +16796,7 @@ final class ZfFxBasicDocumentBuilderTest extends TestCase
     {
         $resolvedContentType = InvoiceSuiteContentTypeResolver::resolveContentType(static::$document->getContent());
 
-        $this->assertSame(InvoiceSuiteContentTypeResolverType::XML, $resolvedContentType);
+        $this->assertSame(InvoiceSuiteContentType::XML, $resolvedContentType);
     }
 
     public function testSaveAsXmlFile(): void
@@ -16817,7 +16817,7 @@ final class ZfFxBasicDocumentBuilderTest extends TestCase
 
         $resolvedContentType = InvoiceSuiteContentTypeResolver::resolveContentType($xmlFileContent);
 
-        $this->assertSame(InvoiceSuiteContentTypeResolverType::XML, $resolvedContentType);
+        $this->assertSame(InvoiceSuiteContentType::XML, $resolvedContentType);
     }
 
     public function testCopyToReader(): void
