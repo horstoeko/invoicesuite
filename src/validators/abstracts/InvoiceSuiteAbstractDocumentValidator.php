@@ -75,7 +75,7 @@ abstract class InvoiceSuiteAbstractDocumentValidator
      *
      * @throws RuntimeException
      */
-    public static function createFromDocumentBuilderAsXml(InvoiceSuiteDocumentBuilder $fromDocumentBuilder): static
+    public static function createFromDocumentBuilder(InvoiceSuiteDocumentBuilder $fromDocumentBuilder): static
     {
         return static::createFromContent($fromDocumentBuilder->getContent());
     }

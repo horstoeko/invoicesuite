@@ -107,7 +107,7 @@ $documentBuilder->saveContentToFile(__DIR__ . "/01_SimpleInvoice_UBL.xml");
 
 // Create (Remote-) Validator
 
-$validator = InvoiceSuiteKositDocumentValidator::createFromDocumentBuilderAsXml($documentBuilder);
+$validator = InvoiceSuiteKositDocumentValidator::createFromDocumentBuilder($documentBuilder);
 $validator->enableRemoteMode();
 $validator->setRemoteModeHost('192.168.1.83');
 $validator->setRemoteModePort(8081);

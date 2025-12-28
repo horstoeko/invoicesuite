@@ -16,7 +16,7 @@ $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('xrechnungublin
 $builder->createFromDTO($dto);
 $builder->saveContentToFile(__DIR__ . "/01_SimpleInvoice_UBL2.xml");
 
-$validator = InvoiceSuiteKositDocumentValidator::createFromDocumentBuilderAsXml($builder);
+$validator = InvoiceSuiteKositDocumentValidator::createFromDocumentBuilder($builder);
 $validator->enableRemoteMode();
 $validator->setRemoteModeHost('192.168.1.83');
 $validator->setRemoteModePort(8081);

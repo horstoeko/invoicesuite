@@ -932,6 +932,10 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
 
         $objects = scandir($directoryToRemove);
 
+        if ($objects === false) {
+            return;
+        }
+
         foreach ($objects as $object) {
             if ('.' !== $object && '..' !== $object) {
                 $fullFilename = InvoiceSuitePathUtils::combinePathWithFile($directoryToRemove, $object);
