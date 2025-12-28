@@ -46,6 +46,17 @@ class LineTradeDeliveryType
     private $packageQuantity;
 
     /**
+     * @var null|QuantityType
+     * @JMS\Groups({"zffx"})
+     * @JMS\Type("horstoeko\invoicesuite\documents\models\zffxextended\udt\QuantityType")
+     * @JMS\Expose
+     * @JMS\SerializedName("PerPackageUnitQuantity")
+     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
+     * @JMS\Accessor(getter="getPerPackageUnitQuantity", setter="setPerPackageUnitQuantity")
+     */
+    private $perPackageUnitQuantity;
+
+    /**
      * @var null|TradePartyType
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\documents\models\zffxextended\ram\TradePartyType")
@@ -224,6 +235,45 @@ class LineTradeDeliveryType
     public function unsetPackageQuantity(): static
     {
         $this->packageQuantity = null;
+
+        return $this;
+    }
+
+    /**
+     * @return null|QuantityType
+     */
+    public function getPerPackageUnitQuantity(): ?QuantityType
+    {
+        return $this->perPackageUnitQuantity;
+    }
+
+    /**
+     * @return QuantityType
+     */
+    public function getPerPackageUnitQuantityWithCreate(): QuantityType
+    {
+        $this->perPackageUnitQuantity = is_null($this->perPackageUnitQuantity) ? new QuantityType() : $this->perPackageUnitQuantity;
+
+        return $this->perPackageUnitQuantity;
+    }
+
+    /**
+     * @param  null|QuantityType $perPackageUnitQuantity
+     * @return static
+     */
+    public function setPerPackageUnitQuantity(?QuantityType $perPackageUnitQuantity = null): static
+    {
+        $this->perPackageUnitQuantity = $perPackageUnitQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function unsetPerPackageUnitQuantity(): static
+    {
+        $this->perPackageUnitQuantity = null;
 
         return $this;
     }

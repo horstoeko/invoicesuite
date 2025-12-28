@@ -12,6 +12,17 @@ class LineTradeAgreementType
     use HandlesObjectFlags;
 
     /**
+     * @var null|TradeDeliveryTermsType
+     * @JMS\Groups({"zffx"})
+     * @JMS\Type("horstoeko\invoicesuite\documents\models\zffxextended\ram\TradeDeliveryTermsType")
+     * @JMS\Expose
+     * @JMS\SerializedName("ApplicableTradeDeliveryTerms")
+     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
+     * @JMS\Accessor(getter="getApplicableTradeDeliveryTerms", setter="setApplicableTradeDeliveryTerms")
+     */
+    private $applicableTradeDeliveryTerms;
+
+    /**
      * @var null|ReferencedDocumentType
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\documents\models\zffxextended\ram\ReferencedDocumentType")
@@ -90,6 +101,17 @@ class LineTradeAgreementType
     private $netPriceProductTradePrice;
 
     /**
+     * @var null|TradePartyType
+     * @JMS\Groups({"zffx"})
+     * @JMS\Type("horstoeko\invoicesuite\documents\models\zffxextended\ram\TradePartyType")
+     * @JMS\Expose
+     * @JMS\SerializedName("ItemSellerTradeParty")
+     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
+     * @JMS\Accessor(getter="getItemSellerTradeParty", setter="setItemSellerTradeParty")
+     */
+    private $itemSellerTradeParty;
+
+    /**
      * @var null|array<ReferencedDocumentType>
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\documents\models\zffxextended\ram\ReferencedDocumentType>")
@@ -100,6 +122,46 @@ class LineTradeAgreementType
      * @JMS\Accessor(getter="getUltimateCustomerOrderReferencedDocument", setter="setUltimateCustomerOrderReferencedDocument")
      */
     private $ultimateCustomerOrderReferencedDocument;
+
+    /**
+     * @return null|TradeDeliveryTermsType
+     */
+    public function getApplicableTradeDeliveryTerms(): ?TradeDeliveryTermsType
+    {
+        return $this->applicableTradeDeliveryTerms;
+    }
+
+    /**
+     * @return TradeDeliveryTermsType
+     */
+    public function getApplicableTradeDeliveryTermsWithCreate(): TradeDeliveryTermsType
+    {
+        $this->applicableTradeDeliveryTerms = is_null($this->applicableTradeDeliveryTerms) ? new TradeDeliveryTermsType() : $this->applicableTradeDeliveryTerms;
+
+        return $this->applicableTradeDeliveryTerms;
+    }
+
+    /**
+     * @param  null|TradeDeliveryTermsType $applicableTradeDeliveryTerms
+     * @return static
+     */
+    public function setApplicableTradeDeliveryTerms(
+        ?TradeDeliveryTermsType $applicableTradeDeliveryTerms = null,
+    ): static {
+        $this->applicableTradeDeliveryTerms = $applicableTradeDeliveryTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function unsetApplicableTradeDeliveryTerms(): static
+    {
+        $this->applicableTradeDeliveryTerms = null;
+
+        return $this;
+    }
 
     /**
      * @return null|ReferencedDocumentType
@@ -424,6 +486,45 @@ class LineTradeAgreementType
     public function unsetNetPriceProductTradePrice(): static
     {
         $this->netPriceProductTradePrice = null;
+
+        return $this;
+    }
+
+    /**
+     * @return null|TradePartyType
+     */
+    public function getItemSellerTradeParty(): ?TradePartyType
+    {
+        return $this->itemSellerTradeParty;
+    }
+
+    /**
+     * @return TradePartyType
+     */
+    public function getItemSellerTradePartyWithCreate(): TradePartyType
+    {
+        $this->itemSellerTradeParty = is_null($this->itemSellerTradeParty) ? new TradePartyType() : $this->itemSellerTradeParty;
+
+        return $this->itemSellerTradeParty;
+    }
+
+    /**
+     * @param  null|TradePartyType $itemSellerTradeParty
+     * @return static
+     */
+    public function setItemSellerTradeParty(?TradePartyType $itemSellerTradeParty = null): static
+    {
+        $this->itemSellerTradeParty = $itemSellerTradeParty;
+
+        return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function unsetItemSellerTradeParty(): static
+    {
+        $this->itemSellerTradeParty = null;
 
         return $this;
     }
