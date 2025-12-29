@@ -28,14 +28,14 @@ trait HandlesRawContents
      *
      * @var string
      */
-    private $rawDocumentContent;
+    private $rawDocumentContent = '';
 
     /**
      * Internal buffer which holds the content of the PDF document
      *
      * @var string
      */
-    private $rawPdfContent;
+    private $rawPdfContent = '';
 
     /**
      * Set the invoice document content
@@ -71,6 +71,18 @@ trait HandlesRawContents
     }
 
     /**
+     * Clear document content
+     *
+     * @return static
+     */
+    protected function clearRawDocumentContent(): static
+    {
+        $this->rawDocumentContent = '';
+
+        return $this;
+    }
+
+    /**
      * Set the PDF content
      *
      * @param  string $fromPdfContent
@@ -101,5 +113,17 @@ trait HandlesRawContents
     protected function hasRawPdfContent(): bool
     {
         return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->rawPdfContent);
+    }
+
+    /**
+     * Clear PDF content
+     *
+     * @return static
+     */
+    protected function clearRawPdfContent(): static
+    {
+        $this->rawPdfContent = '';
+
+        return $this;
     }
 }
