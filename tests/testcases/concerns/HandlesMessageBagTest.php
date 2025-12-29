@@ -20,7 +20,7 @@ final class HandlesMessageBagTest extends TestCase
 
     public function testClearMessageBagFirstCall(): void
     {
-        $this->assertNull($this->messageBag);
+        $this->assertNotInstanceOf(InvoiceSuiteMessageBag::class, $this->messageBag);
         $this->assertSame($this, $this->clearMessageBag());
         $this->assertInstanceOf(InvoiceSuiteMessageBag::class, $this->messageBag);
         $this->assertInstanceOf(ArrayAccess::class, $this->messageBag);

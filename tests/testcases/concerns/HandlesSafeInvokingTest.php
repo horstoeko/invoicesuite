@@ -25,6 +25,7 @@ final class HandlesSafeInvokingTest extends TestCase
 
         $receiver = new class {
             public bool $wasCalled = false;
+
             public mixed $receivedValue = null;
 
             public function setValue($value): void
@@ -46,6 +47,7 @@ final class HandlesSafeInvokingTest extends TestCase
 
         $receiver = new class {
             public bool $wasCalled = false;
+
             public mixed $receivedValue = null;
 
             public function setValue($value): void
@@ -68,6 +70,7 @@ final class HandlesSafeInvokingTest extends TestCase
 
         $receiver = new class {
             public bool $wasCalled = false;
+
             public mixed $receivedValue = null;
 
             public function setValue($value): void
@@ -147,6 +150,7 @@ final class HandlesSafeInvokingTest extends TestCase
 
         $childReceiver = new class {
             public bool $wasSetCalled = false;
+
             public mixed $value = null;
 
             public function setFoo($value): void
@@ -177,6 +181,7 @@ final class HandlesSafeInvokingTest extends TestCase
 
         $childReceiver = new class {
             public bool $wasSetCalled = false;
+
             public mixed $value = null;
 
             public function setFoo($value): void
@@ -207,6 +212,7 @@ final class HandlesSafeInvokingTest extends TestCase
 
         $childReceiver = new class {
             public bool $wasSetCalled = false;
+
             public mixed $value = null;
 
             public function setFoo($value): void
