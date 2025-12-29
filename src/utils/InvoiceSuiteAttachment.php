@@ -236,9 +236,8 @@ class InvoiceSuiteAttachment
         }
 
         $tempFileInfo = new finfo(FILEINFO_MIME_TYPE);
-        $mime = $tempFileInfo->buffer($this->internalContent);
 
-        return $mime;
+        return $tempFileInfo->buffer($this->internalContent);
     }
 
     /**
