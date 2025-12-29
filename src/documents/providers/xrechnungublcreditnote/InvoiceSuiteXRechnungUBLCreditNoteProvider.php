@@ -14,7 +14,7 @@ namespace horstoeko\invoicesuite\documents\providers\xrechnungublcreditnote;
 use DOMDocument;
 use DOMXPath;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
-use horstoeko\invoicesuite\documents\models\ubl\main\CreditNote;
+use horstoeko\invoicesuite\documents\models\peppol\main\CreditNote;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 

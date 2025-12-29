@@ -14,7 +14,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol30creditnote;
 use DOMDocument;
 use DOMXPath;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
-use horstoeko\invoicesuite\documents\models\ubl\main\CreditNote;
+use horstoeko\invoicesuite\documents\models\peppol\main\CreditNote;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 
 class InvoiceSuitePeppol30CreditNoteProvider extends InvoiceSuiteAbstractDocumentFormatProvider

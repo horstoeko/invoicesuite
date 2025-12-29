@@ -14,7 +14,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol30invoice;
 use DOMDocument;
 use DOMXPath;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
-use horstoeko\invoicesuite\documents\models\ubl\main\Invoice;
+use horstoeko\invoicesuite\documents\models\peppol\main\Invoice;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 
 class InvoiceSuitePeppol30InvoiceProvider extends InvoiceSuiteAbstractDocumentFormatProvider

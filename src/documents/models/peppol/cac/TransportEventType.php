@@ -1,0 +1,919 @@
+<?php
+
+declare(strict_types=1);
+
+namespace horstoeko\invoicesuite\documents\models\peppol\cac;
+
+use DateTimeInterface;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\documents\models\peppol\cbc\Description;
+use horstoeko\invoicesuite\documents\models\peppol\cbc\IdentificationID;
+use horstoeko\invoicesuite\documents\models\peppol\cbc\TransportEventTypeCode;
+use JMS\Serializer\Annotation as JMS;
+
+class TransportEventType
+{
+    use HandlesObjectFlags;
+
+    /**
+     * @var null|IdentificationID
+     * @JMS\Groups({"ubl"})
+     * @JMS\Type("horstoeko\invoicesuite\documents\models\peppol\cbc\IdentificationID")
+     * @JMS\Expose
+     * @JMS\SerializedName("IdentificationID")
+     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
+     * @JMS\Accessor(getter="getIdentificationID", setter="setIdentificationID")
+     */
+    private $identificationID;
+
+    /**
+     * @var null|DateTimeInterface
+     * @JMS\Groups({"ubl"})
+     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
+     * @JMS\Expose
+     * @JMS\SerializedName("OccurrenceDate")
+     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
+     * @JMS\Accessor(getter="getOccurrenceDate", setter="setOccurrenceDate")
+     */
+    private $occurrenceDate;
+
+    /**
+     * @var null|DateTimeInterface
+     * @JMS\Groups({"ubl"})
+     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
+     * @JMS\Expose
+     * @JMS\SerializedName("OccurrenceTime")
+     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
+     * @JMS\Accessor(getter="getOccurrenceTime", setter="setOccurrenceTime")
+     */
+    private $occurrenceTime;
+
+    /**
+     * @var null|TransportEventTypeCode
+     * @JMS\Groups({"ubl"})
+     * @JMS\Type("horstoeko\invoicesuite\documents\models\peppol\cbc\TransportEventTypeCode")
+     * @JMS\Expose
+     * @JMS\SerializedName("TransportEventTypeCode")
+     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
+     * @JMS\Accessor(getter="getTransportEventTypeCode", setter="setTransportEventTypeCode")
+     */
+    private $transportEventTypeCode;
+
+    /**
+     * @var null|array<Description>
+     * @JMS\Groups({"ubl"})
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\models\peppol\cbc\Description>")
+     * @JMS\Expose
+     * @JMS\SerializedName("Description")
+     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
+     * @JMS\XmlList(inline=true, entry="Description", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
+     * @JMS\Accessor(getter="getDescription", setter="setDescription")
+     */
+    private $description;
+
+    /**
+     * @var null|bool
+     * @JMS\Groups({"ubl"})
+     * @JMS\Type("bool")
+     * @JMS\Expose
+     * @JMS\SerializedName("CompletionIndicator")
+     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
+     * @JMS\Accessor(getter="getCompletionIndicator", setter="setCompletionIndicator")
+     */
+    private $completionIndicator;
+
+    /**
+     * @var null|ReportedShipment
+     * @JMS\Groups({"ubl"})
+     * @JMS\Type("horstoeko\invoicesuite\documents\models\peppol\cac\ReportedShipment")
+     * @JMS\Expose
+     * @JMS\SerializedName("ReportedShipment")
+     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
+     * @JMS\Accessor(getter="getReportedShipment", setter="setReportedShipment")
+     */
+    private $reportedShipment;
+
+    /**
+     * @var null|array<CurrentStatus>
+     * @JMS\Groups({"ubl"})
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\models\peppol\cac\CurrentStatus>")
+     * @JMS\Expose
+     * @JMS\SerializedName("CurrentStatus")
+     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
+     * @JMS\XmlList(inline=true, entry="CurrentStatus", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
+     * @JMS\Accessor(getter="getCurrentStatus", setter="setCurrentStatus")
+     */
+    private $currentStatus;
+
+    /**
+     * @var null|array<Contact>
+     * @JMS\Groups({"ubl"})
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\models\peppol\cac\Contact>")
+     * @JMS\Expose
+     * @JMS\SerializedName("Contact")
+     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
+     * @JMS\XmlList(inline=true, entry="Contact", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
+     * @JMS\Accessor(getter="getContact", setter="setContact")
+     */
+    private $contact;
+
+    /**
+     * @var null|Location
+     * @JMS\Groups({"ubl"})
+     * @JMS\Type("horstoeko\invoicesuite\documents\models\peppol\cac\Location")
+     * @JMS\Expose
+     * @JMS\SerializedName("Location")
+     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
+     * @JMS\Accessor(getter="getLocation", setter="setLocation")
+     */
+    private $location;
+
+    /**
+     * @var null|Signature
+     * @JMS\Groups({"ubl"})
+     * @JMS\Type("horstoeko\invoicesuite\documents\models\peppol\cac\Signature")
+     * @JMS\Expose
+     * @JMS\SerializedName("Signature")
+     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
+     * @JMS\Accessor(getter="getSignature", setter="setSignature")
+     */
+    private $signature;
+
+    /**
+     * @var null|array<Period>
+     * @JMS\Groups({"ubl"})
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\models\peppol\cac\Period>")
+     * @JMS\Expose
+     * @JMS\SerializedName("Period")
+     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
+     * @JMS\XmlList(inline=true, entry="Period", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
+     * @JMS\Accessor(getter="getPeriod", setter="setPeriod")
+     */
+    private $period;
+
+    /**
+     * @return null|IdentificationID
+     */
+    public function getIdentificationID(): ?IdentificationID
+    {
+        return $this->identificationID;
+    }
+
+    /**
+     * @return IdentificationID
+     */
+    public function getIdentificationIDWithCreate(): IdentificationID
+    {
+        $this->identificationID = is_null($this->identificationID) ? new IdentificationID() : $this->identificationID;
+
+        return $this->identificationID;
+    }
+
+    /**
+     * @param  null|IdentificationID $identificationID
+     * @return static
+     */
+    public function setIdentificationID(?IdentificationID $identificationID = null): static
+    {
+        $this->identificationID = $identificationID;
+
+        return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function unsetIdentificationID(): static
+    {
+        $this->identificationID = null;
+
+        return $this;
+    }
+
+    /**
+     * @return null|DateTimeInterface
+     */
+    public function getOccurrenceDate(): ?DateTimeInterface
+    {
+        return $this->occurrenceDate;
+    }
+
+    /**
+     * @param  null|DateTimeInterface $occurrenceDate
+     * @return static
+     */
+    public function setOccurrenceDate(?DateTimeInterface $occurrenceDate = null): static
+    {
+        $this->occurrenceDate = $occurrenceDate;
+
+        return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function unsetOccurrenceDate(): static
+    {
+        $this->occurrenceDate = null;
+
+        return $this;
+    }
+
+    /**
+     * @return null|DateTimeInterface
+     */
+    public function getOccurrenceTime(): ?DateTimeInterface
+    {
+        return $this->occurrenceTime;
+    }
+
+    /**
+     * @param  null|DateTimeInterface $occurrenceTime
+     * @return static
+     */
+    public function setOccurrenceTime(?DateTimeInterface $occurrenceTime = null): static
+    {
+        $this->occurrenceTime = $occurrenceTime;
+
+        return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function unsetOccurrenceTime(): static
+    {
+        $this->occurrenceTime = null;
+
+        return $this;
+    }
+
+    /**
+     * @return null|TransportEventTypeCode
+     */
+    public function getTransportEventTypeCode(): ?TransportEventTypeCode
+    {
+        return $this->transportEventTypeCode;
+    }
+
+    /**
+     * @return TransportEventTypeCode
+     */
+    public function getTransportEventTypeCodeWithCreate(): TransportEventTypeCode
+    {
+        $this->transportEventTypeCode = is_null($this->transportEventTypeCode) ? new TransportEventTypeCode() : $this->transportEventTypeCode;
+
+        return $this->transportEventTypeCode;
+    }
+
+    /**
+     * @param  null|TransportEventTypeCode $transportEventTypeCode
+     * @return static
+     */
+    public function setTransportEventTypeCode(?TransportEventTypeCode $transportEventTypeCode = null): static
+    {
+        $this->transportEventTypeCode = $transportEventTypeCode;
+
+        return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function unsetTransportEventTypeCode(): static
+    {
+        $this->transportEventTypeCode = null;
+
+        return $this;
+    }
+
+    /**
+     * @return null|array<Description>
+     */
+    public function getDescription(): ?array
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param  null|array<Description> $description
+     * @return static
+     */
+    public function setDescription(?array $description = null): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function unsetDescription(): static
+    {
+        $this->description = null;
+
+        return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function clearDescription(): static
+    {
+        $this->description = [];
+
+        return $this;
+    }
+
+    /**
+     * @return null|Description
+     */
+    public function firstDescription(): ?Description
+    {
+        $description = $this->description ?? [];
+        $description = reset($description);
+
+        if (false === $description) {
+            return null;
+        }
+
+        return $description;
+    }
+
+    /**
+     * @return null|Description
+     */
+    public function lastDescription(): ?Description
+    {
+        $description = $this->description ?? [];
+        $description = end($description);
+
+        if (false === $description) {
+            return null;
+        }
+
+        return $description;
+    }
+
+    /**
+     * @param  Description $description
+     * @return static
+     */
+    public function addToDescription(Description $description): static
+    {
+        $this->description[] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Description
+     */
+    public function addToDescriptionWithCreate(): Description
+    {
+        $this->addTodescription($description = new Description());
+
+        return $description;
+    }
+
+    /**
+     * @param  Description $description
+     * @return static
+     */
+    public function addOnceToDescription(Description $description): static
+    {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
+        if ([] === $this->description) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
+     * @return null|bool
+     */
+    public function getCompletionIndicator(): ?bool
+    {
+        return $this->completionIndicator;
+    }
+
+    /**
+     * @param  null|bool $completionIndicator
+     * @return static
+     */
+    public function setCompletionIndicator(?bool $completionIndicator = null): static
+    {
+        $this->completionIndicator = $completionIndicator;
+
+        return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function unsetCompletionIndicator(): static
+    {
+        $this->completionIndicator = null;
+
+        return $this;
+    }
+
+    /**
+     * @return null|ReportedShipment
+     */
+    public function getReportedShipment(): ?ReportedShipment
+    {
+        return $this->reportedShipment;
+    }
+
+    /**
+     * @return ReportedShipment
+     */
+    public function getReportedShipmentWithCreate(): ReportedShipment
+    {
+        $this->reportedShipment = is_null($this->reportedShipment) ? new ReportedShipment() : $this->reportedShipment;
+
+        return $this->reportedShipment;
+    }
+
+    /**
+     * @param  null|ReportedShipment $reportedShipment
+     * @return static
+     */
+    public function setReportedShipment(?ReportedShipment $reportedShipment = null): static
+    {
+        $this->reportedShipment = $reportedShipment;
+
+        return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function unsetReportedShipment(): static
+    {
+        $this->reportedShipment = null;
+
+        return $this;
+    }
+
+    /**
+     * @return null|array<CurrentStatus>
+     */
+    public function getCurrentStatus(): ?array
+    {
+        return $this->currentStatus;
+    }
+
+    /**
+     * @param  null|array<CurrentStatus> $currentStatus
+     * @return static
+     */
+    public function setCurrentStatus(?array $currentStatus = null): static
+    {
+        $this->currentStatus = $currentStatus;
+
+        return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function unsetCurrentStatus(): static
+    {
+        $this->currentStatus = null;
+
+        return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function clearCurrentStatus(): static
+    {
+        $this->currentStatus = [];
+
+        return $this;
+    }
+
+    /**
+     * @return null|CurrentStatus
+     */
+    public function firstCurrentStatus(): ?CurrentStatus
+    {
+        $currentStatus = $this->currentStatus ?? [];
+        $currentStatus = reset($currentStatus);
+
+        if (false === $currentStatus) {
+            return null;
+        }
+
+        return $currentStatus;
+    }
+
+    /**
+     * @return null|CurrentStatus
+     */
+    public function lastCurrentStatus(): ?CurrentStatus
+    {
+        $currentStatus = $this->currentStatus ?? [];
+        $currentStatus = end($currentStatus);
+
+        if (false === $currentStatus) {
+            return null;
+        }
+
+        return $currentStatus;
+    }
+
+    /**
+     * @param  CurrentStatus $currentStatus
+     * @return static
+     */
+    public function addToCurrentStatus(CurrentStatus $currentStatus): static
+    {
+        $this->currentStatus[] = $currentStatus;
+
+        return $this;
+    }
+
+    /**
+     * @return CurrentStatus
+     */
+    public function addToCurrentStatusWithCreate(): CurrentStatus
+    {
+        $this->addTocurrentStatus($currentStatus = new CurrentStatus());
+
+        return $currentStatus;
+    }
+
+    /**
+     * @param  CurrentStatus $currentStatus
+     * @return static
+     */
+    public function addOnceToCurrentStatus(CurrentStatus $currentStatus): static
+    {
+        if (!is_array($this->currentStatus)) {
+            $this->currentStatus = [];
+        }
+
+        $this->currentStatus[0] = $currentStatus;
+
+        return $this;
+    }
+
+    /**
+     * @return CurrentStatus
+     */
+    public function addOnceToCurrentStatusWithCreate(): CurrentStatus
+    {
+        if (!is_array($this->currentStatus)) {
+            $this->currentStatus = [];
+        }
+
+        if ([] === $this->currentStatus) {
+            $this->addOnceTocurrentStatus(new CurrentStatus());
+        }
+
+        return $this->currentStatus[0];
+    }
+
+    /**
+     * @return null|array<Contact>
+     */
+    public function getContact(): ?array
+    {
+        return $this->contact;
+    }
+
+    /**
+     * @param  null|array<Contact> $contact
+     * @return static
+     */
+    public function setContact(?array $contact = null): static
+    {
+        $this->contact = $contact;
+
+        return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function unsetContact(): static
+    {
+        $this->contact = null;
+
+        return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function clearContact(): static
+    {
+        $this->contact = [];
+
+        return $this;
+    }
+
+    /**
+     * @return null|Contact
+     */
+    public function firstContact(): ?Contact
+    {
+        $contact = $this->contact ?? [];
+        $contact = reset($contact);
+
+        if (false === $contact) {
+            return null;
+        }
+
+        return $contact;
+    }
+
+    /**
+     * @return null|Contact
+     */
+    public function lastContact(): ?Contact
+    {
+        $contact = $this->contact ?? [];
+        $contact = end($contact);
+
+        if (false === $contact) {
+            return null;
+        }
+
+        return $contact;
+    }
+
+    /**
+     * @param  Contact $contact
+     * @return static
+     */
+    public function addToContact(Contact $contact): static
+    {
+        $this->contact[] = $contact;
+
+        return $this;
+    }
+
+    /**
+     * @return Contact
+     */
+    public function addToContactWithCreate(): Contact
+    {
+        $this->addTocontact($contact = new Contact());
+
+        return $contact;
+    }
+
+    /**
+     * @param  Contact $contact
+     * @return static
+     */
+    public function addOnceToContact(Contact $contact): static
+    {
+        if (!is_array($this->contact)) {
+            $this->contact = [];
+        }
+
+        $this->contact[0] = $contact;
+
+        return $this;
+    }
+
+    /**
+     * @return Contact
+     */
+    public function addOnceToContactWithCreate(): Contact
+    {
+        if (!is_array($this->contact)) {
+            $this->contact = [];
+        }
+
+        if ([] === $this->contact) {
+            $this->addOnceTocontact(new Contact());
+        }
+
+        return $this->contact[0];
+    }
+
+    /**
+     * @return null|Location
+     */
+    public function getLocation(): ?Location
+    {
+        return $this->location;
+    }
+
+    /**
+     * @return Location
+     */
+    public function getLocationWithCreate(): Location
+    {
+        $this->location = is_null($this->location) ? new Location() : $this->location;
+
+        return $this->location;
+    }
+
+    /**
+     * @param  null|Location $location
+     * @return static
+     */
+    public function setLocation(?Location $location = null): static
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function unsetLocation(): static
+    {
+        $this->location = null;
+
+        return $this;
+    }
+
+    /**
+     * @return null|Signature
+     */
+    public function getSignature(): ?Signature
+    {
+        return $this->signature;
+    }
+
+    /**
+     * @return Signature
+     */
+    public function getSignatureWithCreate(): Signature
+    {
+        $this->signature = is_null($this->signature) ? new Signature() : $this->signature;
+
+        return $this->signature;
+    }
+
+    /**
+     * @param  null|Signature $signature
+     * @return static
+     */
+    public function setSignature(?Signature $signature = null): static
+    {
+        $this->signature = $signature;
+
+        return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function unsetSignature(): static
+    {
+        $this->signature = null;
+
+        return $this;
+    }
+
+    /**
+     * @return null|array<Period>
+     */
+    public function getPeriod(): ?array
+    {
+        return $this->period;
+    }
+
+    /**
+     * @param  null|array<Period> $period
+     * @return static
+     */
+    public function setPeriod(?array $period = null): static
+    {
+        $this->period = $period;
+
+        return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function unsetPeriod(): static
+    {
+        $this->period = null;
+
+        return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function clearPeriod(): static
+    {
+        $this->period = [];
+
+        return $this;
+    }
+
+    /**
+     * @return null|Period
+     */
+    public function firstPeriod(): ?Period
+    {
+        $period = $this->period ?? [];
+        $period = reset($period);
+
+        if (false === $period) {
+            return null;
+        }
+
+        return $period;
+    }
+
+    /**
+     * @return null|Period
+     */
+    public function lastPeriod(): ?Period
+    {
+        $period = $this->period ?? [];
+        $period = end($period);
+
+        if (false === $period) {
+            return null;
+        }
+
+        return $period;
+    }
+
+    /**
+     * @param  Period $period
+     * @return static
+     */
+    public function addToPeriod(Period $period): static
+    {
+        $this->period[] = $period;
+
+        return $this;
+    }
+
+    /**
+     * @return Period
+     */
+    public function addToPeriodWithCreate(): Period
+    {
+        $this->addToperiod($period = new Period());
+
+        return $period;
+    }
+
+    /**
+     * @param  Period $period
+     * @return static
+     */
+    public function addOnceToPeriod(Period $period): static
+    {
+        if (!is_array($this->period)) {
+            $this->period = [];
+        }
+
+        $this->period[0] = $period;
+
+        return $this;
+    }
+
+    /**
+     * @return Period
+     */
+    public function addOnceToPeriodWithCreate(): Period
+    {
+        if (!is_array($this->period)) {
+            $this->period = [];
+        }
+
+        if ([] === $this->period) {
+            $this->addOnceToperiod(new Period());
+        }
+
+        return $this->period[0];
+    }
+}
