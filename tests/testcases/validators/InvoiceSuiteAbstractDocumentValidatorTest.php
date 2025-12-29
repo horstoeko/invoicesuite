@@ -43,6 +43,11 @@ final class InvoiceSuiteAbstractDocumentValidatorTest extends TestCase
                     {
                         ++$this->doValidateCallCount;
 
+                        $this->addInfoMessageToMessageBag('info 1');
+                        $this->addWarningMessageToMessageBag('warning 1');
+                        $this->addErrorMessageToMessageBag('error 1');
+                        $this->addMessageToMessageBag('info 2');
+
                         return $this;
                     }
                 };
@@ -87,7 +92,13 @@ final class InvoiceSuiteAbstractDocumentValidatorTest extends TestCase
     {
         $validatorClassname = self::$validatorClassname;
 
-        $temporaryDirectory = InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', 'assets', 'invoicesuite_dir_'.bin2hex(random_bytes(16)));
+        $temporaryDirectory = InvoiceSuitePathUtils::combineAllPaths(
+            __DIR__,
+            '..',
+            '..',
+            'assets',
+            'invoicesuite_dir_'.bin2hex(random_bytes(16))
+        );
 
         self::assertFalse(is_dir($temporaryDirectory));
         self::assertTrue(mkdir($temporaryDirectory));
@@ -174,5 +185,29 @@ final class InvoiceSuiteAbstractDocumentValidatorTest extends TestCase
 
         self::assertSame($validatorInstance, $returnedInstance);
         self::assertSame(1, $validatorInstance->doValidateCallCount);
+    }
+
+    public function testValidateAddsMessagesToMessageBagAndClearWorks(): void
+    {
+        $validatorClassname = self::$validatorClassname;
+
+        $validatorInstance = $validatorClassname::createFromContent('<x/>');
+
+        self::assertFalse($validatorInstance->hasMessagesInMessageBag());
+
+        $validatorInstance->validate();
+
+        self::assertTrue($validatorInstance->hasMessagesInMessageBag());
+        self::assertTrue($validatorInstance->hasInfoMessagesInMessageBag());
+        self::assertTrue($validatorInstance->hasWarningMessagesInMessageBag());
+        self::assertTrue($validatorInstance->hasErrorMessagesInMessageBag());
+
+        self::assertSame(2, $validatorInstance->countInfoMessagesInMessageBag());
+        self::assertSame(1, $validatorInstance->countWarningMessagesInMessageBag());
+        self::assertSame(1, $validatorInstance->countErrorMessagesInMessageBag());
+
+        self::assertCount(2, $validatorInstance->getInfoMessagesInMessageBag());
+        self::assertCount(1, $validatorInstance->getWarningMessagesInMessageBag());
+        self::assertCount(1, $validatorInstance->getErrorMessagesInMessageBag());
     }
 }
