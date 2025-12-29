@@ -22,6 +22,8 @@
             <file>../tests/testcases/concerns/HandlesDocumentRootObjectTest.php</file>
             <file>../tests/testcases/concerns/HandlesDocumentSerializerTest.php</file>
             <file>../tests/testcases/concerns/HandlesPdfConstructorRawContentsTest.php</file>
+            <file>../tests/testcases/concerns/HandlesMessageBagTest.php</file>
+            <file>../tests/testcases/concerns/HandlesRawContentsTest.php</file>
         </testsuite>
         <testsuite name="codelists">
             <file>../tests/testcases/codelists/AllCodelistsEnumsTest.php</file>
