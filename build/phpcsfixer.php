@@ -41,7 +41,7 @@ return (new Config())
     ->setFinder($finder)
     ->setIndent("    ")
     ->setLineEnding("\n")
-    ->setParallelConfig(new ParallelConfig(4, 20))
+    ->setParallelConfig(new ParallelConfig(4, 20, 60000))
     ->setRules(
         [
             '@PSR12' => true,
