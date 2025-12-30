@@ -11,6 +11,14 @@ declare(strict_types=1);
 
 namespace horstoeko\zugferd;
 
+/**
+ * Legacy-class representing the document basics
+ *
+ * @category InvoiceSuite
+ * @author   horstoeko <horstoeko@erling.com.de>
+ * @license  https://opensource.org/licenses/MIT MIT
+ * @see      https://github.com/horstoeko/invoicesuite
+ */
 class ZugferdDocument
 {
 }
