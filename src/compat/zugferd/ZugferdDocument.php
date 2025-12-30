@@ -19,6 +19,4 @@ namespace horstoeko\zugferd;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class ZugferdDocument
-{
-}
+class ZugferdDocument {}
