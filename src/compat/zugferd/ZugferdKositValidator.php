@@ -46,6 +46,43 @@ class ZugferdKositValidator
     }
 
     /**
+     * Undocumented function
+     *
+     * @param  null|string|ZugferdDocument $document $document
+     * @return ZugferdKositValidator
+     *
+     * @throws RuntimeException
+     */
+    public function setDocument($document): self
+    {
+        $this->kositValidator = null;
+
+        if (!is_string($document) && !($document instanceof ZugferdDocument)) {
+            return $this;
+        }
+
+        if (is_string($document)) {
+            $this->kositValidator = InvoiceSuiteKositDocumentValidator::createFromContent(
+                $document
+            );
+        }
+
+        if ($document instanceof ZugferdDocumentBuilder) {
+            $this->kositValidator = InvoiceSuiteKositDocumentValidator::createFromDocumentBuilder(
+                $document->getDocumentBuilderInstance()
+            );
+        }
+
+        if ($document instanceof ZugferdDocumentReader) {
+            $this->kositValidator = InvoiceSuiteKositDocumentValidator::createFromContent(
+                $document->getDocumentReaderInstance()->getOriginalDocumentContent()
+            );
+        }
+
+        return $this;
+    }
+
+    /**
      * Create a KositValidator-Instance by a given content string
      *
      * @param  string                $document
@@ -53,9 +90,9 @@ class ZugferdKositValidator
      *
      * @throws RuntimeException
      */
-    public static function fromString(string $document): ZugferdKositValidator
+    public static function fromString(string $document): self
     {
-        return new ZugferdKositValidator($document);
+        return new self($document);
     }
 
     /**
@@ -66,9 +103,9 @@ class ZugferdKositValidator
      *
      * @throws RuntimeException
      */
-    public static function fromZugferdDocument(ZugferdDocument $zugferdDocument): ZugferdKositValidator
+    public static function fromZugferdDocument(ZugferdDocument $zugferdDocument): self
     {
-        return new ZugferdKositValidator($zugferdDocument);
+        return new self($zugferdDocument);
     }
 
     /**
@@ -78,7 +115,7 @@ class ZugferdKositValidator
      * @param  string                $newBaseDirectory
      * @return ZugferdKositValidator
      */
-    public function setBaseDirectory(string $newBaseDirectory): ZugferdKositValidator
+    public function setBaseDirectory(string $newBaseDirectory): self
     {
         $this->kositValidator->setBaseDirectory($newBaseDirectory);
 
@@ -91,7 +128,7 @@ class ZugferdKositValidator
      * @param  string                $newValidatorDownloadUrl
      * @return ZugferdKositValidator
      */
-    public function setValidatorDownloadUrl(string $newValidatorDownloadUrl): ZugferdKositValidator
+    public function setValidatorDownloadUrl(string $newValidatorDownloadUrl): self
     {
         $this->kositValidator->setValidatorDownloadUrl($newValidatorDownloadUrl);
 
@@ -104,7 +141,7 @@ class ZugferdKositValidator
      * @param  string                $newValidatorScenarioDownloadUrl
      * @return ZugferdKositValidator
      */
-    public function setValidatorScenarioDownloadUrl(string $newValidatorScenarioDownloadUrl): ZugferdKositValidator
+    public function setValidatorScenarioDownloadUrl(string $newValidatorScenarioDownloadUrl): self
     {
         $this->kositValidator->setValidatorScenarioDownloadUrl($newValidatorScenarioDownloadUrl);
 
@@ -117,7 +154,7 @@ class ZugferdKositValidator
      * @param  string                $newValidatorAppZipFilename
      * @return ZugferdKositValidator
      */
-    public function setValidatorAppZipFilename(string $newValidatorAppZipFilename): ZugferdKositValidator
+    public function setValidatorAppZipFilename(string $newValidatorAppZipFilename): self
     {
         $this->kositValidator->setValidatorAppZipFilename($newValidatorAppZipFilename);
 
@@ -130,7 +167,7 @@ class ZugferdKositValidator
      * @param  string                $newValidatorScenarioZipFilename
      * @return ZugferdKositValidator
      */
-    public function setValidatorScenarioZipFilename(string $newValidatorScenarioZipFilename): ZugferdKositValidator
+    public function setValidatorScenarioZipFilename(string $newValidatorScenarioZipFilename): self
     {
         $this->kositValidator->setValidatorScenarioZipFilename($newValidatorScenarioZipFilename);
 
@@ -143,7 +180,7 @@ class ZugferdKositValidator
      * @param  string                $newValidatorAppJarFilename
      * @return ZugferdKositValidator
      */
-    public function setValidatorAppJarFilename(string $newValidatorAppJarFilename): ZugferdKositValidator
+    public function setValidatorAppJarFilename(string $newValidatorAppJarFilename): self
     {
         $this->kositValidator->setValidatorAppJarFilename($newValidatorAppJarFilename);
 
@@ -156,7 +193,7 @@ class ZugferdKositValidator
      * @param  string                $newValidatorAppScenarioFilename
      * @return ZugferdKositValidator
      */
-    public function setValidatorAppScenarioFilename(string $newValidatorAppScenarioFilename): ZugferdKositValidator
+    public function setValidatorAppScenarioFilename(string $newValidatorAppScenarioFilename): self
     {
         $this->kositValidator->setValidatorAppScenarioFilename($newValidatorAppScenarioFilename);
 
@@ -168,7 +205,7 @@ class ZugferdKositValidator
      *
      * @return ZugferdKositValidator
      */
-    public function disableCleanup(): ZugferdKositValidator
+    public function disableCleanup(): self
     {
         $this->kositValidator->disableCleanup();
 
@@ -180,7 +217,7 @@ class ZugferdKositValidator
      *
      * @return ZugferdKositValidator
      */
-    public function enableCleanup(): ZugferdKositValidator
+    public function enableCleanup(): self
     {
         $this->kositValidator->enableCleanup();
 
@@ -192,7 +229,7 @@ class ZugferdKositValidator
      *
      * @return ZugferdKositValidator
      */
-    public function disableRemoteMode(): ZugferdKositValidator
+    public function disableRemoteMode(): self
     {
         $this->kositValidator->disableRemoteMode();
 
@@ -204,7 +241,7 @@ class ZugferdKositValidator
      *
      * @return ZugferdKositValidator
      */
-    public function enableRemoteMode(): ZugferdKositValidator
+    public function enableRemoteMode(): self
     {
         $this->kositValidator->enableRemoteMode();
 
@@ -218,7 +255,7 @@ class ZugferdKositValidator
      * @param  string                $remoteModeHost
      * @return ZugferdKositValidator
      */
-    public function setRemoteModeHost(string $remoteModeHost): ZugferdKositValidator
+    public function setRemoteModeHost(string $remoteModeHost): self
     {
         $this->kositValidator->setRemoteModeHost($remoteModeHost);
 
@@ -232,7 +269,7 @@ class ZugferdKositValidator
      * @param  int                   $remoteModePort
      * @return ZugferdKositValidator
      */
-    public function setRemoteModePort(int $remoteModePort): ZugferdKositValidator
+    public function setRemoteModePort(int $remoteModePort): self
     {
         $this->kositValidator->setRemoteModePort($remoteModePort);
 
@@ -256,7 +293,7 @@ class ZugferdKositValidator
      *
      * @throws InvoiceSuiteInvalidArgumentException
      */
-    public function validate(): ZugferdKositValidator
+    public function validate(): self
     {
         $this->kositValidator->validate();
 
@@ -417,43 +454,6 @@ class ZugferdKositValidator
     public function getProcessOutput(): array
     {
         return $this->convertMessageBagMessagesToSimpleArray($this->kositValidator->getInfoMessagesInMessageBag());
-    }
-
-    /**
-     * Undocumented function
-     *
-     * @param  null|string|ZugferdDocument $document $document
-     * @return ZugferdKositValidator
-     *
-     * @throws RuntimeException
-     */
-    private function setDocument($document): ZugferdKositValidator
-    {
-        $this->kositValidator = null;
-
-        if (!is_string($document) && !($document instanceof ZugferdDocument)) {
-            return $this;
-        }
-
-        if (is_string($document)) {
-            $this->kositValidator = InvoiceSuiteKositDocumentValidator::createFromContent(
-                $document
-            );
-        }
-
-        if ($document instanceof ZugferdDocumentBuilder) {
-            $this->kositValidator = InvoiceSuiteKositDocumentValidator::createFromDocumentBuilder(
-                $document->getDocumentBuilderInstance()
-            );
-        }
-
-        if ($document instanceof ZugferdDocumentReader) {
-            $this->kositValidator = InvoiceSuiteKositDocumentValidator::createFromContent(
-                $document->getDocumentReaderInstance()->getOriginalDocumentContent()
-            );
-        }
-
-        return $this;
     }
 
     /**
