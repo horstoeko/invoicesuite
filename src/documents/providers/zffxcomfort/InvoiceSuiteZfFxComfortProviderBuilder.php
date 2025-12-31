@@ -5923,7 +5923,7 @@ class InvoiceSuiteZfFxComfortProviderBuilder extends InvoiceSuiteAbstractDocumen
         ?string $newId = null,
         ?string $newName = null,
     ): static {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId])) {
             return $this;
         }
 
