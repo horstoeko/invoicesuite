@@ -2635,7 +2635,7 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractDocumentFo
     /**
      * Gets the document date (e.g. invoice date)
      *
-     * @param  null|DateTimeInterface $newDocumentDate __BT-2, From MINIMUM__ Date of the document. The date when the document was issued by the seller
+     * @param  null|DateTimeInterface $newDocumentDate __BT-2-00, From MINIMUM__ Date of the document. The date when the document was issued by the seller
      * @return static
      *
      * @phpstan-param-out DateTimeInterface|null $newDocumentDate
