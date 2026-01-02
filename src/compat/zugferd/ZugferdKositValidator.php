@@ -48,7 +48,7 @@ class ZugferdKositValidator
     /**
      * Undocumented function
      *
-     * @param  null|string|ZugferdDocumentReader|ZugferdDocumentBuilder $document $document
+     * @param  null|string|ZugferdDocumentBuilder|ZugferdDocumentReader $document $document
      * @return ZugferdKositValidator
      *
      * @throws RuntimeException
