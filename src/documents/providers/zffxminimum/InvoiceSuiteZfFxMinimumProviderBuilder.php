@@ -2504,7 +2504,7 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractDocumen
             ?->getSellerTradeParty()
             ?->unsetSpecifiedLegalOrganization();
 
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId])) {
             $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])');
 
             return $this;
@@ -2544,7 +2544,7 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractDocumen
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId])) {
             $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])');
 
             return $this;
@@ -2965,7 +2965,7 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractDocumen
             ?->getBuyerTradeParty()
             ?->unsetSpecifiedLegalOrganization();
 
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId])) {
             $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])');
 
             return $this;
@@ -3005,7 +3005,7 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractDocumen
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId])) {
             $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])');
 
             return $this;
