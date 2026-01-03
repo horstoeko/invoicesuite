@@ -3093,18 +3093,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ?->getSellerTradeParty()
             ?->unsetPostalTradeAddress();
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -3114,6 +3104,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getSellerTradePartyWithCreate();
+
+        $sellerTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
             $sellerTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
@@ -3133,10 +3125,6 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
             $sellerTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
-            $sellerTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
@@ -3171,18 +3159,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -3751,18 +3729,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ?->getBuyerTradeParty()
             ?->unsetPostalTradeAddress();
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -3772,6 +3740,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getBuyerTradePartyWithCreate();
+
+        $buyerTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
             $buyerTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
@@ -3791,10 +3761,6 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
             $buyerTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
-            $buyerTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
@@ -3829,18 +3795,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -4418,18 +4374,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ?->getSellerTaxRepresentativeTradeParty()
             ?->unsetPostalTradeAddress();
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -4439,6 +4385,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getSellerTaxRepresentativeTradePartyWithCreate();
+
+        $taxRepresentativeTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
             $taxRepresentativeTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
@@ -4458,10 +4406,6 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
             $taxRepresentativeTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
-            $taxRepresentativeTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
@@ -4496,18 +4440,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -5085,18 +5019,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ?->getProductEndUserTradeParty()
             ?->unsetPostalTradeAddress();
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -5106,6 +5030,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getProductEndUserTradePartyWithCreate();
+
+        $productEndUserTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
             $productEndUserTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
@@ -5125,10 +5051,6 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
             $productEndUserTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
-            $productEndUserTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
@@ -5163,18 +5085,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -5748,18 +5660,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ?->getShipToTradeParty()
             ?->unsetPostalTradeAddress();
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -5769,6 +5671,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeDeliveryWithCreate()
             ->getShipToTradePartyWithCreate();
+
+        $shipToTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
             $shipToTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
@@ -5788,10 +5692,6 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
             $shipToTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
-            $shipToTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
@@ -5826,18 +5726,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -6415,18 +6305,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ?->getUltimateShipToTradeParty()
             ?->unsetPostalTradeAddress();
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -6436,6 +6316,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeDeliveryWithCreate()
             ->getUltimateShipToTradePartyWithCreate();
+
+        $ultimateShipToTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
             $ultimateShipToTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
@@ -6455,10 +6337,6 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
             $ultimateShipToTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
-            $ultimateShipToTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
@@ -6493,18 +6371,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -7078,18 +6946,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ?->getShipFromTradeParty()
             ?->unsetPostalTradeAddress();
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -7099,6 +6957,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeDeliveryWithCreate()
             ->getShipFromTradePartyWithCreate();
+
+        $shipFromTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
             $shipFromTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
@@ -7118,10 +6978,6 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
             $shipFromTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
-            $shipFromTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
@@ -7156,18 +7012,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -7741,18 +7587,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ?->getInvoicerTradeParty()
             ?->unsetPostalTradeAddress();
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -7762,6 +7598,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeSettlementWithCreate()
             ->getInvoicerTradePartyWithCreate();
+
+        $invoicerTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
             $invoicerTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
@@ -7781,10 +7619,6 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
             $invoicerTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
-            $invoicerTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
@@ -7819,18 +7653,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -8404,18 +8228,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ?->getInvoiceeTradeParty()
             ?->unsetPostalTradeAddress();
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -8425,6 +8239,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeSettlementWithCreate()
             ->getInvoiceeTradePartyWithCreate();
+
+        $invoiceeTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
             $invoiceeTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
@@ -8444,10 +8260,6 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
             $invoiceeTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
-            $invoiceeTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
@@ -8482,18 +8294,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -9067,18 +8869,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ?->getPayeeTradeParty()
             ?->unsetPostalTradeAddress();
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -9088,6 +8880,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeSettlementWithCreate()
             ->getPayeeTradePartyWithCreate();
+
+        $payeeTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
             $payeeTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
@@ -9107,10 +8901,6 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
             $payeeTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
-            $payeeTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
@@ -9145,18 +8935,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision,
-            ])
-        ) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([ $newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision, ])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -13112,8 +12892,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ?->getShipToTradeParty()
             ?->unsetPostalTradeAddress();
 
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision])) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -13124,6 +12904,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
             ->getSpecifiedLineTradeDeliveryWithCreate()
             ->getShipToTradePartyWithCreate();
+
+        $shipToTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
             $shipToTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
@@ -13143,10 +12925,6 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
             $shipToTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
-            $shipToTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
@@ -13181,8 +12959,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision])) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -13757,8 +13535,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ?->getUltimateShipToTradeParty()
             ?->unsetPostalTradeAddress();
 
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision])) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
@@ -13769,6 +13547,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
             ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
             ->getSpecifiedLineTradeDeliveryWithCreate()
             ->getUltimateShipToTradePartyWithCreate();
+
+        $ultimateShipToTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
             $ultimateShipToTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
@@ -13788,10 +13568,6 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
             $ultimateShipToTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
-            $ultimateShipToTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
@@ -13826,8 +13602,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision])) {
-            $this->traceMethodEarlyExit(__METHOD__, 'allIsNullOrEmpty', 'InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision])');
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountryId)');
 
             return $this;
         }
