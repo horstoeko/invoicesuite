@@ -10517,10 +10517,10 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractDocumentFo
 
         $newChargeIndicator = $positionAllowanceCharge->getChargeIndicator()?->getIndicator() ?? false;
         $newAllowanceChargeAmount = $positionAllowanceCharge->getActualAmount()?->getValue() ?? 0.0;
-        $newAllowanceChargeBaseAmount = $positionAllowanceCharge->getBasisAmount()?->getValue() ?? 0.0;
+        $newAllowanceChargeBaseAmount = 0.0;
         $newAllowanceChargeReason = $positionAllowanceCharge->getReason()?->getValue() ?? '';
         $newAllowanceChargeReasonCode = $positionAllowanceCharge->getReasonCode()?->getValue() ?? '';
-        $newAllowanceChargePercent = $positionAllowanceCharge->getCalculationPercent()->getValue() ?? 0.0;
+        $newAllowanceChargePercent = 0.0;
 
         $this->traceMethodExit(__METHOD__);
 

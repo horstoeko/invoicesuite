@@ -9914,14 +9914,6 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractDocumentF
         $allowanceCharge->getChargeIndicatorWithCreate()->setIndicator($newChargeIndicator);
         $allowanceCharge->getActualAmountWithCreate()->setValue($newAllowanceChargeAmount);
 
-        if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargeBaseAmount])) {
-            $allowanceCharge->getBasisAmountWithCreate()->setValue($newAllowanceChargeBaseAmount);
-        }
-
-        if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargePercent])) {
-            $allowanceCharge->getCalculationPercentWithCreate()->setValue($newAllowanceChargePercent);
-        }
-
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newAllowanceChargeReason])) {
             $allowanceCharge->getReasonWithCreate()->setValue($newAllowanceChargeReason);
         }

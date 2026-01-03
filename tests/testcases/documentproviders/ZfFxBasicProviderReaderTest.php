@@ -2922,10 +2922,10 @@ final class ZfFxBasicProviderReaderTest extends TestCase
 
         $this->assertTrue($newChargeIndicator);
         $this->assertEqualsWithDelta(10.00, $newAllowanceChargeAmount, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(100.00, $newAllowanceChargeBaseAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.00, $newAllowanceChargeBaseAmount, PHP_FLOAT_EPSILON);
         $this->assertSame('Reason', $newAllowanceChargeReason);
         $this->assertSame('ReasonCode', $newAllowanceChargeReasonCode);
-        $this->assertEqualsWithDelta(10.00, $newAllowanceChargePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.00, $newAllowanceChargePercent, PHP_FLOAT_EPSILON);
 
         $this->assertTrue(static::$document->nextDocumentPositionAllowanceCharge());
 
@@ -2940,10 +2940,10 @@ final class ZfFxBasicProviderReaderTest extends TestCase
 
         $this->assertFalse($newChargeIndicator);
         $this->assertEqualsWithDelta(1.00, $newAllowanceChargeAmount, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(10.00, $newAllowanceChargeBaseAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.00, $newAllowanceChargeBaseAmount, PHP_FLOAT_EPSILON);
         $this->assertSame('Reason2', $newAllowanceChargeReason);
         $this->assertSame('ReasonCode2', $newAllowanceChargeReasonCode);
-        $this->assertEqualsWithDelta(1.00, $newAllowanceChargePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.00, $newAllowanceChargePercent, PHP_FLOAT_EPSILON);
 
         $this->assertFalse(static::$document->nextDocumentPositionAllowanceCharge());
 
