@@ -22,37 +22,36 @@ final class InvoiceSuiteAbstractDocumentValidatorTest extends TestCase
         parent::setUpBeforeClass();
 
         $factory = Closure::bind(
-            static function (string $rawDocumentContent): InvoiceSuiteAbstractDocumentValidator {
-                return new class($rawDocumentContent) extends InvoiceSuiteAbstractDocumentValidator {
-                    public int $initializeCallCount = 0;
-                    public int $doValidateCallCount = 0;
+            static fn(string $rawDocumentContent): InvoiceSuiteAbstractDocumentValidator => new class($rawDocumentContent) extends InvoiceSuiteAbstractDocumentValidator {
+                public int $initializeCallCount = 0;
 
-                    public function getRawDocumentContentForTest(): string
-                    {
-                        return $this->getRawDocumentContent();
-                    }
+                public int $doValidateCallCount = 0;
 
-                    protected function intializeAfterConstruct(): static
-                    {
-                        ++$this->initializeCallCount;
+                public function getRawDocumentContentForTest(): string
+                {
+                    return $this->getRawDocumentContent();
+                }
 
-                        parent::intializeAfterConstruct();
+                protected function intializeAfterConstruct(): static
+                {
+                    ++$this->initializeCallCount;
 
-                        return $this;
-                    }
+                    parent::intializeAfterConstruct();
 
-                    protected function doValidate(): static
-                    {
-                        ++$this->doValidateCallCount;
+                    return $this;
+                }
 
-                        $this->addInfoMessageToMessageBag('info 1');
-                        $this->addWarningMessageToMessageBag('warning 1');
-                        $this->addErrorMessageToMessageBag('error 1');
-                        $this->addMessageToMessageBag('info 2');
+                protected function doValidate(): static
+                {
+                    ++$this->doValidateCallCount;
 
-                        return $this;
-                    }
-                };
+                    $this->addInfoMessageToMessageBag('info 1');
+                    $this->addWarningMessageToMessageBag('warning 1');
+                    $this->addErrorMessageToMessageBag('error 1');
+                    $this->addMessageToMessageBag('info 2');
+
+                    return $this;
+                }
             },
             null,
             InvoiceSuiteAbstractDocumentValidator::class
@@ -69,9 +68,9 @@ final class InvoiceSuiteAbstractDocumentValidatorTest extends TestCase
 
         $validatorInstance = $validatorClassname::createFromContent('<xml/>');
 
-        self::assertInstanceOf($validatorClassname, $validatorInstance);
-        self::assertSame('<xml/>', $validatorInstance->getRawDocumentContentForTest());
-        self::assertSame(1, $validatorInstance->initializeCallCount);
+        $this->assertInstanceOf($validatorClassname, $validatorInstance);
+        $this->assertSame('<xml/>', $validatorInstance->getRawDocumentContentForTest());
+        $this->assertSame(1, $validatorInstance->initializeCallCount);
     }
 
     public function testCreateFromFileThrowsFileNotFoundException(): void
@@ -83,7 +82,7 @@ final class InvoiceSuiteAbstractDocumentValidatorTest extends TestCase
             bin2hex(random_bytes(16)).'.xml'
         );
 
-        self::assertFileDoesNotExist($nonExistingFilename);
+        $this->assertFileDoesNotExist($nonExistingFilename);
 
         $this->expectException(InvoiceSuiteFileNotFoundException::class);
 
@@ -102,9 +101,9 @@ final class InvoiceSuiteAbstractDocumentValidatorTest extends TestCase
             'invoicesuite_dir_'.bin2hex(random_bytes(16))
         );
 
-        self::assertFalse(is_dir($temporaryDirectory));
-        self::assertTrue(mkdir($temporaryDirectory));
-        self::assertTrue(is_dir($temporaryDirectory));
+        $this->assertDirectoryNotExists($temporaryDirectory);
+        $this->assertTrue(mkdir($temporaryDirectory));
+        $this->assertDirectoryExists($temporaryDirectory);
 
         set_error_handler(static fn (): bool => true);
 
@@ -127,20 +126,20 @@ final class InvoiceSuiteAbstractDocumentValidatorTest extends TestCase
             bin2hex(random_bytes(16)).'.xml'
         );
 
-        self::assertNotFalse(file_put_contents($temporaryFilename, '<file/>'));
-        self::assertFileExists($temporaryFilename);
+        $this->assertNotFalse(file_put_contents($temporaryFilename, '<file/>'));
+        $this->assertFileExists($temporaryFilename);
 
         try {
             $validatorInstance = $validatorClassname::createFromFile($temporaryFilename);
 
-            self::assertInstanceOf($validatorClassname, $validatorInstance);
-            self::assertSame('<file/>', $validatorInstance->getRawDocumentContentForTest());
-            self::assertSame(1, $validatorInstance->initializeCallCount);
+            $this->assertInstanceOf($validatorClassname, $validatorInstance);
+            $this->assertSame('<file/>', $validatorInstance->getRawDocumentContentForTest());
+            $this->assertSame(1, $validatorInstance->initializeCallCount);
 
             $returnedInstance = $validatorInstance->validate();
 
-            self::assertSame($validatorInstance, $returnedInstance);
-            self::assertSame(1, $validatorInstance->doValidateCallCount);
+            $this->assertSame($validatorInstance, $returnedInstance);
+            $this->assertSame(1, $validatorInstance->doValidateCallCount);
         } finally {
             @unlink($temporaryFilename);
         }
@@ -157,13 +156,13 @@ final class InvoiceSuiteAbstractDocumentValidatorTest extends TestCase
 
         $validatorInstance = $validatorClassname::createFromDocumentBuilder($documentBuilderMock);
 
-        self::assertInstanceOf($validatorClassname, $validatorInstance);
-        self::assertSame('<builder/>', $validatorInstance->getRawDocumentContentForTest());
+        $this->assertInstanceOf($validatorClassname, $validatorInstance);
+        $this->assertSame('<builder/>', $validatorInstance->getRawDocumentContentForTest());
 
         $returnedInstance = $validatorInstance->validate();
 
-        self::assertSame($validatorInstance, $returnedInstance);
-        self::assertSame(1, $validatorInstance->doValidateCallCount);
+        $this->assertSame($validatorInstance, $returnedInstance);
+        $this->assertSame(1, $validatorInstance->doValidateCallCount);
     }
 
     public function testValidateThrowsWhenNoContentIsPresent(): void
@@ -185,8 +184,8 @@ final class InvoiceSuiteAbstractDocumentValidatorTest extends TestCase
 
         $returnedInstance = $validatorInstance->validate();
 
-        self::assertSame($validatorInstance, $returnedInstance);
-        self::assertSame(1, $validatorInstance->doValidateCallCount);
+        $this->assertSame($validatorInstance, $returnedInstance);
+        $this->assertSame(1, $validatorInstance->doValidateCallCount);
     }
 
     public function testValidateAddsMessagesToMessageBagAndClearWorks(): void
@@ -195,21 +194,21 @@ final class InvoiceSuiteAbstractDocumentValidatorTest extends TestCase
 
         $validatorInstance = $validatorClassname::createFromContent('<x/>');
 
-        self::assertFalse($validatorInstance->hasMessagesInMessageBag());
+        $this->assertFalse($validatorInstance->hasMessagesInMessageBag());
 
         $validatorInstance->validate();
 
-        self::assertTrue($validatorInstance->hasMessagesInMessageBag());
-        self::assertTrue($validatorInstance->hasInfoMessagesInMessageBag());
-        self::assertTrue($validatorInstance->hasWarningMessagesInMessageBag());
-        self::assertTrue($validatorInstance->hasErrorMessagesInMessageBag());
+        $this->assertTrue($validatorInstance->hasMessagesInMessageBag());
+        $this->assertTrue($validatorInstance->hasInfoMessagesInMessageBag());
+        $this->assertTrue($validatorInstance->hasWarningMessagesInMessageBag());
+        $this->assertTrue($validatorInstance->hasErrorMessagesInMessageBag());
 
-        self::assertSame(2, $validatorInstance->countInfoMessagesInMessageBag());
-        self::assertSame(1, $validatorInstance->countWarningMessagesInMessageBag());
-        self::assertSame(1, $validatorInstance->countErrorMessagesInMessageBag());
+        $this->assertSame(2, $validatorInstance->countInfoMessagesInMessageBag());
+        $this->assertSame(1, $validatorInstance->countWarningMessagesInMessageBag());
+        $this->assertSame(1, $validatorInstance->countErrorMessagesInMessageBag());
 
-        self::assertCount(2, $validatorInstance->getInfoMessagesInMessageBag());
-        self::assertCount(1, $validatorInstance->getWarningMessagesInMessageBag());
-        self::assertCount(1, $validatorInstance->getErrorMessagesInMessageBag());
+        $this->assertCount(2, $validatorInstance->getInfoMessagesInMessageBag());
+        $this->assertCount(1, $validatorInstance->getWarningMessagesInMessageBag());
+        $this->assertCount(1, $validatorInstance->getErrorMessagesInMessageBag());
     }
 }

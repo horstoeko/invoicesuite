@@ -436,17 +436,17 @@ final class UtilsTest extends TestCase
 
     public function testInvoiceSuiteContentTypeResolverResolveContentType(): void
     {
-        $this->assertNull(InvoiceSuiteContentTypeResolver::resolveContentType(''));
+        $this->assertNotInstanceOf(InvoiceSuiteContentType::class, InvoiceSuiteContentTypeResolver::resolveContentType(''));
 
-        $this->assertNotNull(InvoiceSuiteContentTypeResolver::resolveContentType('{"a":1,"b":"x"}'));
+        $this->assertInstanceOf(InvoiceSuiteContentType::class, InvoiceSuiteContentTypeResolver::resolveContentType('{"a":1,"b":"x"}'));
         $this->assertSame(InvoiceSuiteContentType::JSON, InvoiceSuiteContentTypeResolver::resolveContentType('{"a":1,"b":"x"}'));
 
-        $this->assertNotNull(InvoiceSuiteContentTypeResolver::resolveContentType('<xml><dummy></dummy></xml>'));
+        $this->assertInstanceOf(InvoiceSuiteContentType::class, InvoiceSuiteContentTypeResolver::resolveContentType('<xml><dummy></dummy></xml>'));
         $this->assertSame(InvoiceSuiteContentType::XML, InvoiceSuiteContentTypeResolver::resolveContentType('<xml><dummy></dummy></xml>'));
 
-        $this->assertNull(InvoiceSuiteContentTypeResolver::resolveContentType('{"a":1,"b":"x"'));
+        $this->assertNotInstanceOf(InvoiceSuiteContentType::class, InvoiceSuiteContentTypeResolver::resolveContentType('{"a":1,"b":"x"'));
 
-        $this->assertNull(InvoiceSuiteContentTypeResolver::resolveContentType('<xml><dummy></dummy>'));
+        $this->assertNotInstanceOf(InvoiceSuiteContentType::class, InvoiceSuiteContentTypeResolver::resolveContentType('<xml><dummy></dummy>'));
     }
 
     public function testInvoiceSuiteAttachmentFromFile(): void
