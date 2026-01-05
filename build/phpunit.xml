@@ -94,23 +94,19 @@
         </testsuite>
         <testsuite name="documentreadbuild">
             <!-- Builder -->
-            <!--
             <file>../tests/testcases/documentreadbuild/ZfFxExtendedDocumentBuilderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxComfortDocumentBuilderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxBasicDocumentBuilderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxBasicWlDocumentBuilderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxMinimumDocumentBuilderTest.php</file>
-            -->
             <file>../tests/testcases/documentreadbuild/XRechnungCIIInvoiceBuilderTest.php</file>
             <file>../tests/testcases/documentreadbuild/XRechnungUBLInvoiceBuilderTest.php</file>
             <!-- Reader -->
-            <!--
             <file>../tests/testcases/documentreadbuild/ZfFxExtendedDocumentReaderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxComfortDocumentReaderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxBasicDocumentReaderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxBasicWlDocumentReaderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxMinimumDocumentReaderTest.php</file>
-            -->
             <file>../tests/testcases/documentreadbuild/XRechnungCIIInvoiceReaderTest.php</file>
             <file>../tests/testcases/documentreadbuild/XRechnungUBLInvoiceReaderTest.php</file>
         </testsuite>
