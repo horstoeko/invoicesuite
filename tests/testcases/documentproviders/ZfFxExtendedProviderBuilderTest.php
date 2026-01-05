@@ -12028,7 +12028,7 @@ final class ZfFxExtendedProviderBuilderTest extends TestCase
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:ApplicableProductCharacteristic/ram:ValueMeasure', 1, '200.00', 'unitCode', 'MTR');
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:ApplicableProductCharacteristic/ram:Value', 1, 'characteristicvalue2');
 
-        // Change product details. Latest characteristics should not be there
+        // Change product details. Latest characteristics should always be there
 
         static::$document->setDocumentPositionProductDetails(
             'productid3',
