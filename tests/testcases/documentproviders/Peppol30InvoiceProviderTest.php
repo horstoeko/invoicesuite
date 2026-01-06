@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 
-use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\documents\models\peppol\main\Invoice;
 use horstoeko\invoicesuite\documents\providers\peppol\InvoiceSuitePeppol30InvoiceProvider;
-use horstoeko\invoicesuite\documents\providers\peppol\InvoiceSuitePeppol30InvoiceProviderReader;
 use horstoeko\invoicesuite\documents\providers\peppol\InvoiceSuitePeppol30InvoiceProviderBuilder;
+use horstoeko\invoicesuite\documents\providers\peppol\InvoiceSuitePeppol30InvoiceProviderReader;
 use horstoeko\invoicesuite\documents\providers\peppol\InvoiceSuitePeppol30InvoiceSerializerHandler;
+use horstoeko\invoicesuite\tests\TestCase;
 
 final class Peppol30InvoiceProviderTest extends TestCase
 {

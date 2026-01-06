@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 
-use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\documents\models\peppol\main\CreditNote;
 use horstoeko\invoicesuite\documents\providers\peppol\InvoiceSuitePeppol30CreditNoteProvider;
-use horstoeko\invoicesuite\documents\providers\peppol\InvoiceSuitePeppol30CreditNoteProviderReader;
 use horstoeko\invoicesuite\documents\providers\peppol\InvoiceSuitePeppol30CreditNoteProviderBuilder;
+use horstoeko\invoicesuite\documents\providers\peppol\InvoiceSuitePeppol30CreditNoteProviderReader;
 use horstoeko\invoicesuite\documents\providers\peppol\InvoiceSuitePeppol30CreditNoteSerializerHandler;
+use horstoeko\invoicesuite\tests\TestCase;
 
 final class Peppol30CreditNoteProviderTest extends TestCase
 {

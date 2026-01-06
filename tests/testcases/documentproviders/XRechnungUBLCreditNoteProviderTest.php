@@ -4,30 +4,30 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 
-use horstoeko\invoicesuite\documents\models\peppol\main\Invoice;
-use horstoeko\invoicesuite\documents\providers\xr\InvoiceSuiteXRechnungUBLInvoiceProvider;
-use horstoeko\invoicesuite\documents\providers\xr\InvoiceSuiteXRechnungUBLInvoiceProviderBuilder;
-use horstoeko\invoicesuite\documents\providers\xr\InvoiceSuiteXRechnungUBLInvoiceProviderReader;
-use horstoeko\invoicesuite\documents\providers\xr\InvoiceSuiteXRechnungUBLInvoiceSerializerHandler;
+use horstoeko\invoicesuite\documents\models\peppol\main\CreditNote;
+use horstoeko\invoicesuite\documents\providers\xr\InvoiceSuiteXRechnungUBLCreditNoteProvider;
+use horstoeko\invoicesuite\documents\providers\xr\InvoiceSuiteXRechnungUBLCreditNoteProviderBuilder;
+use horstoeko\invoicesuite\documents\providers\xr\InvoiceSuiteXRechnungUBLCreditNoteProviderReader;
+use horstoeko\invoicesuite\documents\providers\xr\InvoiceSuiteXRechnungUBLCreditNoteSerializerHandler;
 use horstoeko\invoicesuite\tests\TestCase;
 
-final class XRechnungUBLInvoiceProviderTest extends TestCase
+final class XRechnungUBLCreditNoteProviderTest extends TestCase
 {
     public function testGetUniqueId(): void
     {
-        $provider = new InvoiceSuiteXRechnungUBLInvoiceProvider();
-        $this->assertSame('xrechnungublinvoice', $provider->getUniqueId());
+        $provider = new InvoiceSuiteXRechnungUBLCreditNoteProvider();
+        $this->assertSame('xrechnungublcreditnote', $provider->getUniqueId());
     }
 
     public function testGetDescription(): void
     {
-        $provider = new InvoiceSuiteXRechnungUBLInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLCreditNoteProvider();
         $this->assertNotEmpty($provider->getDescription());
     }
 
     public function testGetParameters(): void
     {
-        $provider = new InvoiceSuiteXRechnungUBLInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLCreditNoteProvider();
 
         $this->assertArrayNotHasKey('ContextParameter', $provider->getParameters());
         $this->assertArrayNotHasKey('AlternativeContextParameters', $provider->getParameters());
@@ -46,7 +46,7 @@ final class XRechnungUBLInvoiceProviderTest extends TestCase
 
     public function testPdfParameters(): void
     {
-        $provider = new InvoiceSuiteXRechnungUBLInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLCreditNoteProvider();
 
         $this->assertFalse($provider->isPdfSupportAvailable());
         $this->assertEmpty($provider->getAllowedPdfAttachmentFilenames());
@@ -56,36 +56,36 @@ final class XRechnungUBLInvoiceProviderTest extends TestCase
 
     public function testGetSerializerMetadataDirectories(): void
     {
-        $provider = new InvoiceSuiteXRechnungUBLInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLCreditNoteProvider();
 
         $this->assertEmpty($provider->getSerializerMetadataDirectories());
     }
 
     public function testGetSerializerHandlers(): void
     {
-        $provider = new InvoiceSuiteXRechnungUBLInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLCreditNoteProvider();
 
         $this->assertCount(1, $provider->getSerializerHandlers());
-        $this->assertContains(InvoiceSuiteXRechnungUBLInvoiceSerializerHandler::class, $provider->getSerializerHandlers());
+        $this->assertContains(InvoiceSuiteXRechnungUBLCreditNoteSerializerHandler::class, $provider->getSerializerHandlers());
     }
 
     public function testGetSerializerListeners(): void
     {
-        $provider = new InvoiceSuiteXRechnungUBLInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLCreditNoteProvider();
 
         $this->assertEmpty($provider->getSerializerListeners());
     }
 
     public function testGetSerializerSubscribers(): void
     {
-        $provider = new InvoiceSuiteXRechnungUBLInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLCreditNoteProvider();
 
         $this->assertEmpty($provider->getSerializerSubscribers());
     }
 
     public function testGetSerializerGroups(): void
     {
-        $provider = new InvoiceSuiteXRechnungUBLInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLCreditNoteProvider();
 
         $this->assertCount(1, $provider->getSerializerGroups());
         $this->assertContains('ubl', $provider->getSerializerGroups());
@@ -93,38 +93,38 @@ final class XRechnungUBLInvoiceProviderTest extends TestCase
 
     public function testIsSatisfiableBy(): void
     {
-        $provider = new InvoiceSuiteXRechnungUBLInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLCreditNoteProvider();
 
         $xml = <<<'XML_WRAP'
         <?xml version="1.0" encoding="UTF-8"?>
-        <Invoice xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">
+        <CreditNote xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2">
             <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0</cbc:CustomizationID>
             <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
             <cbc:ID>Snippet1</cbc:ID>
             <cbc:IssueDate>2017-11-13</cbc:IssueDate>
             <cbc:DueDate>2017-12-01</cbc:DueDate>
-            <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+            <cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>
             <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
             <cbc:AccountingCost>4025:123:4343</cbc:AccountingCost>
             <cbc:BuyerReference>0150abc</cbc:BuyerReference>
-        </Invoice>
+        </CreditNote>
         XML_WRAP;
 
         $this->assertTrue($provider->isSatisfiableBySerializedContent($xml));
 
         $xml = <<<'XML_WRAP'
         <?xml version="1.0" encoding="UTF-8"?>
-        <Invoice xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">
+        <CreditNote xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2">
             <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
             <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
             <cbc:ID>Snippet1</cbc:ID>
             <cbc:IssueDate>2017-11-13</cbc:IssueDate>
             <cbc:DueDate>2017-12-01</cbc:DueDate>
-            <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+            <cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>
             <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
             <cbc:AccountingCost>4025:123:4343</cbc:AccountingCost>
             <cbc:BuyerReference>0150abc</cbc:BuyerReference>
-        </Invoice>
+        </CreditNote>
         XML_WRAP;
 
         $this->assertTrue($provider->isSatisfiableBySerializedContent($xml));
@@ -157,22 +157,22 @@ final class XRechnungUBLInvoiceProviderTest extends TestCase
 
     public function testGetRootClassName(): void
     {
-        $provider = new InvoiceSuiteXRechnungUBLInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLCreditNoteProvider();
 
-        $this->assertsame(Invoice::class, $provider->getRootClassName());
+        $this->assertsame(CreditNote::class, $provider->getRootClassName());
     }
 
     public function testGetReaderClassName(): void
     {
-        $provider = new InvoiceSuiteXRechnungUBLInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLCreditNoteProvider();
 
-        $this->assertsame(InvoiceSuiteXRechnungUBLInvoiceProviderReader::class, $provider->getReaderClassName());
+        $this->assertsame(InvoiceSuiteXRechnungUBLCreditNoteProviderReader::class, $provider->getReaderClassName());
     }
 
     public function testGetBuilderClassName(): void
     {
-        $provider = new InvoiceSuiteXRechnungUBLInvoiceProvider();
+        $provider = new InvoiceSuiteXRechnungUBLCreditNoteProvider();
 
-        $this->assertsame(InvoiceSuiteXRechnungUBLInvoiceProviderBuilder::class, $provider->getBuilderClassName());
+        $this->assertsame(InvoiceSuiteXRechnungUBLCreditNoteProviderBuilder::class, $provider->getBuilderClassName());
     }
 }

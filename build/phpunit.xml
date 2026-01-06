@@ -93,6 +93,7 @@
             <file>../tests/testcases/documentproviders/XRechnungUBLInvoiceProviderTest.php</file>
             <file>../tests/testcases/documentproviders/XRechnungUBLInvoiceProviderBuilderTest.php</file>
             <file>../tests/testcases/documentproviders/XRechnungUBLInvoiceProviderReaderTest.php</file>
+            <file>../tests/testcases/documentproviders/XRechnungUBLCreditNoteProviderTest.php</file>
         </testsuite>
         <testsuite name="documentreadbuild">
             <!-- Builder -->
