@@ -6,12 +6,15 @@ use Rector\Caching\ValueObject\Storage\FileCacheStorage;
 use Rector\CodeQuality\Rector\Class_\ConvertStaticToSelfRector;
 use Rector\CodeQuality\Rector\New_\NewStaticToNewSelfRector;
 use Rector\CodingStyle\Rector\Encapsed\EncapsedStringsToSprintfRector;
+use Rector\CodingStyle\Rector\String_\UseClassKeywordForClassNameResolutionRector;
 use Rector\Config\RectorConfig;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector;
 use Rector\DeadCode\Rector\Property\RemoveUselessVarTagRector;
 use Rector\TypeDeclaration\Rector\StmtsAwareInterface\DeclareStrictTypesRector;
 use Rector\ValueObject\PhpVersion;
+
+require_once(__DIR__.'/phprectorrules.php');
 
 return RectorConfig::configure()
     ->withPaths([
@@ -37,12 +40,15 @@ return RectorConfig::configure()
         RemoveUselessVarTagRector::class,
         ConvertStaticToSelfRector::class,
         NewStaticToNewSelfRector::class,
+        UseClassKeywordForClassNameResolutionRector::class,
     ])
     ->withConfiguredRule(EncapsedStringsToSprintfRector::class, [
         'always' => true,
     ])
     ->withRules([
         DeclareStrictTypesRector::class,
+        OneIsNullOrEmptyIfTraceToStringIsNullOrEmptyRector::class,
+        AllIsNullOrEmptyIfTraceToStringIsNullOrEmptyRector::class,
     ])
     ->withImportNames(
         importShortClasses: true,
