@@ -11760,8 +11760,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])');
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])');
         }
 
         $sellerOrderReference = $this
@@ -11771,10 +11771,15 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getSpecifiedLineTradeAgreementWithCreate()
             ->getSellerOrderReferencedDocumentWithCreate();
 
-        $sellerOrderReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
         $sellerOrderReference->getLineIDWithCreate()->setValue($newReferenceLineNumber);
 
-        if (!InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newReferenceDate])) {
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newReferenceNumber)) {
+            $sellerOrderReference
+                ->getIssuerAssignedIDWithCreate()
+                ->setValue($newReferenceNumber);
+        }
+
+        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
             $sellerOrderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -11806,8 +11811,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])');
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])');
         }
 
         $this->setDocumentPositionSellerOrderReference(
@@ -11866,7 +11871,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 ->setValue($newReferenceNumber);
         }
 
-        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newReferenceDate])) {
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
             $buyerOrderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -11935,8 +11940,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])');
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])');
         }
 
         $quotationOrderReference = $this
@@ -11946,10 +11951,15 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getSpecifiedLineTradeAgreementWithCreate()
             ->getQuotationReferencedDocumentWithCreate();
 
-        $quotationOrderReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
         $quotationOrderReference->getLineIDWithCreate()->setValue($newReferenceLineNumber);
 
-        if (!InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newReferenceDate])) {
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newReferenceNumber)) {
+            $quotationOrderReference
+                ->getIssuerAssignedIDWithCreate()
+                ->setValue($newReferenceNumber);
+        }
+
+        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
             $quotationOrderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -11981,8 +11991,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])');
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])');
         }
 
         $this->setDocumentPositionQuotationReference(
@@ -12022,8 +12032,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])');
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])');
         }
 
         $contractOrderReference = $this
@@ -12033,10 +12043,15 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getSpecifiedLineTradeAgreementWithCreate()
             ->getContractReferencedDocumentWithCreate();
 
-        $contractOrderReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
         $contractOrderReference->getLineIDWithCreate()->setValue($newReferenceLineNumber);
 
-        if (!InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newReferenceDate])) {
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newReferenceNumber)) {
+            $contractOrderReference
+                ->getIssuerAssignedIDWithCreate()
+                ->setValue($newReferenceNumber);
+        }
+
+        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
             $contractOrderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -12068,8 +12083,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])');
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])');
         }
 
         $this->setDocumentPositionContractReference(
@@ -12253,8 +12268,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])');
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])');
         }
 
         $this->addDocumentPositionUltimateCustomerOrderReference(
@@ -12287,8 +12302,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])');
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])');
         }
 
         $ultimateCustomerOrderReference = $this
@@ -12298,10 +12313,15 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getSpecifiedLineTradeAgreementWithCreate()
             ->addToUltimateCustomerOrderReferencedDocumentWithCreate();
 
-        $ultimateCustomerOrderReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
         $ultimateCustomerOrderReference->getLineIDWithCreate()->setValue($newReferenceLineNumber);
 
-        if (!InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newReferenceDate])) {
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newReferenceNumber)) {
+            $ultimateCustomerOrderReference
+                ->getIssuerAssignedIDWithCreate()
+                ->setValue($newReferenceNumber);
+        }
+
+        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
             $ultimateCustomerOrderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -12340,8 +12360,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])');
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])');
         }
 
         $despatchAdviceReference = $this
@@ -12351,8 +12371,13 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getSpecifiedLineTradeDeliveryWithCreate()
             ->getDespatchAdviceReferencedDocumentWithCreate();
 
-        $despatchAdviceReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
         $despatchAdviceReference->getLineIDWithCreate()->setValue($newReferenceLineNumber);
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newReferenceNumber)) {
+            $despatchAdviceReference
+                ->getIssuerAssignedIDWithCreate()
+                ->setValue($newReferenceNumber);
+        }
 
         if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
             $despatchAdviceReference
@@ -12386,8 +12411,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])');
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])');
         }
 
         $this->setDocumentPositionDespatchAdviceReference(
@@ -12427,8 +12452,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])');
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])');
         }
 
         $receivingAdviceReference = $this
@@ -12438,8 +12463,13 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getSpecifiedLineTradeDeliveryWithCreate()
             ->getReceivingAdviceReferencedDocumentWithCreate();
 
-        $receivingAdviceReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
         $receivingAdviceReference->getLineIDWithCreate()->setValue($newReferenceLineNumber);
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newReferenceNumber)) {
+            $receivingAdviceReference
+                ->getIssuerAssignedIDWithCreate()
+                ->setValue($newReferenceNumber);
+        }
 
         if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
             $receivingAdviceReference
@@ -12473,8 +12503,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])');
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])');
         }
 
         $this->setDocumentPositionReceivingAdviceReference(
@@ -12514,8 +12544,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])');
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])');
         }
 
         $deliveryNoteReference = $this
@@ -12525,8 +12555,13 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getSpecifiedLineTradeDeliveryWithCreate()
             ->getDeliveryNoteReferencedDocumentWithCreate();
 
-        $deliveryNoteReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
         $deliveryNoteReference->getLineIDWithCreate()->setValue($newReferenceLineNumber);
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newReferenceNumber)) {
+            $deliveryNoteReference
+                ->getIssuerAssignedIDWithCreate()
+                ->setValue($newReferenceNumber);
+        }
 
         if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
             $deliveryNoteReference
@@ -12560,8 +12595,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])');
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])');
         }
 
         $this->setDocumentPositionDeliveryNoteReference(
@@ -12603,8 +12638,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber, $newTypeCode])) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber, $newTypeCode])');
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])');
         }
 
         $invoiceReference = $this
@@ -12614,11 +12649,21 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getSpecifiedLineTradeSettlementWithCreate()
             ->getInvoiceReferencedDocumentWithCreate();
 
-        $invoiceReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
         $invoiceReference->getLineIDWithCreate()->setValue($newReferenceLineNumber);
-        $invoiceReference->getTypeCodeWithCreate()->setValue($newTypeCode);
 
-        if (!InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newReferenceDate])) {
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newReferenceNumber)) {
+            $invoiceReference
+                ->getIssuerAssignedIDWithCreate()
+                ->setValue($newReferenceNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTypeCode)) {
+            $invoiceReference
+                ->getTypeCodeWithCreate()
+                ->setValue($newTypeCode);
+        }
+
+        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
             $invoiceReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -12652,8 +12697,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber, $newTypeCode])) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber, $newTypeCode])');
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceLineNumber])');
         }
 
         $this->setDocumentPositionInvoiceReference(
