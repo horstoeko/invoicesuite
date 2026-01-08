@@ -7228,6 +7228,13 @@ final class XRechnungUBLInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 0);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 1);
 
+        static::$document->setDocumentPositionQuantities(1.0);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:InvoiceLine/cbc:InvoicedQuantity', 1);
+
         static::$document->setDocumentPositionQuantities(1.0, 'C62');
 
         $this->disableRenderXmlContent();

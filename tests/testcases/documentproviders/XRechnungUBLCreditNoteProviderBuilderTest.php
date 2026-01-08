@@ -7228,6 +7228,13 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:CreditNoteLine/cbc:CreditedQuantity', 0);
         $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:CreditNoteLine/cbc:CreditedQuantity', 1);
 
+        static::$document->setDocumentPositionQuantities(1.0);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:CreditNoteLine/cbc:CreditedQuantity', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:CreditNoteLine/cbc:CreditedQuantity', 1);
+
         static::$document->setDocumentPositionQuantities(1.0, 'C62');
 
         $this->disableRenderXmlContent();
