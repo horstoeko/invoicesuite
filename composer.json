@@ -37,6 +37,8 @@
     "require": {
         "php": ">=8.2",
         "ext-simplexml": "*",
+        "ext-dom": "*",
+        "ext-mbstring": "*",
         "doctrine/annotations": "^2.0",
         "goetas-webservices/xsd2php-runtime": "^0.2.17",
         "horstoeko/mimedb": "^1.0",
