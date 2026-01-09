@@ -245,7 +245,7 @@ class InvoiceSuiteVisualizer
      */
     public function setTemplate(string $template): static
     {
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty()) {
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($template)) {
             throw new InvalidArgumentException('The template must not be empty');
         }
 

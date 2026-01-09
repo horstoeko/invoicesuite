@@ -94,6 +94,7 @@ lint.ps1
 /examples/05_pdf.pdf
 /examples/05_xml.xml
 /examples/05_pdf_*.pdf
+/examples/05_*.pdf
 
 addusetoclasses.php
 addusetoclasses2.php
