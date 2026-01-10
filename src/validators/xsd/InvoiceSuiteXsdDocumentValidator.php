@@ -9,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\validators\kosit;
+namespace horstoeko\invoicesuite\validators\xsd;
 
 use DOMDocument;
 use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;

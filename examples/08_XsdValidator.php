@@ -26,7 +26,7 @@ use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
-use horstoeko\invoicesuite\validators\kosit\InvoiceSuiteXsdDocumentValidator;
+use horstoeko\invoicesuite\validators\xsd\InvoiceSuiteXsdDocumentValidator;
 
 require __DIR__ . "/../vendor/autoload.php";
 
