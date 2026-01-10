@@ -366,7 +366,7 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
      * @param  string $filename
      * @return bool
      */
-    public function isValidPdfAttachmentFilename(string $filename): bool
+    public function getIsValidPdfAttachmentFilename(string $filename): bool
     {
         return InvoiceSuiteArrayUtils::inArrayNoCase($this->getAllowedPdfAttachmentFilenames(), $filename);
     }

@@ -78,7 +78,7 @@ class InvoiceSuitePdfDocumentReader
             $formatProviders = array_filter(
                 $this->getRegisteredDocumentFormatProviders(),
                 static fn ($formatProvider) => $formatProvider->isPdfSupportAvailable()
-                    && $formatProvider->isValidPdfAttachmentFilename($pdfExtractorAttachment->getAttachmentFilename())
+                    && $formatProvider->getIsValidPdfAttachmentFilename($pdfExtractorAttachment->getAttachmentFilename())
                     && $formatProvider->getIsSatisfiableBySerializedContent($pdfExtractorAttachment->getAttachmentContent())
             );
 
