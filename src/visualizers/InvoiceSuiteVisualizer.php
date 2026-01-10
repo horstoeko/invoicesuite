@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\visualizers;
 
-use horstoeko\invoicesuite\concerns\HandlesRawContents;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatReader;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
@@ -40,8 +39,6 @@ use Mpdf\Mpdf;
  */
 class InvoiceSuiteVisualizer
 {
-    use HandlesRawContents;
-
     /**
      * The internal document reaader instance
      *
