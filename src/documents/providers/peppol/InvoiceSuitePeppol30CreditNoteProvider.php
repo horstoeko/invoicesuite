@@ -205,4 +205,14 @@ class InvoiceSuitePeppol30CreditNoteProvider extends InvoiceSuiteAbstractDocumen
     {
         return '';
     }
+
+    /**
+     * Returns the full file name (including path) for the XSD schema that matches this provider.
+     *
+     * @return string
+     */
+    public function getXsdFilename(): string
+    {
+        return '';
+    }
 }

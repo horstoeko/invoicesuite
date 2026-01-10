@@ -14,6 +14,8 @@ namespace horstoeko\invoicesuite\validators\kosit;
 use DOMDocument;
 use DOMXPath;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
+use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
+use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteMessageSeverity;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
@@ -471,8 +473,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      */
     private function checkRequirementsGeneral(): bool
     {
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->getRawDocumentContent())) {
-            $this->addErrorMessageToMessageBag('You must specify the content to validate');
+        if (InvoiceSuiteContentType::XML != InvoiceSuiteContentTypeResolver::resolveContentType($this->getRawDocumentContent())) {
+            $this->addErrorMessageToMessageBag('Only XML content can be validated with this Validator');
 
             return false;
         }
