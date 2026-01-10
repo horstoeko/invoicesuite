@@ -16,6 +16,7 @@ use DOMXPath;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\documents\models\peppol\main\CreditNote;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
+use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
 
 class InvoiceSuitePeppol30CreditNoteProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
@@ -101,6 +102,10 @@ class InvoiceSuitePeppol30CreditNoteProvider extends InvoiceSuiteAbstractDocumen
      */
     public function isSatisfiableBySerializedContent(string $serializedContent): bool
     {
+        if ($this->getContentType() !== InvoiceSuiteContentTypeResolver::resolveContentType($serializedContent)) {
+            return false;
+        }
+
         $prevUseInternalErrors = libxml_use_internal_errors(true);
         libxml_clear_errors();
 

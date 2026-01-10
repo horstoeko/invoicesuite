@@ -19,6 +19,7 @@ use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxProfiles;
 use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
+use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
 
 class InvoiceSuiteXRechnungCIIInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
@@ -116,6 +117,10 @@ class InvoiceSuiteXRechnungCIIInvoiceProvider extends InvoiceSuiteAbstractDocume
      */
     public function isSatisfiableBySerializedContent(string $serializedContent): bool
     {
+        if ($this->getContentType() !== InvoiceSuiteContentTypeResolver::resolveContentType($serializedContent)) {
+            return false;
+        }
+
         $prevUseInternalErrors = libxml_use_internal_errors(true);
         libxml_clear_errors();
 

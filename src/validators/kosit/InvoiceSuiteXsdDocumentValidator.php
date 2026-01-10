@@ -191,7 +191,7 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
      */
     private function checkXsdFilename(): bool
     {
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->xsdFilename)) {
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->getXsdFilename())) {
             return true;
         }
 
@@ -201,7 +201,6 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
             $this->getRegisteredDocumentFormatProviders(),
             fn ($formatProvider) => (
                 $formatProvider->isSatisfiableBySerializedContent($this->getRawDocumentContent())
-                && InvoiceSuiteContentType::XML == $formatProvider->getContentType()
             )
         );
 
