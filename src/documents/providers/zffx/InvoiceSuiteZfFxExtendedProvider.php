@@ -231,7 +231,7 @@ class InvoiceSuiteZfFxExtendedProvider extends InvoiceSuiteAbstractDocumentForma
     {
         return InvoiceSuitePathUtils::combinePathWithFile(
             InvoiceSuitePathUtils::combineAllPaths(__DIR__, 'xsd'),
-            'extended.xsd'
+            'FACTUR-X_EXTENDED.xsd'
         );
     }
 }

@@ -229,7 +229,7 @@ class InvoiceSuiteZfFxMinimumProvider extends InvoiceSuiteAbstractDocumentFormat
     {
         return InvoiceSuitePathUtils::combinePathWithFile(
             InvoiceSuitePathUtils::combineAllPaths(__DIR__, 'xsd'),
-            'minimum.xsd'
+            'FACTUR-X_MINIMUM.xsd'
         );
     }
 }

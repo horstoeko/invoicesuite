@@ -229,7 +229,7 @@ class InvoiceSuiteZfFxComfortProvider extends InvoiceSuiteAbstractDocumentFormat
     {
         return InvoiceSuitePathUtils::combinePathWithFile(
             InvoiceSuitePathUtils::combineAllPaths(__DIR__, 'xsd'),
-            'comfort.xsd'
+            'FACTUR-X_EN16931.xsd'
         );
     }
 }

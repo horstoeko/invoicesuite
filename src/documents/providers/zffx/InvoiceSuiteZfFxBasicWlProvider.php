@@ -230,7 +230,7 @@ class InvoiceSuiteZfFxBasicWlProvider extends InvoiceSuiteAbstractDocumentFormat
     {
         return InvoiceSuitePathUtils::combinePathWithFile(
             InvoiceSuitePathUtils::combineAllPaths(__DIR__, 'xsd'),
-            'basicwl.xsd'
+            'FACTUR-X_BASIC-WL.xsd'
         );
     }
 }

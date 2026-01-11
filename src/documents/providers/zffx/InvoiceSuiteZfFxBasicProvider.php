@@ -228,7 +228,7 @@ class InvoiceSuiteZfFxBasicProvider extends InvoiceSuiteAbstractDocumentFormatPr
     {
         return InvoiceSuitePathUtils::combinePathWithFile(
             InvoiceSuitePathUtils::combineAllPaths(__DIR__, 'xsd'),
-            'basic.xsd'
+            'FACTUR-X_BASIC.xsd'
         );
     }
 }
