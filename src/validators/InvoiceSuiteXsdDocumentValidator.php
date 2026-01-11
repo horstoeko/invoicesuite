@@ -26,7 +26,7 @@ use JMS\Serializer\Exception\RuntimeException;
 use Throwable;
 
 /**
- * Class representing the implementation for a KosIT Validator
+ * Class representing the implementation for a XSD Validator
  *
  * @category InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
