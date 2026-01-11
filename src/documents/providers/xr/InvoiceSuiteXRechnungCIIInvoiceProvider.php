@@ -19,6 +19,7 @@ use horstoeko\invoicesuite\documents\providers\zffx\models\rsm\CrossIndustryInvo
 use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
+use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 
 class InvoiceSuiteXRechnungCIIInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
@@ -230,6 +231,9 @@ class InvoiceSuiteXRechnungCIIInvoiceProvider extends InvoiceSuiteAbstractDocume
      */
     public function getXsdFilename(): string
     {
-        return '';
+        return InvoiceSuitePathUtils::combinePathWithFile(
+            InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', 'zffx', 'xsd'),
+            'FACTUR-X_EN16931.xsd'
+        );
     }
 }
