@@ -166,7 +166,7 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
      *
      * @return string
      */
-    abstract public function getXsdFilename(): string;
+    abstract public function getValidationXsdFilename(): string;
 
     /**
      * Returns true if the content matches the requirements for a format provider, otherwise false

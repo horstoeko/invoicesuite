@@ -57,7 +57,7 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
     {
         $validator = parent::createFromDocumentReader($fromDocumentReader);
 
-        $validator->setXsdFilename($fromDocumentReader->getCurrentDocumentFormatProvider()->getXsdFilename());
+        $validator->setXsdFilename($fromDocumentReader->getCurrentDocumentFormatProvider()->getValidationXsdFilename());
 
         return $validator;
     }
@@ -76,7 +76,7 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
     {
         $validator = parent::createFromDocumentBuilder($fromDocumentBuilder);
 
-        $validator->setXsdFilename($fromDocumentBuilder->getCurrentDocumentFormatProvider()->getXsdFilename());
+        $validator->setXsdFilename($fromDocumentBuilder->getCurrentDocumentFormatProvider()->getValidationXsdFilename());
 
         return $validator;
     }
