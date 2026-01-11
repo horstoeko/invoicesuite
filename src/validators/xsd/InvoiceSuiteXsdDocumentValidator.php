@@ -57,9 +57,7 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
     {
         $validator = parent::createFromDocumentReader($fromDocumentReader);
 
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($fromDocumentReader->getCurrentDocumentFormatProvider()->getXsdFilename())) {
-            $validator->setXsdFilename($fromDocumentReader->getCurrentDocumentFormatProvider()->getXsdFilename());
-        }
+        $validator->setXsdFilename($fromDocumentReader->getCurrentDocumentFormatProvider()->getXsdFilename());
 
         return $validator;
     }
@@ -78,9 +76,7 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
     {
         $validator = parent::createFromDocumentBuilder($fromDocumentBuilder);
 
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($fromDocumentBuilder->getCurrentDocumentFormatProvider()->getXsdFilename())) {
-            $validator->setXsdFilename($fromDocumentBuilder->getCurrentDocumentFormatProvider()->getXsdFilename());
-        }
+        $validator->setXsdFilename($fromDocumentBuilder->getCurrentDocumentFormatProvider()->getXsdFilename());
 
         return $validator;
     }
@@ -105,6 +101,10 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
      */
     public function setXsdFilename(string $newXsdFilename): static
     {
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newXsdFilename)) {
+            return $this;
+        }
+
         if (!is_file($newXsdFilename)) {
             throw new InvoiceSuiteFileNotFoundException($newXsdFilename);
         }
