@@ -15,6 +15,7 @@ use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
 use horstoeko\invoicesuite\concerns\HandlesMessageBag;
 use horstoeko\invoicesuite\concerns\HandlesRawContents;
+use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
@@ -167,8 +168,8 @@ abstract class InvoiceSuiteAbstractDocumentValidator
      */
     protected function setDocumentBuilder(InvoiceSuiteDocumentBuilder $fromDocumentBuilder): static
     {
-        if (!$fromDocumentBuilder->getCurrentDocumentFormatProvider()->getValidationXsdAvailable()) {
-            throw new InvoiceSuiteInvalidArgumentException(sprintf('Provider %s does not support XSD validation', $fromDocumentBuilder->getCurrentDocumentFormatProvider()->getUniqueId()));
+        if (!$this->checkFormatProviderRequirements($fromDocumentBuilder->getCurrentDocumentFormatProvider())) {
+            throw new InvoiceSuiteInvalidArgumentException(sprintf('The provider %s does not meet the requirements.', $fromDocumentBuilder->getCurrentDocumentFormatProvider()->getUniqueId()));
         }
 
         $this->setCurrentDocumentFormatProvider($fromDocumentBuilder->getCurrentDocumentFormatProvider());
@@ -188,8 +189,8 @@ abstract class InvoiceSuiteAbstractDocumentValidator
      */
     protected function setDocumentReader(InvoiceSuiteDocumentReader $fromDocumentReader): static
     {
-        if (!$fromDocumentReader->getCurrentDocumentFormatProvider()->getValidationXsdAvailable()) {
-            throw new InvoiceSuiteInvalidArgumentException(sprintf('Provider %s does not support XSD validation', $fromDocumentReader->getCurrentDocumentFormatProvider()->getUniqueId()));
+        if (!$this->checkFormatProviderRequirements($fromDocumentReader->getCurrentDocumentFormatProvider())) {
+            throw new InvoiceSuiteInvalidArgumentException(sprintf('The provider %s does not meet the requirements.', $fromDocumentReader->getCurrentDocumentFormatProvider()->getUniqueId()));
         }
 
         $this->setCurrentDocumentFormatProvider($fromDocumentReader->getCurrentDocumentFormatProvider());
@@ -213,7 +214,10 @@ abstract class InvoiceSuiteAbstractDocumentValidator
 
         $formatProviders = array_filter(
             $this->getRegisteredDocumentFormatProviders(),
-            static fn ($formatProvider) => $formatProvider->getIsSatisfiableBySerializedContent($fromDocumentContent)
+            fn ($formatProvider) => (
+                $formatProvider->getIsSatisfiableBySerializedContent($fromDocumentContent)
+                && $this->checkFormatProviderRequirements($formatProvider)
+            )
         );
 
         if ([] === $formatProviders) {
@@ -226,6 +230,17 @@ abstract class InvoiceSuiteAbstractDocumentValidator
         $this->setRawDocumentContent($fromDocumentContent);
 
         return $this;
+    }
+
+    /**
+     * Perform additional checks for a given format provider
+     *
+     * @param  InvoiceSuiteAbstractDocumentFormatProvider $formatProvider
+     * @return bool
+     */
+    protected function checkFormatProviderRequirements(InvoiceSuiteAbstractDocumentFormatProvider $formatProvider): bool
+    {
+        return true;
     }
 
     /**
