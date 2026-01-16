@@ -15,8 +15,7 @@ use Composer\InstalledVersions as ComposerInstalledVersions;
 use Throwable;
 
 /**
- * Class representing some tools for getting the package version
- * of this package
+ * Class representing some tools for getting the package paths
  *
  * @category InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
