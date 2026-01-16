@@ -158,7 +158,7 @@ abstract class InvoiceSuiteAbstractDocumentValidator
 
     /**
      * Internal method to set a document builder from which to get the content from. This will check
-     * if the given provider has an enabled XSD validation support
+     * if the given provider fullfills the requirements for this validator
      *
      * @param  InvoiceSuiteDocumentBuilder $fromDocumentBuilder
      * @return static
@@ -180,7 +180,7 @@ abstract class InvoiceSuiteAbstractDocumentValidator
 
     /**
      * Internal method to set a document reader from which to get the content from. This will check
-     * if the given provider has an enabled XSD validation support
+     * if the given provider fullfills the requirements for this validator
      *
      * @param  InvoiceSuiteDocumentReader $fromDocumentReader
      * @return static
@@ -200,8 +200,8 @@ abstract class InvoiceSuiteAbstractDocumentValidator
     }
 
     /**
-     * Internal method to set the document content directly. This will look for a provider and check if
-     * XSD validation support is enabled
+     * Internal method to set the document content directly. This will look for a provider and the
+     * provider fullfills the requirements for this validator
      *
      * @param  string $fromDocumentContent
      * @return static
