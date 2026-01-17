@@ -45,6 +45,7 @@ use horstoeko\invoicesuite\documents\providers\fatturapa\models\FatturaElettroni
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentFormatBuilder
@@ -6308,14 +6309,23 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ?->getLatestDettaglioLinee()
             ?->unsetQuantita();
 
-        $this->traceMethodExit(__METHOD__);
+        if (InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newQuantity)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'floatIsNullOrEmpty', 'InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newQuantity)');
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newQuantityUnit)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newQuantityUnit)');
+        }
 
         $this
             ->getFatturaPaRootObject()
             ->getLatestFatturaElettronicaBodyWithCreate()
             ->getDatiBeniServiziWithCreate()
             ->getLatestDettaglioLineeWithCreate()
-            ->setQuantita(number_format($newQuantity, 2, '.', ''));
+            ->setQuantita(number_format($newQuantity, 2, '.', ''))
+            ->setUnitaMisura($newQuantityUnit);
+
+        $this->traceMethodExit(__METHOD__);
 
         return $this;
     }
