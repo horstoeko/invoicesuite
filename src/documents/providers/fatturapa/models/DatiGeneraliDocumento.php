@@ -20,7 +20,7 @@ final class DatiGeneraliDocumento
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoDocumento',value'>")
+     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoDocumento','value'>")
      * @JMS\Accessor(getter="getTipoDocumento", setter="setTipoDocumento")
      * @JMS\SerializedName("TipoDocumento")
      * @JMS\XmlElement(cdata=false)

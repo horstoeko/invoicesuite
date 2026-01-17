@@ -274,6 +274,28 @@ final class FatturaElettronica
     }
 
     /**
+     * Get the first existing Body
+     *
+     * @translation-german Erster Rechnungs-Body
+     *
+     * @return null|FatturaElettronicaBody
+     */
+    public function getFirstFatturaElettronicaBody(): ?FatturaElettronicaBody
+    {
+        if (!is_array($this->fatturaElettronicaBody)) {
+            return null;
+        }
+
+        $firstBody = reset($this->fatturaElettronicaBody);
+
+        if (false === $firstBody) {
+            return null;
+        }
+
+        return $firstBody;
+    }
+
+    /**
      * @translation-german-untranslated
      *
      * @return null|mixed
