@@ -106,4 +106,39 @@ final class DatiBollo
 
         return $this;
     }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert als Float lesen.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @return null|float
+     */
+    public function getImportoBolloAsFloat(): ?float
+    {
+        return is_null($this->importoBollo) ? null : (float) $this->importoBollo;
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert aus Float setzen.
+     * Wenn $scale nicht gesetzt ist, wird ein sinnvoller Default verwendet.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @param  null|float $value
+     * @param  null|int   $scale anzahl Nachkommastellen (wird auf den erlaubten Bereich begrenzt)
+     * @return static
+     */
+    public function setImportoBolloFromFloat(?float $value = null, ?int $scale = null): static
+    {
+        if (is_null($value)) {
+            return $this->setImportoBollo(null);
+        }
+
+        $formatted = number_format($value, 2, '.', '');
+
+        return $this->setImportoBollo($formatted);
+    }
 }

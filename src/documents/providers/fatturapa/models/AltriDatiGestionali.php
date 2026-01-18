@@ -200,4 +200,40 @@ final class AltriDatiGestionali
 
         return $this;
     }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert als Float lesen.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @return null|float
+     */
+    public function getRiferimentoNumeroAsFloat(): ?float
+    {
+        return is_null($this->riferimentoNumero) ? null : (float) $this->riferimentoNumero;
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert aus Float setzen.
+     * Wenn $scale nicht gesetzt ist, wird ein sinnvoller Default verwendet.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @param  null|float $value
+     * @param  null|int   $scale anzahl Nachkommastellen (wird auf den erlaubten Bereich begrenzt)
+     * @return static
+     */
+    public function setRiferimentoNumeroFromFloat(?float $value = null, ?int $scale = null): static
+    {
+        if (is_null($value)) {
+            return $this->setRiferimentoNumero(null);
+        }
+
+        $scale = max(2, min(8, $scale ?? 2));
+        $formatted = number_format($value, $scale, '.', '');
+
+        return $this->setRiferimentoNumero($formatted);
+    }
 }

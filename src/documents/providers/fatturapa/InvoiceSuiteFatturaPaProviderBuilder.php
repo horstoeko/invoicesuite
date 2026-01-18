@@ -6307,7 +6307,8 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ->getLatestFatturaElettronicaBody()
             ?->getDatiBeniServizi()
             ?->getLatestDettaglioLinee()
-            ?->unsetQuantita();
+            ?->unsetQuantita()
+            ?->unsetUnitaMisura();
 
         if (InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newQuantity)) {
             return $this->traceMethodEarlyExit(__METHOD__, 'floatIsNullOrEmpty', 'InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newQuantity)');
@@ -6322,7 +6323,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ->getLatestFatturaElettronicaBodyWithCreate()
             ->getDatiBeniServiziWithCreate()
             ->getLatestDettaglioLineeWithCreate()
-            ->setQuantita(number_format($newQuantity, 2, '.', ''))
+            ->setQuantitaFromFloat($newQuantity)
             ->setUnitaMisura($newQuantityUnit);
 
         $this->traceMethodExit(__METHOD__);

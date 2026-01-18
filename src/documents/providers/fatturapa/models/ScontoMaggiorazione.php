@@ -153,4 +153,75 @@ final class ScontoMaggiorazione
 
         return $this;
     }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert als Float lesen.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @return null|float
+     */
+    public function getPercentualeAsFloat(): ?float
+    {
+        return is_null($this->percentuale) ? null : (float) $this->percentuale;
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert aus Float setzen.
+     * Wenn $scale nicht gesetzt ist, wird ein sinnvoller Default verwendet.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @param  null|float $value
+     * @param  null|int   $scale anzahl Nachkommastellen (wird auf den erlaubten Bereich begrenzt)
+     * @return static
+     */
+    public function setPercentualeFromFloat(?float $value = null, ?int $scale = null): static
+    {
+        if (is_null($value)) {
+            return $this->setPercentuale(null);
+        }
+
+        $formatted = number_format($value, 2, '.', '');
+
+        return $this->setPercentuale($formatted);
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert als Float lesen.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @return null|float
+     */
+    public function getImportoAsFloat(): ?float
+    {
+        return is_null($this->importo) ? null : (float) $this->importo;
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert aus Float setzen.
+     * Wenn $scale nicht gesetzt ist, wird ein sinnvoller Default verwendet.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @param  null|float $value
+     * @param  null|int   $scale anzahl Nachkommastellen (wird auf den erlaubten Bereich begrenzt)
+     * @return static
+     */
+    public function setImportoFromFloat(?float $value = null, ?int $scale = null): static
+    {
+        if (is_null($value)) {
+            return $this->setImporto(null);
+        }
+
+        $scale = max(2, min(8, $scale ?? 2));
+        $formatted = number_format($value, $scale, '.', '');
+
+        return $this->setImporto($formatted);
+    }
 }

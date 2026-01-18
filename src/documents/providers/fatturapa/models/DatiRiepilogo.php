@@ -389,4 +389,180 @@ final class DatiRiepilogo
 
         return $this;
     }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert als Float lesen.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @return null|float
+     */
+    public function getAliquotaIVAAsFloat(): ?float
+    {
+        return is_null($this->aliquotaIVA) ? null : (float) $this->aliquotaIVA;
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert aus Float setzen.
+     * Wenn $scale nicht gesetzt ist, wird ein sinnvoller Default verwendet.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @param  null|float $value
+     * @param  null|int   $scale anzahl Nachkommastellen (wird auf den erlaubten Bereich begrenzt)
+     * @return static
+     */
+    public function setAliquotaIVAFromFloat(?float $value = null, ?int $scale = null): static
+    {
+        if (is_null($value)) {
+            return $this->setAliquotaIVA(null);
+        }
+
+        $formatted = number_format($value, 2, '.', '');
+
+        return $this->setAliquotaIVA($formatted);
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert als Float lesen.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @return null|float
+     */
+    public function getSpeseAccessorieAsFloat(): ?float
+    {
+        return is_null($this->speseAccessorie) ? null : (float) $this->speseAccessorie;
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert aus Float setzen.
+     * Wenn $scale nicht gesetzt ist, wird ein sinnvoller Default verwendet.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @param  null|float $value
+     * @param  null|int   $scale anzahl Nachkommastellen (wird auf den erlaubten Bereich begrenzt)
+     * @return static
+     */
+    public function setSpeseAccessorieFromFloat(?float $value = null, ?int $scale = null): static
+    {
+        if (is_null($value)) {
+            return $this->setSpeseAccessorie(null);
+        }
+
+        $formatted = number_format($value, 2, '.', '');
+
+        return $this->setSpeseAccessorie($formatted);
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert als Float lesen.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @return null|float
+     */
+    public function getArrotondamentoAsFloat(): ?float
+    {
+        return is_null($this->arrotondamento) ? null : (float) $this->arrotondamento;
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert aus Float setzen.
+     * Wenn $scale nicht gesetzt ist, wird ein sinnvoller Default verwendet.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @param  null|float $value
+     * @param  null|int   $scale anzahl Nachkommastellen (wird auf den erlaubten Bereich begrenzt)
+     * @return static
+     */
+    public function setArrotondamentoFromFloat(?float $value = null, ?int $scale = null): static
+    {
+        if (is_null($value)) {
+            return $this->setArrotondamento(null);
+        }
+
+        $scale = max(2, min(8, $scale ?? 2));
+        $formatted = number_format($value, $scale, '.', '');
+
+        return $this->setArrotondamento($formatted);
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert als Float lesen.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @return null|float
+     */
+    public function getImponibileImportoAsFloat(): ?float
+    {
+        return is_null($this->imponibileImporto) ? null : (float) $this->imponibileImporto;
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert aus Float setzen.
+     * Wenn $scale nicht gesetzt ist, wird ein sinnvoller Default verwendet.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @param  null|float $value
+     * @param  null|int   $scale anzahl Nachkommastellen (wird auf den erlaubten Bereich begrenzt)
+     * @return static
+     */
+    public function setImponibileImportoFromFloat(?float $value = null, ?int $scale = null): static
+    {
+        if (is_null($value)) {
+            return $this->setImponibileImporto(null);
+        }
+
+        $formatted = number_format($value, 2, '.', '');
+
+        return $this->setImponibileImporto($formatted);
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert als Float lesen.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @return null|float
+     */
+    public function getImpostaAsFloat(): ?float
+    {
+        return is_null($this->imposta) ? null : (float) $this->imposta;
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert aus Float setzen.
+     * Wenn $scale nicht gesetzt ist, wird ein sinnvoller Default verwendet.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @param  null|float $value
+     * @param  null|int   $scale anzahl Nachkommastellen (wird auf den erlaubten Bereich begrenzt)
+     * @return static
+     */
+    public function setImpostaFromFloat(?float $value = null, ?int $scale = null): static
+    {
+        if (is_null($value)) {
+            return $this->setImposta(null);
+        }
+
+        $formatted = number_format($value, 2, '.', '');
+
+        return $this->setImposta($formatted);
+    }
 }

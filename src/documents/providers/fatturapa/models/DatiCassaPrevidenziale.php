@@ -390,4 +390,144 @@ final class DatiCassaPrevidenziale
 
         return $this;
     }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert als Float lesen.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @return null|float
+     */
+    public function getAlCassaAsFloat(): ?float
+    {
+        return is_null($this->alCassa) ? null : (float) $this->alCassa;
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert aus Float setzen.
+     * Wenn $scale nicht gesetzt ist, wird ein sinnvoller Default verwendet.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @param  null|float $value
+     * @param  null|int   $scale anzahl Nachkommastellen (wird auf den erlaubten Bereich begrenzt)
+     * @return static
+     */
+    public function setAlCassaFromFloat(?float $value = null, ?int $scale = null): static
+    {
+        if (is_null($value)) {
+            return $this->setAlCassa(null);
+        }
+
+        $formatted = number_format($value, 2, '.', '');
+
+        return $this->setAlCassa($formatted);
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert als Float lesen.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @return null|float
+     */
+    public function getImportoContributoCassaAsFloat(): ?float
+    {
+        return is_null($this->importoContributoCassa) ? null : (float) $this->importoContributoCassa;
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert aus Float setzen.
+     * Wenn $scale nicht gesetzt ist, wird ein sinnvoller Default verwendet.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @param  null|float $value
+     * @param  null|int   $scale anzahl Nachkommastellen (wird auf den erlaubten Bereich begrenzt)
+     * @return static
+     */
+    public function setImportoContributoCassaFromFloat(?float $value = null, ?int $scale = null): static
+    {
+        if (is_null($value)) {
+            return $this->setImportoContributoCassa(null);
+        }
+
+        $formatted = number_format($value, 2, '.', '');
+
+        return $this->setImportoContributoCassa($formatted);
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert als Float lesen.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @return null|float
+     */
+    public function getImponibileCassaAsFloat(): ?float
+    {
+        return is_null($this->imponibileCassa) ? null : (float) $this->imponibileCassa;
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert aus Float setzen.
+     * Wenn $scale nicht gesetzt ist, wird ein sinnvoller Default verwendet.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @param  null|float $value
+     * @param  null|int   $scale anzahl Nachkommastellen (wird auf den erlaubten Bereich begrenzt)
+     * @return static
+     */
+    public function setImponibileCassaFromFloat(?float $value = null, ?int $scale = null): static
+    {
+        if (is_null($value)) {
+            return $this->setImponibileCassa(null);
+        }
+
+        $formatted = number_format($value, 2, '.', '');
+
+        return $this->setImponibileCassa($formatted);
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert als Float lesen.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @return null|float
+     */
+    public function getAliquotaIVAAsFloat(): ?float
+    {
+        return is_null($this->aliquotaIVA) ? null : (float) $this->aliquotaIVA;
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * Komfort-Methode: Dezimalwert aus Float setzen.
+     * Wenn $scale nicht gesetzt ist, wird ein sinnvoller Default verwendet.
+     * Achtung: Floats sind ungenau (IEEE 754) und nur für Bequemlichkeit gedacht.
+     *
+     * @param  null|float $value
+     * @param  null|int   $scale anzahl Nachkommastellen (wird auf den erlaubten Bereich begrenzt)
+     * @return static
+     */
+    public function setAliquotaIVAFromFloat(?float $value = null, ?int $scale = null): static
+    {
+        if (is_null($value)) {
+            return $this->setAliquotaIVA(null);
+        }
+
+        $formatted = number_format($value, 2, '.', '');
+
+        return $this->setAliquotaIVA($formatted);
+    }
 }
