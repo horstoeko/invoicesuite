@@ -38,6 +38,7 @@ use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceProductDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteServiceChargeDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
+use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\EsigibilitaIVA;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\FormatoTrasmissione;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\RegimeFiscale;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoDocumento;
@@ -5428,6 +5429,28 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     {
         $this->traceMethodEnter(__METHOD__);
 
+        $this
+            ->getFatturaPaRootObject()
+            ->getLatestFatturaElettronicaBody()
+            ?->getDatiBeniServizi()
+            ?->unsetDatiRiepilogo();
+
+        if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent, $newBasisAmount, $newTaxAmount])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent, $newBasisAmount, $newTaxAmount])');
+        }
+
+        $this->addDocumentTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newBasisAmount,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode,
+            $newTaxDueDate,
+            $newTaxDueCode
+        );
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5450,6 +5473,20 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     public function addDocumentTax(?string $newTaxCategory = null, ?string $newTaxType = null, ?float $newBasisAmount = null, ?float $newTaxAmount = null, ?float $newTaxPercent = null, ?string $newExemptionReason = null, ?string $newExemptionReasonCode = null, ?DateTimeInterface $newTaxDueDate = null, ?string $newTaxDueCode = null): static
     {
         $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent, $newBasisAmount, $newTaxAmount])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent, $newBasisAmount, $newTaxAmount])');
+        }
+
+        $this
+            ->getFatturaPaRootObject()
+            ->getLatestFatturaElettronicaBodyWithCreate()
+            ->getDatiBeniServiziWithCreate()
+            ->addToDatiRiepilogoWithCreate()
+            ->setAliquotaIVA($newTaxPercent)
+            ->setImponibileImporto($newBasisAmount)
+            ->setImposta($newTaxAmount)
+            ->setEsigibilitaIVA(EsigibilitaIVA::tryFrom($newTaxType ?? EsigibilitaIVA::I->value) ?? EsigibilitaIVA::I);
 
         $this->traceMethodExit(__METHOD__);
 
