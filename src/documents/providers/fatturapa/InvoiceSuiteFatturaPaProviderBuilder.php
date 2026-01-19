@@ -38,8 +38,10 @@ use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceProductDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteServiceChargeDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
+use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\CondizioniPagamento;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\EsigibilitaIVA;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\FormatoTrasmissione;
+use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\ModalitaPagamento;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\RegimeFiscale;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoDocumento;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\FatturaElettronica;
@@ -5309,6 +5311,24 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     {
         $this->traceMethodEnter(__METHOD__);
 
+        $this
+            ->getFatturaPaRootObject()
+            ->getLatestFatturaElettronicaBody()
+            ?->unsetDatiPagamento();
+
+        if (InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'datetimeIsNullOrEmpty', 'InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)');
+        }
+
+        $this
+            ->getFatturaPaRootObject()
+            ->getLatestFatturaElettronicaBodyWithCreate()
+            ->addOnceToDatiPagamentoWithCreate()
+            ->setCondizioniPagamento(CondizioniPagamento::TP01)
+            ->addOnceToDettaglioPagamentoWithCreate()
+            ->setModalitaPagamento(ModalitaPagamento::MP01)
+            ->setDataScadenzaPagamento($newDueDate);
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5325,6 +5345,16 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     public function addDocumentPaymentTerm(?string $newDescription = null, ?DateTimeInterface $newDueDate = null, ?string $newMandate = null): static
     {
         $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'datetimeIsNullOrEmpty', 'InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)');
+        }
+
+        $this->setDocumentPaymentTerm(
+            $newDescription,
+            $newDueDate,
+            $newMandate
+        );
 
         $this->traceMethodExit(__METHOD__);
 
