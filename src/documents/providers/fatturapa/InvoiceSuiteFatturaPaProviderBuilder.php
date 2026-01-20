@@ -288,7 +288,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
                 )
             )
             ?->firstContact(
-                fn (InvoiceSuiteContactDTO $item) => $this->addDocumentSellerContact(
+                fn (InvoiceSuiteContactDTO $item) => $this->setDocumentSellerContact(
                     $item->getPersonName(),
                     $item->getDepartmentName(),
                     $item->getPhoneNumber(),
