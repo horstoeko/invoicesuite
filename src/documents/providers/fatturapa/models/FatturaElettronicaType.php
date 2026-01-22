@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\fatturapa\models;
 
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\FormatoTrasmissione;
+use horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\Signature;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use JMS\Serializer\Annotation as JMS;
 
@@ -58,12 +59,12 @@ class FatturaElettronicaType
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("mixed")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\Signature")
      * @JMS\Accessor(getter="getSignature", setter="setSignature")
      * @JMS\SerializedName("Signature")
-     * @JMS\XmlElement(cdata=false)
+     * @JMS\XmlElement(namespace="http://www.w3.org/2000/09/xmldsig#", cdata=false)
      */
-    private mixed $signature = null;
+    private ?Signature $signature = null;
 
     /**
      * @translation-german-untranslated
@@ -92,9 +93,9 @@ class FatturaElettronicaType
     /**
      * Schema location
      *
-     * @return string
+     * @return null|string
      */
-    public function getSchemaLocation(): string
+    public function getSchemaLocation(): ?string
     {
         return $this->schemaLocation;
     }
@@ -102,10 +103,10 @@ class FatturaElettronicaType
     /**
      * Schema location
      *
-     * @param  string $schemaLocation
+     * @param  null|string $schemaLocation
      * @return static
      */
-    public function setSchemaLocation(string $schemaLocation): static
+    public function setSchemaLocation(?string $schemaLocation = null): static
     {
         $this->schemaLocation = InvoiceSuiteStringUtils::asNullWhenEmpty($schemaLocation);
 
@@ -322,9 +323,9 @@ class FatturaElettronicaType
     /**
      * @translation-german-untranslated
      *
-     * @return null|mixed
+     * @return null|Signature
      */
-    public function getSignature()
+    public function getSignature(): ?Signature
     {
         return $this->signature;
     }
@@ -332,10 +333,22 @@ class FatturaElettronicaType
     /**
      * @translation-german-untranslated
      *
-     * @param  null|mixed $signature
+     * @return Signature
+     */
+    public function getSignatureWithCreate(): Signature
+    {
+        $this->signature = is_null($this->signature) ? new Signature() : $this->signature;
+
+        return $this->signature;
+    }
+
+    /**
+     * @translation-german-untranslated
+     *
+     * @param  null|Signature $signature
      * @return static
      */
-    public function setSignature($signature = null): static
+    public function setSignature(?Signature $signature = null): static
     {
         $this->signature = $signature;
 
