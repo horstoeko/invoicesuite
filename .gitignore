@@ -101,9 +101,6 @@ addusetoclasses.php
 addusetoclasses2.php
 convert_string_params.php
 transfer_docblocks*.php
-gendto.php
-gendto2.php
-gencodelists.php
 genmodeltests*.php
 myfile_dbg.xml
 

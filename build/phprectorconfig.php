@@ -22,6 +22,7 @@ require_once(__DIR__.'/phprectorrules.php');
 return RectorConfig::configure()
     ->withPaths([
         __DIR__ . '/../src',
+        __DIR__ . '/../make',
         __DIR__ . '/../tests/testcases',
     ])
     ->withSkipPath(
