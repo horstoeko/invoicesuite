@@ -323,6 +323,18 @@ class InvoiceSuitePaymentTermDTO
     }
 
     /**
+     * Filter The payment discounts
+     *
+     * @param callable \$callback Callback to execute for each item
+     * @return arra<InvoiceSuitePaymentTermDiscountDTO>,
+     */
+    public function filterDiscountTerm(
+        callable $callback
+    ): array {
+        return array_filter($this->discountTerms, $callback);
+    }
+
+    /**
      * Returns the payment penalties
      *
      * @return array<InvoiceSuitePaymentTermPenaltyDTO>
@@ -512,6 +524,18 @@ class InvoiceSuitePaymentTermDTO
         }
 
         return $this;
+    }
+
+    /**
+     * Filter The payment penalties
+     *
+     * @param callable \$callback Callback to execute for each item
+     * @return arra<InvoiceSuitePaymentTermPenaltyDTO>,
+     */
+    public function filterPenaltyTerm(
+        callable $callback
+    ): array {
+        return array_filter($this->penaltyTerms, $callback);
     }
 
     /**

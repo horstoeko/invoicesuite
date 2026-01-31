@@ -302,6 +302,18 @@ class InvoiceSuitePartyDTO
     }
 
     /**
+     * Filter Party names
+     *
+     * @param callable \$callback Callback to execute for each item
+     * @return arra<string>,
+     */
+    public function filterName(
+        callable $callback
+    ): array {
+        return array_filter($this->names, $callback);
+    }
+
+    /**
      * Returns party IDs
      *
      * @return array<InvoiceSuiteIdDTO>
@@ -491,6 +503,18 @@ class InvoiceSuitePartyDTO
         }
 
         return $this;
+    }
+
+    /**
+     * Filter Party IDs
+     *
+     * @param callable \$callback Callback to execute for each item
+     * @return arra<InvoiceSuiteIdDTO>,
+     */
+    public function filterId(
+        callable $callback
+    ): array {
+        return array_filter($this->ids, $callback);
     }
 
     /**
@@ -686,6 +710,18 @@ class InvoiceSuitePartyDTO
     }
 
     /**
+     * Filter Party global IDs
+     *
+     * @param callable \$callback Callback to execute for each item
+     * @return arra<InvoiceSuiteIdDTO>,
+     */
+    public function filterGlobalId(
+        callable $callback
+    ): array {
+        return array_filter($this->globalIds, $callback);
+    }
+
+    /**
      * Returns party tax registrations
      *
      * @return array<InvoiceSuiteIdDTO>
@@ -875,6 +911,18 @@ class InvoiceSuitePartyDTO
         }
 
         return $this;
+    }
+
+    /**
+     * Filter Party tax registrations
+     *
+     * @param callable \$callback Callback to execute for each item
+     * @return arra<InvoiceSuiteIdDTO>,
+     */
+    public function filterTaxRegistration(
+        callable $callback
+    ): array {
+        return array_filter($this->taxRegistrations, $callback);
     }
 
     /**
@@ -1070,6 +1118,18 @@ class InvoiceSuitePartyDTO
     }
 
     /**
+     * Filter Party addresses
+     *
+     * @param callable \$callback Callback to execute for each item
+     * @return arra<InvoiceSuiteAddressDTO>,
+     */
+    public function filterAddress(
+        callable $callback
+    ): array {
+        return array_filter($this->addresses, $callback);
+    }
+
+    /**
      * Returns party legal organisations
      *
      * @return array<InvoiceSuiteOrganisationDTO>
@@ -1259,6 +1319,18 @@ class InvoiceSuitePartyDTO
         }
 
         return $this;
+    }
+
+    /**
+     * Filter Party legal organisations
+     *
+     * @param callable \$callback Callback to execute for each item
+     * @return arra<InvoiceSuiteOrganisationDTO>,
+     */
+    public function filterLegalOrganisation(
+        callable $callback
+    ): array {
+        return array_filter($this->legalOrganisations, $callback);
     }
 
     /**
@@ -1454,6 +1526,18 @@ class InvoiceSuitePartyDTO
     }
 
     /**
+     * Filter Party contacts
+     *
+     * @param callable \$callback Callback to execute for each item
+     * @return arra<InvoiceSuiteContactDTO>,
+     */
+    public function filterContact(
+        callable $callback
+    ): array {
+        return array_filter($this->contacts, $callback);
+    }
+
+    /**
      * Returns party electronic communications
      *
      * @return array<InvoiceSuiteCommunicationDTO>
@@ -1643,5 +1727,17 @@ class InvoiceSuitePartyDTO
         }
 
         return $this;
+    }
+
+    /**
+     * Filter Party electronic communications
+     *
+     * @param callable \$callback Callback to execute for each item
+     * @return arra<InvoiceSuiteCommunicationDTO>,
+     */
+    public function filterCommunication(
+        callable $callback): array
+    {
+        return array_filter($this->communications, $callback);
     }
 }

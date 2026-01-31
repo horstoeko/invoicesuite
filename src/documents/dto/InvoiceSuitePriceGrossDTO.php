@@ -236,4 +236,16 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
 
         return $this;
     }
+
+    /**
+     * Filter The discounts or charges to the gross price
+     *
+     * @param callable \$callback Callback to execute for each item
+     * @return arra<InvoiceSuiteAllowanceChargeDTO>,
+     */
+    public function filterAllowanceCharge(
+        callable $callback
+    ): array {
+        return array_filter($this->allowanceCharges, $callback);
+    }
 }

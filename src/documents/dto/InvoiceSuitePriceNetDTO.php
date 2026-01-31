@@ -236,4 +236,16 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
 
         return $this;
     }
+
+    /**
+     * Filter The net price included tax
+     *
+     * @param callable \$callback Callback to execute for each item
+     * @return arra<InvoiceSuiteTaxDTO>,
+     */
+    public function filterTax(
+        callable $callback
+    ): array {
+        return array_filter($this->taxes, $callback);
+    }
 }

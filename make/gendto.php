@@ -391,6 +391,19 @@ function gendto(array $definitions): void
                 $looper->addBody('');
                 $looper->addBody('return $this;');
                 $looper->addComment(sprintf("Loop over %1\$s and execute callback\n\n@param bool \$foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved\n@param callable \$callback Callback to execute for each item\n@param callable|null \$callbackElse Callback to execute if no item was found\n@param int|null \$limit Maximum number of loops\n@return static", $propertyCaption, basename((string) $propertyType), $propertyName));
+
+                /**
+                 * --------------------------------
+                 * -- Looper With fallback to first
+                 * --------------------------------
+                 */
+                $filter = $class->addMethod(sprintf('filter%s', ucfirst((string) $propertyLooperName)));
+                $filter->setReturnType('array');
+                $filter->addParameter('callback')->setType('callable');
+                $filter->addBody(sprintf('return array_filter($this->%1$s, $callback);', $propertyClassPropertyName, $propertyName));
+                $filter->addComment(sprintf('Filter %1$s', $propertyCaption));
+                $filter->addComment(sprintf('@param callable \$callback Callback to execute for each item', $propertyCaption));
+                $filter->addComment(sprintf('@return arra<%s>,', basename((string) $propertyType)));
             }
         }
 
