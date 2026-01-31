@@ -128,7 +128,7 @@
         ],
         "generatedto:run": [
             "Composer\\Config::disableProcessTimeout",
-            "@php ./make/gendto2.php",
+            "@php ./make/gendto.php",
             "@phpcsfixer:run"
         ]
     }
