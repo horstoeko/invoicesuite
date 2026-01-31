@@ -248,4 +248,52 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
     ): array {
         return array_filter($this->allowanceCharges, $callback);
     }
+
+    /**
+     * Get first filtered The discounts or charges to the gross price
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredAllowanceCharge(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredAllowanceCharge = $this->filterAllowanceCharge($filterCallback);
+
+        if (($allowanceCharge = reset($filteredAllowanceCharge)) !== false) {
+            $callback($allowanceCharge);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The discounts or charges to the gross price
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredAllowanceCharge(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredAllowanceCharge = $this->filterAllowanceCharge($filterCallback);
+
+        if (($allowanceCharge = reset($filteredAllowanceCharge)) !== false) {
+            $callback($allowanceCharge);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
 }

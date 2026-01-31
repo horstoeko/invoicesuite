@@ -314,6 +314,54 @@ class InvoiceSuitePartyDTO
     }
 
     /**
+     * Get first filtered Party names
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredName(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredName = $this->filterName($filterCallback);
+
+        if (($name = reset($filteredName)) !== false) {
+            $callback($name);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered Party names
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredName(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredName = $this->filterName($filterCallback);
+
+        if (($name = reset($filteredName)) !== false) {
+            $callback($name);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns party IDs
      *
      * @return array<InvoiceSuiteIdDTO>
@@ -515,6 +563,54 @@ class InvoiceSuitePartyDTO
         callable $callback
     ): array {
         return array_filter($this->ids, $callback);
+    }
+
+    /**
+     * Get first filtered Party IDs
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredId(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredId = $this->filterId($filterCallback);
+
+        if (($id = reset($filteredId)) !== false) {
+            $callback($id);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered Party IDs
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredId(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredId = $this->filterId($filterCallback);
+
+        if (($id = reset($filteredId)) !== false) {
+            $callback($id);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
     }
 
     /**
@@ -722,6 +818,54 @@ class InvoiceSuitePartyDTO
     }
 
     /**
+     * Get first filtered Party global IDs
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredGlobalId(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredGlobalId = $this->filterGlobalId($filterCallback);
+
+        if (($globalId = reset($filteredGlobalId)) !== false) {
+            $callback($globalId);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered Party global IDs
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredGlobalId(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredGlobalId = $this->filterGlobalId($filterCallback);
+
+        if (($globalId = reset($filteredGlobalId)) !== false) {
+            $callback($globalId);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns party tax registrations
      *
      * @return array<InvoiceSuiteIdDTO>
@@ -923,6 +1067,54 @@ class InvoiceSuitePartyDTO
         callable $callback
     ): array {
         return array_filter($this->taxRegistrations, $callback);
+    }
+
+    /**
+     * Get first filtered Party tax registrations
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredTaxRegistration(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredTaxRegistration = $this->filterTaxRegistration($filterCallback);
+
+        if (($taxRegistration = reset($filteredTaxRegistration)) !== false) {
+            $callback($taxRegistration);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered Party tax registrations
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredTaxRegistration(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredTaxRegistration = $this->filterTaxRegistration($filterCallback);
+
+        if (($taxRegistration = reset($filteredTaxRegistration)) !== false) {
+            $callback($taxRegistration);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
     }
 
     /**
@@ -1130,6 +1322,54 @@ class InvoiceSuitePartyDTO
     }
 
     /**
+     * Get first filtered Party addresses
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredAddress(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredAddress = $this->filterAddress($filterCallback);
+
+        if (($address = reset($filteredAddress)) !== false) {
+            $callback($address);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered Party addresses
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredAddress(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredAddress = $this->filterAddress($filterCallback);
+
+        if (($address = reset($filteredAddress)) !== false) {
+            $callback($address);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns party legal organisations
      *
      * @return array<InvoiceSuiteOrganisationDTO>
@@ -1331,6 +1571,54 @@ class InvoiceSuitePartyDTO
         callable $callback
     ): array {
         return array_filter($this->legalOrganisations, $callback);
+    }
+
+    /**
+     * Get first filtered Party legal organisations
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredLegalOrganisation(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredLegalOrganisation = $this->filterLegalOrganisation($filterCallback);
+
+        if (($legalOrganisation = reset($filteredLegalOrganisation)) !== false) {
+            $callback($legalOrganisation);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered Party legal organisations
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredLegalOrganisation(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredLegalOrganisation = $this->filterLegalOrganisation($filterCallback);
+
+        if (($legalOrganisation = reset($filteredLegalOrganisation)) !== false) {
+            $callback($legalOrganisation);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
     }
 
     /**
@@ -1538,6 +1826,54 @@ class InvoiceSuitePartyDTO
     }
 
     /**
+     * Get first filtered Party contacts
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredContact(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredContact = $this->filterContact($filterCallback);
+
+        if (($contact = reset($filteredContact)) !== false) {
+            $callback($contact);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered Party contacts
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredContact(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredContact = $this->filterContact($filterCallback);
+
+        if (($contact = reset($filteredContact)) !== false) {
+            $callback($contact);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns party electronic communications
      *
      * @return array<InvoiceSuiteCommunicationDTO>
@@ -1736,8 +2072,56 @@ class InvoiceSuitePartyDTO
      * @return array<InvoiceSuiteCommunicationDTO>
      */
     public function filterCommunication(
-        callable $callback): array
-    {
+        callable $callback
+    ): array {
         return array_filter($this->communications, $callback);
+    }
+
+    /**
+     * Get first filtered Party electronic communications
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredCommunication(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredCommunication = $this->filterCommunication($filterCallback);
+
+        if (($communication = reset($filteredCommunication)) !== false) {
+            $callback($communication);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered Party electronic communications
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredCommunication(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredCommunication = $this->filterCommunication($filterCallback);
+
+        if (($communication = reset($filteredCommunication)) !== false) {
+            $callback($communication);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
     }
 }

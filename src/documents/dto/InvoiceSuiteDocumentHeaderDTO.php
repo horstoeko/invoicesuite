@@ -841,6 +841,54 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Get first filtered The date of the delivery
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredSupplyChainEvent(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredSupplyChainEvent = $this->filterSupplyChainEvent($filterCallback);
+
+        if (($supplyChainEvent = reset($filteredSupplyChainEvent)) !== false) {
+            $callback($supplyChainEvent);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The date of the delivery
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredSupplyChainEvent(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredSupplyChainEvent = $this->filterSupplyChainEvent($filterCallback);
+
+        if (($supplyChainEvent = reset($filteredSupplyChainEvent)) !== false) {
+            $callback($supplyChainEvent);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the code for the invoice currency
      *
      * @return null|string
@@ -1141,6 +1189,54 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Get first filtered The notes for this document
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredNote(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredNote = $this->filterNote($filterCallback);
+
+        if (($note = reset($filteredNote)) !== false) {
+            $callback($note);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The notes for this document
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredNote(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredNote = $this->filterNote($filterCallback);
+
+        if (($note = reset($filteredNote)) !== false) {
+            $callback($note);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the start and/or end date of the billing period
      *
      * @return array<InvoiceSuiteDateRangeDTO>
@@ -1342,6 +1438,54 @@ class InvoiceSuiteDocumentHeaderDTO
         callable $callback
     ): array {
         return array_filter($this->billingPeriods, $callback);
+    }
+
+    /**
+     * Get first filtered The start and/or end date of the billing period
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredBillingPeriod(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredBillingPeriod = $this->filterBillingPeriod($filterCallback);
+
+        if (($billingPeriod = reset($filteredBillingPeriod)) !== false) {
+            $callback($billingPeriod);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The start and/or end date of the billing period
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredBillingPeriod(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredBillingPeriod = $this->filterBillingPeriod($filterCallback);
+
+        if (($billingPeriod = reset($filteredBillingPeriod)) !== false) {
+            $callback($billingPeriod);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
     }
 
     /**
@@ -1549,6 +1693,54 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Get first filtered The posting reference
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredPostingReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredPostingReference = $this->filterPostingReference($filterCallback);
+
+        if (($postingReference = reset($filteredPostingReference)) !== false) {
+            $callback($postingReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The posting reference
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredPostingReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredPostingReference = $this->filterPostingReference($filterCallback);
+
+        if (($postingReference = reset($filteredPostingReference)) !== false) {
+            $callback($postingReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the associated seller's order confirmation
      *
      * @return array<InvoiceSuiteReferenceDocumentDTO>
@@ -1750,6 +1942,54 @@ class InvoiceSuiteDocumentHeaderDTO
         callable $callback
     ): array {
         return array_filter($this->sellerOrderReferences, $callback);
+    }
+
+    /**
+     * Get first filtered The associated seller's order confirmation
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredSellerOrderReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredSellerOrderReference = $this->filterSellerOrderReference($filterCallback);
+
+        if (($sellerOrderReference = reset($filteredSellerOrderReference)) !== false) {
+            $callback($sellerOrderReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The associated seller's order confirmation
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredSellerOrderReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredSellerOrderReference = $this->filterSellerOrderReference($filterCallback);
+
+        if (($sellerOrderReference = reset($filteredSellerOrderReference)) !== false) {
+            $callback($sellerOrderReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
     }
 
     /**
@@ -1957,6 +2197,54 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Get first filtered The associated buyer's order
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredBuyerOrderReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredBuyerOrderReference = $this->filterBuyerOrderReference($filterCallback);
+
+        if (($buyerOrderReference = reset($filteredBuyerOrderReference)) !== false) {
+            $callback($buyerOrderReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The associated buyer's order
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredBuyerOrderReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredBuyerOrderReference = $this->filterBuyerOrderReference($filterCallback);
+
+        if (($buyerOrderReference = reset($filteredBuyerOrderReference)) !== false) {
+            $callback($buyerOrderReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the associated quotation
      *
      * @return array<InvoiceSuiteReferenceDocumentDTO>
@@ -2158,6 +2446,54 @@ class InvoiceSuiteDocumentHeaderDTO
         callable $callback
     ): array {
         return array_filter($this->quotationReferences, $callback);
+    }
+
+    /**
+     * Get first filtered The associated quotation
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredQuotationReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredQuotationReference = $this->filterQuotationReference($filterCallback);
+
+        if (($quotationReference = reset($filteredQuotationReference)) !== false) {
+            $callback($quotationReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The associated quotation
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredQuotationReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredQuotationReference = $this->filterQuotationReference($filterCallback);
+
+        if (($quotationReference = reset($filteredQuotationReference)) !== false) {
+            $callback($quotationReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
     }
 
     /**
@@ -2365,6 +2701,54 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Get first filtered The associated contract
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredContractReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredContractReference = $this->filterContractReference($filterCallback);
+
+        if (($contractReference = reset($filteredContractReference)) !== false) {
+            $callback($contractReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The associated contract
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredContractReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredContractReference = $this->filterContractReference($filterCallback);
+
+        if (($contractReference = reset($filteredContractReference)) !== false) {
+            $callback($contractReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the additional associated document
      *
      * @return array<InvoiceSuiteReferenceDocumentExtDTO>
@@ -2566,6 +2950,54 @@ class InvoiceSuiteDocumentHeaderDTO
         callable $callback
     ): array {
         return array_filter($this->additionalReferences, $callback);
+    }
+
+    /**
+     * Get first filtered The additional associated document
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredAdditionalReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredAdditionalReference = $this->filterAdditionalReference($filterCallback);
+
+        if (($additionalReference = reset($filteredAdditionalReference)) !== false) {
+            $callback($additionalReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The additional associated document
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredAdditionalReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredAdditionalReference = $this->filterAdditionalReference($filterCallback);
+
+        if (($additionalReference = reset($filteredAdditionalReference)) !== false) {
+            $callback($additionalReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
     }
 
     /**
@@ -2773,6 +3205,54 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Get first filtered The additional invoice document
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredInvoiceReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredInvoiceReference = $this->filterInvoiceReference($filterCallback);
+
+        if (($invoiceReference = reset($filteredInvoiceReference)) !== false) {
+            $callback($invoiceReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The additional invoice document
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredInvoiceReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredInvoiceReference = $this->filterInvoiceReference($filterCallback);
+
+        if (($invoiceReference = reset($filteredInvoiceReference)) !== false) {
+            $callback($invoiceReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the project reference
      *
      * @return array<InvoiceSuiteProjectDTO>
@@ -2974,6 +3454,54 @@ class InvoiceSuiteDocumentHeaderDTO
         callable $callback
     ): array {
         return array_filter($this->projectReferences, $callback);
+    }
+
+    /**
+     * Get first filtered The project reference
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredProjectReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredProjectReference = $this->filterProjectReference($filterCallback);
+
+        if (($projectReference = reset($filteredProjectReference)) !== false) {
+            $callback($projectReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The project reference
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredProjectReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredProjectReference = $this->filterProjectReference($filterCallback);
+
+        if (($projectReference = reset($filteredProjectReference)) !== false) {
+            $callback($projectReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
     }
 
     /**
@@ -3181,6 +3709,54 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Get first filtered The ultimate customer order reference
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredUltimateCustomerOrderReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredUltimateCustomerOrderReference = $this->filterUltimateCustomerOrderReference($filterCallback);
+
+        if (($ultimateCustomerOrderReference = reset($filteredUltimateCustomerOrderReference)) !== false) {
+            $callback($ultimateCustomerOrderReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The ultimate customer order reference
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredUltimateCustomerOrderReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredUltimateCustomerOrderReference = $this->filterUltimateCustomerOrderReference($filterCallback);
+
+        if (($ultimateCustomerOrderReference = reset($filteredUltimateCustomerOrderReference)) !== false) {
+            $callback($ultimateCustomerOrderReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the despatch advice reference
      *
      * @return array<InvoiceSuiteReferenceDocumentDTO>
@@ -3382,6 +3958,54 @@ class InvoiceSuiteDocumentHeaderDTO
         callable $callback
     ): array {
         return array_filter($this->despatchAdviceReferences, $callback);
+    }
+
+    /**
+     * Get first filtered The despatch advice reference
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredDespatchAdviceReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredDespatchAdviceReference = $this->filterDespatchAdviceReference($filterCallback);
+
+        if (($despatchAdviceReference = reset($filteredDespatchAdviceReference)) !== false) {
+            $callback($despatchAdviceReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The despatch advice reference
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredDespatchAdviceReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredDespatchAdviceReference = $this->filterDespatchAdviceReference($filterCallback);
+
+        if (($despatchAdviceReference = reset($filteredDespatchAdviceReference)) !== false) {
+            $callback($despatchAdviceReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
     }
 
     /**
@@ -3589,6 +4213,54 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Get first filtered The receiving advice reference
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredReceivingAdviceReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredReceivingAdviceReference = $this->filterReceivingAdviceReference($filterCallback);
+
+        if (($receivingAdviceReference = reset($filteredReceivingAdviceReference)) !== false) {
+            $callback($receivingAdviceReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The receiving advice reference
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredReceivingAdviceReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredReceivingAdviceReference = $this->filterReceivingAdviceReference($filterCallback);
+
+        if (($receivingAdviceReference = reset($filteredReceivingAdviceReference)) !== false) {
+            $callback($receivingAdviceReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the delivery note reference
      *
      * @return array<InvoiceSuiteReferenceDocumentDTO>
@@ -3790,6 +4462,54 @@ class InvoiceSuiteDocumentHeaderDTO
         callable $callback
     ): array {
         return array_filter($this->deliveryNoteReferences, $callback);
+    }
+
+    /**
+     * Get first filtered The delivery note reference
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredDeliveryNoteReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredDeliveryNoteReference = $this->filterDeliveryNoteReference($filterCallback);
+
+        if (($deliveryNoteReference = reset($filteredDeliveryNoteReference)) !== false) {
+            $callback($deliveryNoteReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The delivery note reference
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredDeliveryNoteReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredDeliveryNoteReference = $this->filterDeliveryNoteReference($filterCallback);
+
+        if (($deliveryNoteReference = reset($filteredDeliveryNoteReference)) !== false) {
+            $callback($deliveryNoteReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
     }
 
     /**
@@ -4237,6 +4957,54 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Get first filtered The payment means
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredPaymentMean(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredPaymentMean = $this->filterPaymentMean($filterCallback);
+
+        if (($paymentMean = reset($filteredPaymentMean)) !== false) {
+            $callback($paymentMean);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The payment means
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredPaymentMean(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredPaymentMean = $this->filterPaymentMean($filterCallback);
+
+        if (($paymentMean = reset($filteredPaymentMean)) !== false) {
+            $callback($paymentMean);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the payment terms
      *
      * @return array<InvoiceSuitePaymentTermDTO>
@@ -4438,6 +5206,54 @@ class InvoiceSuiteDocumentHeaderDTO
         callable $callback
     ): array {
         return array_filter($this->paymentTerms, $callback);
+    }
+
+    /**
+     * Get first filtered The payment terms
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredPaymentTerm(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredPaymentTerm = $this->filterPaymentTerm($filterCallback);
+
+        if (($paymentTerm = reset($filteredPaymentTerm)) !== false) {
+            $callback($paymentTerm);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The payment terms
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredPaymentTerm(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredPaymentTerm = $this->filterPaymentTerm($filterCallback);
+
+        if (($paymentTerm = reset($filteredPaymentTerm)) !== false) {
+            $callback($paymentTerm);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
     }
 
     /**
@@ -4645,6 +5461,54 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Get first filtered The creditor identifier
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredCreditorReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredCreditorReference = $this->filterCreditorReference($filterCallback);
+
+        if (($creditorReference = reset($filteredCreditorReference)) !== false) {
+            $callback($creditorReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The creditor identifier
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredCreditorReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredCreditorReference = $this->filterCreditorReference($filterCallback);
+
+        if (($creditorReference = reset($filteredCreditorReference)) !== false) {
+            $callback($creditorReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the payment reference
      *
      * @return array<InvoiceSuiteIdDTO>
@@ -4846,6 +5710,54 @@ class InvoiceSuiteDocumentHeaderDTO
         callable $callback
     ): array {
         return array_filter($this->paymentReferences, $callback);
+    }
+
+    /**
+     * Get first filtered The payment reference
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredPaymentReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredPaymentReference = $this->filterPaymentReference($filterCallback);
+
+        if (($paymentReference = reset($filteredPaymentReference)) !== false) {
+            $callback($paymentReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The payment reference
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredPaymentReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredPaymentReference = $this->filterPaymentReference($filterCallback);
+
+        if (($paymentReference = reset($filteredPaymentReference)) !== false) {
+            $callback($paymentReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
     }
 
     /**
@@ -5053,6 +5965,54 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Get first filtered The ID for internal routing (Leitweg ID)
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredBuyerReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredBuyerReference = $this->filterBuyerReference($filterCallback);
+
+        if (($buyerReference = reset($filteredBuyerReference)) !== false) {
+            $callback($buyerReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The ID for internal routing (Leitweg ID)
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredBuyerReference(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredBuyerReference = $this->filterBuyerReference($filterCallback);
+
+        if (($buyerReference = reset($filteredBuyerReference)) !== false) {
+            $callback($buyerReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the Document positions
      *
      * @return array<InvoiceSuiteDocumentPositionDTO>
@@ -5254,6 +6214,54 @@ class InvoiceSuiteDocumentHeaderDTO
         callable $callback
     ): array {
         return array_filter($this->positions, $callback);
+    }
+
+    /**
+     * Get first filtered The Document positions
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredPosition(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredPosition = $this->filterPosition($filterCallback);
+
+        if (($position = reset($filteredPosition)) !== false) {
+            $callback($position);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The Document positions
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredPosition(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredPosition = $this->filterPosition($filterCallback);
+
+        if (($position = reset($filteredPosition)) !== false) {
+            $callback($position);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
     }
 
     /**
@@ -5461,6 +6469,54 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Get first filtered delivery term
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredDeliveryTerm(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredDeliveryTerm = $this->filterDeliveryTerm($filterCallback);
+
+        if (($deliveryTerm = reset($filteredDeliveryTerm)) !== false) {
+            $callback($deliveryTerm);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered delivery term
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredDeliveryTerm(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredDeliveryTerm = $this->filterDeliveryTerm($filterCallback);
+
+        if (($deliveryTerm = reset($filteredDeliveryTerm)) !== false) {
+            $callback($deliveryTerm);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the VAT breakdown
      *
      * @return array<InvoiceSuiteTaxDTO>
@@ -5662,6 +6718,54 @@ class InvoiceSuiteDocumentHeaderDTO
         callable $callback
     ): array {
         return array_filter($this->taxes, $callback);
+    }
+
+    /**
+     * Get first filtered The VAT breakdown
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredTax(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredTax = $this->filterTax($filterCallback);
+
+        if (($tax = reset($filteredTax)) !== false) {
+            $callback($tax);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The VAT breakdown
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredTax(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredTax = $this->filterTax($filterCallback);
+
+        if (($tax = reset($filteredTax)) !== false) {
+            $callback($tax);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
     }
 
     /**
@@ -5869,6 +6973,54 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Get first filtered The allowances/charges
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredAllowanceCharge(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredAllowanceCharge = $this->filterAllowanceCharge($filterCallback);
+
+        if (($allowanceCharge = reset($filteredAllowanceCharge)) !== false) {
+            $callback($allowanceCharge);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The allowances/charges
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredAllowanceCharge(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredAllowanceCharge = $this->filterAllowanceCharge($filterCallback);
+
+        if (($allowanceCharge = reset($filteredAllowanceCharge)) !== false) {
+            $callback($allowanceCharge);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the allowances/charges
      *
      * @return array<InvoiceSuiteServiceChargeDTO>
@@ -6073,6 +7225,54 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Get first filtered The allowances/charges
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredServiceCharge(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredServiceCharge = $this->filterServiceCharge($filterCallback);
+
+        if (($serviceCharge = reset($filteredServiceCharge)) !== false) {
+            $callback($serviceCharge);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The allowances/charges
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredServiceCharge(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredServiceCharge = $this->filterServiceCharge($filterCallback);
+
+        if (($serviceCharge = reset($filteredServiceCharge)) !== false) {
+            $callback($serviceCharge);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the summation
      *
      * @return array<InvoiceSuiteSummationDTO>
@@ -6271,8 +7471,56 @@ class InvoiceSuiteDocumentHeaderDTO
      * @return array<InvoiceSuiteSummationDTO>
      */
     public function filterSummation(
-        callable $callback): array
-    {
+        callable $callback
+    ): array {
         return array_filter($this->summations, $callback);
+    }
+
+    /**
+     * Get first filtered The summation
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredSummation(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredSummation = $this->filterSummation($filterCallback);
+
+        if (($summation = reset($filteredSummation)) !== false) {
+            $callback($summation);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The summation
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredSummation(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredSummation = $this->filterSummation($filterCallback);
+
+        if (($summation = reset($filteredSummation)) !== false) {
+            $callback($summation);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
     }
 }

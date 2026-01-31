@@ -335,6 +335,54 @@ class InvoiceSuitePaymentTermDTO
     }
 
     /**
+     * Get first filtered The payment discounts
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredDiscountTerm(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredDiscountTerm = $this->filterDiscountTerm($filterCallback);
+
+        if (($discountTerm = reset($filteredDiscountTerm)) !== false) {
+            $callback($discountTerm);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The payment discounts
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredDiscountTerm(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredDiscountTerm = $this->filterDiscountTerm($filterCallback);
+
+        if (($discountTerm = reset($filteredDiscountTerm)) !== false) {
+            $callback($discountTerm);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the payment penalties
      *
      * @return array<InvoiceSuitePaymentTermPenaltyDTO>
@@ -536,6 +584,54 @@ class InvoiceSuitePaymentTermDTO
         callable $callback
     ): array {
         return array_filter($this->penaltyTerms, $callback);
+    }
+
+    /**
+     * Get first filtered The payment penalties
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredPenaltyTerm(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredPenaltyTerm = $this->filterPenaltyTerm($filterCallback);
+
+        if (($penaltyTerm = reset($filteredPenaltyTerm)) !== false) {
+            $callback($penaltyTerm);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The payment penalties
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredPenaltyTerm(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredPenaltyTerm = $this->filterPenaltyTerm($filterCallback);
+
+        if (($penaltyTerm = reset($filteredPenaltyTerm)) !== false) {
+            $callback($penaltyTerm);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
     }
 
     /**

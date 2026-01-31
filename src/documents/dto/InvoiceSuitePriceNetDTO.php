@@ -248,4 +248,52 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
     ): array {
         return array_filter($this->taxes, $callback);
     }
+
+    /**
+     * Get first filtered The net price included tax
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function firstFilteredTax(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredTax = $this->filterTax($filterCallback);
+
+        if (($tax = reset($filteredTax)) !== false) {
+            $callback($tax);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last filtered The net price included tax
+     *
+     * @param  callable      $filterCallback Callback for filtering
+     * @param  callable      $callback       Callback to execute if an item was found
+     * @param  null|callable $callbackElse   Callback to execute if no item was found
+     * @return static
+     */
+    public function lastFilteredTax(
+        callable $filterCallback,
+        callable $callback,
+        ?callable $callbackElse = null,
+    ): static {
+        $filteredTax = $this->filterTax($filterCallback);
+
+        if (($tax = reset($filteredTax)) !== false) {
+            $callback($tax);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
 }
