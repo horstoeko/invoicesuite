@@ -145,8 +145,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
 
         // Document-Level Posting Reference
 
-        $newDocumentDTO->firstPostingReference(
-            fn (InvoiceSuiteIdDTO $item) => $this->setDocumentPostingReference(
+        $newDocumentDTO->forEachOrFirstPostingReference(
+            $this->supportsAtLeastExtended(),
+            fn (InvoiceSuiteIdDTO $item) => $this->addDocumentPostingReference(
                 $item->getIdType(),
                 $item->getId()
             )
@@ -1241,8 +1242,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
 
                 // Position posting references
 
-                $item->firstPostingReference(
-                    fn (InvoiceSuiteIdDTO $postingReference) => $this->setDocumentPositionPostingReference(
+                $item->forEachOrFirstPostingReference(
+                    $this->supportsAtLeastExtended(),
+                    fn (InvoiceSuiteIdDTO $postingReference) => $this->addDocumentPositionPostingReference(
                         $postingReference->getIdType(),
                         $postingReference->getId()
                     )
@@ -15057,18 +15059,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newAccountId)');
         }
 
-        $tradeAccountingAccount = $this
-            ->getCrossIndustryRootObject()
-            ->getSupplyChainTradeTransactionWithCreate()
-            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
-            ->getSpecifiedLineTradeSettlementWithCreate()
-            ->getReceivableSpecifiedTradeAccountingAccountWithCreate();
-
-        $tradeAccountingAccount->getIDWithCreate()->setValue($newAccountId);
-
-        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newType)) {
-            $tradeAccountingAccount->getTypeCodeWithCreate()->setValue($newType);
-        }
+        $this->addDocumentPositionPostingReference($newType, $newAccountId);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -15096,10 +15087,27 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newAccountId)');
         }
 
-        $this->setDocumentPositionPostingReference(
-            $newType,
-            $newAccountId
-        );
+        if ($this->supportsNotAtLeastExtended()) {
+            $this
+                ->getCrossIndustryRootObject()
+                ->getSupplyChainTradeTransaction()
+                ?->getLatestIncludedSupplyChainTradeLineItem()
+                ?->getSpecifiedLineTradeSettlement()
+                ?->unsetReceivableSpecifiedTradeAccountingAccount();
+        }
+
+        $tradeAccountingAccount = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
+            ->getSpecifiedLineTradeSettlementWithCreate()
+            ->addToReceivableSpecifiedTradeAccountingAccountWithCreate();
+
+        $tradeAccountingAccount->getIDWithCreate()->setValue($newAccountId);
+
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newType)) {
+            $tradeAccountingAccount->getTypeCodeWithCreate()->setValue($newType);
+        }
 
         $this->traceMethodExit(__METHOD__);
 

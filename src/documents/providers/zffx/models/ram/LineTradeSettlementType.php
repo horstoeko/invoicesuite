@@ -81,12 +81,13 @@ class LineTradeSettlementType
     private $additionalReferencedDocument;
 
     /**
-     * @var null|TradeAccountingAccountType
+     * @var null|array<TradeAccountingAccountType>
      * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeAccountingAccountType")
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeAccountingAccountType>")
      * @JMS\Expose
      * @JMS\SerializedName("ReceivableSpecifiedTradeAccountingAccount")
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
+     * @JMS\XmlList(inline=true, entry="ReceivableSpecifiedTradeAccountingAccount", namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100")
      * @JMS\Accessor(getter="getReceivableSpecifiedTradeAccountingAccount", setter="setReceivableSpecifiedTradeAccountingAccount")
      */
     private $receivableSpecifiedTradeAccountingAccount;
@@ -494,29 +495,19 @@ class LineTradeSettlementType
     }
 
     /**
-     * @return null|TradeAccountingAccountType
+     * @return null|array<TradeAccountingAccountType>
      */
-    public function getReceivableSpecifiedTradeAccountingAccount(): ?TradeAccountingAccountType
+    public function getReceivableSpecifiedTradeAccountingAccount(): ?array
     {
         return $this->receivableSpecifiedTradeAccountingAccount;
     }
 
     /**
-     * @return TradeAccountingAccountType
-     */
-    public function getReceivableSpecifiedTradeAccountingAccountWithCreate(): TradeAccountingAccountType
-    {
-        $this->receivableSpecifiedTradeAccountingAccount = is_null($this->receivableSpecifiedTradeAccountingAccount) ? new TradeAccountingAccountType() : $this->receivableSpecifiedTradeAccountingAccount;
-
-        return $this->receivableSpecifiedTradeAccountingAccount;
-    }
-
-    /**
-     * @param  null|TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
+     * @param  null|array<TradeAccountingAccountType> $receivableSpecifiedTradeAccountingAccount
      * @return static
      */
     public function setReceivableSpecifiedTradeAccountingAccount(
-        ?TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount = null,
+        ?array $receivableSpecifiedTradeAccountingAccount = null,
     ): static {
         $this->receivableSpecifiedTradeAccountingAccount = $receivableSpecifiedTradeAccountingAccount;
 
@@ -531,5 +522,69 @@ class LineTradeSettlementType
         $this->receivableSpecifiedTradeAccountingAccount = null;
 
         return $this;
+    }
+
+    /**
+     * @return static
+     */
+    public function clearReceivableSpecifiedTradeAccountingAccount(): static
+    {
+        $this->receivableSpecifiedTradeAccountingAccount = [];
+
+        return $this;
+    }
+
+    /**
+     * @param  TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
+     * @return static
+     */
+    public function addToReceivableSpecifiedTradeAccountingAccount(
+        TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount,
+    ): static {
+        $this->receivableSpecifiedTradeAccountingAccount[] = $receivableSpecifiedTradeAccountingAccount;
+
+        return $this;
+    }
+
+    /**
+     * @return TradeAccountingAccountType
+     */
+    public function addToReceivableSpecifiedTradeAccountingAccountWithCreate(): TradeAccountingAccountType
+    {
+        $this->addToreceivableSpecifiedTradeAccountingAccount($receivableSpecifiedTradeAccountingAccount = new TradeAccountingAccountType());
+
+        return $receivableSpecifiedTradeAccountingAccount;
+    }
+
+    /**
+     * @param  TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
+     * @return static
+     */
+    public function addOnceToReceivableSpecifiedTradeAccountingAccount(
+        TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount,
+    ): static {
+        if (!is_array($this->receivableSpecifiedTradeAccountingAccount)) {
+            $this->receivableSpecifiedTradeAccountingAccount = [];
+        }
+
+        $this->receivableSpecifiedTradeAccountingAccount[0] = $receivableSpecifiedTradeAccountingAccount;
+
+        return $this;
+    }
+
+    /**
+     * @return TradeAccountingAccountType
+     */
+    public function addOnceToReceivableSpecifiedTradeAccountingAccountWithCreate(): TradeAccountingAccountType
+    {
+        if (!is_array($this->receivableSpecifiedTradeAccountingAccount)) {
+            $this->receivableSpecifiedTradeAccountingAccount = [];
+        }
+
+        if ([] === $this->receivableSpecifiedTradeAccountingAccount) {
+            $this->addOnceToreceivableSpecifiedTradeAccountingAccount(new TradeAccountingAccountType());
+        }
+
+        return $this->receivableSpecifiedTradeAccountingAccount[0];
     }
 }

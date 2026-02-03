@@ -129,9 +129,6 @@
         <ram:SpecifiedTradeSettlementLineMonetarySummation>
           <ram:LineTotalAmount>100.00</ram:LineTotalAmount>
         </ram:SpecifiedTradeSettlementLineMonetarySummation>
-        <ram:ReceivableSpecifiedTradeAccountingAccount>
-          <ram:ID>PREF-1</ram:ID>
-        </ram:ReceivableSpecifiedTradeAccountingAccount>
         <ram:InvoiceReferencedDocument>
           <ram:IssuerAssignedID>INV1</ram:IssuerAssignedID>
           <ram:LineID>1</ram:LineID>
@@ -151,8 +148,7 @@
           <ram:ReferenceTypeCode>130</ram:ReferenceTypeCode>
         </ram:AdditionalReferencedDocument>
         <ram:ReceivableSpecifiedTradeAccountingAccount>
-          <ram:ID>accid</ram:ID>
-          <ram:TypeCode>acctypecode</ram:TypeCode>
+          <ram:ID>PREF-1</ram:ID>
         </ram:ReceivableSpecifiedTradeAccountingAccount>
       </ram:SpecifiedLineTradeSettlement>
     </ram:IncludedSupplyChainTradeLineItem>

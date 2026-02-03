@@ -3077,21 +3077,69 @@ final class ZffxModelTest extends TestCase
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
 
-        // Property ReceivableSpecifiedTradeAccountingAccount
+        // (1) Property ReceivableSpecifiedTradeAccountingAccount - Test set empty array
 
-        $testValue = new TradeAccountingAccountType();
-        $model->setReceivableSpecifiedTradeAccountingAccount($testValue);
+        $receivableSpecifiedTradeAccountingAccountItems = [];
+        $model->setReceivableSpecifiedTradeAccountingAccount($receivableSpecifiedTradeAccountingAccountItems);
 
-        $this->assertEquals($testValue, $model->getReceivableSpecifiedTradeAccountingAccount());
+        $this->assertIsArray($model->getReceivableSpecifiedTradeAccountingAccount());
+        $this->assertCount(0, $model->getReceivableSpecifiedTradeAccountingAccount());
 
-        $model->unsetReceivableSpecifiedTradeAccountingAccount();
+        // (2) Property ReceivableSpecifiedTradeAccountingAccount - Add instance
 
-        $this->assertNotInstanceOf(TradeAccountingAccountType::class, $model->getReceivableSpecifiedTradeAccountingAccount());
+        $receivableSpecifiedTradeAccountingAccountItem = new TradeAccountingAccountType();
+        $model->addToReceivableSpecifiedTradeAccountingAccount($receivableSpecifiedTradeAccountingAccountItem);
 
-        $testValueForReceivableSpecifiedTradeAccountingAccount = $model->getReceivableSpecifiedTradeAccountingAccountWithCreate();
+        $this->assertIsArray($model->getReceivableSpecifiedTradeAccountingAccount());
+        $this->assertCount(1, $model->getReceivableSpecifiedTradeAccountingAccount());
 
-        $this->assertInstanceOf(TradeAccountingAccountType::class, $testValueForReceivableSpecifiedTradeAccountingAccount);
-        $this->assertSame($testValueForReceivableSpecifiedTradeAccountingAccount, $model->getReceivableSpecifiedTradeAccountingAccount());
+        // (3) Property ReceivableSpecifiedTradeAccountingAccount - Add and create instancc
+
+        $testValueForReceivableSpecifiedTradeAccountingAccountItem = $model->addToReceivableSpecifiedTradeAccountingAccountWithCreate();
+
+        $this->assertInstanceOf(TradeAccountingAccountType::class, $testValueForReceivableSpecifiedTradeAccountingAccountItem);
+        $this->assertIsArray($model->getReceivableSpecifiedTradeAccountingAccount());
+        $this->assertCount(2, $model->getReceivableSpecifiedTradeAccountingAccount());
+
+        // (4) Property ReceivableSpecifiedTradeAccountingAccount - Add once an instance
+
+        $receivableSpecifiedTradeAccountingAccountOnceItem = new TradeAccountingAccountType();
+
+        $model->addOnceToReceivableSpecifiedTradeAccountingAccount($receivableSpecifiedTradeAccountingAccountOnceItem);
+        $model->addOnceToReceivableSpecifiedTradeAccountingAccount($receivableSpecifiedTradeAccountingAccountOnceItem);
+
+        $itemsAfterOnce = $model->getReceivableSpecifiedTradeAccountingAccount();
+
+        $this->assertIsArray($itemsAfterOnce);
+        $this->assertCount(2, $itemsAfterOnce);
+
+        // (5) Property ReceivableSpecifiedTradeAccountingAccount - Add once an instance with implicit creation
+
+        $firstReceivableSpecifiedTradeAccountingAccountOnceItem = $model->addOnceToReceivableSpecifiedTradeAccountingAccountWithCreate();
+
+        $this->assertInstanceOf(TradeAccountingAccountType::class, $firstReceivableSpecifiedTradeAccountingAccountOnceItem);
+
+        $itemsAfterFirstOnceWithCreate = $model->getReceivableSpecifiedTradeAccountingAccount();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property ReceivableSpecifiedTradeAccountingAccount - Add once an instance with implicit creation (2)
+
+        $secondReceivableSpecifiedTradeAccountingAccountOnceItem = $model->addOnceToReceivableSpecifiedTradeAccountingAccountWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstReceivableSpecifiedTradeAccountingAccountOnceItem, $secondReceivableSpecifiedTradeAccountingAccountOnceItem);
+
+        // (7) Property ReceivableSpecifiedTradeAccountingAccount - Clesr
+
+        $model->clearReceivableSpecifiedTradeAccountingAccount();
+
+        $itemsAfterClear = $model->getReceivableSpecifiedTradeAccountingAccount();
+
+        $this->assertIsArray($itemsAfterClear);
+        $this->assertCount(0, $itemsAfterClear);
     }
 
     /**
