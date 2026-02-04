@@ -209,7 +209,6 @@ class InvoiceSuiteArrayUtils
      *
      * @param  bool               $limitCondition
      * @param  array<mixed,mixed> $array
-     * @param  int                $limit
      * @return array<mixed,mixed>
      */
     public static function limitToOneWhen(

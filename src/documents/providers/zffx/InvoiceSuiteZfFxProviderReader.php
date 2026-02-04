@@ -3052,8 +3052,11 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         }
 
         return InvoiceSuitePointerUtils::hasFirst(
-            InvoiceSuiteArrayUtils::ensure(
-                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getReceivableSpecifiedTradeAccountingAccount() ?? []
+            InvoiceSuiteArrayUtils::limitToOneWhen(
+                $this->supportsNotAtLeastExtended(),
+                InvoiceSuiteArrayUtils::ensure(
+                    $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getReceivableSpecifiedTradeAccountingAccount() ?? []
+                )
             ),
             'documentpostingreference'
         );
@@ -3071,8 +3074,11 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         }
 
         return InvoiceSuitePointerUtils::hasNext(
-            InvoiceSuiteArrayUtils::ensure(
-                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getReceivableSpecifiedTradeAccountingAccount() ?? []
+            InvoiceSuiteArrayUtils::limitToOneWhen(
+                $this->supportsNotAtLeastExtended(),
+                InvoiceSuiteArrayUtils::ensure(
+                    $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getReceivableSpecifiedTradeAccountingAccount() ?? []
+                )
             ),
             'documentpostingreference'
         );
@@ -14901,12 +14907,11 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         }
 
         return InvoiceSuitePointerUtils::hasNext(
-            InvoiceSuiteArrayUtils::limitWhen(
+            InvoiceSuiteArrayUtils::limitToOneWhen(
                 $this->supportsNotAtLeastExtended(),
                 InvoiceSuiteArrayUtils::ensure(
                     $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getReceivableSpecifiedTradeAccountingAccount() ?? []
-                ),
-                1
+                )
             ),
             'documentpositionpostingreference'
         );
