@@ -922,8 +922,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                     $item->getLineStatusReason()
                 );
 
-                $item->firstNote(
-                    fn (InvoiceSuiteNoteDTO $itemNote) => $this->setDocumentPositionNote(
+                $item->forEachOrFirstNote(
+                    $this->supportsAtLeastExtended(),
+                    fn (InvoiceSuiteNoteDTO $itemNote) => $this->addDocumentPositionNote(
                         $itemNote->getContent(),
                         $itemNote->getContentCode(),
                         $itemNote->getSubjectCode()
@@ -11131,8 +11132,12 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxBasisAmount, $newGrossAmount, $newDueAmount])) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxBasisAmount, $newTaxTotalAmount, $newGrossAmount, $newDueAmount])');
+        if ($this->supportsAtLeastBasicWl() && InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxBasisAmount, $newGrossAmount, $newDueAmount, $newNetAmount])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxBasisAmount, $newGrossAmount, $newDueAmount, $newNetAmount])');
+        }
+
+        if ($this->supportsAtLeastMinimum() && InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxBasisAmount, $newGrossAmount, $newDueAmount])) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxBasisAmount, $newGrossAmount, $newDueAmount])');
         }
 
         $summation = $this
@@ -11716,7 +11721,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     /**
      * Add referenced product in latest added position
      *
-     * @param  null|string $newProductId               __BT-X-301, From EXTENDED__ ID of the product (product id, Order-X interoperable)
+     * @param  null|string $newProductId               __BT-X-308, From EXTENDED__ ID of the product (product id, Order-X interoperable)
      * @param  null|string $newProductName             __BT-X-18, From EXTENDED__ Name of the product (product name)
      * @param  null|string $newProductDescription      __BT-X-19, From EXTENDED__ Product description of the item, the item description makes it possible to describe the item
      * @param  null|string $newProductSellerId         __BT-X-16, From EXTENDED__ Identifier assigned to the product by the seller

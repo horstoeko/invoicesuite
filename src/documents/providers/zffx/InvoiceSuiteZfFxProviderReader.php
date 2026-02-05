@@ -11880,7 +11880,7 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get referenced product from latest position
      *
-     * @param  null|string $newProductId               __BT-X-301, From EXTENDED__ ID of the product (product id, Order-X interoperable)
+     * @param  null|string $newProductId               __BT-X-308, From EXTENDED__ ID of the product (product id, Order-X interoperable)
      * @param  null|string $newProductName             __BT-X-18, From EXTENDED__ Name of the product (product name)
      * @param  null|string $newProductDescription      __BT-X-19, From EXTENDED__ Product description of the item, the item description makes it possible to describe the item
      * @param  null|string $newProductSellerId         __BT-X-16, From EXTENDED__ Identifier assigned to the product by the seller
