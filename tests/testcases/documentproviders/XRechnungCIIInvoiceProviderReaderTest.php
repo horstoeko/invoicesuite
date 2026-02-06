@@ -2493,18 +2493,6 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
         $this->assertSame('916', $newTypeCode);
         $this->assertSame('130', $newReferenceTypeCode);
 
-        $this->assertTrue(static::$document->nextDocumentPositionAdditionalObjectReference());
-
-        static::$document->getDocumentPositionAdditionalObjectReference(
-            $newReferenceNumber,
-            $newTypeCode,
-            $newReferenceTypeCode
-        );
-
-        $this->assertSame('ABCDEF123', $newReferenceNumber);
-        $this->assertSame('50', $newTypeCode);
-        $this->assertSame('130', $newReferenceTypeCode);
-
         $this->assertFalse(static::$document->nextDocumentPositionAdditionalObjectReference());
 
         // Second position

@@ -3110,7 +3110,12 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         /**
          * @var array<TradeAccountingAccountType>
          */
-        $documentPostingReferences = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getReceivableSpecifiedTradeAccountingAccount() ?? []);
+        $documentPostingReferences = InvoiceSuiteArrayUtils::limitToOneWhen(
+            $this->supportsNotAtLeastExtended(),
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getReceivableSpecifiedTradeAccountingAccount() ?? []
+            )
+        );
 
         /**
          * @var TradeAccountingAccountType
@@ -4621,8 +4626,11 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         }
 
         return InvoiceSuitePointerUtils::hasFirst(
-            InvoiceSuiteArrayUtils::ensure(
-                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getDefinedTradeContact() ?? []
+            InvoiceSuiteArrayUtils::limitToOneWhen(
+                $this->supportsNotAtLeastExtended(),
+                InvoiceSuiteArrayUtils::ensure(
+                    $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getDefinedTradeContact() ?? []
+                )
             ),
             'documentsellercontact'
         );
@@ -4640,8 +4648,11 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         }
 
         return InvoiceSuitePointerUtils::hasNext(
-            InvoiceSuiteArrayUtils::ensure(
-                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getDefinedTradeContact() ?? []
+            InvoiceSuiteArrayUtils::limitToOneWhen(
+                $this->supportsNotAtLeastExtended(),
+                InvoiceSuiteArrayUtils::ensure(
+                    $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getDefinedTradeContact() ?? []
+                )
             ),
             'documentsellercontact'
         );
@@ -4685,7 +4696,12 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         /**
          * @var array<TradeContactType>
          */
-        $documentSellerContacts = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getDefinedTradeContact() ?? []);
+        $documentSellerContacts = InvoiceSuiteArrayUtils::limitToOneWhen(
+            $this->supportsNotAtLeastExtended(),
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getDefinedTradeContact() ?? []
+            )
+        );
 
         /**
          * @var TradeContactType
@@ -5240,8 +5256,11 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         }
 
         return InvoiceSuitePointerUtils::hasFirst(
-            InvoiceSuiteArrayUtils::ensure(
-                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerTradeParty()?->getDefinedTradeContact() ?? []
+            InvoiceSuiteArrayUtils::limitToOneWhen(
+                $this->supportsNotAtLeastExtended(),
+                InvoiceSuiteArrayUtils::ensure(
+                    $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerTradeParty()?->getDefinedTradeContact() ?? []
+                )
             ),
             'documentbuyercontact'
         );
@@ -5259,8 +5278,11 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         }
 
         return InvoiceSuitePointerUtils::hasNext(
-            InvoiceSuiteArrayUtils::ensure(
-                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerTradeParty()?->getDefinedTradeContact() ?? []
+            InvoiceSuiteArrayUtils::limitToOneWhen(
+                $this->supportsNotAtLeastExtended(),
+                InvoiceSuiteArrayUtils::ensure(
+                    $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerTradeParty()?->getDefinedTradeContact() ?? []
+                )
             ),
             'documentbuyercontact'
         );
@@ -5304,7 +5326,12 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         /**
          * @var array<TradeContactType>
          */
-        $documentBuyerContacts = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerTradeParty()?->getDefinedTradeContact() ?? []);
+        $documentBuyerContacts = InvoiceSuiteArrayUtils::limitToOneWhen(
+            $this->supportsNotAtLeastExtended(),
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getBuyerTradeParty()?->getDefinedTradeContact() ?? []
+            )
+        );
 
         /**
          * @var TradeContactType
@@ -10646,8 +10673,11 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         }
 
         return InvoiceSuitePointerUtils::hasFirst(
-            InvoiceSuiteArrayUtils::ensure(
-                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? []
+            InvoiceSuiteArrayUtils::limitToOneWhen(
+                $this->supportsNotAtLeastExtended(),
+                InvoiceSuiteArrayUtils::ensure(
+                    $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? []
+                )
             ),
             'documentpaymentterm'
         );
@@ -10668,8 +10698,11 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         }
 
         return InvoiceSuitePointerUtils::hasNext(
-            InvoiceSuiteArrayUtils::ensure(
-                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? []
+            InvoiceSuiteArrayUtils::limitToOneWhen(
+                $this->supportsNotAtLeastExtended(),
+                InvoiceSuiteArrayUtils::ensure(
+                    $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? []
+                )
             ),
             'documentpaymentterm'
         );
@@ -10710,7 +10743,12 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         /**
          * @var array<TradePaymentTermsType>
          */
-        $documentPaymentTerms = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? []);
+        $documentPaymentTerms = InvoiceSuiteArrayUtils::limitToOneWhen(
+            $this->supportsNotAtLeastExtended(),
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradePaymentTerms() ?? []
+            )
+        );
 
         /**
          * @var TradePaymentTermsType
@@ -11499,7 +11537,10 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         }
 
         return InvoiceSuitePointerUtils::hasFirst(
-            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getAssociatedDocumentLineDocument()?->getIncludedNote() ?? []),
+            InvoiceSuiteArrayUtils::limitToOneWhen(
+                $this->supportsNotAtLeastExtended(),
+                InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getAssociatedDocumentLineDocument()?->getIncludedNote() ?? []),
+            ),
             'documentpositionnote'
         );
     }
@@ -11516,7 +11557,10 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         }
 
         return InvoiceSuitePointerUtils::hasNext(
-            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getAssociatedDocumentLineDocument()?->getIncludedNote() ?? []),
+            InvoiceSuiteArrayUtils::limitToOneWhen(
+                $this->supportsNotAtLeastExtended(),
+                InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getAssociatedDocumentLineDocument()?->getIncludedNote() ?? []),
+            ),
             'documentpositionnote'
         );
     }
@@ -11551,7 +11595,12 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         /**
          * @var array<NoteType>
          */
-        $documentPositionNotes = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getAssociatedDocumentLineDocument()?->getIncludedNote() ?? []);
+        $documentPositionNotes = InvoiceSuiteArrayUtils::limitToOneWhen(
+            $this->supportsNotAtLeastExtended(),
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveCurrentDocumentPosition()->getAssociatedDocumentLineDocument()?->getIncludedNote() ?? []
+            )
+        );
 
         /**
          * @var NoteType
@@ -12867,7 +12916,10 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         }
 
         return InvoiceSuitePointerUtils::hasFirst(
-            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getAdditionalReferencedDocument() ?? []),
+            InvoiceSuiteArrayUtils::limitToOneWhen(
+                $this->supportsNotAtLeastExtended(),
+                InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getAdditionalReferencedDocument() ?? []),
+            ),
             'documentpositionadditionalobjectreference'
         );
     }
@@ -12884,7 +12936,10 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         }
 
         return InvoiceSuitePointerUtils::hasNext(
-            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getAdditionalReferencedDocument() ?? []),
+            InvoiceSuiteArrayUtils::limitToOneWhen(
+                $this->supportsNotAtLeastExtended(),
+                InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getAdditionalReferencedDocument() ?? []),
+            ),
             'documentpositionadditionalobjectreference'
         );
     }
@@ -12919,7 +12974,12 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         /**
          * @var array<ReferencedDocumentType>
          */
-        $documentPositionAdditionalObjectReferences = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getAdditionalReferencedDocument() ?? []);
+        $documentPositionAdditionalObjectReferences = InvoiceSuiteArrayUtils::limitToOneWhen(
+            $this->supportsNotAtLeastExtended(),
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getAdditionalReferencedDocument() ?? []
+            )
+        );
 
         /**
          * @var ReferencedDocumentType
@@ -14625,8 +14685,11 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         }
 
         return InvoiceSuitePointerUtils::hasFirst(
-            InvoiceSuiteArrayUtils::ensure(
-                $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getApplicableTradeTax() ?? []
+            InvoiceSuiteArrayUtils::limitToOneWhen(
+                $this->supportsNotAtLeastExtended(),
+                InvoiceSuiteArrayUtils::ensure(
+                    $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getApplicableTradeTax() ?? []
+                ),
             ),
             'documentpositiontax'
         );
@@ -14644,8 +14707,11 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         }
 
         return InvoiceSuitePointerUtils::hasNext(
-            InvoiceSuiteArrayUtils::ensure(
-                $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getApplicableTradeTax() ?? []
+            InvoiceSuiteArrayUtils::limitToOneWhen(
+                $this->supportsNotAtLeastExtended(),
+                InvoiceSuiteArrayUtils::ensure(
+                    $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getApplicableTradeTax() ?? []
+                ),
             ),
             'documentpositiontax'
         );
@@ -14693,7 +14759,12 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         /**
          * @var array<TradeTaxType>
          */
-        $positionTaxes = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getApplicableTradeTax() ?? []);
+        $positionTaxes = InvoiceSuiteArrayUtils::limitToOneWhen(
+            $this->supportsNotAtLeastExtended(),
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getApplicableTradeTax() ?? []
+            )
+        );
 
         /**
          * @var TradeTaxType
@@ -14943,7 +15014,12 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         /**
          * @var array<TradeAccountingAccountType>
          */
-        $positionPostingReferences = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getReceivableSpecifiedTradeAccountingAccount() ?? []);
+        $positionPostingReferences = InvoiceSuiteArrayUtils::limitToOneWhen(
+            $this->supportsNotAtLeastExtended(),
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getReceivableSpecifiedTradeAccountingAccount() ?? []
+            )
+        );
 
         /**
          * @var TradeAccountingAccountType
