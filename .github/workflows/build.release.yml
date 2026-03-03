@@ -208,7 +208,7 @@ jobs:
           comment_mode: ${{ github.event_name == 'pull_request' && 'failures' || 'always' }}
 
       - name: Publish Build Logs
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: Build log artifacts for ubuntu-24.04 PHP 8.5 (Release)
           path: build/logs
