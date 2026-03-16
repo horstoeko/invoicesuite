@@ -150,5 +150,6 @@ return (new Config())
             'concat_space' => [
                 'spacing' => 'one',
             ],
+            'single_blank_line_before_namespace' => true
         ]
     );
