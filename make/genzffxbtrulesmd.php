@@ -31,7 +31,7 @@ if (null === $inputFile || !is_file($inputFile)) {
 $code = file_get_contents($inputFile);
 
 if (false === $code) {
-    fwrite(STDERR, "Cannot read file: {$inputFile}\n");
+    fwrite(STDERR, sprintf('Cannot read file: %s%s', $inputFile, PHP_EOL));
     exit(1);
 }
 
@@ -123,7 +123,7 @@ function collectRows(string $code, DocBlockFactory $factory): array
             while ($j < $count) {
                 $tj = $tokens[$j];
 
-                if (is_array($tj) && in_array($tj[0], [T_WHITESPACE], true)) {
+                if (is_array($tj) && $tj[0] === T_WHITESPACE) {
                     ++$j;
                     continue;
                 }
@@ -211,7 +211,7 @@ function collectRows(string $code, DocBlockFactory $factory): array
 
             try {
                 $docblock = $factory->create($lastDocComment);
-            } catch (Throwable $e) {
+            } catch (Throwable) {
                 $lastDocComment = null;
                 continue;
             }
@@ -275,7 +275,7 @@ function sortKeyFromRules(string $rulesStr): string
         return 'ZZZ-NO-RULE';
     }
 
-    $first = trim((string) strtok($rulesStr, ','));
+    $first = trim(strtok($rulesStr, ','));
     $first = strtoupper($first);
 
     if (preg_match('/^(BT|BG)-(.+)$/', $first, $m)) {
@@ -317,10 +317,10 @@ function markdownToHtml(string $md): string
     $i = 0;
     $n = count($lines);
     while ($i < $n) {
-        $line = (string) $lines[$i];
+        $line = $lines[$i];
 
         // Table detection: header line + separator line
-        if (preg_match('/^\|.*\|$/', $line) && ($i + 1) < $n && preg_match('/^\|\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|$/', (string) $lines[$i + 1])) {
+        if (preg_match('/^\|.*\|$/', $line) && ($i + 1) < $n && preg_match('/^\|\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|$/', $lines[$i + 1])) {
             if ($inList) {
                 $html[] = '</ul>';
                 $inList = false;
@@ -330,8 +330,8 @@ function markdownToHtml(string $md): string
             $i += 2; // skip separator
             $rows = [];
 
-            while ($i < $n && preg_match('/^\|.*\|$/', (string) $lines[$i]) && '' !== trim((string) $lines[$i])) {
-                $rows[] = (string) $lines[$i];
+            while ($i < $n && preg_match('/^\|.*\|$/', $lines[$i]) && '' !== trim($lines[$i])) {
+                $rows[] = $lines[$i];
                 ++$i;
             }
 
@@ -339,9 +339,8 @@ function markdownToHtml(string $md): string
                 $row = trim($row);
                 $row = trim($row, '|');
                 $parts = array_map('trim', explode('|', $row));
-                $parts = array_map(static fn ($c) => str_replace('\|', '|', $c), $parts);
 
-                return $parts;
+                return array_map(static fn ($c) => str_replace('\|', '|', $c), $parts);
             };
 
             $hCells = $parseRow($header);
@@ -376,7 +375,7 @@ function markdownToHtml(string $md): string
             continue;
         }
 
-        if (0 === strpos($trim, '# ')) {
+        if (str_starts_with($trim, '# ')) {
             if ($inList) {
                 $html[] = '</ul>';
                 $inList = false;
@@ -386,7 +385,7 @@ function markdownToHtml(string $md): string
             continue;
         }
 
-        if (0 === strpos($trim, '## ')) {
+        if (str_starts_with($trim, '## ')) {
             if ($inList) {
                 $html[] = '</ul>';
                 $inList = false;
@@ -396,7 +395,7 @@ function markdownToHtml(string $md): string
             continue;
         }
 
-        if (0 === strpos($trim, '- ')) {
+        if (str_starts_with($trim, '- ')) {
             if (!$inList) {
                 $html[] = '<ul>';
                 $inList = true;
@@ -440,13 +439,13 @@ usort($rowsSortedByRule, static function (array $a, array $b): int {
         return $cmp;
     }
 
-    $cmp = strcmp($a['method'], $b['method']);
+    $cmp = strcmp((string) $a['method'], (string) $b['method']);
 
     if (0 !== $cmp) {
         return $cmp;
     }
 
-    return strcmp($a['param'], $b['param']);
+    return strcmp((string) $a['param'], (string) $b['param']);
 });
 
 $md = "# BT-Rules Export\n\n";
@@ -507,19 +506,19 @@ foreach ($groups as $rule => $items) {
     $md .= "|---|---|---|\n";
 
     usort($items, static function (array $a, array $b): int {
-        $cmp = strcmp($a['profile'], $b['profile']);
+        $cmp = strcmp((string) $a['profile'], (string) $b['profile']);
 
         if (0 !== $cmp) {
             return $cmp;
         }
 
-        $cmp = strcmp($a['method'], $b['method']);
+        $cmp = strcmp((string) $a['method'], (string) $b['method']);
 
         if (0 !== $cmp) {
             return $cmp;
         }
 
-        return strcmp($a['param'], $b['param']);
+        return strcmp((string) $a['param'], (string) $b['param']);
     });
 
     foreach ($items as $r) {
@@ -542,9 +541,7 @@ foreach ($rows as $r) {
     $methodGroups[$r['method']][] = $r;
 }
 
-uksort($methodGroups, static function (string $a, string $b): int {
-    return strcmp($a, $b);
-});
+uksort($methodGroups, static fn(string $a, string $b): int => strcmp($a, $b));
 
 $md .= "\n## By Method\n\n";
 
@@ -557,7 +554,7 @@ foreach ($methodGroups as $method => $items) {
             return $cmp;
         }
 
-        return strcmp($a['param'], $b['param']);
+        return strcmp((string) $a['param'], (string) $b['param']);
     });
 
     $md .= '# ' . mdEscape($method) . "\n\n";
@@ -579,10 +576,10 @@ if (null !== $outputFile) {
     $ok = file_put_contents($outputFile, $md);
 
     if (false === $ok) {
-        fwrite(STDERR, "Cannot write output file: {$outputFile}\n");
+        fwrite(STDERR, sprintf('Cannot write output file: %s%s', $outputFile, PHP_EOL));
         exit(2);
     }
-    fwrite(STDOUT, "Wrote: {$outputFile}\n");
+    fwrite(STDOUT, sprintf('Wrote: %s%s', $outputFile, PHP_EOL));
 } else {
     echo $md;
 }
@@ -607,7 +604,7 @@ if (null !== $outputPdf) {
         $mpdf->WriteHTML($html);
         $mpdf->Output($outputPdf, Destination::FILE);
 
-        fwrite(STDOUT, "Wrote: {$outputPdf}\n");
+        fwrite(STDOUT, sprintf('Wrote: %s%s', $outputPdf, PHP_EOL));
     } catch (Throwable $e) {
         fwrite(STDERR, 'PDF generation failed: ' . $e->getMessage() . "\n");
         exit(3);
