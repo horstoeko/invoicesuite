@@ -45,10 +45,9 @@ class InvoiceSuitePdfExtractorAttachment
     /**
      * Constructor
      *
-     * @param  string $newAttachmentContent
-     * @param  string $newAttachmentFilename
-     * @param  string $newAttachmentMimeType
-     * @return void
+     * @param string $newAttachmentContent
+     * @param string $newAttachmentFilename
+     * @param string $newAttachmentMimeType
      */
     public function __construct(
         string $newAttachmentContent,

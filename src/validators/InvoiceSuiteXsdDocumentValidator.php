@@ -254,8 +254,8 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
         try {
             $doc = new DOMDocument();
 
-            if (true === $doc->loadXML($this->getRawDocumentContent())) {
-                if (true === $doc->schemaValidate($this->getXsdFilename())) {
+            if ($doc->loadXML($this->getRawDocumentContent())) {
+                if ($doc->schemaValidate($this->getXsdFilename())) {
                     return true;
                 }
 
@@ -272,8 +272,8 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
             } else {
                 $this->addErrorMessageToMessageBag('Failed to create DOMDocument from Content');
             }
-        } catch (Throwable $exception) {
-            $this->addErrorMessageToMessageBag($exception->getMessage());
+        } catch (Throwable $throwable) {
+            $this->addErrorMessageToMessageBag($throwable->getMessage());
         } finally {
             libxml_clear_errors();
             libxml_use_internal_errors($prevUseInternalErrors);

@@ -120,8 +120,8 @@ final class UtilsTest extends TestCase
         $this->assertArrayHasKey(0, $variable);
         $this->assertArrayHasKey(1, $variable);
         $this->assertArrayNotHasKey(2, $variable);
-        $this->assertSame(1.0, $variable[0]);
-        $this->assertSame(2.2, $variable[1]);
+        $this->assertEqualsWithDelta(1.0, $variable[0], PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(2.2, $variable[1], PHP_FLOAT_EPSILON);
     }
 
     public function testInvoiceSuiteArrayUtilsPushFloatToStringIndexedArray(): void
@@ -142,8 +142,8 @@ final class UtilsTest extends TestCase
         $this->assertCount(2, $variable);
         $this->assertArrayHasKey('a', $variable);
         $this->assertArrayHasKey('b', $variable);
-        $this->assertSame(1.0, $variable['a']);
-        $this->assertSame(2.2, $variable['b']);
+        $this->assertEqualsWithDelta(1.0, $variable['a'], PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(2.2, $variable['b'], PHP_FLOAT_EPSILON);
     }
 
     public function testInvoiceSuiteArrayUtilsPushBooleanToIntIndexedArray(): void
@@ -160,8 +160,8 @@ final class UtilsTest extends TestCase
         $this->assertArrayHasKey(0, $variable);
         $this->assertArrayHasKey(1, $variable);
         $this->assertArrayNotHasKey(2, $variable);
-        $this->assertSame(true, $variable[0]);
-        $this->assertSame(false, $variable[1]);
+        $this->assertTrue($variable[0]);
+        $this->assertFalse($variable[1]);
     }
 
     public function testInvoiceSuiteArrayUtilsPushBooleanToStringIndexedArray(): void
@@ -182,8 +182,8 @@ final class UtilsTest extends TestCase
         $this->assertCount(2, $variable);
         $this->assertArrayHasKey('a', $variable);
         $this->assertArrayHasKey('b', $variable);
-        $this->assertSame(true, $variable['a']);
-        $this->assertSame(false, $variable['b']);
+        $this->assertTrue($variable['a']);
+        $this->assertFalse($variable['b']);
     }
 
     public function testInvoiceSuiteArrayUtilsLimit(): void

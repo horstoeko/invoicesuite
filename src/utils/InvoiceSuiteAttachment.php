@@ -64,10 +64,9 @@ class InvoiceSuiteAttachment
     /**
      * Constructor (hidden)
      *
-     * @param  string $internalContent
-     * @param  string $internalFilename
-     * @param  int    $internalType
-     * @return void
+     * @param string $internalContent
+     * @param string $internalFilename
+     * @param int    $internalType
      */
     final protected function __construct(
         string $internalContent,

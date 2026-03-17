@@ -123,7 +123,7 @@ function collectRows(string $code, DocBlockFactory $factory): array
             while ($j < $count) {
                 $tj = $tokens[$j];
 
-                if (is_array($tj) && $tj[0] === T_WHITESPACE) {
+                if (is_array($tj) && T_WHITESPACE === $tj[0]) {
                     ++$j;
                     continue;
                 }
@@ -541,7 +541,7 @@ foreach ($rows as $r) {
     $methodGroups[$r['method']][] = $r;
 }
 
-uksort($methodGroups, static fn(string $a, string $b): int => strcmp($a, $b));
+uksort($methodGroups, strcmp(...));
 
 $md .= "\n## By Method\n\n";
 

@@ -161,7 +161,7 @@ class InvoiceSuiteFatturaPaSerializerHandler implements SubscribingHandlerInterf
         }
 
         if (1 === count($params)) {
-            $s = (int) $params[0];
+            $s = $params[0];
 
             return [$s, $s];
         }

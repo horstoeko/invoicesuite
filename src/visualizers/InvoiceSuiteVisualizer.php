@@ -111,9 +111,8 @@ class InvoiceSuiteVisualizer
     /**
      * Constructor
      *
-     * @param  InvoiceSuiteDocumentReader                  $documentReader
-     * @param  null|InvoiceSuiteVisualizerAbstractRenderer $renderer
-     * @return void
+     * @param InvoiceSuiteDocumentReader                  $documentReader
+     * @param null|InvoiceSuiteVisualizerAbstractRenderer $renderer
      */
     final protected function __construct(
         InvoiceSuiteDocumentReader $documentReader,

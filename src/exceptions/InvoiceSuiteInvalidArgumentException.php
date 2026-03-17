@@ -26,9 +26,8 @@ class InvoiceSuiteInvalidArgumentException extends InvoiceSuiteBaseException
     /**
      * Constructor
      *
-     * @param  string         $message
-     * @param  null|Throwable $throwable
-     * @return void
+     * @param string         $message
+     * @param null|Throwable $throwable
      */
     public function __construct(
         string $message,

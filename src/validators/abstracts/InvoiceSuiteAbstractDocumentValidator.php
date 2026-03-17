@@ -41,8 +41,6 @@ abstract class InvoiceSuiteAbstractDocumentValidator
 
     /**
      * Constructor (hidden)
-     *
-     * @return void
      */
     final protected function __construct() {}
 

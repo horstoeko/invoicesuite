@@ -60,7 +60,7 @@ trait HandlesCallForwarding
                 throw $e;
             }
 
-            throw new InvoiceSuiteBadMethodCallException($method);
+            throw new InvoiceSuiteBadMethodCallException($method, $e);
         }
     }
 

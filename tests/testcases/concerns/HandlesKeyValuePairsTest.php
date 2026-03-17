@@ -41,16 +41,16 @@ final class HandlesKeyValuePairsTest extends TestCase
 
         $this->assertSame('somestringvalue', $this->getKeyValuePair('key-1', 'somedefaultvalue'));
         $this->assertSame(999, $this->getKeyValuePair('key-2', 0));
-        $this->assertSame(999.99, $this->getKeyValuePair('key-3', 0));
+        $this->assertEqualsWithDelta(999.99, $this->getKeyValuePair('key-3', 0), PHP_FLOAT_EPSILON);
         $this->assertSame('somedefaultvalue', $this->getKeyValuePair('key-1a', 'somedefaultvalue'));
         $this->assertSame(0, $this->getKeyValuePair('key-2a', 0));
 
         // Add (Overwrite)
 
         $this->addKeyValuePair('key-3', 1999.99);
-        $this->assertSame(999.99, $this->getKeyValuePair('key-3', 0));
+        $this->assertEqualsWithDelta(999.99, $this->getKeyValuePair('key-3', 0), PHP_FLOAT_EPSILON);
         $this->addKeyValuePair('key-3', 1999.99, true);
-        $this->assertSame(1999.99, $this->getKeyValuePair('key-3', 0));
+        $this->assertEqualsWithDelta(1999.99, $this->getKeyValuePair('key-3', 0), PHP_FLOAT_EPSILON);
 
         // Remove
 

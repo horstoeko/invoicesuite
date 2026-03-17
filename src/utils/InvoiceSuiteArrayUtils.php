@@ -188,7 +188,7 @@ class InvoiceSuiteArrayUtils
         array $array,
         int $limit
     ): array {
-        return true === $limitCondition ? static::limit($array, $limit) : $array;
+        return $limitCondition ? static::limit($array, $limit) : $array;
     }
 
     /**
@@ -215,6 +215,6 @@ class InvoiceSuiteArrayUtils
         bool $limitCondition,
         array $array
     ): array {
-        return true === $limitCondition ? static::limitToOne($array) : $array;
+        return $limitCondition ? static::limitToOne($array) : $array;
     }
 }

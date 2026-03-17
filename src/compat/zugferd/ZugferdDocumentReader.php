@@ -52,8 +52,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Constructor (hidden)
      *
-     * @param  InvoiceSuiteDocumentReader $documentReader
-     * @return void
+     * @param InvoiceSuiteDocumentReader $documentReader
      */
     final protected function __construct(
         /**

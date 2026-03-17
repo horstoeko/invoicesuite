@@ -57,8 +57,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
     /**
      * Constructor
      *
-     * @param  int  $profile The ID of the profile of the document
-     * @return void
+     * @param int $profile The ID of the profile of the document
      *
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteInvalidArgumentException

@@ -19,18 +19,4 @@ namespace horstoeko\invoicesuite\documents\dto;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteCommunicationDTO extends InvoiceSuiteIdDTO
-{
-    /**
-     * Constructor
-     *
-     * @param null|string $id     ID
-     * @param null|string $idType Type of the ID
-     */
-    public function __construct(
-        ?string $id = null,
-        ?string $idType = null
-    ) {
-        parent::__construct($id, $idType);
-    }
-}
+class InvoiceSuiteCommunicationDTO extends InvoiceSuiteIdDTO {}
