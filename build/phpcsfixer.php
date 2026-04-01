@@ -10,6 +10,7 @@ $rootDir = __DIR__ . '/..';
 
 $finder = (new Finder())
     ->in([
+        $rootDir . '/examples',
         $rootDir . '/src',
         $rootDir . '/make',
         $rootDir . '/tests',
