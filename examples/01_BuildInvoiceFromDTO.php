@@ -1,35 +1,41 @@
 <?php
 
-use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
-use horstoeko\invoicesuite\InvoiceSuitePdfDocumentBuilder;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteIdDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteNoteDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitePartyDTO;
-use horstoeko\invoicesuite\visualizers\InvoiceSuiteVisualizer;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitePeriodDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAddressDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteContactDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProductDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitePriceNetDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteQuantityDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitePriceGrossDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentTermDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteServiceChargeDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO;
+/**
+ * Build an elctronic invoice document in Factor-X/ZUGFeRD COMFORT profile using the InvoiceSuiteDocumentBuilder
+ * from DTO
+ */
+
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistCurrencyCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAllowanceChargeDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteContactDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentPositionDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceProductDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteIdDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteNoteDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePartyDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentTermDiscountDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentExtDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePaymentTermDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePeriodDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePriceGrossDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePriceNetDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProductCharacteristicDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProductDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteQuantityDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentExtDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceProductDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteServiceChargeDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
+use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 
-require __DIR__ . "/../vendor/autoload.php";
+require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/00_ExampleHelpers.php';
+
+// Instanciate a new document header DTO
 
 $dtoDocumentHeader = (new InvoiceSuiteDocumentHeaderDTO())
     ->setNumber('R87654321012345')
@@ -178,6 +184,8 @@ $dtoDocumentHeader = (new InvoiceSuiteDocumentHeaderDTO())
         ->setPrepaidAmount(0.00)
         ->setDueAmount(518.99));
 
+// Add first invoiced item/good/product
+
 $dtoDocumentPositionOne = (new InvoiceSuiteDocumentPositionDTO())
     ->setLineId('1')
     ->setProduct((new InvoiceSuiteProductDTO())
@@ -205,6 +213,8 @@ $dtoDocumentPositionOne = (new InvoiceSuiteDocumentPositionDTO())
         ->setPercent(19.0))
     ->setSummation((new InvoiceSuitesummationLineDTO())
         ->setNetAmount(100.00));
+
+// Add second invoiced item/good/product
 
 $dtoDocumentPositionTwo = (new InvoiceSuiteDocumentPositionDTO())
     ->setLineId('2')
@@ -239,6 +249,8 @@ $dtoDocumentPositionTwo = (new InvoiceSuiteDocumentPositionDTO())
     ->setSummation((new InvoiceSuitesummationLineDTO())
         ->setNetAmount(72.50));
 
+// Add third invoiced item/good/product
+
 $dtoDocumentPositionThree = (new InvoiceSuiteDocumentPositionDTO())
     ->setLineId('3')
     ->setProduct((new InvoiceSuiteProductDTO())
@@ -264,6 +276,8 @@ $dtoDocumentPositionThree = (new InvoiceSuiteDocumentPositionDTO())
         ->setPercent(7.0))
     ->setSummation((new InvoiceSuitesummationLineDTO())
         ->setNetAmount(0.00));
+
+// Add fourth invoiced item/good/product
 
 $dtoDocumentPositionFour = (new InvoiceSuiteDocumentPositionDTO())
     ->setLineId('4')
@@ -294,6 +308,8 @@ $dtoDocumentPositionFour = (new InvoiceSuiteDocumentPositionDTO())
     ->setSummation((new InvoiceSuitesummationLineDTO())
         ->setNetAmount(180.00));
 
+// Add fifth invoiced item/good/product
+
 $dtoDocumentPositionFive = (new InvoiceSuiteDocumentPositionDTO())
     ->setLineId('5')
     ->setProduct((new InvoiceSuiteProductDTO())
@@ -321,6 +337,8 @@ $dtoDocumentPositionFive = (new InvoiceSuiteDocumentPositionDTO())
         ->setPercent(19.0))
     ->setSummation((new InvoiceSuitesummationLineDTO())
         ->setNetAmount(46.50));
+
+// Add sixth invoiced item/good/product
 
 $dtoDocumentPositionSix = (new InvoiceSuiteDocumentPositionDTO())
     ->setLineId('6')
@@ -381,6 +399,8 @@ $dtoDocumentPositionSix = (new InvoiceSuiteDocumentPositionDTO())
     ->setSummation((new InvoiceSuitesummationLineDTO())
         ->setNetAmount(58.20000));
 
+// Add all created positions to the document DTO
+
 $dtoDocumentHeader->addPosition($dtoDocumentPositionOne);
 $dtoDocumentHeader->addPosition($dtoDocumentPositionTwo);
 $dtoDocumentHeader->addPosition($dtoDocumentPositionThree);
@@ -388,11 +408,14 @@ $dtoDocumentHeader->addPosition($dtoDocumentPositionFour);
 $dtoDocumentHeader->addPosition($dtoDocumentPositionFive);
 $dtoDocumentHeader->addPosition($dtoDocumentPositionSix);
 
-$documentBuilder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+// Instanciate a new document with a profile (in our case the profile is ZUGFeRD/Factor-X in COMFORT profile)
+// and fill it by the former created DTO
+
+$documentBuilder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxcomfort');
 $documentBuilder->createFromDTO($dtoDocumentHeader);
 
-$visualizer = InvoiceSuiteVisualizer::createFromDocumentBuilder($documentBuilder);
-$pdfContent = $visualizer->setDefaultTemplate()->renderPdf();
+// Save the generated invoice document to a file
 
-$pdfDocumentBuiler = InvoiceSuitePdfDocumentBuilder::createFromDocumentBuilderAndPdfContent($documentBuilder, $pdfContent);
-$pdfDocumentBuiler->generatePdfDocumentAndSaveToFile(__DIR__ . '/07_visualized_document.pdf');
+$documentBuilder->saveContentToFile(__DIR__ . '/01_SimpleInvoice_2.xml');
+
+validateInvoiceSuiteDocumentBuilder($documentBuilder);
