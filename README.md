@@ -22,6 +22,12 @@
 
 The code in this project is provided under the [MIT](https://opensource.org/licenses/MIT) license.
 
+## Status
+
+> [!IMPORTANT]
+> ## Project State
+> This project is currently work in progress. The aim is for it to eventually replace the horstoeko/zugferd project with a modern codebase through legacy support and to support many more formats. This means there will be no official composer package until the official release. I would welcome input on both technical and subject-specific matters.
+
 ## Overview
 
 InvoiceSuite is a multi-format library for electronic invoices with the goal of supporting as many formats and real-world variants as possible — from international standards to country-specific profiles. This includes German formats such as ZUGFeRD (and Factur-X, which is closely aligned with it) as well as XRechnung, with XRechnung explicitly supported in UBL syntax. The library also aims to cover interoperability ecosystems such as Peppol.

@@ -87,6 +87,7 @@ lint.ps1
 
 /examples/00_SimpleInvoice.xml
 /examples/01_SimpleInvoice.xml
+/examples/01_SimpleInvoice_2.xml
 /examples/01_SimpleInvoice_UBL.xml
 /examples/01_SimpleInvoice_UBL2.xml
 /examples/01_SimpleInvoice_copy.xml
