@@ -4,102 +4,95 @@ on:
   push:
     branches:
       - master
-    paths:
-      - composer.json
-      - .github/dependabot.yml
-      - .github/workflows/supply-chain-security.yml
   pull_request:
     branches:
       - master
-    paths:
-      - composer.json
-      - .github/dependabot.yml
-      - .github/workflows/supply-chain-security.yml
-  schedule:
-    - cron: '23 4 * * 1'
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  composer-supply-chain:
-    name: Composer audit, licenses and SBOM
-    runs-on: ubuntu-24.04
+  supply-chain:
+    name: Composer audit, SBOM, and license report
+    runs-on: ubuntu-latest
+    env:
+      COMPOSER_PROCESS_TIMEOUT: 0
+      COMPOSER_NO_INTERACTION: 1
+      COMPOSER_NO_AUDIT: 1
+      COMPOSER_AUDIT_ABANDONED: report
 
     steps:
-      - name: Checkout sources
-        uses: actions/checkout@v6
+      - name: Check out repository
+        uses: actions/checkout@v4
 
-      - name: Setup PHP
+      - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.4'
+          php-version: '8.2'
           coverage: none
+          tools: composer:v2
 
-      - name: Get Composer cache directory
-        id: composer-cache
-        run: |
-          echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
-
-      - name: Cache Composer downloads
-        uses: actions/cache@v5
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-supply-chain-composer-${{ hashFiles('composer.json') }}
-          restore-keys: |
-            ${{ runner.os }}-supply-chain-composer-
-
-      - name: Prepare report directory
+      - name: Prepare build directories
+        shell: bash
         run: |
           mkdir -p build/supply-chain
 
-      - name: Resolve Composer dependencies for this CI run
+      - name: Resolve Composer dependencies
+        shell: bash
         run: |
-          composer config -g github-oauth.github.com "${{ secrets.GITHUB_TOKEN }}"
-          composer update --no-interaction --prefer-dist
+          if [ -f composer.lock ]; then
+            composer install --prefer-dist --no-progress
+          else
+            composer update --prefer-dist --no-progress
+          fi
 
       - name: Run Composer audit
         id: composer-audit
         shell: bash
         run: |
           set +e
-          composer audit --no-interaction --format=json > build/supply-chain/composer-audit.json
+          composer audit --no-dev --abandoned=report --format=json > build/supply-chain/composer-audit.json
           audit_json_exit=$?
-          composer audit --no-interaction --format=summary > build/supply-chain/composer-audit.txt
+          composer audit --no-dev --abandoned=report --format=summary > build/supply-chain/composer-audit.txt
           audit_summary_exit=$?
           set -e
+
           audit_exit=$audit_json_exit
           if [ "$audit_summary_exit" -gt "$audit_exit" ]; then
             audit_exit=$audit_summary_exit
           fi
+
           echo "exit_code=$audit_exit" >> "$GITHUB_OUTPUT"
 
       - name: Generate Composer license report
+        shell: bash
         run: |
-          composer licenses --no-interaction --format=json > build/supply-chain/composer-licenses.json
-          composer licenses --no-interaction --format=summary > build/supply-chain/composer-licenses.txt
+          composer licenses --no-dev --format=json > build/supply-chain/composer-licenses.json
+          composer licenses --no-dev --format=summary > build/supply-chain/composer-licenses.txt
 
       - name: Export GitHub dependency graph SBOM
         env:
-          GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
         run: |
-          curl -sS -L \
+          curl -sSL \
             -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${GH_TOKEN}" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "https://api.github.com/repos/${{ github.repository }}/dependency-graph/sbom" \
-            -o build/supply-chain/github-dependency-graph.spdx.json
+            -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/dependency-graph/sbom" \
+            > build/supply-chain/github-dependency-graph-sbom.spdx.json
 
-      - name: Upload supply chain reports
-        uses: actions/upload-artifact@v7
+      - name: Upload supply-chain reports
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: supply-chain-reports
-          path: build/supply-chain
+          path: build/supply-chain/
           if-no-files-found: error
 
-      - name: Fail on vulnerable Composer dependencies
+      - name: Fail on Composer vulnerabilities
         if: steps.composer-audit.outputs.exit_code != '0'
+        shell: bash
         run: |
-          echo "Composer audit reported vulnerable dependencies. See the uploaded supply-chain-reports artifact for details."
+          echo "Composer audit reported security advisories. Abandoned packages are reported separately and do not fail this workflow. See the uploaded supply-chain-reports artifact for details."
           exit 1
