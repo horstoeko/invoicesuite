@@ -22,7 +22,7 @@ jobs:
         with:
           php-version: "8.5"
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, xdebug
-          coverage: xdebug
+          coverage: none
 
       - name: Get Composer Cache Directory
         id: composer-cache

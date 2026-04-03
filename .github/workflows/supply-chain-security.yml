@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 permissions:
@@ -99,12 +99,6 @@ jobs:
         shell: bash
         run: |
           composer global require --no-interaction --no-progress cyclonedx/cyclonedx-php-composer
-
-      - name: Verify CycloneDX command
-        shell: bash
-        run: |
-          composer list --raw | grep '^CycloneDX:make-sbom$'
-
       - name: Generate local CycloneDX SBOM
         shell: bash
         run: |
