@@ -9,7 +9,8 @@ env:
 
 jobs:
   build:
-    permissions: write-all
+    permissions:
+      contents: read
     runs-on: "ubuntu-24.04"
 
     steps:
@@ -39,7 +40,7 @@ jobs:
       - name: Install composer dependencies
         run: |
           composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
-          composer update --no-interaction --prefer-dist
+          composer update --no-interaction --prefer-dist --no-progress
 
       - name: Prepare Directories
         run: |

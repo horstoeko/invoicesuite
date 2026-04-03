@@ -13,8 +13,9 @@ env:
 
 jobs:
   updatechangelog:
-    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
-    permissions: write-all
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') }}
+    permissions:
+      contents: write
     runs-on: "ubuntu-24.04"
 
     steps:
@@ -24,7 +25,7 @@ jobs:
           token: ${{ secrets.UPDATEWIKITOKEN }}
           fetch-depth: 0
           fetch-tags: true
-          ref: ${{ github.event.workflow_run.head_branch || github.ref_name }}
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_branch || github.ref_name }}
 
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
@@ -49,7 +50,7 @@ jobs:
       - name: Install composer dependencies
         run: |
           composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
-          composer update --no-interaction --prefer-dist
+          composer update --no-interaction --prefer-dist --no-progress
 
       - name: Update ChangeLog
         continue-on-error: true

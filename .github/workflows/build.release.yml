@@ -65,7 +65,7 @@ jobs:
       - name: Install composer dependencies
         run: |
           composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
-          composer update --no-interaction --prefer-dist
+          composer update --no-interaction --prefer-dist --no-progress
 
       - name: Prepare Directories
         run: |
@@ -207,6 +207,7 @@ jobs:
           comment_mode: ${{ github.event_name == 'pull_request' && 'failures' || 'always' }}
 
       - name: Publish Build Logs
+        if: always()
         uses: actions/upload-artifact@v7
         with:
           name: Build log artifacts for ubuntu-24.04 PHP 8.5 (Release)
@@ -233,7 +234,7 @@ jobs:
 
       - name: Install CycloneDX Composer plugin
         run: |
-          composer global require --no-interaction cyclonedx/cyclonedx-php-composer
+          composer global require --no-interaction --no-progress cyclonedx/cyclonedx-php-composer
 
       - name: Verify CycloneDX command
         run: |
