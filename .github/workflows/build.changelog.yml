@@ -57,9 +57,12 @@ jobs:
           composer update --no-interaction --prefer-dist --no-progress
 
       - name: Update ChangeLog
-        continue-on-error: true
         run: |
           php -f make/genchangelog.php all
+          if [ ! -f make/CHANGELOG.md ]; then
+            echo "No CHANGELOG.md was generated. Skipping update."
+            exit 0
+          fi
           rm -f CHANGELOG.md
           mv -f make/CHANGELOG.md .
           git config user.name "HorstOeko"
