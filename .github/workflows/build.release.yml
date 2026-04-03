@@ -227,8 +227,24 @@ jobs:
           ls -l build/releasenotes.txt
           cat build/releasenotes.txt
 
+      - name: Allow CycloneDX Composer plugin
+        run: |
+          composer global config --no-plugins allow-plugins.cyclonedx/cyclonedx-php-composer true
+
+      - name: Install CycloneDX Composer plugin
+        run: |
+          composer global require --no-interaction cyclonedx/cyclonedx-php-composer
+
+      - name: Verify CycloneDX command
+        run: |
+          composer list --raw | grep '^CycloneDX:make-sbom$'
+
+      - name: Generate local SBOM
+        run: |
+          composer CycloneDX:make-sbom --omit=dev --output-format=JSON --output-file=build/dist/sbom.cdx.json
+
       - name: Make Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/dist/doc.zip,build/dist/builddoc.zip"
+          artifacts: "build/dist/doc.zip,build/dist/builddoc.zip,build/dist/sbom.cdx.json"
           bodyFile: "build/releasenotes.txt"
