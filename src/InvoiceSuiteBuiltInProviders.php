@@ -117,7 +117,7 @@ final class InvoiceSuiteBuiltInProviders
             self::XRECHNUNG_UBL_INVOICE,
             self::XRECHNUNG_UBL_CREDIT_NOTE,
             self::PEPPOL_30_INVOICE,
-            self::PEPPOL_30_CREDIT_NOTE
+            self::PEPPOL_30_CREDIT_NOTE,
         ];
     }
 }
