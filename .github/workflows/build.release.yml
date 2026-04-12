@@ -31,7 +31,12 @@ jobs:
       checks: write
       pull-requests: write
       issues: read
-    runs-on: ubuntu-24.04
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      fail-fast: false
+      matrix:
+        operating-system: [ubuntu-24.04]
+        phpversion: ['8.5']
 
     steps:
       - name: Checkout sources
@@ -43,7 +48,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.5'
+          php-version: ${{ matrix.phpversion }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, xdebug
           coverage: xdebug
 
@@ -61,10 +66,10 @@ jobs:
         uses: actions/cache@v5
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-8.5-composer-${{ hashFiles('**/composer.json', '**/composer.lock') }}
+          key: ${{ runner.os }}-${{ matrix.phpversion }}-composer-${{ hashFiles('**/composer.json', '**/composer.lock') }}
           restore-keys: |
-            ${{ runner.os }}-8.5-composer-${{ hashFiles('**/composer.json') }}
-            ${{ runner.os }}-8.5-composer-
+            ${{ runner.os }}-${{ matrix.phpversion }}-composer-${{ hashFiles('**/composer.json') }}
+            ${{ runner.os }}-${{ matrix.phpversion }}-composer-
 
       - name: Install Composer dependencies
         run: |
@@ -98,7 +103,7 @@ jobs:
         uses: actions/cache@v5
         with:
           path: build/.php-cs-fixer.cache
-          key: ${{ runner.os }}-8.5-php-cs-fixer-${{ steps.hash-php-cs-fixer.outputs.hash }}
+          key: ${{ runner.os }}-${{ matrix.phpversion }}-php-cs-fixer-${{ steps.hash-php-cs-fixer.outputs.hash }}
 
       - name: Calculate PHPStan cache key
         id: hash-phpstan
@@ -108,7 +113,7 @@ jobs:
         uses: actions/cache@v5
         with:
           path: build/phpstan
-          key: ${{ runner.os }}-8.5-phpstan-${{ steps.hash-phpstan.outputs.hash }}
+          key: ${{ runner.os }}-${{ matrix.phpversion }}-phpstan-${{ steps.hash-phpstan.outputs.hash }}
 
       - name: Run PHP-CS-Fixer
         env:
@@ -132,7 +137,7 @@ jobs:
         uses: actions/cache@v5
         with:
           path: ${{ env.VALIDATORPATH }}
-          key: ${{ runner.os }}-8.5-validator-${{ steps.hash-validator.outputs.hash }}
+          key: ${{ runner.os }}-${{ matrix.phpversion }}-validator-${{ steps.hash-validator.outputs.hash }}
 
       - name: Download Schematron application
         if: steps.cache-validator.outputs.cache-hit != 'true'
@@ -165,7 +170,7 @@ jobs:
         uses: actions/cache@v5
         with:
           path: ${{ env.VERAPDFPATH }}
-          key: ${{ runner.os }}-8.5-verapdf-${{ steps.hash-verapdf.outputs.hash }}
+          key: ${{ runner.os }}-${{ matrix.phpversion }}-verapdf-${{ steps.hash-verapdf.outputs.hash }}
 
       - name: Download veraPDF application
         if: steps.cache-verapdf.outputs.cache-hit != 'true'
@@ -245,7 +250,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: Build log artifacts for ubuntu-24.04 PHP 8.5 (Release)
+          name: Build log artifacts for ${{ matrix.operating-system }} PHP ${{ matrix.phpversion }} (Release)
           path: build/logs
           if-no-files-found: error
 
