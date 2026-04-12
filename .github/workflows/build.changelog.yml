@@ -10,6 +10,7 @@ on:
 
 env:
   GH_PAT: ${{ secrets.UPDATEWIKITOKEN }}
+  TARGET_BRANCH: ${{ github.event_name == 'workflow_dispatch' && github.ref_name || github.event.repository.default_branch }}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_branch || github.ref_name || github.run_id }}
@@ -29,7 +30,7 @@ jobs:
           token: ${{ secrets.UPDATEWIKITOKEN }}
           fetch-depth: 0
           fetch-tags: true
-          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_branch || github.ref_name }}
+          ref: ${{ env.TARGET_BRANCH }}
 
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
@@ -70,7 +71,7 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             git add ./CHANGELOG.md
             git commit -m "[DOC] Updated CHANGELOG.md"
-            git push
+            git push origin HEAD:${{ env.TARGET_BRANCH }}
           else
             echo "No changes found. Skipping."
           fi
