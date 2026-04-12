@@ -13,21 +13,28 @@ Please delete options that are not relevant.
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 - [ ] This change requires a documentation update
 
-# How Has This Been Tested?
+## How has this been tested?
 
-Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration
+Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce them. Please also list any relevant details for your test configuration.
 
 - [ ] Test A
 - [ ] Test B
 
-**Test Configuration**:
+**Test configuration**
 
-* OS:
-* OS Version:
-* PHP Version:
+- OS:
+- OS version:
+- PHP version:
 
-# Checklist:
+## Checklist
 
+Pull requests are only accepted if the coding style has been checked before committing by running:
+
+```bash
+composer checkstyle:run
+```
+
+- [ ] I ran `composer checkstyle:run` before committing and the coding style check passed
 - [ ] My code follows the style guidelines of this project
 - [ ] I have performed a self-review of my own code
 - [ ] I have commented my code, particularly in hard-to-understand areas
