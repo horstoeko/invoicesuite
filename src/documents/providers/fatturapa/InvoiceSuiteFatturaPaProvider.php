@@ -148,7 +148,7 @@ class InvoiceSuiteFatturaPaProvider extends InvoiceSuiteAbstractDocumentFormatPr
             }
 
             $contentDomXPathQuery = ('' !== $contentDomDocumentRootNs)
-                ? '//d:FatturaElettronica/d:FatturaElettronicaHeader'
+                ? '//d:FatturaElettronica/FatturaElettronicaHeader'
                 : '//FatturaElettronica/FatturaElettronicaHeader';
 
             $contentEntries = $contentDomXPath->query($contentDomXPathQuery);

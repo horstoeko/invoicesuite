@@ -38,12 +38,16 @@ use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceProductDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteServiceChargeDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
+use horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiPagamento;
+use horstoeko\invoicesuite\documents\providers\fatturapa\models\DettaglioPagamento;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\CondizioniPagamento;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\EsigibilitaIVA;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\FormatoTrasmissione;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\ModalitaPagamento;
+use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\Natura;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\RegimeFiscale;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoDocumento;
+use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoScontoMaggiorazione;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\FatturaElettronica;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
@@ -563,19 +567,19 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
         $newDocumentDTO
             ->getShipFromParty()
             ?->firstName(
-                fn (string $item) => $this->setDocumentShipfromName($item)
+                fn (string $item) => $this->setDocumentShipFromName($item)
             )
             ?->firstId(
-                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentShipfromId($item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentShipFromId($item->getId())
             )
             ?->forEachGlobalId(
-                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentShipfromGlobalId($item->getId(), $item->getIdType())
+                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentShipFromGlobalId($item->getId(), $item->getIdType())
             )
             ?->firstTaxRegistration(
-                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentShipfromTaxRegistration($item->getIdType(), $item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentShipFromTaxRegistration($item->getIdType(), $item->getId())
             )
             ?->firstAddress(
-                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentShipfromAddress(
+                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentShipFromAddress(
                     $item->getAddressLine1(),
                     $item->getAddressLine2(),
                     $item->getAddressLine3(),
@@ -586,14 +590,14 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
                 )
             )
             ?->firstLegalOrganisation(
-                fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentShipfromLegalOrganisation(
+                fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentShipFromLegalOrganisation(
                     $item->getIdType(),
                     $item->getId(),
                     $item->getName()
                 )
             )
             ?->forEachContact(
-                fn (InvoiceSuiteContactDTO $item) => $this->addDocumentShipfromContact(
+                fn (InvoiceSuiteContactDTO $item) => $this->addDocumentShipFromContact(
                     $item->getPersonName(),
                     $item->getDepartmentName(),
                     $item->getPhoneNumber(),
@@ -602,7 +606,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
                 )
             )
             ?->firstCommunication(
-                fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentShipfromCommunication(
+                fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentShipFromCommunication(
                     $item->getIdType(),
                     $item->getId()
                 )
@@ -1327,6 +1331,28 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
+        $this
+            ->getFatturaPaRootObject()
+            ->getLatestFatturaElettronicaBody()
+            ?->getDatiGenerali()
+            ?->getDatiGeneraliDocumento()
+            ?->unsetTipoDocumento();
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDocumentType)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDocumentType)');
+        }
+
+        if (is_null($resolvedDocumentType = $this->resolveDocumentType($newDocumentType))) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'invalidDocumentType', 'is_null($this->resolveDocumentType($newDocumentType))');
+        }
+
+        $this
+            ->getFatturaPaRootObject()
+            ->getLatestFatturaElettronicaBodyWithCreate()
+            ->getDatiGeneraliWithCreate()
+            ->getDatiGeneraliDocumentoWithCreate()
+            ->setTipoDocumento($resolvedDocumentType);
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -1901,6 +1927,24 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
+        $this
+            ->getFatturaPaRootObject()
+            ->getLatestFatturaElettronicaBody()
+            ?->getDatiGenerali()
+            ?->unsetDatiFattureCollegate();
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newReferenceNumber)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newReferenceNumber)');
+        }
+
+        $this
+            ->getFatturaPaRootObject()
+            ->getLatestFatturaElettronicaBodyWithCreate()
+            ->getDatiGeneraliWithCreate()
+            ->addOnceToDatiFattureCollegateWithCreate()
+            ->setIdDocumento($newReferenceNumber)
+            ->setData($newReferenceDate);
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -1920,6 +1964,18 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
         ?string $newTypeCode = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newReferenceNumber)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newReferenceNumber)');
+        }
+
+        $this
+            ->getFatturaPaRootObject()
+            ->getLatestFatturaElettronicaBodyWithCreate()
+            ->getDatiGeneraliWithCreate()
+            ->addToDatiFattureCollegateWithCreate()
+            ->setIdDocumento($newReferenceNumber)
+            ->setData($newReferenceDate);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -2933,6 +2989,16 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
+        $this->setDocumentBuyerAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -3073,6 +3139,25 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
+        $this
+            ->getFatturaPaRootObject()
+            ->getFatturaElettronicaHeader()
+            ?->getRappresentanteFiscale()
+            ?->getDatiAnagrafici()
+            ?->unsetAnagrafica();
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)');
+        }
+
+        $this
+            ->getFatturaPaRootObject()
+            ->getFatturaElettronicaHeaderWithCreate()
+            ->getRappresentanteFiscaleWithCreate()
+            ->getDatiAnagraficiWithCreate()
+            ->getAnagraficaWithCreate()
+            ->setDenominazione($newName);
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -3088,6 +3173,8 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
         ?string $newName = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
+
+        $this->setDocumentTaxRepresentativeName($newName);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -3175,6 +3262,37 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
+        $this
+            ->getFatturaPaRootObject()
+            ->getFatturaElettronicaHeader()
+            ?->getRappresentanteFiscale()
+            ?->getDatiAnagrafici()
+            ?->unsetIdFiscaleIVA()
+            ?->unsetCodiceFiscale();
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTaxRegistrationId)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTaxRegistrationId)');
+        }
+
+        if ($this->isTaxRegistrationTypeVat($newTaxRegistrationType)) {
+            $this
+                ->getFatturaPaRootObject()
+                ->getFatturaElettronicaHeaderWithCreate()
+                ->getRappresentanteFiscaleWithCreate()
+                ->getDatiAnagraficiWithCreate()
+                ->getIdFiscaleIVAWithCreate()
+                ->setIdCodice($newTaxRegistrationId);
+        } elseif ($this->isTaxRegistrationTypeFiscal($newTaxRegistrationType)) {
+            $this
+                ->getFatturaPaRootObject()
+                ->getFatturaElettronicaHeaderWithCreate()
+                ->getRappresentanteFiscaleWithCreate()
+                ->getDatiAnagraficiWithCreate()
+                ->setCodiceFiscale($newTaxRegistrationId);
+        } else {
+            return $this->traceMethodEarlyExit(__METHOD__, 'unsupportedTaxRegistrationType', '!$this->isTaxRegistrationTypeVat($newTaxRegistrationType) && !$this->isTaxRegistrationTypeFiscal($newTaxRegistrationType)');
+        }
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -3192,6 +3310,11 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
         ?string $newTaxRegistrationId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
+
+        $this->setDocumentTaxRepresentativeTaxRegistration(
+            $newTaxRegistrationType,
+            $newTaxRegistrationId
+        );
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5621,6 +5744,46 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
+        $paymentDetail = $this->getPrimaryPaymentDetailWithCreate();
+
+        $paymentMode = !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTypeCode) ? ModalitaPagamento::tryFrom($newTypeCode) : null;
+
+        if (!is_null($paymentMode)) {
+            $paymentDetail->setModalitaPagamento($paymentMode);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)) {
+            $paymentDetail->setIstitutoFinanziario($newName);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newFinancialCardHolder)) {
+            $paymentDetail->setBeneficiario($newFinancialCardHolder);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPayeeAccountName) && InvoiceSuiteStringUtils::stringIsNullOrEmpty($paymentDetail->getBeneficiario())) {
+            $paymentDetail->setBeneficiario($newPayeeAccountName);
+        }
+
+        if (
+            !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newBuyerIban)
+            && !is_null($paymentMode)
+            && (ModalitaPagamento::MP19 === $paymentMode || ModalitaPagamento::MP20 === $paymentMode)
+        ) {
+            $paymentDetail->setIBAN($newBuyerIban);
+        } elseif (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPayeeIban)) {
+            $paymentDetail->setIBAN($newPayeeIban);
+        } elseif (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newBuyerIban)) {
+            $paymentDetail->setIBAN($newBuyerIban);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPayeeBic)) {
+            $paymentDetail->setBIC($newPayeeBic);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPaymentReference)) {
+            $paymentDetail->setCodicePagamento($newPaymentReference);
+        }
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5657,6 +5820,51 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
+        $paymentDetail = $this
+            ->getFatturaPaRootObject()
+            ->getLatestFatturaElettronicaBodyWithCreate()
+            ->addToDatiPagamentoWithCreate()
+            ->setCondizioniPagamento(CondizioniPagamento::TP02)
+            ->addOnceToDettaglioPagamentoWithCreate();
+
+        $paymentMode = !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTypeCode) ? ModalitaPagamento::tryFrom($newTypeCode) : null;
+
+        if (!is_null($paymentMode)) {
+            $paymentDetail->setModalitaPagamento($paymentMode);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)) {
+            $paymentDetail->setIstitutoFinanziario($newName);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newFinancialCardHolder)) {
+            $paymentDetail->setBeneficiario($newFinancialCardHolder);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPayeeAccountName) && InvoiceSuiteStringUtils::stringIsNullOrEmpty($paymentDetail->getBeneficiario())) {
+            $paymentDetail->setBeneficiario($newPayeeAccountName);
+        }
+
+        if (
+            !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newBuyerIban)
+            && !is_null($paymentMode)
+            && (ModalitaPagamento::MP19 === $paymentMode || ModalitaPagamento::MP20 === $paymentMode)
+        ) {
+            $paymentDetail->setIBAN($newBuyerIban);
+        } elseif (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPayeeIban)) {
+            $paymentDetail->setIBAN($newPayeeIban);
+        } elseif (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newBuyerIban)) {
+            $paymentDetail->setIBAN($newBuyerIban);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPayeeBic)) {
+            $paymentDetail->setBIC($newPayeeBic);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPaymentReference)) {
+            $paymentDetail->setCodicePagamento($newPaymentReference);
+        }
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5680,6 +5888,20 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
         ?string $newPaymentReference = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
+
+        $this->setDocumentPaymentMean(
+            ModalitaPagamento::MP05->value,
+            null,
+            null,
+            null,
+            null,
+            $newPayeeIban,
+            $newPayeeAccountName,
+            $newPayeeProprietaryId,
+            $newPayeeBic,
+            $newPaymentReference,
+            null
+        );
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5705,6 +5927,20 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
+        $this->addDocumentPaymentMean(
+            ModalitaPagamento::MP05->value,
+            null,
+            null,
+            null,
+            null,
+            $newPayeeIban,
+            $newPayeeAccountName,
+            $newPayeeProprietaryId,
+            $newPayeeBic,
+            $newPaymentReference,
+            null
+        );
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5728,6 +5964,20 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
         ?string $newPaymentReference = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
+
+        $this->setDocumentPaymentMean(
+            ModalitaPagamento::MP05->value,
+            null,
+            null,
+            null,
+            null,
+            $newPayeeIban,
+            $newPayeeAccountName,
+            $newPayeeProprietaryId,
+            $newPayeeBic,
+            $newPaymentReference,
+            null
+        );
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5753,6 +6003,20 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
+        $this->addDocumentPaymentMean(
+            ModalitaPagamento::MP05->value,
+            null,
+            null,
+            null,
+            null,
+            $newPayeeIban,
+            $newPayeeAccountName,
+            $newPayeeProprietaryId,
+            $newPayeeBic,
+            $newPaymentReference,
+            null
+        );
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5770,6 +6034,20 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
         ?string $newMandate = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
+
+        $this->setDocumentPaymentMean(
+            ModalitaPagamento::MP19->value,
+            null,
+            null,
+            null,
+            $newBuyerIban,
+            null,
+            null,
+            null,
+            null,
+            null,
+            $newMandate
+        );
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5789,6 +6067,20 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
+        $this->addDocumentPaymentMean(
+            ModalitaPagamento::MP19->value,
+            null,
+            null,
+            null,
+            $newBuyerIban,
+            null,
+            null,
+            null,
+            null,
+            null,
+            $newMandate
+        );
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5806,6 +6098,20 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
         ?string $newMandate = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
+
+        $this->setDocumentPaymentMean(
+            ModalitaPagamento::MP20->value,
+            null,
+            null,
+            null,
+            $newBuyerIban,
+            null,
+            null,
+            null,
+            null,
+            null,
+            $newMandate
+        );
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5825,6 +6131,20 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
+        $this->addDocumentPaymentMean(
+            ModalitaPagamento::MP20->value,
+            null,
+            null,
+            null,
+            $newBuyerIban,
+            null,
+            null,
+            null,
+            null,
+            null,
+            $newMandate
+        );
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5843,6 +6163,20 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
+        $this->setDocumentPaymentMean(
+            ModalitaPagamento::MP08->value,
+            null,
+            $newFinancialCardId,
+            $newFinancialCardHolder,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        );
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5860,6 +6194,20 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
         ?string $newFinancialCardHolder = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
+
+        $this->addDocumentPaymentMean(
+            ModalitaPagamento::MP08->value,
+            null,
+            $newFinancialCardId,
+            $newFinancialCardHolder,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        );
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5909,6 +6257,14 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newId)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newId)');
+        }
+
+        $this
+            ->getPrimaryPaymentDetailWithCreate()
+            ->setCodicePagamento($newId);
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -5924,6 +6280,18 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
         ?string $newId = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newId)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newId)');
+        }
+
+        $this
+            ->getFatturaPaRootObject()
+            ->getLatestFatturaElettronicaBodyWithCreate()
+            ->addToDatiPagamentoWithCreate()
+            ->setCondizioniPagamento(CondizioniPagamento::TP02)
+            ->addOnceToDettaglioPagamentoWithCreate()
+            ->setCodicePagamento($newId);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5945,23 +6313,25 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        $this
-            ->getFatturaPaRootObject()
-            ->getLatestFatturaElettronicaBody()
-            ?->unsetDatiPagamento();
-
-        if (InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'datetimeIsNullOrEmpty', 'InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)');
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription) && InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'noPaymentTermData', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription) && InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)');
         }
 
-        $this
-            ->getFatturaPaRootObject()
-            ->getLatestFatturaElettronicaBodyWithCreate()
-            ->addOnceToDatiPagamentoWithCreate()
-            ->setCondizioniPagamento(CondizioniPagamento::TP01)
-            ->addOnceToDettaglioPagamentoWithCreate()
-            ->setModalitaPagamento(ModalitaPagamento::MP01)
-            ->setDataScadenzaPagamento($newDueDate);
+        $paymentBlock = $this->getPrimaryPaymentBlockWithCreate();
+        $paymentDetail = $paymentBlock->addOnceToDettaglioPagamentoWithCreate();
+
+        /** @var CondizioniPagamento $paymentCondition */
+        $paymentCondition = CondizioniPagamento::tryFrom($newDescription ?? '') ?? ($paymentBlock->getCondizioniPagamento() ?? CondizioniPagamento::TP02);
+
+        $paymentBlock->setCondizioniPagamento($paymentCondition);
+
+        if (is_null($paymentDetail->getModalitaPagamento())) {
+            $paymentDetail->setModalitaPagamento(ModalitaPagamento::MP01);
+        }
+
+        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)) {
+            $paymentDetail->setDataScadenzaPagamento($newDueDate);
+        }
 
         $this->traceMethodExit(__METHOD__);
 
@@ -5983,8 +6353,8 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        if (InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'datetimeIsNullOrEmpty', 'InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)');
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription) && InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'noPaymentTermData', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription) && InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)');
         }
 
         $this->setDocumentPaymentTerm(
@@ -6187,7 +6557,17 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             return $this->traceMethodEarlyExit(__METHOD__, 'oneIsNullOrEmpty', 'InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent, $newBasisAmount, $newTaxAmount])');
         }
 
-        $this
+        /**
+         * @var EsigibilitaIVA $taxType
+         */
+        $taxType = EsigibilitaIVA::tryFrom($newTaxType ?? EsigibilitaIVA::I->value) ?? EsigibilitaIVA::I;
+
+        /**
+         * @var null|Natura $taxNature
+         */
+        $taxNature = $this->resolveTaxNature($newTaxCategory, $newExemptionReasonCode);
+
+        $taxSummary = $this
             ->getFatturaPaRootObject()
             ->getLatestFatturaElettronicaBodyWithCreate()
             ->getDatiBeniServiziWithCreate()
@@ -6195,7 +6575,15 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ->setAliquotaIVA($newTaxPercent)
             ->setImponibileImporto($newBasisAmount)
             ->setImposta($newTaxAmount)
-            ->setEsigibilitaIVA(EsigibilitaIVA::tryFrom($newTaxType ?? EsigibilitaIVA::I->value) ?? EsigibilitaIVA::I);
+            ->setEsigibilitaIVA($taxType);
+
+        if (!is_null($taxNature)) {
+            $taxSummary->setNatura($taxNature);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newExemptionReason)) {
+            $taxSummary->setRiferimentoNormativo($newExemptionReason);
+        }
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6356,16 +6744,34 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        if (InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newDueAmount)) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'floatIsNullOrEmpty', 'InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newDueAmount)');
-        }
-
-        $this
+        $documentTotals = $this
             ->getFatturaPaRootObject()
             ->getLatestFatturaElettronicaBodyWithCreate()
-            ->addOnceToDatiPagamentoWithCreate()
-            ->addOnceToDettaglioPagamentoWithCreate()
-            ->setImportoPagamento($newDueAmount);
+            ->getDatiGeneraliWithCreate()
+            ->getDatiGeneraliDocumentoWithCreate();
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newGrossAmount)) {
+            $documentTotals->setImportoTotaleDocumento($newGrossAmount);
+        }
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newRoungingAmount)) {
+            $documentTotals->setArrotondamento($newRoungingAmount);
+        }
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newDueAmount)) {
+            $paymentBlock = $this->getPrimaryPaymentBlockWithCreate();
+            $paymentDetail = $paymentBlock->addOnceToDettaglioPagamentoWithCreate();
+
+            if (is_null($paymentBlock->getCondizioniPagamento())) {
+                $paymentBlock->setCondizioniPagamento(CondizioniPagamento::TP02);
+            }
+
+            if (is_null($paymentDetail->getModalitaPagamento())) {
+                $paymentDetail->setModalitaPagamento(ModalitaPagamento::MP01);
+            }
+
+            $paymentDetail->setImportoPagamento($newDueAmount);
+        }
 
         $this->traceMethodExit(__METHOD__);
 
@@ -6485,18 +6891,35 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ->getLatestFatturaElettronicaBody()
             ?->getDatiBeniServizi()
             ?->getLatestDettaglioLinee()
-            ?->unsetDescrizione();
+            ?->unsetDescrizione()
+            ?->unsetCodiceArticolo();
 
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newProductName)) {
-            return $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newProductName)');
+        $productName = $newProductName;
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($productName)) {
+            $productName = $newProductDescription;
         }
 
-        $this
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($productName) && InvoiceSuiteStringUtils::stringIsNullOrEmpty($newProductId)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'noProductData', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($productName) && InvoiceSuiteStringUtils::stringIsNullOrEmpty($newProductId)');
+        }
+
+        $position = $this
             ->getFatturaPaRootObject()
             ->getLatestFatturaElettronicaBodyWithCreate()
             ->getDatiBeniServiziWithCreate()
-            ->getLatestDettaglioLineeWithCreate()
-            ->setDescrizione($newProductName);
+            ->getLatestDettaglioLineeWithCreate();
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($productName)) {
+            $position->setDescrizione($productName);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newProductId)) {
+            $position
+                ->addToCodiceArticoloWithCreate()
+                ->setCodiceTipo($newProductIndustryId ?? '')
+                ->setCodiceValore($newProductId);
+        }
 
         $this->traceMethodExit(__METHOD__);
 
@@ -7254,6 +7677,15 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
+        $this->setDocumentPositionTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode
+        );
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7976,6 +8408,32 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
+        $this
+            ->getFatturaPaRootObject()
+            ->getLatestFatturaElettronicaBody()
+            ?->getDatiBeniServizi()
+            ?->getLatestDettaglioLinee()
+            ?->unsetDataInizioPeriodo()
+            ?->unsetDataFinePeriodo();
+
+        if (InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newStartDate) && InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newEndDate)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'datetimeIsNullOrEmpty', 'InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newStartDate) && InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newEndDate)');
+        }
+
+        $position = $this
+            ->getFatturaPaRootObject()
+            ->getLatestFatturaElettronicaBodyWithCreate()
+            ->getDatiBeniServiziWithCreate()
+            ->getLatestDettaglioLineeWithCreate();
+
+        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newStartDate)) {
+            $position->setDataInizioPeriodo($newStartDate);
+        }
+
+        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newEndDate)) {
+            $position->setDataFinePeriodo($newEndDate);
+        }
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -7995,6 +8453,8 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
         ?string $newDescription = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
+
+        $this->setDocumentPositionBillingPeriod($newStartDate, $newEndDate, $newDescription);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -8027,18 +8487,26 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ->getLatestFatturaElettronicaBody()
             ?->getDatiBeniServizi()
             ?->getLatestDettaglioLinee()
-            ?->unsetAliquotaIVA();
+            ?->unsetAliquotaIVA()
+            ?->unsetNatura();
 
         if (InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxPercent)) {
             return $this->traceMethodEarlyExit(__METHOD__, 'floatIsNullOrEmpty', 'InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxPercent)');
         }
 
-        $this
+        /** @var null|Natura $taxNature */
+        $taxNature = $this->resolveTaxNature($newTaxCategory, $newExemptionReasonCode);
+
+        $position = $this
             ->getFatturaPaRootObject()
             ->getLatestFatturaElettronicaBodyWithCreate()
             ->getDatiBeniServiziWithCreate()
             ->getLatestDettaglioLineeWithCreate()
             ->setAliquotaIVA($newTaxPercent);
+
+        if (!is_null($taxNature)) {
+            $position->setNatura($taxNature);
+        }
 
         $this->traceMethodExit(__METHOD__);
 
@@ -8105,6 +8573,26 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
+        $this
+            ->getFatturaPaRootObject()
+            ->getLatestFatturaElettronicaBody()
+            ?->getDatiBeniServizi()
+            ?->getLatestDettaglioLinee()
+            ?->unsetScontoMaggiorazione();
+
+        if (InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newAllowanceChargeAmount) && InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newAllowanceChargePercent)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'floatIsNullOrEmpty', 'InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newAllowanceChargeAmount) && InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newAllowanceChargePercent)');
+        }
+
+        $this->addDocumentPositionAllowanceCharge(
+            $newChargeIndicator,
+            $newAllowanceChargeAmount,
+            $newAllowanceChargeBaseAmount,
+            $newAllowanceChargeReason,
+            $newAllowanceChargeReasonCode,
+            $newAllowanceChargePercent
+        );
+
         $this->traceMethodExit(__METHOD__);
 
         return $this;
@@ -8130,6 +8618,28 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
         ?float $newAllowanceChargePercent = null
     ): static {
         $this->traceMethodEnter(__METHOD__);
+
+        if (InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newAllowanceChargeAmount) && InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newAllowanceChargePercent)) {
+            return $this->traceMethodEarlyExit(__METHOD__, 'floatIsNullOrEmpty', 'InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newAllowanceChargeAmount) && InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newAllowanceChargePercent)');
+        }
+
+        $allowanceChargeType = true === $newChargeIndicator ? TipoScontoMaggiorazione::MG : TipoScontoMaggiorazione::SC;
+
+        $allowanceCharge = $this
+            ->getFatturaPaRootObject()
+            ->getLatestFatturaElettronicaBodyWithCreate()
+            ->getDatiBeniServiziWithCreate()
+            ->getLatestDettaglioLineeWithCreate()
+            ->addToScontoMaggiorazioneWithCreate()
+            ->setTipo($allowanceChargeType);
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newAllowanceChargeAmount)) {
+            $allowanceCharge->setImporto($newAllowanceChargeAmount);
+        }
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newAllowanceChargePercent)) {
+            $allowanceCharge->setPercentuale($newAllowanceChargePercent);
+        }
 
         $this->traceMethodExit(__METHOD__);
 
@@ -8225,6 +8735,60 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     }
 
     /**
+     * Get the primary payment block and create it if necessary.
+     *
+     * @return DatiPagamento
+     */
+    private function getPrimaryPaymentBlockWithCreate(): DatiPagamento
+    {
+        $paymentBlock = $this
+            ->getFatturaPaRootObject()
+            ->getLatestFatturaElettronicaBodyWithCreate()
+            ->addOnceToDatiPagamentoWithCreate();
+
+        if (is_null($paymentBlock->getCondizioniPagamento())) {
+            $paymentBlock->setCondizioniPagamento(CondizioniPagamento::TP02);
+        }
+
+        return $paymentBlock;
+    }
+
+    /**
+     * Get the primary payment detail and create it if necessary.
+     *
+     * @return DettaglioPagamento
+     */
+    private function getPrimaryPaymentDetailWithCreate(): DettaglioPagamento
+    {
+        return $this
+            ->getPrimaryPaymentBlockWithCreate()
+            ->addOnceToDettaglioPagamentoWithCreate();
+    }
+
+    /**
+     * Resolve a generic document type to a FatturaPA document type.
+     *
+     * @param  null|string        $documentType
+     * @return null|TipoDocumento
+     */
+    private function resolveDocumentType(
+        ?string $documentType
+    ): ?TipoDocumento {
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($documentType)) {
+            return null;
+        }
+
+        $normalizedDocumentType = strtoupper(trim($documentType));
+
+        return match ($normalizedDocumentType) {
+            TipoDocumento::TD01->value, 'INVOICE', 'COMMERCIALINVOICE', '380' => TipoDocumento::TD01,
+            TipoDocumento::TD04->value, 'CREDITNOTE', 'CREDITMEMO', '381' => TipoDocumento::TD04,
+            TipoDocumento::TD05->value, 'DEBITNOTE', '383' => TipoDocumento::TD05,
+            default => TipoDocumento::tryFrom($normalizedDocumentType),
+        };
+    }
+
+    /**
      * Check tax registration type is "VAT"
      *
      * @param  null|string $newTaxRegistrationType
@@ -8246,6 +8810,32 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
         ?string $newTaxRegistrationType
     ): bool {
         return InvoiceSuiteArrayUtils::inArrayNoCase(['FC'], $newTaxRegistrationType ?? '');
+    }
+
+    /**
+     * Resolve a generic tax category or exemption code to a FatturaPA tax nature.
+     *
+     * @param  null|string $newTaxCategory
+     * @param  null|string $newExemptionReasonCode
+     * @return null|Natura
+     */
+    private function resolveTaxNature(
+        ?string $newTaxCategory,
+        ?string $newExemptionReasonCode
+    ): ?Natura {
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newExemptionReasonCode)) {
+            return Natura::tryFrom($newExemptionReasonCode);
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTaxCategory)) {
+            return null;
+        }
+
+        if (InvoiceSuiteArrayUtils::inArrayNoCase(['VAT', 'S'], $newTaxCategory)) {
+            return null;
+        }
+
+        return Natura::tryFrom($newTaxCategory);
     }
 
     /**
