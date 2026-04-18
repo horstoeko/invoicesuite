@@ -19,6 +19,7 @@ use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
+use z4kn4fein\SemVer\Version;
 
 class InvoiceSuiteZfFxExtendedProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
@@ -46,6 +47,14 @@ class InvoiceSuiteZfFxExtendedProvider extends InvoiceSuiteAbstractDocumentForma
         return 'The EXTENDED profile is an extension of EN 16931-1 to support more complex business processes (invoices '
             . 'in which several deliveries / delivery locations are billed, structured payment conditions, further information at '
             . 'item level to support warehousing, etc.)';
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getVersion(): Version
+    {
+        return Version::create(1, 0, 0);
     }
 
     /**

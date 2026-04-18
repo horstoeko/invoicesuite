@@ -19,6 +19,7 @@ use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
+use z4kn4fein\SemVer\Version;
 
 class InvoiceSuiteZfFxMinimumProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
@@ -45,6 +46,14 @@ class InvoiceSuiteZfFxMinimumProvider extends InvoiceSuiteAbstractDocumentFormat
     {
         return 'The MINIMUM profile includes the main information about the purchaser and vendor, the total invoice amount, and the total sales tax (VAT). '
             . 'Only the purchaser s reference can be given at item level. A breakdown of the sales tax (VAT) is not supported. It is therefore a booking aid.';
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getVersion(): Version
+    {
+        return Version::create(1, 0, 0);
     }
 
     /**

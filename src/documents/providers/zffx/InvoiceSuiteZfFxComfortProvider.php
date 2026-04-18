@@ -19,6 +19,7 @@ use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
+use z4kn4fein\SemVer\Version;
 
 class InvoiceSuiteZfFxComfortProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
@@ -45,6 +46,14 @@ class InvoiceSuiteZfFxComfortProvider extends InvoiceSuiteAbstractDocumentFormat
     {
         return 'The EN 16931 (COMFORT) profile completely maps the EN 16931-1 and focuses on the core elements '
             . 'of an electronic invoice.';
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getVersion(): Version
+    {
+        return Version::create(1, 0, 0);
     }
 
     /**

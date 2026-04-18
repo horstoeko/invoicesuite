@@ -19,6 +19,7 @@ use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
+use z4kn4fein\SemVer\Version;
 
 class InvoiceSuiteZfFxBasicProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
@@ -44,6 +45,14 @@ class InvoiceSuiteZfFxBasicProvider extends InvoiceSuiteAbstractDocumentFormatPr
     public function getDescription(): string
     {
         return 'The BASIC profile is a subset of EN 16931-1 and can be used for simple VAT-compliant invoices.';
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getVersion(): Version
+    {
+        return Version::create(1, 0, 0);
     }
 
     /**

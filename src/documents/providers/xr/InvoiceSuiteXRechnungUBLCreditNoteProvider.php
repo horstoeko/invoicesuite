@@ -18,6 +18,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\main\CreditNote;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
+use z4kn4fein\SemVer\Version;
 
 class InvoiceSuiteXRechnungUBLCreditNoteProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
@@ -45,6 +46,14 @@ class InvoiceSuiteXRechnungUBLCreditNoteProvider extends InvoiceSuiteAbstractDoc
         return 'The reference profile is based on the CIUS XRechnung, which is maintained by KoSIT. It represents an '
             . 'extension of EN 16931-1 with its own business rules, the national German laws and regulations. This provider '
             . 'used the UBL Syntax.';
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getVersion(): Version
+    {
+        return Version::create(1, 0, 0);
     }
 
     /**

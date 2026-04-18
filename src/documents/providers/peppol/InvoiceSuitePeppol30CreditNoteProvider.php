@@ -17,6 +17,7 @@ use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentForma
 use horstoeko\invoicesuite\documents\providers\peppol\models\main\CreditNote;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
+use z4kn4fein\SemVer\Version;
 
 class InvoiceSuitePeppol30CreditNoteProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
@@ -42,6 +43,14 @@ class InvoiceSuitePeppol30CreditNoteProvider extends InvoiceSuiteAbstractDocumen
     public function getDescription(): string
     {
         return 'Peppol BIS Billing 3.0 - May 2025 Release (Credit Note)';
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getVersion(): Version
+    {
+        return Version::create(1, 0, 0);
     }
 
     /**

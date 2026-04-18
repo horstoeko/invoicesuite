@@ -18,6 +18,8 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use z4kn4fein\SemVer\SemverException;
+use z4kn4fein\SemVer\Version;
 
 /**
  * Class representing methods for a document format provider definition
@@ -63,6 +65,15 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
      * @return string
      */
     abstract public function getDescription(): string;
+
+    /**
+     * Get the version of this provider
+     *
+     * @return Version
+     *
+     * @throws SemverException
+     */
+    abstract public function getVersion(): Version;
 
     /**
      * Get parameters

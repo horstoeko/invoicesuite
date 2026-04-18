@@ -20,6 +20,7 @@ use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
+use z4kn4fein\SemVer\Version;
 
 class InvoiceSuiteXRechnungCIIInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
@@ -47,6 +48,14 @@ class InvoiceSuiteXRechnungCIIInvoiceProvider extends InvoiceSuiteAbstractDocume
         return 'The reference profile is based on the CIUS XRechnung, which is maintained by KoSIT. It represents an '
             . 'extension of EN 16931-1 with its own business rules, the national German laws and regulations. It is therefore more '
             . 'specific than the EN 16931 (COMFORT) profile. This provider uses the CII syntax.';
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getVersion(): Version
+    {
+        return Version::create(1, 0, 0);
     }
 
     /**

@@ -65,7 +65,8 @@
         "setasign/fpdf": "^1",
         "setasign/fpdi": "^2.6.4",
         "symfony/finder": "^5 || ^6 || ^7 || ^8",
-        "symfony/process": "^5.4.46 || ^6.4.14 || ^7.1.7 || ^8"
+        "symfony/process": "^5.4.46 || ^6.4.14 || ^7.1.7 || ^8",
+        "z4kn4fein/php-semver": "^3"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3",

@@ -19,6 +19,7 @@ use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
+use z4kn4fein\SemVer\Version;
 
 class InvoiceSuiteZfFxBasicWlProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
@@ -46,6 +47,14 @@ class InvoiceSuiteZfFxBasicWlProvider extends InvoiceSuiteAbstractDocumentFormat
         return 'The BASIC WL profile does not contain any invoice items and therefore cannot display any VAT-compliant '
             . 'invoices. However, it contains all the information at document level that is required to post the invoice. '
             . 'It is therefore a booking aid.';
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getVersion(): Version
+    {
+        return Version::create(1, 0, 0);
     }
 
     /**

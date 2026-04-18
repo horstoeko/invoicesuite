@@ -19,6 +19,7 @@ use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentForma
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\FatturaElettronica;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
+use z4kn4fein\SemVer\Version;
 
 class InvoiceSuiteFatturaPaProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
@@ -50,6 +51,14 @@ class InvoiceSuiteFatturaPaProvider extends InvoiceSuiteAbstractDocumentFormatPr
     public function getDescription(): string
     {
         return 'Fatturazione Elettronica verso la Pubblica Amministrazione';
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getVersion(): Version
+    {
+        return Version::create(0, 1, 0, 'alpha');
     }
 
     /**
