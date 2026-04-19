@@ -72,13 +72,17 @@ class InvoiceSuiteMergePdfWithXmlCommand extends InvoiceSuiteAbstractCommand
     {
         $pdfFilename = $this->requireReadablePdfFilename($this->getStringArgument($input, 'pdf-file'));
         $xmlFilename = $this->requireReadableXmlFilename($this->getStringArgument($input, 'xml-file'));
-        $outputFilename = $this->getStringArgument($input, 'output-file', $this->buildOutputFilename($pdfFilename, '-with-invoice', 'pdf'));
-        $relationship = InvoiceSuiteStringUtils::asNullWhenEmpty($this->getStringOption($input, 'relationship'));
+        $outputFilename = $this->getStringArgument(
+            $input,
+            'output-file',
+            $this->buildOutputFilenameWithInputExtension($pdfFilename, '-with-invoice')
+        );
+        $relationship = $this->getStringOption($input, 'relationship');
         $documentContent = $this->readFileContents($xmlFilename);
 
         $pdfDocumentBuilder = InvoiceSuitePdfDocumentBuilder::createFromDocumentContentAndPdfFile($documentContent, $pdfFilename);
 
-        if (null !== $relationship) {
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($relationship)) {
             $pdfDocumentBuilder->setDocumentRelationshipType($relationship);
         }
 
