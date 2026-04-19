@@ -72,11 +72,7 @@ class InvoiceSuiteMergePdfWithXmlCommand extends InvoiceSuiteAbstractCommand
     {
         $pdfFilename = $this->requireReadablePdfFilename($this->getStringArgument($input, 'pdf-file'));
         $xmlFilename = $this->requireReadableXmlFilename($this->getStringArgument($input, 'xml-file'));
-        $outputFilename = $this->getStringArgument(
-            $input,
-            'output-file',
-            $this->buildOutputFilenameWithInputExtension($pdfFilename, '-with-invoice')
-        );
+        $outputFilename = $this->getStringArgument($input, 'output-file', $pdfFilename);
         $relationship = $this->getStringOption($input, 'relationship');
         $documentContent = $this->readFileContents($xmlFilename);
 
