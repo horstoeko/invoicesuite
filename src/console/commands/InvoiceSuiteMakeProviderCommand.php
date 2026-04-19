@@ -11,9 +11,11 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\console\commands;
 
+use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuitePackagePaths;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use RuntimeException;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -28,7 +30,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteMakeProviderCommand extends Command
+class InvoiceSuiteMakeProviderCommand extends InvoiceSuiteAbstractCommand
 {
     /**
      * Configure command.
@@ -62,17 +64,17 @@ class InvoiceSuiteMakeProviderCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $namespace = trim((string) $input->getArgument('namespace'), '\\');
-        $directory = (string) $input->getArgument('directory');
-        $providerClassName = trim((string) $input->getArgument('provider-class'));
+        $namespace = trim($this->getStringArgument($input, 'namespace'), '\\');
+        $directory = $this->getStringArgument($input, 'directory');
+        $providerClassName = trim($this->getStringArgument($input, 'provider-class'));
         $readerClassName = $providerClassName . 'Reader';
         $builderClassName = $providerClassName . 'Builder';
-        $providerUniqueId = (string) ($input->getOption('unique-id') ?: strtolower($providerClassName));
-        $providerDescription = (string) ($input->getOption('description') ?: $providerClassName);
-        $rootClassName = (string) ($input->getOption('root-class') ?: '');
-        $force = (bool) $input->getOption('force');
+        $providerUniqueId = $this->getStringOption($input, 'unique-id', strtolower($providerClassName));
+        $providerDescription = $this->getStringOption($input, 'description', $providerClassName);
+        $rootClassName = $this->getStringOption($input, 'root-class');
+        $force = $this->getBoolOption($input, 'force');
 
-        if ('' === $namespace || '' === $providerClassName) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$namespace, $providerClassName])) {
             throw new RuntimeException('Namespace and provider class must not be empty.');
         }
 
@@ -80,7 +82,7 @@ class InvoiceSuiteMakeProviderCommand extends Command
             throw new RuntimeException(sprintf('Unable to create target directory "%s".', $directory));
         }
 
-        $templateDirectory = InvoiceSuitePathUtils::combineAllPaths(dirname(__DIR__), 'templates');
+        $templateDirectory = InvoiceSuitePathUtils::combineAllPaths(InvoiceSuitePackagePaths::getInstallationPath(), 'src', 'console', 'templates');
         $providerPath = InvoiceSuitePathUtils::combinePathWithFile($directory, $providerClassName . '.php');
         $readerPath = InvoiceSuitePathUtils::combinePathWithFile($directory, $readerClassName . '.php');
         $builderPath = InvoiceSuitePathUtils::combinePathWithFile($directory, $builderClassName . '.php');
@@ -125,15 +127,17 @@ class InvoiceSuiteMakeProviderCommand extends Command
             throw new RuntimeException(sprintf('Target file "%s" already exists. Use --force to overwrite.', $targetPath));
         }
 
+        if (!InvoiceSuiteFileUtils::isReadableFilePath($templatePath)) {
+            throw new RuntimeException(sprintf('Template file "%s" is not readable.', $templatePath));
+        }
+
         $templateContent = file_get_contents($templatePath);
 
-        if (false === $templateContent) {
+        if (!is_string($templateContent)) {
             throw new RuntimeException(sprintf('Unable to read template "%s".', $templatePath));
         }
 
-        $targetContent = strtr($templateContent, $replacements);
-
-        if (false === file_put_contents($targetPath, $targetContent)) {
+        if (false === file_put_contents($targetPath, strtr($templateContent, $replacements))) {
             throw new RuntimeException(sprintf('Unable to write target file "%s".', $targetPath));
         }
     }

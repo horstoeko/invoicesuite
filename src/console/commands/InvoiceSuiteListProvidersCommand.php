@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\console\commands;
 
 use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
@@ -26,7 +25,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteListProvidersCommand extends Command
+class InvoiceSuiteListProvidersCommand extends InvoiceSuiteAbstractCommand
 {
     use HandlesDocumentFormatProviders;
 
