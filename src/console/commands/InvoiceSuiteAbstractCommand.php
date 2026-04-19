@@ -233,7 +233,7 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      */
     protected function isXmlFilename(string $filename): bool
     {
-        return InvoiceSuiteArrayUtils::inArrayNoCase($this->detectMimeTypeByFilename($filename), static::XML_MIME_TYPES);
+        return InvoiceSuiteArrayUtils::inArrayNoCase(static::XML_MIME_TYPES, $this->detectMimeTypeByFilename($filename));
     }
 
     /**
