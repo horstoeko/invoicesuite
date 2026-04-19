@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\console\commands;
 
+use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
@@ -79,10 +80,10 @@ class InvoiceSuiteMakeProviderCommand extends Command
             throw new RuntimeException(sprintf('Unable to create target directory "%s".', $directory));
         }
 
-        $templateDirectory = dirname(__DIR__) . '/templates';
-        $providerPath = rtrim($directory, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $providerClassName . '.php';
-        $readerPath = rtrim($directory, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $readerClassName . '.php';
-        $builderPath = rtrim($directory, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $builderClassName . '.php';
+        $templateDirectory = InvoiceSuitePathUtils::combineAllPaths(dirname(__DIR__), 'templates');
+        $providerPath = InvoiceSuitePathUtils::combinePathWithFile($directory, $providerClassName . '.php');
+        $readerPath = InvoiceSuitePathUtils::combinePathWithFile($directory, $readerClassName . '.php');
+        $builderPath = InvoiceSuitePathUtils::combinePathWithFile($directory, $builderClassName . '.php');
 
         $replacements = [
             '{{NAMESPACE}}' => $namespace,
@@ -96,9 +97,9 @@ class InvoiceSuiteMakeProviderCommand extends Command
             '{{ROOT_CLASS_NAME}}' => $rootClassName,
         ];
 
-        $this->writeTemplate($templateDirectory . '/provider.tpl', $providerPath, $replacements, $force);
-        $this->writeTemplate($templateDirectory . '/provider_reader.tpl', $readerPath, $replacements, $force);
-        $this->writeTemplate($templateDirectory . '/provider_builder.tpl', $builderPath, $replacements, $force);
+        $this->writeTemplate(InvoiceSuitePathUtils::combinePathWithFile($templateDirectory, 'provider.tpl'), $providerPath, $replacements, $force);
+        $this->writeTemplate(InvoiceSuitePathUtils::combinePathWithFile($templateDirectory, 'provider_reader.tpl'), $readerPath, $replacements, $force);
+        $this->writeTemplate(InvoiceSuitePathUtils::combinePathWithFile($templateDirectory, 'provider_builder.tpl'), $builderPath, $replacements, $force);
 
         $output->writeln(sprintf('<info>Created:</info> %s', $providerPath));
         $output->writeln(sprintf('<info>Created:</info> %s', $readerPath));
