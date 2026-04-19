@@ -20,6 +20,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\InvoiceSuitePdfDocumentReader;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractorAttachment;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
@@ -46,6 +47,13 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * The MIME type used for PDF documents.
      */
     protected const PDF_MIME_TYPE = 'application/pdf';
+
+    /**
+     * The MIME types used for XML documents.
+     *
+     * @var list<string>
+     */
+    protected const XML_MIME_TYPES = ['application/xml', 'text/xml'];
 
     /**
      * Get a string argument.
@@ -144,11 +152,7 @@ abstract class InvoiceSuiteAbstractCommand extends Command
             return $value;
         }
 
-        if (null === $value) {
-            return $default;
-        }
-
-        if (is_string($value) && InvoiceSuiteStringUtils::stringIsNullOrEmpty($value)) {
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($value)) {
             return $default;
         }
 
@@ -196,6 +200,149 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     }
 
     /**
+     * Detect the MIME type of a file.
+     *
+     * @param  string $filename
+     * @return string
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws RuntimeException
+     */
+    protected function detectMimeTypeByFilename(string $filename): string
+    {
+        $fileInfo = new finfo(FILEINFO_MIME_TYPE);
+        $mimeType = $fileInfo->file($this->requireReadableFilename($filename));
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($mimeType)) {
+            throw new RuntimeException(sprintf('Unable to detect MIME type for file "%s".', $filename));
+        }
+
+        return $mimeType;
+    }
+
+    /**
+     * Determine whether the given file is an XML document.
+     *
+     * @param  string $filename
+     * @return bool
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws RuntimeException
+     */
+    protected function isXmlFilename(string $filename): bool
+    {
+        return InvoiceSuiteArrayUtils::inArrayNoCase($this->detectMimeTypeByFilename($filename), static::XML_MIME_TYPES);
+    }
+
+    /**
+     * Ensure that the given file is an XML document.
+     *
+     * @param  string $filename
+     * @return string
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws RuntimeException
+     */
+    protected function requireReadableXmlFilename(string $filename): string
+    {
+        $filename = $this->requireReadableFilename($filename);
+
+        if (!$this->isXmlFilename($filename)) {
+            throw new InvoiceSuiteInvalidArgumentException(sprintf('The file %s is not an XML document.', $filename));
+        }
+
+        return $filename;
+    }
+
+    /**
+     * Determine whether the given file is a PDF.
+     *
+     * @param  string $filename
+     * @return bool
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws RuntimeException
+     */
+    protected function isPdfFilename(string $filename): bool
+    {
+        return $this->detectMimeTypeByFilename($filename) === static::PDF_MIME_TYPE;
+    }
+
+    /**
+     * Ensure that the given file is a PDF.
+     *
+     * @param  string $filename
+     * @return string
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws RuntimeException
+     */
+    protected function requireReadablePdfFilename(string $filename): string
+    {
+        $filename = $this->requireReadableFilename($filename);
+
+        if (!$this->isPdfFilename($filename)) {
+            throw new InvoiceSuiteInvalidArgumentException(sprintf('The file %s is not a PDF document.', $filename));
+        }
+
+        return $filename;
+    }
+
+    /**
+     * Detect the structured content type of a non-PDF file.
+     *
+     * @param  string                       $filename
+     * @return null|InvoiceSuiteContentType
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     */
+    protected function detectStructuredContentTypeByFilename(string $filename): ?InvoiceSuiteContentType
+    {
+        return InvoiceSuiteContentTypeResolver::resolveContentType($this->readFileContents($filename));
+    }
+
+    /**
+     * Create an invoice reader from an XML file or from an embedded XML inside a PDF.
+     *
+     * @param  string                     $filename
+     * @return InvoiceSuiteDocumentReader
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws JmsRuntimeException
+     * @throws PdfParserException
+     * @throws RuntimeException
+     */
+    protected function createInvoiceDocumentReaderFromFilename(string $filename): InvoiceSuiteDocumentReader
+    {
+        $filename = $this->requireReadableFilename($filename);
+
+        if (!$this->isPdfFilename($filename)) {
+            return InvoiceSuiteDocumentReader::createFromFile($filename);
+        }
+
+        $pdfDocumentReader = InvoiceSuitePdfDocumentReader::createFromFile($filename);
+        $invoiceAttachment = $pdfDocumentReader->getInvoiceDocumentAttachment();
+
+        if (!$invoiceAttachment instanceof InvoiceSuitePdfExtractorAttachment) {
+            throw new InvoiceSuiteInvalidArgumentException(sprintf('The file %s does not contain an embedded invoice document.', $filename));
+        }
+
+        return InvoiceSuiteDocumentReader::createFromContent($invoiceAttachment->getAttachmentContent());
+    }
+
+    /**
      * Ensure that a directory exists.
      *
      * @param  string $directory
@@ -239,147 +386,6 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     }
 
     /**
-     * Detect the MIME type of a file.
-     *
-     * @param  string $filename
-     * @return string
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     * @throws RuntimeException
-     */
-    protected function detectMimeTypeByFilename(string $filename): string
-    {
-        $fileInfo = new finfo(FILEINFO_MIME_TYPE);
-        $mimeType = $fileInfo->file($this->requireReadableFilename($filename));
-
-        if (!is_string($mimeType) || InvoiceSuiteStringUtils::stringIsNullOrEmpty($mimeType)) {
-            throw new RuntimeException(sprintf('Unable to detect MIME type for file "%s".', $filename));
-        }
-
-        return $mimeType;
-    }
-
-    /**
-     * Determine whether the given file is a PDF.
-     *
-     * @param  string $filename
-     * @return bool
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     * @throws RuntimeException
-     */
-    protected function isPdfFilename(string $filename): bool
-    {
-        return static::PDF_MIME_TYPE === $this->detectMimeTypeByFilename($filename);
-    }
-
-    /**
-     * Ensure that the given file is a PDF.
-     *
-     * @param  string $filename
-     * @return string
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     * @throws InvoiceSuiteInvalidArgumentException
-     * @throws RuntimeException
-     */
-    protected function requireReadablePdfFilename(string $filename): string
-    {
-        $filename = $this->requireReadableFilename($filename);
-
-        if (!$this->isPdfFilename($filename)) {
-            throw new InvoiceSuiteInvalidArgumentException(sprintf('The file %s is not a PDF document.', $filename));
-        }
-
-        return $filename;
-    }
-
-    /**
-     * Detect the structured content type of a non-PDF file.
-     *
-     * @param  string                       $filename
-     * @return null|InvoiceSuiteContentType
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     */
-    protected function detectStructuredContentTypeByFilename(string $filename): ?InvoiceSuiteContentType
-    {
-        return InvoiceSuiteContentTypeResolver::resolveContentType($this->readFileContents($filename));
-    }
-
-    /**
-     * Determine whether the given file is an XML document.
-     *
-     * @param  string $filename
-     * @return bool
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     */
-    protected function isXmlFilename(string $filename): bool
-    {
-        return InvoiceSuiteContentType::XML === $this->detectStructuredContentTypeByFilename($filename);
-    }
-
-    /**
-     * Ensure that the given file is an XML document.
-     *
-     * @param  string $filename
-     * @return string
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    protected function requireReadableXmlFilename(string $filename): string
-    {
-        $filename = $this->requireReadableFilename($filename);
-
-        if (!$this->isXmlFilename($filename)) {
-            throw new InvoiceSuiteInvalidArgumentException(sprintf('The file %s is not an XML document.', $filename));
-        }
-
-        return $filename;
-    }
-
-    /**
-     * Create an invoice reader from an XML file or from an embedded XML inside a PDF.
-     *
-     * @param  string                     $filename
-     * @return InvoiceSuiteDocumentReader
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteInvalidArgumentException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws JmsRuntimeException
-     * @throws PdfParserException
-     * @throws RuntimeException
-     */
-    protected function createInvoiceDocumentReaderFromFilename(string $filename): InvoiceSuiteDocumentReader
-    {
-        $filename = $this->requireReadableFilename($filename);
-
-        if (!$this->isPdfFilename($filename)) {
-            return InvoiceSuiteDocumentReader::createFromFile($this->requireReadableXmlFilename($filename));
-        }
-
-        $pdfDocumentReader = InvoiceSuitePdfDocumentReader::createFromFile($filename);
-        $invoiceAttachment = $pdfDocumentReader->getInvoiceDocumentAttachment();
-
-        if (!$invoiceAttachment instanceof InvoiceSuitePdfExtractorAttachment) {
-            throw new InvoiceSuiteInvalidArgumentException(sprintf('The file %s does not contain an embedded invoice document.', $filename));
-        }
-
-        return InvoiceSuiteDocumentReader::createFromContent($invoiceAttachment->getAttachmentContent());
-    }
-
-    /**
      * Build a default output filename beside the input file.
      *
      * @param  string $inputFilename
@@ -394,20 +400,5 @@ abstract class InvoiceSuiteAbstractCommand extends Command
         $filename = InvoiceSuiteFileUtils::combineFilenameWithFileextension($basename, $extension);
 
         return InvoiceSuitePathUtils::combinePathWithFile($directory, $filename);
-    }
-
-    /**
-     * Build a default output directory beside the input file.
-     *
-     * @param  string $inputFilename
-     * @param  string $suffix
-     * @return string
-     */
-    protected function buildOutputDirectory(string $inputFilename, string $suffix): string
-    {
-        $directory = dirname($inputFilename);
-        $basename = InvoiceSuiteFileUtils::getFilenameWithoutExtension($inputFilename) . $suffix;
-
-        return InvoiceSuitePathUtils::combinePathWithFile($directory, $basename);
     }
 }
