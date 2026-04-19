@@ -73,8 +73,7 @@ class InvoiceSuiteExtractCommand extends InvoiceSuiteAbstractCommand
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $inputFilename = $this->requireReadablePdfFilename($this->getStringArgument($input, 'input-file'));
-        $outputDirectory = $this->getStringArgument($input, 'output-directory');
-        $outputDirectory = '' !== $outputDirectory ? $outputDirectory : $this->buildOutputDirectory($inputFilename, '_attachments');
+        $outputDirectory = $this->getStringArgument($input, 'output-directory', $this->buildOutputDirectory($inputFilename, '_attachments'));
         $outputDirectory = $this->ensureDirectoryExists(rtrim($outputDirectory, DIRECTORY_SEPARATOR));
 
         if ($this->getBoolOption($input, 'invoice-only')) {
