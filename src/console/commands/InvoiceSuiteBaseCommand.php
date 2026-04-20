@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\console\commands;
 
 use finfo;
+use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentBaseReader;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
@@ -34,14 +35,14 @@ use Symfony\Component\Console\Exception\InvalidArgumentException as ConsoleInval
 use Symfony\Component\Console\Input\InputInterface;
 
 /**
- * Abstract base class for InvoiceSuite console commands.
+ * Base class for InvoiceSuite console commands.
  *
  * @category InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-abstract class InvoiceSuiteAbstractCommand extends Command
+class InvoiceSuiteBaseCommand extends Command
 {
     /**
      * The MIME type used for PDF documents.
@@ -333,7 +334,7 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * Create an invoice reader from an XML file or from an embedded XML inside a PDF.
      *
      * @param  string                     $filename
-     * @return InvoiceSuiteDocumentReader
+     * @return InvoiceSuiteAbstractDocumentBaseReader
      *
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
@@ -344,7 +345,7 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws PdfParserException
      * @throws RuntimeException
      */
-    protected function createInvoiceDocumentReaderFromFilename(string $filename): InvoiceSuiteDocumentReader
+    protected function createInvoiceDocumentReaderFromFilename(string $filename): InvoiceSuiteAbstractDocumentBaseReader
     {
         $filename = $this->requireReadableFilename($filename);
 
@@ -352,14 +353,7 @@ abstract class InvoiceSuiteAbstractCommand extends Command
             return InvoiceSuiteDocumentReader::createFromFile($filename);
         }
 
-        $pdfDocumentReader = InvoiceSuitePdfDocumentReader::createFromFile($filename);
-        $invoiceAttachment = $pdfDocumentReader->getInvoiceDocumentAttachment();
-
-        if (!$invoiceAttachment instanceof InvoiceSuitePdfExtractorAttachment) {
-            throw new InvoiceSuiteInvalidArgumentException(sprintf('The file %s does not contain an embedded invoice document.', $filename));
-        }
-
-        return InvoiceSuiteDocumentReader::createFromContent($invoiceAttachment->getAttachmentContent());
+        return InvoiceSuitePdfDocumentReader::createFromFile($filename)->getDocumentReader();
     }
 
     /**

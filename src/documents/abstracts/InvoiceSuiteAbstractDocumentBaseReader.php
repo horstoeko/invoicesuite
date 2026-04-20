@@ -38,6 +38,13 @@ abstract class InvoiceSuiteAbstractDocumentBaseReader
     ): static;
 
     /**
+     * Get DTO from this document
+     *
+     * @return InvoiceSuiteDocumentHeaderDTO Data-Transfer-Object
+     */
+    abstract public function toDTO(): InvoiceSuiteDocumentHeaderDTO;
+
+    /**
      * Gets the document number (e.g. invoice number)
      *
      * @param  null|string $newDocumentNo The document no issued by the seller

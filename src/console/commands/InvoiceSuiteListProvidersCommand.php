@@ -25,7 +25,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteListProvidersCommand extends InvoiceSuiteAbstractCommand
+class InvoiceSuiteListProvidersCommand extends InvoiceSuiteBaseCommand
 {
     use HandlesDocumentFormatProviders;
 

@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\console\commands;
 
+use horstoeko\invoicesuite\console\commands\InvoiceSuiteBaseCommand;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
@@ -19,8 +20,8 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use PrinsFrank\PdfParser\Exception\PdfParserException;
 use RuntimeException;
-use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Exception\InvalidArgumentException as ConsoleInvalidArgumentException;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -33,7 +34,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteConvertCommand extends InvoiceSuiteAbstractCommand
+class InvoiceSuiteConvertCommand extends InvoiceSuiteBaseCommand
 {
     /**
      * Configure command.
@@ -69,19 +70,19 @@ class InvoiceSuiteConvertCommand extends InvoiceSuiteAbstractCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $inputFilename = $this->requireReadableFilename($this->getStringArgument($input, 'input-file'));
-        $providerId = $this->getStringArgument($input, 'provider-id');
-        $outputFilename = $this->getStringArgument($input, 'output-file', $this->buildOutputFilename($inputFilename, '-' . $providerId, 'xml'));
-        $sourceReader = $this->createInvoiceDocumentReaderFromFilename($inputFilename);
-        $documentDto = null;
+        $argInputFilename = $this->requireReadableFilename($this->getStringArgument($input, 'input-file'));
+        $argProviderId = $this->getStringArgument($input, 'provider-id');
+        $argOutputFilename = $this->getStringArgument($input, 'output-file', $this->buildOutputFilename($argInputFilename, '-' . $argProviderId, 'xml'));
 
-        $sourceReader->convertToDTO($documentDto);
+        $sourceDocumentReader = $this->createInvoiceDocumentReaderFromFilename($argInputFilename);
 
-        $targetBuilder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId($providerId);
-        $targetBuilder->createFromDTO($documentDto);
-        $targetBuilder->saveContentToFile($outputFilename);
+        $sourceDocumentDTO = $sourceDocumentReader->toDTO();
 
-        $output->writeln(sprintf('<info>Written:</info> %s', $outputFilename));
+        $targetDocumentBuilder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId($argProviderId);
+        $targetDocumentBuilder->fromDTO($sourceDocumentDTO);
+        $targetDocumentBuilder->saveContentToFile($argOutputFilename);
+
+        $output->writeln(sprintf('<info>Written:</info> %s', $argOutputFilename));
 
         return self::SUCCESS;
     }

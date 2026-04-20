@@ -34,7 +34,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteMergePdfWithXmlCommand extends InvoiceSuiteAbstractCommand
+class InvoiceSuiteMergePdfWithXmlCommand extends InvoiceSuiteBaseCommand
 {
     /**
      * Configure command.

@@ -39,7 +39,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
+class InvoiceSuiteValidateCommand extends InvoiceSuiteBaseCommand
 {
     /**
      * Configure command.

@@ -37,7 +37,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
+class InvoiceSuiteDetectCommand extends InvoiceSuiteBaseCommand
 {
     /**
      * Configure command.
@@ -69,28 +69,29 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $inputFilename = $this->requireReadableFilename($this->getStringArgument($input, 'input-file'));
-        $mimeType = $this->detectMimeTypeByFilename($inputFilename);
+        $argInputFilename = $this->requireReadableFilename($this->getStringArgument($input, 'input-file'));
+        $mimeTypeOfInputFilename = $this->detectMimeTypeByFilename($argInputFilename);
+
         $table = new Table($output);
         $table->setStyle('box');
         $table->setHeaders(['Property', 'Value']);
-        $table->addRow(['Filename', $inputFilename]);
-        $table->addRow(['MIME type', $mimeType]);
+        $table->addRow(['Filename', mb_strimwidth($argInputFilename, 0, 60, '...')]);
+        $table->addRow(['MIME type', $mimeTypeOfInputFilename]);
 
-        if ($this->isPdfFilename($inputFilename)) {
-            $extractor = InvoiceSuitePdfExtractor::fromFile($inputFilename);
+        if ($this->isPdfFilename($argInputFilename)) {
+            $extractor = InvoiceSuitePdfExtractor::fromFile($argInputFilename);
             $table->addRow(['Input type', 'pdf']);
             $table->addRow(['Attachments', (string) count($extractor)]);
 
             try {
-                $pdfReader = InvoiceSuitePdfDocumentReader::createFromFile($inputFilename);
-                $provider = $pdfReader->getCurrentDocumentFormatProvider();
-                $invoiceAttachment = $pdfReader->getInvoiceDocumentAttachment();
+                $pdfDocumentReader = InvoiceSuitePdfDocumentReader::createFromFile($argInputFilename);
+                $formatProvider = $pdfDocumentReader->getCurrentDocumentFormatProvider();
+                $invoiceAttachment = $pdfDocumentReader->getInvoiceDocumentAttachment();
 
-                $table->addRow(['Provider', $provider->getUniqueId()]);
-                $table->addRow(['Description', $provider->getDescription()]);
+                $table->addRow(['Provider', $formatProvider->getUniqueId()]);
+                $table->addRow(['Description', mb_strimwidth($formatProvider->getDescription(), 0, 60, '...')]);
                 $table->addRow(['Invoice attachment', $invoiceAttachment?->getAttachmentFilename() ?? '']);
-                $table->addRow(['Additional attachments', (string) count($pdfReader->getAdditionalDocumentAttachments())]);
+                $table->addRow(['Additional attachments', (string) count($pdfDocumentReader->getAdditionalDocumentAttachments())]);
             } catch (InvoiceSuiteFormatProviderNotFoundException|InvoiceSuiteUnknownContentException) {
                 $table->addRow(['Provider', 'not detected']);
             }
@@ -100,7 +101,7 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
             return self::SUCCESS;
         }
 
-        $contentType = $this->detectStructuredContentTypeByFilename($inputFilename);
+        $contentType = $this->detectStructuredContentTypeByFilename($argInputFilename);
 
         if (null === $contentType) {
             $table->addRow(['Input type', 'unknown']);
@@ -118,14 +119,14 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
         }
 
         try {
-            $reader = InvoiceSuiteDocumentReader::createFromFile($inputFilename);
-            $provider = $reader->getCurrentDocumentFormatProvider();
+            $reader = InvoiceSuiteDocumentReader::createFromFile($argInputFilename);
+            $formatProvider = $reader->getCurrentDocumentFormatProvider();
 
-            $table->addRow(['Provider', $provider->getUniqueId()]);
-            $table->addRow(['Description', $provider->getDescription()]);
-            $table->addRow(['Root class', $provider->getRootClassName()]);
-            $table->addRow(['PDF support', $provider->getIsPdfSupportAvailable() ? 'yes' : 'no']);
-            $table->addRow(['XSD validation', $provider->getValidationXsdAvailable() ? 'yes' : 'no']);
+            $table->addRow(['Provider', $formatProvider->getUniqueId()]);
+            $table->addRow(['Description', $formatProvider->getDescription()]);
+            $table->addRow(['Root class', $formatProvider->getRootClassName()]);
+            $table->addRow(['PDF support', $formatProvider->getIsPdfSupportAvailable() ? 'yes' : 'no']);
+            $table->addRow(['XSD validation', $formatProvider->getValidationXsdAvailable() ? 'yes' : 'no']);
         } catch (InvoiceSuiteFormatProviderNotFoundException|InvoiceSuiteUnknownContentException) {
             $table->addRow(['Provider', 'not detected']);
         }
