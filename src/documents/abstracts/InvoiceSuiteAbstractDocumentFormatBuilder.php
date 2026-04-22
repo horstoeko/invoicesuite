@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\documents\abstracts;
 
-use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesDocumentRootObject;
 use horstoeko\invoicesuite\concerns\HandlesDocumentSerializer;
 use horstoeko\invoicesuite\concerns\HandlesMessageBag;
@@ -29,7 +28,6 @@ use JMS\Serializer\SerializationContext;
  */
 abstract class InvoiceSuiteAbstractDocumentFormatBuilder extends InvoiceSuiteAbstractDocumentBaseBuilder
 {
-    use HandlesCurrentDocumentFormatProvider;
     use HandlesDocumentRootObject;
     use HandlesDocumentSerializer;
     use HandlesMessageBag;

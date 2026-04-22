@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\abstracts;
 
 use DateTimeInterface;
+use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 
@@ -25,6 +26,8 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
  */
 abstract class InvoiceSuiteAbstractDocumentBaseBuilder
 {
+    use HandlesCurrentDocumentFormatProvider;
+
     /**
      * Create a document by a DTO
      *

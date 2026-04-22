@@ -15,7 +15,6 @@ use BadMethodCallException;
 use DateTimeInterface;
 use Error;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
-use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
 use horstoeko\invoicesuite\concerns\HandlesRawContents;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentBaseReader;
@@ -42,7 +41,6 @@ use JMS\Serializer\Exception\RuntimeException;
 class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
 {
     use HandlesCallForwarding;
-    use HandlesCurrentDocumentFormatProvider;
     use HandlesDocumentFormatProviders;
     use HandlesRawContents;
 
