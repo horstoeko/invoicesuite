@@ -14,7 +14,6 @@ namespace horstoeko\invoicesuite;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
-use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentBaseReader;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
@@ -44,6 +43,13 @@ class InvoiceSuitePdfDocumentReader
      * @var InvoiceSuitePdfExtractorAttachment
      */
     private $invoiceDocumentAttachment;
+
+    /**
+     * The document reader for the attached invoice document attachment
+     *
+     * @var InvoiceSuiteDocumentReader
+     */
+    private $documentReader;
 
     /**
      * The internal buffer for additional document attachments
@@ -95,6 +101,7 @@ class InvoiceSuitePdfDocumentReader
 
             $this->setCurrentDocumentFormatProvider($formatProvider);
             $this->getCurrentDocumentFormatProvider()->getReader()->deserializeFromContent($pdfExtractorAttachment->getAttachmentContent());
+            $this->documentReader = InvoiceSuiteDocumentReader::createFromContent($pdfExtractorAttachment->getAttachmentContent());
         }
 
         if ($this->hasNotCurrentDocumentFormatProvider()) {
@@ -151,11 +158,11 @@ class InvoiceSuitePdfDocumentReader
     /**
      * Returns the document reader
      *
-     * @return InvoiceSuiteAbstractDocumentBaseReader
+     * @return InvoiceSuiteDocumentReader
      */
-    public function getDocumentReader(): InvoiceSuiteAbstractDocumentBaseReader
+    public function getDocumentReader(): InvoiceSuiteDocumentReader
     {
-        return $this->getCurrentDocumentFormatProvider()->getReader();
+        return $this->documentReader;
     }
 
     /**

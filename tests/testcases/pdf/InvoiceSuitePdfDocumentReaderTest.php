@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\tests\testcases\pdf;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteExceptionCodes;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
+use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\InvoiceSuitePdfDocumentReader;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractorAttachment;
 use horstoeko\invoicesuite\tests\TestCase;
@@ -45,8 +46,7 @@ final class InvoiceSuitePdfDocumentReaderTest extends TestCase
 
         $documentReader = $pdfDocumentReader->getDocumentReader();
 
-        // @phpstan-ignore method.alreadyNarrowedType
-        $this->assertNotNull($documentReader);
+        $this->assertInstanceOf(InvoiceSuiteDocumentReader::class, $documentReader);
     }
 
     public function testCreateFromNotExistingFile(): void
