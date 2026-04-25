@@ -15,6 +15,7 @@ use horstoeko\invoicesuite\console\commands\InvoiceSuiteDetectCommand;
 use horstoeko\invoicesuite\console\commands\InvoiceSuiteListProvidersCommand;
 use horstoeko\invoicesuite\console\commands\InvoiceSuiteMakeProviderCommand;
 use horstoeko\invoicesuite\console\commands\InvoiceSuiteMergePdfCommand;
+use horstoeko\invoicesuite\console\commands\InvoiceSuiteValidateCommand;
 use horstoeko\invoicesuite\utils\InvoiceSuitePackageVersion;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Exception\LogicException;
@@ -54,5 +55,6 @@ class InvoiceSuiteConsoleApplication extends Application
         $this->addCommand(new InvoiceSuiteMakeProviderCommand());
         $this->addCommand(new InvoiceSuiteDetectCommand());
         $this->addCommand(new InvoiceSuiteMergePdfCommand());
+        $this->addCommand(new InvoiceSuiteValidateCommand());
     }
 }
