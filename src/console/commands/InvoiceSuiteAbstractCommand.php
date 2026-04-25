@@ -309,6 +309,166 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     }
 
     /**
+     * Get XML input file argument. File must not be empty and must exist
+     *
+     * @param  string $name
+     * @return string
+     *
+     * @throws ConsoleInvalidArgumentException
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws RuntimeException
+     */
+    protected function getSourceXmlFileArgument(string $name): string
+    {
+        $filename = $this->getSourceFileArgument($name);
+
+        $this->ensureIsXmlFile($filename);
+
+        return $filename;
+    }
+
+    /**
+     * Get XML input file option. File must not be empty and must exist
+     *
+     * @param  string $name
+     * @return string
+     *
+     * @throws ConsoleInvalidArgumentException
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws RuntimeException
+     */
+    protected function getSourceXmlFileOption(string $name): string
+    {
+        $filename = $this->getSourceFileOption($name);
+
+        $this->ensureIsXmlFile($filename);
+
+        return $filename;
+    }
+
+    /**
+     * Get PDF input file argument. File must not be empty and must exist
+     *
+     * @param  string $name
+     * @return string
+     *
+     * @throws ConsoleInvalidArgumentException
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws RuntimeException
+     */
+    protected function getSourcePdfFileArgument(string $name): string
+    {
+        $filename = $this->getSourceFileArgument($name);
+
+        $this->ensureIsPdfFile($filename);
+
+        return $filename;
+    }
+
+    /**
+     * Get PDF input file option. File must not be empty and must exist
+     *
+     * @param  string $name
+     * @return string
+     *
+     * @throws ConsoleInvalidArgumentException
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws RuntimeException
+     */
+    protected function getSourcePdfFileOption(string $name): string
+    {
+        $filename = $this->getSourceFileOption($name);
+
+        $this->ensureIsPdfFile($filename);
+
+        return $filename;
+    }
+
+    /**
+     * Get JSON input file argument. File must not be empty and must exist
+     *
+     * @param  string $name
+     * @return string
+     *
+     * @throws ConsoleInvalidArgumentException
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws RuntimeException
+     */
+    protected function getSourceJsonFileArgument(string $name): string
+    {
+        $filename = $this->getSourceFileArgument($name);
+
+        $this->ensureIsJsonFile($filename);
+
+        return $filename;
+    }
+
+    /**
+     * Get JSON input file option. File must not be empty and must exist
+     *
+     * @param  string $name
+     * @return string
+     *
+     * @throws ConsoleInvalidArgumentException
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws RuntimeException
+     */
+    protected function getSourceJsonFileOption(string $name): string
+    {
+        $filename = $this->getSourceFileOption($name);
+
+        $this->ensureIsJsonFile($filename);
+
+        return $filename;
+    }
+
+    /**
+     * Get JSON or XML input file argument. File must not be empty and must exist
+     *
+     * @param  string $name
+     * @return string
+     *
+     * @throws ConsoleInvalidArgumentException
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws RuntimeException
+     */
+    protected function getSourceXmlOrJsonFileArgument(string $name): string
+    {
+        $filename = $this->getSourceFileArgument($name);
+
+        $this->ensureIsXmlOrJsonFile($filename);
+
+        return $filename;
+    }
+
+    /**
+     * Get JSON or XML input file option. File must not be empty and must exist
+     *
+     * @param  string $name
+     * @return string
+     *
+     * @throws ConsoleInvalidArgumentException
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws RuntimeException
+     */
+    protected function getSourceXmlOrJsonFileOption(string $name): string
+    {
+        $filename = $this->getSourceFileOption($name);
+
+        $this->ensureIsXmlOrJsonFile($filename);
+
+        return $filename;
+    }
+
+    /**
      * Get output file argument. File must not be empty and must exist
      *
      * @param  string $name
@@ -511,7 +671,7 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     }
 
     /**
-     * Ensure given file is an XML file
+     * Ensure given file is a XML file
      *
      * @param  string $filename
      * @return static
@@ -523,14 +683,14 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     protected function ensureIsXmlFile(string $filename): static
     {
         if (!$this->isXmlFile($filename)) {
-            throw new RuntimeException(sprintf('Input file "%s" is not an XML file.', $filename));
+            throw new RuntimeException(sprintf('Input file "%s" is not a XML file.', $filename));
         }
 
         return $this;
     }
 
     /**
-     * Ensure given file is an PDF file
+     * Ensure given file is a PDF file
      *
      * @param  string $filename
      * @return static
@@ -542,14 +702,14 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     protected function ensureIsPdfFile(string $filename): static
     {
         if (!$this->isPdfFile($filename)) {
-            throw new RuntimeException(sprintf('Input file "%s" is not an PDF file.', $filename));
+            throw new RuntimeException(sprintf('Input file "%s" is not a PDF file.', $filename));
         }
 
         return $this;
     }
 
     /**
-     * Ensure given file is an JSON file
+     * Ensure given file is a JSON file
      *
      * @param  string $filename
      * @return static
@@ -561,9 +721,28 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     protected function ensureIsJsonFile(string $filename): static
     {
         if (!$this->isJsonFile($filename)) {
-            throw new RuntimeException(sprintf('Input file "%s" is not an JSON file.', $filename));
+            throw new RuntimeException(sprintf('Input file "%s" is not a JSON file.', $filename));
         }
 
         return $this;
+    }
+
+    /**
+     * Ensure given file is a XML or JSON file
+     *
+     * @param  string $filename
+     * @return static
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws RuntimeException
+     */
+    protected function ensureIsXmlOrJsonFile(string $filename): static
+    {
+        if ($this->isJsonFile($filename) || $this->isXmlFile($filename)) {
+            return $this;
+        }
+
+        throw new RuntimeException(sprintf('Input file "%s" is not a XML or JSON file.', $filename));
     }
 }

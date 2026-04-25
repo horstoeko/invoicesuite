@@ -64,7 +64,7 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handle(): int
     {
-        $inpArgFilename = $this->getSourceFileArgument('input-file');
+        $inpArgFilename = $this->getSourceXmlOrJsonFileArgument('input-file');
 
         if ($this->isPdfFile($inpArgFilename)) {
             return $this->handlePdf(InvoiceSuitePdfDocumentReader::createFromFile($inpArgFilename))->returnSuccess();

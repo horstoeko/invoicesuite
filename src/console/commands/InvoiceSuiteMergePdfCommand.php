@@ -61,8 +61,8 @@ class InvoiceSuiteMergePdfCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handle(): int
     {
-        $xmlFilename = $this->getSourceFileArgument('xml-file');
-        $pdfFilename = $this->getSourceFileArgument('pdf-file');
+        $xmlFilename = $this->getSourceXmlOrJsonFileArgument('xml-file');
+        $pdfFilename = $this->getSourcePdfFileArgument('pdf-file');
         $outputFilename = $this->getTargetFileArgument('output-file', $this->getBoolOption('force'));
 
         $this->ensureIsXmlFile($xmlFilename);
