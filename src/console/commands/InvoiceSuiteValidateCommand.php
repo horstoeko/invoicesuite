@@ -76,7 +76,7 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
     protected function handle(): int
     {
         $inpArgFilename = $this->getSourceXmlFileArgument('input-file');
-        $inpOptionValidator = strtolower($this->getStringOption('validator', 'all'));
+        $inpOptionValidator = InvoiceSuiteStringUtils::lower($this->getStringOption('validator', 'all'));
 
         if (!InvoiceSuiteArrayUtils::inArrayNoCase(['all', 'xsd', 'kosit'], $inpOptionValidator)) {
             throw new InvoiceSuiteInvalidArgumentException(sprintf('Invalid option value for validator "%s"', $inpOptionValidator));

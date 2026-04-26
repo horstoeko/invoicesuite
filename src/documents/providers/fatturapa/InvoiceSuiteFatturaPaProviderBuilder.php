@@ -8723,7 +8723,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             return null;
         }
 
-        $normalizedDocumentType = strtoupper(trim($documentType));
+        $normalizedDocumentType = InvoiceSuiteStringUtils::upper(trim($documentType));
 
         return match ($normalizedDocumentType) {
             TipoDocumento::TD01->value, 'INVOICE', 'COMMERCIALINVOICE', '380' => TipoDocumento::TD01,

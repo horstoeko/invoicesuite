@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\console\commands;
 
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use RuntimeException;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
@@ -60,8 +61,8 @@ class InvoiceSuiteMakeProviderCommand extends InvoiceSuiteAbstractCommand
         $inpArgDirectory = $this->getTargetDirectoryArgument('directory');
         $inpArgProviderClassName = $this->getRequiredStringArgument('provider-class');
 
-        $inpOptionProviderUniqueId = $this->getStringOption('unique-id', strtolower($inpArgProviderClassName));
-        $inpOptionProviderDescription = $this->getStringOption('description', strtolower($inpArgProviderClassName));
+        $inpOptionProviderUniqueId = $this->getStringOption('unique-id', InvoiceSuiteStringUtils::lower($inpArgProviderClassName));
+        $inpOptionProviderDescription = $this->getStringOption('description', InvoiceSuiteStringUtils::lower($inpArgProviderClassName));
         $inpOptionforce = $this->getBoolOption('force');
 
         $newReaderClassName = $inpArgProviderClassName . 'Reader';

@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\concerns;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 /**
  * Trait representing method tracing handling. This requires the HandlesMessageBag trait.
@@ -58,7 +59,7 @@ trait HandlesMethodTracing
 
         // @phpstan-ignore missingType.checkedException
         $this->addInfoMessageToMessageBag(
-            newMessageContent: sprintf('%s %s', strtoupper($newEvent), $newMethod),
+            newMessageContent: sprintf('%s %s', InvoiceSuiteStringUtils::upper($newEvent), $newMethod),
             newMessageAdditionalData: $dataCommon
         );
 

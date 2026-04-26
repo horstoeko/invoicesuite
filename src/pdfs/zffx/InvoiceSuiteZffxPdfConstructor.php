@@ -221,8 +221,8 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
         $descriptionNodes = $xmp->xpath('rdf:Description');
 
         $descFx = $descriptionNodes[0];
-        $descFx->children('fx', true)->{'ConformanceLevel'} = strtoupper($this->getXmlAttachmentXmpName());
-        $descFx->children('fx', true)->{'Version'} = strtoupper($this->getXmlAttachmentXmpVersion());
+        $descFx->children('fx', true)->{'ConformanceLevel'} = InvoiceSuiteStringUtils::upper($this->getXmlAttachmentXmpName());
+        $descFx->children('fx', true)->{'Version'} = InvoiceSuiteStringUtils::upper($this->getXmlAttachmentXmpVersion());
         $descFx->children('fx', true)->{'DocumentFileName'} = $this->getCurrentDocumentFormatProvider()->getPdfDefaultAttachmentFilename();
         $this->pdfWriter->addMetadataDescriptionNode($descFx->asXML());
 
