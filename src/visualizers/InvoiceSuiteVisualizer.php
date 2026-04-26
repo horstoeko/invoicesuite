@@ -382,6 +382,22 @@ class InvoiceSuiteVisualizer
     }
 
     /**
+     * Renders the markup (HTML) to a physical file
+     *
+     * @param  string $toFilename
+     * @return static
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
+     */
+    public function renderMarkupFile(
+        string $toFilename
+    ): static {
+        file_put_contents($toFilename, $this->renderMarkup());
+
+        return $this;
+    }
+
+    /**
      * Renders the PDF by markup (HTML) and returns the PDF as a string
      *
      * @return string

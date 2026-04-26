@@ -89,11 +89,7 @@ class InvoiceSuiteVisualizeCommand extends InvoiceSuiteAbstractCommand
         if (InvoiceSuiteStringUtils::equalsNoCase($inpOptionFormat, 'pdf')) {
             $visualizer->renderPdfFile($inpArgOutputFilename);
         } else {
-            $markup = $visualizer->renderMarkup();
-
-            if (false === file_put_contents($inpArgOutputFilename, $markup)) {
-                throw new RuntimeException(sprintf('Unable to write target file "%s".', $inpArgOutputFilename));
-            }
+            $visualizer->renderMarkupFile($inpArgOutputFilename);
         }
 
         $this->outputLineLF(sprintf('<info>Created:</info> %s', $inpArgOutputFilename));
