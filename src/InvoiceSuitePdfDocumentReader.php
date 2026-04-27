@@ -20,6 +20,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundExceptio
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractor;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractorAttachment;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use JMS\Serializer\Exception\RuntimeException;
 use PrinsFrank\PdfParser\Exception\PdfParserException;
 
@@ -125,7 +126,7 @@ class InvoiceSuitePdfDocumentReader
     public static function createFromFile(
         string $fromFile
     ): static {
-        if (!file_exists($fromFile)) {
+        if (!InvoiceSuiteFileUtils::isReadableFilePath($fromFile)) {
             throw new InvoiceSuiteFileNotFoundException($fromFile);
         }
 

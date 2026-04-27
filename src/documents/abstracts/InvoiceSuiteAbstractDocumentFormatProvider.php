@@ -17,6 +17,7 @@ use horstoeko\invoicesuite\pdfs\abstracts\InvoiceSuiteAbstractPdfConstructor;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use z4kn4fein\SemVer\SemverException;
 use z4kn4fein\SemVer\Version;
@@ -429,7 +430,7 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
             return false;
         }
 
-        if (!file_exists($this->getValidationXsdFilename())) {
+        if (!InvoiceSuiteFileUtils::isReadableFilePath($this->getValidationXsdFilename())) {
             return false;
         }
 

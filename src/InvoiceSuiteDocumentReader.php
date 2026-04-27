@@ -27,6 +27,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundExceptio
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteMessageBagItem;
 use horstoeko\invoicesuite\utils\InvoiceSuiteMessageSeverity;
 use JMS\Serializer\Exception\RuntimeException;
@@ -110,7 +111,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     public static function createFromFile(
         string $fromFile
     ): static {
-        if (!file_exists($fromFile)) {
+        if (!InvoiceSuiteFileUtils::isReadableFilePath($fromFile)) {
             throw new InvoiceSuiteFileNotFoundException($fromFile);
         }
 

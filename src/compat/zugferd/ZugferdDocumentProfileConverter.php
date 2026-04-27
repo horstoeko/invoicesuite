@@ -17,6 +17,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundExceptio
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use JMS\Serializer\Exception\RuntimeException;
 
 /**
@@ -162,7 +163,7 @@ class ZugferdDocumentProfileConverter
         string $fromFilename,
         int $newProfileId
     ): static {
-        if (!file_exists($fromFilename)) {
+        if (!InvoiceSuiteFileUtils::isReadableFilePath($fromFilename)) {
             throw new InvoiceSuiteFileNotFoundException($fromFilename);
         }
 

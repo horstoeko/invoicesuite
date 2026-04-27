@@ -90,7 +90,7 @@ class InvoiceSuiteAttachment
     public static function fromFile(
         string $filename
     ): static {
-        if (!file_exists($filename)) {
+        if (!InvoiceSuiteFileUtils::isReadableFilePath($filename)) {
             throw new InvoiceSuiteFileNotFoundException($filename);
         }
 

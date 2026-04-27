@@ -301,7 +301,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
             throw new InvoiceSuiteInvalidArgumentException('You must specify a filename for the content to attach');
         }
 
-        if (!file_exists($newFullFilename)) {
+        if (!InvoiceSuiteFileUtils::isReadableFilePath($newFullFilename)) {
             throw new InvoiceSuiteFileNotFoundException($newFullFilename);
         }
 

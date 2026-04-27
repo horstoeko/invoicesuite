@@ -18,6 +18,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\visualizers\abstracts\InvoiceSuiteVisualizerAbstractRenderer;
@@ -198,7 +199,7 @@ class InvoiceSuiteVisualizer
         string $fromFile,
         ?InvoiceSuiteVisualizerAbstractRenderer $renderer = null
     ): static {
-        if (!file_exists($fromFile)) {
+        if (!InvoiceSuiteFileUtils::isReadableFilePath($fromFile)) {
             throw new InvoiceSuiteFileNotFoundException($fromFile);
         }
 

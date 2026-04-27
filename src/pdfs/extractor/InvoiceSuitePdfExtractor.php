@@ -16,6 +16,7 @@ use ArrayIterator;
 use Countable;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use IteratorAggregate;
 use LogicException;
 use PrinsFrank\PdfParser\Exception\PdfParserException;
@@ -61,7 +62,7 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
     public static function fromFile(
         string $pdfFilename
     ): static {
-        if (!file_exists($pdfFilename)) {
+        if (!InvoiceSuiteFileUtils::isReadableFilePath($pdfFilename)) {
             throw new InvoiceSuiteFileNotFoundException($pdfFilename);
         }
 

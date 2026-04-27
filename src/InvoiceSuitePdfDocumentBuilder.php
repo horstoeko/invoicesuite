@@ -21,6 +21,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundExceptio
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\pdfs\abstracts\InvoiceSuiteAbstractPdfConstructor;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use JMS\Serializer\Exception\RuntimeException;
 
 /**
@@ -66,7 +67,7 @@ class InvoiceSuitePdfDocumentBuilder
         InvoiceSuiteDocumentBuilder $fromDocumentBuilder,
         string $fromPdfFilename
     ): static {
-        if (!file_exists($fromPdfFilename)) {
+        if (!InvoiceSuiteFileUtils::isReadableFilePath($fromPdfFilename)) {
             throw new InvoiceSuiteFileNotFoundException($fromPdfFilename);
         }
 
@@ -117,7 +118,7 @@ class InvoiceSuitePdfDocumentBuilder
         string $fromDocumentContent,
         string $fromPdfFilename
     ): static {
-        if (!file_exists($fromPdfFilename)) {
+        if (!InvoiceSuiteFileUtils::isReadableFilePath($fromPdfFilename)) {
             throw new InvoiceSuiteFileNotFoundException($fromPdfFilename);
         }
 
