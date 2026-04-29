@@ -164,6 +164,7 @@
         </testsuite>
         <testsuite name="console">
             <file>../tests/testcases/console/InvoiceSuiteDetectCommandTest.php</file>
+            <file>../tests/testcases/console/InvoiceSuiteListProvidersCommandTest.php</file>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
