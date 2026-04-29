@@ -124,7 +124,7 @@ class InvoiceSuiteValidateCommandTest extends InvoiceSuiteConsoleCommandTestCase
         $this->assertArrayHasKey('messageTimestap', $decodedOutput['errormessages'][0]);
         $this->assertArrayHasKey('messageAdditionalData', $decodedOutput['errormessages'][0]);
         $this->assertStringContainsString("Element '{urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100}TypeCode': This element is not expected. Expected is ( {urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100}Description )", $decodedOutput['errormessages'][0]['messageContent']);
-        $this->assertStringContainsString("error", $decodedOutput['errormessages'][0]['messageSeverity']);
+        $this->assertStringContainsString('error', $decodedOutput['errormessages'][0]['messageSeverity']);
     }
 
     /**
