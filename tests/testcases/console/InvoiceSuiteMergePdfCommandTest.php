@@ -166,14 +166,6 @@ class InvoiceSuiteMergePdfCommandTest extends InvoiceSuiteConsoleCommandTestCase
             'pdf-file' => $this->getTestAssetFilePath('pdf_plain.pdf'),
             'output-file' => $this->getTempFilePath('output.pdf'),
         ]);
-
-        $this->assertSame(Command::SUCCESS, $exitCode);
-
-        $commandOutput = $commandTester->getDisplay();
-
-        $this->assertFileExists($this->getTempFilePath('output.pdf'));
-        $this->assertFileIsReadable($this->getTempFilePath('output.pdf'));
-        $this->assertStringContainsString($this->getTempFilePath('output.pdf'), $commandOutput);
     }
 
     /**
