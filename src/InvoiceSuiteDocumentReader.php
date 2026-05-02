@@ -73,7 +73,6 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         $formatProvider = reset($formatProviders);
 
         $this->setRawDocumentContent($fromContent);
-
         $this->setCurrentDocumentFormatProvider($formatProvider);
         $this->getCurrentDocumentFormatProvider()->getReader()->deserializeFromContent($fromContent);
     }

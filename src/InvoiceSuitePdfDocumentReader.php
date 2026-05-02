@@ -96,12 +96,11 @@ class InvoiceSuitePdfDocumentReader
                 continue;
             }
 
-            $this->setInvoiceDocumentAttachment($pdfExtractorAttachment);
-
             $formatProvider = reset($formatProviders);
 
+            $this->setInvoiceDocumentAttachment($pdfExtractorAttachment);
             $this->setCurrentDocumentFormatProvider($formatProvider);
-            $this->getCurrentDocumentFormatProvider()->getReader()->deserializeFromContent($pdfExtractorAttachment->getAttachmentContent());
+
             $this->documentReader = InvoiceSuiteDocumentReader::createFromContent($pdfExtractorAttachment->getAttachmentContent());
         }
 
