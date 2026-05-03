@@ -66,6 +66,22 @@ final class UtilsTest extends TestCase
         $this->assertFalse(InvoiceSuiteArrayUtils::inArrayNoCase($variable, 'C'));
     }
 
+    public function testInvoiceSuiteArrayUtilsArrayContains(): void
+    {
+        $variable = ['a', 'b', 1, 2];
+
+        // @phpstan-ignore method.alreadyNarrowedType
+        $this->assertIsArray($variable);
+
+        $this->assertTrue(InvoiceSuiteArrayUtils::arrayContains($variable, 'a'));
+        $this->assertFalse(InvoiceSuiteArrayUtils::arrayContains($variable, 'A'));
+        $this->assertTrue(InvoiceSuiteArrayUtils::arrayContains($variable, 'b'));
+        $this->assertFalse(InvoiceSuiteArrayUtils::arrayContains($variable, 'B'));
+        $this->assertTrue(InvoiceSuiteArrayUtils::arrayContains($variable, 1));
+        $this->assertTrue(InvoiceSuiteArrayUtils::arrayContains($variable, 2));
+        $this->assertFalse(InvoiceSuiteArrayUtils::arrayContains($variable, 3));
+    }
+
     public function testInvoiceSuiteArrayUtilsPushStringToIntIndexedArray(): void
     {
         $variable = [];

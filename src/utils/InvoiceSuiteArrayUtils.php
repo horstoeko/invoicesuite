@@ -41,6 +41,20 @@ class InvoiceSuiteArrayUtils
     }
 
     /**
+     * Search an array for a value
+     *
+     * @param  array<mixed> $array
+     * @param  mixed        $search
+     * @return bool
+     */
+    public static function arrayContains(
+        array $array,
+        mixed $search
+    ): bool {
+        return in_array($search, $array);
+    }
+
+    /**
      * Push a nullable string to an int-indexed array. The string ($value) is only pushed when it is not null or an empty one
      *
      * @param  array<int,string> $array
