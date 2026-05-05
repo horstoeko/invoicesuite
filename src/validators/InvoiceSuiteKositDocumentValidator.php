@@ -921,7 +921,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
 
         foreach ($resultAreas as $resultArea) {
             $queryResult = $domXPath->query(sprintf("//rep:report/rep:scenarioMatched/rep:validationStepResult[@id='%s']/s:resource/s:name", $resultArea));
-            $resourceName = !is_null($queryResult->item(0)) ? $queryResult->item(0)->nodeValue : $resultArea;
+            $resourceName = is_null($queryResult->item(0)) ? $resultArea : $queryResult->item(0)->nodeValue;
             foreach ($messageTypeMaps as $messageType => $reportMessageType) {
                 $queryResult = $domXPath->query(sprintf("//rep:report/rep:scenarioMatched/rep:validationStepResult[@id='%s']/rep:message[@level='%s']", $resultArea, $reportMessageType));
                 foreach ($queryResult as $queryItem) {
