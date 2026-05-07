@@ -83,7 +83,7 @@ class InvoiceSuiteAttachment
         $this->internalType = $internalType;
         $this->internalContent = $internalContent;
         $this->internalFilename = InvoiceSuiteFileUtils::getFilenameWithoutExtension($internalFilename);
-        $this->internalFilenameExtension = strtolower(InvoiceSuiteFileUtils::getFileExtension($internalFilename));
+        $this->internalFilenameExtension = InvoiceSuiteStringUtils::lower(InvoiceSuiteFileUtils::getFileExtension($internalFilename));
     }
 
     /**

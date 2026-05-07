@@ -26,7 +26,7 @@ class InvoiceSuiteFileUtils extends FileUtils
     public static function isReadableFilePath(
         string $filenameOrContent
     ): bool {
-        if ('' === $filenameOrContent || str_contains($filenameOrContent, "\0")) {
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($filenameOrContent) || InvoiceSuiteStringUtils::contains($filenameOrContent, "\0")) {
             return false;
         }
 

@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\fatturapa;
 
 use DOMNode;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use JMS\Serializer\Context;
 use JMS\Serializer\GraphNavigator;
 use JMS\Serializer\Handler\SubscribingHandlerInterface;
@@ -100,7 +101,7 @@ class InvoiceSuiteFatturaPaSerializerHandler implements SubscribingHandlerInterf
             return null;
         }
 
-        $s = str_replace(',', '.', $s);
+        $s = InvoiceSuiteStringUtils::replace(',', '.', $s);
 
         return (float) $s;
     }

@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\pdfs\zffx;
 
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use Random\RandomException;
 use setasign\Fpdi\Fpdi as PdfFpdi;
 use setasign\Fpdi\PdfParser\StreamReader;
@@ -156,7 +157,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
             }
         }
 
-        $mimetype = str_replace('/', '#2F', $mimetype);
+        $mimetype = InvoiceSuiteStringUtils::replace('/', '#2F', $mimetype);
         $this->files[] = ['file' => $file, 'name' => $name, 'desc' => $desc, 'relationship' => $relationship, 'subtype' => $mimetype];
     }
 
