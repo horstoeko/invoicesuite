@@ -62,6 +62,13 @@ class InvoiceSuiteAttachment
     protected $internalFilename = '';
 
     /**
+     * The original filename extension (lowercase, without dot)
+     *
+     * @var string
+     */
+    protected $internalFilenameExtension = '';
+
+    /**
      * Constructor (hidden)
      *
      * @param string $internalContent
@@ -76,6 +83,7 @@ class InvoiceSuiteAttachment
         $this->internalType = $internalType;
         $this->internalContent = $internalContent;
         $this->internalFilename = InvoiceSuiteFileUtils::getFilenameWithoutExtension($internalFilename);
+        $this->internalFilenameExtension = strtolower(InvoiceSuiteFileUtils::getFileExtension($internalFilename));
     }
 
     /**
@@ -230,15 +238,20 @@ class InvoiceSuiteAttachment
      *
      * @return false|string
      */
-    public function getContentMimeType()
+    public function getContentMimeType(): false|string
     {
         if (!$this->isBinaryAttachment()) {
             return false;
         }
 
         $tempFileInfo = new finfo(FILEINFO_MIME_TYPE);
+        $mimeType = $tempFileInfo->buffer($this->internalContent);
 
-        return $tempFileInfo->buffer($this->internalContent);
+        if ('text/plain' === $mimeType && 'csv' === $this->internalFilenameExtension) {
+            return 'text/csv';
+        }
+
+        return $mimeType;
     }
 
     /**
@@ -246,7 +259,7 @@ class InvoiceSuiteAttachment
      *
      * @return false|string
      */
-    public function getFilename()
+    public function getFilename(): false|string
     {
         if (!$this->isBinaryAttachment()) {
             return false;

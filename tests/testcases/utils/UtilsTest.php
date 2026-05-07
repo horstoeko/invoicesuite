@@ -889,6 +889,76 @@ final class UtilsTest extends TestCase
         // InvoiceSuiteAttachment::fromUrl('Dummy');
     }
 
+    public function testInvoiceSuiteAttachmentCsvNativeFormatFromFile(): void
+    {
+        $attachment = InvoiceSuiteAttachment::fromFile(__DIR__ . '/../../assets/01_InvoiceSuiteAttachment_3.csv');
+
+        $this->assertInstanceOf(InvoiceSuiteAttachment::class, $attachment);
+        $this->assertTrue($attachment->isFileAttachment());
+        $this->assertTrue($attachment->isBinaryAttachment());
+        $this->assertSame('text/csv', $attachment->getContentMimeType());
+        $this->assertSame('01_InvoiceSuiteAttachment_3.csv', $attachment->getFilename());
+    }
+
+    public function testInvoiceSuiteAttachmentCsvNativeFormatFromBinaryString(): void
+    {
+        $csvContent = (string) file_get_contents(__DIR__ . '/../../assets/01_InvoiceSuiteAttachment_3.csv');
+        $attachment = InvoiceSuiteAttachment::fromBinaryString($csvContent, '01_InvoiceSuiteAttachment_3.csv');
+
+        $this->assertInstanceOf(InvoiceSuiteAttachment::class, $attachment);
+        $this->assertTrue($attachment->isBinaryStringAttachment());
+        $this->assertTrue($attachment->isBinaryAttachment());
+        $this->assertSame('text/csv', $attachment->getContentMimeType());
+        $this->assertSame('01_InvoiceSuiteAttachment_3.csv', $attachment->getFilename());
+    }
+
+    public function testInvoiceSuiteAttachmentCsvNativeFormatFromBase64String(): void
+    {
+        $csvContent = (string) file_get_contents(__DIR__ . '/../../assets/01_InvoiceSuiteAttachment_3.csv');
+        $attachment = InvoiceSuiteAttachment::fromBase64String(base64_encode($csvContent), '01_InvoiceSuiteAttachment_3.csv');
+
+        $this->assertInstanceOf(InvoiceSuiteAttachment::class, $attachment);
+        $this->assertTrue($attachment->isBase64StringAttachment());
+        $this->assertTrue($attachment->isBinaryAttachment());
+        $this->assertSame('text/csv', $attachment->getContentMimeType());
+        $this->assertSame('01_InvoiceSuiteAttachment_3.csv', $attachment->getFilename());
+    }
+
+    public function testInvoiceSuiteAttachmentCsvCustomFormatFromFile(): void
+    {
+        $attachment = InvoiceSuiteAttachment::fromFile(__DIR__ . '/../../assets/01_InvoiceSuiteAttachment_4.csv');
+
+        $this->assertInstanceOf(InvoiceSuiteAttachment::class, $attachment);
+        $this->assertTrue($attachment->isFileAttachment());
+        $this->assertTrue($attachment->isBinaryAttachment());
+        $this->assertSame('text/csv', $attachment->getContentMimeType());
+        $this->assertSame('01_InvoiceSuiteAttachment_4.csv', $attachment->getFilename());
+    }
+
+    public function testInvoiceSuiteAttachmentCsvCustomFormatFromBinaryString(): void
+    {
+        $csvContent = (string) file_get_contents(__DIR__ . '/../../assets/01_InvoiceSuiteAttachment_4.csv');
+        $attachment = InvoiceSuiteAttachment::fromBinaryString($csvContent, '01_InvoiceSuiteAttachment_4.csv');
+
+        $this->assertInstanceOf(InvoiceSuiteAttachment::class, $attachment);
+        $this->assertTrue($attachment->isBinaryStringAttachment());
+        $this->assertTrue($attachment->isBinaryAttachment());
+        $this->assertSame('text/csv', $attachment->getContentMimeType());
+        $this->assertSame('01_InvoiceSuiteAttachment_4.csv', $attachment->getFilename());
+    }
+
+    public function testInvoiceSuiteAttachmentCsvCustomFormatFromBase64String(): void
+    {
+        $csvContent = (string) file_get_contents(__DIR__ . '/../../assets/01_InvoiceSuiteAttachment_4.csv');
+        $attachment = InvoiceSuiteAttachment::fromBase64String(base64_encode($csvContent), '01_InvoiceSuiteAttachment_4.csv');
+
+        $this->assertInstanceOf(InvoiceSuiteAttachment::class, $attachment);
+        $this->assertTrue($attachment->isBase64StringAttachment());
+        $this->assertTrue($attachment->isBinaryAttachment());
+        $this->assertSame('text/csv', $attachment->getContentMimeType());
+        $this->assertSame('01_InvoiceSuiteAttachment_4.csv', $attachment->getFilename());
+    }
+
     public function testInvoiceSuiteClassFinderFactory(): void
     {
         $cacheFilename = md5((string) preg_replace('/[^a-zA-Z0-9]/', '', sprintf('invoicesuite-cf-%s', InvoiceSuiteAbstractDocumentFormatProvider::class))) . '.cache';

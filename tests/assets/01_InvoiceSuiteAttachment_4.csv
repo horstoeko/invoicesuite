@@ -1,0 +1,6 @@
+"id";"name";"email";"city";"created_at";"status";"amount_eur"
+"1";"Max Mustermann";"max.mustermann@example.com";"Berlin";"2026-01-01";"active";"129.90"
+"2";"Erika Musterfrau";"erika.musterfrau@example.com";"Hamburg";"2026-01-02";"inactive";"49.50"
+"3";"Paul Beispiel";"paul.beispiel@example.com";"München";"2026-01-03";"active";"199.00"
+"4";"Lena Demo";"lena.demo@example.com";"Köln";"2026-01-03";"active";"15.99"
+"5";"Tobias Test";"tobias.test@example.com";"Frankfurt";"2026-01-04";"pending";"0.00"
