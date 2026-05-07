@@ -180,6 +180,19 @@ class InvoiceSuiteStringUtils
     }
 
     /**
+     * Checks if $needle is found in $haystack and returns a boolean value (true/false)
+     * whether or not the $needle was found. The comparission is case-insensitive.
+     *
+     * @param  string $str
+     * @param  string $needle
+     * @return bool
+     */
+    public static function containsNoCase(string $str, string $needle): bool
+    {
+        return static::contains(static::lower($str), static::lower($needle));
+    }
+
+    /**
      * Replace all occurrences of the search string with the replacement string
      *
      * @template TSubject of string|string[]
