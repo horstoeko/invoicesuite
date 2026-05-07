@@ -247,7 +247,7 @@ class InvoiceSuiteAttachment
         $tempFileInfo = new finfo(FILEINFO_MIME_TYPE);
         $mimeType = $tempFileInfo->buffer($this->internalContent);
 
-        if ($mimeType === 'text/plain' && $this->internalFilenameExtension === 'csv') {
+        if ('text/plain' === $mimeType && 'csv' === $this->internalFilenameExtension) {
             return 'text/csv';
         }
 
