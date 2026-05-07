@@ -38,8 +38,8 @@ The coding style must be checked before committing by running:
 composer checkstyle:run
 ```
 
-- [ ] I answered all questions in this template completely
 - [ ] I ran `composer checkstyle:run` before committing and the coding style check passed
+- [ ] I ran `composer composer phpcsfixer:run` to fix possible coding style issues
 - [ ] My code follows the style guidelines of this project
 - [ ] I have performed a self-review of my own code
 - [ ] I have commented my code, particularly in hard-to-understand areas
@@ -48,3 +48,4 @@ composer checkstyle:run
 - [ ] I have added tests that prove my fix is effective or that my feature works
 - [ ] New and existing unit tests pass locally with my changes
 - [ ] Any dependent changes have been merged and published in downstream modules
+- [ ] I answered all questions in this template completely
