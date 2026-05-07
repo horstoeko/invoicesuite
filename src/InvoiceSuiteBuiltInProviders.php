@@ -96,6 +96,13 @@ final class InvoiceSuiteBuiltInProviders
     public const PEPPOL_30_CREDIT_NOTE = 'peppol30creditnote';
 
     /**
+     * Provider unique ID for FatturaPA documents.
+     *
+     * @var string
+     */
+    public const FATTURA_PA = 'fatturapa';
+
+    /**
      * Prevent instantiation.
      */
     private function __construct() {}
@@ -118,6 +125,7 @@ final class InvoiceSuiteBuiltInProviders
             self::XRECHNUNG_UBL_CREDIT_NOTE,
             self::PEPPOL_30_INVOICE,
             self::PEPPOL_30_CREDIT_NOTE,
+            self::FATTURA_PA,
         ];
     }
 }
