@@ -38,6 +38,7 @@ The coding style must be checked before committing by running:
 composer checkstyle:run
 ```
 
+- [ ] I runned `composer phpcsfixer:run` and `composer phpstan:run` before committing
 - [ ] I answered all questions in this template completely
 - [ ] I ran `composer checkstyle:run` before committing and the coding style check passed
 - [ ] My code follows the style guidelines of this project
