@@ -165,4 +165,33 @@ class InvoiceSuiteStringUtils
     {
         return 0 === strcasecmp($str1, $str2);
     }
+
+    /**
+     * Checks if $needle is found in $haystack and returns a boolean value (true/false)
+     * whether or not the $needle was found
+     *
+     * @param  string $str
+     * @param  string $needle
+     * @return bool
+     */
+    public static function contains(string $str, string $needle): bool
+    {
+        return str_contains($str, $needle);
+    }
+
+    /**
+     * Replace all occurrences of the search string with the replacement string
+     *
+     * @template TSubject of string|string[]
+     *
+     * @param  string|string[] $search
+     * @param  string|string[] $replace
+     * @param  TSubject        $subject $subject
+     * @param  null|int        $count
+     * @return TSubject
+     */
+    public static function replace(array|string $search, array|string $replace, array|string $subject, &$count = null): array|string
+    {
+        return str_replace($search, $replace, $subject, $count);
+    }
 }
