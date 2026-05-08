@@ -15152,40 +15152,30 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
     {
         $invoiceCurrencyCode = $this
             ->getCrossIndustryRootObject()
-            ->getSupplyChainTradeTransactionWithCreate()
-            ->getApplicableHeaderTradeSettlementWithCreate()
-            ->getInvoiceCurrencyCode()?->getValue();
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getInvoiceCurrencyCode()
+            ?->getValue();
 
         $taxCurrencyCode = $this
             ->getCrossIndustryRootObject()
-            ->getSupplyChainTradeTransactionWithCreate()
-            ->getApplicableHeaderTradeSettlementWithCreate()
-            ->getTaxCurrencyCode()?->getValue();
-
-        // Update summation
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getTaxCurrencyCode()
+            ?->getValue();
 
         $summation = $this
             ->getCrossIndustryRootObject()
-            ->getSupplyChainTradeTransactionWithCreate()
-            ->getApplicableHeaderTradeSettlementWithCreate()
-            ->getSpecifiedTradeSettlementHeaderMonetarySummation();
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->getSpecifiedTradeSettlementHeaderMonetarySummation();
 
-        if (!is_null($summation)) {
-            $taxTotalAmounts = $summation->getTaxTotalAmount();
+        $taxTotalAmounts = $summation?->getTaxTotalAmount() ?? [];
+        $taxTotalAmount1 = array_key_exists(0, $taxTotalAmounts) ? $taxTotalAmounts[0] : null;
+        $taxTotalAmount2 = array_key_exists(1, $taxTotalAmounts) ? $taxTotalAmounts[1] : null;
 
-            if (!is_null($taxTotalAmounts)) {
-                $taxTotalAmount1 = $taxTotalAmounts[0] ?? null;
-                $taxTotalAmount2 = $taxTotalAmounts[1] ?? null;
-
-                if (!is_null($taxTotalAmount1)) {
-                    $taxTotalAmount1->setCurrencyID($invoiceCurrencyCode);
-                }
-
-                if (!is_null($taxTotalAmount2)) {
-                    $taxTotalAmount2->setCurrencyID($taxCurrencyCode);
-                }
-            }
-        }
+        $taxTotalAmount1?->setCurrencyID($invoiceCurrencyCode);
+        $taxTotalAmount2?->setCurrencyID($taxCurrencyCode);
 
         return $this;
     }
