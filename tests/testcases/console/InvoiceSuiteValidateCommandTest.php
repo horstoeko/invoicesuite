@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\console;
 
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
@@ -161,8 +161,8 @@ final class InvoiceSuiteValidateCommandTest extends InvoiceSuiteConsoleCommandTe
      */
     public function testCommandWithUnknownFile(): void
     {
-        $this->expectException(InvoiceSuiteFileNotReadableException::class);
-        $this->expectExceptionMessageMatches('/.*unknown\.xml is not readable.*/');
+        $this->expectException(InvoiceSuiteFileNotFoundException::class);
+        $this->expectExceptionMessageMatches('/.*unknown\.xml was not found.*/');
 
         $commandTester = $this->createCommandTester('invoicesuite:validate');
 

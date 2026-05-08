@@ -66,7 +66,7 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
         ZugferdDocumentBuilder $documentBuilder,
         string $pdfFileName
     ): static {
-        if (!is_file($pdfFileName)) {
+        if (!InvoiceSuiteFileUtils::isReadableFilePath($pdfFileName)) {
             throw new InvoiceSuiteFileNotFoundException($pdfFileName);
         }
 

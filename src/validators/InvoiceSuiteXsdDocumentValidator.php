@@ -21,6 +21,7 @@ use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\validators\abstracts\InvoiceSuiteAbstractDocumentValidator;
 use JMS\Serializer\Exception\RuntimeException;
@@ -61,7 +62,6 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
      * @return static
      *
      * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
      */
     public function setXsdFilename(
         string $newXsdFilename
@@ -70,12 +70,8 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
             return $this;
         }
 
-        if (!is_file($newXsdFilename)) {
+        if (!InvoiceSuiteFileUtils::isReadableFilePath($newXsdFilename)) {
             throw new InvoiceSuiteFileNotFoundException($newXsdFilename);
-        }
-
-        if (!is_readable($newXsdFilename)) {
-            throw new InvoiceSuiteFileNotReadableException($newXsdFilename);
         }
 
         $this->xsdFilename = $newXsdFilename;
@@ -166,7 +162,6 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
      * @return bool
      *
      * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteInvalidArgumentException
      */
     private function checkRequirements(): bool
@@ -206,7 +201,6 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
      * @return bool
      *
      * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteInvalidArgumentException
      */
     private function checkXsdFilename(): bool

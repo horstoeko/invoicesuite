@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\visualizers\renderers;
 
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\visualizers\abstracts\InvoiceSuiteVisualizerAbstractRenderer;
 
 /**
@@ -30,7 +31,7 @@ class InvoiceSuiteVisualizerFileTemplateRenderer extends InvoiceSuiteVisualizerA
     public function templateExists(
         string $template
     ): bool {
-        return is_file($template) && is_readable($template);
+        return InvoiceSuiteFileUtils::isReadableFilePath($template);
     }
 
     /**

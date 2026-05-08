@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\console\commands;
 
+use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use RuntimeException;
@@ -108,7 +109,7 @@ class InvoiceSuiteMakeProviderCommand extends InvoiceSuiteAbstractCommand
      */
     protected function writeTemplate(string $templatePath, string $targetPath, array $replacements, bool $force): static
     {
-        if (is_file($targetPath) && false === $force) {
+        if (InvoiceSuiteFileUtils::isReadableFilePath($targetPath) && false === $force) {
             throw new RuntimeException(sprintf('Target file "%s" already exists. Use --force to overwrite.', $targetPath));
         }
 

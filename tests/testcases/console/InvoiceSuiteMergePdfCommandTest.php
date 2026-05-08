@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\console;
 
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 
@@ -64,8 +64,8 @@ final class InvoiceSuiteMergePdfCommandTest extends InvoiceSuiteConsoleCommandTe
      */
     public function testCommandMergeWithUnknownDocumentFile(): void
     {
-        $this->expectException(InvoiceSuiteFileNotReadableException::class);
-        $this->expectExceptionMessageMatches('/.*unknown\.xml is not readable.*/');
+        $this->expectException(InvoiceSuiteFileNotFoundException::class);
+        $this->expectExceptionMessageMatches('/.*unknown\.xml was not found.*/');
 
         $commandTester = $this->createCommandTester('invoicesuite:merge');
 
@@ -83,8 +83,8 @@ final class InvoiceSuiteMergePdfCommandTest extends InvoiceSuiteConsoleCommandTe
      */
     public function testCommandMergeWithUnknownPdfFile(): void
     {
-        $this->expectException(InvoiceSuiteFileNotReadableException::class);
-        $this->expectExceptionMessageMatches('/.*unknown\.pdf is not readable.*/');
+        $this->expectException(InvoiceSuiteFileNotFoundException::class);
+        $this->expectExceptionMessageMatches('/.*unknown\.pdf was not found.*/');
 
         $commandTester = $this->createCommandTester('invoicesuite:merge');
 

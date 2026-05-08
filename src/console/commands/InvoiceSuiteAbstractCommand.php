@@ -536,7 +536,6 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @return string
      *
      * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
     protected function ensureFileExists(string $filename): string
@@ -546,7 +545,7 @@ abstract class InvoiceSuiteAbstractCommand extends Command
         }
 
         if (!InvoiceSuiteFileUtils::isReadableFilePath($filename)) {
-            throw new InvoiceSuiteFileNotReadableException($filename);
+            throw new InvoiceSuiteFileNotFoundException($filename);
         }
 
         return $filename;
