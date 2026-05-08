@@ -15171,8 +15171,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ?->getSpecifiedTradeSettlementHeaderMonetarySummation();
 
         $taxTotalAmounts = $summation?->getTaxTotalAmount() ?? [];
-        $taxTotalAmount1 = array_key_exists(0, $taxTotalAmounts) ? $taxTotalAmounts[0] : null;
-        $taxTotalAmount2 = array_key_exists(1, $taxTotalAmounts) ? $taxTotalAmounts[1] : null;
+        $taxTotalAmount1 = $taxTotalAmounts[0] ?? null;
+        $taxTotalAmount2 = $taxTotalAmounts[1] ?? null;
 
         $taxTotalAmount1?->setCurrencyID($invoiceCurrencyCode);
         $taxTotalAmount2?->setCurrencyID($taxCurrencyCode);
