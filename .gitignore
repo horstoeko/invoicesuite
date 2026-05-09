@@ -100,6 +100,20 @@ lint.ps1
 /examples/05_xml.xml
 /examples/05_pdf_*.pdf
 /examples/07_*.pdf
+/examples/08_Attachment_02_EN16931_Elektron_ElektronRapport.pdf
+/examples/08_Attachment_01_EN16931_Elektron_Aufmass.png
+/examples/08_factur-x.xml
+/examples/09_ModifiedInvoice.xml
+/examples/10_BuiltInvoice.xml
+/examples/11_XRechnungCiiInvoice.xml
+/examples/12_XRechnungUblInvoice.xml
+/examples/13_XRechnungUblCreditNote.xml
+/examples/14_InvoiceWithAttachments.pdf
+/examples/15_CustomTemplate.tmpl
+/examples/15_CustomTemplate.tmpl
+/examples/15_CustomTemplateInvoice.html
+/examples/15_CustomTemplateInvoice.pdf
+/examples/17_SettingsInvoice.xml
 
 /examples.old
 
