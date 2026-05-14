@@ -8,7 +8,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteClassFinder;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use Symfony\Component\Console\Command\Command;
 
-final class InvoiceSuiteRebuildCacheCommandTest extends InvoiceSuiteConsoleCommandTestCase
+final class InvoiceSuiteCacheRebuildCommandTest extends InvoiceSuiteConsoleCommandTestCase
 {
     /**
      * Test that the command rebuilds InvoiceSuite cache files.

@@ -7,7 +7,7 @@ namespace horstoeko\invoicesuite\tests\testcases\console;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use Symfony\Component\Console\Command\Command;
 
-final class InvoiceSuiteClearCacheCommandTest extends InvoiceSuiteConsoleCommandTestCase
+final class InvoiceSuiteCacheClearCommandTest extends InvoiceSuiteConsoleCommandTestCase
 {
     /**
      * Test that the command clears InvoiceSuite cache files.

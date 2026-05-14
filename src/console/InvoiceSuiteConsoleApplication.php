@@ -11,13 +11,13 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\console;
 
-use horstoeko\invoicesuite\console\commands\InvoiceSuiteClearCacheCommand;
+use horstoeko\invoicesuite\console\commands\InvoiceSuiteCacheClearCommand;
+use horstoeko\invoicesuite\console\commands\InvoiceSuiteCacheRebuildCommand;
 use horstoeko\invoicesuite\console\commands\InvoiceSuiteDetectCommand;
 use horstoeko\invoicesuite\console\commands\InvoiceSuiteExportPdfAttachmentsCommand;
 use horstoeko\invoicesuite\console\commands\InvoiceSuiteListProvidersCommand;
 use horstoeko\invoicesuite\console\commands\InvoiceSuiteMakeProviderCommand;
 use horstoeko\invoicesuite\console\commands\InvoiceSuiteMergePdfCommand;
-use horstoeko\invoicesuite\console\commands\InvoiceSuiteRebuildCacheCommand;
 use horstoeko\invoicesuite\console\commands\InvoiceSuiteValidateCommand;
 use horstoeko\invoicesuite\console\commands\InvoiceSuiteVisualizeCommand;
 use horstoeko\invoicesuite\utils\InvoiceSuitePackageVersion;
@@ -62,7 +62,7 @@ class InvoiceSuiteConsoleApplication extends Application
         $this->addCommand(new InvoiceSuiteValidateCommand());
         $this->addCommand(new InvoiceSuiteVisualizeCommand());
         $this->addCommand(new InvoiceSuiteExportPdfAttachmentsCommand());
-        $this->addCommand(new InvoiceSuiteClearCacheCommand());
-        $this->addCommand(new InvoiceSuiteRebuildCacheCommand());
+        $this->addCommand(new InvoiceSuiteCacheClearCommand());
+        $this->addCommand(new InvoiceSuiteCacheRebuildCommand());
     }
 }

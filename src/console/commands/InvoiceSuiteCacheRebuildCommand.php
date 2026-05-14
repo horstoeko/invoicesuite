@@ -11,18 +11,19 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\console\commands;
 
+use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\utils\InvoiceSuiteClassFinder;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 
 /**
- * Class representing a console command that clears the InvoiceSuite cache.
+ * Class representing a console command that rebuilds the InvoiceSuite cache.
  *
  * @category InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteClearCacheCommand extends InvoiceSuiteAbstractCommand
+class InvoiceSuiteCacheRebuildCommand extends InvoiceSuiteAbstractCommand
 {
     /**
      * Configure command.
@@ -33,8 +34,8 @@ class InvoiceSuiteClearCacheCommand extends InvoiceSuiteAbstractCommand
      */
     protected function configure(): void
     {
-        $this->setName('invoicesuite:cache:clear');
-        $this->setDescription('Clear InvoiceSuite class finder and serializer cache files');
+        $this->setName('invoicesuite:cache:rebuild');
+        $this->setDescription('Rebuild InvoiceSuite class finder cache files');
     }
 
     /**
@@ -46,7 +47,14 @@ class InvoiceSuiteClearCacheCommand extends InvoiceSuiteAbstractCommand
     {
         InvoiceSuiteClassFinder::clearCache();
 
-        $this->outputLineLF('<info>Cache cleared.</info>');
+        $documentFormatProviderClasses = InvoiceSuiteClassFinder::factory()
+            ->init()
+            ->getClassesWhenItsSubClassOf(InvoiceSuiteAbstractDocumentFormatProvider::class);
+
+        $this->outputLineLF(sprintf(
+            '<info>Cache rebuilt. %d document format providers found.</info>',
+            count($documentFormatProviderClasses)
+        ));
 
         return $this->returnSuccess();
     }
