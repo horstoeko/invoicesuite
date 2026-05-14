@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\console;
 
+use horstoeko\invoicesuite\console\commands\InvoiceSuiteClearCacheCommand;
 use horstoeko\invoicesuite\console\commands\InvoiceSuiteDetectCommand;
 use horstoeko\invoicesuite\console\commands\InvoiceSuiteExportPdfAttachmentsCommand;
 use horstoeko\invoicesuite\console\commands\InvoiceSuiteListProvidersCommand;
@@ -60,5 +61,6 @@ class InvoiceSuiteConsoleApplication extends Application
         $this->addCommand(new InvoiceSuiteValidateCommand());
         $this->addCommand(new InvoiceSuiteVisualizeCommand());
         $this->addCommand(new InvoiceSuiteExportPdfAttachmentsCommand());
+        $this->addCommand(new InvoiceSuiteClearCacheCommand());
     }
 }
