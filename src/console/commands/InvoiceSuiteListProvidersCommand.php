@@ -16,7 +16,6 @@ use RuntimeException;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Exception\InvalidArgumentException as ConsoleInvalidArgumentException;
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
 use z4kn4fein\SemVer\SemverException;
 
 /**
@@ -58,19 +57,17 @@ class InvoiceSuiteListProvidersCommand extends InvoiceSuiteAbstractCommand
     {
         $this->resolveAvailableDocumentFormatProviders();
 
-        if ($this->getBoolOption('output-json')) {
-            return $this->outputLineLF(json_encode(array_map(
-                static fn ($provider) => [
-                    'id' => mb_strimwidth($provider->getUniqueId(), 0, 30, '...'),
-                    'description' => mb_strimwidth($provider->getDescription(), 0, 60, '...'),
-                    'version' => (string) $provider->getVersion(),
-                    'contentType' => $provider->getContentType()->value,
-                    'pdfSupportAvailable' => $provider->getIsPdfSupportAvailable(),
-                    'xsdValidationAvailable' => $provider->getValidationXsdAvailable(),
-                ],
-                $this->getRegisteredDocumentFormatProviders()
-            ), JSON_PRETTY_PRINT), OutputInterface::OUTPUT_RAW)->returnSuccess();
-        }
+        $jsonRowsToOutput = array_map(
+            static fn ($provider) => [
+                'id' => mb_strimwidth($provider->getUniqueId(), 0, 30, '...'),
+                'description' => mb_strimwidth($provider->getDescription(), 0, 60, '...'),
+                'version' => (string) $provider->getVersion(),
+                'contentType' => $provider->getContentType()->value,
+                'pdfSupportAvailable' => $provider->getIsPdfSupportAvailable(),
+                'xsdValidationAvailable' => $provider->getValidationXsdAvailable(),
+            ],
+            $this->getRegisteredDocumentFormatProviders()
+        );
 
         $rowsToOutput = array_map(
             static fn ($provider) => [
@@ -84,6 +81,9 @@ class InvoiceSuiteListProvidersCommand extends InvoiceSuiteAbstractCommand
             $this->getRegisteredDocumentFormatProviders()
         );
 
-        return $this->outputTable(['Provider', 'Description', 'Version', 'Content-Type', 'PDF', 'XSD'], $rowsToOutput)->returnSuccess();
+        return $this
+            ->outputJsonLFWhen($this->getBoolOption('output-json'), $jsonRowsToOutput)
+            ->outputTableWhen(!$this->getBoolOption('output-json'), ['Provider', 'Description', 'Version', 'Content-Type', 'PDF', 'XSD'], $rowsToOutput)
+            ->returnSuccess();
     }
 }

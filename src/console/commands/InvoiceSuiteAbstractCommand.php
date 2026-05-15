@@ -105,22 +105,32 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     }
 
     /**
-     * Writes a JSON to the output and adds a newline at the end
+     * Writes a JSON value to the output and adds a newline at the end.
      *
      * @param  mixed  $value
      * @return static
+     *
+     * @throws RuntimeException
      */
     protected function outputJsonLF(mixed $value): static
     {
-        return $this->outputLineLF(json_encode($value, JSON_PRETTY_PRINT), OutputInterface::OUTPUT_RAW);
+        $jsonValue = json_encode($value, JSON_PRETTY_PRINT);
+
+        if (false === $jsonValue) {
+            throw new RuntimeException(sprintf('Unable to encode value to JSON. Error was: %s', json_last_error_msg()));
+        }
+
+        return $this->outputLineLF($jsonValue, OutputInterface::OUTPUT_RAW);
     }
 
     /**
-     * Conditionally writes a JSON to the output and adds a newline at the end
+     * Conditionally writes a JSON value to the output and adds a newline at the end.
      *
      * @param  bool   $condition
      * @param  mixed  $value
      * @return static
+     *
+     * @throws RuntimeException
      */
     protected function outputJsonLFWhen(bool $condition, mixed $value): static
     {
@@ -132,10 +142,10 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     }
 
     /**
-     * Output a table
+     * Output a table.
      *
-     * @param  array<int,string>             $headers
-     * @param  array<int,array<int, string>> $rows
+     * @param  array<int,string>           $headers
+     * @param  array<int,array<int,mixed>> $rows
      * @return static
      */
     protected function outputTable(array $headers = [], array $rows = []): static
@@ -156,17 +166,17 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     }
 
     /**
-     * Conditionally Output a table
+     * Conditionally output a table.
      *
-     * @param  bool                          $condition
-     * @param  array<int,string>             $headers
-     * @param  array<int,array<int, string>> $rows
+     * @param  bool                        $condition
+     * @param  array<int,string>           $headers
+     * @param  array<int,array<int,mixed>> $rows
      * @return static
      */
     protected function outputTableWhen(bool $condition, array $headers = [], array $rows = []): static
     {
         if ($condition) {
-            $this->outputTable($headers, $rows);
+            return $this->outputTable($headers, $rows);
         }
 
         return $this;

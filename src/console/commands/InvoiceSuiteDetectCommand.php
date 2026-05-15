@@ -24,7 +24,6 @@ use Symfony\Component\Console\Exception\InvalidArgumentException as ConsoleInval
 use Symfony\Component\Console\Helper\TableSeparator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class representing a console command that detects the format of a given file
@@ -77,7 +76,7 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
             return $this->handleXml(InvoiceSuiteDocumentReader::createFromFile($inpArgFilename))->returnSuccess();
         }
 
-        return $this->handleUnknown()->returnFailure();
+        return $this->handleUnknownType()->returnFailure();
     }
 
     /**
@@ -91,20 +90,18 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handlePdf(InvoiceSuitePdfDocumentReader $pdfReader): static
     {
-        if ($this->getBoolOption('output-json')) {
-            return $this->outputLineLF(json_encode([
-                'id' => $pdfReader->getCurrentDocumentFormatProvider()->getUniqueId(),
-                'description' => $pdfReader->getCurrentDocumentFormatProvider()->getDescription(),
-                'documentAttachmentName' => $pdfReader->getInvoiceDocumentAttachment()->getAttachmentFilename(),
-                'documentAttachmentMimeType' => $pdfReader->getInvoiceDocumentAttachment()->getAttachmentMimeType(),
-                'noOfAdditionalAttachments' => count($pdfReader->getAdditionalDocumentAttachments()),
-                'additionalAttachments' => array_map(static fn ($attachment) => [
-                    'name' => $attachment->getAttachmentFilename(),
-                    'mimeType' => $attachment->getAttachmentMimeType(),
-                ], $pdfReader->getAdditionalDocumentAttachments()),
-                'error' => false,
-            ], JSON_PRETTY_PRINT), OutputInterface::OUTPUT_RAW);
-        }
+        $jsonResult = [
+            'id' => $pdfReader->getCurrentDocumentFormatProvider()->getUniqueId(),
+            'description' => $pdfReader->getCurrentDocumentFormatProvider()->getDescription(),
+            'documentAttachmentName' => $pdfReader->getInvoiceDocumentAttachment()->getAttachmentFilename(),
+            'documentAttachmentMimeType' => $pdfReader->getInvoiceDocumentAttachment()->getAttachmentMimeType(),
+            'noOfAdditionalAttachments' => count($pdfReader->getAdditionalDocumentAttachments()),
+            'additionalAttachments' => array_map(static fn ($attachment) => [
+                'name' => $attachment->getAttachmentFilename(),
+                'mimeType' => $attachment->getAttachmentMimeType(),
+            ], $pdfReader->getAdditionalDocumentAttachments()),
+            'error' => false,
+        ];
 
         $tableRows[] = ['ID', $pdfReader->getCurrentDocumentFormatProvider()->getUniqueId()];
         $tableRows[] = ['Description', mb_strimwidth($pdfReader->getCurrentDocumentFormatProvider()->getDescription(), 0, 60, '...')];
@@ -121,7 +118,9 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
             $tableRows[] = ['Attachment type', $attachment->getAttachmentMimeType()];
         }
 
-        return $this->outputTable(['Info', 'Value'], $tableRows);
+        return $this
+            ->outputJsonLFWhen($this->getBoolOption('output-json'), $jsonResult)
+            ->outputTableWhen(!$this->getBoolOption('output-json'), ['Info', 'Value'], $tableRows);
     }
 
     /**
@@ -135,19 +134,19 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handleXml(InvoiceSuiteDocumentReader $xmlOrJsonReader): static
     {
-        if ($this->getBoolOption('output-json')) {
-            return $this->outputLineLF(json_encode([
-                'id' => $xmlOrJsonReader->getCurrentDocumentFormatProvider()->getUniqueId(),
-                'description' => $xmlOrJsonReader->getCurrentDocumentFormatProvider()->getDescription(),
-                'error' => false,
-            ], JSON_PRETTY_PRINT), OutputInterface::OUTPUT_RAW);
-        }
+        $jsonResult = [
+            'id' => $xmlOrJsonReader->getCurrentDocumentFormatProvider()->getUniqueId(),
+            'description' => $xmlOrJsonReader->getCurrentDocumentFormatProvider()->getDescription(),
+            'error' => false,
+        ];
 
         $tableRows[] = ['ID', $xmlOrJsonReader->getCurrentDocumentFormatProvider()->getUniqueId()];
         $tableRows[] = ['Description', mb_strimwidth($xmlOrJsonReader->getCurrentDocumentFormatProvider()->getDescription(), 0, 60, '...')];
         $tableRows[] = ['Error', 'no'];
 
-        return $this->outputTable(['Info', 'Value'], $tableRows);
+        return $this
+            ->outputJsonLFWhen($this->getBoolOption('output-json'), $jsonResult)
+            ->outputTableWhen(!$this->getBoolOption('output-json'), ['Info', 'Value'], $tableRows);
     }
 
     /**
@@ -158,20 +157,20 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
      * @throws ConsoleInvalidArgumentException
      * @throws RuntimeException
      */
-    protected function handleUnknown(): static
+    protected function handleUnknownType(): static
     {
-        if ($this->getBoolOption('output-json')) {
-            return $this->outputLineLF(json_encode([
-                'id' => 'unknown',
-                'description' => 'unknown',
-                'error' => true,
-            ], JSON_PRETTY_PRINT), OutputInterface::OUTPUT_RAW);
-        }
+        $jsonResult = [
+            'id' => 'unknown',
+            'description' => 'unknown',
+            'error' => true,
+        ];
 
         $tableRows[] = ['ID', 'unknown'];
         $tableRows[] = ['Description', 'unknown'];
         $tableRows[] = ['Error', 'Yes'];
 
-        return $this->outputTable(['Info', 'Value'], $tableRows);
+        return $this
+            ->outputJsonLFWhen($this->getBoolOption('output-json'), $jsonResult)
+            ->outputTableWhen(!$this->getBoolOption('output-json'), ['Info', 'Value'], $tableRows);
     }
 }
