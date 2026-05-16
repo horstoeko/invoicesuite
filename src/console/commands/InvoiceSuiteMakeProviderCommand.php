@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\console\commands;
 
-use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use RuntimeException;
@@ -54,6 +54,7 @@ class InvoiceSuiteMakeProviderCommand extends InvoiceSuiteAbstractCommand
      * @return int
      *
      * @throws InvalidArgumentException
+     * @throws InvoiceSuiteFileNotFoundException
      * @throws RuntimeException
      */
     protected function handle(): int
@@ -102,28 +103,16 @@ class InvoiceSuiteMakeProviderCommand extends InvoiceSuiteAbstractCommand
      * @param  string               $templatePath
      * @param  string               $targetPath
      * @param  array<string,string> $replacements
-     * @param  bool                 $force
+     * @param  bool                 $forceOverwrite
      * @return static
      *
+     * @throws InvoiceSuiteFileNotFoundException
      * @throws RuntimeException
      */
-    protected function writeTemplate(string $templatePath, string $targetPath, array $replacements, bool $force): static
+    protected function writeTemplate(string $templatePath, string $targetPath, array $replacements, bool $forceOverwrite): static
     {
-        if (InvoiceSuiteFileUtils::isReadableFilePath($targetPath) && false === $force) {
-            throw new RuntimeException(sprintf('Target file "%s" already exists. Use --force to overwrite.', $targetPath));
-        }
-
-        $templateContent = file_get_contents($templatePath);
-
-        if (false === $templateContent) {
-            throw new RuntimeException(sprintf('Unable to read template "%s".', $templatePath));
-        }
-
-        $targetContent = strtr($templateContent, $replacements);
-
-        if (false === file_put_contents($targetPath, $targetContent)) {
-            throw new RuntimeException(sprintf('Unable to write target file "%s".', $targetPath));
-        }
+        $this->ensureFileExists($templatePath);
+        $this->outputFile($targetPath, strtr($this->loadFile($templatePath), $replacements), $forceOverwrite);
 
         return $this;
     }

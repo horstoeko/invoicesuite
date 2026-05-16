@@ -105,6 +105,23 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     }
 
     /**
+     * Conditionally writes a message to the output and adds a newline at the end.
+     *
+     * @param  bool                      $condition
+     * @param  array<int, string>|string $messages
+     * @param  int                       $options
+     * @return static
+     */
+    protected function outputLineLFWhen(bool $condition, iterable|string $messages, int $options = 0): static
+    {
+        if ($condition) {
+            return $this->outputLineLF($messages, $options);
+        }
+
+        return $this;
+    }
+
+    /**
      * Writes a JSON value to the output and adds a newline at the end.
      *
      * @param  mixed  $value
@@ -180,6 +197,67 @@ abstract class InvoiceSuiteAbstractCommand extends Command
         }
 
         return $this;
+    }
+
+    /**
+     * Write content to a file specified by $filename
+     *
+     * @param  string $filename
+     * @param  mixed  $content
+     * @param  bool   $forceOverwrite
+     * @return static
+     *
+     * @throws RuntimeException
+     */
+    protected function outputFile(string $filename, mixed $content, bool $forceOverwrite = false): static
+    {
+        $this->ensureTargetFileDirectoryExists($filename);
+        $this->ensureTargetFileCanBeCreated($filename, $forceOverwrite);
+
+        if (false === file_put_contents($filename, $content)) {
+            throw new RuntimeException(sprintf('Unable to write file "%s".', $filename));
+        }
+
+        return $this;
+    }
+
+    /**
+     * Conditionally write content to a file specified by $filename
+     *
+     * @param  bool   $condition
+     * @param  string $filename
+     * @param  mixed  $content
+     * @param  bool   $forceOverwrite
+     * @return static
+     *
+     * @throws RuntimeException
+     */
+    protected function outputFileWhen(bool $condition, string $filename, mixed $content, bool $forceOverwrite = false): static
+    {
+        if ($condition) {
+            return $this->outputFile($filename, $content, $forceOverwrite);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Load the content of a file
+     *
+     * @param  string $filename
+     * @return string
+     *
+     * @throws RuntimeException
+     */
+    protected function loadFile(string $filename): string
+    {
+        $content = file_get_contents($filename);
+
+        if (false === $content) {
+            throw new RuntimeException(sprintf('Unable to read file "%s".', $filename));
+        }
+
+        return $content;
     }
 
     /**

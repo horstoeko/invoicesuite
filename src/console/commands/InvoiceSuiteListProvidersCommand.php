@@ -69,7 +69,7 @@ class InvoiceSuiteListProvidersCommand extends InvoiceSuiteAbstractCommand
             $this->getRegisteredDocumentFormatProviders()
         );
 
-        $rowsToOutput = array_map(
+        $tableRowsToOutput = array_map(
             static fn ($provider) => [
                 mb_strimwidth($provider->getUniqueId(), 0, 30, '...'),
                 mb_strimwidth($provider->getDescription(), 0, 60, '...'),
@@ -83,7 +83,7 @@ class InvoiceSuiteListProvidersCommand extends InvoiceSuiteAbstractCommand
 
         return $this
             ->outputJsonWhen($this->getBoolOption('output-json'), $jsonRowsToOutput)
-            ->outputTableWhen(!$this->getBoolOption('output-json'), ['Provider', 'Description', 'Version', 'Content-Type', 'PDF', 'XSD'], $rowsToOutput)
+            ->outputTableWhen(!$this->getBoolOption('output-json'), ['Provider', 'Description', 'Version', 'Content-Type', 'PDF', 'XSD'], $tableRowsToOutput)
             ->returnSuccess();
     }
 }

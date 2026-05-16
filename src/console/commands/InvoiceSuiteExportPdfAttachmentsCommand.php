@@ -140,17 +140,8 @@ class InvoiceSuiteExportPdfAttachmentsCommand extends InvoiceSuiteAbstractComman
         }
 
         foreach ($targetAttachmentFiles as $targetAttachmentFile) {
-            $this->ensureTargetFileCanBeCreated($targetAttachmentFile['filename'], $forceOverwrite);
-        }
-
-        foreach ($targetAttachmentFiles as $targetAttachmentFile) {
-            if (false === file_put_contents($targetAttachmentFile['filename'], $targetAttachmentFile['attachment']->getAttachmentContent())) {
-                throw new RuntimeException(sprintf('Unable to write attachment file "%s".', $targetAttachmentFile['filename']));
-            }
-
-            $this->outputLineLF(
-                sprintf('<info>Created:</info> %s', $targetAttachmentFile['filename'])
-            );
+            $this->outputFile($targetAttachmentFile['filename'], $targetAttachmentFile['attachment']->getAttachmentContent(), $forceOverwrite);
+            $this->outputLineLF(sprintf('<info>Created:</info> %s', $targetAttachmentFile['filename']));
         }
 
         return $this;
@@ -214,15 +205,8 @@ class InvoiceSuiteExportPdfAttachmentsCommand extends InvoiceSuiteAbstractComman
                 )
             );
 
-            $this->ensureTargetFileCanBeCreated($targetJsonFilename, $forceOverwrite);
-
-            if (false === file_put_contents($targetJsonFilename, $jsonContent)) {
-                throw new RuntimeException(sprintf('Unable to write JSON file "%s".', $targetJsonFilename));
-            }
-
-            if (self::OUTPUT_JSON_FILE === $jsonOutputMode) {
-                $this->outputLineLF(sprintf('<info>Created:</info> %s', $targetJsonFilename));
-            }
+            $this->outputFile($targetJsonFilename, $jsonContent, $forceOverwrite);
+            $this->outputLineLFWhen(self::OUTPUT_JSON_FILE === $jsonOutputMode, sprintf('<info>Created:</info> %s', $targetJsonFilename));
         }
 
         $this->outputJsonWhen(
