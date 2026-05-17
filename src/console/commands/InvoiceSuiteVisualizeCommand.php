@@ -112,7 +112,7 @@ class InvoiceSuiteVisualizeCommand extends InvoiceSuiteAbstractCommand
 
         if (InvoiceSuiteStringUtils::equalsNoCase($inpOptionFormat, 'pdf') && $inpOptionEmbed) {
             InvoiceSuitePdfDocumentBuilder::createFromDocumentContentAndPdfFile(
-                InvoiceSuiteFileUtils::getContentFromFileOrString($inpArgInputFilename),
+                InvoiceSuiteFileUtils::getContentFromFile($inpArgInputFilename),
                 $inpArgOutputFilename
             )->generatePdfDocumentAndSaveToFile($inpArgOutputFilename);
         }

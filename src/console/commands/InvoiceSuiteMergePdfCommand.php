@@ -66,7 +66,7 @@ class InvoiceSuiteMergePdfCommand extends InvoiceSuiteAbstractCommand
         $inpArgOutputFilename = $this->getTargetFileArgument('output-file', $this->getBoolOption('force'));
 
         InvoiceSuitePdfDocumentBuilder::createFromDocumentContentAndPdfFile(
-            InvoiceSuiteFileUtils::getContentFromFileOrString($inpArgXmlOrJsonFilename),
+            InvoiceSuiteFileUtils::getContentFromFile($inpArgXmlOrJsonFilename),
             $inpArgPdfFilename
         )->generatePdfDocumentAndSaveToFile($inpArgOutputFilename);
 
