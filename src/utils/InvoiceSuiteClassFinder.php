@@ -110,7 +110,7 @@ class InvoiceSuiteClassFinder
         $cacheFilepath = InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', 'cache');
         $cacheFilenameFq = InvoiceSuitePathUtils::combinePathWithFile($cacheFilepath, $cacheFilename);
 
-        if (!$disableCache && InvoiceSuiteFileUtils::isReadableFilePath($cacheFilenameFq)) {
+        if (!$disableCache && InvoiceSuiteFileUtils::isReadableFile($cacheFilenameFq)) {
             $cached = @require $cacheFilenameFq;
 
             if (is_array($cached)) {
@@ -162,7 +162,7 @@ class InvoiceSuiteClassFinder
         $files = glob(__DIR__ . '/../cache/*.cache');
 
         foreach ($files as $file) {
-            if (InvoiceSuiteFileUtils::isReadableFilePath($file)) {
+            if (InvoiceSuiteFileUtils::isReadableFile($file)) {
                 unlink($file);
             }
         }
@@ -170,7 +170,7 @@ class InvoiceSuiteClassFinder
         $files = glob(__DIR__ . '/../cache/jms/**/*.*', GLOB_BRACE);
 
         foreach ($files as $file) {
-            if (InvoiceSuiteFileUtils::isReadableFilePath($file)) {
+            if (InvoiceSuiteFileUtils::isReadableFile($file)) {
                 unlink($file);
             }
         }

@@ -31,7 +31,7 @@ class InvoiceSuiteVisualizerFileTemplateRenderer extends InvoiceSuiteVisualizerA
     public function templateExists(
         string $template
     ): bool {
-        return InvoiceSuiteFileUtils::isReadableFilePath($template);
+        return InvoiceSuiteFileUtils::isReadableFile($template);
     }
 
     /**

@@ -70,7 +70,7 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
             return $this;
         }
 
-        if (!InvoiceSuiteFileUtils::isReadableFilePath($newXsdFilename)) {
+        if (!InvoiceSuiteFileUtils::isReadableFile($newXsdFilename)) {
             throw new InvoiceSuiteFileNotFoundException($newXsdFilename);
         }
 

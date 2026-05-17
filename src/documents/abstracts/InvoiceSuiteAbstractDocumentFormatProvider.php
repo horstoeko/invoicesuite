@@ -430,7 +430,7 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
             return false;
         }
 
-        if (!InvoiceSuiteFileUtils::isReadableFilePath($this->getValidationXsdFilename())) {
+        if (!InvoiceSuiteFileUtils::isReadableFile($this->getValidationXsdFilename())) {
             return false;
         }
 

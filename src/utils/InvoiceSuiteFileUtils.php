@@ -19,23 +19,23 @@ use horstoeko\stringmanagement\FileUtils;
 class InvoiceSuiteFileUtils extends FileUtils
 {
     /**
-     * Returns true if $filenameOrContent is a file, otherwise false
+     * Returns true if $filename is a file, otherwise false
      *
-     * @param  string $filenameOrContent
+     * @param  string $filename
      * @return bool
      */
-    public static function isReadableFilePath(
-        string $filenameOrContent
+    public static function isReadableFile(
+        string $filename
     ): bool {
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($filenameOrContent) || InvoiceSuiteStringUtils::contains($filenameOrContent, "\0")) {
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($filename) || InvoiceSuiteStringUtils::contains($filename, "\0")) {
             return false;
         }
 
-        if (preg_match('~^[a-z][a-z0-9+.-]*://~i', $filenameOrContent)) {
+        if (preg_match('~^[a-z][a-z0-9+.-]*://~i', $filename)) {
             return false;
         }
 
-        return is_file($filenameOrContent) && is_readable($filenameOrContent);
+        return is_file($filename) && is_readable($filename);
     }
 
     /**
@@ -49,7 +49,7 @@ class InvoiceSuiteFileUtils extends FileUtils
     public static function getContentFromFileOrString(
         string $filenameOrContent
     ): string {
-        if (!static::isReadableFilePath($filenameOrContent)) {
+        if (!static::isReadableFile($filenameOrContent)) {
             return $filenameOrContent;
         }
 
@@ -74,7 +74,7 @@ class InvoiceSuiteFileUtils extends FileUtils
     public static function getContentFromFile(
         string $filename
     ): string {
-        if (!static::isReadableFilePath($filename)) {
+        if (!static::isReadableFile($filename)) {
             throw new InvoiceSuiteFileNotFoundException($filename);
         }
 

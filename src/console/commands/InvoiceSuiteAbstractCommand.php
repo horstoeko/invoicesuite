@@ -671,7 +671,7 @@ abstract class InvoiceSuiteAbstractCommand extends Command
             throw new RuntimeException('The file name must not be empty.');
         }
 
-        if (!InvoiceSuiteFileUtils::isReadableFilePath($filename)) {
+        if (!InvoiceSuiteFileUtils::isReadableFile($filename)) {
             throw new InvoiceSuiteFileNotFoundException($filename);
         }
 
@@ -693,7 +693,7 @@ abstract class InvoiceSuiteAbstractCommand extends Command
             throw new RuntimeException('The file name must not be empty.');
         }
 
-        if (InvoiceSuiteFileUtils::isReadableFilePath($filename) && false === $forceOverwrite) {
+        if (InvoiceSuiteFileUtils::isReadableFile($filename) && false === $forceOverwrite) {
             throw new RuntimeException(sprintf('Target file "%s" already exists. Use --force to overwrite.', $filename));
         }
 

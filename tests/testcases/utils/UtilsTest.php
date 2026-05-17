@@ -1117,10 +1117,10 @@ final class UtilsTest extends TestCase
         $this->assertSame(35, InvoiceSuiteFileUtils::getFileSizeFromBase64String('SSBhbSBhIHRlc3RmaWxlLiBEb24ndCBtb2RpZnkgbWUuLi4='));
         $this->assertSame(0, InvoiceSuiteFileUtils::getFileSizeFromBase64String(''));
 
-        $this->assertFalse(InvoiceSuiteFileUtils::isReadableFilePath(''));
-        $this->assertFalse(InvoiceSuiteFileUtils::isReadableFilePath('http://test.de'));
-        $this->assertTrue(InvoiceSuiteFileUtils::isReadableFilePath(__DIR__ . '/../../assets/99_FileUtilsTest_tobase64.txt'));
-        $this->assertFalse(InvoiceSuiteFileUtils::isReadableFilePath(__DIR__ . '/../../assets/filenotexists.txt'));
+        $this->assertFalse(InvoiceSuiteFileUtils::isReadableFile(''));
+        $this->assertFalse(InvoiceSuiteFileUtils::isReadableFile('http://test.de'));
+        $this->assertTrue(InvoiceSuiteFileUtils::isReadableFile(__DIR__ . '/../../assets/99_FileUtilsTest_tobase64.txt'));
+        $this->assertFalse(InvoiceSuiteFileUtils::isReadableFile(__DIR__ . '/../../assets/filenotexists.txt'));
 
         $this->assertSame('', InvoiceSuiteFileUtils::getContentFromFileOrString(''));
         $this->assertSame('http://test.de', InvoiceSuiteFileUtils::getContentFromFileOrString('http://test.de'));

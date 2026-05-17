@@ -702,7 +702,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
             $zipStat = $zipArchive->statIndex($i);
             $realfilename = InvoiceSuitePathUtils::combinePathWithFile($this->resolveBaseDirectory(), $zipStat['name']);
 
-            if (InvoiceSuiteFileUtils::isReadableFilePath($realfilename)) {
+            if (InvoiceSuiteFileUtils::isReadableFile($realfilename)) {
                 ++$numFilesExists;
             }
         }
@@ -856,7 +856,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
                 InvoiceSuiteFileUtils::getFilenameWithoutExtension($this->resolveFileToValidateFilename()) . '-report.xml'
             );
 
-        if (!InvoiceSuiteFileUtils::isReadableFilePath($reportFilename)) {
+        if (!InvoiceSuiteFileUtils::isReadableFile($reportFilename)) {
             return;
         }
 
@@ -1054,7 +1054,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
         string $toFilePath,
         bool $forceOverwrite = false
     ): bool {
-        if (InvoiceSuiteFileUtils::isReadableFilePath($toFilePath) && !$forceOverwrite) {
+        if (InvoiceSuiteFileUtils::isReadableFile($toFilePath) && !$forceOverwrite) {
             return true;
         }
 
