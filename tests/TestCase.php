@@ -204,7 +204,7 @@ abstract class TestCase extends PhpUnitTestCase
         try {
             $this->expectException(ErrorException::class);
 
-            if ($expectMessageRegEx !== '' && $expectMessageRegEx !== '0') {
+            if ('' !== $expectMessageRegEx && '0' !== $expectMessageRegEx) {
                 $this->expectExceptionMessageMatches($expectMessageRegEx);
             }
 
