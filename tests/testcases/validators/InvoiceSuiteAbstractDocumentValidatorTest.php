@@ -204,15 +204,18 @@ final class InvoiceSuiteAbstractDocumentValidatorTest extends TestCase
         $this->assertTrue($validatorInstance->hasWarningMessagesInMessageBag());
         $this->assertTrue($validatorInstance->hasErrorMessagesInMessageBag());
         $this->assertTrue($validatorInstance->hasInternalErrorMessagesInMessageBag());
+        $this->assertTrue($validatorInstance->hasErrorOrInternalErrorMessagesInMessageBag());
 
         $this->assertSame(2, $validatorInstance->countInfoMessagesInMessageBag());
         $this->assertSame(1, $validatorInstance->countWarningMessagesInMessageBag());
         $this->assertSame(1, $validatorInstance->countErrorMessagesInMessageBag());
         $this->assertSame(1, $validatorInstance->countInternalErrorMessagesInMessageBag());
+        $this->assertSame(2, $validatorInstance->countErrorOrInternalErrorMessagesInMessageBag());
 
         $this->assertCount(2, $validatorInstance->getInfoMessagesInMessageBag());
         $this->assertCount(1, $validatorInstance->getWarningMessagesInMessageBag());
         $this->assertCount(1, $validatorInstance->getErrorMessagesInMessageBag());
         $this->assertCount(1, $validatorInstance->getInternalErrorMessagesInMessageBag());
+        $this->assertCount(2, $validatorInstance->getErrorOrInternalErrorMessagesInMessageBag());
     }
 }

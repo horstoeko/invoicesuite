@@ -257,6 +257,10 @@ final class HandlesMessageBagTest extends TestCase
 
         $this->assertTrue($this->hasInternalErrorMessagesInMessageBag());
 
+        // hasErrorOrInternalErrorMessagesInMessageBag
+
+        $this->assertTrue($this->hasErrorOrInternalErrorMessagesInMessageBag());
+
         // countMessagesInMessageBagBySeverity
 
         $this->assertSame(3, $this->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::INFO));
@@ -279,6 +283,10 @@ final class HandlesMessageBagTest extends TestCase
         // countInternalErrorMessagesInMessageBag
 
         $this->assertSame(1, $this->countInternalErrorMessagesInMessageBag());
+
+        // countErrorOrInternalErrorMessagesInMessageBag
+
+        $this->assertSame(2, $this->countErrorOrInternalErrorMessagesInMessageBag());
 
         // getMessagesInMessageBagBySeverity
 
@@ -390,6 +398,14 @@ final class HandlesMessageBagTest extends TestCase
         $this->assertSame('19700106', $internalErrorMessages[0]->getMessageTimestamp()->format('Ymd'));
         $this->assertSame(['key' => 'internal-value'], $internalErrorMessages[0]->getMessageAdditionalData());
 
+        // getErrorOrInternalErrorMessagesInMessageBag
+
+        $errorOrInternalErrorMessages = $this->getErrorOrInternalErrorMessagesInMessageBag();
+
+        $this->assertCount(2, $errorOrInternalErrorMessages);
+        $this->assertSame('Message 5', $errorOrInternalErrorMessages[0]->getMessageContent());
+        $this->assertSame('Message 6', $errorOrInternalErrorMessages[1]->getMessageContent());
+
         // clearMessageBag
 
         $this->clearMessageBag();
@@ -400,9 +416,11 @@ final class HandlesMessageBagTest extends TestCase
         $this->assertFalse($this->hasWarningMessagesInMessageBag());
         $this->assertFalse($this->hasErrorMessagesInMessageBag());
         $this->assertFalse($this->hasInternalErrorMessagesInMessageBag());
+        $this->assertFalse($this->hasErrorOrInternalErrorMessagesInMessageBag());
         $this->assertSame(0, $this->countInfoMessagesInMessageBag());
         $this->assertSame(0, $this->countWarningMessagesInMessageBag());
         $this->assertSame(0, $this->countErrorMessagesInMessageBag());
         $this->assertSame(0, $this->countInternalErrorMessagesInMessageBag());
+        $this->assertSame(0, $this->countErrorOrInternalErrorMessagesInMessageBag());
     }
 }
