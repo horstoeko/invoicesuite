@@ -33,6 +33,7 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         bool $expectusePdfContent,
         string $expectXmpName,
         string $expectXmpVersion,
+        string $expectPdfAConformanceLevel,
         int $expectOutputType
     ): void {
         if (!$expectusePdfContent) {
@@ -409,6 +410,7 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $this->assertStringContainsString('<fx:DocumentFileName>factur-x.xml</fx:DocumentFileName>', (string) $propPdfWriterMetaDataValue[0]);
         $this->assertStringContainsString(sprintf('<fx:Version>%s</fx:Version>', $expectXmpVersion), (string) $propPdfWriterMetaDataValue[0]);
         $this->assertStringContainsString(sprintf('<fx:ConformanceLevel>%s</fx:ConformanceLevel>', $expectXmpName), (string) $propPdfWriterMetaDataValue[0]);
+        $this->assertStringContainsString(sprintf('<pdfaid:conformance>%s</pdfaid:conformance>', $expectPdfAConformanceLevel), (string) $propPdfWriterMetaDataValue[2]);
 
         $pdfDOcumentBuilder->setDeterministicModeToEnabled();
 
@@ -458,53 +460,53 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
     public static function zffxProfileProvider(): Iterator
     {
         // 1.
-        yield 'zffxminimum' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', false, false, 'MINIMUM', '1.0', 1];
-        yield 'zffxbasicwl' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', false, false, 'BASIC WL', '1.0', 1];
-        yield 'zffxbasic' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', false, false, 'BASIC', '1.0', 1];
-        yield 'zffxcomfort' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', false, false, 'EN 16931', '1.0', 1];
-        yield 'zffxextended' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', false, false, 'EXTENDED', '1.0', 1];
+        yield 'zffxminimum' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', false, false, 'MINIMUM', '1.0', 'B', 1];
+        yield 'zffxbasicwl' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', false, false, 'BASIC WL', '1.0', 'B', 1];
+        yield 'zffxbasic' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', false, false, 'BASIC', '1.0', 'B', 1];
+        yield 'zffxcomfort' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', false, false, 'EN 16931', '1.0', 'B', 1];
+        yield 'zffxextended' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', false, false, 'EXTENDED', '1.0', 'B', 1];
         // 2.
-        yield 'zffxminimum2' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', '02_technical_xml_zffx_minimum.xml', false, 'MINIMUM', '1.0', 1];
-        yield 'zffxbasicwl2' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', '02_technical_xml_zffx_basicwl.xml', false, 'BASIC WL', '1.0', 1];
-        yield 'zffxbasic2' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', '02_technical_xml_zffx_basic.xml', false, 'BASIC', '1.0', 1];
-        yield 'zffxcomfort2' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', '02_technical_xml_zffx_comfort.xml', false, 'EN 16931', '1.0', 1];
-        yield 'zffxextended2' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', '02_technical_xml_zffx_extended.xml', false, 'EXTENDED', '1.0', 1];
+        yield 'zffxminimum2' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', '02_technical_xml_zffx_minimum.xml', false, 'MINIMUM', '1.0', 'B', 1];
+        yield 'zffxbasicwl2' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', '02_technical_xml_zffx_basicwl.xml', false, 'BASIC WL', '1.0', 'B', 1];
+        yield 'zffxbasic2' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', '02_technical_xml_zffx_basic.xml', false, 'BASIC', '1.0', 'B', 1];
+        yield 'zffxcomfort2' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', '02_technical_xml_zffx_comfort.xml', false, 'EN 16931', '1.0', 'B', 1];
+        yield 'zffxextended2' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', '02_technical_xml_zffx_extended.xml', false, 'EXTENDED', '1.0', 'B', 1];
         // 3.
-        yield 'zffxminimum3' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', false, true, 'MINIMUM', '1.0', 1];
-        yield 'zffxbasicwl3' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', false, true, 'BASIC WL', '1.0', 1];
-        yield 'zffxbasic3' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', false, true, 'BASIC', '1.0', 1];
-        yield 'zffxcomfort3' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', false, true, 'EN 16931', '1.0', 1];
-        yield 'zffxextended3' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', false, true, 'EXTENDED', '1.0', 1];
+        yield 'zffxminimum3' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', false, true, 'MINIMUM', '1.0', 'B', 1];
+        yield 'zffxbasicwl3' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', false, true, 'BASIC WL', '1.0', 'B', 1];
+        yield 'zffxbasic3' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', false, true, 'BASIC', '1.0', 'B', 1];
+        yield 'zffxcomfort3' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', false, true, 'EN 16931', '1.0', 'B', 1];
+        yield 'zffxextended3' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', false, true, 'EXTENDED', '1.0', 'B', 1];
         // 4.
-        yield 'zffxminimum4' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', '02_technical_xml_zffx_minimum.xml', true, 'MINIMUM', '1.0', 1];
-        yield 'zffxbasicwl4' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', '02_technical_xml_zffx_basicwl.xml', true, 'BASIC WL', '1.0', 1];
-        yield 'zffxbasic4' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', '02_technical_xml_zffx_basic.xml', true, 'BASIC', '1.0', 1];
-        yield 'zffxcomfort4' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', '02_technical_xml_zffx_comfort.xml', true, 'EN 16931', '1.0', 1];
-        yield 'zffxextended4' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', '02_technical_xml_zffx_extended.xml', true, 'EXTENDED', '1.0', 1];
+        yield 'zffxminimum4' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', '02_technical_xml_zffx_minimum.xml', true, 'MINIMUM', '1.0', 'B', 1];
+        yield 'zffxbasicwl4' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', '02_technical_xml_zffx_basicwl.xml', true, 'BASIC WL', '1.0', 'B', 1];
+        yield 'zffxbasic4' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', '02_technical_xml_zffx_basic.xml', true, 'BASIC', '1.0', 'B', 1];
+        yield 'zffxcomfort4' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', '02_technical_xml_zffx_comfort.xml', true, 'EN 16931', '1.0', 'B', 1];
+        yield 'zffxextended4' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', '02_technical_xml_zffx_extended.xml', true, 'EXTENDED', '1.0', 'B', 1];
         // 5.
-        yield 'zffxminimum5' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', false, false, 'MINIMUM', '1.0', 2];
-        yield 'zffxbasicwl5' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', false, false, 'BASIC WL', '1.0', 2];
-        yield 'zffxbasic5' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', false, false, 'BASIC', '1.0', 2];
-        yield 'zffxcomfort5' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', false, false, 'EN 16931', '1.0', 2];
-        yield 'zffxextended5' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', false, false, 'EXTENDED', '1.0', 2];
+        yield 'zffxminimum5' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', false, false, 'MINIMUM', '1.0', 'B', 2];
+        yield 'zffxbasicwl5' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', false, false, 'BASIC WL', '1.0', 'B', 2];
+        yield 'zffxbasic5' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', false, false, 'BASIC', '1.0', 'B', 2];
+        yield 'zffxcomfort5' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', false, false, 'EN 16931', '1.0', 'B', 2];
+        yield 'zffxextended5' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', false, false, 'EXTENDED', '1.0', 'B', 2];
         // 6.
-        yield 'zffxminimum6' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', '02_technical_xml_zffx_minimum.xml', false, 'MINIMUM', '1.0', 2];
-        yield 'zffxbasicwl6' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', '02_technical_xml_zffx_basicwl.xml', false, 'BASIC WL', '1.0', 2];
-        yield 'zffxbasic6' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', '02_technical_xml_zffx_basic.xml', false, 'BASIC', '1.0', 2];
-        yield 'zffxcomfort6' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', '02_technical_xml_zffx_comfort.xml', false, 'EN 16931', '1.0', 2];
-        yield 'zffxextended6' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', '02_technical_xml_zffx_extended.xml', false, 'EXTENDED', '1.0', 2];
+        yield 'zffxminimum6' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', '02_technical_xml_zffx_minimum.xml', false, 'MINIMUM', '1.0', 'B', 2];
+        yield 'zffxbasicwl6' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', '02_technical_xml_zffx_basicwl.xml', false, 'BASIC WL', '1.0', 'B', 2];
+        yield 'zffxbasic6' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', '02_technical_xml_zffx_basic.xml', false, 'BASIC', '1.0', 'B', 2];
+        yield 'zffxcomfort6' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', '02_technical_xml_zffx_comfort.xml', false, 'EN 16931', '1.0', 'B', 2];
+        yield 'zffxextended6' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', '02_technical_xml_zffx_extended.xml', false, 'EXTENDED', '1.0', 'B', 2];
         // 7.
-        yield 'zffxminimum7' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', false, true, 'MINIMUM', '1.0', 2];
-        yield 'zffxbasicwl7' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', false, true, 'BASIC WL', '1.0', 2];
-        yield 'zffxbasic7' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', false, true, 'BASIC', '1.0', 2];
-        yield 'zffxcomfort7' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', false, true, 'EN 16931', '1.0', 2];
-        yield 'zffxextended7' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', false, true, 'EXTENDED', '1.0', 2];
+        yield 'zffxminimum7' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', false, true, 'MINIMUM', '1.0', 'B', 2];
+        yield 'zffxbasicwl7' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', false, true, 'BASIC WL', '1.0', 'B', 2];
+        yield 'zffxbasic7' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', false, true, 'BASIC', '1.0', 'B', 2];
+        yield 'zffxcomfort7' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', false, true, 'EN 16931', '1.0', 'B', 2];
+        yield 'zffxextended7' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', false, true, 'EXTENDED', '1.0', 'B', 2];
         // 8.
-        yield 'zffxminimum8' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', '02_technical_xml_zffx_minimum.xml', true, 'MINIMUM', '1.0', 2];
-        yield 'zffxbasicwl8' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', '02_technical_xml_zffx_basicwl.xml', true, 'BASIC WL', '1.0', 2];
-        yield 'zffxbasic8' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', '02_technical_xml_zffx_basic.xml', true, 'BASIC', '1.0', 2];
-        yield 'zffxcomfort8' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', '02_technical_xml_zffx_comfort.xml', true, 'EN 16931', '1.0', 2];
-        yield 'zffxextended8' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', '02_technical_xml_zffx_extended.xml', true, 'EXTENDED', '1.0', 2];
+        yield 'zffxminimum8' => ['zffxminimum', '<ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>', '02_technical_xml_zffx_minimum.xml', true, 'MINIMUM', '1.0', 'B', 2];
+        yield 'zffxbasicwl8' => ['zffxbasicwl', '<ram:ID>urn:factur-x.eu:1p0:basicwl</ram:ID>', '02_technical_xml_zffx_basicwl.xml', true, 'BASIC WL', '1.0', 'B', 2];
+        yield 'zffxbasic8' => ['zffxbasic', '<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic</ram:ID>', '02_technical_xml_zffx_basic.xml', true, 'BASIC', '1.0', 'B', 2];
+        yield 'zffxcomfort8' => ['zffxcomfort', '<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', '02_technical_xml_zffx_comfort.xml', true, 'EN 16931', '1.0', 'B', 2];
+        yield 'zffxextended8' => ['zffxextended', '<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>', '02_technical_xml_zffx_extended.xml', true, 'EXTENDED', '1.0', 'B', 2];
     }
 
     public function testProviderThatDoesNotSupportPdf(): void
