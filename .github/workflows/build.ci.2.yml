@@ -1,0 +1,434 @@
+name: Continuous Integration (V2)
+
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "**"
+    paths-ignore:
+      - "**/*.md"
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+    branches:
+      - master
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      publish_reports:
+        description: Publish unit-test and coverage reports.
+        required: false
+        type: boolean
+        default: true
+      publish_artifacts:
+        description: Upload CI artifacts.
+        required: false
+        type: boolean
+        default: true
+      generate_sbom:
+        description: Generate and upload SBOM artifacts.
+        required: false
+        type: boolean
+        default: true
+      run_external_validators:
+        description: Run KoSIT/Schematron and veraPDF validations.
+        required: false
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  COMPOSER_NO_AUDIT: "1"
+  COMPOSER_NO_INTERACTION: "1"
+  COMPOSER_PROCESS_TIMEOUT: "0"
+  VALIDATOR_URL: https://github.com/itplr-kosit/validator/releases/download/v1.6.2/validator-1.6.2.zip
+  VALIDATOR_STANDALONE_URL: https://github.com/itplr-kosit/validator/releases/download/v1.6.2/validator-1.6.2-standalone.jar
+  VALIDATOR_SCENARIO_URL: https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/v2026-01-31/xrechnung-3.0.2-validator-configuration-2026-01-31.zip
+  VALIDATOR_PATH: build/validator
+  VALIDATOR_ZIP_FILENAME: validator.zip
+  VALIDATOR_SCENARIO_ZIP_FILENAME: validator-configuration.zip
+  VALIDATOR_JAR_FILENAME: validator-1.6.2-standalone.jar
+  VALIDATOR_SCENARIO_FILENAME: scenarios.xml
+  VERAPDF_URL: https://software.verapdf.org/rel/verapdf-installer.zip
+  VERAPDF_PATH: build/verapdf
+  VERAPDF_ZIP_FILENAME: verapdf.zip
+
+jobs:
+  quality:
+    name: Quality gates (PHP ${{ matrix.php-version }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - "8.2"
+          - "8.3"
+          - "8.4"
+          - "8.5"
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json
+          coverage: none
+          tools: composer:v2
+
+      - name: Get Composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Composer dependencies
+        continue-on-error: true
+        uses: actions/cache@v5
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-php-${{ matrix.php-version }}-composer-${{ hashFiles('composer.json', 'composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-${{ matrix.php-version }}-composer-
+            ${{ runner.os }}-php-
+
+      - name: Validate Composer configuration
+        run: composer validate --strict --no-check-publish
+
+      - name: Install Composer dependencies
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          composer config --global github-oauth.github.com "$GITHUB_TOKEN"
+          composer install --prefer-dist --no-progress
+
+      - name: Prepare build directories
+        run: |
+          mkdir -p build/coverage
+          mkdir -p build/coverage-html
+          mkdir -p build/dist
+          mkdir -p build/logs
+          mkdir -p build/phpstan
+
+      - name: Run parallel lint
+        run: vendor/bin/parallel-lint src tests
+
+      - name: Cache PHP-CS-Fixer
+        continue-on-error: true
+        uses: actions/cache@v5
+        with:
+          path: build/.php-cs-fixer.cache
+          key: ${{ runner.os }}-php-${{ matrix.php-version }}-php-cs-fixer-${{ hashFiles('build/phpcsfixer.php', 'composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-${{ matrix.php-version }}-php-cs-fixer-
+
+      - name: Run PHP-CS-Fixer
+        env:
+          XDEBUG_MODE: off
+        run: vendor/bin/php-cs-fixer fix --config=build/phpcsfixer.php --dry-run --diff --no-interaction
+
+      - name: Cache PHPStan
+        continue-on-error: true
+        uses: actions/cache@v5
+        with:
+          path: build/phpstan
+          key: ${{ runner.os }}-php-${{ matrix.php-version }}-phpstan-${{ hashFiles('build/phpstan.neon', 'composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-${{ matrix.php-version }}-phpstan-
+
+      - name: Run PHPStan
+        run: php -d sys_temp_dir=$(pwd)/build/phpstan vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit=4G --error-format=github
+
+      - name: Run PHPUnit tests
+        env:
+          XDEBUG_MODE: off
+        run: vendor/bin/phpunit --configuration build/phpunit.xml --no-coverage
+
+      - name: Publish unit test results
+        continue-on-error: true
+        if: ${{ always() && (github.event_name != 'workflow_call' || inputs.publish_reports) }}
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        with:
+          files: build/logs/junit.xml
+          comment_mode: ${{ github.event_name == 'pull_request' && 'failures' || 'always' }}
+
+      - name: Upload test log artifacts
+        continue-on-error: true
+        if: ${{ always() && (github.event_name != 'workflow_call' || inputs.publish_artifacts) }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: ci-test-logs-php-${{ matrix.php-version }}
+          path: build/logs
+          if-no-files-found: warn
+          retention-days: 14
+
+  coverage:
+    name: Coverage report (PHP 8.5)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    needs:
+      - quality
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
+    if: ${{ github.event_name != 'workflow_call' || inputs.publish_reports }}
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.5"
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, xdebug
+          coverage: xdebug
+          tools: composer:v2
+
+      - name: Get Composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Composer dependencies
+        continue-on-error: true
+        uses: actions/cache@v5
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-php-8.5-composer-${{ hashFiles('composer.json', 'composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-8.5-composer-
+            ${{ runner.os }}-php-
+
+      - name: Install Composer dependencies
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          composer config --global github-oauth.github.com "$GITHUB_TOKEN"
+          composer install --prefer-dist --no-progress
+
+      - name: Prepare build directories
+        run: |
+          mkdir -p build/coverage
+          mkdir -p build/coverage-html
+          mkdir -p build/logs
+
+      - name: Run PHPUnit coverage
+        env:
+          XDEBUG_MODE: coverage
+        run: vendor/bin/phpunit --configuration build/phpunit.xml
+
+      - name: Publish coverage summary
+        continue-on-error: true
+        if: always()
+        run: php make/genbuildcoveragesummary.php --summary-file="$GITHUB_STEP_SUMMARY" --clover-file="build/logs/clover.xml" --crap4j-file="build/logs/crap4j.xml"
+
+      - name: Upload coverage artifacts
+        continue-on-error: true
+        if: ${{ always() && (github.event_name != 'workflow_call' || inputs.publish_artifacts) }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: ci-coverage-php-8.5
+          path: |
+            build/coverage
+            build/coverage-html
+            build/logs
+          if-no-files-found: warn
+          retention-days: 14
+
+  document-validation:
+    name: Document validation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    if: ${{ github.event_name != 'workflow_call' || inputs.run_external_validators }}
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v6
+
+      - name: Set up Java
+        uses: actions/setup-java@v5
+        with:
+          java-version: "11"
+          distribution: temurin
+
+      - name: Cache Schematron application
+        id: schematron-cache
+        continue-on-error: true
+        uses: actions/cache@v5
+        with:
+          path: ${{ env.VALIDATOR_PATH }}
+          key: ${{ runner.os }}-schematron-validator-1.6.2-xrechnung-2026-01-31
+
+      - name: Download Schematron application
+        if: steps.schematron-cache.outputs.cache-hit != 'true'
+        run: |
+          rm -rf "$VALIDATOR_PATH"
+          mkdir -p "$VALIDATOR_PATH"
+          curl --fail --location --show-error --silent "$VALIDATOR_URL" --output "$VALIDATOR_PATH/$VALIDATOR_ZIP_FILENAME"
+          curl --fail --location --show-error --silent "$VALIDATOR_STANDALONE_URL" --output "$VALIDATOR_PATH/$VALIDATOR_JAR_FILENAME"
+          curl --fail --location --show-error --silent "$VALIDATOR_SCENARIO_URL" --output "$VALIDATOR_PATH/$VALIDATOR_SCENARIO_ZIP_FILENAME"
+          unzip -q "$VALIDATOR_PATH/$VALIDATOR_ZIP_FILENAME" -d "$VALIDATOR_PATH"
+          unzip -q "$VALIDATOR_PATH/$VALIDATOR_SCENARIO_ZIP_FILENAME" -d "$VALIDATOR_PATH"
+
+      - name: Run Schematron tests
+        run: |
+          test -f "$VALIDATOR_PATH/$VALIDATOR_JAR_FILENAME"
+          test -f "$VALIDATOR_PATH/$VALIDATOR_SCENARIO_FILENAME"
+
+          java -jar "$VALIDATOR_PATH/$VALIDATOR_JAR_FILENAME" -r "$VALIDATOR_PATH" -s "$VALIDATOR_PATH/$VALIDATOR_SCENARIO_FILENAME" tests/assets/00_case_comfort_simple.xml
+          java -jar "$VALIDATOR_PATH/$VALIDATOR_JAR_FILENAME" -r "$VALIDATOR_PATH" -s "$VALIDATOR_PATH/$VALIDATOR_SCENARIO_FILENAME" tests/assets/00_case_comfort_simple_dto.xml
+          java -jar "$VALIDATOR_PATH/$VALIDATOR_JAR_FILENAME" -r "$VALIDATOR_PATH" -s "$VALIDATOR_PATH/$VALIDATOR_SCENARIO_FILENAME" tests/assets/00_case_xrechnung_cii_simple.xml
+          java -jar "$VALIDATOR_PATH/$VALIDATOR_JAR_FILENAME" -r "$VALIDATOR_PATH" -s "$VALIDATOR_PATH/$VALIDATOR_SCENARIO_FILENAME" tests/assets/00_case_xrechnung_cii_simple_dto.xml
+          java -jar "$VALIDATOR_PATH/$VALIDATOR_JAR_FILENAME" -r "$VALIDATOR_PATH" -s "$VALIDATOR_PATH/$VALIDATOR_SCENARIO_FILENAME" tests/assets/00_case_xrechnung_ublinvoice_simple.xml
+          java -jar "$VALIDATOR_PATH/$VALIDATOR_JAR_FILENAME" -r "$VALIDATOR_PATH" -s "$VALIDATOR_PATH/$VALIDATOR_SCENARIO_FILENAME" tests/assets/00_case_xrechnung_ublinvoice_simple_dto.xml
+          java -jar "$VALIDATOR_PATH/$VALIDATOR_JAR_FILENAME" -r "$VALIDATOR_PATH" -s "$VALIDATOR_PATH/$VALIDATOR_SCENARIO_FILENAME" tests/assets/00_case_xrechnung_ublcreditnote_simple.xml
+          java -jar "$VALIDATOR_PATH/$VALIDATOR_JAR_FILENAME" -r "$VALIDATOR_PATH" -s "$VALIDATOR_PATH/$VALIDATOR_SCENARIO_FILENAME" tests/assets/00_case_xrechnung_ublcreditnote_simple_dto.xml
+
+      - name: Cache veraPDF application
+        id: verapdf-cache
+        continue-on-error: true
+        uses: actions/cache@v5
+        with:
+          path: ${{ env.VERAPDF_PATH }}
+          key: ${{ runner.os }}-verapdf-installer-latest
+
+      - name: Download veraPDF application
+        if: steps.verapdf-cache.outputs.cache-hit != 'true'
+        run: |
+          rm -rf "$VERAPDF_PATH"
+          mkdir -p "$VERAPDF_PATH"
+          curl --fail --location --show-error --silent "$VERAPDF_URL" --output "$VERAPDF_PATH/$VERAPDF_ZIP_FILENAME"
+          unzip -q -j "$VERAPDF_PATH/$VERAPDF_ZIP_FILENAME" -d "$VERAPDF_PATH"
+
+          cat > "$VERAPDF_PATH/install.xml" <<EOF
+          <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+          <AutomatedInstallation langpack="eng">
+              <com.izforge.izpack.panels.htmlhello.HTMLHelloPanel id="welcome"/>
+              <com.izforge.izpack.panels.target.TargetPanel id="install_dir">
+                  <installpath>$(pwd)/$VERAPDF_PATH</installpath>
+              </com.izforge.izpack.panels.target.TargetPanel>
+              <com.izforge.izpack.panels.packs.PacksPanel id="sdk_pack_select">
+                  <pack index="0" name="veraPDF Mac and *nix Scripts" selected="true"/>
+                  <pack index="1" name="veraPDF Validation model" selected="true"/>
+                  <pack index="2" name="veraPDF Documentation" selected="true"/>
+                  <pack index="3" name="veraPDF Sample Plugins" selected="true"/>
+              </com.izforge.izpack.panels.packs.PacksPanel>
+              <com.izforge.izpack.panels.install.InstallPanel id="install"/>
+              <com.izforge.izpack.panels.finish.FinishPanel id="finish"/>
+          </AutomatedInstallation>
+          EOF
+
+          verapdf_installer_jar=$(find "$VERAPDF_PATH" -type f -name '*.jar' | head -n 1)
+          if [ -z "$verapdf_installer_jar" ]; then
+            echo 'No veraPDF installer found' >&2
+            exit 1
+          fi
+
+          echo "veraPDF installer found at $verapdf_installer_jar"
+          java -jar "$verapdf_installer_jar" "$VERAPDF_PATH/install.xml"
+
+      - name: Run veraPDF tests
+        run: |
+          test -x "$VERAPDF_PATH/verapdf"
+
+          echo 'Running PDF validation (1)'
+          verapdf_result=$("$VERAPDF_PATH/verapdf" --format text --flavour 3b --loglevel 0 tests/assets/00_case_comfort_simple.pdf)
+          echo 'Result of validation (1)'
+          echo "$verapdf_result"
+          [[ "$verapdf_result" == PASS* ]] && echo 'PDF validation passed' || { echo 'Error: PDF validation not passed' >&2; exit 1; }
+
+          echo 'Running PDF validation (2)'
+          verapdf_result=$("$VERAPDF_PATH/verapdf" --format text --flavour 3b --loglevel 0 tests/assets/00_case_extended_simple.pdf)
+          echo 'Result of validation (2)'
+          echo "$verapdf_result"
+          [[ "$verapdf_result" == PASS* ]] && echo 'PDF validation passed' || { echo 'Error: PDF validation not passed' >&2; exit 1; }
+
+  sbom:
+    name: SBOM
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    continue-on-error: true
+    permissions:
+      contents: read
+    if: ${{ github.event_name != 'workflow_call' || inputs.generate_sbom }}
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v6
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.5"
+          extensions: dom, json, libxml, mbstring, zip
+          coverage: none
+          tools: composer:v2
+
+      - name: Get Composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Composer dependencies
+        continue-on-error: true
+        uses: actions/cache@v5
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-php-8.5-composer-${{ hashFiles('composer.json', 'composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-8.5-composer-
+            ${{ runner.os }}-php-
+
+      - name: Install Composer dependencies
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          composer config --global github-oauth.github.com "$GITHUB_TOKEN"
+          composer install --prefer-dist --no-progress --no-dev
+
+      - name: Generate SBOM
+        run: |
+          mkdir -p build/dist
+          composer global config --no-plugins allow-plugins.cyclonedx/cyclonedx-php-composer true
+          composer global require --no-progress cyclonedx/cyclonedx-php-composer
+          composer CycloneDX:make-sbom --omit=dev --output-format=JSON --output-file=build/dist/sbom.json
+          composer CycloneDX:make-sbom --omit=dev --output-format=XML --output-file=build/dist/sbom.xml
+
+      - name: Upload SBOM artifacts
+        continue-on-error: true
+        if: ${{ github.event_name != 'workflow_call' || inputs.publish_artifacts }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: ci-sbom-php-8.5
+          path: |
+            build/dist/sbom.json
+            build/dist/sbom.xml
+          if-no-files-found: warn
+          retention-days: 30
