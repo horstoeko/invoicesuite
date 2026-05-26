@@ -1,3 +1,25 @@
+## v0.0.10
+
+``Previous version v0.0.9``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [00d2087f](https://github.com/horstoeko/invoicesuite/commit/00d2087f) | 2026-05-23 09:51:37 CEST | HorstOeko | [ENH] Added support for setting the PDF/A Conformance Level in InvoiceSuitePdfDocumentBuilder -> Improved Tests | 
+| :new:  | [0b853c0b](https://github.com/horstoeko/invoicesuite/commit/0b853c0b) | 2026-05-23 09:32:51 CEST | HorstOeko | [ENH] Added support for setting the PDF/A Conformance Level in InvoiceSuitePdfDocumentBuilder | 
+| :new:  | [bd8a157c](https://github.com/horstoeko/invoicesuite/commit/bd8a157c) | 2026-05-22 05:09:46 CEST | HorstOeko | [ENH] Added "ErrorOrInternalError" methods toMessageBag -> Tests | 
+| :new:  | [6ea37b48](https://github.com/horstoeko/invoicesuite/commit/6ea37b48) | 2026-05-21 05:42:37 CEST | HorstOeko | [ENH] Added "ErrorOrInternalError" methods toMessageBag | 
+| :new:  | [39187569](https://github.com/horstoeko/invoicesuite/commit/39187569) | 2026-05-20 18:22:14 CEST | HorstOeko | [ENH] Added InternalErrors for MessageBag | 
+| :new:  | [eee89ee6](https://github.com/horstoeko/invoicesuite/commit/eee89ee6) | 2026-05-20 05:46:45 CEST | HorstOeko | [ENH] Added functionallity to copy messages from one messagebag to another one | 
+| :new:  | [7378718d](https://github.com/horstoeko/invoicesuite/commit/7378718d) | 2026-05-18 05:19:56 CEST | HorstOeko | [ENH] Use of InvoiceSuitePdfDocumentBuilder::createFromDocumentFileAndPdfFile in several commands | 
+| :bug:  | [fb589a39](https://github.com/horstoeko/invoicesuite/commit/fb589a39) | 2026-05-17 16:35:46 CEST | HorstOeko | [FIX] Improved using Rector | 
+| :bug:  | [c7687e28](https://github.com/horstoeko/invoicesuite/commit/c7687e28) | 2026-05-17 12:42:17 CEST | HorstOeko | [FIX] Fixed examples (Rector issues) | 
+| :new:  | [45ec840b](https://github.com/horstoeko/invoicesuite/commit/45ec840b) | 2026-05-17 10:15:26 CEST | HorstOeko | [ENH] Renamed InvoiceSuiteFileUtils::isReadableFilePath to isReadableFile | 
+| :new:  | [43148daa](https://github.com/horstoeko/invoicesuite/commit/43148daa) | 2026-05-17 09:43:05 CEST | HorstOeko | [ENH] Usage of "getContentFromFile" instead of "getContentFromFileOrString in console commands | 
+| :new:  | [ae1a72fc](https://github.com/horstoeko/invoicesuite/commit/ae1a72fc) | 2026-05-17 09:32:06 CEST | HorstOeko | [ENH] Centralised duplicate code for `file_put_contents` in `InvoiceSuiteFileUtils::putContentToFile` | 
+| :new:  | [28455c49](https://github.com/horstoeko/invoicesuite/commit/28455c49) | 2026-05-17 09:05:56 CEST | HorstOeko | [ENH] Centralised duplicate code for `file_get_contents` in `InvoiceSuiteFileUtils::getContentFromFile` | 
+
+:exclamation: _There are 10 internal commit(s)_
+
 ## v0.0.9
 
 ``Previous version v0.0.8``
