@@ -29,6 +29,10 @@ defaults:
     shell: bash
 
 env:
+  COMPOSER_NO_AUDIT: "1"
+  COMPOSER_NO_INTERACTION: "1"
+  COMPOSER_PROCESS_TIMEOUT: "0"
+  XDEBUG_MODE: off
   VALIDATORURL: https://github.com/itplr-kosit/validator/releases/download/v1.6.2/validator-1.6.2.zip
   VALIDATORURL2: https://github.com/itplr-kosit/validator/releases/download/v1.6.2/validator-1.6.2-standalone.jar
   VALIDATORSCENARIOURL: https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/v2026-01-31/xrechnung-3.0.2-validator-configuration-2026-01-31.zip
@@ -66,7 +70,10 @@ jobs:
         with:
           php-version: ${{ matrix.phpversion }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, xdebug
+          tools: composer:v2
           coverage: xdebug
+          ini-values: memory_limit=-1
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up JDK 11
         uses: actions/setup-java@v5
@@ -74,28 +81,14 @@ jobs:
           java-version: '11'
           distribution: temurin
 
-      - name: Get Composer cache directory
-        id: composer-cache
-        run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
-
-      - name: Cache Composer dependencies
-        uses: actions/cache@v5
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-${{ matrix.phpversion }}-composer-${{ hashFiles('**/composer.json', '**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ matrix.phpversion }}-composer-${{ hashFiles('**/composer.json') }}
-            ${{ runner.os }}-${{ matrix.phpversion }}-composer-
-
       - name: Install Composer dependencies
-        run: |
-          composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
-
-          if [ -f composer.lock ]; then
-            composer install --no-interaction --prefer-dist --no-progress
-          else
-            composer update --no-interaction --prefer-dist --no-progress
-          fi
+        uses: ramsey/composer-install@v4
+        with:
+          dependency-versions: locked
+          composer-options: --prefer-dist
+          require-lock-file: false
+        env:
+          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.GITHUB_TOKEN }}"}}'
 
       - name: Prepare build directories
         run: |
@@ -110,25 +103,25 @@ jobs:
       - name: Run parallel lint
         run: vendor/bin/parallel-lint src tests
 
-      - name: Calculate PHP-CS-Fixer cache key
-        id: hash-php-cs-fixer
-        run: echo "hash=$(sha256sum build/phpcsfixer.php | cut -c1-16)" >> "$GITHUB_OUTPUT"
-
       - name: Cache PHP-CS-Fixer
+        continue-on-error: true
         uses: actions/cache@v5
         with:
           path: build/.php-cs-fixer.cache
-          key: ${{ runner.os }}-${{ matrix.phpversion }}-php-cs-fixer-${{ steps.hash-php-cs-fixer.outputs.hash }}
-
-      - name: Calculate PHPStan cache key
-        id: hash-phpstan
-        run: echo "hash=$(sha256sum build/phpstan.neon | cut -c1-16)" >> "$GITHUB_OUTPUT"
+          key: ${{ runner.os }}-php-cs-fixer-php-${{ matrix.phpversion }}-${{ hashFiles('build/phpcsfixer.php', 'composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-cs-fixer-php-${{ matrix.phpversion }}-
+            ${{ runner.os }}-php-cs-fixer-
 
       - name: Cache PHPStan
+        continue-on-error: true
         uses: actions/cache@v5
         with:
           path: build/phpstan
-          key: ${{ runner.os }}-${{ matrix.phpversion }}-phpstan-${{ steps.hash-phpstan.outputs.hash }}
+          key: ${{ runner.os }}-phpstan-php-${{ matrix.phpversion }}-${{ hashFiles('build/phpstan.neon', 'composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-phpstan-php-${{ matrix.phpversion }}-
+            ${{ runner.os }}-phpstan-
 
       - name: Run PHP-CS-Fixer
         env:
@@ -148,11 +141,12 @@ jobs:
         run: echo "hash=$(echo '${{ env.VALIDATORURL }} ${{ env.VALIDATORSCENARIOURL }}' | sha256sum | cut -c1-16)" >> "$GITHUB_OUTPUT"
 
       - name: Cache Schematron application
+        continue-on-error: true
         id: cache-validator
         uses: actions/cache@v5
         with:
           path: ${{ env.VALIDATORPATH }}
-          key: ${{ runner.os }}-${{ matrix.phpversion }}-validator-${{ steps.hash-validator.outputs.hash }}
+          key: ${{ runner.os }}-validator-${{ steps.hash-validator.outputs.hash }}
 
       - name: Download Schematron application
         if: steps.cache-validator.outputs.cache-hit != 'true'
@@ -181,11 +175,12 @@ jobs:
         run: echo "hash=$(echo '${{ env.VERAPDFURL }}' | sha256sum | cut -c1-16)" >> "$GITHUB_OUTPUT"
 
       - name: Cache veraPDF application
+        continue-on-error: true
         id: cache-verapdf
         uses: actions/cache@v5
         with:
           path: ${{ env.VERAPDFPATH }}
-          key: ${{ runner.os }}-${{ matrix.phpversion }}-verapdf-${{ steps.hash-verapdf.outputs.hash }}
+          key: ${{ runner.os }}-verapdf-${{ steps.hash-verapdf.outputs.hash }}
 
       - name: Download veraPDF application
         if: steps.cache-verapdf.outputs.cache-hit != 'true'
@@ -237,19 +232,20 @@ jobs:
           [[ "$VERAPDFRESULT" == PASS* ]] && echo 'PDF validation passed' || { echo 'Error: PDF validation not passed' >&2; exit 1; }
 
       - name: Publish unit test results
-        if: always()
         continue-on-error: true
+        if: always()
         uses: EnricoMi/publish-unit-test-result-action@v2
         with:
           files: build/logs/junit.xml
           comment_mode: ${{ github.event_name == 'pull_request' && 'failures' || 'always' }}
 
       - name: Publish coverage summary
-        if: always()
         continue-on-error: true
+        if: always()
         run: php make/genbuildcoveragesummary.php --summary-file="$GITHUB_STEP_SUMMARY" --clover-file="build/logs/clover.xml" --crap4j-file="build/logs/crap4j.xml"
 
       - name: Generate SBOM
+        continue-on-error: true
         run: |
           composer global config --no-plugins allow-plugins.cyclonedx/cyclonedx-php-composer true
           composer global require --no-interaction --no-progress cyclonedx/cyclonedx-php-composer
@@ -257,7 +253,8 @@ jobs:
           composer CycloneDX:make-sbom --omit=dev --output-format=XML --output-file=build/dist/sbom.xml
 
       - name: Publish SBOM artifacts
-        uses: actions/upload-artifact@v7
+        continue-on-error: true
+        uses: actions/upload-artifact@v6
         with:
           name: SBOM artifacts for ${{ matrix.operating-system }} PHP ${{ matrix.phpversion }}
           path: |
@@ -266,9 +263,9 @@ jobs:
           if-no-files-found: error
 
       - name: Publish build log artifacts
-        if: always()
         continue-on-error: true
-        uses: actions/upload-artifact@v7
+        if: always()
+        uses: actions/upload-artifact@v6
         with:
           name: Build log artifacts for ${{ matrix.operating-system }} PHP ${{ matrix.phpversion }}
           path: build/logs
