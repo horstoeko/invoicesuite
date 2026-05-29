@@ -56,7 +56,7 @@ class InvoiceSuiteInternalMethodGuard
         $guardedMethodCallSiteFile = $guardedMethodStackItem['file'] ?? null;
         $allowedNamespacePrefix = rtrim($allowedNamespacePrefix, '\\') . '\\';
 
-        if (!is_string($callerClass) || !str_starts_with($callerClass, $allowedNamespacePrefix)) {
+        if (!is_string($callerClass) || !InvoiceSuiteStringUtils::startsWith($callerClass, $allowedNamespacePrefix)) {
             self::throwNotInternalCall($guardedMethod);
         }
 
@@ -75,11 +75,11 @@ class InvoiceSuiteInternalMethodGuard
         $normalizedAllowedSourceDirectory = str_replace('\\', '/', $realAllowedSourceDirectory);
         $normalizedGuardedMethodCallSiteFile = str_replace('\\', '/', $realGuardedMethodCallSiteFile);
 
-        if (!str_ends_with($normalizedAllowedSourceDirectory, '/')) {
+        if (!InvoiceSuiteStringUtils::endsWith($normalizedAllowedSourceDirectory, '/')) {
             $normalizedAllowedSourceDirectory .= '/';
         }
 
-        if (!str_starts_with($normalizedGuardedMethodCallSiteFile, $normalizedAllowedSourceDirectory)) {
+        if (!InvoiceSuiteStringUtils::startsWith($normalizedGuardedMethodCallSiteFile, $normalizedAllowedSourceDirectory)) {
             self::throwNotInternalCall($guardedMethod);
         }
     }
