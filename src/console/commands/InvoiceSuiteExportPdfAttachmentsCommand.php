@@ -14,6 +14,7 @@ namespace horstoeko\invoicesuite\console\commands;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteInternalMethodCallException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuitePdfDocumentReader;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractorAttachment;
@@ -71,6 +72,7 @@ class InvoiceSuiteExportPdfAttachmentsCommand extends InvoiceSuiteAbstractComman
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteInternalMethodCallException
      * @throws InvoiceSuiteUnknownContentException
      * @throws PdfParserException
      * @throws RuntimeException

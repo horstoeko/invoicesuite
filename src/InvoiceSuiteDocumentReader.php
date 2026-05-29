@@ -19,15 +19,18 @@ use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
 use horstoeko\invoicesuite\concerns\HandlesRawContents;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentBaseReader;
+use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteBadMethodCallException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteInternalMethodCallException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteInternalMethodGuard;
 use horstoeko\invoicesuite\utils\InvoiceSuiteMessageBagItem;
 use horstoeko\invoicesuite\utils\InvoiceSuiteMessageSeverity;
 use JMS\Serializer\Exception\RuntimeException;
@@ -50,30 +53,34 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     /**
      * Constructor (hidden)
      *
-     * @param string $fromContent
+     * @param string                                          $fromContent
+     * @param null|InvoiceSuiteAbstractDocumentFormatProvider $documentFormatProvider
      *
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
      * @throws RuntimeException
      */
     final protected function __construct(
-        string $fromContent
+        string $fromContent,
+        ?InvoiceSuiteAbstractDocumentFormatProvider $documentFormatProvider = null
     ) {
-        $this->resolveAvailableDocumentFormatProviders();
+        if (is_null($documentFormatProvider)) {
+            $this->resolveAvailableDocumentFormatProviders();
 
-        $formatProviders = array_filter(
-            $this->getRegisteredDocumentFormatProviders(),
-            static fn ($formatProvider) => $formatProvider->getIsSatisfiableBySerializedContent($fromContent)
-        );
+            $formatProviders = array_filter(
+                $this->getRegisteredDocumentFormatProviders(),
+                static fn ($formatProvider) => $formatProvider->getIsSatisfiableBySerializedContent($fromContent)
+            );
 
-        if ([] === $formatProviders) {
-            throw new InvoiceSuiteFormatProviderNotFoundException('unknown');
+            if ([] === $formatProviders) {
+                throw new InvoiceSuiteFormatProviderNotFoundException('unknown');
+            }
+
+            $documentFormatProvider = reset($formatProviders);
         }
 
-        $formatProvider = reset($formatProviders);
-
         $this->setRawDocumentContent($fromContent);
-        $this->setCurrentDocumentFormatProvider($formatProvider);
+        $this->setCurrentDocumentFormatProvider($documentFormatProvider);
         $this->getCurrentDocumentFormatProvider()->getReader()->deserializeFromContent($fromContent);
     }
 
@@ -127,6 +134,57 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         string $fromContent
     ): static {
         return new static($fromContent);
+    }
+
+    /**
+     * Create reader by file with an already resolved document format provider
+     *
+     * @internal
+     *
+     * @param  string                                     $fromFile
+     * @param  InvoiceSuiteAbstractDocumentFormatProvider $documentFormatProvider
+     * @return static
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteInternalMethodCallException
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws RuntimeException
+     */
+    public static function createFromFileWithDocumentFormatProvider(
+        string $fromFile,
+        InvoiceSuiteAbstractDocumentFormatProvider $documentFormatProvider
+    ): static {
+        InvoiceSuiteInternalMethodGuard::ensureInternalCall(__METHOD__);
+
+        return static::createFromContentWithDocumentFormatProvider(
+            InvoiceSuiteFileUtils::getContentFromFile($fromFile),
+            $documentFormatProvider
+        );
+    }
+
+    /**
+     * Create reader by content with an already resolved document format provider
+     *
+     * @internal
+     *
+     * @param  string                                     $fromContent
+     * @param  InvoiceSuiteAbstractDocumentFormatProvider $documentFormatProvider
+     * @return static
+     *
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteInternalMethodCallException
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws RuntimeException
+     */
+    public static function createFromContentWithDocumentFormatProvider(
+        string $fromContent,
+        InvoiceSuiteAbstractDocumentFormatProvider $documentFormatProvider
+    ): static {
+        InvoiceSuiteInternalMethodGuard::ensureInternalCall(__METHOD__);
+
+        return new static($fromContent, $documentFormatProvider);
     }
 
     /**
