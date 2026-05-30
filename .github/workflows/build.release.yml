@@ -244,7 +244,7 @@ jobs:
       - name: Publish build log artifacts
         continue-on-error: true
         if: always()
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: Build log artifacts for ${{ matrix.operating-system }} PHP ${{ matrix.phpversion }} (Release)
           path: build/logs
