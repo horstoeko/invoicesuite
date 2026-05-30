@@ -18,6 +18,18 @@ use Random\RandomException;
 class InvoiceSuiteStringUtils
 {
     /**
+     * Find whether the type of a variable is string
+     *
+     * @param  mixed $value
+     * @return bool
+     */
+    public static function is(
+        mixed $value
+    ): bool {
+        return is_string($value);
+    }
+
+    /**
      * Its like the almost known C#-Methods
      * Tests if string is not null and has a value != ""
      *
@@ -230,5 +242,41 @@ class InvoiceSuiteStringUtils
     public static function startsWith(?string $haystack, ?string $needle): bool
     {
         return str_starts_with($haystack, $needle);
+    }
+
+    /**
+     * Strip whitespace (or other characters) from the beginning and end of a string
+     *
+     * @param  string $string
+     * @param  string $characters
+     * @return string
+     */
+    public static function trim(string $string, string $characters = " \n\r\t\v\0"): string
+    {
+        return trim($string, $characters);
+    }
+
+    /**
+     * Strip whitespace (or other characters) from the end of a string
+     *
+     * @param  string $string
+     * @param  string $characters
+     * @return string
+     */
+    public static function trimEnd(string $string, string $characters = " \n\r\t\v\0"): string
+    {
+        return rtrim($string, $characters);
+    }
+
+    /**
+     * Strip whitespace (or other characters) from the beginning of a string
+     *
+     * @param  string $string
+     * @param  string $characters
+     * @return string
+     */
+    public static function trimStart(string $string, string $characters = " \n\r\t\v\0"): string
+    {
+        return ltrim($string, $characters);
     }
 }

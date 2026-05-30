@@ -255,7 +255,7 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     {
         $value = $this->input->getArgument($name);
 
-        if (is_string($value)) {
+        if (InvoiceSuiteStringUtils::is($value)) {
             return $value;
         }
 
@@ -300,7 +300,7 @@ abstract class InvoiceSuiteAbstractCommand extends Command
     {
         $value = $this->input->getOption($name);
 
-        if (is_string($value)) {
+        if (InvoiceSuiteStringUtils::is($value)) {
             return $value;
         }
 

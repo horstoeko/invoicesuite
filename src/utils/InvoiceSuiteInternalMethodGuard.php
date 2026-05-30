@@ -2,12 +2,19 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of horstoeko/invoicesuite.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace horstoeko\invoicesuite\utils;
 
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInternalMethodCallException;
 
 /**
- * Class for guarding methods marked as internal against external calls.
+ * Class representing a guard for internal method calls
  *
  * @category InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
@@ -16,107 +23,99 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteInternalMethodCallException;
  */
 class InvoiceSuiteInternalMethodGuard
 {
-    private const DEFAULT_ALLOWED_NAMESPACE_PREFIX = 'horstoeko\invoicesuite\\';
-
-    private const GUARDED_METHOD_STACK_POSITION = 1;
-
-    private const DEFAULT_CALLER_STACK_POSITION = 2;
-
     /**
-     * Ensure that the guarded method was called from an allowed internal class.
+     * Ensure that an internal method is called from an allowed namespace
      *
-     * @param  string      $guardedMethod
-     * @param  string      $allowedNamespacePrefix
-     * @param  null|string $allowedSourceDirectory
-     * @param  int         $callerStackPosition
-     * @return void
+     * @param string $internalMethod
      *
      * @throws InvoiceSuiteInternalMethodCallException
      */
     public static function ensureInternalCall(
-        string $guardedMethod,
-        string $allowedNamespacePrefix = self::DEFAULT_ALLOWED_NAMESPACE_PREFIX,
-        ?string $allowedSourceDirectory = null,
-        int $callerStackPosition = self::DEFAULT_CALLER_STACK_POSITION
+        string $internalMethod
     ): void {
-        $callStackLimit = max(self::DEFAULT_CALLER_STACK_POSITION, $callerStackPosition) + 1;
-        $callStack = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, $callStackLimit);
-        $guardedMethodStackItem = $callStack[self::GUARDED_METHOD_STACK_POSITION] ?? null;
-        $callerStackItem = $callStack[$callerStackPosition] ?? null;
+        $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 3);
+        $guardedMethod = $backtrace[1] ?? [];
+        $caller = $backtrace[2] ?? [];
 
-        if (!self::isGuardedMethodStackItem($guardedMethodStackItem, $guardedMethod)) {
-            self::throw($guardedMethod);
+        if (self::getMethodName($guardedMethod) !== $internalMethod) {
+            throw new InvoiceSuiteInternalMethodCallException($internalMethod);
         }
 
-        if (!is_array($callerStackItem)) {
-            self::throw($guardedMethod);
+        $callerClass = $caller['class'] ?? null;
+
+        if (!InvoiceSuiteStringUtils::is($callerClass)) {
+            throw new InvoiceSuiteInternalMethodCallException($internalMethod);
         }
 
-        $callerClass = $callerStackItem['class'] ?? null;
-        $guardedMethodCallSiteFile = $guardedMethodStackItem['file'] ?? null;
-        $allowedNamespacePrefix = rtrim($allowedNamespacePrefix, '\\') . '\\';
-
-        if (!is_string($callerClass) || !InvoiceSuiteStringUtils::startsWith($callerClass, $allowedNamespacePrefix)) {
-            self::throw($guardedMethod);
+        if (self::matchesAnyNamespacePrefix($callerClass, self::getExcludedNamespaces())) {
+            throw new InvoiceSuiteInternalMethodCallException($internalMethod);
         }
 
-        if (!is_string($guardedMethodCallSiteFile)) {
-            self::throw($guardedMethod);
-        }
-
-        $allowedSourceDirectory ??= dirname(__DIR__);
-        $realAllowedSourceDirectory = realpath($allowedSourceDirectory);
-        $realGuardedMethodCallSiteFile = realpath($guardedMethodCallSiteFile);
-
-        if (!is_string($realAllowedSourceDirectory) || !is_string($realGuardedMethodCallSiteFile)) {
-            self::throw($guardedMethod);
-        }
-
-        $normalizedAllowedSourceDirectory = str_replace('\\', '/', $realAllowedSourceDirectory);
-        $normalizedGuardedMethodCallSiteFile = str_replace('\\', '/', $realGuardedMethodCallSiteFile);
-
-        if (!InvoiceSuiteStringUtils::endsWith($normalizedAllowedSourceDirectory, '/')) {
-            $normalizedAllowedSourceDirectory .= '/';
-        }
-
-        if (!InvoiceSuiteStringUtils::startsWith($normalizedGuardedMethodCallSiteFile, $normalizedAllowedSourceDirectory)) {
-            self::throw($guardedMethod);
+        if (false === self::matchesAnyNamespacePrefix($callerClass, self::getAllowedNamespaces())) {
+            throw new InvoiceSuiteInternalMethodCallException($internalMethod);
         }
     }
 
     /**
-     * Check whether the guard was called directly from the guarded method.
+     * Get the full method name from a debug backtrace frame
      *
-     * @param  mixed  $callStackItem
-     * @param  string $guardedMethod
+     * @param  array<string,mixed> $backtraceFrame
+     * @return string
+     */
+    private static function getMethodName(array $backtraceFrame): string
+    {
+        $className = $backtraceFrame['class'] ?? null;
+        $methodName = $backtraceFrame['function'] ?? null;
+
+        if (!InvoiceSuiteStringUtils::is($className) || !InvoiceSuiteStringUtils::is($methodName)) {
+            return '';
+        }
+
+        return sprintf('%s::%s', $className, $methodName);
+    }
+
+    /**
+     * Check if class name matches any namespace prefix
+     *
+     * @param  string            $className
+     * @param  array<int,string> $namespacePrefixes
      * @return bool
      */
-    private static function isGuardedMethodStackItem(mixed $callStackItem, string $guardedMethod): bool
-    {
-        if (!is_array($callStackItem)) {
-            return false;
+    private static function matchesAnyNamespacePrefix(
+        string $className,
+        array $namespacePrefixes
+    ): bool {
+        foreach ($namespacePrefixes as $namespacePrefix) {
+            if (InvoiceSuiteStringUtils::startsWith($className, InvoiceSuiteStringUtils::trimEnd($namespacePrefix, '\\') . '\\')) {
+                return true;
+            }
         }
 
-        $className = $callStackItem['class'] ?? null;
-        $methodName = $callStackItem['function'] ?? null;
-
-        if (!is_string($className) || !is_string($methodName)) {
-            return false;
-        }
-
-        return sprintf('%s::%s', $className, $methodName) === $guardedMethod;
+        return false;
     }
 
     /**
-     * Throw the exception for an invalid internal call.
+     * Return a list of allowed namespaces
      *
-     * @param  string $guardedMethod
-     * @return never
-     *
-     * @throws InvoiceSuiteInternalMethodCallException
+     * @return array<int,string>
      */
-    private static function throw(string $guardedMethod): never
+    private static function getAllowedNamespaces(): array
     {
-        throw new InvoiceSuiteInternalMethodCallException($guardedMethod);
+        return [
+            'horstoeko\invoicesuite\\',
+            'horstoeko\zugferd\\',
+        ];
+    }
+
+    /**
+     * Return a list of namespaces to exclude
+     *
+     * @return array<int,string>
+     */
+    private static function getExcludedNamespaces(): array
+    {
+        return [
+            'horstoeko\invoicesuite\tests\\',
+        ];
     }
 }

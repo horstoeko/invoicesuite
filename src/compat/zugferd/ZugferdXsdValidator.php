@@ -14,6 +14,7 @@ namespace horstoeko\zugferd;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteMessageBagItem;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\validators\InvoiceSuiteXsdDocumentValidator;
 use JMS\Serializer\Exception\RuntimeException;
 
@@ -64,11 +65,11 @@ class ZugferdXsdValidator
     ): self {
         $this->xsdValidator = null;
 
-        if (!is_string($document) && !($document instanceof ZugferdDocument)) {
+        if (!InvoiceSuiteStringUtils::is($document) && !($document instanceof ZugferdDocument)) {
             return $this;
         }
 
-        if (is_string($document)) {
+        if (InvoiceSuiteStringUtils::is($document)) {
             $this->xsdValidator = InvoiceSuiteXsdDocumentValidator::createFromContent(
                 $document
             );

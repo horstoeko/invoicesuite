@@ -667,6 +667,72 @@ final class UtilsTest extends TestCase
         $this->assertTrue(InvoiceSuiteStringUtils::equalsNoCase('', ''));
     }
 
+    public function testInvoiceSuiteStringUtilsContains(): void
+    {
+        $this->assertTrue(InvoiceSuiteStringUtils::contains('xxabcxx', 'abc'));
+        $this->assertFalse(InvoiceSuiteStringUtils::contains('xxabcxx', 'def'));
+        $this->assertFalse(InvoiceSuiteStringUtils::contains('xxabcxx', 'ABC'));
+    }
+
+    public function testInvoiceSuiteStringUtilsContainsNoCase(): void
+    {
+        $this->assertTrue(InvoiceSuiteStringUtils::containsNoCase('xxabcxx', 'abc'));
+        $this->assertFalse(InvoiceSuiteStringUtils::containsNoCase('xxabcxx', 'def'));
+        $this->assertTrue(InvoiceSuiteStringUtils::containsNoCase('xxabcxx', 'ABC'));
+    }
+
+    public function testInvoiceSuiteStringUtilsReplace(): void
+    {
+        $this->assertSame('xxabcxx', InvoiceSuiteStringUtils::replace('yyy', 'abc', 'xxyyyxx'));
+        $this->assertSame('xxyyyxx', InvoiceSuiteStringUtils::replace('def', 'abc', 'xxyyyxx'));
+    }
+
+    public function testInvoiceSuiteStringUtilsEndsWith(): void
+    {
+        $this->assertTrue(InvoiceSuiteStringUtils::endsWith('teststring', 'string'));
+        $this->assertFalse(InvoiceSuiteStringUtils::endsWith('teststring', 'dummmy'));
+        $this->assertFalse(InvoiceSuiteStringUtils::endsWith('teststring', 'String'));
+    }
+
+    public function testInvoiceSuiteStringUtilsStartsWith(): void
+    {
+        $this->assertTrue(InvoiceSuiteStringUtils::startsWith('teststring', 'test'));
+        $this->assertFalse(InvoiceSuiteStringUtils::startsWith('secondstring', 'test'));
+        $this->assertFalse(InvoiceSuiteStringUtils::startsWith('teststring', 'Test'));
+    }
+
+    public function testInvoiceSuiteStringUtilsTrim(): void
+    {
+        $this->assertSame('abc', InvoiceSuiteStringUtils::trim(' abc '));
+        $this->assertSame('abc', InvoiceSuiteStringUtils::trim('abc'));
+    }
+
+    public function testInvoiceSuiteStringUtilsTrimEnd(): void
+    {
+        $this->assertSame(' abc', InvoiceSuiteStringUtils::trimEnd(' abc '));
+        $this->assertSame('abc', InvoiceSuiteStringUtils::trimEnd('abc'));
+    }
+
+    public function testInvoiceSuiteStringUtilsTrimStart(): void
+    {
+        $this->assertSame('abc ', InvoiceSuiteStringUtils::trimStart(' abc '));
+        $this->assertSame('abc', InvoiceSuiteStringUtils::trimStart('abc'));
+    }
+
+    public function testInvoiceSuiteStringUtilsIs(): void
+    {
+        $this->assertTrue(InvoiceSuiteStringUtils::is('abc'));
+        $this->assertFalse(InvoiceSuiteStringUtils::is(1.0));
+        $this->assertFalse(InvoiceSuiteStringUtils::is(null));
+        $this->assertFalse(InvoiceSuiteStringUtils::is([]));
+
+        $testVar = 'test';
+        $this->assertTrue(InvoiceSuiteStringUtils::is($testVar));
+
+        $testVar = 1.0;
+        $this->assertFalse(InvoiceSuiteStringUtils::is($testVar));
+    }
+
     public function testInvoiceSuitePointerUtilsFirst(): void
     {
         InvoiceSuitePointerUtils::first('ptr1');

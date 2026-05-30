@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\concerns;
 
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+
 /**
  * Trait representing safe invoker methods
  *
@@ -115,7 +117,7 @@ trait HandlesSafeInvoking
             return false;
         }
 
-        if (!is_object($instance) && !is_string($instance)) {
+        if (!is_object($instance) && !InvoiceSuiteStringUtils::is($instance)) {
             return false;
         }
 

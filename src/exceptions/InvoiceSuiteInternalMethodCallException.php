@@ -14,7 +14,7 @@ namespace horstoeko\invoicesuite\exceptions;
 use Throwable;
 
 /**
- * Class representing the base exception
+ * Class representing an exception for invalid internal method calls
  *
  * @category InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
