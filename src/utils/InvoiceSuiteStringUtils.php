@@ -279,4 +279,29 @@ class InvoiceSuiteStringUtils
     {
         return ltrim($string, $characters);
     }
+
+    /**
+     * Translate characters or replace substrings
+     *
+     * @param  string $string
+     * @param  string $from
+     * @param  string $to
+     * @return string
+     */
+    public static function translate(string $string, string $from, string $to): string
+    {
+        return strtr($string, $from, $to);
+    }
+
+    /**
+     * Translate certain characters
+     *
+     * @param  string               $string
+     * @param  array<string,string> $replacements
+     * @return string
+     */
+    public static function translateArray(string $string, array $replacements): string
+    {
+        return strtr($string, $replacements);
+    }
 }

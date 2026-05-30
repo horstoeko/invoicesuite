@@ -733,6 +733,20 @@ final class UtilsTest extends TestCase
         $this->assertFalse(InvoiceSuiteStringUtils::is($testVar));
     }
 
+    public function testInvoiceSuiteStringUtilsTranslate(): void
+    {
+        $this->assertSame('1d2e3f', InvoiceSuiteStringUtils::translate('1a2b3c', 'abc', 'def'));
+        $this->assertSame('1dd2ee3ff', InvoiceSuiteStringUtils::translate('1aa2bb3cc', 'abc', 'def'));
+        $this->assertSame('1x2y3z', InvoiceSuiteStringUtils::translate('1x2y3z', 'abc', 'def'));
+    }
+
+    public function testInvoiceSuiteStringUtilsTranslateArray(): void
+    {
+        $this->assertSame('My name is John', InvoiceSuiteStringUtils::translateArray('My name is Robert', ['Robert' => 'John']));
+        $this->assertSame('My name is Martin', InvoiceSuiteStringUtils::translateArray('My name is Martin', ['Robert' => 'John']));
+        $this->assertSame('My name is John', InvoiceSuiteStringUtils::translateArray('My name is {{name}}', ['{{name}}' => 'John']));
+    }
+
     public function testInvoiceSuitePointerUtilsFirst(): void
     {
         InvoiceSuitePointerUtils::first('ptr1');

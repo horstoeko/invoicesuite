@@ -117,7 +117,7 @@ class InvoiceSuiteMakeProviderCommand extends InvoiceSuiteAbstractCommand
     {
         $this->outputFile(
             $targetPath,
-            strtr(
+            InvoiceSuiteStringUtils::translateArray(
                 InvoiceSuiteFileUtils::getContentFromFile($templatePath),
                 $replacements
             ),
