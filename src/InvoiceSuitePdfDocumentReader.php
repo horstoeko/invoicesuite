@@ -17,6 +17,7 @@ use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteInternalMethodCallException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractor;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractorAttachment;
@@ -65,6 +66,7 @@ class InvoiceSuitePdfDocumentReader
      * @param string $fromContent
      *
      * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteInternalMethodCallException
      * @throws InvoiceSuiteUnknownContentException
      * @throws PdfParserException
      * @throws RuntimeException
@@ -101,7 +103,10 @@ class InvoiceSuitePdfDocumentReader
             $this->setInvoiceDocumentAttachment($pdfExtractorAttachment);
             $this->setCurrentDocumentFormatProvider($formatProvider);
 
-            $this->documentReader = InvoiceSuiteDocumentReader::createFromContent($pdfExtractorAttachment->getAttachmentContent());
+            $this->documentReader = InvoiceSuiteDocumentReader::createFromContentWithDocumentFormatProvider(
+                $pdfExtractorAttachment->getAttachmentContent(),
+                $formatProvider
+            );
         }
 
         if ($this->hasNotCurrentDocumentFormatProvider()) {
@@ -118,6 +123,7 @@ class InvoiceSuitePdfDocumentReader
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteInternalMethodCallException
      * @throws InvoiceSuiteUnknownContentException
      * @throws PdfParserException
      * @throws RuntimeException
@@ -137,6 +143,7 @@ class InvoiceSuitePdfDocumentReader
      * @return static
      *
      * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteInternalMethodCallException
      * @throws InvoiceSuiteUnknownContentException
      * @throws PdfParserException
      * @throws RuntimeException

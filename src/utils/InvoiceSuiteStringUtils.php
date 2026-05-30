@@ -207,4 +207,28 @@ class InvoiceSuiteStringUtils
     {
         return str_replace($search, $replace, $subject, $count);
     }
+
+    /**
+     * The function returns {@see true} if the passed $haystack ends with the $needle string or {@see false} otherwise
+     *
+     * @param  null|string $haystack
+     * @param  null|string $needle
+     * @return bool
+     */
+    public static function endsWith(?string $haystack, ?string $needle): bool
+    {
+        return str_ends_with($haystack, $needle);
+    }
+
+    /**
+     * The function returns {@see true} if the passed $haystack starts from the $needle string or {@see false} otherwise
+     *
+     * @param  null|string $haystack
+     * @param  null|string $needle
+     * @return bool
+     */
+    public static function startsWith(?string $haystack, ?string $needle): bool
+    {
+        return str_starts_with($haystack, $needle);
+    }
 }

@@ -367,9 +367,9 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
     /**
      * Serialze JSON date
      *
-     * @param  JsonSerializationVisitor $visitor
-     * @param  DateTime                 $date
-     * @param  array<mixed,mixed>       $type
+     * @param  JsonSerializationVisitor                      $visitor
+     * @param  DateTime                                      $date
+     * @param  array{name: string, params: array<int,mixed>} $type
      * @return string
      */
     public function serializeJsonDate(
@@ -399,9 +399,9 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
     /**
      * Serialze JSON Date/Time
      *
-     * @param  JsonSerializationVisitor $visitor
-     * @param  DateTime                 $date
-     * @param  array<mixed,mixed>       $type
+     * @param  JsonSerializationVisitor                      $visitor
+     * @param  DateTime                                      $date
+     * @param  array{name: string, params: array<int,mixed>} $type
      * @return string
      */
     public function serializeJsonDateTime(
@@ -431,9 +431,9 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
     /**
      * Serialize JSON time
      *
-     * @param  JsonSerializationVisitor $visitor
-     * @param  DateTime                 $date
-     * @param  array<mixed,mixed>       $type
+     * @param  JsonSerializationVisitor                      $visitor
+     * @param  DateTime                                      $date
+     * @param  array{name: string, params: array<int,mixed>} $type
      * @return string
      */
     public function serializeJsonTime(
@@ -477,9 +477,9 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
     /**
      * Serialize JSON BASE64
      *
-     * @param  JsonSerializationVisitor $visitor
-     * @param  mixed                    $data
-     * @param  array<mixed,mixed>       $type
+     * @param  JsonSerializationVisitor                      $visitor
+     * @param  mixed                                         $data
+     * @param  array{name: string, params: array<int,mixed>} $type
      * @return string
      */
     public function serializeBase64EncodedToJson(

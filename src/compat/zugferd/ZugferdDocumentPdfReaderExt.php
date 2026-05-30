@@ -14,6 +14,7 @@ namespace horstoeko\zugferd;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteInternalMethodCallException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuitePdfDocumentReader;
 use JMS\Serializer\Exception\RuntimeException;
@@ -75,6 +76,7 @@ class ZugferdDocumentPdfReaderExt
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteInternalMethodCallException
      * @throws InvoiceSuiteUnknownContentException
      * @throws PdfParserException
      * @throws RuntimeException
@@ -92,6 +94,7 @@ class ZugferdDocumentPdfReaderExt
      * @return static
      *
      * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteInternalMethodCallException
      * @throws InvoiceSuiteUnknownContentException
      * @throws PdfParserException
      * @throws RuntimeException
@@ -111,6 +114,7 @@ class ZugferdDocumentPdfReaderExt
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteInternalMethodCallException
      * @throws InvoiceSuiteUnknownContentException
      * @throws PdfParserException
      * @throws RuntimeException
@@ -128,6 +132,7 @@ class ZugferdDocumentPdfReaderExt
      * @return ZugferdDocumentReader
      *
      * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteInternalMethodCallException
      * @throws InvoiceSuiteUnknownContentException
      * @throws PdfParserException
      * @throws RuntimeException
@@ -147,6 +152,7 @@ class ZugferdDocumentPdfReaderExt
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteInternalMethodCallException
      * @throws InvoiceSuiteUnknownContentException
      * @throws PdfParserException
      * @throws RuntimeException
@@ -164,6 +170,7 @@ class ZugferdDocumentPdfReaderExt
      * @return string
      *
      * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteInternalMethodCallException
      * @throws InvoiceSuiteUnknownContentException
      * @throws PdfParserException
      * @throws RuntimeException
@@ -183,6 +190,7 @@ class ZugferdDocumentPdfReaderExt
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteInternalMethodCallException
      * @throws InvoiceSuiteUnknownContentException
      * @throws PdfParserException
      * @throws RuntimeException
@@ -200,6 +208,7 @@ class ZugferdDocumentPdfReaderExt
      * @return array<int, array{type: int, content: string, filename: string, mimetype: string}>
      *
      * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteInternalMethodCallException
      * @throws InvoiceSuiteUnknownContentException
      * @throws PdfParserException
      * @throws RuntimeException

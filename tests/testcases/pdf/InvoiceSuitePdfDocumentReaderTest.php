@@ -4,13 +4,16 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\pdf;
 
+use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxComfortProvider;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteExceptionCodes;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteInternalMethodCallException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\InvoiceSuitePdfDocumentReader;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractorAttachment;
 use horstoeko\invoicesuite\tests\TestCase;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 
 final class InvoiceSuitePdfDocumentReaderTest extends TestCase
@@ -49,6 +52,37 @@ final class InvoiceSuitePdfDocumentReaderTest extends TestCase
         $this->assertInstanceOf(InvoiceSuiteDocumentReader::class, $documentReader);
     }
 
+    public function testCreateFromFileUsesDetectedProviderForDocumentReader(): void
+    {
+        $pdfDocumentReader = InvoiceSuitePdfDocumentReader::createFromFile($this->getSamplePdfPath());
+        $documentReader = $pdfDocumentReader->getDocumentReader();
+
+        $this->assertSame(
+            $pdfDocumentReader->getCurrentDocumentFormatProvider()->getUniqueId(),
+            $documentReader->getCurrentDocumentFormatProvider()->getUniqueId()
+        );
+    }
+
+    public function testCreateFromContentWithDocumentFormatProviderRejectsExternalCall(): void
+    {
+        $this->expectException(InvoiceSuiteInternalMethodCallException::class);
+
+        InvoiceSuiteDocumentReader::createFromContentWithDocumentFormatProvider(
+            InvoiceSuiteFileUtils::getContentFromFile($this->getSampleXmlPath()),
+            new InvoiceSuiteZfFxComfortProvider()
+        );
+    }
+
+    public function testCreateFromFileWithDocumentFormatProviderRejectsExternalCall(): void
+    {
+        $this->expectException(InvoiceSuiteInternalMethodCallException::class);
+
+        InvoiceSuiteDocumentReader::createFromFileWithDocumentFormatProvider(
+            $this->getSampleXmlPath(),
+            new InvoiceSuiteZfFxComfortProvider()
+        );
+    }
+
     public function testCreateFromNotExistingFile(): void
     {
         $this->expectException(InvoiceSuiteFileNotFoundException::class);
@@ -72,6 +106,14 @@ final class InvoiceSuitePdfDocumentReaderTest extends TestCase
         return InvoiceSuitePathUtils::combinePathWithFile(
             InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', 'assets'),
             'pdf_with_multiple_attachments.pdf'
+        );
+    }
+
+    private function getSampleXmlPath(): string
+    {
+        return InvoiceSuitePathUtils::combinePathWithFile(
+            InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', 'assets'),
+            '02_technical_xml_zffx_comfort.xml'
         );
     }
 
