@@ -15,6 +15,17 @@ namespace horstoeko\invoicesuite\utils;
 class InvoiceSuiteArrayUtils
 {
     /**
+     * Finds whether a variable is an array
+     *
+     * @param  mixed $value
+     * @return bool
+     */
+    public static function is(mixed $value): bool
+    {
+        return is_array($value);
+    }
+
+    /**
      * Ensure that $value is an array
      *
      * @param  mixed              $value
@@ -23,7 +34,7 @@ class InvoiceSuiteArrayUtils
     public static function ensure(
         $value
     ): array {
-        return is_array($value) ? $value : [$value];
+        return static::is($value) ? $value : [$value];
     }
 
     /**
