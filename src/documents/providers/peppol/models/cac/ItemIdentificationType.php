@@ -16,70 +16,70 @@ class ItemIdentificationType
 
     /**
      * @var null|ID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID")
-     * @JMS\Expose
-     * @JMS\SerializedName("ID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getID", setter="setID")
      */
+    #[JMS\Accessor(getter: 'getID', setter: 'setID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $iD;
 
     /**
      * @var null|ExtendedID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ExtendedID")
-     * @JMS\Expose
-     * @JMS\SerializedName("ExtendedID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getExtendedID", setter="setExtendedID")
      */
+    #[JMS\Accessor(getter: 'getExtendedID', setter: 'setExtendedID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ExtendedID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ExtendedID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $extendedID;
 
     /**
      * @var null|BarcodeSymbologyID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\BarcodeSymbologyID")
-     * @JMS\Expose
-     * @JMS\SerializedName("BarcodeSymbologyID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getBarcodeSymbologyID", setter="setBarcodeSymbologyID")
      */
+    #[JMS\Accessor(getter: 'getBarcodeSymbologyID', setter: 'setBarcodeSymbologyID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('BarcodeSymbologyID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\BarcodeSymbologyID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $barcodeSymbologyID;
 
     /**
      * @var null|array<PhysicalAttribute>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\PhysicalAttribute>")
-     * @JMS\Expose
-     * @JMS\SerializedName("PhysicalAttribute")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="PhysicalAttribute", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getPhysicalAttribute", setter="setPhysicalAttribute")
      */
+    #[JMS\Accessor(getter: 'getPhysicalAttribute', setter: 'setPhysicalAttribute')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PhysicalAttribute')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\PhysicalAttribute>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'PhysicalAttribute', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $physicalAttribute;
 
     /**
      * @var null|array<MeasurementDimension>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\MeasurementDimension>")
-     * @JMS\Expose
-     * @JMS\SerializedName("MeasurementDimension")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="MeasurementDimension", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getMeasurementDimension", setter="setMeasurementDimension")
      */
+    #[JMS\Accessor(getter: 'getMeasurementDimension', setter: 'setMeasurementDimension')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MeasurementDimension')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\MeasurementDimension>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'MeasurementDimension', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $measurementDimension;
 
     /**
      * @var null|IssuerParty
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\IssuerParty")
-     * @JMS\Expose
-     * @JMS\SerializedName("IssuerParty")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getIssuerParty", setter="setIssuerParty")
      */
+    #[JMS\Accessor(getter: 'getIssuerParty', setter: 'setIssuerParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('IssuerParty')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\IssuerParty')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $issuerParty;
 
     /**

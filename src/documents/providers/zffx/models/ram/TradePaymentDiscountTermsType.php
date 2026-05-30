@@ -17,57 +17,57 @@ class TradePaymentDiscountTermsType
 
     /**
      * @var null|DateTimeType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateTimeType")
-     * @JMS\Expose
-     * @JMS\SerializedName("BasisDateTime")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getBasisDateTime", setter="setBasisDateTime")
      */
+    #[JMS\Accessor(getter: 'getBasisDateTime', setter: 'setBasisDateTime')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('BasisDateTime')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateTimeType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $basisDateTime;
 
     /**
      * @var null|MeasureType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\MeasureType")
-     * @JMS\Expose
-     * @JMS\SerializedName("BasisPeriodMeasure")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getBasisPeriodMeasure", setter="setBasisPeriodMeasure")
      */
+    #[JMS\Accessor(getter: 'getBasisPeriodMeasure', setter: 'setBasisPeriodMeasure')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('BasisPeriodMeasure')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\MeasureType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $basisPeriodMeasure;
 
     /**
      * @var null|AmountType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType")
-     * @JMS\Expose
-     * @JMS\SerializedName("BasisAmount")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getBasisAmount", setter="setBasisAmount")
      */
+    #[JMS\Accessor(getter: 'getBasisAmount', setter: 'setBasisAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('BasisAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $basisAmount;
 
     /**
      * @var null|PercentType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\PercentType")
-     * @JMS\Expose
-     * @JMS\SerializedName("CalculationPercent")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getCalculationPercent", setter="setCalculationPercent")
      */
+    #[JMS\Accessor(getter: 'getCalculationPercent', setter: 'setCalculationPercent')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('CalculationPercent')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\PercentType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $calculationPercent;
 
     /**
      * @var null|AmountType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ActualDiscountAmount")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getActualDiscountAmount", setter="setActualDiscountAmount")
      */
+    #[JMS\Accessor(getter: 'getActualDiscountAmount', setter: 'setActualDiscountAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ActualDiscountAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $actualDiscountAmount;
 
     /**

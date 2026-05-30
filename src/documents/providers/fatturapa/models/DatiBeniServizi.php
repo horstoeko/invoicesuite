@@ -15,28 +15,28 @@ final class DatiBeniServizi
      * @translation-german Detail Positionen
      *
      * @var null|array<DettaglioLinee>
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DettaglioLinee>")
-     * @JMS\Accessor(getter="getDettaglioLinee", setter="setDettaglioLinee")
-     * @JMS\SerializedName("DettaglioLinee")
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlList(inline=true, entry="DettaglioLinee")
      */
+    #[JMS\Accessor(getter: 'getDettaglioLinee', setter: 'setDettaglioLinee')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DettaglioLinee')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DettaglioLinee>')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'DettaglioLinee')]
     private ?array $dettaglioLinee = null;
 
     /**
      * @translation-german Angaben Zusammenfassung
      *
      * @var null|array<DatiRiepilogo>
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiRiepilogo>")
-     * @JMS\Accessor(getter="getDatiRiepilogo", setter="setDatiRiepilogo")
-     * @JMS\SerializedName("DatiRiepilogo")
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlList(inline=true, entry="DatiRiepilogo")
      */
+    #[JMS\Accessor(getter: 'getDatiRiepilogo', setter: 'setDatiRiepilogo')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DatiRiepilogo')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiRiepilogo>')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'DatiRiepilogo')]
     private ?array $datiRiepilogo = null;
 
     /**

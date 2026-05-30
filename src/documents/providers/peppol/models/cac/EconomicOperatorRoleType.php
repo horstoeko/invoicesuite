@@ -15,25 +15,25 @@ class EconomicOperatorRoleType
 
     /**
      * @var null|RoleCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RoleCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("RoleCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getRoleCode", setter="setRoleCode")
      */
+    #[JMS\Accessor(getter: 'getRoleCode', setter: 'setRoleCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('RoleCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RoleCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $roleCode;
 
     /**
      * @var null|array<RoleDescription>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RoleDescription>")
-     * @JMS\Expose
-     * @JMS\SerializedName("RoleDescription")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="RoleDescription", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
-     * @JMS\Accessor(getter="getRoleDescription", setter="setRoleDescription")
      */
+    #[JMS\Accessor(getter: 'getRoleDescription', setter: 'setRoleDescription')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('RoleDescription')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RoleDescription>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'RoleDescription', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')]
     private $roleDescription;
 
     /**

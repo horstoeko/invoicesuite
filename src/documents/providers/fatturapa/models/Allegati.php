@@ -14,62 +14,57 @@ final class Allegati
 
     /**
      * @translation-german Name Attachment
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getNomeAttachment", setter="setNomeAttachment")
-     * @JMS\SerializedName("NomeAttachment")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getNomeAttachment', setter: 'setNomeAttachment')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('NomeAttachment')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $nomeAttachment = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getAlgoritmoCompressione", setter="setAlgoritmoCompressione")
-     * @JMS\SerializedName("AlgoritmoCompressione")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getAlgoritmoCompressione', setter: 'setAlgoritmoCompressione')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('AlgoritmoCompressione')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $algoritmoCompressione = null;
 
     /**
      * @translation-german Format Attachment
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getFormatoAttachment", setter="setFormatoAttachment")
-     * @JMS\SerializedName("FormatoAttachment")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getFormatoAttachment', setter: 'setFormatoAttachment')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('FormatoAttachment')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $formatoAttachment = null;
 
     /**
      * @translation-german Beschreibung Attachment
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getDescrizioneAttachment", setter="setDescrizioneAttachment")
-     * @JMS\SerializedName("DescrizioneAttachment")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDescrizioneAttachment', setter: 'setDescrizioneAttachment')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DescrizioneAttachment')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $descrizioneAttachment = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("mixed")
-     * @JMS\Accessor(getter="getAttachment", setter="setAttachment")
-     * @JMS\SerializedName("Attachment")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getAttachment', setter: 'setAttachment')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Attachment')]
+    #[JMS\Type('mixed')]
+    #[JMS\XmlElement(cdata: false)]
     private mixed $attachment;
 
     /**

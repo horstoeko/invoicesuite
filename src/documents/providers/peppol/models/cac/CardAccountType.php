@@ -23,123 +23,123 @@ class CardAccountType
 
     /**
      * @var null|PrimaryAccountNumberID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PrimaryAccountNumberID")
-     * @JMS\Expose
-     * @JMS\SerializedName("PrimaryAccountNumberID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPrimaryAccountNumberID", setter="setPrimaryAccountNumberID")
      */
+    #[JMS\Accessor(getter: 'getPrimaryAccountNumberID', setter: 'setPrimaryAccountNumberID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PrimaryAccountNumberID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PrimaryAccountNumberID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $primaryAccountNumberID;
 
     /**
      * @var null|NetworkID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NetworkID")
-     * @JMS\Expose
-     * @JMS\SerializedName("NetworkID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getNetworkID", setter="setNetworkID")
      */
+    #[JMS\Accessor(getter: 'getNetworkID', setter: 'setNetworkID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('NetworkID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NetworkID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $networkID;
 
     /**
      * @var null|CardTypeCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CardTypeCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("CardTypeCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCardTypeCode", setter="setCardTypeCode")
      */
+    #[JMS\Accessor(getter: 'getCardTypeCode', setter: 'setCardTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CardTypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CardTypeCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $cardTypeCode;
 
     /**
      * @var null|DateTimeInterface
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Expose
-     * @JMS\SerializedName("ValidityStartDate")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getValidityStartDate", setter="setValidityStartDate")
      */
+    #[JMS\Accessor(getter: 'getValidityStartDate', setter: 'setValidityStartDate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ValidityStartDate')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $validityStartDate;
 
     /**
      * @var null|DateTimeInterface
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Expose
-     * @JMS\SerializedName("ExpiryDate")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getExpiryDate", setter="setExpiryDate")
      */
+    #[JMS\Accessor(getter: 'getExpiryDate', setter: 'setExpiryDate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ExpiryDate')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $expiryDate;
 
     /**
      * @var null|IssuerID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\IssuerID")
-     * @JMS\Expose
-     * @JMS\SerializedName("IssuerID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getIssuerID", setter="setIssuerID")
      */
+    #[JMS\Accessor(getter: 'getIssuerID', setter: 'setIssuerID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('IssuerID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\IssuerID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $issuerID;
 
     /**
      * @var null|IssueNumberID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\IssueNumberID")
-     * @JMS\Expose
-     * @JMS\SerializedName("IssueNumberID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getIssueNumberID", setter="setIssueNumberID")
      */
+    #[JMS\Accessor(getter: 'getIssueNumberID', setter: 'setIssueNumberID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('IssueNumberID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\IssueNumberID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $issueNumberID;
 
     /**
      * @var null|CV2ID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CV2ID")
-     * @JMS\Expose
-     * @JMS\SerializedName("CV2ID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCV2ID", setter="setCV2ID")
      */
+    #[JMS\Accessor(getter: 'getCV2ID', setter: 'setCV2ID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CV2ID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CV2ID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $cV2ID;
 
     /**
      * @var null|CardChipCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CardChipCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("CardChipCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCardChipCode", setter="setCardChipCode")
      */
+    #[JMS\Accessor(getter: 'getCardChipCode', setter: 'setCardChipCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CardChipCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CardChipCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $cardChipCode;
 
     /**
      * @var null|ChipApplicationID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ChipApplicationID")
-     * @JMS\Expose
-     * @JMS\SerializedName("ChipApplicationID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getChipApplicationID", setter="setChipApplicationID")
      */
+    #[JMS\Accessor(getter: 'getChipApplicationID', setter: 'setChipApplicationID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ChipApplicationID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ChipApplicationID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $chipApplicationID;
 
     /**
      * @var null|HolderName
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\HolderName")
-     * @JMS\Expose
-     * @JMS\SerializedName("HolderName")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getHolderName", setter="setHolderName")
      */
+    #[JMS\Accessor(getter: 'getHolderName', setter: 'setHolderName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('HolderName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\HolderName')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $holderName;
 
     /**

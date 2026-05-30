@@ -68,7 +68,6 @@
         "ext-fileinfo": "*",
         "ext-mbstring": "*",
         "ext-simplexml": "*",
-        "doctrine/annotations": "^2.0",
         "goetas-webservices/xsd2php-runtime": "^0.2.17",
         "horstoeko/mimedb": "^1.0",
         "horstoeko/stringmanagement": "^1",

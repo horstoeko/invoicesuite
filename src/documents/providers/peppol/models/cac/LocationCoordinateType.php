@@ -21,90 +21,90 @@ class LocationCoordinateType
 
     /**
      * @var null|CoordinateSystemCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CoordinateSystemCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("CoordinateSystemCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCoordinateSystemCode", setter="setCoordinateSystemCode")
      */
+    #[JMS\Accessor(getter: 'getCoordinateSystemCode', setter: 'setCoordinateSystemCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CoordinateSystemCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CoordinateSystemCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $coordinateSystemCode;
 
     /**
      * @var null|LatitudeDegreesMeasure
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LatitudeDegreesMeasure")
-     * @JMS\Expose
-     * @JMS\SerializedName("LatitudeDegreesMeasure")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getLatitudeDegreesMeasure", setter="setLatitudeDegreesMeasure")
      */
+    #[JMS\Accessor(getter: 'getLatitudeDegreesMeasure', setter: 'setLatitudeDegreesMeasure')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('LatitudeDegreesMeasure')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LatitudeDegreesMeasure')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $latitudeDegreesMeasure;
 
     /**
      * @var null|LatitudeMinutesMeasure
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LatitudeMinutesMeasure")
-     * @JMS\Expose
-     * @JMS\SerializedName("LatitudeMinutesMeasure")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getLatitudeMinutesMeasure", setter="setLatitudeMinutesMeasure")
      */
+    #[JMS\Accessor(getter: 'getLatitudeMinutesMeasure', setter: 'setLatitudeMinutesMeasure')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('LatitudeMinutesMeasure')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LatitudeMinutesMeasure')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $latitudeMinutesMeasure;
 
     /**
      * @var null|LatitudeDirectionCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LatitudeDirectionCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("LatitudeDirectionCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getLatitudeDirectionCode", setter="setLatitudeDirectionCode")
      */
+    #[JMS\Accessor(getter: 'getLatitudeDirectionCode', setter: 'setLatitudeDirectionCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('LatitudeDirectionCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LatitudeDirectionCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $latitudeDirectionCode;
 
     /**
      * @var null|LongitudeDegreesMeasure
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LongitudeDegreesMeasure")
-     * @JMS\Expose
-     * @JMS\SerializedName("LongitudeDegreesMeasure")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getLongitudeDegreesMeasure", setter="setLongitudeDegreesMeasure")
      */
+    #[JMS\Accessor(getter: 'getLongitudeDegreesMeasure', setter: 'setLongitudeDegreesMeasure')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('LongitudeDegreesMeasure')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LongitudeDegreesMeasure')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $longitudeDegreesMeasure;
 
     /**
      * @var null|LongitudeMinutesMeasure
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LongitudeMinutesMeasure")
-     * @JMS\Expose
-     * @JMS\SerializedName("LongitudeMinutesMeasure")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getLongitudeMinutesMeasure", setter="setLongitudeMinutesMeasure")
      */
+    #[JMS\Accessor(getter: 'getLongitudeMinutesMeasure', setter: 'setLongitudeMinutesMeasure')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('LongitudeMinutesMeasure')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LongitudeMinutesMeasure')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $longitudeMinutesMeasure;
 
     /**
      * @var null|LongitudeDirectionCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LongitudeDirectionCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("LongitudeDirectionCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getLongitudeDirectionCode", setter="setLongitudeDirectionCode")
      */
+    #[JMS\Accessor(getter: 'getLongitudeDirectionCode', setter: 'setLongitudeDirectionCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('LongitudeDirectionCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LongitudeDirectionCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $longitudeDirectionCode;
 
     /**
      * @var null|AltitudeMeasure
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AltitudeMeasure")
-     * @JMS\Expose
-     * @JMS\SerializedName("AltitudeMeasure")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getAltitudeMeasure", setter="setAltitudeMeasure")
      */
+    #[JMS\Accessor(getter: 'getAltitudeMeasure', setter: 'setAltitudeMeasure')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('AltitudeMeasure')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AltitudeMeasure')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $altitudeMeasure;
 
     /**

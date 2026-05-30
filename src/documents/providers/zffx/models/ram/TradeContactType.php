@@ -15,68 +15,68 @@ class TradeContactType
 
     /**
      * @var null|TextType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType")
-     * @JMS\Expose
-     * @JMS\SerializedName("PersonName")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getPersonName", setter="setPersonName")
      */
+    #[JMS\Accessor(getter: 'getPersonName', setter: 'setPersonName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('PersonName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $personName;
 
     /**
      * @var null|TextType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType")
-     * @JMS\Expose
-     * @JMS\SerializedName("DepartmentName")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getDepartmentName", setter="setDepartmentName")
      */
+    #[JMS\Accessor(getter: 'getDepartmentName', setter: 'setDepartmentName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('DepartmentName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $departmentName;
 
     /**
      * @var null|CodeType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\CodeType")
-     * @JMS\Expose
-     * @JMS\SerializedName("TypeCode")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getTypeCode", setter="setTypeCode")
      */
+    #[JMS\Accessor(getter: 'getTypeCode', setter: 'setTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('TypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\CodeType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $typeCode;
 
     /**
      * @var null|UniversalCommunicationType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\UniversalCommunicationType")
-     * @JMS\Expose
-     * @JMS\SerializedName("TelephoneUniversalCommunication")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getTelephoneUniversalCommunication", setter="setTelephoneUniversalCommunication")
      */
+    #[JMS\Accessor(getter: 'getTelephoneUniversalCommunication', setter: 'setTelephoneUniversalCommunication')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('TelephoneUniversalCommunication')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\UniversalCommunicationType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $telephoneUniversalCommunication;
 
     /**
      * @var null|UniversalCommunicationType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\UniversalCommunicationType")
-     * @JMS\Expose
-     * @JMS\SerializedName("FaxUniversalCommunication")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getFaxUniversalCommunication", setter="setFaxUniversalCommunication")
      */
+    #[JMS\Accessor(getter: 'getFaxUniversalCommunication', setter: 'setFaxUniversalCommunication')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('FaxUniversalCommunication')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\UniversalCommunicationType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $faxUniversalCommunication;
 
     /**
      * @var null|UniversalCommunicationType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\UniversalCommunicationType")
-     * @JMS\Expose
-     * @JMS\SerializedName("EmailURIUniversalCommunication")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getEmailURIUniversalCommunication", setter="setEmailURIUniversalCommunication")
      */
+    #[JMS\Accessor(getter: 'getEmailURIUniversalCommunication', setter: 'setEmailURIUniversalCommunication')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('EmailURIUniversalCommunication')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\UniversalCommunicationType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $emailURIUniversalCommunication;
 
     /**

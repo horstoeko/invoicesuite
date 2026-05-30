@@ -19,79 +19,79 @@ class ImmobilizedSecurityType
 
     /**
      * @var null|ImmobilizationCertificateID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ImmobilizationCertificateID")
-     * @JMS\Expose
-     * @JMS\SerializedName("ImmobilizationCertificateID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getImmobilizationCertificateID", setter="setImmobilizationCertificateID")
      */
+    #[JMS\Accessor(getter: 'getImmobilizationCertificateID', setter: 'setImmobilizationCertificateID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ImmobilizationCertificateID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ImmobilizationCertificateID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $immobilizationCertificateID;
 
     /**
      * @var null|SecurityID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SecurityID")
-     * @JMS\Expose
-     * @JMS\SerializedName("SecurityID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getSecurityID", setter="setSecurityID")
      */
+    #[JMS\Accessor(getter: 'getSecurityID', setter: 'setSecurityID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('SecurityID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SecurityID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $securityID;
 
     /**
      * @var null|DateTimeInterface
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Expose
-     * @JMS\SerializedName("IssueDate")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getIssueDate", setter="setIssueDate")
      */
+    #[JMS\Accessor(getter: 'getIssueDate', setter: 'setIssueDate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('IssueDate')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $issueDate;
 
     /**
      * @var null|FaceValueAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\FaceValueAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("FaceValueAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getFaceValueAmount", setter="setFaceValueAmount")
      */
+    #[JMS\Accessor(getter: 'getFaceValueAmount', setter: 'setFaceValueAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('FaceValueAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\FaceValueAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $faceValueAmount;
 
     /**
      * @var null|MarketValueAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MarketValueAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("MarketValueAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getMarketValueAmount", setter="setMarketValueAmount")
      */
+    #[JMS\Accessor(getter: 'getMarketValueAmount', setter: 'setMarketValueAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MarketValueAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MarketValueAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $marketValueAmount;
 
     /**
      * @var null|SharesNumberQuantity
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SharesNumberQuantity")
-     * @JMS\Expose
-     * @JMS\SerializedName("SharesNumberQuantity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getSharesNumberQuantity", setter="setSharesNumberQuantity")
      */
+    #[JMS\Accessor(getter: 'getSharesNumberQuantity', setter: 'setSharesNumberQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('SharesNumberQuantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SharesNumberQuantity')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $sharesNumberQuantity;
 
     /**
      * @var null|IssuerParty
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\IssuerParty")
-     * @JMS\Expose
-     * @JMS\SerializedName("IssuerParty")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getIssuerParty", setter="setIssuerParty")
      */
+    #[JMS\Accessor(getter: 'getIssuerParty', setter: 'setIssuerParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('IssuerParty')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\IssuerParty')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $issuerParty;
 
     /**

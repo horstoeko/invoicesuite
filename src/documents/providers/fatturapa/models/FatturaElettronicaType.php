@@ -9,85 +9,78 @@ use horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\Signatur
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use JMS\Serializer\Annotation as JMS;
 
-/**
- * @JMS\XmlNamespace(uri="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2", prefix="p")
- * @JMS\XmlNamespace(uri="http://www.w3.org/2000/09/xmldsig#", prefix="ds")
- * @JMS\XmlNamespace(uri="http://www.w3.org/2001/XMLSchema-instance", prefix="xsi")
- */
+#[JMS\XmlNamespace(uri: 'http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2', prefix: 'p')]
+#[JMS\XmlNamespace(uri: 'http://www.w3.org/2000/09/xmldsig#', prefix: 'ds')]
+#[JMS\XmlNamespace(uri: 'http://www.w3.org/2001/XMLSchema-instance', prefix: 'xsi')]
 class FatturaElettronicaType
 {
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getSchemaLocation", setter="setSchemaLocation")
-     * @JMS\SerializedName("schemaLocation")
-     * @JMS\XmlAttribute(namespace="http://www.w3.org/2001/XMLSchema-instance")
      */
+    #[JMS\Accessor(getter: 'getSchemaLocation', setter: 'setSchemaLocation')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('schemaLocation')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute(namespace: 'http://www.w3.org/2001/XMLSchema-instance')]
     private ?string $schemaLocation = 'http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/Schema_del_file_xml_FatturaPA_versione_1.2.xsd';
 
     /**
      * @translation-german Rechnungs-Header
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\FatturaElettronicaHeader")
-     * @JMS\Accessor(getter="getFatturaElettronicaHeader", setter="setFatturaElettronicaHeader")
-     * @JMS\SerializedName("FatturaElettronicaHeader")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getFatturaElettronicaHeader', setter: 'setFatturaElettronicaHeader')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('FatturaElettronicaHeader')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\FatturaElettronicaHeader')]
+    #[JMS\XmlElement(cdata: false)]
     private ?FatturaElettronicaHeader $fatturaElettronicaHeader = null;
 
     /**
      * @translation-german Rechnungs-Body
      *
      * @var null|array<FatturaElettronicaBody>
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\FatturaElettronicaBody>")
-     * @JMS\Accessor(getter="getFatturaElettronicaBody", setter="setFatturaElettronicaBody")
-     * @JMS\SerializedName("FatturaElettronicaBody")
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlList(inline=true, entry="FatturaElettronicaBody")
      */
+    #[JMS\Accessor(getter: 'getFatturaElettronicaBody', setter: 'setFatturaElettronicaBody')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('FatturaElettronicaBody')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\fatturapa\models\FatturaElettronicaBody>')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'FatturaElettronicaBody')]
     private ?array $fatturaElettronicaBody = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\Signature")
-     * @JMS\Accessor(getter="getSignature", setter="setSignature")
-     * @JMS\SerializedName("Signature")
-     * @JMS\XmlElement(namespace="http://www.w3.org/2000/09/xmldsig#", cdata=false)
      */
+    #[JMS\Accessor(getter: 'getSignature', setter: 'setSignature')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Signature')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\Signature')]
+    #[JMS\XmlElement(namespace: 'http://www.w3.org/2000/09/xmldsig#', cdata: false)]
     private ?Signature $signature = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\FormatoTrasmissione','value'>")
-     * @JMS\Accessor(getter="getVersione", setter="setVersione")
-     * @JMS\SerializedName("versione")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getVersione', setter: 'setVersione')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('versione')]
+    #[JMS\Type('enum<\'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\FormatoTrasmissione\',\'value\'>')]
+    #[JMS\XmlAttribute]
     private ?FormatoTrasmissione $versione = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getSistemaEmittente", setter="setSistemaEmittente")
-     * @JMS\SerializedName("SistemaEmittente")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getSistemaEmittente', setter: 'setSistemaEmittente')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('SistemaEmittente')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private ?string $sistemaEmittente = null;
 
     /**

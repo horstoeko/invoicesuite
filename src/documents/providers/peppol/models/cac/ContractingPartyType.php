@@ -15,48 +15,48 @@ class ContractingPartyType extends ContractingPartyTypeType
 
     /**
      * @var null|BuyerProfileURI
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\BuyerProfileURI")
-     * @JMS\Expose
-     * @JMS\SerializedName("BuyerProfileURI")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getBuyerProfileURI", setter="setBuyerProfileURI")
      */
+    #[JMS\Accessor(getter: 'getBuyerProfileURI', setter: 'setBuyerProfileURI')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('BuyerProfileURI')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\BuyerProfileURI')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $buyerProfileURI;
 
     /**
      * @var null|array<ContractingPartyType1>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\ContractingPartyType>")
-     * @JMS\Expose
-     * @JMS\SerializedName("ContractingPartyType")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="ContractingPartyType", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getContractingPartyType", setter="setContractingPartyType")
      */
+    #[JMS\Accessor(getter: 'getContractingPartyType', setter: 'setContractingPartyType')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ContractingPartyType')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\ContractingPartyType>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'ContractingPartyType', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $contractingPartyType;
 
     /**
      * @var null|array<ContractingActivity>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\ContractingActivity>")
-     * @JMS\Expose
-     * @JMS\SerializedName("ContractingActivity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="ContractingActivity", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getContractingActivity", setter="setContractingActivity")
      */
+    #[JMS\Accessor(getter: 'getContractingActivity', setter: 'setContractingActivity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ContractingActivity')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\ContractingActivity>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'ContractingActivity', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $contractingActivity;
 
     /**
      * @var null|Party
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\Party")
-     * @JMS\Expose
-     * @JMS\SerializedName("Party")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getParty", setter="setParty")
      */
+    #[JMS\Accessor(getter: 'getParty', setter: 'setParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Party')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\Party')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $party;
 
     /**

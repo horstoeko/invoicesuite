@@ -14,26 +14,24 @@ final class DatiBollo
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\BolloVirtuale','value'>")
-     * @JMS\Accessor(getter="getBolloVirtuale", setter="setBolloVirtuale")
-     * @JMS\SerializedName("BolloVirtuale")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getBolloVirtuale', setter: 'setBolloVirtuale')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('BolloVirtuale')]
+    #[JMS\Type('enum<\'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\BolloVirtuale\',\'value\'>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?BolloVirtuale $bolloVirtuale = null;
 
     /**
      * @translation-german Betrag Bollo
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("fatturapa_decimal<2>")
-     * @JMS\Accessor(getter="getImportoBollo", setter="setImportoBollo")
-     * @JMS\SerializedName("ImportoBollo")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getImportoBollo', setter: 'setImportoBollo')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('ImportoBollo')]
+    #[JMS\Type('fatturapa_decimal<2>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?float $importoBollo = null;
 
     /**

@@ -13,25 +13,25 @@ class PricingReferenceType
 
     /**
      * @var null|OriginalItemLocationQuantity
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\OriginalItemLocationQuantity")
-     * @JMS\Expose
-     * @JMS\SerializedName("OriginalItemLocationQuantity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getOriginalItemLocationQuantity", setter="setOriginalItemLocationQuantity")
      */
+    #[JMS\Accessor(getter: 'getOriginalItemLocationQuantity', setter: 'setOriginalItemLocationQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('OriginalItemLocationQuantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\OriginalItemLocationQuantity')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $originalItemLocationQuantity;
 
     /**
      * @var null|array<AlternativeConditionPrice>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\AlternativeConditionPrice>")
-     * @JMS\Expose
-     * @JMS\SerializedName("AlternativeConditionPrice")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="AlternativeConditionPrice", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getAlternativeConditionPrice", setter="setAlternativeConditionPrice")
      */
+    #[JMS\Accessor(getter: 'getAlternativeConditionPrice', setter: 'setAlternativeConditionPrice')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('AlternativeConditionPrice')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\AlternativeConditionPrice>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'AlternativeConditionPrice', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $alternativeConditionPrice;
 
     /**

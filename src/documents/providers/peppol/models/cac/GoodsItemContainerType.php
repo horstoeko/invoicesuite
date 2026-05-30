@@ -15,36 +15,36 @@ class GoodsItemContainerType
 
     /**
      * @var null|ID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID")
-     * @JMS\Expose
-     * @JMS\SerializedName("ID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getID", setter="setID")
      */
+    #[JMS\Accessor(getter: 'getID', setter: 'setID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $iD;
 
     /**
      * @var null|Quantity
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Quantity")
-     * @JMS\Expose
-     * @JMS\SerializedName("Quantity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getQuantity", setter="setQuantity")
      */
+    #[JMS\Accessor(getter: 'getQuantity', setter: 'setQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Quantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Quantity')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $quantity;
 
     /**
      * @var null|array<TransportEquipment>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\TransportEquipment>")
-     * @JMS\Expose
-     * @JMS\SerializedName("TransportEquipment")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="TransportEquipment", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getTransportEquipment", setter="setTransportEquipment")
      */
+    #[JMS\Accessor(getter: 'getTransportEquipment', setter: 'setTransportEquipment')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TransportEquipment')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\TransportEquipment>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'TransportEquipment', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $transportEquipment;
 
     /**

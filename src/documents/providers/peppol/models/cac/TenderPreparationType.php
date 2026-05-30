@@ -17,71 +17,71 @@ class TenderPreparationType
 
     /**
      * @var null|TenderEnvelopeID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TenderEnvelopeID")
-     * @JMS\Expose
-     * @JMS\SerializedName("TenderEnvelopeID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTenderEnvelopeID", setter="setTenderEnvelopeID")
      */
+    #[JMS\Accessor(getter: 'getTenderEnvelopeID', setter: 'setTenderEnvelopeID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TenderEnvelopeID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TenderEnvelopeID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $tenderEnvelopeID;
 
     /**
      * @var null|TenderEnvelopeTypeCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TenderEnvelopeTypeCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("TenderEnvelopeTypeCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTenderEnvelopeTypeCode", setter="setTenderEnvelopeTypeCode")
      */
+    #[JMS\Accessor(getter: 'getTenderEnvelopeTypeCode', setter: 'setTenderEnvelopeTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TenderEnvelopeTypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TenderEnvelopeTypeCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $tenderEnvelopeTypeCode;
 
     /**
      * @var null|array<Description>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description>")
-     * @JMS\Expose
-     * @JMS\SerializedName("Description")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="Description", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
-     * @JMS\Accessor(getter="getDescription", setter="setDescription")
      */
+    #[JMS\Accessor(getter: 'getDescription', setter: 'setDescription')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Description')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'Description', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')]
     private $description;
 
     /**
      * @var null|OpenTenderID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OpenTenderID")
-     * @JMS\Expose
-     * @JMS\SerializedName("OpenTenderID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getOpenTenderID", setter="setOpenTenderID")
      */
+    #[JMS\Accessor(getter: 'getOpenTenderID', setter: 'setOpenTenderID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('OpenTenderID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OpenTenderID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $openTenderID;
 
     /**
      * @var null|array<ProcurementProjectLot>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\ProcurementProjectLot>")
-     * @JMS\Expose
-     * @JMS\SerializedName("ProcurementProjectLot")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="ProcurementProjectLot", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getProcurementProjectLot", setter="setProcurementProjectLot")
      */
+    #[JMS\Accessor(getter: 'getProcurementProjectLot', setter: 'setProcurementProjectLot')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ProcurementProjectLot')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\ProcurementProjectLot>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'ProcurementProjectLot', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $procurementProjectLot;
 
     /**
      * @var null|array<DocumentTenderRequirement>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\DocumentTenderRequirement>")
-     * @JMS\Expose
-     * @JMS\SerializedName("DocumentTenderRequirement")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="DocumentTenderRequirement", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getDocumentTenderRequirement", setter="setDocumentTenderRequirement")
      */
+    #[JMS\Accessor(getter: 'getDocumentTenderRequirement', setter: 'setDocumentTenderRequirement')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('DocumentTenderRequirement')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\DocumentTenderRequirement>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'DocumentTenderRequirement', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $documentTenderRequirement;
 
     /**

@@ -18,81 +18,81 @@ class MeterType
 
     /**
      * @var null|MeterNumber
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MeterNumber")
-     * @JMS\Expose
-     * @JMS\SerializedName("MeterNumber")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getMeterNumber", setter="setMeterNumber")
      */
+    #[JMS\Accessor(getter: 'getMeterNumber', setter: 'setMeterNumber')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MeterNumber')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MeterNumber')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $meterNumber;
 
     /**
      * @var null|MeterName
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MeterName")
-     * @JMS\Expose
-     * @JMS\SerializedName("MeterName")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getMeterName", setter="setMeterName")
      */
+    #[JMS\Accessor(getter: 'getMeterName', setter: 'setMeterName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MeterName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MeterName')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $meterName;
 
     /**
      * @var null|MeterConstant
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MeterConstant")
-     * @JMS\Expose
-     * @JMS\SerializedName("MeterConstant")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getMeterConstant", setter="setMeterConstant")
      */
+    #[JMS\Accessor(getter: 'getMeterConstant', setter: 'setMeterConstant')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MeterConstant')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MeterConstant')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $meterConstant;
 
     /**
      * @var null|MeterConstantCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MeterConstantCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("MeterConstantCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getMeterConstantCode", setter="setMeterConstantCode")
      */
+    #[JMS\Accessor(getter: 'getMeterConstantCode', setter: 'setMeterConstantCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MeterConstantCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MeterConstantCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $meterConstantCode;
 
     /**
      * @var null|TotalDeliveredQuantity
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalDeliveredQuantity")
-     * @JMS\Expose
-     * @JMS\SerializedName("TotalDeliveredQuantity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTotalDeliveredQuantity", setter="setTotalDeliveredQuantity")
      */
+    #[JMS\Accessor(getter: 'getTotalDeliveredQuantity', setter: 'setTotalDeliveredQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TotalDeliveredQuantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalDeliveredQuantity')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $totalDeliveredQuantity;
 
     /**
      * @var null|array<MeterReading>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\MeterReading>")
-     * @JMS\Expose
-     * @JMS\SerializedName("MeterReading")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="MeterReading", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getMeterReading", setter="setMeterReading")
      */
+    #[JMS\Accessor(getter: 'getMeterReading', setter: 'setMeterReading')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MeterReading')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\MeterReading>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'MeterReading', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $meterReading;
 
     /**
      * @var null|array<MeterProperty>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\MeterProperty>")
-     * @JMS\Expose
-     * @JMS\SerializedName("MeterProperty")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="MeterProperty", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getMeterProperty", setter="setMeterProperty")
      */
+    #[JMS\Accessor(getter: 'getMeterProperty', setter: 'setMeterProperty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MeterProperty')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\MeterProperty>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'MeterProperty', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $meterProperty;
 
     /**

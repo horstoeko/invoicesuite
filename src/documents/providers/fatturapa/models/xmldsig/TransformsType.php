@@ -18,14 +18,14 @@ class TransformsType
      * @translation-german-untranslated
      *
      * @var null|array<TransformType>
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\TransformType>")
-     * @JMS\Accessor(getter="getTransform", setter="setTransform")
-     * @JMS\SerializedName("Transform")
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlList(inline=true, entry="Transform")
      */
+    #[JMS\Accessor(getter: 'getTransform', setter: 'setTransform')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Transform')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\TransformType>')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'Transform')]
     private ?array $transform = null;
 
     /**

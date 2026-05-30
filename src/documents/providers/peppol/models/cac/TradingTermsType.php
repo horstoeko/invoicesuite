@@ -15,36 +15,36 @@ class TradingTermsType
 
     /**
      * @var null|array<Information>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Information>")
-     * @JMS\Expose
-     * @JMS\SerializedName("Information")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="Information", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
-     * @JMS\Accessor(getter="getInformation", setter="setInformation")
      */
+    #[JMS\Accessor(getter: 'getInformation', setter: 'setInformation')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Information')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Information>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'Information', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')]
     private $information;
 
     /**
      * @var null|Reference
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Reference")
-     * @JMS\Expose
-     * @JMS\SerializedName("Reference")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getReference", setter="setReference")
      */
+    #[JMS\Accessor(getter: 'getReference', setter: 'setReference')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Reference')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Reference')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $reference;
 
     /**
      * @var null|ApplicableAddress
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\ApplicableAddress")
-     * @JMS\Expose
-     * @JMS\SerializedName("ApplicableAddress")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getApplicableAddress", setter="setApplicableAddress")
      */
+    #[JMS\Accessor(getter: 'getApplicableAddress', setter: 'setApplicableAddress')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ApplicableAddress')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\ApplicableAddress')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $applicableAddress;
 
     /**

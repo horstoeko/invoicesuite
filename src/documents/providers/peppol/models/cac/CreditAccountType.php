@@ -14,13 +14,13 @@ class CreditAccountType
 
     /**
      * @var null|AccountID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AccountID")
-     * @JMS\Expose
-     * @JMS\SerializedName("AccountID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getAccountID", setter="setAccountID")
      */
+    #[JMS\Accessor(getter: 'getAccountID', setter: 'setAccountID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('AccountID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AccountID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $accountID;
 
     /**

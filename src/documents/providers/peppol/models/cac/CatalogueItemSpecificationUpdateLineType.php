@@ -14,46 +14,46 @@ class CatalogueItemSpecificationUpdateLineType
 
     /**
      * @var null|ID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID")
-     * @JMS\Expose
-     * @JMS\SerializedName("ID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getID", setter="setID")
      */
+    #[JMS\Accessor(getter: 'getID', setter: 'setID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $iD;
 
     /**
      * @var null|ContractorCustomerParty
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\ContractorCustomerParty")
-     * @JMS\Expose
-     * @JMS\SerializedName("ContractorCustomerParty")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getContractorCustomerParty", setter="setContractorCustomerParty")
      */
+    #[JMS\Accessor(getter: 'getContractorCustomerParty', setter: 'setContractorCustomerParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ContractorCustomerParty')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\ContractorCustomerParty')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $contractorCustomerParty;
 
     /**
      * @var null|SellerSupplierParty
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\SellerSupplierParty")
-     * @JMS\Expose
-     * @JMS\SerializedName("SellerSupplierParty")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getSellerSupplierParty", setter="setSellerSupplierParty")
      */
+    #[JMS\Accessor(getter: 'getSellerSupplierParty', setter: 'setSellerSupplierParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('SellerSupplierParty')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\SellerSupplierParty')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $sellerSupplierParty;
 
     /**
      * @var null|Item
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\Item")
-     * @JMS\Expose
-     * @JMS\SerializedName("Item")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getItem", setter="setItem")
      */
+    #[JMS\Accessor(getter: 'getItem', setter: 'setItem')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Item')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\Item')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $item;
 
     /**

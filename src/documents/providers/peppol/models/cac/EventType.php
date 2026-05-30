@@ -17,104 +17,104 @@ class EventType
 
     /**
      * @var null|IdentificationID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\IdentificationID")
-     * @JMS\Expose
-     * @JMS\SerializedName("IdentificationID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getIdentificationID", setter="setIdentificationID")
      */
+    #[JMS\Accessor(getter: 'getIdentificationID', setter: 'setIdentificationID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('IdentificationID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\IdentificationID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $identificationID;
 
     /**
      * @var null|DateTimeInterface
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Expose
-     * @JMS\SerializedName("OccurrenceDate")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getOccurrenceDate", setter="setOccurrenceDate")
      */
+    #[JMS\Accessor(getter: 'getOccurrenceDate', setter: 'setOccurrenceDate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('OccurrenceDate')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $occurrenceDate;
 
     /**
      * @var null|DateTimeInterface
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
-     * @JMS\Expose
-     * @JMS\SerializedName("OccurrenceTime")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getOccurrenceTime", setter="setOccurrenceTime")
      */
+    #[JMS\Accessor(getter: 'getOccurrenceTime', setter: 'setOccurrenceTime')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('OccurrenceTime')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $occurrenceTime;
 
     /**
      * @var null|TypeCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TypeCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("TypeCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTypeCode", setter="setTypeCode")
      */
+    #[JMS\Accessor(getter: 'getTypeCode', setter: 'setTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TypeCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $typeCode;
 
     /**
      * @var null|array<Description>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description>")
-     * @JMS\Expose
-     * @JMS\SerializedName("Description")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="Description", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
-     * @JMS\Accessor(getter="getDescription", setter="setDescription")
      */
+    #[JMS\Accessor(getter: 'getDescription', setter: 'setDescription')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Description')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'Description', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')]
     private $description;
 
     /**
      * @var null|bool
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("bool")
-     * @JMS\Expose
-     * @JMS\SerializedName("CompletionIndicator")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCompletionIndicator", setter="setCompletionIndicator")
      */
+    #[JMS\Accessor(getter: 'getCompletionIndicator', setter: 'setCompletionIndicator')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CompletionIndicator')]
+    #[JMS\Type('bool')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $completionIndicator;
 
     /**
      * @var null|array<CurrentStatus>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\CurrentStatus>")
-     * @JMS\Expose
-     * @JMS\SerializedName("CurrentStatus")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="CurrentStatus", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getCurrentStatus", setter="setCurrentStatus")
      */
+    #[JMS\Accessor(getter: 'getCurrentStatus', setter: 'setCurrentStatus')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CurrentStatus')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\CurrentStatus>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'CurrentStatus', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $currentStatus;
 
     /**
      * @var null|array<Contact>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\Contact>")
-     * @JMS\Expose
-     * @JMS\SerializedName("Contact")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="Contact", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getContact", setter="setContact")
      */
+    #[JMS\Accessor(getter: 'getContact', setter: 'setContact')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Contact')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\Contact>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'Contact', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $contact;
 
     /**
      * @var null|OccurenceLocation
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\OccurenceLocation")
-     * @JMS\Expose
-     * @JMS\SerializedName("OccurenceLocation")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getOccurenceLocation", setter="setOccurenceLocation")
      */
+    #[JMS\Accessor(getter: 'getOccurenceLocation', setter: 'setOccurenceLocation')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('OccurenceLocation')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\OccurenceLocation')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $occurenceLocation;
 
     /**

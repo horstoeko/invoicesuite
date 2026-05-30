@@ -19,127 +19,127 @@ class QuotationLineType
 
     /**
      * @var null|ID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID")
-     * @JMS\Expose
-     * @JMS\SerializedName("ID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getID", setter="setID")
      */
+    #[JMS\Accessor(getter: 'getID', setter: 'setID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $iD;
 
     /**
      * @var null|array<Note>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Note>")
-     * @JMS\Expose
-     * @JMS\SerializedName("Note")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="Note", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
-     * @JMS\Accessor(getter="getNote", setter="setNote")
      */
+    #[JMS\Accessor(getter: 'getNote', setter: 'setNote')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Note')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Note>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'Note', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')]
     private $note;
 
     /**
      * @var null|Quantity
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Quantity")
-     * @JMS\Expose
-     * @JMS\SerializedName("Quantity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getQuantity", setter="setQuantity")
      */
+    #[JMS\Accessor(getter: 'getQuantity', setter: 'setQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Quantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Quantity')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $quantity;
 
     /**
      * @var null|LineExtensionAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LineExtensionAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("LineExtensionAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getLineExtensionAmount", setter="setLineExtensionAmount")
      */
+    #[JMS\Accessor(getter: 'getLineExtensionAmount', setter: 'setLineExtensionAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('LineExtensionAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LineExtensionAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $lineExtensionAmount;
 
     /**
      * @var null|TotalTaxAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalTaxAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("TotalTaxAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTotalTaxAmount", setter="setTotalTaxAmount")
      */
+    #[JMS\Accessor(getter: 'getTotalTaxAmount', setter: 'setTotalTaxAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TotalTaxAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TotalTaxAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $totalTaxAmount;
 
     /**
      * @var null|RequestForQuotationLineID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RequestForQuotationLineID")
-     * @JMS\Expose
-     * @JMS\SerializedName("RequestForQuotationLineID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getRequestForQuotationLineID", setter="setRequestForQuotationLineID")
      */
+    #[JMS\Accessor(getter: 'getRequestForQuotationLineID', setter: 'setRequestForQuotationLineID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('RequestForQuotationLineID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RequestForQuotationLineID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $requestForQuotationLineID;
 
     /**
      * @var null|array<DocumentReference>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\DocumentReference>")
-     * @JMS\Expose
-     * @JMS\SerializedName("DocumentReference")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="DocumentReference", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getDocumentReference", setter="setDocumentReference")
      */
+    #[JMS\Accessor(getter: 'getDocumentReference', setter: 'setDocumentReference')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('DocumentReference')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\DocumentReference>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'DocumentReference', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $documentReference;
 
     /**
      * @var null|LineItem
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\LineItem")
-     * @JMS\Expose
-     * @JMS\SerializedName("LineItem")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getLineItem", setter="setLineItem")
      */
+    #[JMS\Accessor(getter: 'getLineItem', setter: 'setLineItem')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('LineItem')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\LineItem')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $lineItem;
 
     /**
      * @var null|array<SellerProposedSubstituteLineItem>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\SellerProposedSubstituteLineItem>")
-     * @JMS\Expose
-     * @JMS\SerializedName("SellerProposedSubstituteLineItem")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="SellerProposedSubstituteLineItem", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getSellerProposedSubstituteLineItem", setter="setSellerProposedSubstituteLineItem")
      */
+    #[JMS\Accessor(getter: 'getSellerProposedSubstituteLineItem', setter: 'setSellerProposedSubstituteLineItem')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('SellerProposedSubstituteLineItem')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\SellerProposedSubstituteLineItem>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'SellerProposedSubstituteLineItem', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $sellerProposedSubstituteLineItem;
 
     /**
      * @var null|array<AlternativeLineItem>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\AlternativeLineItem>")
-     * @JMS\Expose
-     * @JMS\SerializedName("AlternativeLineItem")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="AlternativeLineItem", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getAlternativeLineItem", setter="setAlternativeLineItem")
      */
+    #[JMS\Accessor(getter: 'getAlternativeLineItem', setter: 'setAlternativeLineItem')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('AlternativeLineItem')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\AlternativeLineItem>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'AlternativeLineItem', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $alternativeLineItem;
 
     /**
      * @var null|RequestLineReference
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\RequestLineReference")
-     * @JMS\Expose
-     * @JMS\SerializedName("RequestLineReference")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getRequestLineReference", setter="setRequestLineReference")
      */
+    #[JMS\Accessor(getter: 'getRequestLineReference', setter: 'setRequestLineReference')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('RequestLineReference')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\RequestLineReference')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $requestLineReference;
 
     /**

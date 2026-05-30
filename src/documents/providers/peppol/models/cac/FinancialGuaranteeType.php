@@ -17,58 +17,58 @@ class FinancialGuaranteeType
 
     /**
      * @var null|GuaranteeTypeCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\GuaranteeTypeCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("GuaranteeTypeCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getGuaranteeTypeCode", setter="setGuaranteeTypeCode")
      */
+    #[JMS\Accessor(getter: 'getGuaranteeTypeCode', setter: 'setGuaranteeTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('GuaranteeTypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\GuaranteeTypeCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $guaranteeTypeCode;
 
     /**
      * @var null|array<Description>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description>")
-     * @JMS\Expose
-     * @JMS\SerializedName("Description")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="Description", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
-     * @JMS\Accessor(getter="getDescription", setter="setDescription")
      */
+    #[JMS\Accessor(getter: 'getDescription', setter: 'setDescription')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Description')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'Description', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')]
     private $description;
 
     /**
      * @var null|LiabilityAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LiabilityAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("LiabilityAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getLiabilityAmount", setter="setLiabilityAmount")
      */
+    #[JMS\Accessor(getter: 'getLiabilityAmount', setter: 'setLiabilityAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('LiabilityAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LiabilityAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $liabilityAmount;
 
     /**
      * @var null|AmountRate
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AmountRate")
-     * @JMS\Expose
-     * @JMS\SerializedName("AmountRate")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getAmountRate", setter="setAmountRate")
      */
+    #[JMS\Accessor(getter: 'getAmountRate', setter: 'setAmountRate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('AmountRate')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AmountRate')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $amountRate;
 
     /**
      * @var null|ConstitutionPeriod
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\ConstitutionPeriod")
-     * @JMS\Expose
-     * @JMS\SerializedName("ConstitutionPeriod")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getConstitutionPeriod", setter="setConstitutionPeriod")
      */
+    #[JMS\Accessor(getter: 'getConstitutionPeriod', setter: 'setConstitutionPeriod')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ConstitutionPeriod')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\ConstitutionPeriod')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $constitutionPeriod;
 
     /**

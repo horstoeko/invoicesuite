@@ -18,27 +18,27 @@ class ManifestType
      * @translation-german-untranslated
      *
      * @var null|array<ReferenceType>
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\ReferenceType>")
-     * @JMS\Accessor(getter="getReference", setter="setReference")
-     * @JMS\SerializedName("Reference")
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlList(inline=true, entry="Reference")
      */
+    #[JMS\Accessor(getter: 'getReference', setter: 'setReference')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Reference')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\ReferenceType>')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'Reference')]
     private ?array $reference = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getId", setter="setId")
-     * @JMS\SerializedName("Id")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getId', setter: 'setId')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Id')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private ?string $id = null;
 
     /**

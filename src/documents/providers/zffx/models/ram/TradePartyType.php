@@ -16,116 +16,116 @@ class TradePartyType
 
     /**
      * @var null|array<IDType>
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType>")
-     * @JMS\Expose
-     * @JMS\SerializedName("ID")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\XmlList(inline=true, entry="ID", namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100")
-     * @JMS\Accessor(getter="getID", setter="setID")
      */
+    #[JMS\Accessor(getter: 'getID', setter: 'setID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ID')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType>')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'ID', namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100')]
     private $iD;
 
     /**
      * @var null|array<IDType>
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType>")
-     * @JMS\Expose
-     * @JMS\SerializedName("GlobalID")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\XmlList(inline=true, entry="GlobalID", namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100")
-     * @JMS\Accessor(getter="getGlobalID", setter="setGlobalID")
      */
+    #[JMS\Accessor(getter: 'getGlobalID', setter: 'setGlobalID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('GlobalID')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType>')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'GlobalID', namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100')]
     private $globalID;
 
     /**
      * @var null|TextType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType")
-     * @JMS\Expose
-     * @JMS\SerializedName("Name")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getName", setter="setName")
      */
+    #[JMS\Accessor(getter: 'getName', setter: 'setName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('Name')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $name;
 
     /**
      * @var null|string
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("RoleCode")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getRoleCode", setter="setRoleCode")
      */
+    #[JMS\Accessor(getter: 'getRoleCode', setter: 'setRoleCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('RoleCode')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $roleCode;
 
     /**
      * @var null|TextType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType")
-     * @JMS\Expose
-     * @JMS\SerializedName("Description")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getDescription", setter="setDescription")
      */
+    #[JMS\Accessor(getter: 'getDescription', setter: 'setDescription')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('Description')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $description;
 
     /**
      * @var null|LegalOrganizationType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\LegalOrganizationType")
-     * @JMS\Expose
-     * @JMS\SerializedName("SpecifiedLegalOrganization")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getSpecifiedLegalOrganization", setter="setSpecifiedLegalOrganization")
      */
+    #[JMS\Accessor(getter: 'getSpecifiedLegalOrganization', setter: 'setSpecifiedLegalOrganization')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('SpecifiedLegalOrganization')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\LegalOrganizationType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $specifiedLegalOrganization;
 
     /**
      * @var null|array<TradeContactType>
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeContactType>")
-     * @JMS\Expose
-     * @JMS\SerializedName("DefinedTradeContact")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\XmlList(inline=true, entry="DefinedTradeContact", namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100")
-     * @JMS\Accessor(getter="getDefinedTradeContact", setter="setDefinedTradeContact")
      */
+    #[JMS\Accessor(getter: 'getDefinedTradeContact', setter: 'setDefinedTradeContact')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('DefinedTradeContact')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeContactType>')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'DefinedTradeContact', namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100')]
     private $definedTradeContact;
 
     /**
      * @var null|TradeAddressType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeAddressType")
-     * @JMS\Expose
-     * @JMS\SerializedName("PostalTradeAddress")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getPostalTradeAddress", setter="setPostalTradeAddress")
      */
+    #[JMS\Accessor(getter: 'getPostalTradeAddress', setter: 'setPostalTradeAddress')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('PostalTradeAddress')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeAddressType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $postalTradeAddress;
 
     /**
      * @var null|UniversalCommunicationType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\UniversalCommunicationType")
-     * @JMS\Expose
-     * @JMS\SerializedName("URIUniversalCommunication")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getURIUniversalCommunication", setter="setURIUniversalCommunication")
      */
+    #[JMS\Accessor(getter: 'getURIUniversalCommunication', setter: 'setURIUniversalCommunication')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('URIUniversalCommunication')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\UniversalCommunicationType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $uRIUniversalCommunication;
 
     /**
      * @var null|array<TaxRegistrationType>
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\zffx\models\ram\TaxRegistrationType>")
-     * @JMS\Expose
-     * @JMS\SerializedName("SpecifiedTaxRegistration")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\XmlList(inline=true, entry="SpecifiedTaxRegistration", namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100")
-     * @JMS\Accessor(getter="getSpecifiedTaxRegistration", setter="setSpecifiedTaxRegistration")
      */
+    #[JMS\Accessor(getter: 'getSpecifiedTaxRegistration', setter: 'setSpecifiedTaxRegistration')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('SpecifiedTaxRegistration')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\zffx\models\ram\TaxRegistrationType>')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'SpecifiedTaxRegistration', namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100')]
     private $specifiedTaxRegistration;
 
     /**

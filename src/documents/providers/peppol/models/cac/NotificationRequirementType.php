@@ -16,71 +16,71 @@ class NotificationRequirementType
 
     /**
      * @var null|NotificationTypeCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NotificationTypeCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("NotificationTypeCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getNotificationTypeCode", setter="setNotificationTypeCode")
      */
+    #[JMS\Accessor(getter: 'getNotificationTypeCode', setter: 'setNotificationTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('NotificationTypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NotificationTypeCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $notificationTypeCode;
 
     /**
      * @var null|PostEventNotificationDurationMeasure
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PostEventNotificationDurationMeasure")
-     * @JMS\Expose
-     * @JMS\SerializedName("PostEventNotificationDurationMeasure")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPostEventNotificationDurationMeasure", setter="setPostEventNotificationDurationMeasure")
      */
+    #[JMS\Accessor(getter: 'getPostEventNotificationDurationMeasure', setter: 'setPostEventNotificationDurationMeasure')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PostEventNotificationDurationMeasure')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PostEventNotificationDurationMeasure')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $postEventNotificationDurationMeasure;
 
     /**
      * @var null|PreEventNotificationDurationMeasure
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PreEventNotificationDurationMeasure")
-     * @JMS\Expose
-     * @JMS\SerializedName("PreEventNotificationDurationMeasure")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPreEventNotificationDurationMeasure", setter="setPreEventNotificationDurationMeasure")
      */
+    #[JMS\Accessor(getter: 'getPreEventNotificationDurationMeasure', setter: 'setPreEventNotificationDurationMeasure')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PreEventNotificationDurationMeasure')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PreEventNotificationDurationMeasure')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $preEventNotificationDurationMeasure;
 
     /**
      * @var null|array<NotifyParty>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\NotifyParty>")
-     * @JMS\Expose
-     * @JMS\SerializedName("NotifyParty")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="NotifyParty", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getNotifyParty", setter="setNotifyParty")
      */
+    #[JMS\Accessor(getter: 'getNotifyParty', setter: 'setNotifyParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('NotifyParty')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\NotifyParty>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'NotifyParty', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $notifyParty;
 
     /**
      * @var null|array<NotificationPeriod>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\NotificationPeriod>")
-     * @JMS\Expose
-     * @JMS\SerializedName("NotificationPeriod")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="NotificationPeriod", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getNotificationPeriod", setter="setNotificationPeriod")
      */
+    #[JMS\Accessor(getter: 'getNotificationPeriod', setter: 'setNotificationPeriod')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('NotificationPeriod')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\NotificationPeriod>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'NotificationPeriod', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $notificationPeriod;
 
     /**
      * @var null|array<NotificationLocation>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\NotificationLocation>")
-     * @JMS\Expose
-     * @JMS\SerializedName("NotificationLocation")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="NotificationLocation", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getNotificationLocation", setter="setNotificationLocation")
      */
+    #[JMS\Accessor(getter: 'getNotificationLocation', setter: 'setNotificationLocation')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('NotificationLocation')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\NotificationLocation>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'NotificationLocation', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $notificationLocation;
 
     /**

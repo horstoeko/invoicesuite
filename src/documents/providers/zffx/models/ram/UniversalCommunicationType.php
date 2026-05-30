@@ -15,24 +15,24 @@ class UniversalCommunicationType
 
     /**
      * @var null|IDType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType")
-     * @JMS\Expose
-     * @JMS\SerializedName("URIID")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getURIID", setter="setURIID")
      */
+    #[JMS\Accessor(getter: 'getURIID', setter: 'setURIID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('URIID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $uRIID;
 
     /**
      * @var null|TextType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType")
-     * @JMS\Expose
-     * @JMS\SerializedName("CompleteNumber")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getCompleteNumber", setter="setCompleteNumber")
      */
+    #[JMS\Accessor(getter: 'getCompleteNumber', setter: 'setCompleteNumber')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('CompleteNumber')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $completeNumber;
 
     /**

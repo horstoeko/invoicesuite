@@ -15,46 +15,46 @@ class SpecifiedPeriodType
 
     /**
      * @var null|TextType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType")
-     * @JMS\Expose
-     * @JMS\SerializedName("Description")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getDescription", setter="setDescription")
      */
+    #[JMS\Accessor(getter: 'getDescription', setter: 'setDescription')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('Description')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $description;
 
     /**
      * @var null|DateTimeType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateTimeType")
-     * @JMS\Expose
-     * @JMS\SerializedName("StartDateTime")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getStartDateTime", setter="setStartDateTime")
      */
+    #[JMS\Accessor(getter: 'getStartDateTime', setter: 'setStartDateTime')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('StartDateTime')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateTimeType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $startDateTime;
 
     /**
      * @var null|DateTimeType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateTimeType")
-     * @JMS\Expose
-     * @JMS\SerializedName("EndDateTime")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getEndDateTime", setter="setEndDateTime")
      */
+    #[JMS\Accessor(getter: 'getEndDateTime', setter: 'setEndDateTime')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('EndDateTime')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateTimeType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $endDateTime;
 
     /**
      * @var null|DateTimeType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateTimeType")
-     * @JMS\Expose
-     * @JMS\SerializedName("CompleteDateTime")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getCompleteDateTime", setter="setCompleteDateTime")
      */
+    #[JMS\Accessor(getter: 'getCompleteDateTime', setter: 'setCompleteDateTime')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('CompleteDateTime')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateTimeType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $completeDateTime;
 
     /**

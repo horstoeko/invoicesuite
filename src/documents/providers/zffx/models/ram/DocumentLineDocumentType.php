@@ -16,58 +16,58 @@ class DocumentLineDocumentType
 
     /**
      * @var null|IDType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType")
-     * @JMS\Expose
-     * @JMS\SerializedName("LineID")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getLineID", setter="setLineID")
      */
+    #[JMS\Accessor(getter: 'getLineID', setter: 'setLineID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('LineID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $lineID;
 
     /**
      * @var null|IDType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ParentLineID")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getParentLineID", setter="setParentLineID")
      */
+    #[JMS\Accessor(getter: 'getParentLineID', setter: 'setParentLineID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ParentLineID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $parentLineID;
 
     /**
      * @var null|LineStatusCodeType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\qdt\LineStatusCodeType")
-     * @JMS\Expose
-     * @JMS\SerializedName("LineStatusCode")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getLineStatusCode", setter="setLineStatusCode")
      */
+    #[JMS\Accessor(getter: 'getLineStatusCode', setter: 'setLineStatusCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('LineStatusCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\qdt\LineStatusCodeType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $lineStatusCode;
 
     /**
      * @var null|CodeType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\CodeType")
-     * @JMS\Expose
-     * @JMS\SerializedName("LineStatusReasonCode")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getLineStatusReasonCode", setter="setLineStatusReasonCode")
      */
+    #[JMS\Accessor(getter: 'getLineStatusReasonCode', setter: 'setLineStatusReasonCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('LineStatusReasonCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\CodeType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $lineStatusReasonCode;
 
     /**
      * @var null|array<NoteType>
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\zffx\models\ram\NoteType>")
-     * @JMS\Expose
-     * @JMS\SerializedName("IncludedNote")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\XmlList(inline=true, entry="IncludedNote", namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100")
-     * @JMS\Accessor(getter="getIncludedNote", setter="setIncludedNote")
      */
+    #[JMS\Accessor(getter: 'getIncludedNote', setter: 'setIncludedNote')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('IncludedNote')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\zffx\models\ram\NoteType>')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'IncludedNote', namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100')]
     private $includedNote;
 
     /**

@@ -14,13 +14,13 @@ class ServiceFrequencyType
 
     /**
      * @var null|WeekDayCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\WeekDayCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("WeekDayCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getWeekDayCode", setter="setWeekDayCode")
      */
+    #[JMS\Accessor(getter: 'getWeekDayCode', setter: 'setWeekDayCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('WeekDayCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\WeekDayCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $weekDayCode;
 
     /**

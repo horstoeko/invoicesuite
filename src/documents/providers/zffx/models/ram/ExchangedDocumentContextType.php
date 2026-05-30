@@ -14,35 +14,35 @@ class ExchangedDocumentContextType
 
     /**
      * @var null|IndicatorType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\IndicatorType")
-     * @JMS\Expose
-     * @JMS\SerializedName("TestIndicator")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getTestIndicator", setter="setTestIndicator")
      */
+    #[JMS\Accessor(getter: 'getTestIndicator', setter: 'setTestIndicator')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('TestIndicator')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\IndicatorType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $testIndicator;
 
     /**
      * @var null|DocumentContextParameterType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\DocumentContextParameterType")
-     * @JMS\Expose
-     * @JMS\SerializedName("BusinessProcessSpecifiedDocumentContextParameter")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getBusinessProcessSpecifiedDocumentContextParameter", setter="setBusinessProcessSpecifiedDocumentContextParameter")
      */
+    #[JMS\Accessor(getter: 'getBusinessProcessSpecifiedDocumentContextParameter', setter: 'setBusinessProcessSpecifiedDocumentContextParameter')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('BusinessProcessSpecifiedDocumentContextParameter')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\DocumentContextParameterType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $businessProcessSpecifiedDocumentContextParameter;
 
     /**
      * @var null|DocumentContextParameterType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\DocumentContextParameterType")
-     * @JMS\Expose
-     * @JMS\SerializedName("GuidelineSpecifiedDocumentContextParameter")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getGuidelineSpecifiedDocumentContextParameter", setter="setGuidelineSpecifiedDocumentContextParameter")
      */
+    #[JMS\Accessor(getter: 'getGuidelineSpecifiedDocumentContextParameter', setter: 'setGuidelineSpecifiedDocumentContextParameter')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('GuidelineSpecifiedDocumentContextParameter')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\DocumentContextParameterType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $guidelineSpecifiedDocumentContextParameter;
 
     /**

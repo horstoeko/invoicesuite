@@ -8,22 +8,20 @@ use DateTimeInterface;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use JMS\Serializer\Annotation as JMS;
 
-/**
- * @JMS\XmlRoot(name="ActualDeliveryDate", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
- */
+#[JMS\XmlRoot(name: 'ActualDeliveryDate', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')]
 class ActualDeliveryDate
 {
     use HandlesObjectFlags;
 
     /**
      * @var null|DateTimeInterface
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Expose
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlValue(cdata=false)
-     * @JMS\Accessor(getter="getValue", setter="setValue")
      */
+    #[JMS\Accessor(getter: 'getValue', setter: 'setValue')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlValue(cdata: false)]
     private $value;
 
     /**

@@ -15,24 +15,24 @@ class ItemComparisonType
 
     /**
      * @var null|PriceAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PriceAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("PriceAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPriceAmount", setter="setPriceAmount")
      */
+    #[JMS\Accessor(getter: 'getPriceAmount', setter: 'setPriceAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PriceAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PriceAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $priceAmount;
 
     /**
      * @var null|Quantity
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Quantity")
-     * @JMS\Expose
-     * @JMS\SerializedName("Quantity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getQuantity", setter="setQuantity")
      */
+    #[JMS\Accessor(getter: 'getQuantity', setter: 'setQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Quantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Quantity')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $quantity;
 
     /**

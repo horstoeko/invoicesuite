@@ -18,26 +18,26 @@ class X509IssuerSerialType
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getX509IssuerName", setter="setX509IssuerName")
-     * @JMS\SerializedName("X509IssuerName")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getX509IssuerName', setter: 'setX509IssuerName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('X509IssuerName')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $x509IssuerName = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|int
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("int")
-     * @JMS\Accessor(getter="getX509SerialNumber", setter="setX509SerialNumber")
-     * @JMS\SerializedName("X509SerialNumber")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getX509SerialNumber', setter: 'setX509SerialNumber')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('X509SerialNumber')]
+    #[JMS\Type('int')]
+    #[JMS\XmlElement(cdata: false)]
     private ?int $x509SerialNumber = null;
 
     /**

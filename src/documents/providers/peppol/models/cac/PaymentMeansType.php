@@ -20,147 +20,147 @@ class PaymentMeansType
 
     /**
      * @var null|ID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID")
-     * @JMS\Expose
-     * @JMS\SerializedName("ID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getID", setter="setID")
      */
+    #[JMS\Accessor(getter: 'getID', setter: 'setID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $iD;
 
     /**
      * @var null|PaymentMeansCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PaymentMeansCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("PaymentMeansCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPaymentMeansCode", setter="setPaymentMeansCode")
      */
+    #[JMS\Accessor(getter: 'getPaymentMeansCode', setter: 'setPaymentMeansCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PaymentMeansCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PaymentMeansCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $paymentMeansCode;
 
     /**
      * @var null|DateTimeInterface
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Expose
-     * @JMS\SerializedName("PaymentDueDate")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPaymentDueDate", setter="setPaymentDueDate")
      */
+    #[JMS\Accessor(getter: 'getPaymentDueDate', setter: 'setPaymentDueDate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PaymentDueDate')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $paymentDueDate;
 
     /**
      * @var null|PaymentChannelCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PaymentChannelCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("PaymentChannelCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPaymentChannelCode", setter="setPaymentChannelCode")
      */
+    #[JMS\Accessor(getter: 'getPaymentChannelCode', setter: 'setPaymentChannelCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PaymentChannelCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PaymentChannelCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $paymentChannelCode;
 
     /**
      * @var null|InstructionID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\InstructionID")
-     * @JMS\Expose
-     * @JMS\SerializedName("InstructionID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getInstructionID", setter="setInstructionID")
      */
+    #[JMS\Accessor(getter: 'getInstructionID', setter: 'setInstructionID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('InstructionID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\InstructionID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $instructionID;
 
     /**
      * @var null|array<InstructionNote>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\InstructionNote>")
-     * @JMS\Expose
-     * @JMS\SerializedName("InstructionNote")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="InstructionNote", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
-     * @JMS\Accessor(getter="getInstructionNote", setter="setInstructionNote")
      */
+    #[JMS\Accessor(getter: 'getInstructionNote', setter: 'setInstructionNote')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('InstructionNote')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\InstructionNote>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'InstructionNote', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')]
     private $instructionNote;
 
     /**
      * @var null|array<PaymentID>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PaymentID>")
-     * @JMS\Expose
-     * @JMS\SerializedName("PaymentID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="PaymentID", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
-     * @JMS\Accessor(getter="getPaymentID", setter="setPaymentID")
      */
+    #[JMS\Accessor(getter: 'getPaymentID', setter: 'setPaymentID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PaymentID')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PaymentID>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'PaymentID', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')]
     private $paymentID;
 
     /**
      * @var null|CardAccount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\CardAccount")
-     * @JMS\Expose
-     * @JMS\SerializedName("CardAccount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCardAccount", setter="setCardAccount")
      */
+    #[JMS\Accessor(getter: 'getCardAccount', setter: 'setCardAccount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CardAccount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\CardAccount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $cardAccount;
 
     /**
      * @var null|PayerFinancialAccount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\PayerFinancialAccount")
-     * @JMS\Expose
-     * @JMS\SerializedName("PayerFinancialAccount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPayerFinancialAccount", setter="setPayerFinancialAccount")
      */
+    #[JMS\Accessor(getter: 'getPayerFinancialAccount', setter: 'setPayerFinancialAccount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PayerFinancialAccount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\PayerFinancialAccount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $payerFinancialAccount;
 
     /**
      * @var null|PayeeFinancialAccount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\PayeeFinancialAccount")
-     * @JMS\Expose
-     * @JMS\SerializedName("PayeeFinancialAccount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPayeeFinancialAccount", setter="setPayeeFinancialAccount")
      */
+    #[JMS\Accessor(getter: 'getPayeeFinancialAccount', setter: 'setPayeeFinancialAccount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PayeeFinancialAccount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\PayeeFinancialAccount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $payeeFinancialAccount;
 
     /**
      * @var null|CreditAccount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\CreditAccount")
-     * @JMS\Expose
-     * @JMS\SerializedName("CreditAccount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCreditAccount", setter="setCreditAccount")
      */
+    #[JMS\Accessor(getter: 'getCreditAccount', setter: 'setCreditAccount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CreditAccount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\CreditAccount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $creditAccount;
 
     /**
      * @var null|PaymentMandate
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\PaymentMandate")
-     * @JMS\Expose
-     * @JMS\SerializedName("PaymentMandate")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPaymentMandate", setter="setPaymentMandate")
      */
+    #[JMS\Accessor(getter: 'getPaymentMandate', setter: 'setPaymentMandate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PaymentMandate')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\PaymentMandate')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $paymentMandate;
 
     /**
      * @var null|TradeFinancing
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\TradeFinancing")
-     * @JMS\Expose
-     * @JMS\SerializedName("TradeFinancing")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTradeFinancing", setter="setTradeFinancing")
      */
+    #[JMS\Accessor(getter: 'getTradeFinancing', setter: 'setTradeFinancing')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TradeFinancing')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\TradeFinancing')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $tradeFinancing;
 
     /**

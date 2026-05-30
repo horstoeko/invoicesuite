@@ -15,24 +15,24 @@ class ItemPropertyRangeType
 
     /**
      * @var null|MinimumValue
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MinimumValue")
-     * @JMS\Expose
-     * @JMS\SerializedName("MinimumValue")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getMinimumValue", setter="setMinimumValue")
      */
+    #[JMS\Accessor(getter: 'getMinimumValue', setter: 'setMinimumValue')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MinimumValue')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MinimumValue')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $minimumValue;
 
     /**
      * @var null|MaximumValue
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MaximumValue")
-     * @JMS\Expose
-     * @JMS\SerializedName("MaximumValue")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getMaximumValue", setter="setMaximumValue")
      */
+    #[JMS\Accessor(getter: 'getMaximumValue', setter: 'setMaximumValue')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MaximumValue')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MaximumValue')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $maximumValue;
 
     /**

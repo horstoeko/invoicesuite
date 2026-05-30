@@ -16,98 +16,90 @@ final class DatiAnagraficiCedente
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\IdFiscale")
-     * @JMS\Accessor(getter="getIdFiscaleIVA", setter="setIdFiscaleIVA")
-     * @JMS\SerializedName("IdFiscaleIVA")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getIdFiscaleIVA', setter: 'setIdFiscaleIVA')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('IdFiscaleIVA')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\IdFiscale')]
+    #[JMS\XmlElement(cdata: false)]
     private ?IdFiscale $idFiscaleIVA = null;
 
     /**
      * @translation-german Code Fiscale
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getCodiceFiscale", setter="setCodiceFiscale")
-     * @JMS\SerializedName("CodiceFiscale")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCodiceFiscale', setter: 'setCodiceFiscale')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CodiceFiscale')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $codiceFiscale = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Anagrafica")
-     * @JMS\Accessor(getter="getAnagrafica", setter="setAnagrafica")
-     * @JMS\SerializedName("Anagrafica")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getAnagrafica', setter: 'setAnagrafica')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Anagrafica')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\Anagrafica')]
+    #[JMS\XmlElement(cdata: false)]
     private ?Anagrafica $anagrafica = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getAlboProfessionale", setter="setAlboProfessionale")
-     * @JMS\SerializedName("AlboProfessionale")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getAlboProfessionale', setter: 'setAlboProfessionale')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('AlboProfessionale')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $alboProfessionale = null;
 
     /**
      * @translation-german Provinz Albo
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getProvinciaAlbo", setter="setProvinciaAlbo")
-     * @JMS\SerializedName("ProvinciaAlbo")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getProvinciaAlbo', setter: 'setProvinciaAlbo')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('ProvinciaAlbo')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $provinciaAlbo = null;
 
     /**
      * @translation-german Nummer Iscrizione Albo
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getNumeroIscrizioneAlbo", setter="setNumeroIscrizioneAlbo")
-     * @JMS\SerializedName("NumeroIscrizioneAlbo")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getNumeroIscrizioneAlbo', setter: 'setNumeroIscrizioneAlbo')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('NumeroIscrizioneAlbo')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $numeroIscrizioneAlbo = null;
 
     /**
      * @translation-german Datum Iscrizione Albo
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Accessor(getter="getDataIscrizioneAlbo", setter="setDataIscrizioneAlbo")
-     * @JMS\SerializedName("DataIscrizioneAlbo")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDataIscrizioneAlbo', setter: 'setDataIscrizioneAlbo')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DataIscrizioneAlbo')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DateTimeInterface $dataIscrizioneAlbo = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\RegimeFiscale','value'>")
-     * @JMS\Accessor(getter="getRegimeFiscale", setter="setRegimeFiscale")
-     * @JMS\SerializedName("RegimeFiscale")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getRegimeFiscale', setter: 'setRegimeFiscale')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('RegimeFiscale')]
+    #[JMS\Type('enum<\'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\RegimeFiscale\',\'value\'>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?RegimeFiscale $regimeFiscale = null;
 
     /**

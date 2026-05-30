@@ -14,37 +14,37 @@ class PromotionalSpecificationType
 
     /**
      * @var null|SpecificationID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SpecificationID")
-     * @JMS\Expose
-     * @JMS\SerializedName("SpecificationID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getSpecificationID", setter="setSpecificationID")
      */
+    #[JMS\Accessor(getter: 'getSpecificationID', setter: 'setSpecificationID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('SpecificationID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SpecificationID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $specificationID;
 
     /**
      * @var null|array<PromotionalEventLineItem>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\PromotionalEventLineItem>")
-     * @JMS\Expose
-     * @JMS\SerializedName("PromotionalEventLineItem")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="PromotionalEventLineItem", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getPromotionalEventLineItem", setter="setPromotionalEventLineItem")
      */
+    #[JMS\Accessor(getter: 'getPromotionalEventLineItem', setter: 'setPromotionalEventLineItem')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PromotionalEventLineItem')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\PromotionalEventLineItem>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'PromotionalEventLineItem', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $promotionalEventLineItem;
 
     /**
      * @var null|array<EventTactic>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\EventTactic>")
-     * @JMS\Expose
-     * @JMS\SerializedName("EventTactic")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="EventTactic", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getEventTactic", setter="setEventTactic")
      */
+    #[JMS\Accessor(getter: 'getEventTactic', setter: 'setEventTactic')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('EventTactic')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\EventTactic>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'EventTactic', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $eventTactic;
 
     /**

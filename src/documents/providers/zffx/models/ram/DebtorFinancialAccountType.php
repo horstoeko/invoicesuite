@@ -14,13 +14,13 @@ class DebtorFinancialAccountType
 
     /**
      * @var null|IDType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType")
-     * @JMS\Expose
-     * @JMS\SerializedName("IBANID")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getIBANID", setter="setIBANID")
      */
+    #[JMS\Accessor(getter: 'getIBANID', setter: 'setIBANID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('IBANID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $iBANID;
 
     /**

@@ -13,13 +13,13 @@ class NumericType
 
     /**
      * @var null|float
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("float")
-     * @JMS\Expose
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlValue(cdata=false)
-     * @JMS\Accessor(getter="getValue", setter="setValue")
      */
+    #[JMS\Accessor(getter: 'getValue', setter: 'setValue')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\Type('float')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlValue(cdata: false)]
     private $value;
 
     /**

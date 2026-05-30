@@ -14,26 +14,24 @@ final class CodiceArticolo
 
     /**
      * @translation-german Code Tipo
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getCodiceTipo", setter="setCodiceTipo")
-     * @JMS\SerializedName("CodiceTipo")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCodiceTipo', setter: 'setCodiceTipo')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CodiceTipo')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $codiceTipo = null;
 
     /**
      * @translation-german Code Valore
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getCodiceValore", setter="setCodiceValore")
-     * @JMS\SerializedName("CodiceValore")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCodiceValore', setter: 'setCodiceValore')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CodiceValore')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $codiceValore = null;
 
     /**

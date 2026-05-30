@@ -15,35 +15,35 @@ class DeliveryUnitType
 
     /**
      * @var null|BatchQuantity
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\BatchQuantity")
-     * @JMS\Expose
-     * @JMS\SerializedName("BatchQuantity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getBatchQuantity", setter="setBatchQuantity")
      */
+    #[JMS\Accessor(getter: 'getBatchQuantity', setter: 'setBatchQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('BatchQuantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\BatchQuantity')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $batchQuantity;
 
     /**
      * @var null|ConsumerUnitQuantity
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ConsumerUnitQuantity")
-     * @JMS\Expose
-     * @JMS\SerializedName("ConsumerUnitQuantity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getConsumerUnitQuantity", setter="setConsumerUnitQuantity")
      */
+    #[JMS\Accessor(getter: 'getConsumerUnitQuantity', setter: 'setConsumerUnitQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ConsumerUnitQuantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ConsumerUnitQuantity')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $consumerUnitQuantity;
 
     /**
      * @var null|bool
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("bool")
-     * @JMS\Expose
-     * @JMS\SerializedName("HazardousRiskIndicator")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getHazardousRiskIndicator", setter="setHazardousRiskIndicator")
      */
+    #[JMS\Accessor(getter: 'getHazardousRiskIndicator', setter: 'setHazardousRiskIndicator')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('HazardousRiskIndicator')]
+    #[JMS\Type('bool')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $hazardousRiskIndicator;
 
     /**

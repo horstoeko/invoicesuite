@@ -14,13 +14,13 @@ class RoadTransportType
 
     /**
      * @var null|LicensePlateID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LicensePlateID")
-     * @JMS\Expose
-     * @JMS\SerializedName("LicensePlateID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getLicensePlateID", setter="setLicensePlateID")
      */
+    #[JMS\Accessor(getter: 'getLicensePlateID', setter: 'setLicensePlateID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('LicensePlateID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LicensePlateID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $licensePlateID;
 
     /**

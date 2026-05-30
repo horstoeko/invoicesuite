@@ -13,14 +13,13 @@ final class RappresentanteFiscale
 
     /**
      * @translation-german Stammdaten
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiAnagraficiRappresentante")
-     * @JMS\Accessor(getter="getDatiAnagrafici", setter="setDatiAnagrafici")
-     * @JMS\SerializedName("DatiAnagrafici")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDatiAnagrafici', setter: 'setDatiAnagrafici')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DatiAnagrafici')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiAnagraficiRappresentante')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DatiAnagraficiRappresentante $datiAnagrafici = null;
 
     /**

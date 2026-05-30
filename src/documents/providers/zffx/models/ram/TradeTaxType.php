@@ -21,123 +21,123 @@ class TradeTaxType
 
     /**
      * @var null|AmountType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType")
-     * @JMS\Expose
-     * @JMS\SerializedName("CalculatedAmount")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getCalculatedAmount", setter="setCalculatedAmount")
      */
+    #[JMS\Accessor(getter: 'getCalculatedAmount', setter: 'setCalculatedAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('CalculatedAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $calculatedAmount;
 
     /**
      * @var null|TaxTypeCodeType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\qdt\TaxTypeCodeType")
-     * @JMS\Expose
-     * @JMS\SerializedName("TypeCode")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getTypeCode", setter="setTypeCode")
      */
+    #[JMS\Accessor(getter: 'getTypeCode', setter: 'setTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('TypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\qdt\TaxTypeCodeType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $typeCode;
 
     /**
      * @var null|TextType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ExemptionReason")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getExemptionReason", setter="setExemptionReason")
      */
+    #[JMS\Accessor(getter: 'getExemptionReason', setter: 'setExemptionReason')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ExemptionReason')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $exemptionReason;
 
     /**
      * @var null|AmountType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType")
-     * @JMS\Expose
-     * @JMS\SerializedName("BasisAmount")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getBasisAmount", setter="setBasisAmount")
      */
+    #[JMS\Accessor(getter: 'getBasisAmount', setter: 'setBasisAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('BasisAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $basisAmount;
 
     /**
      * @var null|AmountType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType")
-     * @JMS\Expose
-     * @JMS\SerializedName("LineTotalBasisAmount")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getLineTotalBasisAmount", setter="setLineTotalBasisAmount")
      */
+    #[JMS\Accessor(getter: 'getLineTotalBasisAmount', setter: 'setLineTotalBasisAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('LineTotalBasisAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $lineTotalBasisAmount;
 
     /**
      * @var null|AmountType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType")
-     * @JMS\Expose
-     * @JMS\SerializedName("AllowanceChargeBasisAmount")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getAllowanceChargeBasisAmount", setter="setAllowanceChargeBasisAmount")
      */
+    #[JMS\Accessor(getter: 'getAllowanceChargeBasisAmount', setter: 'setAllowanceChargeBasisAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('AllowanceChargeBasisAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $allowanceChargeBasisAmount;
 
     /**
      * @var null|TaxCategoryCodeType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\qdt\TaxCategoryCodeType")
-     * @JMS\Expose
-     * @JMS\SerializedName("CategoryCode")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getCategoryCode", setter="setCategoryCode")
      */
+    #[JMS\Accessor(getter: 'getCategoryCode', setter: 'setCategoryCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('CategoryCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\qdt\TaxCategoryCodeType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $categoryCode;
 
     /**
      * @var null|CodeType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\CodeType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ExemptionReasonCode")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getExemptionReasonCode", setter="setExemptionReasonCode")
      */
+    #[JMS\Accessor(getter: 'getExemptionReasonCode', setter: 'setExemptionReasonCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ExemptionReasonCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\CodeType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $exemptionReasonCode;
 
     /**
      * @var null|DateType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateType")
-     * @JMS\Expose
-     * @JMS\SerializedName("TaxPointDate")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getTaxPointDate", setter="setTaxPointDate")
      */
+    #[JMS\Accessor(getter: 'getTaxPointDate', setter: 'setTaxPointDate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('TaxPointDate')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $taxPointDate;
 
     /**
      * @var null|TimeReferenceCodeType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\qdt\TimeReferenceCodeType")
-     * @JMS\Expose
-     * @JMS\SerializedName("DueDateTypeCode")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getDueDateTypeCode", setter="setDueDateTypeCode")
      */
+    #[JMS\Accessor(getter: 'getDueDateTypeCode', setter: 'setDueDateTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('DueDateTypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\qdt\TimeReferenceCodeType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $dueDateTypeCode;
 
     /**
      * @var null|PercentType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\PercentType")
-     * @JMS\Expose
-     * @JMS\SerializedName("RateApplicablePercent")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getRateApplicablePercent", setter="setRateApplicablePercent")
      */
+    #[JMS\Accessor(getter: 'getRateApplicablePercent', setter: 'setRateApplicablePercent')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('RateApplicablePercent')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\PercentType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $rateApplicablePercent;
 
     /**

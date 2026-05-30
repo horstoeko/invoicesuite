@@ -14,35 +14,35 @@ class BinaryObjectType
 
     /**
      * @var null|string
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlValue(cdata=false)
-     * @JMS\Accessor(getter="getValue", setter="setValue")
      */
+    #[JMS\Accessor(getter: 'getValue', setter: 'setValue')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlValue(cdata: false)]
     private $value;
 
     /**
      * @var null|string
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("mimeCode")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getMimeCode", setter="setMimeCode")
      */
+    #[JMS\Accessor(getter: 'getMimeCode', setter: 'setMimeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('mimeCode')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $mimeCode;
 
     /**
      * @var null|string
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("filename")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getFilename", setter="setFilename")
      */
+    #[JMS\Accessor(getter: 'getFilename', setter: 'setFilename')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('filename')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $filename;
 
     /**

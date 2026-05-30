@@ -9,10 +9,9 @@ use JMS\Serializer\Annotation as JMS;
 
 /**
  * @translation-german-untranslated
- *
- * @JMS\XmlRoot("DigestMethod")
- * @JMS\XmlNamespace(uri="http://www.w3.org/2000/09/xmldsig#", prefix="ds")
  */
+#[JMS\XmlNamespace(uri: 'http://www.w3.org/2000/09/xmldsig#', prefix: 'ds')]
+#[JMS\XmlRoot('DigestMethod')]
 class DigestMethod extends DigestMethodType
 {
     use HandlesObjectFlags;

@@ -14,24 +14,24 @@ class IDType
 
     /**
      * @var null|string
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlValue(cdata=false)
-     * @JMS\Accessor(getter="getValue", setter="setValue")
      */
+    #[JMS\Accessor(getter: 'getValue', setter: 'setValue')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlValue(cdata: false)]
     private $value;
 
     /**
      * @var null|string
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("schemeID")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getSchemeID", setter="setSchemeID")
      */
+    #[JMS\Accessor(getter: 'getSchemeID', setter: 'setSchemeID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('schemeID')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $schemeID;
 
     /**

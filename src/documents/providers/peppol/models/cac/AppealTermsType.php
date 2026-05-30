@@ -14,58 +14,58 @@ class AppealTermsType
 
     /**
      * @var null|array<Description>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description>")
-     * @JMS\Expose
-     * @JMS\SerializedName("Description")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="Description", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
-     * @JMS\Accessor(getter="getDescription", setter="setDescription")
      */
+    #[JMS\Accessor(getter: 'getDescription', setter: 'setDescription')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Description')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'Description', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')]
     private $description;
 
     /**
      * @var null|PresentationPeriod
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\PresentationPeriod")
-     * @JMS\Expose
-     * @JMS\SerializedName("PresentationPeriod")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPresentationPeriod", setter="setPresentationPeriod")
      */
+    #[JMS\Accessor(getter: 'getPresentationPeriod', setter: 'setPresentationPeriod')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PresentationPeriod')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\PresentationPeriod')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $presentationPeriod;
 
     /**
      * @var null|AppealInformationParty
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\AppealInformationParty")
-     * @JMS\Expose
-     * @JMS\SerializedName("AppealInformationParty")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getAppealInformationParty", setter="setAppealInformationParty")
      */
+    #[JMS\Accessor(getter: 'getAppealInformationParty', setter: 'setAppealInformationParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('AppealInformationParty')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\AppealInformationParty')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $appealInformationParty;
 
     /**
      * @var null|AppealReceiverParty
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\AppealReceiverParty")
-     * @JMS\Expose
-     * @JMS\SerializedName("AppealReceiverParty")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getAppealReceiverParty", setter="setAppealReceiverParty")
      */
+    #[JMS\Accessor(getter: 'getAppealReceiverParty', setter: 'setAppealReceiverParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('AppealReceiverParty')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\AppealReceiverParty')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $appealReceiverParty;
 
     /**
      * @var null|MediationParty
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\MediationParty")
-     * @JMS\Expose
-     * @JMS\SerializedName("MediationParty")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getMediationParty", setter="setMediationParty")
      */
+    #[JMS\Accessor(getter: 'getMediationParty', setter: 'setMediationParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MediationParty')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\MediationParty')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $mediationParty;
 
     /**

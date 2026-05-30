@@ -14,74 +14,68 @@ final class Indirizzo
 
     /**
      * @translation-german Adresse
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getIndirizzo", setter="setIndirizzo")
-     * @JMS\SerializedName("Indirizzo")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getIndirizzo', setter: 'setIndirizzo')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Indirizzo')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $indirizzo = null;
 
     /**
      * @translation-german Nummer Hausnummer
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getNumeroCivico", setter="setNumeroCivico")
-     * @JMS\SerializedName("NumeroCivico")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getNumeroCivico', setter: 'setNumeroCivico')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('NumeroCivico')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $numeroCivico = null;
 
     /**
      * @translation-german PLZ
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getCAP", setter="setCAP")
-     * @JMS\SerializedName("CAP")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCAP', setter: 'setCAP')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CAP')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $cAP = null;
 
     /**
      * @translation-german Gemeinde
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getComune", setter="setComune")
-     * @JMS\SerializedName("Comune")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getComune', setter: 'setComune')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Comune')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $comune = null;
 
     /**
      * @translation-german Provinz
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getProvincia", setter="setProvincia")
-     * @JMS\SerializedName("Provincia")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getProvincia', setter: 'setProvincia')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Provincia')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $provincia = null;
 
     /**
      * @translation-german Land
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getNazione", setter="setNazione")
-     * @JMS\SerializedName("Nazione")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getNazione', setter: 'setNazione')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Nazione')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $nazione = null;
 
     /**

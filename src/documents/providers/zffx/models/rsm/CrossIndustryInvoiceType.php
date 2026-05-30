@@ -10,49 +10,47 @@ use horstoeko\invoicesuite\documents\providers\zffx\models\ram\ExchangedDocument
 use horstoeko\invoicesuite\documents\providers\zffx\models\ram\SupplyChainTradeTransactionType;
 use JMS\Serializer\Annotation as JMS;
 
-/**
- * @JMS\XmlNamespace(uri="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100", prefix="rsm")
- * @JMS\XmlNamespace(uri="urn:un:unece:uncefact:data:standard:QualifiedDataType:100", prefix="qdt")
- * @JMS\XmlNamespace(uri="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", prefix="ram")
- * @JMS\XmlNamespace(uri="http://www.w3.org/2001/XMLSchema", prefix="xs")
- * @JMS\XmlNamespace(uri="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100", prefix="udt")
- * @JMS\XmlNamespace(uri="http://www.w3.org/2001/XMLSchema-instance", prefix="xsi")
- */
+#[JMS\XmlNamespace(uri: 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100', prefix: 'rsm')]
+#[JMS\XmlNamespace(uri: 'urn:un:unece:uncefact:data:standard:QualifiedDataType:100', prefix: 'qdt')]
+#[JMS\XmlNamespace(uri: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', prefix: 'ram')]
+#[JMS\XmlNamespace(uri: 'http://www.w3.org/2001/XMLSchema', prefix: 'xs')]
+#[JMS\XmlNamespace(uri: 'urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100', prefix: 'udt')]
+#[JMS\XmlNamespace(uri: 'http://www.w3.org/2001/XMLSchema-instance', prefix: 'xsi')]
 class CrossIndustryInvoiceType
 {
     use HandlesObjectFlags;
 
     /**
      * @var null|ExchangedDocumentContextType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\ExchangedDocumentContextType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ExchangedDocumentContext")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100", cdata=false)
-     * @JMS\Accessor(getter="getExchangedDocumentContext", setter="setExchangedDocumentContext")
      */
+    #[JMS\Accessor(getter: 'getExchangedDocumentContext', setter: 'setExchangedDocumentContext')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ExchangedDocumentContext')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\ExchangedDocumentContextType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100', cdata: false)]
     private $exchangedDocumentContext;
 
     /**
      * @var null|ExchangedDocumentType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\ExchangedDocumentType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ExchangedDocument")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100", cdata=false)
-     * @JMS\Accessor(getter="getExchangedDocument", setter="setExchangedDocument")
      */
+    #[JMS\Accessor(getter: 'getExchangedDocument', setter: 'setExchangedDocument')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ExchangedDocument')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\ExchangedDocumentType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100', cdata: false)]
     private $exchangedDocument;
 
     /**
      * @var null|SupplyChainTradeTransactionType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\SupplyChainTradeTransactionType")
-     * @JMS\Expose
-     * @JMS\SerializedName("SupplyChainTradeTransaction")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100", cdata=false)
-     * @JMS\Accessor(getter="getSupplyChainTradeTransaction", setter="setSupplyChainTradeTransaction")
      */
+    #[JMS\Accessor(getter: 'getSupplyChainTradeTransaction', setter: 'setSupplyChainTradeTransaction')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('SupplyChainTradeTransaction')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\SupplyChainTradeTransactionType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100', cdata: false)]
     private $supplyChainTradeTransaction;
 
     /**

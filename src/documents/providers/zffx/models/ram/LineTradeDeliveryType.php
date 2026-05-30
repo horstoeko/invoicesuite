@@ -14,112 +14,112 @@ class LineTradeDeliveryType
 
     /**
      * @var null|QuantityType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\QuantityType")
-     * @JMS\Expose
-     * @JMS\SerializedName("BilledQuantity")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getBilledQuantity", setter="setBilledQuantity")
      */
+    #[JMS\Accessor(getter: 'getBilledQuantity', setter: 'setBilledQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('BilledQuantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\QuantityType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $billedQuantity;
 
     /**
      * @var null|QuantityType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\QuantityType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ChargeFreeQuantity")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getChargeFreeQuantity", setter="setChargeFreeQuantity")
      */
+    #[JMS\Accessor(getter: 'getChargeFreeQuantity', setter: 'setChargeFreeQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ChargeFreeQuantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\QuantityType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $chargeFreeQuantity;
 
     /**
      * @var null|QuantityType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\QuantityType")
-     * @JMS\Expose
-     * @JMS\SerializedName("PackageQuantity")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getPackageQuantity", setter="setPackageQuantity")
      */
+    #[JMS\Accessor(getter: 'getPackageQuantity', setter: 'setPackageQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('PackageQuantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\QuantityType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $packageQuantity;
 
     /**
      * @var null|QuantityType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\QuantityType")
-     * @JMS\Expose
-     * @JMS\SerializedName("PerPackageUnitQuantity")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getPerPackageUnitQuantity", setter="setPerPackageUnitQuantity")
      */
+    #[JMS\Accessor(getter: 'getPerPackageUnitQuantity', setter: 'setPerPackageUnitQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('PerPackageUnitQuantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\QuantityType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $perPackageUnitQuantity;
 
     /**
      * @var null|TradePartyType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePartyType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ShipToTradeParty")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getShipToTradeParty", setter="setShipToTradeParty")
      */
+    #[JMS\Accessor(getter: 'getShipToTradeParty', setter: 'setShipToTradeParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ShipToTradeParty')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePartyType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $shipToTradeParty;
 
     /**
      * @var null|TradePartyType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePartyType")
-     * @JMS\Expose
-     * @JMS\SerializedName("UltimateShipToTradeParty")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getUltimateShipToTradeParty", setter="setUltimateShipToTradeParty")
      */
+    #[JMS\Accessor(getter: 'getUltimateShipToTradeParty', setter: 'setUltimateShipToTradeParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('UltimateShipToTradeParty')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePartyType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $ultimateShipToTradeParty;
 
     /**
      * @var null|SupplyChainEventType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\SupplyChainEventType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ActualDeliverySupplyChainEvent")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getActualDeliverySupplyChainEvent", setter="setActualDeliverySupplyChainEvent")
      */
+    #[JMS\Accessor(getter: 'getActualDeliverySupplyChainEvent', setter: 'setActualDeliverySupplyChainEvent')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ActualDeliverySupplyChainEvent')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\SupplyChainEventType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $actualDeliverySupplyChainEvent;
 
     /**
      * @var null|ReferencedDocumentType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType")
-     * @JMS\Expose
-     * @JMS\SerializedName("DespatchAdviceReferencedDocument")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getDespatchAdviceReferencedDocument", setter="setDespatchAdviceReferencedDocument")
      */
+    #[JMS\Accessor(getter: 'getDespatchAdviceReferencedDocument', setter: 'setDespatchAdviceReferencedDocument')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('DespatchAdviceReferencedDocument')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $despatchAdviceReferencedDocument;
 
     /**
      * @var null|ReferencedDocumentType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ReceivingAdviceReferencedDocument")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getReceivingAdviceReferencedDocument", setter="setReceivingAdviceReferencedDocument")
      */
+    #[JMS\Accessor(getter: 'getReceivingAdviceReferencedDocument', setter: 'setReceivingAdviceReferencedDocument')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ReceivingAdviceReferencedDocument')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $receivingAdviceReferencedDocument;
 
     /**
      * @var null|ReferencedDocumentType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType")
-     * @JMS\Expose
-     * @JMS\SerializedName("DeliveryNoteReferencedDocument")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getDeliveryNoteReferencedDocument", setter="setDeliveryNoteReferencedDocument")
      */
+    #[JMS\Accessor(getter: 'getDeliveryNoteReferencedDocument', setter: 'setDeliveryNoteReferencedDocument')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('DeliveryNoteReferencedDocument')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $deliveryNoteReferencedDocument;
 
     /**

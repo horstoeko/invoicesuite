@@ -9,10 +9,9 @@ use JMS\Serializer\Annotation as JMS;
 
 /**
  * @translation-german-untranslated
- *
- * @JMS\XmlRoot("X509Data")
- * @JMS\XmlNamespace(uri="http://www.w3.org/2000/09/xmldsig#", prefix="ds")
  */
+#[JMS\XmlNamespace(uri: 'http://www.w3.org/2000/09/xmldsig#', prefix: 'ds')]
+#[JMS\XmlRoot('X509Data')]
 class X509Data extends X509DataType
 {
     use HandlesObjectFlags;

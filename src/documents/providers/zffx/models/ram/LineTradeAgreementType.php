@@ -13,114 +13,114 @@ class LineTradeAgreementType
 
     /**
      * @var null|TradeDeliveryTermsType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeDeliveryTermsType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ApplicableTradeDeliveryTerms")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getApplicableTradeDeliveryTerms", setter="setApplicableTradeDeliveryTerms")
      */
+    #[JMS\Accessor(getter: 'getApplicableTradeDeliveryTerms', setter: 'setApplicableTradeDeliveryTerms')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ApplicableTradeDeliveryTerms')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeDeliveryTermsType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $applicableTradeDeliveryTerms;
 
     /**
      * @var null|ReferencedDocumentType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType")
-     * @JMS\Expose
-     * @JMS\SerializedName("SellerOrderReferencedDocument")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getSellerOrderReferencedDocument", setter="setSellerOrderReferencedDocument")
      */
+    #[JMS\Accessor(getter: 'getSellerOrderReferencedDocument', setter: 'setSellerOrderReferencedDocument')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('SellerOrderReferencedDocument')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $sellerOrderReferencedDocument;
 
     /**
      * @var null|ReferencedDocumentType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType")
-     * @JMS\Expose
-     * @JMS\SerializedName("BuyerOrderReferencedDocument")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getBuyerOrderReferencedDocument", setter="setBuyerOrderReferencedDocument")
      */
+    #[JMS\Accessor(getter: 'getBuyerOrderReferencedDocument', setter: 'setBuyerOrderReferencedDocument')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('BuyerOrderReferencedDocument')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $buyerOrderReferencedDocument;
 
     /**
      * @var null|ReferencedDocumentType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType")
-     * @JMS\Expose
-     * @JMS\SerializedName("QuotationReferencedDocument")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getQuotationReferencedDocument", setter="setQuotationReferencedDocument")
      */
+    #[JMS\Accessor(getter: 'getQuotationReferencedDocument', setter: 'setQuotationReferencedDocument')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('QuotationReferencedDocument')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $quotationReferencedDocument;
 
     /**
      * @var null|ReferencedDocumentType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ContractReferencedDocument")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getContractReferencedDocument", setter="setContractReferencedDocument")
      */
+    #[JMS\Accessor(getter: 'getContractReferencedDocument', setter: 'setContractReferencedDocument')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ContractReferencedDocument')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $contractReferencedDocument;
 
     /**
      * @var null|array<ReferencedDocumentType>
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType>")
-     * @JMS\Expose
-     * @JMS\SerializedName("AdditionalReferencedDocument")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\XmlList(inline=true, entry="AdditionalReferencedDocument", namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100")
-     * @JMS\Accessor(getter="getAdditionalReferencedDocument", setter="setAdditionalReferencedDocument")
      */
+    #[JMS\Accessor(getter: 'getAdditionalReferencedDocument', setter: 'setAdditionalReferencedDocument')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('AdditionalReferencedDocument')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType>')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'AdditionalReferencedDocument', namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100')]
     private $additionalReferencedDocument;
 
     /**
      * @var null|TradePriceType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePriceType")
-     * @JMS\Expose
-     * @JMS\SerializedName("GrossPriceProductTradePrice")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getGrossPriceProductTradePrice", setter="setGrossPriceProductTradePrice")
      */
+    #[JMS\Accessor(getter: 'getGrossPriceProductTradePrice', setter: 'setGrossPriceProductTradePrice')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('GrossPriceProductTradePrice')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePriceType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $grossPriceProductTradePrice;
 
     /**
      * @var null|TradePriceType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePriceType")
-     * @JMS\Expose
-     * @JMS\SerializedName("NetPriceProductTradePrice")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getNetPriceProductTradePrice", setter="setNetPriceProductTradePrice")
      */
+    #[JMS\Accessor(getter: 'getNetPriceProductTradePrice', setter: 'setNetPriceProductTradePrice')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('NetPriceProductTradePrice')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePriceType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $netPriceProductTradePrice;
 
     /**
      * @var null|TradePartyType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePartyType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ItemSellerTradeParty")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getItemSellerTradeParty", setter="setItemSellerTradeParty")
      */
+    #[JMS\Accessor(getter: 'getItemSellerTradeParty', setter: 'setItemSellerTradeParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ItemSellerTradeParty')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePartyType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $itemSellerTradeParty;
 
     /**
      * @var null|array<ReferencedDocumentType>
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType>")
-     * @JMS\Expose
-     * @JMS\SerializedName("UltimateCustomerOrderReferencedDocument")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\XmlList(inline=true, entry="UltimateCustomerOrderReferencedDocument", namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100")
-     * @JMS\Accessor(getter="getUltimateCustomerOrderReferencedDocument", setter="setUltimateCustomerOrderReferencedDocument")
      */
+    #[JMS\Accessor(getter: 'getUltimateCustomerOrderReferencedDocument', setter: 'setUltimateCustomerOrderReferencedDocument')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('UltimateCustomerOrderReferencedDocument')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType>')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'UltimateCustomerOrderReferencedDocument', namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100')]
     private $ultimateCustomerOrderReferencedDocument;
 
     /**

@@ -15,26 +15,24 @@ final class DatiVeicoli
 
     /**
      * @translation-german Datum
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Accessor(getter="getData", setter="setData")
-     * @JMS\SerializedName("Data")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getData', setter: 'setData')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Data')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DateTimeInterface $data = null;
 
     /**
      * @translation-german Gesamt Percorso
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getTotalePercorso", setter="setTotalePercorso")
-     * @JMS\SerializedName("TotalePercorso")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getTotalePercorso', setter: 'setTotalePercorso')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('TotalePercorso')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $totalePercorso = null;
 
     /**

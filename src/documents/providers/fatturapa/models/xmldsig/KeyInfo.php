@@ -9,10 +9,9 @@ use JMS\Serializer\Annotation as JMS;
 
 /**
  * @translation-german-untranslated
- *
- * @JMS\XmlRoot("KeyInfo")
- * @JMS\XmlNamespace(uri="http://www.w3.org/2000/09/xmldsig#", prefix="ds")
  */
+#[JMS\XmlNamespace(uri: 'http://www.w3.org/2000/09/xmldsig#', prefix: 'ds')]
+#[JMS\XmlRoot('KeyInfo')]
 class KeyInfo extends KeyInfoType
 {
     use HandlesObjectFlags;

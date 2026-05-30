@@ -18,26 +18,26 @@ class SignaturePropertyType
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getTarget", setter="setTarget")
-     * @JMS\SerializedName("Target")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getTarget', setter: 'setTarget')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Target')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private ?string $target = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getId", setter="setId")
-     * @JMS\SerializedName("Id")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getId', setter: 'setId')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Id')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private ?string $id = null;
 
     /**

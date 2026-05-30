@@ -14,74 +14,68 @@ final class FatturaElettronicaHeader
 
     /**
      * @translation-german Übertragungsdaten
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiTrasmissione")
-     * @JMS\Accessor(getter="getDatiTrasmissione", setter="setDatiTrasmissione")
-     * @JMS\SerializedName("DatiTrasmissione")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDatiTrasmissione', setter: 'setDatiTrasmissione')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DatiTrasmissione')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiTrasmissione')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DatiTrasmissione $datiTrasmissione = null;
 
     /**
      * @translation-german Aussteller Leistungserbringer
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\CedentePrestatore")
-     * @JMS\Accessor(getter="getCedentePrestatore", setter="setCedentePrestatore")
-     * @JMS\SerializedName("CedentePrestatore")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCedentePrestatore', setter: 'setCedentePrestatore')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CedentePrestatore')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\CedentePrestatore')]
+    #[JMS\XmlElement(cdata: false)]
     private ?CedentePrestatore $cedentePrestatore = null;
 
     /**
      * @translation-german Vertreter Fiscale
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\RappresentanteFiscale")
-     * @JMS\Accessor(getter="getRappresentanteFiscale", setter="setRappresentanteFiscale")
-     * @JMS\SerializedName("RappresentanteFiscale")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getRappresentanteFiscale', setter: 'setRappresentanteFiscale')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('RappresentanteFiscale')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\RappresentanteFiscale')]
+    #[JMS\XmlElement(cdata: false)]
     private ?RappresentanteFiscale $rappresentanteFiscale = null;
 
     /**
      * @translation-german Empfänger Auftraggeber
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\CessionarioCommittente")
-     * @JMS\Accessor(getter="getCessionarioCommittente", setter="setCessionarioCommittente")
-     * @JMS\SerializedName("CessionarioCommittente")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCessionarioCommittente', setter: 'setCessionarioCommittente')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CessionarioCommittente')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\CessionarioCommittente')]
+    #[JMS\XmlElement(cdata: false)]
     private ?CessionarioCommittente $cessionarioCommittente = null;
 
     /**
      * @translation-german Dritter Vermittler O Soggetto Emittente
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\TerzoIntermediarioSoggettoEmittente")
-     * @JMS\Accessor(getter="getTerzoIntermediarioOSoggettoEmittente", setter="setTerzoIntermediarioOSoggettoEmittente")
-     * @JMS\SerializedName("TerzoIntermediarioOSoggettoEmittente")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getTerzoIntermediarioOSoggettoEmittente', setter: 'setTerzoIntermediarioOSoggettoEmittente')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('TerzoIntermediarioOSoggettoEmittente')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\TerzoIntermediarioSoggettoEmittente')]
+    #[JMS\XmlElement(cdata: false)]
     private ?TerzoIntermediarioSoggettoEmittente $terzoIntermediarioOSoggettoEmittente = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\SoggettoEmittente','value'>")
-     * @JMS\Accessor(getter="getSoggettoEmittente", setter="setSoggettoEmittente")
-     * @JMS\SerializedName("SoggettoEmittente")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getSoggettoEmittente', setter: 'setSoggettoEmittente')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('SoggettoEmittente')]
+    #[JMS\Type('enum<\'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\SoggettoEmittente\',\'value\'>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?SoggettoEmittente $soggettoEmittente = null;
 
     /**

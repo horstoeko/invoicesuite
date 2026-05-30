@@ -14,24 +14,24 @@ class WinningPartyType
 
     /**
      * @var null|Rank
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Rank")
-     * @JMS\Expose
-     * @JMS\SerializedName("Rank")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getRank", setter="setRank")
      */
+    #[JMS\Accessor(getter: 'getRank', setter: 'setRank')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Rank')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Rank')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $rank;
 
     /**
      * @var null|Party
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\Party")
-     * @JMS\Expose
-     * @JMS\SerializedName("Party")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getParty", setter="setParty")
      */
+    #[JMS\Accessor(getter: 'getParty', setter: 'setParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Party')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\Party')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $party;
 
     /**

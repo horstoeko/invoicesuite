@@ -15,50 +15,46 @@ final class AltriDatiGestionali
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getTipoDato", setter="setTipoDato")
-     * @JMS\SerializedName("TipoDato")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getTipoDato', setter: 'setTipoDato')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('TipoDato')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $tipoDato = null;
 
     /**
      * @translation-german Referenz Testo
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getRiferimentoTesto", setter="setRiferimentoTesto")
-     * @JMS\SerializedName("RiferimentoTesto")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getRiferimentoTesto', setter: 'setRiferimentoTesto')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('RiferimentoTesto')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $riferimentoTesto = null;
 
     /**
      * @translation-german Referenz Nummer
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("fatturapa_decimal<2>")
-     * @JMS\Accessor(getter="getRiferimentoNumero", setter="setRiferimentoNumero")
-     * @JMS\SerializedName("RiferimentoNumero")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getRiferimentoNumero', setter: 'setRiferimentoNumero')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('RiferimentoNumero')]
+    #[JMS\Type('fatturapa_decimal<2>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?float $riferimentoNumero = null;
 
     /**
      * @translation-german Referenz Datum
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Accessor(getter="getRiferimentoData", setter="setRiferimentoData")
-     * @JMS\SerializedName("RiferimentoData")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getRiferimentoData', setter: 'setRiferimentoData')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('RiferimentoData')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DateTimeInterface $riferimentoData = null;
 
     /**

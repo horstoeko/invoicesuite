@@ -37,301 +37,301 @@ class AddressType
 
     /**
      * @var null|ID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID")
-     * @JMS\Expose
-     * @JMS\SerializedName("ID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getID", setter="setID")
      */
+    #[JMS\Accessor(getter: 'getID', setter: 'setID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $iD;
 
     /**
      * @var null|AddressTypeCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AddressTypeCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("AddressTypeCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getAddressTypeCode", setter="setAddressTypeCode")
      */
+    #[JMS\Accessor(getter: 'getAddressTypeCode', setter: 'setAddressTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('AddressTypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AddressTypeCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $addressTypeCode;
 
     /**
      * @var null|AddressFormatCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AddressFormatCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("AddressFormatCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getAddressFormatCode", setter="setAddressFormatCode")
      */
+    #[JMS\Accessor(getter: 'getAddressFormatCode', setter: 'setAddressFormatCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('AddressFormatCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AddressFormatCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $addressFormatCode;
 
     /**
      * @var null|Postbox
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Postbox")
-     * @JMS\Expose
-     * @JMS\SerializedName("Postbox")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPostbox", setter="setPostbox")
      */
+    #[JMS\Accessor(getter: 'getPostbox', setter: 'setPostbox')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Postbox')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Postbox')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $postbox;
 
     /**
      * @var null|Floor
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Floor")
-     * @JMS\Expose
-     * @JMS\SerializedName("Floor")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getFloor", setter="setFloor")
      */
+    #[JMS\Accessor(getter: 'getFloor', setter: 'setFloor')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Floor')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Floor')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $floor;
 
     /**
      * @var null|Room
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Room")
-     * @JMS\Expose
-     * @JMS\SerializedName("Room")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getRoom", setter="setRoom")
      */
+    #[JMS\Accessor(getter: 'getRoom', setter: 'setRoom')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Room')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Room')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $room;
 
     /**
      * @var null|StreetName
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\StreetName")
-     * @JMS\Expose
-     * @JMS\SerializedName("StreetName")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getStreetName", setter="setStreetName")
      */
+    #[JMS\Accessor(getter: 'getStreetName', setter: 'setStreetName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('StreetName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\StreetName')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $streetName;
 
     /**
      * @var null|AdditionalStreetName
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AdditionalStreetName")
-     * @JMS\Expose
-     * @JMS\SerializedName("AdditionalStreetName")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getAdditionalStreetName", setter="setAdditionalStreetName")
      */
+    #[JMS\Accessor(getter: 'getAdditionalStreetName', setter: 'setAdditionalStreetName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('AdditionalStreetName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AdditionalStreetName')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $additionalStreetName;
 
     /**
      * @var null|BlockName
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\BlockName")
-     * @JMS\Expose
-     * @JMS\SerializedName("BlockName")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getBlockName", setter="setBlockName")
      */
+    #[JMS\Accessor(getter: 'getBlockName', setter: 'setBlockName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('BlockName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\BlockName')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $blockName;
 
     /**
      * @var null|BuildingName
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\BuildingName")
-     * @JMS\Expose
-     * @JMS\SerializedName("BuildingName")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getBuildingName", setter="setBuildingName")
      */
+    #[JMS\Accessor(getter: 'getBuildingName', setter: 'setBuildingName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('BuildingName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\BuildingName')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $buildingName;
 
     /**
      * @var null|BuildingNumber
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\BuildingNumber")
-     * @JMS\Expose
-     * @JMS\SerializedName("BuildingNumber")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getBuildingNumber", setter="setBuildingNumber")
      */
+    #[JMS\Accessor(getter: 'getBuildingNumber', setter: 'setBuildingNumber')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('BuildingNumber')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\BuildingNumber')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $buildingNumber;
 
     /**
      * @var null|InhouseMail
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\InhouseMail")
-     * @JMS\Expose
-     * @JMS\SerializedName("InhouseMail")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getInhouseMail", setter="setInhouseMail")
      */
+    #[JMS\Accessor(getter: 'getInhouseMail', setter: 'setInhouseMail')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('InhouseMail')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\InhouseMail')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $inhouseMail;
 
     /**
      * @var null|Department
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Department")
-     * @JMS\Expose
-     * @JMS\SerializedName("Department")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getDepartment", setter="setDepartment")
      */
+    #[JMS\Accessor(getter: 'getDepartment', setter: 'setDepartment')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Department')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Department')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $department;
 
     /**
      * @var null|MarkAttention
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MarkAttention")
-     * @JMS\Expose
-     * @JMS\SerializedName("MarkAttention")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getMarkAttention", setter="setMarkAttention")
      */
+    #[JMS\Accessor(getter: 'getMarkAttention', setter: 'setMarkAttention')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MarkAttention')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MarkAttention')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $markAttention;
 
     /**
      * @var null|MarkCare
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MarkCare")
-     * @JMS\Expose
-     * @JMS\SerializedName("MarkCare")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getMarkCare", setter="setMarkCare")
      */
+    #[JMS\Accessor(getter: 'getMarkCare', setter: 'setMarkCare')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MarkCare')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MarkCare')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $markCare;
 
     /**
      * @var null|PlotIdentification
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PlotIdentification")
-     * @JMS\Expose
-     * @JMS\SerializedName("PlotIdentification")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPlotIdentification", setter="setPlotIdentification")
      */
+    #[JMS\Accessor(getter: 'getPlotIdentification', setter: 'setPlotIdentification')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PlotIdentification')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PlotIdentification')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $plotIdentification;
 
     /**
      * @var null|CitySubdivisionName
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CitySubdivisionName")
-     * @JMS\Expose
-     * @JMS\SerializedName("CitySubdivisionName")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCitySubdivisionName", setter="setCitySubdivisionName")
      */
+    #[JMS\Accessor(getter: 'getCitySubdivisionName', setter: 'setCitySubdivisionName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CitySubdivisionName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CitySubdivisionName')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $citySubdivisionName;
 
     /**
      * @var null|CityName
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CityName")
-     * @JMS\Expose
-     * @JMS\SerializedName("CityName")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCityName", setter="setCityName")
      */
+    #[JMS\Accessor(getter: 'getCityName', setter: 'setCityName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CityName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CityName')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $cityName;
 
     /**
      * @var null|PostalZone
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PostalZone")
-     * @JMS\Expose
-     * @JMS\SerializedName("PostalZone")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPostalZone", setter="setPostalZone")
      */
+    #[JMS\Accessor(getter: 'getPostalZone', setter: 'setPostalZone')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PostalZone')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PostalZone')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $postalZone;
 
     /**
      * @var null|CountrySubentity
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CountrySubentity")
-     * @JMS\Expose
-     * @JMS\SerializedName("CountrySubentity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCountrySubentity", setter="setCountrySubentity")
      */
+    #[JMS\Accessor(getter: 'getCountrySubentity', setter: 'setCountrySubentity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CountrySubentity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CountrySubentity')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $countrySubentity;
 
     /**
      * @var null|CountrySubentityCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CountrySubentityCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("CountrySubentityCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCountrySubentityCode", setter="setCountrySubentityCode")
      */
+    #[JMS\Accessor(getter: 'getCountrySubentityCode', setter: 'setCountrySubentityCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CountrySubentityCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CountrySubentityCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $countrySubentityCode;
 
     /**
      * @var null|Region
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Region")
-     * @JMS\Expose
-     * @JMS\SerializedName("Region")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getRegion", setter="setRegion")
      */
+    #[JMS\Accessor(getter: 'getRegion', setter: 'setRegion')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Region')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Region')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $region;
 
     /**
      * @var null|District
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\District")
-     * @JMS\Expose
-     * @JMS\SerializedName("District")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getDistrict", setter="setDistrict")
      */
+    #[JMS\Accessor(getter: 'getDistrict', setter: 'setDistrict')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('District')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\District')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $district;
 
     /**
      * @var null|TimezoneOffset
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TimezoneOffset")
-     * @JMS\Expose
-     * @JMS\SerializedName("TimezoneOffset")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTimezoneOffset", setter="setTimezoneOffset")
      */
+    #[JMS\Accessor(getter: 'getTimezoneOffset', setter: 'setTimezoneOffset')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TimezoneOffset')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TimezoneOffset')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $timezoneOffset;
 
     /**
      * @var null|array<AddressLine>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\AddressLine>")
-     * @JMS\Expose
-     * @JMS\SerializedName("AddressLine")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="AddressLine", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getAddressLine", setter="setAddressLine")
      */
+    #[JMS\Accessor(getter: 'getAddressLine', setter: 'setAddressLine')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('AddressLine')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\AddressLine>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'AddressLine', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $addressLine;
 
     /**
      * @var null|Country
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\Country")
-     * @JMS\Expose
-     * @JMS\SerializedName("Country")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCountry", setter="setCountry")
      */
+    #[JMS\Accessor(getter: 'getCountry', setter: 'setCountry')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Country')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\Country')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $country;
 
     /**
      * @var null|array<LocationCoordinate>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\LocationCoordinate>")
-     * @JMS\Expose
-     * @JMS\SerializedName("LocationCoordinate")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="LocationCoordinate", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getLocationCoordinate", setter="setLocationCoordinate")
      */
+    #[JMS\Accessor(getter: 'getLocationCoordinate', setter: 'setLocationCoordinate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('LocationCoordinate')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\LocationCoordinate>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'LocationCoordinate', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $locationCoordinate;
 
     /**

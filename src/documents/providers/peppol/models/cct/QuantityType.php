@@ -14,57 +14,57 @@ class QuantityType
 
     /**
      * @var null|float
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("float")
-     * @JMS\Expose
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlValue(cdata=false)
-     * @JMS\Accessor(getter="getValue", setter="setValue")
      */
+    #[JMS\Accessor(getter: 'getValue', setter: 'setValue')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\Type('float')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlValue(cdata: false)]
     private $value;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("unitCode")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getUnitCode", setter="setUnitCode")
      */
+    #[JMS\Accessor(getter: 'getUnitCode', setter: 'setUnitCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('unitCode')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $unitCode;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("unitCodeListID")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getUnitCodeListID", setter="setUnitCodeListID")
      */
+    #[JMS\Accessor(getter: 'getUnitCodeListID', setter: 'setUnitCodeListID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('unitCodeListID')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $unitCodeListID;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("unitCodeListAgencyID")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getUnitCodeListAgencyID", setter="setUnitCodeListAgencyID")
      */
+    #[JMS\Accessor(getter: 'getUnitCodeListAgencyID', setter: 'setUnitCodeListAgencyID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('unitCodeListAgencyID')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $unitCodeListAgencyID;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("unitCodeListAgencyName")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getUnitCodeListAgencyName", setter="setUnitCodeListAgencyName")
      */
+    #[JMS\Accessor(getter: 'getUnitCodeListAgencyName', setter: 'setUnitCodeListAgencyName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('unitCodeListAgencyName')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $unitCodeListAgencyName;
 
     /**

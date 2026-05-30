@@ -14,38 +14,35 @@ final class ScontoMaggiorazione
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoScontoMaggiorazione','value'>")
-     * @JMS\Accessor(getter="getTipo", setter="setTipo")
-     * @JMS\SerializedName("Tipo")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getTipo', setter: 'setTipo')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Tipo')]
+    #[JMS\Type('enum<\'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoScontoMaggiorazione\',\'value\'>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?TipoScontoMaggiorazione $tipo = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("fatturapa_decimal<2>")
-     * @JMS\Accessor(getter="getPercentuale", setter="setPercentuale")
-     * @JMS\SerializedName("Percentuale")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getPercentuale', setter: 'setPercentuale')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Percentuale')]
+    #[JMS\Type('fatturapa_decimal<2>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?float $percentuale = null;
 
     /**
      * @translation-german Betrag
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("fatturapa_decimal<2>")
-     * @JMS\Accessor(getter="getImporto", setter="setImporto")
-     * @JMS\SerializedName("Importo")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getImporto', setter: 'setImporto')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Importo')]
+    #[JMS\Type('fatturapa_decimal<2>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?float $importo = null;
 
     /**

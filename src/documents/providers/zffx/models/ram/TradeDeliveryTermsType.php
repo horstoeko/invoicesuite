@@ -14,24 +14,24 @@ class TradeDeliveryTermsType
 
     /**
      * @var null|DeliveryTermsCodeType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\qdt\DeliveryTermsCodeType")
-     * @JMS\Expose
-     * @JMS\SerializedName("DeliveryTypeCode")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getDeliveryTypeCode", setter="setDeliveryTypeCode")
      */
+    #[JMS\Accessor(getter: 'getDeliveryTypeCode', setter: 'setDeliveryTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('DeliveryTypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\qdt\DeliveryTermsCodeType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $deliveryTypeCode;
 
     /**
      * @var null|TradeLocationType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeLocationType")
-     * @JMS\Expose
-     * @JMS\SerializedName("RelevantTradeLocation")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getRelevantTradeLocation", setter="setRelevantTradeLocation")
      */
+    #[JMS\Accessor(getter: 'getRelevantTradeLocation', setter: 'setRelevantTradeLocation')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('RelevantTradeLocation')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeLocationType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $relevantTradeLocation;
 
     /**

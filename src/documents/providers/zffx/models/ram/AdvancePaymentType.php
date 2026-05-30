@@ -15,47 +15,47 @@ class AdvancePaymentType
 
     /**
      * @var null|AmountType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType")
-     * @JMS\Expose
-     * @JMS\SerializedName("PaidAmount")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getPaidAmount", setter="setPaidAmount")
      */
+    #[JMS\Accessor(getter: 'getPaidAmount', setter: 'setPaidAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('PaidAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $paidAmount;
 
     /**
      * @var null|FormattedDateTimeType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\qdt\FormattedDateTimeType")
-     * @JMS\Expose
-     * @JMS\SerializedName("FormattedReceivedDateTime")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getFormattedReceivedDateTime", setter="setFormattedReceivedDateTime")
      */
+    #[JMS\Accessor(getter: 'getFormattedReceivedDateTime', setter: 'setFormattedReceivedDateTime')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('FormattedReceivedDateTime')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\qdt\FormattedDateTimeType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $formattedReceivedDateTime;
 
     /**
      * @var null|array<TradeTaxType>
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeTaxType>")
-     * @JMS\Expose
-     * @JMS\SerializedName("IncludedTradeTax")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\XmlList(inline=true, entry="IncludedTradeTax", namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100")
-     * @JMS\Accessor(getter="getIncludedTradeTax", setter="setIncludedTradeTax")
      */
+    #[JMS\Accessor(getter: 'getIncludedTradeTax', setter: 'setIncludedTradeTax')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('IncludedTradeTax')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeTaxType>')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'IncludedTradeTax', namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100')]
     private $includedTradeTax;
 
     /**
      * @var null|ReferencedDocumentType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType")
-     * @JMS\Expose
-     * @JMS\SerializedName("InvoiceSpecifiedReferencedDocument")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getInvoiceSpecifiedReferencedDocument", setter="setInvoiceSpecifiedReferencedDocument")
      */
+    #[JMS\Accessor(getter: 'getInvoiceSpecifiedReferencedDocument', setter: 'setInvoiceSpecifiedReferencedDocument')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('InvoiceSpecifiedReferencedDocument')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $invoiceSpecifiedReferencedDocument;
 
     /**

@@ -13,50 +13,50 @@ class EnergyWaterSupplyType
 
     /**
      * @var null|array<ConsumptionReport>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\ConsumptionReport>")
-     * @JMS\Expose
-     * @JMS\SerializedName("ConsumptionReport")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="ConsumptionReport", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getConsumptionReport", setter="setConsumptionReport")
      */
+    #[JMS\Accessor(getter: 'getConsumptionReport', setter: 'setConsumptionReport')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ConsumptionReport')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\ConsumptionReport>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'ConsumptionReport', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $consumptionReport;
 
     /**
      * @var null|array<EnergyTaxReport>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\EnergyTaxReport>")
-     * @JMS\Expose
-     * @JMS\SerializedName("EnergyTaxReport")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="EnergyTaxReport", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getEnergyTaxReport", setter="setEnergyTaxReport")
      */
+    #[JMS\Accessor(getter: 'getEnergyTaxReport', setter: 'setEnergyTaxReport')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('EnergyTaxReport')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\EnergyTaxReport>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'EnergyTaxReport', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $energyTaxReport;
 
     /**
      * @var null|array<ConsumptionAverage>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\ConsumptionAverage>")
-     * @JMS\Expose
-     * @JMS\SerializedName("ConsumptionAverage")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="ConsumptionAverage", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getConsumptionAverage", setter="setConsumptionAverage")
      */
+    #[JMS\Accessor(getter: 'getConsumptionAverage', setter: 'setConsumptionAverage')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ConsumptionAverage')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\ConsumptionAverage>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'ConsumptionAverage', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $consumptionAverage;
 
     /**
      * @var null|array<EnergyWaterConsumptionCorrection>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\EnergyWaterConsumptionCorrection>")
-     * @JMS\Expose
-     * @JMS\SerializedName("EnergyWaterConsumptionCorrection")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="EnergyWaterConsumptionCorrection", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getEnergyWaterConsumptionCorrection", setter="setEnergyWaterConsumptionCorrection")
      */
+    #[JMS\Accessor(getter: 'getEnergyWaterConsumptionCorrection', setter: 'setEnergyWaterConsumptionCorrection')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('EnergyWaterConsumptionCorrection')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\EnergyWaterConsumptionCorrection>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'EnergyWaterConsumptionCorrection', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $energyWaterConsumptionCorrection;
 
     /**

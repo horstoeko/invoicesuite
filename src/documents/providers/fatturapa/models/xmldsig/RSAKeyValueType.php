@@ -18,26 +18,26 @@ class RSAKeyValueType
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getModulus", setter="setModulus")
-     * @JMS\SerializedName("Modulus")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getModulus', setter: 'setModulus')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Modulus')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $modulus = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getExponent", setter="setExponent")
-     * @JMS\SerializedName("Exponent")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getExponent', setter: 'setExponent')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Exponent')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $exponent = null;
 
     /**

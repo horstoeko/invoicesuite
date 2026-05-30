@@ -14,112 +14,112 @@ class CodeType
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlValue(cdata=false)
-     * @JMS\Accessor(getter="getValue", setter="setValue")
      */
+    #[JMS\Accessor(getter: 'getValue', setter: 'setValue')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlValue(cdata: false)]
     private $value;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("listID")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getListID", setter="setListID")
      */
+    #[JMS\Accessor(getter: 'getListID', setter: 'setListID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('listID')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $listID;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("listAgencyID")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getListAgencyID", setter="setListAgencyID")
      */
+    #[JMS\Accessor(getter: 'getListAgencyID', setter: 'setListAgencyID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('listAgencyID')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $listAgencyID;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("listAgencyName")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getListAgencyName", setter="setListAgencyName")
      */
+    #[JMS\Accessor(getter: 'getListAgencyName', setter: 'setListAgencyName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('listAgencyName')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $listAgencyName;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("listName")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getListName", setter="setListName")
      */
+    #[JMS\Accessor(getter: 'getListName', setter: 'setListName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('listName')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $listName;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("listVersionID")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getListVersionID", setter="setListVersionID")
      */
+    #[JMS\Accessor(getter: 'getListVersionID', setter: 'setListVersionID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('listVersionID')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $listVersionID;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("name")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getName", setter="setName")
      */
+    #[JMS\Accessor(getter: 'getName', setter: 'setName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('name')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $name;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("languageID")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getLanguageID", setter="setLanguageID")
      */
+    #[JMS\Accessor(getter: 'getLanguageID', setter: 'setLanguageID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('languageID')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $languageID;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("listURI")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getListURI", setter="setListURI")
      */
+    #[JMS\Accessor(getter: 'getListURI', setter: 'setListURI')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('listURI')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $listURI;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("listSchemeURI")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getListSchemeURI", setter="setListSchemeURI")
      */
+    #[JMS\Accessor(getter: 'getListSchemeURI', setter: 'setListSchemeURI')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('listSchemeURI')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $listSchemeURI;
 
     /**

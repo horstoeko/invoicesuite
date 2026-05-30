@@ -18,39 +18,39 @@ class RetrievalMethodType
      * @translation-german-untranslated
      *
      * @var null|TransformsType
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\TransformsType")
-     * @JMS\Accessor(getter="getTransforms", setter="setTransforms")
-     * @JMS\SerializedName("Transforms")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getTransforms', setter: 'setTransforms')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Transforms')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\TransformsType')]
+    #[JMS\XmlElement(cdata: false)]
     private ?TransformsType $transforms = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getURI", setter="setURI")
-     * @JMS\SerializedName("URI")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getURI', setter: 'setURI')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('URI')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private ?string $uRI = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getType", setter="setType")
-     * @JMS\SerializedName("Type")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getType', setter: 'setType')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Type')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private ?string $type = null;
 
     /**

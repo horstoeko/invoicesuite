@@ -15,13 +15,13 @@ class VideoType extends BinaryObjectType
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("mimeCode")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getMimeCode", setter="setMimeCode")
      */
+    #[JMS\Accessor(getter: 'getMimeCode', setter: 'setMimeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('mimeCode')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $mimeCode;
 
     /**

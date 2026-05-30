@@ -18,79 +18,79 @@ class HazardousGoodsTransitType
 
     /**
      * @var null|TransportEmergencyCardCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TransportEmergencyCardCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("TransportEmergencyCardCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTransportEmergencyCardCode", setter="setTransportEmergencyCardCode")
      */
+    #[JMS\Accessor(getter: 'getTransportEmergencyCardCode', setter: 'setTransportEmergencyCardCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TransportEmergencyCardCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TransportEmergencyCardCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $transportEmergencyCardCode;
 
     /**
      * @var null|PackingCriteriaCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PackingCriteriaCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("PackingCriteriaCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPackingCriteriaCode", setter="setPackingCriteriaCode")
      */
+    #[JMS\Accessor(getter: 'getPackingCriteriaCode', setter: 'setPackingCriteriaCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PackingCriteriaCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PackingCriteriaCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $packingCriteriaCode;
 
     /**
      * @var null|HazardousRegulationCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\HazardousRegulationCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("HazardousRegulationCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getHazardousRegulationCode", setter="setHazardousRegulationCode")
      */
+    #[JMS\Accessor(getter: 'getHazardousRegulationCode', setter: 'setHazardousRegulationCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('HazardousRegulationCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\HazardousRegulationCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $hazardousRegulationCode;
 
     /**
      * @var null|InhalationToxicityZoneCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\InhalationToxicityZoneCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("InhalationToxicityZoneCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getInhalationToxicityZoneCode", setter="setInhalationToxicityZoneCode")
      */
+    #[JMS\Accessor(getter: 'getInhalationToxicityZoneCode', setter: 'setInhalationToxicityZoneCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('InhalationToxicityZoneCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\InhalationToxicityZoneCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $inhalationToxicityZoneCode;
 
     /**
      * @var null|TransportAuthorizationCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TransportAuthorizationCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("TransportAuthorizationCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTransportAuthorizationCode", setter="setTransportAuthorizationCode")
      */
+    #[JMS\Accessor(getter: 'getTransportAuthorizationCode', setter: 'setTransportAuthorizationCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TransportAuthorizationCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TransportAuthorizationCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $transportAuthorizationCode;
 
     /**
      * @var null|MaximumTemperature
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\MaximumTemperature")
-     * @JMS\Expose
-     * @JMS\SerializedName("MaximumTemperature")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getMaximumTemperature", setter="setMaximumTemperature")
      */
+    #[JMS\Accessor(getter: 'getMaximumTemperature', setter: 'setMaximumTemperature')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MaximumTemperature')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\MaximumTemperature')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $maximumTemperature;
 
     /**
      * @var null|MinimumTemperature
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\MinimumTemperature")
-     * @JMS\Expose
-     * @JMS\SerializedName("MinimumTemperature")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getMinimumTemperature", setter="setMinimumTemperature")
      */
+    #[JMS\Accessor(getter: 'getMinimumTemperature', setter: 'setMinimumTemperature')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MinimumTemperature')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\MinimumTemperature')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $minimumTemperature;
 
     /**

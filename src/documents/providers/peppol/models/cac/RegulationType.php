@@ -16,35 +16,35 @@ class RegulationType
 
     /**
      * @var null|Name
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Name")
-     * @JMS\Expose
-     * @JMS\SerializedName("Name")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getName", setter="setName")
      */
+    #[JMS\Accessor(getter: 'getName', setter: 'setName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Name')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Name')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $name;
 
     /**
      * @var null|LegalReference
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LegalReference")
-     * @JMS\Expose
-     * @JMS\SerializedName("LegalReference")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getLegalReference", setter="setLegalReference")
      */
+    #[JMS\Accessor(getter: 'getLegalReference', setter: 'setLegalReference')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('LegalReference')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LegalReference')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $legalReference;
 
     /**
      * @var null|OntologyURI
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OntologyURI")
-     * @JMS\Expose
-     * @JMS\SerializedName("OntologyURI")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getOntologyURI", setter="setOntologyURI")
      */
+    #[JMS\Accessor(getter: 'getOntologyURI', setter: 'setOntologyURI')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('OntologyURI')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OntologyURI')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $ontologyURI;
 
     /**

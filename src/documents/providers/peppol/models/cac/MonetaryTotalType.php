@@ -22,101 +22,101 @@ class MonetaryTotalType
 
     /**
      * @var null|LineExtensionAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LineExtensionAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("LineExtensionAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getLineExtensionAmount", setter="setLineExtensionAmount")
      */
+    #[JMS\Accessor(getter: 'getLineExtensionAmount', setter: 'setLineExtensionAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('LineExtensionAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LineExtensionAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $lineExtensionAmount;
 
     /**
      * @var null|TaxExclusiveAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TaxExclusiveAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("TaxExclusiveAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTaxExclusiveAmount", setter="setTaxExclusiveAmount")
      */
+    #[JMS\Accessor(getter: 'getTaxExclusiveAmount', setter: 'setTaxExclusiveAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TaxExclusiveAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TaxExclusiveAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $taxExclusiveAmount;
 
     /**
      * @var null|TaxInclusiveAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TaxInclusiveAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("TaxInclusiveAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTaxInclusiveAmount", setter="setTaxInclusiveAmount")
      */
+    #[JMS\Accessor(getter: 'getTaxInclusiveAmount', setter: 'setTaxInclusiveAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TaxInclusiveAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TaxInclusiveAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $taxInclusiveAmount;
 
     /**
      * @var null|AllowanceTotalAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AllowanceTotalAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("AllowanceTotalAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getAllowanceTotalAmount", setter="setAllowanceTotalAmount")
      */
+    #[JMS\Accessor(getter: 'getAllowanceTotalAmount', setter: 'setAllowanceTotalAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('AllowanceTotalAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AllowanceTotalAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $allowanceTotalAmount;
 
     /**
      * @var null|ChargeTotalAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ChargeTotalAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("ChargeTotalAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getChargeTotalAmount", setter="setChargeTotalAmount")
      */
+    #[JMS\Accessor(getter: 'getChargeTotalAmount', setter: 'setChargeTotalAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ChargeTotalAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ChargeTotalAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $chargeTotalAmount;
 
     /**
      * @var null|PrepaidAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PrepaidAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("PrepaidAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPrepaidAmount", setter="setPrepaidAmount")
      */
+    #[JMS\Accessor(getter: 'getPrepaidAmount', setter: 'setPrepaidAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PrepaidAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PrepaidAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $prepaidAmount;
 
     /**
      * @var null|PayableRoundingAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PayableRoundingAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("PayableRoundingAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPayableRoundingAmount", setter="setPayableRoundingAmount")
      */
+    #[JMS\Accessor(getter: 'getPayableRoundingAmount', setter: 'setPayableRoundingAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PayableRoundingAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PayableRoundingAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $payableRoundingAmount;
 
     /**
      * @var null|PayableAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PayableAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("PayableAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPayableAmount", setter="setPayableAmount")
      */
+    #[JMS\Accessor(getter: 'getPayableAmount', setter: 'setPayableAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PayableAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PayableAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $payableAmount;
 
     /**
      * @var null|PayableAlternativeAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PayableAlternativeAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("PayableAlternativeAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPayableAlternativeAmount", setter="setPayableAlternativeAmount")
      */
+    #[JMS\Accessor(getter: 'getPayableAlternativeAmount', setter: 'setPayableAlternativeAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PayableAlternativeAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PayableAlternativeAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $payableAlternativeAmount;
 
     /**

@@ -13,13 +13,13 @@ class IndicatorType
 
     /**
      * @var null|bool
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("bool")
-     * @JMS\Expose
-     * @JMS\SerializedName("Indicator")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100", cdata=false)
-     * @JMS\Accessor(getter="getIndicator", setter="setIndicator")
      */
+    #[JMS\Accessor(getter: 'getIndicator', setter: 'setIndicator')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('Indicator')]
+    #[JMS\Type('bool')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100', cdata: false)]
     private $indicator;
 
     /**

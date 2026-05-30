@@ -15,40 +15,38 @@ final class DatiDDT
 
     /**
      * @translation-german Nummer DDT
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getNumeroDDT", setter="setNumeroDDT")
-     * @JMS\SerializedName("NumeroDDT")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getNumeroDDT', setter: 'setNumeroDDT')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('NumeroDDT')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $numeroDDT = null;
 
     /**
      * @translation-german Datum DDT
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Accessor(getter="getDataDDT", setter="setDataDDT")
-     * @JMS\SerializedName("DataDDT")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDataDDT', setter: 'setDataDDT')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DataDDT')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DateTimeInterface $dataDDT = null;
 
     /**
      * @translation-german Referenz Nummer Position
      *
      * @var null|array<int>
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<int>")
-     * @JMS\Accessor(getter="getRiferimentoNumeroLinea", setter="setRiferimentoNumeroLinea")
-     * @JMS\SerializedName("RiferimentoNumeroLinea")
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlList(inline=true, entry="RiferimentoNumeroLinea")
      */
+    #[JMS\Accessor(getter: 'getRiferimentoNumeroLinea', setter: 'setRiferimentoNumeroLinea')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('RiferimentoNumeroLinea')]
+    #[JMS\Type('array<int>')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'RiferimentoNumeroLinea')]
     private ?array $riferimentoNumeroLinea = null;
 
     /**

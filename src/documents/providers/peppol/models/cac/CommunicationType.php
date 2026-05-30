@@ -16,35 +16,35 @@ class CommunicationType
 
     /**
      * @var null|ChannelCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ChannelCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("ChannelCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getChannelCode", setter="setChannelCode")
      */
+    #[JMS\Accessor(getter: 'getChannelCode', setter: 'setChannelCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ChannelCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ChannelCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $channelCode;
 
     /**
      * @var null|Channel
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Channel")
-     * @JMS\Expose
-     * @JMS\SerializedName("Channel")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getChannel", setter="setChannel")
      */
+    #[JMS\Accessor(getter: 'getChannel', setter: 'setChannel')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Channel')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Channel')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $channel;
 
     /**
      * @var null|Value
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Value")
-     * @JMS\Expose
-     * @JMS\SerializedName("Value")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getValue", setter="setValue")
      */
+    #[JMS\Accessor(getter: 'getValue', setter: 'setValue')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Value')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Value')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $value;
 
     /**

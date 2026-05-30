@@ -14,50 +14,46 @@ final class RappresentanteFiscaleCessionario
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\IdFiscale")
-     * @JMS\Accessor(getter="getIdFiscaleIVA", setter="setIdFiscaleIVA")
-     * @JMS\SerializedName("IdFiscaleIVA")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getIdFiscaleIVA', setter: 'setIdFiscaleIVA')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('IdFiscaleIVA')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\IdFiscale')]
+    #[JMS\XmlElement(cdata: false)]
     private ?IdFiscale $idFiscaleIVA = null;
 
     /**
      * @translation-german Bezeichnung
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getDenominazione", setter="setDenominazione")
-     * @JMS\SerializedName("Denominazione")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDenominazione', setter: 'setDenominazione')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Denominazione')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $denominazione = null;
 
     /**
      * @translation-german Name
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getNome", setter="setNome")
-     * @JMS\SerializedName("Nome")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getNome', setter: 'setNome')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Nome')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $nome = null;
 
     /**
      * @translation-german Nachname
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getCognome", setter="setCognome")
-     * @JMS\SerializedName("Cognome")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCognome', setter: 'setCognome')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Cognome')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $cognome = null;
 
     /**

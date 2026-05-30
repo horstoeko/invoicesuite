@@ -18,26 +18,26 @@ class KeyValueType
      * @translation-german-untranslated
      *
      * @var null|DSAKeyValueType
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\DSAKeyValueType")
-     * @JMS\Accessor(getter="getDSAKeyValue", setter="setDSAKeyValue")
-     * @JMS\SerializedName("DSAKeyValue")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDSAKeyValue', setter: 'setDSAKeyValue')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DSAKeyValue')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\DSAKeyValueType')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DSAKeyValueType $dSAKeyValue = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|RSAKeyValueType
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\RSAKeyValueType")
-     * @JMS\Accessor(getter="getRSAKeyValue", setter="setRSAKeyValue")
-     * @JMS\SerializedName("RSAKeyValue")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getRSAKeyValue', setter: 'setRSAKeyValue')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('RSAKeyValue')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\RSAKeyValueType')]
+    #[JMS\XmlElement(cdata: false)]
     private ?RSAKeyValueType $rSAKeyValue = null;
 
     /**

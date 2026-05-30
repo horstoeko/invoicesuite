@@ -21,101 +21,101 @@ class ExchangeRateType
 
     /**
      * @var null|SourceCurrencyCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SourceCurrencyCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("SourceCurrencyCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getSourceCurrencyCode", setter="setSourceCurrencyCode")
      */
+    #[JMS\Accessor(getter: 'getSourceCurrencyCode', setter: 'setSourceCurrencyCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('SourceCurrencyCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SourceCurrencyCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $sourceCurrencyCode;
 
     /**
      * @var null|SourceCurrencyBaseRate
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SourceCurrencyBaseRate")
-     * @JMS\Expose
-     * @JMS\SerializedName("SourceCurrencyBaseRate")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getSourceCurrencyBaseRate", setter="setSourceCurrencyBaseRate")
      */
+    #[JMS\Accessor(getter: 'getSourceCurrencyBaseRate', setter: 'setSourceCurrencyBaseRate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('SourceCurrencyBaseRate')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SourceCurrencyBaseRate')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $sourceCurrencyBaseRate;
 
     /**
      * @var null|TargetCurrencyCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TargetCurrencyCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("TargetCurrencyCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTargetCurrencyCode", setter="setTargetCurrencyCode")
      */
+    #[JMS\Accessor(getter: 'getTargetCurrencyCode', setter: 'setTargetCurrencyCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TargetCurrencyCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TargetCurrencyCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $targetCurrencyCode;
 
     /**
      * @var null|TargetCurrencyBaseRate
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TargetCurrencyBaseRate")
-     * @JMS\Expose
-     * @JMS\SerializedName("TargetCurrencyBaseRate")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTargetCurrencyBaseRate", setter="setTargetCurrencyBaseRate")
      */
+    #[JMS\Accessor(getter: 'getTargetCurrencyBaseRate', setter: 'setTargetCurrencyBaseRate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TargetCurrencyBaseRate')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TargetCurrencyBaseRate')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $targetCurrencyBaseRate;
 
     /**
      * @var null|ExchangeMarketID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ExchangeMarketID")
-     * @JMS\Expose
-     * @JMS\SerializedName("ExchangeMarketID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getExchangeMarketID", setter="setExchangeMarketID")
      */
+    #[JMS\Accessor(getter: 'getExchangeMarketID', setter: 'setExchangeMarketID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ExchangeMarketID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ExchangeMarketID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $exchangeMarketID;
 
     /**
      * @var null|CalculationRate
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CalculationRate")
-     * @JMS\Expose
-     * @JMS\SerializedName("CalculationRate")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCalculationRate", setter="setCalculationRate")
      */
+    #[JMS\Accessor(getter: 'getCalculationRate', setter: 'setCalculationRate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CalculationRate')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CalculationRate')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $calculationRate;
 
     /**
      * @var null|MathematicOperatorCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MathematicOperatorCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("MathematicOperatorCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getMathematicOperatorCode", setter="setMathematicOperatorCode")
      */
+    #[JMS\Accessor(getter: 'getMathematicOperatorCode', setter: 'setMathematicOperatorCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MathematicOperatorCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MathematicOperatorCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $mathematicOperatorCode;
 
     /**
      * @var null|DateTimeInterface
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Expose
-     * @JMS\SerializedName("Date")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getDate", setter="setDate")
      */
+    #[JMS\Accessor(getter: 'getDate', setter: 'setDate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Date')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $date;
 
     /**
      * @var null|ForeignExchangeContract
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\ForeignExchangeContract")
-     * @JMS\Expose
-     * @JMS\SerializedName("ForeignExchangeContract")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getForeignExchangeContract", setter="setForeignExchangeContract")
      */
+    #[JMS\Accessor(getter: 'getForeignExchangeContract', setter: 'setForeignExchangeContract')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ForeignExchangeContract')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\ForeignExchangeContract')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $foreignExchangeContract;
 
     /**

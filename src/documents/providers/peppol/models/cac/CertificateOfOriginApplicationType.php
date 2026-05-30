@@ -19,183 +19,183 @@ class CertificateOfOriginApplicationType
 
     /**
      * @var null|ReferenceID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ReferenceID")
-     * @JMS\Expose
-     * @JMS\SerializedName("ReferenceID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getReferenceID", setter="setReferenceID")
      */
+    #[JMS\Accessor(getter: 'getReferenceID', setter: 'setReferenceID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ReferenceID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ReferenceID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $referenceID;
 
     /**
      * @var null|CertificateType
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CertificateType")
-     * @JMS\Expose
-     * @JMS\SerializedName("CertificateType")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCertificateType", setter="setCertificateType")
      */
+    #[JMS\Accessor(getter: 'getCertificateType', setter: 'setCertificateType')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CertificateType')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CertificateType')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $certificateType;
 
     /**
      * @var null|ApplicationStatusCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ApplicationStatusCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("ApplicationStatusCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getApplicationStatusCode", setter="setApplicationStatusCode")
      */
+    #[JMS\Accessor(getter: 'getApplicationStatusCode', setter: 'setApplicationStatusCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ApplicationStatusCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ApplicationStatusCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $applicationStatusCode;
 
     /**
      * @var null|OriginalJobID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OriginalJobID")
-     * @JMS\Expose
-     * @JMS\SerializedName("OriginalJobID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getOriginalJobID", setter="setOriginalJobID")
      */
+    #[JMS\Accessor(getter: 'getOriginalJobID', setter: 'setOriginalJobID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('OriginalJobID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OriginalJobID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $originalJobID;
 
     /**
      * @var null|PreviousJobID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PreviousJobID")
-     * @JMS\Expose
-     * @JMS\SerializedName("PreviousJobID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPreviousJobID", setter="setPreviousJobID")
      */
+    #[JMS\Accessor(getter: 'getPreviousJobID', setter: 'setPreviousJobID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PreviousJobID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PreviousJobID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $previousJobID;
 
     /**
      * @var null|array<Remarks>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Remarks>")
-     * @JMS\Expose
-     * @JMS\SerializedName("Remarks")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="Remarks", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
-     * @JMS\Accessor(getter="getRemarks", setter="setRemarks")
      */
+    #[JMS\Accessor(getter: 'getRemarks', setter: 'setRemarks')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Remarks')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Remarks>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'Remarks', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')]
     private $remarks;
 
     /**
      * @var null|Shipment
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\Shipment")
-     * @JMS\Expose
-     * @JMS\SerializedName("Shipment")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getShipment", setter="setShipment")
      */
+    #[JMS\Accessor(getter: 'getShipment', setter: 'setShipment')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Shipment')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\Shipment')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $shipment;
 
     /**
      * @var null|array<EndorserParty>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\EndorserParty>")
-     * @JMS\Expose
-     * @JMS\SerializedName("EndorserParty")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="EndorserParty", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getEndorserParty", setter="setEndorserParty")
      */
+    #[JMS\Accessor(getter: 'getEndorserParty', setter: 'setEndorserParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('EndorserParty')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\EndorserParty>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'EndorserParty', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $endorserParty;
 
     /**
      * @var null|PreparationParty
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\PreparationParty")
-     * @JMS\Expose
-     * @JMS\SerializedName("PreparationParty")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPreparationParty", setter="setPreparationParty")
      */
+    #[JMS\Accessor(getter: 'getPreparationParty', setter: 'setPreparationParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PreparationParty')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\PreparationParty')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $preparationParty;
 
     /**
      * @var null|IssuerParty
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\IssuerParty")
-     * @JMS\Expose
-     * @JMS\SerializedName("IssuerParty")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getIssuerParty", setter="setIssuerParty")
      */
+    #[JMS\Accessor(getter: 'getIssuerParty', setter: 'setIssuerParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('IssuerParty')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\IssuerParty')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $issuerParty;
 
     /**
      * @var null|ExporterParty
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\ExporterParty")
-     * @JMS\Expose
-     * @JMS\SerializedName("ExporterParty")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getExporterParty", setter="setExporterParty")
      */
+    #[JMS\Accessor(getter: 'getExporterParty', setter: 'setExporterParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ExporterParty')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\ExporterParty')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $exporterParty;
 
     /**
      * @var null|ImporterParty
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\ImporterParty")
-     * @JMS\Expose
-     * @JMS\SerializedName("ImporterParty")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getImporterParty", setter="setImporterParty")
      */
+    #[JMS\Accessor(getter: 'getImporterParty', setter: 'setImporterParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ImporterParty')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\ImporterParty')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $importerParty;
 
     /**
      * @var null|IssuingCountry
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\IssuingCountry")
-     * @JMS\Expose
-     * @JMS\SerializedName("IssuingCountry")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getIssuingCountry", setter="setIssuingCountry")
      */
+    #[JMS\Accessor(getter: 'getIssuingCountry', setter: 'setIssuingCountry')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('IssuingCountry')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\IssuingCountry')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $issuingCountry;
 
     /**
      * @var null|array<DocumentDistribution>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\DocumentDistribution>")
-     * @JMS\Expose
-     * @JMS\SerializedName("DocumentDistribution")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="DocumentDistribution", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getDocumentDistribution", setter="setDocumentDistribution")
      */
+    #[JMS\Accessor(getter: 'getDocumentDistribution', setter: 'setDocumentDistribution')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('DocumentDistribution')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\DocumentDistribution>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'DocumentDistribution', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $documentDistribution;
 
     /**
      * @var null|array<SupportingDocumentReference>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\SupportingDocumentReference>")
-     * @JMS\Expose
-     * @JMS\SerializedName("SupportingDocumentReference")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="SupportingDocumentReference", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getSupportingDocumentReference", setter="setSupportingDocumentReference")
      */
+    #[JMS\Accessor(getter: 'getSupportingDocumentReference', setter: 'setSupportingDocumentReference')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('SupportingDocumentReference')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\SupportingDocumentReference>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'SupportingDocumentReference', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $supportingDocumentReference;
 
     /**
      * @var null|array<Signature>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\Signature>")
-     * @JMS\Expose
-     * @JMS\SerializedName("Signature")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="Signature", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getSignature", setter="setSignature")
      */
+    #[JMS\Accessor(getter: 'getSignature', setter: 'setSignature')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Signature')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\Signature>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'Signature', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $signature;
 
     /**

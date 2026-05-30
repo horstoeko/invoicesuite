@@ -18,53 +18,53 @@ class SignedInfoType
      * @translation-german-untranslated
      *
      * @var null|CanonicalizationMethodType
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\CanonicalizationMethodType")
-     * @JMS\Accessor(getter="getCanonicalizationMethod", setter="setCanonicalizationMethod")
-     * @JMS\SerializedName("CanonicalizationMethod")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCanonicalizationMethod', setter: 'setCanonicalizationMethod')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CanonicalizationMethod')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\CanonicalizationMethodType')]
+    #[JMS\XmlElement(cdata: false)]
     private ?CanonicalizationMethodType $canonicalizationMethod = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|SignatureMethodType
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\SignatureMethodType")
-     * @JMS\Accessor(getter="getSignatureMethod", setter="setSignatureMethod")
-     * @JMS\SerializedName("SignatureMethod")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getSignatureMethod', setter: 'setSignatureMethod')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('SignatureMethod')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\SignatureMethodType')]
+    #[JMS\XmlElement(cdata: false)]
     private ?SignatureMethodType $signatureMethod = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|array<ReferenceType>
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\ReferenceType>")
-     * @JMS\Accessor(getter="getReference", setter="setReference")
-     * @JMS\SerializedName("Reference")
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlList(inline=true, entry="Reference")
      */
+    #[JMS\Accessor(getter: 'getReference', setter: 'setReference')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Reference')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\ReferenceType>')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'Reference')]
     private ?array $reference = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getId", setter="setId")
-     * @JMS\SerializedName("Id")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getId', setter: 'setId')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Id')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private ?string $id = null;
 
     /**

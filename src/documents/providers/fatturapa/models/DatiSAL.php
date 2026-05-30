@@ -13,14 +13,13 @@ final class DatiSAL
 
     /**
      * @translation-german Referenz Fase
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("int")
-     * @JMS\Accessor(getter="getRiferimentoFase", setter="setRiferimentoFase")
-     * @JMS\SerializedName("RiferimentoFase")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getRiferimentoFase', setter: 'setRiferimentoFase')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('RiferimentoFase')]
+    #[JMS\Type('int')]
+    #[JMS\XmlElement(cdata: false)]
     private ?int $riferimentoFase = null;
 
     /**

@@ -13,14 +13,14 @@ class SupplyChainConsignmentType
 
     /**
      * @var null|array<LogisticsTransportMovementType>
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\zffx\models\ram\LogisticsTransportMovementType>")
-     * @JMS\Expose
-     * @JMS\SerializedName("SpecifiedLogisticsTransportMovement")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\XmlList(inline=true, entry="SpecifiedLogisticsTransportMovement", namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100")
-     * @JMS\Accessor(getter="getSpecifiedLogisticsTransportMovement", setter="setSpecifiedLogisticsTransportMovement")
      */
+    #[JMS\Accessor(getter: 'getSpecifiedLogisticsTransportMovement', setter: 'setSpecifiedLogisticsTransportMovement')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('SpecifiedLogisticsTransportMovement')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\zffx\models\ram\LogisticsTransportMovementType>')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'SpecifiedLogisticsTransportMovement', namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100')]
     private $specifiedLogisticsTransportMovement;
 
     /**

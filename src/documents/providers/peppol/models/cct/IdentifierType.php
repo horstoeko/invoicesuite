@@ -14,90 +14,90 @@ class IdentifierType
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlValue(cdata=false)
-     * @JMS\Accessor(getter="getValue", setter="setValue")
      */
+    #[JMS\Accessor(getter: 'getValue', setter: 'setValue')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlValue(cdata: false)]
     private $value;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("schemeID")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getSchemeID", setter="setSchemeID")
      */
+    #[JMS\Accessor(getter: 'getSchemeID', setter: 'setSchemeID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('schemeID')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $schemeID;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("schemeName")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getSchemeName", setter="setSchemeName")
      */
+    #[JMS\Accessor(getter: 'getSchemeName', setter: 'setSchemeName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('schemeName')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $schemeName;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("schemeAgencyID")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getSchemeAgencyID", setter="setSchemeAgencyID")
      */
+    #[JMS\Accessor(getter: 'getSchemeAgencyID', setter: 'setSchemeAgencyID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('schemeAgencyID')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $schemeAgencyID;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("schemeAgencyName")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getSchemeAgencyName", setter="setSchemeAgencyName")
      */
+    #[JMS\Accessor(getter: 'getSchemeAgencyName', setter: 'setSchemeAgencyName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('schemeAgencyName')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $schemeAgencyName;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("schemeVersionID")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getSchemeVersionID", setter="setSchemeVersionID")
      */
+    #[JMS\Accessor(getter: 'getSchemeVersionID', setter: 'setSchemeVersionID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('schemeVersionID')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $schemeVersionID;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("schemeDataURI")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getSchemeDataURI", setter="setSchemeDataURI")
      */
+    #[JMS\Accessor(getter: 'getSchemeDataURI', setter: 'setSchemeDataURI')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('schemeDataURI')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $schemeDataURI;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("schemeURI")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getSchemeURI", setter="setSchemeURI")
      */
+    #[JMS\Accessor(getter: 'getSchemeURI', setter: 'setSchemeURI')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('schemeURI')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $schemeURI;
 
     /**

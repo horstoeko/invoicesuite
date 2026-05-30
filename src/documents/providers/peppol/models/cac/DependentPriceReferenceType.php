@@ -14,35 +14,35 @@ class DependentPriceReferenceType
 
     /**
      * @var null|Percent
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Percent")
-     * @JMS\Expose
-     * @JMS\SerializedName("Percent")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPercent", setter="setPercent")
      */
+    #[JMS\Accessor(getter: 'getPercent', setter: 'setPercent')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Percent')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Percent')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $percent;
 
     /**
      * @var null|LocationAddress
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\LocationAddress")
-     * @JMS\Expose
-     * @JMS\SerializedName("LocationAddress")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getLocationAddress", setter="setLocationAddress")
      */
+    #[JMS\Accessor(getter: 'getLocationAddress', setter: 'setLocationAddress')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('LocationAddress')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\LocationAddress')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $locationAddress;
 
     /**
      * @var null|DependentLineReference
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\DependentLineReference")
-     * @JMS\Expose
-     * @JMS\SerializedName("DependentLineReference")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getDependentLineReference", setter="setDependentLineReference")
      */
+    #[JMS\Accessor(getter: 'getDependentLineReference', setter: 'setDependentLineReference')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('DependentLineReference')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\DependentLineReference')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $dependentLineReference;
 
     /**

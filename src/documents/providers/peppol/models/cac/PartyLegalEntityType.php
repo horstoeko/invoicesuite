@@ -20,157 +20,157 @@ class PartyLegalEntityType
 
     /**
      * @var null|RegistrationName
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RegistrationName")
-     * @JMS\Expose
-     * @JMS\SerializedName("RegistrationName")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getRegistrationName", setter="setRegistrationName")
      */
+    #[JMS\Accessor(getter: 'getRegistrationName', setter: 'setRegistrationName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('RegistrationName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RegistrationName')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $registrationName;
 
     /**
      * @var null|CompanyID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CompanyID")
-     * @JMS\Expose
-     * @JMS\SerializedName("CompanyID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCompanyID", setter="setCompanyID")
      */
+    #[JMS\Accessor(getter: 'getCompanyID', setter: 'setCompanyID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CompanyID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CompanyID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $companyID;
 
     /**
      * @var null|DateTimeInterface
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Expose
-     * @JMS\SerializedName("RegistrationDate")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getRegistrationDate", setter="setRegistrationDate")
      */
+    #[JMS\Accessor(getter: 'getRegistrationDate', setter: 'setRegistrationDate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('RegistrationDate')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $registrationDate;
 
     /**
      * @var null|DateTimeInterface
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Expose
-     * @JMS\SerializedName("RegistrationExpirationDate")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getRegistrationExpirationDate", setter="setRegistrationExpirationDate")
      */
+    #[JMS\Accessor(getter: 'getRegistrationExpirationDate', setter: 'setRegistrationExpirationDate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('RegistrationExpirationDate')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $registrationExpirationDate;
 
     /**
      * @var null|CompanyLegalFormCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CompanyLegalFormCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("CompanyLegalFormCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCompanyLegalFormCode", setter="setCompanyLegalFormCode")
      */
+    #[JMS\Accessor(getter: 'getCompanyLegalFormCode', setter: 'setCompanyLegalFormCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CompanyLegalFormCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CompanyLegalFormCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $companyLegalFormCode;
 
     /**
      * @var null|CompanyLegalForm
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CompanyLegalForm")
-     * @JMS\Expose
-     * @JMS\SerializedName("CompanyLegalForm")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCompanyLegalForm", setter="setCompanyLegalForm")
      */
+    #[JMS\Accessor(getter: 'getCompanyLegalForm', setter: 'setCompanyLegalForm')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CompanyLegalForm')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CompanyLegalForm')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $companyLegalForm;
 
     /**
      * @var null|bool
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("bool")
-     * @JMS\Expose
-     * @JMS\SerializedName("SoleProprietorshipIndicator")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getSoleProprietorshipIndicator", setter="setSoleProprietorshipIndicator")
      */
+    #[JMS\Accessor(getter: 'getSoleProprietorshipIndicator', setter: 'setSoleProprietorshipIndicator')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('SoleProprietorshipIndicator')]
+    #[JMS\Type('bool')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $soleProprietorshipIndicator;
 
     /**
      * @var null|CompanyLiquidationStatusCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CompanyLiquidationStatusCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("CompanyLiquidationStatusCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCompanyLiquidationStatusCode", setter="setCompanyLiquidationStatusCode")
      */
+    #[JMS\Accessor(getter: 'getCompanyLiquidationStatusCode', setter: 'setCompanyLiquidationStatusCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CompanyLiquidationStatusCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CompanyLiquidationStatusCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $companyLiquidationStatusCode;
 
     /**
      * @var null|CorporateStockAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CorporateStockAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("CorporateStockAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCorporateStockAmount", setter="setCorporateStockAmount")
      */
+    #[JMS\Accessor(getter: 'getCorporateStockAmount', setter: 'setCorporateStockAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CorporateStockAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CorporateStockAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $corporateStockAmount;
 
     /**
      * @var null|bool
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("bool")
-     * @JMS\Expose
-     * @JMS\SerializedName("FullyPaidSharesIndicator")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getFullyPaidSharesIndicator", setter="setFullyPaidSharesIndicator")
      */
+    #[JMS\Accessor(getter: 'getFullyPaidSharesIndicator', setter: 'setFullyPaidSharesIndicator')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('FullyPaidSharesIndicator')]
+    #[JMS\Type('bool')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $fullyPaidSharesIndicator;
 
     /**
      * @var null|RegistrationAddress
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\RegistrationAddress")
-     * @JMS\Expose
-     * @JMS\SerializedName("RegistrationAddress")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getRegistrationAddress", setter="setRegistrationAddress")
      */
+    #[JMS\Accessor(getter: 'getRegistrationAddress', setter: 'setRegistrationAddress')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('RegistrationAddress')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\RegistrationAddress')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $registrationAddress;
 
     /**
      * @var null|CorporateRegistrationScheme
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\CorporateRegistrationScheme")
-     * @JMS\Expose
-     * @JMS\SerializedName("CorporateRegistrationScheme")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCorporateRegistrationScheme", setter="setCorporateRegistrationScheme")
      */
+    #[JMS\Accessor(getter: 'getCorporateRegistrationScheme', setter: 'setCorporateRegistrationScheme')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CorporateRegistrationScheme')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\CorporateRegistrationScheme')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $corporateRegistrationScheme;
 
     /**
      * @var null|HeadOfficeParty
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\HeadOfficeParty")
-     * @JMS\Expose
-     * @JMS\SerializedName("HeadOfficeParty")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getHeadOfficeParty", setter="setHeadOfficeParty")
      */
+    #[JMS\Accessor(getter: 'getHeadOfficeParty', setter: 'setHeadOfficeParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('HeadOfficeParty')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\HeadOfficeParty')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $headOfficeParty;
 
     /**
      * @var null|array<ShareholderParty>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\ShareholderParty>")
-     * @JMS\Expose
-     * @JMS\SerializedName("ShareholderParty")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="ShareholderParty", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getShareholderParty", setter="setShareholderParty")
      */
+    #[JMS\Accessor(getter: 'getShareholderParty', setter: 'setShareholderParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ShareholderParty')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\ShareholderParty>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'ShareholderParty', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $shareholderParty;
 
     /**

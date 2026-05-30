@@ -19,90 +19,90 @@ class ResultOfVerificationType
 
     /**
      * @var null|ValidatorID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ValidatorID")
-     * @JMS\Expose
-     * @JMS\SerializedName("ValidatorID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getValidatorID", setter="setValidatorID")
      */
+    #[JMS\Accessor(getter: 'getValidatorID', setter: 'setValidatorID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ValidatorID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ValidatorID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $validatorID;
 
     /**
      * @var null|ValidationResultCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ValidationResultCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("ValidationResultCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getValidationResultCode", setter="setValidationResultCode")
      */
+    #[JMS\Accessor(getter: 'getValidationResultCode', setter: 'setValidationResultCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ValidationResultCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ValidationResultCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $validationResultCode;
 
     /**
      * @var null|DateTimeInterface
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Expose
-     * @JMS\SerializedName("ValidationDate")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getValidationDate", setter="setValidationDate")
      */
+    #[JMS\Accessor(getter: 'getValidationDate', setter: 'setValidationDate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ValidationDate')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $validationDate;
 
     /**
      * @var null|DateTimeInterface
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
-     * @JMS\Expose
-     * @JMS\SerializedName("ValidationTime")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getValidationTime", setter="setValidationTime")
      */
+    #[JMS\Accessor(getter: 'getValidationTime', setter: 'setValidationTime')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ValidationTime')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $validationTime;
 
     /**
      * @var null|ValidateProcess
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ValidateProcess")
-     * @JMS\Expose
-     * @JMS\SerializedName("ValidateProcess")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getValidateProcess", setter="setValidateProcess")
      */
+    #[JMS\Accessor(getter: 'getValidateProcess', setter: 'setValidateProcess')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ValidateProcess')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ValidateProcess')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $validateProcess;
 
     /**
      * @var null|ValidateTool
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ValidateTool")
-     * @JMS\Expose
-     * @JMS\SerializedName("ValidateTool")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getValidateTool", setter="setValidateTool")
      */
+    #[JMS\Accessor(getter: 'getValidateTool', setter: 'setValidateTool')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ValidateTool')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ValidateTool')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $validateTool;
 
     /**
      * @var null|ValidateToolVersion
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ValidateToolVersion")
-     * @JMS\Expose
-     * @JMS\SerializedName("ValidateToolVersion")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getValidateToolVersion", setter="setValidateToolVersion")
      */
+    #[JMS\Accessor(getter: 'getValidateToolVersion', setter: 'setValidateToolVersion')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ValidateToolVersion')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ValidateToolVersion')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $validateToolVersion;
 
     /**
      * @var null|SignatoryParty
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\SignatoryParty")
-     * @JMS\Expose
-     * @JMS\SerializedName("SignatoryParty")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getSignatoryParty", setter="setSignatoryParty")
      */
+    #[JMS\Accessor(getter: 'getSignatoryParty', setter: 'setSignatoryParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('SignatoryParty')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\SignatoryParty')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $signatoryParty;
 
     /**

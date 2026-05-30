@@ -19,130 +19,130 @@ class TendererQualificationRequestType
 
     /**
      * @var null|CompanyLegalFormCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CompanyLegalFormCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("CompanyLegalFormCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCompanyLegalFormCode", setter="setCompanyLegalFormCode")
      */
+    #[JMS\Accessor(getter: 'getCompanyLegalFormCode', setter: 'setCompanyLegalFormCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CompanyLegalFormCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CompanyLegalFormCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $companyLegalFormCode;
 
     /**
      * @var null|CompanyLegalForm
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CompanyLegalForm")
-     * @JMS\Expose
-     * @JMS\SerializedName("CompanyLegalForm")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCompanyLegalForm", setter="setCompanyLegalForm")
      */
+    #[JMS\Accessor(getter: 'getCompanyLegalForm', setter: 'setCompanyLegalForm')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CompanyLegalForm')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CompanyLegalForm')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $companyLegalForm;
 
     /**
      * @var null|array<PersonalSituation>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PersonalSituation>")
-     * @JMS\Expose
-     * @JMS\SerializedName("PersonalSituation")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="PersonalSituation", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
-     * @JMS\Accessor(getter="getPersonalSituation", setter="setPersonalSituation")
      */
+    #[JMS\Accessor(getter: 'getPersonalSituation', setter: 'setPersonalSituation')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PersonalSituation')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PersonalSituation>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'PersonalSituation', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')]
     private $personalSituation;
 
     /**
      * @var null|OperatingYearsQuantity
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OperatingYearsQuantity")
-     * @JMS\Expose
-     * @JMS\SerializedName("OperatingYearsQuantity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getOperatingYearsQuantity", setter="setOperatingYearsQuantity")
      */
+    #[JMS\Accessor(getter: 'getOperatingYearsQuantity', setter: 'setOperatingYearsQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('OperatingYearsQuantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OperatingYearsQuantity')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $operatingYearsQuantity;
 
     /**
      * @var null|EmployeeQuantity
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\EmployeeQuantity")
-     * @JMS\Expose
-     * @JMS\SerializedName("EmployeeQuantity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getEmployeeQuantity", setter="setEmployeeQuantity")
      */
+    #[JMS\Accessor(getter: 'getEmployeeQuantity', setter: 'setEmployeeQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('EmployeeQuantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\EmployeeQuantity')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $employeeQuantity;
 
     /**
      * @var null|array<Description>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description>")
-     * @JMS\Expose
-     * @JMS\SerializedName("Description")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="Description", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
-     * @JMS\Accessor(getter="getDescription", setter="setDescription")
      */
+    #[JMS\Accessor(getter: 'getDescription', setter: 'setDescription')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Description')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'Description', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')]
     private $description;
 
     /**
      * @var null|array<RequiredBusinessClassificationScheme>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\RequiredBusinessClassificationScheme>")
-     * @JMS\Expose
-     * @JMS\SerializedName("RequiredBusinessClassificationScheme")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="RequiredBusinessClassificationScheme", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getRequiredBusinessClassificationScheme", setter="setRequiredBusinessClassificationScheme")
      */
+    #[JMS\Accessor(getter: 'getRequiredBusinessClassificationScheme', setter: 'setRequiredBusinessClassificationScheme')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('RequiredBusinessClassificationScheme')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\RequiredBusinessClassificationScheme>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'RequiredBusinessClassificationScheme', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $requiredBusinessClassificationScheme;
 
     /**
      * @var null|array<TechnicalEvaluationCriterion>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\TechnicalEvaluationCriterion>")
-     * @JMS\Expose
-     * @JMS\SerializedName("TechnicalEvaluationCriterion")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="TechnicalEvaluationCriterion", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getTechnicalEvaluationCriterion", setter="setTechnicalEvaluationCriterion")
      */
+    #[JMS\Accessor(getter: 'getTechnicalEvaluationCriterion', setter: 'setTechnicalEvaluationCriterion')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TechnicalEvaluationCriterion')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\TechnicalEvaluationCriterion>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'TechnicalEvaluationCriterion', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $technicalEvaluationCriterion;
 
     /**
      * @var null|array<FinancialEvaluationCriterion>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\FinancialEvaluationCriterion>")
-     * @JMS\Expose
-     * @JMS\SerializedName("FinancialEvaluationCriterion")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="FinancialEvaluationCriterion", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getFinancialEvaluationCriterion", setter="setFinancialEvaluationCriterion")
      */
+    #[JMS\Accessor(getter: 'getFinancialEvaluationCriterion', setter: 'setFinancialEvaluationCriterion')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('FinancialEvaluationCriterion')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\FinancialEvaluationCriterion>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'FinancialEvaluationCriterion', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $financialEvaluationCriterion;
 
     /**
      * @var null|array<SpecificTendererRequirement>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\SpecificTendererRequirement>")
-     * @JMS\Expose
-     * @JMS\SerializedName("SpecificTendererRequirement")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="SpecificTendererRequirement", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getSpecificTendererRequirement", setter="setSpecificTendererRequirement")
      */
+    #[JMS\Accessor(getter: 'getSpecificTendererRequirement', setter: 'setSpecificTendererRequirement')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('SpecificTendererRequirement')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\SpecificTendererRequirement>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'SpecificTendererRequirement', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $specificTendererRequirement;
 
     /**
      * @var null|array<EconomicOperatorRole>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\EconomicOperatorRole>")
-     * @JMS\Expose
-     * @JMS\SerializedName("EconomicOperatorRole")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="EconomicOperatorRole", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getEconomicOperatorRole", setter="setEconomicOperatorRole")
      */
+    #[JMS\Accessor(getter: 'getEconomicOperatorRole', setter: 'setEconomicOperatorRole')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('EconomicOperatorRole')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\EconomicOperatorRole>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'EconomicOperatorRole', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $economicOperatorRole;
 
     /**

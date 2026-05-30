@@ -18,25 +18,25 @@ class SignatureValueType
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getValue", setter="setValue")
-     * @JMS\XmlValue(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getValue', setter: 'setValue')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\Type('string')]
+    #[JMS\XmlValue(cdata: false)]
     private ?string $value = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getId", setter="setId")
-     * @JMS\SerializedName("Id")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getId', setter: 'setId')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Id')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private ?string $id = null;
 
     /**

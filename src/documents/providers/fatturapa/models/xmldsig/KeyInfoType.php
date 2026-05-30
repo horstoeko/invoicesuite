@@ -18,104 +18,104 @@ class KeyInfoType
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getKeyName", setter="setKeyName")
-     * @JMS\SerializedName("KeyName")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getKeyName', setter: 'setKeyName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('KeyName')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $keyName = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|KeyValueType
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\KeyValueType")
-     * @JMS\Accessor(getter="getKeyValue", setter="setKeyValue")
-     * @JMS\SerializedName("KeyValue")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getKeyValue', setter: 'setKeyValue')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('KeyValue')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\KeyValueType')]
+    #[JMS\XmlElement(cdata: false)]
     private ?KeyValueType $keyValue = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|RetrievalMethodType
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\RetrievalMethodType")
-     * @JMS\Accessor(getter="getRetrievalMethod", setter="setRetrievalMethod")
-     * @JMS\SerializedName("RetrievalMethod")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getRetrievalMethod', setter: 'setRetrievalMethod')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('RetrievalMethod')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\RetrievalMethodType')]
+    #[JMS\XmlElement(cdata: false)]
     private ?RetrievalMethodType $retrievalMethod = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|X509DataType
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\X509DataType")
-     * @JMS\Accessor(getter="getX509Data", setter="setX509Data")
-     * @JMS\SerializedName("X509Data")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getX509Data', setter: 'setX509Data')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('X509Data')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\X509DataType')]
+    #[JMS\XmlElement(cdata: false)]
     private ?X509DataType $x509Data = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|PGPDataType
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\PGPDataType")
-     * @JMS\Accessor(getter="getPGPData", setter="setPGPData")
-     * @JMS\SerializedName("PGPData")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getPGPData', setter: 'setPGPData')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('PGPData')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\PGPDataType')]
+    #[JMS\XmlElement(cdata: false)]
     private ?PGPDataType $pGPData = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|SPKIDataType
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\SPKIDataType")
-     * @JMS\Accessor(getter="getSPKIData", setter="setSPKIData")
-     * @JMS\SerializedName("SPKIData")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getSPKIData', setter: 'setSPKIData')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('SPKIData')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\SPKIDataType')]
+    #[JMS\XmlElement(cdata: false)]
     private ?SPKIDataType $sPKIData = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getMgmtData", setter="setMgmtData")
-     * @JMS\SerializedName("MgmtData")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getMgmtData', setter: 'setMgmtData')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('MgmtData')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $mgmtData = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getId", setter="setId")
-     * @JMS\SerializedName("Id")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getId', setter: 'setId')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Id')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private ?string $id = null;
 
     /**

@@ -18,27 +18,27 @@ class SignaturePropertiesType
      * @translation-german-untranslated
      *
      * @var null|array<SignaturePropertyType>
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\SignaturePropertyType>")
-     * @JMS\Accessor(getter="getSignatureProperty", setter="setSignatureProperty")
-     * @JMS\SerializedName("SignatureProperty")
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlList(inline=true, entry="SignatureProperty")
      */
+    #[JMS\Accessor(getter: 'getSignatureProperty', setter: 'setSignatureProperty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('SignatureProperty')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\SignaturePropertyType>')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'SignatureProperty')]
     private ?array $signatureProperty = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getId", setter="setId")
-     * @JMS\SerializedName("Id")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getId', setter: 'setId')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Id')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private ?string $id = null;
 
     /**

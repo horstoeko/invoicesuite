@@ -15,158 +15,145 @@ final class DatiTrasporto
 
     /**
      * @translation-german Stammdaten Vettore
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiAnagraficiVettore")
-     * @JMS\Accessor(getter="getDatiAnagraficiVettore", setter="setDatiAnagraficiVettore")
-     * @JMS\SerializedName("DatiAnagraficiVettore")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDatiAnagraficiVettore', setter: 'setDatiAnagraficiVettore')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DatiAnagraficiVettore')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiAnagraficiVettore')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DatiAnagraficiVettore $datiAnagraficiVettore = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getMezzoTrasporto", setter="setMezzoTrasporto")
-     * @JMS\SerializedName("MezzoTrasporto")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getMezzoTrasporto', setter: 'setMezzoTrasporto')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('MezzoTrasporto')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $mezzoTrasporto = null;
 
     /**
      * @translation-german Begründung Trasporto
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getCausaleTrasporto", setter="setCausaleTrasporto")
-     * @JMS\SerializedName("CausaleTrasporto")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCausaleTrasporto', setter: 'setCausaleTrasporto')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CausaleTrasporto')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $causaleTrasporto = null;
 
     /**
      * @translation-german Nummer Colli
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("int")
-     * @JMS\Accessor(getter="getNumeroColli", setter="setNumeroColli")
-     * @JMS\SerializedName("NumeroColli")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getNumeroColli', setter: 'setNumeroColli')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('NumeroColli')]
+    #[JMS\Type('int')]
+    #[JMS\XmlElement(cdata: false)]
     private ?int $numeroColli = null;
 
     /**
      * @translation-german Beschreibung
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getDescrizione", setter="setDescrizione")
-     * @JMS\SerializedName("Descrizione")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDescrizione', setter: 'setDescrizione')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Descrizione')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $descrizione = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getUnitaMisuraPeso", setter="setUnitaMisuraPeso")
-     * @JMS\SerializedName("UnitaMisuraPeso")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getUnitaMisuraPeso', setter: 'setUnitaMisuraPeso')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('UnitaMisuraPeso')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $unitaMisuraPeso = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("fatturapa_decimal<2>")
-     * @JMS\Accessor(getter="getPesoLordo", setter="setPesoLordo")
-     * @JMS\SerializedName("PesoLordo")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getPesoLordo', setter: 'setPesoLordo')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('PesoLordo')]
+    #[JMS\Type('fatturapa_decimal<2>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?float $pesoLordo = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("fatturapa_decimal<2>")
-     * @JMS\Accessor(getter="getPesoNetto", setter="setPesoNetto")
-     * @JMS\SerializedName("PesoNetto")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getPesoNetto', setter: 'setPesoNetto')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('PesoNetto')]
+    #[JMS\Type('fatturapa_decimal<2>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?float $pesoNetto = null;
 
     /**
      * @translation-german Datum Ora Ritiro
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime")
-     * @JMS\Accessor(getter="getDataOraRitiro", setter="setDataOraRitiro")
-     * @JMS\SerializedName("DataOraRitiro")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDataOraRitiro', setter: 'setDataOraRitiro')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DataOraRitiro')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DateTimeInterface $dataOraRitiro = null;
 
     /**
      * @translation-german Datum Inizio Trasporto
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Accessor(getter="getDataInizioTrasporto", setter="setDataInizioTrasporto")
-     * @JMS\SerializedName("DataInizioTrasporto")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDataInizioTrasporto', setter: 'setDataInizioTrasporto')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DataInizioTrasporto')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DateTimeInterface $dataInizioTrasporto = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getTipoResa", setter="setTipoResa")
-     * @JMS\SerializedName("TipoResa")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getTipoResa', setter: 'setTipoResa')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('TipoResa')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $tipoResa = null;
 
     /**
      * @translation-german Adresse Resa
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Indirizzo")
-     * @JMS\Accessor(getter="getIndirizzoResa", setter="setIndirizzoResa")
-     * @JMS\SerializedName("IndirizzoResa")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getIndirizzoResa', setter: 'setIndirizzoResa')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('IndirizzoResa')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\Indirizzo')]
+    #[JMS\XmlElement(cdata: false)]
     private ?Indirizzo $indirizzoResa = null;
 
     /**
      * @translation-german Datum Ora Consegna
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime")
-     * @JMS\Accessor(getter="getDataOraConsegna", setter="setDataOraConsegna")
-     * @JMS\SerializedName("DataOraConsegna")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDataOraConsegna', setter: 'setDataOraConsegna')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DataOraConsegna')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DateTimeInterface $dataOraConsegna = null;
 
     /**

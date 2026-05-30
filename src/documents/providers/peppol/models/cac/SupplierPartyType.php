@@ -16,80 +16,80 @@ class SupplierPartyType
 
     /**
      * @var null|CustomerAssignedAccountID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CustomerAssignedAccountID")
-     * @JMS\Expose
-     * @JMS\SerializedName("CustomerAssignedAccountID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCustomerAssignedAccountID", setter="setCustomerAssignedAccountID")
      */
+    #[JMS\Accessor(getter: 'getCustomerAssignedAccountID', setter: 'setCustomerAssignedAccountID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CustomerAssignedAccountID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CustomerAssignedAccountID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $customerAssignedAccountID;
 
     /**
      * @var null|array<AdditionalAccountID>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AdditionalAccountID>")
-     * @JMS\Expose
-     * @JMS\SerializedName("AdditionalAccountID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="AdditionalAccountID", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
-     * @JMS\Accessor(getter="getAdditionalAccountID", setter="setAdditionalAccountID")
      */
+    #[JMS\Accessor(getter: 'getAdditionalAccountID', setter: 'setAdditionalAccountID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('AdditionalAccountID')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AdditionalAccountID>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'AdditionalAccountID', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')]
     private $additionalAccountID;
 
     /**
      * @var null|DataSendingCapability
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\DataSendingCapability")
-     * @JMS\Expose
-     * @JMS\SerializedName("DataSendingCapability")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getDataSendingCapability", setter="setDataSendingCapability")
      */
+    #[JMS\Accessor(getter: 'getDataSendingCapability', setter: 'setDataSendingCapability')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('DataSendingCapability')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\DataSendingCapability')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $dataSendingCapability;
 
     /**
      * @var null|Party
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\Party")
-     * @JMS\Expose
-     * @JMS\SerializedName("Party")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getParty", setter="setParty")
      */
+    #[JMS\Accessor(getter: 'getParty', setter: 'setParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Party')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\Party')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $party;
 
     /**
      * @var null|DespatchContact
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\DespatchContact")
-     * @JMS\Expose
-     * @JMS\SerializedName("DespatchContact")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getDespatchContact", setter="setDespatchContact")
      */
+    #[JMS\Accessor(getter: 'getDespatchContact', setter: 'setDespatchContact')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('DespatchContact')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\DespatchContact')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $despatchContact;
 
     /**
      * @var null|AccountingContact
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\AccountingContact")
-     * @JMS\Expose
-     * @JMS\SerializedName("AccountingContact")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getAccountingContact", setter="setAccountingContact")
      */
+    #[JMS\Accessor(getter: 'getAccountingContact', setter: 'setAccountingContact')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('AccountingContact')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\AccountingContact')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $accountingContact;
 
     /**
      * @var null|SellerContact
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\SellerContact")
-     * @JMS\Expose
-     * @JMS\SerializedName("SellerContact")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getSellerContact", setter="setSellerContact")
      */
+    #[JMS\Accessor(getter: 'getSellerContact', setter: 'setSellerContact')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('SellerContact')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\SellerContact')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $sellerContact;
 
     /**

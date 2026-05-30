@@ -14,24 +14,24 @@ class AttachmentType
 
     /**
      * @var null|EmbeddedDocumentBinaryObject
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\EmbeddedDocumentBinaryObject")
-     * @JMS\Expose
-     * @JMS\SerializedName("EmbeddedDocumentBinaryObject")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getEmbeddedDocumentBinaryObject", setter="setEmbeddedDocumentBinaryObject")
      */
+    #[JMS\Accessor(getter: 'getEmbeddedDocumentBinaryObject', setter: 'setEmbeddedDocumentBinaryObject')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('EmbeddedDocumentBinaryObject')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\EmbeddedDocumentBinaryObject')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $embeddedDocumentBinaryObject;
 
     /**
      * @var null|ExternalReference
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\ExternalReference")
-     * @JMS\Expose
-     * @JMS\SerializedName("ExternalReference")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getExternalReference", setter="setExternalReference")
      */
+    #[JMS\Accessor(getter: 'getExternalReference', setter: 'setExternalReference')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ExternalReference')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\ExternalReference')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $externalReference;
 
     /**

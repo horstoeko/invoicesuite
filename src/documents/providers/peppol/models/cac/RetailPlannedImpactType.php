@@ -16,46 +16,46 @@ class RetailPlannedImpactType
 
     /**
      * @var null|Amount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Amount")
-     * @JMS\Expose
-     * @JMS\SerializedName("Amount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getAmount", setter="setAmount")
      */
+    #[JMS\Accessor(getter: 'getAmount', setter: 'setAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Amount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Amount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $amount;
 
     /**
      * @var null|ForecastPurposeCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ForecastPurposeCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("ForecastPurposeCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getForecastPurposeCode", setter="setForecastPurposeCode")
      */
+    #[JMS\Accessor(getter: 'getForecastPurposeCode', setter: 'setForecastPurposeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ForecastPurposeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ForecastPurposeCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $forecastPurposeCode;
 
     /**
      * @var null|ForecastTypeCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ForecastTypeCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("ForecastTypeCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getForecastTypeCode", setter="setForecastTypeCode")
      */
+    #[JMS\Accessor(getter: 'getForecastTypeCode', setter: 'setForecastTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ForecastTypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ForecastTypeCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $forecastTypeCode;
 
     /**
      * @var null|Period
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\Period")
-     * @JMS\Expose
-     * @JMS\SerializedName("Period")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPeriod", setter="setPeriod")
      */
+    #[JMS\Accessor(getter: 'getPeriod', setter: 'setPeriod')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Period')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\Period')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $period;
 
     /**

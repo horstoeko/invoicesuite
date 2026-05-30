@@ -30,259 +30,259 @@ class HazardousItemType
 
     /**
      * @var null|ID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID")
-     * @JMS\Expose
-     * @JMS\SerializedName("ID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getID", setter="setID")
      */
+    #[JMS\Accessor(getter: 'getID', setter: 'setID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $iD;
 
     /**
      * @var null|PlacardNotation
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PlacardNotation")
-     * @JMS\Expose
-     * @JMS\SerializedName("PlacardNotation")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPlacardNotation", setter="setPlacardNotation")
      */
+    #[JMS\Accessor(getter: 'getPlacardNotation', setter: 'setPlacardNotation')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PlacardNotation')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PlacardNotation')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $placardNotation;
 
     /**
      * @var null|PlacardEndorsement
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PlacardEndorsement")
-     * @JMS\Expose
-     * @JMS\SerializedName("PlacardEndorsement")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPlacardEndorsement", setter="setPlacardEndorsement")
      */
+    #[JMS\Accessor(getter: 'getPlacardEndorsement', setter: 'setPlacardEndorsement')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PlacardEndorsement')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PlacardEndorsement')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $placardEndorsement;
 
     /**
      * @var null|array<AdditionalInformation>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AdditionalInformation>")
-     * @JMS\Expose
-     * @JMS\SerializedName("AdditionalInformation")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="AdditionalInformation", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
-     * @JMS\Accessor(getter="getAdditionalInformation", setter="setAdditionalInformation")
      */
+    #[JMS\Accessor(getter: 'getAdditionalInformation', setter: 'setAdditionalInformation')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('AdditionalInformation')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AdditionalInformation>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'AdditionalInformation', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')]
     private $additionalInformation;
 
     /**
      * @var null|UNDGCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UNDGCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("UNDGCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getUNDGCode", setter="setUNDGCode")
      */
+    #[JMS\Accessor(getter: 'getUNDGCode', setter: 'setUNDGCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('UNDGCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UNDGCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $uNDGCode;
 
     /**
      * @var null|EmergencyProceduresCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\EmergencyProceduresCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("EmergencyProceduresCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getEmergencyProceduresCode", setter="setEmergencyProceduresCode")
      */
+    #[JMS\Accessor(getter: 'getEmergencyProceduresCode', setter: 'setEmergencyProceduresCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('EmergencyProceduresCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\EmergencyProceduresCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $emergencyProceduresCode;
 
     /**
      * @var null|MedicalFirstAidGuideCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MedicalFirstAidGuideCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("MedicalFirstAidGuideCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getMedicalFirstAidGuideCode", setter="setMedicalFirstAidGuideCode")
      */
+    #[JMS\Accessor(getter: 'getMedicalFirstAidGuideCode', setter: 'setMedicalFirstAidGuideCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MedicalFirstAidGuideCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MedicalFirstAidGuideCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $medicalFirstAidGuideCode;
 
     /**
      * @var null|TechnicalName
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TechnicalName")
-     * @JMS\Expose
-     * @JMS\SerializedName("TechnicalName")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTechnicalName", setter="setTechnicalName")
      */
+    #[JMS\Accessor(getter: 'getTechnicalName', setter: 'setTechnicalName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TechnicalName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TechnicalName')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $technicalName;
 
     /**
      * @var null|CategoryName
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CategoryName")
-     * @JMS\Expose
-     * @JMS\SerializedName("CategoryName")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCategoryName", setter="setCategoryName")
      */
+    #[JMS\Accessor(getter: 'getCategoryName', setter: 'setCategoryName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CategoryName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CategoryName')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $categoryName;
 
     /**
      * @var null|HazardousCategoryCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\HazardousCategoryCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("HazardousCategoryCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getHazardousCategoryCode", setter="setHazardousCategoryCode")
      */
+    #[JMS\Accessor(getter: 'getHazardousCategoryCode', setter: 'setHazardousCategoryCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('HazardousCategoryCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\HazardousCategoryCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $hazardousCategoryCode;
 
     /**
      * @var null|UpperOrangeHazardPlacardID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UpperOrangeHazardPlacardID")
-     * @JMS\Expose
-     * @JMS\SerializedName("UpperOrangeHazardPlacardID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getUpperOrangeHazardPlacardID", setter="setUpperOrangeHazardPlacardID")
      */
+    #[JMS\Accessor(getter: 'getUpperOrangeHazardPlacardID', setter: 'setUpperOrangeHazardPlacardID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('UpperOrangeHazardPlacardID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\UpperOrangeHazardPlacardID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $upperOrangeHazardPlacardID;
 
     /**
      * @var null|LowerOrangeHazardPlacardID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LowerOrangeHazardPlacardID")
-     * @JMS\Expose
-     * @JMS\SerializedName("LowerOrangeHazardPlacardID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getLowerOrangeHazardPlacardID", setter="setLowerOrangeHazardPlacardID")
      */
+    #[JMS\Accessor(getter: 'getLowerOrangeHazardPlacardID', setter: 'setLowerOrangeHazardPlacardID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('LowerOrangeHazardPlacardID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LowerOrangeHazardPlacardID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $lowerOrangeHazardPlacardID;
 
     /**
      * @var null|MarkingID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MarkingID")
-     * @JMS\Expose
-     * @JMS\SerializedName("MarkingID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getMarkingID", setter="setMarkingID")
      */
+    #[JMS\Accessor(getter: 'getMarkingID', setter: 'setMarkingID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MarkingID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MarkingID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $markingID;
 
     /**
      * @var null|HazardClassID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\HazardClassID")
-     * @JMS\Expose
-     * @JMS\SerializedName("HazardClassID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getHazardClassID", setter="setHazardClassID")
      */
+    #[JMS\Accessor(getter: 'getHazardClassID', setter: 'setHazardClassID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('HazardClassID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\HazardClassID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $hazardClassID;
 
     /**
      * @var null|NetWeightMeasure
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NetWeightMeasure")
-     * @JMS\Expose
-     * @JMS\SerializedName("NetWeightMeasure")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getNetWeightMeasure", setter="setNetWeightMeasure")
      */
+    #[JMS\Accessor(getter: 'getNetWeightMeasure', setter: 'setNetWeightMeasure')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('NetWeightMeasure')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NetWeightMeasure')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $netWeightMeasure;
 
     /**
      * @var null|NetVolumeMeasure
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NetVolumeMeasure")
-     * @JMS\Expose
-     * @JMS\SerializedName("NetVolumeMeasure")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getNetVolumeMeasure", setter="setNetVolumeMeasure")
      */
+    #[JMS\Accessor(getter: 'getNetVolumeMeasure', setter: 'setNetVolumeMeasure')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('NetVolumeMeasure')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NetVolumeMeasure')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $netVolumeMeasure;
 
     /**
      * @var null|Quantity
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Quantity")
-     * @JMS\Expose
-     * @JMS\SerializedName("Quantity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getQuantity", setter="setQuantity")
      */
+    #[JMS\Accessor(getter: 'getQuantity', setter: 'setQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Quantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Quantity')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $quantity;
 
     /**
      * @var null|ContactParty
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\ContactParty")
-     * @JMS\Expose
-     * @JMS\SerializedName("ContactParty")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getContactParty", setter="setContactParty")
      */
+    #[JMS\Accessor(getter: 'getContactParty', setter: 'setContactParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ContactParty')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\ContactParty')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $contactParty;
 
     /**
      * @var null|array<SecondaryHazard>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\SecondaryHazard>")
-     * @JMS\Expose
-     * @JMS\SerializedName("SecondaryHazard")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="SecondaryHazard", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getSecondaryHazard", setter="setSecondaryHazard")
      */
+    #[JMS\Accessor(getter: 'getSecondaryHazard', setter: 'setSecondaryHazard')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('SecondaryHazard')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\SecondaryHazard>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'SecondaryHazard', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $secondaryHazard;
 
     /**
      * @var null|array<HazardousGoodsTransit>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\HazardousGoodsTransit>")
-     * @JMS\Expose
-     * @JMS\SerializedName("HazardousGoodsTransit")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="HazardousGoodsTransit", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getHazardousGoodsTransit", setter="setHazardousGoodsTransit")
      */
+    #[JMS\Accessor(getter: 'getHazardousGoodsTransit', setter: 'setHazardousGoodsTransit')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('HazardousGoodsTransit')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\HazardousGoodsTransit>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'HazardousGoodsTransit', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $hazardousGoodsTransit;
 
     /**
      * @var null|EmergencyTemperature
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\EmergencyTemperature")
-     * @JMS\Expose
-     * @JMS\SerializedName("EmergencyTemperature")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getEmergencyTemperature", setter="setEmergencyTemperature")
      */
+    #[JMS\Accessor(getter: 'getEmergencyTemperature', setter: 'setEmergencyTemperature')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('EmergencyTemperature')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\EmergencyTemperature')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $emergencyTemperature;
 
     /**
      * @var null|FlashpointTemperature
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\FlashpointTemperature")
-     * @JMS\Expose
-     * @JMS\SerializedName("FlashpointTemperature")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getFlashpointTemperature", setter="setFlashpointTemperature")
      */
+    #[JMS\Accessor(getter: 'getFlashpointTemperature', setter: 'setFlashpointTemperature')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('FlashpointTemperature')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\FlashpointTemperature')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $flashpointTemperature;
 
     /**
      * @var null|array<AdditionalTemperature>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\AdditionalTemperature>")
-     * @JMS\Expose
-     * @JMS\SerializedName("AdditionalTemperature")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="AdditionalTemperature", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getAdditionalTemperature", setter="setAdditionalTemperature")
      */
+    #[JMS\Accessor(getter: 'getAdditionalTemperature', setter: 'setAdditionalTemperature')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('AdditionalTemperature')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\AdditionalTemperature>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'AdditionalTemperature', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $additionalTemperature;
 
     /**

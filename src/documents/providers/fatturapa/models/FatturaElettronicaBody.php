@@ -13,66 +13,63 @@ final class FatturaElettronicaBody
 
     /**
      * @translation-german Allgemeine Angaben
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiGenerali")
-     * @JMS\Accessor(getter="getDatiGenerali", setter="setDatiGenerali")
-     * @JMS\SerializedName("DatiGenerali")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDatiGenerali', setter: 'setDatiGenerali')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DatiGenerali')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiGenerali')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DatiGenerali $datiGenerali = null;
 
     /**
      * @translation-german Waren-/Dienstleistungsangaben
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiBeniServizi")
-     * @JMS\Accessor(getter="getDatiBeniServizi", setter="setDatiBeniServizi")
-     * @JMS\SerializedName("DatiBeniServizi")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDatiBeniServizi', setter: 'setDatiBeniServizi')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DatiBeniServizi')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiBeniServizi')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DatiBeniServizi $datiBeniServizi = null;
 
     /**
      * @translation-german Fahrzeugdaten
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiVeicoli")
-     * @JMS\Accessor(getter="getDatiVeicoli", setter="setDatiVeicoli")
-     * @JMS\SerializedName("DatiVeicoli")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDatiVeicoli', setter: 'setDatiVeicoli')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DatiVeicoli')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiVeicoli')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DatiVeicoli $datiVeicoli = null;
 
     /**
      * @translation-german Zahlungsangaben
      *
      * @var null|array<DatiPagamento>
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiPagamento>")
-     * @JMS\Accessor(getter="getDatiPagamento", setter="setDatiPagamento")
-     * @JMS\SerializedName("DatiPagamento")
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlList(inline=true, entry="DatiPagamento")
      */
+    #[JMS\Accessor(getter: 'getDatiPagamento', setter: 'setDatiPagamento')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DatiPagamento')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiPagamento>')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'DatiPagamento')]
     private ?array $datiPagamento = null;
 
     /**
      * @translation-german Anhänge
      *
      * @var null|array<Allegati>
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\Allegati>")
-     * @JMS\Accessor(getter="getAllegati", setter="setAllegati")
-     * @JMS\SerializedName("Allegati")
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlList(inline=true, entry="Allegati")
      */
+    #[JMS\Accessor(getter: 'getAllegati', setter: 'setAllegati')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Allegati')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\fatturapa\models\Allegati>')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'Allegati')]
     private ?array $allegati = null;
 
     /**

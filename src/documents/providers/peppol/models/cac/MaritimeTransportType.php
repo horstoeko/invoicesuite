@@ -19,91 +19,91 @@ class MaritimeTransportType
 
     /**
      * @var null|VesselID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\VesselID")
-     * @JMS\Expose
-     * @JMS\SerializedName("VesselID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getVesselID", setter="setVesselID")
      */
+    #[JMS\Accessor(getter: 'getVesselID', setter: 'setVesselID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('VesselID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\VesselID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $vesselID;
 
     /**
      * @var null|VesselName
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\VesselName")
-     * @JMS\Expose
-     * @JMS\SerializedName("VesselName")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getVesselName", setter="setVesselName")
      */
+    #[JMS\Accessor(getter: 'getVesselName', setter: 'setVesselName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('VesselName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\VesselName')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $vesselName;
 
     /**
      * @var null|RadioCallSignID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RadioCallSignID")
-     * @JMS\Expose
-     * @JMS\SerializedName("RadioCallSignID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getRadioCallSignID", setter="setRadioCallSignID")
      */
+    #[JMS\Accessor(getter: 'getRadioCallSignID', setter: 'setRadioCallSignID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('RadioCallSignID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RadioCallSignID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $radioCallSignID;
 
     /**
      * @var null|array<ShipsRequirements>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ShipsRequirements>")
-     * @JMS\Expose
-     * @JMS\SerializedName("ShipsRequirements")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="ShipsRequirements", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
-     * @JMS\Accessor(getter="getShipsRequirements", setter="setShipsRequirements")
      */
+    #[JMS\Accessor(getter: 'getShipsRequirements', setter: 'setShipsRequirements')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ShipsRequirements')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ShipsRequirements>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'ShipsRequirements', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')]
     private $shipsRequirements;
 
     /**
      * @var null|GrossTonnageMeasure
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\GrossTonnageMeasure")
-     * @JMS\Expose
-     * @JMS\SerializedName("GrossTonnageMeasure")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getGrossTonnageMeasure", setter="setGrossTonnageMeasure")
      */
+    #[JMS\Accessor(getter: 'getGrossTonnageMeasure', setter: 'setGrossTonnageMeasure')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('GrossTonnageMeasure')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\GrossTonnageMeasure')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $grossTonnageMeasure;
 
     /**
      * @var null|NetTonnageMeasure
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NetTonnageMeasure")
-     * @JMS\Expose
-     * @JMS\SerializedName("NetTonnageMeasure")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getNetTonnageMeasure", setter="setNetTonnageMeasure")
      */
+    #[JMS\Accessor(getter: 'getNetTonnageMeasure', setter: 'setNetTonnageMeasure')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('NetTonnageMeasure')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NetTonnageMeasure')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $netTonnageMeasure;
 
     /**
      * @var null|RegistryCertificateDocumentReference
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\RegistryCertificateDocumentReference")
-     * @JMS\Expose
-     * @JMS\SerializedName("RegistryCertificateDocumentReference")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getRegistryCertificateDocumentReference", setter="setRegistryCertificateDocumentReference")
      */
+    #[JMS\Accessor(getter: 'getRegistryCertificateDocumentReference', setter: 'setRegistryCertificateDocumentReference')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('RegistryCertificateDocumentReference')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\RegistryCertificateDocumentReference')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $registryCertificateDocumentReference;
 
     /**
      * @var null|RegistryPortLocation
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\RegistryPortLocation")
-     * @JMS\Expose
-     * @JMS\SerializedName("RegistryPortLocation")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getRegistryPortLocation", setter="setRegistryPortLocation")
      */
+    #[JMS\Accessor(getter: 'getRegistryPortLocation', setter: 'setRegistryPortLocation')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('RegistryPortLocation')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\RegistryPortLocation')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $registryPortLocation;
 
     /**

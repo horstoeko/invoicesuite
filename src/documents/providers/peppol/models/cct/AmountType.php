@@ -14,35 +14,35 @@ class AmountType
 
     /**
      * @var null|float
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("float")
-     * @JMS\Expose
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlValue(cdata=false)
-     * @JMS\Accessor(getter="getValue", setter="setValue")
      */
+    #[JMS\Accessor(getter: 'getValue', setter: 'setValue')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\Type('float')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlValue(cdata: false)]
     private $value;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("currencyID")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getCurrencyID", setter="setCurrencyID")
      */
+    #[JMS\Accessor(getter: 'getCurrencyID', setter: 'setCurrencyID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('currencyID')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $currencyID;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("currencyCodeListVersionID")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getCurrencyCodeListVersionID", setter="setCurrencyCodeListVersionID")
      */
+    #[JMS\Accessor(getter: 'getCurrencyCodeListVersionID', setter: 'setCurrencyCodeListVersionID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('currencyCodeListVersionID')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $currencyCodeListVersionID;
 
     /**

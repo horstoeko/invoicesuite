@@ -14,28 +14,27 @@ final class DatiPagamento
 
     /**
      * @translation-german Condizioni Zahlung
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\CondizioniPagamento','value'>")
-     * @JMS\Accessor(getter="getCondizioniPagamento", setter="setCondizioniPagamento")
-     * @JMS\SerializedName("CondizioniPagamento")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCondizioniPagamento', setter: 'setCondizioniPagamento')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CondizioniPagamento')]
+    #[JMS\Type('enum<\'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\CondizioniPagamento\',\'value\'>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?CondizioniPagamento $condizioniPagamento = null;
 
     /**
      * @translation-german Zahlungsdetail
      *
      * @var null|array<DettaglioPagamento>
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DettaglioPagamento>")
-     * @JMS\Accessor(getter="getDettaglioPagamento", setter="setDettaglioPagamento")
-     * @JMS\SerializedName("DettaglioPagamento")
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlList(inline=true, entry="DettaglioPagamento")
      */
+    #[JMS\Accessor(getter: 'getDettaglioPagamento', setter: 'setDettaglioPagamento')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DettaglioPagamento')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DettaglioPagamento>')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'DettaglioPagamento')]
     private ?array $dettaglioPagamento = null;
 
     /**

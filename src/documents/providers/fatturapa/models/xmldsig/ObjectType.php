@@ -18,39 +18,39 @@ class ObjectType
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getId", setter="setId")
-     * @JMS\SerializedName("Id")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getId', setter: 'setId')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Id')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private ?string $id = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getMimeType", setter="setMimeType")
-     * @JMS\SerializedName("MimeType")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getMimeType', setter: 'setMimeType')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('MimeType')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private ?string $mimeType = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getEncoding", setter="setEncoding")
-     * @JMS\SerializedName("Encoding")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getEncoding', setter: 'setEncoding')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Encoding')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private ?string $encoding = null;
 
     /**

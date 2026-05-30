@@ -18,80 +18,80 @@ class PartyTaxSchemeType
 
     /**
      * @var null|RegistrationName
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RegistrationName")
-     * @JMS\Expose
-     * @JMS\SerializedName("RegistrationName")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getRegistrationName", setter="setRegistrationName")
      */
+    #[JMS\Accessor(getter: 'getRegistrationName', setter: 'setRegistrationName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('RegistrationName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RegistrationName')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $registrationName;
 
     /**
      * @var null|CompanyID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CompanyID")
-     * @JMS\Expose
-     * @JMS\SerializedName("CompanyID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCompanyID", setter="setCompanyID")
      */
+    #[JMS\Accessor(getter: 'getCompanyID', setter: 'setCompanyID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CompanyID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CompanyID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $companyID;
 
     /**
      * @var null|TaxLevelCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TaxLevelCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("TaxLevelCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTaxLevelCode", setter="setTaxLevelCode")
      */
+    #[JMS\Accessor(getter: 'getTaxLevelCode', setter: 'setTaxLevelCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TaxLevelCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TaxLevelCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $taxLevelCode;
 
     /**
      * @var null|ExemptionReasonCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ExemptionReasonCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("ExemptionReasonCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getExemptionReasonCode", setter="setExemptionReasonCode")
      */
+    #[JMS\Accessor(getter: 'getExemptionReasonCode', setter: 'setExemptionReasonCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ExemptionReasonCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ExemptionReasonCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $exemptionReasonCode;
 
     /**
      * @var null|array<ExemptionReason>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ExemptionReason>")
-     * @JMS\Expose
-     * @JMS\SerializedName("ExemptionReason")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="ExemptionReason", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
-     * @JMS\Accessor(getter="getExemptionReason", setter="setExemptionReason")
      */
+    #[JMS\Accessor(getter: 'getExemptionReason', setter: 'setExemptionReason')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ExemptionReason')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ExemptionReason>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'ExemptionReason', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')]
     private $exemptionReason;
 
     /**
      * @var null|RegistrationAddress
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\RegistrationAddress")
-     * @JMS\Expose
-     * @JMS\SerializedName("RegistrationAddress")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getRegistrationAddress", setter="setRegistrationAddress")
      */
+    #[JMS\Accessor(getter: 'getRegistrationAddress', setter: 'setRegistrationAddress')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('RegistrationAddress')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\RegistrationAddress')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $registrationAddress;
 
     /**
      * @var null|TaxScheme
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\TaxScheme")
-     * @JMS\Expose
-     * @JMS\SerializedName("TaxScheme")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTaxScheme", setter="setTaxScheme")
      */
+    #[JMS\Accessor(getter: 'getTaxScheme', setter: 'setTaxScheme')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TaxScheme')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\TaxScheme')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $taxScheme;
 
     /**

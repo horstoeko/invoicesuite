@@ -16,98 +16,90 @@ final class DatiRiepilogo
 
     /**
      * @translation-german Steuersatz IVA
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("fatturapa_decimal<2>")
-     * @JMS\Accessor(getter="getAliquotaIVA", setter="setAliquotaIVA")
-     * @JMS\SerializedName("AliquotaIVA")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getAliquotaIVA', setter: 'setAliquotaIVA')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('AliquotaIVA')]
+    #[JMS\Type('fatturapa_decimal<2>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?float $aliquotaIVA = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\Natura','value'>")
-     * @JMS\Accessor(getter="getNatura", setter="setNatura")
-     * @JMS\SerializedName("Natura")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getNatura', setter: 'setNatura')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Natura')]
+    #[JMS\Type('enum<\'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\Natura\',\'value\'>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?Natura $natura = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("fatturapa_decimal<2>")
-     * @JMS\Accessor(getter="getSpeseAccessorie", setter="setSpeseAccessorie")
-     * @JMS\SerializedName("SpeseAccessorie")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getSpeseAccessorie', setter: 'setSpeseAccessorie')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('SpeseAccessorie')]
+    #[JMS\Type('fatturapa_decimal<2>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?float $speseAccessorie = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("fatturapa_decimal<2>")
-     * @JMS\Accessor(getter="getArrotondamento", setter="setArrotondamento")
-     * @JMS\SerializedName("Arrotondamento")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getArrotondamento', setter: 'setArrotondamento')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Arrotondamento')]
+    #[JMS\Type('fatturapa_decimal<2>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?float $arrotondamento = null;
 
     /**
      * @translation-german Imponibile Betrag
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("fatturapa_decimal<2>")
-     * @JMS\Accessor(getter="getImponibileImporto", setter="setImponibileImporto")
-     * @JMS\SerializedName("ImponibileImporto")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getImponibileImporto', setter: 'setImponibileImporto')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('ImponibileImporto')]
+    #[JMS\Type('fatturapa_decimal<2>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?float $imponibileImporto = null;
 
     /**
      * @translation-german Steuer
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("fatturapa_decimal<2>")
-     * @JMS\Accessor(getter="getImposta", setter="setImposta")
-     * @JMS\SerializedName("Imposta")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getImposta', setter: 'setImposta')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Imposta')]
+    #[JMS\Type('fatturapa_decimal<2>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?float $imposta = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\EsigibilitaIVA','value'>")
-     * @JMS\Accessor(getter="getEsigibilitaIVA", setter="setEsigibilitaIVA")
-     * @JMS\SerializedName("EsigibilitaIVA")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getEsigibilitaIVA', setter: 'setEsigibilitaIVA')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('EsigibilitaIVA')]
+    #[JMS\Type('enum<\'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\EsigibilitaIVA\',\'value\'>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?EsigibilitaIVA $esigibilitaIVA = null;
 
     /**
      * @translation-german Referenz Normativo
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getRiferimentoNormativo", setter="setRiferimentoNormativo")
-     * @JMS\SerializedName("RiferimentoNormativo")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getRiferimentoNormativo', setter: 'setRiferimentoNormativo')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('RiferimentoNormativo')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $riferimentoNormativo = null;
 
     /**

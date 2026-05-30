@@ -18,13 +18,13 @@ class SPKIDataType
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getSPKISexp", setter="setSPKISexp")
-     * @JMS\SerializedName("SPKISexp")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getSPKISexp', setter: 'setSPKISexp')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('SPKISexp')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $sPKISexp = null;
 
     /**

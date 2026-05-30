@@ -14,13 +14,13 @@ class AirTransportType
 
     /**
      * @var null|AircraftID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AircraftID")
-     * @JMS\Expose
-     * @JMS\SerializedName("AircraftID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getAircraftID", setter="setAircraftID")
      */
+    #[JMS\Accessor(getter: 'getAircraftID', setter: 'setAircraftID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('AircraftID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\AircraftID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $aircraftID;
 
     /**

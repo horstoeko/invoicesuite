@@ -14,13 +14,13 @@ class SupplyChainEventType
 
     /**
      * @var null|DateTimeType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateTimeType")
-     * @JMS\Expose
-     * @JMS\SerializedName("OccurrenceDateTime")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getOccurrenceDateTime", setter="setOccurrenceDateTime")
      */
+    #[JMS\Accessor(getter: 'getOccurrenceDateTime', setter: 'setOccurrenceDateTime')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('OccurrenceDateTime')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateTimeType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $occurrenceDateTime;
 
     /**

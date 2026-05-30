@@ -15,46 +15,46 @@ class EndorserPartyType
 
     /**
      * @var null|RoleCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RoleCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("RoleCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getRoleCode", setter="setRoleCode")
      */
+    #[JMS\Accessor(getter: 'getRoleCode', setter: 'setRoleCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('RoleCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\RoleCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $roleCode;
 
     /**
      * @var null|SequenceNumeric
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SequenceNumeric")
-     * @JMS\Expose
-     * @JMS\SerializedName("SequenceNumeric")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getSequenceNumeric", setter="setSequenceNumeric")
      */
+    #[JMS\Accessor(getter: 'getSequenceNumeric', setter: 'setSequenceNumeric')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('SequenceNumeric')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\SequenceNumeric')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $sequenceNumeric;
 
     /**
      * @var null|Party
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\Party")
-     * @JMS\Expose
-     * @JMS\SerializedName("Party")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getParty", setter="setParty")
      */
+    #[JMS\Accessor(getter: 'getParty', setter: 'setParty')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Party')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\Party')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $party;
 
     /**
      * @var null|SignatoryContact
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\SignatoryContact")
-     * @JMS\Expose
-     * @JMS\SerializedName("SignatoryContact")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getSignatoryContact", setter="setSignatoryContact")
      */
+    #[JMS\Accessor(getter: 'getSignatoryContact', setter: 'setSignatoryContact')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('SignatoryContact')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\SignatoryContact')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $signatoryContact;
 
     /**

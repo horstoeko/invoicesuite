@@ -15,24 +15,24 @@ class ContractingActivityType
 
     /**
      * @var null|ActivityTypeCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ActivityTypeCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("ActivityTypeCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getActivityTypeCode", setter="setActivityTypeCode")
      */
+    #[JMS\Accessor(getter: 'getActivityTypeCode', setter: 'setActivityTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ActivityTypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ActivityTypeCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $activityTypeCode;
 
     /**
      * @var null|ActivityType
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ActivityType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ActivityType")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getActivityType", setter="setActivityType")
      */
+    #[JMS\Accessor(getter: 'getActivityType', setter: 'setActivityType')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ActivityType')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ActivityType')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $activityType;
 
     /**

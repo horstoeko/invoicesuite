@@ -7,9 +7,7 @@ namespace horstoeko\invoicesuite\documents\providers\peppol\models\ext;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use JMS\Serializer\Annotation as JMS;
 
-/**
- * @JMS\XmlRoot(name="ExtensionAgencyID", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2")
- */
+#[JMS\XmlRoot(name: 'ExtensionAgencyID', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2')]
 class ExtensionAgencyID extends ExtensionAgencyIDType
 {
     use HandlesObjectFlags;

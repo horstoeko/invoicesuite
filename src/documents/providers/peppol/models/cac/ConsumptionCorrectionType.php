@@ -25,135 +25,135 @@ class ConsumptionCorrectionType
 
     /**
      * @var null|CorrectionType
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CorrectionType")
-     * @JMS\Expose
-     * @JMS\SerializedName("CorrectionType")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCorrectionType", setter="setCorrectionType")
      */
+    #[JMS\Accessor(getter: 'getCorrectionType', setter: 'setCorrectionType')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CorrectionType')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CorrectionType')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $correctionType;
 
     /**
      * @var null|CorrectionTypeCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CorrectionTypeCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("CorrectionTypeCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCorrectionTypeCode", setter="setCorrectionTypeCode")
      */
+    #[JMS\Accessor(getter: 'getCorrectionTypeCode', setter: 'setCorrectionTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CorrectionTypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CorrectionTypeCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $correctionTypeCode;
 
     /**
      * @var null|MeterNumber
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MeterNumber")
-     * @JMS\Expose
-     * @JMS\SerializedName("MeterNumber")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getMeterNumber", setter="setMeterNumber")
      */
+    #[JMS\Accessor(getter: 'getMeterNumber', setter: 'setMeterNumber')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MeterNumber')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MeterNumber')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $meterNumber;
 
     /**
      * @var null|GasPressureQuantity
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\GasPressureQuantity")
-     * @JMS\Expose
-     * @JMS\SerializedName("GasPressureQuantity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getGasPressureQuantity", setter="setGasPressureQuantity")
      */
+    #[JMS\Accessor(getter: 'getGasPressureQuantity', setter: 'setGasPressureQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('GasPressureQuantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\GasPressureQuantity')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $gasPressureQuantity;
 
     /**
      * @var null|ActualTemperatureReductionQuantity
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ActualTemperatureReductionQuantity")
-     * @JMS\Expose
-     * @JMS\SerializedName("ActualTemperatureReductionQuantity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getActualTemperatureReductionQuantity", setter="setActualTemperatureReductionQuantity")
      */
+    #[JMS\Accessor(getter: 'getActualTemperatureReductionQuantity', setter: 'setActualTemperatureReductionQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ActualTemperatureReductionQuantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ActualTemperatureReductionQuantity')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $actualTemperatureReductionQuantity;
 
     /**
      * @var null|NormalTemperatureReductionQuantity
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NormalTemperatureReductionQuantity")
-     * @JMS\Expose
-     * @JMS\SerializedName("NormalTemperatureReductionQuantity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getNormalTemperatureReductionQuantity", setter="setNormalTemperatureReductionQuantity")
      */
+    #[JMS\Accessor(getter: 'getNormalTemperatureReductionQuantity', setter: 'setNormalTemperatureReductionQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('NormalTemperatureReductionQuantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NormalTemperatureReductionQuantity')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $normalTemperatureReductionQuantity;
 
     /**
      * @var null|DifferenceTemperatureReductionQuantity
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\DifferenceTemperatureReductionQuantity")
-     * @JMS\Expose
-     * @JMS\SerializedName("DifferenceTemperatureReductionQuantity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getDifferenceTemperatureReductionQuantity", setter="setDifferenceTemperatureReductionQuantity")
      */
+    #[JMS\Accessor(getter: 'getDifferenceTemperatureReductionQuantity', setter: 'setDifferenceTemperatureReductionQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('DifferenceTemperatureReductionQuantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\DifferenceTemperatureReductionQuantity')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $differenceTemperatureReductionQuantity;
 
     /**
      * @var null|array<Description>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description>")
-     * @JMS\Expose
-     * @JMS\SerializedName("Description")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="Description", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
-     * @JMS\Accessor(getter="getDescription", setter="setDescription")
      */
+    #[JMS\Accessor(getter: 'getDescription', setter: 'setDescription')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Description')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Description>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'Description', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')]
     private $description;
 
     /**
      * @var null|CorrectionUnitAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CorrectionUnitAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("CorrectionUnitAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCorrectionUnitAmount", setter="setCorrectionUnitAmount")
      */
+    #[JMS\Accessor(getter: 'getCorrectionUnitAmount', setter: 'setCorrectionUnitAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CorrectionUnitAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CorrectionUnitAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $correctionUnitAmount;
 
     /**
      * @var null|ConsumptionEnergyQuantity
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ConsumptionEnergyQuantity")
-     * @JMS\Expose
-     * @JMS\SerializedName("ConsumptionEnergyQuantity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getConsumptionEnergyQuantity", setter="setConsumptionEnergyQuantity")
      */
+    #[JMS\Accessor(getter: 'getConsumptionEnergyQuantity', setter: 'setConsumptionEnergyQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ConsumptionEnergyQuantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ConsumptionEnergyQuantity')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $consumptionEnergyQuantity;
 
     /**
      * @var null|ConsumptionWaterQuantity
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ConsumptionWaterQuantity")
-     * @JMS\Expose
-     * @JMS\SerializedName("ConsumptionWaterQuantity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getConsumptionWaterQuantity", setter="setConsumptionWaterQuantity")
      */
+    #[JMS\Accessor(getter: 'getConsumptionWaterQuantity', setter: 'setConsumptionWaterQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ConsumptionWaterQuantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ConsumptionWaterQuantity')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $consumptionWaterQuantity;
 
     /**
      * @var null|CorrectionAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CorrectionAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("CorrectionAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCorrectionAmount", setter="setCorrectionAmount")
      */
+    #[JMS\Accessor(getter: 'getCorrectionAmount', setter: 'setCorrectionAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CorrectionAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CorrectionAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $correctionAmount;
 
     /**

@@ -13,14 +13,14 @@ class UBLExtensionsType
 
     /**
      * @var null|array<UBLExtension>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\ext\UBLExtension>")
-     * @JMS\Expose
-     * @JMS\SerializedName("UBLExtension")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="UBLExtension", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2")
-     * @JMS\Accessor(getter="getUBLExtension", setter="setUBLExtension")
      */
+    #[JMS\Accessor(getter: 'getUBLExtension', setter: 'setUBLExtension')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('UBLExtension')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\ext\UBLExtension>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'UBLExtension', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2')]
     private $uBLExtension;
 
     /**

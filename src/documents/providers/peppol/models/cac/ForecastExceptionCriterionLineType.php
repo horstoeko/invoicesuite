@@ -18,57 +18,57 @@ class ForecastExceptionCriterionLineType
 
     /**
      * @var null|ForecastPurposeCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ForecastPurposeCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("ForecastPurposeCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getForecastPurposeCode", setter="setForecastPurposeCode")
      */
+    #[JMS\Accessor(getter: 'getForecastPurposeCode', setter: 'setForecastPurposeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ForecastPurposeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ForecastPurposeCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $forecastPurposeCode;
 
     /**
      * @var null|ForecastTypeCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ForecastTypeCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("ForecastTypeCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getForecastTypeCode", setter="setForecastTypeCode")
      */
+    #[JMS\Accessor(getter: 'getForecastTypeCode', setter: 'setForecastTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ForecastTypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ForecastTypeCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $forecastTypeCode;
 
     /**
      * @var null|ComparisonDataSourceCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ComparisonDataSourceCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("ComparisonDataSourceCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getComparisonDataSourceCode", setter="setComparisonDataSourceCode")
      */
+    #[JMS\Accessor(getter: 'getComparisonDataSourceCode', setter: 'setComparisonDataSourceCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ComparisonDataSourceCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ComparisonDataSourceCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $comparisonDataSourceCode;
 
     /**
      * @var null|DataSourceCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\DataSourceCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("DataSourceCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getDataSourceCode", setter="setDataSourceCode")
      */
+    #[JMS\Accessor(getter: 'getDataSourceCode', setter: 'setDataSourceCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('DataSourceCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\DataSourceCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $dataSourceCode;
 
     /**
      * @var null|TimeDeltaDaysQuantity
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TimeDeltaDaysQuantity")
-     * @JMS\Expose
-     * @JMS\SerializedName("TimeDeltaDaysQuantity")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTimeDeltaDaysQuantity", setter="setTimeDeltaDaysQuantity")
      */
+    #[JMS\Accessor(getter: 'getTimeDeltaDaysQuantity', setter: 'setTimeDeltaDaysQuantity')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TimeDeltaDaysQuantity')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TimeDeltaDaysQuantity')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $timeDeltaDaysQuantity;
 
     /**

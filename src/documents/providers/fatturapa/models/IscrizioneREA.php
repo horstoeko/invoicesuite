@@ -16,62 +16,57 @@ final class IscrizioneREA
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getUfficio", setter="setUfficio")
-     * @JMS\SerializedName("Ufficio")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getUfficio', setter: 'setUfficio')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Ufficio')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $ufficio = null;
 
     /**
      * @translation-german Nummer REA
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getNumeroREA", setter="setNumeroREA")
-     * @JMS\SerializedName("NumeroREA")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getNumeroREA', setter: 'setNumeroREA')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('NumeroREA')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $numeroREA = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("fatturapa_decimal<2>")
-     * @JMS\Accessor(getter="getCapitaleSociale", setter="setCapitaleSociale")
-     * @JMS\SerializedName("CapitaleSociale")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCapitaleSociale', setter: 'setCapitaleSociale')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CapitaleSociale')]
+    #[JMS\Type('fatturapa_decimal<2>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?float $capitaleSociale = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\SocioUnico")
-     * @JMS\Accessor(getter="getSocioUnico", setter="setSocioUnico")
-     * @JMS\SerializedName("SocioUnico")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getSocioUnico', setter: 'setSocioUnico')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('SocioUnico')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\SocioUnico')]
+    #[JMS\XmlElement(cdata: false)]
     private ?SocioUnico $socioUnico = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\StatoLiquidazione','value'>")
-     * @JMS\Accessor(getter="getStatoLiquidazione", setter="setStatoLiquidazione")
-     * @JMS\SerializedName("StatoLiquidazione")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getStatoLiquidazione', setter: 'setStatoLiquidazione')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('StatoLiquidazione')]
+    #[JMS\Type('enum<\'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\StatoLiquidazione\',\'value\'>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?StatoLiquidazione $statoLiquidazione = null;
 
     /**

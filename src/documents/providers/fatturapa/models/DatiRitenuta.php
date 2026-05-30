@@ -15,50 +15,46 @@ final class DatiRitenuta
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoRitenuta','value'>")
-     * @JMS\Accessor(getter="getTipoRitenuta", setter="setTipoRitenuta")
-     * @JMS\SerializedName("TipoRitenuta")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getTipoRitenuta', setter: 'setTipoRitenuta')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('TipoRitenuta')]
+    #[JMS\Type('enum<\'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoRitenuta\',\'value\'>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?TipoRitenuta $tipoRitenuta = null;
 
     /**
      * @translation-german Betrag Ritenuta
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("fatturapa_decimal<2>")
-     * @JMS\Accessor(getter="getImportoRitenuta", setter="setImportoRitenuta")
-     * @JMS\SerializedName("ImportoRitenuta")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getImportoRitenuta', setter: 'setImportoRitenuta')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('ImportoRitenuta')]
+    #[JMS\Type('fatturapa_decimal<2>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?float $importoRitenuta = null;
 
     /**
      * @translation-german Steuersatz Ritenuta
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("fatturapa_decimal<2>")
-     * @JMS\Accessor(getter="getAliquotaRitenuta", setter="setAliquotaRitenuta")
-     * @JMS\SerializedName("AliquotaRitenuta")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getAliquotaRitenuta', setter: 'setAliquotaRitenuta')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('AliquotaRitenuta')]
+    #[JMS\Type('fatturapa_decimal<2>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?float $aliquotaRitenuta = null;
 
     /**
      * @translation-german Begründung Zahlung
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\CausalePagamento','value'>")
-     * @JMS\Accessor(getter="getCausalePagamento", setter="setCausalePagamento")
-     * @JMS\SerializedName("CausalePagamento")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCausalePagamento', setter: 'setCausalePagamento')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CausalePagamento')]
+    #[JMS\Type('enum<\'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\CausalePagamento\',\'value\'>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?CausalePagamento $causalePagamento = null;
 
     /**

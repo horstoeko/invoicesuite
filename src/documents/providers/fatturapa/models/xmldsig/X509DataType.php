@@ -18,65 +18,65 @@ class X509DataType
      * @translation-german-untranslated
      *
      * @var null|X509IssuerSerialType
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\X509IssuerSerialType")
-     * @JMS\Accessor(getter="getX509IssuerSerial", setter="setX509IssuerSerial")
-     * @JMS\SerializedName("X509IssuerSerial")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getX509IssuerSerial', setter: 'setX509IssuerSerial')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('X509IssuerSerial')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\X509IssuerSerialType')]
+    #[JMS\XmlElement(cdata: false)]
     private ?X509IssuerSerialType $x509IssuerSerial = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getX509SKI", setter="setX509SKI")
-     * @JMS\SerializedName("X509SKI")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getX509SKI', setter: 'setX509SKI')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('X509SKI')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $x509SKI = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getX509SubjectName", setter="setX509SubjectName")
-     * @JMS\SerializedName("X509SubjectName")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getX509SubjectName', setter: 'setX509SubjectName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('X509SubjectName')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $x509SubjectName = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getX509Certificate", setter="setX509Certificate")
-     * @JMS\SerializedName("X509Certificate")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getX509Certificate', setter: 'setX509Certificate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('X509Certificate')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $x509Certificate = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getX509CRL", setter="setX509CRL")
-     * @JMS\SerializedName("X509CRL")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getX509CRL', setter: 'setX509CRL')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('X509CRL')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $x509CRL = null;
 
     /**

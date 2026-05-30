@@ -17,86 +17,80 @@ final class DatiDocumentiCorrelati
      * @translation-german Referenz Nummer Position
      *
      * @var null|array<int>
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<int>")
-     * @JMS\Accessor(getter="getRiferimentoNumeroLinea", setter="setRiferimentoNumeroLinea")
-     * @JMS\SerializedName("RiferimentoNumeroLinea")
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlList(inline=true, entry="RiferimentoNumeroLinea")
      */
+    #[JMS\Accessor(getter: 'getRiferimentoNumeroLinea', setter: 'setRiferimentoNumeroLinea')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('RiferimentoNumeroLinea')]
+    #[JMS\Type('array<int>')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'RiferimentoNumeroLinea')]
     private ?array $riferimentoNumeroLinea = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getIdDocumento", setter="setIdDocumento")
-     * @JMS\SerializedName("IdDocumento")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getIdDocumento', setter: 'setIdDocumento')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('IdDocumento')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $idDocumento = null;
 
     /**
      * @translation-german Datum
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Accessor(getter="getData", setter="setData")
-     * @JMS\SerializedName("Data")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getData', setter: 'setData')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Data')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DateTimeInterface $data = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getNumItem", setter="setNumItem")
-     * @JMS\SerializedName("NumItem")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getNumItem', setter: 'setNumItem')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('NumItem')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $numItem = null;
 
     /**
      * @translation-german Code Commessa Vereinbarung
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getCodiceCommessaConvenzione", setter="setCodiceCommessaConvenzione")
-     * @JMS\SerializedName("CodiceCommessaConvenzione")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCodiceCommessaConvenzione', setter: 'setCodiceCommessaConvenzione')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CodiceCommessaConvenzione')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $codiceCommessaConvenzione = null;
 
     /**
      * @translation-german Code CUP
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getCodiceCUP", setter="setCodiceCUP")
-     * @JMS\SerializedName("CodiceCUP")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCodiceCUP', setter: 'setCodiceCUP')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CodiceCUP')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $codiceCUP = null;
 
     /**
      * @translation-german Code CIG
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getCodiceCIG", setter="setCodiceCIG")
-     * @JMS\SerializedName("CodiceCIG")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCodiceCIG', setter: 'setCodiceCIG')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CodiceCIG')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $codiceCIG = null;
 
     /**

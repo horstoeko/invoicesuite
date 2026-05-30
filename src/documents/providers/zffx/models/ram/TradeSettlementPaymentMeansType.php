@@ -15,68 +15,68 @@ class TradeSettlementPaymentMeansType
 
     /**
      * @var null|PaymentMeansCodeType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\qdt\PaymentMeansCodeType")
-     * @JMS\Expose
-     * @JMS\SerializedName("TypeCode")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getTypeCode", setter="setTypeCode")
      */
+    #[JMS\Accessor(getter: 'getTypeCode', setter: 'setTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('TypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\qdt\PaymentMeansCodeType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $typeCode;
 
     /**
      * @var null|TextType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType")
-     * @JMS\Expose
-     * @JMS\SerializedName("Information")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getInformation", setter="setInformation")
      */
+    #[JMS\Accessor(getter: 'getInformation', setter: 'setInformation')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('Information')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $information;
 
     /**
      * @var null|TradeSettlementFinancialCardType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeSettlementFinancialCardType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ApplicableTradeSettlementFinancialCard")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getApplicableTradeSettlementFinancialCard", setter="setApplicableTradeSettlementFinancialCard")
      */
+    #[JMS\Accessor(getter: 'getApplicableTradeSettlementFinancialCard', setter: 'setApplicableTradeSettlementFinancialCard')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ApplicableTradeSettlementFinancialCard')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeSettlementFinancialCardType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $applicableTradeSettlementFinancialCard;
 
     /**
      * @var null|DebtorFinancialAccountType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\DebtorFinancialAccountType")
-     * @JMS\Expose
-     * @JMS\SerializedName("PayerPartyDebtorFinancialAccount")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getPayerPartyDebtorFinancialAccount", setter="setPayerPartyDebtorFinancialAccount")
      */
+    #[JMS\Accessor(getter: 'getPayerPartyDebtorFinancialAccount', setter: 'setPayerPartyDebtorFinancialAccount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('PayerPartyDebtorFinancialAccount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\DebtorFinancialAccountType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $payerPartyDebtorFinancialAccount;
 
     /**
      * @var null|CreditorFinancialAccountType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\CreditorFinancialAccountType")
-     * @JMS\Expose
-     * @JMS\SerializedName("PayeePartyCreditorFinancialAccount")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getPayeePartyCreditorFinancialAccount", setter="setPayeePartyCreditorFinancialAccount")
      */
+    #[JMS\Accessor(getter: 'getPayeePartyCreditorFinancialAccount', setter: 'setPayeePartyCreditorFinancialAccount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('PayeePartyCreditorFinancialAccount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\CreditorFinancialAccountType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $payeePartyCreditorFinancialAccount;
 
     /**
      * @var null|CreditorFinancialInstitutionType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\CreditorFinancialInstitutionType")
-     * @JMS\Expose
-     * @JMS\SerializedName("PayeeSpecifiedCreditorFinancialInstitution")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getPayeeSpecifiedCreditorFinancialInstitution", setter="setPayeeSpecifiedCreditorFinancialInstitution")
      */
+    #[JMS\Accessor(getter: 'getPayeeSpecifiedCreditorFinancialInstitution', setter: 'setPayeeSpecifiedCreditorFinancialInstitution')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('PayeeSpecifiedCreditorFinancialInstitution')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\CreditorFinancialInstitutionType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $payeeSpecifiedCreditorFinancialInstitution;
 
     /**

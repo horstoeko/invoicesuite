@@ -18,26 +18,26 @@ class SignatureMethodType
      * @translation-german-untranslated
      *
      * @var null|int
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("int")
-     * @JMS\Accessor(getter="getHMACOutputLength", setter="setHMACOutputLength")
-     * @JMS\SerializedName("HMACOutputLength")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getHMACOutputLength', setter: 'setHMACOutputLength')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('HMACOutputLength')]
+    #[JMS\Type('int')]
+    #[JMS\XmlElement(cdata: false)]
     private ?int $hMACOutputLength = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getAlgorithm", setter="setAlgorithm")
-     * @JMS\SerializedName("Algorithm")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getAlgorithm', setter: 'setAlgorithm')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Algorithm')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private ?string $algorithm = null;
 
     /**

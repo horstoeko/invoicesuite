@@ -26,190 +26,190 @@ class PersonType
 
     /**
      * @var null|ID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID")
-     * @JMS\Expose
-     * @JMS\SerializedName("ID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getID", setter="setID")
      */
+    #[JMS\Accessor(getter: 'getID', setter: 'setID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $iD;
 
     /**
      * @var null|FirstName
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\FirstName")
-     * @JMS\Expose
-     * @JMS\SerializedName("FirstName")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getFirstName", setter="setFirstName")
      */
+    #[JMS\Accessor(getter: 'getFirstName', setter: 'setFirstName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('FirstName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\FirstName')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $firstName;
 
     /**
      * @var null|FamilyName
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\FamilyName")
-     * @JMS\Expose
-     * @JMS\SerializedName("FamilyName")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getFamilyName", setter="setFamilyName")
      */
+    #[JMS\Accessor(getter: 'getFamilyName', setter: 'setFamilyName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('FamilyName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\FamilyName')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $familyName;
 
     /**
      * @var null|Title
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Title")
-     * @JMS\Expose
-     * @JMS\SerializedName("Title")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTitle", setter="setTitle")
      */
+    #[JMS\Accessor(getter: 'getTitle', setter: 'setTitle')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Title')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Title')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $title;
 
     /**
      * @var null|MiddleName
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MiddleName")
-     * @JMS\Expose
-     * @JMS\SerializedName("MiddleName")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getMiddleName", setter="setMiddleName")
      */
+    #[JMS\Accessor(getter: 'getMiddleName', setter: 'setMiddleName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MiddleName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\MiddleName')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $middleName;
 
     /**
      * @var null|OtherName
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OtherName")
-     * @JMS\Expose
-     * @JMS\SerializedName("OtherName")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getOtherName", setter="setOtherName")
      */
+    #[JMS\Accessor(getter: 'getOtherName', setter: 'setOtherName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('OtherName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OtherName')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $otherName;
 
     /**
      * @var null|NameSuffix
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NameSuffix")
-     * @JMS\Expose
-     * @JMS\SerializedName("NameSuffix")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getNameSuffix", setter="setNameSuffix")
      */
+    #[JMS\Accessor(getter: 'getNameSuffix', setter: 'setNameSuffix')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('NameSuffix')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NameSuffix')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $nameSuffix;
 
     /**
      * @var null|JobTitle
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\JobTitle")
-     * @JMS\Expose
-     * @JMS\SerializedName("JobTitle")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getJobTitle", setter="setJobTitle")
      */
+    #[JMS\Accessor(getter: 'getJobTitle', setter: 'setJobTitle')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('JobTitle')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\JobTitle')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $jobTitle;
 
     /**
      * @var null|NationalityID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NationalityID")
-     * @JMS\Expose
-     * @JMS\SerializedName("NationalityID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getNationalityID", setter="setNationalityID")
      */
+    #[JMS\Accessor(getter: 'getNationalityID', setter: 'setNationalityID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('NationalityID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NationalityID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $nationalityID;
 
     /**
      * @var null|GenderCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\GenderCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("GenderCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getGenderCode", setter="setGenderCode")
      */
+    #[JMS\Accessor(getter: 'getGenderCode', setter: 'setGenderCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('GenderCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\GenderCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $genderCode;
 
     /**
      * @var null|DateTimeInterface
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Expose
-     * @JMS\SerializedName("BirthDate")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getBirthDate", setter="setBirthDate")
      */
+    #[JMS\Accessor(getter: 'getBirthDate', setter: 'setBirthDate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('BirthDate')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $birthDate;
 
     /**
      * @var null|BirthplaceName
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\BirthplaceName")
-     * @JMS\Expose
-     * @JMS\SerializedName("BirthplaceName")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getBirthplaceName", setter="setBirthplaceName")
      */
+    #[JMS\Accessor(getter: 'getBirthplaceName', setter: 'setBirthplaceName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('BirthplaceName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\BirthplaceName')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $birthplaceName;
 
     /**
      * @var null|OrganizationDepartment
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OrganizationDepartment")
-     * @JMS\Expose
-     * @JMS\SerializedName("OrganizationDepartment")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getOrganizationDepartment", setter="setOrganizationDepartment")
      */
+    #[JMS\Accessor(getter: 'getOrganizationDepartment', setter: 'setOrganizationDepartment')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('OrganizationDepartment')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\OrganizationDepartment')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $organizationDepartment;
 
     /**
      * @var null|Contact
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\Contact")
-     * @JMS\Expose
-     * @JMS\SerializedName("Contact")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getContact", setter="setContact")
      */
+    #[JMS\Accessor(getter: 'getContact', setter: 'setContact')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Contact')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\Contact')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $contact;
 
     /**
      * @var null|FinancialAccount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\FinancialAccount")
-     * @JMS\Expose
-     * @JMS\SerializedName("FinancialAccount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getFinancialAccount", setter="setFinancialAccount")
      */
+    #[JMS\Accessor(getter: 'getFinancialAccount', setter: 'setFinancialAccount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('FinancialAccount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\FinancialAccount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $financialAccount;
 
     /**
      * @var null|array<IdentityDocumentReference>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\IdentityDocumentReference>")
-     * @JMS\Expose
-     * @JMS\SerializedName("IdentityDocumentReference")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="IdentityDocumentReference", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getIdentityDocumentReference", setter="setIdentityDocumentReference")
      */
+    #[JMS\Accessor(getter: 'getIdentityDocumentReference', setter: 'setIdentityDocumentReference')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('IdentityDocumentReference')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\IdentityDocumentReference>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'IdentityDocumentReference', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $identityDocumentReference;
 
     /**
      * @var null|ResidenceAddress
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\ResidenceAddress")
-     * @JMS\Expose
-     * @JMS\SerializedName("ResidenceAddress")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getResidenceAddress", setter="setResidenceAddress")
      */
+    #[JMS\Accessor(getter: 'getResidenceAddress', setter: 'setResidenceAddress')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ResidenceAddress')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\ResidenceAddress')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $residenceAddress;
 
     /**

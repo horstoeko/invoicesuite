@@ -17,46 +17,46 @@ class EventTacticEnumerationType
 
     /**
      * @var null|ConsumerIncentiveTacticTypeCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ConsumerIncentiveTacticTypeCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("ConsumerIncentiveTacticTypeCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getConsumerIncentiveTacticTypeCode", setter="setConsumerIncentiveTacticTypeCode")
      */
+    #[JMS\Accessor(getter: 'getConsumerIncentiveTacticTypeCode', setter: 'setConsumerIncentiveTacticTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ConsumerIncentiveTacticTypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ConsumerIncentiveTacticTypeCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $consumerIncentiveTacticTypeCode;
 
     /**
      * @var null|DisplayTacticTypeCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\DisplayTacticTypeCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("DisplayTacticTypeCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getDisplayTacticTypeCode", setter="setDisplayTacticTypeCode")
      */
+    #[JMS\Accessor(getter: 'getDisplayTacticTypeCode', setter: 'setDisplayTacticTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('DisplayTacticTypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\DisplayTacticTypeCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $displayTacticTypeCode;
 
     /**
      * @var null|FeatureTacticTypeCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\FeatureTacticTypeCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("FeatureTacticTypeCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getFeatureTacticTypeCode", setter="setFeatureTacticTypeCode")
      */
+    #[JMS\Accessor(getter: 'getFeatureTacticTypeCode', setter: 'setFeatureTacticTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('FeatureTacticTypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\FeatureTacticTypeCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $featureTacticTypeCode;
 
     /**
      * @var null|TradeItemPackingLabelingTypeCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TradeItemPackingLabelingTypeCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("TradeItemPackingLabelingTypeCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTradeItemPackingLabelingTypeCode", setter="setTradeItemPackingLabelingTypeCode")
      */
+    #[JMS\Accessor(getter: 'getTradeItemPackingLabelingTypeCode', setter: 'setTradeItemPackingLabelingTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TradeItemPackingLabelingTypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TradeItemPackingLabelingTypeCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $tradeItemPackingLabelingTypeCode;
 
     /**

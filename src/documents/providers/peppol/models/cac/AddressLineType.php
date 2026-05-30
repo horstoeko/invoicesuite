@@ -14,13 +14,13 @@ class AddressLineType
 
     /**
      * @var null|Line
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Line")
-     * @JMS\Expose
-     * @JMS\SerializedName("Line")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getLine", setter="setLine")
      */
+    #[JMS\Accessor(getter: 'getLine', setter: 'setLine')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Line')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Line')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $line;
 
     /**

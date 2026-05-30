@@ -16,46 +16,46 @@ class TradeCurrencyExchangeType
 
     /**
      * @var null|CurrencyCodeType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\qdt\CurrencyCodeType")
-     * @JMS\Expose
-     * @JMS\SerializedName("SourceCurrencyCode")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getSourceCurrencyCode", setter="setSourceCurrencyCode")
      */
+    #[JMS\Accessor(getter: 'getSourceCurrencyCode', setter: 'setSourceCurrencyCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('SourceCurrencyCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\qdt\CurrencyCodeType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $sourceCurrencyCode;
 
     /**
      * @var null|CurrencyCodeType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\qdt\CurrencyCodeType")
-     * @JMS\Expose
-     * @JMS\SerializedName("TargetCurrencyCode")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getTargetCurrencyCode", setter="setTargetCurrencyCode")
      */
+    #[JMS\Accessor(getter: 'getTargetCurrencyCode', setter: 'setTargetCurrencyCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('TargetCurrencyCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\qdt\CurrencyCodeType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $targetCurrencyCode;
 
     /**
      * @var null|RateType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\RateType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ConversionRate")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getConversionRate", setter="setConversionRate")
      */
+    #[JMS\Accessor(getter: 'getConversionRate', setter: 'setConversionRate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ConversionRate')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\RateType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $conversionRate;
 
     /**
      * @var null|DateTimeType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateTimeType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ConversionRateDateTime")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getConversionRateDateTime", setter="setConversionRateDateTime")
      */
+    #[JMS\Accessor(getter: 'getConversionRateDateTime', setter: 'setConversionRateDateTime')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ConversionRateDateTime')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateTimeType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $conversionRateDateTime;
 
     /**

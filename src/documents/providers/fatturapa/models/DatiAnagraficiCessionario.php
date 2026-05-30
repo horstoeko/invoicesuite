@@ -14,38 +14,35 @@ final class DatiAnagraficiCessionario
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\IdFiscale")
-     * @JMS\Accessor(getter="getIdFiscaleIVA", setter="setIdFiscaleIVA")
-     * @JMS\SerializedName("IdFiscaleIVA")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getIdFiscaleIVA', setter: 'setIdFiscaleIVA')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('IdFiscaleIVA')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\IdFiscale')]
+    #[JMS\XmlElement(cdata: false)]
     private ?IdFiscale $idFiscaleIVA = null;
 
     /**
      * @translation-german Code Fiscale
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getCodiceFiscale", setter="setCodiceFiscale")
-     * @JMS\SerializedName("CodiceFiscale")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCodiceFiscale', setter: 'setCodiceFiscale')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CodiceFiscale')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $codiceFiscale = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Anagrafica")
-     * @JMS\Accessor(getter="getAnagrafica", setter="setAnagrafica")
-     * @JMS\SerializedName("Anagrafica")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getAnagrafica', setter: 'setAnagrafica')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Anagrafica')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\Anagrafica')]
+    #[JMS\XmlElement(cdata: false)]
     private ?Anagrafica $anagrafica = null;
 
     /**

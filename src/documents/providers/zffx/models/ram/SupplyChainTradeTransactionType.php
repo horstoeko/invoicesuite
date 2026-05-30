@@ -13,47 +13,47 @@ class SupplyChainTradeTransactionType
 
     /**
      * @var null|array<SupplyChainTradeLineItemType>
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\zffx\models\ram\SupplyChainTradeLineItemType>")
-     * @JMS\Expose
-     * @JMS\SerializedName("IncludedSupplyChainTradeLineItem")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\XmlList(inline=true, entry="IncludedSupplyChainTradeLineItem", namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100")
-     * @JMS\Accessor(getter="getIncludedSupplyChainTradeLineItem", setter="setIncludedSupplyChainTradeLineItem")
      */
+    #[JMS\Accessor(getter: 'getIncludedSupplyChainTradeLineItem', setter: 'setIncludedSupplyChainTradeLineItem')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('IncludedSupplyChainTradeLineItem')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\zffx\models\ram\SupplyChainTradeLineItemType>')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'IncludedSupplyChainTradeLineItem', namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100')]
     private $includedSupplyChainTradeLineItem;
 
     /**
      * @var null|HeaderTradeAgreementType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\HeaderTradeAgreementType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ApplicableHeaderTradeAgreement")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getApplicableHeaderTradeAgreement", setter="setApplicableHeaderTradeAgreement")
      */
+    #[JMS\Accessor(getter: 'getApplicableHeaderTradeAgreement', setter: 'setApplicableHeaderTradeAgreement')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ApplicableHeaderTradeAgreement')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\HeaderTradeAgreementType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $applicableHeaderTradeAgreement;
 
     /**
      * @var null|HeaderTradeDeliveryType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\HeaderTradeDeliveryType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ApplicableHeaderTradeDelivery")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getApplicableHeaderTradeDelivery", setter="setApplicableHeaderTradeDelivery")
      */
+    #[JMS\Accessor(getter: 'getApplicableHeaderTradeDelivery', setter: 'setApplicableHeaderTradeDelivery')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ApplicableHeaderTradeDelivery')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\HeaderTradeDeliveryType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $applicableHeaderTradeDelivery;
 
     /**
      * @var null|HeaderTradeSettlementType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\HeaderTradeSettlementType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ApplicableHeaderTradeSettlement")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getApplicableHeaderTradeSettlement", setter="setApplicableHeaderTradeSettlement")
      */
+    #[JMS\Accessor(getter: 'getApplicableHeaderTradeSettlement', setter: 'setApplicableHeaderTradeSettlement')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ApplicableHeaderTradeSettlement')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\HeaderTradeSettlementType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $applicableHeaderTradeSettlement;
 
     /**

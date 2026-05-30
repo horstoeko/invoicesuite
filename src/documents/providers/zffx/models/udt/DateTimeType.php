@@ -14,13 +14,13 @@ class DateTimeType
 
     /**
      * @var null|DateTimeStringAType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateTimeType\DateTimeStringAType")
-     * @JMS\Expose
-     * @JMS\SerializedName("DateTimeString")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100", cdata=false)
-     * @JMS\Accessor(getter="getDateTimeString", setter="setDateTimeString")
      */
+    #[JMS\Accessor(getter: 'getDateTimeString', setter: 'setDateTimeString')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('DateTimeString')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateTimeType\DateTimeStringAType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100', cdata: false)]
     private $dateTimeString;
 
     /**

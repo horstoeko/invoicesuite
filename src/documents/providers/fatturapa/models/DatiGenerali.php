@@ -13,136 +13,133 @@ final class DatiGenerali
 
     /**
      * @translation-german Allgemeine Angaben Documento
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiGeneraliDocumento")
-     * @JMS\Accessor(getter="getDatiGeneraliDocumento", setter="setDatiGeneraliDocumento")
-     * @JMS\SerializedName("DatiGeneraliDocumento")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDatiGeneraliDocumento', setter: 'setDatiGeneraliDocumento')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DatiGeneraliDocumento')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiGeneraliDocumento')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DatiGeneraliDocumento $datiGeneraliDocumento = null;
 
     /**
      * @translation-german Bestelldaten
      *
      * @var null|array<DatiDocumentiCorrelati>
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiDocumentiCorrelati>")
-     * @JMS\Accessor(getter="getDatiOrdineAcquisto", setter="setDatiOrdineAcquisto")
-     * @JMS\SerializedName("DatiOrdineAcquisto")
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlList(inline=true, entry="DatiOrdineAcquisto")
      */
+    #[JMS\Accessor(getter: 'getDatiOrdineAcquisto', setter: 'setDatiOrdineAcquisto')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DatiOrdineAcquisto')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiDocumentiCorrelati>')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'DatiOrdineAcquisto')]
     private ?array $datiOrdineAcquisto = null;
 
     /**
      * @translation-german Vertragsdaten
      *
      * @var null|array<DatiDocumentiCorrelati>
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiDocumentiCorrelati>")
-     * @JMS\Accessor(getter="getDatiContratto", setter="setDatiContratto")
-     * @JMS\SerializedName("DatiContratto")
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlList(inline=true, entry="DatiContratto")
      */
+    #[JMS\Accessor(getter: 'getDatiContratto', setter: 'setDatiContratto')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DatiContratto')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiDocumentiCorrelati>')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'DatiContratto')]
     private ?array $datiContratto = null;
 
     /**
      * @translation-german Vereinbarungsdaten
      *
      * @var null|array<DatiDocumentiCorrelati>
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiDocumentiCorrelati>")
-     * @JMS\Accessor(getter="getDatiConvenzione", setter="setDatiConvenzione")
-     * @JMS\SerializedName("DatiConvenzione")
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlList(inline=true, entry="DatiConvenzione")
      */
+    #[JMS\Accessor(getter: 'getDatiConvenzione', setter: 'setDatiConvenzione')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DatiConvenzione')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiDocumentiCorrelati>')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'DatiConvenzione')]
     private ?array $datiConvenzione = null;
 
     /**
      * @translation-german Empfangsdaten
      *
      * @var null|array<DatiDocumentiCorrelati>
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiDocumentiCorrelati>")
-     * @JMS\Accessor(getter="getDatiRicezione", setter="setDatiRicezione")
-     * @JMS\SerializedName("DatiRicezione")
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlList(inline=true, entry="DatiRicezione")
      */
+    #[JMS\Accessor(getter: 'getDatiRicezione', setter: 'setDatiRicezione')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DatiRicezione')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiDocumentiCorrelati>')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'DatiRicezione')]
     private ?array $datiRicezione = null;
 
     /**
      * @translation-german Verknüpfte Rechnungen
      *
      * @var null|array<DatiDocumentiCorrelati>
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiDocumentiCorrelati>")
-     * @JMS\Accessor(getter="getDatiFattureCollegate", setter="setDatiFattureCollegate")
-     * @JMS\SerializedName("DatiFattureCollegate")
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlList(inline=true, entry="DatiFattureCollegate")
      */
+    #[JMS\Accessor(getter: 'getDatiFattureCollegate', setter: 'setDatiFattureCollegate')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DatiFattureCollegate')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiDocumentiCorrelati>')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'DatiFattureCollegate')]
     private ?array $datiFattureCollegate = null;
 
     /**
      * @translation-german Angaben SAL
      *
      * @var null|array<DatiSAL>
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiSAL>")
-     * @JMS\Accessor(getter="getDatiSAL", setter="setDatiSAL")
-     * @JMS\SerializedName("DatiSAL")
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlList(inline=true, entry="DatiSAL")
      */
+    #[JMS\Accessor(getter: 'getDatiSAL', setter: 'setDatiSAL')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DatiSAL')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiSAL>')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'DatiSAL')]
     private ?array $datiSAL = null;
 
     /**
      * @translation-german Angaben DDT
      *
      * @var null|array<DatiDDT>
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiDDT>")
-     * @JMS\Accessor(getter="getDatiDDT", setter="setDatiDDT")
-     * @JMS\SerializedName("DatiDDT")
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlList(inline=true, entry="DatiDDT")
      */
+    #[JMS\Accessor(getter: 'getDatiDDT', setter: 'setDatiDDT')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DatiDDT')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiDDT>')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'DatiDDT')]
     private ?array $datiDDT = null;
 
     /**
      * @translation-german Transportdaten
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiTrasporto")
-     * @JMS\Accessor(getter="getDatiTrasporto", setter="setDatiTrasporto")
-     * @JMS\SerializedName("DatiTrasporto")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDatiTrasporto', setter: 'setDatiTrasporto')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DatiTrasporto')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiTrasporto')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DatiTrasporto $datiTrasporto = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\FatturaPrincipale")
-     * @JMS\Accessor(getter="getFatturaPrincipale", setter="setFatturaPrincipale")
-     * @JMS\SerializedName("FatturaPrincipale")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getFatturaPrincipale', setter: 'setFatturaPrincipale')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('FatturaPrincipale')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\FatturaPrincipale')]
+    #[JMS\XmlElement(cdata: false)]
     private ?FatturaPrincipale $fatturaPrincipale = null;
 
     /**

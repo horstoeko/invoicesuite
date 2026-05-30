@@ -15,74 +15,68 @@ final class DatiTrasmissione
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\IdFiscale")
-     * @JMS\Accessor(getter="getIdTrasmittente", setter="setIdTrasmittente")
-     * @JMS\SerializedName("IdTrasmittente")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getIdTrasmittente', setter: 'setIdTrasmittente')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('IdTrasmittente')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\IdFiscale')]
+    #[JMS\XmlElement(cdata: false)]
     private ?IdFiscale $idTrasmittente = null;
 
     /**
      * @translation-german fortlaufend Invio
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getProgressivoInvio", setter="setProgressivoInvio")
-     * @JMS\SerializedName("ProgressivoInvio")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getProgressivoInvio', setter: 'setProgressivoInvio')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('ProgressivoInvio')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $progressivoInvio = null;
 
     /**
      * @translation-german Format Übertragung
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\FormatoTrasmissione','value'>")
-     * @JMS\Accessor(getter="getFormatoTrasmissione", setter="setFormatoTrasmissione")
-     * @JMS\SerializedName("FormatoTrasmissione")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getFormatoTrasmissione', setter: 'setFormatoTrasmissione')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('FormatoTrasmissione')]
+    #[JMS\Type('enum<\'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\FormatoTrasmissione\',\'value\'>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?FormatoTrasmissione $formatoTrasmissione = null;
 
     /**
      * @translation-german Code Empfänger
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getCodiceDestinatario", setter="setCodiceDestinatario")
-     * @JMS\SerializedName("CodiceDestinatario")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCodiceDestinatario', setter: 'setCodiceDestinatario')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CodiceDestinatario')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $codiceDestinatario = null;
 
     /**
      * @translation-german Kontakte Trasmittente
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\ContattiTrasmittente")
-     * @JMS\Accessor(getter="getContattiTrasmittente", setter="setContattiTrasmittente")
-     * @JMS\SerializedName("ContattiTrasmittente")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getContattiTrasmittente', setter: 'setContattiTrasmittente')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('ContattiTrasmittente')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\ContattiTrasmittente')]
+    #[JMS\XmlElement(cdata: false)]
     private ?ContattiTrasmittente $contattiTrasmittente = null;
 
     /**
      * @translation-german PEC Empfänger
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getPECDestinatario", setter="setPECDestinatario")
-     * @JMS\SerializedName("PECDestinatario")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getPECDestinatario', setter: 'setPECDestinatario')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('PECDestinatario')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $pECDestinatario = null;
 
     /**

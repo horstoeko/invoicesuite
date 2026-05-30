@@ -13,57 +13,57 @@ class SupplyChainTradeLineItemType
 
     /**
      * @var null|DocumentLineDocumentType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\DocumentLineDocumentType")
-     * @JMS\Expose
-     * @JMS\SerializedName("AssociatedDocumentLineDocument")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getAssociatedDocumentLineDocument", setter="setAssociatedDocumentLineDocument")
      */
+    #[JMS\Accessor(getter: 'getAssociatedDocumentLineDocument', setter: 'setAssociatedDocumentLineDocument')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('AssociatedDocumentLineDocument')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\DocumentLineDocumentType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $associatedDocumentLineDocument;
 
     /**
      * @var null|TradeProductType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeProductType")
-     * @JMS\Expose
-     * @JMS\SerializedName("SpecifiedTradeProduct")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getSpecifiedTradeProduct", setter="setSpecifiedTradeProduct")
      */
+    #[JMS\Accessor(getter: 'getSpecifiedTradeProduct', setter: 'setSpecifiedTradeProduct')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('SpecifiedTradeProduct')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeProductType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $specifiedTradeProduct;
 
     /**
      * @var null|LineTradeAgreementType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\LineTradeAgreementType")
-     * @JMS\Expose
-     * @JMS\SerializedName("SpecifiedLineTradeAgreement")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getSpecifiedLineTradeAgreement", setter="setSpecifiedLineTradeAgreement")
      */
+    #[JMS\Accessor(getter: 'getSpecifiedLineTradeAgreement', setter: 'setSpecifiedLineTradeAgreement')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('SpecifiedLineTradeAgreement')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\LineTradeAgreementType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $specifiedLineTradeAgreement;
 
     /**
      * @var null|LineTradeDeliveryType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\LineTradeDeliveryType")
-     * @JMS\Expose
-     * @JMS\SerializedName("SpecifiedLineTradeDelivery")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getSpecifiedLineTradeDelivery", setter="setSpecifiedLineTradeDelivery")
      */
+    #[JMS\Accessor(getter: 'getSpecifiedLineTradeDelivery', setter: 'setSpecifiedLineTradeDelivery')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('SpecifiedLineTradeDelivery')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\LineTradeDeliveryType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $specifiedLineTradeDelivery;
 
     /**
      * @var null|LineTradeSettlementType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\ram\LineTradeSettlementType")
-     * @JMS\Expose
-     * @JMS\SerializedName("SpecifiedLineTradeSettlement")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getSpecifiedLineTradeSettlement", setter="setSpecifiedLineTradeSettlement")
      */
+    #[JMS\Accessor(getter: 'getSpecifiedLineTradeSettlement', setter: 'setSpecifiedLineTradeSettlement')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('SpecifiedLineTradeSettlement')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\ram\LineTradeSettlementType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $specifiedLineTradeSettlement;
 
     /**

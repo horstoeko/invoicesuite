@@ -18,78 +18,78 @@ class ReferenceType
      * @translation-german-untranslated
      *
      * @var null|TransformsType
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\TransformsType")
-     * @JMS\Accessor(getter="getTransforms", setter="setTransforms")
-     * @JMS\SerializedName("Transforms")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getTransforms', setter: 'setTransforms')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Transforms')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\TransformsType')]
+    #[JMS\XmlElement(cdata: false)]
     private ?TransformsType $transforms = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|DigestMethodType
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\DigestMethodType")
-     * @JMS\Accessor(getter="getDigestMethod", setter="setDigestMethod")
-     * @JMS\SerializedName("DigestMethod")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDigestMethod', setter: 'setDigestMethod')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DigestMethod')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\xmldsig\DigestMethodType')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DigestMethodType $digestMethod = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getDigestValue", setter="setDigestValue")
-     * @JMS\SerializedName("DigestValue")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDigestValue', setter: 'setDigestValue')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DigestValue')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $digestValue = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getId", setter="setId")
-     * @JMS\SerializedName("Id")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getId', setter: 'setId')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Id')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private ?string $id = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getURI", setter="setURI")
-     * @JMS\SerializedName("URI")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getURI', setter: 'setURI')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('URI')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private ?string $uRI = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getType", setter="setType")
-     * @JMS\SerializedName("Type")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getType', setter: 'setType')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Type')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private ?string $type = null;
 
     /**

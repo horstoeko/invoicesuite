@@ -15,13 +15,13 @@ class MeasureType extends MeasureTypeBase
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("unitCode")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getUnitCode", setter="setUnitCode")
      */
+    #[JMS\Accessor(getter: 'getUnitCode', setter: 'setUnitCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('unitCode')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $unitCode;
 
     /**

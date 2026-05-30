@@ -17,46 +17,46 @@ class CommodityClassificationType
 
     /**
      * @var null|NatureCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NatureCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("NatureCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getNatureCode", setter="setNatureCode")
      */
+    #[JMS\Accessor(getter: 'getNatureCode', setter: 'setNatureCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('NatureCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\NatureCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $natureCode;
 
     /**
      * @var null|CargoTypeCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CargoTypeCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("CargoTypeCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCargoTypeCode", setter="setCargoTypeCode")
      */
+    #[JMS\Accessor(getter: 'getCargoTypeCode', setter: 'setCargoTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CargoTypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CargoTypeCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $cargoTypeCode;
 
     /**
      * @var null|CommodityCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CommodityCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("CommodityCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCommodityCode", setter="setCommodityCode")
      */
+    #[JMS\Accessor(getter: 'getCommodityCode', setter: 'setCommodityCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CommodityCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CommodityCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $commodityCode;
 
     /**
      * @var null|ItemClassificationCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ItemClassificationCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("ItemClassificationCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getItemClassificationCode", setter="setItemClassificationCode")
      */
+    #[JMS\Accessor(getter: 'getItemClassificationCode', setter: 'setItemClassificationCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ItemClassificationCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ItemClassificationCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $itemClassificationCode;
 
     /**

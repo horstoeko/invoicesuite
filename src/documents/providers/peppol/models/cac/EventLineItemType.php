@@ -14,47 +14,47 @@ class EventLineItemType
 
     /**
      * @var null|LineNumberNumeric
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LineNumberNumeric")
-     * @JMS\Expose
-     * @JMS\SerializedName("LineNumberNumeric")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getLineNumberNumeric", setter="setLineNumberNumeric")
      */
+    #[JMS\Accessor(getter: 'getLineNumberNumeric', setter: 'setLineNumberNumeric')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('LineNumberNumeric')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\LineNumberNumeric')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $lineNumberNumeric;
 
     /**
      * @var null|ParticipatingLocationsLocation
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\ParticipatingLocationsLocation")
-     * @JMS\Expose
-     * @JMS\SerializedName("ParticipatingLocationsLocation")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getParticipatingLocationsLocation", setter="setParticipatingLocationsLocation")
      */
+    #[JMS\Accessor(getter: 'getParticipatingLocationsLocation', setter: 'setParticipatingLocationsLocation')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ParticipatingLocationsLocation')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\ParticipatingLocationsLocation')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $participatingLocationsLocation;
 
     /**
      * @var null|array<RetailPlannedImpact>
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\RetailPlannedImpact>")
-     * @JMS\Expose
-     * @JMS\SerializedName("RetailPlannedImpact")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\XmlList(inline=true, entry="RetailPlannedImpact", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
-     * @JMS\Accessor(getter="getRetailPlannedImpact", setter="setRetailPlannedImpact")
      */
+    #[JMS\Accessor(getter: 'getRetailPlannedImpact', setter: 'setRetailPlannedImpact')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('RetailPlannedImpact')]
+    #[JMS\Type('array<horstoeko\invoicesuite\documents\providers\peppol\models\cac\RetailPlannedImpact>')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
+    #[JMS\XmlList(inline: true, entry: 'RetailPlannedImpact', namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')]
     private $retailPlannedImpact;
 
     /**
      * @var null|SupplyItem
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\SupplyItem")
-     * @JMS\Expose
-     * @JMS\SerializedName("SupplyItem")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getSupplyItem", setter="setSupplyItem")
      */
+    #[JMS\Accessor(getter: 'getSupplyItem', setter: 'setSupplyItem')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('SupplyItem')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\SupplyItem')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $supplyItem;
 
     /**

@@ -13,50 +13,46 @@ final class CessionarioCommittente
 
     /**
      * @translation-german Stammdaten
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiAnagraficiCessionario")
-     * @JMS\Accessor(getter="getDatiAnagrafici", setter="setDatiAnagrafici")
-     * @JMS\SerializedName("DatiAnagrafici")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDatiAnagrafici', setter: 'setDatiAnagrafici')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DatiAnagrafici')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiAnagraficiCessionario')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DatiAnagraficiCessionario $datiAnagrafici = null;
 
     /**
      * @translation-german Sitz
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Indirizzo")
-     * @JMS\Accessor(getter="getSede", setter="setSede")
-     * @JMS\SerializedName("Sede")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getSede', setter: 'setSede')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Sede')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\Indirizzo')]
+    #[JMS\XmlElement(cdata: false)]
     private ?Indirizzo $sede = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Indirizzo")
-     * @JMS\Accessor(getter="getStabileOrganizzazione", setter="setStabileOrganizzazione")
-     * @JMS\SerializedName("StabileOrganizzazione")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getStabileOrganizzazione', setter: 'setStabileOrganizzazione')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('StabileOrganizzazione')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\Indirizzo')]
+    #[JMS\XmlElement(cdata: false)]
     private ?Indirizzo $stabileOrganizzazione = null;
 
     /**
      * @translation-german Vertreter Fiscale
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\RappresentanteFiscaleCessionario")
-     * @JMS\Accessor(getter="getRappresentanteFiscale", setter="setRappresentanteFiscale")
-     * @JMS\SerializedName("RappresentanteFiscale")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getRappresentanteFiscale', setter: 'setRappresentanteFiscale')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('RappresentanteFiscale')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\RappresentanteFiscaleCessionario')]
+    #[JMS\XmlElement(cdata: false)]
     private ?RappresentanteFiscaleCessionario $rappresentanteFiscale = null;
 
     /**

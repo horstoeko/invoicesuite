@@ -16,254 +16,233 @@ final class DettaglioPagamento
 
     /**
      * @translation-german Begünstigter
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getBeneficiario", setter="setBeneficiario")
-     * @JMS\SerializedName("Beneficiario")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getBeneficiario', setter: 'setBeneficiario')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Beneficiario')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $beneficiario = null;
 
     /**
      * @translation-german Art/Modus Zahlung
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\ModalitaPagamento','value'>")
-     * @JMS\Accessor(getter="getModalitaPagamento", setter="setModalitaPagamento")
-     * @JMS\SerializedName("ModalitaPagamento")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getModalitaPagamento', setter: 'setModalitaPagamento')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('ModalitaPagamento')]
+    #[JMS\Type('enum<\'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\ModalitaPagamento\',\'value\'>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?ModalitaPagamento $modalitaPagamento = null;
 
     /**
      * @translation-german Datum Referenz Termini Zahlung
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Accessor(getter="getDataRiferimentoTerminiPagamento", setter="setDataRiferimentoTerminiPagamento")
-     * @JMS\SerializedName("DataRiferimentoTerminiPagamento")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDataRiferimentoTerminiPagamento', setter: 'setDataRiferimentoTerminiPagamento')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DataRiferimentoTerminiPagamento')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DateTimeInterface $dataRiferimentoTerminiPagamento = null;
 
     /**
      * @translation-german Giorni Termini Zahlung
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("int")
-     * @JMS\Accessor(getter="getGiorniTerminiPagamento", setter="setGiorniTerminiPagamento")
-     * @JMS\SerializedName("GiorniTerminiPagamento")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getGiorniTerminiPagamento', setter: 'setGiorniTerminiPagamento')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('GiorniTerminiPagamento')]
+    #[JMS\Type('int')]
+    #[JMS\XmlElement(cdata: false)]
     private ?int $giorniTerminiPagamento = null;
 
     /**
      * @translation-german Datum Fälligkeit Zahlung
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Accessor(getter="getDataScadenzaPagamento", setter="setDataScadenzaPagamento")
-     * @JMS\SerializedName("DataScadenzaPagamento")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDataScadenzaPagamento', setter: 'setDataScadenzaPagamento')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DataScadenzaPagamento')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DateTimeInterface $dataScadenzaPagamento = null;
 
     /**
      * @translation-german Betrag Zahlung
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("fatturapa_decimal<2>")
-     * @JMS\Accessor(getter="getImportoPagamento", setter="setImportoPagamento")
-     * @JMS\SerializedName("ImportoPagamento")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getImportoPagamento', setter: 'setImportoPagamento')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('ImportoPagamento')]
+    #[JMS\Type('fatturapa_decimal<2>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?float $importoPagamento = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getCodUfficioPostale", setter="setCodUfficioPostale")
-     * @JMS\SerializedName("CodUfficioPostale")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCodUfficioPostale', setter: 'setCodUfficioPostale')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CodUfficioPostale')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $codUfficioPostale = null;
 
     /**
      * @translation-german Nachname Quietanzante
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getCognomeQuietanzante", setter="setCognomeQuietanzante")
-     * @JMS\SerializedName("CognomeQuietanzante")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCognomeQuietanzante', setter: 'setCognomeQuietanzante')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CognomeQuietanzante')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $cognomeQuietanzante = null;
 
     /**
      * @translation-german Name Quietanzante
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getNomeQuietanzante", setter="setNomeQuietanzante")
-     * @JMS\SerializedName("NomeQuietanzante")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getNomeQuietanzante', setter: 'setNomeQuietanzante')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('NomeQuietanzante')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $nomeQuietanzante = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getCFQuietanzante", setter="setCFQuietanzante")
-     * @JMS\SerializedName("CFQuietanzante")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCFQuietanzante', setter: 'setCFQuietanzante')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CFQuietanzante')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $cFQuietanzante = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getTitoloQuietanzante", setter="setTitoloQuietanzante")
-     * @JMS\SerializedName("TitoloQuietanzante")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getTitoloQuietanzante', setter: 'setTitoloQuietanzante')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('TitoloQuietanzante')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $titoloQuietanzante = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getIstitutoFinanziario", setter="setIstitutoFinanziario")
-     * @JMS\SerializedName("IstitutoFinanziario")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getIstitutoFinanziario', setter: 'setIstitutoFinanziario')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('IstitutoFinanziario')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $istitutoFinanziario = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getIBAN", setter="setIBAN")
-     * @JMS\SerializedName("IBAN")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getIBAN', setter: 'setIBAN')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('IBAN')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $iBAN = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getABI", setter="setABI")
-     * @JMS\SerializedName("ABI")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getABI', setter: 'setABI')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('ABI')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $aBI = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getCAB", setter="setCAB")
-     * @JMS\SerializedName("CAB")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCAB', setter: 'setCAB')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CAB')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $cAB = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getBIC", setter="setBIC")
-     * @JMS\SerializedName("BIC")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getBIC', setter: 'setBIC')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('BIC')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $bIC = null;
 
     /**
      * @translation-german Sconto Zahlung Anticipato
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("fatturapa_decimal<2>")
-     * @JMS\Accessor(getter="getScontoPagamentoAnticipato", setter="setScontoPagamentoAnticipato")
-     * @JMS\SerializedName("ScontoPagamentoAnticipato")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getScontoPagamentoAnticipato', setter: 'setScontoPagamentoAnticipato')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('ScontoPagamentoAnticipato')]
+    #[JMS\Type('fatturapa_decimal<2>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?float $scontoPagamentoAnticipato = null;
 
     /**
      * @translation-german Datum Limite Zahlung Anticipato
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Accessor(getter="getDataLimitePagamentoAnticipato", setter="setDataLimitePagamentoAnticipato")
-     * @JMS\SerializedName("DataLimitePagamentoAnticipato")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDataLimitePagamentoAnticipato', setter: 'setDataLimitePagamentoAnticipato')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DataLimitePagamentoAnticipato')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DateTimeInterface $dataLimitePagamentoAnticipato = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("fatturapa_decimal<2>")
-     * @JMS\Accessor(getter="getPenalitaPagamentiRitardati", setter="setPenalitaPagamentiRitardati")
-     * @JMS\SerializedName("PenalitaPagamentiRitardati")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getPenalitaPagamentiRitardati', setter: 'setPenalitaPagamentiRitardati')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('PenalitaPagamentiRitardati')]
+    #[JMS\Type('fatturapa_decimal<2>')]
+    #[JMS\XmlElement(cdata: false)]
     private ?float $penalitaPagamentiRitardati = null;
 
     /**
      * @translation-german Datum Decorrenza Penale
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Accessor(getter="getDataDecorrenzaPenale", setter="setDataDecorrenzaPenale")
-     * @JMS\SerializedName("DataDecorrenzaPenale")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDataDecorrenzaPenale', setter: 'setDataDecorrenzaPenale')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DataDecorrenzaPenale')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DateTimeInterface $dataDecorrenzaPenale = null;
 
     /**
      * @translation-german Code Zahlung
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getCodicePagamento", setter="setCodicePagamento")
-     * @JMS\SerializedName("CodicePagamento")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getCodicePagamento', setter: 'setCodicePagamento')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('CodicePagamento')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $codicePagamento = null;
 
     /**

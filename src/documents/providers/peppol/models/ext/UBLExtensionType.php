@@ -15,112 +15,112 @@ class UBLExtensionType
 
     /**
      * @var null|ID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID")
-     * @JMS\Expose
-     * @JMS\SerializedName("ID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getID", setter="setID")
      */
+    #[JMS\Accessor(getter: 'getID', setter: 'setID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\ID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $iD;
 
     /**
      * @var null|Name
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Name")
-     * @JMS\Expose
-     * @JMS\SerializedName("Name")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getName", setter="setName")
      */
+    #[JMS\Accessor(getter: 'getName', setter: 'setName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('Name')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\Name')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $name;
 
     /**
      * @var null|ExtensionAgencyID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\ext\ExtensionAgencyID")
-     * @JMS\Expose
-     * @JMS\SerializedName("ExtensionAgencyID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getExtensionAgencyID", setter="setExtensionAgencyID")
      */
+    #[JMS\Accessor(getter: 'getExtensionAgencyID', setter: 'setExtensionAgencyID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ExtensionAgencyID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\ext\ExtensionAgencyID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2', cdata: false)]
     private $extensionAgencyID;
 
     /**
      * @var null|ExtensionAgencyName
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\ext\ExtensionAgencyName")
-     * @JMS\Expose
-     * @JMS\SerializedName("ExtensionAgencyName")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getExtensionAgencyName", setter="setExtensionAgencyName")
      */
+    #[JMS\Accessor(getter: 'getExtensionAgencyName', setter: 'setExtensionAgencyName')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ExtensionAgencyName')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\ext\ExtensionAgencyName')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2', cdata: false)]
     private $extensionAgencyName;
 
     /**
      * @var null|ExtensionVersionID
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\ext\ExtensionVersionID")
-     * @JMS\Expose
-     * @JMS\SerializedName("ExtensionVersionID")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getExtensionVersionID", setter="setExtensionVersionID")
      */
+    #[JMS\Accessor(getter: 'getExtensionVersionID', setter: 'setExtensionVersionID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ExtensionVersionID')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\ext\ExtensionVersionID')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2', cdata: false)]
     private $extensionVersionID;
 
     /**
      * @var null|ExtensionAgencyURI
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\ext\ExtensionAgencyURI")
-     * @JMS\Expose
-     * @JMS\SerializedName("ExtensionAgencyURI")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getExtensionAgencyURI", setter="setExtensionAgencyURI")
      */
+    #[JMS\Accessor(getter: 'getExtensionAgencyURI', setter: 'setExtensionAgencyURI')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ExtensionAgencyURI')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\ext\ExtensionAgencyURI')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2', cdata: false)]
     private $extensionAgencyURI;
 
     /**
      * @var null|ExtensionURI
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\ext\ExtensionURI")
-     * @JMS\Expose
-     * @JMS\SerializedName("ExtensionURI")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getExtensionURI", setter="setExtensionURI")
      */
+    #[JMS\Accessor(getter: 'getExtensionURI', setter: 'setExtensionURI')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ExtensionURI')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\ext\ExtensionURI')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2', cdata: false)]
     private $extensionURI;
 
     /**
      * @var null|ExtensionReasonCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\ext\ExtensionReasonCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("ExtensionReasonCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getExtensionReasonCode", setter="setExtensionReasonCode")
      */
+    #[JMS\Accessor(getter: 'getExtensionReasonCode', setter: 'setExtensionReasonCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ExtensionReasonCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\ext\ExtensionReasonCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2', cdata: false)]
     private $extensionReasonCode;
 
     /**
      * @var null|ExtensionReason
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\ext\ExtensionReason")
-     * @JMS\Expose
-     * @JMS\SerializedName("ExtensionReason")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getExtensionReason", setter="setExtensionReason")
      */
+    #[JMS\Accessor(getter: 'getExtensionReason', setter: 'setExtensionReason')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ExtensionReason')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\ext\ExtensionReason')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2', cdata: false)]
     private $extensionReason;
 
     /**
      * @var null|ExtensionContent
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\ext\ExtensionContent")
-     * @JMS\Expose
-     * @JMS\SerializedName("ExtensionContent")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getExtensionContent", setter="setExtensionContent")
      */
+    #[JMS\Accessor(getter: 'getExtensionContent', setter: 'setExtensionContent')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('ExtensionContent')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\ext\ExtensionContent')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2', cdata: false)]
     private $extensionContent;
 
     /**

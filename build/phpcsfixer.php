@@ -153,6 +153,8 @@ return (new Config())
             'lowercase_cast' => true,
             'short_scalar_cast' => true,
             'cast_spaces' => ['space' => 'single'],
-            'phpdoc_to_comment' => false
+            'phpdoc_to_comment' => false,
+            'ordered_attributes' => true,
+            'attribute_block_no_spaces' => true,
         ]
     );

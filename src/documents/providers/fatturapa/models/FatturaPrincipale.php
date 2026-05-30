@@ -15,26 +15,24 @@ final class FatturaPrincipale
 
     /**
      * @translation-german Nummer Fattura Principale
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getNumeroFatturaPrincipale", setter="setNumeroFatturaPrincipale")
-     * @JMS\SerializedName("NumeroFatturaPrincipale")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getNumeroFatturaPrincipale', setter: 'setNumeroFatturaPrincipale')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('NumeroFatturaPrincipale')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $numeroFatturaPrincipale = null;
 
     /**
      * @translation-german Datum Fattura Principale
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
-     * @JMS\Accessor(getter="getDataFatturaPrincipale", setter="setDataFatturaPrincipale")
-     * @JMS\SerializedName("DataFatturaPrincipale")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDataFatturaPrincipale', setter: 'setDataFatturaPrincipale')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DataFatturaPrincipale')]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DateTimeInterface $dataFatturaPrincipale = null;
 
     /**

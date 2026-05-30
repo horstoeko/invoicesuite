@@ -18,13 +18,13 @@ class DigestMethodType
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getAlgorithm", setter="setAlgorithm")
-     * @JMS\SerializedName("Algorithm")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getAlgorithm', setter: 'setAlgorithm')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Algorithm')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private ?string $algorithm = null;
 
     /**

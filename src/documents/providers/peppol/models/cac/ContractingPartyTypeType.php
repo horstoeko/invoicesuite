@@ -15,24 +15,24 @@ class ContractingPartyTypeType
 
     /**
      * @var null|PartyTypeCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PartyTypeCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("PartyTypeCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPartyTypeCode", setter="setPartyTypeCode")
      */
+    #[JMS\Accessor(getter: 'getPartyTypeCode', setter: 'setPartyTypeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PartyTypeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PartyTypeCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $partyTypeCode;
 
     /**
      * @var null|PartyType
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PartyType")
-     * @JMS\Expose
-     * @JMS\SerializedName("PartyType")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getPartyType", setter="setPartyType")
      */
+    #[JMS\Accessor(getter: 'getPartyType', setter: 'setPartyType')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('PartyType')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\PartyType')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $partyType;
 
     /**

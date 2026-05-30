@@ -15,13 +15,13 @@ class AmountType extends AmountTypeBase
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("currencyID")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getCurrencyID", setter="setCurrencyID")
      */
+    #[JMS\Accessor(getter: 'getCurrencyID', setter: 'setCurrencyID')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('currencyID')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $currencyID;
 
     /**

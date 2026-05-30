@@ -14,74 +14,68 @@ final class CedentePrestatore
 
     /**
      * @translation-german Stammdaten
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiAnagraficiCedente")
-     * @JMS\Accessor(getter="getDatiAnagrafici", setter="setDatiAnagrafici")
-     * @JMS\SerializedName("DatiAnagrafici")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getDatiAnagrafici', setter: 'setDatiAnagrafici')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('DatiAnagrafici')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiAnagraficiCedente')]
+    #[JMS\XmlElement(cdata: false)]
     private ?DatiAnagraficiCedente $datiAnagrafici = null;
 
     /**
      * @translation-german Sitz
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Indirizzo")
-     * @JMS\Accessor(getter="getSede", setter="setSede")
-     * @JMS\SerializedName("Sede")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getSede', setter: 'setSede')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Sede')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\Indirizzo')]
+    #[JMS\XmlElement(cdata: false)]
     private ?Indirizzo $sede = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Indirizzo")
-     * @JMS\Accessor(getter="getStabileOrganizzazione", setter="setStabileOrganizzazione")
-     * @JMS\SerializedName("StabileOrganizzazione")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getStabileOrganizzazione', setter: 'setStabileOrganizzazione')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('StabileOrganizzazione')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\Indirizzo')]
+    #[JMS\XmlElement(cdata: false)]
     private ?Indirizzo $stabileOrganizzazione = null;
 
     /**
      * @translation-german-untranslated
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\IscrizioneREA")
-     * @JMS\Accessor(getter="getIscrizioneREA", setter="setIscrizioneREA")
-     * @JMS\SerializedName("IscrizioneREA")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getIscrizioneREA', setter: 'setIscrizioneREA')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('IscrizioneREA')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\IscrizioneREA')]
+    #[JMS\XmlElement(cdata: false)]
     private ?IscrizioneREA $iscrizioneREA = null;
 
     /**
      * @translation-german Kontakte
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Contatti")
-     * @JMS\Accessor(getter="getContatti", setter="setContatti")
-     * @JMS\SerializedName("Contatti")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getContatti', setter: 'setContatti')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Contatti')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\fatturapa\models\Contatti')]
+    #[JMS\XmlElement(cdata: false)]
     private ?Contatti $contatti = null;
 
     /**
      * @translation-german Referenz Amministrazione
-     *
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getRiferimentoAmministrazione", setter="setRiferimentoAmministrazione")
-     * @JMS\SerializedName("RiferimentoAmministrazione")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getRiferimentoAmministrazione', setter: 'setRiferimentoAmministrazione')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('RiferimentoAmministrazione')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $riferimentoAmministrazione = null;
 
     /**

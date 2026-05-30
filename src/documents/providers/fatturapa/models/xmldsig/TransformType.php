@@ -18,26 +18,26 @@ class TransformType
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getXPath", setter="setXPath")
-     * @JMS\SerializedName("XPath")
-     * @JMS\XmlElement(cdata=false)
      */
+    #[JMS\Accessor(getter: 'getXPath', setter: 'setXPath')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('XPath')]
+    #[JMS\Type('string')]
+    #[JMS\XmlElement(cdata: false)]
     private ?string $xPath = null;
 
     /**
      * @translation-german-untranslated
      *
      * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getAlgorithm", setter="setAlgorithm")
-     * @JMS\SerializedName("Algorithm")
-     * @JMS\XmlAttribute
      */
+    #[JMS\Accessor(getter: 'getAlgorithm', setter: 'setAlgorithm')]
+    #[JMS\Expose]
+    #[JMS\Groups(['fatturapa'])]
+    #[JMS\SerializedName('Algorithm')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private ?string $algorithm = null;
 
     /**

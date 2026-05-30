@@ -16,46 +16,46 @@ class EnergyTaxReportType
 
     /**
      * @var null|TaxEnergyAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TaxEnergyAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("TaxEnergyAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTaxEnergyAmount", setter="setTaxEnergyAmount")
      */
+    #[JMS\Accessor(getter: 'getTaxEnergyAmount', setter: 'setTaxEnergyAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TaxEnergyAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TaxEnergyAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $taxEnergyAmount;
 
     /**
      * @var null|TaxEnergyOnAccountAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TaxEnergyOnAccountAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("TaxEnergyOnAccountAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTaxEnergyOnAccountAmount", setter="setTaxEnergyOnAccountAmount")
      */
+    #[JMS\Accessor(getter: 'getTaxEnergyOnAccountAmount', setter: 'setTaxEnergyOnAccountAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TaxEnergyOnAccountAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TaxEnergyOnAccountAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $taxEnergyOnAccountAmount;
 
     /**
      * @var null|TaxEnergyBalanceAmount
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TaxEnergyBalanceAmount")
-     * @JMS\Expose
-     * @JMS\SerializedName("TaxEnergyBalanceAmount")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTaxEnergyBalanceAmount", setter="setTaxEnergyBalanceAmount")
      */
+    #[JMS\Accessor(getter: 'getTaxEnergyBalanceAmount', setter: 'setTaxEnergyBalanceAmount')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TaxEnergyBalanceAmount')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\TaxEnergyBalanceAmount')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $taxEnergyBalanceAmount;
 
     /**
      * @var null|TaxScheme
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\TaxScheme")
-     * @JMS\Expose
-     * @JMS\SerializedName("TaxScheme")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getTaxScheme", setter="setTaxScheme")
      */
+    #[JMS\Accessor(getter: 'getTaxScheme', setter: 'setTaxScheme')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('TaxScheme')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\TaxScheme')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $taxScheme;
 
     /**

@@ -14,13 +14,13 @@ class LogisticsTransportMovementType
 
     /**
      * @var null|TransportModeCodeType
-     * @JMS\Groups({"zffx"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\zffx\models\qdt\TransportModeCodeType")
-     * @JMS\Expose
-     * @JMS\SerializedName("ModeCode")
-     * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
-     * @JMS\Accessor(getter="getModeCode", setter="setModeCode")
      */
+    #[JMS\Accessor(getter: 'getModeCode', setter: 'setModeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['zffx'])]
+    #[JMS\SerializedName('ModeCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\zffx\models\qdt\TransportModeCodeType')]
+    #[JMS\XmlElement(namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100', cdata: false)]
     private $modeCode;
 
     /**

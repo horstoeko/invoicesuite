@@ -14,79 +14,79 @@ class BinaryObjectType
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\Jms\Base64Encoded")
-     * @JMS\Expose
-     * @JMS\XmlElement(cdata=false)
-     * @JMS\XmlValue(cdata=false)
-     * @JMS\Accessor(getter="getValue", setter="setValue")
      */
+    #[JMS\Accessor(getter: 'getValue', setter: 'setValue')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\Type('GoetasWebservices\Xsd\XsdToPhp\Jms\Base64Encoded')]
+    #[JMS\XmlElement(cdata: false)]
+    #[JMS\XmlValue(cdata: false)]
     private $value;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("format")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getFormat", setter="setFormat")
      */
+    #[JMS\Accessor(getter: 'getFormat', setter: 'setFormat')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('format')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $format;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("mimeCode")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getMimeCode", setter="setMimeCode")
      */
+    #[JMS\Accessor(getter: 'getMimeCode', setter: 'setMimeCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('mimeCode')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $mimeCode;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("encodingCode")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getEncodingCode", setter="setEncodingCode")
      */
+    #[JMS\Accessor(getter: 'getEncodingCode', setter: 'setEncodingCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('encodingCode')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $encodingCode;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("characterSetCode")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getCharacterSetCode", setter="setCharacterSetCode")
      */
+    #[JMS\Accessor(getter: 'getCharacterSetCode', setter: 'setCharacterSetCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('characterSetCode')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $characterSetCode;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("uri")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getUri", setter="setUri")
      */
+    #[JMS\Accessor(getter: 'getUri', setter: 'setUri')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('uri')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $uri;
 
     /**
      * @var null|string
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("string")
-     * @JMS\Expose
-     * @JMS\SerializedName("filename")
-     * @JMS\XmlAttribute
-     * @JMS\Accessor(getter="getFilename", setter="setFilename")
      */
+    #[JMS\Accessor(getter: 'getFilename', setter: 'setFilename')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('filename')]
+    #[JMS\Type('string')]
+    #[JMS\XmlAttribute]
     private $filename;
 
     /**

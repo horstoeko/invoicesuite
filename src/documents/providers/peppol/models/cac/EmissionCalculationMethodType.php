@@ -15,46 +15,46 @@ class EmissionCalculationMethodType
 
     /**
      * @var null|CalculationMethodCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CalculationMethodCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("CalculationMethodCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getCalculationMethodCode", setter="setCalculationMethodCode")
      */
+    #[JMS\Accessor(getter: 'getCalculationMethodCode', setter: 'setCalculationMethodCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('CalculationMethodCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\CalculationMethodCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $calculationMethodCode;
 
     /**
      * @var null|FullnessIndicationCode
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cbc\FullnessIndicationCode")
-     * @JMS\Expose
-     * @JMS\SerializedName("FullnessIndicationCode")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getFullnessIndicationCode", setter="setFullnessIndicationCode")
      */
+    #[JMS\Accessor(getter: 'getFullnessIndicationCode', setter: 'setFullnessIndicationCode')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('FullnessIndicationCode')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cbc\FullnessIndicationCode')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cdata: false)]
     private $fullnessIndicationCode;
 
     /**
      * @var null|MeasurementFromLocation
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\MeasurementFromLocation")
-     * @JMS\Expose
-     * @JMS\SerializedName("MeasurementFromLocation")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getMeasurementFromLocation", setter="setMeasurementFromLocation")
      */
+    #[JMS\Accessor(getter: 'getMeasurementFromLocation', setter: 'setMeasurementFromLocation')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MeasurementFromLocation')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\MeasurementFromLocation')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $measurementFromLocation;
 
     /**
      * @var null|MeasurementToLocation
-     * @JMS\Groups({"ubl"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\peppol\models\cac\MeasurementToLocation")
-     * @JMS\Expose
-     * @JMS\SerializedName("MeasurementToLocation")
-     * @JMS\XmlElement(namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", cdata=false)
-     * @JMS\Accessor(getter="getMeasurementToLocation", setter="setMeasurementToLocation")
      */
+    #[JMS\Accessor(getter: 'getMeasurementToLocation', setter: 'setMeasurementToLocation')]
+    #[JMS\Expose]
+    #[JMS\Groups(['ubl'])]
+    #[JMS\SerializedName('MeasurementToLocation')]
+    #[JMS\Type('horstoeko\invoicesuite\documents\providers\peppol\models\cac\MeasurementToLocation')]
+    #[JMS\XmlElement(namespace: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2', cdata: false)]
     private $measurementToLocation;
 
     /**
