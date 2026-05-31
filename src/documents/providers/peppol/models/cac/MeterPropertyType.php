@@ -319,7 +319,7 @@ class MeterPropertyType
      */
     public function addToValueQualifierWithCreate(): ValueQualifier
     {
-        $this->addTovalueQualifier($valueQualifier = new ValueQualifier());
+        $this->addToValueQualifier($valueQualifier = new ValueQualifier());
 
         return $valueQualifier;
     }
@@ -350,7 +350,7 @@ class MeterPropertyType
         }
 
         if ([] === $this->valueQualifier) {
-            $this->addOnceTovalueQualifier(new ValueQualifier());
+            $this->addOnceToValueQualifier(new ValueQualifier());
         }
 
         return $this->valueQualifier[0];

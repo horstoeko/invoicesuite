@@ -319,7 +319,7 @@ class SecondaryHazardType
      */
     public function addToExtensionWithCreate(): Extension
     {
-        $this->addToextension($extension = new Extension());
+        $this->addToExtension($extension = new Extension());
 
         return $extension;
     }
@@ -350,7 +350,7 @@ class SecondaryHazardType
         }
 
         if ([] === $this->extension) {
-            $this->addOnceToextension(new Extension());
+            $this->addOnceToExtension(new Extension());
         }
 
         return $this->extension[0];

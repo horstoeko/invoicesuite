@@ -251,7 +251,7 @@ class FrameworkAgreementType
      */
     public function addToJustificationWithCreate(): Justification
     {
-        $this->addTojustification($justification = new Justification());
+        $this->addToJustification($justification = new Justification());
 
         return $justification;
     }
@@ -282,7 +282,7 @@ class FrameworkAgreementType
         }
 
         if ([] === $this->justification) {
-            $this->addOnceTojustification(new Justification());
+            $this->addOnceToJustification(new Justification());
         }
 
         return $this->justification[0];
@@ -375,7 +375,7 @@ class FrameworkAgreementType
      */
     public function addToFrequencyWithCreate(): Frequency
     {
-        $this->addTofrequency($frequency = new Frequency());
+        $this->addToFrequency($frequency = new Frequency());
 
         return $frequency;
     }
@@ -406,7 +406,7 @@ class FrameworkAgreementType
         }
 
         if ([] === $this->frequency) {
-            $this->addOnceTofrequency(new Frequency());
+            $this->addOnceToFrequency(new Frequency());
         }
 
         return $this->frequency[0];
@@ -539,7 +539,7 @@ class FrameworkAgreementType
      */
     public function addToSubsequentProcessTenderRequirementWithCreate(): SubsequentProcessTenderRequirement
     {
-        $this->addTosubsequentProcessTenderRequirement($subsequentProcessTenderRequirement = new SubsequentProcessTenderRequirement());
+        $this->addToSubsequentProcessTenderRequirement($subsequentProcessTenderRequirement = new SubsequentProcessTenderRequirement());
 
         return $subsequentProcessTenderRequirement;
     }
@@ -570,7 +570,7 @@ class FrameworkAgreementType
         }
 
         if ([] === $this->subsequentProcessTenderRequirement) {
-            $this->addOnceTosubsequentProcessTenderRequirement(new SubsequentProcessTenderRequirement());
+            $this->addOnceToSubsequentProcessTenderRequirement(new SubsequentProcessTenderRequirement());
         }
 
         return $this->subsequentProcessTenderRequirement[0];

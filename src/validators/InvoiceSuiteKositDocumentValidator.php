@@ -506,7 +506,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      */
     private function checkRequirementsGeneral(): bool
     {
-        if (InvoiceSuiteContentType::XML != InvoiceSuiteContentTypeResolver::resolveContentType($this->getRawDocumentContent())) {
+        if (InvoiceSuiteContentType::XML !== InvoiceSuiteContentTypeResolver::resolveContentType($this->getRawDocumentContent())) {
             $this->addErrorMessageToMessageBag('Only XML content can be validated with this Validator');
 
             return false;
@@ -1016,11 +1016,11 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
             }
 
             if (!$process->isSuccessful()) {
-                if (-1 == $process->getExitCode()) {
+                if (-1 === $process->getExitCode()) {
                     $this->addErrorMessageToMessageBag('Parsing error. The commandline arguments specified are incorrect');
                 }
 
-                if (-2 == $process->getExitCode()) {
+                if (-2 === $process->getExitCode()) {
                     $this->addErrorMessageToMessageBag('Configuration error. There is an error loading the configuration and/or validation targets');
                 }
 

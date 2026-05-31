@@ -249,7 +249,7 @@ class CatalogueRequestLineType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -280,7 +280,7 @@ class CatalogueRequestLineType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -413,7 +413,7 @@ class CatalogueRequestLineType
      */
     public function addToRequiredItemLocationQuantityWithCreate(): RequiredItemLocationQuantity
     {
-        $this->addTorequiredItemLocationQuantity($requiredItemLocationQuantity = new RequiredItemLocationQuantity());
+        $this->addToRequiredItemLocationQuantity($requiredItemLocationQuantity = new RequiredItemLocationQuantity());
 
         return $requiredItemLocationQuantity;
     }
@@ -444,7 +444,7 @@ class CatalogueRequestLineType
         }
 
         if ([] === $this->requiredItemLocationQuantity) {
-            $this->addOnceTorequiredItemLocationQuantity(new RequiredItemLocationQuantity());
+            $this->addOnceToRequiredItemLocationQuantity(new RequiredItemLocationQuantity());
         }
 
         return $this->requiredItemLocationQuantity[0];

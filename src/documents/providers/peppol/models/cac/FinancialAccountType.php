@@ -445,7 +445,7 @@ class FinancialAccountType
      */
     public function addToPaymentNoteWithCreate(): PaymentNote
     {
-        $this->addTopaymentNote($paymentNote = new PaymentNote());
+        $this->addToPaymentNote($paymentNote = new PaymentNote());
 
         return $paymentNote;
     }
@@ -476,7 +476,7 @@ class FinancialAccountType
         }
 
         if ([] === $this->paymentNote) {
-            $this->addOnceTopaymentNote(new PaymentNote());
+            $this->addOnceToPaymentNote(new PaymentNote());
         }
 
         return $this->paymentNote[0];

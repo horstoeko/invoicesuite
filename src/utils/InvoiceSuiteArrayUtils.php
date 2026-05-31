@@ -62,7 +62,7 @@ class InvoiceSuiteArrayUtils
         array $array,
         mixed $search
     ): bool {
-        return in_array($search, $array);
+        return in_array($search, $array, true);
     }
 
     /**

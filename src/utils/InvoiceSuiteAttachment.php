@@ -160,7 +160,7 @@ class InvoiceSuiteAttachment
      */
     public function isFileAttachment(): bool
     {
-        return $this->internalType == static::IS_FROM_FILE;
+        return $this->internalType === static::IS_FROM_FILE;
     }
 
     /**
@@ -170,7 +170,7 @@ class InvoiceSuiteAttachment
      */
     public function isBase64StringAttachment(): bool
     {
-        return $this->internalType == static::IS_FROM_BASE64_STRING;
+        return $this->internalType === static::IS_FROM_BASE64_STRING;
     }
 
     /**
@@ -180,7 +180,7 @@ class InvoiceSuiteAttachment
      */
     public function isBinaryStringAttachment(): bool
     {
-        return $this->internalType == static::IS_FROM_BINARY_STRING;
+        return $this->internalType === static::IS_FROM_BINARY_STRING;
     }
 
     /**
@@ -190,7 +190,7 @@ class InvoiceSuiteAttachment
      */
     public function isUrlAttachment(): bool
     {
-        return $this->internalType == static::IS_FROM_URL;
+        return $this->internalType === static::IS_FROM_URL;
     }
 
     /**

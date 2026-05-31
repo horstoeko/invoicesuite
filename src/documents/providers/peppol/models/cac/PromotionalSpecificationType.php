@@ -174,7 +174,7 @@ class PromotionalSpecificationType
      */
     public function addToPromotionalEventLineItemWithCreate(): PromotionalEventLineItem
     {
-        $this->addTopromotionalEventLineItem($promotionalEventLineItem = new PromotionalEventLineItem());
+        $this->addToPromotionalEventLineItem($promotionalEventLineItem = new PromotionalEventLineItem());
 
         return $promotionalEventLineItem;
     }
@@ -205,7 +205,7 @@ class PromotionalSpecificationType
         }
 
         if ([] === $this->promotionalEventLineItem) {
-            $this->addOnceTopromotionalEventLineItem(new PromotionalEventLineItem());
+            $this->addOnceToPromotionalEventLineItem(new PromotionalEventLineItem());
         }
 
         return $this->promotionalEventLineItem[0];
@@ -298,7 +298,7 @@ class PromotionalSpecificationType
      */
     public function addToEventTacticWithCreate(): EventTactic
     {
-        $this->addToeventTactic($eventTactic = new EventTactic());
+        $this->addToEventTactic($eventTactic = new EventTactic());
 
         return $eventTactic;
     }
@@ -329,7 +329,7 @@ class PromotionalSpecificationType
         }
 
         if ([] === $this->eventTactic) {
-            $this->addOnceToeventTactic(new EventTactic());
+            $this->addOnceToEventTactic(new EventTactic());
         }
 
         return $this->eventTactic[0];

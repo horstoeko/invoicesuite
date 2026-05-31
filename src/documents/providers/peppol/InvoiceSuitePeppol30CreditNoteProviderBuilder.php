@@ -389,7 +389,7 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
 
         // Document-Level Payment Means
 
-        $newDocumentDTO->forEachPaymentmean(
+        $newDocumentDTO->forEachPaymentMean(
             fn (InvoiceSuitePaymentMeanDTO $item) => $this->addDocumentPaymentMean(
                 $item->getTypeCode(),
                 $item->getName(),
@@ -736,7 +736,7 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
 
         $this->getUblRootObject()->unsetIssueDate();
 
-        if (InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDocumentDate)) {
+        if (InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDocumentDate)) {
             return $this->traceMethodEarlyExit(__METHOD__, 'datetimeIsNullOrEmpty', 'InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDocumentDate)');
         }
 
@@ -932,11 +932,11 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
             ->getUblRootObject()
             ->addToInvoicePeriodWithCreate();
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newStartDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newStartDate)) {
             $invoicePeriod->setStartDate($newStartDate);
         }
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newEndDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newEndDate)) {
             $invoicePeriod->setEndDate($newEndDate);
         }
 
@@ -1664,7 +1664,7 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
             ->firstDelivery()
             ?->unsetActualDeliveryDate();
 
-        if (InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDate)) {
+        if (InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDate)) {
             return $this->traceMethodEarlyExit(__METHOD__, 'datetimeIsNullOrEmpty', 'InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDate)');
         }
 
@@ -6845,7 +6845,7 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
             $taxCategory->getTaxExemptionReasonCodeWithCreate()->setValue($newExemptionReasonCode);
         }
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newTaxDueDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newTaxDueDate)) {
             $this->getUblRootObject()->setTaxPointDate($newTaxDueDate);
         }
 

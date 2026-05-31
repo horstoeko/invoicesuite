@@ -623,7 +623,7 @@ class CatalogueLineType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -654,7 +654,7 @@ class CatalogueLineType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -977,7 +977,7 @@ class CatalogueLineType
      */
     public function addToWarrantyInformationWithCreate(): WarrantyInformation
     {
-        $this->addTowarrantyInformation($warrantyInformation = new WarrantyInformation());
+        $this->addToWarrantyInformation($warrantyInformation = new WarrantyInformation());
 
         return $warrantyInformation;
     }
@@ -1008,7 +1008,7 @@ class CatalogueLineType
         }
 
         if ([] === $this->warrantyInformation) {
-            $this->addOnceTowarrantyInformation(new WarrantyInformation());
+            $this->addOnceToWarrantyInformation(new WarrantyInformation());
         }
 
         return $this->warrantyInformation[0];
@@ -1341,7 +1341,7 @@ class CatalogueLineType
      */
     public function addToItemComparisonWithCreate(): ItemComparison
     {
-        $this->addToitemComparison($itemComparison = new ItemComparison());
+        $this->addToItemComparison($itemComparison = new ItemComparison());
 
         return $itemComparison;
     }
@@ -1372,7 +1372,7 @@ class CatalogueLineType
         }
 
         if ([] === $this->itemComparison) {
-            $this->addOnceToitemComparison(new ItemComparison());
+            $this->addOnceToItemComparison(new ItemComparison());
         }
 
         return $this->itemComparison[0];
@@ -1465,7 +1465,7 @@ class CatalogueLineType
      */
     public function addToComponentRelatedItemWithCreate(): ComponentRelatedItem
     {
-        $this->addTocomponentRelatedItem($componentRelatedItem = new ComponentRelatedItem());
+        $this->addToComponentRelatedItem($componentRelatedItem = new ComponentRelatedItem());
 
         return $componentRelatedItem;
     }
@@ -1496,7 +1496,7 @@ class CatalogueLineType
         }
 
         if ([] === $this->componentRelatedItem) {
-            $this->addOnceTocomponentRelatedItem(new ComponentRelatedItem());
+            $this->addOnceToComponentRelatedItem(new ComponentRelatedItem());
         }
 
         return $this->componentRelatedItem[0];
@@ -1589,7 +1589,7 @@ class CatalogueLineType
      */
     public function addToAccessoryRelatedItemWithCreate(): AccessoryRelatedItem
     {
-        $this->addToaccessoryRelatedItem($accessoryRelatedItem = new AccessoryRelatedItem());
+        $this->addToAccessoryRelatedItem($accessoryRelatedItem = new AccessoryRelatedItem());
 
         return $accessoryRelatedItem;
     }
@@ -1620,7 +1620,7 @@ class CatalogueLineType
         }
 
         if ([] === $this->accessoryRelatedItem) {
-            $this->addOnceToaccessoryRelatedItem(new AccessoryRelatedItem());
+            $this->addOnceToAccessoryRelatedItem(new AccessoryRelatedItem());
         }
 
         return $this->accessoryRelatedItem[0];
@@ -1713,7 +1713,7 @@ class CatalogueLineType
      */
     public function addToRequiredRelatedItemWithCreate(): RequiredRelatedItem
     {
-        $this->addTorequiredRelatedItem($requiredRelatedItem = new RequiredRelatedItem());
+        $this->addToRequiredRelatedItem($requiredRelatedItem = new RequiredRelatedItem());
 
         return $requiredRelatedItem;
     }
@@ -1744,7 +1744,7 @@ class CatalogueLineType
         }
 
         if ([] === $this->requiredRelatedItem) {
-            $this->addOnceTorequiredRelatedItem(new RequiredRelatedItem());
+            $this->addOnceToRequiredRelatedItem(new RequiredRelatedItem());
         }
 
         return $this->requiredRelatedItem[0];
@@ -1837,7 +1837,7 @@ class CatalogueLineType
      */
     public function addToReplacementRelatedItemWithCreate(): ReplacementRelatedItem
     {
-        $this->addToreplacementRelatedItem($replacementRelatedItem = new ReplacementRelatedItem());
+        $this->addToReplacementRelatedItem($replacementRelatedItem = new ReplacementRelatedItem());
 
         return $replacementRelatedItem;
     }
@@ -1868,7 +1868,7 @@ class CatalogueLineType
         }
 
         if ([] === $this->replacementRelatedItem) {
-            $this->addOnceToreplacementRelatedItem(new ReplacementRelatedItem());
+            $this->addOnceToReplacementRelatedItem(new ReplacementRelatedItem());
         }
 
         return $this->replacementRelatedItem[0];
@@ -1961,7 +1961,7 @@ class CatalogueLineType
      */
     public function addToComplementaryRelatedItemWithCreate(): ComplementaryRelatedItem
     {
-        $this->addTocomplementaryRelatedItem($complementaryRelatedItem = new ComplementaryRelatedItem());
+        $this->addToComplementaryRelatedItem($complementaryRelatedItem = new ComplementaryRelatedItem());
 
         return $complementaryRelatedItem;
     }
@@ -1992,7 +1992,7 @@ class CatalogueLineType
         }
 
         if ([] === $this->complementaryRelatedItem) {
-            $this->addOnceTocomplementaryRelatedItem(new ComplementaryRelatedItem());
+            $this->addOnceToComplementaryRelatedItem(new ComplementaryRelatedItem());
         }
 
         return $this->complementaryRelatedItem[0];
@@ -2085,7 +2085,7 @@ class CatalogueLineType
      */
     public function addToReplacedRelatedItemWithCreate(): ReplacedRelatedItem
     {
-        $this->addToreplacedRelatedItem($replacedRelatedItem = new ReplacedRelatedItem());
+        $this->addToReplacedRelatedItem($replacedRelatedItem = new ReplacedRelatedItem());
 
         return $replacedRelatedItem;
     }
@@ -2116,7 +2116,7 @@ class CatalogueLineType
         }
 
         if ([] === $this->replacedRelatedItem) {
-            $this->addOnceToreplacedRelatedItem(new ReplacedRelatedItem());
+            $this->addOnceToReplacedRelatedItem(new ReplacedRelatedItem());
         }
 
         return $this->replacedRelatedItem[0];
@@ -2209,7 +2209,7 @@ class CatalogueLineType
      */
     public function addToRequiredItemLocationQuantityWithCreate(): RequiredItemLocationQuantity
     {
-        $this->addTorequiredItemLocationQuantity($requiredItemLocationQuantity = new RequiredItemLocationQuantity());
+        $this->addToRequiredItemLocationQuantity($requiredItemLocationQuantity = new RequiredItemLocationQuantity());
 
         return $requiredItemLocationQuantity;
     }
@@ -2240,7 +2240,7 @@ class CatalogueLineType
         }
 
         if ([] === $this->requiredItemLocationQuantity) {
-            $this->addOnceTorequiredItemLocationQuantity(new RequiredItemLocationQuantity());
+            $this->addOnceToRequiredItemLocationQuantity(new RequiredItemLocationQuantity());
         }
 
         return $this->requiredItemLocationQuantity[0];
@@ -2333,7 +2333,7 @@ class CatalogueLineType
      */
     public function addToDocumentReferenceWithCreate(): DocumentReference
     {
-        $this->addTodocumentReference($documentReference = new DocumentReference());
+        $this->addToDocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
     }
@@ -2364,7 +2364,7 @@ class CatalogueLineType
         }
 
         if ([] === $this->documentReference) {
-            $this->addOnceTodocumentReference(new DocumentReference());
+            $this->addOnceToDocumentReference(new DocumentReference());
         }
 
         return $this->documentReference[0];
@@ -2497,7 +2497,7 @@ class CatalogueLineType
      */
     public function addToKeywordItemPropertyWithCreate(): KeywordItemProperty
     {
-        $this->addTokeywordItemProperty($keywordItemProperty = new KeywordItemProperty());
+        $this->addToKeywordItemProperty($keywordItemProperty = new KeywordItemProperty());
 
         return $keywordItemProperty;
     }
@@ -2528,7 +2528,7 @@ class CatalogueLineType
         }
 
         if ([] === $this->keywordItemProperty) {
-            $this->addOnceTokeywordItemProperty(new KeywordItemProperty());
+            $this->addOnceToKeywordItemProperty(new KeywordItemProperty());
         }
 
         return $this->keywordItemProperty[0];

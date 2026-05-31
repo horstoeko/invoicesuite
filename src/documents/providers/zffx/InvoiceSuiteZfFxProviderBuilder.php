@@ -1455,7 +1455,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDocumentDate)) {
+        if (InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDocumentDate)) {
             return $this->traceMethodEarlyExit(__METHOD__, 'datetimeIsNullOrEmpty', 'InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDocumentDate)');
         }
 
@@ -1492,7 +1492,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newCompleteDate)) {
+        if (InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newCompleteDate)) {
             return $this->traceMethodEarlyExit(__METHOD__, 'datetimeIsNullOrEmpty', 'InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newCompleteDate)');
         }
 
@@ -1949,7 +1949,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getIssuerAssignedIDWithCreate()
             ->setValue($newReferenceNumber);
 
-        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $sellerOrderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -2027,7 +2027,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getIssuerAssignedIDWithCreate()
             ->setValue($newReferenceNumber);
 
-        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $buyerOrderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -2105,7 +2105,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getIssuerAssignedIDWithCreate()
             ->setValue($newReferenceNumber);
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $quotationReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -2183,7 +2183,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getIssuerAssignedIDWithCreate()
             ->setValue($newReferenceNumber);
 
-        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $contractReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -2316,7 +2316,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getTypeCodeWithCreate()
             ->setValue($newTypeCode);
 
-        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $additionalReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -2436,7 +2436,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 ->setValue($newTypeCode);
         }
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $invoiceReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -2588,7 +2588,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getIssuerAssignedIDWithCreate()
             ->setValue($newReferenceNumber);
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $orderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -2638,7 +2638,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getIssuerAssignedIDWithCreate()
             ->setValue($newReferenceNumber);
 
-        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $despatchAdviceReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -2716,7 +2716,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getIssuerAssignedIDWithCreate()
             ->setValue($newReferenceNumber);
 
-        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $receivingAdviceReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -2794,7 +2794,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getIssuerAssignedIDWithCreate()
             ->setValue($newReferenceNumber);
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $deliveryNoteReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -2856,7 +2856,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDate)) {
+        if (InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDate)) {
             return $this->traceMethodEarlyExit(__METHOD__, 'datetimeIsNullOrEmpty', 'InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDate)');
         }
 
@@ -10366,7 +10366,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
 
         $paymentTerm->getDescriptionWithCreate()->setValue($newDescription);
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDueDate)) {
             $paymentTerm
                 ->getDueDateDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -10449,7 +10449,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 ->setValue($newDiscountPercent);
         }
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newBaseDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newBaseDate)) {
             $lastPaymentTerm
                 ->getApplicableTradePaymentDiscountTermsWithCreate()
                 ->getBasisDateTimeWithCreate()
@@ -10575,7 +10575,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 ->setValue($newPenaltyPercent);
         }
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newBaseDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newBaseDate)) {
             $lastPaymentTerm
                 ->getApplicableTradePaymentPenaltyTermsWithCreate()
                 ->getBasisDateTimeWithCreate()
@@ -10763,7 +10763,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             $applicableTradeTax->getExemptionReasonCodeWithCreate()->setValue($newExemptionReasonCode);
         }
 
-        if ($this->supportsAtLeastEn16931() && !InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newTaxDueDate)) {
+        if ($this->supportsAtLeastEn16931() && !InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newTaxDueDate)) {
             $applicableTradeTax
                 ->getTaxPointDateWithCreate()
                 ->getDateStringWithCreate()
@@ -11101,7 +11101,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($taxCurrencyCode)) {
             $taxTotalAmount = $summation->addToTaxTotalAmountWithCreate();
-            $taxTotalAmount->setValue(0.0)->setCurrencyId($taxCurrencyCode);
+            $taxTotalAmount->setValue(0.0)->setCurrencyID($taxCurrencyCode);
         }
 
         return $this;
@@ -11863,7 +11863,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 ->setValue($newReferenceNumber);
         }
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $sellerOrderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -11955,7 +11955,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 ->setValue($newReferenceNumber);
         }
 
-        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $buyerOrderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -12043,7 +12043,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 ->setValue($newReferenceNumber);
         }
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $quotationOrderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -12135,7 +12135,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 ->setValue($newReferenceNumber);
         }
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $contractOrderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -12285,7 +12285,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getTypeCodeWithCreate()
             ->setValue($newTypeCode);
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $additionalReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -12405,7 +12405,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 ->setValue($newReferenceNumber);
         }
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $ultimateCustomerOrderReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -12463,7 +12463,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 ->setValue($newReferenceNumber);
         }
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $despatchAdviceReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -12555,7 +12555,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 ->setValue($newReferenceNumber);
         }
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $receivingAdviceReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -12647,7 +12647,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 ->setValue($newReferenceNumber);
         }
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $deliveryNoteReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -12747,7 +12747,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 ->setValue($newTypeCode);
         }
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $invoiceReference
                 ->getFormattedIssueDateTimeWithCreate()
                 ->getDateTimeStringWithCreate()
@@ -14642,7 +14642,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             return $this;
         }
 
-        if (InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDate)) {
+        if (InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDate)) {
             return $this->traceMethodEarlyExit(__METHOD__, 'datetimeIsNullOrEmpty', 'InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDate)');
         }
 

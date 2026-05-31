@@ -326,7 +326,7 @@ class TenderResultType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -357,7 +357,7 @@ class TenderResultType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -900,7 +900,7 @@ class TenderResultType
      */
     public function addToSubcontractTermsWithCreate(): SubcontractTerms
     {
-        $this->addTosubcontractTerms($subcontractTerms = new SubcontractTerms());
+        $this->addToSubcontractTerms($subcontractTerms = new SubcontractTerms());
 
         return $subcontractTerms;
     }
@@ -931,7 +931,7 @@ class TenderResultType
         }
 
         if ([] === $this->subcontractTerms) {
-            $this->addOnceTosubcontractTerms(new SubcontractTerms());
+            $this->addOnceToSubcontractTerms(new SubcontractTerms());
         }
 
         return $this->subcontractTerms[0];
@@ -1024,7 +1024,7 @@ class TenderResultType
      */
     public function addToWinningPartyWithCreate(): WinningParty
     {
-        $this->addTowinningParty($winningParty = new WinningParty());
+        $this->addToWinningParty($winningParty = new WinningParty());
 
         return $winningParty;
     }
@@ -1055,7 +1055,7 @@ class TenderResultType
         }
 
         if ([] === $this->winningParty) {
-            $this->addOnceTowinningParty(new WinningParty());
+            $this->addOnceToWinningParty(new WinningParty());
         }
 
         return $this->winningParty[0];

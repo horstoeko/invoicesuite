@@ -540,7 +540,7 @@ class TransportHandlingUnitType
      */
     public function addToHandlingInstructionsWithCreate(): HandlingInstructions
     {
-        $this->addTohandlingInstructions($handlingInstructions = new HandlingInstructions());
+        $this->addToHandlingInstructions($handlingInstructions = new HandlingInstructions());
 
         return $handlingInstructions;
     }
@@ -571,7 +571,7 @@ class TransportHandlingUnitType
         }
 
         if ([] === $this->handlingInstructions) {
-            $this->addOnceTohandlingInstructions(new HandlingInstructions());
+            $this->addOnceToHandlingInstructions(new HandlingInstructions());
         }
 
         return $this->handlingInstructions[0];
@@ -774,7 +774,7 @@ class TransportHandlingUnitType
      */
     public function addToDamageRemarksWithCreate(): DamageRemarks
     {
-        $this->addTodamageRemarks($damageRemarks = new DamageRemarks());
+        $this->addToDamageRemarks($damageRemarks = new DamageRemarks());
 
         return $damageRemarks;
     }
@@ -805,7 +805,7 @@ class TransportHandlingUnitType
         }
 
         if ([] === $this->damageRemarks) {
-            $this->addOnceTodamageRemarks(new DamageRemarks());
+            $this->addOnceToDamageRemarks(new DamageRemarks());
         }
 
         return $this->damageRemarks[0];
@@ -898,7 +898,7 @@ class TransportHandlingUnitType
      */
     public function addToShippingMarksWithCreate(): ShippingMarks
     {
-        $this->addToshippingMarks($shippingMarks = new ShippingMarks());
+        $this->addToShippingMarks($shippingMarks = new ShippingMarks());
 
         return $shippingMarks;
     }
@@ -929,7 +929,7 @@ class TransportHandlingUnitType
         }
 
         if ([] === $this->shippingMarks) {
-            $this->addOnceToshippingMarks(new ShippingMarks());
+            $this->addOnceToShippingMarks(new ShippingMarks());
         }
 
         return $this->shippingMarks[0];
@@ -1062,7 +1062,7 @@ class TransportHandlingUnitType
      */
     public function addToHandlingUnitDespatchLineWithCreate(): HandlingUnitDespatchLine
     {
-        $this->addTohandlingUnitDespatchLine($handlingUnitDespatchLine = new HandlingUnitDespatchLine());
+        $this->addToHandlingUnitDespatchLine($handlingUnitDespatchLine = new HandlingUnitDespatchLine());
 
         return $handlingUnitDespatchLine;
     }
@@ -1093,7 +1093,7 @@ class TransportHandlingUnitType
         }
 
         if ([] === $this->handlingUnitDespatchLine) {
-            $this->addOnceTohandlingUnitDespatchLine(new HandlingUnitDespatchLine());
+            $this->addOnceToHandlingUnitDespatchLine(new HandlingUnitDespatchLine());
         }
 
         return $this->handlingUnitDespatchLine[0];
@@ -1186,7 +1186,7 @@ class TransportHandlingUnitType
      */
     public function addToActualPackageWithCreate(): ActualPackage
     {
-        $this->addToactualPackage($actualPackage = new ActualPackage());
+        $this->addToActualPackage($actualPackage = new ActualPackage());
 
         return $actualPackage;
     }
@@ -1217,7 +1217,7 @@ class TransportHandlingUnitType
         }
 
         if ([] === $this->actualPackage) {
-            $this->addOnceToactualPackage(new ActualPackage());
+            $this->addOnceToActualPackage(new ActualPackage());
         }
 
         return $this->actualPackage[0];
@@ -1310,7 +1310,7 @@ class TransportHandlingUnitType
      */
     public function addToReceivedHandlingUnitReceiptLineWithCreate(): ReceivedHandlingUnitReceiptLine
     {
-        $this->addToreceivedHandlingUnitReceiptLine($receivedHandlingUnitReceiptLine = new ReceivedHandlingUnitReceiptLine());
+        $this->addToReceivedHandlingUnitReceiptLine($receivedHandlingUnitReceiptLine = new ReceivedHandlingUnitReceiptLine());
 
         return $receivedHandlingUnitReceiptLine;
     }
@@ -1341,7 +1341,7 @@ class TransportHandlingUnitType
         }
 
         if ([] === $this->receivedHandlingUnitReceiptLine) {
-            $this->addOnceToreceivedHandlingUnitReceiptLine(new ReceivedHandlingUnitReceiptLine());
+            $this->addOnceToReceivedHandlingUnitReceiptLine(new ReceivedHandlingUnitReceiptLine());
         }
 
         return $this->receivedHandlingUnitReceiptLine[0];
@@ -1434,7 +1434,7 @@ class TransportHandlingUnitType
      */
     public function addToTransportEquipmentWithCreate(): TransportEquipment
     {
-        $this->addTotransportEquipment($transportEquipment = new TransportEquipment());
+        $this->addToTransportEquipment($transportEquipment = new TransportEquipment());
 
         return $transportEquipment;
     }
@@ -1465,7 +1465,7 @@ class TransportHandlingUnitType
         }
 
         if ([] === $this->transportEquipment) {
-            $this->addOnceTotransportEquipment(new TransportEquipment());
+            $this->addOnceToTransportEquipment(new TransportEquipment());
         }
 
         return $this->transportEquipment[0];
@@ -1558,7 +1558,7 @@ class TransportHandlingUnitType
      */
     public function addToTransportMeansWithCreate(): TransportMeans
     {
-        $this->addTotransportMeans($transportMeans = new TransportMeans());
+        $this->addToTransportMeans($transportMeans = new TransportMeans());
 
         return $transportMeans;
     }
@@ -1589,7 +1589,7 @@ class TransportHandlingUnitType
         }
 
         if ([] === $this->transportMeans) {
-            $this->addOnceTotransportMeans(new TransportMeans());
+            $this->addOnceToTransportMeans(new TransportMeans());
         }
 
         return $this->transportMeans[0];
@@ -1682,7 +1682,7 @@ class TransportHandlingUnitType
      */
     public function addToHazardousGoodsTransitWithCreate(): HazardousGoodsTransit
     {
-        $this->addTohazardousGoodsTransit($hazardousGoodsTransit = new HazardousGoodsTransit());
+        $this->addToHazardousGoodsTransit($hazardousGoodsTransit = new HazardousGoodsTransit());
 
         return $hazardousGoodsTransit;
     }
@@ -1713,7 +1713,7 @@ class TransportHandlingUnitType
         }
 
         if ([] === $this->hazardousGoodsTransit) {
-            $this->addOnceTohazardousGoodsTransit(new HazardousGoodsTransit());
+            $this->addOnceToHazardousGoodsTransit(new HazardousGoodsTransit());
         }
 
         return $this->hazardousGoodsTransit[0];
@@ -1806,7 +1806,7 @@ class TransportHandlingUnitType
      */
     public function addToMeasurementDimensionWithCreate(): MeasurementDimension
     {
-        $this->addTomeasurementDimension($measurementDimension = new MeasurementDimension());
+        $this->addToMeasurementDimension($measurementDimension = new MeasurementDimension());
 
         return $measurementDimension;
     }
@@ -1837,7 +1837,7 @@ class TransportHandlingUnitType
         }
 
         if ([] === $this->measurementDimension) {
-            $this->addOnceTomeasurementDimension(new MeasurementDimension());
+            $this->addOnceToMeasurementDimension(new MeasurementDimension());
         }
 
         return $this->measurementDimension[0];
@@ -2010,7 +2010,7 @@ class TransportHandlingUnitType
      */
     public function addToGoodsItemWithCreate(): GoodsItem
     {
-        $this->addTogoodsItem($goodsItem = new GoodsItem());
+        $this->addToGoodsItem($goodsItem = new GoodsItem());
 
         return $goodsItem;
     }
@@ -2041,7 +2041,7 @@ class TransportHandlingUnitType
         }
 
         if ([] === $this->goodsItem) {
-            $this->addOnceTogoodsItem(new GoodsItem());
+            $this->addOnceToGoodsItem(new GoodsItem());
         }
 
         return $this->goodsItem[0];
@@ -2214,7 +2214,7 @@ class TransportHandlingUnitType
      */
     public function addToShipmentDocumentReferenceWithCreate(): ShipmentDocumentReference
     {
-        $this->addToshipmentDocumentReference($shipmentDocumentReference = new ShipmentDocumentReference());
+        $this->addToShipmentDocumentReference($shipmentDocumentReference = new ShipmentDocumentReference());
 
         return $shipmentDocumentReference;
     }
@@ -2245,7 +2245,7 @@ class TransportHandlingUnitType
         }
 
         if ([] === $this->shipmentDocumentReference) {
-            $this->addOnceToshipmentDocumentReference(new ShipmentDocumentReference());
+            $this->addOnceToShipmentDocumentReference(new ShipmentDocumentReference());
         }
 
         return $this->shipmentDocumentReference[0];
@@ -2338,7 +2338,7 @@ class TransportHandlingUnitType
      */
     public function addToStatusWithCreate(): Status
     {
-        $this->addTostatus($status = new Status());
+        $this->addToStatus($status = new Status());
 
         return $status;
     }
@@ -2369,7 +2369,7 @@ class TransportHandlingUnitType
         }
 
         if ([] === $this->status) {
-            $this->addOnceTostatus(new Status());
+            $this->addOnceToStatus(new Status());
         }
 
         return $this->status[0];
@@ -2462,7 +2462,7 @@ class TransportHandlingUnitType
      */
     public function addToCustomsDeclarationWithCreate(): CustomsDeclaration
     {
-        $this->addTocustomsDeclaration($customsDeclaration = new CustomsDeclaration());
+        $this->addToCustomsDeclaration($customsDeclaration = new CustomsDeclaration());
 
         return $customsDeclaration;
     }
@@ -2493,7 +2493,7 @@ class TransportHandlingUnitType
         }
 
         if ([] === $this->customsDeclaration) {
-            $this->addOnceTocustomsDeclaration(new CustomsDeclaration());
+            $this->addOnceToCustomsDeclaration(new CustomsDeclaration());
         }
 
         return $this->customsDeclaration[0];
@@ -2586,7 +2586,7 @@ class TransportHandlingUnitType
      */
     public function addToReferencedShipmentWithCreate(): ReferencedShipment
     {
-        $this->addToreferencedShipment($referencedShipment = new ReferencedShipment());
+        $this->addToReferencedShipment($referencedShipment = new ReferencedShipment());
 
         return $referencedShipment;
     }
@@ -2617,7 +2617,7 @@ class TransportHandlingUnitType
         }
 
         if ([] === $this->referencedShipment) {
-            $this->addOnceToreferencedShipment(new ReferencedShipment());
+            $this->addOnceToReferencedShipment(new ReferencedShipment());
         }
 
         return $this->referencedShipment[0];
@@ -2710,7 +2710,7 @@ class TransportHandlingUnitType
      */
     public function addToPackageWithCreate(): Package
     {
-        $this->addTopackage($package = new Package());
+        $this->addToPackage($package = new Package());
 
         return $package;
     }
@@ -2741,7 +2741,7 @@ class TransportHandlingUnitType
         }
 
         if ([] === $this->package) {
-            $this->addOnceTopackage(new Package());
+            $this->addOnceToPackage(new Package());
         }
 
         return $this->package[0];

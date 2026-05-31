@@ -531,7 +531,7 @@ class TransportationServiceType
      */
     public function addToTransportationServiceDescriptionWithCreate(): TransportationServiceDescription
     {
-        $this->addTotransportationServiceDescription($transportationServiceDescription = new TransportationServiceDescription());
+        $this->addToTransportationServiceDescription($transportationServiceDescription = new TransportationServiceDescription());
 
         return $transportationServiceDescription;
     }
@@ -562,7 +562,7 @@ class TransportationServiceType
         }
 
         if ([] === $this->transportationServiceDescription) {
-            $this->addOnceTotransportationServiceDescription(new TransportationServiceDescription());
+            $this->addOnceToTransportationServiceDescription(new TransportationServiceDescription());
         }
 
         return $this->transportationServiceDescription[0];
@@ -835,7 +835,7 @@ class TransportationServiceType
      */
     public function addToTransportEquipmentWithCreate(): TransportEquipment
     {
-        $this->addTotransportEquipment($transportEquipment = new TransportEquipment());
+        $this->addToTransportEquipment($transportEquipment = new TransportEquipment());
 
         return $transportEquipment;
     }
@@ -866,7 +866,7 @@ class TransportationServiceType
         }
 
         if ([] === $this->transportEquipment) {
-            $this->addOnceTotransportEquipment(new TransportEquipment());
+            $this->addOnceToTransportEquipment(new TransportEquipment());
         }
 
         return $this->transportEquipment[0];
@@ -959,7 +959,7 @@ class TransportationServiceType
      */
     public function addToSupportedTransportEquipmentWithCreate(): SupportedTransportEquipment
     {
-        $this->addTosupportedTransportEquipment($supportedTransportEquipment = new SupportedTransportEquipment());
+        $this->addToSupportedTransportEquipment($supportedTransportEquipment = new SupportedTransportEquipment());
 
         return $supportedTransportEquipment;
     }
@@ -990,7 +990,7 @@ class TransportationServiceType
         }
 
         if ([] === $this->supportedTransportEquipment) {
-            $this->addOnceTosupportedTransportEquipment(new SupportedTransportEquipment());
+            $this->addOnceToSupportedTransportEquipment(new SupportedTransportEquipment());
         }
 
         return $this->supportedTransportEquipment[0];
@@ -1083,7 +1083,7 @@ class TransportationServiceType
      */
     public function addToUnsupportedTransportEquipmentWithCreate(): UnsupportedTransportEquipment
     {
-        $this->addTounsupportedTransportEquipment($unsupportedTransportEquipment = new UnsupportedTransportEquipment());
+        $this->addToUnsupportedTransportEquipment($unsupportedTransportEquipment = new UnsupportedTransportEquipment());
 
         return $unsupportedTransportEquipment;
     }
@@ -1114,7 +1114,7 @@ class TransportationServiceType
         }
 
         if ([] === $this->unsupportedTransportEquipment) {
-            $this->addOnceTounsupportedTransportEquipment(new UnsupportedTransportEquipment());
+            $this->addOnceToUnsupportedTransportEquipment(new UnsupportedTransportEquipment());
         }
 
         return $this->unsupportedTransportEquipment[0];
@@ -1207,7 +1207,7 @@ class TransportationServiceType
      */
     public function addToCommodityClassificationWithCreate(): CommodityClassification
     {
-        $this->addTocommodityClassification($commodityClassification = new CommodityClassification());
+        $this->addToCommodityClassification($commodityClassification = new CommodityClassification());
 
         return $commodityClassification;
     }
@@ -1238,7 +1238,7 @@ class TransportationServiceType
         }
 
         if ([] === $this->commodityClassification) {
-            $this->addOnceTocommodityClassification(new CommodityClassification());
+            $this->addOnceToCommodityClassification(new CommodityClassification());
         }
 
         return $this->commodityClassification[0];
@@ -1331,7 +1331,7 @@ class TransportationServiceType
      */
     public function addToSupportedCommodityClassificationWithCreate(): SupportedCommodityClassification
     {
-        $this->addTosupportedCommodityClassification($supportedCommodityClassification = new SupportedCommodityClassification());
+        $this->addToSupportedCommodityClassification($supportedCommodityClassification = new SupportedCommodityClassification());
 
         return $supportedCommodityClassification;
     }
@@ -1362,7 +1362,7 @@ class TransportationServiceType
         }
 
         if ([] === $this->supportedCommodityClassification) {
-            $this->addOnceTosupportedCommodityClassification(new SupportedCommodityClassification());
+            $this->addOnceToSupportedCommodityClassification(new SupportedCommodityClassification());
         }
 
         return $this->supportedCommodityClassification[0];
@@ -1455,7 +1455,7 @@ class TransportationServiceType
      */
     public function addToUnsupportedCommodityClassificationWithCreate(): UnsupportedCommodityClassification
     {
-        $this->addTounsupportedCommodityClassification($unsupportedCommodityClassification = new UnsupportedCommodityClassification());
+        $this->addToUnsupportedCommodityClassification($unsupportedCommodityClassification = new UnsupportedCommodityClassification());
 
         return $unsupportedCommodityClassification;
     }
@@ -1486,7 +1486,7 @@ class TransportationServiceType
         }
 
         if ([] === $this->unsupportedCommodityClassification) {
-            $this->addOnceTounsupportedCommodityClassification(new UnsupportedCommodityClassification());
+            $this->addOnceToUnsupportedCommodityClassification(new UnsupportedCommodityClassification());
         }
 
         return $this->unsupportedCommodityClassification[0];
@@ -1619,7 +1619,7 @@ class TransportationServiceType
      */
     public function addToShipmentStageWithCreate(): ShipmentStage
     {
-        $this->addToshipmentStage($shipmentStage = new ShipmentStage());
+        $this->addToShipmentStage($shipmentStage = new ShipmentStage());
 
         return $shipmentStage;
     }
@@ -1650,7 +1650,7 @@ class TransportationServiceType
         }
 
         if ([] === $this->shipmentStage) {
-            $this->addOnceToshipmentStage(new ShipmentStage());
+            $this->addOnceToShipmentStage(new ShipmentStage());
         }
 
         return $this->shipmentStage[0];
@@ -1743,7 +1743,7 @@ class TransportationServiceType
      */
     public function addToTransportEventWithCreate(): TransportEvent
     {
-        $this->addTotransportEvent($transportEvent = new TransportEvent());
+        $this->addToTransportEvent($transportEvent = new TransportEvent());
 
         return $transportEvent;
     }
@@ -1774,7 +1774,7 @@ class TransportationServiceType
         }
 
         if ([] === $this->transportEvent) {
-            $this->addOnceTotransportEvent(new TransportEvent());
+            $this->addOnceToTransportEvent(new TransportEvent());
         }
 
         return $this->transportEvent[0];
@@ -1907,7 +1907,7 @@ class TransportationServiceType
      */
     public function addToEnvironmentalEmissionWithCreate(): EnvironmentalEmission
     {
-        $this->addToenvironmentalEmission($environmentalEmission = new EnvironmentalEmission());
+        $this->addToEnvironmentalEmission($environmentalEmission = new EnvironmentalEmission());
 
         return $environmentalEmission;
     }
@@ -1938,7 +1938,7 @@ class TransportationServiceType
         }
 
         if ([] === $this->environmentalEmission) {
-            $this->addOnceToenvironmentalEmission(new EnvironmentalEmission());
+            $this->addOnceToEnvironmentalEmission(new EnvironmentalEmission());
         }
 
         return $this->environmentalEmission[0];
@@ -2071,7 +2071,7 @@ class TransportationServiceType
      */
     public function addToScheduledServiceFrequencyWithCreate(): ScheduledServiceFrequency
     {
-        $this->addToscheduledServiceFrequency($scheduledServiceFrequency = new ScheduledServiceFrequency());
+        $this->addToScheduledServiceFrequency($scheduledServiceFrequency = new ScheduledServiceFrequency());
 
         return $scheduledServiceFrequency;
     }
@@ -2102,7 +2102,7 @@ class TransportationServiceType
         }
 
         if ([] === $this->scheduledServiceFrequency) {
-            $this->addOnceToscheduledServiceFrequency(new ScheduledServiceFrequency());
+            $this->addOnceToScheduledServiceFrequency(new ScheduledServiceFrequency());
         }
 
         return $this->scheduledServiceFrequency[0];

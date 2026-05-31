@@ -376,7 +376,7 @@ class ItemManagementProfileType
      */
     public function addToReplenishmentOwnerDescriptionWithCreate(): ReplenishmentOwnerDescription
     {
-        $this->addToreplenishmentOwnerDescription($replenishmentOwnerDescription = new ReplenishmentOwnerDescription());
+        $this->addToReplenishmentOwnerDescription($replenishmentOwnerDescription = new ReplenishmentOwnerDescription());
 
         return $replenishmentOwnerDescription;
     }
@@ -407,7 +407,7 @@ class ItemManagementProfileType
         }
 
         if ([] === $this->replenishmentOwnerDescription) {
-            $this->addOnceToreplenishmentOwnerDescription(new ReplenishmentOwnerDescription());
+            $this->addOnceToReplenishmentOwnerDescription(new ReplenishmentOwnerDescription());
         }
 
         return $this->replenishmentOwnerDescription[0];

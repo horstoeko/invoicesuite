@@ -148,7 +148,7 @@ class DeclarationType
      */
     public function addToNameWithCreate(): Name
     {
-        $this->addToname($name = new Name());
+        $this->addToName($name = new Name());
 
         return $name;
     }
@@ -179,7 +179,7 @@ class DeclarationType
         }
 
         if ([] === $this->name) {
-            $this->addOnceToname(new Name());
+            $this->addOnceToName(new Name());
         }
 
         return $this->name[0];
@@ -312,7 +312,7 @@ class DeclarationType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -343,7 +343,7 @@ class DeclarationType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -436,7 +436,7 @@ class DeclarationType
      */
     public function addToEvidenceSuppliedWithCreate(): EvidenceSupplied
     {
-        $this->addToevidenceSupplied($evidenceSupplied = new EvidenceSupplied());
+        $this->addToEvidenceSupplied($evidenceSupplied = new EvidenceSupplied());
 
         return $evidenceSupplied;
     }
@@ -467,7 +467,7 @@ class DeclarationType
         }
 
         if ([] === $this->evidenceSupplied) {
-            $this->addOnceToevidenceSupplied(new EvidenceSupplied());
+            $this->addOnceToEvidenceSupplied(new EvidenceSupplied());
         }
 
         return $this->evidenceSupplied[0];

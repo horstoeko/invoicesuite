@@ -195,7 +195,7 @@ class TradePriceType
      */
     public function addToAppliedTradeAllowanceChargeWithCreate(): TradeAllowanceChargeType
     {
-        $this->addToappliedTradeAllowanceCharge($appliedTradeAllowanceCharge = new TradeAllowanceChargeType());
+        $this->addToAppliedTradeAllowanceCharge($appliedTradeAllowanceCharge = new TradeAllowanceChargeType());
 
         return $appliedTradeAllowanceCharge;
     }
@@ -226,7 +226,7 @@ class TradePriceType
         }
 
         if ([] === $this->appliedTradeAllowanceCharge) {
-            $this->addOnceToappliedTradeAllowanceCharge(new TradeAllowanceChargeType());
+            $this->addOnceToAppliedTradeAllowanceCharge(new TradeAllowanceChargeType());
         }
 
         return $this->appliedTradeAllowanceCharge[0];

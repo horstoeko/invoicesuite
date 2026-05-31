@@ -273,7 +273,7 @@ class RequestForQuotationLineType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -304,7 +304,7 @@ class RequestForQuotationLineType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -507,7 +507,7 @@ class RequestForQuotationLineType
      */
     public function addToDocumentReferenceWithCreate(): DocumentReference
     {
-        $this->addTodocumentReference($documentReference = new DocumentReference());
+        $this->addToDocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
     }
@@ -538,7 +538,7 @@ class RequestForQuotationLineType
         }
 
         if ([] === $this->documentReference) {
-            $this->addOnceTodocumentReference(new DocumentReference());
+            $this->addOnceToDocumentReference(new DocumentReference());
         }
 
         return $this->documentReference[0];

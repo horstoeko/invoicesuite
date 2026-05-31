@@ -275,7 +275,7 @@ class TelecommunicationsSupplyLineType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -306,7 +306,7 @@ class TelecommunicationsSupplyLineType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -439,7 +439,7 @@ class TelecommunicationsSupplyLineType
      */
     public function addToExchangeRateWithCreate(): ExchangeRate
     {
-        $this->addToexchangeRate($exchangeRate = new ExchangeRate());
+        $this->addToExchangeRate($exchangeRate = new ExchangeRate());
 
         return $exchangeRate;
     }
@@ -470,7 +470,7 @@ class TelecommunicationsSupplyLineType
         }
 
         if ([] === $this->exchangeRate) {
-            $this->addOnceToexchangeRate(new ExchangeRate());
+            $this->addOnceToExchangeRate(new ExchangeRate());
         }
 
         return $this->exchangeRate[0];
@@ -563,7 +563,7 @@ class TelecommunicationsSupplyLineType
      */
     public function addToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        $this->addToallowanceCharge($allowanceCharge = new AllowanceCharge());
+        $this->addToAllowanceCharge($allowanceCharge = new AllowanceCharge());
 
         return $allowanceCharge;
     }
@@ -594,7 +594,7 @@ class TelecommunicationsSupplyLineType
         }
 
         if ([] === $this->allowanceCharge) {
-            $this->addOnceToallowanceCharge(new AllowanceCharge());
+            $this->addOnceToAllowanceCharge(new AllowanceCharge());
         }
 
         return $this->allowanceCharge[0];
@@ -687,7 +687,7 @@ class TelecommunicationsSupplyLineType
      */
     public function addToTaxTotalWithCreate(): TaxTotal
     {
-        $this->addTotaxTotal($taxTotal = new TaxTotal());
+        $this->addToTaxTotal($taxTotal = new TaxTotal());
 
         return $taxTotal;
     }
@@ -718,7 +718,7 @@ class TelecommunicationsSupplyLineType
         }
 
         if ([] === $this->taxTotal) {
-            $this->addOnceTotaxTotal(new TaxTotal());
+            $this->addOnceToTaxTotal(new TaxTotal());
         }
 
         return $this->taxTotal[0];
@@ -811,7 +811,7 @@ class TelecommunicationsSupplyLineType
      */
     public function addToTelecommunicationsServiceWithCreate(): TelecommunicationsService
     {
-        $this->addTotelecommunicationsService($telecommunicationsService = new TelecommunicationsService());
+        $this->addToTelecommunicationsService($telecommunicationsService = new TelecommunicationsService());
 
         return $telecommunicationsService;
     }
@@ -842,7 +842,7 @@ class TelecommunicationsSupplyLineType
         }
 
         if ([] === $this->telecommunicationsService) {
-            $this->addOnceTotelecommunicationsService(new TelecommunicationsService());
+            $this->addOnceToTelecommunicationsService(new TelecommunicationsService());
         }
 
         return $this->telecommunicationsService[0];

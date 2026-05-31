@@ -175,7 +175,7 @@ class OnAccountPaymentType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -206,7 +206,7 @@ class OnAccountPaymentType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -299,7 +299,7 @@ class OnAccountPaymentType
      */
     public function addToPaymentTermsWithCreate(): PaymentTerms
     {
-        $this->addTopaymentTerms($paymentTerms = new PaymentTerms());
+        $this->addToPaymentTerms($paymentTerms = new PaymentTerms());
 
         return $paymentTerms;
     }
@@ -330,7 +330,7 @@ class OnAccountPaymentType
         }
 
         if ([] === $this->paymentTerms) {
-            $this->addOnceTopaymentTerms(new PaymentTerms());
+            $this->addOnceToPaymentTerms(new PaymentTerms());
         }
 
         return $this->paymentTerms[0];

@@ -296,7 +296,7 @@ class TaxTotalType
      */
     public function addToTaxSubtotalWithCreate(): TaxSubtotal
     {
-        $this->addTotaxSubtotal($taxSubtotal = new TaxSubtotal());
+        $this->addToTaxSubtotal($taxSubtotal = new TaxSubtotal());
 
         return $taxSubtotal;
     }
@@ -327,7 +327,7 @@ class TaxTotalType
         }
 
         if ([] === $this->taxSubtotal) {
-            $this->addOnceTotaxSubtotal(new TaxSubtotal());
+            $this->addOnceToTaxSubtotal(new TaxSubtotal());
         }
 
         return $this->taxSubtotal[0];

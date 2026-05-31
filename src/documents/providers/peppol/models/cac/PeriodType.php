@@ -341,7 +341,7 @@ class PeriodType
      */
     public function addToDescriptionCodeWithCreate(): DescriptionCode
     {
-        $this->addTodescriptionCode($descriptionCode = new DescriptionCode());
+        $this->addToDescriptionCode($descriptionCode = new DescriptionCode());
 
         return $descriptionCode;
     }
@@ -372,7 +372,7 @@ class PeriodType
         }
 
         if ([] === $this->descriptionCode) {
-            $this->addOnceTodescriptionCode(new DescriptionCode());
+            $this->addOnceToDescriptionCode(new DescriptionCode());
         }
 
         return $this->descriptionCode[0];
@@ -465,7 +465,7 @@ class PeriodType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -496,7 +496,7 @@ class PeriodType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];

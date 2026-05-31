@@ -1586,7 +1586,7 @@ class ConsignmentType
      */
     public function addToSummaryDescriptionWithCreate(): SummaryDescription
     {
-        $this->addTosummaryDescription($summaryDescription = new SummaryDescription());
+        $this->addToSummaryDescription($summaryDescription = new SummaryDescription());
 
         return $summaryDescription;
     }
@@ -1617,7 +1617,7 @@ class ConsignmentType
         }
 
         if ([] === $this->summaryDescription) {
-            $this->addOnceTosummaryDescription(new SummaryDescription());
+            $this->addOnceToSummaryDescription(new SummaryDescription());
         }
 
         return $this->summaryDescription[0];
@@ -1790,7 +1790,7 @@ class ConsignmentType
      */
     public function addToTariffDescriptionWithCreate(): TariffDescription
     {
-        $this->addTotariffDescription($tariffDescription = new TariffDescription());
+        $this->addToTariffDescription($tariffDescription = new TariffDescription());
 
         return $tariffDescription;
     }
@@ -1821,7 +1821,7 @@ class ConsignmentType
         }
 
         if ([] === $this->tariffDescription) {
-            $this->addOnceTotariffDescription(new TariffDescription());
+            $this->addOnceToTariffDescription(new TariffDescription());
         }
 
         return $this->tariffDescription[0];
@@ -2274,7 +2274,7 @@ class ConsignmentType
      */
     public function addToRemarksWithCreate(): Remarks
     {
-        $this->addToremarks($remarks = new Remarks());
+        $this->addToRemarks($remarks = new Remarks());
 
         return $remarks;
     }
@@ -2305,7 +2305,7 @@ class ConsignmentType
         }
 
         if ([] === $this->remarks) {
-            $this->addOnceToremarks(new Remarks());
+            $this->addOnceToRemarks(new Remarks());
         }
 
         return $this->remarks[0];
@@ -2668,7 +2668,7 @@ class ConsignmentType
      */
     public function addToCarrierServiceInstructionsWithCreate(): CarrierServiceInstructions
     {
-        $this->addTocarrierServiceInstructions($carrierServiceInstructions = new CarrierServiceInstructions());
+        $this->addToCarrierServiceInstructions($carrierServiceInstructions = new CarrierServiceInstructions());
 
         return $carrierServiceInstructions;
     }
@@ -2699,7 +2699,7 @@ class ConsignmentType
         }
 
         if ([] === $this->carrierServiceInstructions) {
-            $this->addOnceTocarrierServiceInstructions(new CarrierServiceInstructions());
+            $this->addOnceToCarrierServiceInstructions(new CarrierServiceInstructions());
         }
 
         return $this->carrierServiceInstructions[0];
@@ -2792,7 +2792,7 @@ class ConsignmentType
      */
     public function addToCustomsClearanceServiceInstructionsWithCreate(): CustomsClearanceServiceInstructions
     {
-        $this->addTocustomsClearanceServiceInstructions($customsClearanceServiceInstructions = new CustomsClearanceServiceInstructions());
+        $this->addToCustomsClearanceServiceInstructions($customsClearanceServiceInstructions = new CustomsClearanceServiceInstructions());
 
         return $customsClearanceServiceInstructions;
     }
@@ -2823,7 +2823,7 @@ class ConsignmentType
         }
 
         if ([] === $this->customsClearanceServiceInstructions) {
-            $this->addOnceTocustomsClearanceServiceInstructions(new CustomsClearanceServiceInstructions());
+            $this->addOnceToCustomsClearanceServiceInstructions(new CustomsClearanceServiceInstructions());
         }
 
         return $this->customsClearanceServiceInstructions[0];
@@ -2916,7 +2916,7 @@ class ConsignmentType
      */
     public function addToForwarderServiceInstructionsWithCreate(): ForwarderServiceInstructions
     {
-        $this->addToforwarderServiceInstructions($forwarderServiceInstructions = new ForwarderServiceInstructions());
+        $this->addToForwarderServiceInstructions($forwarderServiceInstructions = new ForwarderServiceInstructions());
 
         return $forwarderServiceInstructions;
     }
@@ -2947,7 +2947,7 @@ class ConsignmentType
         }
 
         if ([] === $this->forwarderServiceInstructions) {
-            $this->addOnceToforwarderServiceInstructions(new ForwarderServiceInstructions());
+            $this->addOnceToForwarderServiceInstructions(new ForwarderServiceInstructions());
         }
 
         return $this->forwarderServiceInstructions[0];
@@ -3040,7 +3040,7 @@ class ConsignmentType
      */
     public function addToSpecialServiceInstructionsWithCreate(): SpecialServiceInstructions
     {
-        $this->addTospecialServiceInstructions($specialServiceInstructions = new SpecialServiceInstructions());
+        $this->addToSpecialServiceInstructions($specialServiceInstructions = new SpecialServiceInstructions());
 
         return $specialServiceInstructions;
     }
@@ -3071,7 +3071,7 @@ class ConsignmentType
         }
 
         if ([] === $this->specialServiceInstructions) {
-            $this->addOnceTospecialServiceInstructions(new SpecialServiceInstructions());
+            $this->addOnceToSpecialServiceInstructions(new SpecialServiceInstructions());
         }
 
         return $this->specialServiceInstructions[0];
@@ -3284,7 +3284,7 @@ class ConsignmentType
      */
     public function addToHandlingInstructionsWithCreate(): HandlingInstructions
     {
-        $this->addTohandlingInstructions($handlingInstructions = new HandlingInstructions());
+        $this->addToHandlingInstructions($handlingInstructions = new HandlingInstructions());
 
         return $handlingInstructions;
     }
@@ -3315,7 +3315,7 @@ class ConsignmentType
         }
 
         if ([] === $this->handlingInstructions) {
-            $this->addOnceTohandlingInstructions(new HandlingInstructions());
+            $this->addOnceToHandlingInstructions(new HandlingInstructions());
         }
 
         return $this->handlingInstructions[0];
@@ -3408,7 +3408,7 @@ class ConsignmentType
      */
     public function addToInformationWithCreate(): Information
     {
-        $this->addToinformation($information = new Information());
+        $this->addToInformation($information = new Information());
 
         return $information;
     }
@@ -3439,7 +3439,7 @@ class ConsignmentType
         }
 
         if ([] === $this->information) {
-            $this->addOnceToinformation(new Information());
+            $this->addOnceToInformation(new Information());
         }
 
         return $this->information[0];
@@ -3772,7 +3772,7 @@ class ConsignmentType
      */
     public function addToSpecialInstructionsWithCreate(): SpecialInstructions
     {
-        $this->addTospecialInstructions($specialInstructions = new SpecialInstructions());
+        $this->addToSpecialInstructions($specialInstructions = new SpecialInstructions());
 
         return $specialInstructions;
     }
@@ -3803,7 +3803,7 @@ class ConsignmentType
         }
 
         if ([] === $this->specialInstructions) {
-            $this->addOnceTospecialInstructions(new SpecialInstructions());
+            $this->addOnceToSpecialInstructions(new SpecialInstructions());
         }
 
         return $this->specialInstructions[0];
@@ -3926,7 +3926,7 @@ class ConsignmentType
      */
     public function addToDeliveryInstructionsWithCreate(): DeliveryInstructions
     {
-        $this->addTodeliveryInstructions($deliveryInstructions = new DeliveryInstructions());
+        $this->addToDeliveryInstructions($deliveryInstructions = new DeliveryInstructions());
 
         return $deliveryInstructions;
     }
@@ -3957,7 +3957,7 @@ class ConsignmentType
         }
 
         if ([] === $this->deliveryInstructions) {
-            $this->addOnceTodeliveryInstructions(new DeliveryInstructions());
+            $this->addOnceToDeliveryInstructions(new DeliveryInstructions());
         }
 
         return $this->deliveryInstructions[0];
@@ -4120,7 +4120,7 @@ class ConsignmentType
      */
     public function addToHaulageInstructionsWithCreate(): HaulageInstructions
     {
-        $this->addTohaulageInstructions($haulageInstructions = new HaulageInstructions());
+        $this->addToHaulageInstructions($haulageInstructions = new HaulageInstructions());
 
         return $haulageInstructions;
     }
@@ -4151,7 +4151,7 @@ class ConsignmentType
         }
 
         if ([] === $this->haulageInstructions) {
-            $this->addOnceTohaulageInstructions(new HaulageInstructions());
+            $this->addOnceToHaulageInstructions(new HaulageInstructions());
         }
 
         return $this->haulageInstructions[0];
@@ -4364,7 +4364,7 @@ class ConsignmentType
      */
     public function addToConsolidatedShipmentWithCreate(): ConsolidatedShipment
     {
-        $this->addToconsolidatedShipment($consolidatedShipment = new ConsolidatedShipment());
+        $this->addToConsolidatedShipment($consolidatedShipment = new ConsolidatedShipment());
 
         return $consolidatedShipment;
     }
@@ -4395,7 +4395,7 @@ class ConsignmentType
         }
 
         if ([] === $this->consolidatedShipment) {
-            $this->addOnceToconsolidatedShipment(new ConsolidatedShipment());
+            $this->addOnceToConsolidatedShipment(new ConsolidatedShipment());
         }
 
         return $this->consolidatedShipment[0];
@@ -4488,7 +4488,7 @@ class ConsignmentType
      */
     public function addToCustomsDeclarationWithCreate(): CustomsDeclaration
     {
-        $this->addTocustomsDeclaration($customsDeclaration = new CustomsDeclaration());
+        $this->addToCustomsDeclaration($customsDeclaration = new CustomsDeclaration());
 
         return $customsDeclaration;
     }
@@ -4519,7 +4519,7 @@ class ConsignmentType
         }
 
         if ([] === $this->customsDeclaration) {
-            $this->addOnceTocustomsDeclaration(new CustomsDeclaration());
+            $this->addOnceToCustomsDeclaration(new CustomsDeclaration());
         }
 
         return $this->customsDeclaration[0];
@@ -4772,7 +4772,7 @@ class ConsignmentType
      */
     public function addToStatusWithCreate(): Status
     {
-        $this->addTostatus($status = new Status());
+        $this->addToStatus($status = new Status());
 
         return $status;
     }
@@ -4803,7 +4803,7 @@ class ConsignmentType
         }
 
         if ([] === $this->status) {
-            $this->addOnceTostatus(new Status());
+            $this->addOnceToStatus(new Status());
         }
 
         return $this->status[0];
@@ -4896,7 +4896,7 @@ class ConsignmentType
      */
     public function addToChildConsignmentWithCreate(): ChildConsignment
     {
-        $this->addTochildConsignment($childConsignment = new ChildConsignment());
+        $this->addToChildConsignment($childConsignment = new ChildConsignment());
 
         return $childConsignment;
     }
@@ -4927,7 +4927,7 @@ class ConsignmentType
         }
 
         if ([] === $this->childConsignment) {
-            $this->addOnceTochildConsignment(new ChildConsignment());
+            $this->addOnceToChildConsignment(new ChildConsignment());
         }
 
         return $this->childConsignment[0];
@@ -5780,7 +5780,7 @@ class ConsignmentType
      */
     public function addToTransitCountryWithCreate(): TransitCountry
     {
-        $this->addTotransitCountry($transitCountry = new TransitCountry());
+        $this->addToTransitCountry($transitCountry = new TransitCountry());
 
         return $transitCountry;
     }
@@ -5811,7 +5811,7 @@ class ConsignmentType
         }
 
         if ([] === $this->transitCountry) {
-            $this->addOnceTotransitCountry(new TransitCountry());
+            $this->addOnceToTransitCountry(new TransitCountry());
         }
 
         return $this->transitCountry[0];
@@ -5944,7 +5944,7 @@ class ConsignmentType
      */
     public function addToTransportEventWithCreate(): TransportEvent
     {
-        $this->addTotransportEvent($transportEvent = new TransportEvent());
+        $this->addToTransportEvent($transportEvent = new TransportEvent());
 
         return $transportEvent;
     }
@@ -5975,7 +5975,7 @@ class ConsignmentType
         }
 
         if ([] === $this->transportEvent) {
-            $this->addOnceTotransportEvent(new TransportEvent());
+            $this->addOnceToTransportEvent(new TransportEvent());
         }
 
         return $this->transportEvent[0];
@@ -6348,7 +6348,7 @@ class ConsignmentType
      */
     public function addToFreightAllowanceChargeWithCreate(): FreightAllowanceCharge
     {
-        $this->addTofreightAllowanceCharge($freightAllowanceCharge = new FreightAllowanceCharge());
+        $this->addToFreightAllowanceCharge($freightAllowanceCharge = new FreightAllowanceCharge());
 
         return $freightAllowanceCharge;
     }
@@ -6379,7 +6379,7 @@ class ConsignmentType
         }
 
         if ([] === $this->freightAllowanceCharge) {
-            $this->addOnceTofreightAllowanceCharge(new FreightAllowanceCharge());
+            $this->addOnceToFreightAllowanceCharge(new FreightAllowanceCharge());
         }
 
         return $this->freightAllowanceCharge[0];
@@ -6472,7 +6472,7 @@ class ConsignmentType
      */
     public function addToExtraAllowanceChargeWithCreate(): ExtraAllowanceCharge
     {
-        $this->addToextraAllowanceCharge($extraAllowanceCharge = new ExtraAllowanceCharge());
+        $this->addToExtraAllowanceCharge($extraAllowanceCharge = new ExtraAllowanceCharge());
 
         return $extraAllowanceCharge;
     }
@@ -6503,7 +6503,7 @@ class ConsignmentType
         }
 
         if ([] === $this->extraAllowanceCharge) {
-            $this->addOnceToextraAllowanceCharge(new ExtraAllowanceCharge());
+            $this->addOnceToExtraAllowanceCharge(new ExtraAllowanceCharge());
         }
 
         return $this->extraAllowanceCharge[0];
@@ -6596,7 +6596,7 @@ class ConsignmentType
      */
     public function addToMainCarriageShipmentStageWithCreate(): MainCarriageShipmentStage
     {
-        $this->addTomainCarriageShipmentStage($mainCarriageShipmentStage = new MainCarriageShipmentStage());
+        $this->addToMainCarriageShipmentStage($mainCarriageShipmentStage = new MainCarriageShipmentStage());
 
         return $mainCarriageShipmentStage;
     }
@@ -6627,7 +6627,7 @@ class ConsignmentType
         }
 
         if ([] === $this->mainCarriageShipmentStage) {
-            $this->addOnceTomainCarriageShipmentStage(new MainCarriageShipmentStage());
+            $this->addOnceToMainCarriageShipmentStage(new MainCarriageShipmentStage());
         }
 
         return $this->mainCarriageShipmentStage[0];
@@ -6720,7 +6720,7 @@ class ConsignmentType
      */
     public function addToPreCarriageShipmentStageWithCreate(): PreCarriageShipmentStage
     {
-        $this->addTopreCarriageShipmentStage($preCarriageShipmentStage = new PreCarriageShipmentStage());
+        $this->addToPreCarriageShipmentStage($preCarriageShipmentStage = new PreCarriageShipmentStage());
 
         return $preCarriageShipmentStage;
     }
@@ -6751,7 +6751,7 @@ class ConsignmentType
         }
 
         if ([] === $this->preCarriageShipmentStage) {
-            $this->addOnceTopreCarriageShipmentStage(new PreCarriageShipmentStage());
+            $this->addOnceToPreCarriageShipmentStage(new PreCarriageShipmentStage());
         }
 
         return $this->preCarriageShipmentStage[0];
@@ -6844,7 +6844,7 @@ class ConsignmentType
      */
     public function addToOnCarriageShipmentStageWithCreate(): OnCarriageShipmentStage
     {
-        $this->addToonCarriageShipmentStage($onCarriageShipmentStage = new OnCarriageShipmentStage());
+        $this->addToOnCarriageShipmentStage($onCarriageShipmentStage = new OnCarriageShipmentStage());
 
         return $onCarriageShipmentStage;
     }
@@ -6875,7 +6875,7 @@ class ConsignmentType
         }
 
         if ([] === $this->onCarriageShipmentStage) {
-            $this->addOnceToonCarriageShipmentStage(new OnCarriageShipmentStage());
+            $this->addOnceToOnCarriageShipmentStage(new OnCarriageShipmentStage());
         }
 
         return $this->onCarriageShipmentStage[0];
@@ -6968,7 +6968,7 @@ class ConsignmentType
      */
     public function addToTransportHandlingUnitWithCreate(): TransportHandlingUnit
     {
-        $this->addTotransportHandlingUnit($transportHandlingUnit = new TransportHandlingUnit());
+        $this->addToTransportHandlingUnit($transportHandlingUnit = new TransportHandlingUnit());
 
         return $transportHandlingUnit;
     }
@@ -6999,7 +6999,7 @@ class ConsignmentType
         }
 
         if ([] === $this->transportHandlingUnit) {
-            $this->addOnceTotransportHandlingUnit(new TransportHandlingUnit());
+            $this->addOnceToTransportHandlingUnit(new TransportHandlingUnit());
         }
 
         return $this->transportHandlingUnit[0];

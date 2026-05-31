@@ -341,7 +341,7 @@ class PartyTaxSchemeType
      */
     public function addToExemptionReasonWithCreate(): ExemptionReason
     {
-        $this->addToexemptionReason($exemptionReason = new ExemptionReason());
+        $this->addToExemptionReason($exemptionReason = new ExemptionReason());
 
         return $exemptionReason;
     }
@@ -372,7 +372,7 @@ class PartyTaxSchemeType
         }
 
         if ([] === $this->exemptionReason) {
-            $this->addOnceToexemptionReason(new ExemptionReason());
+            $this->addOnceToExemptionReason(new ExemptionReason());
         }
 
         return $this->exemptionReason[0];

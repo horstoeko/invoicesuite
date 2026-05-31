@@ -195,7 +195,7 @@ class AdvancePaymentType
      */
     public function addToIncludedTradeTaxWithCreate(): TradeTaxType
     {
-        $this->addToincludedTradeTax($includedTradeTax = new TradeTaxType());
+        $this->addToIncludedTradeTax($includedTradeTax = new TradeTaxType());
 
         return $includedTradeTax;
     }
@@ -226,7 +226,7 @@ class AdvancePaymentType
         }
 
         if ([] === $this->includedTradeTax) {
-            $this->addOnceToincludedTradeTax(new TradeTaxType());
+            $this->addOnceToIncludedTradeTax(new TradeTaxType());
         }
 
         return $this->includedTradeTax[0];

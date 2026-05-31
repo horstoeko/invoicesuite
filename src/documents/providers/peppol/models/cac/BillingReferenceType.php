@@ -467,7 +467,7 @@ class BillingReferenceType
      */
     public function addToBillingReferenceLineWithCreate(): BillingReferenceLine
     {
-        $this->addTobillingReferenceLine($billingReferenceLine = new BillingReferenceLine());
+        $this->addToBillingReferenceLine($billingReferenceLine = new BillingReferenceLine());
 
         return $billingReferenceLine;
     }
@@ -498,7 +498,7 @@ class BillingReferenceType
         }
 
         if ([] === $this->billingReferenceLine) {
-            $this->addOnceTobillingReferenceLine(new BillingReferenceLine());
+            $this->addOnceToBillingReferenceLine(new BillingReferenceLine());
         }
 
         return $this->billingReferenceLine[0];

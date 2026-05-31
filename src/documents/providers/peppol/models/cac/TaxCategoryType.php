@@ -458,7 +458,7 @@ class TaxCategoryType
      */
     public function addToTaxExemptionReasonWithCreate(): TaxExemptionReason
     {
-        $this->addTotaxExemptionReason($taxExemptionReason = new TaxExemptionReason());
+        $this->addToTaxExemptionReason($taxExemptionReason = new TaxExemptionReason());
 
         return $taxExemptionReason;
     }
@@ -489,7 +489,7 @@ class TaxCategoryType
         }
 
         if ([] === $this->taxExemptionReason) {
-            $this->addOnceTotaxExemptionReason(new TaxExemptionReason());
+            $this->addOnceToTaxExemptionReason(new TaxExemptionReason());
         }
 
         return $this->taxExemptionReason[0];

@@ -186,7 +186,7 @@ class ContractingPartyType extends ContractingPartyTypeType
      */
     public function addToContractingPartyTypeWithCreate(): ContractingPartyType1
     {
-        $this->addTocontractingPartyType($contractingPartyType = new ContractingPartyType1());
+        $this->addToContractingPartyType($contractingPartyType = new ContractingPartyType1());
 
         return $contractingPartyType;
     }
@@ -217,7 +217,7 @@ class ContractingPartyType extends ContractingPartyTypeType
         }
 
         if ([] === $this->contractingPartyType) {
-            $this->addOnceTocontractingPartyType(new ContractingPartyType1());
+            $this->addOnceToContractingPartyType(new ContractingPartyType1());
         }
 
         return $this->contractingPartyType[0];
@@ -310,7 +310,7 @@ class ContractingPartyType extends ContractingPartyTypeType
      */
     public function addToContractingActivityWithCreate(): ContractingActivity
     {
-        $this->addTocontractingActivity($contractingActivity = new ContractingActivity());
+        $this->addToContractingActivity($contractingActivity = new ContractingActivity());
 
         return $contractingActivity;
     }
@@ -341,7 +341,7 @@ class ContractingPartyType extends ContractingPartyTypeType
         }
 
         if ([] === $this->contractingActivity) {
-            $this->addOnceTocontractingActivity(new ContractingActivity());
+            $this->addOnceToContractingActivity(new ContractingActivity());
         }
 
         return $this->contractingActivity[0];

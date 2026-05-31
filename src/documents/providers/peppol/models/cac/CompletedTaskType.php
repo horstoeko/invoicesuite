@@ -301,7 +301,7 @@ class CompletedTaskType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -332,7 +332,7 @@ class CompletedTaskType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -425,7 +425,7 @@ class CompletedTaskType
      */
     public function addToEvidenceSuppliedWithCreate(): EvidenceSupplied
     {
-        $this->addToevidenceSupplied($evidenceSupplied = new EvidenceSupplied());
+        $this->addToEvidenceSupplied($evidenceSupplied = new EvidenceSupplied());
 
         return $evidenceSupplied;
     }
@@ -456,7 +456,7 @@ class CompletedTaskType
         }
 
         if ([] === $this->evidenceSupplied) {
-            $this->addOnceToevidenceSupplied(new EvidenceSupplied());
+            $this->addOnceToEvidenceSupplied(new EvidenceSupplied());
         }
 
         return $this->evidenceSupplied[0];

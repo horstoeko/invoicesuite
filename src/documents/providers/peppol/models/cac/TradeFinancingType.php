@@ -299,7 +299,7 @@ class TradeFinancingType
      */
     public function addToDocumentReferenceWithCreate(): DocumentReference
     {
-        $this->addTodocumentReference($documentReference = new DocumentReference());
+        $this->addToDocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
     }
@@ -330,7 +330,7 @@ class TradeFinancingType
         }
 
         if ([] === $this->documentReference) {
-            $this->addOnceTodocumentReference(new DocumentReference());
+            $this->addOnceToDocumentReference(new DocumentReference());
         }
 
         return $this->documentReference[0];
@@ -503,7 +503,7 @@ class TradeFinancingType
      */
     public function addToClauseWithCreate(): Clause
     {
-        $this->addToclause($clause = new Clause());
+        $this->addToClause($clause = new Clause());
 
         return $clause;
     }
@@ -534,7 +534,7 @@ class TradeFinancingType
         }
 
         if ([] === $this->clause) {
-            $this->addOnceToclause(new Clause());
+            $this->addOnceToClause(new Clause());
         }
 
         return $this->clause[0];

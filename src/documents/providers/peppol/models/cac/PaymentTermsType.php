@@ -363,7 +363,7 @@ class PaymentTermsType
      */
     public function addToPaymentMeansIDWithCreate(): PaymentMeansID
     {
-        $this->addTopaymentMeansID($paymentMeansID = new PaymentMeansID());
+        $this->addToPaymentMeansID($paymentMeansID = new PaymentMeansID());
 
         return $paymentMeansID;
     }
@@ -394,7 +394,7 @@ class PaymentTermsType
         }
 
         if ([] === $this->paymentMeansID) {
-            $this->addOnceTopaymentMeansID(new PaymentMeansID());
+            $this->addOnceToPaymentMeansID(new PaymentMeansID());
         }
 
         return $this->paymentMeansID[0];
@@ -527,7 +527,7 @@ class PaymentTermsType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -558,7 +558,7 @@ class PaymentTermsType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];

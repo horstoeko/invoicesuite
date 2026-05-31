@@ -502,7 +502,7 @@ class ContractType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -533,7 +533,7 @@ class ContractType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -666,7 +666,7 @@ class ContractType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -697,7 +697,7 @@ class ContractType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -830,7 +830,7 @@ class ContractType
      */
     public function addToContractDocumentReferenceWithCreate(): ContractDocumentReference
     {
-        $this->addTocontractDocumentReference($contractDocumentReference = new ContractDocumentReference());
+        $this->addToContractDocumentReference($contractDocumentReference = new ContractDocumentReference());
 
         return $contractDocumentReference;
     }
@@ -861,7 +861,7 @@ class ContractType
         }
 
         if ([] === $this->contractDocumentReference) {
-            $this->addOnceTocontractDocumentReference(new ContractDocumentReference());
+            $this->addOnceToContractDocumentReference(new ContractDocumentReference());
         }
 
         return $this->contractDocumentReference[0];

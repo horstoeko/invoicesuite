@@ -3298,14 +3298,14 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
 
         $newInvoiceSuiteAttachment = null;
 
-        if ($documentAdditionalReference->getAttachment()?->getEmbeddedDocumentBinaryObject()) {
+        if (!is_null($documentAdditionalReference->getAttachment()?->getEmbeddedDocumentBinaryObject())) {
             $newInvoiceSuiteAttachment = InvoiceSuiteAttachment::fromBinaryString(
                 $documentAdditionalReference->getAttachment()->getEmbeddedDocumentBinaryObject()->getValue() ?? '',
                 $documentAdditionalReference->getAttachment()->getEmbeddedDocumentBinaryObject()->getFilename() ?? ''
             );
         }
 
-        if ($documentAdditionalReference->getAttachment()?->getExternalReference()?->getURI()) {
+        if (!is_null($documentAdditionalReference->getAttachment()?->getExternalReference()?->getURI())) {
             $newInvoiceSuiteAttachment = InvoiceSuiteAttachment::fromUrl(
                 $documentAdditionalReference->getAttachment()->getExternalReference()->getURI()->getValue() ?? ''
             );
@@ -7844,7 +7844,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
         $newFinancialCardId = $documentPaymentMean->getCardAccount()?->getPrimaryAccountNumberID()?->getValue() ?? '';
         $newFinancialCardHolder = $documentPaymentMean->getCardAccount()?->getHolderName()?->getValue() ?? '';
         $newBuyerIban = $documentPaymentMean->getPaymentMandate()?->getPayerFinancialAccount()?->getID()?->getValue() ?? '';
-        $newPayeeIban = $documentPaymentMean->getPayeeFinancialAccount()?->getId()?->getValue() ?? '';
+        $newPayeeIban = $documentPaymentMean->getPayeeFinancialAccount()?->getID()?->getValue() ?? '';
         $newPayeeAccountName = $documentPaymentMean->getPayeeFinancialAccount()?->getName()?->getValue() ?? '';
         $newPayeeProprietaryId = '';
         $newPayeeBic = $documentPaymentMean->getPayeeFinancialAccount()?->getFinancialInstitutionBranch()?->getID()?->getValue() ?? '';
@@ -10993,7 +10993,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
     /**
      * Get all buyer/customer IDs
      *
-     * @return array<PartyIdentification>
+     * @return array<ID>
      */
     private function resolveDocumentShipToIds(): array
     {
@@ -11011,7 +11011,7 @@ class InvoiceSuitePeppol30InvoiceProviderReader extends InvoiceSuiteAbstractDocu
     /**
      * Get all buyer/customer global IDs
      *
-     * @return array<PartyIdentification>
+     * @return array<ID>
      */
     private function resolveDocumentShipToGlobalIds(): array
     {

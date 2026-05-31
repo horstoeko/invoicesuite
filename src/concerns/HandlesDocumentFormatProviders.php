@@ -45,7 +45,7 @@ trait HandlesDocumentFormatProviders
     public function registerDocumentFormatProvider(
         InvoiceSuiteAbstractDocumentFormatProvider $invoiceSuiteAbstractFormatProvider
     ): static {
-        if (in_array($invoiceSuiteAbstractFormatProvider, $this->registeredDocumentFormatProviders)) {
+        if (in_array($invoiceSuiteAbstractFormatProvider, $this->registeredDocumentFormatProviders, true)) {
             return $this;
         }
 

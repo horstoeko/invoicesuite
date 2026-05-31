@@ -219,7 +219,7 @@ class SupplierPartyType
      */
     public function addToAdditionalAccountIDWithCreate(): AdditionalAccountID
     {
-        $this->addToadditionalAccountID($additionalAccountID = new AdditionalAccountID());
+        $this->addToAdditionalAccountID($additionalAccountID = new AdditionalAccountID());
 
         return $additionalAccountID;
     }
@@ -250,7 +250,7 @@ class SupplierPartyType
         }
 
         if ([] === $this->additionalAccountID) {
-            $this->addOnceToadditionalAccountID(new AdditionalAccountID());
+            $this->addOnceToAdditionalAccountID(new AdditionalAccountID());
         }
 
         return $this->additionalAccountID[0];

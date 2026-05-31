@@ -227,7 +227,7 @@ class TransactionConditionsType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -258,7 +258,7 @@ class TransactionConditionsType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -351,7 +351,7 @@ class TransactionConditionsType
      */
     public function addToDocumentReferenceWithCreate(): DocumentReference
     {
-        $this->addTodocumentReference($documentReference = new DocumentReference());
+        $this->addToDocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
     }
@@ -382,7 +382,7 @@ class TransactionConditionsType
         }
 
         if ([] === $this->documentReference) {
-            $this->addOnceTodocumentReference(new DocumentReference());
+            $this->addOnceToDocumentReference(new DocumentReference());
         }
 
         return $this->documentReference[0];

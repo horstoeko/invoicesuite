@@ -674,7 +674,7 @@ class MeterReadingType
      */
     public function addToMeterReadingCommentsWithCreate(): MeterReadingComments
     {
-        $this->addTometerReadingComments($meterReadingComments = new MeterReadingComments());
+        $this->addToMeterReadingComments($meterReadingComments = new MeterReadingComments());
 
         return $meterReadingComments;
     }
@@ -705,7 +705,7 @@ class MeterReadingType
         }
 
         if ([] === $this->meterReadingComments) {
-            $this->addOnceTometerReadingComments(new MeterReadingComments());
+            $this->addOnceToMeterReadingComments(new MeterReadingComments());
         }
 
         return $this->meterReadingComments[0];

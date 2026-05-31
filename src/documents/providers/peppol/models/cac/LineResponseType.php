@@ -161,7 +161,7 @@ class LineResponseType
      */
     public function addToResponseWithCreate(): Response
     {
-        $this->addToresponse($response = new Response());
+        $this->addToResponse($response = new Response());
 
         return $response;
     }
@@ -192,7 +192,7 @@ class LineResponseType
         }
 
         if ([] === $this->response) {
-            $this->addOnceToresponse(new Response());
+            $this->addOnceToResponse(new Response());
         }
 
         return $this->response[0];

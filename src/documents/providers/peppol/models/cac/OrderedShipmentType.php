@@ -161,7 +161,7 @@ class OrderedShipmentType
      */
     public function addToPackageWithCreate(): Package
     {
-        $this->addTopackage($package = new Package());
+        $this->addToPackage($package = new Package());
 
         return $package;
     }
@@ -192,7 +192,7 @@ class OrderedShipmentType
         }
 
         if ([] === $this->package) {
-            $this->addOnceTopackage(new Package());
+            $this->addOnceToPackage(new Package());
         }
 
         return $this->package[0];

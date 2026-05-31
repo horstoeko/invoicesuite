@@ -389,7 +389,7 @@ class ItemLocationQuantityType
      */
     public function addToTradingRestrictionsWithCreate(): TradingRestrictions
     {
-        $this->addTotradingRestrictions($tradingRestrictions = new TradingRestrictions());
+        $this->addToTradingRestrictions($tradingRestrictions = new TradingRestrictions());
 
         return $tradingRestrictions;
     }
@@ -420,7 +420,7 @@ class ItemLocationQuantityType
         }
 
         if ([] === $this->tradingRestrictions) {
-            $this->addOnceTotradingRestrictions(new TradingRestrictions());
+            $this->addOnceToTradingRestrictions(new TradingRestrictions());
         }
 
         return $this->tradingRestrictions[0];
@@ -513,7 +513,7 @@ class ItemLocationQuantityType
      */
     public function addToApplicableTerritoryAddressWithCreate(): ApplicableTerritoryAddress
     {
-        $this->addToapplicableTerritoryAddress($applicableTerritoryAddress = new ApplicableTerritoryAddress());
+        $this->addToApplicableTerritoryAddress($applicableTerritoryAddress = new ApplicableTerritoryAddress());
 
         return $applicableTerritoryAddress;
     }
@@ -544,7 +544,7 @@ class ItemLocationQuantityType
         }
 
         if ([] === $this->applicableTerritoryAddress) {
-            $this->addOnceToapplicableTerritoryAddress(new ApplicableTerritoryAddress());
+            $this->addOnceToApplicableTerritoryAddress(new ApplicableTerritoryAddress());
         }
 
         return $this->applicableTerritoryAddress[0];
@@ -677,7 +677,7 @@ class ItemLocationQuantityType
      */
     public function addToDeliveryUnitWithCreate(): DeliveryUnit
     {
-        $this->addTodeliveryUnit($deliveryUnit = new DeliveryUnit());
+        $this->addToDeliveryUnit($deliveryUnit = new DeliveryUnit());
 
         return $deliveryUnit;
     }
@@ -708,7 +708,7 @@ class ItemLocationQuantityType
         }
 
         if ([] === $this->deliveryUnit) {
-            $this->addOnceTodeliveryUnit(new DeliveryUnit());
+            $this->addOnceToDeliveryUnit(new DeliveryUnit());
         }
 
         return $this->deliveryUnit[0];
@@ -801,7 +801,7 @@ class ItemLocationQuantityType
      */
     public function addToApplicableTaxCategoryWithCreate(): ApplicableTaxCategory
     {
-        $this->addToapplicableTaxCategory($applicableTaxCategory = new ApplicableTaxCategory());
+        $this->addToApplicableTaxCategory($applicableTaxCategory = new ApplicableTaxCategory());
 
         return $applicableTaxCategory;
     }
@@ -832,7 +832,7 @@ class ItemLocationQuantityType
         }
 
         if ([] === $this->applicableTaxCategory) {
-            $this->addOnceToapplicableTaxCategory(new ApplicableTaxCategory());
+            $this->addOnceToApplicableTaxCategory(new ApplicableTaxCategory());
         }
 
         return $this->applicableTaxCategory[0];
@@ -965,7 +965,7 @@ class ItemLocationQuantityType
      */
     public function addToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        $this->addToallowanceCharge($allowanceCharge = new AllowanceCharge());
+        $this->addToAllowanceCharge($allowanceCharge = new AllowanceCharge());
 
         return $allowanceCharge;
     }
@@ -996,7 +996,7 @@ class ItemLocationQuantityType
         }
 
         if ([] === $this->allowanceCharge) {
-            $this->addOnceToallowanceCharge(new AllowanceCharge());
+            $this->addOnceToAllowanceCharge(new AllowanceCharge());
         }
 
         return $this->allowanceCharge[0];

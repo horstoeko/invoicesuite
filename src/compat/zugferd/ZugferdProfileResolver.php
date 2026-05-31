@@ -58,7 +58,7 @@ class ZugferdProfileResolver
         $documentReader = InvoiceSuiteDocumentReader::createFromContent($xmlContent);
 
         foreach (ZugferdProfiles::PROFILEDEF as $profile => $profileDef) {
-            if ($profileDef['invoicesuiteproviderid'] == $documentReader->getCurrentDocumentFormatProvider()->getUniqueId()) {
+            if ($profileDef['invoicesuiteproviderid'] === $documentReader->getCurrentDocumentFormatProvider()->getUniqueId()) {
                 return [$profile, $profileDef];
             }
         }

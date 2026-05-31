@@ -375,7 +375,7 @@ class TransportScheduleType
      */
     public function addToRemarksWithCreate(): Remarks
     {
-        $this->addToremarks($remarks = new Remarks());
+        $this->addToRemarks($remarks = new Remarks());
 
         return $remarks;
     }
@@ -406,7 +406,7 @@ class TransportScheduleType
         }
 
         if ([] === $this->remarks) {
-            $this->addOnceToremarks(new Remarks());
+            $this->addOnceToRemarks(new Remarks());
         }
 
         return $this->remarks[0];

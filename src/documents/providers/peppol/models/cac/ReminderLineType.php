@@ -305,7 +305,7 @@ class ReminderLineType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -336,7 +336,7 @@ class ReminderLineType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -779,7 +779,7 @@ class ReminderLineType
      */
     public function addToReminderPeriodWithCreate(): ReminderPeriod
     {
-        $this->addToreminderPeriod($reminderPeriod = new ReminderPeriod());
+        $this->addToReminderPeriod($reminderPeriod = new ReminderPeriod());
 
         return $reminderPeriod;
     }
@@ -810,7 +810,7 @@ class ReminderLineType
         }
 
         if ([] === $this->reminderPeriod) {
-            $this->addOnceToreminderPeriod(new ReminderPeriod());
+            $this->addOnceToReminderPeriod(new ReminderPeriod());
         }
 
         return $this->reminderPeriod[0];
@@ -903,7 +903,7 @@ class ReminderLineType
      */
     public function addToBillingReferenceWithCreate(): BillingReference
     {
-        $this->addTobillingReference($billingReference = new BillingReference());
+        $this->addToBillingReference($billingReference = new BillingReference());
 
         return $billingReference;
     }
@@ -934,7 +934,7 @@ class ReminderLineType
         }
 
         if ([] === $this->billingReference) {
-            $this->addOnceTobillingReference(new BillingReference());
+            $this->addOnceToBillingReference(new BillingReference());
         }
 
         return $this->billingReference[0];

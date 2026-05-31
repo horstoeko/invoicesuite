@@ -14,7 +14,7 @@ namespace horstoeko\zugferd;
 use BadMethodCallException;
 use DateTimeInterface;
 use DOMDocument;
-use DOMXpath;
+use DOMXPath;
 use Error;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
@@ -114,7 +114,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
         $providerId = $this->documentBuilder->getCurrentDocumentFormatProvider()->getUniqueId();
 
         foreach (ZugferdProfiles::PROFILEDEF as $profileId => $profileDef) {
-            if ($profileDef['invoicesuiteproviderid'] == $providerId) {
+            if ($profileDef['invoicesuiteproviderid'] === $providerId) {
                 return $profileId;
             }
         }
@@ -132,7 +132,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
         $providerId = $this->documentBuilder->getCurrentDocumentFormatProvider()->getUniqueId();
 
         foreach (ZugferdProfiles::PROFILEDEF as $profileDef) {
-            if ($profileDef['invoicesuiteproviderid'] == $providerId) {
+            if ($profileDef['invoicesuiteproviderid'] === $providerId) {
                 return $profileDef;
             }
         }
@@ -389,15 +389,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
     }
 
     /**
-     * Write the content of a invoice object to a DOMXpath instance
+     * Write the content of a invoice object to a DOMXPath instance
      *
-     * @return DOMXpath
+     * @return DOMXPath
      *
      * @throws RuntimeException
      */
-    public function getContentAsDomXPath(): DOMXpath
+    public function getContentAsDOMXPath(): DOMXPath
     {
-        return new DOMXpath($this->getContentAsDomDocument());
+        return new DOMXPath($this->getContentAsDomDocument());
     }
 
     /**

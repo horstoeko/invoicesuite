@@ -1381,7 +1381,7 @@ class AddressType
      */
     public function addToAddressLineWithCreate(): AddressLine
     {
-        $this->addToaddressLine($addressLine = new AddressLine());
+        $this->addToAddressLine($addressLine = new AddressLine());
 
         return $addressLine;
     }
@@ -1412,7 +1412,7 @@ class AddressType
         }
 
         if ([] === $this->addressLine) {
-            $this->addOnceToaddressLine(new AddressLine());
+            $this->addOnceToAddressLine(new AddressLine());
         }
 
         return $this->addressLine[0];
@@ -1545,7 +1545,7 @@ class AddressType
      */
     public function addToLocationCoordinateWithCreate(): LocationCoordinate
     {
-        $this->addTolocationCoordinate($locationCoordinate = new LocationCoordinate());
+        $this->addToLocationCoordinate($locationCoordinate = new LocationCoordinate());
 
         return $locationCoordinate;
     }
@@ -1576,7 +1576,7 @@ class AddressType
         }
 
         if ([] === $this->locationCoordinate) {
-            $this->addOnceTolocationCoordinate(new LocationCoordinate());
+            $this->addOnceToLocationCoordinate(new LocationCoordinate());
         }
 
         return $this->locationCoordinate[0];

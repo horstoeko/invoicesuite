@@ -384,7 +384,7 @@ class RequestedTenderTotalType
      */
     public function addToMonetaryScopeWithCreate(): MonetaryScope
     {
-        $this->addTomonetaryScope($monetaryScope = new MonetaryScope());
+        $this->addToMonetaryScope($monetaryScope = new MonetaryScope());
 
         return $monetaryScope;
     }
@@ -415,7 +415,7 @@ class RequestedTenderTotalType
         }
 
         if ([] === $this->monetaryScope) {
-            $this->addOnceTomonetaryScope(new MonetaryScope());
+            $this->addOnceToMonetaryScope(new MonetaryScope());
         }
 
         return $this->monetaryScope[0];
@@ -548,7 +548,7 @@ class RequestedTenderTotalType
      */
     public function addToApplicableTaxCategoryWithCreate(): ApplicableTaxCategory
     {
-        $this->addToapplicableTaxCategory($applicableTaxCategory = new ApplicableTaxCategory());
+        $this->addToApplicableTaxCategory($applicableTaxCategory = new ApplicableTaxCategory());
 
         return $applicableTaxCategory;
     }
@@ -579,7 +579,7 @@ class RequestedTenderTotalType
         }
 
         if ([] === $this->applicableTaxCategory) {
-            $this->addOnceToapplicableTaxCategory(new ApplicableTaxCategory());
+            $this->addOnceToApplicableTaxCategory(new ApplicableTaxCategory());
         }
 
         return $this->applicableTaxCategory[0];

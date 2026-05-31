@@ -262,7 +262,7 @@ class WorkPhaseReferenceType
      */
     public function addToWorkPhaseWithCreate(): WorkPhase
     {
-        $this->addToworkPhase($workPhase = new WorkPhase());
+        $this->addToWorkPhase($workPhase = new WorkPhase());
 
         return $workPhase;
     }
@@ -293,7 +293,7 @@ class WorkPhaseReferenceType
         }
 
         if ([] === $this->workPhase) {
-            $this->addOnceToworkPhase(new WorkPhase());
+            $this->addOnceToWorkPhase(new WorkPhase());
         }
 
         return $this->workPhase[0];
@@ -486,7 +486,7 @@ class WorkPhaseReferenceType
      */
     public function addToWorkOrderDocumentReferenceWithCreate(): WorkOrderDocumentReference
     {
-        $this->addToworkOrderDocumentReference($workOrderDocumentReference = new WorkOrderDocumentReference());
+        $this->addToWorkOrderDocumentReference($workOrderDocumentReference = new WorkOrderDocumentReference());
 
         return $workOrderDocumentReference;
     }
@@ -517,7 +517,7 @@ class WorkPhaseReferenceType
         }
 
         if ([] === $this->workOrderDocumentReference) {
-            $this->addOnceToworkOrderDocumentReference(new WorkOrderDocumentReference());
+            $this->addOnceToWorkOrderDocumentReference(new WorkOrderDocumentReference());
         }
 
         return $this->workOrderDocumentReference[0];

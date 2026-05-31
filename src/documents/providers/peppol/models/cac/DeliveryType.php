@@ -1051,7 +1051,7 @@ class DeliveryType
      */
     public function addToNotifyPartyWithCreate(): NotifyParty
     {
-        $this->addTonotifyParty($notifyParty = new NotifyParty());
+        $this->addToNotifyParty($notifyParty = new NotifyParty());
 
         return $notifyParty;
     }
@@ -1082,7 +1082,7 @@ class DeliveryType
         }
 
         if ([] === $this->notifyParty) {
-            $this->addOnceTonotifyParty(new NotifyParty());
+            $this->addOnceToNotifyParty(new NotifyParty());
         }
 
         return $this->notifyParty[0];
@@ -1215,7 +1215,7 @@ class DeliveryType
      */
     public function addToDeliveryTermsWithCreate(): DeliveryTerms
     {
-        $this->addTodeliveryTerms($deliveryTerms = new DeliveryTerms());
+        $this->addToDeliveryTerms($deliveryTerms = new DeliveryTerms());
 
         return $deliveryTerms;
     }
@@ -1246,7 +1246,7 @@ class DeliveryType
         }
 
         if ([] === $this->deliveryTerms) {
-            $this->addOnceTodeliveryTerms(new DeliveryTerms());
+            $this->addOnceToDeliveryTerms(new DeliveryTerms());
         }
 
         return $this->deliveryTerms[0];

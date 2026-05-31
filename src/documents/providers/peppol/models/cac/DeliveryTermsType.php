@@ -222,7 +222,7 @@ class DeliveryTermsType
      */
     public function addToSpecialTermsWithCreate(): SpecialTerms
     {
-        $this->addTospecialTerms($specialTerms = new SpecialTerms());
+        $this->addToSpecialTerms($specialTerms = new SpecialTerms());
 
         return $specialTerms;
     }
@@ -253,7 +253,7 @@ class DeliveryTermsType
         }
 
         if ([] === $this->specialTerms) {
-            $this->addOnceTospecialTerms(new SpecialTerms());
+            $this->addOnceToSpecialTerms(new SpecialTerms());
         }
 
         return $this->specialTerms[0];
@@ -386,7 +386,7 @@ class DeliveryTermsType
      */
     public function addToLossRiskWithCreate(): LossRisk
     {
-        $this->addTolossRisk($lossRisk = new LossRisk());
+        $this->addToLossRisk($lossRisk = new LossRisk());
 
         return $lossRisk;
     }
@@ -417,7 +417,7 @@ class DeliveryTermsType
         }
 
         if ([] === $this->lossRisk) {
-            $this->addOnceTolossRisk(new LossRisk());
+            $this->addOnceToLossRisk(new LossRisk());
         }
 
         return $this->lossRisk[0];

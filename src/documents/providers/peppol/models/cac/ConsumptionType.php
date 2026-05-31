@@ -258,7 +258,7 @@ class ConsumptionType
      */
     public function addToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        $this->addToallowanceCharge($allowanceCharge = new AllowanceCharge());
+        $this->addToAllowanceCharge($allowanceCharge = new AllowanceCharge());
 
         return $allowanceCharge;
     }
@@ -289,7 +289,7 @@ class ConsumptionType
         }
 
         if ([] === $this->allowanceCharge) {
-            $this->addOnceToallowanceCharge(new AllowanceCharge());
+            $this->addOnceToAllowanceCharge(new AllowanceCharge());
         }
 
         return $this->allowanceCharge[0];
@@ -382,7 +382,7 @@ class ConsumptionType
      */
     public function addToTaxTotalWithCreate(): TaxTotal
     {
-        $this->addTotaxTotal($taxTotal = new TaxTotal());
+        $this->addToTaxTotal($taxTotal = new TaxTotal());
 
         return $taxTotal;
     }
@@ -413,7 +413,7 @@ class ConsumptionType
         }
 
         if ([] === $this->taxTotal) {
-            $this->addOnceTotaxTotal(new TaxTotal());
+            $this->addOnceToTaxTotal(new TaxTotal());
         }
 
         return $this->taxTotal[0];

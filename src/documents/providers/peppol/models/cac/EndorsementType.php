@@ -238,7 +238,7 @@ class EndorsementType
      */
     public function addToRemarksWithCreate(): Remarks
     {
-        $this->addToremarks($remarks = new Remarks());
+        $this->addToRemarks($remarks = new Remarks());
 
         return $remarks;
     }
@@ -269,7 +269,7 @@ class EndorsementType
         }
 
         if ([] === $this->remarks) {
-            $this->addOnceToremarks(new Remarks());
+            $this->addOnceToRemarks(new Remarks());
         }
 
         return $this->remarks[0];
@@ -402,7 +402,7 @@ class EndorsementType
      */
     public function addToSignatureWithCreate(): Signature
     {
-        $this->addTosignature($signature = new Signature());
+        $this->addToSignature($signature = new Signature());
 
         return $signature;
     }
@@ -433,7 +433,7 @@ class EndorsementType
         }
 
         if ([] === $this->signature) {
-            $this->addOnceTosignature(new Signature());
+            $this->addOnceToSignature(new Signature());
         }
 
         return $this->signature[0];

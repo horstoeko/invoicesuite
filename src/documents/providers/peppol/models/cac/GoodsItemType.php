@@ -650,7 +650,7 @@ class GoodsItemType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -681,7 +681,7 @@ class GoodsItemType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -1634,7 +1634,7 @@ class GoodsItemType
      */
     public function addToItemWithCreate(): Item
     {
-        $this->addToitem($item = new Item());
+        $this->addToItem($item = new Item());
 
         return $item;
     }
@@ -1665,7 +1665,7 @@ class GoodsItemType
         }
 
         if ([] === $this->item) {
-            $this->addOnceToitem(new Item());
+            $this->addOnceToItem(new Item());
         }
 
         return $this->item[0];
@@ -1758,7 +1758,7 @@ class GoodsItemType
      */
     public function addToGoodsItemContainerWithCreate(): GoodsItemContainer
     {
-        $this->addTogoodsItemContainer($goodsItemContainer = new GoodsItemContainer());
+        $this->addToGoodsItemContainer($goodsItemContainer = new GoodsItemContainer());
 
         return $goodsItemContainer;
     }
@@ -1789,7 +1789,7 @@ class GoodsItemType
         }
 
         if ([] === $this->goodsItemContainer) {
-            $this->addOnceTogoodsItemContainer(new GoodsItemContainer());
+            $this->addOnceToGoodsItemContainer(new GoodsItemContainer());
         }
 
         return $this->goodsItemContainer[0];
@@ -1882,7 +1882,7 @@ class GoodsItemType
      */
     public function addToFreightAllowanceChargeWithCreate(): FreightAllowanceCharge
     {
-        $this->addTofreightAllowanceCharge($freightAllowanceCharge = new FreightAllowanceCharge());
+        $this->addToFreightAllowanceCharge($freightAllowanceCharge = new FreightAllowanceCharge());
 
         return $freightAllowanceCharge;
     }
@@ -1913,7 +1913,7 @@ class GoodsItemType
         }
 
         if ([] === $this->freightAllowanceCharge) {
-            $this->addOnceTofreightAllowanceCharge(new FreightAllowanceCharge());
+            $this->addOnceToFreightAllowanceCharge(new FreightAllowanceCharge());
         }
 
         return $this->freightAllowanceCharge[0];
@@ -2006,7 +2006,7 @@ class GoodsItemType
      */
     public function addToInvoiceLineWithCreate(): InvoiceLine
     {
-        $this->addToinvoiceLine($invoiceLine = new InvoiceLine());
+        $this->addToInvoiceLine($invoiceLine = new InvoiceLine());
 
         return $invoiceLine;
     }
@@ -2037,7 +2037,7 @@ class GoodsItemType
         }
 
         if ([] === $this->invoiceLine) {
-            $this->addOnceToinvoiceLine(new InvoiceLine());
+            $this->addOnceToInvoiceLine(new InvoiceLine());
         }
 
         return $this->invoiceLine[0];
@@ -2130,7 +2130,7 @@ class GoodsItemType
      */
     public function addToTemperatureWithCreate(): Temperature
     {
-        $this->addTotemperature($temperature = new Temperature());
+        $this->addToTemperature($temperature = new Temperature());
 
         return $temperature;
     }
@@ -2161,7 +2161,7 @@ class GoodsItemType
         }
 
         if ([] === $this->temperature) {
-            $this->addOnceTotemperature(new Temperature());
+            $this->addOnceToTemperature(new Temperature());
         }
 
         return $this->temperature[0];
@@ -2254,7 +2254,7 @@ class GoodsItemType
      */
     public function addToContainedGoodsItemWithCreate(): ContainedGoodsItem
     {
-        $this->addTocontainedGoodsItem($containedGoodsItem = new ContainedGoodsItem());
+        $this->addToContainedGoodsItem($containedGoodsItem = new ContainedGoodsItem());
 
         return $containedGoodsItem;
     }
@@ -2285,7 +2285,7 @@ class GoodsItemType
         }
 
         if ([] === $this->containedGoodsItem) {
-            $this->addOnceTocontainedGoodsItem(new ContainedGoodsItem());
+            $this->addOnceToContainedGoodsItem(new ContainedGoodsItem());
         }
 
         return $this->containedGoodsItem[0];
@@ -2538,7 +2538,7 @@ class GoodsItemType
      */
     public function addToMeasurementDimensionWithCreate(): MeasurementDimension
     {
-        $this->addTomeasurementDimension($measurementDimension = new MeasurementDimension());
+        $this->addToMeasurementDimension($measurementDimension = new MeasurementDimension());
 
         return $measurementDimension;
     }
@@ -2569,7 +2569,7 @@ class GoodsItemType
         }
 
         if ([] === $this->measurementDimension) {
-            $this->addOnceTomeasurementDimension(new MeasurementDimension());
+            $this->addOnceToMeasurementDimension(new MeasurementDimension());
         }
 
         return $this->measurementDimension[0];
@@ -2662,7 +2662,7 @@ class GoodsItemType
      */
     public function addToContainingPackageWithCreate(): ContainingPackage
     {
-        $this->addTocontainingPackage($containingPackage = new ContainingPackage());
+        $this->addToContainingPackage($containingPackage = new ContainingPackage());
 
         return $containingPackage;
     }
@@ -2693,7 +2693,7 @@ class GoodsItemType
         }
 
         if ([] === $this->containingPackage) {
-            $this->addOnceTocontainingPackage(new ContainingPackage());
+            $this->addOnceToContainingPackage(new ContainingPackage());
         }
 
         return $this->containingPackage[0];

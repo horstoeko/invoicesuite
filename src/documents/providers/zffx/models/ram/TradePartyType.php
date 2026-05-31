@@ -185,7 +185,7 @@ class TradePartyType
      */
     public function addToIDWithCreate(): IDType
     {
-        $this->addToiD($iD = new IDType());
+        $this->addToID($iD = new IDType());
 
         return $iD;
     }
@@ -216,7 +216,7 @@ class TradePartyType
         }
 
         if ([] === $this->iD) {
-            $this->addOnceToiD(new IDType());
+            $this->addOnceToID(new IDType());
         }
 
         return $this->iD[0];
@@ -279,7 +279,7 @@ class TradePartyType
      */
     public function addToGlobalIDWithCreate(): IDType
     {
-        $this->addToglobalID($globalID = new IDType());
+        $this->addToGlobalID($globalID = new IDType());
 
         return $globalID;
     }
@@ -310,7 +310,7 @@ class TradePartyType
         }
 
         if ([] === $this->globalID) {
-            $this->addOnceToglobalID(new IDType());
+            $this->addOnceToGlobalID(new IDType());
         }
 
         return $this->globalID[0];
@@ -523,7 +523,7 @@ class TradePartyType
      */
     public function addToDefinedTradeContactWithCreate(): TradeContactType
     {
-        $this->addTodefinedTradeContact($definedTradeContact = new TradeContactType());
+        $this->addToDefinedTradeContact($definedTradeContact = new TradeContactType());
 
         return $definedTradeContact;
     }
@@ -554,7 +554,7 @@ class TradePartyType
         }
 
         if ([] === $this->definedTradeContact) {
-            $this->addOnceTodefinedTradeContact(new TradeContactType());
+            $this->addOnceToDefinedTradeContact(new TradeContactType());
         }
 
         return $this->definedTradeContact[0];
@@ -697,7 +697,7 @@ class TradePartyType
      */
     public function addToSpecifiedTaxRegistrationWithCreate(): TaxRegistrationType
     {
-        $this->addTospecifiedTaxRegistration($specifiedTaxRegistration = new TaxRegistrationType());
+        $this->addToSpecifiedTaxRegistration($specifiedTaxRegistration = new TaxRegistrationType());
 
         return $specifiedTaxRegistration;
     }
@@ -728,7 +728,7 @@ class TradePartyType
         }
 
         if ([] === $this->specifiedTaxRegistration) {
-            $this->addOnceTospecifiedTaxRegistration(new TaxRegistrationType());
+            $this->addOnceToSpecifiedTaxRegistration(new TaxRegistrationType());
         }
 
         return $this->specifiedTaxRegistration[0];

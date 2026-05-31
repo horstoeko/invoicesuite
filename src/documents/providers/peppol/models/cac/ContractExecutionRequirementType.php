@@ -136,7 +136,7 @@ class ContractExecutionRequirementType
      */
     public function addToNameWithCreate(): Name
     {
-        $this->addToname($name = new Name());
+        $this->addToName($name = new Name());
 
         return $name;
     }
@@ -167,7 +167,7 @@ class ContractExecutionRequirementType
         }
 
         if ([] === $this->name) {
-            $this->addOnceToname(new Name());
+            $this->addOnceToName(new Name());
         }
 
         return $this->name[0];
@@ -300,7 +300,7 @@ class ContractExecutionRequirementType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -331,7 +331,7 @@ class ContractExecutionRequirementType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];

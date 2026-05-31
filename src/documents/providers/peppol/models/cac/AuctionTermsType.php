@@ -216,7 +216,7 @@ class AuctionTermsType
      */
     public function addToJustificationDescriptionWithCreate(): JustificationDescription
     {
-        $this->addTojustificationDescription($justificationDescription = new JustificationDescription());
+        $this->addToJustificationDescription($justificationDescription = new JustificationDescription());
 
         return $justificationDescription;
     }
@@ -247,7 +247,7 @@ class AuctionTermsType
         }
 
         if ([] === $this->justificationDescription) {
-            $this->addOnceTojustificationDescription(new JustificationDescription());
+            $this->addOnceToJustificationDescription(new JustificationDescription());
         }
 
         return $this->justificationDescription[0];
@@ -340,7 +340,7 @@ class AuctionTermsType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -371,7 +371,7 @@ class AuctionTermsType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -464,7 +464,7 @@ class AuctionTermsType
      */
     public function addToProcessDescriptionWithCreate(): ProcessDescription
     {
-        $this->addToprocessDescription($processDescription = new ProcessDescription());
+        $this->addToProcessDescription($processDescription = new ProcessDescription());
 
         return $processDescription;
     }
@@ -495,7 +495,7 @@ class AuctionTermsType
         }
 
         if ([] === $this->processDescription) {
-            $this->addOnceToprocessDescription(new ProcessDescription());
+            $this->addOnceToProcessDescription(new ProcessDescription());
         }
 
         return $this->processDescription[0];
@@ -588,7 +588,7 @@ class AuctionTermsType
      */
     public function addToConditionsDescriptionWithCreate(): ConditionsDescription
     {
-        $this->addToconditionsDescription($conditionsDescription = new ConditionsDescription());
+        $this->addToConditionsDescription($conditionsDescription = new ConditionsDescription());
 
         return $conditionsDescription;
     }
@@ -619,7 +619,7 @@ class AuctionTermsType
         }
 
         if ([] === $this->conditionsDescription) {
-            $this->addOnceToconditionsDescription(new ConditionsDescription());
+            $this->addOnceToConditionsDescription(new ConditionsDescription());
         }
 
         return $this->conditionsDescription[0];
@@ -712,7 +712,7 @@ class AuctionTermsType
      */
     public function addToElectronicDeviceDescriptionWithCreate(): ElectronicDeviceDescription
     {
-        $this->addToelectronicDeviceDescription($electronicDeviceDescription = new ElectronicDeviceDescription());
+        $this->addToElectronicDeviceDescription($electronicDeviceDescription = new ElectronicDeviceDescription());
 
         return $electronicDeviceDescription;
     }
@@ -743,7 +743,7 @@ class AuctionTermsType
         }
 
         if ([] === $this->electronicDeviceDescription) {
-            $this->addOnceToelectronicDeviceDescription(new ElectronicDeviceDescription());
+            $this->addOnceToElectronicDeviceDescription(new ElectronicDeviceDescription());
         }
 
         return $this->electronicDeviceDescription[0];

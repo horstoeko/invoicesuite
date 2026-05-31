@@ -256,7 +256,7 @@ class OrderLineType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -287,7 +287,7 @@ class OrderLineType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -420,7 +420,7 @@ class OrderLineType
      */
     public function addToSellerProposedSubstituteLineItemWithCreate(): SellerProposedSubstituteLineItem
     {
-        $this->addTosellerProposedSubstituteLineItem($sellerProposedSubstituteLineItem = new SellerProposedSubstituteLineItem());
+        $this->addToSellerProposedSubstituteLineItem($sellerProposedSubstituteLineItem = new SellerProposedSubstituteLineItem());
 
         return $sellerProposedSubstituteLineItem;
     }
@@ -451,7 +451,7 @@ class OrderLineType
         }
 
         if ([] === $this->sellerProposedSubstituteLineItem) {
-            $this->addOnceTosellerProposedSubstituteLineItem(new SellerProposedSubstituteLineItem());
+            $this->addOnceToSellerProposedSubstituteLineItem(new SellerProposedSubstituteLineItem());
         }
 
         return $this->sellerProposedSubstituteLineItem[0];
@@ -544,7 +544,7 @@ class OrderLineType
      */
     public function addToSellerSubstitutedLineItemWithCreate(): SellerSubstitutedLineItem
     {
-        $this->addTosellerSubstitutedLineItem($sellerSubstitutedLineItem = new SellerSubstitutedLineItem());
+        $this->addToSellerSubstitutedLineItem($sellerSubstitutedLineItem = new SellerSubstitutedLineItem());
 
         return $sellerSubstitutedLineItem;
     }
@@ -575,7 +575,7 @@ class OrderLineType
         }
 
         if ([] === $this->sellerSubstitutedLineItem) {
-            $this->addOnceTosellerSubstitutedLineItem(new SellerSubstitutedLineItem());
+            $this->addOnceToSellerSubstitutedLineItem(new SellerSubstitutedLineItem());
         }
 
         return $this->sellerSubstitutedLineItem[0];
@@ -668,7 +668,7 @@ class OrderLineType
      */
     public function addToBuyerProposedSubstituteLineItemWithCreate(): BuyerProposedSubstituteLineItem
     {
-        $this->addTobuyerProposedSubstituteLineItem($buyerProposedSubstituteLineItem = new BuyerProposedSubstituteLineItem());
+        $this->addToBuyerProposedSubstituteLineItem($buyerProposedSubstituteLineItem = new BuyerProposedSubstituteLineItem());
 
         return $buyerProposedSubstituteLineItem;
     }
@@ -699,7 +699,7 @@ class OrderLineType
         }
 
         if ([] === $this->buyerProposedSubstituteLineItem) {
-            $this->addOnceTobuyerProposedSubstituteLineItem(new BuyerProposedSubstituteLineItem());
+            $this->addOnceToBuyerProposedSubstituteLineItem(new BuyerProposedSubstituteLineItem());
         }
 
         return $this->buyerProposedSubstituteLineItem[0];
@@ -872,7 +872,7 @@ class OrderLineType
      */
     public function addToOrderLineReferenceWithCreate(): OrderLineReference
     {
-        $this->addToorderLineReference($orderLineReference = new OrderLineReference());
+        $this->addToOrderLineReference($orderLineReference = new OrderLineReference());
 
         return $orderLineReference;
     }
@@ -903,7 +903,7 @@ class OrderLineType
         }
 
         if ([] === $this->orderLineReference) {
-            $this->addOnceToorderLineReference(new OrderLineReference());
+            $this->addOnceToOrderLineReference(new OrderLineReference());
         }
 
         return $this->orderLineReference[0];
@@ -996,7 +996,7 @@ class OrderLineType
      */
     public function addToDocumentReferenceWithCreate(): DocumentReference
     {
-        $this->addTodocumentReference($documentReference = new DocumentReference());
+        $this->addToDocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
     }
@@ -1027,7 +1027,7 @@ class OrderLineType
         }
 
         if ([] === $this->documentReference) {
-            $this->addOnceTodocumentReference(new DocumentReference());
+            $this->addOnceToDocumentReference(new DocumentReference());
         }
 
         return $this->documentReference[0];

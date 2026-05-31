@@ -440,7 +440,7 @@ class PaymentMeansType
      */
     public function addToInstructionNoteWithCreate(): InstructionNote
     {
-        $this->addToinstructionNote($instructionNote = new InstructionNote());
+        $this->addToInstructionNote($instructionNote = new InstructionNote());
 
         return $instructionNote;
     }
@@ -471,7 +471,7 @@ class PaymentMeansType
         }
 
         if ([] === $this->instructionNote) {
-            $this->addOnceToinstructionNote(new InstructionNote());
+            $this->addOnceToInstructionNote(new InstructionNote());
         }
 
         return $this->instructionNote[0];
@@ -564,7 +564,7 @@ class PaymentMeansType
      */
     public function addToPaymentIDWithCreate(): PaymentID
     {
-        $this->addTopaymentID($paymentID = new PaymentID());
+        $this->addToPaymentID($paymentID = new PaymentID());
 
         return $paymentID;
     }
@@ -595,7 +595,7 @@ class PaymentMeansType
         }
 
         if ([] === $this->paymentID) {
-            $this->addOnceTopaymentID(new PaymentID());
+            $this->addOnceToPaymentID(new PaymentID());
         }
 
         return $this->paymentID[0];

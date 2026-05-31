@@ -354,7 +354,7 @@ class ProcurementProjectType
      */
     public function addToNameWithCreate(): Name
     {
-        $this->addToname($name = new Name());
+        $this->addToName($name = new Name());
 
         return $name;
     }
@@ -385,7 +385,7 @@ class ProcurementProjectType
         }
 
         if ([] === $this->name) {
-            $this->addOnceToname(new Name());
+            $this->addOnceToName(new Name());
         }
 
         return $this->name[0];
@@ -478,7 +478,7 @@ class ProcurementProjectType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -509,7 +509,7 @@ class ProcurementProjectType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -762,7 +762,7 @@ class ProcurementProjectType
      */
     public function addToFeeDescriptionWithCreate(): FeeDescription
     {
-        $this->addTofeeDescription($feeDescription = new FeeDescription());
+        $this->addToFeeDescription($feeDescription = new FeeDescription());
 
         return $feeDescription;
     }
@@ -793,7 +793,7 @@ class ProcurementProjectType
         }
 
         if ([] === $this->feeDescription) {
-            $this->addOnceTofeeDescription(new FeeDescription());
+            $this->addOnceToFeeDescription(new FeeDescription());
         }
 
         return $this->feeDescription[0];
@@ -956,7 +956,7 @@ class ProcurementProjectType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -987,7 +987,7 @@ class ProcurementProjectType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -1160,7 +1160,7 @@ class ProcurementProjectType
      */
     public function addToAdditionalCommodityClassificationWithCreate(): AdditionalCommodityClassification
     {
-        $this->addToadditionalCommodityClassification($additionalCommodityClassification = new AdditionalCommodityClassification());
+        $this->addToAdditionalCommodityClassification($additionalCommodityClassification = new AdditionalCommodityClassification());
 
         return $additionalCommodityClassification;
     }
@@ -1191,7 +1191,7 @@ class ProcurementProjectType
         }
 
         if ([] === $this->additionalCommodityClassification) {
-            $this->addOnceToadditionalCommodityClassification(new AdditionalCommodityClassification());
+            $this->addOnceToAdditionalCommodityClassification(new AdditionalCommodityClassification());
         }
 
         return $this->additionalCommodityClassification[0];
@@ -1284,7 +1284,7 @@ class ProcurementProjectType
      */
     public function addToRealizedLocationWithCreate(): RealizedLocation
     {
-        $this->addTorealizedLocation($realizedLocation = new RealizedLocation());
+        $this->addToRealizedLocation($realizedLocation = new RealizedLocation());
 
         return $realizedLocation;
     }
@@ -1315,7 +1315,7 @@ class ProcurementProjectType
         }
 
         if ([] === $this->realizedLocation) {
-            $this->addOnceTorealizedLocation(new RealizedLocation());
+            $this->addOnceToRealizedLocation(new RealizedLocation());
         }
 
         return $this->realizedLocation[0];
@@ -1488,7 +1488,7 @@ class ProcurementProjectType
      */
     public function addToRequestForTenderLineWithCreate(): RequestForTenderLine
     {
-        $this->addTorequestForTenderLine($requestForTenderLine = new RequestForTenderLine());
+        $this->addToRequestForTenderLine($requestForTenderLine = new RequestForTenderLine());
 
         return $requestForTenderLine;
     }
@@ -1519,7 +1519,7 @@ class ProcurementProjectType
         }
 
         if ([] === $this->requestForTenderLine) {
-            $this->addOnceTorequestForTenderLine(new RequestForTenderLine());
+            $this->addOnceToRequestForTenderLine(new RequestForTenderLine());
         }
 
         return $this->requestForTenderLine[0];

@@ -161,7 +161,7 @@ class PricingReferenceType
      */
     public function addToAlternativeConditionPriceWithCreate(): AlternativeConditionPrice
     {
-        $this->addToalternativeConditionPrice($alternativeConditionPrice = new AlternativeConditionPrice());
+        $this->addToAlternativeConditionPrice($alternativeConditionPrice = new AlternativeConditionPrice());
 
         return $alternativeConditionPrice;
     }
@@ -192,7 +192,7 @@ class PricingReferenceType
         }
 
         if ([] === $this->alternativeConditionPrice) {
-            $this->addOnceToalternativeConditionPrice(new AlternativeConditionPrice());
+            $this->addOnceToAlternativeConditionPrice(new AlternativeConditionPrice());
         }
 
         return $this->alternativeConditionPrice[0];

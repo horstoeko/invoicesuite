@@ -266,7 +266,7 @@ class CorporateRegistrationSchemeType
      */
     public function addToJurisdictionRegionAddressWithCreate(): JurisdictionRegionAddress
     {
-        $this->addTojurisdictionRegionAddress($jurisdictionRegionAddress = new JurisdictionRegionAddress());
+        $this->addToJurisdictionRegionAddress($jurisdictionRegionAddress = new JurisdictionRegionAddress());
 
         return $jurisdictionRegionAddress;
     }
@@ -297,7 +297,7 @@ class CorporateRegistrationSchemeType
         }
 
         if ([] === $this->jurisdictionRegionAddress) {
-            $this->addOnceTojurisdictionRegionAddress(new JurisdictionRegionAddress());
+            $this->addOnceToJurisdictionRegionAddress(new JurisdictionRegionAddress());
         }
 
         return $this->jurisdictionRegionAddress[0];

@@ -261,7 +261,7 @@ class EvidenceType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -292,7 +292,7 @@ class EvidenceType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -385,7 +385,7 @@ class EvidenceType
      */
     public function addToCandidateStatementWithCreate(): CandidateStatement
     {
-        $this->addTocandidateStatement($candidateStatement = new CandidateStatement());
+        $this->addToCandidateStatement($candidateStatement = new CandidateStatement());
 
         return $candidateStatement;
     }
@@ -416,7 +416,7 @@ class EvidenceType
         }
 
         if ([] === $this->candidateStatement) {
-            $this->addOnceTocandidateStatement(new CandidateStatement());
+            $this->addOnceToCandidateStatement(new CandidateStatement());
         }
 
         return $this->candidateStatement[0];

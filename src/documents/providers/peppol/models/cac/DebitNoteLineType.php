@@ -428,7 +428,7 @@ class DebitNoteLineType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -459,7 +459,7 @@ class DebitNoteLineType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -782,7 +782,7 @@ class DebitNoteLineType
      */
     public function addToDiscrepancyResponseWithCreate(): DiscrepancyResponse
     {
-        $this->addTodiscrepancyResponse($discrepancyResponse = new DiscrepancyResponse());
+        $this->addToDiscrepancyResponse($discrepancyResponse = new DiscrepancyResponse());
 
         return $discrepancyResponse;
     }
@@ -813,7 +813,7 @@ class DebitNoteLineType
         }
 
         if ([] === $this->discrepancyResponse) {
-            $this->addOnceTodiscrepancyResponse(new DiscrepancyResponse());
+            $this->addOnceToDiscrepancyResponse(new DiscrepancyResponse());
         }
 
         return $this->discrepancyResponse[0];
@@ -906,7 +906,7 @@ class DebitNoteLineType
      */
     public function addToDespatchLineReferenceWithCreate(): DespatchLineReference
     {
-        $this->addTodespatchLineReference($despatchLineReference = new DespatchLineReference());
+        $this->addToDespatchLineReference($despatchLineReference = new DespatchLineReference());
 
         return $despatchLineReference;
     }
@@ -937,7 +937,7 @@ class DebitNoteLineType
         }
 
         if ([] === $this->despatchLineReference) {
-            $this->addOnceTodespatchLineReference(new DespatchLineReference());
+            $this->addOnceToDespatchLineReference(new DespatchLineReference());
         }
 
         return $this->despatchLineReference[0];
@@ -1030,7 +1030,7 @@ class DebitNoteLineType
      */
     public function addToReceiptLineReferenceWithCreate(): ReceiptLineReference
     {
-        $this->addToreceiptLineReference($receiptLineReference = new ReceiptLineReference());
+        $this->addToReceiptLineReference($receiptLineReference = new ReceiptLineReference());
 
         return $receiptLineReference;
     }
@@ -1061,7 +1061,7 @@ class DebitNoteLineType
         }
 
         if ([] === $this->receiptLineReference) {
-            $this->addOnceToreceiptLineReference(new ReceiptLineReference());
+            $this->addOnceToReceiptLineReference(new ReceiptLineReference());
         }
 
         return $this->receiptLineReference[0];
@@ -1154,7 +1154,7 @@ class DebitNoteLineType
      */
     public function addToBillingReferenceWithCreate(): BillingReference
     {
-        $this->addTobillingReference($billingReference = new BillingReference());
+        $this->addToBillingReference($billingReference = new BillingReference());
 
         return $billingReference;
     }
@@ -1185,7 +1185,7 @@ class DebitNoteLineType
         }
 
         if ([] === $this->billingReference) {
-            $this->addOnceTobillingReference(new BillingReference());
+            $this->addOnceToBillingReference(new BillingReference());
         }
 
         return $this->billingReference[0];
@@ -1278,7 +1278,7 @@ class DebitNoteLineType
      */
     public function addToDocumentReferenceWithCreate(): DocumentReference
     {
-        $this->addTodocumentReference($documentReference = new DocumentReference());
+        $this->addToDocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
     }
@@ -1309,7 +1309,7 @@ class DebitNoteLineType
         }
 
         if ([] === $this->documentReference) {
-            $this->addOnceTodocumentReference(new DocumentReference());
+            $this->addOnceToDocumentReference(new DocumentReference());
         }
 
         return $this->documentReference[0];
@@ -1442,7 +1442,7 @@ class DebitNoteLineType
      */
     public function addToDeliveryWithCreate(): Delivery
     {
-        $this->addTodelivery($delivery = new Delivery());
+        $this->addToDelivery($delivery = new Delivery());
 
         return $delivery;
     }
@@ -1473,7 +1473,7 @@ class DebitNoteLineType
         }
 
         if ([] === $this->delivery) {
-            $this->addOnceTodelivery(new Delivery());
+            $this->addOnceToDelivery(new Delivery());
         }
 
         return $this->delivery[0];
@@ -1566,7 +1566,7 @@ class DebitNoteLineType
      */
     public function addToTaxTotalWithCreate(): TaxTotal
     {
-        $this->addTotaxTotal($taxTotal = new TaxTotal());
+        $this->addToTaxTotal($taxTotal = new TaxTotal());
 
         return $taxTotal;
     }
@@ -1597,7 +1597,7 @@ class DebitNoteLineType
         }
 
         if ([] === $this->taxTotal) {
-            $this->addOnceTotaxTotal(new TaxTotal());
+            $this->addOnceToTaxTotal(new TaxTotal());
         }
 
         return $this->taxTotal[0];
@@ -1690,7 +1690,7 @@ class DebitNoteLineType
      */
     public function addToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        $this->addToallowanceCharge($allowanceCharge = new AllowanceCharge());
+        $this->addToAllowanceCharge($allowanceCharge = new AllowanceCharge());
 
         return $allowanceCharge;
     }
@@ -1721,7 +1721,7 @@ class DebitNoteLineType
         }
 
         if ([] === $this->allowanceCharge) {
-            $this->addOnceToallowanceCharge(new AllowanceCharge());
+            $this->addOnceToAllowanceCharge(new AllowanceCharge());
         }
 
         return $this->allowanceCharge[0];
@@ -1894,7 +1894,7 @@ class DebitNoteLineType
      */
     public function addToSubDebitNoteLineWithCreate(): SubDebitNoteLine
     {
-        $this->addTosubDebitNoteLine($subDebitNoteLine = new SubDebitNoteLine());
+        $this->addToSubDebitNoteLine($subDebitNoteLine = new SubDebitNoteLine());
 
         return $subDebitNoteLine;
     }
@@ -1925,7 +1925,7 @@ class DebitNoteLineType
         }
 
         if ([] === $this->subDebitNoteLine) {
-            $this->addOnceTosubDebitNoteLine(new SubDebitNoteLine());
+            $this->addOnceToSubDebitNoteLine(new SubDebitNoteLine());
         }
 
         return $this->subDebitNoteLine[0];

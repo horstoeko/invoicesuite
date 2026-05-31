@@ -309,7 +309,7 @@ class TenderedProjectType
      */
     public function addToFeeDescriptionWithCreate(): FeeDescription
     {
-        $this->addTofeeDescription($feeDescription = new FeeDescription());
+        $this->addToFeeDescription($feeDescription = new FeeDescription());
 
         return $feeDescription;
     }
@@ -340,7 +340,7 @@ class TenderedProjectType
         }
 
         if ([] === $this->feeDescription) {
-            $this->addOnceTofeeDescription(new FeeDescription());
+            $this->addOnceToFeeDescription(new FeeDescription());
         }
 
         return $this->feeDescription[0];
@@ -553,7 +553,7 @@ class TenderedProjectType
      */
     public function addToEvidenceDocumentReferenceWithCreate(): EvidenceDocumentReference
     {
-        $this->addToevidenceDocumentReference($evidenceDocumentReference = new EvidenceDocumentReference());
+        $this->addToEvidenceDocumentReference($evidenceDocumentReference = new EvidenceDocumentReference());
 
         return $evidenceDocumentReference;
     }
@@ -584,7 +584,7 @@ class TenderedProjectType
         }
 
         if ([] === $this->evidenceDocumentReference) {
-            $this->addOnceToevidenceDocumentReference(new EvidenceDocumentReference());
+            $this->addOnceToEvidenceDocumentReference(new EvidenceDocumentReference());
         }
 
         return $this->evidenceDocumentReference[0];
@@ -677,7 +677,7 @@ class TenderedProjectType
      */
     public function addToTaxTotalWithCreate(): TaxTotal
     {
-        $this->addTotaxTotal($taxTotal = new TaxTotal());
+        $this->addToTaxTotal($taxTotal = new TaxTotal());
 
         return $taxTotal;
     }
@@ -708,7 +708,7 @@ class TenderedProjectType
         }
 
         if ([] === $this->taxTotal) {
-            $this->addOnceTotaxTotal(new TaxTotal());
+            $this->addOnceToTaxTotal(new TaxTotal());
         }
 
         return $this->taxTotal[0];
@@ -841,7 +841,7 @@ class TenderedProjectType
      */
     public function addToTenderLineWithCreate(): TenderLine
     {
-        $this->addTotenderLine($tenderLine = new TenderLine());
+        $this->addToTenderLine($tenderLine = new TenderLine());
 
         return $tenderLine;
     }
@@ -872,7 +872,7 @@ class TenderedProjectType
         }
 
         if ([] === $this->tenderLine) {
-            $this->addOnceTotenderLine(new TenderLine());
+            $this->addOnceToTenderLine(new TenderLine());
         }
 
         return $this->tenderLine[0];
@@ -965,7 +965,7 @@ class TenderedProjectType
      */
     public function addToAwardingCriterionResponseWithCreate(): AwardingCriterionResponse
     {
-        $this->addToawardingCriterionResponse($awardingCriterionResponse = new AwardingCriterionResponse());
+        $this->addToAwardingCriterionResponse($awardingCriterionResponse = new AwardingCriterionResponse());
 
         return $awardingCriterionResponse;
     }
@@ -996,7 +996,7 @@ class TenderedProjectType
         }
 
         if ([] === $this->awardingCriterionResponse) {
-            $this->addOnceToawardingCriterionResponse(new AwardingCriterionResponse());
+            $this->addOnceToAwardingCriterionResponse(new AwardingCriterionResponse());
         }
 
         return $this->awardingCriterionResponse[0];

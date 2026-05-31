@@ -284,7 +284,7 @@ class SubscriberConsumptionType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -315,7 +315,7 @@ class SubscriberConsumptionType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -528,7 +528,7 @@ class SubscriberConsumptionType
      */
     public function addToOnAccountPaymentWithCreate(): OnAccountPayment
     {
-        $this->addToonAccountPayment($onAccountPayment = new OnAccountPayment());
+        $this->addToOnAccountPayment($onAccountPayment = new OnAccountPayment());
 
         return $onAccountPayment;
     }
@@ -559,7 +559,7 @@ class SubscriberConsumptionType
         }
 
         if ([] === $this->onAccountPayment) {
-            $this->addOnceToonAccountPayment(new OnAccountPayment());
+            $this->addOnceToOnAccountPayment(new OnAccountPayment());
         }
 
         return $this->onAccountPayment[0];
@@ -692,7 +692,7 @@ class SubscriberConsumptionType
      */
     public function addToSupplierConsumptionWithCreate(): SupplierConsumption
     {
-        $this->addTosupplierConsumption($supplierConsumption = new SupplierConsumption());
+        $this->addToSupplierConsumption($supplierConsumption = new SupplierConsumption());
 
         return $supplierConsumption;
     }
@@ -723,7 +723,7 @@ class SubscriberConsumptionType
         }
 
         if ([] === $this->supplierConsumption) {
-            $this->addOnceTosupplierConsumption(new SupplierConsumption());
+            $this->addOnceToSupplierConsumption(new SupplierConsumption());
         }
 
         return $this->supplierConsumption[0];

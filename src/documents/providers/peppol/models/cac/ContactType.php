@@ -383,7 +383,7 @@ class ContactType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -414,7 +414,7 @@ class ContactType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -507,7 +507,7 @@ class ContactType
      */
     public function addToOtherCommunicationWithCreate(): OtherCommunication
     {
-        $this->addTootherCommunication($otherCommunication = new OtherCommunication());
+        $this->addToOtherCommunication($otherCommunication = new OtherCommunication());
 
         return $otherCommunication;
     }
@@ -538,7 +538,7 @@ class ContactType
         }
 
         if ([] === $this->otherCommunication) {
-            $this->addOnceTootherCommunication(new OtherCommunication());
+            $this->addOnceToOtherCommunication(new OtherCommunication());
         }
 
         return $this->otherCommunication[0];

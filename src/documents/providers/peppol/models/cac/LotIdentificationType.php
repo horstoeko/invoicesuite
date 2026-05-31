@@ -204,7 +204,7 @@ class LotIdentificationType
      */
     public function addToAdditionalItemPropertyWithCreate(): AdditionalItemProperty
     {
-        $this->addToadditionalItemProperty($additionalItemProperty = new AdditionalItemProperty());
+        $this->addToAdditionalItemProperty($additionalItemProperty = new AdditionalItemProperty());
 
         return $additionalItemProperty;
     }
@@ -235,7 +235,7 @@ class LotIdentificationType
         }
 
         if ([] === $this->additionalItemProperty) {
-            $this->addOnceToadditionalItemProperty(new AdditionalItemProperty());
+            $this->addOnceToAdditionalItemProperty(new AdditionalItemProperty());
         }
 
         return $this->additionalItemProperty[0];

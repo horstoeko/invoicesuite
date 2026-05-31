@@ -304,7 +304,7 @@ class QualifyingPartyType
      */
     public function addToPersonalSituationWithCreate(): PersonalSituation
     {
-        $this->addTopersonalSituation($personalSituation = new PersonalSituation());
+        $this->addToPersonalSituation($personalSituation = new PersonalSituation());
 
         return $personalSituation;
     }
@@ -335,7 +335,7 @@ class QualifyingPartyType
         }
 
         if ([] === $this->personalSituation) {
-            $this->addOnceTopersonalSituation(new PersonalSituation());
+            $this->addOnceToPersonalSituation(new PersonalSituation());
         }
 
         return $this->personalSituation[0];
@@ -668,7 +668,7 @@ class QualifyingPartyType
      */
     public function addToTechnicalCapabilityWithCreate(): TechnicalCapability
     {
-        $this->addTotechnicalCapability($technicalCapability = new TechnicalCapability());
+        $this->addToTechnicalCapability($technicalCapability = new TechnicalCapability());
 
         return $technicalCapability;
     }
@@ -699,7 +699,7 @@ class QualifyingPartyType
         }
 
         if ([] === $this->technicalCapability) {
-            $this->addOnceTotechnicalCapability(new TechnicalCapability());
+            $this->addOnceToTechnicalCapability(new TechnicalCapability());
         }
 
         return $this->technicalCapability[0];
@@ -792,7 +792,7 @@ class QualifyingPartyType
      */
     public function addToFinancialCapabilityWithCreate(): FinancialCapability
     {
-        $this->addTofinancialCapability($financialCapability = new FinancialCapability());
+        $this->addToFinancialCapability($financialCapability = new FinancialCapability());
 
         return $financialCapability;
     }
@@ -823,7 +823,7 @@ class QualifyingPartyType
         }
 
         if ([] === $this->financialCapability) {
-            $this->addOnceTofinancialCapability(new FinancialCapability());
+            $this->addOnceToFinancialCapability(new FinancialCapability());
         }
 
         return $this->financialCapability[0];
@@ -916,7 +916,7 @@ class QualifyingPartyType
      */
     public function addToCompletedTaskWithCreate(): CompletedTask
     {
-        $this->addTocompletedTask($completedTask = new CompletedTask());
+        $this->addToCompletedTask($completedTask = new CompletedTask());
 
         return $completedTask;
     }
@@ -947,7 +947,7 @@ class QualifyingPartyType
         }
 
         if ([] === $this->completedTask) {
-            $this->addOnceTocompletedTask(new CompletedTask());
+            $this->addOnceToCompletedTask(new CompletedTask());
         }
 
         return $this->completedTask[0];
@@ -1040,7 +1040,7 @@ class QualifyingPartyType
      */
     public function addToDeclarationWithCreate(): Declaration
     {
-        $this->addTodeclaration($declaration = new Declaration());
+        $this->addToDeclaration($declaration = new Declaration());
 
         return $declaration;
     }
@@ -1071,7 +1071,7 @@ class QualifyingPartyType
         }
 
         if ([] === $this->declaration) {
-            $this->addOnceTodeclaration(new Declaration());
+            $this->addOnceToDeclaration(new Declaration());
         }
 
         return $this->declaration[0];

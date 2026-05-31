@@ -197,7 +197,7 @@ class SalesItemType
      */
     public function addToActivityPropertyWithCreate(): ActivityProperty
     {
-        $this->addToactivityProperty($activityProperty = new ActivityProperty());
+        $this->addToActivityProperty($activityProperty = new ActivityProperty());
 
         return $activityProperty;
     }
@@ -228,7 +228,7 @@ class SalesItemType
         }
 
         if ([] === $this->activityProperty) {
-            $this->addOnceToactivityProperty(new ActivityProperty());
+            $this->addOnceToActivityProperty(new ActivityProperty());
         }
 
         return $this->activityProperty[0];
@@ -321,7 +321,7 @@ class SalesItemType
      */
     public function addToTaxExclusivePriceWithCreate(): TaxExclusivePrice
     {
-        $this->addTotaxExclusivePrice($taxExclusivePrice = new TaxExclusivePrice());
+        $this->addToTaxExclusivePrice($taxExclusivePrice = new TaxExclusivePrice());
 
         return $taxExclusivePrice;
     }
@@ -352,7 +352,7 @@ class SalesItemType
         }
 
         if ([] === $this->taxExclusivePrice) {
-            $this->addOnceTotaxExclusivePrice(new TaxExclusivePrice());
+            $this->addOnceToTaxExclusivePrice(new TaxExclusivePrice());
         }
 
         return $this->taxExclusivePrice[0];
@@ -445,7 +445,7 @@ class SalesItemType
      */
     public function addToTaxInclusivePriceWithCreate(): TaxInclusivePrice
     {
-        $this->addTotaxInclusivePrice($taxInclusivePrice = new TaxInclusivePrice());
+        $this->addToTaxInclusivePrice($taxInclusivePrice = new TaxInclusivePrice());
 
         return $taxInclusivePrice;
     }
@@ -476,7 +476,7 @@ class SalesItemType
         }
 
         if ([] === $this->taxInclusivePrice) {
-            $this->addOnceTotaxInclusivePrice(new TaxInclusivePrice());
+            $this->addOnceToTaxInclusivePrice(new TaxInclusivePrice());
         }
 
         return $this->taxInclusivePrice[0];

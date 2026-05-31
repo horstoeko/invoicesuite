@@ -426,7 +426,7 @@ class ConsumptionLineType
      */
     public function addToDeliveryWithCreate(): Delivery
     {
-        $this->addTodelivery($delivery = new Delivery());
+        $this->addToDelivery($delivery = new Delivery());
 
         return $delivery;
     }
@@ -457,7 +457,7 @@ class ConsumptionLineType
         }
 
         if ([] === $this->delivery) {
-            $this->addOnceTodelivery(new Delivery());
+            $this->addOnceToDelivery(new Delivery());
         }
 
         return $this->delivery[0];
@@ -550,7 +550,7 @@ class ConsumptionLineType
      */
     public function addToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        $this->addToallowanceCharge($allowanceCharge = new AllowanceCharge());
+        $this->addToAllowanceCharge($allowanceCharge = new AllowanceCharge());
 
         return $allowanceCharge;
     }
@@ -581,7 +581,7 @@ class ConsumptionLineType
         }
 
         if ([] === $this->allowanceCharge) {
-            $this->addOnceToallowanceCharge(new AllowanceCharge());
+            $this->addOnceToAllowanceCharge(new AllowanceCharge());
         }
 
         return $this->allowanceCharge[0];
@@ -674,7 +674,7 @@ class ConsumptionLineType
      */
     public function addToTaxTotalWithCreate(): TaxTotal
     {
-        $this->addTotaxTotal($taxTotal = new TaxTotal());
+        $this->addToTaxTotal($taxTotal = new TaxTotal());
 
         return $taxTotal;
     }
@@ -705,7 +705,7 @@ class ConsumptionLineType
         }
 
         if ([] === $this->taxTotal) {
-            $this->addOnceTotaxTotal(new TaxTotal());
+            $this->addOnceToTaxTotal(new TaxTotal());
         }
 
         return $this->taxTotal[0];

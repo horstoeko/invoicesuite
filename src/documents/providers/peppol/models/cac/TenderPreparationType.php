@@ -251,7 +251,7 @@ class TenderPreparationType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -282,7 +282,7 @@ class TenderPreparationType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -415,7 +415,7 @@ class TenderPreparationType
      */
     public function addToProcurementProjectLotWithCreate(): ProcurementProjectLot
     {
-        $this->addToprocurementProjectLot($procurementProjectLot = new ProcurementProjectLot());
+        $this->addToProcurementProjectLot($procurementProjectLot = new ProcurementProjectLot());
 
         return $procurementProjectLot;
     }
@@ -446,7 +446,7 @@ class TenderPreparationType
         }
 
         if ([] === $this->procurementProjectLot) {
-            $this->addOnceToprocurementProjectLot(new ProcurementProjectLot());
+            $this->addOnceToProcurementProjectLot(new ProcurementProjectLot());
         }
 
         return $this->procurementProjectLot[0];
@@ -539,7 +539,7 @@ class TenderPreparationType
      */
     public function addToDocumentTenderRequirementWithCreate(): DocumentTenderRequirement
     {
-        $this->addTodocumentTenderRequirement($documentTenderRequirement = new DocumentTenderRequirement());
+        $this->addToDocumentTenderRequirement($documentTenderRequirement = new DocumentTenderRequirement());
 
         return $documentTenderRequirement;
     }
@@ -570,7 +570,7 @@ class TenderPreparationType
         }
 
         if ([] === $this->documentTenderRequirement) {
-            $this->addOnceTodocumentTenderRequirement(new DocumentTenderRequirement());
+            $this->addOnceToDocumentTenderRequirement(new DocumentTenderRequirement());
         }
 
         return $this->documentTenderRequirement[0];

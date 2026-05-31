@@ -281,7 +281,7 @@ class ExceptionCriteriaLineType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -312,7 +312,7 @@ class ExceptionCriteriaLineType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -725,7 +725,7 @@ class ExceptionCriteriaLineType
      */
     public function addToSupplyItemWithCreate(): SupplyItem
     {
-        $this->addTosupplyItem($supplyItem = new SupplyItem());
+        $this->addToSupplyItem($supplyItem = new SupplyItem());
 
         return $supplyItem;
     }
@@ -756,7 +756,7 @@ class ExceptionCriteriaLineType
         }
 
         if ([] === $this->supplyItem) {
-            $this->addOnceTosupplyItem(new SupplyItem());
+            $this->addOnceToSupplyItem(new SupplyItem());
         }
 
         return $this->supplyItem[0];

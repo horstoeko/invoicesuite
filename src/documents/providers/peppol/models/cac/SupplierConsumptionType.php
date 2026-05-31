@@ -167,7 +167,7 @@ class SupplierConsumptionType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -198,7 +198,7 @@ class SupplierConsumptionType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -451,7 +451,7 @@ class SupplierConsumptionType
      */
     public function addToConsumptionLineWithCreate(): ConsumptionLine
     {
-        $this->addToconsumptionLine($consumptionLine = new ConsumptionLine());
+        $this->addToConsumptionLine($consumptionLine = new ConsumptionLine());
 
         return $consumptionLine;
     }
@@ -482,7 +482,7 @@ class SupplierConsumptionType
         }
 
         if ([] === $this->consumptionLine) {
-            $this->addOnceToconsumptionLine(new ConsumptionLine());
+            $this->addOnceToConsumptionLine(new ConsumptionLine());
         }
 
         return $this->consumptionLine[0];

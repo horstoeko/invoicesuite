@@ -740,7 +740,7 @@ class PartyLegalEntityType
      */
     public function addToShareholderPartyWithCreate(): ShareholderParty
     {
-        $this->addToshareholderParty($shareholderParty = new ShareholderParty());
+        $this->addToShareholderParty($shareholderParty = new ShareholderParty());
 
         return $shareholderParty;
     }
@@ -771,7 +771,7 @@ class PartyLegalEntityType
         }
 
         if ([] === $this->shareholderParty) {
-            $this->addOnceToshareholderParty(new ShareholderParty());
+            $this->addOnceToShareholderParty(new ShareholderParty());
         }
 
         return $this->shareholderParty[0];

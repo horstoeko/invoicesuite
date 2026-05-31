@@ -538,7 +538,7 @@ class PartyType
      */
     public function addToPartyIdentificationWithCreate(): PartyIdentification
     {
-        $this->addTopartyIdentification($partyIdentification = new PartyIdentification());
+        $this->addToPartyIdentification($partyIdentification = new PartyIdentification());
 
         return $partyIdentification;
     }
@@ -569,7 +569,7 @@ class PartyType
         }
 
         if ([] === $this->partyIdentification) {
-            $this->addOnceTopartyIdentification(new PartyIdentification());
+            $this->addOnceToPartyIdentification(new PartyIdentification());
         }
 
         return $this->partyIdentification[0];
@@ -662,7 +662,7 @@ class PartyType
      */
     public function addToPartyNameWithCreate(): PartyName
     {
-        $this->addTopartyName($partyName = new PartyName());
+        $this->addToPartyName($partyName = new PartyName());
 
         return $partyName;
     }
@@ -693,7 +693,7 @@ class PartyType
         }
 
         if ([] === $this->partyName) {
-            $this->addOnceTopartyName(new PartyName());
+            $this->addOnceToPartyName(new PartyName());
         }
 
         return $this->partyName[0];
@@ -906,7 +906,7 @@ class PartyType
      */
     public function addToPartyTaxSchemeWithCreate(): PartyTaxScheme
     {
-        $this->addTopartyTaxScheme($partyTaxScheme = new PartyTaxScheme());
+        $this->addToPartyTaxScheme($partyTaxScheme = new PartyTaxScheme());
 
         return $partyTaxScheme;
     }
@@ -937,7 +937,7 @@ class PartyType
         }
 
         if ([] === $this->partyTaxScheme) {
-            $this->addOnceTopartyTaxScheme(new PartyTaxScheme());
+            $this->addOnceToPartyTaxScheme(new PartyTaxScheme());
         }
 
         return $this->partyTaxScheme[0];
@@ -1030,7 +1030,7 @@ class PartyType
      */
     public function addToPartyLegalEntityWithCreate(): PartyLegalEntity
     {
-        $this->addTopartyLegalEntity($partyLegalEntity = new PartyLegalEntity());
+        $this->addToPartyLegalEntity($partyLegalEntity = new PartyLegalEntity());
 
         return $partyLegalEntity;
     }
@@ -1061,7 +1061,7 @@ class PartyType
         }
 
         if ([] === $this->partyLegalEntity) {
-            $this->addOnceTopartyLegalEntity(new PartyLegalEntity());
+            $this->addOnceToPartyLegalEntity(new PartyLegalEntity());
         }
 
         return $this->partyLegalEntity[0];
@@ -1194,7 +1194,7 @@ class PartyType
      */
     public function addToPersonWithCreate(): Person
     {
-        $this->addToperson($person = new Person());
+        $this->addToPerson($person = new Person());
 
         return $person;
     }
@@ -1225,7 +1225,7 @@ class PartyType
         }
 
         if ([] === $this->person) {
-            $this->addOnceToperson(new Person());
+            $this->addOnceToPerson(new Person());
         }
 
         return $this->person[0];
@@ -1358,7 +1358,7 @@ class PartyType
      */
     public function addToServiceProviderPartyWithCreate(): ServiceProviderParty
     {
-        $this->addToserviceProviderParty($serviceProviderParty = new ServiceProviderParty());
+        $this->addToServiceProviderParty($serviceProviderParty = new ServiceProviderParty());
 
         return $serviceProviderParty;
     }
@@ -1389,7 +1389,7 @@ class PartyType
         }
 
         if ([] === $this->serviceProviderParty) {
-            $this->addOnceToserviceProviderParty(new ServiceProviderParty());
+            $this->addOnceToServiceProviderParty(new ServiceProviderParty());
         }
 
         return $this->serviceProviderParty[0];
@@ -1482,7 +1482,7 @@ class PartyType
      */
     public function addToPowerOfAttorneyWithCreate(): PowerOfAttorney
     {
-        $this->addTopowerOfAttorney($powerOfAttorney = new PowerOfAttorney());
+        $this->addToPowerOfAttorney($powerOfAttorney = new PowerOfAttorney());
 
         return $powerOfAttorney;
     }
@@ -1513,7 +1513,7 @@ class PartyType
         }
 
         if ([] === $this->powerOfAttorney) {
-            $this->addOnceTopowerOfAttorney(new PowerOfAttorney());
+            $this->addOnceToPowerOfAttorney(new PowerOfAttorney());
         }
 
         return $this->powerOfAttorney[0];

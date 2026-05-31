@@ -160,7 +160,7 @@ class TendererRequirementType
      */
     public function addToNameWithCreate(): Name
     {
-        $this->addToname($name = new Name());
+        $this->addToName($name = new Name());
 
         return $name;
     }
@@ -191,7 +191,7 @@ class TendererRequirementType
         }
 
         if ([] === $this->name) {
-            $this->addOnceToname(new Name());
+            $this->addOnceToName(new Name());
         }
 
         return $this->name[0];
@@ -324,7 +324,7 @@ class TendererRequirementType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -355,7 +355,7 @@ class TendererRequirementType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -488,7 +488,7 @@ class TendererRequirementType
      */
     public function addToSuggestedEvidenceWithCreate(): SuggestedEvidence
     {
-        $this->addTosuggestedEvidence($suggestedEvidence = new SuggestedEvidence());
+        $this->addToSuggestedEvidence($suggestedEvidence = new SuggestedEvidence());
 
         return $suggestedEvidence;
     }
@@ -519,7 +519,7 @@ class TendererRequirementType
         }
 
         if ([] === $this->suggestedEvidence) {
-            $this->addOnceTosuggestedEvidence(new SuggestedEvidence());
+            $this->addOnceToSuggestedEvidence(new SuggestedEvidence());
         }
 
         return $this->suggestedEvidence[0];

@@ -386,7 +386,7 @@ class AllowanceChargeType
      */
     public function addToAllowanceChargeReasonWithCreate(): AllowanceChargeReason
     {
-        $this->addToallowanceChargeReason($allowanceChargeReason = new AllowanceChargeReason());
+        $this->addToAllowanceChargeReason($allowanceChargeReason = new AllowanceChargeReason());
 
         return $allowanceChargeReason;
     }
@@ -417,7 +417,7 @@ class AllowanceChargeType
         }
 
         if ([] === $this->allowanceChargeReason) {
-            $this->addOnceToallowanceChargeReason(new AllowanceChargeReason());
+            $this->addOnceToAllowanceChargeReason(new AllowanceChargeReason());
         }
 
         return $this->allowanceChargeReason[0];
@@ -820,7 +820,7 @@ class AllowanceChargeType
      */
     public function addToTaxCategoryWithCreate(): TaxCategory
     {
-        $this->addTotaxCategory($taxCategory = new TaxCategory());
+        $this->addToTaxCategory($taxCategory = new TaxCategory());
 
         return $taxCategory;
     }
@@ -851,7 +851,7 @@ class AllowanceChargeType
         }
 
         if ([] === $this->taxCategory) {
-            $this->addOnceTotaxCategory(new TaxCategory());
+            $this->addOnceToTaxCategory(new TaxCategory());
         }
 
         return $this->taxCategory[0];
@@ -984,7 +984,7 @@ class AllowanceChargeType
      */
     public function addToPaymentMeansWithCreate(): PaymentMeans
     {
-        $this->addTopaymentMeans($paymentMeans = new PaymentMeans());
+        $this->addToPaymentMeans($paymentMeans = new PaymentMeans());
 
         return $paymentMeans;
     }
@@ -1015,7 +1015,7 @@ class AllowanceChargeType
         }
 
         if ([] === $this->paymentMeans) {
-            $this->addOnceTopaymentMeans(new PaymentMeans());
+            $this->addOnceToPaymentMeans(new PaymentMeans());
         }
 
         return $this->paymentMeans[0];

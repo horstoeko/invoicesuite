@@ -338,7 +338,7 @@ class AwardingCriterionType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -369,7 +369,7 @@ class AwardingCriterionType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -502,7 +502,7 @@ class AwardingCriterionType
      */
     public function addToWeightWithCreate(): Weight
     {
-        $this->addToweight($weight = new Weight());
+        $this->addToWeight($weight = new Weight());
 
         return $weight;
     }
@@ -533,7 +533,7 @@ class AwardingCriterionType
         }
 
         if ([] === $this->weight) {
-            $this->addOnceToweight(new Weight());
+            $this->addOnceToWeight(new Weight());
         }
 
         return $this->weight[0];
@@ -626,7 +626,7 @@ class AwardingCriterionType
      */
     public function addToCalculationExpressionWithCreate(): CalculationExpression
     {
-        $this->addTocalculationExpression($calculationExpression = new CalculationExpression());
+        $this->addToCalculationExpression($calculationExpression = new CalculationExpression());
 
         return $calculationExpression;
     }
@@ -657,7 +657,7 @@ class AwardingCriterionType
         }
 
         if ([] === $this->calculationExpression) {
-            $this->addOnceTocalculationExpression(new CalculationExpression());
+            $this->addOnceToCalculationExpression(new CalculationExpression());
         }
 
         return $this->calculationExpression[0];
@@ -950,7 +950,7 @@ class AwardingCriterionType
      */
     public function addToMinimumImprovementBidWithCreate(): MinimumImprovementBid
     {
-        $this->addTominimumImprovementBid($minimumImprovementBid = new MinimumImprovementBid());
+        $this->addToMinimumImprovementBid($minimumImprovementBid = new MinimumImprovementBid());
 
         return $minimumImprovementBid;
     }
@@ -981,7 +981,7 @@ class AwardingCriterionType
         }
 
         if ([] === $this->minimumImprovementBid) {
-            $this->addOnceTominimumImprovementBid(new MinimumImprovementBid());
+            $this->addOnceToMinimumImprovementBid(new MinimumImprovementBid());
         }
 
         return $this->minimumImprovementBid[0];
@@ -1074,7 +1074,7 @@ class AwardingCriterionType
      */
     public function addToSubordinateAwardingCriterionWithCreate(): SubordinateAwardingCriterion
     {
-        $this->addTosubordinateAwardingCriterion($subordinateAwardingCriterion = new SubordinateAwardingCriterion());
+        $this->addToSubordinateAwardingCriterion($subordinateAwardingCriterion = new SubordinateAwardingCriterion());
 
         return $subordinateAwardingCriterion;
     }
@@ -1105,7 +1105,7 @@ class AwardingCriterionType
         }
 
         if ([] === $this->subordinateAwardingCriterion) {
-            $this->addOnceTosubordinateAwardingCriterion(new SubordinateAwardingCriterion());
+            $this->addOnceToSubordinateAwardingCriterion(new SubordinateAwardingCriterion());
         }
 
         return $this->subordinateAwardingCriterion[0];

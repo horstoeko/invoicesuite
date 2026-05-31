@@ -574,7 +574,7 @@ class PaymentMandateType
      */
     public function addToClauseWithCreate(): Clause
     {
-        $this->addToclause($clause = new Clause());
+        $this->addToClause($clause = new Clause());
 
         return $clause;
     }
@@ -605,7 +605,7 @@ class PaymentMandateType
         }
 
         if ([] === $this->clause) {
-            $this->addOnceToclause(new Clause());
+            $this->addOnceToClause(new Clause());
         }
 
         return $this->clause[0];

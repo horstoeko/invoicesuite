@@ -1063,7 +1063,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
                     $item->getGrossPrice()?->getPriceQuantity()?->getQuantityUnit()
                 );
 
-                $item->getGrossPrice()?->foreachAllowanceCharge(
+                $item->getGrossPrice()?->forEachAllowanceCharge(
                     fn (InvoiceSuiteAllowanceChargeDTO $itemGrossPriceAllowanceCharge) => $this->addDocumentPositionGrossPriceAllowanceCharge(
                         $itemGrossPriceAllowanceCharge->getAmount(),
                         $itemGrossPriceAllowanceCharge->getChargeIndicator(),
@@ -1406,7 +1406,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ?->getDatiGeneraliDocumento()
             ?->unsetData();
 
-        if (InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDocumentDate)) {
+        if (InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDocumentDate)) {
             return $this->traceMethodEarlyExit(__METHOD__, 'datetimeIsNullOrEmpty', 'InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDocumentDate)');
         }
 
@@ -1750,7 +1750,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ->addOnceToDatiOrdineAcquistoWithCreate()
             ->setIdDocumento($newReferenceNumber);
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $buyerOrderReference->setData($newReferenceDate);
         }
 
@@ -1849,7 +1849,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ->addToDatiContrattoWithCreate()
             ->setIdDocumento($newReferenceNumber);
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newReferenceDate)) {
             $contractReference->setData($newReferenceDate);
         }
 
@@ -6276,7 +6276,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ->getLatestFatturaElettronicaBody()
             ?->unsetDatiPagamento();
 
-        if (InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)) {
+        if (InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDueDate)) {
             return $this->traceMethodEarlyExit(__METHOD__, 'datetimeIsNullOrEmpty', 'InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)');
         }
 
@@ -6314,7 +6314,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        if (InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)) {
+        if (InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newDueDate)) {
             return $this->traceMethodEarlyExit(__METHOD__, 'datetimeIsNullOrEmpty', 'InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newDueDate)');
         }
 
@@ -8372,7 +8372,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ?->unsetDataInizioPeriodo()
             ?->unsetDataFinePeriodo();
 
-        if (InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newStartDate) && InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newEndDate)) {
+        if (InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newStartDate) && InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newEndDate)) {
             return $this->traceMethodEarlyExit(__METHOD__, 'datetimeIsNullOrEmpty', 'InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newStartDate) && InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newEndDate)');
         }
 
@@ -8382,11 +8382,11 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ->getDatiBeniServiziWithCreate()
             ->getLatestDettaglioLineeWithCreate();
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newStartDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newStartDate)) {
             $position->setDataInizioPeriodo($newStartDate);
         }
 
-        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newEndDate)) {
+        if (!InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($newEndDate)) {
             $position->setDataFinePeriodo($newEndDate);
         }
 

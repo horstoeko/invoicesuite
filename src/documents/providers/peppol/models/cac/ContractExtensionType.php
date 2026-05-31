@@ -158,7 +158,7 @@ class ContractExtensionType
      */
     public function addToOptionsDescriptionWithCreate(): OptionsDescription
     {
-        $this->addTooptionsDescription($optionsDescription = new OptionsDescription());
+        $this->addToOptionsDescription($optionsDescription = new OptionsDescription());
 
         return $optionsDescription;
     }
@@ -189,7 +189,7 @@ class ContractExtensionType
         }
 
         if ([] === $this->optionsDescription) {
-            $this->addOnceTooptionsDescription(new OptionsDescription());
+            $this->addOnceToOptionsDescription(new OptionsDescription());
         }
 
         return $this->optionsDescription[0];
@@ -402,7 +402,7 @@ class ContractExtensionType
      */
     public function addToRenewalWithCreate(): Renewal
     {
-        $this->addTorenewal($renewal = new Renewal());
+        $this->addToRenewal($renewal = new Renewal());
 
         return $renewal;
     }
@@ -433,7 +433,7 @@ class ContractExtensionType
         }
 
         if ([] === $this->renewal) {
-            $this->addOnceTorenewal(new Renewal());
+            $this->addOnceToRenewal(new Renewal());
         }
 
         return $this->renewal[0];

@@ -237,7 +237,7 @@ class ServiceProviderPartyType
      */
     public function addToServiceTypeWithCreate(): ServiceType
     {
-        $this->addToserviceType($serviceType = new ServiceType());
+        $this->addToServiceType($serviceType = new ServiceType());
 
         return $serviceType;
     }
@@ -268,7 +268,7 @@ class ServiceProviderPartyType
         }
 
         if ([] === $this->serviceType) {
-            $this->addOnceToserviceType(new ServiceType());
+            $this->addOnceToServiceType(new ServiceType());
         }
 
         return $this->serviceType[0];

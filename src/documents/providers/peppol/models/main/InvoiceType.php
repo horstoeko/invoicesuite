@@ -765,7 +765,7 @@ class InvoiceType
      */
     public function addToUBLExtensionsWithCreate(): UBLExtension
     {
-        $this->addTouBLExtensions($uBLExtensions = new UBLExtension());
+        $this->addToUBLExtensions($uBLExtensions = new UBLExtension());
 
         return $uBLExtensions;
     }
@@ -796,7 +796,7 @@ class InvoiceType
         }
 
         if ([] === $this->uBLExtensions) {
-            $this->addOnceTouBLExtensions(new UBLExtension());
+            $this->addOnceToUBLExtensions(new UBLExtension());
         }
 
         return $this->uBLExtensions[0];
@@ -1289,7 +1289,7 @@ class InvoiceType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -1320,7 +1320,7 @@ class InvoiceType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -1803,7 +1803,7 @@ class InvoiceType
      */
     public function addToInvoicePeriodWithCreate(): InvoicePeriod
     {
-        $this->addToinvoicePeriod($invoicePeriod = new InvoicePeriod());
+        $this->addToInvoicePeriod($invoicePeriod = new InvoicePeriod());
 
         return $invoicePeriod;
     }
@@ -1834,7 +1834,7 @@ class InvoiceType
         }
 
         if ([] === $this->invoicePeriod) {
-            $this->addOnceToinvoicePeriod(new InvoicePeriod());
+            $this->addOnceToInvoicePeriod(new InvoicePeriod());
         }
 
         return $this->invoicePeriod[0];
@@ -1967,7 +1967,7 @@ class InvoiceType
      */
     public function addToBillingReferenceWithCreate(): BillingReference
     {
-        $this->addTobillingReference($billingReference = new BillingReference());
+        $this->addToBillingReference($billingReference = new BillingReference());
 
         return $billingReference;
     }
@@ -1998,7 +1998,7 @@ class InvoiceType
         }
 
         if ([] === $this->billingReference) {
-            $this->addOnceTobillingReference(new BillingReference());
+            $this->addOnceToBillingReference(new BillingReference());
         }
 
         return $this->billingReference[0];
@@ -2091,7 +2091,7 @@ class InvoiceType
      */
     public function addToDespatchDocumentReferenceWithCreate(): DespatchDocumentReference
     {
-        $this->addTodespatchDocumentReference($despatchDocumentReference = new DespatchDocumentReference());
+        $this->addToDespatchDocumentReference($despatchDocumentReference = new DespatchDocumentReference());
 
         return $despatchDocumentReference;
     }
@@ -2122,7 +2122,7 @@ class InvoiceType
         }
 
         if ([] === $this->despatchDocumentReference) {
-            $this->addOnceTodespatchDocumentReference(new DespatchDocumentReference());
+            $this->addOnceToDespatchDocumentReference(new DespatchDocumentReference());
         }
 
         return $this->despatchDocumentReference[0];
@@ -2215,7 +2215,7 @@ class InvoiceType
      */
     public function addToReceiptDocumentReferenceWithCreate(): ReceiptDocumentReference
     {
-        $this->addToreceiptDocumentReference($receiptDocumentReference = new ReceiptDocumentReference());
+        $this->addToReceiptDocumentReference($receiptDocumentReference = new ReceiptDocumentReference());
 
         return $receiptDocumentReference;
     }
@@ -2246,7 +2246,7 @@ class InvoiceType
         }
 
         if ([] === $this->receiptDocumentReference) {
-            $this->addOnceToreceiptDocumentReference(new ReceiptDocumentReference());
+            $this->addOnceToReceiptDocumentReference(new ReceiptDocumentReference());
         }
 
         return $this->receiptDocumentReference[0];
@@ -2339,7 +2339,7 @@ class InvoiceType
      */
     public function addToStatementDocumentReferenceWithCreate(): StatementDocumentReference
     {
-        $this->addTostatementDocumentReference($statementDocumentReference = new StatementDocumentReference());
+        $this->addToStatementDocumentReference($statementDocumentReference = new StatementDocumentReference());
 
         return $statementDocumentReference;
     }
@@ -2370,7 +2370,7 @@ class InvoiceType
         }
 
         if ([] === $this->statementDocumentReference) {
-            $this->addOnceTostatementDocumentReference(new StatementDocumentReference());
+            $this->addOnceToStatementDocumentReference(new StatementDocumentReference());
         }
 
         return $this->statementDocumentReference[0];
@@ -2463,7 +2463,7 @@ class InvoiceType
      */
     public function addToOriginatorDocumentReferenceWithCreate(): OriginatorDocumentReference
     {
-        $this->addTooriginatorDocumentReference($originatorDocumentReference = new OriginatorDocumentReference());
+        $this->addToOriginatorDocumentReference($originatorDocumentReference = new OriginatorDocumentReference());
 
         return $originatorDocumentReference;
     }
@@ -2494,7 +2494,7 @@ class InvoiceType
         }
 
         if ([] === $this->originatorDocumentReference) {
-            $this->addOnceTooriginatorDocumentReference(new OriginatorDocumentReference());
+            $this->addOnceToOriginatorDocumentReference(new OriginatorDocumentReference());
         }
 
         return $this->originatorDocumentReference[0];
@@ -2587,7 +2587,7 @@ class InvoiceType
      */
     public function addToContractDocumentReferenceWithCreate(): ContractDocumentReference
     {
-        $this->addTocontractDocumentReference($contractDocumentReference = new ContractDocumentReference());
+        $this->addToContractDocumentReference($contractDocumentReference = new ContractDocumentReference());
 
         return $contractDocumentReference;
     }
@@ -2618,7 +2618,7 @@ class InvoiceType
         }
 
         if ([] === $this->contractDocumentReference) {
-            $this->addOnceTocontractDocumentReference(new ContractDocumentReference());
+            $this->addOnceToContractDocumentReference(new ContractDocumentReference());
         }
 
         return $this->contractDocumentReference[0];
@@ -2711,7 +2711,7 @@ class InvoiceType
      */
     public function addToAdditionalDocumentReferenceWithCreate(): AdditionalDocumentReference
     {
-        $this->addToadditionalDocumentReference($additionalDocumentReference = new AdditionalDocumentReference());
+        $this->addToAdditionalDocumentReference($additionalDocumentReference = new AdditionalDocumentReference());
 
         return $additionalDocumentReference;
     }
@@ -2742,7 +2742,7 @@ class InvoiceType
         }
 
         if ([] === $this->additionalDocumentReference) {
-            $this->addOnceToadditionalDocumentReference(new AdditionalDocumentReference());
+            $this->addOnceToAdditionalDocumentReference(new AdditionalDocumentReference());
         }
 
         return $this->additionalDocumentReference[0];
@@ -2835,7 +2835,7 @@ class InvoiceType
      */
     public function addToProjectReferenceWithCreate(): ProjectReference
     {
-        $this->addToprojectReference($projectReference = new ProjectReference());
+        $this->addToProjectReference($projectReference = new ProjectReference());
 
         return $projectReference;
     }
@@ -2866,7 +2866,7 @@ class InvoiceType
         }
 
         if ([] === $this->projectReference) {
-            $this->addOnceToprojectReference(new ProjectReference());
+            $this->addOnceToProjectReference(new ProjectReference());
         }
 
         return $this->projectReference[0];
@@ -2959,7 +2959,7 @@ class InvoiceType
      */
     public function addToSignatureWithCreate(): Signature
     {
-        $this->addTosignature($signature = new Signature());
+        $this->addToSignature($signature = new Signature());
 
         return $signature;
     }
@@ -2990,7 +2990,7 @@ class InvoiceType
         }
 
         if ([] === $this->signature) {
-            $this->addOnceTosignature(new Signature());
+            $this->addOnceToSignature(new Signature());
         }
 
         return $this->signature[0];
@@ -3323,7 +3323,7 @@ class InvoiceType
      */
     public function addToDeliveryWithCreate(): Delivery
     {
-        $this->addTodelivery($delivery = new Delivery());
+        $this->addToDelivery($delivery = new Delivery());
 
         return $delivery;
     }
@@ -3354,7 +3354,7 @@ class InvoiceType
         }
 
         if ([] === $this->delivery) {
-            $this->addOnceTodelivery(new Delivery());
+            $this->addOnceToDelivery(new Delivery());
         }
 
         return $this->delivery[0];
@@ -3487,7 +3487,7 @@ class InvoiceType
      */
     public function addToPaymentMeansWithCreate(): PaymentMeans
     {
-        $this->addTopaymentMeans($paymentMeans = new PaymentMeans());
+        $this->addToPaymentMeans($paymentMeans = new PaymentMeans());
 
         return $paymentMeans;
     }
@@ -3518,7 +3518,7 @@ class InvoiceType
         }
 
         if ([] === $this->paymentMeans) {
-            $this->addOnceTopaymentMeans(new PaymentMeans());
+            $this->addOnceToPaymentMeans(new PaymentMeans());
         }
 
         return $this->paymentMeans[0];
@@ -3611,7 +3611,7 @@ class InvoiceType
      */
     public function addToPaymentTermsWithCreate(): PaymentTerms
     {
-        $this->addTopaymentTerms($paymentTerms = new PaymentTerms());
+        $this->addToPaymentTerms($paymentTerms = new PaymentTerms());
 
         return $paymentTerms;
     }
@@ -3642,7 +3642,7 @@ class InvoiceType
         }
 
         if ([] === $this->paymentTerms) {
-            $this->addOnceTopaymentTerms(new PaymentTerms());
+            $this->addOnceToPaymentTerms(new PaymentTerms());
         }
 
         return $this->paymentTerms[0];
@@ -3735,7 +3735,7 @@ class InvoiceType
      */
     public function addToPrepaidPaymentWithCreate(): PrepaidPayment
     {
-        $this->addToprepaidPayment($prepaidPayment = new PrepaidPayment());
+        $this->addToPrepaidPayment($prepaidPayment = new PrepaidPayment());
 
         return $prepaidPayment;
     }
@@ -3766,7 +3766,7 @@ class InvoiceType
         }
 
         if ([] === $this->prepaidPayment) {
-            $this->addOnceToprepaidPayment(new PrepaidPayment());
+            $this->addOnceToPrepaidPayment(new PrepaidPayment());
         }
 
         return $this->prepaidPayment[0];
@@ -3859,7 +3859,7 @@ class InvoiceType
      */
     public function addToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        $this->addToallowanceCharge($allowanceCharge = new AllowanceCharge());
+        $this->addToAllowanceCharge($allowanceCharge = new AllowanceCharge());
 
         return $allowanceCharge;
     }
@@ -3890,7 +3890,7 @@ class InvoiceType
         }
 
         if ([] === $this->allowanceCharge) {
-            $this->addOnceToallowanceCharge(new AllowanceCharge());
+            $this->addOnceToAllowanceCharge(new AllowanceCharge());
         }
 
         return $this->allowanceCharge[0];
@@ -4161,7 +4161,7 @@ class InvoiceType
      */
     public function addToTaxTotalWithCreate(): TaxTotal
     {
-        $this->addTotaxTotal($taxTotal = new TaxTotal());
+        $this->addToTaxTotal($taxTotal = new TaxTotal());
 
         return $taxTotal;
     }
@@ -4230,7 +4230,7 @@ class InvoiceType
         }
 
         if ([] === $this->taxTotal) {
-            $this->addOnceTotaxTotal(new TaxTotal());
+            $this->addOnceToTaxTotal(new TaxTotal());
         }
 
         return $this->taxTotal[0];
@@ -4323,7 +4323,7 @@ class InvoiceType
      */
     public function addToWithholdingTaxTotalWithCreate(): WithholdingTaxTotal
     {
-        $this->addTowithholdingTaxTotal($withholdingTaxTotal = new WithholdingTaxTotal());
+        $this->addToWithholdingTaxTotal($withholdingTaxTotal = new WithholdingTaxTotal());
 
         return $withholdingTaxTotal;
     }
@@ -4354,7 +4354,7 @@ class InvoiceType
         }
 
         if ([] === $this->withholdingTaxTotal) {
-            $this->addOnceTowithholdingTaxTotal(new WithholdingTaxTotal());
+            $this->addOnceToWithholdingTaxTotal(new WithholdingTaxTotal());
         }
 
         return $this->withholdingTaxTotal[0];
@@ -4487,7 +4487,7 @@ class InvoiceType
      */
     public function addToInvoiceLineWithCreate(): InvoiceLine
     {
-        $this->addToinvoiceLine($invoiceLine = new InvoiceLine());
+        $this->addToInvoiceLine($invoiceLine = new InvoiceLine());
 
         return $invoiceLine;
     }
@@ -4518,7 +4518,7 @@ class InvoiceType
         }
 
         if ([] === $this->invoiceLine) {
-            $this->addOnceToinvoiceLine(new InvoiceLine());
+            $this->addOnceToInvoiceLine(new InvoiceLine());
         }
 
         return $this->invoiceLine[0];

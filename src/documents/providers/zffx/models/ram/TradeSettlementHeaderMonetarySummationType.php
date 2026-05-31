@@ -329,7 +329,7 @@ class TradeSettlementHeaderMonetarySummationType
      */
     public function addToTaxTotalAmountWithCreate(): AmountType
     {
-        $this->addTotaxTotalAmount($taxTotalAmount = new AmountType());
+        $this->addToTaxTotalAmount($taxTotalAmount = new AmountType());
 
         return $taxTotalAmount;
     }
@@ -360,7 +360,7 @@ class TradeSettlementHeaderMonetarySummationType
         }
 
         if ([] === $this->taxTotalAmount) {
-            $this->addOnceTotaxTotalAmount(new AmountType());
+            $this->addOnceToTaxTotalAmount(new AmountType());
         }
 
         return $this->taxTotalAmount[0];

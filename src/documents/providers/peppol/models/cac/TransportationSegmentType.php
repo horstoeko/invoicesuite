@@ -367,7 +367,7 @@ class TransportationSegmentType
      */
     public function addToShipmentStageWithCreate(): ShipmentStage
     {
-        $this->addToshipmentStage($shipmentStage = new ShipmentStage());
+        $this->addToShipmentStage($shipmentStage = new ShipmentStage());
 
         return $shipmentStage;
     }
@@ -398,7 +398,7 @@ class TransportationSegmentType
         }
 
         if ([] === $this->shipmentStage) {
-            $this->addOnceToshipmentStage(new ShipmentStage());
+            $this->addOnceToShipmentStage(new ShipmentStage());
         }
 
         return $this->shipmentStage[0];

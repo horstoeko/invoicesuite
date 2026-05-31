@@ -633,7 +633,7 @@ class DespatchType
      */
     public function addToInstructionsWithCreate(): Instructions
     {
-        $this->addToinstructions($instructions = new Instructions());
+        $this->addToInstructions($instructions = new Instructions());
 
         return $instructions;
     }
@@ -664,7 +664,7 @@ class DespatchType
         }
 
         if ([] === $this->instructions) {
-            $this->addOnceToinstructions(new Instructions());
+            $this->addOnceToInstructions(new Instructions());
         }
 
         return $this->instructions[0];
@@ -917,7 +917,7 @@ class DespatchType
      */
     public function addToNotifyPartyWithCreate(): NotifyParty
     {
-        $this->addTonotifyParty($notifyParty = new NotifyParty());
+        $this->addToNotifyParty($notifyParty = new NotifyParty());
 
         return $notifyParty;
     }
@@ -948,7 +948,7 @@ class DespatchType
         }
 
         if ([] === $this->notifyParty) {
-            $this->addOnceTonotifyParty(new NotifyParty());
+            $this->addOnceToNotifyParty(new NotifyParty());
         }
 
         return $this->notifyParty[0];

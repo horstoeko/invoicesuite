@@ -3565,14 +3565,14 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $newReferenceTypeCode = $documentAdditionalReference->getReferenceTypeCode()?->getValue() ?? '';
         $newDescription = $documentAdditionalReference->getName()?->getValue() ?? '';
 
-        if ($documentAdditionalReference->getAttachmentBinaryObject()) {
+        if (!is_null($documentAdditionalReference->getAttachmentBinaryObject())) {
             $newInvoiceSuiteAttachment = InvoiceSuiteAttachment::fromBase64String(
                 $documentAdditionalReference->getAttachmentBinaryObject()->getValue(),
                 $documentAdditionalReference->getAttachmentBinaryObject()->getFilename()
             );
         }
 
-        if ($documentAdditionalReference->getURIID()) {
+        if (!is_null($documentAdditionalReference->getURIID())) {
             $newInvoiceSuiteAttachment = InvoiceSuiteAttachment::fromUrl($documentAdditionalReference->getURIID()->getValue() ?? '');
         }
 
@@ -12458,14 +12458,14 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
         $newDescription = $documentPositionAdditionalReference->getName()?->getValue() ?? '';
         $newInvoiceSuiteAttachment = null;
 
-        if ($documentPositionAdditionalReference->getAttachmentBinaryObject()) {
+        if (!is_null($documentPositionAdditionalReference->getAttachmentBinaryObject())) {
             $newInvoiceSuiteAttachment = InvoiceSuiteAttachment::fromBase64String(
                 $documentPositionAdditionalReference->getAttachmentBinaryObject()->getValue(),
                 $documentPositionAdditionalReference->getAttachmentBinaryObject()->getFilename()
             );
         }
 
-        if ($documentPositionAdditionalReference->getURIID()) {
+        if (!is_null($documentPositionAdditionalReference->getURIID())) {
             $newInvoiceSuiteAttachment = InvoiceSuiteAttachment::fromUrl($documentPositionAdditionalReference->getURIID()->getValue() ?? '');
         }
 

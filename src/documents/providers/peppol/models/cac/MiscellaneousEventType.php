@@ -162,7 +162,7 @@ class MiscellaneousEventType
      */
     public function addToEventLineItemWithCreate(): EventLineItem
     {
-        $this->addToeventLineItem($eventLineItem = new EventLineItem());
+        $this->addToEventLineItem($eventLineItem = new EventLineItem());
 
         return $eventLineItem;
     }
@@ -193,7 +193,7 @@ class MiscellaneousEventType
         }
 
         if ([] === $this->eventLineItem) {
-            $this->addOnceToeventLineItem(new EventLineItem());
+            $this->addOnceToEventLineItem(new EventLineItem());
         }
 
         return $this->eventLineItem[0];

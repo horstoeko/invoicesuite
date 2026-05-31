@@ -45,6 +45,7 @@ trait HandlesSafeInvoking
         }
 
         if ($this->safeInvokeMethodExists($instance, $method)) {
+            // @phpstan-ignore method.dynamicName
             $instance->{$method}($value);
         }
 
@@ -72,6 +73,7 @@ trait HandlesSafeInvoking
         }
 
         if ($this->safeInvokeMethodExists($instance, $method)) {
+            // @phpstan-ignore method.dynamicName
             return $instance->{$method}();
         }
 
@@ -113,7 +115,7 @@ trait HandlesSafeInvoking
         $instance,
         $method
     ): bool {
-        if (null == $instance) {
+        if (null === $instance) {
             return false;
         }
 

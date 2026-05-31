@@ -256,7 +256,7 @@ class ProjectReferenceType
      */
     public function addToWorkPhaseReferenceWithCreate(): WorkPhaseReference
     {
-        $this->addToworkPhaseReference($workPhaseReference = new WorkPhaseReference());
+        $this->addToWorkPhaseReference($workPhaseReference = new WorkPhaseReference());
 
         return $workPhaseReference;
     }
@@ -287,7 +287,7 @@ class ProjectReferenceType
         }
 
         if ([] === $this->workPhaseReference) {
-            $this->addOnceToworkPhaseReference(new WorkPhaseReference());
+            $this->addOnceToWorkPhaseReference(new WorkPhaseReference());
         }
 
         return $this->workPhaseReference[0];

@@ -264,7 +264,7 @@ class CataloguePricingUpdateLineType
      */
     public function addToRequiredItemLocationQuantityWithCreate(): RequiredItemLocationQuantity
     {
-        $this->addTorequiredItemLocationQuantity($requiredItemLocationQuantity = new RequiredItemLocationQuantity());
+        $this->addToRequiredItemLocationQuantity($requiredItemLocationQuantity = new RequiredItemLocationQuantity());
 
         return $requiredItemLocationQuantity;
     }
@@ -295,7 +295,7 @@ class CataloguePricingUpdateLineType
         }
 
         if ([] === $this->requiredItemLocationQuantity) {
-            $this->addOnceTorequiredItemLocationQuantity(new RequiredItemLocationQuantity());
+            $this->addOnceToRequiredItemLocationQuantity(new RequiredItemLocationQuantity());
         }
 
         return $this->requiredItemLocationQuantity[0];

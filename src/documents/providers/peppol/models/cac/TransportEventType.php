@@ -378,7 +378,7 @@ class TransportEventType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -409,7 +409,7 @@ class TransportEventType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -572,7 +572,7 @@ class TransportEventType
      */
     public function addToCurrentStatusWithCreate(): CurrentStatus
     {
-        $this->addTocurrentStatus($currentStatus = new CurrentStatus());
+        $this->addToCurrentStatus($currentStatus = new CurrentStatus());
 
         return $currentStatus;
     }
@@ -603,7 +603,7 @@ class TransportEventType
         }
 
         if ([] === $this->currentStatus) {
-            $this->addOnceTocurrentStatus(new CurrentStatus());
+            $this->addOnceToCurrentStatus(new CurrentStatus());
         }
 
         return $this->currentStatus[0];
@@ -696,7 +696,7 @@ class TransportEventType
      */
     public function addToContactWithCreate(): Contact
     {
-        $this->addTocontact($contact = new Contact());
+        $this->addToContact($contact = new Contact());
 
         return $contact;
     }
@@ -727,7 +727,7 @@ class TransportEventType
         }
 
         if ([] === $this->contact) {
-            $this->addOnceTocontact(new Contact());
+            $this->addOnceToContact(new Contact());
         }
 
         return $this->contact[0];
@@ -900,7 +900,7 @@ class TransportEventType
      */
     public function addToPeriodWithCreate(): Period
     {
-        $this->addToperiod($period = new Period());
+        $this->addToPeriod($period = new Period());
 
         return $period;
     }
@@ -931,7 +931,7 @@ class TransportEventType
         }
 
         if ([] === $this->period) {
-            $this->addOnceToperiod(new Period());
+            $this->addOnceToPeriod(new Period());
         }
 
         return $this->period[0];

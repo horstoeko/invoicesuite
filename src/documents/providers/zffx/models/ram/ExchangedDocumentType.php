@@ -402,7 +402,7 @@ class ExchangedDocumentType
      */
     public function addToIncludedNoteWithCreate(): NoteType
     {
-        $this->addToincludedNote($includedNote = new NoteType());
+        $this->addToIncludedNote($includedNote = new NoteType());
 
         return $includedNote;
     }
@@ -433,7 +433,7 @@ class ExchangedDocumentType
         }
 
         if ([] === $this->includedNote) {
-            $this->addOnceToincludedNote(new NoteType());
+            $this->addOnceToIncludedNote(new NoteType());
         }
 
         return $this->includedNote[0];

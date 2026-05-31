@@ -297,7 +297,7 @@ class PriceType
      */
     public function addToPriceChangeReasonWithCreate(): PriceChangeReason
     {
-        $this->addTopriceChangeReason($priceChangeReason = new PriceChangeReason());
+        $this->addToPriceChangeReason($priceChangeReason = new PriceChangeReason());
 
         return $priceChangeReason;
     }
@@ -328,7 +328,7 @@ class PriceType
         }
 
         if ([] === $this->priceChangeReason) {
-            $this->addOnceTopriceChangeReason(new PriceChangeReason());
+            $this->addOnceToPriceChangeReason(new PriceChangeReason());
         }
 
         return $this->priceChangeReason[0];
@@ -541,7 +541,7 @@ class PriceType
      */
     public function addToValidityPeriodWithCreate(): ValidityPeriod
     {
-        $this->addTovalidityPeriod($validityPeriod = new ValidityPeriod());
+        $this->addToValidityPeriod($validityPeriod = new ValidityPeriod());
 
         return $validityPeriod;
     }
@@ -572,7 +572,7 @@ class PriceType
         }
 
         if ([] === $this->validityPeriod) {
-            $this->addOnceTovalidityPeriod(new ValidityPeriod());
+            $this->addOnceToValidityPeriod(new ValidityPeriod());
         }
 
         return $this->validityPeriod[0];
@@ -705,7 +705,7 @@ class PriceType
      */
     public function addToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        $this->addToallowanceCharge($allowanceCharge = new AllowanceCharge());
+        $this->addToAllowanceCharge($allowanceCharge = new AllowanceCharge());
 
         return $allowanceCharge;
     }
@@ -736,7 +736,7 @@ class PriceType
         }
 
         if ([] === $this->allowanceCharge) {
-            $this->addOnceToallowanceCharge(new AllowanceCharge());
+            $this->addOnceToAllowanceCharge(new AllowanceCharge());
         }
 
         return $this->allowanceCharge[0];

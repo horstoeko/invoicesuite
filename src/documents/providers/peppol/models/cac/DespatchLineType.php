@@ -348,7 +348,7 @@ class DespatchLineType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -379,7 +379,7 @@ class DespatchLineType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -592,7 +592,7 @@ class DespatchLineType
      */
     public function addToBackorderReasonWithCreate(): BackorderReason
     {
-        $this->addTobackorderReason($backorderReason = new BackorderReason());
+        $this->addToBackorderReason($backorderReason = new BackorderReason());
 
         return $backorderReason;
     }
@@ -623,7 +623,7 @@ class DespatchLineType
         }
 
         if ([] === $this->backorderReason) {
-            $this->addOnceTobackorderReason(new BackorderReason());
+            $this->addOnceToBackorderReason(new BackorderReason());
         }
 
         return $this->backorderReason[0];
@@ -756,7 +756,7 @@ class DespatchLineType
      */
     public function addToOutstandingReasonWithCreate(): OutstandingReason
     {
-        $this->addTooutstandingReason($outstandingReason = new OutstandingReason());
+        $this->addToOutstandingReason($outstandingReason = new OutstandingReason());
 
         return $outstandingReason;
     }
@@ -787,7 +787,7 @@ class DespatchLineType
         }
 
         if ([] === $this->outstandingReason) {
-            $this->addOnceTooutstandingReason(new OutstandingReason());
+            $this->addOnceToOutstandingReason(new OutstandingReason());
         }
 
         return $this->outstandingReason[0];
@@ -920,7 +920,7 @@ class DespatchLineType
      */
     public function addToOrderLineReferenceWithCreate(): OrderLineReference
     {
-        $this->addToorderLineReference($orderLineReference = new OrderLineReference());
+        $this->addToOrderLineReference($orderLineReference = new OrderLineReference());
 
         return $orderLineReference;
     }
@@ -951,7 +951,7 @@ class DespatchLineType
         }
 
         if ([] === $this->orderLineReference) {
-            $this->addOnceToorderLineReference(new OrderLineReference());
+            $this->addOnceToOrderLineReference(new OrderLineReference());
         }
 
         return $this->orderLineReference[0];
@@ -1044,7 +1044,7 @@ class DespatchLineType
      */
     public function addToDocumentReferenceWithCreate(): DocumentReference
     {
-        $this->addTodocumentReference($documentReference = new DocumentReference());
+        $this->addToDocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
     }
@@ -1075,7 +1075,7 @@ class DespatchLineType
         }
 
         if ([] === $this->documentReference) {
-            $this->addOnceTodocumentReference(new DocumentReference());
+            $this->addOnceToDocumentReference(new DocumentReference());
         }
 
         return $this->documentReference[0];
@@ -1208,7 +1208,7 @@ class DespatchLineType
      */
     public function addToShipmentWithCreate(): Shipment
     {
-        $this->addToshipment($shipment = new Shipment());
+        $this->addToShipment($shipment = new Shipment());
 
         return $shipment;
     }
@@ -1239,7 +1239,7 @@ class DespatchLineType
         }
 
         if ([] === $this->shipment) {
-            $this->addOnceToshipment(new Shipment());
+            $this->addOnceToShipment(new Shipment());
         }
 
         return $this->shipment[0];

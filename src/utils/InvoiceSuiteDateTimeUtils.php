@@ -24,7 +24,7 @@ class InvoiceSuiteDateTimeUtils
      * @param  null|DateTimeInterface $value
      * @return bool
      */
-    public static function datetimeIsNullOrEmpty(
+    public static function dateTimeIsNullOrEmpty(
         ?DateTimeInterface $value = null
     ): bool {
         return is_null($value);
@@ -41,7 +41,7 @@ class InvoiceSuiteDateTimeUtils
         array $values
     ): bool {
         foreach ($values as $value) {
-            if (!static::datetimeIsNullOrEmpty($value)) {
+            if (!static::dateTimeIsNullOrEmpty($value)) {
                 return false;
             }
         }
@@ -76,7 +76,7 @@ class InvoiceSuiteDateTimeUtils
     public static function asNullWhenEmpty(
         ?DateTimeInterface $str
     ): ?DateTimeInterface {
-        return static::datetimeIsNullOrEmpty($str) ? null : $str;
+        return static::dateTimeIsNullOrEmpty($str) ? null : $str;
     }
 
     /**
@@ -98,31 +98,31 @@ class InvoiceSuiteDateTimeUtils
 
         $dateTimeString = trim((string) $dateTimeString);
 
-        if ('102' == $format) {
+        if ('102' === $format) {
             return DateTime::createFromFormat('Ymd', $dateTimeString);
         }
 
-        if ('101' == $format) {
+        if ('101' === $format) {
             return DateTime::createFromFormat('ymd', $dateTimeString);
         }
 
-        if ('201' == $format) {
+        if ('201' === $format) {
             return DateTime::createFromFormat('ymdHi', $dateTimeString);
         }
 
-        if ('202' == $format) {
+        if ('202' === $format) {
             return DateTime::createFromFormat('ymdHis', $dateTimeString);
         }
 
-        if ('203' == $format) {
+        if ('203' === $format) {
             return DateTime::createFromFormat('YmdHi', $dateTimeString);
         }
 
-        if ('204' == $format) {
+        if ('204' === $format) {
             return DateTime::createFromFormat('YmdHis', $dateTimeString);
         }
 
-        if ('610' == $format) {
+        if ('610' === $format) {
             return DateTime::createFromFormat('!Ym', $dateTimeString)->modify('first day of')->modify('midnight');
         }
 

@@ -366,12 +366,12 @@ final class UtilsTest extends TestCase
     {
         $dateTimeValue = null;
 
-        $this->assertTrue(InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($dateTimeValue));
+        $this->assertTrue(InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($dateTimeValue));
 
         $dateTimeValue = DateTime::createFromFormat('dmY', '01011970');
 
         $this->assertInstanceOf(DateTimeInterface::class, $dateTimeValue);
-        $this->assertFalse(InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($dateTimeValue));
+        $this->assertFalse(InvoiceSuiteDateTimeUtils::dateTimeIsNullOrEmpty($dateTimeValue));
     }
 
     public function testInvoiceSuiteDateTimeUtilsAllIsNullOrEmpty(): void

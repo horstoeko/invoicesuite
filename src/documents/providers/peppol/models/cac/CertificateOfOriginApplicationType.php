@@ -485,7 +485,7 @@ class CertificateOfOriginApplicationType
      */
     public function addToRemarksWithCreate(): Remarks
     {
-        $this->addToremarks($remarks = new Remarks());
+        $this->addToRemarks($remarks = new Remarks());
 
         return $remarks;
     }
@@ -516,7 +516,7 @@ class CertificateOfOriginApplicationType
         }
 
         if ([] === $this->remarks) {
-            $this->addOnceToremarks(new Remarks());
+            $this->addOnceToRemarks(new Remarks());
         }
 
         return $this->remarks[0];
@@ -649,7 +649,7 @@ class CertificateOfOriginApplicationType
      */
     public function addToEndorserPartyWithCreate(): EndorserParty
     {
-        $this->addToendorserParty($endorserParty = new EndorserParty());
+        $this->addToEndorserParty($endorserParty = new EndorserParty());
 
         return $endorserParty;
     }
@@ -680,7 +680,7 @@ class CertificateOfOriginApplicationType
         }
 
         if ([] === $this->endorserParty) {
-            $this->addOnceToendorserParty(new EndorserParty());
+            $this->addOnceToEndorserParty(new EndorserParty());
         }
 
         return $this->endorserParty[0];
@@ -973,7 +973,7 @@ class CertificateOfOriginApplicationType
      */
     public function addToDocumentDistributionWithCreate(): DocumentDistribution
     {
-        $this->addTodocumentDistribution($documentDistribution = new DocumentDistribution());
+        $this->addToDocumentDistribution($documentDistribution = new DocumentDistribution());
 
         return $documentDistribution;
     }
@@ -1004,7 +1004,7 @@ class CertificateOfOriginApplicationType
         }
 
         if ([] === $this->documentDistribution) {
-            $this->addOnceTodocumentDistribution(new DocumentDistribution());
+            $this->addOnceToDocumentDistribution(new DocumentDistribution());
         }
 
         return $this->documentDistribution[0];
@@ -1097,7 +1097,7 @@ class CertificateOfOriginApplicationType
      */
     public function addToSupportingDocumentReferenceWithCreate(): SupportingDocumentReference
     {
-        $this->addTosupportingDocumentReference($supportingDocumentReference = new SupportingDocumentReference());
+        $this->addToSupportingDocumentReference($supportingDocumentReference = new SupportingDocumentReference());
 
         return $supportingDocumentReference;
     }
@@ -1128,7 +1128,7 @@ class CertificateOfOriginApplicationType
         }
 
         if ([] === $this->supportingDocumentReference) {
-            $this->addOnceTosupportingDocumentReference(new SupportingDocumentReference());
+            $this->addOnceToSupportingDocumentReference(new SupportingDocumentReference());
         }
 
         return $this->supportingDocumentReference[0];
@@ -1221,7 +1221,7 @@ class CertificateOfOriginApplicationType
      */
     public function addToSignatureWithCreate(): Signature
     {
-        $this->addTosignature($signature = new Signature());
+        $this->addToSignature($signature = new Signature());
 
         return $signature;
     }
@@ -1252,7 +1252,7 @@ class CertificateOfOriginApplicationType
         }
 
         if ([] === $this->signature) {
-            $this->addOnceTosignature(new Signature());
+            $this->addOnceToSignature(new Signature());
         }
 
         return $this->signature[0];

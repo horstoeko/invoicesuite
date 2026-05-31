@@ -509,7 +509,7 @@ class CreditNoteLineType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -540,7 +540,7 @@ class CreditNoteLineType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -893,7 +893,7 @@ class CreditNoteLineType
      */
     public function addToInvoicePeriodWithCreate(): InvoicePeriod
     {
-        $this->addToinvoicePeriod($invoicePeriod = new InvoicePeriod());
+        $this->addToInvoicePeriod($invoicePeriod = new InvoicePeriod());
 
         return $invoicePeriod;
     }
@@ -924,7 +924,7 @@ class CreditNoteLineType
         }
 
         if ([] === $this->invoicePeriod) {
-            $this->addOnceToinvoicePeriod(new InvoicePeriod());
+            $this->addOnceToInvoicePeriod(new InvoicePeriod());
         }
 
         return $this->invoicePeriod[0];
@@ -1017,7 +1017,7 @@ class CreditNoteLineType
      */
     public function addToOrderLineReferenceWithCreate(): OrderLineReference
     {
-        $this->addToorderLineReference($orderLineReference = new OrderLineReference());
+        $this->addToOrderLineReference($orderLineReference = new OrderLineReference());
 
         return $orderLineReference;
     }
@@ -1048,7 +1048,7 @@ class CreditNoteLineType
         }
 
         if ([] === $this->orderLineReference) {
-            $this->addOnceToorderLineReference(new OrderLineReference());
+            $this->addOnceToOrderLineReference(new OrderLineReference());
         }
 
         return $this->orderLineReference[0];
@@ -1141,7 +1141,7 @@ class CreditNoteLineType
      */
     public function addToDiscrepancyResponseWithCreate(): DiscrepancyResponse
     {
-        $this->addTodiscrepancyResponse($discrepancyResponse = new DiscrepancyResponse());
+        $this->addToDiscrepancyResponse($discrepancyResponse = new DiscrepancyResponse());
 
         return $discrepancyResponse;
     }
@@ -1172,7 +1172,7 @@ class CreditNoteLineType
         }
 
         if ([] === $this->discrepancyResponse) {
-            $this->addOnceTodiscrepancyResponse(new DiscrepancyResponse());
+            $this->addOnceToDiscrepancyResponse(new DiscrepancyResponse());
         }
 
         return $this->discrepancyResponse[0];
@@ -1265,7 +1265,7 @@ class CreditNoteLineType
      */
     public function addToDespatchLineReferenceWithCreate(): DespatchLineReference
     {
-        $this->addTodespatchLineReference($despatchLineReference = new DespatchLineReference());
+        $this->addToDespatchLineReference($despatchLineReference = new DespatchLineReference());
 
         return $despatchLineReference;
     }
@@ -1296,7 +1296,7 @@ class CreditNoteLineType
         }
 
         if ([] === $this->despatchLineReference) {
-            $this->addOnceTodespatchLineReference(new DespatchLineReference());
+            $this->addOnceToDespatchLineReference(new DespatchLineReference());
         }
 
         return $this->despatchLineReference[0];
@@ -1389,7 +1389,7 @@ class CreditNoteLineType
      */
     public function addToReceiptLineReferenceWithCreate(): ReceiptLineReference
     {
-        $this->addToreceiptLineReference($receiptLineReference = new ReceiptLineReference());
+        $this->addToReceiptLineReference($receiptLineReference = new ReceiptLineReference());
 
         return $receiptLineReference;
     }
@@ -1420,7 +1420,7 @@ class CreditNoteLineType
         }
 
         if ([] === $this->receiptLineReference) {
-            $this->addOnceToreceiptLineReference(new ReceiptLineReference());
+            $this->addOnceToReceiptLineReference(new ReceiptLineReference());
         }
 
         return $this->receiptLineReference[0];
@@ -1513,7 +1513,7 @@ class CreditNoteLineType
      */
     public function addToBillingReferenceWithCreate(): BillingReference
     {
-        $this->addTobillingReference($billingReference = new BillingReference());
+        $this->addToBillingReference($billingReference = new BillingReference());
 
         return $billingReference;
     }
@@ -1544,7 +1544,7 @@ class CreditNoteLineType
         }
 
         if ([] === $this->billingReference) {
-            $this->addOnceTobillingReference(new BillingReference());
+            $this->addOnceToBillingReference(new BillingReference());
         }
 
         return $this->billingReference[0];
@@ -1637,7 +1637,7 @@ class CreditNoteLineType
      */
     public function addToDocumentReferenceWithCreate(): DocumentReference
     {
-        $this->addTodocumentReference($documentReference = new DocumentReference());
+        $this->addToDocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
     }
@@ -1668,7 +1668,7 @@ class CreditNoteLineType
         }
 
         if ([] === $this->documentReference) {
-            $this->addOnceTodocumentReference(new DocumentReference());
+            $this->addOnceToDocumentReference(new DocumentReference());
         }
 
         return $this->documentReference[0];
@@ -1841,7 +1841,7 @@ class CreditNoteLineType
      */
     public function addToDeliveryWithCreate(): Delivery
     {
-        $this->addTodelivery($delivery = new Delivery());
+        $this->addToDelivery($delivery = new Delivery());
 
         return $delivery;
     }
@@ -1872,7 +1872,7 @@ class CreditNoteLineType
         }
 
         if ([] === $this->delivery) {
-            $this->addOnceTodelivery(new Delivery());
+            $this->addOnceToDelivery(new Delivery());
         }
 
         return $this->delivery[0];
@@ -1965,7 +1965,7 @@ class CreditNoteLineType
      */
     public function addToPaymentTermsWithCreate(): PaymentTerms
     {
-        $this->addTopaymentTerms($paymentTerms = new PaymentTerms());
+        $this->addToPaymentTerms($paymentTerms = new PaymentTerms());
 
         return $paymentTerms;
     }
@@ -1996,7 +1996,7 @@ class CreditNoteLineType
         }
 
         if ([] === $this->paymentTerms) {
-            $this->addOnceTopaymentTerms(new PaymentTerms());
+            $this->addOnceToPaymentTerms(new PaymentTerms());
         }
 
         return $this->paymentTerms[0];
@@ -2089,7 +2089,7 @@ class CreditNoteLineType
      */
     public function addToTaxTotalWithCreate(): TaxTotal
     {
-        $this->addTotaxTotal($taxTotal = new TaxTotal());
+        $this->addToTaxTotal($taxTotal = new TaxTotal());
 
         return $taxTotal;
     }
@@ -2120,7 +2120,7 @@ class CreditNoteLineType
         }
 
         if ([] === $this->taxTotal) {
-            $this->addOnceTotaxTotal(new TaxTotal());
+            $this->addOnceToTaxTotal(new TaxTotal());
         }
 
         return $this->taxTotal[0];
@@ -2213,7 +2213,7 @@ class CreditNoteLineType
      */
     public function addToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        $this->addToallowanceCharge($allowanceCharge = new AllowanceCharge());
+        $this->addToAllowanceCharge($allowanceCharge = new AllowanceCharge());
 
         return $allowanceCharge;
     }
@@ -2244,7 +2244,7 @@ class CreditNoteLineType
         }
 
         if ([] === $this->allowanceCharge) {
-            $this->addOnceToallowanceCharge(new AllowanceCharge());
+            $this->addOnceToAllowanceCharge(new AllowanceCharge());
         }
 
         return $this->allowanceCharge[0];
@@ -2417,7 +2417,7 @@ class CreditNoteLineType
      */
     public function addToDeliveryTermsWithCreate(): DeliveryTerms
     {
-        $this->addTodeliveryTerms($deliveryTerms = new DeliveryTerms());
+        $this->addToDeliveryTerms($deliveryTerms = new DeliveryTerms());
 
         return $deliveryTerms;
     }
@@ -2448,7 +2448,7 @@ class CreditNoteLineType
         }
 
         if ([] === $this->deliveryTerms) {
-            $this->addOnceTodeliveryTerms(new DeliveryTerms());
+            $this->addOnceToDeliveryTerms(new DeliveryTerms());
         }
 
         return $this->deliveryTerms[0];
@@ -2541,7 +2541,7 @@ class CreditNoteLineType
      */
     public function addToSubCreditNoteLineWithCreate(): SubCreditNoteLine
     {
-        $this->addTosubCreditNoteLine($subCreditNoteLine = new SubCreditNoteLine());
+        $this->addToSubCreditNoteLine($subCreditNoteLine = new SubCreditNoteLine());
 
         return $subCreditNoteLine;
     }
@@ -2572,7 +2572,7 @@ class CreditNoteLineType
         }
 
         if ([] === $this->subCreditNoteLine) {
-            $this->addOnceTosubCreditNoteLine(new SubCreditNoteLine());
+            $this->addOnceToSubCreditNoteLine(new SubCreditNoteLine());
         }
 
         return $this->subCreditNoteLine[0];

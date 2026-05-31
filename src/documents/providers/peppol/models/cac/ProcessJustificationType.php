@@ -228,7 +228,7 @@ class ProcessJustificationType
      */
     public function addToProcessReasonWithCreate(): ProcessReason
     {
-        $this->addToprocessReason($processReason = new ProcessReason());
+        $this->addToProcessReason($processReason = new ProcessReason());
 
         return $processReason;
     }
@@ -259,7 +259,7 @@ class ProcessJustificationType
         }
 
         if ([] === $this->processReason) {
-            $this->addOnceToprocessReason(new ProcessReason());
+            $this->addOnceToProcessReason(new ProcessReason());
         }
 
         return $this->processReason[0];
@@ -352,7 +352,7 @@ class ProcessJustificationType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -383,7 +383,7 @@ class ProcessJustificationType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];

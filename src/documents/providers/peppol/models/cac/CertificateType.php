@@ -302,7 +302,7 @@ class CertificateType
      */
     public function addToRemarksWithCreate(): Remarks
     {
-        $this->addToremarks($remarks = new Remarks());
+        $this->addToRemarks($remarks = new Remarks());
 
         return $remarks;
     }
@@ -333,7 +333,7 @@ class CertificateType
         }
 
         if ([] === $this->remarks) {
-            $this->addOnceToremarks(new Remarks());
+            $this->addOnceToRemarks(new Remarks());
         }
 
         return $this->remarks[0];
@@ -466,7 +466,7 @@ class CertificateType
      */
     public function addToDocumentReferenceWithCreate(): DocumentReference
     {
-        $this->addTodocumentReference($documentReference = new DocumentReference());
+        $this->addToDocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
     }
@@ -497,7 +497,7 @@ class CertificateType
         }
 
         if ([] === $this->documentReference) {
-            $this->addOnceTodocumentReference(new DocumentReference());
+            $this->addOnceToDocumentReference(new DocumentReference());
         }
 
         return $this->documentReference[0];
@@ -590,7 +590,7 @@ class CertificateType
      */
     public function addToSignatureWithCreate(): Signature
     {
-        $this->addTosignature($signature = new Signature());
+        $this->addToSignature($signature = new Signature());
 
         return $signature;
     }
@@ -621,7 +621,7 @@ class CertificateType
         }
 
         if ([] === $this->signature) {
-            $this->addOnceTosignature(new Signature());
+            $this->addOnceToSignature(new Signature());
         }
 
         return $this->signature[0];

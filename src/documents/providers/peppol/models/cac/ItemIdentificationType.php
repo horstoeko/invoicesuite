@@ -289,7 +289,7 @@ class ItemIdentificationType
      */
     public function addToPhysicalAttributeWithCreate(): PhysicalAttribute
     {
-        $this->addTophysicalAttribute($physicalAttribute = new PhysicalAttribute());
+        $this->addToPhysicalAttribute($physicalAttribute = new PhysicalAttribute());
 
         return $physicalAttribute;
     }
@@ -320,7 +320,7 @@ class ItemIdentificationType
         }
 
         if ([] === $this->physicalAttribute) {
-            $this->addOnceTophysicalAttribute(new PhysicalAttribute());
+            $this->addOnceToPhysicalAttribute(new PhysicalAttribute());
         }
 
         return $this->physicalAttribute[0];
@@ -413,7 +413,7 @@ class ItemIdentificationType
      */
     public function addToMeasurementDimensionWithCreate(): MeasurementDimension
     {
-        $this->addTomeasurementDimension($measurementDimension = new MeasurementDimension());
+        $this->addToMeasurementDimension($measurementDimension = new MeasurementDimension());
 
         return $measurementDimension;
     }
@@ -444,7 +444,7 @@ class ItemIdentificationType
         }
 
         if ([] === $this->measurementDimension) {
-            $this->addOnceTomeasurementDimension(new MeasurementDimension());
+            $this->addOnceToMeasurementDimension(new MeasurementDimension());
         }
 
         return $this->measurementDimension[0];

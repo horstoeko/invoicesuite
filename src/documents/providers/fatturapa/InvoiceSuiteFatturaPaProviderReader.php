@@ -3569,6 +3569,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         $newName = $anagrafica?->getDenominazione() ?? '';
 
         if ('' === trim($newName)) {
+            // @phpstan-ignore arrayFilter.strict
             $newName = trim(implode(' ', array_filter([$anagrafica?->getNome(), $anagrafica?->getCognome()])));
         }
 
@@ -3852,6 +3853,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         $newAddressLine1 = '';
 
         if (!is_null($address)) {
+            // @phpstan-ignore arrayFilter.strict
             $newAddressLine1 = trim(implode(' ', array_filter([$address->getIndirizzo(), $address->getNumeroCivico()])));
         }
 
@@ -4057,6 +4059,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         $newName = $anagrafica?->getDenominazione() ?? '';
 
         if ('' === trim($newName)) {
+            // @phpstan-ignore arrayFilter.strict
             $newName = trim(implode(' ', array_filter([$anagrafica?->getNome(), $anagrafica?->getCognome()])));
         }
 
@@ -4340,6 +4343,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         $newAddressLine1 = '';
 
         if (!is_null($address)) {
+            // @phpstan-ignore arrayFilter.strict
             $newAddressLine1 = trim(implode(' ', array_filter([$address->getIndirizzo(), $address->getNumeroCivico()])));
         }
 
@@ -4514,6 +4518,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         $newName = $anagrafica?->getDenominazione() ?? '';
 
         if ('' === trim($newName)) {
+            // @phpstan-ignore arrayFilter.strict
             $newName = trim(implode(' ', array_filter([$anagrafica?->getNome(), $anagrafica?->getCognome()])));
         }
 

@@ -387,7 +387,7 @@ class TenderLineType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -418,7 +418,7 @@ class TenderLineType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -831,7 +831,7 @@ class TenderLineType
      */
     public function addToWarrantyInformationWithCreate(): WarrantyInformation
     {
-        $this->addTowarrantyInformation($warrantyInformation = new WarrantyInformation());
+        $this->addToWarrantyInformation($warrantyInformation = new WarrantyInformation());
 
         return $warrantyInformation;
     }
@@ -862,7 +862,7 @@ class TenderLineType
         }
 
         if ([] === $this->warrantyInformation) {
-            $this->addOnceTowarrantyInformation(new WarrantyInformation());
+            $this->addOnceToWarrantyInformation(new WarrantyInformation());
         }
 
         return $this->warrantyInformation[0];
@@ -995,7 +995,7 @@ class TenderLineType
      */
     public function addToDocumentReferenceWithCreate(): DocumentReference
     {
-        $this->addTodocumentReference($documentReference = new DocumentReference());
+        $this->addToDocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
     }
@@ -1026,7 +1026,7 @@ class TenderLineType
         }
 
         if ([] === $this->documentReference) {
-            $this->addOnceTodocumentReference(new DocumentReference());
+            $this->addOnceToDocumentReference(new DocumentReference());
         }
 
         return $this->documentReference[0];
@@ -1159,7 +1159,7 @@ class TenderLineType
      */
     public function addToOfferedItemLocationQuantityWithCreate(): OfferedItemLocationQuantity
     {
-        $this->addToofferedItemLocationQuantity($offeredItemLocationQuantity = new OfferedItemLocationQuantity());
+        $this->addToOfferedItemLocationQuantity($offeredItemLocationQuantity = new OfferedItemLocationQuantity());
 
         return $offeredItemLocationQuantity;
     }
@@ -1190,7 +1190,7 @@ class TenderLineType
         }
 
         if ([] === $this->offeredItemLocationQuantity) {
-            $this->addOnceToofferedItemLocationQuantity(new OfferedItemLocationQuantity());
+            $this->addOnceToOfferedItemLocationQuantity(new OfferedItemLocationQuantity());
         }
 
         return $this->offeredItemLocationQuantity[0];
@@ -1283,7 +1283,7 @@ class TenderLineType
      */
     public function addToReplacementRelatedItemWithCreate(): ReplacementRelatedItem
     {
-        $this->addToreplacementRelatedItem($replacementRelatedItem = new ReplacementRelatedItem());
+        $this->addToReplacementRelatedItem($replacementRelatedItem = new ReplacementRelatedItem());
 
         return $replacementRelatedItem;
     }
@@ -1314,7 +1314,7 @@ class TenderLineType
         }
 
         if ([] === $this->replacementRelatedItem) {
-            $this->addOnceToreplacementRelatedItem(new ReplacementRelatedItem());
+            $this->addOnceToReplacementRelatedItem(new ReplacementRelatedItem());
         }
 
         return $this->replacementRelatedItem[0];
@@ -1487,7 +1487,7 @@ class TenderLineType
      */
     public function addToSubTenderLineWithCreate(): SubTenderLine
     {
-        $this->addTosubTenderLine($subTenderLine = new SubTenderLine());
+        $this->addToSubTenderLine($subTenderLine = new SubTenderLine());
 
         return $subTenderLine;
     }
@@ -1518,7 +1518,7 @@ class TenderLineType
         }
 
         if ([] === $this->subTenderLine) {
-            $this->addOnceTosubTenderLine(new SubTenderLine());
+            $this->addOnceToSubTenderLine(new SubTenderLine());
         }
 
         return $this->subTenderLine[0];

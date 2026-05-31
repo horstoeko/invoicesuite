@@ -382,7 +382,7 @@ class MeterType
      */
     public function addToMeterReadingWithCreate(): MeterReading
     {
-        $this->addTometerReading($meterReading = new MeterReading());
+        $this->addToMeterReading($meterReading = new MeterReading());
 
         return $meterReading;
     }
@@ -413,7 +413,7 @@ class MeterType
         }
 
         if ([] === $this->meterReading) {
-            $this->addOnceTometerReading(new MeterReading());
+            $this->addOnceToMeterReading(new MeterReading());
         }
 
         return $this->meterReading[0];
@@ -506,7 +506,7 @@ class MeterType
      */
     public function addToMeterPropertyWithCreate(): MeterProperty
     {
-        $this->addTometerProperty($meterProperty = new MeterProperty());
+        $this->addToMeterProperty($meterProperty = new MeterProperty());
 
         return $meterProperty;
     }
@@ -537,7 +537,7 @@ class MeterType
         }
 
         if ([] === $this->meterProperty) {
-            $this->addOnceTometerProperty(new MeterProperty());
+            $this->addOnceToMeterProperty(new MeterProperty());
         }
 
         return $this->meterProperty[0];

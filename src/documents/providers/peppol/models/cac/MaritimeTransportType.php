@@ -313,7 +313,7 @@ class MaritimeTransportType
      */
     public function addToShipsRequirementsWithCreate(): ShipsRequirements
     {
-        $this->addToshipsRequirements($shipsRequirements = new ShipsRequirements());
+        $this->addToShipsRequirements($shipsRequirements = new ShipsRequirements());
 
         return $shipsRequirements;
     }
@@ -344,7 +344,7 @@ class MaritimeTransportType
         }
 
         if ([] === $this->shipsRequirements) {
-            $this->addOnceToshipsRequirements(new ShipsRequirements());
+            $this->addOnceToShipsRequirements(new ShipsRequirements());
         }
 
         return $this->shipsRequirements[0];

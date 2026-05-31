@@ -163,7 +163,7 @@ class EconomicOperatorRoleType
      */
     public function addToRoleDescriptionWithCreate(): RoleDescription
     {
-        $this->addToroleDescription($roleDescription = new RoleDescription());
+        $this->addToRoleDescription($roleDescription = new RoleDescription());
 
         return $roleDescription;
     }
@@ -194,7 +194,7 @@ class EconomicOperatorRoleType
         }
 
         if ([] === $this->roleDescription) {
-            $this->addOnceToroleDescription(new RoleDescription());
+            $this->addOnceToRoleDescription(new RoleDescription());
         }
 
         return $this->roleDescription[0];

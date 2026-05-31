@@ -571,7 +571,7 @@ class TradeProductType
      */
     public function addToBatchIDWithCreate(): IDType
     {
-        $this->addTobatchID($batchID = new IDType());
+        $this->addToBatchID($batchID = new IDType());
 
         return $batchID;
     }
@@ -602,7 +602,7 @@ class TradeProductType
         }
 
         if ([] === $this->batchID) {
-            $this->addOnceTobatchID(new IDType());
+            $this->addOnceToBatchID(new IDType());
         }
 
         return $this->batchID[0];
@@ -745,7 +745,7 @@ class TradeProductType
      */
     public function addToApplicableProductCharacteristicWithCreate(): ProductCharacteristicType
     {
-        $this->addToapplicableProductCharacteristic($applicableProductCharacteristic = new ProductCharacteristicType());
+        $this->addToApplicableProductCharacteristic($applicableProductCharacteristic = new ProductCharacteristicType());
 
         return $applicableProductCharacteristic;
     }
@@ -776,7 +776,7 @@ class TradeProductType
         }
 
         if ([] === $this->applicableProductCharacteristic) {
-            $this->addOnceToapplicableProductCharacteristic(new ProductCharacteristicType());
+            $this->addOnceToApplicableProductCharacteristic(new ProductCharacteristicType());
         }
 
         return $this->applicableProductCharacteristic[0];
@@ -839,7 +839,7 @@ class TradeProductType
      */
     public function addToDesignatedProductClassificationWithCreate(): ProductClassificationType
     {
-        $this->addTodesignatedProductClassification($designatedProductClassification = new ProductClassificationType());
+        $this->addToDesignatedProductClassification($designatedProductClassification = new ProductClassificationType());
 
         return $designatedProductClassification;
     }
@@ -870,7 +870,7 @@ class TradeProductType
         }
 
         if ([] === $this->designatedProductClassification) {
-            $this->addOnceTodesignatedProductClassification(new ProductClassificationType());
+            $this->addOnceToDesignatedProductClassification(new ProductClassificationType());
         }
 
         return $this->designatedProductClassification[0];
@@ -933,7 +933,7 @@ class TradeProductType
      */
     public function addToIndividualTradeProductInstanceWithCreate(): TradeProductInstanceType
     {
-        $this->addToindividualTradeProductInstance($individualTradeProductInstance = new TradeProductInstanceType());
+        $this->addToIndividualTradeProductInstance($individualTradeProductInstance = new TradeProductInstanceType());
 
         return $individualTradeProductInstance;
     }
@@ -964,7 +964,7 @@ class TradeProductType
         }
 
         if ([] === $this->individualTradeProductInstance) {
-            $this->addOnceToindividualTradeProductInstance(new TradeProductInstanceType());
+            $this->addOnceToIndividualTradeProductInstance(new TradeProductInstanceType());
         }
 
         return $this->individualTradeProductInstance[0];
@@ -1067,7 +1067,7 @@ class TradeProductType
      */
     public function addToIncludedReferencedProductWithCreate(): ReferencedProductType
     {
-        $this->addToincludedReferencedProduct($includedReferencedProduct = new ReferencedProductType());
+        $this->addToIncludedReferencedProduct($includedReferencedProduct = new ReferencedProductType());
 
         return $includedReferencedProduct;
     }
@@ -1098,7 +1098,7 @@ class TradeProductType
         }
 
         if ([] === $this->includedReferencedProduct) {
-            $this->addOnceToincludedReferencedProduct(new ReferencedProductType());
+            $this->addOnceToIncludedReferencedProduct(new ReferencedProductType());
         }
 
         return $this->includedReferencedProduct[0];

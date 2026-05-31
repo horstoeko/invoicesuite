@@ -245,7 +245,7 @@ class ConsumptionPointType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -276,7 +276,7 @@ class ConsumptionPointType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -609,7 +609,7 @@ class ConsumptionPointType
      */
     public function addToUtilityMeterWithCreate(): UtilityMeter
     {
-        $this->addToutilityMeter($utilityMeter = new UtilityMeter());
+        $this->addToUtilityMeter($utilityMeter = new UtilityMeter());
 
         return $utilityMeter;
     }
@@ -640,7 +640,7 @@ class ConsumptionPointType
         }
 
         if ([] === $this->utilityMeter) {
-            $this->addOnceToutilityMeter(new UtilityMeter());
+            $this->addOnceToUtilityMeter(new UtilityMeter());
         }
 
         return $this->utilityMeter[0];

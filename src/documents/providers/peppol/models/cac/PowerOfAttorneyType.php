@@ -292,7 +292,7 @@ class PowerOfAttorneyType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -323,7 +323,7 @@ class PowerOfAttorneyType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -496,7 +496,7 @@ class PowerOfAttorneyType
      */
     public function addToWitnessPartyWithCreate(): WitnessParty
     {
-        $this->addTowitnessParty($witnessParty = new WitnessParty());
+        $this->addToWitnessParty($witnessParty = new WitnessParty());
 
         return $witnessParty;
     }
@@ -527,7 +527,7 @@ class PowerOfAttorneyType
         }
 
         if ([] === $this->witnessParty) {
-            $this->addOnceTowitnessParty(new WitnessParty());
+            $this->addOnceToWitnessParty(new WitnessParty());
         }
 
         return $this->witnessParty[0];
@@ -620,7 +620,7 @@ class PowerOfAttorneyType
      */
     public function addToMandateDocumentReferenceWithCreate(): MandateDocumentReference
     {
-        $this->addTomandateDocumentReference($mandateDocumentReference = new MandateDocumentReference());
+        $this->addToMandateDocumentReference($mandateDocumentReference = new MandateDocumentReference());
 
         return $mandateDocumentReference;
     }
@@ -651,7 +651,7 @@ class PowerOfAttorneyType
         }
 
         if ([] === $this->mandateDocumentReference) {
-            $this->addOnceTomandateDocumentReference(new MandateDocumentReference());
+            $this->addOnceToMandateDocumentReference(new MandateDocumentReference());
         }
 
         return $this->mandateDocumentReference[0];

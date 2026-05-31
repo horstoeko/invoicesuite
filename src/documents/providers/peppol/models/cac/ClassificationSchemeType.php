@@ -407,7 +407,7 @@ class ClassificationSchemeType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -438,7 +438,7 @@ class ClassificationSchemeType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -571,7 +571,7 @@ class ClassificationSchemeType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -602,7 +602,7 @@ class ClassificationSchemeType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -935,7 +935,7 @@ class ClassificationSchemeType
      */
     public function addToClassificationCategoryWithCreate(): ClassificationCategory
     {
-        $this->addToclassificationCategory($classificationCategory = new ClassificationCategory());
+        $this->addToClassificationCategory($classificationCategory = new ClassificationCategory());
 
         return $classificationCategory;
     }
@@ -966,7 +966,7 @@ class ClassificationSchemeType
         }
 
         if ([] === $this->classificationCategory) {
-            $this->addOnceToclassificationCategory(new ClassificationCategory());
+            $this->addOnceToClassificationCategory(new ClassificationCategory());
         }
 
         return $this->classificationCategory[0];

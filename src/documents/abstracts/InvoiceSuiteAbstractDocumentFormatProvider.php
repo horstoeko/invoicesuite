@@ -187,7 +187,7 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
     public function getIsSatisfiableBySerializedContent(
         string $serializedContent
     ): bool {
-        if (InvoiceSuiteContentTypeResolver::resolveContentType($serializedContent) != $this->getContentType()) {
+        if (InvoiceSuiteContentTypeResolver::resolveContentType($serializedContent) !== $this->getContentType()) {
             return false;
         }
 
@@ -255,7 +255,7 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
     public function hasSerializerGroup(
         string $group
     ): bool {
-        return in_array($group, $this->getSerializerGroups());
+        return in_array($group, $this->getSerializerGroups(), true);
     }
 
     /**

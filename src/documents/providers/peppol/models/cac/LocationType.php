@@ -283,7 +283,7 @@ class LocationType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -314,7 +314,7 @@ class LocationType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -407,7 +407,7 @@ class LocationType
      */
     public function addToConditionsWithCreate(): Conditions
     {
-        $this->addToconditions($conditions = new Conditions());
+        $this->addToConditions($conditions = new Conditions());
 
         return $conditions;
     }
@@ -438,7 +438,7 @@ class LocationType
         }
 
         if ([] === $this->conditions) {
-            $this->addOnceToconditions(new Conditions());
+            $this->addOnceToConditions(new Conditions());
         }
 
         return $this->conditions[0];
@@ -731,7 +731,7 @@ class LocationType
      */
     public function addToValidityPeriodWithCreate(): ValidityPeriod
     {
-        $this->addTovalidityPeriod($validityPeriod = new ValidityPeriod());
+        $this->addToValidityPeriod($validityPeriod = new ValidityPeriod());
 
         return $validityPeriod;
     }
@@ -762,7 +762,7 @@ class LocationType
         }
 
         if ([] === $this->validityPeriod) {
-            $this->addOnceTovalidityPeriod(new ValidityPeriod());
+            $this->addOnceToValidityPeriod(new ValidityPeriod());
         }
 
         return $this->validityPeriod[0];
@@ -895,7 +895,7 @@ class LocationType
      */
     public function addToSubsidiaryLocationWithCreate(): SubsidiaryLocation
     {
-        $this->addTosubsidiaryLocation($subsidiaryLocation = new SubsidiaryLocation());
+        $this->addToSubsidiaryLocation($subsidiaryLocation = new SubsidiaryLocation());
 
         return $subsidiaryLocation;
     }
@@ -926,7 +926,7 @@ class LocationType
         }
 
         if ([] === $this->subsidiaryLocation) {
-            $this->addOnceTosubsidiaryLocation(new SubsidiaryLocation());
+            $this->addOnceToSubsidiaryLocation(new SubsidiaryLocation());
         }
 
         return $this->subsidiaryLocation[0];
@@ -1019,7 +1019,7 @@ class LocationType
      */
     public function addToLocationCoordinateWithCreate(): LocationCoordinate
     {
-        $this->addTolocationCoordinate($locationCoordinate = new LocationCoordinate());
+        $this->addToLocationCoordinate($locationCoordinate = new LocationCoordinate());
 
         return $locationCoordinate;
     }
@@ -1050,7 +1050,7 @@ class LocationType
         }
 
         if ([] === $this->locationCoordinate) {
-            $this->addOnceTolocationCoordinate(new LocationCoordinate());
+            $this->addOnceToLocationCoordinate(new LocationCoordinate());
         }
 
         return $this->locationCoordinate[0];

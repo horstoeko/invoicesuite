@@ -149,7 +149,7 @@ class LineTradeSettlementType
      */
     public function addToApplicableTradeTaxWithCreate(): TradeTaxType
     {
-        $this->addToapplicableTradeTax($applicableTradeTax = new TradeTaxType());
+        $this->addToApplicableTradeTax($applicableTradeTax = new TradeTaxType());
 
         return $applicableTradeTax;
     }
@@ -180,7 +180,7 @@ class LineTradeSettlementType
         }
 
         if ([] === $this->applicableTradeTax) {
-            $this->addOnceToapplicableTradeTax(new TradeTaxType());
+            $this->addOnceToApplicableTradeTax(new TradeTaxType());
         }
 
         return $this->applicableTradeTax[0];
@@ -283,7 +283,7 @@ class LineTradeSettlementType
      */
     public function addToSpecifiedTradeAllowanceChargeWithCreate(): TradeAllowanceChargeType
     {
-        $this->addTospecifiedTradeAllowanceCharge($specifiedTradeAllowanceCharge = new TradeAllowanceChargeType());
+        $this->addToSpecifiedTradeAllowanceCharge($specifiedTradeAllowanceCharge = new TradeAllowanceChargeType());
 
         return $specifiedTradeAllowanceCharge;
     }
@@ -314,7 +314,7 @@ class LineTradeSettlementType
         }
 
         if ([] === $this->specifiedTradeAllowanceCharge) {
-            $this->addOnceTospecifiedTradeAllowanceCharge(new TradeAllowanceChargeType());
+            $this->addOnceToSpecifiedTradeAllowanceCharge(new TradeAllowanceChargeType());
         }
 
         return $this->specifiedTradeAllowanceCharge[0];
@@ -457,7 +457,7 @@ class LineTradeSettlementType
      */
     public function addToAdditionalReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->addToadditionalReferencedDocument($additionalReferencedDocument = new ReferencedDocumentType());
+        $this->addToAdditionalReferencedDocument($additionalReferencedDocument = new ReferencedDocumentType());
 
         return $additionalReferencedDocument;
     }
@@ -488,7 +488,7 @@ class LineTradeSettlementType
         }
 
         if ([] === $this->additionalReferencedDocument) {
-            $this->addOnceToadditionalReferencedDocument(new ReferencedDocumentType());
+            $this->addOnceToAdditionalReferencedDocument(new ReferencedDocumentType());
         }
 
         return $this->additionalReferencedDocument[0];
@@ -551,7 +551,7 @@ class LineTradeSettlementType
      */
     public function addToReceivableSpecifiedTradeAccountingAccountWithCreate(): TradeAccountingAccountType
     {
-        $this->addToreceivableSpecifiedTradeAccountingAccount($receivableSpecifiedTradeAccountingAccount = new TradeAccountingAccountType());
+        $this->addToReceivableSpecifiedTradeAccountingAccount($receivableSpecifiedTradeAccountingAccount = new TradeAccountingAccountType());
 
         return $receivableSpecifiedTradeAccountingAccount;
     }
@@ -582,7 +582,7 @@ class LineTradeSettlementType
         }
 
         if ([] === $this->receivableSpecifiedTradeAccountingAccount) {
-            $this->addOnceToreceivableSpecifiedTradeAccountingAccount(new TradeAccountingAccountType());
+            $this->addOnceToReceivableSpecifiedTradeAccountingAccount(new TradeAccountingAccountType());
         }
 
         return $this->receivableSpecifiedTradeAccountingAccount[0];

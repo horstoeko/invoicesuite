@@ -250,7 +250,7 @@ class ResponseType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -281,7 +281,7 @@ class ResponseType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -434,7 +434,7 @@ class ResponseType
      */
     public function addToStatusWithCreate(): Status
     {
-        $this->addTostatus($status = new Status());
+        $this->addToStatus($status = new Status());
 
         return $status;
     }
@@ -465,7 +465,7 @@ class ResponseType
         }
 
         if ([] === $this->status) {
-            $this->addOnceTostatus(new Status());
+            $this->addOnceToStatus(new Status());
         }
 
         return $this->status[0];

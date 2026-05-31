@@ -225,7 +225,7 @@ class PriceListType
      */
     public function addToValidityPeriodWithCreate(): ValidityPeriod
     {
-        $this->addTovalidityPeriod($validityPeriod = new ValidityPeriod());
+        $this->addToValidityPeriod($validityPeriod = new ValidityPeriod());
 
         return $validityPeriod;
     }
@@ -256,7 +256,7 @@ class PriceListType
         }
 
         if ([] === $this->validityPeriod) {
-            $this->addOnceTovalidityPeriod(new ValidityPeriod());
+            $this->addOnceToValidityPeriod(new ValidityPeriod());
         }
 
         return $this->validityPeriod[0];

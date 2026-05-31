@@ -134,7 +134,7 @@ class TradingTermsType
      */
     public function addToInformationWithCreate(): Information
     {
-        $this->addToinformation($information = new Information());
+        $this->addToInformation($information = new Information());
 
         return $information;
     }
@@ -165,7 +165,7 @@ class TradingTermsType
         }
 
         if ([] === $this->information) {
-            $this->addOnceToinformation(new Information());
+            $this->addOnceToInformation(new Information());
         }
 
         return $this->information[0];

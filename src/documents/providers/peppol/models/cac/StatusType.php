@@ -343,7 +343,7 @@ class StatusType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -374,7 +374,7 @@ class StatusType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -507,7 +507,7 @@ class StatusType
      */
     public function addToStatusReasonWithCreate(): StatusReason
     {
-        $this->addTostatusReason($statusReason = new StatusReason());
+        $this->addToStatusReason($statusReason = new StatusReason());
 
         return $statusReason;
     }
@@ -538,7 +538,7 @@ class StatusType
         }
 
         if ([] === $this->statusReason) {
-            $this->addOnceTostatusReason(new StatusReason());
+            $this->addOnceToStatusReason(new StatusReason());
         }
 
         return $this->statusReason[0];
@@ -671,7 +671,7 @@ class StatusType
      */
     public function addToTextWithCreate(): Text
     {
-        $this->addTotext($text = new Text());
+        $this->addToText($text = new Text());
 
         return $text;
     }
@@ -702,7 +702,7 @@ class StatusType
         }
 
         if ([] === $this->text) {
-            $this->addOnceTotext(new Text());
+            $this->addOnceToText(new Text());
         }
 
         return $this->text[0];
@@ -905,7 +905,7 @@ class StatusType
      */
     public function addToConditionWithCreate(): Condition
     {
-        $this->addTocondition($condition = new Condition());
+        $this->addToCondition($condition = new Condition());
 
         return $condition;
     }
@@ -936,7 +936,7 @@ class StatusType
         }
 
         if ([] === $this->condition) {
-            $this->addOnceTocondition(new Condition());
+            $this->addOnceToCondition(new Condition());
         }
 
         return $this->condition[0];

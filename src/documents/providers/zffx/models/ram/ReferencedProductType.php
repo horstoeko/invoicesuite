@@ -200,7 +200,7 @@ class ReferencedProductType
      */
     public function addToGlobalIDWithCreate(): IDType
     {
-        $this->addToglobalID($globalID = new IDType());
+        $this->addToGlobalID($globalID = new IDType());
 
         return $globalID;
     }
@@ -231,7 +231,7 @@ class ReferencedProductType
         }
 
         if ([] === $this->globalID) {
-            $this->addOnceToglobalID(new IDType());
+            $this->addOnceToGlobalID(new IDType());
         }
 
         return $this->globalID[0];

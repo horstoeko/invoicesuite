@@ -492,7 +492,7 @@ class HazardousItemType
      */
     public function addToAdditionalInformationWithCreate(): AdditionalInformation
     {
-        $this->addToadditionalInformation($additionalInformation = new AdditionalInformation());
+        $this->addToAdditionalInformation($additionalInformation = new AdditionalInformation());
 
         return $additionalInformation;
     }
@@ -523,7 +523,7 @@ class HazardousItemType
         }
 
         if ([] === $this->additionalInformation) {
-            $this->addOnceToadditionalInformation(new AdditionalInformation());
+            $this->addOnceToAdditionalInformation(new AdditionalInformation());
         }
 
         return $this->additionalInformation[0];
@@ -1176,7 +1176,7 @@ class HazardousItemType
      */
     public function addToSecondaryHazardWithCreate(): SecondaryHazard
     {
-        $this->addTosecondaryHazard($secondaryHazard = new SecondaryHazard());
+        $this->addToSecondaryHazard($secondaryHazard = new SecondaryHazard());
 
         return $secondaryHazard;
     }
@@ -1207,7 +1207,7 @@ class HazardousItemType
         }
 
         if ([] === $this->secondaryHazard) {
-            $this->addOnceTosecondaryHazard(new SecondaryHazard());
+            $this->addOnceToSecondaryHazard(new SecondaryHazard());
         }
 
         return $this->secondaryHazard[0];
@@ -1300,7 +1300,7 @@ class HazardousItemType
      */
     public function addToHazardousGoodsTransitWithCreate(): HazardousGoodsTransit
     {
-        $this->addTohazardousGoodsTransit($hazardousGoodsTransit = new HazardousGoodsTransit());
+        $this->addToHazardousGoodsTransit($hazardousGoodsTransit = new HazardousGoodsTransit());
 
         return $hazardousGoodsTransit;
     }
@@ -1331,7 +1331,7 @@ class HazardousItemType
         }
 
         if ([] === $this->hazardousGoodsTransit) {
-            $this->addOnceTohazardousGoodsTransit(new HazardousGoodsTransit());
+            $this->addOnceToHazardousGoodsTransit(new HazardousGoodsTransit());
         }
 
         return $this->hazardousGoodsTransit[0];
@@ -1504,7 +1504,7 @@ class HazardousItemType
      */
     public function addToAdditionalTemperatureWithCreate(): AdditionalTemperature
     {
-        $this->addToadditionalTemperature($additionalTemperature = new AdditionalTemperature());
+        $this->addToAdditionalTemperature($additionalTemperature = new AdditionalTemperature());
 
         return $additionalTemperature;
     }
@@ -1535,7 +1535,7 @@ class HazardousItemType
         }
 
         if ([] === $this->additionalTemperature) {
-            $this->addOnceToadditionalTemperature(new AdditionalTemperature());
+            $this->addOnceToAdditionalTemperature(new AdditionalTemperature());
         }
 
         return $this->additionalTemperature[0];

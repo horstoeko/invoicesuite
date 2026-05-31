@@ -210,7 +210,7 @@ class CapabilityType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -241,7 +241,7 @@ class CapabilityType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -414,7 +414,7 @@ class CapabilityType
      */
     public function addToEvidenceSuppliedWithCreate(): EvidenceSupplied
     {
-        $this->addToevidenceSupplied($evidenceSupplied = new EvidenceSupplied());
+        $this->addToEvidenceSupplied($evidenceSupplied = new EvidenceSupplied());
 
         return $evidenceSupplied;
     }
@@ -445,7 +445,7 @@ class CapabilityType
         }
 
         if ([] === $this->evidenceSupplied) {
-            $this->addOnceToevidenceSupplied(new EvidenceSupplied());
+            $this->addOnceToEvidenceSupplied(new EvidenceSupplied());
         }
 
         return $this->evidenceSupplied[0];

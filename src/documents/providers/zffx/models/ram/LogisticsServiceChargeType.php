@@ -184,7 +184,7 @@ class LogisticsServiceChargeType
      */
     public function addToAppliedTradeTaxWithCreate(): TradeTaxType
     {
-        $this->addToappliedTradeTax($appliedTradeTax = new TradeTaxType());
+        $this->addToAppliedTradeTax($appliedTradeTax = new TradeTaxType());
 
         return $appliedTradeTax;
     }
@@ -215,7 +215,7 @@ class LogisticsServiceChargeType
         }
 
         if ([] === $this->appliedTradeTax) {
-            $this->addOnceToappliedTradeTax(new TradeTaxType());
+            $this->addOnceToAppliedTradeTax(new TradeTaxType());
         }
 
         return $this->appliedTradeTax[0];

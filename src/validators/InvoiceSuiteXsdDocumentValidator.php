@@ -186,7 +186,7 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
      */
     private function checkContentTypeIsXML(): bool
     {
-        if (InvoiceSuiteContentType::XML != InvoiceSuiteContentTypeResolver::resolveContentType($this->getRawDocumentContent())) {
+        if (InvoiceSuiteContentType::XML !== InvoiceSuiteContentTypeResolver::resolveContentType($this->getRawDocumentContent())) {
             $this->addErrorMessageToMessageBag('Only XML content can be validated with this Validator');
 
             return false;

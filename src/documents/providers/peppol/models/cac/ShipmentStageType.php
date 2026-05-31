@@ -1211,7 +1211,7 @@ class ShipmentStageType
      */
     public function addToInstructionsWithCreate(): Instructions
     {
-        $this->addToinstructions($instructions = new Instructions());
+        $this->addToInstructions($instructions = new Instructions());
 
         return $instructions;
     }
@@ -1242,7 +1242,7 @@ class ShipmentStageType
         }
 
         if ([] === $this->instructions) {
-            $this->addOnceToinstructions(new Instructions());
+            $this->addOnceToInstructions(new Instructions());
         }
 
         return $this->instructions[0];
@@ -1335,7 +1335,7 @@ class ShipmentStageType
      */
     public function addToDemurrageInstructionsWithCreate(): DemurrageInstructions
     {
-        $this->addTodemurrageInstructions($demurrageInstructions = new DemurrageInstructions());
+        $this->addToDemurrageInstructions($demurrageInstructions = new DemurrageInstructions());
 
         return $demurrageInstructions;
     }
@@ -1366,7 +1366,7 @@ class ShipmentStageType
         }
 
         if ([] === $this->demurrageInstructions) {
-            $this->addOnceTodemurrageInstructions(new DemurrageInstructions());
+            $this->addOnceToDemurrageInstructions(new DemurrageInstructions());
         }
 
         return $this->demurrageInstructions[0];
@@ -1579,7 +1579,7 @@ class ShipmentStageType
      */
     public function addToCarrierPartyWithCreate(): CarrierParty
     {
-        $this->addTocarrierParty($carrierParty = new CarrierParty());
+        $this->addToCarrierParty($carrierParty = new CarrierParty());
 
         return $carrierParty;
     }
@@ -1610,7 +1610,7 @@ class ShipmentStageType
         }
 
         if ([] === $this->carrierParty) {
-            $this->addOnceTocarrierParty(new CarrierParty());
+            $this->addOnceToCarrierParty(new CarrierParty());
         }
 
         return $this->carrierParty[0];
@@ -2543,7 +2543,7 @@ class ShipmentStageType
      */
     public function addToFreightAllowanceChargeWithCreate(): FreightAllowanceCharge
     {
-        $this->addTofreightAllowanceCharge($freightAllowanceCharge = new FreightAllowanceCharge());
+        $this->addToFreightAllowanceCharge($freightAllowanceCharge = new FreightAllowanceCharge());
 
         return $freightAllowanceCharge;
     }
@@ -2574,7 +2574,7 @@ class ShipmentStageType
         }
 
         if ([] === $this->freightAllowanceCharge) {
-            $this->addOnceTofreightAllowanceCharge(new FreightAllowanceCharge());
+            $this->addOnceToFreightAllowanceCharge(new FreightAllowanceCharge());
         }
 
         return $this->freightAllowanceCharge[0];
@@ -2707,7 +2707,7 @@ class ShipmentStageType
      */
     public function addToDetentionTransportEventWithCreate(): DetentionTransportEvent
     {
-        $this->addTodetentionTransportEvent($detentionTransportEvent = new DetentionTransportEvent());
+        $this->addToDetentionTransportEvent($detentionTransportEvent = new DetentionTransportEvent());
 
         return $detentionTransportEvent;
     }
@@ -2738,7 +2738,7 @@ class ShipmentStageType
         }
 
         if ([] === $this->detentionTransportEvent) {
-            $this->addOnceTodetentionTransportEvent(new DetentionTransportEvent());
+            $this->addOnceToDetentionTransportEvent(new DetentionTransportEvent());
         }
 
         return $this->detentionTransportEvent[0];
@@ -2911,7 +2911,7 @@ class ShipmentStageType
      */
     public function addToRequestedWaypointTransportEventWithCreate(): RequestedWaypointTransportEvent
     {
-        $this->addTorequestedWaypointTransportEvent($requestedWaypointTransportEvent = new RequestedWaypointTransportEvent());
+        $this->addToRequestedWaypointTransportEvent($requestedWaypointTransportEvent = new RequestedWaypointTransportEvent());
 
         return $requestedWaypointTransportEvent;
     }
@@ -2942,7 +2942,7 @@ class ShipmentStageType
         }
 
         if ([] === $this->requestedWaypointTransportEvent) {
-            $this->addOnceTorequestedWaypointTransportEvent(new RequestedWaypointTransportEvent());
+            $this->addOnceToRequestedWaypointTransportEvent(new RequestedWaypointTransportEvent());
         }
 
         return $this->requestedWaypointTransportEvent[0];
@@ -3115,7 +3115,7 @@ class ShipmentStageType
      */
     public function addToPlannedWaypointTransportEventWithCreate(): PlannedWaypointTransportEvent
     {
-        $this->addToplannedWaypointTransportEvent($plannedWaypointTransportEvent = new PlannedWaypointTransportEvent());
+        $this->addToPlannedWaypointTransportEvent($plannedWaypointTransportEvent = new PlannedWaypointTransportEvent());
 
         return $plannedWaypointTransportEvent;
     }
@@ -3146,7 +3146,7 @@ class ShipmentStageType
         }
 
         if ([] === $this->plannedWaypointTransportEvent) {
-            $this->addOnceToplannedWaypointTransportEvent(new PlannedWaypointTransportEvent());
+            $this->addOnceToPlannedWaypointTransportEvent(new PlannedWaypointTransportEvent());
         }
 
         return $this->plannedWaypointTransportEvent[0];
@@ -3359,7 +3359,7 @@ class ShipmentStageType
      */
     public function addToTransportEventWithCreate(): TransportEvent
     {
-        $this->addTotransportEvent($transportEvent = new TransportEvent());
+        $this->addToTransportEvent($transportEvent = new TransportEvent());
 
         return $transportEvent;
     }
@@ -3390,7 +3390,7 @@ class ShipmentStageType
         }
 
         if ([] === $this->transportEvent) {
-            $this->addOnceTotransportEvent(new TransportEvent());
+            $this->addOnceToTransportEvent(new TransportEvent());
         }
 
         return $this->transportEvent[0];
@@ -3563,7 +3563,7 @@ class ShipmentStageType
      */
     public function addToPassengerPersonWithCreate(): PassengerPerson
     {
-        $this->addTopassengerPerson($passengerPerson = new PassengerPerson());
+        $this->addToPassengerPerson($passengerPerson = new PassengerPerson());
 
         return $passengerPerson;
     }
@@ -3594,7 +3594,7 @@ class ShipmentStageType
         }
 
         if ([] === $this->passengerPerson) {
-            $this->addOnceTopassengerPerson(new PassengerPerson());
+            $this->addOnceToPassengerPerson(new PassengerPerson());
         }
 
         return $this->passengerPerson[0];
@@ -3687,7 +3687,7 @@ class ShipmentStageType
      */
     public function addToDriverPersonWithCreate(): DriverPerson
     {
-        $this->addTodriverPerson($driverPerson = new DriverPerson());
+        $this->addToDriverPerson($driverPerson = new DriverPerson());
 
         return $driverPerson;
     }
@@ -3718,7 +3718,7 @@ class ShipmentStageType
         }
 
         if ([] === $this->driverPerson) {
-            $this->addOnceTodriverPerson(new DriverPerson());
+            $this->addOnceToDriverPerson(new DriverPerson());
         }
 
         return $this->driverPerson[0];
@@ -3851,7 +3851,7 @@ class ShipmentStageType
      */
     public function addToCrewMemberPersonWithCreate(): CrewMemberPerson
     {
-        $this->addTocrewMemberPerson($crewMemberPerson = new CrewMemberPerson());
+        $this->addToCrewMemberPerson($crewMemberPerson = new CrewMemberPerson());
 
         return $crewMemberPerson;
     }
@@ -3882,7 +3882,7 @@ class ShipmentStageType
         }
 
         if ([] === $this->crewMemberPerson) {
-            $this->addOnceTocrewMemberPerson(new CrewMemberPerson());
+            $this->addOnceToCrewMemberPerson(new CrewMemberPerson());
         }
 
         return $this->crewMemberPerson[0];

@@ -224,7 +224,7 @@ class EventLineItemType
      */
     public function addToRetailPlannedImpactWithCreate(): RetailPlannedImpact
     {
-        $this->addToretailPlannedImpact($retailPlannedImpact = new RetailPlannedImpact());
+        $this->addToRetailPlannedImpact($retailPlannedImpact = new RetailPlannedImpact());
 
         return $retailPlannedImpact;
     }
@@ -255,7 +255,7 @@ class EventLineItemType
         }
 
         if ([] === $this->retailPlannedImpact) {
-            $this->addOnceToretailPlannedImpact(new RetailPlannedImpact());
+            $this->addOnceToRetailPlannedImpact(new RetailPlannedImpact());
         }
 
         return $this->retailPlannedImpact[0];

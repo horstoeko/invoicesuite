@@ -1,11 +1,15 @@
 includes:
     - ../vendor/phpstan/phpstan/conf/bleedingEdge.neon
+    - ../vendor/phpstan/phpstan-strict-rules/rules.neon
+    - ../vendor/phpstan/phpstan-deprecation-rules/rules.neon
 parameters:
     tmpDir: ./phpstan
     paths:
         - ../src
     excludePaths:
         - ../src/codelists
+        - ../src/cache
+        - ../src/concerns/HandlesCallForwarding.php
     level: 6
     treatPhpDocTypesAsCertain: false
     phpVersion: 80400

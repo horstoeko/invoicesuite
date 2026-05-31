@@ -173,7 +173,7 @@ abstract class InvoiceSuiteAbstractCommand extends Command
             $table->setHeaders($headers);
         }
 
-        if ([] != $rows) {
+        if ([] !== $rows) {
             $table->addRows($rows);
         }
 

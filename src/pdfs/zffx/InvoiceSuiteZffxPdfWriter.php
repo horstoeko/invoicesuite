@@ -105,9 +105,10 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
         $version = '1.3',
         $binary_data = false
     ): void {
+        // @phpstan-ignore argument.type
         $this->PDFVersion = sprintf('%.1F', $version);
 
-        if (true == $binary_data) {
+        if (true === $binary_data) {
             if (true === $this->deterministicModeEnabled) {
                 $this->PDFVersion .= "\n" . '%' . chr(128) . chr(129) . chr(130) . chr(131);
             } else {
@@ -135,7 +136,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
         $mimetype = '',
         $isUTF8 = false
     ): void {
-        if ('' == $name) {
+        if ('' === $name) {
             $p = strrpos((string) $file, '/');
 
             if (false === $p) {
@@ -149,7 +150,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
             $desc = mb_convert_encoding($desc, 'UTF-8', mb_list_encodings());
         }
 
-        if ('' == $mimetype) {
+        if ('' === $mimetype) {
             $mimetype = mime_content_type($file);
 
             if (in_array($mimetype, ['', '0', false], true)) {
@@ -246,11 +247,11 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
         $this->_put('/Type /Filespec');
         $this->_put('/UF ' . $this->_textstring(mb_convert_encoding($file_info['name'], 'UTF-8', mb_list_encodings())));
 
-        if ($file_info['relationship']) {
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($file_info['relationship'])) {
             $this->_put('/AFRelationship /' . $file_info['relationship']);
         }
 
-        if ($file_info['desc']) {
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($file_info['desc'])) {
             $this->_put('/Desc ' . $this->_textstring($file_info['desc']));
         }
 
@@ -275,7 +276,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
         $this->_put('<<');
         $this->_put('/Filter /FlateDecode');
 
-        if ($file_info['subtype']) {
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($file_info['subtype'])) {
             $this->_put('/Subtype /' . $file_info['subtype']);
         }
 
@@ -378,7 +379,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
 
         $this->_putoutputintent();
 
-        if (!empty($this->metaDataDescriptions)) {
+        if ([] !== $this->metaDataDescriptions) {
             $this->putMetadataDescriptions();
         }
     }
@@ -445,7 +446,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
             }
         }
 
-        if (0 != $this->descriptionIndex) {
+        if (0 !== $this->descriptionIndex) {
             $this->_put(sprintf('/Metadata %s 0 R', $this->descriptionIndex));
         }
 
@@ -456,7 +457,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
             $this->_put('>>');
         }
 
-        if (0 != $this->outputIntentIndex) {
+        if (0 !== $this->outputIntentIndex) {
             $this->_put(sprintf('/OutputIntents [%s 0 R]', $this->outputIntentIndex));
         }
 

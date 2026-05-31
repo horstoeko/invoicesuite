@@ -508,7 +508,7 @@ class InvoiceLineType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -539,7 +539,7 @@ class InvoiceLineType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -892,7 +892,7 @@ class InvoiceLineType
      */
     public function addToInvoicePeriodWithCreate(): InvoicePeriod
     {
-        $this->addToinvoicePeriod($invoicePeriod = new InvoicePeriod());
+        $this->addToInvoicePeriod($invoicePeriod = new InvoicePeriod());
 
         return $invoicePeriod;
     }
@@ -923,7 +923,7 @@ class InvoiceLineType
         }
 
         if ([] === $this->invoicePeriod) {
-            $this->addOnceToinvoicePeriod(new InvoicePeriod());
+            $this->addOnceToInvoicePeriod(new InvoicePeriod());
         }
 
         return $this->invoicePeriod[0];
@@ -1016,7 +1016,7 @@ class InvoiceLineType
      */
     public function addToOrderLineReferenceWithCreate(): OrderLineReference
     {
-        $this->addToorderLineReference($orderLineReference = new OrderLineReference());
+        $this->addToOrderLineReference($orderLineReference = new OrderLineReference());
 
         return $orderLineReference;
     }
@@ -1047,7 +1047,7 @@ class InvoiceLineType
         }
 
         if ([] === $this->orderLineReference) {
-            $this->addOnceToorderLineReference(new OrderLineReference());
+            $this->addOnceToOrderLineReference(new OrderLineReference());
         }
 
         return $this->orderLineReference[0];
@@ -1140,7 +1140,7 @@ class InvoiceLineType
      */
     public function addToDespatchLineReferenceWithCreate(): DespatchLineReference
     {
-        $this->addTodespatchLineReference($despatchLineReference = new DespatchLineReference());
+        $this->addToDespatchLineReference($despatchLineReference = new DespatchLineReference());
 
         return $despatchLineReference;
     }
@@ -1171,7 +1171,7 @@ class InvoiceLineType
         }
 
         if ([] === $this->despatchLineReference) {
-            $this->addOnceTodespatchLineReference(new DespatchLineReference());
+            $this->addOnceToDespatchLineReference(new DespatchLineReference());
         }
 
         return $this->despatchLineReference[0];
@@ -1264,7 +1264,7 @@ class InvoiceLineType
      */
     public function addToReceiptLineReferenceWithCreate(): ReceiptLineReference
     {
-        $this->addToreceiptLineReference($receiptLineReference = new ReceiptLineReference());
+        $this->addToReceiptLineReference($receiptLineReference = new ReceiptLineReference());
 
         return $receiptLineReference;
     }
@@ -1295,7 +1295,7 @@ class InvoiceLineType
         }
 
         if ([] === $this->receiptLineReference) {
-            $this->addOnceToreceiptLineReference(new ReceiptLineReference());
+            $this->addOnceToReceiptLineReference(new ReceiptLineReference());
         }
 
         return $this->receiptLineReference[0];
@@ -1388,7 +1388,7 @@ class InvoiceLineType
      */
     public function addToBillingReferenceWithCreate(): BillingReference
     {
-        $this->addTobillingReference($billingReference = new BillingReference());
+        $this->addToBillingReference($billingReference = new BillingReference());
 
         return $billingReference;
     }
@@ -1419,7 +1419,7 @@ class InvoiceLineType
         }
 
         if ([] === $this->billingReference) {
-            $this->addOnceTobillingReference(new BillingReference());
+            $this->addOnceToBillingReference(new BillingReference());
         }
 
         return $this->billingReference[0];
@@ -1512,7 +1512,7 @@ class InvoiceLineType
      */
     public function addToDocumentReferenceWithCreate(): DocumentReference
     {
-        $this->addTodocumentReference($documentReference = new DocumentReference());
+        $this->addToDocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
     }
@@ -1543,7 +1543,7 @@ class InvoiceLineType
         }
 
         if ([] === $this->documentReference) {
-            $this->addOnceTodocumentReference(new DocumentReference());
+            $this->addOnceToDocumentReference(new DocumentReference());
         }
 
         return $this->documentReference[0];
@@ -1716,7 +1716,7 @@ class InvoiceLineType
      */
     public function addToDeliveryWithCreate(): Delivery
     {
-        $this->addTodelivery($delivery = new Delivery());
+        $this->addToDelivery($delivery = new Delivery());
 
         return $delivery;
     }
@@ -1747,7 +1747,7 @@ class InvoiceLineType
         }
 
         if ([] === $this->delivery) {
-            $this->addOnceTodelivery(new Delivery());
+            $this->addOnceToDelivery(new Delivery());
         }
 
         return $this->delivery[0];
@@ -1840,7 +1840,7 @@ class InvoiceLineType
      */
     public function addToPaymentTermsWithCreate(): PaymentTerms
     {
-        $this->addTopaymentTerms($paymentTerms = new PaymentTerms());
+        $this->addToPaymentTerms($paymentTerms = new PaymentTerms());
 
         return $paymentTerms;
     }
@@ -1871,7 +1871,7 @@ class InvoiceLineType
         }
 
         if ([] === $this->paymentTerms) {
-            $this->addOnceTopaymentTerms(new PaymentTerms());
+            $this->addOnceToPaymentTerms(new PaymentTerms());
         }
 
         return $this->paymentTerms[0];
@@ -1964,7 +1964,7 @@ class InvoiceLineType
      */
     public function addToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        $this->addToallowanceCharge($allowanceCharge = new AllowanceCharge());
+        $this->addToAllowanceCharge($allowanceCharge = new AllowanceCharge());
 
         return $allowanceCharge;
     }
@@ -1995,7 +1995,7 @@ class InvoiceLineType
         }
 
         if ([] === $this->allowanceCharge) {
-            $this->addOnceToallowanceCharge(new AllowanceCharge());
+            $this->addOnceToAllowanceCharge(new AllowanceCharge());
         }
 
         return $this->allowanceCharge[0];
@@ -2088,7 +2088,7 @@ class InvoiceLineType
      */
     public function addToTaxTotalWithCreate(): TaxTotal
     {
-        $this->addTotaxTotal($taxTotal = new TaxTotal());
+        $this->addToTaxTotal($taxTotal = new TaxTotal());
 
         return $taxTotal;
     }
@@ -2119,7 +2119,7 @@ class InvoiceLineType
         }
 
         if ([] === $this->taxTotal) {
-            $this->addOnceTotaxTotal(new TaxTotal());
+            $this->addOnceToTaxTotal(new TaxTotal());
         }
 
         return $this->taxTotal[0];
@@ -2212,7 +2212,7 @@ class InvoiceLineType
      */
     public function addToWithholdingTaxTotalWithCreate(): WithholdingTaxTotal
     {
-        $this->addTowithholdingTaxTotal($withholdingTaxTotal = new WithholdingTaxTotal());
+        $this->addToWithholdingTaxTotal($withholdingTaxTotal = new WithholdingTaxTotal());
 
         return $withholdingTaxTotal;
     }
@@ -2243,7 +2243,7 @@ class InvoiceLineType
         }
 
         if ([] === $this->withholdingTaxTotal) {
-            $this->addOnceTowithholdingTaxTotal(new WithholdingTaxTotal());
+            $this->addOnceToWithholdingTaxTotal(new WithholdingTaxTotal());
         }
 
         return $this->withholdingTaxTotal[0];
@@ -2456,7 +2456,7 @@ class InvoiceLineType
      */
     public function addToSubInvoiceLineWithCreate(): SubInvoiceLine
     {
-        $this->addTosubInvoiceLine($subInvoiceLine = new SubInvoiceLine());
+        $this->addToSubInvoiceLine($subInvoiceLine = new SubInvoiceLine());
 
         return $subInvoiceLine;
     }
@@ -2487,7 +2487,7 @@ class InvoiceLineType
         }
 
         if ([] === $this->subInvoiceLine) {
-            $this->addOnceTosubInvoiceLine(new SubInvoiceLine());
+            $this->addOnceToSubInvoiceLine(new SubInvoiceLine());
         }
 
         return $this->subInvoiceLine[0];

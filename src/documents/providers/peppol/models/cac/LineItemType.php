@@ -594,7 +594,7 @@ class LineItemType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -625,7 +625,7 @@ class LineItemType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -1218,7 +1218,7 @@ class LineItemType
      */
     public function addToWarrantyInformationWithCreate(): WarrantyInformation
     {
-        $this->addTowarrantyInformation($warrantyInformation = new WarrantyInformation());
+        $this->addToWarrantyInformation($warrantyInformation = new WarrantyInformation());
 
         return $warrantyInformation;
     }
@@ -1249,7 +1249,7 @@ class LineItemType
         }
 
         if ([] === $this->warrantyInformation) {
-            $this->addOnceTowarrantyInformation(new WarrantyInformation());
+            $this->addOnceToWarrantyInformation(new WarrantyInformation());
         }
 
         return $this->warrantyInformation[0];
@@ -1342,7 +1342,7 @@ class LineItemType
      */
     public function addToDeliveryWithCreate(): Delivery
     {
-        $this->addTodelivery($delivery = new Delivery());
+        $this->addToDelivery($delivery = new Delivery());
 
         return $delivery;
     }
@@ -1373,7 +1373,7 @@ class LineItemType
         }
 
         if ([] === $this->delivery) {
-            $this->addOnceTodelivery(new Delivery());
+            $this->addOnceToDelivery(new Delivery());
         }
 
         return $this->delivery[0];
@@ -1546,7 +1546,7 @@ class LineItemType
      */
     public function addToOrderedShipmentWithCreate(): OrderedShipment
     {
-        $this->addToorderedShipment($orderedShipment = new OrderedShipment());
+        $this->addToOrderedShipment($orderedShipment = new OrderedShipment());
 
         return $orderedShipment;
     }
@@ -1577,7 +1577,7 @@ class LineItemType
         }
 
         if ([] === $this->orderedShipment) {
-            $this->addOnceToorderedShipment(new OrderedShipment());
+            $this->addOnceToOrderedShipment(new OrderedShipment());
         }
 
         return $this->orderedShipment[0];
@@ -1710,7 +1710,7 @@ class LineItemType
      */
     public function addToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        $this->addToallowanceCharge($allowanceCharge = new AllowanceCharge());
+        $this->addToAllowanceCharge($allowanceCharge = new AllowanceCharge());
 
         return $allowanceCharge;
     }
@@ -1741,7 +1741,7 @@ class LineItemType
         }
 
         if ([] === $this->allowanceCharge) {
-            $this->addOnceToallowanceCharge(new AllowanceCharge());
+            $this->addOnceToAllowanceCharge(new AllowanceCharge());
         }
 
         return $this->allowanceCharge[0];
@@ -1914,7 +1914,7 @@ class LineItemType
      */
     public function addToSubLineItemWithCreate(): SubLineItem
     {
-        $this->addTosubLineItem($subLineItem = new SubLineItem());
+        $this->addToSubLineItem($subLineItem = new SubLineItem());
 
         return $subLineItem;
     }
@@ -1945,7 +1945,7 @@ class LineItemType
         }
 
         if ([] === $this->subLineItem) {
-            $this->addOnceTosubLineItem(new SubLineItem());
+            $this->addOnceToSubLineItem(new SubLineItem());
         }
 
         return $this->subLineItem[0];
@@ -2118,7 +2118,7 @@ class LineItemType
      */
     public function addToTaxTotalWithCreate(): TaxTotal
     {
-        $this->addTotaxTotal($taxTotal = new TaxTotal());
+        $this->addToTaxTotal($taxTotal = new TaxTotal());
 
         return $taxTotal;
     }
@@ -2149,7 +2149,7 @@ class LineItemType
         }
 
         if ([] === $this->taxTotal) {
-            $this->addOnceTotaxTotal(new TaxTotal());
+            $this->addOnceToTaxTotal(new TaxTotal());
         }
 
         return $this->taxTotal[0];
@@ -2282,7 +2282,7 @@ class LineItemType
      */
     public function addToLineReferenceWithCreate(): LineReference
     {
-        $this->addTolineReference($lineReference = new LineReference());
+        $this->addToLineReference($lineReference = new LineReference());
 
         return $lineReference;
     }
@@ -2313,7 +2313,7 @@ class LineItemType
         }
 
         if ([] === $this->lineReference) {
-            $this->addOnceTolineReference(new LineReference());
+            $this->addOnceToLineReference(new LineReference());
         }
 
         return $this->lineReference[0];

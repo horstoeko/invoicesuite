@@ -269,7 +269,7 @@ class QuotationLineType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -300,7 +300,7 @@ class QuotationLineType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -553,7 +553,7 @@ class QuotationLineType
      */
     public function addToDocumentReferenceWithCreate(): DocumentReference
     {
-        $this->addTodocumentReference($documentReference = new DocumentReference());
+        $this->addToDocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
     }
@@ -584,7 +584,7 @@ class QuotationLineType
         }
 
         if ([] === $this->documentReference) {
-            $this->addOnceTodocumentReference(new DocumentReference());
+            $this->addOnceToDocumentReference(new DocumentReference());
         }
 
         return $this->documentReference[0];
@@ -717,7 +717,7 @@ class QuotationLineType
      */
     public function addToSellerProposedSubstituteLineItemWithCreate(): SellerProposedSubstituteLineItem
     {
-        $this->addTosellerProposedSubstituteLineItem($sellerProposedSubstituteLineItem = new SellerProposedSubstituteLineItem());
+        $this->addToSellerProposedSubstituteLineItem($sellerProposedSubstituteLineItem = new SellerProposedSubstituteLineItem());
 
         return $sellerProposedSubstituteLineItem;
     }
@@ -748,7 +748,7 @@ class QuotationLineType
         }
 
         if ([] === $this->sellerProposedSubstituteLineItem) {
-            $this->addOnceTosellerProposedSubstituteLineItem(new SellerProposedSubstituteLineItem());
+            $this->addOnceToSellerProposedSubstituteLineItem(new SellerProposedSubstituteLineItem());
         }
 
         return $this->sellerProposedSubstituteLineItem[0];
@@ -841,7 +841,7 @@ class QuotationLineType
      */
     public function addToAlternativeLineItemWithCreate(): AlternativeLineItem
     {
-        $this->addToalternativeLineItem($alternativeLineItem = new AlternativeLineItem());
+        $this->addToAlternativeLineItem($alternativeLineItem = new AlternativeLineItem());
 
         return $alternativeLineItem;
     }
@@ -872,7 +872,7 @@ class QuotationLineType
         }
 
         if ([] === $this->alternativeLineItem) {
-            $this->addOnceToalternativeLineItem(new AlternativeLineItem());
+            $this->addOnceToAlternativeLineItem(new AlternativeLineItem());
         }
 
         return $this->alternativeLineItem[0];

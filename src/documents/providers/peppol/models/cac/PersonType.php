@@ -889,7 +889,7 @@ class PersonType
      */
     public function addToIdentityDocumentReferenceWithCreate(): IdentityDocumentReference
     {
-        $this->addToidentityDocumentReference($identityDocumentReference = new IdentityDocumentReference());
+        $this->addToIdentityDocumentReference($identityDocumentReference = new IdentityDocumentReference());
 
         return $identityDocumentReference;
     }
@@ -920,7 +920,7 @@ class PersonType
         }
 
         if ([] === $this->identityDocumentReference) {
-            $this->addOnceToidentityDocumentReference(new IdentityDocumentReference());
+            $this->addOnceToIdentityDocumentReference(new IdentityDocumentReference());
         }
 
         return $this->identityDocumentReference[0];

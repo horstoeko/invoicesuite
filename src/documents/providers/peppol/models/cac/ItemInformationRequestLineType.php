@@ -330,7 +330,7 @@ class ItemInformationRequestLineType
      */
     public function addToPeriodWithCreate(): Period
     {
-        $this->addToperiod($period = new Period());
+        $this->addToPeriod($period = new Period());
 
         return $period;
     }
@@ -361,7 +361,7 @@ class ItemInformationRequestLineType
         }
 
         if ([] === $this->period) {
-            $this->addOnceToperiod(new Period());
+            $this->addOnceToPeriod(new Period());
         }
 
         return $this->period[0];
@@ -454,7 +454,7 @@ class ItemInformationRequestLineType
      */
     public function addToSalesItemWithCreate(): SalesItem
     {
-        $this->addTosalesItem($salesItem = new SalesItem());
+        $this->addToSalesItem($salesItem = new SalesItem());
 
         return $salesItem;
     }
@@ -485,7 +485,7 @@ class ItemInformationRequestLineType
         }
 
         if ([] === $this->salesItem) {
-            $this->addOnceTosalesItem(new SalesItem());
+            $this->addOnceToSalesItem(new SalesItem());
         }
 
         return $this->salesItem[0];

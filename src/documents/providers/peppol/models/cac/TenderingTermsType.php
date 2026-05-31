@@ -751,7 +751,7 @@ class TenderingTermsType
      */
     public function addToAcceptedVariantsDescriptionWithCreate(): AcceptedVariantsDescription
     {
-        $this->addToacceptedVariantsDescription($acceptedVariantsDescription = new AcceptedVariantsDescription());
+        $this->addToAcceptedVariantsDescription($acceptedVariantsDescription = new AcceptedVariantsDescription());
 
         return $acceptedVariantsDescription;
     }
@@ -782,7 +782,7 @@ class TenderingTermsType
         }
 
         if ([] === $this->acceptedVariantsDescription) {
-            $this->addOnceToacceptedVariantsDescription(new AcceptedVariantsDescription());
+            $this->addOnceToAcceptedVariantsDescription(new AcceptedVariantsDescription());
         }
 
         return $this->acceptedVariantsDescription[0];
@@ -875,7 +875,7 @@ class TenderingTermsType
      */
     public function addToPriceRevisionFormulaDescriptionWithCreate(): PriceRevisionFormulaDescription
     {
-        $this->addTopriceRevisionFormulaDescription($priceRevisionFormulaDescription = new PriceRevisionFormulaDescription());
+        $this->addToPriceRevisionFormulaDescription($priceRevisionFormulaDescription = new PriceRevisionFormulaDescription());
 
         return $priceRevisionFormulaDescription;
     }
@@ -906,7 +906,7 @@ class TenderingTermsType
         }
 
         if ([] === $this->priceRevisionFormulaDescription) {
-            $this->addOnceTopriceRevisionFormulaDescription(new PriceRevisionFormulaDescription());
+            $this->addOnceToPriceRevisionFormulaDescription(new PriceRevisionFormulaDescription());
         }
 
         return $this->priceRevisionFormulaDescription[0];
@@ -1039,7 +1039,7 @@ class TenderingTermsType
      */
     public function addToFundingProgramWithCreate(): FundingProgram
     {
-        $this->addTofundingProgram($fundingProgram = new FundingProgram());
+        $this->addToFundingProgram($fundingProgram = new FundingProgram());
 
         return $fundingProgram;
     }
@@ -1070,7 +1070,7 @@ class TenderingTermsType
         }
 
         if ([] === $this->fundingProgram) {
-            $this->addOnceTofundingProgram(new FundingProgram());
+            $this->addOnceToFundingProgram(new FundingProgram());
         }
 
         return $this->fundingProgram[0];
@@ -1203,7 +1203,7 @@ class TenderingTermsType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -1234,7 +1234,7 @@ class TenderingTermsType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -1467,7 +1467,7 @@ class TenderingTermsType
      */
     public function addToAdditionalConditionsWithCreate(): AdditionalConditions
     {
-        $this->addToadditionalConditions($additionalConditions = new AdditionalConditions());
+        $this->addToAdditionalConditions($additionalConditions = new AdditionalConditions());
 
         return $additionalConditions;
     }
@@ -1498,7 +1498,7 @@ class TenderingTermsType
         }
 
         if ([] === $this->additionalConditions) {
-            $this->addOnceToadditionalConditions(new AdditionalConditions());
+            $this->addOnceToAdditionalConditions(new AdditionalConditions());
         }
 
         return $this->additionalConditions[0];
@@ -1661,7 +1661,7 @@ class TenderingTermsType
      */
     public function addToPenaltyClauseWithCreate(): PenaltyClause
     {
-        $this->addTopenaltyClause($penaltyClause = new PenaltyClause());
+        $this->addToPenaltyClause($penaltyClause = new PenaltyClause());
 
         return $penaltyClause;
     }
@@ -1692,7 +1692,7 @@ class TenderingTermsType
         }
 
         if ([] === $this->penaltyClause) {
-            $this->addOnceTopenaltyClause(new PenaltyClause());
+            $this->addOnceToPenaltyClause(new PenaltyClause());
         }
 
         return $this->penaltyClause[0];
@@ -1785,7 +1785,7 @@ class TenderingTermsType
      */
     public function addToRequiredFinancialGuaranteeWithCreate(): RequiredFinancialGuarantee
     {
-        $this->addTorequiredFinancialGuarantee($requiredFinancialGuarantee = new RequiredFinancialGuarantee());
+        $this->addToRequiredFinancialGuarantee($requiredFinancialGuarantee = new RequiredFinancialGuarantee());
 
         return $requiredFinancialGuarantee;
     }
@@ -1816,7 +1816,7 @@ class TenderingTermsType
         }
 
         if ([] === $this->requiredFinancialGuarantee) {
-            $this->addOnceTorequiredFinancialGuarantee(new RequiredFinancialGuarantee());
+            $this->addOnceToRequiredFinancialGuarantee(new RequiredFinancialGuarantee());
         }
 
         return $this->requiredFinancialGuarantee[0];
@@ -2069,7 +2069,7 @@ class TenderingTermsType
      */
     public function addToContractualDocumentReferenceWithCreate(): ContractualDocumentReference
     {
-        $this->addTocontractualDocumentReference($contractualDocumentReference = new ContractualDocumentReference());
+        $this->addToContractualDocumentReference($contractualDocumentReference = new ContractualDocumentReference());
 
         return $contractualDocumentReference;
     }
@@ -2100,7 +2100,7 @@ class TenderingTermsType
         }
 
         if ([] === $this->contractualDocumentReference) {
-            $this->addOnceTocontractualDocumentReference(new ContractualDocumentReference());
+            $this->addOnceToContractualDocumentReference(new ContractualDocumentReference());
         }
 
         return $this->contractualDocumentReference[0];
@@ -2273,7 +2273,7 @@ class TenderingTermsType
      */
     public function addToPaymentTermsWithCreate(): PaymentTerms
     {
-        $this->addTopaymentTerms($paymentTerms = new PaymentTerms());
+        $this->addToPaymentTerms($paymentTerms = new PaymentTerms());
 
         return $paymentTerms;
     }
@@ -2304,7 +2304,7 @@ class TenderingTermsType
         }
 
         if ([] === $this->paymentTerms) {
-            $this->addOnceTopaymentTerms(new PaymentTerms());
+            $this->addOnceToPaymentTerms(new PaymentTerms());
         }
 
         return $this->paymentTerms[0];
@@ -2397,7 +2397,7 @@ class TenderingTermsType
      */
     public function addToTendererQualificationRequestWithCreate(): TendererQualificationRequest
     {
-        $this->addTotendererQualificationRequest($tendererQualificationRequest = new TendererQualificationRequest());
+        $this->addToTendererQualificationRequest($tendererQualificationRequest = new TendererQualificationRequest());
 
         return $tendererQualificationRequest;
     }
@@ -2428,7 +2428,7 @@ class TenderingTermsType
         }
 
         if ([] === $this->tendererQualificationRequest) {
-            $this->addOnceTotendererQualificationRequest(new TendererQualificationRequest());
+            $this->addOnceToTendererQualificationRequest(new TendererQualificationRequest());
         }
 
         return $this->tendererQualificationRequest[0];
@@ -2521,7 +2521,7 @@ class TenderingTermsType
      */
     public function addToAllowedSubcontractTermsWithCreate(): AllowedSubcontractTerms
     {
-        $this->addToallowedSubcontractTerms($allowedSubcontractTerms = new AllowedSubcontractTerms());
+        $this->addToAllowedSubcontractTerms($allowedSubcontractTerms = new AllowedSubcontractTerms());
 
         return $allowedSubcontractTerms;
     }
@@ -2552,7 +2552,7 @@ class TenderingTermsType
         }
 
         if ([] === $this->allowedSubcontractTerms) {
-            $this->addOnceToallowedSubcontractTerms(new AllowedSubcontractTerms());
+            $this->addOnceToAllowedSubcontractTerms(new AllowedSubcontractTerms());
         }
 
         return $this->allowedSubcontractTerms[0];
@@ -2645,7 +2645,7 @@ class TenderingTermsType
      */
     public function addToTenderPreparationWithCreate(): TenderPreparation
     {
-        $this->addTotenderPreparation($tenderPreparation = new TenderPreparation());
+        $this->addToTenderPreparation($tenderPreparation = new TenderPreparation());
 
         return $tenderPreparation;
     }
@@ -2676,7 +2676,7 @@ class TenderingTermsType
         }
 
         if ([] === $this->tenderPreparation) {
-            $this->addOnceTotenderPreparation(new TenderPreparation());
+            $this->addOnceToTenderPreparation(new TenderPreparation());
         }
 
         return $this->tenderPreparation[0];
@@ -2769,7 +2769,7 @@ class TenderingTermsType
      */
     public function addToContractExecutionRequirementWithCreate(): ContractExecutionRequirement
     {
-        $this->addTocontractExecutionRequirement($contractExecutionRequirement = new ContractExecutionRequirement());
+        $this->addToContractExecutionRequirement($contractExecutionRequirement = new ContractExecutionRequirement());
 
         return $contractExecutionRequirement;
     }
@@ -2800,7 +2800,7 @@ class TenderingTermsType
         }
 
         if ([] === $this->contractExecutionRequirement) {
-            $this->addOnceTocontractExecutionRequirement(new ContractExecutionRequirement());
+            $this->addOnceToContractExecutionRequirement(new ContractExecutionRequirement());
         }
 
         return $this->contractExecutionRequirement[0];
@@ -3093,7 +3093,7 @@ class TenderingTermsType
      */
     public function addToTenderEvaluationPartyWithCreate(): TenderEvaluationParty
     {
-        $this->addTotenderEvaluationParty($tenderEvaluationParty = new TenderEvaluationParty());
+        $this->addToTenderEvaluationParty($tenderEvaluationParty = new TenderEvaluationParty());
 
         return $tenderEvaluationParty;
     }
@@ -3124,7 +3124,7 @@ class TenderingTermsType
         }
 
         if ([] === $this->tenderEvaluationParty) {
-            $this->addOnceTotenderEvaluationParty(new TenderEvaluationParty());
+            $this->addOnceToTenderEvaluationParty(new TenderEvaluationParty());
         }
 
         return $this->tenderEvaluationParty[0];
@@ -3337,7 +3337,7 @@ class TenderingTermsType
      */
     public function addToLanguageWithCreate(): Language
     {
-        $this->addTolanguage($language = new Language());
+        $this->addToLanguage($language = new Language());
 
         return $language;
     }
@@ -3368,7 +3368,7 @@ class TenderingTermsType
         }
 
         if ([] === $this->language) {
-            $this->addOnceTolanguage(new Language());
+            $this->addOnceToLanguage(new Language());
         }
 
         return $this->language[0];
@@ -3461,7 +3461,7 @@ class TenderingTermsType
      */
     public function addToBudgetAccountLineWithCreate(): BudgetAccountLine
     {
-        $this->addTobudgetAccountLine($budgetAccountLine = new BudgetAccountLine());
+        $this->addToBudgetAccountLine($budgetAccountLine = new BudgetAccountLine());
 
         return $budgetAccountLine;
     }
@@ -3492,7 +3492,7 @@ class TenderingTermsType
         }
 
         if ([] === $this->budgetAccountLine) {
-            $this->addOnceTobudgetAccountLine(new BudgetAccountLine());
+            $this->addOnceToBudgetAccountLine(new BudgetAccountLine());
         }
 
         return $this->budgetAccountLine[0];

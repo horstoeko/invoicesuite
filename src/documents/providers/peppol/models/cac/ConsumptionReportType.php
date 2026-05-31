@@ -432,7 +432,7 @@ class ConsumptionReportType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -463,7 +463,7 @@ class ConsumptionReportType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -1036,7 +1036,7 @@ class ConsumptionReportType
      */
     public function addToConsumptionReportReferenceWithCreate(): ConsumptionReportReference
     {
-        $this->addToconsumptionReportReference($consumptionReportReference = new ConsumptionReportReference());
+        $this->addToConsumptionReportReference($consumptionReportReference = new ConsumptionReportReference());
 
         return $consumptionReportReference;
     }
@@ -1067,7 +1067,7 @@ class ConsumptionReportType
         }
 
         if ([] === $this->consumptionReportReference) {
-            $this->addOnceToconsumptionReportReference(new ConsumptionReportReference());
+            $this->addOnceToConsumptionReportReference(new ConsumptionReportReference());
         }
 
         return $this->consumptionReportReference[0];
@@ -1160,7 +1160,7 @@ class ConsumptionReportType
      */
     public function addToConsumptionHistoryWithCreate(): ConsumptionHistory
     {
-        $this->addToconsumptionHistory($consumptionHistory = new ConsumptionHistory());
+        $this->addToConsumptionHistory($consumptionHistory = new ConsumptionHistory());
 
         return $consumptionHistory;
     }
@@ -1191,7 +1191,7 @@ class ConsumptionReportType
         }
 
         if ([] === $this->consumptionHistory) {
-            $this->addOnceToconsumptionHistory(new ConsumptionHistory());
+            $this->addOnceToConsumptionHistory(new ConsumptionHistory());
         }
 
         return $this->consumptionHistory[0];

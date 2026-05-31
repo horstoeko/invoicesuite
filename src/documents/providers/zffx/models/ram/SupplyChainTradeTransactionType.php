@@ -113,7 +113,7 @@ class SupplyChainTradeTransactionType
      */
     public function addToIncludedSupplyChainTradeLineItemWithCreate(): SupplyChainTradeLineItemType
     {
-        $this->addToincludedSupplyChainTradeLineItem($includedSupplyChainTradeLineItem = new SupplyChainTradeLineItemType());
+        $this->addToIncludedSupplyChainTradeLineItem($includedSupplyChainTradeLineItem = new SupplyChainTradeLineItemType());
 
         return $includedSupplyChainTradeLineItem;
     }
@@ -144,7 +144,7 @@ class SupplyChainTradeTransactionType
         }
 
         if ([] === $this->includedSupplyChainTradeLineItem) {
-            $this->addOnceToincludedSupplyChainTradeLineItem(new SupplyChainTradeLineItemType());
+            $this->addOnceToIncludedSupplyChainTradeLineItem(new SupplyChainTradeLineItemType());
         }
 
         return $this->includedSupplyChainTradeLineItem[0];

@@ -853,7 +853,7 @@ class TransportEquipmentType
      */
     public function addToReferencedConsignmentIDWithCreate(): ReferencedConsignmentID
     {
-        $this->addToreferencedConsignmentID($referencedConsignmentID = new ReferencedConsignmentID());
+        $this->addToReferencedConsignmentID($referencedConsignmentID = new ReferencedConsignmentID());
 
         return $referencedConsignmentID;
     }
@@ -884,7 +884,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->referencedConsignmentID) {
-            $this->addOnceToreferencedConsignmentID(new ReferencedConsignmentID());
+            $this->addOnceToReferencedConsignmentID(new ReferencedConsignmentID());
         }
 
         return $this->referencedConsignmentID[0];
@@ -1247,7 +1247,7 @@ class TransportEquipmentType
      */
     public function addToInformationWithCreate(): Information
     {
-        $this->addToinformation($information = new Information());
+        $this->addToInformation($information = new Information());
 
         return $information;
     }
@@ -1278,7 +1278,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->information) {
-            $this->addOnceToinformation(new Information());
+            $this->addOnceToInformation(new Information());
         }
 
         return $this->information[0];
@@ -1671,7 +1671,7 @@ class TransportEquipmentType
      */
     public function addToDamageRemarksWithCreate(): DamageRemarks
     {
-        $this->addTodamageRemarks($damageRemarks = new DamageRemarks());
+        $this->addToDamageRemarks($damageRemarks = new DamageRemarks());
 
         return $damageRemarks;
     }
@@ -1702,7 +1702,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->damageRemarks) {
-            $this->addOnceTodamageRemarks(new DamageRemarks());
+            $this->addOnceToDamageRemarks(new DamageRemarks());
         }
 
         return $this->damageRemarks[0];
@@ -1795,7 +1795,7 @@ class TransportEquipmentType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -1826,7 +1826,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -1919,7 +1919,7 @@ class TransportEquipmentType
      */
     public function addToSpecialTransportRequirementsWithCreate(): SpecialTransportRequirements
     {
-        $this->addTospecialTransportRequirements($specialTransportRequirements = new SpecialTransportRequirements());
+        $this->addToSpecialTransportRequirements($specialTransportRequirements = new SpecialTransportRequirements());
 
         return $specialTransportRequirements;
     }
@@ -1950,7 +1950,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->specialTransportRequirements) {
-            $this->addOnceTospecialTransportRequirements(new SpecialTransportRequirements());
+            $this->addOnceToSpecialTransportRequirements(new SpecialTransportRequirements());
         }
 
         return $this->specialTransportRequirements[0];
@@ -2273,7 +2273,7 @@ class TransportEquipmentType
      */
     public function addToMeasurementDimensionWithCreate(): MeasurementDimension
     {
-        $this->addTomeasurementDimension($measurementDimension = new MeasurementDimension());
+        $this->addToMeasurementDimension($measurementDimension = new MeasurementDimension());
 
         return $measurementDimension;
     }
@@ -2304,7 +2304,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->measurementDimension) {
-            $this->addOnceTomeasurementDimension(new MeasurementDimension());
+            $this->addOnceToMeasurementDimension(new MeasurementDimension());
         }
 
         return $this->measurementDimension[0];
@@ -2397,7 +2397,7 @@ class TransportEquipmentType
      */
     public function addToTransportEquipmentSealWithCreate(): TransportEquipmentSeal
     {
-        $this->addTotransportEquipmentSeal($transportEquipmentSeal = new TransportEquipmentSeal());
+        $this->addToTransportEquipmentSeal($transportEquipmentSeal = new TransportEquipmentSeal());
 
         return $transportEquipmentSeal;
     }
@@ -2428,7 +2428,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->transportEquipmentSeal) {
-            $this->addOnceTotransportEquipmentSeal(new TransportEquipmentSeal());
+            $this->addOnceToTransportEquipmentSeal(new TransportEquipmentSeal());
         }
 
         return $this->transportEquipmentSeal[0];
@@ -2921,7 +2921,7 @@ class TransportEquipmentType
      */
     public function addToPositioningTransportEventWithCreate(): PositioningTransportEvent
     {
-        $this->addTopositioningTransportEvent($positioningTransportEvent = new PositioningTransportEvent());
+        $this->addToPositioningTransportEvent($positioningTransportEvent = new PositioningTransportEvent());
 
         return $positioningTransportEvent;
     }
@@ -2952,7 +2952,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->positioningTransportEvent) {
-            $this->addOnceTopositioningTransportEvent(new PositioningTransportEvent());
+            $this->addOnceToPositioningTransportEvent(new PositioningTransportEvent());
         }
 
         return $this->positioningTransportEvent[0];
@@ -3045,7 +3045,7 @@ class TransportEquipmentType
      */
     public function addToQuarantineTransportEventWithCreate(): QuarantineTransportEvent
     {
-        $this->addToquarantineTransportEvent($quarantineTransportEvent = new QuarantineTransportEvent());
+        $this->addToQuarantineTransportEvent($quarantineTransportEvent = new QuarantineTransportEvent());
 
         return $quarantineTransportEvent;
     }
@@ -3076,7 +3076,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->quarantineTransportEvent) {
-            $this->addOnceToquarantineTransportEvent(new QuarantineTransportEvent());
+            $this->addOnceToQuarantineTransportEvent(new QuarantineTransportEvent());
         }
 
         return $this->quarantineTransportEvent[0];
@@ -3169,7 +3169,7 @@ class TransportEquipmentType
      */
     public function addToDeliveryTransportEventWithCreate(): DeliveryTransportEvent
     {
-        $this->addTodeliveryTransportEvent($deliveryTransportEvent = new DeliveryTransportEvent());
+        $this->addToDeliveryTransportEvent($deliveryTransportEvent = new DeliveryTransportEvent());
 
         return $deliveryTransportEvent;
     }
@@ -3200,7 +3200,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->deliveryTransportEvent) {
-            $this->addOnceTodeliveryTransportEvent(new DeliveryTransportEvent());
+            $this->addOnceToDeliveryTransportEvent(new DeliveryTransportEvent());
         }
 
         return $this->deliveryTransportEvent[0];
@@ -3293,7 +3293,7 @@ class TransportEquipmentType
      */
     public function addToPickupTransportEventWithCreate(): PickupTransportEvent
     {
-        $this->addTopickupTransportEvent($pickupTransportEvent = new PickupTransportEvent());
+        $this->addToPickupTransportEvent($pickupTransportEvent = new PickupTransportEvent());
 
         return $pickupTransportEvent;
     }
@@ -3324,7 +3324,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->pickupTransportEvent) {
-            $this->addOnceTopickupTransportEvent(new PickupTransportEvent());
+            $this->addOnceToPickupTransportEvent(new PickupTransportEvent());
         }
 
         return $this->pickupTransportEvent[0];
@@ -3417,7 +3417,7 @@ class TransportEquipmentType
      */
     public function addToHandlingTransportEventWithCreate(): HandlingTransportEvent
     {
-        $this->addTohandlingTransportEvent($handlingTransportEvent = new HandlingTransportEvent());
+        $this->addToHandlingTransportEvent($handlingTransportEvent = new HandlingTransportEvent());
 
         return $handlingTransportEvent;
     }
@@ -3448,7 +3448,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->handlingTransportEvent) {
-            $this->addOnceTohandlingTransportEvent(new HandlingTransportEvent());
+            $this->addOnceToHandlingTransportEvent(new HandlingTransportEvent());
         }
 
         return $this->handlingTransportEvent[0];
@@ -3541,7 +3541,7 @@ class TransportEquipmentType
      */
     public function addToLoadingTransportEventWithCreate(): LoadingTransportEvent
     {
-        $this->addToloadingTransportEvent($loadingTransportEvent = new LoadingTransportEvent());
+        $this->addToLoadingTransportEvent($loadingTransportEvent = new LoadingTransportEvent());
 
         return $loadingTransportEvent;
     }
@@ -3572,7 +3572,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->loadingTransportEvent) {
-            $this->addOnceToloadingTransportEvent(new LoadingTransportEvent());
+            $this->addOnceToLoadingTransportEvent(new LoadingTransportEvent());
         }
 
         return $this->loadingTransportEvent[0];
@@ -3665,7 +3665,7 @@ class TransportEquipmentType
      */
     public function addToTransportEventWithCreate(): TransportEvent
     {
-        $this->addTotransportEvent($transportEvent = new TransportEvent());
+        $this->addToTransportEvent($transportEvent = new TransportEvent());
 
         return $transportEvent;
     }
@@ -3696,7 +3696,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->transportEvent) {
-            $this->addOnceTotransportEvent(new TransportEvent());
+            $this->addOnceToTransportEvent(new TransportEvent());
         }
 
         return $this->transportEvent[0];
@@ -3829,7 +3829,7 @@ class TransportEquipmentType
      */
     public function addToHaulageTradingTermsWithCreate(): HaulageTradingTerms
     {
-        $this->addTohaulageTradingTerms($haulageTradingTerms = new HaulageTradingTerms());
+        $this->addToHaulageTradingTerms($haulageTradingTerms = new HaulageTradingTerms());
 
         return $haulageTradingTerms;
     }
@@ -3860,7 +3860,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->haulageTradingTerms) {
-            $this->addOnceTohaulageTradingTerms(new HaulageTradingTerms());
+            $this->addOnceToHaulageTradingTerms(new HaulageTradingTerms());
         }
 
         return $this->haulageTradingTerms[0];
@@ -3953,7 +3953,7 @@ class TransportEquipmentType
      */
     public function addToHazardousGoodsTransitWithCreate(): HazardousGoodsTransit
     {
-        $this->addTohazardousGoodsTransit($hazardousGoodsTransit = new HazardousGoodsTransit());
+        $this->addToHazardousGoodsTransit($hazardousGoodsTransit = new HazardousGoodsTransit());
 
         return $hazardousGoodsTransit;
     }
@@ -3984,7 +3984,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->hazardousGoodsTransit) {
-            $this->addOnceTohazardousGoodsTransit(new HazardousGoodsTransit());
+            $this->addOnceToHazardousGoodsTransit(new HazardousGoodsTransit());
         }
 
         return $this->hazardousGoodsTransit[0];
@@ -4077,7 +4077,7 @@ class TransportEquipmentType
      */
     public function addToPackagedTransportHandlingUnitWithCreate(): PackagedTransportHandlingUnit
     {
-        $this->addTopackagedTransportHandlingUnit($packagedTransportHandlingUnit = new PackagedTransportHandlingUnit());
+        $this->addToPackagedTransportHandlingUnit($packagedTransportHandlingUnit = new PackagedTransportHandlingUnit());
 
         return $packagedTransportHandlingUnit;
     }
@@ -4108,7 +4108,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->packagedTransportHandlingUnit) {
-            $this->addOnceTopackagedTransportHandlingUnit(new PackagedTransportHandlingUnit());
+            $this->addOnceToPackagedTransportHandlingUnit(new PackagedTransportHandlingUnit());
         }
 
         return $this->packagedTransportHandlingUnit[0];
@@ -4201,7 +4201,7 @@ class TransportEquipmentType
      */
     public function addToServiceAllowanceChargeWithCreate(): ServiceAllowanceCharge
     {
-        $this->addToserviceAllowanceCharge($serviceAllowanceCharge = new ServiceAllowanceCharge());
+        $this->addToServiceAllowanceCharge($serviceAllowanceCharge = new ServiceAllowanceCharge());
 
         return $serviceAllowanceCharge;
     }
@@ -4232,7 +4232,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->serviceAllowanceCharge) {
-            $this->addOnceToserviceAllowanceCharge(new ServiceAllowanceCharge());
+            $this->addOnceToServiceAllowanceCharge(new ServiceAllowanceCharge());
         }
 
         return $this->serviceAllowanceCharge[0];
@@ -4325,7 +4325,7 @@ class TransportEquipmentType
      */
     public function addToFreightAllowanceChargeWithCreate(): FreightAllowanceCharge
     {
-        $this->addTofreightAllowanceCharge($freightAllowanceCharge = new FreightAllowanceCharge());
+        $this->addToFreightAllowanceCharge($freightAllowanceCharge = new FreightAllowanceCharge());
 
         return $freightAllowanceCharge;
     }
@@ -4356,7 +4356,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->freightAllowanceCharge) {
-            $this->addOnceTofreightAllowanceCharge(new FreightAllowanceCharge());
+            $this->addOnceToFreightAllowanceCharge(new FreightAllowanceCharge());
         }
 
         return $this->freightAllowanceCharge[0];
@@ -4449,7 +4449,7 @@ class TransportEquipmentType
      */
     public function addToAttachedTransportEquipmentWithCreate(): AttachedTransportEquipment
     {
-        $this->addToattachedTransportEquipment($attachedTransportEquipment = new AttachedTransportEquipment());
+        $this->addToAttachedTransportEquipment($attachedTransportEquipment = new AttachedTransportEquipment());
 
         return $attachedTransportEquipment;
     }
@@ -4480,7 +4480,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->attachedTransportEquipment) {
-            $this->addOnceToattachedTransportEquipment(new AttachedTransportEquipment());
+            $this->addOnceToAttachedTransportEquipment(new AttachedTransportEquipment());
         }
 
         return $this->attachedTransportEquipment[0];
@@ -4693,7 +4693,7 @@ class TransportEquipmentType
      */
     public function addToShipmentDocumentReferenceWithCreate(): ShipmentDocumentReference
     {
-        $this->addToshipmentDocumentReference($shipmentDocumentReference = new ShipmentDocumentReference());
+        $this->addToShipmentDocumentReference($shipmentDocumentReference = new ShipmentDocumentReference());
 
         return $shipmentDocumentReference;
     }
@@ -4724,7 +4724,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->shipmentDocumentReference) {
-            $this->addOnceToshipmentDocumentReference(new ShipmentDocumentReference());
+            $this->addOnceToShipmentDocumentReference(new ShipmentDocumentReference());
         }
 
         return $this->shipmentDocumentReference[0];
@@ -4817,7 +4817,7 @@ class TransportEquipmentType
      */
     public function addToContainedInTransportEquipmentWithCreate(): ContainedInTransportEquipment
     {
-        $this->addTocontainedInTransportEquipment($containedInTransportEquipment = new ContainedInTransportEquipment());
+        $this->addToContainedInTransportEquipment($containedInTransportEquipment = new ContainedInTransportEquipment());
 
         return $containedInTransportEquipment;
     }
@@ -4848,7 +4848,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->containedInTransportEquipment) {
-            $this->addOnceTocontainedInTransportEquipment(new ContainedInTransportEquipment());
+            $this->addOnceToContainedInTransportEquipment(new ContainedInTransportEquipment());
         }
 
         return $this->containedInTransportEquipment[0];
@@ -4941,7 +4941,7 @@ class TransportEquipmentType
      */
     public function addToPackageWithCreate(): Package
     {
-        $this->addTopackage($package = new Package());
+        $this->addToPackage($package = new Package());
 
         return $package;
     }
@@ -4972,7 +4972,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->package) {
-            $this->addOnceTopackage(new Package());
+            $this->addOnceToPackage(new Package());
         }
 
         return $this->package[0];
@@ -5065,7 +5065,7 @@ class TransportEquipmentType
      */
     public function addToGoodsItemWithCreate(): GoodsItem
     {
-        $this->addTogoodsItem($goodsItem = new GoodsItem());
+        $this->addToGoodsItem($goodsItem = new GoodsItem());
 
         return $goodsItem;
     }
@@ -5096,7 +5096,7 @@ class TransportEquipmentType
         }
 
         if ([] === $this->goodsItem) {
-            $this->addOnceTogoodsItem(new GoodsItem());
+            $this->addOnceToGoodsItem(new GoodsItem());
         }
 
         return $this->goodsItem[0];

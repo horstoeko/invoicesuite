@@ -235,7 +235,7 @@ class EvaluationCriterionType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -266,7 +266,7 @@ class EvaluationCriterionType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -479,7 +479,7 @@ class EvaluationCriterionType
      */
     public function addToExpressionWithCreate(): Expression
     {
-        $this->addToexpression($expression = new Expression());
+        $this->addToExpression($expression = new Expression());
 
         return $expression;
     }
@@ -510,7 +510,7 @@ class EvaluationCriterionType
         }
 
         if ([] === $this->expression) {
-            $this->addOnceToexpression(new Expression());
+            $this->addOnceToExpression(new Expression());
         }
 
         return $this->expression[0];
@@ -643,7 +643,7 @@ class EvaluationCriterionType
      */
     public function addToSuggestedEvidenceWithCreate(): SuggestedEvidence
     {
-        $this->addTosuggestedEvidence($suggestedEvidence = new SuggestedEvidence());
+        $this->addToSuggestedEvidence($suggestedEvidence = new SuggestedEvidence());
 
         return $suggestedEvidence;
     }
@@ -674,7 +674,7 @@ class EvaluationCriterionType
         }
 
         if ([] === $this->suggestedEvidence) {
-            $this->addOnceTosuggestedEvidence(new SuggestedEvidence());
+            $this->addOnceToSuggestedEvidence(new SuggestedEvidence());
         }
 
         return $this->suggestedEvidence[0];

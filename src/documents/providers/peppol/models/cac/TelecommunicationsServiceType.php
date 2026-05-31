@@ -967,7 +967,7 @@ class TelecommunicationsServiceType
      */
     public function addToExchangeRateWithCreate(): ExchangeRate
     {
-        $this->addToexchangeRate($exchangeRate = new ExchangeRate());
+        $this->addToExchangeRate($exchangeRate = new ExchangeRate());
 
         return $exchangeRate;
     }
@@ -998,7 +998,7 @@ class TelecommunicationsServiceType
         }
 
         if ([] === $this->exchangeRate) {
-            $this->addOnceToexchangeRate(new ExchangeRate());
+            $this->addOnceToExchangeRate(new ExchangeRate());
         }
 
         return $this->exchangeRate[0];
@@ -1091,7 +1091,7 @@ class TelecommunicationsServiceType
      */
     public function addToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        $this->addToallowanceCharge($allowanceCharge = new AllowanceCharge());
+        $this->addToAllowanceCharge($allowanceCharge = new AllowanceCharge());
 
         return $allowanceCharge;
     }
@@ -1122,7 +1122,7 @@ class TelecommunicationsServiceType
         }
 
         if ([] === $this->allowanceCharge) {
-            $this->addOnceToallowanceCharge(new AllowanceCharge());
+            $this->addOnceToAllowanceCharge(new AllowanceCharge());
         }
 
         return $this->allowanceCharge[0];
@@ -1215,7 +1215,7 @@ class TelecommunicationsServiceType
      */
     public function addToTaxTotalWithCreate(): TaxTotal
     {
-        $this->addTotaxTotal($taxTotal = new TaxTotal());
+        $this->addToTaxTotal($taxTotal = new TaxTotal());
 
         return $taxTotal;
     }
@@ -1246,7 +1246,7 @@ class TelecommunicationsServiceType
         }
 
         if ([] === $this->taxTotal) {
-            $this->addOnceTotaxTotal(new TaxTotal());
+            $this->addOnceToTaxTotal(new TaxTotal());
         }
 
         return $this->taxTotal[0];
@@ -1339,7 +1339,7 @@ class TelecommunicationsServiceType
      */
     public function addToCallDutyWithCreate(): CallDuty
     {
-        $this->addTocallDuty($callDuty = new CallDuty());
+        $this->addToCallDuty($callDuty = new CallDuty());
 
         return $callDuty;
     }
@@ -1370,7 +1370,7 @@ class TelecommunicationsServiceType
         }
 
         if ([] === $this->callDuty) {
-            $this->addOnceTocallDuty(new CallDuty());
+            $this->addOnceToCallDuty(new CallDuty());
         }
 
         return $this->callDuty[0];
@@ -1463,7 +1463,7 @@ class TelecommunicationsServiceType
      */
     public function addToTimeDutyWithCreate(): TimeDuty
     {
-        $this->addTotimeDuty($timeDuty = new TimeDuty());
+        $this->addToTimeDuty($timeDuty = new TimeDuty());
 
         return $timeDuty;
     }
@@ -1494,7 +1494,7 @@ class TelecommunicationsServiceType
         }
 
         if ([] === $this->timeDuty) {
-            $this->addOnceTotimeDuty(new TimeDuty());
+            $this->addOnceToTimeDuty(new TimeDuty());
         }
 
         return $this->timeDuty[0];

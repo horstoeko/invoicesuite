@@ -286,7 +286,7 @@ class PromotionalEventType
      */
     public function addToPromotionalSpecificationWithCreate(): PromotionalSpecification
     {
-        $this->addTopromotionalSpecification($promotionalSpecification = new PromotionalSpecification());
+        $this->addToPromotionalSpecification($promotionalSpecification = new PromotionalSpecification());
 
         return $promotionalSpecification;
     }
@@ -317,7 +317,7 @@ class PromotionalEventType
         }
 
         if ([] === $this->promotionalSpecification) {
-            $this->addOnceTopromotionalSpecification(new PromotionalSpecification());
+            $this->addOnceToPromotionalSpecification(new PromotionalSpecification());
         }
 
         return $this->promotionalSpecification[0];

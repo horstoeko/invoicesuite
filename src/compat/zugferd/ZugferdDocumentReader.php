@@ -124,7 +124,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         $providerId = $this->documentReader->getCurrentDocumentFormatProvider()->getUniqueId();
 
         foreach (ZugferdProfiles::PROFILEDEF as $profileId => $profileDef) {
-            if ($profileDef['invoicesuiteproviderid'] == $providerId) {
+            if ($profileDef['invoicesuiteproviderid'] === $providerId) {
                 return $profileId;
             }
         }
@@ -142,7 +142,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         $providerId = $this->documentReader->getCurrentDocumentFormatProvider()->getUniqueId();
 
         foreach (ZugferdProfiles::PROFILEDEF as $profileDef) {
-            if ($profileDef['invoicesuiteproviderid'] == $providerId) {
+            if ($profileDef['invoicesuiteproviderid'] === $providerId) {
                 return $profileDef;
             }
         }

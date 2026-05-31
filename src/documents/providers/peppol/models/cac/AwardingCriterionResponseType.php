@@ -264,7 +264,7 @@ class AwardingCriterionResponseType
      */
     public function addToAwardingCriterionDescriptionWithCreate(): AwardingCriterionDescription
     {
-        $this->addToawardingCriterionDescription($awardingCriterionDescription = new AwardingCriterionDescription());
+        $this->addToAwardingCriterionDescription($awardingCriterionDescription = new AwardingCriterionDescription());
 
         return $awardingCriterionDescription;
     }
@@ -295,7 +295,7 @@ class AwardingCriterionResponseType
         }
 
         if ([] === $this->awardingCriterionDescription) {
-            $this->addOnceToawardingCriterionDescription(new AwardingCriterionDescription());
+            $this->addOnceToAwardingCriterionDescription(new AwardingCriterionDescription());
         }
 
         return $this->awardingCriterionDescription[0];
@@ -388,7 +388,7 @@ class AwardingCriterionResponseType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -419,7 +419,7 @@ class AwardingCriterionResponseType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -592,7 +592,7 @@ class AwardingCriterionResponseType
      */
     public function addToSubordinateAwardingCriterionResponseWithCreate(): SubordinateAwardingCriterionResponse
     {
-        $this->addTosubordinateAwardingCriterionResponse($subordinateAwardingCriterionResponse = new SubordinateAwardingCriterionResponse());
+        $this->addToSubordinateAwardingCriterionResponse($subordinateAwardingCriterionResponse = new SubordinateAwardingCriterionResponse());
 
         return $subordinateAwardingCriterionResponse;
     }
@@ -623,7 +623,7 @@ class AwardingCriterionResponseType
         }
 
         if ([] === $this->subordinateAwardingCriterionResponse) {
-            $this->addOnceTosubordinateAwardingCriterionResponse(new SubordinateAwardingCriterionResponse());
+            $this->addOnceToSubordinateAwardingCriterionResponse(new SubordinateAwardingCriterionResponse());
         }
 
         return $this->subordinateAwardingCriterionResponse[0];

@@ -413,7 +413,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
         $this->setDocumentBuyerAddress($street, null, null, $postcode, $city, $country);
         $this->addDocumentBuyerGlobalId($globalID, $globalIDscheme);
 
-        if (null != $buyerReference) {
+        if (null !== $buyerReference) {
             $this->setDocumentBuyerReference($buyerReference);
         }
 

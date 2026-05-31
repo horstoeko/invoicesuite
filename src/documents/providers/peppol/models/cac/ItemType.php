@@ -454,7 +454,7 @@ class ItemType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -485,7 +485,7 @@ class ItemType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -758,7 +758,7 @@ class ItemType
      */
     public function addToAdditionalInformationWithCreate(): AdditionalInformation
     {
-        $this->addToadditionalInformation($additionalInformation = new AdditionalInformation());
+        $this->addToAdditionalInformation($additionalInformation = new AdditionalInformation());
 
         return $additionalInformation;
     }
@@ -789,7 +789,7 @@ class ItemType
         }
 
         if ([] === $this->additionalInformation) {
-            $this->addOnceToadditionalInformation(new AdditionalInformation());
+            $this->addOnceToAdditionalInformation(new AdditionalInformation());
         }
 
         return $this->additionalInformation[0];
@@ -882,7 +882,7 @@ class ItemType
      */
     public function addToKeywordWithCreate(): Keyword
     {
-        $this->addTokeyword($keyword = new Keyword());
+        $this->addToKeyword($keyword = new Keyword());
 
         return $keyword;
     }
@@ -913,7 +913,7 @@ class ItemType
         }
 
         if ([] === $this->keyword) {
-            $this->addOnceTokeyword(new Keyword());
+            $this->addOnceToKeyword(new Keyword());
         }
 
         return $this->keyword[0];
@@ -1006,7 +1006,7 @@ class ItemType
      */
     public function addToBrandNameWithCreate(): BrandName
     {
-        $this->addTobrandName($brandName = new BrandName());
+        $this->addToBrandName($brandName = new BrandName());
 
         return $brandName;
     }
@@ -1037,7 +1037,7 @@ class ItemType
         }
 
         if ([] === $this->brandName) {
-            $this->addOnceTobrandName(new BrandName());
+            $this->addOnceToBrandName(new BrandName());
         }
 
         return $this->brandName[0];
@@ -1130,7 +1130,7 @@ class ItemType
      */
     public function addToModelNameWithCreate(): ModelName
     {
-        $this->addTomodelName($modelName = new ModelName());
+        $this->addToModelName($modelName = new ModelName());
 
         return $modelName;
     }
@@ -1161,7 +1161,7 @@ class ItemType
         }
 
         if ([] === $this->modelName) {
-            $this->addOnceTomodelName(new ModelName());
+            $this->addOnceToModelName(new ModelName());
         }
 
         return $this->modelName[0];
@@ -1334,7 +1334,7 @@ class ItemType
      */
     public function addToManufacturersItemIdentificationWithCreate(): ManufacturersItemIdentification
     {
-        $this->addTomanufacturersItemIdentification($manufacturersItemIdentification = new ManufacturersItemIdentification());
+        $this->addToManufacturersItemIdentification($manufacturersItemIdentification = new ManufacturersItemIdentification());
 
         return $manufacturersItemIdentification;
     }
@@ -1365,7 +1365,7 @@ class ItemType
         }
 
         if ([] === $this->manufacturersItemIdentification) {
-            $this->addOnceTomanufacturersItemIdentification(new ManufacturersItemIdentification());
+            $this->addOnceToManufacturersItemIdentification(new ManufacturersItemIdentification());
         }
 
         return $this->manufacturersItemIdentification[0];
@@ -1538,7 +1538,7 @@ class ItemType
      */
     public function addToAdditionalItemIdentificationWithCreate(): AdditionalItemIdentification
     {
-        $this->addToadditionalItemIdentification($additionalItemIdentification = new AdditionalItemIdentification());
+        $this->addToAdditionalItemIdentification($additionalItemIdentification = new AdditionalItemIdentification());
 
         return $additionalItemIdentification;
     }
@@ -1569,7 +1569,7 @@ class ItemType
         }
 
         if ([] === $this->additionalItemIdentification) {
-            $this->addOnceToadditionalItemIdentification(new AdditionalItemIdentification());
+            $this->addOnceToAdditionalItemIdentification(new AdditionalItemIdentification());
         }
 
         return $this->additionalItemIdentification[0];
@@ -1702,7 +1702,7 @@ class ItemType
      */
     public function addToItemSpecificationDocumentReferenceWithCreate(): ItemSpecificationDocumentReference
     {
-        $this->addToitemSpecificationDocumentReference($itemSpecificationDocumentReference = new ItemSpecificationDocumentReference());
+        $this->addToItemSpecificationDocumentReference($itemSpecificationDocumentReference = new ItemSpecificationDocumentReference());
 
         return $itemSpecificationDocumentReference;
     }
@@ -1733,7 +1733,7 @@ class ItemType
         }
 
         if ([] === $this->itemSpecificationDocumentReference) {
-            $this->addOnceToitemSpecificationDocumentReference(new ItemSpecificationDocumentReference());
+            $this->addOnceToItemSpecificationDocumentReference(new ItemSpecificationDocumentReference());
         }
 
         return $this->itemSpecificationDocumentReference[0];
@@ -1866,7 +1866,7 @@ class ItemType
      */
     public function addToCommodityClassificationWithCreate(): CommodityClassification
     {
-        $this->addTocommodityClassification($commodityClassification = new CommodityClassification());
+        $this->addToCommodityClassification($commodityClassification = new CommodityClassification());
 
         return $commodityClassification;
     }
@@ -1897,7 +1897,7 @@ class ItemType
         }
 
         if ([] === $this->commodityClassification) {
-            $this->addOnceTocommodityClassification(new CommodityClassification());
+            $this->addOnceToCommodityClassification(new CommodityClassification());
         }
 
         return $this->commodityClassification[0];
@@ -1990,7 +1990,7 @@ class ItemType
      */
     public function addToTransactionConditionsWithCreate(): TransactionConditions
     {
-        $this->addTotransactionConditions($transactionConditions = new TransactionConditions());
+        $this->addToTransactionConditions($transactionConditions = new TransactionConditions());
 
         return $transactionConditions;
     }
@@ -2021,7 +2021,7 @@ class ItemType
         }
 
         if ([] === $this->transactionConditions) {
-            $this->addOnceTotransactionConditions(new TransactionConditions());
+            $this->addOnceToTransactionConditions(new TransactionConditions());
         }
 
         return $this->transactionConditions[0];
@@ -2114,7 +2114,7 @@ class ItemType
      */
     public function addToHazardousItemWithCreate(): HazardousItem
     {
-        $this->addTohazardousItem($hazardousItem = new HazardousItem());
+        $this->addToHazardousItem($hazardousItem = new HazardousItem());
 
         return $hazardousItem;
     }
@@ -2145,7 +2145,7 @@ class ItemType
         }
 
         if ([] === $this->hazardousItem) {
-            $this->addOnceTohazardousItem(new HazardousItem());
+            $this->addOnceToHazardousItem(new HazardousItem());
         }
 
         return $this->hazardousItem[0];
@@ -2238,7 +2238,7 @@ class ItemType
      */
     public function addToClassifiedTaxCategoryWithCreate(): ClassifiedTaxCategory
     {
-        $this->addToclassifiedTaxCategory($classifiedTaxCategory = new ClassifiedTaxCategory());
+        $this->addToClassifiedTaxCategory($classifiedTaxCategory = new ClassifiedTaxCategory());
 
         return $classifiedTaxCategory;
     }
@@ -2269,7 +2269,7 @@ class ItemType
         }
 
         if ([] === $this->classifiedTaxCategory) {
-            $this->addOnceToclassifiedTaxCategory(new ClassifiedTaxCategory());
+            $this->addOnceToClassifiedTaxCategory(new ClassifiedTaxCategory());
         }
 
         return $this->classifiedTaxCategory[0];
@@ -2362,7 +2362,7 @@ class ItemType
      */
     public function addToAdditionalItemPropertyWithCreate(): AdditionalItemProperty
     {
-        $this->addToadditionalItemProperty($additionalItemProperty = new AdditionalItemProperty());
+        $this->addToAdditionalItemProperty($additionalItemProperty = new AdditionalItemProperty());
 
         return $additionalItemProperty;
     }
@@ -2393,7 +2393,7 @@ class ItemType
         }
 
         if ([] === $this->additionalItemProperty) {
-            $this->addOnceToadditionalItemProperty(new AdditionalItemProperty());
+            $this->addOnceToAdditionalItemProperty(new AdditionalItemProperty());
         }
 
         return $this->additionalItemProperty[0];
@@ -2486,7 +2486,7 @@ class ItemType
      */
     public function addToManufacturerPartyWithCreate(): ManufacturerParty
     {
-        $this->addTomanufacturerParty($manufacturerParty = new ManufacturerParty());
+        $this->addToManufacturerParty($manufacturerParty = new ManufacturerParty());
 
         return $manufacturerParty;
     }
@@ -2517,7 +2517,7 @@ class ItemType
         }
 
         if ([] === $this->manufacturerParty) {
-            $this->addOnceTomanufacturerParty(new ManufacturerParty());
+            $this->addOnceToManufacturerParty(new ManufacturerParty());
         }
 
         return $this->manufacturerParty[0];
@@ -2650,7 +2650,7 @@ class ItemType
      */
     public function addToOriginAddressWithCreate(): OriginAddress
     {
-        $this->addTooriginAddress($originAddress = new OriginAddress());
+        $this->addToOriginAddress($originAddress = new OriginAddress());
 
         return $originAddress;
     }
@@ -2681,7 +2681,7 @@ class ItemType
         }
 
         if ([] === $this->originAddress) {
-            $this->addOnceTooriginAddress(new OriginAddress());
+            $this->addOnceToOriginAddress(new OriginAddress());
         }
 
         return $this->originAddress[0];
@@ -2774,7 +2774,7 @@ class ItemType
      */
     public function addToItemInstanceWithCreate(): ItemInstance
     {
-        $this->addToitemInstance($itemInstance = new ItemInstance());
+        $this->addToItemInstance($itemInstance = new ItemInstance());
 
         return $itemInstance;
     }
@@ -2805,7 +2805,7 @@ class ItemType
         }
 
         if ([] === $this->itemInstance) {
-            $this->addOnceToitemInstance(new ItemInstance());
+            $this->addOnceToItemInstance(new ItemInstance());
         }
 
         return $this->itemInstance[0];
@@ -2898,7 +2898,7 @@ class ItemType
      */
     public function addToCertificateWithCreate(): Certificate
     {
-        $this->addTocertificate($certificate = new Certificate());
+        $this->addToCertificate($certificate = new Certificate());
 
         return $certificate;
     }
@@ -2929,7 +2929,7 @@ class ItemType
         }
 
         if ([] === $this->certificate) {
-            $this->addOnceTocertificate(new Certificate());
+            $this->addOnceToCertificate(new Certificate());
         }
 
         return $this->certificate[0];
@@ -3022,7 +3022,7 @@ class ItemType
      */
     public function addToDimensionWithCreate(): Dimension
     {
-        $this->addTodimension($dimension = new Dimension());
+        $this->addToDimension($dimension = new Dimension());
 
         return $dimension;
     }
@@ -3053,7 +3053,7 @@ class ItemType
         }
 
         if ([] === $this->dimension) {
-            $this->addOnceTodimension(new Dimension());
+            $this->addOnceToDimension(new Dimension());
         }
 
         return $this->dimension[0];

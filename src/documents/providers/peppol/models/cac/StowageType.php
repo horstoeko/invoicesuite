@@ -175,7 +175,7 @@ class StowageType
      */
     public function addToLocationWithCreate(): Location
     {
-        $this->addTolocation($location = new Location());
+        $this->addToLocation($location = new Location());
 
         return $location;
     }
@@ -206,7 +206,7 @@ class StowageType
         }
 
         if ([] === $this->location) {
-            $this->addOnceTolocation(new Location());
+            $this->addOnceToLocation(new Location());
         }
 
         return $this->location[0];
@@ -299,7 +299,7 @@ class StowageType
      */
     public function addToMeasurementDimensionWithCreate(): MeasurementDimension
     {
-        $this->addTomeasurementDimension($measurementDimension = new MeasurementDimension());
+        $this->addToMeasurementDimension($measurementDimension = new MeasurementDimension());
 
         return $measurementDimension;
     }
@@ -330,7 +330,7 @@ class StowageType
         }
 
         if ([] === $this->measurementDimension) {
-            $this->addOnceTomeasurementDimension(new MeasurementDimension());
+            $this->addOnceToMeasurementDimension(new MeasurementDimension());
         }
 
         return $this->measurementDimension[0];

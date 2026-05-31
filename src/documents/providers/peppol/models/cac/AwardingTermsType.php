@@ -272,7 +272,7 @@ class AwardingTermsType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -303,7 +303,7 @@ class AwardingTermsType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -396,7 +396,7 @@ class AwardingTermsType
      */
     public function addToTechnicalCommitteeDescriptionWithCreate(): TechnicalCommitteeDescription
     {
-        $this->addTotechnicalCommitteeDescription($technicalCommitteeDescription = new TechnicalCommitteeDescription());
+        $this->addToTechnicalCommitteeDescription($technicalCommitteeDescription = new TechnicalCommitteeDescription());
 
         return $technicalCommitteeDescription;
     }
@@ -427,7 +427,7 @@ class AwardingTermsType
         }
 
         if ([] === $this->technicalCommitteeDescription) {
-            $this->addOnceTotechnicalCommitteeDescription(new TechnicalCommitteeDescription());
+            $this->addOnceToTechnicalCommitteeDescription(new TechnicalCommitteeDescription());
         }
 
         return $this->technicalCommitteeDescription[0];
@@ -520,7 +520,7 @@ class AwardingTermsType
      */
     public function addToLowTendersDescriptionWithCreate(): LowTendersDescription
     {
-        $this->addTolowTendersDescription($lowTendersDescription = new LowTendersDescription());
+        $this->addToLowTendersDescription($lowTendersDescription = new LowTendersDescription());
 
         return $lowTendersDescription;
     }
@@ -551,7 +551,7 @@ class AwardingTermsType
         }
 
         if ([] === $this->lowTendersDescription) {
-            $this->addOnceTolowTendersDescription(new LowTendersDescription());
+            $this->addOnceToLowTendersDescription(new LowTendersDescription());
         }
 
         return $this->lowTendersDescription[0];
@@ -674,7 +674,7 @@ class AwardingTermsType
      */
     public function addToPrizeDescriptionWithCreate(): PrizeDescription
     {
-        $this->addToprizeDescription($prizeDescription = new PrizeDescription());
+        $this->addToPrizeDescription($prizeDescription = new PrizeDescription());
 
         return $prizeDescription;
     }
@@ -705,7 +705,7 @@ class AwardingTermsType
         }
 
         if ([] === $this->prizeDescription) {
-            $this->addOnceToprizeDescription(new PrizeDescription());
+            $this->addOnceToPrizeDescription(new PrizeDescription());
         }
 
         return $this->prizeDescription[0];
@@ -798,7 +798,7 @@ class AwardingTermsType
      */
     public function addToPaymentDescriptionWithCreate(): PaymentDescription
     {
-        $this->addTopaymentDescription($paymentDescription = new PaymentDescription());
+        $this->addToPaymentDescription($paymentDescription = new PaymentDescription());
 
         return $paymentDescription;
     }
@@ -829,7 +829,7 @@ class AwardingTermsType
         }
 
         if ([] === $this->paymentDescription) {
-            $this->addOnceTopaymentDescription(new PaymentDescription());
+            $this->addOnceToPaymentDescription(new PaymentDescription());
         }
 
         return $this->paymentDescription[0];
@@ -982,7 +982,7 @@ class AwardingTermsType
      */
     public function addToAwardingCriterionWithCreate(): AwardingCriterion
     {
-        $this->addToawardingCriterion($awardingCriterion = new AwardingCriterion());
+        $this->addToAwardingCriterion($awardingCriterion = new AwardingCriterion());
 
         return $awardingCriterion;
     }
@@ -1013,7 +1013,7 @@ class AwardingTermsType
         }
 
         if ([] === $this->awardingCriterion) {
-            $this->addOnceToawardingCriterion(new AwardingCriterion());
+            $this->addOnceToAwardingCriterion(new AwardingCriterion());
         }
 
         return $this->awardingCriterion[0];
@@ -1106,7 +1106,7 @@ class AwardingTermsType
      */
     public function addToTechnicalCommitteePersonWithCreate(): TechnicalCommitteePerson
     {
-        $this->addTotechnicalCommitteePerson($technicalCommitteePerson = new TechnicalCommitteePerson());
+        $this->addToTechnicalCommitteePerson($technicalCommitteePerson = new TechnicalCommitteePerson());
 
         return $technicalCommitteePerson;
     }
@@ -1137,7 +1137,7 @@ class AwardingTermsType
         }
 
         if ([] === $this->technicalCommitteePerson) {
-            $this->addOnceTotechnicalCommitteePerson(new TechnicalCommitteePerson());
+            $this->addOnceToTechnicalCommitteePerson(new TechnicalCommitteePerson());
         }
 
         return $this->technicalCommitteePerson[0];

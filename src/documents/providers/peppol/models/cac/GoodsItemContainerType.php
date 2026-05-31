@@ -214,7 +214,7 @@ class GoodsItemContainerType
      */
     public function addToTransportEquipmentWithCreate(): TransportEquipment
     {
-        $this->addTotransportEquipment($transportEquipment = new TransportEquipment());
+        $this->addToTransportEquipment($transportEquipment = new TransportEquipment());
 
         return $transportEquipment;
     }
@@ -245,7 +245,7 @@ class GoodsItemContainerType
         }
 
         if ([] === $this->transportEquipment) {
-            $this->addOnceTotransportEquipment(new TransportEquipment());
+            $this->addOnceToTransportEquipment(new TransportEquipment());
         }
 
         return $this->transportEquipment[0];

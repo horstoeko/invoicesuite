@@ -210,7 +210,7 @@ class QualificationResolutionType
      */
     public function addToExclusionReasonWithCreate(): ExclusionReason
     {
-        $this->addToexclusionReason($exclusionReason = new ExclusionReason());
+        $this->addToExclusionReason($exclusionReason = new ExclusionReason());
 
         return $exclusionReason;
     }
@@ -241,7 +241,7 @@ class QualificationResolutionType
         }
 
         if ([] === $this->exclusionReason) {
-            $this->addOnceToexclusionReason(new ExclusionReason());
+            $this->addOnceToExclusionReason(new ExclusionReason());
         }
 
         return $this->exclusionReason[0];
@@ -334,7 +334,7 @@ class QualificationResolutionType
      */
     public function addToResolutionWithCreate(): Resolution
     {
-        $this->addToresolution($resolution = new Resolution());
+        $this->addToResolution($resolution = new Resolution());
 
         return $resolution;
     }
@@ -365,7 +365,7 @@ class QualificationResolutionType
         }
 
         if ([] === $this->resolution) {
-            $this->addOnceToresolution(new Resolution());
+            $this->addOnceToResolution(new Resolution());
         }
 
         return $this->resolution[0];

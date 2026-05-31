@@ -105,6 +105,8 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
             'error' => false,
         ];
 
+        $tableRows = [];
+
         $tableRows[] = ['ID', $pdfReader->getCurrentDocumentFormatProvider()->getUniqueId()];
         $tableRows[] = ['Description', mb_strimwidth($pdfReader->getCurrentDocumentFormatProvider()->getDescription(), 0, 60, '...')];
         $tableRows[] = ['Error', 'no'];
@@ -142,6 +144,8 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
             'error' => false,
         ];
 
+        $tableRows = [];
+
         $tableRows[] = ['ID', $xmlOrJsonReader->getCurrentDocumentFormatProvider()->getUniqueId()];
         $tableRows[] = ['Description', mb_strimwidth($xmlOrJsonReader->getCurrentDocumentFormatProvider()->getDescription(), 0, 60, '...')];
         $tableRows[] = ['Error', 'no'];
@@ -166,6 +170,8 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
             'description' => 'unknown',
             'error' => true,
         ];
+
+        $tableRows = [];
 
         $tableRows[] = ['ID', 'unknown'];
         $tableRows[] = ['Description', 'unknown'];

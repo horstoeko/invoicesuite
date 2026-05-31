@@ -195,7 +195,7 @@ class DocumentResponseType
      */
     public function addToDocumentReferenceWithCreate(): DocumentReference
     {
-        $this->addTodocumentReference($documentReference = new DocumentReference());
+        $this->addToDocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
     }
@@ -226,7 +226,7 @@ class DocumentResponseType
         }
 
         if ([] === $this->documentReference) {
-            $this->addOnceTodocumentReference(new DocumentReference());
+            $this->addOnceToDocumentReference(new DocumentReference());
         }
 
         return $this->documentReference[0];
@@ -399,7 +399,7 @@ class DocumentResponseType
      */
     public function addToLineResponseWithCreate(): LineResponse
     {
-        $this->addTolineResponse($lineResponse = new LineResponse());
+        $this->addToLineResponse($lineResponse = new LineResponse());
 
         return $lineResponse;
     }
@@ -430,7 +430,7 @@ class DocumentResponseType
         }
 
         if ([] === $this->lineResponse) {
-            $this->addOnceTolineResponse(new LineResponse());
+            $this->addOnceToLineResponse(new LineResponse());
         }
 
         return $this->lineResponse[0];

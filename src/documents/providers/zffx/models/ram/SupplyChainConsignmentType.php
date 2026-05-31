@@ -80,7 +80,7 @@ class SupplyChainConsignmentType
      */
     public function addToSpecifiedLogisticsTransportMovementWithCreate(): LogisticsTransportMovementType
     {
-        $this->addTospecifiedLogisticsTransportMovement($specifiedLogisticsTransportMovement = new LogisticsTransportMovementType());
+        $this->addToSpecifiedLogisticsTransportMovement($specifiedLogisticsTransportMovement = new LogisticsTransportMovementType());
 
         return $specifiedLogisticsTransportMovement;
     }
@@ -111,7 +111,7 @@ class SupplyChainConsignmentType
         }
 
         if ([] === $this->specifiedLogisticsTransportMovement) {
-            $this->addOnceTospecifiedLogisticsTransportMovement(new LogisticsTransportMovementType());
+            $this->addOnceToSpecifiedLogisticsTransportMovement(new LogisticsTransportMovementType());
         }
 
         return $this->specifiedLogisticsTransportMovement[0];

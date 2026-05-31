@@ -447,7 +447,7 @@ class TenderingProcessType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -478,7 +478,7 @@ class TenderingProcessType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -571,7 +571,7 @@ class TenderingProcessType
      */
     public function addToNegotiationDescriptionWithCreate(): NegotiationDescription
     {
-        $this->addTonegotiationDescription($negotiationDescription = new NegotiationDescription());
+        $this->addToNegotiationDescription($negotiationDescription = new NegotiationDescription());
 
         return $negotiationDescription;
     }
@@ -602,7 +602,7 @@ class TenderingProcessType
         }
 
         if ([] === $this->negotiationDescription) {
-            $this->addOnceTonegotiationDescription(new NegotiationDescription());
+            $this->addOnceToNegotiationDescription(new NegotiationDescription());
         }
 
         return $this->negotiationDescription[0];
@@ -1155,7 +1155,7 @@ class TenderingProcessType
      */
     public function addToNoticeDocumentReferenceWithCreate(): NoticeDocumentReference
     {
-        $this->addTonoticeDocumentReference($noticeDocumentReference = new NoticeDocumentReference());
+        $this->addToNoticeDocumentReference($noticeDocumentReference = new NoticeDocumentReference());
 
         return $noticeDocumentReference;
     }
@@ -1186,7 +1186,7 @@ class TenderingProcessType
         }
 
         if ([] === $this->noticeDocumentReference) {
-            $this->addOnceTonoticeDocumentReference(new NoticeDocumentReference());
+            $this->addOnceToNoticeDocumentReference(new NoticeDocumentReference());
         }
 
         return $this->noticeDocumentReference[0];
@@ -1279,7 +1279,7 @@ class TenderingProcessType
      */
     public function addToAdditionalDocumentReferenceWithCreate(): AdditionalDocumentReference
     {
-        $this->addToadditionalDocumentReference($additionalDocumentReference = new AdditionalDocumentReference());
+        $this->addToAdditionalDocumentReference($additionalDocumentReference = new AdditionalDocumentReference());
 
         return $additionalDocumentReference;
     }
@@ -1310,7 +1310,7 @@ class TenderingProcessType
         }
 
         if ([] === $this->additionalDocumentReference) {
-            $this->addOnceToadditionalDocumentReference(new AdditionalDocumentReference());
+            $this->addOnceToAdditionalDocumentReference(new AdditionalDocumentReference());
         }
 
         return $this->additionalDocumentReference[0];
@@ -1403,7 +1403,7 @@ class TenderingProcessType
      */
     public function addToProcessJustificationWithCreate(): ProcessJustification
     {
-        $this->addToprocessJustification($processJustification = new ProcessJustification());
+        $this->addToProcessJustification($processJustification = new ProcessJustification());
 
         return $processJustification;
     }
@@ -1434,7 +1434,7 @@ class TenderingProcessType
         }
 
         if ([] === $this->processJustification) {
-            $this->addOnceToprocessJustification(new ProcessJustification());
+            $this->addOnceToProcessJustification(new ProcessJustification());
         }
 
         return $this->processJustification[0];
@@ -1567,7 +1567,7 @@ class TenderingProcessType
      */
     public function addToOpenTenderEventWithCreate(): OpenTenderEvent
     {
-        $this->addToopenTenderEvent($openTenderEvent = new OpenTenderEvent());
+        $this->addToOpenTenderEvent($openTenderEvent = new OpenTenderEvent());
 
         return $openTenderEvent;
     }
@@ -1598,7 +1598,7 @@ class TenderingProcessType
         }
 
         if ([] === $this->openTenderEvent) {
-            $this->addOnceToopenTenderEvent(new OpenTenderEvent());
+            $this->addOnceToOpenTenderEvent(new OpenTenderEvent());
         }
 
         return $this->openTenderEvent[0];

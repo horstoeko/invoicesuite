@@ -394,7 +394,7 @@ class StatementLineType
      */
     public function addToNoteWithCreate(): Note
     {
-        $this->addTonote($note = new Note());
+        $this->addToNote($note = new Note());
 
         return $note;
     }
@@ -425,7 +425,7 @@ class StatementLineType
         }
 
         if ([] === $this->note) {
-            $this->addOnceTonote(new Note());
+            $this->addOnceToNote(new Note());
         }
 
         return $this->note[0];
@@ -788,7 +788,7 @@ class StatementLineType
      */
     public function addToPaymentTermsWithCreate(): PaymentTerms
     {
-        $this->addTopaymentTerms($paymentTerms = new PaymentTerms());
+        $this->addToPaymentTerms($paymentTerms = new PaymentTerms());
 
         return $paymentTerms;
     }
@@ -819,7 +819,7 @@ class StatementLineType
         }
 
         if ([] === $this->paymentTerms) {
-            $this->addOnceTopaymentTerms(new PaymentTerms());
+            $this->addOnceToPaymentTerms(new PaymentTerms());
         }
 
         return $this->paymentTerms[0];
@@ -1152,7 +1152,7 @@ class StatementLineType
      */
     public function addToInvoicePeriodWithCreate(): InvoicePeriod
     {
-        $this->addToinvoicePeriod($invoicePeriod = new InvoicePeriod());
+        $this->addToInvoicePeriod($invoicePeriod = new InvoicePeriod());
 
         return $invoicePeriod;
     }
@@ -1183,7 +1183,7 @@ class StatementLineType
         }
 
         if ([] === $this->invoicePeriod) {
-            $this->addOnceToinvoicePeriod(new InvoicePeriod());
+            $this->addOnceToInvoicePeriod(new InvoicePeriod());
         }
 
         return $this->invoicePeriod[0];
@@ -1276,7 +1276,7 @@ class StatementLineType
      */
     public function addToBillingReferenceWithCreate(): BillingReference
     {
-        $this->addTobillingReference($billingReference = new BillingReference());
+        $this->addToBillingReference($billingReference = new BillingReference());
 
         return $billingReference;
     }
@@ -1307,7 +1307,7 @@ class StatementLineType
         }
 
         if ([] === $this->billingReference) {
-            $this->addOnceTobillingReference(new BillingReference());
+            $this->addOnceToBillingReference(new BillingReference());
         }
 
         return $this->billingReference[0];
@@ -1400,7 +1400,7 @@ class StatementLineType
      */
     public function addToDocumentReferenceWithCreate(): DocumentReference
     {
-        $this->addTodocumentReference($documentReference = new DocumentReference());
+        $this->addToDocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
     }
@@ -1431,7 +1431,7 @@ class StatementLineType
         }
 
         if ([] === $this->documentReference) {
-            $this->addOnceTodocumentReference(new DocumentReference());
+            $this->addOnceToDocumentReference(new DocumentReference());
         }
 
         return $this->documentReference[0];
@@ -1564,7 +1564,7 @@ class StatementLineType
      */
     public function addToAllowanceChargeWithCreate(): AllowanceCharge
     {
-        $this->addToallowanceCharge($allowanceCharge = new AllowanceCharge());
+        $this->addToAllowanceCharge($allowanceCharge = new AllowanceCharge());
 
         return $allowanceCharge;
     }
@@ -1595,7 +1595,7 @@ class StatementLineType
         }
 
         if ([] === $this->allowanceCharge) {
-            $this->addOnceToallowanceCharge(new AllowanceCharge());
+            $this->addOnceToAllowanceCharge(new AllowanceCharge());
         }
 
         return $this->allowanceCharge[0];
@@ -1688,7 +1688,7 @@ class StatementLineType
      */
     public function addToCollectedPaymentWithCreate(): CollectedPayment
     {
-        $this->addTocollectedPayment($collectedPayment = new CollectedPayment());
+        $this->addToCollectedPayment($collectedPayment = new CollectedPayment());
 
         return $collectedPayment;
     }
@@ -1719,7 +1719,7 @@ class StatementLineType
         }
 
         if ([] === $this->collectedPayment) {
-            $this->addOnceTocollectedPayment(new CollectedPayment());
+            $this->addOnceToCollectedPayment(new CollectedPayment());
         }
 
         return $this->collectedPayment[0];

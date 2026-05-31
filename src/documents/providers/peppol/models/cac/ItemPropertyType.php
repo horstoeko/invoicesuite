@@ -493,7 +493,7 @@ class ItemPropertyType
      */
     public function addToValueQualifierWithCreate(): ValueQualifier
     {
-        $this->addTovalueQualifier($valueQualifier = new ValueQualifier());
+        $this->addToValueQualifier($valueQualifier = new ValueQualifier());
 
         return $valueQualifier;
     }
@@ -524,7 +524,7 @@ class ItemPropertyType
         }
 
         if ([] === $this->valueQualifier) {
-            $this->addOnceTovalueQualifier(new ValueQualifier());
+            $this->addOnceToValueQualifier(new ValueQualifier());
         }
 
         return $this->valueQualifier[0];
@@ -657,7 +657,7 @@ class ItemPropertyType
      */
     public function addToListValueWithCreate(): ListValue
     {
-        $this->addTolistValue($listValue = new ListValue());
+        $this->addToListValue($listValue = new ListValue());
 
         return $listValue;
     }
@@ -688,7 +688,7 @@ class ItemPropertyType
         }
 
         if ([] === $this->listValue) {
-            $this->addOnceTolistValue(new ListValue());
+            $this->addOnceToListValue(new ListValue());
         }
 
         return $this->listValue[0];
@@ -821,7 +821,7 @@ class ItemPropertyType
      */
     public function addToItemPropertyGroupWithCreate(): ItemPropertyGroup
     {
-        $this->addToitemPropertyGroup($itemPropertyGroup = new ItemPropertyGroup());
+        $this->addToItemPropertyGroup($itemPropertyGroup = new ItemPropertyGroup());
 
         return $itemPropertyGroup;
     }
@@ -852,7 +852,7 @@ class ItemPropertyType
         }
 
         if ([] === $this->itemPropertyGroup) {
-            $this->addOnceToitemPropertyGroup(new ItemPropertyGroup());
+            $this->addOnceToItemPropertyGroup(new ItemPropertyGroup());
         }
 
         return $this->itemPropertyGroup[0];

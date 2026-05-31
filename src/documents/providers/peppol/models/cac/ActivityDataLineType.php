@@ -469,7 +469,7 @@ class ActivityDataLineType
      */
     public function addToSalesItemWithCreate(): SalesItem
     {
-        $this->addTosalesItem($salesItem = new SalesItem());
+        $this->addToSalesItem($salesItem = new SalesItem());
 
         return $salesItem;
     }
@@ -500,7 +500,7 @@ class ActivityDataLineType
         }
 
         if ([] === $this->salesItem) {
-            $this->addOnceTosalesItem(new SalesItem());
+            $this->addOnceToSalesItem(new SalesItem());
         }
 
         return $this->salesItem[0];

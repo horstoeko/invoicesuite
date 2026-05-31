@@ -290,7 +290,7 @@ class NotificationRequirementType
      */
     public function addToNotifyPartyWithCreate(): NotifyParty
     {
-        $this->addTonotifyParty($notifyParty = new NotifyParty());
+        $this->addToNotifyParty($notifyParty = new NotifyParty());
 
         return $notifyParty;
     }
@@ -321,7 +321,7 @@ class NotificationRequirementType
         }
 
         if ([] === $this->notifyParty) {
-            $this->addOnceTonotifyParty(new NotifyParty());
+            $this->addOnceToNotifyParty(new NotifyParty());
         }
 
         return $this->notifyParty[0];
@@ -414,7 +414,7 @@ class NotificationRequirementType
      */
     public function addToNotificationPeriodWithCreate(): NotificationPeriod
     {
-        $this->addTonotificationPeriod($notificationPeriod = new NotificationPeriod());
+        $this->addToNotificationPeriod($notificationPeriod = new NotificationPeriod());
 
         return $notificationPeriod;
     }
@@ -445,7 +445,7 @@ class NotificationRequirementType
         }
 
         if ([] === $this->notificationPeriod) {
-            $this->addOnceTonotificationPeriod(new NotificationPeriod());
+            $this->addOnceToNotificationPeriod(new NotificationPeriod());
         }
 
         return $this->notificationPeriod[0];
@@ -538,7 +538,7 @@ class NotificationRequirementType
      */
     public function addToNotificationLocationWithCreate(): NotificationLocation
     {
-        $this->addTonotificationLocation($notificationLocation = new NotificationLocation());
+        $this->addToNotificationLocation($notificationLocation = new NotificationLocation());
 
         return $notificationLocation;
     }
@@ -569,7 +569,7 @@ class NotificationRequirementType
         }
 
         if ([] === $this->notificationLocation) {
-            $this->addOnceTonotificationLocation(new NotificationLocation());
+            $this->addOnceToNotificationLocation(new NotificationLocation());
         }
 
         return $this->notificationLocation[0];

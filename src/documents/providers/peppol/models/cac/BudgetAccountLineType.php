@@ -214,7 +214,7 @@ class BudgetAccountLineType
      */
     public function addToBudgetAccountWithCreate(): BudgetAccount
     {
-        $this->addTobudgetAccount($budgetAccount = new BudgetAccount());
+        $this->addToBudgetAccount($budgetAccount = new BudgetAccount());
 
         return $budgetAccount;
     }
@@ -245,7 +245,7 @@ class BudgetAccountLineType
         }
 
         if ([] === $this->budgetAccount) {
-            $this->addOnceTobudgetAccount(new BudgetAccount());
+            $this->addOnceToBudgetAccount(new BudgetAccount());
         }
 
         return $this->budgetAccount[0];

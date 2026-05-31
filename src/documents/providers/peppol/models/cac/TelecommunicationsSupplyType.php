@@ -291,7 +291,7 @@ class TelecommunicationsSupplyType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -322,7 +322,7 @@ class TelecommunicationsSupplyType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -455,7 +455,7 @@ class TelecommunicationsSupplyType
      */
     public function addToTelecommunicationsSupplyLineWithCreate(): TelecommunicationsSupplyLine
     {
-        $this->addTotelecommunicationsSupplyLine($telecommunicationsSupplyLine = new TelecommunicationsSupplyLine());
+        $this->addToTelecommunicationsSupplyLine($telecommunicationsSupplyLine = new TelecommunicationsSupplyLine());
 
         return $telecommunicationsSupplyLine;
     }
@@ -486,7 +486,7 @@ class TelecommunicationsSupplyType
         }
 
         if ([] === $this->telecommunicationsSupplyLine) {
-            $this->addOnceTotelecommunicationsSupplyLine(new TelecommunicationsSupplyLine());
+            $this->addOnceToTelecommunicationsSupplyLine(new TelecommunicationsSupplyLine());
         }
 
         return $this->telecommunicationsSupplyLine[0];

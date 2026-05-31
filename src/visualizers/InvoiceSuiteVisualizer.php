@@ -507,7 +507,7 @@ class InvoiceSuiteVisualizer
      */
     protected function testMustUseDefaultRenderer(): static
     {
-        if (!$this->renderer) {
+        if (is_null($this->renderer)) {
             $this->setRenderer(new InvoiceSuiteVisualizerFileTemplateRenderer());
         }
 
@@ -524,7 +524,7 @@ class InvoiceSuiteVisualizer
      */
     protected function testTemplateIsSet(): static
     {
-        if (!$this->template) {
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->template)) {
             throw new InvoiceSuiteInvalidArgumentException('No template specified');
         }
 

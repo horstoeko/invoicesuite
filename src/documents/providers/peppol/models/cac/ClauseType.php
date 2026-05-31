@@ -163,7 +163,7 @@ class ClauseType
      */
     public function addToContentWithCreate(): Content
     {
-        $this->addTocontent($content = new Content());
+        $this->addToContent($content = new Content());
 
         return $content;
     }
@@ -194,7 +194,7 @@ class ClauseType
         }
 
         if ([] === $this->content) {
-            $this->addOnceTocontent(new Content());
+            $this->addOnceToContent(new Content());
         }
 
         return $this->content[0];

@@ -548,7 +548,7 @@ class DocumentReferenceType
      */
     public function addToXPathWithCreate(): XPath
     {
-        $this->addToxPath($xPath = new XPath());
+        $this->addToXPath($xPath = new XPath());
 
         return $xPath;
     }
@@ -579,7 +579,7 @@ class DocumentReferenceType
         }
 
         if ([] === $this->xPath) {
-            $this->addOnceToxPath(new XPath());
+            $this->addOnceToXPath(new XPath());
         }
 
         return $this->xPath[0];
@@ -832,7 +832,7 @@ class DocumentReferenceType
      */
     public function addToDocumentDescriptionWithCreate(): DocumentDescription
     {
-        $this->addTodocumentDescription($documentDescription = new DocumentDescription());
+        $this->addToDocumentDescription($documentDescription = new DocumentDescription());
 
         return $documentDescription;
     }
@@ -863,7 +863,7 @@ class DocumentReferenceType
         }
 
         if ([] === $this->documentDescription) {
-            $this->addOnceTodocumentDescription(new DocumentDescription());
+            $this->addOnceToDocumentDescription(new DocumentDescription());
         }
 
         return $this->documentDescription[0];

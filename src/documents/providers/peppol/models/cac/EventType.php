@@ -344,7 +344,7 @@ class EventType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -375,7 +375,7 @@ class EventType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -498,7 +498,7 @@ class EventType
      */
     public function addToCurrentStatusWithCreate(): CurrentStatus
     {
-        $this->addTocurrentStatus($currentStatus = new CurrentStatus());
+        $this->addToCurrentStatus($currentStatus = new CurrentStatus());
 
         return $currentStatus;
     }
@@ -529,7 +529,7 @@ class EventType
         }
 
         if ([] === $this->currentStatus) {
-            $this->addOnceTocurrentStatus(new CurrentStatus());
+            $this->addOnceToCurrentStatus(new CurrentStatus());
         }
 
         return $this->currentStatus[0];
@@ -622,7 +622,7 @@ class EventType
      */
     public function addToContactWithCreate(): Contact
     {
-        $this->addTocontact($contact = new Contact());
+        $this->addToContact($contact = new Contact());
 
         return $contact;
     }
@@ -653,7 +653,7 @@ class EventType
         }
 
         if ([] === $this->contact) {
-            $this->addOnceTocontact(new Contact());
+            $this->addOnceToContact(new Contact());
         }
 
         return $this->contact[0];

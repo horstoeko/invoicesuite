@@ -146,7 +146,7 @@ class EnergyWaterSupplyType
      */
     public function addToConsumptionReportWithCreate(): ConsumptionReport
     {
-        $this->addToconsumptionReport($consumptionReport = new ConsumptionReport());
+        $this->addToConsumptionReport($consumptionReport = new ConsumptionReport());
 
         return $consumptionReport;
     }
@@ -177,7 +177,7 @@ class EnergyWaterSupplyType
         }
 
         if ([] === $this->consumptionReport) {
-            $this->addOnceToconsumptionReport(new ConsumptionReport());
+            $this->addOnceToConsumptionReport(new ConsumptionReport());
         }
 
         return $this->consumptionReport[0];
@@ -270,7 +270,7 @@ class EnergyWaterSupplyType
      */
     public function addToEnergyTaxReportWithCreate(): EnergyTaxReport
     {
-        $this->addToenergyTaxReport($energyTaxReport = new EnergyTaxReport());
+        $this->addToEnergyTaxReport($energyTaxReport = new EnergyTaxReport());
 
         return $energyTaxReport;
     }
@@ -301,7 +301,7 @@ class EnergyWaterSupplyType
         }
 
         if ([] === $this->energyTaxReport) {
-            $this->addOnceToenergyTaxReport(new EnergyTaxReport());
+            $this->addOnceToEnergyTaxReport(new EnergyTaxReport());
         }
 
         return $this->energyTaxReport[0];
@@ -394,7 +394,7 @@ class EnergyWaterSupplyType
      */
     public function addToConsumptionAverageWithCreate(): ConsumptionAverage
     {
-        $this->addToconsumptionAverage($consumptionAverage = new ConsumptionAverage());
+        $this->addToConsumptionAverage($consumptionAverage = new ConsumptionAverage());
 
         return $consumptionAverage;
     }
@@ -425,7 +425,7 @@ class EnergyWaterSupplyType
         }
 
         if ([] === $this->consumptionAverage) {
-            $this->addOnceToconsumptionAverage(new ConsumptionAverage());
+            $this->addOnceToConsumptionAverage(new ConsumptionAverage());
         }
 
         return $this->consumptionAverage[0];
@@ -518,7 +518,7 @@ class EnergyWaterSupplyType
      */
     public function addToEnergyWaterConsumptionCorrectionWithCreate(): EnergyWaterConsumptionCorrection
     {
-        $this->addToenergyWaterConsumptionCorrection($energyWaterConsumptionCorrection = new EnergyWaterConsumptionCorrection());
+        $this->addToEnergyWaterConsumptionCorrection($energyWaterConsumptionCorrection = new EnergyWaterConsumptionCorrection());
 
         return $energyWaterConsumptionCorrection;
     }
@@ -549,7 +549,7 @@ class EnergyWaterSupplyType
         }
 
         if ([] === $this->energyWaterConsumptionCorrection) {
-            $this->addOnceToenergyWaterConsumptionCorrection(new EnergyWaterConsumptionCorrection());
+            $this->addOnceToEnergyWaterConsumptionCorrection(new EnergyWaterConsumptionCorrection());
         }
 
         return $this->energyWaterConsumptionCorrection[0];

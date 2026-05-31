@@ -110,7 +110,7 @@ class UBLExtensionsType
      */
     public function addToUBLExtensionWithCreate(): UBLExtension
     {
-        $this->addTouBLExtension($uBLExtension = new UBLExtension());
+        $this->addToUBLExtension($uBLExtension = new UBLExtension());
 
         return $uBLExtension;
     }
@@ -141,7 +141,7 @@ class UBLExtensionsType
         }
 
         if ([] === $this->uBLExtension) {
-            $this->addOnceTouBLExtension(new UBLExtension());
+            $this->addOnceToUBLExtension(new UBLExtension());
         }
 
         return $this->uBLExtension[0];

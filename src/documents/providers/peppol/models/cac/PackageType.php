@@ -464,7 +464,7 @@ class PackageType
      */
     public function addToPackingMaterialWithCreate(): PackingMaterial
     {
-        $this->addTopackingMaterial($packingMaterial = new PackingMaterial());
+        $this->addToPackingMaterial($packingMaterial = new PackingMaterial());
 
         return $packingMaterial;
     }
@@ -495,7 +495,7 @@ class PackageType
         }
 
         if ([] === $this->packingMaterial) {
-            $this->addOnceTopackingMaterial(new PackingMaterial());
+            $this->addOnceToPackingMaterial(new PackingMaterial());
         }
 
         return $this->packingMaterial[0];
@@ -628,7 +628,7 @@ class PackageType
      */
     public function addToContainedPackageWithCreate(): ContainedPackage
     {
-        $this->addTocontainedPackage($containedPackage = new ContainedPackage());
+        $this->addToContainedPackage($containedPackage = new ContainedPackage());
 
         return $containedPackage;
     }
@@ -659,7 +659,7 @@ class PackageType
         }
 
         if ([] === $this->containedPackage) {
-            $this->addOnceTocontainedPackage(new ContainedPackage());
+            $this->addOnceToContainedPackage(new ContainedPackage());
         }
 
         return $this->containedPackage[0];
@@ -792,7 +792,7 @@ class PackageType
      */
     public function addToGoodsItemWithCreate(): GoodsItem
     {
-        $this->addTogoodsItem($goodsItem = new GoodsItem());
+        $this->addToGoodsItem($goodsItem = new GoodsItem());
 
         return $goodsItem;
     }
@@ -823,7 +823,7 @@ class PackageType
         }
 
         if ([] === $this->goodsItem) {
-            $this->addOnceTogoodsItem(new GoodsItem());
+            $this->addOnceToGoodsItem(new GoodsItem());
         }
 
         return $this->goodsItem[0];
@@ -916,7 +916,7 @@ class PackageType
      */
     public function addToMeasurementDimensionWithCreate(): MeasurementDimension
     {
-        $this->addTomeasurementDimension($measurementDimension = new MeasurementDimension());
+        $this->addToMeasurementDimension($measurementDimension = new MeasurementDimension());
 
         return $measurementDimension;
     }
@@ -947,7 +947,7 @@ class PackageType
         }
 
         if ([] === $this->measurementDimension) {
-            $this->addOnceTomeasurementDimension(new MeasurementDimension());
+            $this->addOnceToMeasurementDimension(new MeasurementDimension());
         }
 
         return $this->measurementDimension[0];
@@ -1040,7 +1040,7 @@ class PackageType
      */
     public function addToDeliveryUnitWithCreate(): DeliveryUnit
     {
-        $this->addTodeliveryUnit($deliveryUnit = new DeliveryUnit());
+        $this->addToDeliveryUnit($deliveryUnit = new DeliveryUnit());
 
         return $deliveryUnit;
     }
@@ -1071,7 +1071,7 @@ class PackageType
         }
 
         if ([] === $this->deliveryUnit) {
-            $this->addOnceTodeliveryUnit(new DeliveryUnit());
+            $this->addOnceToDeliveryUnit(new DeliveryUnit());
         }
 
         return $this->deliveryUnit[0];

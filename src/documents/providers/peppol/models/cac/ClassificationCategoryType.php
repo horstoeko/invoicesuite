@@ -227,7 +227,7 @@ class ClassificationCategoryType
      */
     public function addToDescriptionWithCreate(): Description
     {
-        $this->addTodescription($description = new Description());
+        $this->addToDescription($description = new Description());
 
         return $description;
     }
@@ -258,7 +258,7 @@ class ClassificationCategoryType
         }
 
         if ([] === $this->description) {
-            $this->addOnceTodescription(new Description());
+            $this->addOnceToDescription(new Description());
         }
 
         return $this->description[0];
@@ -351,7 +351,7 @@ class ClassificationCategoryType
      */
     public function addToCategorizesClassificationCategoryWithCreate(): CategorizesClassificationCategory
     {
-        $this->addTocategorizesClassificationCategory($categorizesClassificationCategory = new CategorizesClassificationCategory());
+        $this->addToCategorizesClassificationCategory($categorizesClassificationCategory = new CategorizesClassificationCategory());
 
         return $categorizesClassificationCategory;
     }
@@ -382,7 +382,7 @@ class ClassificationCategoryType
         }
 
         if ([] === $this->categorizesClassificationCategory) {
-            $this->addOnceTocategorizesClassificationCategory(new CategorizesClassificationCategory());
+            $this->addOnceToCategorizesClassificationCategory(new CategorizesClassificationCategory());
         }
 
         return $this->categorizesClassificationCategory[0];
